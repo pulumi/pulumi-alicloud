@@ -19,7 +19,7 @@ public final class ScalingConfigurationDataDisk {
      */
     private @Nullable String autoSnapshotPolicyId;
     /**
-     * @return Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+     * @return Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
      * 
      */
     private @Nullable String category;
@@ -82,7 +82,7 @@ public final class ScalingConfigurationDataDisk {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
     }
     /**
-     * @return Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+     * @return Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
      * 
      */
     public Optional<String> category() {

@@ -18,6 +18,30 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         [Input("networkInterfaceId")]
         public Input<string>? NetworkInterfaceId { get; set; }
 
+        /// <summary>
+        /// The communication mode of the ENI. Default value: `Standard`. Valid values:
+        /// </summary>
+        [Input("networkInterfaceTrafficMode")]
+        public Input<string>? NetworkInterfaceTrafficMode { get; set; }
+
+        [Input("securityGroupIds")]
+        private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// The ID of security group N to which to assign ENI N.
+        /// </summary>
+        public InputList<string> SecurityGroupIds
+        {
+            get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
+            set => _securityGroupIds = value;
+        }
+
+        /// <summary>
+        /// The ID of the vSwitch to which to connect ENI N.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
         public InstanceNetworkInterfacesGetArgs()
         {
         }

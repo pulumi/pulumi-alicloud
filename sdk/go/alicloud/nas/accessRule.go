@@ -27,27 +27,45 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := nas.NewAccessGroup(ctx, "foo", &nas.AccessGroupArgs{
-//				AccessGroupName: pulumi.String("tf-NasConfigName"),
-//				AccessGroupType: pulumi.String("Vpc"),
-//				Description:     pulumi.String("tf-testAccNasConfig"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = nas.NewAccessRule(ctx, "foo", &nas.AccessRuleArgs{
-//				AccessGroupName: foo.AccessGroupName,
-//				SourceCidrIp:    pulumi.String("168.1.1.0/16"),
-//				RwAccessType:    pulumi.String("RDWR"),
-//				UserAccessType:  pulumi.String("no_squash"),
-//				Priority:        pulumi.Int(2),
+//			defaultAccessGroup, err := nas.NewAccessGroup(ctx, "default", &nas.AccessGroupArgs{
+//				AccessGroupType: pulumi.String("Vpc"),
+//				Description:     pulumi.String("ExtremeAccessGroup"),
+//				AccessGroupName: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				FileSystemType:  pulumi.String("extreme"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewAccessRule(ctx, "default", &nas.AccessRuleArgs{
+//				AccessGroupName:  defaultAccessGroup.AccessGroupName,
+//				RwAccessType:     pulumi.String("RDONLY"),
+//				Ipv6SourceCidrIp: pulumi.String("::1"),
+//				UserAccessType:   pulumi.String("no_squash"),
+//				Priority:         pulumi.Int(1),
+//				FileSystemType:   pulumi.String("extreme"),
 //			})
 //			if err != nil {
 //				return err

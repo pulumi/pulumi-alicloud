@@ -15,7 +15,7 @@ import (
 //
 // For information about ECS Deployment Set and how to use it, see [What is Deployment Set](https://www.alibabacloud.com/help/en/doc-detail/91269.htm).
 //
-// > **NOTE:** Available in v1.140.0+.
+// > **NOTE:** Available since v1.140.0.
 //
 // ## Example Usage
 //
@@ -69,7 +69,7 @@ type EcsDeploymentSet struct {
 	Granularity pulumi.StringPtrOutput `pulumi:"granularity"`
 	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
 	OnUnableToRedeployFailedInstance pulumi.StringPtrOutput `pulumi:"onUnableToRedeployFailedInstance"`
-	// The deployment strategy. Valid values: `Availability`.
+	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
 	Strategy pulumi.StringPtrOutput `pulumi:"strategy"`
 }
 
@@ -113,7 +113,7 @@ type ecsDeploymentSetState struct {
 	Granularity *string `pulumi:"granularity"`
 	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
 	OnUnableToRedeployFailedInstance *string `pulumi:"onUnableToRedeployFailedInstance"`
-	// The deployment strategy. Valid values: `Availability`.
+	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
 	Strategy *string `pulumi:"strategy"`
 }
 
@@ -128,7 +128,7 @@ type EcsDeploymentSetState struct {
 	Granularity pulumi.StringPtrInput
 	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
 	OnUnableToRedeployFailedInstance pulumi.StringPtrInput
-	// The deployment strategy. Valid values: `Availability`.
+	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
 	Strategy pulumi.StringPtrInput
 }
 
@@ -147,7 +147,7 @@ type ecsDeploymentSetArgs struct {
 	Granularity *string `pulumi:"granularity"`
 	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
 	OnUnableToRedeployFailedInstance *string `pulumi:"onUnableToRedeployFailedInstance"`
-	// The deployment strategy. Valid values: `Availability`.
+	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
 	Strategy *string `pulumi:"strategy"`
 }
 
@@ -163,7 +163,7 @@ type EcsDeploymentSetArgs struct {
 	Granularity pulumi.StringPtrInput
 	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
 	OnUnableToRedeployFailedInstance pulumi.StringPtrInput
-	// The deployment strategy. Valid values: `Availability`.
+	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
 	Strategy pulumi.StringPtrInput
 }
 
@@ -279,7 +279,7 @@ func (o EcsDeploymentSetOutput) OnUnableToRedeployFailedInstance() pulumi.String
 	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.OnUnableToRedeployFailedInstance }).(pulumi.StringPtrOutput)
 }
 
-// The deployment strategy. Valid values: `Availability`.
+// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
 func (o EcsDeploymentSetOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.Strategy }).(pulumi.StringPtrOutput)
 }

@@ -56,18 +56,33 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * @return The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      * 
      */
     public Optional<Output<String>> endpointType() {
         return Optional.ofNullable(this.endpointType);
+    }
+
+    /**
+     * RAM access policies.
+     * 
+     */
+    @Import(name="policyDocument")
+    private @Nullable Output<String> policyDocument;
+
+    /**
+     * @return RAM access policies.
+     * 
+     */
+    public Optional<Output<String>> policyDocument() {
+        return Optional.ofNullable(this.policyDocument);
     }
 
     /**
@@ -215,6 +230,7 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         this.dryRun = $.dryRun;
         this.endpointDescription = $.endpointDescription;
         this.endpointType = $.endpointType;
+        this.policyDocument = $.policyDocument;
         this.protectedEnabled = $.protectedEnabled;
         this.resourceGroupId = $.resourceGroupId;
         this.securityGroupIds = $.securityGroupIds;
@@ -291,7 +307,7 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointType The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+         * @param endpointType The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
          * 
          * @return builder
          * 
@@ -302,13 +318,34 @@ public final class VpcEndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointType The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+         * @param endpointType The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
          * 
          * @return builder
          * 
          */
         public Builder endpointType(String endpointType) {
             return endpointType(Output.of(endpointType));
+        }
+
+        /**
+         * @param policyDocument RAM access policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyDocument(@Nullable Output<String> policyDocument) {
+            $.policyDocument = policyDocument;
+            return this;
+        }
+
+        /**
+         * @param policyDocument RAM access policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyDocument(String policyDocument) {
+            return policyDocument(Output.of(policyDocument));
         }
 
         /**

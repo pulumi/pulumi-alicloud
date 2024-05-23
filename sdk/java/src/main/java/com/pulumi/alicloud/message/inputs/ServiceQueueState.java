@@ -18,14 +18,29 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
     public static final ServiceQueueState Empty = new ServiceQueueState();
 
     /**
-     * The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
+     * Represents the time when the Queue was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<Integer> createTime;
+
+    /**
+     * @return Represents the time when the Queue was created.
+     * 
+     */
+    public Optional<Output<Integer>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
      * 
      */
     @Import(name="delaySeconds")
     private @Nullable Output<Integer> delaySeconds;
 
     /**
-     * @return The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
+     * @return This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
      * 
      */
     public Optional<Output<Integer>> delaySeconds() {
@@ -33,14 +48,14 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable the log management feature. Default value: false. Valid values:
+     * Represents whether the log management function is enabled.
      * 
      */
     @Import(name="loggingEnabled")
     private @Nullable Output<Boolean> loggingEnabled;
 
     /**
-     * @return Specifies whether to enable the log management feature. Default value: false. Valid values:
+     * @return Represents whether the log management function is enabled.
      * 
      */
     public Optional<Output<Boolean>> loggingEnabled() {
@@ -48,14 +63,14 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
+     * Represents the maximum length of the message body sent to the Queue, in Byte.
      * 
      */
     @Import(name="maximumMessageSize")
     private @Nullable Output<Integer> maximumMessageSize;
 
     /**
-     * @return The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
+     * @return Represents the maximum length of the message body sent to the Queue, in Byte.
      * 
      */
     public Optional<Output<Integer>> maximumMessageSize() {
@@ -63,14 +78,14 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
+     * Represents the longest life time of the message in the Queue.
      * 
      */
     @Import(name="messageRetentionPeriod")
     private @Nullable Output<Integer> messageRetentionPeriod;
 
     /**
-     * @return The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
+     * @return Represents the longest life time of the message in the Queue.
      * 
      */
     public Optional<Output<Integer>> messageRetentionPeriod() {
@@ -78,14 +93,14 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
+     * The longest waiting time for a Queue request when the number of messages is empty, in seconds.
      * 
      */
     @Import(name="pollingWaitSeconds")
     private @Nullable Output<Integer> pollingWaitSeconds;
 
     /**
-     * @return The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
+     * @return The longest waiting time for a Queue request when the number of messages is empty, in seconds.
      * 
      */
     public Optional<Output<Integer>> pollingWaitSeconds() {
@@ -93,14 +108,14 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
+     * Representative resources.
      * 
      */
     @Import(name="queueName")
     private @Nullable Output<String> queueName;
 
     /**
-     * @return Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
+     * @return Representative resources.
      * 
      */
     public Optional<Output<String>> queueName() {
@@ -108,14 +123,14 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
+     * Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
      * 
      */
     @Import(name="visibilityTimeout")
     private @Nullable Output<Integer> visibilityTimeout;
 
     /**
-     * @return The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
+     * @return Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
      * 
      */
     public Optional<Output<Integer>> visibilityTimeout() {
@@ -125,6 +140,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
     private ServiceQueueState() {}
 
     private ServiceQueueState(ServiceQueueState $) {
+        this.createTime = $.createTime;
         this.delaySeconds = $.delaySeconds;
         this.loggingEnabled = $.loggingEnabled;
         this.maximumMessageSize = $.maximumMessageSize;
@@ -153,7 +169,28 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param delaySeconds The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
+         * @param createTime Represents the time when the Queue was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<Integer> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Represents the time when the Queue was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(Integer createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param delaySeconds This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
          * 
          * @return builder
          * 
@@ -164,7 +201,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param delaySeconds The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
+         * @param delaySeconds This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
          * 
          * @return builder
          * 
@@ -174,7 +211,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loggingEnabled Specifies whether to enable the log management feature. Default value: false. Valid values:
+         * @param loggingEnabled Represents whether the log management function is enabled.
          * 
          * @return builder
          * 
@@ -185,7 +222,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loggingEnabled Specifies whether to enable the log management feature. Default value: false. Valid values:
+         * @param loggingEnabled Represents whether the log management function is enabled.
          * 
          * @return builder
          * 
@@ -195,7 +232,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maximumMessageSize The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
+         * @param maximumMessageSize Represents the maximum length of the message body sent to the Queue, in Byte.
          * 
          * @return builder
          * 
@@ -206,7 +243,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maximumMessageSize The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
+         * @param maximumMessageSize Represents the maximum length of the message body sent to the Queue, in Byte.
          * 
          * @return builder
          * 
@@ -216,7 +253,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param messageRetentionPeriod The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
+         * @param messageRetentionPeriod Represents the longest life time of the message in the Queue.
          * 
          * @return builder
          * 
@@ -227,7 +264,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param messageRetentionPeriod The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
+         * @param messageRetentionPeriod Represents the longest life time of the message in the Queue.
          * 
          * @return builder
          * 
@@ -237,7 +274,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pollingWaitSeconds The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
+         * @param pollingWaitSeconds The longest waiting time for a Queue request when the number of messages is empty, in seconds.
          * 
          * @return builder
          * 
@@ -248,7 +285,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pollingWaitSeconds The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
+         * @param pollingWaitSeconds The longest waiting time for a Queue request when the number of messages is empty, in seconds.
          * 
          * @return builder
          * 
@@ -258,7 +295,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queueName Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
+         * @param queueName Representative resources.
          * 
          * @return builder
          * 
@@ -269,7 +306,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queueName Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
+         * @param queueName Representative resources.
          * 
          * @return builder
          * 
@@ -279,7 +316,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param visibilityTimeout The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
+         * @param visibilityTimeout Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
          * 
          * @return builder
          * 
@@ -290,7 +327,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param visibilityTimeout The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
+         * @param visibilityTimeout Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
          * 
          * @return builder
          * 

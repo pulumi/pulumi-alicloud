@@ -114,6 +114,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> CustomSan { get; private set; } = null!;
 
         /// <summary>
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// </summary>
+        [Output("deleteOptions")]
+        public Output<ImmutableArray<Outputs.KubernetesDeleteOption>> DeleteOptions { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable cluster deletion protection.
         /// </summary>
         [Output("deletionProtection")]
@@ -326,7 +332,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
 
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         /// </summary>
         [Output("runtime")]
         public Output<Outputs.KubernetesRuntime?> Runtime { get; private set; } = null!;
@@ -521,6 +527,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("customSan")]
         public Input<string>? CustomSan { get; set; }
+
+        [Input("deleteOptions")]
+        private InputList<Inputs.KubernetesDeleteOptionArgs>? _deleteOptions;
+
+        /// <summary>
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// </summary>
+        public InputList<Inputs.KubernetesDeleteOptionArgs> DeleteOptions
+        {
+            get => _deleteOptions ?? (_deleteOptions = new InputList<Inputs.KubernetesDeleteOptionArgs>());
+            set => _deleteOptions = value;
+        }
 
         /// <summary>
         /// Whether to enable cluster deletion protection.
@@ -768,7 +786,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.KubernetesRuntimeArgs>? Runtime { get; set; }
@@ -909,6 +927,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("customSan")]
         public Input<string>? CustomSan { get; set; }
+
+        [Input("deleteOptions")]
+        private InputList<Inputs.KubernetesDeleteOptionGetArgs>? _deleteOptions;
+
+        /// <summary>
+        /// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        /// </summary>
+        public InputList<Inputs.KubernetesDeleteOptionGetArgs> DeleteOptions
+        {
+            get => _deleteOptions ?? (_deleteOptions = new InputList<Inputs.KubernetesDeleteOptionGetArgs>());
+            set => _deleteOptions = value;
+        }
 
         /// <summary>
         /// Whether to enable cluster deletion protection.
@@ -1174,7 +1204,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        /// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.KubernetesRuntimeGetArgs>? Runtime { get; set; }

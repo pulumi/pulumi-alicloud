@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cs.inputs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAddonArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesCertificateAuthorityArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesConnectionsArgs;
+import com.pulumi.alicloud.cs.inputs.ManagedKubernetesDeleteOptionArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesMaintenanceWindowArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesRrsaMetadataArgs;
 import com.pulumi.core.Output;
@@ -154,6 +155,13 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
     public Optional<Output<String>> customSan() {
         return Optional.ofNullable(this.customSan);
+    }
+
+    @Import(name="deleteOptions")
+    private @Nullable Output<List<ManagedKubernetesDeleteOptionArgs>> deleteOptions;
+
+    public Optional<Output<List<ManagedKubernetesDeleteOptionArgs>>> deleteOptions() {
+        return Optional.ofNullable(this.deleteOptions);
     }
 
     @Import(name="deletionProtection")
@@ -461,6 +469,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         this.controlPlaneLogProject = $.controlPlaneLogProject;
         this.controlPlaneLogTtl = $.controlPlaneLogTtl;
         this.customSan = $.customSan;
+        this.deleteOptions = $.deleteOptions;
         this.deletionProtection = $.deletionProtection;
         this.enableRrsa = $.enableRrsa;
         this.encryptionProviderKey = $.encryptionProviderKey;
@@ -699,6 +708,19 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         public Builder customSan(String customSan) {
             return customSan(Output.of(customSan));
+        }
+
+        public Builder deleteOptions(@Nullable Output<List<ManagedKubernetesDeleteOptionArgs>> deleteOptions) {
+            $.deleteOptions = deleteOptions;
+            return this;
+        }
+
+        public Builder deleteOptions(List<ManagedKubernetesDeleteOptionArgs> deleteOptions) {
+            return deleteOptions(Output.of(deleteOptions));
+        }
+
+        public Builder deleteOptions(ManagedKubernetesDeleteOptionArgs... deleteOptions) {
+            return deleteOptions(List.of(deleteOptions));
         }
 
         public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {

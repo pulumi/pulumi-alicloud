@@ -19,6 +19,7 @@ class VpcEndpointArgs:
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  endpoint_description: Optional[pulumi.Input[str]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
+                 policy_document: Optional[pulumi.Input[str]] = None,
                  protected_enabled: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
@@ -34,7 +35,8 @@ class VpcEndpointArgs:
                - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
                - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         :param pulumi.Input[str] endpoint_description: The description of the endpoint.
-        :param pulumi.Input[str] endpoint_type: The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[str] endpoint_type: The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[str] policy_document: RAM access policies.
         :param pulumi.Input[bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
                - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
                - **false (default)**: disables user authentication.
@@ -53,6 +55,8 @@ class VpcEndpointArgs:
             pulumi.set(__self__, "endpoint_description", endpoint_description)
         if endpoint_type is not None:
             pulumi.set(__self__, "endpoint_type", endpoint_type)
+        if policy_document is not None:
+            pulumi.set(__self__, "policy_document", policy_document)
         if protected_enabled is not None:
             pulumi.set(__self__, "protected_enabled", protected_enabled)
         if resource_group_id is not None:
@@ -122,13 +126,25 @@ class VpcEndpointArgs:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
     def endpoint_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint_type", value)
+
+    @property
+    @pulumi.getter(name="policyDocument")
+    def policy_document(self) -> Optional[pulumi.Input[str]]:
+        """
+        RAM access policies.
+        """
+        return pulumi.get(self, "policy_document")
+
+    @policy_document.setter
+    def policy_document(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_document", value)
 
     @property
     @pulumi.getter(name="protectedEnabled")
@@ -228,6 +244,7 @@ class _VpcEndpointState:
                  endpoint_description: Optional[pulumi.Input[str]] = None,
                  endpoint_domain: Optional[pulumi.Input[str]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
+                 policy_document: Optional[pulumi.Input[str]] = None,
                  protected_enabled: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -240,7 +257,7 @@ class _VpcEndpointState:
                  zone_private_ip_address_count: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering VpcEndpoint resources.
-        :param pulumi.Input[int] bandwidth: The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+        :param pulumi.Input[int] bandwidth: The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
         :param pulumi.Input[str] connection_status: The state of the endpoint connection.
         :param pulumi.Input[str] create_time: The time when the endpoint was created.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -249,7 +266,8 @@ class _VpcEndpointState:
         :param pulumi.Input[str] endpoint_business_status: The service state of the endpoint.
         :param pulumi.Input[str] endpoint_description: The description of the endpoint.
         :param pulumi.Input[str] endpoint_domain: The domain name of the endpoint.
-        :param pulumi.Input[str] endpoint_type: The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[str] endpoint_type: The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[str] policy_document: RAM access policies.
         :param pulumi.Input[bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
                - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
                - **false (default)**: disables user authentication.
@@ -279,6 +297,8 @@ class _VpcEndpointState:
             pulumi.set(__self__, "endpoint_domain", endpoint_domain)
         if endpoint_type is not None:
             pulumi.set(__self__, "endpoint_type", endpoint_type)
+        if policy_document is not None:
+            pulumi.set(__self__, "policy_document", policy_document)
         if protected_enabled is not None:
             pulumi.set(__self__, "protected_enabled", protected_enabled)
         if resource_group_id is not None:
@@ -304,7 +324,7 @@ class _VpcEndpointState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+        The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -390,13 +410,25 @@ class _VpcEndpointState:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
     def endpoint_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint_type", value)
+
+    @property
+    @pulumi.getter(name="policyDocument")
+    def policy_document(self) -> Optional[pulumi.Input[str]]:
+        """
+        RAM access policies.
+        """
+        return pulumi.get(self, "policy_document")
+
+    @policy_document.setter
+    def policy_document(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy_document", value)
 
     @property
     @pulumi.getter(name="protectedEnabled")
@@ -529,6 +561,7 @@ class VpcEndpoint(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  endpoint_description: Optional[pulumi.Input[str]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
+                 policy_document: Optional[pulumi.Input[str]] = None,
                  protected_enabled: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -552,27 +585,45 @@ class VpcEndpoint(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        example = alicloud.privatelink.VpcEndpointService("example",
-            service_description=name,
-            connect_bandwidth=103,
-            auto_accept_connection=False)
-        example_network = alicloud.vpc.Network("example",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name = "terraform-example"
+        default = alicloud.resourcemanager.get_resource_groups()
+        defaultb_fz_a4a = alicloud.vpc.Network("defaultbFzA4a",
+            description="example-terraform",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        default1_ft_fr_p = alicloud.ecs.SecurityGroup("default1FTFrP",
             name=name,
-            vpc_id=example_network.id)
-        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("example",
-            service_id=example.id,
-            security_group_ids=[example_security_group.id],
-            vpc_id=example_network.id,
-            vpc_endpoint_name=name)
+            vpc_id=defaultb_fz_a4a.id)
+        defaultjlj_y5_s = alicloud.ecs.SecurityGroup("defaultjljY5S",
+            name=name,
+            vpc_id=defaultb_fz_a4a.id)
+        default_vpc_endpoint = alicloud.privatelink.VpcEndpoint("default",
+            endpoint_description=name,
+            vpc_endpoint_name=name,
+            resource_group_id=default.ids[0],
+            endpoint_type="Interface",
+            vpc_id=defaultb_fz_a4a.id,
+            service_name="com.aliyuncs.privatelink.ap-southeast-5.oss",
+            dry_run=False,
+            zone_private_ip_address_count=1,
+            policy_document=json.dumps({
+                "Version": "1",
+                "Statement": [{
+                    "Effect": "Allow",
+                    "Action": ["*"],
+                    "Resource": ["*"],
+                    "Principal": "*",
+                }],
+            }),
+            security_group_ids=[default1_ft_fr_p.id],
+            service_id="epsrv-k1apjysze8u1l9t6uyg9",
+            protected_enabled=False)
         ```
 
         ## Import
@@ -589,7 +640,8 @@ class VpcEndpoint(pulumi.CustomResource):
                - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
                - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         :param pulumi.Input[str] endpoint_description: The description of the endpoint.
-        :param pulumi.Input[str] endpoint_type: The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[str] endpoint_type: The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[str] policy_document: RAM access policies.
         :param pulumi.Input[bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
                - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
                - **false (default)**: disables user authentication.
@@ -621,27 +673,45 @@ class VpcEndpoint(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        example = alicloud.privatelink.VpcEndpointService("example",
-            service_description=name,
-            connect_bandwidth=103,
-            auto_accept_connection=False)
-        example_network = alicloud.vpc.Network("example",
-            vpc_name=name,
-            cidr_block="10.0.0.0/8")
-        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name = "terraform-example"
+        default = alicloud.resourcemanager.get_resource_groups()
+        defaultb_fz_a4a = alicloud.vpc.Network("defaultbFzA4a",
+            description="example-terraform",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        default1_ft_fr_p = alicloud.ecs.SecurityGroup("default1FTFrP",
             name=name,
-            vpc_id=example_network.id)
-        example_vpc_endpoint = alicloud.privatelink.VpcEndpoint("example",
-            service_id=example.id,
-            security_group_ids=[example_security_group.id],
-            vpc_id=example_network.id,
-            vpc_endpoint_name=name)
+            vpc_id=defaultb_fz_a4a.id)
+        defaultjlj_y5_s = alicloud.ecs.SecurityGroup("defaultjljY5S",
+            name=name,
+            vpc_id=defaultb_fz_a4a.id)
+        default_vpc_endpoint = alicloud.privatelink.VpcEndpoint("default",
+            endpoint_description=name,
+            vpc_endpoint_name=name,
+            resource_group_id=default.ids[0],
+            endpoint_type="Interface",
+            vpc_id=defaultb_fz_a4a.id,
+            service_name="com.aliyuncs.privatelink.ap-southeast-5.oss",
+            dry_run=False,
+            zone_private_ip_address_count=1,
+            policy_document=json.dumps({
+                "Version": "1",
+                "Statement": [{
+                    "Effect": "Allow",
+                    "Action": ["*"],
+                    "Resource": ["*"],
+                    "Principal": "*",
+                }],
+            }),
+            security_group_ids=[default1_ft_fr_p.id],
+            service_id="epsrv-k1apjysze8u1l9t6uyg9",
+            protected_enabled=False)
         ```
 
         ## Import
@@ -670,6 +740,7 @@ class VpcEndpoint(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  endpoint_description: Optional[pulumi.Input[str]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
+                 policy_document: Optional[pulumi.Input[str]] = None,
                  protected_enabled: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -691,6 +762,7 @@ class VpcEndpoint(pulumi.CustomResource):
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["endpoint_description"] = endpoint_description
             __props__.__dict__["endpoint_type"] = endpoint_type
+            __props__.__dict__["policy_document"] = policy_document
             __props__.__dict__["protected_enabled"] = protected_enabled
             __props__.__dict__["resource_group_id"] = resource_group_id
             if security_group_ids is None and not opts.urn:
@@ -728,6 +800,7 @@ class VpcEndpoint(pulumi.CustomResource):
             endpoint_description: Optional[pulumi.Input[str]] = None,
             endpoint_domain: Optional[pulumi.Input[str]] = None,
             endpoint_type: Optional[pulumi.Input[str]] = None,
+            policy_document: Optional[pulumi.Input[str]] = None,
             protected_enabled: Optional[pulumi.Input[bool]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -745,7 +818,7 @@ class VpcEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] bandwidth: The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+        :param pulumi.Input[int] bandwidth: The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
         :param pulumi.Input[str] connection_status: The state of the endpoint connection.
         :param pulumi.Input[str] create_time: The time when the endpoint was created.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -754,7 +827,8 @@ class VpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint_business_status: The service state of the endpoint.
         :param pulumi.Input[str] endpoint_description: The description of the endpoint.
         :param pulumi.Input[str] endpoint_domain: The domain name of the endpoint.
-        :param pulumi.Input[str] endpoint_type: The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[str] endpoint_type: The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[str] policy_document: RAM access policies.
         :param pulumi.Input[bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
                - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
                - **false (default)**: disables user authentication.
@@ -780,6 +854,7 @@ class VpcEndpoint(pulumi.CustomResource):
         __props__.__dict__["endpoint_description"] = endpoint_description
         __props__.__dict__["endpoint_domain"] = endpoint_domain
         __props__.__dict__["endpoint_type"] = endpoint_type
+        __props__.__dict__["policy_document"] = policy_document
         __props__.__dict__["protected_enabled"] = protected_enabled
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
@@ -796,7 +871,7 @@ class VpcEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[int]:
         """
-        The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+        The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -854,9 +929,17 @@ class VpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Output[str]:
         """
-        The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
         """
         return pulumi.get(self, "endpoint_type")
+
+    @property
+    @pulumi.getter(name="policyDocument")
+    def policy_document(self) -> pulumi.Output[str]:
+        """
+        RAM access policies.
+        """
+        return pulumi.get(self, "policy_document")
 
     @property
     @pulumi.getter(name="protectedEnabled")

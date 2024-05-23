@@ -34,6 +34,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> AddressName { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+        /// </summary>
+        [Output("allocationId")]
+        public Output<string?> AllocationId { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         /// </summary>
         [Output("autoPay")]
@@ -110,6 +116,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("logStore")]
         public Output<string?> LogStore { get; private set; } = null!;
+
+        /// <summary>
+        /// Binding mode, value:
+        /// - **NAT** (default):NAT mode (normal mode).
+        /// - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+        /// - **BINDED**: indicates the mode in which the EIP NIC is visible.
+        /// </summary>
+        [Output("mode")]
+        public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
         /// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
@@ -240,6 +255,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AddressName { get; set; }
 
         /// <summary>
+        /// The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+        /// </summary>
+        [Input("allocationId")]
+        public Input<string>? AllocationId { get; set; }
+
+        /// <summary>
         /// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         /// </summary>
         [Input("autoPay")]
@@ -310,6 +331,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("logStore")]
         public Input<string>? LogStore { get; set; }
+
+        /// <summary>
+        /// Binding mode, value:
+        /// - **NAT** (default):NAT mode (normal mode).
+        /// - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+        /// - **BINDED**: indicates the mode in which the EIP NIC is visible.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
         /// <summary>
         /// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
@@ -408,6 +438,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AddressName { get; set; }
 
         /// <summary>
+        /// The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+        /// </summary>
+        [Input("allocationId")]
+        public Input<string>? AllocationId { get; set; }
+
+        /// <summary>
         /// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         /// </summary>
         [Input("autoPay")]
@@ -484,6 +520,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("logStore")]
         public Input<string>? LogStore { get; set; }
+
+        /// <summary>
+        /// Binding mode, value:
+        /// - **NAT** (default):NAT mode (normal mode).
+        /// - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+        /// - **BINDED**: indicates the mode in which the EIP NIC is visible.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
         /// <summary>
         /// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.

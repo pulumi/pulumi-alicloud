@@ -17,11 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Network Attached Storage (NAS) Auto Snapshot Policy resource.
+ * Provides a NAS Auto Snapshot Policy resource. Automatic snapshot policy.
  * 
- * For information about Network Attached Storage (NAS) Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html).
+ * For information about NAS Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html)).
  * 
- * &gt; **NOTE:** Available in v1.153.0+.
+ * &gt; **NOTE:** Available since v1.153.0.
  * 
  * ## Example Usage
  * 
@@ -50,17 +50,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AutoSnapshotPolicy("example", AutoSnapshotPolicyArgs.builder()        
- *             .autoSnapshotPolicyName("example_value")
- *             .repeatWeekdays(            
- *                 "3",
- *                 "4",
- *                 "5")
- *             .retentionDays(30)
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new AutoSnapshotPolicy("default", AutoSnapshotPolicyArgs.builder()        
  *             .timePoints(            
+ *                 "0",
+ *                 "1",
+ *                 "2")
+ *             .retentionDays("1")
+ *             .repeatWeekdays(            
+ *                 "2",
  *                 "3",
- *                 "4",
- *                 "5")
+ *                 "4")
+ *             .autoSnapshotPolicyName(name)
+ *             .fileSystemType("extreme")
  *             .build());
  * 
  *     }
@@ -71,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.
+ * NAS Auto Snapshot Policy can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example &lt;id&gt;
@@ -101,6 +104,34 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> autoSnapshotPolicyName() {
         return Codegen.optional(this.autoSnapshotPolicyName);
+    }
+    /**
+     * Creation time.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Creation time.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The file system type.
+     * 
+     */
+    @Export(name="fileSystemType", refs={String.class}, tree="[0]")
+    private Output<String> fileSystemType;
+
+    /**
+     * @return The file system type.
+     * 
+     */
+    public Output<String> fileSystemType() {
+        return this.fileSystemType;
     }
     /**
      * The day on which an auto snapshot is created.

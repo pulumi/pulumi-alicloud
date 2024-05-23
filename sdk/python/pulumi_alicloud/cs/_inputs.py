@@ -23,12 +23,14 @@ __all__ = [
     'KubernetesAutoscalerNodepoolArgs',
     'KubernetesCertificateAuthorityArgs',
     'KubernetesConnectionsArgs',
+    'KubernetesDeleteOptionArgs',
     'KubernetesMasterNodeArgs',
     'KubernetesPermissionPermissionArgs',
     'KubernetesRuntimeArgs',
     'ManagedKubernetesAddonArgs',
     'ManagedKubernetesCertificateAuthorityArgs',
     'ManagedKubernetesConnectionsArgs',
+    'ManagedKubernetesDeleteOptionArgs',
     'ManagedKubernetesMaintenanceWindowArgs',
     'ManagedKubernetesRrsaMetadataArgs',
     'NodePoolDataDiskArgs',
@@ -271,10 +273,8 @@ class EdgeKubernetesCertificateAuthorityArgs:
                  client_key: Optional[pulumi.Input[str]] = None,
                  cluster_cert: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] client_cert: The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
-        :param pulumi.Input[str] client_key: The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
-               
-               *Network params*
+        :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
+        :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
         if client_cert is not None:
@@ -288,7 +288,7 @@ class EdgeKubernetesCertificateAuthorityArgs:
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[pulumi.Input[str]]:
         """
-        The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+        The path of client certificate, like `~/.kube/client-cert.pem`.
         """
         return pulumi.get(self, "client_cert")
 
@@ -300,9 +300,7 @@ class EdgeKubernetesCertificateAuthorityArgs:
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
-
-        *Network params*
+        The path of client key, like `~/.kube/client-key.pem`.
         """
         return pulumi.get(self, "client_key")
 
@@ -438,8 +436,17 @@ class EdgeKubernetesRuntimeArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
-        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        :param pulumi.Input[str] name: The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
+        :param pulumi.Input[str] version: The version of the runtime.
+               
+               The following example is the definition of runtime block:
+               
+               ```
+               runtime = {
+               name = "containerd"
+               version = "1.6.28"
+               }
+               ```
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -450,7 +457,7 @@ class EdgeKubernetesRuntimeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
         """
         return pulumi.get(self, "name")
 
@@ -462,7 +469,16 @@ class EdgeKubernetesRuntimeArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        The version of the runtime.
+
+        The following example is the definition of runtime block:
+
+        ```
+        runtime = {
+        name = "containerd"
+        version = "1.6.28"
+        }
+        ```
         """
         return pulumi.get(self, "version")
 
@@ -956,6 +972,45 @@ class KubernetesConnectionsArgs:
 
 
 @pulumi.input_type
+class KubernetesDeleteOptionArgs:
+    def __init__(__self__, *,
+                 delete_mode: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] delete_mode: The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+        :param pulumi.Input[str] resource_type: The type of resources that are created by cluster. Valid values:
+        """
+        if delete_mode is not None:
+            pulumi.set(__self__, "delete_mode", delete_mode)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter(name="deleteMode")
+    def delete_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+        """
+        return pulumi.get(self, "delete_mode")
+
+    @delete_mode.setter
+    def delete_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_mode", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of resources that are created by cluster. Valid values:
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
+
+
+@pulumi.input_type
 class KubernetesMasterNodeArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None,
@@ -1116,8 +1171,17 @@ class KubernetesRuntimeArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
-        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        :param pulumi.Input[str] name: The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
+        :param pulumi.Input[str] version: The version of the runtime.
+               
+               The following example is the definition of runtime block:
+               
+               ```
+               runtime = {
+               name = "containerd"
+               version = "1.6.28"
+               }
+               ```
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1128,7 +1192,7 @@ class KubernetesRuntimeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
         """
         return pulumi.get(self, "name")
 
@@ -1140,7 +1204,16 @@ class KubernetesRuntimeArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        The version of the runtime.
+
+        The following example is the definition of runtime block:
+
+        ```
+        runtime = {
+        name = "containerd"
+        version = "1.6.28"
+        }
+        ```
         """
         return pulumi.get(self, "version")
 
@@ -1364,6 +1437,45 @@ class ManagedKubernetesConnectionsArgs:
     @service_domain.setter
     def service_domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_domain", value)
+
+
+@pulumi.input_type
+class ManagedKubernetesDeleteOptionArgs:
+    def __init__(__self__, *,
+                 delete_mode: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] delete_mode: The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+        :param pulumi.Input[str] resource_type: The type of resources that are created by cluster. Valid values:
+        """
+        if delete_mode is not None:
+            pulumi.set(__self__, "delete_mode", delete_mode)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter(name="deleteMode")
+    def delete_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
+        """
+        return pulumi.get(self, "delete_mode")
+
+    @delete_mode.setter
+    def delete_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_mode", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of resources that are created by cluster. Valid values:
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
 
 
 @pulumi.input_type

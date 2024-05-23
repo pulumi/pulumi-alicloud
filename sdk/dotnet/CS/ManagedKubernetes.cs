@@ -107,6 +107,9 @@ namespace Pulumi.AliCloud.CS
         [Output("customSan")]
         public Output<string?> CustomSan { get; private set; } = null!;
 
+        [Output("deleteOptions")]
+        public Output<ImmutableArray<Outputs.ManagedKubernetesDeleteOption>> DeleteOptions { get; private set; } = null!;
+
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
@@ -330,6 +333,14 @@ namespace Pulumi.AliCloud.CS
         [Input("customSan")]
         public Input<string>? CustomSan { get; set; }
 
+        [Input("deleteOptions")]
+        private InputList<Inputs.ManagedKubernetesDeleteOptionArgs>? _deleteOptions;
+        public InputList<Inputs.ManagedKubernetesDeleteOptionArgs> DeleteOptions
+        {
+            get => _deleteOptions ?? (_deleteOptions = new InputList<Inputs.ManagedKubernetesDeleteOptionArgs>());
+            set => _deleteOptions = value;
+        }
+
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
@@ -504,6 +515,14 @@ namespace Pulumi.AliCloud.CS
 
         [Input("customSan")]
         public Input<string>? CustomSan { get; set; }
+
+        [Input("deleteOptions")]
+        private InputList<Inputs.ManagedKubernetesDeleteOptionGetArgs>? _deleteOptions;
+        public InputList<Inputs.ManagedKubernetesDeleteOptionGetArgs> DeleteOptions
+        {
+            get => _deleteOptions ?? (_deleteOptions = new InputList<Inputs.ManagedKubernetesDeleteOptionGetArgs>());
+            set => _deleteOptions = value;
+        }
 
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }

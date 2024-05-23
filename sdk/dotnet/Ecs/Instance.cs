@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> AllocatePublicIp { get; private set; } = null!;
 
         /// <summary>
-        /// The automatic release time of the `PostPaid` instance. 
+        /// The automatic release time of the `PostPaid` instance.
         /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
         /// Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         /// </summary>
@@ -191,12 +191,32 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to send a dry-run request. Default to false. 
+        /// Specifies whether to send a dry-run request. Default to false.
         /// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
         /// - false: A request is sent. If the validation succeeds, the instance is created.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
+        /// 
+        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+        /// </summary>
+        [Output("enableJumboFrame")]
+        public Output<bool> EnableJumboFrame { get; private set; } = null!;
 
         /// <summary>
         /// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
@@ -336,21 +356,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
-        /// 
-        /// 
-        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-        /// 
-        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-        /// 
-        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("launchTemplateVersion")]
         public Output<string?> LaunchTemplateVersion { get; private set; } = null!;
@@ -535,7 +540,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SystemDiskAutoSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since 1.184.0+.
+        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string> SystemDiskCategory { get; private set; } = null!;
@@ -682,7 +687,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? AllocatePublicIp { get; set; }
 
         /// <summary>
-        /// The automatic release time of the `PostPaid` instance. 
+        /// The automatic release time of the `PostPaid` instance.
         /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
         /// Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         /// </summary>
@@ -748,12 +753,32 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to send a dry-run request. Default to false. 
+        /// Specifies whether to send a dry-run request. Default to false.
         /// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
         /// - false: A request is sent. If the validation succeeds, the instance is created.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
+        /// 
+        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+        /// </summary>
+        [Input("enableJumboFrame")]
+        public Input<bool>? EnableJumboFrame { get; set; }
 
         /// <summary>
         /// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
@@ -905,21 +930,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
-        /// 
-        /// 
-        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-        /// 
-        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-        /// 
-        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("launchTemplateVersion")]
         public Input<string>? LaunchTemplateVersion { get; set; }
@@ -1090,7 +1100,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since 1.184.0+.
+        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1201,7 +1211,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? AllocatePublicIp { get; set; }
 
         /// <summary>
-        /// The automatic release time of the `PostPaid` instance. 
+        /// The automatic release time of the `PostPaid` instance.
         /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
         /// Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         /// </summary>
@@ -1279,12 +1289,32 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to send a dry-run request. Default to false. 
+        /// Specifies whether to send a dry-run request. Default to false.
         /// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
         /// - false: A request is sent. If the validation succeeds, the instance is created.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
+        /// 
+        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+        /// </summary>
+        [Input("enableJumboFrame")]
+        public Input<bool>? EnableJumboFrame { get; set; }
 
         /// <summary>
         /// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
@@ -1436,21 +1466,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The version of the launch template. If you set `launch_template_id` or `launch_template_name` parameter but do not set the version number of the launch template, the default template version is used.
-        /// 
-        /// 
-        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-        /// 
-        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-        /// 
-        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("launchTemplateVersion")]
         public Input<string>? LaunchTemplateVersion { get; set; }
@@ -1657,7 +1672,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since 1.184.0+.
+        /// Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since v1.184.0.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }

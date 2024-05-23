@@ -33,14 +33,14 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
     }
 
     /**
-     * Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+     * Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+     * @return Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -246,7 +246,7 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
         }
 
         /**
-         * @param category Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+         * @param category Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
         }
 
         /**
-         * @param category Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+         * @param category Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
          * 
          * @return builder
          * 

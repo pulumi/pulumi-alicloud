@@ -242,14 +242,14 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return this.groupType;
     }
     /**
-     * Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+     * Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
      * 
      */
     @Export(name="healthCheckType", refs={String.class}, tree="[0]")
     private Output<String> healthCheckType;
 
     /**
-     * @return Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+     * @return Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
      * 
      */
     public Output<String> healthCheckType() {

@@ -174,7 +174,7 @@ type ScalingGroup struct {
 	GroupDeletionProtection pulumi.BoolPtrOutput `pulumi:"groupDeletionProtection"`
 	// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
 	GroupType pulumi.StringOutput `pulumi:"groupType"`
-	// Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+	// Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
 	HealthCheckType pulumi.StringOutput `pulumi:"healthCheckType"`
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrOutput `pulumi:"launchTemplateId"`
@@ -275,7 +275,7 @@ type scalingGroupState struct {
 	GroupDeletionProtection *bool `pulumi:"groupDeletionProtection"`
 	// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
 	GroupType *string `pulumi:"groupType"`
-	// Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+	// Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
@@ -341,7 +341,7 @@ type ScalingGroupState struct {
 	GroupDeletionProtection pulumi.BoolPtrInput
 	// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
 	GroupType pulumi.StringPtrInput
-	// Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+	// Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
 	HealthCheckType pulumi.StringPtrInput
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrInput
@@ -411,7 +411,7 @@ type scalingGroupArgs struct {
 	GroupDeletionProtection *bool `pulumi:"groupDeletionProtection"`
 	// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
 	GroupType *string `pulumi:"groupType"`
-	// Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+	// Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
@@ -478,7 +478,7 @@ type ScalingGroupArgs struct {
 	GroupDeletionProtection pulumi.BoolPtrInput
 	// Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
 	GroupType pulumi.StringPtrInput
-	// Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+	// Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
 	HealthCheckType pulumi.StringPtrInput
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrInput
@@ -645,7 +645,7 @@ func (o ScalingGroupOutput) GroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringOutput { return v.GroupType }).(pulumi.StringOutput)
 }
 
-// Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+// Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
 func (o ScalingGroupOutput) HealthCheckType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringOutput { return v.HealthCheckType }).(pulumi.StringOutput)
 }

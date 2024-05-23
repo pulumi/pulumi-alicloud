@@ -293,17 +293,27 @@ class AccessRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        foo = alicloud.nas.AccessGroup("foo",
-            access_group_name="tf-NasConfigName",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_access_group = alicloud.nas.AccessGroup("default",
             access_group_type="Vpc",
-            description="tf-testAccNasConfig")
-        foo_access_rule = alicloud.nas.AccessRule("foo",
-            access_group_name=foo.access_group_name,
-            source_cidr_ip="168.1.1.0/16",
-            rw_access_type="RDWR",
+            description="ExtremeAccessGroup",
+            access_group_name=f"terraform-example-{default['result']}",
+            file_system_type="extreme")
+        default_access_rule = alicloud.nas.AccessRule("default",
+            access_group_name=default_access_group.access_group_name,
+            rw_access_type="RDONLY",
+            ipv6_source_cidr_ip="::1",
             user_access_type="no_squash",
-            priority=2)
+            priority=1,
+            file_system_type="extreme")
         ```
 
         ## Import
@@ -344,17 +354,27 @@ class AccessRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        foo = alicloud.nas.AccessGroup("foo",
-            access_group_name="tf-NasConfigName",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_access_group = alicloud.nas.AccessGroup("default",
             access_group_type="Vpc",
-            description="tf-testAccNasConfig")
-        foo_access_rule = alicloud.nas.AccessRule("foo",
-            access_group_name=foo.access_group_name,
-            source_cidr_ip="168.1.1.0/16",
-            rw_access_type="RDWR",
+            description="ExtremeAccessGroup",
+            access_group_name=f"terraform-example-{default['result']}",
+            file_system_type="extreme")
+        default_access_rule = alicloud.nas.AccessRule("default",
+            access_group_name=default_access_group.access_group_name,
+            rw_access_type="RDONLY",
+            ipv6_source_cidr_ip="::1",
             user_access_type="no_squash",
-            priority=2)
+            priority=1,
+            file_system_type="extreme")
         ```
 
         ## Import

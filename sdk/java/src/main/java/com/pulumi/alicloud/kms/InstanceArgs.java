@@ -35,29 +35,44 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum number of stored keys.
+     * Whether to force deletion even without backup.
      * 
      */
-    @Import(name="keyNum", required=true)
-    private Output<Integer> keyNum;
+    @Import(name="forceDeleteWithoutBackup")
+    private @Nullable Output<String> forceDeleteWithoutBackup;
 
     /**
-     * @return Maximum number of stored keys.
+     * @return Whether to force deletion even without backup.
      * 
      */
-    public Output<Integer> keyNum() {
-        return this.keyNum;
+    public Optional<Output<String>> forceDeleteWithoutBackup() {
+        return Optional.ofNullable(this.forceDeleteWithoutBackup);
     }
 
     /**
-     * Instance Audit Log Switch.
+     * Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * 
+     */
+    @Import(name="keyNum")
+    private @Nullable Output<Integer> keyNum;
+
+    /**
+     * @return Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
+     * 
+     */
+    public Optional<Output<Integer>> keyNum() {
+        return Optional.ofNullable(this.keyNum);
+    }
+
+    /**
+     * Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Import(name="log")
     private @Nullable Output<String> log;
 
     /**
-     * @return Instance Audit Log Switch.
+     * @return Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     public Optional<Output<String>> log() {
@@ -65,14 +80,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance log capacity.
+     * Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Import(name="logStorage")
     private @Nullable Output<Integer> logStorage;
 
     /**
-     * @return Instance log capacity.
+     * @return Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     public Optional<Output<Integer>> logStorage() {
@@ -80,14 +95,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Purchase cycle, in months.
+     * Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     * 
+     */
+    @Import(name="paymentType")
+    private @Nullable Output<String> paymentType;
+
+    /**
+     * @return Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     * 
+     */
+    public Optional<Output<String>> paymentType() {
+        return Optional.ofNullable(this.paymentType);
+    }
+
+    /**
+     * Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Purchase cycle, in months.
+     * @return Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -110,14 +140,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatic renewal period, in months.
+     * Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Import(name="renewPeriod")
     private @Nullable Output<Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period, in months.
+     * @return Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     public Optional<Output<Integer>> renewPeriod() {
@@ -125,14 +155,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Renewal options (manual renewal, automatic renewal, no renewal).
+     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Import(name="renewStatus")
     private @Nullable Output<String> renewStatus;
 
     /**
-     * @return Renewal options (manual renewal, automatic renewal, no renewal).
+     * @return Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     public Optional<Output<String>> renewStatus() {
@@ -140,33 +170,33 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum number of Secrets.
+     * Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
-    @Import(name="secretNum", required=true)
-    private Output<Integer> secretNum;
+    @Import(name="secretNum")
+    private @Nullable Output<Integer> secretNum;
 
     /**
-     * @return Maximum number of Secrets.
+     * @return Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
-    public Output<Integer> secretNum() {
-        return this.secretNum;
+    public Optional<Output<Integer>> secretNum() {
+        return Optional.ofNullable(this.secretNum);
     }
 
     /**
-     * The computation performance level of the KMS instance.
+     * The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
-    @Import(name="spec", required=true)
-    private Output<Integer> spec;
+    @Import(name="spec")
+    private @Nullable Output<Integer> spec;
 
     /**
-     * @return The computation performance level of the KMS instance.
+     * @return The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
-    public Output<Integer> spec() {
-        return this.spec;
+    public Optional<Output<Integer>> spec() {
+        return Optional.ofNullable(this.spec);
     }
 
     /**
@@ -185,18 +215,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance.
+     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
-    @Import(name="vpcNum", required=true)
-    private Output<Integer> vpcNum;
+    @Import(name="vpcNum")
+    private @Nullable Output<Integer> vpcNum;
 
     /**
-     * @return The number of managed accesses. The maximum number of VPCs that can access this KMS instance.
+     * @return The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
-    public Output<Integer> vpcNum() {
-        return this.vpcNum;
+    public Optional<Output<Integer>> vpcNum() {
+        return Optional.ofNullable(this.vpcNum);
     }
 
     /**
@@ -233,9 +263,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     private InstanceArgs(InstanceArgs $) {
         this.bindVpcs = $.bindVpcs;
+        this.forceDeleteWithoutBackup = $.forceDeleteWithoutBackup;
         this.keyNum = $.keyNum;
         this.log = $.log;
         this.logStorage = $.logStorage;
+        this.paymentType = $.paymentType;
         this.period = $.period;
         this.productVersion = $.productVersion;
         this.renewPeriod = $.renewPeriod;
@@ -298,18 +330,39 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyNum Maximum number of stored keys.
+         * @param forceDeleteWithoutBackup Whether to force deletion even without backup.
          * 
          * @return builder
          * 
          */
-        public Builder keyNum(Output<Integer> keyNum) {
+        public Builder forceDeleteWithoutBackup(@Nullable Output<String> forceDeleteWithoutBackup) {
+            $.forceDeleteWithoutBackup = forceDeleteWithoutBackup;
+            return this;
+        }
+
+        /**
+         * @param forceDeleteWithoutBackup Whether to force deletion even without backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDeleteWithoutBackup(String forceDeleteWithoutBackup) {
+            return forceDeleteWithoutBackup(Output.of(forceDeleteWithoutBackup));
+        }
+
+        /**
+         * @param keyNum Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyNum(@Nullable Output<Integer> keyNum) {
             $.keyNum = keyNum;
             return this;
         }
 
         /**
-         * @param keyNum Maximum number of stored keys.
+         * @param keyNum Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -319,7 +372,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param log Instance Audit Log Switch.
+         * @param log Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -330,7 +383,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param log Instance Audit Log Switch.
+         * @param log Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -340,7 +393,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStorage Instance log capacity.
+         * @param logStorage Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -351,7 +404,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStorage Instance log capacity.
+         * @param logStorage Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -361,7 +414,28 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Purchase cycle, in months.
+         * @param paymentType Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(@Nullable Output<String> paymentType) {
+            $.paymentType = paymentType;
+            return this;
+        }
+
+        /**
+         * @param paymentType Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(String paymentType) {
+            return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param period Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -372,7 +446,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Purchase cycle, in months.
+         * @param period Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -403,7 +477,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period, in months.
+         * @param renewPeriod Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -414,7 +488,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period, in months.
+         * @param renewPeriod Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -424,7 +498,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewStatus Renewal options (manual renewal, automatic renewal, no renewal).
+         * @param renewStatus Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -435,7 +509,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewStatus Renewal options (manual renewal, automatic renewal, no renewal).
+         * @param renewStatus Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -445,18 +519,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretNum Maximum number of Secrets.
+         * @param secretNum Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
          */
-        public Builder secretNum(Output<Integer> secretNum) {
+        public Builder secretNum(@Nullable Output<Integer> secretNum) {
             $.secretNum = secretNum;
             return this;
         }
 
         /**
-         * @param secretNum Maximum number of Secrets.
+         * @param secretNum Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -466,18 +540,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec The computation performance level of the KMS instance.
+         * @param spec The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
          */
-        public Builder spec(Output<Integer> spec) {
+        public Builder spec(@Nullable Output<Integer> spec) {
             $.spec = spec;
             return this;
         }
 
         /**
-         * @param spec The computation performance level of the KMS instance.
+         * @param spec The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -508,18 +582,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcNum The number of managed accesses. The maximum number of VPCs that can access this KMS instance.
+         * @param vpcNum The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
          */
-        public Builder vpcNum(Output<Integer> vpcNum) {
+        public Builder vpcNum(@Nullable Output<Integer> vpcNum) {
             $.vpcNum = vpcNum;
             return this;
         }
 
         /**
-         * @param vpcNum The number of managed accesses. The maximum number of VPCs that can access this KMS instance.
+         * @param vpcNum The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
          * 
          * @return builder
          * 
@@ -591,20 +665,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            if ($.keyNum == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "keyNum");
-            }
-            if ($.secretNum == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "secretNum");
-            }
-            if ($.spec == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "spec");
-            }
             if ($.vpcId == null) {
                 throw new MissingRequiredPropertyException("InstanceArgs", "vpcId");
-            }
-            if ($.vpcNum == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "vpcNum");
             }
             if ($.vswitchIds == null) {
                 throw new MissingRequiredPropertyException("InstanceArgs", "vswitchIds");

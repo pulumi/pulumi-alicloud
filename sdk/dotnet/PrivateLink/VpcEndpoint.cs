@@ -23,41 +23,71 @@ namespace Pulumi.AliCloud.PrivateLink
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var example = new AliCloud.PrivateLink.VpcEndpointService("example", new()
-    ///     {
-    ///         ServiceDescription = name,
-    ///         ConnectBandwidth = 103,
-    ///         AutoAcceptConnection = false,
-    ///     });
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     var defaultbFzA4a = new AliCloud.Vpc.Network("defaultbFzA4a", new()
     ///     {
+    ///         Description = "example-terraform",
+    ///         CidrBlock = "172.16.0.0/12",
     ///         VpcName = name,
-    ///         CidrBlock = "10.0.0.0/8",
     ///     });
     /// 
-    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
+    ///     var default1FTFrP = new AliCloud.Ecs.SecurityGroup("default1FTFrP", new()
     ///     {
     ///         Name = name,
-    ///         VpcId = exampleNetwork.Id,
+    ///         VpcId = defaultbFzA4a.Id,
     ///     });
     /// 
-    ///     var exampleVpcEndpoint = new AliCloud.PrivateLink.VpcEndpoint("example", new()
+    ///     var defaultjljY5S = new AliCloud.Ecs.SecurityGroup("defaultjljY5S", new()
     ///     {
-    ///         ServiceId = example.Id,
+    ///         Name = name,
+    ///         VpcId = defaultbFzA4a.Id,
+    ///     });
+    /// 
+    ///     var defaultVpcEndpoint = new AliCloud.PrivateLink.VpcEndpoint("default", new()
+    ///     {
+    ///         EndpointDescription = name,
+    ///         VpcEndpointName = name,
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+    ///         EndpointType = "Interface",
+    ///         VpcId = defaultbFzA4a.Id,
+    ///         ServiceName = "com.aliyuncs.privatelink.ap-southeast-5.oss",
+    ///         DryRun = false,
+    ///         ZonePrivateIpAddressCount = 1,
+    ///         PolicyDocument = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["Version"] = "1",
+    ///             ["Statement"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["Effect"] = "Allow",
+    ///                     ["Action"] = new[]
+    ///                     {
+    ///                         "*",
+    ///                     },
+    ///                     ["Resource"] = new[]
+    ///                     {
+    ///                         "*",
+    ///                     },
+    ///                     ["Principal"] = "*",
+    ///                 },
+    ///             },
+    ///         }),
     ///         SecurityGroupIds = new[]
     ///         {
-    ///             exampleSecurityGroup.Id,
+    ///             default1FTFrP.Id,
     ///         },
-    ///         VpcId = exampleNetwork.Id,
-    ///         VpcEndpointName = name,
+    ///         ServiceId = "epsrv-k1apjysze8u1l9t6uyg9",
+    ///         ProtectedEnabled = false,
     ///     });
     /// 
     /// });
@@ -75,7 +105,7 @@ namespace Pulumi.AliCloud.PrivateLink
     public partial class VpcEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+        /// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
         /// </summary>
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
@@ -119,10 +149,16 @@ namespace Pulumi.AliCloud.PrivateLink
         public Output<string> EndpointDomain { get; private set; } = null!;
 
         /// <summary>
-        /// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        /// The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
+
+        /// <summary>
+        /// RAM access policies.
+        /// </summary>
+        [Output("policyDocument")]
+        public Output<string> PolicyDocument { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
@@ -247,10 +283,16 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<string>? EndpointDescription { get; set; }
 
         /// <summary>
-        /// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        /// The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
+
+        /// <summary>
+        /// RAM access policies.
+        /// </summary>
+        [Input("policyDocument")]
+        public Input<string>? PolicyDocument { get; set; }
 
         /// <summary>
         /// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
@@ -329,7 +371,7 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+        /// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -373,10 +415,16 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<string>? EndpointDomain { get; set; }
 
         /// <summary>
-        /// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        /// The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
+
+        /// <summary>
+        /// RAM access policies.
+        /// </summary>
+        [Input("policyDocument")]
+        public Input<string>? PolicyDocument { get; set; }
 
         /// <summary>
         /// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:

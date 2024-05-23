@@ -2098,6 +2098,12 @@ func (o InstanceMaintenanceTimePtrOutput) StartTime() pulumi.StringPtrOutput {
 type InstanceNetworkInterfaces struct {
 	// The ID of the secondary ENI.
 	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
+	// The communication mode of the ENI. Default value: `Standard`. Valid values:
+	NetworkInterfaceTrafficMode *string `pulumi:"networkInterfaceTrafficMode"`
+	// The ID of security group N to which to assign ENI N.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The ID of the vSwitch to which to connect ENI N.
+	VswitchId *string `pulumi:"vswitchId"`
 }
 
 // InstanceNetworkInterfacesInput is an input type that accepts InstanceNetworkInterfacesArgs and InstanceNetworkInterfacesOutput values.
@@ -2114,6 +2120,12 @@ type InstanceNetworkInterfacesInput interface {
 type InstanceNetworkInterfacesArgs struct {
 	// The ID of the secondary ENI.
 	NetworkInterfaceId pulumi.StringPtrInput `pulumi:"networkInterfaceId"`
+	// The communication mode of the ENI. Default value: `Standard`. Valid values:
+	NetworkInterfaceTrafficMode pulumi.StringPtrInput `pulumi:"networkInterfaceTrafficMode"`
+	// The ID of security group N to which to assign ENI N.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// The ID of the vSwitch to which to connect ENI N.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 
 func (InstanceNetworkInterfacesArgs) ElementType() reflect.Type {
@@ -2198,6 +2210,21 @@ func (o InstanceNetworkInterfacesOutput) NetworkInterfaceId() pulumi.StringPtrOu
 	return o.ApplyT(func(v InstanceNetworkInterfaces) *string { return v.NetworkInterfaceId }).(pulumi.StringPtrOutput)
 }
 
+// The communication mode of the ENI. Default value: `Standard`. Valid values:
+func (o InstanceNetworkInterfacesOutput) NetworkInterfaceTrafficMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkInterfaces) *string { return v.NetworkInterfaceTrafficMode }).(pulumi.StringPtrOutput)
+}
+
+// The ID of security group N to which to assign ENI N.
+func (o InstanceNetworkInterfacesOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceNetworkInterfaces) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the vSwitch to which to connect ENI N.
+func (o InstanceNetworkInterfacesOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkInterfaces) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
 type InstanceNetworkInterfacesPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkInterfacesPtrOutput) ElementType() reflect.Type {
@@ -2229,6 +2256,36 @@ func (o InstanceNetworkInterfacesPtrOutput) NetworkInterfaceId() pulumi.StringPt
 			return nil
 		}
 		return v.NetworkInterfaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The communication mode of the ENI. Default value: `Standard`. Valid values:
+func (o InstanceNetworkInterfacesPtrOutput) NetworkInterfaceTrafficMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkInterfaces) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaceTrafficMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of security group N to which to assign ENI N.
+func (o InstanceNetworkInterfacesPtrOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceNetworkInterfaces) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The ID of the vSwitch to which to connect ENI N.
+func (o InstanceNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkInterfaces) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VswitchId
 	}).(pulumi.StringPtrOutput)
 }
 

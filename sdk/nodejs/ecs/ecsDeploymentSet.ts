@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Deployment Set and how to use it, see [What is Deployment Set](https://www.alibabacloud.com/help/en/doc-detail/91269.htm).
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *
@@ -85,7 +85,7 @@ export class EcsDeploymentSet extends pulumi.CustomResource {
      */
     public readonly onUnableToRedeployFailedInstance!: pulumi.Output<string | undefined>;
     /**
-     * The deployment strategy. Valid values: `Availability`.
+     * The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
      */
     public readonly strategy!: pulumi.Output<string | undefined>;
 
@@ -147,7 +147,7 @@ export interface EcsDeploymentSetState {
      */
     onUnableToRedeployFailedInstance?: pulumi.Input<string>;
     /**
-     * The deployment strategy. Valid values: `Availability`.
+     * The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
      */
     strategy?: pulumi.Input<string>;
 }
@@ -177,7 +177,7 @@ export interface EcsDeploymentSetArgs {
      */
     onUnableToRedeployFailedInstance?: pulumi.Input<string>;
     /**
-     * The deployment strategy. Valid values: `Availability`.
+     * The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
      */
     strategy?: pulumi.Input<string>;
 }

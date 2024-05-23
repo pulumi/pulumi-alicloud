@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cs.inputs;
 import com.pulumi.alicloud.cs.inputs.KubernetesAddonArgs;
 import com.pulumi.alicloud.cs.inputs.KubernetesCertificateAuthorityArgs;
 import com.pulumi.alicloud.cs.inputs.KubernetesConnectionsArgs;
+import com.pulumi.alicloud.cs.inputs.KubernetesDeleteOptionArgs;
 import com.pulumi.alicloud.cs.inputs.KubernetesMasterNodeArgs;
 import com.pulumi.alicloud.cs.inputs.KubernetesRuntimeArgs;
 import com.pulumi.core.Output;
@@ -166,6 +167,21 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> customSan() {
         return Optional.ofNullable(this.customSan);
+    }
+
+    /**
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * 
+     */
+    @Import(name="deleteOptions")
+    private @Nullable Output<List<KubernetesDeleteOptionArgs>> deleteOptions;
+
+    /**
+     * @return Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * 
+     */
+    public Optional<Output<List<KubernetesDeleteOptionArgs>>> deleteOptions() {
+        return Optional.ofNullable(this.deleteOptions);
     }
 
     /**
@@ -709,14 +725,14 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      * 
      */
     @Import(name="runtime")
     private @Nullable Output<KubernetesRuntimeArgs> runtime;
 
     /**
-     * @return The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+     * @return The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      * 
      */
     public Optional<Output<KubernetesRuntimeArgs>> runtime() {
@@ -940,6 +956,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         this.clusterDomain = $.clusterDomain;
         this.connections = $.connections;
         this.customSan = $.customSan;
+        this.deleteOptions = $.deleteOptions;
         this.deletionProtection = $.deletionProtection;
         this.enableSsh = $.enableSsh;
         this.imageId = $.imageId;
@@ -1227,6 +1244,37 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder customSan(String customSan) {
             return customSan(Output.of(customSan));
+        }
+
+        /**
+         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteOptions(@Nullable Output<List<KubernetesDeleteOptionArgs>> deleteOptions) {
+            $.deleteOptions = deleteOptions;
+            return this;
+        }
+
+        /**
+         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteOptions(List<KubernetesDeleteOptionArgs> deleteOptions) {
+            return deleteOptions(Output.of(deleteOptions));
+        }
+
+        /**
+         * @param deleteOptions Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteOptions(KubernetesDeleteOptionArgs... deleteOptions) {
+            return deleteOptions(List.of(deleteOptions));
         }
 
         /**
@@ -2036,7 +2084,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+         * @param runtime The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
          * 
          * @return builder
          * 
@@ -2047,7 +2095,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+         * @param runtime The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
          * 
          * @return builder
          * 

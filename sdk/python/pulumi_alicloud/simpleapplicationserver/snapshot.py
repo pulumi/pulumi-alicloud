@@ -132,8 +132,8 @@ class Snapshot(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = alicloud.simpleapplicationserver.get_images()
-        default_get_server_plans = alicloud.simpleapplicationserver.get_server_plans()
+        default = alicloud.simpleapplicationserver.get_images(platform="Linux")
+        default_get_server_plans = alicloud.simpleapplicationserver.get_server_plans(platform="Linux")
         default_instance = alicloud.simpleapplicationserver.Instance("default",
             payment_type="Subscription",
             plan_id=default_get_server_plans.plans[0].id,
@@ -185,8 +185,8 @@ class Snapshot(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default = alicloud.simpleapplicationserver.get_images()
-        default_get_server_plans = alicloud.simpleapplicationserver.get_server_plans()
+        default = alicloud.simpleapplicationserver.get_images(platform="Linux")
+        default_get_server_plans = alicloud.simpleapplicationserver.get_server_plans(platform="Linux")
         default_instance = alicloud.simpleapplicationserver.Instance("default",
             payment_type="Subscription",
             plan_id=default_get_server_plans.plans[0].id,

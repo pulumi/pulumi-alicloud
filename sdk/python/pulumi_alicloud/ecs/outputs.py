@@ -1256,6 +1256,12 @@ class InstanceNetworkInterfaces(dict):
         suggest = None
         if key == "networkInterfaceId":
             suggest = "network_interface_id"
+        elif key == "networkInterfaceTrafficMode":
+            suggest = "network_interface_traffic_mode"
+        elif key == "securityGroupIds":
+            suggest = "security_group_ids"
+        elif key == "vswitchId":
+            suggest = "vswitch_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceNetworkInterfaces. Access the value via the '{suggest}' property getter instead.")
@@ -1269,12 +1275,24 @@ class InstanceNetworkInterfaces(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 network_interface_id: Optional[str] = None):
+                 network_interface_id: Optional[str] = None,
+                 network_interface_traffic_mode: Optional[str] = None,
+                 security_group_ids: Optional[Sequence[str]] = None,
+                 vswitch_id: Optional[str] = None):
         """
         :param str network_interface_id: The ID of the secondary ENI.
+        :param str network_interface_traffic_mode: The communication mode of the ENI. Default value: `Standard`. Valid values:
+        :param Sequence[str] security_group_ids: The ID of security group N to which to assign ENI N.
+        :param str vswitch_id: The ID of the vSwitch to which to connect ENI N.
         """
         if network_interface_id is not None:
             pulumi.set(__self__, "network_interface_id", network_interface_id)
+        if network_interface_traffic_mode is not None:
+            pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="networkInterfaceId")
@@ -1283,6 +1301,30 @@ class InstanceNetworkInterfaces(dict):
         The ID of the secondary ENI.
         """
         return pulumi.get(self, "network_interface_id")
+
+    @property
+    @pulumi.getter(name="networkInterfaceTrafficMode")
+    def network_interface_traffic_mode(self) -> Optional[str]:
+        """
+        The communication mode of the ENI. Default value: `Standard`. Valid values:
+        """
+        return pulumi.get(self, "network_interface_traffic_mode")
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[Sequence[str]]:
+        """
+        The ID of security group N to which to assign ENI N.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[str]:
+        """
+        The ID of the vSwitch to which to connect ENI N.
+        """
+        return pulumi.get(self, "vswitch_id")
 
 
 @pulumi.output_type

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Message
 {
     /// <summary>
-    /// Provides a Message Notification Service Queue resource.
+    /// Provides a Message Service Queue resource.
     /// 
-    /// For information about Message Notification Service Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-service/latest/createqueue).
+    /// For information about Message Service Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-service/latest/createqueue).
     /// 
     /// &gt; **NOTE:** Available since v1.188.0.
     /// 
@@ -25,27 +25,19 @@ namespace Pulumi.AliCloud.Message
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Message.ServiceQueue("default", new()
     ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
-    ///     });
-    /// 
-    ///     var queue = new AliCloud.Message.ServiceQueue("queue", new()
-    ///     {
-    ///         QueueName = $"{name}-{@default.Result}",
-    ///         DelaySeconds = 60478,
-    ///         MaximumMessageSize = 12357,
-    ///         MessageRetentionPeriod = 256000,
+    ///         DelaySeconds = 2,
+    ///         PollingWaitSeconds = 2,
+    ///         MessageRetentionPeriod = 566,
+    ///         MaximumMessageSize = 1123,
     ///         VisibilityTimeout = 30,
-    ///         PollingWaitSeconds = 3,
-    ///         LoggingEnabled = true,
+    ///         QueueName = name,
     ///     });
     /// 
     /// });
@@ -53,53 +45,59 @@ namespace Pulumi.AliCloud.Message
     /// 
     /// ## Import
     /// 
-    /// Message Notification Service Queue can be imported using the id or queue_name, e.g.
+    /// Message Service Queue can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:message/serviceQueue:ServiceQueue example &lt;queue_name&gt;
+    /// $ pulumi import alicloud:message/serviceQueue:ServiceQueue example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:message/serviceQueue:ServiceQueue")]
     public partial class ServiceQueue : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
+        /// Represents the time when the Queue was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
         /// </summary>
         [Output("delaySeconds")]
         public Output<int> DelaySeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the log management feature. Default value: false. Valid values:
+        /// Represents whether the log management function is enabled.
         /// </summary>
         [Output("loggingEnabled")]
         public Output<bool?> LoggingEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
+        /// Represents the maximum length of the message body sent to the Queue, in Byte.
         /// </summary>
         [Output("maximumMessageSize")]
         public Output<int> MaximumMessageSize { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
+        /// Represents the longest life time of the message in the Queue.
         /// </summary>
         [Output("messageRetentionPeriod")]
         public Output<int> MessageRetentionPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
+        /// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
         /// </summary>
         [Output("pollingWaitSeconds")]
         public Output<int> PollingWaitSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
+        /// Representative resources.
         /// </summary>
         [Output("queueName")]
         public Output<string> QueueName { get; private set; } = null!;
 
         /// <summary>
-        /// The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
+        /// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
         /// </summary>
         [Output("visibilityTimeout")]
         public Output<int> VisibilityTimeout { get; private set; } = null!;
@@ -151,43 +149,43 @@ namespace Pulumi.AliCloud.Message
     public sealed class ServiceQueueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
+        /// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
         /// </summary>
         [Input("delaySeconds")]
         public Input<int>? DelaySeconds { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the log management feature. Default value: false. Valid values:
+        /// Represents whether the log management function is enabled.
         /// </summary>
         [Input("loggingEnabled")]
         public Input<bool>? LoggingEnabled { get; set; }
 
         /// <summary>
-        /// The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
+        /// Represents the maximum length of the message body sent to the Queue, in Byte.
         /// </summary>
         [Input("maximumMessageSize")]
         public Input<int>? MaximumMessageSize { get; set; }
 
         /// <summary>
-        /// The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
+        /// Represents the longest life time of the message in the Queue.
         /// </summary>
         [Input("messageRetentionPeriod")]
         public Input<int>? MessageRetentionPeriod { get; set; }
 
         /// <summary>
-        /// The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
+        /// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
         /// </summary>
         [Input("pollingWaitSeconds")]
         public Input<int>? PollingWaitSeconds { get; set; }
 
         /// <summary>
-        /// Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
+        /// Representative resources.
         /// </summary>
         [Input("queueName", required: true)]
         public Input<string> QueueName { get; set; } = null!;
 
         /// <summary>
-        /// The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
+        /// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
         /// </summary>
         [Input("visibilityTimeout")]
         public Input<int>? VisibilityTimeout { get; set; }
@@ -201,43 +199,49 @@ namespace Pulumi.AliCloud.Message
     public sealed class ServiceQueueState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
+        /// Represents the time when the Queue was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
+
+        /// <summary>
+        /// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
         /// </summary>
         [Input("delaySeconds")]
         public Input<int>? DelaySeconds { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the log management feature. Default value: false. Valid values:
+        /// Represents whether the log management function is enabled.
         /// </summary>
         [Input("loggingEnabled")]
         public Input<bool>? LoggingEnabled { get; set; }
 
         /// <summary>
-        /// The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
+        /// Represents the maximum length of the message body sent to the Queue, in Byte.
         /// </summary>
         [Input("maximumMessageSize")]
         public Input<int>? MaximumMessageSize { get; set; }
 
         /// <summary>
-        /// The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
+        /// Represents the longest life time of the message in the Queue.
         /// </summary>
         [Input("messageRetentionPeriod")]
         public Input<int>? MessageRetentionPeriod { get; set; }
 
         /// <summary>
-        /// The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
+        /// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
         /// </summary>
         [Input("pollingWaitSeconds")]
         public Input<int>? PollingWaitSeconds { get; set; }
 
         /// <summary>
-        /// Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
+        /// Representative resources.
         /// </summary>
         [Input("queueName")]
         public Input<string>? QueueName { get; set; }
 
         /// <summary>
-        /// The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
+        /// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
         /// </summary>
         [Input("visibilityTimeout")]
         public Input<int>? VisibilityTimeout { get; set; }

@@ -43,12 +43,16 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The ID of availability zone.
      * 
+     * *Network params*
+     * 
      */
     @Import(name="availabilityZone")
     private @Nullable Output<String> availabilityZone;
 
     /**
      * @return The ID of availability zone.
+     * 
+     * *Network params*
      * 
      */
     public Optional<Output<String>> availabilityZone() {
@@ -400,14 +404,14 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      * 
      */
     @Import(name="runtime")
     private @Nullable Output<EdgeKubernetesRuntimeArgs> runtime;
 
     /**
-     * @return The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * @return The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      * 
      */
     public Optional<Output<EdgeKubernetesRuntimeArgs>> runtime() {
@@ -744,6 +748,8 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param availabilityZone The ID of availability zone.
          * 
+         * *Network params*
+         * 
          * @return builder
          * 
          */
@@ -754,6 +760,8 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param availabilityZone The ID of availability zone.
+         * 
+         * *Network params*
          * 
          * @return builder
          * 
@@ -1245,7 +1253,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
          * 
          * @return builder
          * 
@@ -1256,7 +1264,7 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
          * 
          * @return builder
          * 

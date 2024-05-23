@@ -251,6 +251,8 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * The ID of availability zone.
      * 
+     * *Network params*
+     * 
      */
     @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
@@ -258,19 +260,21 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of availability zone.
      * 
+     * *Network params*
+     * 
      */
     public Output<String> availabilityZone() {
         return this.availabilityZone;
     }
     /**
-     * Nested attribute containing certificate authority data for your cluster.
+     * (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     @Export(name="certificateAuthority", refs={EdgeKubernetesCertificateAuthority.class}, tree="[0]")
     private Output<EdgeKubernetesCertificateAuthority> certificateAuthority;
 
     /**
-     * @return Nested attribute containing certificate authority data for your cluster.
+     * @return (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     public Output<EdgeKubernetesCertificateAuthority> certificateAuthority() {
@@ -341,14 +345,14 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
         return this.clusterSpec;
     }
     /**
-     * Map of kubernetes cluster connection information.
+     * (Map) Map of kubernetes cluster connection information.
      * 
      */
     @Export(name="connections", refs={EdgeKubernetesConnections.class}, tree="[0]")
     private Output<EdgeKubernetesConnections> connections;
 
     /**
-     * @return Map of kubernetes cluster connection information.
+     * @return (Map) Map of kubernetes cluster connection information.
      * 
      */
     public Output<EdgeKubernetesConnections> connections() {
@@ -619,14 +623,14 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retainResources);
     }
     /**
-     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      * 
      */
     @Export(name="runtime", refs={EdgeKubernetesRuntime.class}, tree="[0]")
     private Output</* @Nullable */ EdgeKubernetesRuntime> runtime;
 
     /**
-     * @return The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * @return The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      * 
      */
     public Output<Optional<EdgeKubernetesRuntime>> runtime() {

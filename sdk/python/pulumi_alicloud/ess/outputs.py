@@ -1436,7 +1436,7 @@ class ScalingConfigurationDataDisk(dict):
                  snapshot_id: Optional[str] = None):
         """
         :param str auto_snapshot_policy_id: The id of auto snapshot policy for data disk.
-        :param str category: Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+        :param str category: Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
         :param bool delete_with_instance: Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
         :param str description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param str device: The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
@@ -1482,7 +1482,7 @@ class ScalingConfigurationDataDisk(dict):
     @pulumi.getter
     def category(self) -> Optional[str]:
         """
-        Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+        Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
         """
         return pulumi.get(self, "category")
 

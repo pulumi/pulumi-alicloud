@@ -16,6 +16,7 @@ class EipArgs:
     def __init__(__self__, *,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 allocation_id: Optional[pulumi.Input[str]] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -27,6 +28,7 @@ class EipArgs:
                  isp: Optional[pulumi.Input[str]] = None,
                  log_project: Optional[pulumi.Input[str]] = None,
                  log_store: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -60,6 +62,8 @@ class EipArgs:
             pulumi.set(__self__, "activity_id", activity_id)
         if address_name is not None:
             pulumi.set(__self__, "address_name", address_name)
+        if allocation_id is not None:
+            pulumi.set(__self__, "allocation_id", allocation_id)
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
         if bandwidth is not None:
@@ -85,6 +89,8 @@ class EipArgs:
             pulumi.set(__self__, "log_project", log_project)
         if log_store is not None:
             pulumi.set(__self__, "log_store", log_store)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
@@ -129,6 +135,15 @@ class EipArgs:
     @address_name.setter
     def address_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address_name", value)
+
+    @property
+    @pulumi.getter(name="allocationId")
+    def allocation_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "allocation_id")
+
+    @allocation_id.setter
+    def allocation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allocation_id", value)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -257,6 +272,15 @@ class EipArgs:
 
     @property
     @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
@@ -370,6 +394,7 @@ class _EipState:
     def __init__(__self__, *,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 allocation_id: Optional[pulumi.Input[str]] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -382,6 +407,7 @@ class _EipState:
                  isp: Optional[pulumi.Input[str]] = None,
                  log_project: Optional[pulumi.Input[str]] = None,
                  log_store: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -417,6 +443,8 @@ class _EipState:
             pulumi.set(__self__, "activity_id", activity_id)
         if address_name is not None:
             pulumi.set(__self__, "address_name", address_name)
+        if allocation_id is not None:
+            pulumi.set(__self__, "allocation_id", allocation_id)
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
         if bandwidth is not None:
@@ -444,6 +472,8 @@ class _EipState:
             pulumi.set(__self__, "log_project", log_project)
         if log_store is not None:
             pulumi.set(__self__, "log_store", log_store)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
@@ -490,6 +520,15 @@ class _EipState:
     @address_name.setter
     def address_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address_name", value)
+
+    @property
+    @pulumi.getter(name="allocationId")
+    def allocation_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "allocation_id")
+
+    @allocation_id.setter
+    def allocation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allocation_id", value)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -627,6 +666,15 @@ class _EipState:
 
     @property
     @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
@@ -759,6 +807,7 @@ class Eip(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 allocation_id: Optional[pulumi.Input[str]] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -770,6 +819,7 @@ class Eip(pulumi.CustomResource):
                  isp: Optional[pulumi.Input[str]] = None,
                  log_project: Optional[pulumi.Input[str]] = None,
                  log_store: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -893,6 +943,7 @@ class Eip(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 allocation_id: Optional[pulumi.Input[str]] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -904,6 +955,7 @@ class Eip(pulumi.CustomResource):
                  isp: Optional[pulumi.Input[str]] = None,
                  log_project: Optional[pulumi.Input[str]] = None,
                  log_store: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -926,6 +978,7 @@ class Eip(pulumi.CustomResource):
 
             __props__.__dict__["activity_id"] = activity_id
             __props__.__dict__["address_name"] = address_name
+            __props__.__dict__["allocation_id"] = allocation_id
             __props__.__dict__["auto_pay"] = auto_pay
             __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["deletion_protection"] = deletion_protection
@@ -937,6 +990,7 @@ class Eip(pulumi.CustomResource):
             __props__.__dict__["isp"] = isp
             __props__.__dict__["log_project"] = log_project
             __props__.__dict__["log_store"] = log_store
+            __props__.__dict__["mode"] = mode
             __props__.__dict__["name"] = name
             __props__.__dict__["netmode"] = netmode
             __props__.__dict__["payment_type"] = payment_type
@@ -961,6 +1015,7 @@ class Eip(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             activity_id: Optional[pulumi.Input[str]] = None,
             address_name: Optional[pulumi.Input[str]] = None,
+            allocation_id: Optional[pulumi.Input[str]] = None,
             auto_pay: Optional[pulumi.Input[bool]] = None,
             bandwidth: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
@@ -973,6 +1028,7 @@ class Eip(pulumi.CustomResource):
             isp: Optional[pulumi.Input[str]] = None,
             log_project: Optional[pulumi.Input[str]] = None,
             log_store: Optional[pulumi.Input[str]] = None,
+            mode: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             netmode: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
@@ -1015,6 +1071,7 @@ class Eip(pulumi.CustomResource):
 
         __props__.__dict__["activity_id"] = activity_id
         __props__.__dict__["address_name"] = address_name
+        __props__.__dict__["allocation_id"] = allocation_id
         __props__.__dict__["auto_pay"] = auto_pay
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["create_time"] = create_time
@@ -1027,6 +1084,7 @@ class Eip(pulumi.CustomResource):
         __props__.__dict__["isp"] = isp
         __props__.__dict__["log_project"] = log_project
         __props__.__dict__["log_store"] = log_store
+        __props__.__dict__["mode"] = mode
         __props__.__dict__["name"] = name
         __props__.__dict__["netmode"] = netmode
         __props__.__dict__["payment_type"] = payment_type
@@ -1052,6 +1110,11 @@ class Eip(pulumi.CustomResource):
         The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         """
         return pulumi.get(self, "address_name")
+
+    @property
+    @pulumi.getter(name="allocationId")
+    def allocation_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "allocation_id")
 
     @property
     @pulumi.getter(name="autoPay")
@@ -1138,6 +1201,11 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter(name="logStore")
     def log_store(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "log_store")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter

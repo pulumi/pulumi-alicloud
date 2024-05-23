@@ -118,6 +118,10 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly customSan!: pulumi.Output<string | undefined>;
     /**
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+     */
+    public readonly deleteOptions!: pulumi.Output<outputs.cs.KubernetesDeleteOption[] | undefined>;
+    /**
      * Whether to enable cluster deletion protection.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
@@ -261,7 +265,7 @@ export class Kubernetes extends pulumi.CustomResource {
     public readonly resourceGroupId!: pulumi.Output<string>;
     public readonly retainResources!: pulumi.Output<string[] | undefined>;
     /**
-     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      */
     public readonly runtime!: pulumi.Output<outputs.cs.KubernetesRuntime | undefined>;
     /**
@@ -344,6 +348,7 @@ export class Kubernetes extends pulumi.CustomResource {
             resourceInputs["clusterDomain"] = state ? state.clusterDomain : undefined;
             resourceInputs["connections"] = state ? state.connections : undefined;
             resourceInputs["customSan"] = state ? state.customSan : undefined;
+            resourceInputs["deleteOptions"] = state ? state.deleteOptions : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["enableSsh"] = state ? state.enableSsh : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
@@ -409,6 +414,7 @@ export class Kubernetes extends pulumi.CustomResource {
             resourceInputs["clusterCaCert"] = args ? args.clusterCaCert : undefined;
             resourceInputs["clusterDomain"] = args ? args.clusterDomain : undefined;
             resourceInputs["customSan"] = args ? args.customSan : undefined;
+            resourceInputs["deleteOptions"] = args ? args.deleteOptions : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["enableSsh"] = args ? args.enableSsh : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
@@ -513,6 +519,10 @@ export interface KubernetesState {
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      */
     customSan?: pulumi.Input<string>;
+    /**
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+     */
+    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesDeleteOption>[]>;
     /**
      * Whether to enable cluster deletion protection.
      */
@@ -657,7 +667,7 @@ export interface KubernetesState {
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      */
     runtime?: pulumi.Input<inputs.cs.KubernetesRuntime>;
     /**
@@ -755,6 +765,10 @@ export interface KubernetesArgs {
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      */
     customSan?: pulumi.Input<string>;
+    /**
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+     */
+    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesDeleteOption>[]>;
     /**
      * Whether to enable cluster deletion protection.
      */
@@ -891,7 +905,7 @@ export interface KubernetesArgs {
     resourceGroupId?: pulumi.Input<string>;
     retainResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      */
     runtime?: pulumi.Input<inputs.cs.KubernetesRuntime>;
     /**

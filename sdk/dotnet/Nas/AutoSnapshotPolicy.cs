@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nas
 {
     /// <summary>
-    /// Provides a Network Attached Storage (NAS) Auto Snapshot Policy resource.
+    /// Provides a NAS Auto Snapshot Policy resource. Automatic snapshot policy.
     /// 
-    /// For information about Network Attached Storage (NAS) Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html).
+    /// For information about NAS Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html)).
     /// 
-    /// &gt; **NOTE:** Available in v1.153.0+.
+    /// &gt; **NOTE:** Available since v1.153.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,22 +28,25 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Nas.AutoSnapshotPolicy("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Nas.AutoSnapshotPolicy("default", new()
     ///     {
-    ///         AutoSnapshotPolicyName = "example_value",
-    ///         RepeatWeekdays = new[]
-    ///         {
-    ///             "3",
-    ///             "4",
-    ///             "5",
-    ///         },
-    ///         RetentionDays = 30,
     ///         TimePoints = new[]
     ///         {
+    ///             "0",
+    ///             "1",
+    ///             "2",
+    ///         },
+    ///         RetentionDays = 1,
+    ///         RepeatWeekdays = new[]
+    ///         {
+    ///             "2",
     ///             "3",
     ///             "4",
-    ///             "5",
     ///         },
+    ///         AutoSnapshotPolicyName = name,
+    ///         FileSystemType = "extreme",
     ///     });
     /// 
     /// });
@@ -51,7 +54,7 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// ## Import
     /// 
-    /// Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.
+    /// NAS Auto Snapshot Policy can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example &lt;id&gt;
@@ -69,6 +72,18 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         [Output("autoSnapshotPolicyName")]
         public Output<string?> AutoSnapshotPolicyName { get; private set; } = null!;
+
+        /// <summary>
+        /// Creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The file system type.
+        /// </summary>
+        [Output("fileSystemType")]
+        public Output<string> FileSystemType { get; private set; } = null!;
 
         /// <summary>
         /// The day on which an auto snapshot is created.
@@ -155,6 +170,12 @@ namespace Pulumi.AliCloud.Nas
         [Input("autoSnapshotPolicyName")]
         public Input<string>? AutoSnapshotPolicyName { get; set; }
 
+        /// <summary>
+        /// The file system type.
+        /// </summary>
+        [Input("fileSystemType")]
+        public Input<string>? FileSystemType { get; set; }
+
         [Input("repeatWeekdays", required: true)]
         private InputList<string>? _repeatWeekdays;
 
@@ -207,6 +228,18 @@ namespace Pulumi.AliCloud.Nas
         /// </summary>
         [Input("autoSnapshotPolicyName")]
         public Input<string>? AutoSnapshotPolicyName { get; set; }
+
+        /// <summary>
+        /// Creation time.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The file system type.
+        /// </summary>
+        [Input("fileSystemType")]
+        public Input<string>? FileSystemType { get; set; }
 
         [Input("repeatWeekdays")]
         private InputList<string>? _repeatWeekdays;

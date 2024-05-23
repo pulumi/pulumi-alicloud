@@ -40,11 +40,15 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := simpleapplicationserver.GetImages(ctx, nil, nil)
+//			_default, err := simpleapplicationserver.GetImages(ctx, &simpleapplicationserver.GetImagesArgs{
+//				Platform: pulumi.StringRef("Linux"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetServerPlans, err := simpleapplicationserver.GetServerPlans(ctx, nil, nil)
+//			defaultGetServerPlans, err := simpleapplicationserver.GetServerPlans(ctx, &simpleapplicationserver.GetServerPlansArgs{
+//				Platform: pulumi.StringRef("Linux"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}

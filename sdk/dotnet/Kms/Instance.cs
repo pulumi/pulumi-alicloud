@@ -94,31 +94,43 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to force deletion even without backup.
+        /// </summary>
+        [Output("forceDeleteWithoutBackup")]
+        public Output<string?> ForceDeleteWithoutBackup { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the resource.
         /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum number of stored keys.
+        /// Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Output("keyNum")]
-        public Output<int> KeyNum { get; private set; } = null!;
+        public Output<int?> KeyNum { get; private set; } = null!;
 
         /// <summary>
-        /// Instance Audit Log Switch.
+        /// Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Output("log")]
         public Output<string> Log { get; private set; } = null!;
 
         /// <summary>
-        /// Instance log capacity.
+        /// Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Output("logStorage")]
         public Output<int> LogStorage { get; private set; } = null!;
 
         /// <summary>
-        /// Purchase cycle, in months.
+        /// Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+        /// </summary>
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
+
+        /// <summary>
+        /// Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -130,28 +142,28 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> ProductVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic renewal period, in months.
+        /// Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Output("renewPeriod")]
         public Output<int?> RenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Renewal options (manual renewal, automatic renewal, no renewal).
+        /// Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Output("renewStatus")]
         public Output<string?> RenewStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum number of Secrets.
+        /// Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Output("secretNum")]
-        public Output<int> SecretNum { get; private set; } = null!;
+        public Output<int?> SecretNum { get; private set; } = null!;
 
         /// <summary>
-        /// The computation performance level of the KMS instance.
+        /// The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Output("spec")]
-        public Output<int> Spec { get; private set; } = null!;
+        public Output<int?> Spec { get; private set; } = null!;
 
         /// <summary>
         /// Instance status.
@@ -166,10 +178,10 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The number of managed accesses. The maximum number of VPCs that can access this KMS instance.
+        /// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Output("vpcNum")]
-        public Output<int> VpcNum { get; private set; } = null!;
+        public Output<int?> VpcNum { get; private set; } = null!;
 
         /// <summary>
         /// Instance bind vswitches.
@@ -242,25 +254,37 @@ namespace Pulumi.AliCloud.Kms
         }
 
         /// <summary>
-        /// Maximum number of stored keys.
+        /// Whether to force deletion even without backup.
         /// </summary>
-        [Input("keyNum", required: true)]
-        public Input<int> KeyNum { get; set; } = null!;
+        [Input("forceDeleteWithoutBackup")]
+        public Input<string>? ForceDeleteWithoutBackup { get; set; }
 
         /// <summary>
-        /// Instance Audit Log Switch.
+        /// Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        /// </summary>
+        [Input("keyNum")]
+        public Input<int>? KeyNum { get; set; }
+
+        /// <summary>
+        /// Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("log")]
         public Input<string>? Log { get; set; }
 
         /// <summary>
-        /// Instance log capacity.
+        /// Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("logStorage")]
         public Input<int>? LogStorage { get; set; }
 
         /// <summary>
-        /// Purchase cycle, in months.
+        /// Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -272,28 +296,28 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? ProductVersion { get; set; }
 
         /// <summary>
-        /// Automatic renewal period, in months.
+        /// Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Renewal options (manual renewal, automatic renewal, no renewal).
+        /// Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("renewStatus")]
         public Input<string>? RenewStatus { get; set; }
 
         /// <summary>
-        /// Maximum number of Secrets.
+        /// Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
-        [Input("secretNum", required: true)]
-        public Input<int> SecretNum { get; set; } = null!;
+        [Input("secretNum")]
+        public Input<int>? SecretNum { get; set; }
 
         /// <summary>
-        /// The computation performance level of the KMS instance.
+        /// The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
-        [Input("spec", required: true)]
-        public Input<int> Spec { get; set; } = null!;
+        [Input("spec")]
+        public Input<int>? Spec { get; set; }
 
         /// <summary>
         /// Instance VPC id.
@@ -302,10 +326,10 @@ namespace Pulumi.AliCloud.Kms
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// The number of managed accesses. The maximum number of VPCs that can access this KMS instance.
+        /// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
-        [Input("vpcNum", required: true)]
-        public Input<int> VpcNum { get; set; } = null!;
+        [Input("vpcNum")]
+        public Input<int>? VpcNum { get; set; }
 
         [Input("vswitchIds", required: true)]
         private InputList<string>? _vswitchIds;
@@ -364,31 +388,43 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
+        /// Whether to force deletion even without backup.
+        /// </summary>
+        [Input("forceDeleteWithoutBackup")]
+        public Input<string>? ForceDeleteWithoutBackup { get; set; }
+
+        /// <summary>
         /// The name of the resource.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Maximum number of stored keys.
+        /// Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("keyNum")]
         public Input<int>? KeyNum { get; set; }
 
         /// <summary>
-        /// Instance Audit Log Switch.
+        /// Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("log")]
         public Input<string>? Log { get; set; }
 
         /// <summary>
-        /// Instance log capacity.
+        /// Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("logStorage")]
         public Input<int>? LogStorage { get; set; }
 
         /// <summary>
-        /// Purchase cycle, in months.
+        /// Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -400,25 +436,25 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? ProductVersion { get; set; }
 
         /// <summary>
-        /// Automatic renewal period, in months.
+        /// Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Renewal options (manual renewal, automatic renewal, no renewal).
+        /// Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("renewStatus")]
         public Input<string>? RenewStatus { get; set; }
 
         /// <summary>
-        /// Maximum number of Secrets.
+        /// Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("secretNum")]
         public Input<int>? SecretNum { get; set; }
 
         /// <summary>
-        /// The computation performance level of the KMS instance.
+        /// The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("spec")]
         public Input<int>? Spec { get; set; }
@@ -436,7 +472,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The number of managed accesses. The maximum number of VPCs that can access this KMS instance.
+        /// The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         /// </summary>
         [Input("vpcNum")]
         public Input<int>? VpcNum { get; set; }

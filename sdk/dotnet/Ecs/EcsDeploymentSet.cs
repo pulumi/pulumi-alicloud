@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Deployment Set and how to use it, see [What is Deployment Set](https://www.alibabacloud.com/help/en/doc-detail/91269.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.140.0+.
+    /// &gt; **NOTE:** Available since v1.140.0.
     /// 
     /// ## Example Usage
     /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> OnUnableToRedeployFailedInstance { get; private set; } = null!;
 
         /// <summary>
-        /// The deployment strategy. Valid values: `Availability`.
+        /// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         /// </summary>
         [Output("strategy")]
         public Output<string?> Strategy { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OnUnableToRedeployFailedInstance { get; set; }
 
         /// <summary>
-        /// The deployment strategy. Valid values: `Availability`.
+        /// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OnUnableToRedeployFailedInstance { get; set; }
 
         /// <summary>
-        /// The deployment strategy. Valid values: `Availability`.
+        /// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }

@@ -78,6 +78,8 @@ type Kubernetes struct {
 	Connections KubernetesConnectionsOutput `pulumi:"connections"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 	CustomSan pulumi.StringPtrOutput `pulumi:"customSan"`
+	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+	DeleteOptions KubernetesDeleteOptionArrayOutput `pulumi:"deleteOptions"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Enable login to the node through SSH. Default to `false`.
@@ -151,7 +153,7 @@ type Kubernetes struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput      `pulumi:"resourceGroupId"`
 	RetainResources pulumi.StringArrayOutput `pulumi:"retainResources"`
-	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
 	Runtime KubernetesRuntimePtrOutput `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
@@ -251,6 +253,8 @@ type kubernetesState struct {
 	Connections *KubernetesConnections `pulumi:"connections"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 	CustomSan *string `pulumi:"customSan"`
+	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+	DeleteOptions []KubernetesDeleteOption `pulumi:"deleteOptions"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Enable login to the node through SSH. Default to `false`.
@@ -324,7 +328,7 @@ type kubernetesState struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	RetainResources []string `pulumi:"retainResources"`
-	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
 	Runtime *KubernetesRuntime `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -382,6 +386,8 @@ type KubernetesState struct {
 	Connections KubernetesConnectionsPtrInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 	CustomSan pulumi.StringPtrInput
+	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+	DeleteOptions KubernetesDeleteOptionArrayInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
 	// Enable login to the node through SSH. Default to `false`.
@@ -455,7 +461,7 @@ type KubernetesState struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	RetainResources pulumi.StringArrayInput
-	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
 	Runtime KubernetesRuntimePtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
@@ -513,6 +519,8 @@ type kubernetesArgs struct {
 	ClusterDomain *string `pulumi:"clusterDomain"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 	CustomSan *string `pulumi:"customSan"`
+	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+	DeleteOptions []KubernetesDeleteOption `pulumi:"deleteOptions"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Enable login to the node through SSH. Default to `false`.
@@ -582,7 +590,7 @@ type kubernetesArgs struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	RetainResources []string `pulumi:"retainResources"`
-	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
 	Runtime *KubernetesRuntime `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -627,6 +635,8 @@ type KubernetesArgs struct {
 	ClusterDomain pulumi.StringPtrInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 	CustomSan pulumi.StringPtrInput
+	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+	DeleteOptions KubernetesDeleteOptionArrayInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
 	// Enable login to the node through SSH. Default to `false`.
@@ -696,7 +706,7 @@ type KubernetesArgs struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	RetainResources pulumi.StringArrayInput
-	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
 	Runtime KubernetesRuntimePtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
@@ -855,6 +865,11 @@ func (o KubernetesOutput) Connections() KubernetesConnectionsOutput {
 // Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 func (o KubernetesOutput) CustomSan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringPtrOutput { return v.CustomSan }).(pulumi.StringPtrOutput)
+}
+
+// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
+func (o KubernetesOutput) DeleteOptions() KubernetesDeleteOptionArrayOutput {
+	return o.ApplyT(func(v *Kubernetes) KubernetesDeleteOptionArrayOutput { return v.DeleteOptions }).(KubernetesDeleteOptionArrayOutput)
 }
 
 // Whether to enable cluster deletion protection.
@@ -1038,7 +1053,7 @@ func (o KubernetesOutput) RetainResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringArrayOutput { return v.RetainResources }).(pulumi.StringArrayOutput)
 }
 
-// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+// The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
 func (o KubernetesOutput) Runtime() KubernetesRuntimePtrOutput {
 	return o.ApplyT(func(v *Kubernetes) KubernetesRuntimePtrOutput { return v.Runtime }).(KubernetesRuntimePtrOutput)
 }

@@ -65,6 +65,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("addressName")]
         public Output<string> AddressName { get; private set; } = null!;
 
+        [Output("allocationId")]
+        public Output<string?> AllocationId { get; private set; } = null!;
+
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
 
@@ -123,6 +126,9 @@ namespace Pulumi.AliCloud.Ecs
 
         [Output("logStore")]
         public Output<string?> LogStore { get; private set; } = null!;
+
+        [Output("mode")]
+        public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
         /// It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
@@ -231,6 +237,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("addressName")]
         public Input<string>? AddressName { get; set; }
 
+        [Input("allocationId")]
+        public Input<string>? AllocationId { get; set; }
+
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
@@ -286,6 +295,9 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("logStore")]
         public Input<string>? LogStore { get; set; }
+
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
         /// <summary>
         /// It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
@@ -361,6 +373,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("addressName")]
         public Input<string>? AddressName { get; set; }
 
+        [Input("allocationId")]
+        public Input<string>? AllocationId { get; set; }
+
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
@@ -419,6 +434,9 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("logStore")]
         public Input<string>? LogStore { get; set; }
+
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
         /// <summary>
         /// It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.

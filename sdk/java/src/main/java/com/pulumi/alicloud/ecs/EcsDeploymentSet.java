@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECS Deployment Set and how to use it, see [What is Deployment Set](https://www.alibabacloud.com/help/en/doc-detail/91269.htm).
  * 
- * &gt; **NOTE:** Available in v1.140.0+.
+ * &gt; **NOTE:** Available since v1.140.0.
  * 
  * ## Example Usage
  * 
@@ -144,14 +144,14 @@ public class EcsDeploymentSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.onUnableToRedeployFailedInstance);
     }
     /**
-     * The deployment strategy. Valid values: `Availability`.
+     * The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
      * 
      */
     @Export(name="strategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> strategy;
 
     /**
-     * @return The deployment strategy. Valid values: `Availability`.
+     * @return The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
      * 
      */
     public Output<Optional<String>> strategy() {

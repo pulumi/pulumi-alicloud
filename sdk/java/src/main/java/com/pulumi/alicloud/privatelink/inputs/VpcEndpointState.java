@@ -21,14 +21,14 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     public static final VpcEndpointState Empty = new VpcEndpointState();
 
     /**
-     * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+     * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+     * @return The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -130,18 +130,33 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * @return The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      * 
      */
     public Optional<Output<String>> endpointType() {
         return Optional.ofNullable(this.endpointType);
+    }
+
+    /**
+     * RAM access policies.
+     * 
+     */
+    @Import(name="policyDocument")
+    private @Nullable Output<String> policyDocument;
+
+    /**
+     * @return RAM access policies.
+     * 
+     */
+    public Optional<Output<String>> policyDocument() {
+        return Optional.ofNullable(this.policyDocument);
     }
 
     /**
@@ -309,6 +324,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         this.endpointDescription = $.endpointDescription;
         this.endpointDomain = $.endpointDomain;
         this.endpointType = $.endpointType;
+        this.policyDocument = $.policyDocument;
         this.protectedEnabled = $.protectedEnabled;
         this.resourceGroupId = $.resourceGroupId;
         this.securityGroupIds = $.securityGroupIds;
@@ -340,7 +356,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+         * @param bandwidth The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
          * 
          * @return builder
          * 
@@ -351,7 +367,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+         * @param bandwidth The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
          * 
          * @return builder
          * 
@@ -491,7 +507,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointType The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+         * @param endpointType The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
          * 
          * @return builder
          * 
@@ -502,13 +518,34 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointType The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+         * @param endpointType The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
          * 
          * @return builder
          * 
          */
         public Builder endpointType(String endpointType) {
             return endpointType(Output.of(endpointType));
+        }
+
+        /**
+         * @param policyDocument RAM access policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyDocument(@Nullable Output<String> policyDocument) {
+            $.policyDocument = policyDocument;
+            return this;
+        }
+
+        /**
+         * @param policyDocument RAM access policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyDocument(String policyDocument) {
+            return policyDocument(Output.of(policyDocument));
         }
 
         /**

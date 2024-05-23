@@ -106,6 +106,12 @@ public class Eip extends com.pulumi.resources.CustomResource {
     public Output<String> addressName() {
         return this.addressName;
     }
+    @Export(name="allocationId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> allocationId;
+
+    public Output<Optional<String>> allocationId() {
+        return Codegen.optional(this.allocationId);
+    }
     @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
@@ -241,6 +247,12 @@ public class Eip extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> logStore() {
         return Codegen.optional(this.logStore);
+    }
+    @Export(name="mode", refs={String.class}, tree="[0]")
+    private Output<String> mode;
+
+    public Output<String> mode() {
+        return this.mode;
     }
     /**
      * It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.

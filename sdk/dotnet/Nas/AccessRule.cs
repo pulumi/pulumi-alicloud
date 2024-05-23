@@ -25,23 +25,34 @@ namespace Pulumi.AliCloud.Nas
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new AliCloud.Nas.AccessGroup("foo", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         AccessGroupName = "tf-NasConfigName",
-    ///         AccessGroupType = "Vpc",
-    ///         Description = "tf-testAccNasConfig",
+    ///         Min = 10000,
+    ///         Max = 99999,
     ///     });
     /// 
-    ///     var fooAccessRule = new AliCloud.Nas.AccessRule("foo", new()
+    ///     var defaultAccessGroup = new AliCloud.Nas.AccessGroup("default", new()
     ///     {
-    ///         AccessGroupName = foo.AccessGroupName,
-    ///         SourceCidrIp = "168.1.1.0/16",
-    ///         RwAccessType = "RDWR",
+    ///         AccessGroupType = "Vpc",
+    ///         Description = "ExtremeAccessGroup",
+    ///         AccessGroupName = $"terraform-example-{@default.Result}",
+    ///         FileSystemType = "extreme",
+    ///     });
+    /// 
+    ///     var defaultAccessRule = new AliCloud.Nas.AccessRule("default", new()
+    ///     {
+    ///         AccessGroupName = defaultAccessGroup.AccessGroupName,
+    ///         RwAccessType = "RDONLY",
+    ///         Ipv6SourceCidrIp = "::1",
     ///         UserAccessType = "no_squash",
-    ///         Priority = 2,
+    ///         Priority = 1,
+    ///         FileSystemType = "extreme",
     ///     });
     /// 
     /// });

@@ -103,6 +103,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     public readonly controlPlaneLogProject!: pulumi.Output<string>;
     public readonly controlPlaneLogTtl!: pulumi.Output<string>;
     public readonly customSan!: pulumi.Output<string | undefined>;
+    public readonly deleteOptions!: pulumi.Output<outputs.cs.ManagedKubernetesDeleteOption[] | undefined>;
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     public readonly enableRrsa!: pulumi.Output<boolean | undefined>;
     /**
@@ -188,6 +189,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["controlPlaneLogProject"] = state ? state.controlPlaneLogProject : undefined;
             resourceInputs["controlPlaneLogTtl"] = state ? state.controlPlaneLogTtl : undefined;
             resourceInputs["customSan"] = state ? state.customSan : undefined;
+            resourceInputs["deleteOptions"] = state ? state.deleteOptions : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["enableRrsa"] = state ? state.enableRrsa : undefined;
             resourceInputs["encryptionProviderKey"] = state ? state.encryptionProviderKey : undefined;
@@ -235,6 +237,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["controlPlaneLogProject"] = args ? args.controlPlaneLogProject : undefined;
             resourceInputs["controlPlaneLogTtl"] = args ? args.controlPlaneLogTtl : undefined;
             resourceInputs["customSan"] = args ? args.customSan : undefined;
+            resourceInputs["deleteOptions"] = args ? args.deleteOptions : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["enableRrsa"] = args ? args.enableRrsa : undefined;
             resourceInputs["encryptionProviderKey"] = args ? args.encryptionProviderKey : undefined;
@@ -306,6 +309,7 @@ export interface ManagedKubernetesState {
     controlPlaneLogProject?: pulumi.Input<string>;
     controlPlaneLogTtl?: pulumi.Input<string>;
     customSan?: pulumi.Input<string>;
+    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesDeleteOption>[]>;
     deletionProtection?: pulumi.Input<boolean>;
     enableRrsa?: pulumi.Input<boolean>;
     /**
@@ -390,6 +394,7 @@ export interface ManagedKubernetesArgs {
     controlPlaneLogProject?: pulumi.Input<string>;
     controlPlaneLogTtl?: pulumi.Input<string>;
     customSan?: pulumi.Input<string>;
+    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesDeleteOption>[]>;
     deletionProtection?: pulumi.Input<boolean>;
     enableRrsa?: pulumi.Input<boolean>;
     /**

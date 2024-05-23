@@ -16,14 +16,14 @@ public final class KubernetesRuntimeArgs extends com.pulumi.resources.ResourceAr
     public static final KubernetesRuntimeArgs Empty = new KubernetesRuntimeArgs();
 
     /**
-     * The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
      * 
      */
     public Optional<Output<String>> name() {
@@ -31,14 +31,18 @@ public final class KubernetesRuntimeArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     * The version of the runtime.
+     * 
+     * The following example is the definition of runtime block:
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     * @return The version of the runtime.
+     * 
+     * The following example is the definition of runtime block:
      * 
      */
     public Optional<Output<String>> version() {
@@ -71,7 +75,7 @@ public final class KubernetesRuntimeArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
          * 
          * @return builder
          * 
@@ -82,7 +86,7 @@ public final class KubernetesRuntimeArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
          * 
          * @return builder
          * 
@@ -92,7 +96,9 @@ public final class KubernetesRuntimeArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param version Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+         * @param version The version of the runtime.
+         * 
+         * The following example is the definition of runtime block:
          * 
          * @return builder
          * 
@@ -103,7 +109,9 @@ public final class KubernetesRuntimeArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param version Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+         * @param version The version of the runtime.
+         * 
+         * The following example is the definition of runtime block:
          * 
          * @return builder
          * 

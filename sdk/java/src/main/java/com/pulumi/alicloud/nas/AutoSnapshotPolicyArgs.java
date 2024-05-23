@@ -42,6 +42,21 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The file system type.
+     * 
+     */
+    @Import(name="fileSystemType")
+    private @Nullable Output<String> fileSystemType;
+
+    /**
+     * @return The file system type.
+     * 
+     */
+    public Optional<Output<String>> fileSystemType() {
+        return Optional.ofNullable(this.fileSystemType);
+    }
+
+    /**
      * The day on which an auto snapshot is created.
      * - A maximum of 7 time points can be selected.
      * - The format is  an JSON array of [&#34;1&#34;, &#34;2&#34;, … &#34;7&#34;]  and the time points are separated by commas (,).
@@ -100,6 +115,7 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
 
     private AutoSnapshotPolicyArgs(AutoSnapshotPolicyArgs $) {
         this.autoSnapshotPolicyName = $.autoSnapshotPolicyName;
+        this.fileSystemType = $.fileSystemType;
         this.repeatWeekdays = $.repeatWeekdays;
         this.retentionDays = $.retentionDays;
         this.timePoints = $.timePoints;
@@ -150,6 +166,27 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
          */
         public Builder autoSnapshotPolicyName(String autoSnapshotPolicyName) {
             return autoSnapshotPolicyName(Output.of(autoSnapshotPolicyName));
+        }
+
+        /**
+         * @param fileSystemType The file system type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSystemType(@Nullable Output<String> fileSystemType) {
+            $.fileSystemType = fileSystemType;
+            return this;
+        }
+
+        /**
+         * @param fileSystemType The file system type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSystemType(String fileSystemType) {
+            return fileSystemType(Output.of(fileSystemType));
         }
 
         /**

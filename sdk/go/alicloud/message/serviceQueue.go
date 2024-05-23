@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Message Notification Service Queue resource.
+// Provides a Message Service Queue resource.
 //
-// For information about Message Notification Service Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-service/latest/createqueue).
+// For information about Message Service Queue and how to use it, see [What is Queue](https://www.alibabacloud.com/help/en/message-service/latest/createqueue).
 //
 // > **NOTE:** Available since v1.188.0.
 //
@@ -27,10 +27,7 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/message"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -39,25 +36,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Min: 10000,
-//				Max: 99999,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = message.NewServiceQueue(ctx, "queue", &message.ServiceQueueArgs{
-//				QueueName:              pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
-//				DelaySeconds:           pulumi.Int(60478),
-//				MaximumMessageSize:     pulumi.Int(12357),
-//				MessageRetentionPeriod: pulumi.Int(256000),
+//			_, err := message.NewServiceQueue(ctx, "default", &message.ServiceQueueArgs{
+//				DelaySeconds:           pulumi.Int(2),
+//				PollingWaitSeconds:     pulumi.Int(2),
+//				MessageRetentionPeriod: pulumi.Int(566),
+//				MaximumMessageSize:     pulumi.Int(1123),
 //				VisibilityTimeout:      pulumi.Int(30),
-//				PollingWaitSeconds:     pulumi.Int(3),
-//				LoggingEnabled:         pulumi.Bool(true),
+//				QueueName:              pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -70,27 +59,29 @@ import (
 //
 // ## Import
 //
-// Message Notification Service Queue can be imported using the id or queue_name, e.g.
+// Message Service Queue can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:message/serviceQueue:ServiceQueue example <queue_name>
+// $ pulumi import alicloud:message/serviceQueue:ServiceQueue example <id>
 // ```
 type ServiceQueue struct {
 	pulumi.CustomResourceState
 
-	// The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
+	// Represents the time when the Queue was created.
+	CreateTime pulumi.IntOutput `pulumi:"createTime"`
+	// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
 	DelaySeconds pulumi.IntOutput `pulumi:"delaySeconds"`
-	// Specifies whether to enable the log management feature. Default value: false. Valid values:
+	// Represents whether the log management function is enabled.
 	LoggingEnabled pulumi.BoolPtrOutput `pulumi:"loggingEnabled"`
-	// The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
+	// Represents the maximum length of the message body sent to the Queue, in Byte.
 	MaximumMessageSize pulumi.IntOutput `pulumi:"maximumMessageSize"`
-	// The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
+	// Represents the longest life time of the message in the Queue.
 	MessageRetentionPeriod pulumi.IntOutput `pulumi:"messageRetentionPeriod"`
-	// The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
+	// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
 	PollingWaitSeconds pulumi.IntOutput `pulumi:"pollingWaitSeconds"`
-	// Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
+	// Representative resources.
 	QueueName pulumi.StringOutput `pulumi:"queueName"`
-	// The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
+	// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
 	VisibilityTimeout pulumi.IntOutput `pulumi:"visibilityTimeout"`
 }
 
@@ -127,36 +118,40 @@ func GetServiceQueue(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceQueue resources.
 type serviceQueueState struct {
-	// The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
+	// Represents the time when the Queue was created.
+	CreateTime *int `pulumi:"createTime"`
+	// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
 	DelaySeconds *int `pulumi:"delaySeconds"`
-	// Specifies whether to enable the log management feature. Default value: false. Valid values:
+	// Represents whether the log management function is enabled.
 	LoggingEnabled *bool `pulumi:"loggingEnabled"`
-	// The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
+	// Represents the maximum length of the message body sent to the Queue, in Byte.
 	MaximumMessageSize *int `pulumi:"maximumMessageSize"`
-	// The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
+	// Represents the longest life time of the message in the Queue.
 	MessageRetentionPeriod *int `pulumi:"messageRetentionPeriod"`
-	// The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
+	// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
 	PollingWaitSeconds *int `pulumi:"pollingWaitSeconds"`
-	// Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
+	// Representative resources.
 	QueueName *string `pulumi:"queueName"`
-	// The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
+	// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
 	VisibilityTimeout *int `pulumi:"visibilityTimeout"`
 }
 
 type ServiceQueueState struct {
-	// The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
+	// Represents the time when the Queue was created.
+	CreateTime pulumi.IntPtrInput
+	// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
 	DelaySeconds pulumi.IntPtrInput
-	// Specifies whether to enable the log management feature. Default value: false. Valid values:
+	// Represents whether the log management function is enabled.
 	LoggingEnabled pulumi.BoolPtrInput
-	// The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
+	// Represents the maximum length of the message body sent to the Queue, in Byte.
 	MaximumMessageSize pulumi.IntPtrInput
-	// The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
+	// Represents the longest life time of the message in the Queue.
 	MessageRetentionPeriod pulumi.IntPtrInput
-	// The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
+	// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
 	PollingWaitSeconds pulumi.IntPtrInput
-	// Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
+	// Representative resources.
 	QueueName pulumi.StringPtrInput
-	// The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
+	// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
 	VisibilityTimeout pulumi.IntPtrInput
 }
 
@@ -165,37 +160,37 @@ func (ServiceQueueState) ElementType() reflect.Type {
 }
 
 type serviceQueueArgs struct {
-	// The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
+	// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
 	DelaySeconds *int `pulumi:"delaySeconds"`
-	// Specifies whether to enable the log management feature. Default value: false. Valid values:
+	// Represents whether the log management function is enabled.
 	LoggingEnabled *bool `pulumi:"loggingEnabled"`
-	// The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
+	// Represents the maximum length of the message body sent to the Queue, in Byte.
 	MaximumMessageSize *int `pulumi:"maximumMessageSize"`
-	// The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
+	// Represents the longest life time of the message in the Queue.
 	MessageRetentionPeriod *int `pulumi:"messageRetentionPeriod"`
-	// The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
+	// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
 	PollingWaitSeconds *int `pulumi:"pollingWaitSeconds"`
-	// Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
+	// Representative resources.
 	QueueName string `pulumi:"queueName"`
-	// The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
+	// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
 	VisibilityTimeout *int `pulumi:"visibilityTimeout"`
 }
 
 // The set of arguments for constructing a ServiceQueue resource.
 type ServiceQueueArgs struct {
-	// The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
+	// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
 	DelaySeconds pulumi.IntPtrInput
-	// Specifies whether to enable the log management feature. Default value: false. Valid values:
+	// Represents whether the log management function is enabled.
 	LoggingEnabled pulumi.BoolPtrInput
-	// The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
+	// Represents the maximum length of the message body sent to the Queue, in Byte.
 	MaximumMessageSize pulumi.IntPtrInput
-	// The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
+	// Represents the longest life time of the message in the Queue.
 	MessageRetentionPeriod pulumi.IntPtrInput
-	// The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
+	// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
 	PollingWaitSeconds pulumi.IntPtrInput
-	// Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
+	// Representative resources.
 	QueueName pulumi.StringInput
-	// The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
+	// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
 	VisibilityTimeout pulumi.IntPtrInput
 }
 
@@ -286,37 +281,42 @@ func (o ServiceQueueOutput) ToServiceQueueOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The delay period after which a message sent to the queue can be consumed. Unit: seconds. Valid values: 0-604800 seconds. Default value: 0.
+// Represents the time when the Queue was created.
+func (o ServiceQueueOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// This means that messages sent to the queue can only be consumed after the delay time set by this parameter, in seconds.
 func (o ServiceQueueOutput) DelaySeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.DelaySeconds }).(pulumi.IntOutput)
 }
 
-// Specifies whether to enable the log management feature. Default value: false. Valid values:
+// Represents whether the log management function is enabled.
 func (o ServiceQueueOutput) LoggingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.BoolPtrOutput { return v.LoggingEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The maximum size of a message body that can be sent to the queue. Unit: bytes. Valid value range: 1024-65536. Default value: 65536.
+// Represents the maximum length of the message body sent to the Queue, in Byte.
 func (o ServiceQueueOutput) MaximumMessageSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.MaximumMessageSize }).(pulumi.IntOutput)
 }
 
-// The maximum period for which a message can be retained in the queue. After the specified period, the message is deleted no matter whether the message is consumed. Unit: seconds. Valid values: 60-604800. Default value: 345600.
+// Represents the longest life time of the message in the Queue.
 func (o ServiceQueueOutput) MessageRetentionPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.MessageRetentionPeriod }).(pulumi.IntOutput)
 }
 
-// The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds. Valid values: 0-30. Default value: 0.
+// The longest waiting time for a Queue request when the number of messages is empty, in seconds.
 func (o ServiceQueueOutput) PollingWaitSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.PollingWaitSeconds }).(pulumi.IntOutput)
 }
 
-// Two queues on a single account in the same region cannot have the same name. A queue name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 120 characters.
+// Representative resources.
 func (o ServiceQueueOutput) QueueName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.StringOutput { return v.QueueName }).(pulumi.StringOutput)
 }
 
-// The invisibility period for which the received message remains the Inactive state. Unit: seconds. Valid values: 1-43200. Default value: 30.
+// Represents the duration after the message is removed from the Queue and changed from the Active state to the Inactive state.
 func (o ServiceQueueOutput) VisibilityTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.IntOutput { return v.VisibilityTimeout }).(pulumi.IntOutput)
 }
