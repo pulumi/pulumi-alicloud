@@ -167,10 +167,10 @@ def get_commands(command_provider: Optional[str] = None,
     :param str content_encoding: The Base64-encoded content of the command.
     :param str description: The description of command.
     :param Sequence[str] ids: A list of Command IDs.
-    :param str name: The name of the command
+    :param str name: The name of the command.
     :param str name_regex: A regex string to filter results by Command name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str type: The command type.
+    :param str type: The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
     """
     __args__ = dict()
     __args__['commandProvider'] = command_provider
@@ -231,9 +231,9 @@ def get_commands_output(command_provider: Optional[pulumi.Input[Optional[str]]] 
     :param str content_encoding: The Base64-encoded content of the command.
     :param str description: The description of command.
     :param Sequence[str] ids: A list of Command IDs.
-    :param str name: The name of the command
+    :param str name: The name of the command.
     :param str name_regex: A regex string to filter results by Command name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str type: The command type.
+    :param str type: The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
     """
     ...

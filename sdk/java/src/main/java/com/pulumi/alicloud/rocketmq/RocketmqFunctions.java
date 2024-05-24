@@ -101,7 +101,7 @@ public final class RocketmqFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("onsInstanceDatasourceName");
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .name(name)
      *             .remark("default_ons_instance_remark")
      *             .build());
@@ -157,7 +157,7 @@ public final class RocketmqFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("onsInstanceDatasourceName");
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .name(name)
      *             .remark("default_ons_instance_remark")
      *             .build());
@@ -213,7 +213,7 @@ public final class RocketmqFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("onsInstanceDatasourceName");
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .name(name)
      *             .remark("default_ons_instance_remark")
      *             .build());
@@ -269,7 +269,7 @@ public final class RocketmqFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("onsInstanceDatasourceName");
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .name(name)
      *             .remark("default_ons_instance_remark")
      *             .build());
@@ -325,7 +325,7 @@ public final class RocketmqFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("onsInstanceDatasourceName");
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .name(name)
      *             .remark("default_ons_instance_remark")
      *             .build());
@@ -381,7 +381,7 @@ public final class RocketmqFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("onsInstanceDatasourceName");
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .name(name)
      *             .remark("default_ons_instance_remark")
      *             .build());
@@ -716,12 +716,12 @@ public final class RocketmqFunctions {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("onsInstanceName");
      *         final var topic = config.get("topic").orElse("onsTopicDatasourceName");
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .instanceName(name)
      *             .remark("default_ons_instance_remark")
      *             .build());
      * 
-     *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
+     *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()
      *             .topicName(topic)
      *             .instanceId(default_.id())
      *             .messageType(0)
@@ -782,12 +782,12 @@ public final class RocketmqFunctions {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("onsInstanceName");
      *         final var topic = config.get("topic").orElse("onsTopicDatasourceName");
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .instanceName(name)
      *             .remark("default_ons_instance_remark")
      *             .build());
      * 
-     *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
+     *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()
      *             .topicName(topic)
      *             .instanceId(default_.id())
      *             .messageType(0)
@@ -848,12 +848,12 @@ public final class RocketmqFunctions {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("onsInstanceName");
      *         final var topic = config.get("topic").orElse("onsTopicDatasourceName");
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .instanceName(name)
      *             .remark("default_ons_instance_remark")
      *             .build());
      * 
-     *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
+     *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()
      *             .topicName(topic)
      *             .instanceId(default_.id())
      *             .messageType(0)
@@ -914,12 +914,12 @@ public final class RocketmqFunctions {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("onsInstanceName");
      *         final var topic = config.get("topic").orElse("onsTopicDatasourceName");
-     *         var default_ = new Instance("default", InstanceArgs.builder()        
+     *         var default_ = new Instance("default", InstanceArgs.builder()
      *             .instanceName(name)
      *             .remark("default_ons_instance_remark")
      *             .build());
      * 
-     *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
+     *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()
      *             .topicName(topic)
      *             .instanceId(default_.id())
      *             .messageType(0)

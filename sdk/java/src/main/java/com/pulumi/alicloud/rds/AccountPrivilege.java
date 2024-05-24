@@ -67,19 +67,19 @@ import javax.annotation.Nullable;
  *             .engineVersion("5.6")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .engine("MySQL")
  *             .engineVersion("5.6")
  *             .instanceType("rds.mysql.s1.small")
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         for (var i = 0; i < 2; i++) {
- *             new Database("db-" + i, DatabaseArgs.builder()            
+ *             new Database("db-" + i, DatabaseArgs.builder()
  *                 .instanceId(instance.id())
  *                 .name(String.format("%s_%s", name,range.value()))
  *                 .description("from terraform")
@@ -97,14 +97,14 @@ import javax.annotation.Nullable;
  * 
  *         
  * }
- *         var account = new Account("account", AccountArgs.builder()        
+ *         var account = new Account("account", AccountArgs.builder()
  *             .dbInstanceId(instance.id())
  *             .accountName("tfexample")
  *             .accountPassword("Example12345")
  *             .accountDescription("from terraform")
  *             .build());
  * 
- *         var privilege = new AccountPrivilege("privilege", AccountPrivilegeArgs.builder()        
+ *         var privilege = new AccountPrivilege("privilege", AccountPrivilegeArgs.builder()
  *             .instanceId(instance.id())
  *             .accountName(account.name())
  *             .privilege("ReadOnly")

@@ -66,7 +66,7 @@ type GetAppTemplatesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Application template usage status.
+	// Application template usage status. Valid values: ["attached", "unattached"].
 	Status *string `pulumi:"status"`
 }
 
@@ -103,7 +103,7 @@ type GetAppTemplatesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Application template usage status.
+	// Application template usage status. Valid values: ["attached", "unattached"].
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

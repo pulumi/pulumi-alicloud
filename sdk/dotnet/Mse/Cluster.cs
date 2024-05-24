@@ -47,6 +47,10 @@ namespace Pulumi.AliCloud.Mse
 
         /// <summary>
         /// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        /// - `MSE_SC_1_2_60_c`: 1C2G
+        /// - `MSE_SC_2_4_60_c`: 2C4G
+        /// - `MSE_SC_4_8_60_c`: 4C8G
+        /// - `MSE_SC_8_16_60_c`: 8C16G
         /// </summary>
         [Output("clusterSpecification")]
         public Output<string> ClusterSpecification { get; private set; } = null!;
@@ -219,6 +223,10 @@ namespace Pulumi.AliCloud.Mse
 
         /// <summary>
         /// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        /// - `MSE_SC_1_2_60_c`: 1C2G
+        /// - `MSE_SC_2_4_60_c`: 2C4G
+        /// - `MSE_SC_4_8_60_c`: 4C8G
+        /// - `MSE_SC_8_16_60_c`: 8C16G
         /// </summary>
         [Input("clusterSpecification", required: true)]
         public Input<string> ClusterSpecification { get; set; } = null!;
@@ -365,6 +373,10 @@ namespace Pulumi.AliCloud.Mse
 
         /// <summary>
         /// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        /// - `MSE_SC_1_2_60_c`: 1C2G
+        /// - `MSE_SC_2_4_60_c`: 2C4G
+        /// - `MSE_SC_4_8_60_c`: 4C8G
+        /// - `MSE_SC_8_16_60_c`: 8C16G
         /// </summary>
         [Input("clusterSpecification")]
         public Input<string>? ClusterSpecification { get; set; }

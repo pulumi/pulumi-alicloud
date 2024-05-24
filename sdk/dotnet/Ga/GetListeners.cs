@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Ga
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the listener.
+        /// The status of the listener. Valid values: `active`, `configuring`, `creating`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the listener.
+        /// The status of the listener. Valid values: `active`, `configuring`, `creating`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -31,58 +31,6 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.scdn.Domain;
- * import com.pulumi.alicloud.scdn.DomainArgs;
- * import com.pulumi.alicloud.scdn.inputs.DomainSourceArgs;
- * import com.pulumi.alicloud.scdn.DomainConfig;
- * import com.pulumi.alicloud.scdn.DomainConfigArgs;
- * import com.pulumi.alicloud.scdn.inputs.DomainConfigFunctionArgArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Create a new Domain config.
- *         var domain = new Domain("domain", DomainArgs.builder()        
- *             .domainName("mydomain.alicloud-provider.cn")
- *             .cdnType("web")
- *             .scope("overseas")
- *             .sources(DomainSourceArgs.builder()
- *                 .content("1.1.1.1")
- *                 .type("ipaddr")
- *                 .priority("20")
- *                 .port(80)
- *                 .build())
- *             .build());
- * 
- *         var config = new DomainConfig("config", DomainConfigArgs.builder()        
- *             .domainName(domain.domainName())
- *             .functionName("ip_allow_list_set")
- *             .functionArgs(DomainConfigFunctionArgArgs.builder()
- *                 .argName("ip_list")
- *                 .argValue("110.110.110.110")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

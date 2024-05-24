@@ -10,21 +10,55 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn {
+    /**
+     * @return The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+     * 
+     */
     private String comparisonOperator;
+    /**
+     * @return The statistical aggregation method for warn-level alerts.
+     * 
+     */
     private String statistics;
+    /**
+     * @return The threshold for warn-level alerts.
+     * 
+     */
     private String threshold;
+    /**
+     * @return The consecutive number of times for which the metric value is measured before a warn-level
+     * alert is triggered.
+     * 
+     */
     private String times;
 
     private GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn() {}
+    /**
+     * @return The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+     * 
+     */
     public String comparisonOperator() {
         return this.comparisonOperator;
     }
+    /**
+     * @return The statistical aggregation method for warn-level alerts.
+     * 
+     */
     public String statistics() {
         return this.statistics;
     }
+    /**
+     * @return The threshold for warn-level alerts.
+     * 
+     */
     public String threshold() {
         return this.threshold;
     }
+    /**
+     * @return The consecutive number of times for which the metric value is measured before a warn-level
+     * alert is triggered.
+     * 
+     */
     public String times() {
         return this.times;
     }

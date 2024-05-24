@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHybridMonitorSlsTasksTaskAttachLabel {
+    /**
+     * @return The key of the tag.
+     * 
+     */
     private String name;
+    /**
+     * @return The value of the tag.
+     * 
+     */
     private String value;
 
     private GetHybridMonitorSlsTasksTaskAttachLabel() {}
+    /**
+     * @return The key of the tag.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The value of the tag.
+     * 
+     */
     public String value() {
         return this.value;
     }

@@ -128,23 +128,19 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The type of the server group.
+        /// The type of the server group. Valid values: `Instance`, `Ip`.
         /// </summary>
         [Input("serverGroupType")]
         public string? ServerGroupType { get; set; }
 
         /// <summary>
-        /// The status of the server group.
+        /// The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         [Input("tags")]
         private Dictionary<string, object>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         public Dictionary<string, object> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, object>());
@@ -202,23 +198,19 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The type of the server group.
+        /// The type of the server group. Valid values: `Instance`, `Ip`.
         /// </summary>
         [Input("serverGroupType")]
         public Input<string>? ServerGroupType { get; set; }
 
         /// <summary>
-        /// The status of the server group.
+        /// The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());

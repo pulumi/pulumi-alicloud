@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .regionId(default_.regions()[0].id())
  *             .build());
  * 
- *         var defaultDiskReplicaGroup = new DiskReplicaGroup("defaultDiskReplicaGroup", DiskReplicaGroupArgs.builder()        
+ *         var defaultDiskReplicaGroup = new DiskReplicaGroup("defaultDiskReplicaGroup", DiskReplicaGroupArgs.builder()
  *             .sourceRegionId(default_.regions()[0].id())
  *             .sourceZoneId(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].zones()[0].zoneId()))
  *             .destinationRegionId(default_.regions()[0].id())

@@ -150,7 +150,7 @@ def get_server_snapshots(disk_id: Optional[str] = None,
     ```
 
 
-    :param str disk_id: The ID of the source disk. This parameter has a value even after the source disk is released.
+    :param str disk_id: The ID of the disk.
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str instance_id: The ID of the simple application server.
     :param str name_regex: A regex string to filter results by Snapshot name.
@@ -213,7 +213,7 @@ def get_server_snapshots_output(disk_id: Optional[pulumi.Input[Optional[str]]] =
     ```
 
 
-    :param str disk_id: The ID of the source disk. This parameter has a value even after the source disk is released.
+    :param str disk_id: The ID of the disk.
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str instance_id: The ID of the simple application server.
     :param str name_regex: A regex string to filter results by Snapshot name.

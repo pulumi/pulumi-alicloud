@@ -25,11 +25,24 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] accessed_by: The network limitation of accessing instance. Valid values:
+               * `Any` - Allow all network to access the instance.
+               * `Vpc` - Only can the attached VPC allow to access the instance.
+               * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+               
+               Default to "Any".
         :param pulumi.Input[str] description: The description of the instance. Currently, it does not support modifying.
         :param pulumi.Input[str] instance_type: The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
         :param pulumi.Input[str] name: The name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_source_acls: The set of request sources that are allowed access. Valid optional values:
+               * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+               
+               Default to ["TRUST_PROXY"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_type_acls: The set of network types that are allowed access. Valid optional values:
+               * `CLASSIC` - Classic network.
+               * `VPC` - VPC network.
+               * `INTERNET` - Public internet.
+               
+               Default to ["VPC", "CLASSIC"].
         :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
                Default to Alibaba Cloud default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
@@ -56,6 +69,11 @@ class InstanceArgs:
     def accessed_by(self) -> Optional[pulumi.Input[str]]:
         """
         The network limitation of accessing instance. Valid values:
+        * `Any` - Allow all network to access the instance.
+        * `Vpc` - Only can the attached VPC allow to access the instance.
+        * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+
+        Default to "Any".
         """
         return pulumi.get(self, "accessed_by")
 
@@ -104,6 +122,9 @@ class InstanceArgs:
     def network_source_acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of request sources that are allowed access. Valid optional values:
+        * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+
+        Default to ["TRUST_PROXY"].
         """
         return pulumi.get(self, "network_source_acls")
 
@@ -116,6 +137,11 @@ class InstanceArgs:
     def network_type_acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of network types that are allowed access. Valid optional values:
+        * `CLASSIC` - Classic network.
+        * `VPC` - VPC network.
+        * `INTERNET` - Public internet.
+
+        Default to ["VPC", "CLASSIC"].
         """
         return pulumi.get(self, "network_type_acls")
 
@@ -163,11 +189,24 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] accessed_by: The network limitation of accessing instance. Valid values:
+               * `Any` - Allow all network to access the instance.
+               * `Vpc` - Only can the attached VPC allow to access the instance.
+               * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+               
+               Default to "Any".
         :param pulumi.Input[str] description: The description of the instance. Currently, it does not support modifying.
         :param pulumi.Input[str] instance_type: The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
         :param pulumi.Input[str] name: The name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_source_acls: The set of request sources that are allowed access. Valid optional values:
+               * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+               
+               Default to ["TRUST_PROXY"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_type_acls: The set of network types that are allowed access. Valid optional values:
+               * `CLASSIC` - Classic network.
+               * `VPC` - VPC network.
+               * `INTERNET` - Public internet.
+               
+               Default to ["VPC", "CLASSIC"].
         :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
                Default to Alibaba Cloud default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
@@ -194,6 +233,11 @@ class _InstanceState:
     def accessed_by(self) -> Optional[pulumi.Input[str]]:
         """
         The network limitation of accessing instance. Valid values:
+        * `Any` - Allow all network to access the instance.
+        * `Vpc` - Only can the attached VPC allow to access the instance.
+        * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+
+        Default to "Any".
         """
         return pulumi.get(self, "accessed_by")
 
@@ -242,6 +286,9 @@ class _InstanceState:
     def network_source_acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of request sources that are allowed access. Valid optional values:
+        * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+
+        Default to ["TRUST_PROXY"].
         """
         return pulumi.get(self, "network_source_acls")
 
@@ -254,6 +301,11 @@ class _InstanceState:
     def network_type_acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The set of network types that are allowed access. Valid optional values:
+        * `CLASSIC` - Classic network.
+        * `VPC` - VPC network.
+        * `INTERNET` - Public internet.
+
+        Default to ["VPC", "CLASSIC"].
         """
         return pulumi.get(self, "network_type_acls")
 
@@ -342,11 +394,24 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accessed_by: The network limitation of accessing instance. Valid values:
+               * `Any` - Allow all network to access the instance.
+               * `Vpc` - Only can the attached VPC allow to access the instance.
+               * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+               
+               Default to "Any".
         :param pulumi.Input[str] description: The description of the instance. Currently, it does not support modifying.
         :param pulumi.Input[str] instance_type: The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
         :param pulumi.Input[str] name: The name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_source_acls: The set of request sources that are allowed access. Valid optional values:
+               * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+               
+               Default to ["TRUST_PROXY"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_type_acls: The set of network types that are allowed access. Valid optional values:
+               * `CLASSIC` - Classic network.
+               * `VPC` - VPC network.
+               * `INTERNET` - Public internet.
+               
+               Default to ["VPC", "CLASSIC"].
         :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
                Default to Alibaba Cloud default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
@@ -461,11 +526,24 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accessed_by: The network limitation of accessing instance. Valid values:
+               * `Any` - Allow all network to access the instance.
+               * `Vpc` - Only can the attached VPC allow to access the instance.
+               * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+               
+               Default to "Any".
         :param pulumi.Input[str] description: The description of the instance. Currently, it does not support modifying.
         :param pulumi.Input[str] instance_type: The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
         :param pulumi.Input[str] name: The name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_source_acls: The set of request sources that are allowed access. Valid optional values:
+               * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+               
+               Default to ["TRUST_PROXY"].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_type_acls: The set of network types that are allowed access. Valid optional values:
+               * `CLASSIC` - Classic network.
+               * `VPC` - VPC network.
+               * `INTERNET` - Public internet.
+               
+               Default to ["VPC", "CLASSIC"].
         :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
                Default to Alibaba Cloud default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
@@ -489,6 +567,11 @@ class Instance(pulumi.CustomResource):
     def accessed_by(self) -> pulumi.Output[str]:
         """
         The network limitation of accessing instance. Valid values:
+        * `Any` - Allow all network to access the instance.
+        * `Vpc` - Only can the attached VPC allow to access the instance.
+        * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+
+        Default to "Any".
         """
         return pulumi.get(self, "accessed_by")
 
@@ -521,6 +604,9 @@ class Instance(pulumi.CustomResource):
     def network_source_acls(self) -> pulumi.Output[Sequence[str]]:
         """
         The set of request sources that are allowed access. Valid optional values:
+        * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+
+        Default to ["TRUST_PROXY"].
         """
         return pulumi.get(self, "network_source_acls")
 
@@ -529,6 +615,11 @@ class Instance(pulumi.CustomResource):
     def network_type_acls(self) -> pulumi.Output[Sequence[str]]:
         """
         The set of network types that are allowed access. Valid optional values:
+        * `CLASSIC` - Classic network.
+        * `VPC` - VPC network.
+        * `INTERNET` - Public internet.
+
+        Default to ["VPC", "CLASSIC"].
         """
         return pulumi.get(self, "network_type_acls")
 

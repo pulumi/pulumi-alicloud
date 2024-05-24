@@ -73,24 +73,24 @@ import javax.annotation.Nullable;
  *             .engineVersion("5.6")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(name)
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .engine("MySQL")
  *             .engineVersion("5.6")
  *             .category("HighAvailability")
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *                 "100.69.7.112")
  *             .build());
  * 
- *         var exampleReadOnlyInstance = new ReadOnlyInstance("exampleReadOnlyInstance", ReadOnlyInstanceArgs.builder()        
+ *         var exampleReadOnlyInstance = new ReadOnlyInstance("exampleReadOnlyInstance", ReadOnlyInstanceArgs.builder()
  *             .zoneId(exampleInstance.zoneId())
  *             .masterDbInstanceId(exampleInstance.id())
  *             .engineVersion(exampleInstance.engineVersion())
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
- *         var exampleReadWriteSplittingConnection = new ReadWriteSplittingConnection("exampleReadWriteSplittingConnection", ReadWriteSplittingConnectionArgs.builder()        
+ *         var exampleReadWriteSplittingConnection = new ReadWriteSplittingConnection("exampleReadWriteSplittingConnection", ReadWriteSplittingConnectionArgs.builder()
  *             .instanceId(exampleReadOnlyInstance.masterDbInstanceId())
  *             .connectionPrefix("example-con-123")
  *             .distributionType("Standard")

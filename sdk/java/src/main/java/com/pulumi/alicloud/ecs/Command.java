@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Command("example", CommandArgs.builder()        
+ *         var example = new Command("example", CommandArgs.builder()
  *             .name("tf-testAcc")
  *             .commandContent("bHMK")
  *             .description("For Terraform Test")

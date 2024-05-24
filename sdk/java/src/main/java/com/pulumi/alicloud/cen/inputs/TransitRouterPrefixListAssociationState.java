@@ -33,6 +33,10 @@ public final class TransitRouterPrefixListAssociationState extends com.pulumi.re
 
     /**
      * The type of the next hop. Valid values:
+     * - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+     * - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+     * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+     * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
      * 
      */
     @Import(name="nextHopType")
@@ -40,6 +44,10 @@ public final class TransitRouterPrefixListAssociationState extends com.pulumi.re
 
     /**
      * @return The type of the next hop. Valid values:
+     * - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+     * - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+     * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+     * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
      * 
      */
     public Optional<Output<String>> nextHopType() {
@@ -174,6 +182,10 @@ public final class TransitRouterPrefixListAssociationState extends com.pulumi.re
 
         /**
          * @param nextHopType The type of the next hop. Valid values:
+         * - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+         * - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+         * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+         * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
          * 
          * @return builder
          * 
@@ -185,6 +197,10 @@ public final class TransitRouterPrefixListAssociationState extends com.pulumi.re
 
         /**
          * @param nextHopType The type of the next hop. Valid values:
+         * - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+         * - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+         * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+         * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
          * 
          * @return builder
          * 

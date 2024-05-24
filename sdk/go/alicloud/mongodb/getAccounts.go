@@ -56,9 +56,9 @@ func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getAccounts.
 type GetAccountsArgs struct {
-	// The name of the account.
+	// The name of the account. Valid values: `root`.
 	AccountName *string `pulumi:"accountName"`
-	// The id of the instance to which the account belongs.
+	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -89,9 +89,9 @@ func GetAccountsOutput(ctx *pulumi.Context, args GetAccountsOutputArgs, opts ...
 
 // A collection of arguments for invoking getAccounts.
 type GetAccountsOutputArgs struct {
-	// The name of the account.
+	// The name of the account. Valid values: `root`.
 	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
-	// The id of the instance to which the account belongs.
+	// The ID of the instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

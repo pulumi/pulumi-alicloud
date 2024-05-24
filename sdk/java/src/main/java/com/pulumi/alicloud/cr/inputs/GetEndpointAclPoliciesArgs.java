@@ -18,14 +18,14 @@ public final class GetEndpointAclPoliciesArgs extends com.pulumi.resources.Invok
     public static final GetEndpointAclPoliciesArgs Empty = new GetEndpointAclPoliciesArgs();
 
     /**
-     * The type of endpoint.
+     * The type of endpoint. Valid values: `internet`.
      * 
      */
     @Import(name="endpointType", required=true)
     private Output<String> endpointType;
 
     /**
-     * @return The type of endpoint.
+     * @return The type of endpoint. Valid values: `internet`.
      * 
      */
     public Output<String> endpointType() {
@@ -105,7 +105,7 @@ public final class GetEndpointAclPoliciesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param endpointType The type of endpoint.
+         * @param endpointType The type of endpoint. Valid values: `internet`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class GetEndpointAclPoliciesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param endpointType The type of endpoint.
+         * @param endpointType The type of endpoint. Valid values: `internet`.
          * 
          * @return builder
          * 

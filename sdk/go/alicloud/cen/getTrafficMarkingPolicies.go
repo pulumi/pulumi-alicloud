@@ -67,7 +67,6 @@ func GetTrafficMarkingPolicies(ctx *pulumi.Context, args *GetTrafficMarkingPolic
 
 // A collection of arguments for invoking getTrafficMarkingPolicies.
 type GetTrafficMarkingPoliciesArgs struct {
-	// The description of the Traffic Marking Policy.
 	Description *string `pulumi:"description"`
 	// A list of Traffic Marking Policy IDs.
 	Ids []string `pulumi:"ids"`
@@ -75,7 +74,7 @@ type GetTrafficMarkingPoliciesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
 	Status *string `pulumi:"status"`
 	// The ID of the transit router.
 	TransitRouterId string `pulumi:"transitRouterId"`
@@ -110,7 +109,6 @@ func GetTrafficMarkingPoliciesOutput(ctx *pulumi.Context, args GetTrafficMarking
 
 // A collection of arguments for invoking getTrafficMarkingPolicies.
 type GetTrafficMarkingPoliciesOutputArgs struct {
-	// The description of the Traffic Marking Policy.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// A list of Traffic Marking Policy IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -118,7 +116,7 @@ type GetTrafficMarkingPoliciesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`

@@ -68,19 +68,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation(creation)
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .dbClusterVersion("3.0")
  *             .dbClusterCategory("Cluster")
  *             .dbNodeClass("C8")

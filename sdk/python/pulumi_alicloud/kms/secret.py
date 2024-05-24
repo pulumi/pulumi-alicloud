@@ -44,6 +44,10 @@ class SecretArgs:
         :param pulumi.Input[str] rotation_interval: The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[str] secret_type: The type of the secret. Valid values:
+               - `Generic`: specifies a generic secret.
+               - `Rds`: specifies a managed ApsaraDB RDS secret.
+               - `RAMCredentials`: indicates a managed RAM secret.
+               - `ECS`: specifies a managed ECS secret.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """
@@ -224,6 +228,10 @@ class SecretArgs:
     def secret_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the secret. Valid values:
+        - `Generic`: specifies a generic secret.
+        - `Rds`: specifies a managed ApsaraDB RDS secret.
+        - `RAMCredentials`: indicates a managed RAM secret.
+        - `ECS`: specifies a managed ECS secret.
         """
         return pulumi.get(self, "secret_type")
 
@@ -292,6 +300,10 @@ class _SecretState:
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[str] secret_name: The name of the secret.
         :param pulumi.Input[str] secret_type: The type of the secret. Valid values:
+               - `Generic`: specifies a generic secret.
+               - `Rds`: specifies a managed ApsaraDB RDS secret.
+               - `RAMCredentials`: indicates a managed RAM secret.
+               - `ECS`: specifies a managed ECS secret.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
@@ -492,6 +504,10 @@ class _SecretState:
     def secret_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the secret. Valid values:
+        - `Generic`: specifies a generic secret.
+        - `Rds`: specifies a managed ApsaraDB RDS secret.
+        - `RAMCredentials`: indicates a managed RAM secret.
+        - `ECS`: specifies a managed ECS secret.
         """
         return pulumi.get(self, "secret_type")
 
@@ -600,6 +616,10 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[str] secret_name: The name of the secret.
         :param pulumi.Input[str] secret_type: The type of the secret. Valid values:
+               - `Generic`: specifies a generic secret.
+               - `Rds`: specifies a managed ApsaraDB RDS secret.
+               - `RAMCredentials`: indicates a managed RAM secret.
+               - `ECS`: specifies a managed ECS secret.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
@@ -751,6 +771,10 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[str] secret_name: The name of the secret.
         :param pulumi.Input[str] secret_type: The type of the secret. Valid values:
+               - `Generic`: specifies a generic secret.
+               - `Rds`: specifies a managed ApsaraDB RDS secret.
+               - `RAMCredentials`: indicates a managed RAM secret.
+               - `ECS`: specifies a managed ECS secret.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
@@ -887,6 +911,10 @@ class Secret(pulumi.CustomResource):
     def secret_type(self) -> pulumi.Output[str]:
         """
         The type of the secret. Valid values:
+        - `Generic`: specifies a generic secret.
+        - `Rds`: specifies a managed ApsaraDB RDS secret.
+        - `RAMCredentials`: indicates a managed RAM secret.
+        - `ECS`: specifies a managed ECS secret.
         """
         return pulumi.get(self, "secret_type")
 

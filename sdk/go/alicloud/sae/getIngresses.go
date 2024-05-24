@@ -30,7 +30,7 @@ type GetIngressesArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Ingress IDs.
 	Ids []string `pulumi:"ids"`
-	// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
 	NamespaceId string `pulumi:"namespaceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -66,7 +66,7 @@ type GetIngressesOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Ingress IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
 	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

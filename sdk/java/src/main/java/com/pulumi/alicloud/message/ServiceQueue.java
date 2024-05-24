@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new ServiceQueue("default", ServiceQueueArgs.builder()        
+ *         var default_ = new ServiceQueue("default", ServiceQueueArgs.builder()
  *             .delaySeconds("2")
  *             .pollingWaitSeconds("2")
  *             .messageRetentionPeriod("566")

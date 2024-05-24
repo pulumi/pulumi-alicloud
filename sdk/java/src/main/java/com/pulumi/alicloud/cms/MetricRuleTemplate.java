@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var example = new MetricRuleTemplate("example", MetricRuleTemplateArgs.builder()        
+ *         var example = new MetricRuleTemplate("example", MetricRuleTemplateArgs.builder()
  *             .metricRuleTemplateName(name)
  *             .alertTemplates(MetricRuleTemplateAlertTemplateArgs.builder()
  *                 .category("ecs")

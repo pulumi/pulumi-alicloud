@@ -33,14 +33,14 @@ public final class GetEcsImageComponentsPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The name of the image component.
+     * The name of the component.
      * 
      */
     @Import(name="imageComponentName")
     private @Nullable String imageComponentName;
 
     /**
-     * @return The name of the image component.
+     * @return The name of the component.
      * 
      */
     public Optional<String> imageComponentName() {
@@ -78,14 +78,18 @@ public final class GetEcsImageComponentsPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The type of the image component.
+     * Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+     * - SELF: The custom image component you created.
+     * - ALIYUN: System components provided by Alibaba Cloud.
      * 
      */
     @Import(name="owner")
     private @Nullable String owner;
 
     /**
-     * @return The type of the image component.
+     * @return Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+     * - SELF: The custom image component you created.
+     * - ALIYUN: System components provided by Alibaba Cloud.
      * 
      */
     public Optional<String> owner() {
@@ -108,14 +112,14 @@ public final class GetEcsImageComponentsPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * List of label key-value pairs.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
     /**
-     * @return List of label key-value pairs.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -174,7 +178,7 @@ public final class GetEcsImageComponentsPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param imageComponentName The name of the image component.
+         * @param imageComponentName The name of the component.
          * 
          * @return builder
          * 
@@ -207,7 +211,9 @@ public final class GetEcsImageComponentsPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param owner The type of the image component.
+         * @param owner Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+         * - SELF: The custom image component you created.
+         * - ALIYUN: System components provided by Alibaba Cloud.
          * 
          * @return builder
          * 
@@ -229,7 +235,7 @@ public final class GetEcsImageComponentsPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param tags List of label key-value pairs.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 

@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Oos
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the encryption parameter.
+        /// The name of the secret parameter.
         /// </summary>
         [Input("secretParameterName")]
         public string? SecretParameterName { get; set; }
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Oos
         private Dictionary<string, object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the encryption parameter.
+        /// The name of the secret parameter.
         /// </summary>
         [Input("secretParameterName")]
         public Input<string>? SecretParameterName { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.Oos
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<object> Tags
         {

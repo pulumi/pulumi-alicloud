@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var example = new ServerlessInstance("example", ServerlessInstanceArgs.builder()        
+ *         var example = new ServerlessInstance("example", ServerlessInstanceArgs.builder()
  *             .accountPassword("Abc12345")
  *             .dbInstanceDescription("example_value")
  *             .dbInstanceStorage(5)

@@ -5614,6 +5614,7 @@ func (o GetTransitRouterVpnAttachmentsAttachmentArrayOutput) Index(i pulumi.IntI
 }
 
 type GetTransitRouterVpnAttachmentsAttachmentZone struct {
+	// The id of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -5629,6 +5630,7 @@ type GetTransitRouterVpnAttachmentsAttachmentZoneInput interface {
 }
 
 type GetTransitRouterVpnAttachmentsAttachmentZoneArgs struct {
+	// The id of the zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -5683,6 +5685,7 @@ func (o GetTransitRouterVpnAttachmentsAttachmentZoneOutput) ToGetTransitRouterVp
 	return o
 }
 
+// The id of the zone.
 func (o GetTransitRouterVpnAttachmentsAttachmentZoneOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpnAttachmentsAttachmentZone) string { return v.ZoneId }).(pulumi.StringOutput)
 }

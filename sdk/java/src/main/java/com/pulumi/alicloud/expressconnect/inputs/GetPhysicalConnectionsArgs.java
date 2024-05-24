@@ -78,14 +78,14 @@ public final class GetPhysicalConnectionsArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Resources on Behalf of a State of the Resource Attribute Field.
+     * Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Resources on Behalf of a State of the Resource Attribute Field.
+     * @return Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -215,7 +215,7 @@ public final class GetPhysicalConnectionsArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status Resources on Behalf of a State of the Resource Attribute Field.
+         * @param status Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class GetPhysicalConnectionsArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status Resources on Behalf of a State of the Resource Attribute Field.
+         * @param status Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
          * 
          * @return builder
          * 

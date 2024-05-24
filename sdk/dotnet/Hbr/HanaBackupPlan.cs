@@ -94,6 +94,9 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// The backup type. Valid values:
+        /// - `COMPLETE`: full backup.
+        /// - `INCREMENTAL`: incremental backup.
+        /// - `DIFFERENTIAL`: differential backup.
         /// </summary>
         [Output("backupType")]
         public Output<string> BackupType { get; private set; } = null!;
@@ -200,6 +203,9 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// The backup type. Valid values:
+        /// - `COMPLETE`: full backup.
+        /// - `INCREMENTAL`: incremental backup.
+        /// - `DIFFERENTIAL`: differential backup.
         /// </summary>
         [Input("backupType", required: true)]
         public Input<string> BackupType { get; set; } = null!;
@@ -262,6 +268,9 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// The backup type. Valid values:
+        /// - `COMPLETE`: full backup.
+        /// - `INCREMENTAL`: incremental backup.
+        /// - `DIFFERENTIAL`: differential backup.
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }

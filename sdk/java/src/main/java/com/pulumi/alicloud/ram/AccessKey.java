@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new RAM access key for user.
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .name("terraform-example")
  *             .displayName("user_display_name")
  *             .mobile("86-18688888888")
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var ak = new AccessKey("ak", AccessKeyArgs.builder()        
+ *         var ak = new AccessKey("ak", AccessKeyArgs.builder()
  *             .userName(user.name())
  *             .secretFile("/xxx/xxx/xxx.txt")
  *             .build());
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new RAM access key for user.
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .name("terraform-example")
  *             .displayName("user_display_name")
  *             .mobile("86-18688888888")
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var encrypt = new AccessKey("encrypt", AccessKeyArgs.builder()        
+ *         var encrypt = new AccessKey("encrypt", AccessKeyArgs.builder()
  *             .userName(user.name())
  *             .pgpKey("""
  * mQENBFXbjPUBCADjNjCUQwfxKL+RR2GA6pv/1K+zJZ8UWIF9S0lk7cVIEfJiprzzwiMwBS5cD0da

@@ -24,6 +24,9 @@ class CustomRoutingEndpointArgs:
         :param pulumi.Input[str] endpoint_group_id: The ID of the endpoint group in which to create endpoints.
         :param pulumi.Input[str] type: The backend service type of the endpoint. Valid values: `PrivateSubNet`.
         :param pulumi.Input[str] traffic_to_endpoint_policy: The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+               - `DenyAll`: denies all traffic to the endpoint.
+               - `AllowAll`: allows all traffic to the endpoint.
+               - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
@@ -72,6 +75,9 @@ class CustomRoutingEndpointArgs:
     def traffic_to_endpoint_policy(self) -> Optional[pulumi.Input[str]]:
         """
         The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+        - `DenyAll`: denies all traffic to the endpoint.
+        - `AllowAll`: allows all traffic to the endpoint.
+        - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
         """
         return pulumi.get(self, "traffic_to_endpoint_policy")
 
@@ -100,6 +106,9 @@ class _CustomRoutingEndpointState:
         :param pulumi.Input[str] listener_id: The ID of the listener with which the endpoint is associated.
         :param pulumi.Input[str] status: The status of the Custom Routing Endpoint.
         :param pulumi.Input[str] traffic_to_endpoint_policy: The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+               - `DenyAll`: denies all traffic to the endpoint.
+               - `AllowAll`: allows all traffic to the endpoint.
+               - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
         :param pulumi.Input[str] type: The backend service type of the endpoint. Valid values: `PrivateSubNet`.
         """
         if accelerator_id is not None:
@@ -196,6 +205,9 @@ class _CustomRoutingEndpointState:
     def traffic_to_endpoint_policy(self) -> Optional[pulumi.Input[str]]:
         """
         The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+        - `DenyAll`: denies all traffic to the endpoint.
+        - `AllowAll`: allows all traffic to the endpoint.
+        - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
         """
         return pulumi.get(self, "traffic_to_endpoint_policy")
 
@@ -301,6 +313,9 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint: The ID of the endpoint (vSwitch).
         :param pulumi.Input[str] endpoint_group_id: The ID of the endpoint group in which to create endpoints.
         :param pulumi.Input[str] traffic_to_endpoint_policy: The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+               - `DenyAll`: denies all traffic to the endpoint.
+               - `AllowAll`: allows all traffic to the endpoint.
+               - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
         :param pulumi.Input[str] type: The backend service type of the endpoint. Valid values: `PrivateSubNet`.
         """
         ...
@@ -453,6 +468,9 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] listener_id: The ID of the listener with which the endpoint is associated.
         :param pulumi.Input[str] status: The status of the Custom Routing Endpoint.
         :param pulumi.Input[str] traffic_to_endpoint_policy: The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+               - `DenyAll`: denies all traffic to the endpoint.
+               - `AllowAll`: allows all traffic to the endpoint.
+               - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
         :param pulumi.Input[str] type: The backend service type of the endpoint. Valid values: `PrivateSubNet`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -522,6 +540,9 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
     def traffic_to_endpoint_policy(self) -> pulumi.Output[str]:
         """
         The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+        - `DenyAll`: denies all traffic to the endpoint.
+        - `AllowAll`: allows all traffic to the endpoint.
+        - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
         """
         return pulumi.get(self, "traffic_to_endpoint_policy")
 

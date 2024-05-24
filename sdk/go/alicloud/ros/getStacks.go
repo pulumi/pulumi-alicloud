@@ -66,11 +66,11 @@ type GetStacksArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Parent Stack Id.
+	// ParentStackId.
 	ParentStackId *string `pulumi:"parentStackId"`
 	// The show nested stack.
 	ShowNestedStack *bool `pulumi:"showNestedStack"`
-	// Stack Name.
+	// StackName.
 	StackName *string `pulumi:"stackName"`
 	// The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
 	Status *string `pulumi:"status"`
@@ -118,11 +118,11 @@ type GetStacksOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Parent Stack Id.
+	// ParentStackId.
 	ParentStackId pulumi.StringPtrInput `pulumi:"parentStackId"`
 	// The show nested stack.
 	ShowNestedStack pulumi.BoolPtrInput `pulumi:"showNestedStack"`
-	// Stack Name.
+	// StackName.
 	StackName pulumi.StringPtrInput `pulumi:"stackName"`
 	// The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

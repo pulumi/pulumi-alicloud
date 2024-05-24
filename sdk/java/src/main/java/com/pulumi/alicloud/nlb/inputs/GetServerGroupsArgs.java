@@ -94,14 +94,14 @@ public final class GetServerGroupsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The type of the server group.
+     * The type of the server group. Valid values: `Instance`, `Ip`.
      * 
      */
     @Import(name="serverGroupType")
     private @Nullable Output<String> serverGroupType;
 
     /**
-     * @return The type of the server group.
+     * @return The type of the server group. Valid values: `Instance`, `Ip`.
      * 
      */
     public Optional<Output<String>> serverGroupType() {
@@ -109,31 +109,23 @@ public final class GetServerGroupsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the server group.
+     * The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the server group.
+     * @return The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * A mapping of tags to assign to the resource.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
-    /**
-     * @return A mapping of tags to assign to the resource.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -295,7 +287,7 @@ public final class GetServerGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serverGroupType The type of the server group.
+         * @param serverGroupType The type of the server group. Valid values: `Instance`, `Ip`.
          * 
          * @return builder
          * 
@@ -306,7 +298,7 @@ public final class GetServerGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serverGroupType The type of the server group.
+         * @param serverGroupType The type of the server group. Valid values: `Instance`, `Ip`.
          * 
          * @return builder
          * 
@@ -316,7 +308,7 @@ public final class GetServerGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the server group.
+         * @param status The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
          * 
          * @return builder
          * 
@@ -327,7 +319,7 @@ public final class GetServerGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the server group.
+         * @param status The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
          * 
          * @return builder
          * 
@@ -336,23 +328,11 @@ public final class GetServerGroupsArgs extends com.pulumi.resources.InvokeArgs {
             return status(Output.of(status));
         }
 
-        /**
-         * @param tags A mapping of tags to assign to the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags A mapping of tags to assign to the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }

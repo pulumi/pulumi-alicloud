@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class GetVpcEndpointServicesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to automatically accept terminal node connections..
+        /// Whether to automatically accept terminal node connections.
         /// </summary>
         [Input("autoAcceptConnection")]
         public bool? AutoAcceptConnection { get; set; }
@@ -118,13 +118,13 @@ namespace Pulumi.AliCloud.PrivateLink
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The business status of the terminal node service..
+        /// The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
         /// </summary>
         [Input("serviceBusinessStatus")]
         public string? ServiceBusinessStatus { get; set; }
 
         /// <summary>
-        /// The Status of Vpc Endpoint Service.
+        /// The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class GetVpcEndpointServicesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to automatically accept terminal node connections..
+        /// Whether to automatically accept terminal node connections.
         /// </summary>
         [Input("autoAcceptConnection")]
         public Input<bool>? AutoAcceptConnection { get; set; }
@@ -174,13 +174,13 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The business status of the terminal node service..
+        /// The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
         /// </summary>
         [Input("serviceBusinessStatus")]
         public Input<string>? ServiceBusinessStatus { get; set; }
 
         /// <summary>
-        /// The Status of Vpc Endpoint Service.
+        /// The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

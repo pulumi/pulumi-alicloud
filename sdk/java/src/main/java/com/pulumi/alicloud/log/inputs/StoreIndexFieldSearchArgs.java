@@ -20,14 +20,14 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
     public static final StoreIndexFieldSearchArgs Empty = new StoreIndexFieldSearchArgs();
 
     /**
-     * The alias of one field.
+     * The alias of one field
      * 
      */
     @Import(name="alias")
     private @Nullable Output<String> alias;
 
     /**
-     * @return The alias of one field.
+     * @return The alias of one field
      * 
      */
     public Optional<Output<String>> alias() {
@@ -95,14 +95,14 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * When using the json_keys field, this field is required.
+     * The field name, which is unique in the same log store.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return When using the json_keys field, this field is required.
+     * @return The field name, which is unique in the same log store.
      * 
      */
     public Output<String> name() {
@@ -125,14 +125,14 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
+     * The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;, &#34;json&#34;]. Default to &#34;long&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
+     * @return The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;, &#34;json&#34;]. Default to &#34;long&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -171,7 +171,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param alias The alias of one field.
+         * @param alias The alias of one field
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param alias The alias of one field.
+         * @param alias The alias of one field
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name When using the json_keys field, this field is required.
+         * @param name The field name, which is unique in the same log store.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name When using the json_keys field, this field is required.
+         * @param name The field name, which is unique in the same log store.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
+         * @param type The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;, &#34;json&#34;]. Default to &#34;long&#34;.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
+         * @param type The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;, &#34;json&#34;]. Default to &#34;long&#34;.
          * 
          * @return builder
          * 

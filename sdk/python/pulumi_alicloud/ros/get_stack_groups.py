@@ -137,7 +137,7 @@ def get_stack_groups(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of Stack Group IDs.
     :param str name_regex: A regex string to filter results by Stack Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of Stack Group.
+    :param str status: The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -189,6 +189,6 @@ def get_stack_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]
     :param Sequence[str] ids: A list of Stack Group IDs.
     :param str name_regex: A regex string to filter results by Stack Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of Stack Group.
+    :param str status: The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
     """
     ...

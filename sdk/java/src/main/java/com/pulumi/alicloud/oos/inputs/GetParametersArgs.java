@@ -80,14 +80,14 @@ public final class GetParametersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the common parameter.
+     * The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
      * 
      */
     @Import(name="parameterName")
     private @Nullable Output<String> parameterName;
 
     /**
-     * @return The name of the common parameter.
+     * @return The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
      * 
      */
     public Optional<Output<String>> parameterName() {
@@ -124,14 +124,14 @@ public final class GetParametersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -139,14 +139,14 @@ public final class GetParametersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The data type of the common parameter.
+     * The data type of the common parameter. Valid values: `String` and `StringList`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The data type of the common parameter.
+     * @return The data type of the common parameter. Valid values: `String` and `StringList`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -281,7 +281,7 @@ public final class GetParametersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parameterName The name of the common parameter.
+         * @param parameterName The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class GetParametersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parameterName The name of the common parameter.
+         * @param parameterName The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class GetParametersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class GetParametersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class GetParametersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type The data type of the common parameter.
+         * @param type The data type of the common parameter. Valid values: `String` and `StringList`.
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class GetParametersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type The data type of the common parameter.
+         * @param type The data type of the common parameter. Valid values: `String` and `StringList`.
          * 
          * @return builder
          * 

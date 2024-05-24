@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         var default_ = new Project("default", ProjectArgs.builder()        
+ *         var default_ = new Project("default", ProjectArgs.builder()
  *             .defaultQuota("默认后付费Quota")
  *             .projectName(name)
  *             .comment(name)

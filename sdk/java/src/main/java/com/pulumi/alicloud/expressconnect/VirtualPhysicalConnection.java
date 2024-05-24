@@ -61,14 +61,14 @@ import javax.annotation.Nullable;
  *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var vlanId = new Integer("vlanId", IntegerArgs.builder()        
+ *         var vlanId = new Integer("vlanId", IntegerArgs.builder()
  *             .max(2999)
  *             .min(1)
  *             .build());
  * 
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var exampleVirtualPhysicalConnection = new VirtualPhysicalConnection("exampleVirtualPhysicalConnection", VirtualPhysicalConnectionArgs.builder()        
+ *         var exampleVirtualPhysicalConnection = new VirtualPhysicalConnection("exampleVirtualPhysicalConnection", VirtualPhysicalConnectionArgs.builder()
  *             .virtualPhysicalConnectionName(name)
  *             .description(name)
  *             .orderMode("PayByPhysicalConnectionOwner")

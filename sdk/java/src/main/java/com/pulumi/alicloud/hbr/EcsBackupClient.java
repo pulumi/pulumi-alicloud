@@ -76,24 +76,24 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
  *             .name("terraform-example")
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
- *         var exampleEcsBackupClient = new EcsBackupClient("exampleEcsBackupClient", EcsBackupClientArgs.builder()        
+ *         var exampleEcsBackupClient = new EcsBackupClient("exampleEcsBackupClient", EcsBackupClientArgs.builder()
  *             .instanceId(exampleInstance.id())
  *             .useHttps(false)
  *             .dataNetworkType("VPC")

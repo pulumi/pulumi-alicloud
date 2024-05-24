@@ -65,7 +65,7 @@ type GetFilesetsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the fileset.
+	// The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
 	Status *string `pulumi:"status"`
 }
 
@@ -101,7 +101,7 @@ type GetFilesetsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the fileset.
+	// The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

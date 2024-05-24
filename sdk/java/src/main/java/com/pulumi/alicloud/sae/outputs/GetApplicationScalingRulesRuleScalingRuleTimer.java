@@ -12,21 +12,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApplicationScalingRulesRuleScalingRuleTimer {
+    /**
+     * @return The short-term start date of the timed elastic scaling strategy.
+     * 
+     */
     private String beginDate;
+    /**
+     * @return The short-term end date of the timed elastic scaling strategy.
+     * 
+     */
     private String endDate;
+    /**
+     * @return The period in which a timed elastic scaling strategy is executed.
+     * 
+     */
     private String period;
+    /**
+     * @return Trigger point in time within a single day.
+     * 
+     */
     private List<GetApplicationScalingRulesRuleScalingRuleTimerSchedule> schedules;
 
     private GetApplicationScalingRulesRuleScalingRuleTimer() {}
+    /**
+     * @return The short-term start date of the timed elastic scaling strategy.
+     * 
+     */
     public String beginDate() {
         return this.beginDate;
     }
+    /**
+     * @return The short-term end date of the timed elastic scaling strategy.
+     * 
+     */
     public String endDate() {
         return this.endDate;
     }
+    /**
+     * @return The period in which a timed elastic scaling strategy is executed.
+     * 
+     */
     public String period() {
         return this.period;
     }
+    /**
+     * @return Trigger point in time within a single day.
+     * 
+     */
     public List<GetApplicationScalingRulesRuleScalingRuleTimerSchedule> schedules() {
         return this.schedules;
     }

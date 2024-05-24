@@ -19,14 +19,14 @@ public final class GetTrafficMirrorSessionsArgs extends com.pulumi.resources.Inv
     public static final GetTrafficMirrorSessionsArgs Empty = new GetTrafficMirrorSessionsArgs();
 
     /**
-     * Indicates whether traffic mirror sessions are enabled. default to `false`.
+     * Specifies whether to enable traffic mirror sessions. default to `false`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Indicates whether traffic mirror sessions are enabled. default to `false`.
+     * @return Specifies whether to enable traffic mirror sessions. default to `false`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -79,14 +79,14 @@ public final class GetTrafficMirrorSessionsArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The priority of the traffic mirror session. A smaller value indicates a higher priority.
+     * The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return The priority of the traffic mirror session. A smaller value indicates a higher priority.
+     * @return The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -124,14 +124,14 @@ public final class GetTrafficMirrorSessionsArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The name of the traffic mirror session.
+     * The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     @Import(name="trafficMirrorSessionName")
     private @Nullable Output<String> trafficMirrorSessionName;
 
     /**
-     * @return The name of the traffic mirror session.
+     * @return The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     public Optional<Output<String>> trafficMirrorSessionName() {
@@ -202,7 +202,7 @@ public final class GetTrafficMirrorSessionsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param enabled Indicates whether traffic mirror sessions are enabled. default to `false`.
+         * @param enabled Specifies whether to enable traffic mirror sessions. default to `false`.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class GetTrafficMirrorSessionsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param enabled Indicates whether traffic mirror sessions are enabled. default to `false`.
+         * @param enabled Specifies whether to enable traffic mirror sessions. default to `false`.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class GetTrafficMirrorSessionsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param priority The priority of the traffic mirror session. A smaller value indicates a higher priority.
+         * @param priority The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class GetTrafficMirrorSessionsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param priority The priority of the traffic mirror session. A smaller value indicates a higher priority.
+         * @param priority The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class GetTrafficMirrorSessionsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param trafficMirrorSessionName The name of the traffic mirror session.
+         * @param trafficMirrorSessionName The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class GetTrafficMirrorSessionsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param trafficMirrorSessionName The name of the traffic mirror session.
+         * @param trafficMirrorSessionName The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 

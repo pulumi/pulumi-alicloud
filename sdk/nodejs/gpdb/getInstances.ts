@@ -92,12 +92,9 @@ export interface GetInstancesArgs {
      * The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
      */
     status?: string;
-    /**
-     * The tags of the instance.
-     */
     tags?: {[key: string]: any};
     /**
-     * The vswitch id.
+     * Used to retrieve instances belong to specified `vswitch` resources.
      */
     vswitchId?: string;
 }
@@ -195,12 +192,9 @@ export interface GetInstancesOutputArgs {
      * The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
      */
     status?: pulumi.Input<string>;
-    /**
-     * The tags of the instance.
-     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The vswitch id.
+     * Used to retrieve instances belong to specified `vswitch` resources.
      */
     vswitchId?: pulumi.Input<string>;
 }

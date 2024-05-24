@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EcsPrefixList("default", EcsPrefixListArgs.builder()        
+ *         var default_ = new EcsPrefixList("default", EcsPrefixListArgs.builder()
  *             .addressFamily("IPv4")
  *             .maxEntries(2)
  *             .prefixListName("tftest")

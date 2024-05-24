@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var example = new Parameter("example", ParameterArgs.builder()        
+ *         var example = new Parameter("example", ParameterArgs.builder()
  *             .parameterName("my-Parameter")
  *             .type("String")
  *             .value("example_value")
@@ -85,6 +85,10 @@ import javax.annotation.Nullable;
 public class Parameter extends com.pulumi.resources.CustomResource {
     /**
      * The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
+     * * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
+     * * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
+     * * `MinLength`: The minimum length of the common parameter.
+     * * `MaxLength`: The maximum length of the common parameter.
      * 
      */
     @Export(name="constraints", refs={String.class}, tree="[0]")
@@ -92,6 +96,10 @@ public class Parameter extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
+     * * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
+     * * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
+     * * `MinLength`: The minimum length of the common parameter.
+     * * `MaxLength`: The maximum length of the common parameter.
      * 
      */
     public Output<Optional<String>> constraints() {

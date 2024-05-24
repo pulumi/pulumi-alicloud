@@ -54,18 +54,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance("example", InstanceArgs.builder()        
+ *         var example = new Instance("example", InstanceArgs.builder()
  *             .cenInstanceName("tf_example")
  *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()
  *             .transitRouterName("tf_example")
  *             .cenId(example.id())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var exampleTransitRouterMulticastDomain = new TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()        
+ *         var exampleTransitRouterMulticastDomain = new TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .transitRouterMulticastDomainName("tf_example")
  *             .transitRouterMulticastDomainDescription("tf_example")

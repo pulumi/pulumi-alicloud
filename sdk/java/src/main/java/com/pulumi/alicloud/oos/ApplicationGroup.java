@@ -58,14 +58,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+ *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
  *             .resourceGroupId(default_.groups()[0].id())
  *             .applicationName(String.format("%s-%s", name,defaultInteger.result()))
  *             .description(name)
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultApplicationGroup = new ApplicationGroup("defaultApplicationGroup", ApplicationGroupArgs.builder()        
+ *         var defaultApplicationGroup = new ApplicationGroup("defaultApplicationGroup", ApplicationGroupArgs.builder()
  *             .applicationGroupName(name)
  *             .applicationName(defaultApplication.id())
  *             .deployRegionId(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()))

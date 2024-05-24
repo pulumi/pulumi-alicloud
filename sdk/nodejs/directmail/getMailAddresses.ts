@@ -55,7 +55,7 @@ export interface GetMailAddressesArgs {
      */
     outputFile?: string;
     /**
-     * Account type.
+     * Account type. Valid values: `batch`, `trigger`.
      */
     sendtype?: string;
     /**
@@ -119,7 +119,7 @@ export interface GetMailAddressesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Account type.
+     * Account type. Valid values: `batch`, `trigger`.
      */
     sendtype?: pulumi.Input<string>;
     /**

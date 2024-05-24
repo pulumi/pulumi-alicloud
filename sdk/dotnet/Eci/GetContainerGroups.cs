@@ -134,17 +134,13 @@ namespace Pulumi.AliCloud.Eci
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of container.
+        /// The status list. For more information, see the description of ContainerGroup arrays.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         [Input("tags")]
         private Dictionary<string, object>? _tags;
-
-        /// <summary>
-        /// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-        /// </summary>
         public Dictionary<string, object> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, object>());
@@ -152,7 +148,7 @@ namespace Pulumi.AliCloud.Eci
         }
 
         /// <summary>
-        /// The vswitch id.
+        /// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
         /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
@@ -161,7 +157,7 @@ namespace Pulumi.AliCloud.Eci
         public bool? WithEvent { get; set; }
 
         /// <summary>
-        /// The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+        /// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -223,17 +219,13 @@ namespace Pulumi.AliCloud.Eci
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of container.
+        /// The status list. For more information, see the description of ContainerGroup arrays.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -241,7 +233,7 @@ namespace Pulumi.AliCloud.Eci
         }
 
         /// <summary>
-        /// The vswitch id.
+        /// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -250,7 +242,7 @@ namespace Pulumi.AliCloud.Eci
         public Input<bool>? WithEvent { get; set; }
 
         /// <summary>
-        /// The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+        /// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Arms.Outputs
     [OutputType]
     public sealed class GetPrometheusAlertRulesRuleLabelResult
     {
+        /// <summary>
+        /// The name of the label.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The value of the label.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

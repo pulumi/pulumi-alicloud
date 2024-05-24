@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Log
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of project.
+        /// The status of log project. Valid values `Normal` and `Disable`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of project.
+        /// The status of log project. Valid values `Normal` and `Disable`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

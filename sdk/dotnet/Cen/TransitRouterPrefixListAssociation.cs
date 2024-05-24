@@ -90,6 +90,10 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The type of the next hop. Valid values:
+        /// - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+        /// - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+        /// - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+        /// - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
         /// </summary>
         [Output("nextHopType")]
         public Output<string> NextHopType { get; private set; } = null!;
@@ -178,6 +182,10 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The type of the next hop. Valid values:
+        /// - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+        /// - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+        /// - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+        /// - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
         /// </summary>
         [Input("nextHopType")]
         public Input<string>? NextHopType { get; set; }
@@ -222,6 +230,10 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The type of the next hop. Valid values:
+        /// - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+        /// - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+        /// - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+        /// - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
         /// </summary>
         [Input("nextHopType")]
         public Input<string>? NextHopType { get; set; }

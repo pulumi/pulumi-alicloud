@@ -32,11 +32,11 @@ type GetPatchBaselinesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Patch Baseline name.
 	NameRegex *string `pulumi:"nameRegex"`
-	// Operating system type.
+	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
 	OperationSystem *string `pulumi:"operationSystem"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Patch baseline sharing type.
+	// Patch baseline sharing type. Valid values: `Private`, `Public`.
 	ShareType *string `pulumi:"shareType"`
 }
 
@@ -75,11 +75,11 @@ type GetPatchBaselinesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Patch Baseline name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
-	// Operating system type.
+	// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
 	OperationSystem pulumi.StringPtrInput `pulumi:"operationSystem"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Patch baseline sharing type.
+	// Patch baseline sharing type. Valid values: `Private`, `Public`.
 	ShareType pulumi.StringPtrInput `pulumi:"shareType"`
 }
 

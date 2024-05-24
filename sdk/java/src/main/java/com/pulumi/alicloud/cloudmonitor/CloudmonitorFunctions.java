@@ -53,15 +53,15 @@ public final class CloudmonitorFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getAccount();
      * 
-     *         var source = new Namespace("source", NamespaceArgs.builder()        
+     *         var source = new Namespace("source", NamespaceArgs.builder()
      *             .namespace("your-source-namespace")
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
      *             .namespace("your-namespace")
      *             .build());
      * 
-     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
+     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()
      *             .sourceNamespace(source.id())
      *             .sourceUserId(default_.id())
      *             .namespace(defaultNamespace.id())
@@ -122,15 +122,15 @@ public final class CloudmonitorFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getAccount();
      * 
-     *         var source = new Namespace("source", NamespaceArgs.builder()        
+     *         var source = new Namespace("source", NamespaceArgs.builder()
      *             .namespace("your-source-namespace")
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
      *             .namespace("your-namespace")
      *             .build());
      * 
-     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
+     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()
      *             .sourceNamespace(source.id())
      *             .sourceUserId(default_.id())
      *             .namespace(defaultNamespace.id())
@@ -191,15 +191,15 @@ public final class CloudmonitorFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getAccount();
      * 
-     *         var source = new Namespace("source", NamespaceArgs.builder()        
+     *         var source = new Namespace("source", NamespaceArgs.builder()
      *             .namespace("your-source-namespace")
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
      *             .namespace("your-namespace")
      *             .build());
      * 
-     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
+     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()
      *             .sourceNamespace(source.id())
      *             .sourceUserId(default_.id())
      *             .namespace(defaultNamespace.id())
@@ -260,15 +260,15 @@ public final class CloudmonitorFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getAccount();
      * 
-     *         var source = new Namespace("source", NamespaceArgs.builder()        
+     *         var source = new Namespace("source", NamespaceArgs.builder()
      *             .namespace("your-source-namespace")
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
      *             .namespace("your-namespace")
      *             .build());
      * 
-     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
+     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()
      *             .sourceNamespace(source.id())
      *             .sourceUserId(default_.id())
      *             .namespace(defaultNamespace.id())
@@ -329,15 +329,15 @@ public final class CloudmonitorFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getAccount();
      * 
-     *         var source = new Namespace("source", NamespaceArgs.builder()        
+     *         var source = new Namespace("source", NamespaceArgs.builder()
      *             .namespace("your-source-namespace")
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
      *             .namespace("your-namespace")
      *             .build());
      * 
-     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
+     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()
      *             .sourceNamespace(source.id())
      *             .sourceUserId(default_.id())
      *             .namespace(defaultNamespace.id())
@@ -398,15 +398,15 @@ public final class CloudmonitorFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getAccount();
      * 
-     *         var source = new Namespace("source", NamespaceArgs.builder()        
+     *         var source = new Namespace("source", NamespaceArgs.builder()
      *             .namespace("your-source-namespace")
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
      *             .namespace("your-namespace")
      *             .build());
      * 
-     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
+     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()
      *             .sourceNamespace(source.id())
      *             .sourceUserId(default_.id())
      *             .namespace(defaultNamespace.id())

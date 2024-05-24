@@ -66,17 +66,19 @@ func GetEcsImageComponents(ctx *pulumi.Context, args *GetEcsImageComponentsArgs,
 type GetEcsImageComponentsArgs struct {
 	// A list of Image Component IDs.
 	Ids []string `pulumi:"ids"`
-	// The name of the image component.
+	// The name of the component.
 	ImageComponentName *string `pulumi:"imageComponentName"`
 	// A regex string to filter results by Image Component name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The type of the image component.
+	// Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+	// - SELF: The custom image component you created.
+	// - ALIYUN: System components provided by Alibaba Cloud.
 	Owner *string `pulumi:"owner"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// List of label key-value pairs.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -112,17 +114,19 @@ func GetEcsImageComponentsOutput(ctx *pulumi.Context, args GetEcsImageComponents
 type GetEcsImageComponentsOutputArgs struct {
 	// A list of Image Component IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The name of the image component.
+	// The name of the component.
 	ImageComponentName pulumi.StringPtrInput `pulumi:"imageComponentName"`
 	// A regex string to filter results by Image Component name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The type of the image component.
+	// Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+	// - SELF: The custom image component you created.
+	// - ALIYUN: System components provided by Alibaba Cloud.
 	Owner pulumi.StringPtrInput `pulumi:"owner"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// List of label key-value pairs.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
 }
 

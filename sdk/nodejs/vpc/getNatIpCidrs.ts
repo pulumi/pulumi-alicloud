@@ -77,11 +77,11 @@ export interface GetNatIpCidrsArgs {
      */
     nameRegex?: string;
     /**
-     * The ID of the VPC NAT gateway.
+     * NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
      */
     natGatewayId: string;
     /**
-     * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     * The name of the CIDR block that you want to query. Support up to `20`.
      */
     natIpCidrNames?: string[];
     /**
@@ -93,7 +93,7 @@ export interface GetNatIpCidrsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+     * The status of the NAT IP address. Valid values:`Available`.
      */
     status?: string;
 }
@@ -177,11 +177,11 @@ export interface GetNatIpCidrsOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     /**
-     * The ID of the VPC NAT gateway.
+     * NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
      */
     natGatewayId: pulumi.Input<string>;
     /**
-     * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     * The name of the CIDR block that you want to query. Support up to `20`.
      */
     natIpCidrNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -193,7 +193,7 @@ export interface GetNatIpCidrsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+     * The status of the NAT IP address. Valid values:`Available`.
      */
     status?: pulumi.Input<string>;
 }

@@ -120,13 +120,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? ResourceShareName { get; set; }
 
         /// <summary>
-        /// The owner of resource share.
+        /// The owner of resource share, Valid values: `Self` and `OtherAccounts`.
         /// </summary>
         [Input("resourceShareOwner", required: true)]
         public string ResourceShareOwner { get; set; } = null!;
 
         /// <summary>
-        /// The status of resource share.
+        /// The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -170,13 +170,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? ResourceShareName { get; set; }
 
         /// <summary>
-        /// The owner of resource share.
+        /// The owner of resource share, Valid values: `Self` and `OtherAccounts`.
         /// </summary>
         [Input("resourceShareOwner", required: true)]
         public Input<string> ResourceShareOwner { get; set; } = null!;
 
         /// <summary>
-        /// The status of resource share.
+        /// The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -171,7 +171,7 @@ def get_acls(acl_ids: Optional[Sequence[str]] = None,
     :param str name_regex: A regex string to filter results by Acl name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: Resource Group to Which the Number.
-    :param str status: The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+    :param str status: The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
     """
     __args__ = dict()
     __args__['aclIds'] = acl_ids
@@ -236,6 +236,6 @@ def get_acls_output(acl_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     :param str name_regex: A regex string to filter results by Acl name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: Resource Group to Which the Number.
-    :param str status: The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+    :param str status: The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
     """
     ...

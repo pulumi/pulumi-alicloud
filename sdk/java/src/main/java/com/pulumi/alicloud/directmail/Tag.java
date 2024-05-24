@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("example");
- *         var example = new Tag("example", TagArgs.builder()        
+ *         var example = new Tag("example", TagArgs.builder()
  *             .tagName(name)
  *             .build());
  * 

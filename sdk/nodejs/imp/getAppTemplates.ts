@@ -56,7 +56,7 @@ export interface GetAppTemplatesArgs {
      */
     outputFile?: string;
     /**
-     * Application template usage status.
+     * Application template usage status. Valid values: ["attached", "unattached"].
      */
     status?: string;
 }
@@ -118,7 +118,7 @@ export interface GetAppTemplatesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Application template usage status.
+     * Application template usage status. Valid values: ["attached", "unattached"].
      */
     status?: pulumi.Input<string>;
 }

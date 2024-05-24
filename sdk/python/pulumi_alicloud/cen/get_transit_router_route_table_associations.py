@@ -162,6 +162,10 @@ def get_transit_router_route_table_associations(ids: Optional[Sequence[str]] = N
     :param str transit_router_attachment_id: The ID of the network instance connection.
     :param str transit_router_attachment_resource_id: The ID of the next hop.
     :param str transit_router_attachment_resource_type: The type of next hop. Valid values:
+           * `VPC`: virtual private cloud (VPC)
+           * `VBR`: virtual border router (VBR)
+           * `TR`: transit router
+           * `VPN`: VPN attachment
     :param str transit_router_route_table_id: The ID of the route table of the Enterprise Edition transit router.
     """
     __args__ = dict()
@@ -218,6 +222,10 @@ def get_transit_router_route_table_associations_output(ids: Optional[pulumi.Inpu
     :param str transit_router_attachment_id: The ID of the network instance connection.
     :param str transit_router_attachment_resource_id: The ID of the next hop.
     :param str transit_router_attachment_resource_type: The type of next hop. Valid values:
+           * `VPC`: virtual private cloud (VPC)
+           * `VBR`: virtual border router (VBR)
+           * `TR`: transit router
+           * `VPN`: VPN attachment
     :param str transit_router_route_table_id: The ID of the route table of the Enterprise Edition transit router.
     """
     ...

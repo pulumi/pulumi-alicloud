@@ -93,14 +93,14 @@ public final class GetRulesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Rule status, either Enable or Disable.
+     * Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Rule status, either Enable or Disable.
+     * @return Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -252,7 +252,7 @@ public final class GetRulesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status Rule status, either Enable or Disable.
+         * @param status Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class GetRulesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status Rule status, either Enable or Disable.
+         * @param status Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
          * 
          * @return builder
          * 

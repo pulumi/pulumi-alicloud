@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Eds
         }
 
         /// <summary>
-        /// The Specification family.
+        /// The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
         /// </summary>
         [Input("instanceTypeFamily")]
         public string? InstanceTypeFamily { get; set; }
@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Eds
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `SUFFICIENT`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Eds
         }
 
         /// <summary>
-        /// The Specification family.
+        /// The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
         /// </summary>
         [Input("instanceTypeFamily")]
         public Input<string>? InstanceTypeFamily { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `SUFFICIENT`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

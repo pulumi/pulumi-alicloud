@@ -74,19 +74,19 @@ import javax.annotation.Nullable;
  * 
  *         final var zoneId = default_.zones()[index].id();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .engineVersion("4.2")
  *             .dbInstanceClass("dds.mongo.mid")
  *             .dbInstanceStorage(10)
@@ -439,6 +439,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
      * 
      */
     @Export(name="orderType", refs={String.class}, tree="[0]")
@@ -446,6 +449,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
      * 
      */
     public Output<Optional<String>> orderType() {
@@ -621,6 +627,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: standard backup.
+     * - ` Flash  `: single-digit second backup.
      * 
      */
     @Export(name="snapshotBackupType", refs={String.class}, tree="[0]")
@@ -628,6 +636,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: standard backup.
+     * - ` Flash  `: single-digit second backup.
      * 
      */
     public Output<String> snapshotBackupType() {
@@ -635,6 +645,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
      * 
      */
     @Export(name="sslAction", refs={String.class}, tree="[0]")
@@ -642,6 +655,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
      * 
      */
     public Output<Optional<String>> sslAction() {

@@ -92,6 +92,10 @@ public final class GetTransitRouterRouteTableAssociationsPlainArgs extends com.p
 
     /**
      * The type of next hop. Valid values:
+     * * `VPC`: virtual private cloud (VPC)
+     * * `VBR`: virtual border router (VBR)
+     * * `TR`: transit router
+     * * `VPN`: VPN attachment
      * 
      */
     @Import(name="transitRouterAttachmentResourceType")
@@ -99,6 +103,10 @@ public final class GetTransitRouterRouteTableAssociationsPlainArgs extends com.p
 
     /**
      * @return The type of next hop. Valid values:
+     * * `VPC`: virtual private cloud (VPC)
+     * * `VBR`: virtual border router (VBR)
+     * * `TR`: transit router
+     * * `VPN`: VPN attachment
      * 
      */
     public Optional<String> transitRouterAttachmentResourceType() {
@@ -217,6 +225,10 @@ public final class GetTransitRouterRouteTableAssociationsPlainArgs extends com.p
 
         /**
          * @param transitRouterAttachmentResourceType The type of next hop. Valid values:
+         * * `VPC`: virtual private cloud (VPC)
+         * * `VBR`: virtual border router (VBR)
+         * * `TR`: transit router
+         * * `VPN`: VPN attachment
          * 
          * @return builder
          * 

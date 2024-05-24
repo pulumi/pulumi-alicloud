@@ -74,7 +74,9 @@ export interface GetAccessStrategiesArgs {
      */
     outputFile?: string;
     /**
-     * The type of the access policy.
+     * The type of the access policy. Valid values:
+     * - `GEO`: based on geographic location.
+     * - `LATENCY`: Based on delay.
      */
     strategyMode: string;
 }
@@ -155,7 +157,9 @@ export interface GetAccessStrategiesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The type of the access policy.
+     * The type of the access policy. Valid values:
+     * - `GEO`: based on geographic location.
+     * - `LATENCY`: Based on delay.
      */
     strategyMode: pulumi.Input<string>;
 }

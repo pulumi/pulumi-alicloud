@@ -177,9 +177,9 @@ def get_stacks(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of Stack IDs.
     :param str name_regex: A regex string to filter results by Stack name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str parent_stack_id: Parent Stack Id.
+    :param str parent_stack_id: ParentStackId.
     :param bool show_nested_stack: The show nested stack.
-    :param str stack_name: Stack Name.
+    :param str stack_name: StackName.
     :param str status: The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
     :param Mapping[str, Any] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     """
@@ -245,9 +245,9 @@ def get_stacks_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
     :param Sequence[str] ids: A list of Stack IDs.
     :param str name_regex: A regex string to filter results by Stack name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str parent_stack_id: Parent Stack Id.
+    :param str parent_stack_id: ParentStackId.
     :param bool show_nested_stack: The show nested stack.
-    :param str stack_name: Stack Name.
+    :param str stack_name: StackName.
     :param str status: The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
     :param Mapping[str, Any] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     """

@@ -58,12 +58,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()        
+ *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
  *             .scope("overseas")
  *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", defaultInteger.result()))
  *             .cdnType("web")
@@ -76,12 +76,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
  *             .projectName(String.format("terraform-example-%s", defaultInteger.result()))
  *             .description("terraform-example")
  *             .build());
  * 
- *         var defaultStore = new Store("defaultStore", StoreArgs.builder()        
+ *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
  *             .projectName(defaultProject.name())
  *             .logstoreName("example-store")
  *             .shardCount(3)
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultRealTimeLogDelivery = new RealTimeLogDelivery("defaultRealTimeLogDelivery", RealTimeLogDeliveryArgs.builder()        
+ *         var defaultRealTimeLogDelivery = new RealTimeLogDelivery("defaultRealTimeLogDelivery", RealTimeLogDeliveryArgs.builder()
  *             .domain(defaultDomainNew.domainName())
  *             .logstore(defaultStore.logstoreName())
  *             .project(defaultProject.projectName())

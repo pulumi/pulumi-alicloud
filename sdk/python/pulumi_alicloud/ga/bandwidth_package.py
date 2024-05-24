@@ -50,6 +50,9 @@ class BandwidthPackageArgs:
         :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
         :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
@@ -271,6 +274,9 @@ class BandwidthPackageArgs:
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
         Whether to renew a bandwidth packet. automatically or not. Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -330,6 +336,9 @@ class _BandwidthPackageState:
         :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
         :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] status: The status of the Bandwidth Package.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
@@ -545,6 +554,9 @@ class _BandwidthPackageState:
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
         Whether to renew a bandwidth packet. automatically or not. Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -664,6 +676,9 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
         :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
         """
@@ -821,6 +836,9 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[int] ratio: The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billing_type` is set to `PayBy95`.
         :param pulumi.Input[str] renewal_status: Whether to renew a bandwidth packet. automatically or not. Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] status: The status of the Bandwidth Package.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
@@ -967,6 +985,9 @@ class BandwidthPackage(pulumi.CustomResource):
     def renewal_status(self) -> pulumi.Output[str]:
         """
         Whether to renew a bandwidth packet. automatically or not. Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 

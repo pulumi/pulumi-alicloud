@@ -46,14 +46,14 @@ public final class GetBgpNetworksPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The ID of the vRouter.
+     * The ID of the router to which the route table belongs.
      * 
      */
     @Import(name="routerId")
     private @Nullable String routerId;
 
     /**
-     * @return The ID of the vRouter.
+     * @return The ID of the router to which the route table belongs.
      * 
      */
     public Optional<String> routerId() {
@@ -61,14 +61,14 @@ public final class GetBgpNetworksPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The state of the advertised BGP network.
+     * The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The state of the advertised BGP network.
+     * @return The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
      * 
      */
     public Optional<String> status() {
@@ -135,7 +135,7 @@ public final class GetBgpNetworksPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param routerId The ID of the vRouter.
+         * @param routerId The ID of the router to which the route table belongs.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class GetBgpNetworksPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param status The state of the advertised BGP network.
+         * @param status The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
          * 
          * @return builder
          * 

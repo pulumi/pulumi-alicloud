@@ -59,7 +59,6 @@ func GetHanaBackupPlans(ctx *pulumi.Context, args *GetHanaBackupPlansArgs, opts 
 
 // A collection of arguments for invoking getHanaBackupPlans.
 type GetHanaBackupPlansArgs struct {
-	// The ID of the SAP HANA instance.
 	ClusterId string `pulumi:"clusterId"`
 	// The name of the database.
 	DatabaseName *string `pulumi:"databaseName"`
@@ -71,7 +70,7 @@ type GetHanaBackupPlansArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// The ID of the backup vault.
+	// The id of the vault.
 	VaultId *string `pulumi:"vaultId"`
 }
 
@@ -106,7 +105,6 @@ func GetHanaBackupPlansOutput(ctx *pulumi.Context, args GetHanaBackupPlansOutput
 
 // A collection of arguments for invoking getHanaBackupPlans.
 type GetHanaBackupPlansOutputArgs struct {
-	// The ID of the SAP HANA instance.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// The name of the database.
 	DatabaseName pulumi.StringPtrInput `pulumi:"databaseName"`
@@ -118,7 +116,7 @@ type GetHanaBackupPlansOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// The ID of the backup vault.
+	// The id of the vault.
 	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
 }
 

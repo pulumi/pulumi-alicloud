@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult
     {
+        /// <summary>
+        /// The EIP of the ENI.
+        /// </summary>
         public readonly string PublicIpAddress;
 
         [OutputConstructor]

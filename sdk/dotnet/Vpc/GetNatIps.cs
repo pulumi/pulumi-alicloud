@@ -216,13 +216,13 @@ namespace Pulumi.AliCloud.Vpc
         public string? NameRegex { get; set; }
 
         /// <summary>
-        /// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+        /// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
         /// </summary>
         [Input("natGatewayId", required: true)]
         public string NatGatewayId { get; set; } = null!;
 
         /// <summary>
-        /// The CIDR block to which the NAT IP address belongs.
+        /// NAT IP ADDRESS of the address segment.
         /// </summary>
         [Input("natIpCidr")]
         public string? NatIpCidr { get; set; }
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Vpc
         private List<string>? _natIpNames;
 
         /// <summary>
-        /// The name of the NAT IP address.
+        /// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
         /// </summary>
         public List<string> NatIpNames
         {
@@ -286,13 +286,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? NameRegex { get; set; }
 
         /// <summary>
-        /// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+        /// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
         /// </summary>
         [Input("natGatewayId", required: true)]
         public Input<string> NatGatewayId { get; set; } = null!;
 
         /// <summary>
-        /// The CIDR block to which the NAT IP address belongs.
+        /// NAT IP ADDRESS of the address segment.
         /// </summary>
         [Input("natIpCidr")]
         public Input<string>? NatIpCidr { get; set; }
@@ -309,7 +309,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _natIpNames;
 
         /// <summary>
-        /// The name of the NAT IP address.
+        /// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
         /// </summary>
         public InputList<string> NatIpNames
         {

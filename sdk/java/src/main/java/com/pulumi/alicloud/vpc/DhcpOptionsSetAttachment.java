@@ -55,19 +55,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var example = new Network("example", NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var exampleDhcpOptionsSet = new DhcpOptionsSet("exampleDhcpOptionsSet", DhcpOptionsSetArgs.builder()        
+ *         var exampleDhcpOptionsSet = new DhcpOptionsSet("exampleDhcpOptionsSet", DhcpOptionsSetArgs.builder()
  *             .dhcpOptionsSetName(name)
  *             .dhcpOptionsSetDescription(name)
  *             .domainName("example.com")
  *             .domainNameServers("100.100.2.136")
  *             .build());
  * 
- *         var exampleDhcpOptionsSetAttachment = new DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment", DhcpOptionsSetAttachmentArgs.builder()        
+ *         var exampleDhcpOptionsSetAttachment = new DhcpOptionsSetAttachment("exampleDhcpOptionsSetAttachment", DhcpOptionsSetAttachmentArgs.builder()
  *             .vpcId(example.id())
  *             .dhcpOptionsSetId(exampleDhcpOptionsSet.id())
  *             .build());

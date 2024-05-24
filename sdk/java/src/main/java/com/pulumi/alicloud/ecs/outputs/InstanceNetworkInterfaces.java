@@ -19,6 +19,8 @@ public final class InstanceNetworkInterfaces {
     private @Nullable String networkInterfaceId;
     /**
      * @return The communication mode of the ENI. Default value: `Standard`. Valid values:
+     * - `Standard`: Uses the TCP communication mode.
+     * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
      * 
      */
     private @Nullable String networkInterfaceTrafficMode;
@@ -43,6 +45,8 @@ public final class InstanceNetworkInterfaces {
     }
     /**
      * @return The communication mode of the ENI. Default value: `Standard`. Valid values:
+     * - `Standard`: Uses the TCP communication mode.
+     * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
      * 
      */
     public Optional<String> networkInterfaceTrafficMode() {

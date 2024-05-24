@@ -29,15 +29,9 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
  */
 export interface GetImagesArgs {
     ids?: string[];
-    /**
-     * The type of the image. Valid values: `app`, `custom`, `system`.
-     */
     imageType?: string;
     nameRegex?: string;
     outputFile?: string;
-    /**
-     * The platform of Plan supported.
-     */
     platform?: string;
 }
 
@@ -71,14 +65,8 @@ export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.Invoke
  */
 export interface GetImagesOutputArgs {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The type of the image. Valid values: `app`, `custom`, `system`.
-     */
     imageType?: pulumi.Input<string>;
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
-    /**
-     * The platform of Plan supported.
-     */
     platform?: pulumi.Input<string>;
 }

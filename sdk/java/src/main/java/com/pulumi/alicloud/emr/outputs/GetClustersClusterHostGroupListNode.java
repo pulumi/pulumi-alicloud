@@ -49,7 +49,7 @@ public final class GetClustersClusterHostGroupListNode {
      */
     private String pubIp;
     /**
-     * @return The cluster status.
+     * @return Status.
      * 
      */
     private String status;
@@ -115,7 +115,7 @@ public final class GetClustersClusterHostGroupListNode {
         return this.pubIp;
     }
     /**
-     * @return The cluster status.
+     * @return Status.
      * 
      */
     public String status() {

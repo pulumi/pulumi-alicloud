@@ -64,13 +64,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-hangzhou");
- *         var default_ = new Accelerator("default", AcceleratorArgs.builder()        
+ *         var default_ = new Accelerator("default", AcceleratorArgs.builder()
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec("1")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
  *             .bandwidth(100)
  *             .type("Basic")
  *             .bandwidthType("Basic")
@@ -79,12 +79,12 @@ import javax.annotation.Nullable;
  *             .ratio(30)
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
  *             .acceleratorId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
  *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
  *             .portRanges(ListenerPortRangeArgs.builder()
  *                 .fromPort(60)
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         for (var i = 0; i < 2; i++) {
- *             new EipAddress("defaultEipAddress-" + i, EipAddressArgs.builder()            
+ *             new EipAddress("defaultEipAddress-" + i, EipAddressArgs.builder()
  *                 .bandwidth("10")
  *                 .internetChargeType("PayByBandwidth")
  *                 .addressName("terraform-example")
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  * 
  *         
  * }
- *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()        
+ *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()
  *             .acceleratorId(default_.id())
  *             .endpointConfigurations(            
  *                 EndpointGroupEndpointConfigurationArgs.builder()
@@ -298,6 +298,10 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The protocol that is used to connect to the targets for health checks. Valid values:
+     * - `TCP` or `tcp`: TCP protocol.
+     * - `HTTP` or `http`: HTTP protocol.
+     * - `HTTPS` or `https`: HTTPS protocol.
+     * &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      * 
      */
     @Export(name="healthCheckProtocol", refs={String.class}, tree="[0]")
@@ -305,6 +309,10 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The protocol that is used to connect to the targets for health checks. Valid values:
+     * - `TCP` or `tcp`: TCP protocol.
+     * - `HTTP` or `http`: HTTP protocol.
+     * - `HTTPS` or `https`: HTTPS protocol.
+     * &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      * 
      */
     public Output<Optional<String>> healthCheckProtocol() {

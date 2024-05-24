@@ -20,14 +20,14 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetEipAddressesArgs Empty = new GetEipAddressesArgs();
 
     /**
-     * The name of the EIP.
+     * The eip name.
      * 
      */
     @Import(name="addressName")
     private @Nullable Output<String> addressName;
 
     /**
-     * @return The name of the EIP.
+     * @return The eip name.
      * 
      */
     public Optional<Output<String>> addressName() {
@@ -125,14 +125,14 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The IP address of the EIP.
+     * The eip address.
      * 
      */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return The IP address of the EIP.
+     * @return The eip address.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -159,14 +159,14 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Internet service provider (ISP).
+     * The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
      * 
      */
     @Import(name="isp")
     private @Nullable Output<String> isp;
 
     /**
-     * @return The Internet service provider (ISP).
+     * @return The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
      * 
      */
     public Optional<Output<String>> isp() {
@@ -219,14 +219,14 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The billing method of the EIP.
+     * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The billing method of the EIP.
+     * @return The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -249,14 +249,14 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The IDs of the contiguous EIPs.
+     * The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
      * 
      */
     @Import(name="segmentInstanceId")
     private @Nullable Output<String> segmentInstanceId;
 
     /**
-     * @return The IDs of the contiguous EIPs.
+     * @return The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
      * 
      */
     public Optional<Output<String>> segmentInstanceId() {
@@ -264,14 +264,14 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the EIP.
+     * The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the EIP.
+     * @return The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      * 
      */
     public Optional<Output<String>> status() {
@@ -335,7 +335,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param addressName The name of the EIP.
+         * @param addressName The eip name.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param addressName The name of the EIP.
+         * @param addressName The eip name.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ipAddress The IP address of the EIP.
+         * @param ipAddress The eip address.
          * 
          * @return builder
          * 
@@ -503,7 +503,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ipAddress The IP address of the EIP.
+         * @param ipAddress The eip address.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param isp The Internet service provider (ISP).
+         * @param isp The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param isp The Internet service provider (ISP).
+         * @param isp The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
          * 
          * @return builder
          * 
@@ -634,7 +634,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param paymentType The billing method of the EIP.
+         * @param paymentType The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -645,7 +645,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param paymentType The billing method of the EIP.
+         * @param paymentType The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -676,7 +676,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param segmentInstanceId The IDs of the contiguous EIPs.
+         * @param segmentInstanceId The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
          * 
          * @return builder
          * 
@@ -687,7 +687,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param segmentInstanceId The IDs of the contiguous EIPs.
+         * @param segmentInstanceId The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
          * 
          * @return builder
          * 
@@ -697,7 +697,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the EIP.
+         * @param status The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
          * 
          * @return builder
          * 
@@ -708,7 +708,7 @@ public final class GetEipAddressesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the EIP.
+         * @param status The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
          * 
          * @return builder
          * 

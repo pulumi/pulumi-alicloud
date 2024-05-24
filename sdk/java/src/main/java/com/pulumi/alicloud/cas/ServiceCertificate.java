@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultServiceCertificate = new ServiceCertificate("defaultServiceCertificate", ServiceCertificateArgs.builder()        
+ *         var defaultServiceCertificate = new ServiceCertificate("defaultServiceCertificate", ServiceCertificateArgs.builder()
  *             .certificateName(String.format("tf-example-%s", default_.result()))
  *             .cert("""
  * -----BEGIN CERTIFICATE-----

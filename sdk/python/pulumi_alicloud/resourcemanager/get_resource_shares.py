@@ -148,8 +148,8 @@ def get_resource_shares(ids: Optional[Sequence[str]] = None,
     :param str name_regex: A regex string to filter results by Resource Share name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_share_name: The name of resource share.
-    :param str resource_share_owner: The owner of resource share.
-    :param str status: The status of resource share.
+    :param str resource_share_owner: The owner of resource share, Valid values: `Self` and `OtherAccounts`.
+    :param str status: The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -205,7 +205,7 @@ def get_resource_shares_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     :param str name_regex: A regex string to filter results by Resource Share name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_share_name: The name of resource share.
-    :param str resource_share_owner: The owner of resource share.
-    :param str status: The status of resource share.
+    :param str resource_share_owner: The owner of resource share, Valid values: `Self` and `OtherAccounts`.
+    :param str status: The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
     """
     ...

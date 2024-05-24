@@ -68,7 +68,7 @@ export interface GetServerDisksArgs {
      */
     ids?: string[];
     /**
-     * Alibaba Cloud simple application server instance ID.
+     * The ID of the simple application server to which the disk is attached.
      */
     instanceId?: string;
     /**
@@ -154,7 +154,7 @@ export interface GetServerDisksOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Alibaba Cloud simple application server instance ID.
+     * The ID of the simple application server to which the disk is attached.
      */
     instanceId?: pulumi.Input<string>;
     /**

@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AlidnsInstance("example", AlidnsInstanceArgs.builder()        
+ *         var example = new AlidnsInstance("example", AlidnsInstanceArgs.builder()
  *             .dnsSecurity("no")
  *             .domainNumbers("2")
  *             .period(1)

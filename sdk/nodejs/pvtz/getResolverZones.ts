@@ -44,7 +44,7 @@ export interface GetResolverZonesArgs {
      */
     outputFile?: string;
     /**
-     * The status of the Zone.
+     * The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
      */
     status?: string;
 }
@@ -93,7 +93,7 @@ export interface GetResolverZonesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the Zone.
+     * The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
      */
     status?: pulumi.Input<string>;
 }

@@ -1901,7 +1901,7 @@ class GetContainerGroupsGroupResult(dict):
         :param str container_group_id: The id if ContainerGroup.
         :param str container_group_name: The name of ContainerGroup.
         :param Sequence['GetContainerGroupsGroupContainerArgs'] containers: A list of containers. Each element contains the following attributes:
-        :param float cpu: The amount of CPU resources allocated to the container.
+        :param float cpu: The amount of CPU resources allocated to the container group.
         :param Sequence['GetContainerGroupsGroupDnsConfigArgs'] dns_configs: The DNS settings.
         :param Sequence['GetContainerGroupsGroupEciSecurityContextArgs'] eci_security_contexts: The security context of the container group.
         :param str eni_instance_id: The ID of the ENI instance.
@@ -1987,7 +1987,7 @@ class GetContainerGroupsGroupResult(dict):
     @pulumi.getter
     def cpu(self) -> float:
         """
-        The amount of CPU resources allocated to the container.
+        The amount of CPU resources allocated to the container group.
         """
         return pulumi.get(self, "cpu")
 
@@ -2215,16 +2215,16 @@ class GetContainerGroupsGroupContainerResult(dict):
                  volume_mounts: Sequence['outputs.GetContainerGroupsGroupContainerVolumeMountResult'],
                  working_dir: str):
         """
-        :param Sequence[str] args: The arguments passed to the commands.
-        :param Sequence[str] commands: The commands run by the container.
+        :param Sequence[str] args: The arguments passed to the commands. Maximum: `10`.
+        :param Sequence[str] commands: The commands run by the container. You can define a maximum of 20 commands. Minimum length per string: 256 characters.
         :param float cpu: The amount of CPU resources allocated to the container.
         :param Sequence['GetContainerGroupsGroupContainerEnvironmentVarArgs'] environment_vars: The environment variables.
         :param int gpu: The amount of GPU resources allocated to the container.
         :param str image: The image of the container.
         :param str image_pull_policy: The policy for pulling an image.
-        :param float memory: The amount of memory resources allocated to the container group.
-        :param str name: The name of the volume.
-        :param Sequence['GetContainerGroupsGroupContainerPortArgs'] ports: The exposed ports and protocols. Maximum: `100`.
+        :param float memory: The amount of memory resources allocated to the container.
+        :param str name: The name of the container.
+        :param Sequence['GetContainerGroupsGroupContainerPortArgs'] ports: The list of exposed ports and protocols. Maximum: 100.
         :param bool ready: Indicates whether the container is ready.
         :param int restart_count: The number of times that the container has restarted.
         :param Sequence['GetContainerGroupsGroupContainerVolumeMountArgs'] volume_mounts: The list of volumes mounted to the container.
@@ -2249,7 +2249,7 @@ class GetContainerGroupsGroupContainerResult(dict):
     @pulumi.getter
     def args(self) -> Sequence[str]:
         """
-        The arguments passed to the commands.
+        The arguments passed to the commands. Maximum: `10`.
         """
         return pulumi.get(self, "args")
 
@@ -2257,7 +2257,7 @@ class GetContainerGroupsGroupContainerResult(dict):
     @pulumi.getter
     def commands(self) -> Sequence[str]:
         """
-        The commands run by the container.
+        The commands run by the container. You can define a maximum of 20 commands. Minimum length per string: 256 characters.
         """
         return pulumi.get(self, "commands")
 
@@ -2305,7 +2305,7 @@ class GetContainerGroupsGroupContainerResult(dict):
     @pulumi.getter
     def memory(self) -> float:
         """
-        The amount of memory resources allocated to the container group.
+        The amount of memory resources allocated to the container.
         """
         return pulumi.get(self, "memory")
 
@@ -2313,7 +2313,7 @@ class GetContainerGroupsGroupContainerResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the volume.
+        The name of the container.
         """
         return pulumi.get(self, "name")
 
@@ -2321,7 +2321,7 @@ class GetContainerGroupsGroupContainerResult(dict):
     @pulumi.getter
     def ports(self) -> Sequence['outputs.GetContainerGroupsGroupContainerPortResult']:
         """
-        The exposed ports and protocols. Maximum: `100`.
+        The list of exposed ports and protocols. Maximum: 100.
         """
         return pulumi.get(self, "ports")
 
@@ -2502,8 +2502,8 @@ class GetContainerGroupsGroupDnsConfigOptionResult(dict):
                  name: str,
                  value: str):
         """
-        :param str name: The name of the volume.
-        :param str value: The value of the variable.
+        :param str name: The name of the object variable.
+        :param str value: The value of the object variable.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -2512,7 +2512,7 @@ class GetContainerGroupsGroupDnsConfigOptionResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the volume.
+        The name of the object variable.
         """
         return pulumi.get(self, "name")
 
@@ -2520,7 +2520,7 @@ class GetContainerGroupsGroupDnsConfigOptionResult(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The value of the variable.
+        The value of the object variable.
         """
         return pulumi.get(self, "value")
 
@@ -2549,7 +2549,7 @@ class GetContainerGroupsGroupEciSecurityContextSysctlResult(dict):
                  name: str,
                  value: str):
         """
-        :param str name: The name of the volume.
+        :param str name: The name of the variable.
         :param str value: The value of the variable.
         """
         pulumi.set(__self__, "name", name)
@@ -2559,7 +2559,7 @@ class GetContainerGroupsGroupEciSecurityContextSysctlResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the volume.
+        The name of the variable.
         """
         return pulumi.get(self, "name")
 
@@ -2587,9 +2587,9 @@ class GetContainerGroupsGroupEventResult(dict):
         :param str first_timestamp: The time when the event started.
         :param str last_timestamp: The time when the event ended.
         :param str message: The content of the event.
-        :param str name: The name of the volume.
+        :param str name: The name of the object to which the event belongs.
         :param str reason: The name of the event.
-        :param str type: The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+        :param str type: The type of the event. Valid values: Normal and Warning.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "first_timestamp", first_timestamp)
@@ -2635,7 +2635,7 @@ class GetContainerGroupsGroupEventResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the volume.
+        The name of the object to which the event belongs.
         """
         return pulumi.get(self, "name")
 
@@ -2651,7 +2651,7 @@ class GetContainerGroupsGroupEventResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+        The type of the event. Valid values: Normal and Warning.
         """
         return pulumi.get(self, "type")
 
@@ -2710,8 +2710,8 @@ class GetContainerGroupsGroupInitContainerResult(dict):
         :param int gpu: The amount of GPU resources allocated to the container.
         :param str image: The image of the container.
         :param str image_pull_policy: The policy for pulling an image.
-        :param float memory: The amount of memory resources allocated to the container group.
-        :param str name: The name of the volume.
+        :param float memory: The amount of memory resources allocated to the container.
+        :param str name: The name of the init container.
         :param Sequence['GetContainerGroupsGroupInitContainerPortArgs'] ports: The exposed ports and protocols. Maximum: `100`.
         :param bool ready: Indicates whether the container is ready.
         :param int restart_count: The number of times that the container has restarted.
@@ -2793,7 +2793,7 @@ class GetContainerGroupsGroupInitContainerResult(dict):
     @pulumi.getter
     def memory(self) -> float:
         """
-        The amount of memory resources allocated to the container group.
+        The amount of memory resources allocated to the container.
         """
         return pulumi.get(self, "memory")
 
@@ -2801,7 +2801,7 @@ class GetContainerGroupsGroupInitContainerResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the volume.
+        The name of the init container.
         """
         return pulumi.get(self, "name")
 

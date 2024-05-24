@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
     [OutputType]
     public sealed class GetClustersClusterAccessInfoZkLinkResult
     {
-        /// <summary>
-        /// The access link address of ZooKeeper.
-        /// </summary>
         public readonly string Link;
-        /// <summary>
-        /// The port of ZooKeeper.
-        /// </summary>
         public readonly string Port;
 
         [OutputConstructor]

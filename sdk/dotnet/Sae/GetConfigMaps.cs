@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Sae
         public string? NameRegex { get; set; }
 
         /// <summary>
-        /// The NamespaceId of Config Maps.
+        /// The NamespaceId of Config Maps. The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
         /// </summary>
         [Input("namespaceId", required: true)]
         public string NamespaceId { get; set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<string>? NameRegex { get; set; }
 
         /// <summary>
-        /// The NamespaceId of Config Maps.
+        /// The NamespaceId of Config Maps. The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
         /// </summary>
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;

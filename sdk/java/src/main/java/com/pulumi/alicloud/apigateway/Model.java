@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Group("default", GroupArgs.builder()        
+ *         var default_ = new Group("default", GroupArgs.builder()
  *             .name("example_value")
  *             .description("example_value")
  *             .build());
  * 
- *         var defaultModel = new Model("defaultModel", ModelArgs.builder()        
+ *         var defaultModel = new Model("defaultModel", ModelArgs.builder()
  *             .groupId(default_.id())
  *             .modelName("example_value")
  *             .schema("{\"type\":\"object\",\"properties\":{\"id\":{\"format\":\"int64\",\"maximum\":100,\"exclusiveMaximum\":true,\"type\":\"integer\"},\"name\":{\"maxLength\":10,\"type\":\"string\"}}}")

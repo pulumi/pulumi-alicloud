@@ -230,6 +230,9 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+        /// - `UPGRADE`: The specifications are upgraded.
+        /// - `DOWNGRADE`: The specifications are downgraded.
+        /// **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         /// </summary>
         [Output("orderType")]
         public Output<string?> OrderType { get; private set; } = null!;
@@ -308,12 +311,17 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The snapshot backup type. Default value: `Standard`. Valid values:
+        /// - `Standard`: standard backup.
+        /// - `Flash `: single-digit second backup.
         /// </summary>
         [Output("snapshotBackupType")]
         public Output<string> SnapshotBackupType { get; private set; } = null!;
 
         /// <summary>
         /// Actions performed on SSL functions. Valid values:
+        /// - `Open`: turn on SSL encryption.
+        /// - `Close`: turn off SSL encryption.
+        /// - `Update`: update SSL certificate.
         /// </summary>
         [Output("sslAction")]
         public Output<string?> SslAction { get; private set; } = null!;
@@ -577,6 +585,9 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+        /// - `UPGRADE`: The specifications are upgraded.
+        /// - `DOWNGRADE`: The specifications are downgraded.
+        /// **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
@@ -649,12 +660,17 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The snapshot backup type. Default value: `Standard`. Valid values:
+        /// - `Standard`: standard backup.
+        /// - `Flash `: single-digit second backup.
         /// </summary>
         [Input("snapshotBackupType")]
         public Input<string>? SnapshotBackupType { get; set; }
 
         /// <summary>
         /// Actions performed on SSL functions. Valid values:
+        /// - `Open`: turn on SSL encryption.
+        /// - `Close`: turn off SSL encryption.
+        /// - `Update`: update SSL certificate.
         /// </summary>
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }
@@ -876,6 +892,9 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+        /// - `UPGRADE`: The specifications are upgraded.
+        /// - `DOWNGRADE`: The specifications are downgraded.
+        /// **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
@@ -972,12 +991,17 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// The snapshot backup type. Default value: `Standard`. Valid values:
+        /// - `Standard`: standard backup.
+        /// - `Flash `: single-digit second backup.
         /// </summary>
         [Input("snapshotBackupType")]
         public Input<string>? SnapshotBackupType { get; set; }
 
         /// <summary>
         /// Actions performed on SSL functions. Valid values:
+        /// - `Open`: turn on SSL encryption.
+        /// - `Close`: turn off SSL encryption.
+        /// - `Update`: update SSL certificate.
         /// </summary>
         [Input("sslAction")]
         public Input<string>? SslAction { get; set; }

@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The VBR state.
+        /// The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The VBR state.
+        /// The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

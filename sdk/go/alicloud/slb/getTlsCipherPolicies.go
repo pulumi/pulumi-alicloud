@@ -73,7 +73,7 @@ type GetTlsCipherPoliciesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// TLS policy instance state.
+	// TLS policy instance state. Valid values: `configuring`, `normal`.
 	Status *string `pulumi:"status"`
 	// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
 	TlsCipherPolicyName *string `pulumi:"tlsCipherPolicyName"`
@@ -116,7 +116,7 @@ type GetTlsCipherPoliciesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// TLS policy instance state.
+	// TLS policy instance state. Valid values: `configuring`, `normal`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
 	TlsCipherPolicyName pulumi.StringPtrInput `pulumi:"tlsCipherPolicyName"`

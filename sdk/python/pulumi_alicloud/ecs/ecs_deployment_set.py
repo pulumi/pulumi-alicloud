@@ -27,6 +27,8 @@ class EcsDeploymentSetArgs:
         :param pulumi.Input[str] domain: The deployment domain. Valid values: `Default`.
         :param pulumi.Input[str] granularity: The deployment granularity. Valid values: `Host`.
         :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+               * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+               * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
         :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         """
         if deployment_set_name is not None:
@@ -95,6 +97,8 @@ class EcsDeploymentSetArgs:
     def on_unable_to_redeploy_failed_instance(self) -> Optional[pulumi.Input[str]]:
         """
         The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+        * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+        * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
         """
         return pulumi.get(self, "on_unable_to_redeploy_failed_instance")
 
@@ -131,6 +135,8 @@ class _EcsDeploymentSetState:
         :param pulumi.Input[str] domain: The deployment domain. Valid values: `Default`.
         :param pulumi.Input[str] granularity: The deployment granularity. Valid values: `Host`.
         :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+               * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+               * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
         :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         """
         if deployment_set_name is not None:
@@ -199,6 +205,8 @@ class _EcsDeploymentSetState:
     def on_unable_to_redeploy_failed_instance(self) -> Optional[pulumi.Input[str]]:
         """
         The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+        * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+        * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
         """
         return pulumi.get(self, "on_unable_to_redeploy_failed_instance")
 
@@ -269,6 +277,8 @@ class EcsDeploymentSet(pulumi.CustomResource):
         :param pulumi.Input[str] domain: The deployment domain. Valid values: `Default`.
         :param pulumi.Input[str] granularity: The deployment granularity. Valid values: `Host`.
         :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+               * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+               * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
         :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         """
         ...
@@ -372,6 +382,8 @@ class EcsDeploymentSet(pulumi.CustomResource):
         :param pulumi.Input[str] domain: The deployment domain. Valid values: `Default`.
         :param pulumi.Input[str] granularity: The deployment granularity. Valid values: `Host`.
         :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+               * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+               * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
         :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -423,6 +435,8 @@ class EcsDeploymentSet(pulumi.CustomResource):
     def on_unable_to_redeploy_failed_instance(self) -> pulumi.Output[Optional[str]]:
         """
         The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+        * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+        * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
         """
         return pulumi.get(self, "on_unable_to_redeploy_failed_instance")
 

@@ -53,7 +53,7 @@ func GetDedicatedHostAccounts(ctx *pulumi.Context, args *GetDedicatedHostAccount
 
 // A collection of arguments for invoking getDedicatedHostAccounts.
 type GetDedicatedHostAccountsArgs struct {
-	// The ID of the Dedicated host.
+	// The ID of the host.
 	DedicatedHostId *string `pulumi:"dedicatedHostId"`
 	// A list of Dedicated Host Account IDs.
 	Ids []string `pulumi:"ids"`
@@ -94,7 +94,7 @@ func GetDedicatedHostAccountsOutput(ctx *pulumi.Context, args GetDedicatedHostAc
 
 // A collection of arguments for invoking getDedicatedHostAccounts.
 type GetDedicatedHostAccountsOutputArgs struct {
-	// The ID of the Dedicated host.
+	// The ID of the host.
 	DedicatedHostId pulumi.StringPtrInput `pulumi:"dedicatedHostId"`
 	// A list of Dedicated Host Account IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

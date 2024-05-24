@@ -62,14 +62,14 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of project.
+     * The status of log project. Valid values `Normal` and `Disable`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of project.
+     * @return The status of log project. Valid values `Normal` and `Disable`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -177,7 +177,7 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of project.
+         * @param status The status of log project. Valid values `Normal` and `Disable`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of project.
+         * @param status The status of log project. Valid values `Normal` and `Disable`.
          * 
          * @return builder
          * 

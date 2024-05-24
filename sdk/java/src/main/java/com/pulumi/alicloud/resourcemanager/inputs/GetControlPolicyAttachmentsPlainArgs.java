@@ -46,14 +46,14 @@ public final class GetControlPolicyAttachmentsPlainArgs extends com.pulumi.resou
     }
 
     /**
-     * The type of policy.
+     * The policy type of control policy. Valid values: `Custom` and `System`.
      * 
      */
     @Import(name="policyType")
     private @Nullable String policyType;
 
     /**
-     * @return The type of policy.
+     * @return The policy type of control policy. Valid values: `Custom` and `System`.
      * 
      */
     public Optional<String> policyType() {
@@ -125,7 +125,7 @@ public final class GetControlPolicyAttachmentsPlainArgs extends com.pulumi.resou
         }
 
         /**
-         * @param policyType The type of policy.
+         * @param policyType The policy type of control policy. Valid values: `Custom` and `System`.
          * 
          * @return builder
          * 

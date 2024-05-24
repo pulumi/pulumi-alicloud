@@ -128,13 +128,13 @@ namespace Pulumi.AliCloud.Vpc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the vRouter.
+        /// The ID of the router to which the route table belongs.
         /// </summary>
         [Input("routerId")]
         public string? RouterId { get; set; }
 
         /// <summary>
-        /// The state of the advertised BGP network.
+        /// The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -166,13 +166,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the vRouter.
+        /// The ID of the router to which the route table belongs.
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
 
         /// <summary>
-        /// The state of the advertised BGP network.
+        /// The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

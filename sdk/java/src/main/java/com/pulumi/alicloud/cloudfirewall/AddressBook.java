@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AddressBook("example", AddressBookArgs.builder()        
+ *         var example = new AddressBook("example", AddressBookArgs.builder()
  *             .description("example_value")
  *             .groupName("example_value")
  *             .groupType("tag")

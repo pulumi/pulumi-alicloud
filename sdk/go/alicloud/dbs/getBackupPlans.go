@@ -72,7 +72,7 @@ type GetBackupPlansArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
 	Status *string `pulumi:"status"`
 }
 
@@ -119,7 +119,7 @@ type GetBackupPlansOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

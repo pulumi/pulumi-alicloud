@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The index warehouse where the host belongs.
+        /// The name of the namespace.
         /// </summary>
         [Input("namespace")]
         public string? Namespace { get; set; }
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The index warehouse where the host belongs.
+        /// The name of the namespace.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }

@@ -92,13 +92,13 @@ namespace Pulumi.AliCloud.Sddp
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the data asset.
+        /// The parent asset ID of the data asset.
         /// </summary>
         [Input("parentId")]
         public string? ParentId { get; set; }
 
         /// <summary>
-        /// The type of the service to which the data asset belongs.
+        /// The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
         /// </summary>
         [Input("resourceType")]
         public string? ResourceType { get; set; }
@@ -130,13 +130,13 @@ namespace Pulumi.AliCloud.Sddp
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the data asset.
+        /// The parent asset ID of the data asset.
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// The type of the service to which the data asset belongs.
+        /// The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }

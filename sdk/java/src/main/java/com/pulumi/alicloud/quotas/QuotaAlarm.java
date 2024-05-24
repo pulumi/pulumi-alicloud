@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultQuotaAlarm = new QuotaAlarm("defaultQuotaAlarm", QuotaAlarmArgs.builder()        
+ *         var defaultQuotaAlarm = new QuotaAlarm("defaultQuotaAlarm", QuotaAlarmArgs.builder()
  *             .quotaActionCode("q_desktop-count")
  *             .quotaDimensions(QuotaAlarmQuotaDimensionArgs.builder()
  *                 .key("regionId")

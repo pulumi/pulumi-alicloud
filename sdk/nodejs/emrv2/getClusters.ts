@@ -35,7 +35,7 @@ export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetClustersArgs {
     /**
-     * The name of the emr cluster.
+     * The cluster name.
      */
     clusterName?: string;
     /**
@@ -71,7 +71,7 @@ export interface GetClustersArgs {
      */
     paymentTypes?: string[];
     /**
-     * The resource group id of the resource.
+     * The Resource Group ID.
      */
     resourceGroupId?: string;
     /**
@@ -117,7 +117,7 @@ export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.In
  */
 export interface GetClustersOutputArgs {
     /**
-     * The name of the emr cluster.
+     * The cluster name.
      */
     clusterName?: pulumi.Input<string>;
     /**
@@ -153,7 +153,7 @@ export interface GetClustersOutputArgs {
      */
     paymentTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The resource group id of the resource.
+     * The Resource Group ID.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**

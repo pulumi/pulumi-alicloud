@@ -136,6 +136,9 @@ export class CustomRoutingEndpoint extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+     * - `DenyAll`: denies all traffic to the endpoint.
+     * - `AllowAll`: allows all traffic to the endpoint.
+     * - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
      */
     public readonly trafficToEndpointPolicy!: pulumi.Output<string>;
     /**
@@ -219,6 +222,9 @@ export interface CustomRoutingEndpointState {
     status?: pulumi.Input<string>;
     /**
      * The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+     * - `DenyAll`: denies all traffic to the endpoint.
+     * - `AllowAll`: allows all traffic to the endpoint.
+     * - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
      */
     trafficToEndpointPolicy?: pulumi.Input<string>;
     /**
@@ -241,6 +247,9 @@ export interface CustomRoutingEndpointArgs {
     endpointGroupId: pulumi.Input<string>;
     /**
      * The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+     * - `DenyAll`: denies all traffic to the endpoint.
+     * - `AllowAll`: allows all traffic to the endpoint.
+     * - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
      */
     trafficToEndpointPolicy?: pulumi.Input<string>;
     /**

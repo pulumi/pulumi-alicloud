@@ -66,7 +66,9 @@ export interface GetDdosBgpIpsArgs {
      */
     productName?: string;
     /**
-     * The current state of the IP address.
+     * The current state of the IP address. Valid Value:
+     * - normal: indicates normal (not attacked).
+     * - hole_begin: indicates that you are in a black hole state.
      */
     status?: string;
 }
@@ -138,7 +140,9 @@ export interface GetDdosBgpIpsOutputArgs {
      */
     productName?: pulumi.Input<string>;
     /**
-     * The current state of the IP address.
+     * The current state of the IP address. Valid Value:
+     * - normal: indicates normal (not attacked).
+     * - hole_begin: indicates that you are in a black hole state.
      */
     status?: pulumi.Input<string>;
 }

@@ -83,19 +83,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -109,7 +109,7 @@ public final class PolardbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         var account = new Account("account", AccountArgs.builder()        
+     *         var account = new Account("account", AccountArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .accountName("tfnormal_01")
      *             .accountPassword("Test12345")
@@ -181,19 +181,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -207,7 +207,7 @@ public final class PolardbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         var account = new Account("account", AccountArgs.builder()        
+     *         var account = new Account("account", AccountArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .accountName("tfnormal_01")
      *             .accountPassword("Test12345")
@@ -279,19 +279,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -305,7 +305,7 @@ public final class PolardbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         var account = new Account("account", AccountArgs.builder()        
+     *         var account = new Account("account", AccountArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .accountName("tfnormal_01")
      *             .accountPassword("Test12345")
@@ -377,19 +377,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -403,7 +403,7 @@ public final class PolardbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         var account = new Account("account", AccountArgs.builder()        
+     *         var account = new Account("account", AccountArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .accountName("tfnormal_01")
      *             .accountPassword("Test12345")
@@ -472,19 +472,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(default_.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -554,19 +554,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(default_.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -636,19 +636,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(default_.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -718,19 +718,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(default_.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -800,19 +800,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(default_.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -882,19 +882,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(default_.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -967,19 +967,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -993,7 +993,7 @@ public final class PolardbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
+     *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .dbName(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> String.format("tfaccountpri_%s", polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()))))
      *             .dbDescription("from terraform")
@@ -1063,19 +1063,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -1089,7 +1089,7 @@ public final class PolardbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
+     *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .dbName(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> String.format("tfaccountpri_%s", polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()))))
      *             .dbDescription("from terraform")
@@ -1159,19 +1159,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -1185,7 +1185,7 @@ public final class PolardbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
+     *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .dbName(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> String.format("tfaccountpri_%s", polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()))))
      *             .dbDescription("from terraform")
@@ -1255,19 +1255,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -1281,7 +1281,7 @@ public final class PolardbFunctions {
      *             .status("Running")
      *             .build());
      * 
-     *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
+     *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .dbName(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> String.format("tfaccountpri_%s", polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()))))
      *             .dbDescription("from terraform")
@@ -1349,19 +1349,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -1436,19 +1436,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -1523,19 +1523,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -1610,19 +1610,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -1699,19 +1699,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(default_.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -1720,7 +1720,7 @@ public final class PolardbFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()        
+     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()
      *             .dbClusterId(cluster.id())
      *             .description(cluster.id())
      *             .build());
@@ -1793,19 +1793,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(default_.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -1814,7 +1814,7 @@ public final class PolardbFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()        
+     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()
      *             .dbClusterId(cluster.id())
      *             .description(cluster.id())
      *             .build());
@@ -1887,19 +1887,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(default_.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -1908,7 +1908,7 @@ public final class PolardbFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()        
+     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()
      *             .dbClusterId(cluster.id())
      *             .description(cluster.id())
      *             .build());
@@ -1981,19 +1981,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(default_.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -2002,7 +2002,7 @@ public final class PolardbFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()        
+     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()
      *             .dbClusterId(cluster.id())
      *             .description(cluster.id())
      *             .build());
@@ -2075,19 +2075,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(default_.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -2096,7 +2096,7 @@ public final class PolardbFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()        
+     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()
      *             .dbClusterId(cluster.id())
      *             .description(cluster.id())
      *             .build());
@@ -2169,19 +2169,19 @@ public final class PolardbFunctions {
      *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *         var default_ = new Network("default", NetworkArgs.builder()
      *             .vpcName("terraform-example")
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(default_.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()
      *             .dbType("MySQL")
      *             .dbVersion("8.0")
      *             .payType("PostPaid")
@@ -2190,7 +2190,7 @@ public final class PolardbFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()        
+     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()
      *             .dbClusterId(cluster.id())
      *             .description(cluster.id())
      *             .build());

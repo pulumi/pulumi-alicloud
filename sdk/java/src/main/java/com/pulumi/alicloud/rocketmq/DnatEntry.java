@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var sagId = config.get("sagId").orElse("sag-9bifkfaz***");
- *         var default_ = new DnatEntry("default", DnatEntryArgs.builder()        
+ *         var default_ = new DnatEntry("default", DnatEntryArgs.builder()
  *             .sagId(sagId)
  *             .type("Intranet")
  *             .ipProtocol("any")

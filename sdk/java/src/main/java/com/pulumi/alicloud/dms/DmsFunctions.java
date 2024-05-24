@@ -1144,7 +1144,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()        
+     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()
      *             .indepPassword("PASSWORD-DEMO")
      *             .proxyId(1881)
      *             .indepAccount("dmstest")
@@ -1199,7 +1199,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()        
+     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()
      *             .indepPassword("PASSWORD-DEMO")
      *             .proxyId(1881)
      *             .indepAccount("dmstest")
@@ -1254,7 +1254,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()        
+     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()
      *             .indepPassword("PASSWORD-DEMO")
      *             .proxyId(1881)
      *             .indepAccount("dmstest")
@@ -1309,7 +1309,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()        
+     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()
      *             .indepPassword("PASSWORD-DEMO")
      *             .proxyId(1881)
      *             .indepAccount("dmstest")

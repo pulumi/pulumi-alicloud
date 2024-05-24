@@ -31,14 +31,14 @@ public final class GetLogConfigsPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The type the of log.
+     * The type the of log. Valid values: `PROVIDER`.
      * 
      */
     @Import(name="logType")
     private @Nullable String logType;
 
     /**
-     * @return The type the of log.
+     * @return The type the of log. Valid values: `PROVIDER`.
      * 
      */
     public Optional<String> logType() {
@@ -108,7 +108,7 @@ public final class GetLogConfigsPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param logType The type the of log.
+         * @param logType The type the of log. Valid values: `PROVIDER`.
          * 
          * @return builder
          * 

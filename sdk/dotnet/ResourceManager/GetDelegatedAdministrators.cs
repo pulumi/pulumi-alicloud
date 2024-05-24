@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The identity of the trusted service.
+        /// The identification of the trusted service.
         /// </summary>
         [Input("servicePrincipal")]
         public string? ServicePrincipal { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The identity of the trusted service.
+        /// The identification of the trusted service.
         /// </summary>
         [Input("servicePrincipal")]
         public Input<string>? ServicePrincipal { get; set; }

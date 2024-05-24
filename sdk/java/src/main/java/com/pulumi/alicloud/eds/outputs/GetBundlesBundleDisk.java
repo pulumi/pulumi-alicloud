@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBundlesBundleDisk {
+    /**
+     * @return The disk size attribute of the bundle.
+     * 
+     */
     private String diskSize;
+    /**
+     * @return The disk type attribute of the bundle.
+     * 
+     */
     private String diskType;
 
     private GetBundlesBundleDisk() {}
+    /**
+     * @return The disk size attribute of the bundle.
+     * 
+     */
     public String diskSize() {
         return this.diskSize;
     }
+    /**
+     * @return The disk type attribute of the bundle.
+     * 
+     */
     public String diskType() {
         return this.diskType;
     }

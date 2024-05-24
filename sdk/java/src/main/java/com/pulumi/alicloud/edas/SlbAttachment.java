@@ -90,23 +90,23 @@ import javax.annotation.Nullable;
  *             .memorySize(2)
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .instanceName(name)
  *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *             .systemDiskCategory("cloud_efficiency")
  *             .build());
  * 
- *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterName(name)
  *             .clusterType("2")
  *             .networkMode("2")
@@ -127,25 +127,25 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstanceClusterAttachment = new InstanceClusterAttachment("defaultInstanceClusterAttachment", InstanceClusterAttachmentArgs.builder()        
+ *         var defaultInstanceClusterAttachment = new InstanceClusterAttachment("defaultInstanceClusterAttachment", InstanceClusterAttachmentArgs.builder()
  *             .clusterId(defaultCluster.id())
  *             .instanceIds(defaultInstance.id())
  *             .build());
  * 
- *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+ *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
  *             .applicationName(name)
  *             .clusterId(defaultCluster.id())
  *             .packageType("JAR")
  *             .build());
  * 
- *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+ *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
  *             .loadBalancerName(name)
  *             .vswitchId(defaultSwitch.id())
  *             .loadBalancerSpec("slb.s2.small")
  *             .addressType("intranet")
  *             .build());
  * 
- *         var defaultSlbAttachment = new SlbAttachment("defaultSlbAttachment", SlbAttachmentArgs.builder()        
+ *         var defaultSlbAttachment = new SlbAttachment("defaultSlbAttachment", SlbAttachmentArgs.builder()
  *             .appId(defaultApplication.id())
  *             .slbId(defaultApplicationLoadBalancer.id())
  *             .slbIp(defaultApplicationLoadBalancer.address())

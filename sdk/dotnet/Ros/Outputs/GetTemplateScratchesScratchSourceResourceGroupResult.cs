@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Ros.Outputs
     [OutputType]
     public sealed class GetTemplateScratchesScratchSourceResourceGroupResult
     {
+        /// <summary>
+        /// The ID of the Source Resource Group.
+        /// </summary>
         public readonly string ResourceGroupId;
+        /// <summary>
+        /// Source resource type filter list.
+        /// </summary>
         public readonly ImmutableArray<string> ResourceTypeFilters;
 
         [OutputConstructor]

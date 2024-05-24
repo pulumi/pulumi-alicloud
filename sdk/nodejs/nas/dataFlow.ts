@@ -69,6 +69,8 @@ export class DataFlow extends pulumi.CustomResource {
     public readonly fsetId!: pulumi.Output<string>;
     /**
      * The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+     * - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+     * - `SSL`: Protects access through SSL certificates.
      */
     public readonly sourceSecurityType!: pulumi.Output<string>;
     /**
@@ -164,6 +166,8 @@ export interface DataFlowState {
     fsetId?: pulumi.Input<string>;
     /**
      * The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+     * - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+     * - `SSL`: Protects access through SSL certificates.
      */
     sourceSecurityType?: pulumi.Input<string>;
     /**
@@ -205,6 +209,8 @@ export interface DataFlowArgs {
     fsetId: pulumi.Input<string>;
     /**
      * The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+     * - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+     * - `SSL`: Protects access through SSL certificates.
      */
     sourceSecurityType?: pulumi.Input<string>;
     /**

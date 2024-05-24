@@ -58,7 +58,7 @@ export function getBgpPeers(args?: GetBgpPeersArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetBgpPeersArgs {
     /**
-     * The ID of the BGP group.
+     * The ID of the BGP group to which the BGP peer that you want to query belongs.
      */
     bgpGroupId?: string;
     /**
@@ -70,11 +70,11 @@ export interface GetBgpPeersArgs {
      */
     outputFile?: string;
     /**
-     * The ID of the router.
+     * The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
      */
     routerId?: string;
     /**
-     * The status of the BGP peer.
+     * The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
      */
     status?: string;
 }
@@ -137,7 +137,7 @@ export function getBgpPeersOutput(args?: GetBgpPeersOutputArgs, opts?: pulumi.In
  */
 export interface GetBgpPeersOutputArgs {
     /**
-     * The ID of the BGP group.
+     * The ID of the BGP group to which the BGP peer that you want to query belongs.
      */
     bgpGroupId?: pulumi.Input<string>;
     /**
@@ -149,11 +149,11 @@ export interface GetBgpPeersOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of the router.
+     * The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
      */
     routerId?: pulumi.Input<string>;
     /**
-     * The status of the BGP peer.
+     * The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
      */
     status?: pulumi.Input<string>;
 }

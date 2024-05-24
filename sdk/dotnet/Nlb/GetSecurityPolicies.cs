@@ -128,17 +128,13 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Available`, `Configuring`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         [Input("tags")]
         private Dictionary<string, object>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         public Dictionary<string, object> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, object>());
@@ -196,17 +192,13 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Available`, `Configuring`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());

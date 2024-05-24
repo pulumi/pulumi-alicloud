@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .name("terraform_example")
  *             .displayName("terraform_example")
  *             .mobile("86-18688888888")
@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var profile = new LoginProfile("profile", LoginProfileArgs.builder()        
+ *         var profile = new LoginProfile("profile", LoginProfileArgs.builder()
  *             .userName(user.name())
  *             .password("Example_1234")
  *             .build());

@@ -290,6 +290,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The security enhancement strategy.
+        /// - `Active`: Enable security enhancement strategy, it only works on system images.
+        /// - `Deactive`: Disable security enhancement strategy, it works on all images.
         /// </summary>
         [Output("securityEnhancementStrategy")]
         public Output<string?> SecurityEnhancementStrategy { get; private set; } = null!;
@@ -308,6 +310,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        /// - `NoSpot`: A regular Pay-As-You-Go instance.
+        /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
+        /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         /// </summary>
         [Output("spotStrategy")]
         public Output<string> SpotStrategy { get; private set; } = null!;
@@ -630,6 +635,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The security enhancement strategy.
+        /// - `Active`: Enable security enhancement strategy, it only works on system images.
+        /// - `Deactive`: Disable security enhancement strategy, it works on all images.
         /// </summary>
         [Input("securityEnhancementStrategy")]
         public Input<string>? SecurityEnhancementStrategy { get; set; }
@@ -654,6 +661,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        /// - `NoSpot`: A regular Pay-As-You-Go instance.
+        /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
+        /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
@@ -952,6 +962,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The security enhancement strategy.
+        /// - `Active`: Enable security enhancement strategy, it only works on system images.
+        /// - `Deactive`: Disable security enhancement strategy, it works on all images.
         /// </summary>
         [Input("securityEnhancementStrategy")]
         public Input<string>? SecurityEnhancementStrategy { get; set; }
@@ -976,6 +988,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        /// - `NoSpot`: A regular Pay-As-You-Go instance.
+        /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
+        /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }

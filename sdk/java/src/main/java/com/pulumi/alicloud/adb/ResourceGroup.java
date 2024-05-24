@@ -66,19 +66,19 @@ import javax.annotation.Nullable;
  *             .status("OK")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("10.4.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultDBCluster = new DBCluster("defaultDBCluster", DBClusterArgs.builder()        
+ *         var defaultDBCluster = new DBCluster("defaultDBCluster", DBClusterArgs.builder()
  *             .computeResource("48Core192GBNEW")
  *             .dbClusterCategory("MixedStorage")
  *             .dbClusterVersion("3.0")
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var defaultResourceGroup = new ResourceGroup("defaultResourceGroup", ResourceGroupArgs.builder()        
+ *         var defaultResourceGroup = new ResourceGroup("defaultResourceGroup", ResourceGroupArgs.builder()
  *             .groupName("TF_EXAMPLE")
  *             .groupType("batch")
  *             .nodeNum(1)

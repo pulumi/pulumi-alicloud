@@ -13,9 +13,23 @@ namespace Pulumi.AliCloud.Log.Outputs
     [OutputType]
     public sealed class StoreIndexFieldSearchJsonKey
     {
+        /// <summary>
+        /// The alias of one field.
+        /// </summary>
         public readonly string? Alias;
+        /// <summary>
+        /// Whether to enable statistics. default to true.
+        /// 
+        /// &gt; **Note:** At least one of the "full_text" and "field_search" should be specified.
+        /// </summary>
         public readonly bool? DocValue;
+        /// <summary>
+        /// When using the json_keys field, this field is required.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

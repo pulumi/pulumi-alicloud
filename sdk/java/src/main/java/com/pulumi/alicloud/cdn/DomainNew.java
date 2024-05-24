@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()        
+ *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
  *             .scope("overseas")
  *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
  *             .cdnType("web")

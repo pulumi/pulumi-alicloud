@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Adb
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -115,6 +115,8 @@ type TransitRouterPeerAttachment struct {
 	// The bandwidth of the bandwidth package.
 	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
 	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+	// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+	// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
 	BandwidthType pulumi.StringOutput `pulumi:"bandwidthType"`
 	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
 	CenBandwidthPackageId pulumi.StringPtrOutput `pulumi:"cenBandwidthPackageId"`
@@ -192,6 +194,8 @@ type transitRouterPeerAttachmentState struct {
 	// The bandwidth of the bandwidth package.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+	// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+	// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
 	BandwidthType *string `pulumi:"bandwidthType"`
 	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
 	CenBandwidthPackageId *string `pulumi:"cenBandwidthPackageId"`
@@ -231,6 +235,8 @@ type TransitRouterPeerAttachmentState struct {
 	// The bandwidth of the bandwidth package.
 	Bandwidth pulumi.IntPtrInput
 	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+	// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+	// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
 	BandwidthType pulumi.StringPtrInput
 	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
 	CenBandwidthPackageId pulumi.StringPtrInput
@@ -274,6 +280,8 @@ type transitRouterPeerAttachmentArgs struct {
 	// The bandwidth of the bandwidth package.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+	// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+	// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
 	BandwidthType *string `pulumi:"bandwidthType"`
 	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
 	CenBandwidthPackageId *string `pulumi:"cenBandwidthPackageId"`
@@ -308,6 +316,8 @@ type TransitRouterPeerAttachmentArgs struct {
 	// The bandwidth of the bandwidth package.
 	Bandwidth pulumi.IntPtrInput
 	// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+	// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+	// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
 	BandwidthType pulumi.StringPtrInput
 	// The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
 	CenBandwidthPackageId pulumi.StringPtrInput
@@ -433,6 +443,8 @@ func (o TransitRouterPeerAttachmentOutput) Bandwidth() pulumi.IntPtrOutput {
 }
 
 // The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
 func (o TransitRouterPeerAttachmentOutput) BandwidthType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.BandwidthType }).(pulumi.StringOutput)
 }

@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Scdn
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: "check_failed", "checking", "configure_failed", "configuring", "offline", "online".
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Scdn
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: "check_failed", "checking", "configure_failed", "configuring", "offline", "online".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

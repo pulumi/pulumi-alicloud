@@ -77,14 +77,22 @@ public final class GetHanaInstancesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The status of the SAP HANA instance.
+     * The status of the SAP HANA instance. Valid values:
+     * - `INITIALIZING`: The instance is being initialized.
+     * - `INITIALIZED`: The instance is registered.
+     * - `INVALID_HANA_NODE`: The instance is invalid.
+     * - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the SAP HANA instance.
+     * @return The status of the SAP HANA instance. Valid values:
+     * - `INITIALIZING`: The instance is being initialized.
+     * - `INITIALIZED`: The instance is registered.
+     * - `INVALID_HANA_NODE`: The instance is invalid.
+     * - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
      * 
      */
     public Optional<Output<String>> status() {
@@ -92,14 +100,14 @@ public final class GetHanaInstancesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The ID of the backup vault.
+     * The id of the vault.
      * 
      */
     @Import(name="vaultId")
     private @Nullable Output<String> vaultId;
 
     /**
-     * @return The ID of the backup vault.
+     * @return The id of the vault.
      * 
      */
     public Optional<Output<String>> vaultId() {
@@ -228,7 +236,11 @@ public final class GetHanaInstancesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The status of the SAP HANA instance.
+         * @param status The status of the SAP HANA instance. Valid values:
+         * - `INITIALIZING`: The instance is being initialized.
+         * - `INITIALIZED`: The instance is registered.
+         * - `INVALID_HANA_NODE`: The instance is invalid.
+         * - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
          * 
          * @return builder
          * 
@@ -239,7 +251,11 @@ public final class GetHanaInstancesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The status of the SAP HANA instance.
+         * @param status The status of the SAP HANA instance. Valid values:
+         * - `INITIALIZING`: The instance is being initialized.
+         * - `INITIALIZED`: The instance is registered.
+         * - `INVALID_HANA_NODE`: The instance is invalid.
+         * - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
          * 
          * @return builder
          * 
@@ -249,7 +265,7 @@ public final class GetHanaInstancesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param vaultId The ID of the backup vault.
+         * @param vaultId The id of the vault.
          * 
          * @return builder
          * 
@@ -260,7 +276,7 @@ public final class GetHanaInstancesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param vaultId The ID of the backup vault.
+         * @param vaultId The id of the vault.
          * 
          * @return builder
          * 

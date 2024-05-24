@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new Folder("example", FolderArgs.builder()        
+ *         var example = new Folder("example", FolderArgs.builder()
  *             .folderName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 

@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var defaultJkW46o = new EcsDisk("defaultJkW46o", EcsDiskArgs.builder()        
+ *         var defaultJkW46o = new EcsDisk("defaultJkW46o", EcsDiskArgs.builder()
  *             .category("cloud_essd")
  *             .description("esp-attachment-test")
  *             .zoneId("cn-hangzhou-i")
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .diskName(name)
  *             .build());
  * 
- *         var defaultPE3jjR = new EnterpriseSnapshotPolicy("defaultPE3jjR", EnterpriseSnapshotPolicyArgs.builder()        
+ *         var defaultPE3jjR = new EnterpriseSnapshotPolicy("defaultPE3jjR", EnterpriseSnapshotPolicyArgs.builder()
  *             .status("DISABLED")
  *             .desc("DESC")
  *             .schedule(EnterpriseSnapshotPolicyScheduleArgs.builder()

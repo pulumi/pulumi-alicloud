@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of Storage Capacity Unit.
+        /// The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of Storage Capacity Unit.
+        /// The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

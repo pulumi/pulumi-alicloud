@@ -68,7 +68,7 @@ type GetControlPoliciesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The type of policy.
+	// The policy type of control policy. Valid values `System` and `Custom`.
 	PolicyType *string `pulumi:"policyType"`
 }
 
@@ -111,7 +111,7 @@ type GetControlPoliciesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The type of policy.
+	// The policy type of control policy. Valid values `System` and `Custom`.
 	PolicyType pulumi.StringPtrInput `pulumi:"policyType"`
 }
 

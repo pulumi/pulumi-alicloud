@@ -95,24 +95,24 @@ import javax.annotation.Nullable;
  *             .instanceChargeType("PostPaid")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .engine("MySQL")
  *             .engineVersion("8.0")
  *             .dbInstanceStorageType("cloud_essd")
@@ -129,14 +129,14 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
+ *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()
  *             .dbInstanceId(defaultInstance.id())
  *             .accountName("tfexamplename")
  *             .accountPassword("Example12345")
  *             .accountType("Normal")
  *             .build());
  * 
- *         var defaultEnterpriseInstance = new EnterpriseInstance("defaultEnterpriseInstance", EnterpriseInstanceArgs.builder()        
+ *         var defaultEnterpriseInstance = new EnterpriseInstance("defaultEnterpriseInstance", EnterpriseInstanceArgs.builder()
  *             .tid(defaultGetUserTenants.applyValue(getUserTenantsResult -> getUserTenantsResult.ids()[0]))
  *             .instanceType("mysql")
  *             .instanceSource("RDS")

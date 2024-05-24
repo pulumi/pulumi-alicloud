@@ -77,11 +77,11 @@ import javax.annotation.Nullable;
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .description(name)
  *             .licenseCode("bhah_ent_50_asset")
  *             .planCode("cloudbastion")
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             .securityGroupIds(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var localUser = new User("localUser", UserArgs.builder()        
+ *         var localUser = new User("localUser", UserArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .mobileCountryCode("CN")
  *             .mobile("13312345678")
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *             .userName(String.format("%s_local_user", name))
  *             .build());
  * 
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .name(String.format("%s_bastionhost_user", name))
  *             .displayName(String.format("%s_bastionhost_user", name))
  *             .mobile("86-18688888888")
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetAccount = AlicloudFunctions.getAccount();
  * 
- *         var ramUser = new User("ramUser", UserArgs.builder()        
+ *         var ramUser = new User("ramUser", UserArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .source("Ram")
  *             .sourceUserId(defaultGetAccount.applyValue(getAccountResult -> getAccountResult.id()))

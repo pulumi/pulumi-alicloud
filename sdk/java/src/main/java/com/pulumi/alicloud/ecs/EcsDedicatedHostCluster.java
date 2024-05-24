@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var example = AlicloudFunctions.getZones();
  * 
- *         var exampleEcsDedicatedHostCluster = new EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster", EcsDedicatedHostClusterArgs.builder()        
+ *         var exampleEcsDedicatedHostCluster = new EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster", EcsDedicatedHostClusterArgs.builder()
  *             .dedicatedHostClusterName("example_value")
  *             .description("example_value")
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))

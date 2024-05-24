@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .status("Running")
  *             .build());
  * 
- *         var defaultStudioApplication = new StudioApplication("defaultStudioApplication", StudioApplicationArgs.builder()        
+ *         var defaultStudioApplication = new StudioApplication("defaultStudioApplication", StudioApplicationArgs.builder()
  *             .applicationName(name)
  *             .templateId("YAUUQIYRSV1CMFGX")
  *             .resourceGroupId(default_.groups()[0].id())

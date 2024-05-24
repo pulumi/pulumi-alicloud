@@ -74,11 +74,11 @@ type GetAnycastEipAddressesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+	// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
-	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+	// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
 	ServiceLocation *string `pulumi:"serviceLocation"`
-	// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+	// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
 	Status *string `pulumi:"status"`
 }
 
@@ -132,11 +132,11 @@ type GetAnycastEipAddressesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+	// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
-	// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+	// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
 	ServiceLocation pulumi.StringPtrInput `pulumi:"serviceLocation"`
-	// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+	// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

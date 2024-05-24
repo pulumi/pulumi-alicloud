@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class GetContainerGroupsGroupContainerResult
     {
         /// <summary>
-        /// The arguments passed to the commands.
+        /// The arguments passed to the commands. Maximum: `10`.
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
-        /// The commands run by the container.
+        /// The commands run by the container. You can define a maximum of 20 commands. Minimum length per string: 256 characters.
         /// </summary>
         public readonly ImmutableArray<string> Commands;
         /// <summary>
@@ -42,15 +42,15 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string ImagePullPolicy;
         /// <summary>
-        /// The amount of memory resources allocated to the container group.
+        /// The amount of memory resources allocated to the container.
         /// </summary>
         public readonly double Memory;
         /// <summary>
-        /// The name of the volume.
+        /// The name of the container.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The exposed ports and protocols. Maximum: `100`.
+        /// The list of exposed ports and protocols. Maximum: 100.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetContainerGroupsGroupContainerPortResult> Ports;
         /// <summary>

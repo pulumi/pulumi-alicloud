@@ -62,12 +62,12 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
+ *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
  *             .resourceGroupId(default_.ids()[0])
  *             .serverGroupName(name)
  *             .serverGroupType("Instance")
@@ -246,6 +246,11 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The routing algorithm. Valid values:
+     * - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+     * - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+     * - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+     * - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+     * - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
      * 
      */
     @Export(name="scheduler", refs={String.class}, tree="[0]")
@@ -253,6 +258,11 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The routing algorithm. Valid values:
+     * - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+     * - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+     * - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+     * - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+     * - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
      * 
      */
     public Output<String> scheduler() {
@@ -274,6 +284,8 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the server group. Valid values:
+     * - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+     * - `Ip`: allows you to specify IP addresses.
      * 
      */
     @Export(name="serverGroupType", refs={String.class}, tree="[0]")
@@ -281,6 +293,8 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the server group. Valid values:
+     * - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+     * - `Ip`: allows you to specify IP addresses.
      * 
      */
     public Output<String> serverGroupType() {

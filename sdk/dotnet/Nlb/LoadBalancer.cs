@@ -198,6 +198,8 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+        /// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+        /// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
         /// </summary>
         [Output("modificationProtectionStatus")]
         public Output<string> ModificationProtectionStatus { get; private set; } = null!;
@@ -366,6 +368,8 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+        /// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+        /// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
         /// </summary>
         [Input("modificationProtectionStatus")]
         public Input<string>? ModificationProtectionStatus { get; set; }
@@ -526,6 +530,8 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+        /// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+        /// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
         /// </summary>
         [Input("modificationProtectionStatus")]
         public Input<string>? ModificationProtectionStatus { get; set; }

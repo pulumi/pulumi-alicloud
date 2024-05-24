@@ -111,7 +111,7 @@ def get_chart_namespaces(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of matched Container Registry Enterprise Edition namespaces.
-    :param str instance_id: The ID of the namespace.
+    :param str instance_id: The ID of the Container Registry instance.
     :param str name_regex: A regex string to filter results by name space name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -146,7 +146,7 @@ def get_chart_namespaces_output(ids: Optional[pulumi.Input[Optional[Sequence[str
 
 
     :param Sequence[str] ids: A list of matched Container Registry Enterprise Edition namespaces.
-    :param str instance_id: The ID of the namespace.
+    :param str instance_id: The ID of the Container Registry instance.
     :param str name_regex: A regex string to filter results by name space name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """

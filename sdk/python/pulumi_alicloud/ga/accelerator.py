@@ -34,6 +34,8 @@ class AcceleratorArgs:
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+               - `BandwidthPackage`: billed based on bandwidth plans.
+               - `CDT`: billed based on data transfer.
         :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
@@ -42,8 +44,13 @@ class AcceleratorArgs:
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
+               - `Month`: billed on a monthly basis.
+               - `Year`: billed on an annual basis.
         :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -117,6 +124,8 @@ class AcceleratorArgs:
     def bandwidth_billing_type(self) -> Optional[pulumi.Input[str]]:
         """
         The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        - `BandwidthPackage`: billed based on bandwidth plans.
+        - `CDT`: billed based on data transfer.
         """
         return pulumi.get(self, "bandwidth_billing_type")
 
@@ -191,6 +200,8 @@ class AcceleratorArgs:
     def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
         """
         The billing cycle of the GA instance. Default value: `Month`. Valid values:
+        - `Month`: billed on a monthly basis.
+        - `Year`: billed on an annual basis.
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -215,6 +226,9 @@ class AcceleratorArgs:
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
         Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -271,6 +285,8 @@ class _AcceleratorState:
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+               - `BandwidthPackage`: billed based on bandwidth plans.
+               - `CDT`: billed based on data transfer.
         :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
@@ -279,8 +295,13 @@ class _AcceleratorState:
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
+               - `Month`: billed on a monthly basis.
+               - `Year`: billed on an annual basis.
         :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[str] status: The status of the GA instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -357,6 +378,8 @@ class _AcceleratorState:
     def bandwidth_billing_type(self) -> Optional[pulumi.Input[str]]:
         """
         The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        - `BandwidthPackage`: billed based on bandwidth plans.
+        - `CDT`: billed based on data transfer.
         """
         return pulumi.get(self, "bandwidth_billing_type")
 
@@ -431,6 +454,8 @@ class _AcceleratorState:
     def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
         """
         The billing cycle of the GA instance. Default value: `Month`. Valid values:
+        - `Month`: billed on a monthly basis.
+        - `Year`: billed on an annual basis.
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -455,6 +480,9 @@ class _AcceleratorState:
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
         Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -554,6 +582,8 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+               - `BandwidthPackage`: billed based on bandwidth plans.
+               - `CDT`: billed based on data transfer.
         :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
@@ -562,8 +592,13 @@ class Accelerator(pulumi.CustomResource):
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
+               - `Month`: billed on a monthly basis.
+               - `Year`: billed on an annual basis.
         :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -691,6 +726,8 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+               - `BandwidthPackage`: billed based on bandwidth plans.
+               - `CDT`: billed based on data transfer.
         :param pulumi.Input[str] cross_border_mode: The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `cross_border_mode` is valid only when `cross_border_status` is set to `true`.
         :param pulumi.Input[bool] cross_border_status: Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
@@ -699,8 +736,13 @@ class Accelerator(pulumi.CustomResource):
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
         :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Default value: `Month`. Valid values:
+               - `Month`: billed on a monthly basis.
+               - `Year`: billed on an annual basis.
         :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[str] status: The status of the GA instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -755,6 +797,8 @@ class Accelerator(pulumi.CustomResource):
     def bandwidth_billing_type(self) -> pulumi.Output[str]:
         """
         The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        - `BandwidthPackage`: billed based on bandwidth plans.
+        - `CDT`: billed based on data transfer.
         """
         return pulumi.get(self, "bandwidth_billing_type")
 
@@ -805,6 +849,8 @@ class Accelerator(pulumi.CustomResource):
     def pricing_cycle(self) -> pulumi.Output[Optional[str]]:
         """
         The billing cycle of the GA instance. Default value: `Month`. Valid values:
+        - `Month`: billed on a monthly basis.
+        - `Year`: billed on an annual basis.
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -821,6 +867,9 @@ class Accelerator(pulumi.CustomResource):
     def renewal_status(self) -> pulumi.Output[str]:
         """
         Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 

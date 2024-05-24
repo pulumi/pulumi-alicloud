@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var order = new Order("order", OrderArgs.builder()        
+ *         var order = new Order("order", OrderArgs.builder()
  *             .productCode("cmapi033136")
  *             .payType("prepay")
  *             .quantity(1)

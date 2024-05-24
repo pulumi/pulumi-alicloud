@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The name of the image component.
+        /// The name of the component.
         /// </summary>
         [Input("imageComponentName")]
         public string? ImageComponentName { get; set; }
@@ -128,7 +128,9 @@ namespace Pulumi.AliCloud.Ecs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The type of the image component.
+        /// Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+        /// - SELF: The custom image component you created.
+        /// - ALIYUN: System components provided by Alibaba Cloud.
         /// </summary>
         [Input("owner")]
         public string? Owner { get; set; }
@@ -143,7 +145,7 @@ namespace Pulumi.AliCloud.Ecs
         private Dictionary<string, object>? _tags;
 
         /// <summary>
-        /// List of label key-value pairs.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -172,7 +174,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The name of the image component.
+        /// The name of the component.
         /// </summary>
         [Input("imageComponentName")]
         public Input<string>? ImageComponentName { get; set; }
@@ -190,7 +192,9 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The type of the image component.
+        /// Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+        /// - SELF: The custom image component you created.
+        /// - ALIYUN: System components provided by Alibaba Cloud.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -205,7 +209,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// List of label key-value pairs.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<object> Tags
         {

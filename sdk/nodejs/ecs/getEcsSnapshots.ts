@@ -55,7 +55,7 @@ export function getEcsSnapshots(args?: GetEcsSnapshotsArgs, opts?: pulumi.Invoke
  */
 export interface GetEcsSnapshotsArgs {
     /**
-     * The category of the snapshot.
+     * The category of the snapshot. Valid Values: `flash` and `standard`.
      */
     category?: string;
     /**
@@ -63,7 +63,7 @@ export interface GetEcsSnapshotsArgs {
      */
     dryRun?: boolean;
     /**
-     * Whether the snapshot is encrypted.
+     * Specifies whether the snapshot is encrypted.
      */
     encrypted?: boolean;
     /**
@@ -91,28 +91,28 @@ export interface GetEcsSnapshotsArgs {
      */
     snapshotLinkId?: string;
     /**
-     * Snapshot Display Name.
+     * The name of the snapshot.
      */
     snapshotName?: string;
     /**
-     * Snapshot creation type.
+     * The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
      */
     snapshotType?: string;
     /**
-     * Source disk attributes.
+     * The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
      */
     sourceDiskType?: string;
     /**
-     * The status of the snapshot.
+     * The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
      */
     status?: string;
     /**
-     * The tags.
+     * A mapping of tags to assign to the snapshot.
      */
     tags?: {[key: string]: any};
     type?: string;
     /**
-     * A resource type that has a reference relationship.
+     * A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
      */
     usage?: string;
 }
@@ -173,7 +173,7 @@ export function getEcsSnapshotsOutput(args?: GetEcsSnapshotsOutputArgs, opts?: p
  */
 export interface GetEcsSnapshotsOutputArgs {
     /**
-     * The category of the snapshot.
+     * The category of the snapshot. Valid Values: `flash` and `standard`.
      */
     category?: pulumi.Input<string>;
     /**
@@ -181,7 +181,7 @@ export interface GetEcsSnapshotsOutputArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * Whether the snapshot is encrypted.
+     * Specifies whether the snapshot is encrypted.
      */
     encrypted?: pulumi.Input<boolean>;
     /**
@@ -209,28 +209,28 @@ export interface GetEcsSnapshotsOutputArgs {
      */
     snapshotLinkId?: pulumi.Input<string>;
     /**
-     * Snapshot Display Name.
+     * The name of the snapshot.
      */
     snapshotName?: pulumi.Input<string>;
     /**
-     * Snapshot creation type.
+     * The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
      */
     snapshotType?: pulumi.Input<string>;
     /**
-     * Source disk attributes.
+     * The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
      */
     sourceDiskType?: pulumi.Input<string>;
     /**
-     * The status of the snapshot.
+     * The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The tags.
+     * A mapping of tags to assign to the snapshot.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     type?: pulumi.Input<string>;
     /**
-     * A resource type that has a reference relationship.
+     * A resource type that has a reference relationship. Valid Values: `image`, `disk`, `imageDisk` and `none`.
      */
     usage?: pulumi.Input<string>;
 }

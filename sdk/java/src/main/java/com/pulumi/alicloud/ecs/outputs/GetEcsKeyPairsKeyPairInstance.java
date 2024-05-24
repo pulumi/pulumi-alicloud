@@ -16,10 +16,6 @@ public final class GetEcsKeyPairsKeyPairInstance {
     private String instanceId;
     private String instanceName;
     private String instanceType;
-    /**
-     * @return The Key Pair Name.
-     * 
-     */
     private String keyName;
     private String privateIp;
     private String publicIp;
@@ -46,10 +42,6 @@ public final class GetEcsKeyPairsKeyPairInstance {
     public String instanceType() {
         return this.instanceType;
     }
-    /**
-     * @return The Key Pair Name.
-     * 
-     */
     public String keyName() {
         return this.keyName;
     }

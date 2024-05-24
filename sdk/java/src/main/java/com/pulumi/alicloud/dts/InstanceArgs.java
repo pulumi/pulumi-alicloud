@@ -379,6 +379,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The synchronization direction. Default value: `Forward`. Valid values:
+     * - `Forward`: Data is synchronized from the source database to the destination database.
+     * - `Reverse`: Data is synchronized from the destination database to the source database.
+     * - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
      * 
      */
     @Import(name="synchronizationDirection")
@@ -386,6 +389,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The synchronization direction. Default value: `Forward`. Valid values:
+     * - `Forward`: Data is synchronized from the source database to the destination database.
+     * - `Reverse`: Data is synchronized from the destination database to the source database.
+     * - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
      * 
      */
     public Optional<Output<String>> synchronizationDirection() {
@@ -954,6 +960,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param synchronizationDirection The synchronization direction. Default value: `Forward`. Valid values:
+         * - `Forward`: Data is synchronized from the source database to the destination database.
+         * - `Reverse`: Data is synchronized from the destination database to the source database.
+         * - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
          * 
          * @return builder
          * 
@@ -965,6 +974,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param synchronizationDirection The synchronization direction. Default value: `Forward`. Valid values:
+         * - `Forward`: Data is synchronized from the source database to the destination database.
+         * - `Reverse`: Data is synchronized from the destination database to the source database.
+         * - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
          * 
          * @return builder
          * 

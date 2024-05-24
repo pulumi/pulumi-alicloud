@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
     [OutputType]
     public sealed class GetServerlessInstancesInstanceSecurityIpGroupResult
     {
+        /// <summary>
+        /// The attribute of the IP whitelist. This parameter is empty by default.
+        /// </summary>
         public readonly string SecurityIpGroupAttribute;
+        /// <summary>
+        /// The name of the IP whitelist.
+        /// </summary>
         public readonly string SecurityIpGroupName;
+        /// <summary>
+        /// The IP addresses in the whitelist.
+        /// </summary>
         public readonly string SecurityIpList;
 
         [OutputConstructor]

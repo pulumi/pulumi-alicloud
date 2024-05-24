@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Acl("default", AclArgs.builder()        
+ *         var default_ = new Acl("default", AclArgs.builder()
  *             .name("terraform-example")
  *             .build());
  * 

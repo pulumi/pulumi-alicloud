@@ -147,10 +147,6 @@ namespace Pulumi.AliCloud.Gpdb
 
         [Input("tags")]
         private Dictionary<string, object>? _tags;
-
-        /// <summary>
-        /// The tags of the instance.
-        /// </summary>
         public Dictionary<string, object> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, object>());
@@ -158,7 +154,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The vswitch id.
+        /// Used to retrieve instances belong to specified `vswitch` resources.
         /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
@@ -245,10 +241,6 @@ namespace Pulumi.AliCloud.Gpdb
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// The tags of the instance.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -256,7 +248,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The vswitch id.
+        /// Used to retrieve instances belong to specified `vswitch` resources.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

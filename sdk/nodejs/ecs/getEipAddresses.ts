@@ -57,7 +57,7 @@ export function getEipAddresses(args?: GetEipAddressesArgs, opts?: pulumi.Invoke
  */
 export interface GetEipAddressesArgs {
     /**
-     * The name of the EIP.
+     * The eip name.
      */
     addressName?: string;
     /**
@@ -85,7 +85,7 @@ export interface GetEipAddressesArgs {
      */
     includeReservationData?: boolean;
     /**
-     * The IP address of the EIP.
+     * The eip address.
      */
     ipAddress?: string;
     /**
@@ -93,7 +93,7 @@ export interface GetEipAddressesArgs {
      */
     ipAddresses?: string[];
     /**
-     * The Internet service provider (ISP).
+     * The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
      */
     isp?: string;
     /**
@@ -109,7 +109,7 @@ export interface GetEipAddressesArgs {
      */
     outputFile?: string;
     /**
-     * The billing method of the EIP.
+     * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
      */
     paymentType?: string;
     /**
@@ -117,11 +117,11 @@ export interface GetEipAddressesArgs {
      */
     resourceGroupId?: string;
     /**
-     * The IDs of the contiguous EIPs.
+     * The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
      */
     segmentInstanceId?: string;
     /**
-     * The status of the EIP.
+     * The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      */
     status?: string;
     /**
@@ -195,7 +195,7 @@ export function getEipAddressesOutput(args?: GetEipAddressesOutputArgs, opts?: p
  */
 export interface GetEipAddressesOutputArgs {
     /**
-     * The name of the EIP.
+     * The eip name.
      */
     addressName?: pulumi.Input<string>;
     /**
@@ -223,7 +223,7 @@ export interface GetEipAddressesOutputArgs {
      */
     includeReservationData?: pulumi.Input<boolean>;
     /**
-     * The IP address of the EIP.
+     * The eip address.
      */
     ipAddress?: pulumi.Input<string>;
     /**
@@ -231,7 +231,7 @@ export interface GetEipAddressesOutputArgs {
      */
     ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Internet service provider (ISP).
+     * The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
      */
     isp?: pulumi.Input<string>;
     /**
@@ -247,7 +247,7 @@ export interface GetEipAddressesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The billing method of the EIP.
+     * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -255,11 +255,11 @@ export interface GetEipAddressesOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The IDs of the contiguous EIPs.
+     * The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
      */
     segmentInstanceId?: pulumi.Input<string>;
     /**
-     * The status of the EIP.
+     * The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      */
     status?: pulumi.Input<string>;
     /**

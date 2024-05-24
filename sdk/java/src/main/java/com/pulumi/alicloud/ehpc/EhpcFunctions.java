@@ -363,7 +363,7 @@ public final class EhpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()
      *             .jobTemplateName("example_value")
      *             .commandLine("./LammpsTest/lammps.pbs")
      *             .build());
@@ -417,7 +417,7 @@ public final class EhpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()
      *             .jobTemplateName("example_value")
      *             .commandLine("./LammpsTest/lammps.pbs")
      *             .build());
@@ -471,7 +471,7 @@ public final class EhpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()
      *             .jobTemplateName("example_value")
      *             .commandLine("./LammpsTest/lammps.pbs")
      *             .build());
@@ -525,7 +525,7 @@ public final class EhpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()
      *             .jobTemplateName("example_value")
      *             .commandLine("./LammpsTest/lammps.pbs")
      *             .build());
@@ -579,7 +579,7 @@ public final class EhpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()
      *             .jobTemplateName("example_value")
      *             .commandLine("./LammpsTest/lammps.pbs")
      *             .build());
@@ -633,7 +633,7 @@ public final class EhpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()
      *             .jobTemplateName("example_value")
      *             .commandLine("./LammpsTest/lammps.pbs")
      *             .build());

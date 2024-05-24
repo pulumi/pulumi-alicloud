@@ -18,7 +18,7 @@ import java.util.Objects;
 @CustomType
 public final class GetEcsDisksDisk {
     /**
-     * @return A mount of time.
+     * @return Disk attachment time.
      * 
      */
     private String attachedTime;
@@ -63,7 +63,7 @@ public final class GetEcsDisksDisk {
      */
     private String detachedTime;
     /**
-     * @return The mount point of the disk.
+     * @return Cloud disk or the device name of the mounted instance on the site.
      * 
      */
     private String device;
@@ -109,7 +109,7 @@ public final class GetEcsDisksDisk {
      */
     private String imageId;
     /**
-     * @return The instance ID of the disk mount.
+     * @return ID of the related instance. It is `null` unless the `status` is `In_use`.
      * 
      */
     private String instanceId;
@@ -200,7 +200,7 @@ public final class GetEcsDisksDisk {
 
     private GetEcsDisksDisk() {}
     /**
-     * @return A mount of time.
+     * @return Disk attachment time.
      * 
      */
     public String attachedTime() {
@@ -263,7 +263,7 @@ public final class GetEcsDisksDisk {
         return this.detachedTime;
     }
     /**
-     * @return The mount point of the disk.
+     * @return Cloud disk or the device name of the mounted instance on the site.
      * 
      */
     public String device() {
@@ -329,7 +329,7 @@ public final class GetEcsDisksDisk {
         return this.imageId;
     }
     /**
-     * @return The instance ID of the disk mount.
+     * @return ID of the related instance. It is `null` unless the `status` is `In_use`.
      * 
      */
     public String instanceId() {

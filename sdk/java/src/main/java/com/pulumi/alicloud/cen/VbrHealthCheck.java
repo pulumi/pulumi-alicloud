@@ -72,12 +72,12 @@ import javax.annotation.Nullable;
  *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var vlanId = new Integer("vlanId", IntegerArgs.builder()        
+ *         var vlanId = new Integer("vlanId", IntegerArgs.builder()
  *             .max(2999)
  *             .min(1)
  *             .build());
  * 
- *         var example = new VirtualBorderRouter("example", VirtualBorderRouterArgs.builder()        
+ *         var example = new VirtualBorderRouter("example", VirtualBorderRouterArgs.builder()
  *             .localGatewayIp("10.0.0.1")
  *             .peerGatewayIp("10.0.0.2")
  *             .peeringSubnetMask("255.255.255.252")
@@ -89,19 +89,19 @@ import javax.annotation.Nullable;
  *             .detectMultiplier(10)
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .protectionLevel("REDUCED")
  *             .build());
  * 
- *         var exampleInstanceAttachment = new InstanceAttachment("exampleInstanceAttachment", InstanceAttachmentArgs.builder()        
+ *         var exampleInstanceAttachment = new InstanceAttachment("exampleInstanceAttachment", InstanceAttachmentArgs.builder()
  *             .instanceId(exampleInstance.id())
  *             .childInstanceId(example.id())
  *             .childInstanceType("VBR")
  *             .childInstanceRegionId(default_.regions()[0].id())
  *             .build());
  * 
- *         var exampleVbrHealthCheck = new VbrHealthCheck("exampleVbrHealthCheck", VbrHealthCheckArgs.builder()        
+ *         var exampleVbrHealthCheck = new VbrHealthCheck("exampleVbrHealthCheck", VbrHealthCheckArgs.builder()
  *             .cenId(exampleInstance.id())
  *             .healthCheckSourceIp("192.168.1.2")
  *             .healthCheckTargetIp("10.0.0.2")

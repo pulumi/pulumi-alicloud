@@ -127,7 +127,7 @@ def get_ram_directories(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Ram Directory IDs.
     :param str name_regex: A regex string to filter results by Ram Directory name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of directory.
+    :param str status: The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -176,6 +176,6 @@ def get_ram_directories_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     :param Sequence[str] ids: A list of Ram Directory IDs.
     :param str name_regex: A regex string to filter results by Ram Directory name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of directory.
+    :param str status: The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
     """
     ...

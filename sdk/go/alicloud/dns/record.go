@@ -68,6 +68,7 @@ type Record struct {
 	// The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/what-is-alibaba-cloud-dns) or using dns.getResolutionLines in data source to get the value.
 	Routing pulumi.StringPtrOutput `pulumi:"routing"`
 	// The record status. `Enable` or `Disable`.
+	// * `Locked` - The record locked state. `true` or `false`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
@@ -126,6 +127,7 @@ type recordState struct {
 	// The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/what-is-alibaba-cloud-dns) or using dns.getResolutionLines in data source to get the value.
 	Routing *string `pulumi:"routing"`
 	// The record status. `Enable` or `Disable`.
+	// * `Locked` - The record locked state. `true` or `false`.
 	Status *string `pulumi:"status"`
 	// The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
 	Ttl *int `pulumi:"ttl"`
@@ -146,6 +148,7 @@ type RecordState struct {
 	// The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/what-is-alibaba-cloud-dns) or using dns.getResolutionLines in data source to get the value.
 	Routing pulumi.StringPtrInput
 	// The record status. `Enable` or `Disable`.
+	// * `Locked` - The record locked state. `true` or `false`.
 	Status pulumi.StringPtrInput
 	// The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
 	Ttl pulumi.IntPtrInput
@@ -306,6 +309,7 @@ func (o RecordOutput) Routing() pulumi.StringPtrOutput {
 }
 
 // The record status. `Enable` or `Disable`.
+// * `Locked` - The record locked state. `true` or `false`.
 func (o RecordOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

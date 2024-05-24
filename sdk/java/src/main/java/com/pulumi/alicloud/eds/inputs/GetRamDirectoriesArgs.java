@@ -62,14 +62,14 @@ public final class GetRamDirectoriesArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The status of directory.
+     * The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of directory.
+     * @return The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -177,7 +177,7 @@ public final class GetRamDirectoriesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The status of directory.
+         * @param status The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GetRamDirectoriesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The status of directory.
+         * @param status The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
          * 
          * @return builder
          * 

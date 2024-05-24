@@ -245,6 +245,9 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The synchronization direction. Default value: `Forward`. Valid values:
+        /// - `Forward`: Data is synchronized from the source database to the destination database.
+        /// - `Reverse`: Data is synchronized from the destination database to the source database.
+        /// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
         /// </summary>
         [Output("synchronizationDirection")]
         public Output<string?> SynchronizationDirection { get; private set; } = null!;
@@ -479,6 +482,9 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The synchronization direction. Default value: `Forward`. Valid values:
+        /// - `Forward`: Data is synchronized from the source database to the destination database.
+        /// - `Reverse`: Data is synchronized from the destination database to the source database.
+        /// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
         /// </summary>
         [Input("synchronizationDirection")]
         public Input<string>? SynchronizationDirection { get; set; }
@@ -705,6 +711,9 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The synchronization direction. Default value: `Forward`. Valid values:
+        /// - `Forward`: Data is synchronized from the source database to the destination database.
+        /// - `Reverse`: Data is synchronized from the destination database to the source database.
+        /// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
         /// </summary>
         [Input("synchronizationDirection")]
         public Input<string>? SynchronizationDirection { get; set; }

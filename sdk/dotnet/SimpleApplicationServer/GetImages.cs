@@ -39,9 +39,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
             set => _ids = value;
         }
 
-        /// <summary>
-        /// The type of the image. Valid values: `app`, `custom`, `system`.
-        /// </summary>
         [Input("imageType")]
         public string? ImageType { get; set; }
 
@@ -51,9 +48,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
-        /// <summary>
-        /// The platform of Plan supported.
-        /// </summary>
         [Input("platform")]
         public string? Platform { get; set; }
 
@@ -73,9 +67,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
             set => _ids = value;
         }
 
-        /// <summary>
-        /// The type of the image. Valid values: `app`, `custom`, `system`.
-        /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
 
@@ -85,9 +76,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
-        /// <summary>
-        /// The platform of Plan supported.
-        /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
 

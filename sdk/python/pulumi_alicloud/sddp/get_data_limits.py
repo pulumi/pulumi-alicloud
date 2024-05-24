@@ -115,8 +115,8 @@ def get_data_limits(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Data Limit IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str parent_id: The ID of the data asset.
-    :param str resource_type: The type of the service to which the data asset belongs.
+    :param str parent_id: The parent asset ID of the data asset.
+    :param str resource_type: The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -161,7 +161,7 @@ def get_data_limits_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
 
     :param Sequence[str] ids: A list of Data Limit IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str parent_id: The ID of the data asset.
-    :param str resource_type: The type of the service to which the data asset belongs.
+    :param str parent_id: The parent asset ID of the data asset.
+    :param str resource_type: The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
     """
     ...

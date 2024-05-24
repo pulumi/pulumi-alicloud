@@ -77,7 +77,7 @@ type GetGroupsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+	// The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
 	ProvisionType *string `pulumi:"provisionType"`
 }
 
@@ -117,7 +117,7 @@ type GetGroupsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+	// The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
 	ProvisionType pulumi.StringPtrInput `pulumi:"provisionType"`
 }
 

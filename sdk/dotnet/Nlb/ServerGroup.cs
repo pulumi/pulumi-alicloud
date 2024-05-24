@@ -143,6 +143,11 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The routing algorithm. Valid values:
+        /// - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+        /// - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+        /// - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+        /// - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+        /// - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
         /// </summary>
         [Output("scheduler")]
         public Output<string> Scheduler { get; private set; } = null!;
@@ -154,7 +159,9 @@ namespace Pulumi.AliCloud.Nlb
         public Output<string> ServerGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the server group. Valid values:
+        /// The type of the server group. Valid values: 
+        /// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+        /// - `Ip`: allows you to specify IP addresses.
         /// </summary>
         [Output("serverGroupType")]
         public Output<string> ServerGroupType { get; private set; } = null!;
@@ -281,6 +288,11 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The routing algorithm. Valid values:
+        /// - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+        /// - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+        /// - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+        /// - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+        /// - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
@@ -292,7 +304,9 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string> ServerGroupName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the server group. Valid values:
+        /// The type of the server group. Valid values: 
+        /// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+        /// - `Ip`: allows you to specify IP addresses.
         /// </summary>
         [Input("serverGroupType")]
         public Input<string>? ServerGroupType { get; set; }
@@ -381,6 +395,11 @@ namespace Pulumi.AliCloud.Nlb
 
         /// <summary>
         /// The routing algorithm. Valid values:
+        /// - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+        /// - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+        /// - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+        /// - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+        /// - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
@@ -392,7 +411,9 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string>? ServerGroupName { get; set; }
 
         /// <summary>
-        /// The type of the server group. Valid values:
+        /// The type of the server group. Valid values: 
+        /// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+        /// - `Ip`: allows you to specify IP addresses.
         /// </summary>
         [Input("serverGroupType")]
         public Input<string>? ServerGroupType { get; set; }

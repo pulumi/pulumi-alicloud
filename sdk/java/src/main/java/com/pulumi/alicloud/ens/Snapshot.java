@@ -52,14 +52,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var disk = new Disk("disk", DiskArgs.builder()        
+ *         var disk = new Disk("disk", DiskArgs.builder()
  *             .category("cloud_efficiency")
  *             .size("20")
  *             .paymentType("PayAsYouGo")
  *             .ensRegionId("ch-zurich-1")
  *             .build());
  * 
- *         var default_ = new Snapshot("default", SnapshotArgs.builder()        
+ *         var default_ = new Snapshot("default", SnapshotArgs.builder()
  *             .description(name)
  *             .ensRegionId("ch-zurich-1")
  *             .snapshotName(name)

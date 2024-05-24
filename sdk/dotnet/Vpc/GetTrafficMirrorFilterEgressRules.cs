@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? Status { get; set; }
 
         /// <summary>
-        /// The ID of the filter associated with the outbound rule.
+        /// The ID of the Traffic Mirror Filter.
         /// </summary>
         [Input("trafficMirrorFilterId", required: true)]
         public string TrafficMirrorFilterId { get; set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The ID of the filter associated with the outbound rule.
+        /// The ID of the Traffic Mirror Filter.
         /// </summary>
         [Input("trafficMirrorFilterId", required: true)]
         public Input<string> TrafficMirrorFilterId { get; set; } = null!;

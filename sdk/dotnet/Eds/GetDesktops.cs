@@ -218,17 +218,13 @@ namespace Pulumi.AliCloud.Eds
     public sealed class GetDesktopsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The desktop name of the Desktop.
+        /// The desktop name.
         /// </summary>
         [Input("desktopName")]
         public string? DesktopName { get; set; }
 
         [Input("endUserIds")]
         private List<string>? _endUserIds;
-
-        /// <summary>
-        /// The desktop end user id of the Desktop.
-        /// </summary>
         public List<string> EndUserIds
         {
             get => _endUserIds ?? (_endUserIds = new List<string>());
@@ -286,17 +282,13 @@ namespace Pulumi.AliCloud.Eds
     public sealed class GetDesktopsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The desktop name of the Desktop.
+        /// The desktop name.
         /// </summary>
         [Input("desktopName")]
         public Input<string>? DesktopName { get; set; }
 
         [Input("endUserIds")]
         private InputList<string>? _endUserIds;
-
-        /// <summary>
-        /// The desktop end user id of the Desktop.
-        /// </summary>
         public InputList<string> EndUserIds
         {
             get => _endUserIds ?? (_endUserIds = new InputList<string>());

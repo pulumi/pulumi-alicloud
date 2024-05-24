@@ -56,22 +56,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-testacc-example");
- *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
  *             .description("tf-testacc")
  *             .enableIpv6(true)
  *             .build());
  * 
- *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()        
+ *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()
  *             .displayName("tf-testacc-ipv6gateway503")
  *             .resourceGroupName(String.format("%s1", name))
  *             .build());
  * 
- *         var changeRg = new ResourceGroup("changeRg", ResourceGroupArgs.builder()        
+ *         var changeRg = new ResourceGroup("changeRg", ResourceGroupArgs.builder()
  *             .displayName("tf-testacc-ipv6gateway311")
  *             .resourceGroupName(String.format("%s2", name))
  *             .build());
  * 
- *         var default_ = new Ipv6Gateway("default", Ipv6GatewayArgs.builder()        
+ *         var default_ = new Ipv6Gateway("default", Ipv6GatewayArgs.builder()
  *             .description("test")
  *             .ipv6GatewayName(name)
  *             .vpcId(defaultVpc.id())

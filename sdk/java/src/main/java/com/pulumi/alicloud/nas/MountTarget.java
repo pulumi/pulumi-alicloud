@@ -65,19 +65,19 @@ import javax.annotation.Nullable;
  * 
  *         final var zoneId = default_.zones()[countSize - 1].zoneId();
  * 
- *         var example = new Network("example", NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName(example.vpcName())
  *             .cidrBlock(example.cidrBlock())
  *             .vpcId(example.id())
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()        
+ *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()
  *             .protocolType("NFS")
  *             .storageType("advance")
  *             .fileSystemType("extreme")
@@ -85,14 +85,14 @@ import javax.annotation.Nullable;
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var exampleAccessGroup = new AccessGroup("exampleAccessGroup", AccessGroupArgs.builder()        
+ *         var exampleAccessGroup = new AccessGroup("exampleAccessGroup", AccessGroupArgs.builder()
  *             .accessGroupName("access_group_xxx")
  *             .accessGroupType("Vpc")
  *             .description("test_access_group")
  *             .fileSystemType("extreme")
  *             .build());
  * 
- *         var exampleMountTarget = new MountTarget("exampleMountTarget", MountTargetArgs.builder()        
+ *         var exampleMountTarget = new MountTarget("exampleMountTarget", MountTargetArgs.builder()
  *             .fileSystemId(exampleFileSystem.id())
  *             .accessGroupName(exampleAccessGroup.accessGroupName())
  *             .vswitchId(exampleSwitch.id())

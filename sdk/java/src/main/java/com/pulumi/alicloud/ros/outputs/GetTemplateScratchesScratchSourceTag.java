@@ -13,13 +13,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTemplateScratchesScratchSourceTag {
+    /**
+     * @return Source label.
+     * 
+     */
     private Map<String,Object> resourceTags;
+    /**
+     * @return Source resource type filter list.
+     * 
+     */
     private List<String> resourceTypeFilters;
 
     private GetTemplateScratchesScratchSourceTag() {}
+    /**
+     * @return Source label.
+     * 
+     */
     public Map<String,Object> resourceTags() {
         return this.resourceTags;
     }
+    /**
+     * @return Source resource type filter list.
+     * 
+     */
     public List<String> resourceTypeFilters() {
         return this.resourceTypeFilters;
     }

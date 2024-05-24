@@ -49,14 +49,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new PatchBaseline("default", PatchBaselineArgs.builder()        
+ *         var default_ = new PatchBaseline("default", PatchBaselineArgs.builder()
  *             .operationSystem("Windows")
  *             .patchBaselineName("terraform-example")
  *             .description("terraform-example")
  *             .approvalRules("{\"PatchRules\":[{\"PatchFilterGroup\":[{\"Key\":\"PatchSet\",\"Values\":[\"OS\"]},{\"Key\":\"ProductFamily\",\"Values\":[\"Windows\"]},{\"Key\":\"Product\",\"Values\":[\"Windows 10\",\"Windows 7\"]},{\"Key\":\"Classification\",\"Values\":[\"Security Updates\",\"Updates\",\"Update Rollups\",\"Critical Updates\"]},{\"Key\":\"Severity\",\"Values\":[\"Critical\",\"Important\",\"Moderate\"]}],\"ApproveAfterDays\":7,\"EnableNonSecurity\":true,\"ComplianceLevel\":\"Medium\"}]}")
  *             .build());
  * 
- *         var defaultDefaultPatchBaseline = new DefaultPatchBaseline("defaultDefaultPatchBaseline", DefaultPatchBaselineArgs.builder()        
+ *         var defaultDefaultPatchBaseline = new DefaultPatchBaseline("defaultDefaultPatchBaseline", DefaultPatchBaselineArgs.builder()
  *             .patchBaselineName(default_.id())
  *             .build());
  * 

@@ -63,18 +63,18 @@ import javax.annotation.Nullable;
  *         //   secret_key = "secret_key"
  *         //   alias      = "cen_account"
  *         // }
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .name(name)
  *             .description(name)
  *             .cidrBlock("192.168.0.0/24")
  *             .isDefault(true)
  *             .build());
  * 
- *         var cen = new Instance("cen", InstanceArgs.builder()        
+ *         var cen = new Instance("cen", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .build());
  * 
- *         var defaultNetworkGrant = new NetworkGrant("defaultNetworkGrant", NetworkGrantArgs.builder()        
+ *         var defaultNetworkGrant = new NetworkGrant("defaultNetworkGrant", NetworkGrantArgs.builder()
  *             .ccnId(default_.id())
  *             .cenId(cen.id())
  *             .cenUid(anotherUid)

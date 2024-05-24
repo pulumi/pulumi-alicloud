@@ -31,6 +31,8 @@ class RuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]] rule_conditions: The conditions of the forwarding rule. See `rule_conditions` below.
         :param pulumi.Input[str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] direction: The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+               - `Request`: The forwarding rule is applied to the client requests received by ALB.
+               - `Response`: The forwarding rule is applied to the responses returned by backend servers.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         """
         pulumi.set(__self__, "listener_id", listener_id)
@@ -108,6 +110,8 @@ class RuleArgs:
     def direction(self) -> Optional[pulumi.Input[str]]:
         """
         The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+        - `Request`: The forwarding rule is applied to the client requests received by ALB.
+        - `Response`: The forwarding rule is applied to the responses returned by backend servers.
         """
         return pulumi.get(self, "direction")
 
@@ -142,6 +146,8 @@ class _RuleState:
         """
         Input properties used for looking up and filtering Rule resources.
         :param pulumi.Input[str] direction: The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+               - `Request`: The forwarding rule is applied to the client requests received by ALB.
+               - `Response`: The forwarding rule is applied to the responses returned by backend servers.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[str] listener_id: The ID of the listener to which the forwarding rule belongs.
         :param pulumi.Input[int] priority: The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
@@ -172,6 +178,8 @@ class _RuleState:
     def direction(self) -> Optional[pulumi.Input[str]]:
         """
         The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+        - `Request`: The forwarding rule is applied to the client requests received by ALB.
+        - `Response`: The forwarding rule is applied to the responses returned by backend servers.
         """
         return pulumi.get(self, "direction")
 
@@ -297,6 +305,8 @@ class Rule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] direction: The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+               - `Request`: The forwarding rule is applied to the client requests received by ALB.
+               - `Response`: The forwarding rule is applied to the responses returned by backend servers.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[str] listener_id: The ID of the listener to which the forwarding rule belongs.
         :param pulumi.Input[int] priority: The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
@@ -402,6 +412,8 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] direction: The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+               - `Request`: The forwarding rule is applied to the client requests received by ALB.
+               - `Response`: The forwarding rule is applied to the responses returned by backend servers.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[str] listener_id: The ID of the listener to which the forwarding rule belongs.
         :param pulumi.Input[int] priority: The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
@@ -429,6 +441,8 @@ class Rule(pulumi.CustomResource):
     def direction(self) -> pulumi.Output[str]:
         """
         The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+        - `Request`: The forwarding rule is applied to the client requests received by ALB.
+        - `Response`: The forwarding rule is applied to the responses returned by backend servers.
         """
         return pulumi.get(self, "direction")
 

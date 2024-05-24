@@ -61,18 +61,18 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var example = new Network("example", NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()
  *             .vpcName(name)
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vpcId(example.id())
  *             .zoneId(default_.zones()[0].id())
  *             .cidrBlock("172.16.0.0/24")
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultPolardbxInstance = new PolardbxInstance("defaultPolardbxInstance", PolardbxInstanceArgs.builder()        
+ *         var defaultPolardbxInstance = new PolardbxInstance("defaultPolardbxInstance", PolardbxInstanceArgs.builder()
  *             .topologyType("3azones")
  *             .vswitchId(exampleSwitch.id())
  *             .primaryZone("ap-southeast-1a")

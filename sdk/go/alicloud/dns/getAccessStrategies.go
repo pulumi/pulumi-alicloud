@@ -73,7 +73,9 @@ type GetAccessStrategiesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The type of the access policy.
+	// The type of the access policy. Valid values:
+	// - `GEO`: based on geographic location.
+	// - `LATENCY`: Based on delay.
 	StrategyMode string `pulumi:"strategyMode"`
 }
 
@@ -119,7 +121,9 @@ type GetAccessStrategiesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The type of the access policy.
+	// The type of the access policy. Valid values:
+	// - `GEO`: based on geographic location.
+	// - `LATENCY`: Based on delay.
 	StrategyMode pulumi.StringInput `pulumi:"strategyMode"`
 }
 

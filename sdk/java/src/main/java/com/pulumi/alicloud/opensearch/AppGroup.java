@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("name");
- *         var default_ = new AppGroup("default", AppGroupArgs.builder()        
+ *         var default_ = new AppGroup("default", AppGroupArgs.builder()
  *             .appGroupName(name)
  *             .paymentType("PayAsYouGo")
  *             .type("standard")

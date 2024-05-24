@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CustomLine("default", CustomLineArgs.builder()        
+ *         var default_ = new CustomLine("default", CustomLineArgs.builder()
  *             .customLineName("tf-example")
  *             .domainName("alicloud-provider.com")
  *             .ipSegmentLists(CustomLineIpSegmentListArgs.builder()

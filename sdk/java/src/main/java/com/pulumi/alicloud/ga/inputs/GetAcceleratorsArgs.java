@@ -18,6 +18,8 @@ public final class GetAcceleratorsArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed based on data transfer.
      * 
      */
     @Import(name="bandwidthBillingType")
@@ -25,6 +27,8 @@ public final class GetAcceleratorsArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed based on data transfer.
      * 
      */
     public Optional<Output<String>> bandwidthBillingType() {
@@ -121,6 +125,8 @@ public final class GetAcceleratorsArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param bandwidthBillingType The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+         * - `BandwidthPackage`: billed based on bandwidth plans.
+         * - `CDT`: billed based on data transfer.
          * 
          * @return builder
          * 
@@ -132,6 +138,8 @@ public final class GetAcceleratorsArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param bandwidthBillingType The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+         * - `BandwidthPackage`: billed based on bandwidth plans.
+         * - `CDT`: billed based on data transfer.
          * 
          * @return builder
          * 

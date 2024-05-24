@@ -98,13 +98,13 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class GetLoadBalancersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The IP version.
+        /// The IP version. Valid values: `ipv4`, `DualStack`.
         /// </summary>
         [Input("addressIpVersion")]
         public string? AddressIpVersion { get; set; }
 
         /// <summary>
-        /// The type of IPv4 address used by the NLB instance.
+        /// The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
         /// </summary>
         [Input("addressType")]
         public string? AddressType { get; set; }
@@ -128,13 +128,13 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The type of IPv6 address used by the NLB instance.
+        /// The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
         /// </summary>
         [Input("ipv6AddressType")]
         public string? Ipv6AddressType { get; set; }
 
         /// <summary>
-        /// The business status of the NLB instance.
+        /// The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
         /// </summary>
         [Input("loadBalancerBusinessStatus")]
         public string? LoadBalancerBusinessStatus { get; set; }
@@ -170,17 +170,13 @@ namespace Pulumi.AliCloud.Nlb
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the NLB instance.
+        /// The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         [Input("tags")]
         private Dictionary<string, object>? _tags;
-
-        /// <summary>
-        /// The tag of the resource.
-        /// </summary>
         public Dictionary<string, object> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, object>());
@@ -214,13 +210,13 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class GetLoadBalancersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The IP version.
+        /// The IP version. Valid values: `ipv4`, `DualStack`.
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }
 
         /// <summary>
-        /// The type of IPv4 address used by the NLB instance.
+        /// The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -244,13 +240,13 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The type of IPv6 address used by the NLB instance.
+        /// The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
         /// </summary>
         [Input("ipv6AddressType")]
         public Input<string>? Ipv6AddressType { get; set; }
 
         /// <summary>
-        /// The business status of the NLB instance.
+        /// The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
         /// </summary>
         [Input("loadBalancerBusinessStatus")]
         public Input<string>? LoadBalancerBusinessStatus { get; set; }
@@ -286,17 +282,13 @@ namespace Pulumi.AliCloud.Nlb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the NLB instance.
+        /// The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// The tag of the resource.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());

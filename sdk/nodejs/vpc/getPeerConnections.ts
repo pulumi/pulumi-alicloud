@@ -62,7 +62,7 @@ export interface GetPeerConnectionsArgs {
      */
     peerConnectionName?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
      */
     status?: string;
     /**
@@ -134,7 +134,7 @@ export interface GetPeerConnectionsOutputArgs {
      */
     peerConnectionName?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
      */
     status?: pulumi.Input<string>;
     /**

@@ -173,6 +173,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+     * - `M`: months.
+     * - `Y`: years.
      * 
      */
     @Export(name="renewalPeriodUnit", refs={String.class}, tree="[0]")
@@ -180,6 +182,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+     * - `M`: months.
+     * - `Y`: years.
      * 
      */
     public Output<String> renewalPeriodUnit() {

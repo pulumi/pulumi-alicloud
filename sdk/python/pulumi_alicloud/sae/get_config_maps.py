@@ -141,7 +141,7 @@ def get_config_maps(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Config Map IDs.
     :param str name_regex: A regex string to filter results by Config Map name.
-    :param str namespace_id: The NamespaceId of Config Maps.
+    :param str namespace_id: The NamespaceId of Config Maps. The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -205,7 +205,7 @@ def get_config_maps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
 
     :param Sequence[str] ids: A list of Config Map IDs.
     :param str name_regex: A regex string to filter results by Config Map name.
-    :param str namespace_id: The NamespaceId of Config Maps.
+    :param str namespace_id: The NamespaceId of Config Maps. The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

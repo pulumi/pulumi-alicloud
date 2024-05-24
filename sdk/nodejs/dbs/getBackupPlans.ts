@@ -70,7 +70,7 @@ export interface GetBackupPlansArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
      */
     status?: string;
 }
@@ -146,7 +146,7 @@ export interface GetBackupPlansOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `checkPass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
      */
     status?: pulumi.Input<string>;
 }

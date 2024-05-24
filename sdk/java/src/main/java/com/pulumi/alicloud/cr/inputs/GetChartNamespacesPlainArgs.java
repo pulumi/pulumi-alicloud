@@ -32,14 +32,14 @@ public final class GetChartNamespacesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The ID of the namespace.
+     * The ID of the Container Registry instance.
      * 
      */
     @Import(name="instanceId", required=true)
     private String instanceId;
 
     /**
-     * @return The ID of the namespace.
+     * @return The ID of the Container Registry instance.
      * 
      */
     public String instanceId() {
@@ -125,7 +125,7 @@ public final class GetChartNamespacesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param instanceId The ID of the namespace.
+         * @param instanceId The ID of the Container Registry instance.
          * 
          * @return builder
          * 

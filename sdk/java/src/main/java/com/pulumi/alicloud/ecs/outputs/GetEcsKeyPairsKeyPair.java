@@ -19,27 +19,15 @@ public final class GetEcsKeyPairsKeyPair {
      * 
      */
     private String fingerPrint;
-    /**
-     * @return The ID of the Key Pair.
-     * 
-     */
     private String id;
     private List<GetEcsKeyPairsKeyPairInstance> instances;
-    /**
-     * @return The Key Pair Name.
-     * 
-     */
     private String keyName;
     private String keyPairName;
     /**
-     * @return The Resource Group Id.
+     * @return The resource group Id.
      * 
      */
     private String resourceGroupId;
-    /**
-     * @return The tags.
-     * 
-     */
     private Map<String,Object> tags;
 
     private GetEcsKeyPairsKeyPair() {}
@@ -50,20 +38,12 @@ public final class GetEcsKeyPairsKeyPair {
     public String fingerPrint() {
         return this.fingerPrint;
     }
-    /**
-     * @return The ID of the Key Pair.
-     * 
-     */
     public String id() {
         return this.id;
     }
     public List<GetEcsKeyPairsKeyPairInstance> instances() {
         return this.instances;
     }
-    /**
-     * @return The Key Pair Name.
-     * 
-     */
     public String keyName() {
         return this.keyName;
     }
@@ -71,16 +51,12 @@ public final class GetEcsKeyPairsKeyPair {
         return this.keyPairName;
     }
     /**
-     * @return The Resource Group Id.
+     * @return The resource group Id.
      * 
      */
     public String resourceGroupId() {
         return this.resourceGroupId;
     }
-    /**
-     * @return The tags.
-     * 
-     */
     public Map<String,Object> tags() {
         return this.tags;
     }

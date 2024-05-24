@@ -63,7 +63,7 @@ type GetDelegatedAdministratorsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// The identity of the trusted service.
+	// The identification of the trusted service.
 	ServicePrincipal *string `pulumi:"servicePrincipal"`
 }
 
@@ -100,7 +100,7 @@ type GetDelegatedAdministratorsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// The identity of the trusted service.
+	// The identification of the trusted service.
 	ServicePrincipal pulumi.StringPtrInput `pulumi:"servicePrincipal"`
 }
 

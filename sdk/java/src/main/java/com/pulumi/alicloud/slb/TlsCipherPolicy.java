@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TlsCipherPolicy("example", TlsCipherPolicyArgs.builder()        
+ *         var example = new TlsCipherPolicy("example", TlsCipherPolicyArgs.builder()
  *             .tlsCipherPolicyName("Test-example_value")
  *             .tlsVersions("TLSv1.2")
  *             .ciphers(            

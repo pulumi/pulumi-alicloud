@@ -93,6 +93,9 @@ type BandwidthPackage struct {
 	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
 	Ratio pulumi.IntPtrOutput `pulumi:"ratio"`
 	// Whether to renew a bandwidth packet. automatically or not. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The status of the Bandwidth Package.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -168,6 +171,9 @@ type bandwidthPackageState struct {
 	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
 	Ratio *int `pulumi:"ratio"`
 	// Whether to renew a bandwidth packet. automatically or not. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The status of the Bandwidth Package.
 	Status *string `pulumi:"status"`
@@ -208,6 +214,9 @@ type BandwidthPackageState struct {
 	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
 	Ratio pulumi.IntPtrInput
 	// Whether to renew a bandwidth packet. automatically or not. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
 	// The status of the Bandwidth Package.
 	Status pulumi.StringPtrInput
@@ -252,6 +261,9 @@ type bandwidthPackageArgs struct {
 	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
 	Ratio *int `pulumi:"ratio"`
 	// Whether to renew a bandwidth packet. automatically or not. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -291,6 +303,9 @@ type BandwidthPackageArgs struct {
 	// The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`. **NOTE:** `ratio` is valid only when `billingType` is set to `PayBy95`.
 	Ratio pulumi.IntPtrInput
 	// Whether to renew a bandwidth packet. automatically or not. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -457,6 +472,9 @@ func (o BandwidthPackageOutput) Ratio() pulumi.IntPtrOutput {
 }
 
 // Whether to renew a bandwidth packet. automatically or not. Valid values:
+// - `AutoRenewal`: Enable auto renewal.
+// - `Normal`: Disable auto renewal.
+// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 func (o BandwidthPackageOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
 }

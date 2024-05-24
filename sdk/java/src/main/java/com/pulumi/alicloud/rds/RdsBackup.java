@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance("example", InstanceArgs.builder()        
+ *         var example = new Instance("example", InstanceArgs.builder()
  *             .engine("MySQL")
  *             .engineVersion("5.6")
  *             .instanceType("rds.mysql.t1.small")
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .dbInstanceStorageType("local_ssd")
  *             .build());
  * 
- *         var exampleRdsBackup = new RdsBackup("exampleRdsBackup", RdsBackupArgs.builder()        
+ *         var exampleRdsBackup = new RdsBackup("exampleRdsBackup", RdsBackupArgs.builder()
  *             .dbInstanceId(example.id())
  *             .build());
  * 

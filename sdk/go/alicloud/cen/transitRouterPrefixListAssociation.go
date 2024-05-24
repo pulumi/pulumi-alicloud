@@ -100,6 +100,10 @@ type TransitRouterPrefixListAssociation struct {
 	// The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
 	NextHop pulumi.StringOutput `pulumi:"nextHop"`
 	// The type of the next hop. Valid values:
+	// - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+	// - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+	// - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+	// - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
 	NextHopType pulumi.StringOutput `pulumi:"nextHopType"`
 	// The ID of the Alibaba Cloud account to which the prefix list belongs.
 	OwnerUid pulumi.IntOutput `pulumi:"ownerUid"`
@@ -158,6 +162,10 @@ type transitRouterPrefixListAssociationState struct {
 	// The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
 	NextHop *string `pulumi:"nextHop"`
 	// The type of the next hop. Valid values:
+	// - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+	// - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+	// - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+	// - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
 	NextHopType *string `pulumi:"nextHopType"`
 	// The ID of the Alibaba Cloud account to which the prefix list belongs.
 	OwnerUid *int `pulumi:"ownerUid"`
@@ -175,6 +183,10 @@ type TransitRouterPrefixListAssociationState struct {
 	// The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
 	NextHop pulumi.StringPtrInput
 	// The type of the next hop. Valid values:
+	// - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+	// - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+	// - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+	// - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
 	NextHopType pulumi.StringPtrInput
 	// The ID of the Alibaba Cloud account to which the prefix list belongs.
 	OwnerUid pulumi.IntPtrInput
@@ -196,6 +208,10 @@ type transitRouterPrefixListAssociationArgs struct {
 	// The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
 	NextHop string `pulumi:"nextHop"`
 	// The type of the next hop. Valid values:
+	// - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+	// - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+	// - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+	// - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
 	NextHopType *string `pulumi:"nextHopType"`
 	// The ID of the Alibaba Cloud account to which the prefix list belongs.
 	OwnerUid *int `pulumi:"ownerUid"`
@@ -212,6 +228,10 @@ type TransitRouterPrefixListAssociationArgs struct {
 	// The ID of the next hop. **NOTE:** If `nextHop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
 	NextHop pulumi.StringInput
 	// The type of the next hop. Valid values:
+	// - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+	// - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+	// - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+	// - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
 	NextHopType pulumi.StringPtrInput
 	// The ID of the Alibaba Cloud account to which the prefix list belongs.
 	OwnerUid pulumi.IntPtrInput
@@ -316,6 +336,10 @@ func (o TransitRouterPrefixListAssociationOutput) NextHop() pulumi.StringOutput 
 }
 
 // The type of the next hop. Valid values:
+// - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+// - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+// - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+// - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
 func (o TransitRouterPrefixListAssociationOutput) NextHopType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterPrefixListAssociation) pulumi.StringOutput { return v.NextHopType }).(pulumi.StringOutput)
 }

@@ -86,24 +86,24 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
  *             .name("terraform-example")
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .instanceName("terraform-example")
  *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
@@ -113,26 +113,26 @@ import javax.annotation.Nullable;
  *             .internetMaxBandwidthOut(5)
  *             .build());
  * 
- *         var exampleInstance2 = new Instance("exampleInstance2", InstanceArgs.builder()        
+ *         var exampleInstance2 = new Instance("exampleInstance2", InstanceArgs.builder()
  *             .cenInstanceName("tf_example")
  *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleInstanceAttachment = new InstanceAttachment("exampleInstanceAttachment", InstanceAttachmentArgs.builder()        
+ *         var exampleInstanceAttachment = new InstanceAttachment("exampleInstanceAttachment", InstanceAttachmentArgs.builder()
  *             .instanceId(exampleInstance2.id())
  *             .childInstanceId(exampleNetwork.id())
  *             .childInstanceType("VPC")
  *             .childInstanceRegionId(default_.regions()[0].id())
  *             .build());
  * 
- *         var exampleRouteEntry = new RouteEntry("exampleRouteEntry", RouteEntryArgs.builder()        
+ *         var exampleRouteEntry = new RouteEntry("exampleRouteEntry", RouteEntryArgs.builder()
  *             .routeTableId(exampleNetwork.routeTableId())
  *             .destinationCidrblock("11.0.0.0/16")
  *             .nexthopType("Instance")
  *             .nexthopId(exampleInstance.id())
  *             .build());
  * 
- *         var exampleRouteEntry2 = new RouteEntry("exampleRouteEntry2", RouteEntryArgs.builder()        
+ *         var exampleRouteEntry2 = new RouteEntry("exampleRouteEntry2", RouteEntryArgs.builder()
  *             .instanceId(exampleInstanceAttachment.instanceId())
  *             .routeTableId(exampleNetwork.routeTableId())
  *             .cidrBlock(exampleRouteEntry.destinationCidrblock())

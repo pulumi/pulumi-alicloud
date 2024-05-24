@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Secret("default", SecretArgs.builder()        
+ *         var default_ = new Secret("default", SecretArgs.builder()
  *             .secretName("secret-foo")
  *             .description("from terraform")
  *             .secretData("Secret data.")
@@ -260,6 +260,10 @@ public class Secret extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the secret. Valid values:
+     * - `Generic`: specifies a generic secret.
+     * - `Rds`: specifies a managed ApsaraDB RDS secret.
+     * - `RAMCredentials`: indicates a managed RAM secret.
+     * - `ECS`: specifies a managed ECS secret.
      * 
      */
     @Export(name="secretType", refs={String.class}, tree="[0]")
@@ -267,6 +271,10 @@ public class Secret extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the secret. Valid values:
+     * - `Generic`: specifies a generic secret.
+     * - `Rds`: specifies a managed ApsaraDB RDS secret.
+     * - `RAMCredentials`: indicates a managed RAM secret.
+     * - `ECS`: specifies a managed ECS secret.
      * 
      */
     public Output<String> secretType() {

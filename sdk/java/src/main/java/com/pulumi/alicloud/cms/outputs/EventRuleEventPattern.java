@@ -15,11 +15,19 @@ import javax.annotation.Nullable;
 public final class EventRuleEventPattern {
     /**
      * @return The type of the event-triggered alert rule. Valid values:
+     * - `StatusNotification`: fault notifications.
+     * - `Exception`: exceptions.
+     * - `Maintenance`: O&amp;M.
+     * - `*`: all types.
      * 
      */
     private @Nullable List<String> eventTypeLists;
     /**
      * @return The level of the event-triggered alert rule. Valid values:
+     * - `CRITICAL`: critical.
+     * - `WARN`: warning.
+     * - `INFO`: information.
+     * - `*`: all types.
      * 
      */
     private @Nullable List<String> levelLists;
@@ -42,6 +50,10 @@ public final class EventRuleEventPattern {
     private EventRuleEventPattern() {}
     /**
      * @return The type of the event-triggered alert rule. Valid values:
+     * - `StatusNotification`: fault notifications.
+     * - `Exception`: exceptions.
+     * - `Maintenance`: O&amp;M.
+     * - `*`: all types.
      * 
      */
     public List<String> eventTypeLists() {
@@ -49,6 +61,10 @@ public final class EventRuleEventPattern {
     }
     /**
      * @return The level of the event-triggered alert rule. Valid values:
+     * - `CRITICAL`: critical.
+     * - `WARN`: warning.
+     * - `INFO`: information.
+     * - `*`: all types.
      * 
      */
     public List<String> levelLists() {

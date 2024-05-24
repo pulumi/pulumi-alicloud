@@ -33,6 +33,8 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
 
     /**
      * The communication mode of the ENI. Default value: `Standard`. Valid values:
+     * - `Standard`: Uses the TCP communication mode.
+     * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
      * 
      */
     @Import(name="networkInterfaceTrafficMode")
@@ -40,6 +42,8 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
 
     /**
      * @return The communication mode of the ENI. Default value: `Standard`. Valid values:
+     * - `Standard`: Uses the TCP communication mode.
+     * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
      * 
      */
     public Optional<Output<String>> networkInterfaceTrafficMode() {
@@ -126,6 +130,8 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
 
         /**
          * @param networkInterfaceTrafficMode The communication mode of the ENI. Default value: `Standard`. Valid values:
+         * - `Standard`: Uses the TCP communication mode.
+         * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
          * 
          * @return builder
          * 
@@ -137,6 +143,8 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
 
         /**
          * @param networkInterfaceTrafficMode The communication mode of the ENI. Default value: `Standard`. Valid values:
+         * - `Standard`: Uses the TCP communication mode.
+         * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
          * 
          * @return builder
          * 

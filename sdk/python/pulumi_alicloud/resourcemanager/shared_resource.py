@@ -22,6 +22,11 @@ class SharedResourceArgs:
         :param pulumi.Input[str] resource_id: The resource ID need shared.
         :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
         :param pulumi.Input[str] resource_type: The resource type of should shared. Valid values:
+               - `VSwitch`.
+               - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+               - The following types are added after v1.192.0: `PrefixList` and `Image`.
+               - The following types are added after v1.194.1: `PublicIpAddressPool`.
+               - The following types are added after v1.208.0: `KMSInstance`.
         """
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_share_id", resource_share_id)
@@ -56,6 +61,11 @@ class SharedResourceArgs:
     def resource_type(self) -> pulumi.Input[str]:
         """
         The resource type of should shared. Valid values:
+        - `VSwitch`.
+        - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        - The following types are added after v1.192.0: `PrefixList` and `Image`.
+        - The following types are added after v1.194.1: `PublicIpAddressPool`.
+        - The following types are added after v1.208.0: `KMSInstance`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -76,6 +86,11 @@ class _SharedResourceState:
         :param pulumi.Input[str] resource_id: The resource ID need shared.
         :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
         :param pulumi.Input[str] resource_type: The resource type of should shared. Valid values:
+               - `VSwitch`.
+               - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+               - The following types are added after v1.192.0: `PrefixList` and `Image`.
+               - The following types are added after v1.194.1: `PublicIpAddressPool`.
+               - The following types are added after v1.208.0: `KMSInstance`.
         :param pulumi.Input[str] status: The status of the Shared Resource.
         """
         if resource_id is not None:
@@ -116,6 +131,11 @@ class _SharedResourceState:
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
         The resource type of should shared. Valid values:
+        - `VSwitch`.
+        - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        - The following types are added after v1.192.0: `PrefixList` and `Image`.
+        - The following types are added after v1.194.1: `PublicIpAddressPool`.
+        - The following types are added after v1.208.0: `KMSInstance`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -193,6 +213,11 @@ class SharedResource(pulumi.CustomResource):
         :param pulumi.Input[str] resource_id: The resource ID need shared.
         :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
         :param pulumi.Input[str] resource_type: The resource type of should shared. Valid values:
+               - `VSwitch`.
+               - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+               - The following types are added after v1.192.0: `PrefixList` and `Image`.
+               - The following types are added after v1.194.1: `PublicIpAddressPool`.
+               - The following types are added after v1.208.0: `KMSInstance`.
         """
         ...
     @overload
@@ -304,6 +329,11 @@ class SharedResource(pulumi.CustomResource):
         :param pulumi.Input[str] resource_id: The resource ID need shared.
         :param pulumi.Input[str] resource_share_id: The resource share ID of resource manager.
         :param pulumi.Input[str] resource_type: The resource type of should shared. Valid values:
+               - `VSwitch`.
+               - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+               - The following types are added after v1.192.0: `PrefixList` and `Image`.
+               - The following types are added after v1.194.1: `PublicIpAddressPool`.
+               - The following types are added after v1.208.0: `KMSInstance`.
         :param pulumi.Input[str] status: The status of the Shared Resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -337,6 +367,11 @@ class SharedResource(pulumi.CustomResource):
     def resource_type(self) -> pulumi.Output[str]:
         """
         The resource type of should shared. Valid values:
+        - `VSwitch`.
+        - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        - The following types are added after v1.192.0: `PrefixList` and `Image`.
+        - The following types are added after v1.194.1: `PublicIpAddressPool`.
+        - The following types are added after v1.208.0: `KMSInstance`.
         """
         return pulumi.get(self, "resource_type")
 

@@ -708,6 +708,16 @@ class GetGatewaysGatewaySlbListResult(dict):
                  slb_ip: str,
                  slb_port: str,
                  type: str):
+        """
+        :param str associate_id: The associate id.
+        :param str gateway_slb_mode: The Mode of the gateway slb.
+        :param str gateway_slb_status: The Status of the gateway slb.
+        :param str gmt_create: The creation time of the gateway slb.
+        :param str slb_id: The ID of the gateway slb.
+        :param str slb_ip: The ip of the gateway slb.
+        :param str slb_port: The port of the gateway slb.
+        :param str type: The type of the gateway slb.
+        """
         pulumi.set(__self__, "associate_id", associate_id)
         pulumi.set(__self__, "gateway_slb_mode", gateway_slb_mode)
         pulumi.set(__self__, "gateway_slb_status", gateway_slb_status)
@@ -720,41 +730,65 @@ class GetGatewaysGatewaySlbListResult(dict):
     @property
     @pulumi.getter(name="associateId")
     def associate_id(self) -> str:
+        """
+        The associate id.
+        """
         return pulumi.get(self, "associate_id")
 
     @property
     @pulumi.getter(name="gatewaySlbMode")
     def gateway_slb_mode(self) -> str:
+        """
+        The Mode of the gateway slb.
+        """
         return pulumi.get(self, "gateway_slb_mode")
 
     @property
     @pulumi.getter(name="gatewaySlbStatus")
     def gateway_slb_status(self) -> str:
+        """
+        The Status of the gateway slb.
+        """
         return pulumi.get(self, "gateway_slb_status")
 
     @property
     @pulumi.getter(name="gmtCreate")
     def gmt_create(self) -> str:
+        """
+        The creation time of the gateway slb.
+        """
         return pulumi.get(self, "gmt_create")
 
     @property
     @pulumi.getter(name="slbId")
     def slb_id(self) -> str:
+        """
+        The ID of the gateway slb.
+        """
         return pulumi.get(self, "slb_id")
 
     @property
     @pulumi.getter(name="slbIp")
     def slb_ip(self) -> str:
+        """
+        The ip of the gateway slb.
+        """
         return pulumi.get(self, "slb_ip")
 
     @property
     @pulumi.getter(name="slbPort")
     def slb_port(self) -> str:
+        """
+        The port of the gateway slb.
+        """
         return pulumi.get(self, "slb_port")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of the gateway slb.
+        """
         return pulumi.get(self, "type")
 
 

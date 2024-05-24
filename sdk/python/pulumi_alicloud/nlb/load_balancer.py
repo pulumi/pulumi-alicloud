@@ -59,6 +59,8 @@ class LoadBalancerArgs:
         :param pulumi.Input['LoadBalancerModificationProtectionConfigArgs'] modification_protection_config: Modify protection. See `modification_protection_config` below.
         :param pulumi.Input[str] modification_protection_reason: The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+               - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+               - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security group to which the network-based SLB instance belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: List of labels.
@@ -278,6 +280,8 @@ class LoadBalancerArgs:
     def modification_protection_status(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+        - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+        - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
         """
         return pulumi.get(self, "modification_protection_status")
 
@@ -373,6 +377,8 @@ class _LoadBalancerState:
         :param pulumi.Input['LoadBalancerModificationProtectionConfigArgs'] modification_protection_config: Modify protection. See `modification_protection_config` below.
         :param pulumi.Input[str] modification_protection_reason: The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+               - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+               - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security group to which the network-based SLB instance belongs.
         :param pulumi.Input[str] status: The status of the resource.
@@ -618,6 +624,8 @@ class _LoadBalancerState:
     def modification_protection_status(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+        - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+        - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
         """
         return pulumi.get(self, "modification_protection_status")
 
@@ -810,6 +818,8 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']] modification_protection_config: Modify protection. See `modification_protection_config` below.
         :param pulumi.Input[str] modification_protection_reason: The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+               - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+               - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security group to which the network-based SLB instance belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: List of labels.
@@ -1020,6 +1030,8 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']] modification_protection_config: Modify protection. See `modification_protection_config` below.
         :param pulumi.Input[str] modification_protection_reason: The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+               - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+               - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security group to which the network-based SLB instance belongs.
         :param pulumi.Input[str] status: The status of the resource.
@@ -1188,6 +1200,8 @@ class LoadBalancer(pulumi.CustomResource):
     def modification_protection_status(self) -> pulumi.Output[str]:
         """
         Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+        - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+        - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
         """
         return pulumi.get(self, "modification_protection_status")
 

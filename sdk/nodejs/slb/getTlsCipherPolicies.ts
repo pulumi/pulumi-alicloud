@@ -67,7 +67,7 @@ export interface GetTlsCipherPoliciesArgs {
      */
     outputFile?: string;
     /**
-     * TLS policy instance state.
+     * TLS policy instance state. Valid values: `configuring`, `normal`.
      */
     status?: string;
     /**
@@ -144,7 +144,7 @@ export interface GetTlsCipherPoliciesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * TLS policy instance state.
+     * TLS policy instance state. Valid values: `configuring`, `normal`.
      */
     status?: pulumi.Input<string>;
     /**

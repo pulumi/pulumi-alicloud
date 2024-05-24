@@ -58,7 +58,7 @@ public final class SagFunctions {
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
      *             .name("tf-testAccSagAclName")
      *             .build());
      * 
@@ -113,7 +113,7 @@ public final class SagFunctions {
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
      *             .name("tf-testAccSagAclName")
      *             .build());
      * 
@@ -168,7 +168,7 @@ public final class SagFunctions {
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
      *             .name("tf-testAccSagAclName")
      *             .build());
      * 
@@ -223,7 +223,7 @@ public final class SagFunctions {
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
      *             .name("tf-testAccSagAclName")
      *             .build());
      * 
@@ -278,7 +278,7 @@ public final class SagFunctions {
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
      *             .name("tf-testAccSagAclName")
      *             .build());
      * 
@@ -333,7 +333,7 @@ public final class SagFunctions {
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
      *             .name("tf-testAccSagAclName")
      *             .build());
      * 

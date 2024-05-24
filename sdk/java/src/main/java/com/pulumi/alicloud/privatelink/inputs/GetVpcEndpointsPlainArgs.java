@@ -137,14 +137,14 @@ public final class GetVpcEndpointsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The private network to which the terminal node belongs.
+     * The private network to which the terminal node belongs..
      * 
      */
     @Import(name="vpcId")
     private @Nullable String vpcId;
 
     /**
-     * @return The private network to which the terminal node belongs.
+     * @return The private network to which the terminal node belongs..
      * 
      */
     public Optional<String> vpcId() {
@@ -282,7 +282,7 @@ public final class GetVpcEndpointsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param vpcId The private network to which the terminal node belongs.
+         * @param vpcId The private network to which the terminal node belongs..
          * 
          * @return builder
          * 

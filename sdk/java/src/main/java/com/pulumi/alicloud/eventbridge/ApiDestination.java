@@ -57,14 +57,14 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-chengdu");
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Connection("default", ConnectionArgs.builder()        
+ *         var default_ = new Connection("default", ConnectionArgs.builder()
  *             .connectionName(name)
  *             .networkParameters(ConnectionNetworkParametersArgs.builder()
  *                 .networkType("PublicNetwork")
  *                 .build())
  *             .build());
  * 
- *         var defaultApiDestination = new ApiDestination("defaultApiDestination", ApiDestinationArgs.builder()        
+ *         var defaultApiDestination = new ApiDestination("defaultApiDestination", ApiDestinationArgs.builder()
  *             .connectionName(default_.connectionName())
  *             .apiDestinationName(name)
  *             .description("test-api-destination-connection")

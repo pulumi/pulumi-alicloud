@@ -86,13 +86,13 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .enableIpv6("true")
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
@@ -100,13 +100,13 @@ import javax.annotation.Nullable;
  *             .ipv6CidrBlockMask("64")
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .description(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .ipv6AddressCount(1)
  *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *             .securityGroups(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var defaultIpv6Gateway = new Ipv6Gateway("defaultIpv6Gateway", Ipv6GatewayArgs.builder()        
+ *         var defaultIpv6Gateway = new Ipv6Gateway("defaultIpv6Gateway", Ipv6GatewayArgs.builder()
  *             .ipv6GatewayName(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
@@ -128,14 +128,14 @@ import javax.annotation.Nullable;
  *             .status("Available")
  *             .build());
  * 
- *         var defaultIpv6InternetBandwidth = new Ipv6InternetBandwidth("defaultIpv6InternetBandwidth", Ipv6InternetBandwidthArgs.builder()        
+ *         var defaultIpv6InternetBandwidth = new Ipv6InternetBandwidth("defaultIpv6InternetBandwidth", Ipv6InternetBandwidthArgs.builder()
  *             .ipv6AddressId(defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult).applyValue(defaultGetIpv6Addresses -> defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id())))
  *             .ipv6GatewayId(defaultIpv6Gateway.ipv6GatewayId())
  *             .internetChargeType("PayByBandwidth")
  *             .bandwidth("20")
  *             .build());
  * 
- *         var defaultIpv6EgressRule = new Ipv6EgressRule("defaultIpv6EgressRule", Ipv6EgressRuleArgs.builder()        
+ *         var defaultIpv6EgressRule = new Ipv6EgressRule("defaultIpv6EgressRule", Ipv6EgressRuleArgs.builder()
  *             .instanceId(defaultIpv6InternetBandwidth.ipv6AddressId())
  *             .ipv6EgressRuleName(name)
  *             .description(name)

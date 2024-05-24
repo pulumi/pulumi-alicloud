@@ -16,17 +16,9 @@ public final class GetTrafficMarkingPoliciesPlainArgs extends com.pulumi.resourc
 
     public static final GetTrafficMarkingPoliciesPlainArgs Empty = new GetTrafficMarkingPoliciesPlainArgs();
 
-    /**
-     * The description of the Traffic Marking Policy.
-     * 
-     */
     @Import(name="description")
     private @Nullable String description;
 
-    /**
-     * @return The description of the Traffic Marking Policy.
-     * 
-     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -77,14 +69,14 @@ public final class GetTrafficMarkingPoliciesPlainArgs extends com.pulumi.resourc
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
      * 
      */
     public Optional<String> status() {
@@ -135,12 +127,6 @@ public final class GetTrafficMarkingPoliciesPlainArgs extends com.pulumi.resourc
             $ = new GetTrafficMarkingPoliciesPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param description The description of the Traffic Marking Policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable String description) {
             $.description = description;
             return this;
@@ -190,7 +176,7 @@ public final class GetTrafficMarkingPoliciesPlainArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
          * 
          * @return builder
          * 

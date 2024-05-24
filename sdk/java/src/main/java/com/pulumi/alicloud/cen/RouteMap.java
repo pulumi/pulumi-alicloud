@@ -62,36 +62,36 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var sourceRegion = config.get("sourceRegion").orElse("cn-hangzhou");
  *         final var destinationRegion = config.get("destinationRegion").orElse("cn-shanghai");
- *         var exampleHz = new Network("exampleHz", NetworkArgs.builder()        
+ *         var exampleHz = new Network("exampleHz", NetworkArgs.builder()
  *             .vpcName("tf_example")
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var exampleSh = new Network("exampleSh", NetworkArgs.builder()        
+ *         var exampleSh = new Network("exampleSh", NetworkArgs.builder()
  *             .vpcName("tf_example")
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var example = new Instance("example", InstanceArgs.builder()        
+ *         var example = new Instance("example", InstanceArgs.builder()
  *             .cenInstanceName("tf_example")
  *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleHzInstanceAttachment = new InstanceAttachment("exampleHzInstanceAttachment", InstanceAttachmentArgs.builder()        
+ *         var exampleHzInstanceAttachment = new InstanceAttachment("exampleHzInstanceAttachment", InstanceAttachmentArgs.builder()
  *             .instanceId(example.id())
  *             .childInstanceId(exampleHz.id())
  *             .childInstanceType("VPC")
  *             .childInstanceRegionId(sourceRegion)
  *             .build());
  * 
- *         var exampleShInstanceAttachment = new InstanceAttachment("exampleShInstanceAttachment", InstanceAttachmentArgs.builder()        
+ *         var exampleShInstanceAttachment = new InstanceAttachment("exampleShInstanceAttachment", InstanceAttachmentArgs.builder()
  *             .instanceId(example.id())
  *             .childInstanceId(exampleSh.id())
  *             .childInstanceType("VPC")
  *             .childInstanceRegionId(destinationRegion)
  *             .build());
  * 
- *         var default_ = new RouteMap("default", RouteMapArgs.builder()        
+ *         var default_ = new RouteMap("default", RouteMapArgs.builder()
  *             .cenRegionId(sourceRegion)
  *             .cenId(example.id())
  *             .description("tf_example")

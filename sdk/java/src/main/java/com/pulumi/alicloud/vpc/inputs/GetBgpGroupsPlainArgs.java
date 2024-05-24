@@ -61,14 +61,14 @@ public final class GetBgpGroupsPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The ID of the VBR.
+     * The ID of the virtual border router (VBR) that is associated with the BGP group.
      * 
      */
     @Import(name="routerId")
     private @Nullable String routerId;
 
     /**
-     * @return The ID of the VBR.
+     * @return The ID of the virtual border router (VBR) that is associated with the BGP group.
      * 
      */
     public Optional<String> routerId() {
@@ -76,14 +76,14 @@ public final class GetBgpGroupsPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
      * 
      */
     public Optional<String> status() {
@@ -162,7 +162,7 @@ public final class GetBgpGroupsPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param routerId The ID of the VBR.
+         * @param routerId The ID of the virtual border router (VBR) that is associated with the BGP group.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class GetBgpGroupsPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
          * 
          * @return builder
          * 

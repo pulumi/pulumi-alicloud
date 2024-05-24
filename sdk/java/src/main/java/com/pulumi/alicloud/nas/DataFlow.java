@@ -106,6 +106,8 @@ public class DataFlow extends com.pulumi.resources.CustomResource {
     }
     /**
      * The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+     * - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+     * - `SSL`: Protects access through SSL certificates.
      * 
      */
     @Export(name="sourceSecurityType", refs={String.class}, tree="[0]")
@@ -113,6 +115,8 @@ public class DataFlow extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+     * - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+     * - `SSL`: Protects access through SSL certificates.
      * 
      */
     public Output<String> sourceSecurityType() {

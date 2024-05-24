@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -71,31 +71,31 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(myName)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(myName)
  *             .build());
  * 
- *         var default2 = new Switch("default2", SwitchArgs.builder()        
+ *         var default2 = new Switch("default2", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.1.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(String.format("%s-bar", name))
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(myName)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()        
+ *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
  *             .minSize("1")
  *             .maxSize("1")
  *             .scalingGroupName(myName)
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *                 default2.id())
  *             .build());
  * 
- *         var defaultLifecycleHook = new LifecycleHook("defaultLifecycleHook", LifecycleHookArgs.builder()        
+ *         var defaultLifecycleHook = new LifecycleHook("defaultLifecycleHook", LifecycleHookArgs.builder()
  *             .scalingGroupId(defaultScalingGroup.id())
  *             .name(myName)
  *             .lifecycleTransition("SCALE_OUT")

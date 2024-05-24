@@ -92,14 +92,14 @@ public final class GetNetworkAclsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The type of the associated resource.
+     * The type of the associated resource. Valid values `VSwitch`. `resource_type` and `resource_id` need to be specified at the same time to take effect.
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return The type of the associated resource.
+     * @return The type of the associated resource. Valid values `VSwitch`. `resource_type` and `resource_id` need to be specified at the same time to take effect.
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -107,14 +107,14 @@ public final class GetNetworkAclsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The state of the network ACL.
+     * The state of the network ACL. Valid values: `Available` and `Modifying`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The state of the network ACL.
+     * @return The state of the network ACL. Valid values: `Available` and `Modifying`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -283,7 +283,7 @@ public final class GetNetworkAclsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceType The type of the associated resource.
+         * @param resourceType The type of the associated resource. Valid values `VSwitch`. `resource_type` and `resource_id` need to be specified at the same time to take effect.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class GetNetworkAclsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceType The type of the associated resource.
+         * @param resourceType The type of the associated resource. Valid values `VSwitch`. `resource_type` and `resource_id` need to be specified at the same time to take effect.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class GetNetworkAclsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The state of the network ACL.
+         * @param status The state of the network ACL. Valid values: `Available` and `Modifying`.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class GetNetworkAclsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The state of the network ACL.
+         * @param status The state of the network ACL. Valid values: `Available` and `Modifying`.
          * 
          * @return builder
          * 

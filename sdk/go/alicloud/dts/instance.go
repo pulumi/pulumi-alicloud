@@ -176,6 +176,9 @@ type Instance struct {
 	// - **bidirectional**: two-way synchronization.
 	SyncArchitecture pulumi.StringPtrOutput `pulumi:"syncArchitecture"`
 	// The synchronization direction. Default value: `Forward`. Valid values:
+	// - `Forward`: Data is synchronized from the source database to the destination database.
+	// - `Reverse`: Data is synchronized from the destination database to the source database.
+	// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
 	SynchronizationDirection pulumi.StringPtrOutput `pulumi:"synchronizationDirection"`
 	// The tag value corresponding to the tag key.See the following `Block Tags`.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -324,6 +327,9 @@ type instanceState struct {
 	// - **bidirectional**: two-way synchronization.
 	SyncArchitecture *string `pulumi:"syncArchitecture"`
 	// The synchronization direction. Default value: `Forward`. Valid values:
+	// - `Forward`: Data is synchronized from the source database to the destination database.
+	// - `Reverse`: Data is synchronized from the destination database to the source database.
+	// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
 	SynchronizationDirection *string `pulumi:"synchronizationDirection"`
 	// The tag value corresponding to the tag key.See the following `Block Tags`.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -443,6 +449,9 @@ type InstanceState struct {
 	// - **bidirectional**: two-way synchronization.
 	SyncArchitecture pulumi.StringPtrInput
 	// The synchronization direction. Default value: `Forward`. Valid values:
+	// - `Forward`: Data is synchronized from the source database to the destination database.
+	// - `Reverse`: Data is synchronized from the destination database to the source database.
+	// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
 	SynchronizationDirection pulumi.StringPtrInput
 	// The tag value corresponding to the tag key.See the following `Block Tags`.
 	Tags pulumi.MapInput
@@ -558,6 +567,9 @@ type instanceArgs struct {
 	// - **bidirectional**: two-way synchronization.
 	SyncArchitecture *string `pulumi:"syncArchitecture"`
 	// The synchronization direction. Default value: `Forward`. Valid values:
+	// - `Forward`: Data is synchronized from the source database to the destination database.
+	// - `Reverse`: Data is synchronized from the destination database to the source database.
+	// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
 	SynchronizationDirection *string `pulumi:"synchronizationDirection"`
 	// The tag value corresponding to the tag key.See the following `Block Tags`.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -670,6 +682,9 @@ type InstanceArgs struct {
 	// - **bidirectional**: two-way synchronization.
 	SyncArchitecture pulumi.StringPtrInput
 	// The synchronization direction. Default value: `Forward`. Valid values:
+	// - `Forward`: Data is synchronized from the source database to the destination database.
+	// - `Reverse`: Data is synchronized from the destination database to the source database.
+	// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
 	SynchronizationDirection pulumi.StringPtrInput
 	// The tag value corresponding to the tag key.See the following `Block Tags`.
 	Tags pulumi.MapInput
@@ -935,6 +950,9 @@ func (o InstanceOutput) SyncArchitecture() pulumi.StringPtrOutput {
 }
 
 // The synchronization direction. Default value: `Forward`. Valid values:
+// - `Forward`: Data is synchronized from the source database to the destination database.
+// - `Reverse`: Data is synchronized from the destination database to the source database.
+// - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
 func (o InstanceOutput) SynchronizationDirection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SynchronizationDirection }).(pulumi.StringPtrOutput)
 }

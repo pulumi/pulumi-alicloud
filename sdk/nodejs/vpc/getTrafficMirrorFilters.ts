@@ -71,7 +71,7 @@ export interface GetTrafficMirrorFiltersArgs {
      */
     status?: string;
     /**
-     * The name of the filter.
+     * The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      */
     trafficMirrorFilterName?: string;
 }
@@ -148,7 +148,7 @@ export interface GetTrafficMirrorFiltersOutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * The name of the filter.
+     * The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      */
     trafficMirrorFilterName?: pulumi.Input<string>;
 }

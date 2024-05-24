@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new CustomerGateway("default", CustomerGatewayArgs.builder()        
+ *         var default_ = new CustomerGateway("default", CustomerGatewayArgs.builder()
  *             .description(name)
  *             .ipAddress("4.3.2.10")
  *             .asn("1219002")

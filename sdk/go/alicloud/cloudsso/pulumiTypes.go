@@ -776,7 +776,7 @@ func (o GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput) Index(i
 }
 
 type GetDirectoriesDirectory struct {
-	// Saml identifies the creation time of the provider configuration.
+	// The CreateTime of the CloudSSO directory.
 	CreateTime string `pulumi:"createTime"`
 	// The DirectoryId of the CloudSSO directory.
 	DirectoryId string `pulumi:"directoryId"`
@@ -808,7 +808,7 @@ type GetDirectoriesDirectoryInput interface {
 }
 
 type GetDirectoriesDirectoryArgs struct {
-	// Saml identifies the creation time of the provider configuration.
+	// The CreateTime of the CloudSSO directory.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The DirectoryId of the CloudSSO directory.
 	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
@@ -879,7 +879,7 @@ func (o GetDirectoriesDirectoryOutput) ToGetDirectoriesDirectoryOutputWithContex
 	return o
 }
 
-// Saml identifies the creation time of the provider configuration.
+// The CreateTime of the CloudSSO directory.
 func (o GetDirectoriesDirectoryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectory) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -947,11 +947,16 @@ func (o GetDirectoriesDirectoryArrayOutput) Index(i pulumi.IntInput) GetDirector
 }
 
 type GetDirectoriesDirectorySamlIdentityProviderConfiguration struct {
-	CreateTime              string `pulumi:"createTime"`
+	// Saml identifies the creation time of the provider configuration.
+	CreateTime string `pulumi:"createTime"`
+	// Base64 encoded IdP metadata document.
 	EncodedMetadataDocument string `pulumi:"encodedMetadataDocument"`
-	EntityId                string `pulumi:"entityId"`
-	LoginUrl                string `pulumi:"loginUrl"`
-	SsoStatus               string `pulumi:"ssoStatus"`
+	// SAML IdPEntityID.
+	EntityId string `pulumi:"entityId"`
+	// SAML IdP http-post Binding address.
+	LoginUrl string `pulumi:"loginUrl"`
+	// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	SsoStatus string `pulumi:"ssoStatus"`
 }
 
 // GetDirectoriesDirectorySamlIdentityProviderConfigurationInput is an input type that accepts GetDirectoriesDirectorySamlIdentityProviderConfigurationArgs and GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput values.
@@ -966,11 +971,16 @@ type GetDirectoriesDirectorySamlIdentityProviderConfigurationInput interface {
 }
 
 type GetDirectoriesDirectorySamlIdentityProviderConfigurationArgs struct {
-	CreateTime              pulumi.StringInput `pulumi:"createTime"`
+	// Saml identifies the creation time of the provider configuration.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Base64 encoded IdP metadata document.
 	EncodedMetadataDocument pulumi.StringInput `pulumi:"encodedMetadataDocument"`
-	EntityId                pulumi.StringInput `pulumi:"entityId"`
-	LoginUrl                pulumi.StringInput `pulumi:"loginUrl"`
-	SsoStatus               pulumi.StringInput `pulumi:"ssoStatus"`
+	// SAML IdPEntityID.
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+	// SAML IdP http-post Binding address.
+	LoginUrl pulumi.StringInput `pulumi:"loginUrl"`
+	// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+	SsoStatus pulumi.StringInput `pulumi:"ssoStatus"`
 }
 
 func (GetDirectoriesDirectorySamlIdentityProviderConfigurationArgs) ElementType() reflect.Type {
@@ -1024,24 +1034,29 @@ func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput) ToGetDir
 	return o
 }
 
+// Saml identifies the creation time of the provider configuration.
 func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectorySamlIdentityProviderConfiguration) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Base64 encoded IdP metadata document.
 func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput) EncodedMetadataDocument() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectorySamlIdentityProviderConfiguration) string {
 		return v.EncodedMetadataDocument
 	}).(pulumi.StringOutput)
 }
 
+// SAML IdPEntityID.
 func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectorySamlIdentityProviderConfiguration) string { return v.EntityId }).(pulumi.StringOutput)
 }
 
+// SAML IdP http-post Binding address.
 func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput) LoginUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectorySamlIdentityProviderConfiguration) string { return v.LoginUrl }).(pulumi.StringOutput)
 }
 
+// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
 func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput) SsoStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectorySamlIdentityProviderConfiguration) string { return v.SsoStatus }).(pulumi.StringOutput)
 }
@@ -1067,21 +1082,36 @@ func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationArrayOutput) Ind
 }
 
 type GetDirectoriesDirectoryTask struct {
-	AccessConfigurationId   string `pulumi:"accessConfigurationId"`
+	// The ID of Access Configuration.
+	AccessConfigurationId string `pulumi:"accessConfigurationId"`
+	// The Name of Access Configuration.
 	AccessConfigurationName string `pulumi:"accessConfigurationName"`
-	EndTime                 string `pulumi:"endTime"`
-	FailureReason           string `pulumi:"failureReason"`
-	PrincipalId             string `pulumi:"principalId"`
-	PrincipalName           string `pulumi:"principalName"`
-	PrincipalType           string `pulumi:"principalType"`
-	StartTime               string `pulumi:"startTime"`
-	Status                  string `pulumi:"status"`
-	TargetId                string `pulumi:"targetId"`
-	TargetName              string `pulumi:"targetName"`
-	TargetPath              string `pulumi:"targetPath"`
-	TargetType              string `pulumi:"targetType"`
-	TaskId                  string `pulumi:"taskId"`
-	TaskType                string `pulumi:"taskType"`
+	// The End Time of Task.
+	EndTime string `pulumi:"endTime"`
+	// the Reason for the Failure of  the task.
+	FailureReason string `pulumi:"failureReason"`
+	// The ID of Cloud SSO Identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The Name of Cloud SSO Identity.
+	PrincipalName string `pulumi:"principalName"`
+	// The Type of Cloud SSO Identity.
+	PrincipalType string `pulumi:"principalType"`
+	// The Start Time of Task.
+	StartTime string `pulumi:"startTime"`
+	// The Task Status.
+	Status string `pulumi:"status"`
+	// The Id of deploy target.
+	TargetId string `pulumi:"targetId"`
+	// The Name of Deploy Target.
+	TargetName string `pulumi:"targetName"`
+	// The Path in RD of Deploy Target.
+	TargetPath string `pulumi:"targetPath"`
+	// The Type of Deploy Target.
+	TargetType string `pulumi:"targetType"`
+	// The ID of the Task.
+	TaskId string `pulumi:"taskId"`
+	// The Type of the Task.
+	TaskType string `pulumi:"taskType"`
 }
 
 // GetDirectoriesDirectoryTaskInput is an input type that accepts GetDirectoriesDirectoryTaskArgs and GetDirectoriesDirectoryTaskOutput values.
@@ -1096,21 +1126,36 @@ type GetDirectoriesDirectoryTaskInput interface {
 }
 
 type GetDirectoriesDirectoryTaskArgs struct {
-	AccessConfigurationId   pulumi.StringInput `pulumi:"accessConfigurationId"`
+	// The ID of Access Configuration.
+	AccessConfigurationId pulumi.StringInput `pulumi:"accessConfigurationId"`
+	// The Name of Access Configuration.
 	AccessConfigurationName pulumi.StringInput `pulumi:"accessConfigurationName"`
-	EndTime                 pulumi.StringInput `pulumi:"endTime"`
-	FailureReason           pulumi.StringInput `pulumi:"failureReason"`
-	PrincipalId             pulumi.StringInput `pulumi:"principalId"`
-	PrincipalName           pulumi.StringInput `pulumi:"principalName"`
-	PrincipalType           pulumi.StringInput `pulumi:"principalType"`
-	StartTime               pulumi.StringInput `pulumi:"startTime"`
-	Status                  pulumi.StringInput `pulumi:"status"`
-	TargetId                pulumi.StringInput `pulumi:"targetId"`
-	TargetName              pulumi.StringInput `pulumi:"targetName"`
-	TargetPath              pulumi.StringInput `pulumi:"targetPath"`
-	TargetType              pulumi.StringInput `pulumi:"targetType"`
-	TaskId                  pulumi.StringInput `pulumi:"taskId"`
-	TaskType                pulumi.StringInput `pulumi:"taskType"`
+	// The End Time of Task.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// the Reason for the Failure of  the task.
+	FailureReason pulumi.StringInput `pulumi:"failureReason"`
+	// The ID of Cloud SSO Identity.
+	PrincipalId pulumi.StringInput `pulumi:"principalId"`
+	// The Name of Cloud SSO Identity.
+	PrincipalName pulumi.StringInput `pulumi:"principalName"`
+	// The Type of Cloud SSO Identity.
+	PrincipalType pulumi.StringInput `pulumi:"principalType"`
+	// The Start Time of Task.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The Task Status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The Id of deploy target.
+	TargetId pulumi.StringInput `pulumi:"targetId"`
+	// The Name of Deploy Target.
+	TargetName pulumi.StringInput `pulumi:"targetName"`
+	// The Path in RD of Deploy Target.
+	TargetPath pulumi.StringInput `pulumi:"targetPath"`
+	// The Type of Deploy Target.
+	TargetType pulumi.StringInput `pulumi:"targetType"`
+	// The ID of the Task.
+	TaskId pulumi.StringInput `pulumi:"taskId"`
+	// The Type of the Task.
+	TaskType pulumi.StringInput `pulumi:"taskType"`
 }
 
 func (GetDirectoriesDirectoryTaskArgs) ElementType() reflect.Type {
@@ -1164,62 +1209,77 @@ func (o GetDirectoriesDirectoryTaskOutput) ToGetDirectoriesDirectoryTaskOutputWi
 	return o
 }
 
+// The ID of Access Configuration.
 func (o GetDirectoriesDirectoryTaskOutput) AccessConfigurationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.AccessConfigurationId }).(pulumi.StringOutput)
 }
 
+// The Name of Access Configuration.
 func (o GetDirectoriesDirectoryTaskOutput) AccessConfigurationName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.AccessConfigurationName }).(pulumi.StringOutput)
 }
 
+// The End Time of Task.
 func (o GetDirectoriesDirectoryTaskOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
+// the Reason for the Failure of  the task.
 func (o GetDirectoriesDirectoryTaskOutput) FailureReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.FailureReason }).(pulumi.StringOutput)
 }
 
+// The ID of Cloud SSO Identity.
 func (o GetDirectoriesDirectoryTaskOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
+// The Name of Cloud SSO Identity.
 func (o GetDirectoriesDirectoryTaskOutput) PrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.PrincipalName }).(pulumi.StringOutput)
 }
 
+// The Type of Cloud SSO Identity.
 func (o GetDirectoriesDirectoryTaskOutput) PrincipalType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.PrincipalType }).(pulumi.StringOutput)
 }
 
+// The Start Time of Task.
 func (o GetDirectoriesDirectoryTaskOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
+// The Task Status.
 func (o GetDirectoriesDirectoryTaskOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The Id of deploy target.
 func (o GetDirectoriesDirectoryTaskOutput) TargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.TargetId }).(pulumi.StringOutput)
 }
 
+// The Name of Deploy Target.
 func (o GetDirectoriesDirectoryTaskOutput) TargetName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.TargetName }).(pulumi.StringOutput)
 }
 
+// The Path in RD of Deploy Target.
 func (o GetDirectoriesDirectoryTaskOutput) TargetPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.TargetPath }).(pulumi.StringOutput)
 }
 
+// The Type of Deploy Target.
 func (o GetDirectoriesDirectoryTaskOutput) TargetType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.TargetType }).(pulumi.StringOutput)
 }
 
+// The ID of the Task.
 func (o GetDirectoriesDirectoryTaskOutput) TaskId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.TaskId }).(pulumi.StringOutput)
 }
 
+// The Type of the Task.
 func (o GetDirectoriesDirectoryTaskOutput) TaskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectoryTask) string { return v.TaskType }).(pulumi.StringOutput)
 }
@@ -1761,9 +1821,13 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 type GetUsersUserMfaDevice struct {
-	DeviceId      string `pulumi:"deviceId"`
-	DeviceName    string `pulumi:"deviceName"`
-	DeviceType    string `pulumi:"deviceType"`
+	// The MFA Device ID.
+	DeviceId string `pulumi:"deviceId"`
+	// The MFA Device Name.
+	DeviceName string `pulumi:"deviceName"`
+	// The MFA Device Type.
+	DeviceType string `pulumi:"deviceType"`
+	// The Effective Time of MFA Device.
 	EffectiveTime string `pulumi:"effectiveTime"`
 }
 
@@ -1779,9 +1843,13 @@ type GetUsersUserMfaDeviceInput interface {
 }
 
 type GetUsersUserMfaDeviceArgs struct {
-	DeviceId      pulumi.StringInput `pulumi:"deviceId"`
-	DeviceName    pulumi.StringInput `pulumi:"deviceName"`
-	DeviceType    pulumi.StringInput `pulumi:"deviceType"`
+	// The MFA Device ID.
+	DeviceId pulumi.StringInput `pulumi:"deviceId"`
+	// The MFA Device Name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The MFA Device Type.
+	DeviceType pulumi.StringInput `pulumi:"deviceType"`
+	// The Effective Time of MFA Device.
 	EffectiveTime pulumi.StringInput `pulumi:"effectiveTime"`
 }
 
@@ -1836,18 +1904,22 @@ func (o GetUsersUserMfaDeviceOutput) ToGetUsersUserMfaDeviceOutputWithContext(ct
 	return o
 }
 
+// The MFA Device ID.
 func (o GetUsersUserMfaDeviceOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUserMfaDevice) string { return v.DeviceId }).(pulumi.StringOutput)
 }
 
+// The MFA Device Name.
 func (o GetUsersUserMfaDeviceOutput) DeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUserMfaDevice) string { return v.DeviceName }).(pulumi.StringOutput)
 }
 
+// The MFA Device Type.
 func (o GetUsersUserMfaDeviceOutput) DeviceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUserMfaDevice) string { return v.DeviceType }).(pulumi.StringOutput)
 }
 
+// The Effective Time of MFA Device.
 func (o GetUsersUserMfaDeviceOutput) EffectiveTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUserMfaDevice) string { return v.EffectiveTime }).(pulumi.StringOutput)
 }

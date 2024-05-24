@@ -142,6 +142,8 @@ def get_accelerators(bandwidth_billing_type: Optional[str] = None,
 
 
     :param str bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+           - `BandwidthPackage`: billed based on bandwidth plans.
+           - `CDT`: billed based on data transfer.
     :param Sequence[str] ids: A list of Accelerator IDs.
     :param str name_regex: A regex string to filter results by Accelerator name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -193,6 +195,8 @@ def get_accelerators_output(bandwidth_billing_type: Optional[pulumi.Input[Option
 
 
     :param str bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+           - `BandwidthPackage`: billed based on bandwidth plans.
+           - `CDT`: billed based on data transfer.
     :param Sequence[str] ids: A list of Accelerator IDs.
     :param str name_regex: A regex string to filter results by Accelerator name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

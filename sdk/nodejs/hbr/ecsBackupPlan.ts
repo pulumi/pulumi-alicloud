@@ -185,6 +185,7 @@ export class EcsBackupPlan extends pulumi.CustomResource {
     public readonly retention!: pulumi.Output<string>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * * `startTime` Backup start time, UNIX time seconds.
      */
     public readonly schedule!: pulumi.Output<string>;
     /**
@@ -333,6 +334,7 @@ export interface EcsBackupPlanState {
     retention?: pulumi.Input<string>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * * `startTime` Backup start time, UNIX time seconds.
      */
     schedule?: pulumi.Input<string>;
     /**
@@ -409,6 +411,7 @@ export interface EcsBackupPlanArgs {
     retention: pulumi.Input<string>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * * `startTime` Backup start time, UNIX time seconds.
      */
     schedule: pulumi.Input<string>;
     /**

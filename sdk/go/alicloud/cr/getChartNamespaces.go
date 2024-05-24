@@ -28,7 +28,7 @@ func GetChartNamespaces(ctx *pulumi.Context, args *GetChartNamespacesArgs, opts 
 type GetChartNamespacesArgs struct {
 	// A list of matched Container Registry Enterprise Edition namespaces.
 	Ids []string `pulumi:"ids"`
-	// The ID of the namespace.
+	// The ID of the Container Registry instance.
 	InstanceId string `pulumi:"instanceId"`
 	// A regex string to filter results by name space name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -65,7 +65,7 @@ func GetChartNamespacesOutput(ctx *pulumi.Context, args GetChartNamespacesOutput
 type GetChartNamespacesOutputArgs struct {
 	// A list of matched Container Registry Enterprise Edition namespaces.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The ID of the namespace.
+	// The ID of the Container Registry instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// A regex string to filter results by name space name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`

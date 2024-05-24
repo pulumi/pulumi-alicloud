@@ -54,21 +54,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance("example", InstanceArgs.builder()        
+ *         var example = new Instance("example", InstanceArgs.builder()
  *             .cenInstanceName("tf_example")
  *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()
  *             .transitRouterName("tf_example")
  *             .cenId(example.id())
  *             .build());
  * 
- *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable("exampleTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()        
+ *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable("exampleTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .build());
  * 
- *         var exampleTransitRouteTableAggregation = new TransitRouteTableAggregation("exampleTransitRouteTableAggregation", TransitRouteTableAggregationArgs.builder()        
+ *         var exampleTransitRouteTableAggregation = new TransitRouteTableAggregation("exampleTransitRouteTableAggregation", TransitRouteTableAggregationArgs.builder()
  *             .transitRouteTableId(exampleTransitRouterRouteTable.transitRouterRouteTableId())
  *             .transitRouteTableAggregationCidr("10.0.0.0/8")
  *             .transitRouteTableAggregationScope("VPC")

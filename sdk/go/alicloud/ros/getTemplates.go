@@ -66,9 +66,9 @@ type GetTemplatesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Share Type.
+	// Share Type. Valid Values: `Private`, `Shared`
 	ShareType *string `pulumi:"shareType"`
-	// Tags.
+	// Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
 	TemplateName *string `pulumi:"templateName"`
@@ -112,9 +112,9 @@ type GetTemplatesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Share Type.
+	// Share Type. Valid Values: `Private`, `Shared`
 	ShareType pulumi.StringPtrInput `pulumi:"shareType"`
-	// Tags.
+	// Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
 	TemplateName pulumi.StringPtrInput `pulumi:"templateName"`

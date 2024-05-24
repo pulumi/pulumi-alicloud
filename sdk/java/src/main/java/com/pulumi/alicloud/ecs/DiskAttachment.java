@@ -54,18 +54,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new ECS disk-attachment and use it attach one disk to a new instance.
- *         var ecsSg = new SecurityGroup("ecsSg", SecurityGroupArgs.builder()        
+ *         var ecsSg = new SecurityGroup("ecsSg", SecurityGroupArgs.builder()
  *             .name("terraform-test-group")
  *             .description("New security group")
  *             .build());
  * 
- *         var ecsDisk = new Disk("ecsDisk", DiskArgs.builder()        
+ *         var ecsDisk = new Disk("ecsDisk", DiskArgs.builder()
  *             .availabilityZone("cn-beijing-a")
  *             .size("50")
  *             .tags(Map.of("Name", "TerraformTest-disk"))
  *             .build());
  * 
- *         var ecsInstance = new Instance("ecsInstance", InstanceArgs.builder()        
+ *         var ecsInstance = new Instance("ecsInstance", InstanceArgs.builder()
  *             .imageId("ubuntu_18_04_64_20G_alibase_20190624.vhd")
  *             .instanceType("ecs.n4.small")
  *             .availabilityZone("cn-beijing-a")
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .tags(Map.of("Name", "TerraformTest-instance"))
  *             .build());
  * 
- *         var ecsDiskAtt = new DiskAttachment("ecsDiskAtt", DiskAttachmentArgs.builder()        
+ *         var ecsDiskAtt = new DiskAttachment("ecsDiskAtt", DiskAttachmentArgs.builder()
  *             .diskId(ecsDisk.id())
  *             .instanceId(ecsInstance.id())
  *             .build());

@@ -25,40 +25,6 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ebs.DedicatedBlockStorageCluster;
- * import com.pulumi.alicloud.ebs.DedicatedBlockStorageClusterArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new DedicatedBlockStorageCluster("default", DedicatedBlockStorageClusterArgs.builder()        
- *             .type("Premium")
- *             .zoneId("cn-heyuan-b")
- *             .dedicatedBlockStorageClusterName("dedicated_block_storage_cluster_name")
- *             .totalCapacity(61440)
- *             .regionId("cn-heyuan")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

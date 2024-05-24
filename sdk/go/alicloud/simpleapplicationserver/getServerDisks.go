@@ -89,7 +89,7 @@ type GetServerDisksArgs struct {
 	DiskType *string `pulumi:"diskType"`
 	// A list of Disk IDs.
 	Ids []string `pulumi:"ids"`
-	// Alibaba Cloud simple application server instance ID.
+	// The ID of the simple application server to which the disk is attached.
 	InstanceId *string `pulumi:"instanceId"`
 	// A regex string to filter results by Disk name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -132,7 +132,7 @@ type GetServerDisksOutputArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// A list of Disk IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// Alibaba Cloud simple application server instance ID.
+	// The ID of the simple application server to which the disk is attached.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// A regex string to filter results by Disk name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`

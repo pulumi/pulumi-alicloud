@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CustomProperty("example", CustomPropertyArgs.builder()        
+ *         var example = new CustomProperty("example", CustomPropertyArgs.builder()
  *             .propertyKey("example_key")
  *             .propertyValues(CustomPropertyPropertyValueArgs.builder()
  *                 .propertyValue("example_value")

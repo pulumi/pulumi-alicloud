@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.CR
         }
 
         /// <summary>
-        /// The ID of the Container Registry instance.
+        /// InstanceId.
         /// </summary>
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.CR
         }
 
         /// <summary>
-        /// The ID of the Container Registry instance.
+        /// InstanceId.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;

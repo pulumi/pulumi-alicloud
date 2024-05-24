@@ -161,6 +161,7 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Backup strategy. Optional format: `I|{startTime}|{interval}`
+        /// * `startTime` Backup start time, UNIX time, in seconds.
         /// </summary>
         [Output("schedule")]
         public Output<string> Schedule { get; private set; } = null!;
@@ -267,6 +268,7 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Backup strategy. Optional format: `I|{startTime}|{interval}`
+        /// * `startTime` Backup start time, UNIX time, in seconds.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<string> Schedule { get; set; } = null!;
@@ -335,6 +337,7 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Backup strategy. Optional format: `I|{startTime}|{interval}`
+        /// * `startTime` Backup start time, UNIX time, in seconds.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }

@@ -62,11 +62,11 @@ export interface GetTemplatesArgs {
      */
     outputFile?: string;
     /**
-     * Share Type.
+     * Share Type. Valid Values: `Private`, `Shared`
      */
     shareType?: string;
     /**
-     * Tags.
+     * Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
      */
     tags?: {[key: string]: any};
     /**
@@ -138,11 +138,11 @@ export interface GetTemplatesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Share Type.
+     * Share Type. Valid Values: `Private`, `Shared`
      */
     shareType?: pulumi.Input<string>;
     /**
-     * Tags.
+     * Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

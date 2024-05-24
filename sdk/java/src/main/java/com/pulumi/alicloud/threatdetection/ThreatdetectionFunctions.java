@@ -84,7 +84,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()        
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()
      *             .antiBruteForceRuleName(name)
      *             .forbiddenTime(360)
      *             .uuidLists("7567806c-4ec5-4597-9543-7c9543381a13")
@@ -142,7 +142,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()        
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()
      *             .antiBruteForceRuleName(name)
      *             .forbiddenTime(360)
      *             .uuidLists("7567806c-4ec5-4597-9543-7c9543381a13")
@@ -200,7 +200,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()        
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()
      *             .antiBruteForceRuleName(name)
      *             .forbiddenTime(360)
      *             .uuidLists("7567806c-4ec5-4597-9543-7c9543381a13")
@@ -258,7 +258,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()        
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()
      *             .antiBruteForceRuleName(name)
      *             .forbiddenTime(360)
      *             .uuidLists("7567806c-4ec5-4597-9543-7c9543381a13")
@@ -316,7 +316,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()        
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()
      *             .antiBruteForceRuleName(name)
      *             .forbiddenTime(360)
      *             .uuidLists("7567806c-4ec5-4597-9543-7c9543381a13")
@@ -374,7 +374,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()        
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()
      *             .antiBruteForceRuleName(name)
      *             .forbiddenTime(360)
      *             .uuidLists("7567806c-4ec5-4597-9543-7c9543381a13")
@@ -1000,7 +1000,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()        
+     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()
      *             .customType("custom")
      *             .endTime("08:00:00")
      *             .baselineStrategyName("apispec")
@@ -1059,7 +1059,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()        
+     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()
      *             .customType("custom")
      *             .endTime("08:00:00")
      *             .baselineStrategyName("apispec")
@@ -1118,7 +1118,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()        
+     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()
      *             .customType("custom")
      *             .endTime("08:00:00")
      *             .baselineStrategyName("apispec")
@@ -1177,7 +1177,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()        
+     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()
      *             .customType("custom")
      *             .endTime("08:00:00")
      *             .baselineStrategyName("apispec")
@@ -1236,7 +1236,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()        
+     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()
      *             .customType("custom")
      *             .endTime("08:00:00")
      *             .baselineStrategyName("apispec")
@@ -1295,7 +1295,7 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()        
+     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()
      *             .customType("custom")
      *             .endTime("08:00:00")
      *             .baselineStrategyName("apispec")
@@ -2485,7 +2485,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
-     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()        
+     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
      *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
      *             .probeType("host_probe")
      *             .controlNodeId("e1397077-4941-4b14-b533-ca2bdebd00a3")
@@ -2554,7 +2554,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
-     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()        
+     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
      *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
      *             .probeType("host_probe")
      *             .controlNodeId("e1397077-4941-4b14-b533-ca2bdebd00a3")
@@ -2623,7 +2623,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
-     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()        
+     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
      *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
      *             .probeType("host_probe")
      *             .controlNodeId("e1397077-4941-4b14-b533-ca2bdebd00a3")
@@ -2692,7 +2692,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
-     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()        
+     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
      *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
      *             .probeType("host_probe")
      *             .controlNodeId("e1397077-4941-4b14-b533-ca2bdebd00a3")
@@ -2761,7 +2761,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
-     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()        
+     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
      *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
      *             .probeType("host_probe")
      *             .controlNodeId("e1397077-4941-4b14-b533-ca2bdebd00a3")
@@ -2830,7 +2830,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
-     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()        
+     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()
      *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
      *             .probeType("host_probe")
      *             .controlNodeId("e1397077-4941-4b14-b533-ca2bdebd00a3")

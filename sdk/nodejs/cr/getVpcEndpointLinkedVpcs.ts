@@ -53,6 +53,8 @@ export interface GetVpcEndpointLinkedVpcsArgs {
     instanceId: string;
     /**
      * The name of the module that you want to access. Valid Values:
+     * - `Registry`: the image repository.
+     * - `Chart`: a Helm chart.
      */
     moduleName: string;
     /**
@@ -131,6 +133,8 @@ export interface GetVpcEndpointLinkedVpcsOutputArgs {
     instanceId: pulumi.Input<string>;
     /**
      * The name of the module that you want to access. Valid Values:
+     * - `Registry`: the image repository.
+     * - `Chart`: a Helm chart.
      */
     moduleName: pulumi.Input<string>;
     /**

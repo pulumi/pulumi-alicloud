@@ -722,7 +722,12 @@ class GetStackInstancesInstanceResult(dict):
         :param str stack_id: The ID of the stack corresponding to the stack instance.
         :param str stack_instance_account_id: The account to which the stack instance belongs.
         :param str stack_instance_region_id: The region of the stack instance.
-        :param str status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+        :param str status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+               * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+               * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+               * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+               * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+               * The create or update operation is not complete.
         :param str status_reason: The reason why the stack is in its current state.
         """
         pulumi.set(__self__, "id", id)
@@ -795,7 +800,12 @@ class GetStackInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+        * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+        * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+        * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+        * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+        * The create or update operation is not complete.
         """
         return pulumi.get(self, "status")
 
@@ -813,17 +823,27 @@ class GetStackInstancesInstanceParameterOverrideResult(dict):
     def __init__(__self__, *,
                  parameter_key: str,
                  parameter_value: str):
+        """
+        :param str parameter_key: The key of override parameter.
+        :param str parameter_value: The value of override parameter.
+        """
         pulumi.set(__self__, "parameter_key", parameter_key)
         pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> str:
+        """
+        The key of override parameter.
+        """
         return pulumi.get(self, "parameter_key")
 
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> str:
+        """
+        The value of override parameter.
+        """
         return pulumi.get(self, "parameter_value")
 
 
@@ -1205,17 +1225,27 @@ class GetTemplateScratchesScratchPreferenceParameterResult(dict):
     def __init__(__self__, *,
                  parameter_key: str,
                  parameter_value: str):
+        """
+        :param str parameter_key: Priority parameter key.
+        :param str parameter_value: Priority parameter value.
+        """
         pulumi.set(__self__, "parameter_key", parameter_key)
         pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> str:
+        """
+        Priority parameter key.
+        """
         return pulumi.get(self, "parameter_key")
 
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> str:
+        """
+        Priority parameter value.
+        """
         return pulumi.get(self, "parameter_value")
 
 
@@ -1224,17 +1254,27 @@ class GetTemplateScratchesScratchSourceResourceResult(dict):
     def __init__(__self__, *,
                  resource_id: str,
                  resource_type: str):
+        """
+        :param str resource_id: The ID of the Source Resource.
+        :param str resource_type: The type of the Source resource.
+        """
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_type", resource_type)
 
     @property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> str:
+        """
+        The ID of the Source Resource.
+        """
         return pulumi.get(self, "resource_id")
 
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> str:
+        """
+        The type of the Source resource.
+        """
         return pulumi.get(self, "resource_type")
 
 
@@ -1243,17 +1283,27 @@ class GetTemplateScratchesScratchSourceResourceGroupResult(dict):
     def __init__(__self__, *,
                  resource_group_id: str,
                  resource_type_filters: Sequence[str]):
+        """
+        :param str resource_group_id: The ID of the Source Resource Group.
+        :param Sequence[str] resource_type_filters: Source resource type filter list.
+        """
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         pulumi.set(__self__, "resource_type_filters", resource_type_filters)
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> str:
+        """
+        The ID of the Source Resource Group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="resourceTypeFilters")
     def resource_type_filters(self) -> Sequence[str]:
+        """
+        Source resource type filter list.
+        """
         return pulumi.get(self, "resource_type_filters")
 
 
@@ -1262,17 +1312,27 @@ class GetTemplateScratchesScratchSourceTagResult(dict):
     def __init__(__self__, *,
                  resource_tags: Mapping[str, Any],
                  resource_type_filters: Sequence[str]):
+        """
+        :param Mapping[str, Any] resource_tags: Source label.
+        :param Sequence[str] resource_type_filters: Source resource type filter list.
+        """
         pulumi.set(__self__, "resource_tags", resource_tags)
         pulumi.set(__self__, "resource_type_filters", resource_type_filters)
 
     @property
     @pulumi.getter(name="resourceTags")
     def resource_tags(self) -> Mapping[str, Any]:
+        """
+        Source label.
+        """
         return pulumi.get(self, "resource_tags")
 
     @property
     @pulumi.getter(name="resourceTypeFilters")
     def resource_type_filters(self) -> Sequence[str]:
+        """
+        Source resource type filter list.
+        """
         return pulumi.get(self, "resource_type_filters")
 
 
@@ -1280,11 +1340,17 @@ class GetTemplateScratchesScratchSourceTagResult(dict):
 class GetTemplateScratchesScratchStackResult(dict):
     def __init__(__self__, *,
                  stack_id: str):
+        """
+        :param str stack_id: The ID of the Resource stack.
+        """
         pulumi.set(__self__, "stack_id", stack_id)
 
     @property
     @pulumi.getter(name="stackId")
     def stack_id(self) -> str:
+        """
+        The ID of the Resource stack.
+        """
         return pulumi.get(self, "stack_id")
 
 

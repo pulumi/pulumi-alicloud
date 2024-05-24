@@ -17,14 +17,14 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetAccountsArgs Empty = new GetAccountsArgs();
 
     /**
-     * The name of the account.
+     * The name of the account. Valid values: `root`.
      * 
      */
     @Import(name="accountName")
     private @Nullable Output<String> accountName;
 
     /**
-     * @return The name of the account.
+     * @return The name of the account. Valid values: `root`.
      * 
      */
     public Optional<Output<String>> accountName() {
@@ -32,14 +32,14 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The id of the instance to which the account belongs.
+     * The ID of the instance.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return The id of the instance to which the account belongs.
+     * @return The ID of the instance.
      * 
      */
     public Output<String> instanceId() {
@@ -88,7 +88,7 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountName The name of the account.
+         * @param accountName The name of the account. Valid values: `root`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountName The name of the account.
+         * @param accountName The name of the account. Valid values: `root`.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceId The id of the instance to which the account belongs.
+         * @param instanceId The ID of the instance.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceId The id of the instance to which the account belongs.
+         * @param instanceId The ID of the instance.
          * 
          * @return builder
          * 

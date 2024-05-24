@@ -74,24 +74,24 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf_example");
  *         final var default = CenFunctions.getTransitRouterAvailableResources();
  * 
- *         var example = new Instance("example", InstanceArgs.builder()        
+ *         var example = new Instance("example", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()
  *             .cenId(example.id())
  *             .transitRouterDescription(name)
  *             .transitRouterName(name)
  *             .build());
  * 
- *         var exampleCustomerGateway = new CustomerGateway("exampleCustomerGateway", CustomerGatewayArgs.builder()        
+ *         var exampleCustomerGateway = new CustomerGateway("exampleCustomerGateway", CustomerGatewayArgs.builder()
  *             .name(name)
  *             .ipAddress("42.104.22.210")
  *             .asn("45014")
  *             .description(name)
  *             .build());
  * 
- *         var exampleGatewayVpnAttachment = new GatewayVpnAttachment("exampleGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()        
+ *         var exampleGatewayVpnAttachment = new GatewayVpnAttachment("exampleGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()
  *             .customerGatewayId(exampleCustomerGateway.id())
  *             .networkType("public")
  *             .localSubnet("0.0.0.0/0")
@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  *             .vpnAttachmentName(name)
  *             .build());
  * 
- *         var exampleTransitRouterCidr = new TransitRouterCidr("exampleTransitRouterCidr", TransitRouterCidrArgs.builder()        
+ *         var exampleTransitRouterCidr = new TransitRouterCidr("exampleTransitRouterCidr", TransitRouterCidrArgs.builder()
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .cidr("192.168.0.0/16")
  *             .transitRouterCidrName(name)
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *             .publishCidrRoute(true)
  *             .build());
  * 
- *         var exampleTransitRouterVpnAttachment = new TransitRouterVpnAttachment("exampleTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()        
+ *         var exampleTransitRouterVpnAttachment = new TransitRouterVpnAttachment("exampleTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
  *             .autoPublishRouteEnabled(false)
  *             .transitRouterAttachmentDescription(name)
  *             .transitRouterAttachmentName(name)

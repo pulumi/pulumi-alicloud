@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var domain = config.get("domain").orElse("tf-example.alibaba.com");
- *         var default_ = new DdosCooInstance("default", DdosCooInstanceArgs.builder()        
+ *         var default_ = new DdosCooInstance("default", DdosCooInstanceArgs.builder()
  *             .name(name)
  *             .bandwidth("30")
  *             .baseBandwidth("30")
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .productType("ddoscoo")
  *             .build());
  * 
- *         var defaultDomainResource = new DomainResource("defaultDomainResource", DomainResourceArgs.builder()        
+ *         var defaultDomainResource = new DomainResource("defaultDomainResource", DomainResourceArgs.builder()
  *             .domain(domain)
  *             .rsType(0)
  *             .instanceIds(default_.id())
@@ -128,6 +128,9 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
     }
     /**
      * The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
+     * - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
+     * - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
+     * - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
      * 
      */
     @Export(name="httpsExt", refs={String.class}, tree="[0]")
@@ -135,6 +138,9 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
+     * - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
+     * - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
+     * - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
      * 
      */
     public Output<String> httpsExt() {

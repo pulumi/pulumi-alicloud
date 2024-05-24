@@ -63,14 +63,14 @@ public final class GetAutoSnapshotPoliciesPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The status of Auto Snapshot Policy.
+     * The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of Auto Snapshot Policy.
+     * @return The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
      * 
      */
     public Optional<String> status() {
@@ -164,7 +164,7 @@ public final class GetAutoSnapshotPoliciesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param status The status of Auto Snapshot Policy.
+         * @param status The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
          * 
          * @return builder
          * 

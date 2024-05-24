@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *         final var default = WafFunctions.getInstances();
  * 
  *         for (var i = 0; i < default_.instances().length() > 0 ? 0 : 1; i++) {
- *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+ *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
  *                 .bigScreen("0")
  *                 .exclusiveIpPackage("1")
  *                 .extBandwidth("50")

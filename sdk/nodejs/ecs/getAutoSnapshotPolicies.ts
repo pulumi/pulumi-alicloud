@@ -56,7 +56,7 @@ export interface GetAutoSnapshotPoliciesArgs {
      */
     outputFile?: string;
     /**
-     * The status of Auto Snapshot Policy.
+     * The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
      */
     status?: string;
     /**
@@ -122,7 +122,7 @@ export interface GetAutoSnapshotPoliciesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of Auto Snapshot Policy.
+     * The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
      */
     status?: pulumi.Input<string>;
     /**

@@ -74,7 +74,7 @@ export interface GetDbInstancePlansArgs {
      */
     planType?: string;
     /**
-     * The Status of the Plan.
+     * Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
      */
     status?: string;
 }
@@ -155,7 +155,7 @@ export interface GetDbInstancePlansOutputArgs {
      */
     planType?: pulumi.Input<string>;
     /**
-     * The Status of the Plan.
+     * Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
      */
     status?: pulumi.Input<string>;
 }

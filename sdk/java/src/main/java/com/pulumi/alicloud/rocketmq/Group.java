@@ -58,16 +58,16 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("GID-tf-example");
  *         final var groupName = config.get("groupName").orElse("GID-tf-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .name(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()        
+ *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()
  *             .groupName(groupName)
  *             .instanceId(defaultInstance.id())
  *             .remark("dafault_ons_group_remark")

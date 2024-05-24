@@ -128,13 +128,13 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        /// The name of the resource.
         /// </summary>
         [Input("securityPolicyName")]
         public string? SecurityPolicyName { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values : `Available`, `Configuring`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -198,13 +198,13 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        /// The name of the resource.
         /// </summary>
         [Input("securityPolicyName")]
         public Input<string>? SecurityPolicyName { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values : `Available`, `Configuring`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

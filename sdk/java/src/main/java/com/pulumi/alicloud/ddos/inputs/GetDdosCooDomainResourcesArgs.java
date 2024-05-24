@@ -32,14 +32,14 @@ public final class GetDdosCooDomainResourcesArgs extends com.pulumi.resources.In
     }
 
     /**
-     * A list ID of instance that you want to associate.
+     * A ID list of Ddoscoo instance.
      * 
      */
     @Import(name="instanceIds")
     private @Nullable Output<List<String>> instanceIds;
 
     /**
-     * @return A list ID of instance that you want to associate.
+     * @return A ID list of Ddoscoo instance.
      * 
      */
     public Optional<Output<List<String>>> instanceIds() {
@@ -135,7 +135,7 @@ public final class GetDdosCooDomainResourcesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param instanceIds A list ID of instance that you want to associate.
+         * @param instanceIds A ID list of Ddoscoo instance.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class GetDdosCooDomainResourcesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param instanceIds A list ID of instance that you want to associate.
+         * @param instanceIds A ID list of Ddoscoo instance.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class GetDdosCooDomainResourcesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param instanceIds A list ID of instance that you want to associate.
+         * @param instanceIds A ID list of Ddoscoo instance.
          * 
          * @return builder
          * 

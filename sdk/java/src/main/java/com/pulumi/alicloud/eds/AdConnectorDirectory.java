@@ -63,24 +63,24 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = EdsFunctions.getZones();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.ids()[0])
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultAdConnectorDirectory = new AdConnectorDirectory("defaultAdConnectorDirectory", AdConnectorDirectoryArgs.builder()        
+ *         var defaultAdConnectorDirectory = new AdConnectorDirectory("defaultAdConnectorDirectory", AdConnectorDirectoryArgs.builder()
  *             .directoryName(String.format("%s-%s", name,defaultInteger.result()))
  *             .desktopAccessType("INTERNET")
  *             .dnsAddresses("127.0.0.2")

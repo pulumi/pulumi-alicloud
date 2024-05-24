@@ -141,6 +141,7 @@ public final class ServerBackupPlanState extends com.pulumi.resources.ResourceAr
 
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`
+     * * `startTime` Backup start time, UNIX time, in seconds.
      * 
      */
     @Import(name="schedule")
@@ -148,6 +149,7 @@ public final class ServerBackupPlanState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Backup strategy. Optional format: `I|{startTime}|{interval}`
+     * * `startTime` Backup start time, UNIX time, in seconds.
      * 
      */
     public Optional<Output<String>> schedule() {
@@ -366,6 +368,7 @@ public final class ServerBackupPlanState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param schedule Backup strategy. Optional format: `I|{startTime}|{interval}`
+         * * `startTime` Backup start time, UNIX time, in seconds.
          * 
          * @return builder
          * 
@@ -377,6 +380,7 @@ public final class ServerBackupPlanState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param schedule Backup strategy. Optional format: `I|{startTime}|{interval}`
+         * * `startTime` Backup start time, UNIX time, in seconds.
          * 
          * @return builder
          * 

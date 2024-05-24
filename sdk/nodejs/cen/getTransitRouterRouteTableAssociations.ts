@@ -64,6 +64,10 @@ export interface GetTransitRouterRouteTableAssociationsArgs {
     transitRouterAttachmentResourceId?: string;
     /**
      * The type of next hop. Valid values:
+     * * `VPC`: virtual private cloud (VPC)
+     * * `VBR`: virtual border router (VBR)
+     * * `TR`: transit router
+     * * `VPN`: VPN attachment
      */
     transitRouterAttachmentResourceType?: string;
     /**
@@ -151,6 +155,10 @@ export interface GetTransitRouterRouteTableAssociationsOutputArgs {
     transitRouterAttachmentResourceId?: pulumi.Input<string>;
     /**
      * The type of next hop. Valid values:
+     * * `VPC`: virtual private cloud (VPC)
+     * * `VBR`: virtual border router (VBR)
+     * * `TR`: transit router
+     * * `VPN`: VPN attachment
      */
     transitRouterAttachmentResourceType?: pulumi.Input<string>;
     /**

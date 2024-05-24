@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add a new Domain.
- *         var dns = new Domain("dns", DomainArgs.builder()        
+ *         var dns = new Domain("dns", DomainArgs.builder()
  *             .name("starmove.com")
  *             .groupId("85ab8713-4a30-4de4-9d20-155ff830f651")
  *             .build());

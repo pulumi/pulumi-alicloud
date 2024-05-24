@@ -92,25 +92,25 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .vpcId(exampleNetwork.id())
  *             .zoneId(exampleGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .description(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .availabilityZone(exampleGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .instanceName(name)
  *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
- *         var exampleServerGroup = new ServerGroup("exampleServerGroup", ServerGroupArgs.builder()        
+ *         var exampleServerGroup = new ServerGroup("exampleServerGroup", ServerGroupArgs.builder()
  *             .protocol("HTTP")
  *             .vpcId(exampleNetwork.id())
  *             .serverGroupName(name)
@@ -260,6 +260,9 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the server group. Default value: `Instance`. Valid values:
+     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
+     * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      * 
      */
     @Export(name="serverGroupType", refs={String.class}, tree="[0]")
@@ -267,6 +270,9 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the server group. Default value: `Instance`. Valid values:
+     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
+     * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      * 
      */
     public Output<String> serverGroupType() {

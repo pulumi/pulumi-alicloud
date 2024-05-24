@@ -89,9 +89,6 @@ namespace Pulumi.AliCloud.Hbr
 
     public sealed class GetHanaBackupPlansArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the SAP HANA instance.
-        /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
@@ -132,7 +129,7 @@ namespace Pulumi.AliCloud.Hbr
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The ID of the backup vault.
+        /// The id of the vault.
         /// </summary>
         [Input("vaultId")]
         public string? VaultId { get; set; }
@@ -145,9 +142,6 @@ namespace Pulumi.AliCloud.Hbr
 
     public sealed class GetHanaBackupPlansInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the SAP HANA instance.
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
@@ -188,7 +182,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The ID of the backup vault.
+        /// The id of the vault.
         /// </summary>
         [Input("vaultId")]
         public Input<string>? VaultId { get; set; }

@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // These resource primary keys should be replaced with your actual values.
- *         var default_ = new FirewallVpcFirewallCen("default", FirewallVpcFirewallCenArgs.builder()        
+ *         var default_ = new FirewallVpcFirewallCen("default", FirewallVpcFirewallCenArgs.builder()
  *             .cenId("cen-xxx")
  *             .localVpc(FirewallVpcFirewallCenLocalVpcArgs.builder()
  *                 .networkInstanceId("vpc-xxx")

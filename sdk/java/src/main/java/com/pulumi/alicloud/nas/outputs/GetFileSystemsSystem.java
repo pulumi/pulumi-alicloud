@@ -71,6 +71,8 @@ public final class GetFileSystemsSystem {
     /**
      * @return The storage type of the file system.
      * * Valid values:
+     * * `Performance` (Available when the `file_system_type` is `standard`)
+     * * `Capacity` (Available when the `file_system_type` is `standard`)
      * 
      */
     private String storageType;
@@ -161,6 +163,8 @@ public final class GetFileSystemsSystem {
     /**
      * @return The storage type of the file system.
      * * Valid values:
+     * * `Performance` (Available when the `file_system_type` is `standard`)
+     * * `Capacity` (Available when the `file_system_type` is `standard`)
      * 
      */
     public String storageType() {

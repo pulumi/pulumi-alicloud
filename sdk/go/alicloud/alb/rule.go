@@ -31,6 +31,8 @@ type Rule struct {
 	pulumi.CustomResourceState
 
 	// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+	// - `Request`: The forwarding rule is applied to the client requests received by ALB.
+	// - `Response`: The forwarding rule is applied to the responses returned by backend servers.
 	Direction pulumi.StringOutput `pulumi:"direction"`
 	// Specifies whether to precheck this request.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
@@ -94,6 +96,8 @@ func GetRule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Rule resources.
 type ruleState struct {
 	// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+	// - `Request`: The forwarding rule is applied to the client requests received by ALB.
+	// - `Response`: The forwarding rule is applied to the responses returned by backend servers.
 	Direction *string `pulumi:"direction"`
 	// Specifies whether to precheck this request.
 	DryRun *bool `pulumi:"dryRun"`
@@ -113,6 +117,8 @@ type ruleState struct {
 
 type RuleState struct {
 	// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+	// - `Request`: The forwarding rule is applied to the client requests received by ALB.
+	// - `Response`: The forwarding rule is applied to the responses returned by backend servers.
 	Direction pulumi.StringPtrInput
 	// Specifies whether to precheck this request.
 	DryRun pulumi.BoolPtrInput
@@ -136,6 +142,8 @@ func (RuleState) ElementType() reflect.Type {
 
 type ruleArgs struct {
 	// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+	// - `Request`: The forwarding rule is applied to the client requests received by ALB.
+	// - `Response`: The forwarding rule is applied to the responses returned by backend servers.
 	Direction *string `pulumi:"direction"`
 	// Specifies whether to precheck this request.
 	DryRun *bool `pulumi:"dryRun"`
@@ -154,6 +162,8 @@ type ruleArgs struct {
 // The set of arguments for constructing a Rule resource.
 type RuleArgs struct {
 	// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+	// - `Request`: The forwarding rule is applied to the client requests received by ALB.
+	// - `Response`: The forwarding rule is applied to the responses returned by backend servers.
 	Direction pulumi.StringPtrInput
 	// Specifies whether to precheck this request.
 	DryRun pulumi.BoolPtrInput
@@ -257,6 +267,8 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 }
 
 // The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+// - `Request`: The forwarding rule is applied to the client requests received by ALB.
+// - `Response`: The forwarding rule is applied to the responses returned by backend servers.
 func (o RuleOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
 }

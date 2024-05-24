@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .status("CreateSuccess")
  *             .build());
  * 
- *         var defaultAggregator = new Aggregator("defaultAggregator", AggregatorArgs.builder()        
+ *         var defaultAggregator = new Aggregator("defaultAggregator", AggregatorArgs.builder()
  *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
  *                 .accountId(default_.accounts()[0].accountId())
  *                 .accountName(default_.accounts()[0].displayName())
@@ -116,6 +116,8 @@ public class Aggregator extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+     * * `CUSTOM` - The custom account group.
+     * * `RD` - The global account group.
      * 
      */
     @Export(name="aggregatorType", refs={String.class}, tree="[0]")
@@ -123,6 +125,8 @@ public class Aggregator extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+     * * `CUSTOM` - The custom account group.
+     * * `RD` - The global account group.
      * 
      */
     public Output<String> aggregatorType() {

@@ -91,14 +91,14 @@ public final class GetEventRulesPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `DISABLED`, `ENABLED`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `DISABLED`, `ENABLED`.
      * 
      */
     public Optional<String> status() {
@@ -200,7 +200,7 @@ public final class GetEventRulesPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `DISABLED`, `ENABLED`.
          * 
          * @return builder
          * 

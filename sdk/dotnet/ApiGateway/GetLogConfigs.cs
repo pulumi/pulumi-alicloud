@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
 
         /// <summary>
-        /// The type the of log.
+        /// The type the of log. Valid values: `PROVIDER`.
         /// </summary>
         [Input("logType")]
         public string? LogType { get; set; }
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
 
         /// <summary>
-        /// The type the of log.
+        /// The type the of log. Valid values: `PROVIDER`.
         /// </summary>
         [Input("logType")]
         public Input<string>? LogType { get; set; }

@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The Internet service provider.
+        /// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
         /// </summary>
         [Input("isp")]
         public string? Isp { get; set; }
@@ -140,13 +140,13 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The name of the Vpc Public Ip Address Pool.
+        /// The name of the VPC Public IP address pool.
         /// </summary>
         [Input("publicIpAddressPoolName")]
         public string? PublicIpAddressPoolName { get; set; }
 
         /// <summary>
-        /// The status of the Vpc Public Ip Address Pool.
+        /// The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The Internet service provider.
+        /// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
@@ -202,13 +202,13 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The name of the Vpc Public Ip Address Pool.
+        /// The name of the VPC Public IP address pool.
         /// </summary>
         [Input("publicIpAddressPoolName")]
         public Input<string>? PublicIpAddressPoolName { get; set; }
 
         /// <summary>
-        /// The status of the Vpc Public Ip Address Pool.
+        /// The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

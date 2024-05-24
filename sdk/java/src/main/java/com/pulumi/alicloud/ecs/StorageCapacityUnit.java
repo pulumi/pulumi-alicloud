@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new StorageCapacityUnit("default", StorageCapacityUnitArgs.builder()        
+ *         var default_ = new StorageCapacityUnit("default", StorageCapacityUnitArgs.builder()
  *             .capacity(20)
  *             .description("tftestdescription")
  *             .storageCapacityUnitName("tftestname")

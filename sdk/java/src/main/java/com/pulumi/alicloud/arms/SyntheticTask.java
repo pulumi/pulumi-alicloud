@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultSyntheticTask = new SyntheticTask("defaultSyntheticTask", SyntheticTaskArgs.builder()        
+ *         var defaultSyntheticTask = new SyntheticTask("defaultSyntheticTask", SyntheticTaskArgs.builder()
  *             .monitors(SyntheticTaskMonitorArgs.builder()
  *                 .cityCode("1200101")
  *                 .operatorCode("246")

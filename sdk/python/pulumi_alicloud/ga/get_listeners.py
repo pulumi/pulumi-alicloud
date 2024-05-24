@@ -138,7 +138,7 @@ def get_listeners(accelerator_id: Optional[str] = None,
     :param Sequence[str] ids: A list of Listener IDs.
     :param str name_regex: A regex string to filter results by Listener name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the listener.
+    :param str status: The status of the listener. Valid values: `active`, `configuring`, `creating`.
     """
     __args__ = dict()
     __args__['acceleratorId'] = accelerator_id
@@ -191,6 +191,6 @@ def get_listeners_output(accelerator_id: Optional[pulumi.Input[str]] = None,
     :param Sequence[str] ids: A list of Listener IDs.
     :param str name_regex: A regex string to filter results by Listener name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the listener.
+    :param str status: The status of the listener. Valid values: `active`, `configuring`, `creating`.
     """
     ...

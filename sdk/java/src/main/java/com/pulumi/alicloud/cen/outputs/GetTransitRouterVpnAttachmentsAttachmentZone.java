@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTransitRouterVpnAttachmentsAttachmentZone {
+    /**
+     * @return The id of the zone.
+     * 
+     */
     private String zoneId;
 
     private GetTransitRouterVpnAttachmentsAttachmentZone() {}
+    /**
+     * @return The id of the zone.
+     * 
+     */
     public String zoneId() {
         return this.zoneId;
     }

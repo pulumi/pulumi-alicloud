@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTemplateScratchesScratchStack {
+    /**
+     * @return The ID of the Resource stack.
+     * 
+     */
     private String stackId;
 
     private GetTemplateScratchesScratchStack() {}
+    /**
+     * @return The ID of the Resource stack.
+     * 
+     */
     public String stackId() {
         return this.stackId;
     }

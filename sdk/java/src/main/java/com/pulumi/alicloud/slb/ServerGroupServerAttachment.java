@@ -85,25 +85,25 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var serverAttachmentNetwork = new Network("serverAttachmentNetwork", NetworkArgs.builder()        
+ *         var serverAttachmentNetwork = new Network("serverAttachmentNetwork", NetworkArgs.builder()
  *             .vpcName(slbServerGroupServerAttachment)
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var serverAttachmentSwitch = new Switch("serverAttachmentSwitch", SwitchArgs.builder()        
+ *         var serverAttachmentSwitch = new Switch("serverAttachmentSwitch", SwitchArgs.builder()
  *             .vswitchName(slbServerGroupServerAttachment)
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(serverAttachmentNetwork.id())
  *             .zoneId(serverAttachment.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var serverAttachmentSecurityGroup = new SecurityGroup("serverAttachmentSecurityGroup", SecurityGroupArgs.builder()        
+ *         var serverAttachmentSecurityGroup = new SecurityGroup("serverAttachmentSecurityGroup", SecurityGroupArgs.builder()
  *             .name(slbServerGroupServerAttachment)
  *             .vpcId(serverAttachmentNetwork.id())
  *             .build());
  * 
  *         for (var i = 0; i < slbServerGroupServerAttachmentCount; i++) {
- *             new Instance("serverAttachmentInstance-" + i, InstanceArgs.builder()            
+ *             new Instance("serverAttachmentInstance-" + i, InstanceArgs.builder()
  *                 .imageId(serverAttachmentGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *                 .instanceType(serverAttachmentGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *                 .instanceName(slbServerGroupServerAttachment)
@@ -118,20 +118,20 @@ import javax.annotation.Nullable;
  * 
  *         
  * }
- *         var serverAttachmentApplicationLoadBalancer = new ApplicationLoadBalancer("serverAttachmentApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+ *         var serverAttachmentApplicationLoadBalancer = new ApplicationLoadBalancer("serverAttachmentApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
  *             .loadBalancerName(slbServerGroupServerAttachment)
  *             .vswitchId(serverAttachmentSwitch.id())
  *             .loadBalancerSpec("slb.s2.small")
  *             .addressType("intranet")
  *             .build());
  * 
- *         var serverAttachmentServerGroup = new ServerGroup("serverAttachmentServerGroup", ServerGroupArgs.builder()        
+ *         var serverAttachmentServerGroup = new ServerGroup("serverAttachmentServerGroup", ServerGroupArgs.builder()
  *             .loadBalancerId(serverAttachmentApplicationLoadBalancer.id())
  *             .name(slbServerGroupServerAttachment)
  *             .build());
  * 
  *         for (var i = 0; i < slbServerGroupServerAttachmentCount; i++) {
- *             new ServerGroupServerAttachment("serverAttachmentServerGroupServerAttachment-" + i, ServerGroupServerAttachmentArgs.builder()            
+ *             new ServerGroupServerAttachment("serverAttachmentServerGroupServerAttachment-" + i, ServerGroupServerAttachmentArgs.builder()
  *                 .serverGroupId(serverAttachmentServerGroup.id())
  *                 .serverId(serverAttachmentInstance[range.value()].id())
  *                 .port(8080)

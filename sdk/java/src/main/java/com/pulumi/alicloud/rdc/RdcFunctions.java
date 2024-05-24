@@ -50,7 +50,7 @@ public final class RdcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccOrganizations-Organizations");
-     *         var default_ = new Organization("default", OrganizationArgs.builder()        
+     *         var default_ = new Organization("default", OrganizationArgs.builder()
      *             .organizationName(name)
      *             .source(name)
      *             .build());
@@ -111,7 +111,7 @@ public final class RdcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccOrganizations-Organizations");
-     *         var default_ = new Organization("default", OrganizationArgs.builder()        
+     *         var default_ = new Organization("default", OrganizationArgs.builder()
      *             .organizationName(name)
      *             .source(name)
      *             .build());
@@ -172,7 +172,7 @@ public final class RdcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccOrganizations-Organizations");
-     *         var default_ = new Organization("default", OrganizationArgs.builder()        
+     *         var default_ = new Organization("default", OrganizationArgs.builder()
      *             .organizationName(name)
      *             .source(name)
      *             .build());
@@ -233,7 +233,7 @@ public final class RdcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccOrganizations-Organizations");
-     *         var default_ = new Organization("default", OrganizationArgs.builder()        
+     *         var default_ = new Organization("default", OrganizationArgs.builder()
      *             .organizationName(name)
      *             .source(name)
      *             .build());
@@ -294,7 +294,7 @@ public final class RdcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccOrganizations-Organizations");
-     *         var default_ = new Organization("default", OrganizationArgs.builder()        
+     *         var default_ = new Organization("default", OrganizationArgs.builder()
      *             .organizationName(name)
      *             .source(name)
      *             .build());
@@ -355,7 +355,7 @@ public final class RdcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-testAccOrganizations-Organizations");
-     *         var default_ = new Organization("default", OrganizationArgs.builder()        
+     *         var default_ = new Organization("default", OrganizationArgs.builder()
      *             .organizationName(name)
      *             .source(name)
      *             .build());

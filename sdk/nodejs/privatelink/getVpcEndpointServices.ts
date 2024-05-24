@@ -46,7 +46,7 @@ export function getVpcEndpointServices(args?: GetVpcEndpointServicesArgs, opts?:
  */
 export interface GetVpcEndpointServicesArgs {
     /**
-     * Whether to automatically accept terminal node connections..
+     * Whether to automatically accept terminal node connections.
      */
     autoAcceptConnection?: boolean;
     /**
@@ -62,11 +62,11 @@ export interface GetVpcEndpointServicesArgs {
      */
     outputFile?: string;
     /**
-     * The business status of the terminal node service..
+     * The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
      */
     serviceBusinessStatus?: string;
     /**
-     * The Status of Vpc Endpoint Service.
+     * The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      */
     status?: string;
     /**
@@ -122,7 +122,7 @@ export function getVpcEndpointServicesOutput(args?: GetVpcEndpointServicesOutput
  */
 export interface GetVpcEndpointServicesOutputArgs {
     /**
-     * Whether to automatically accept terminal node connections..
+     * Whether to automatically accept terminal node connections.
      */
     autoAcceptConnection?: pulumi.Input<boolean>;
     /**
@@ -138,11 +138,11 @@ export interface GetVpcEndpointServicesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The business status of the terminal node service..
+     * The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
      */
     serviceBusinessStatus?: pulumi.Input<string>;
     /**
-     * The Status of Vpc Endpoint Service.
+     * The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      */
     status?: pulumi.Input<string>;
     /**

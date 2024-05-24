@@ -960,7 +960,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
@@ -971,7 +971,7 @@ public final class EdsFunctions {
      *             .nameRegex("windows")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -990,14 +990,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(name)
      *             .build());
      * 
-     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()
      *             .commandContent("ipconfig")
      *             .commandType("RunPowerShellScript")
      *             .desktopId(defaultDesktop.id())
@@ -1059,7 +1059,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
@@ -1070,7 +1070,7 @@ public final class EdsFunctions {
      *             .nameRegex("windows")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -1089,14 +1089,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(name)
      *             .build());
      * 
-     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()
      *             .commandContent("ipconfig")
      *             .commandType("RunPowerShellScript")
      *             .desktopId(defaultDesktop.id())
@@ -1158,7 +1158,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
@@ -1169,7 +1169,7 @@ public final class EdsFunctions {
      *             .nameRegex("windows")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -1188,14 +1188,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(name)
      *             .build());
      * 
-     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()
      *             .commandContent("ipconfig")
      *             .commandType("RunPowerShellScript")
      *             .desktopId(defaultDesktop.id())
@@ -1257,7 +1257,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
@@ -1268,7 +1268,7 @@ public final class EdsFunctions {
      *             .nameRegex("windows")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -1287,14 +1287,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(name)
      *             .build());
      * 
-     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()
      *             .commandContent("ipconfig")
      *             .commandType("RunPowerShellScript")
      *             .desktopId(defaultDesktop.id())
@@ -1356,7 +1356,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
@@ -1367,7 +1367,7 @@ public final class EdsFunctions {
      *             .nameRegex("windows")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -1386,14 +1386,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(name)
      *             .build());
      * 
-     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()
      *             .commandContent("ipconfig")
      *             .commandType("RunPowerShellScript")
      *             .desktopId(defaultDesktop.id())
@@ -1455,7 +1455,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
@@ -1466,7 +1466,7 @@ public final class EdsFunctions {
      *             .nameRegex("windows")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -1485,14 +1485,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(name)
      *             .build());
      * 
-     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()
      *             .commandContent("ipconfig")
      *             .commandType("RunPowerShellScript")
      *             .desktopId(defaultDesktop.id())
@@ -2118,7 +2118,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
@@ -2128,7 +2128,7 @@ public final class EdsFunctions {
      *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -2147,14 +2147,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
      *             .endUserId("your_end_user_id")
      *             .email("your_email")
      *             .phone("your_phone")
      *             .password("your_password")
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
@@ -2225,7 +2225,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
@@ -2235,7 +2235,7 @@ public final class EdsFunctions {
      *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -2254,14 +2254,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
      *             .endUserId("your_end_user_id")
      *             .email("your_email")
      *             .phone("your_phone")
      *             .password("your_password")
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
@@ -2332,7 +2332,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
@@ -2342,7 +2342,7 @@ public final class EdsFunctions {
      *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -2361,14 +2361,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
      *             .endUserId("your_end_user_id")
      *             .email("your_email")
      *             .phone("your_phone")
      *             .password("your_password")
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
@@ -2439,7 +2439,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
@@ -2449,7 +2449,7 @@ public final class EdsFunctions {
      *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -2468,14 +2468,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
      *             .endUserId("your_end_user_id")
      *             .email("your_email")
      *             .phone("your_phone")
      *             .password("your_password")
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
@@ -2546,7 +2546,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
@@ -2556,7 +2556,7 @@ public final class EdsFunctions {
      *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -2575,14 +2575,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
      *             .endUserId("your_end_user_id")
      *             .email("your_email")
      *             .phone("your_phone")
      *             .password("your_password")
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
@@ -2653,7 +2653,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
@@ -2663,7 +2663,7 @@ public final class EdsFunctions {
      *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -2682,14 +2682,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
      *             .endUserId("your_end_user_id")
      *             .email("your_email")
      *             .phone("your_phone")
      *             .password("your_password")
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
@@ -2760,7 +2760,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_simple_office_site_name")
@@ -2770,7 +2770,7 @@ public final class EdsFunctions {
      *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -2789,14 +2789,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[1].id())
      *             .desktopName("your_desktop_name")
      *             .build());
      * 
-     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()
      *             .imageName("your_image_name")
      *             .desktopId(defaultDesktop.id())
      *             .description("example_value")
@@ -2865,7 +2865,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_simple_office_site_name")
@@ -2875,7 +2875,7 @@ public final class EdsFunctions {
      *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -2894,14 +2894,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[1].id())
      *             .desktopName("your_desktop_name")
      *             .build());
      * 
-     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()
      *             .imageName("your_image_name")
      *             .desktopId(defaultDesktop.id())
      *             .description("example_value")
@@ -2970,7 +2970,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_simple_office_site_name")
@@ -2980,7 +2980,7 @@ public final class EdsFunctions {
      *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -2999,14 +2999,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[1].id())
      *             .desktopName("your_desktop_name")
      *             .build());
      * 
-     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()
      *             .imageName("your_image_name")
      *             .desktopId(defaultDesktop.id())
      *             .description("example_value")
@@ -3075,7 +3075,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_simple_office_site_name")
@@ -3085,7 +3085,7 @@ public final class EdsFunctions {
      *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -3104,14 +3104,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[1].id())
      *             .desktopName("your_desktop_name")
      *             .build());
      * 
-     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()
      *             .imageName("your_image_name")
      *             .desktopId(defaultDesktop.id())
      *             .description("example_value")
@@ -3180,7 +3180,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_simple_office_site_name")
@@ -3190,7 +3190,7 @@ public final class EdsFunctions {
      *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -3209,14 +3209,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[1].id())
      *             .desktopName("your_desktop_name")
      *             .build());
      * 
-     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()
      *             .imageName("your_image_name")
      *             .desktopId(defaultDesktop.id())
      *             .description("example_value")
@@ -3285,7 +3285,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_simple_office_site_name")
@@ -3295,7 +3295,7 @@ public final class EdsFunctions {
      *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("your_policy_group_name")
      *             .clipboard("readwrite")
      *             .localDrive("read")
@@ -3314,14 +3314,14 @@ public final class EdsFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[1].id())
      *             .desktopName("your_desktop_name")
      *             .build());
      * 
-     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()
      *             .imageName("your_image_name")
      *             .desktopId(defaultDesktop.id())
      *             .description("example_value")
@@ -3383,14 +3383,14 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()        
+     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
      *             .enableInternetAccess(false)
      *             .build());
      * 
-     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()        
+     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()
      *             .description("your_description")
      *             .officeSiteId(default_.id())
      *             .nasFileSystemName("your_nas_file_system_name")
@@ -3450,14 +3450,14 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()        
+     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
      *             .enableInternetAccess(false)
      *             .build());
      * 
-     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()        
+     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()
      *             .description("your_description")
      *             .officeSiteId(default_.id())
      *             .nasFileSystemName("your_nas_file_system_name")
@@ -3517,14 +3517,14 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()        
+     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
      *             .enableInternetAccess(false)
      *             .build());
      * 
-     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()        
+     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()
      *             .description("your_description")
      *             .officeSiteId(default_.id())
      *             .nasFileSystemName("your_nas_file_system_name")
@@ -3584,14 +3584,14 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()        
+     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
      *             .enableInternetAccess(false)
      *             .build());
      * 
-     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()        
+     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()
      *             .description("your_description")
      *             .officeSiteId(default_.id())
      *             .nasFileSystemName("your_nas_file_system_name")
@@ -3651,14 +3651,14 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()        
+     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
      *             .enableInternetAccess(false)
      *             .build());
      * 
-     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()        
+     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()
      *             .description("your_description")
      *             .officeSiteId(default_.id())
      *             .nasFileSystemName("your_nas_file_system_name")
@@ -3718,14 +3718,14 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()        
+     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("your_office_site_name")
      *             .enableInternetAccess(false)
      *             .build());
      * 
-     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()        
+     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()
      *             .description("your_description")
      *             .officeSiteId(default_.id())
      *             .nasFileSystemName("your_nas_file_system_name")
@@ -3785,13 +3785,13 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("example_value")
      *             .build());
      * 
-     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
+     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
      *             .bandwidth("10")
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
@@ -3847,13 +3847,13 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("example_value")
      *             .build());
      * 
-     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
+     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
      *             .bandwidth("10")
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
@@ -3909,13 +3909,13 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("example_value")
      *             .build());
      * 
-     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
+     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
      *             .bandwidth("10")
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
@@ -3971,13 +3971,13 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("example_value")
      *             .build());
      * 
-     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
+     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
      *             .bandwidth("10")
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
@@ -4033,13 +4033,13 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("example_value")
      *             .build());
      * 
-     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
+     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
      *             .bandwidth("10")
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
@@ -4095,13 +4095,13 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .desktopAccessType("Internet")
      *             .officeSiteName("example_value")
      *             .build());
      * 
-     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
+     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
      *             .bandwidth("10")
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
@@ -4157,7 +4157,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()        
+     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("my-policy-group")
      *             .clipboard("read")
      *             .localDrive("read")
@@ -4229,7 +4229,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()        
+     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("my-policy-group")
      *             .clipboard("read")
      *             .localDrive("read")
@@ -4301,7 +4301,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()        
+     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("my-policy-group")
      *             .clipboard("read")
      *             .localDrive("read")
@@ -4373,7 +4373,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()        
+     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("my-policy-group")
      *             .clipboard("read")
      *             .localDrive("read")
@@ -4445,7 +4445,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()        
+     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("my-policy-group")
      *             .clipboard("read")
      *             .localDrive("read")
@@ -4517,7 +4517,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()        
+     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()
      *             .policyGroupName("my-policy-group")
      *             .clipboard("read")
      *             .localDrive("read")
@@ -5457,7 +5457,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new User("default", UserArgs.builder()        
+     *         var default_ = new User("default", UserArgs.builder()
      *             .endUserId("example_value")
      *             .email("your_email")
      *             .phone("your_phone")
@@ -5511,7 +5511,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new User("default", UserArgs.builder()        
+     *         var default_ = new User("default", UserArgs.builder()
      *             .endUserId("example_value")
      *             .email("your_email")
      *             .phone("your_phone")
@@ -5565,7 +5565,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new User("default", UserArgs.builder()        
+     *         var default_ = new User("default", UserArgs.builder()
      *             .endUserId("example_value")
      *             .email("your_email")
      *             .phone("your_phone")
@@ -5619,7 +5619,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new User("default", UserArgs.builder()        
+     *         var default_ = new User("default", UserArgs.builder()
      *             .endUserId("example_value")
      *             .email("your_email")
      *             .phone("your_phone")
@@ -5673,7 +5673,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new User("default", UserArgs.builder()        
+     *         var default_ = new User("default", UserArgs.builder()
      *             .endUserId("example_value")
      *             .email("your_email")
      *             .phone("your_phone")
@@ -5727,7 +5727,7 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new User("default", UserArgs.builder()        
+     *         var default_ = new User("default", UserArgs.builder()
      *             .endUserId("example_value")
      *             .email("your_email")
      *             .phone("your_phone")

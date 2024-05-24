@@ -14,37 +14,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus {
+    /**
+     * @return The current monitoring indicator elasticity list.
+     * 
+     */
     private List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric> currentMetrics;
+    /**
+     * @return The number of current instances.
+     * 
+     */
     private Integer currentReplicas;
+    /**
+     * @return The number of target instances.
+     * 
+     */
     private Integer desiredReplicas;
+    /**
+     * @return The time of the last elastic expansion.
+     * 
+     */
     private String lastScaleTime;
+    /**
+     * @return The maximum number of instances.
+     * 
+     */
     private Integer maxReplicas;
+    /**
+     * @return The minimum number of instances.
+     * 
+     */
     private Integer minReplicas;
+    /**
+     * @return Next monitoring indicator elasticity list
+     * 
+     */
     private List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric> nextScaleMetrics;
+    /**
+     * @return The next cycle of monitoring indicator elasticity.
+     * 
+     */
     private Integer nextScaleTimePeriod;
 
     private GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus() {}
+    /**
+     * @return The current monitoring indicator elasticity list.
+     * 
+     */
     public List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric> currentMetrics() {
         return this.currentMetrics;
     }
+    /**
+     * @return The number of current instances.
+     * 
+     */
     public Integer currentReplicas() {
         return this.currentReplicas;
     }
+    /**
+     * @return The number of target instances.
+     * 
+     */
     public Integer desiredReplicas() {
         return this.desiredReplicas;
     }
+    /**
+     * @return The time of the last elastic expansion.
+     * 
+     */
     public String lastScaleTime() {
         return this.lastScaleTime;
     }
+    /**
+     * @return The maximum number of instances.
+     * 
+     */
     public Integer maxReplicas() {
         return this.maxReplicas;
     }
+    /**
+     * @return The minimum number of instances.
+     * 
+     */
     public Integer minReplicas() {
         return this.minReplicas;
     }
+    /**
+     * @return Next monitoring indicator elasticity list
+     * 
+     */
     public List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric> nextScaleMetrics() {
         return this.nextScaleMetrics;
     }
+    /**
+     * @return The next cycle of monitoring indicator elasticity.
+     * 
+     */
     public Integer nextScaleTimePeriod() {
         return this.nextScaleTimePeriod;
     }

@@ -39,6 +39,8 @@ type DataFlow struct {
 	// The ID of the Fileset.
 	FsetId pulumi.StringOutput `pulumi:"fsetId"`
 	// The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+	// - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+	// - `SSL`: Protects access through SSL certificates.
 	SourceSecurityType pulumi.StringOutput `pulumi:"sourceSecurityType"`
 	// The access path of the source store. Format: `<storage type>://<path>`. Among them:
 	// - storage type: currently only OSS is supported.
@@ -104,6 +106,8 @@ type dataFlowState struct {
 	// The ID of the Fileset.
 	FsetId *string `pulumi:"fsetId"`
 	// The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+	// - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+	// - `SSL`: Protects access through SSL certificates.
 	SourceSecurityType *string `pulumi:"sourceSecurityType"`
 	// The access path of the source store. Format: `<storage type>://<path>`. Among them:
 	// - storage type: currently only OSS is supported.
@@ -128,6 +132,8 @@ type DataFlowState struct {
 	// The ID of the Fileset.
 	FsetId pulumi.StringPtrInput
 	// The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+	// - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+	// - `SSL`: Protects access through SSL certificates.
 	SourceSecurityType pulumi.StringPtrInput
 	// The access path of the source store. Format: `<storage type>://<path>`. Among them:
 	// - storage type: currently only OSS is supported.
@@ -154,6 +160,8 @@ type dataFlowArgs struct {
 	// The ID of the Fileset.
 	FsetId string `pulumi:"fsetId"`
 	// The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+	// - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+	// - `SSL`: Protects access through SSL certificates.
 	SourceSecurityType *string `pulumi:"sourceSecurityType"`
 	// The access path of the source store. Format: `<storage type>://<path>`. Among them:
 	// - storage type: currently only OSS is supported.
@@ -177,6 +185,8 @@ type DataFlowArgs struct {
 	// The ID of the Fileset.
 	FsetId pulumi.StringInput
 	// The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+	// - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+	// - `SSL`: Protects access through SSL certificates.
 	SourceSecurityType pulumi.StringPtrInput
 	// The access path of the source store. Format: `<storage type>://<path>`. Among them:
 	// - storage type: currently only OSS is supported.
@@ -302,6 +312,8 @@ func (o DataFlowOutput) FsetId() pulumi.StringOutput {
 }
 
 // The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+// - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+// - `SSL`: Protects access through SSL certificates.
 func (o DataFlowOutput) SourceSecurityType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataFlow) pulumi.StringOutput { return v.SourceSecurityType }).(pulumi.StringOutput)
 }

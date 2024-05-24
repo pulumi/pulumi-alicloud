@@ -77,14 +77,14 @@ public final class GetEcsNetworkInterfacePermissionsPlainArgs extends com.pulumi
     }
 
     /**
-     * The Status of the Network Interface Permissions.
+     * The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The Status of the Network Interface Permissions.
+     * @return The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
      * 
      */
     public Optional<String> status() {
@@ -174,7 +174,7 @@ public final class GetEcsNetworkInterfacePermissionsPlainArgs extends com.pulumi
         }
 
         /**
-         * @param status The Status of the Network Interface Permissions.
+         * @param status The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
          * 
          * @return builder
          * 

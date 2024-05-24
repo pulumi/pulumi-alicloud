@@ -63,7 +63,7 @@ export interface GetGatewayVpnAttachmentsArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
      */
     status?: string;
     /**
@@ -141,7 +141,7 @@ export interface GetGatewayVpnAttachmentsOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
      */
     status?: pulumi.Input<string>;
     /**

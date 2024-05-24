@@ -63,7 +63,7 @@ export interface GetEcsDeploymentSetsArgs {
      */
     outputFile?: string;
     /**
-     * The deployment strategy.
+     * The deployment strategy. Valid values: `Availability`.
      */
     strategy?: string;
 }
@@ -132,7 +132,7 @@ export interface GetEcsDeploymentSetsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The deployment strategy.
+     * The deployment strategy. Valid values: `Availability`.
      */
     strategy?: pulumi.Input<string>;
 }

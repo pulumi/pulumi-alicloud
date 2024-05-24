@@ -63,17 +63,17 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var example = new Instance("example", InstanceArgs.builder()        
+ *         var example = new Instance("example", InstanceArgs.builder()
  *             .cenInstanceName("tf_example")
  *             .description("an example for cen")
  *             .build());
  * 
- *         var childAccountNetwork = new Network("childAccountNetwork", NetworkArgs.builder()        
+ *         var childAccountNetwork = new Network("childAccountNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var childAccountInstanceGrant = new InstanceGrant("childAccountInstanceGrant", InstanceGrantArgs.builder()        
+ *         var childAccountInstanceGrant = new InstanceGrant("childAccountInstanceGrant", InstanceGrantArgs.builder()
  *             .cenId(example.id())
  *             .childInstanceId(childAccountNetwork.id())
  *             .cenOwnerId(yourAccount.applyValue(getAccountResult -> getAccountResult.id()))

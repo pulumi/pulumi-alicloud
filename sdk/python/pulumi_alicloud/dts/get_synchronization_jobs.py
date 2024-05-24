@@ -126,7 +126,7 @@ def get_synchronization_jobs(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of Synchronization Job IDs.
     :param str name_regex: A regex string to filter results by synchronization job name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+    :param str status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. `Downgrade`, `Failed`, `Finished`, `InitializeFailed`, `Locked`, `Modifying`, `NotConfigured`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Upgrade`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -175,6 +175,6 @@ def get_synchronization_jobs_output(enable_details: Optional[pulumi.Input[Option
     :param Sequence[str] ids: A list of Synchronization Job IDs.
     :param str name_regex: A regex string to filter results by synchronization job name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+    :param str status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. `Downgrade`, `Failed`, `Finished`, `InitializeFailed`, `Locked`, `Modifying`, `NotConfigured`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Upgrade`.
     """
     ...

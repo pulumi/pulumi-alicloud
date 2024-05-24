@@ -68,7 +68,7 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-example");
-     *         var default_ = new AddressBook("default", AddressBookArgs.builder()        
+     *         var default_ = new AddressBook("default", AddressBookArgs.builder()
      *             .groupName(name)
      *             .groupType("ip")
      *             .description("tf-description")
@@ -129,7 +129,7 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-example");
-     *         var default_ = new AddressBook("default", AddressBookArgs.builder()        
+     *         var default_ = new AddressBook("default", AddressBookArgs.builder()
      *             .groupName(name)
      *             .groupType("ip")
      *             .description("tf-description")
@@ -190,7 +190,7 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-example");
-     *         var default_ = new AddressBook("default", AddressBookArgs.builder()        
+     *         var default_ = new AddressBook("default", AddressBookArgs.builder()
      *             .groupName(name)
      *             .groupType("ip")
      *             .description("tf-description")
@@ -251,7 +251,7 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-example");
-     *         var default_ = new AddressBook("default", AddressBookArgs.builder()        
+     *         var default_ = new AddressBook("default", AddressBookArgs.builder()
      *             .groupName(name)
      *             .groupType("ip")
      *             .description("tf-description")
@@ -312,7 +312,7 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-example");
-     *         var default_ = new AddressBook("default", AddressBookArgs.builder()        
+     *         var default_ = new AddressBook("default", AddressBookArgs.builder()
      *             .groupName(name)
      *             .groupType("ip")
      *             .description("tf-description")
@@ -373,7 +373,7 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf-example");
-     *         var default_ = new AddressBook("default", AddressBookArgs.builder()        
+     *         var default_ = new AddressBook("default", AddressBookArgs.builder()
      *             .groupName(name)
      *             .groupType("ip")
      *             .description("tf-description")

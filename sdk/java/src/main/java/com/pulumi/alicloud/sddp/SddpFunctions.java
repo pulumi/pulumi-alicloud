@@ -57,7 +57,7 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
+     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
      *             .code("access_failed_cnt")
      *             .value(10)
      *             .build());
@@ -112,7 +112,7 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
+     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
      *             .code("access_failed_cnt")
      *             .value(10)
      *             .build());
@@ -167,7 +167,7 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
+     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
      *             .code("access_failed_cnt")
      *             .value(10)
      *             .build());
@@ -222,7 +222,7 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
+     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
      *             .code("access_failed_cnt")
      *             .value(10)
      *             .build());
@@ -277,7 +277,7 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
+     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
      *             .code("access_failed_cnt")
      *             .value(10)
      *             .build());
@@ -332,7 +332,7 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
+     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()
      *             .code("access_failed_cnt")
      *             .value(10)
      *             .build());
@@ -927,7 +927,7 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
      *             .category("0")
      *             .content("content")
      *             .ruleName("rule_name")
@@ -984,7 +984,7 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
      *             .category("0")
      *             .content("content")
      *             .ruleName("rule_name")
@@ -1041,7 +1041,7 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
      *             .category("0")
      *             .content("content")
      *             .ruleName("rule_name")
@@ -1098,7 +1098,7 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
      *             .category("0")
      *             .content("content")
      *             .ruleName("rule_name")
@@ -1155,7 +1155,7 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
      *             .category("0")
      *             .content("content")
      *             .ruleName("rule_name")
@@ -1212,7 +1212,7 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
      *             .category("0")
      *             .content("content")
      *             .ruleName("rule_name")

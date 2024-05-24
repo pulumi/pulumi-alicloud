@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Cen.Outputs
     [OutputType]
     public sealed class GetTransitRouterVpnAttachmentsAttachmentZoneResult
     {
+        /// <summary>
+        /// The id of the zone.
+        /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]

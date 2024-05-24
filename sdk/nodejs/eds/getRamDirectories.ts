@@ -58,7 +58,7 @@ export interface GetRamDirectoriesArgs {
      */
     outputFile?: string;
     /**
-     * The status of directory.
+     * The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
      */
     status?: string;
 }
@@ -122,7 +122,7 @@ export interface GetRamDirectoriesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of directory.
+     * The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
      */
     status?: pulumi.Input<string>;
 }

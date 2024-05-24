@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .description("example_value")
  *             .tags(Map.ofEntries(
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var defaultFirewallVpcFirewallControlPolicy = new FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy", FirewallVpcFirewallControlPolicyArgs.builder()        
+ *         var defaultFirewallVpcFirewallControlPolicy = new FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy", FirewallVpcFirewallControlPolicyArgs.builder()
  *             .order("1")
  *             .destination("127.0.0.2/32")
  *             .applicationName("ANY")

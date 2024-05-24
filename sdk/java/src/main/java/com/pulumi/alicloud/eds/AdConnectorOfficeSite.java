@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .protectionLevel("REDUCED")
  *             .build());
  * 
- *         var defaultAdConnectorOfficeSite = new AdConnectorOfficeSite("defaultAdConnectorOfficeSite", AdConnectorOfficeSiteArgs.builder()        
+ *         var defaultAdConnectorOfficeSite = new AdConnectorOfficeSite("defaultAdConnectorOfficeSite", AdConnectorOfficeSiteArgs.builder()
  *             .adConnectorOfficeSiteName(name)
  *             .bandwidth(100)
  *             .cenId(default_.id())
@@ -180,6 +180,9 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
     }
     /**
      * The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+     * - `INTERNET`: connects clients to cloud desktops only over the Internet.
+     * - `VPC`: connects clients to cloud desktops only over a VPC.
+     * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
      * 
      */
     @Export(name="desktopAccessType", refs={String.class}, tree="[0]")
@@ -187,6 +190,9 @@ public class AdConnectorOfficeSite extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+     * - `INTERNET`: connects clients to cloud desktops only over the Internet.
+     * - `VPC`: connects clients to cloud desktops only over a VPC.
+     * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
      * 
      */
     public Output<String> desktopAccessType() {

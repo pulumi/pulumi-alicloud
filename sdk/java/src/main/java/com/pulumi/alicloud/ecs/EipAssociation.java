@@ -84,24 +84,24 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(exampleNetwork.id())
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .instanceName(name)
  *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
@@ -114,11 +114,11 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var exampleEipAddress = new EipAddress("exampleEipAddress", EipAddressArgs.builder()        
+ *         var exampleEipAddress = new EipAddress("exampleEipAddress", EipAddressArgs.builder()
  *             .addressName(name)
  *             .build());
  * 
- *         var exampleEipAssociation = new EipAssociation("exampleEipAssociation", EipAssociationArgs.builder()        
+ *         var exampleEipAssociation = new EipAssociation("exampleEipAssociation", EipAssociationArgs.builder()
  *             .allocationId(exampleEipAddress.id())
  *             .instanceId(exampleInstance.id())
  *             .build());

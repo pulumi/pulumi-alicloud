@@ -13,11 +13,29 @@ namespace Pulumi.AliCloud.Eds.Outputs
     [OutputType]
     public sealed class GetAdConnectorDirectoriesDirectoryAdConnectorResult
     {
+        /// <summary>
+        /// The address of AD connector.
+        /// </summary>
         public readonly string AdConnectorAddress;
+        /// <summary>
+        /// The status of connector.
+        /// </summary>
         public readonly string ConnectorStatus;
+        /// <summary>
+        /// The ID of the network interface.
+        /// </summary>
         public readonly string NetworkInterfaceId;
+        /// <summary>
+        /// The AD Connector specifications.
+        /// </summary>
         public readonly string Specification;
+        /// <summary>
+        /// The AD Connector control trust password.
+        /// </summary>
         public readonly string TrustKey;
+        /// <summary>
+        /// The ID of VSwitch.
+        /// </summary>
         public readonly string VswitchId;
 
         [OutputConstructor]

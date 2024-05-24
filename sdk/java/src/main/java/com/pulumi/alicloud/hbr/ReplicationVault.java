@@ -58,16 +58,16 @@ import javax.annotation.Nullable;
  *         final var sourceRegion = config.get("sourceRegion").orElse("cn-hangzhou");
  *         final var default = HbrFunctions.getReplicationVaultRegions();
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()        
+ *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()
  *             .vaultName(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
- *         var defaultReplicationVault = new ReplicationVault("defaultReplicationVault", ReplicationVaultArgs.builder()        
+ *         var defaultReplicationVault = new ReplicationVault("defaultReplicationVault", ReplicationVaultArgs.builder()
  *             .replicationSourceRegionId(sourceRegion)
  *             .replicationSourceVaultId(defaultVault.id())
  *             .vaultName("terraform-example")

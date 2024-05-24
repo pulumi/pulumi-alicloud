@@ -77,25 +77,25 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var name = config.get("name").orElse("RouteEntryConfig");
- *         var foo = new Network("foo", NetworkArgs.builder()        
+ *         var foo = new Network("foo", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.1.0.0/21")
  *             .build());
  * 
- *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
+ *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
  *             .vpcId(foo.id())
  *             .cidrBlock("10.1.1.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()        
+ *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()
  *             .name(name)
  *             .description("foo")
  *             .vpcId(foo.id())
  *             .build());
  * 
- *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()        
+ *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()
  *             .type("ingress")
  *             .ipProtocol("tcp")
  *             .nicType("intranet")
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *             .cidrIp("0.0.0.0/0")
  *             .build());
  * 
- *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
+ *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
  *             .securityGroups(tfTestFoo.id())
  *             .vswitchId(fooSwitch.id())
  *             .instanceChargeType("PostPaid")
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *             .instanceName(name)
  *             .build());
  * 
- *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()        
+ *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()
  *             .routeTableId(foo.routeTableId())
  *             .destinationCidrblock("172.11.1.1/32")
  *             .nexthopType("Instance")
@@ -191,6 +191,16 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
     }
     /**
      * The next hop type. Available values:
+     * - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+     * - `RouterInterface`: a router interface.
+     * - `VpnGateway`: a VPN Gateway.
+     * - `HaVip`: a high-availability virtual IP address (HAVIP).
+     * - `NetworkInterface`: an elastic network interface (ENI).
+     * - `NatGateway`: a Nat Gateway.
+     * - `IPv6Gateway`: an IPv6 gateway.
+     * - `Attachment`: a transit router.
+     * - `VpcPeer`: a VPC Peering Connection.
+     * - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
      * 
      */
     @Export(name="nexthopType", refs={String.class}, tree="[0]")
@@ -198,6 +208,16 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The next hop type. Available values:
+     * - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+     * - `RouterInterface`: a router interface.
+     * - `VpnGateway`: a VPN Gateway.
+     * - `HaVip`: a high-availability virtual IP address (HAVIP).
+     * - `NetworkInterface`: an elastic network interface (ENI).
+     * - `NatGateway`: a Nat Gateway.
+     * - `IPv6Gateway`: an IPv6 gateway.
+     * - `Attachment`: a transit router.
+     * - `VpcPeer`: a VPC Peering Connection.
+     * - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
      * 
      */
     public Output<Optional<String>> nexthopType() {

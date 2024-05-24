@@ -47,14 +47,18 @@ public final class GetCrossRegionBackupsPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The ID of the destination region where the cross-region data backup file of the instance is stored.
+     * The ID of the destination region where the cross-region data backup file is stored.
+     * 
+     * &gt; **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
      * 
      */
     @Import(name="crossBackupRegion")
     private @Nullable String crossBackupRegion;
 
     /**
-     * @return The ID of the destination region where the cross-region data backup file of the instance is stored.
+     * @return The ID of the destination region where the cross-region data backup file is stored.
+     * 
+     * &gt; **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
      * 
      */
     public Optional<String> crossBackupRegion() {
@@ -206,7 +210,9 @@ public final class GetCrossRegionBackupsPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param crossBackupRegion The ID of the destination region where the cross-region data backup file of the instance is stored.
+         * @param crossBackupRegion The ID of the destination region where the cross-region data backup file is stored.
+         * 
+         * &gt; **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
          * 
          * @return builder
          * 

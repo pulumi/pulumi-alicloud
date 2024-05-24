@@ -33,6 +33,8 @@ class ServiceSubscriptionArgs:
         :param pulumi.Input[str] filter_tag: The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
         :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
         :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+               - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+               - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "push_type", push_type)
@@ -125,6 +127,8 @@ class ServiceSubscriptionArgs:
     def notify_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+        - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+        - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
         """
         return pulumi.get(self, "notify_strategy")
 
@@ -152,6 +156,8 @@ class _ServiceSubscriptionState:
         :param pulumi.Input[str] filter_tag: The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
         :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
         :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+               - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+               - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
         :param pulumi.Input[str] push_type: The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
         :param pulumi.Input[str] subscription_name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         :param pulumi.Input[str] topic_name: The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
@@ -215,6 +221,8 @@ class _ServiceSubscriptionState:
     def notify_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+        - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+        - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
         """
         return pulumi.get(self, "notify_strategy")
 
@@ -322,6 +330,8 @@ class ServiceSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] filter_tag: The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
         :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
         :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+               - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+               - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
         :param pulumi.Input[str] push_type: The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
         :param pulumi.Input[str] subscription_name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         :param pulumi.Input[str] topic_name: The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
@@ -450,6 +460,8 @@ class ServiceSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] filter_tag: The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
         :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
         :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+               - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+               - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
         :param pulumi.Input[str] push_type: The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
         :param pulumi.Input[str] subscription_name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         :param pulumi.Input[str] topic_name: The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
@@ -499,6 +511,8 @@ class ServiceSubscription(pulumi.CustomResource):
     def notify_strategy(self) -> pulumi.Output[str]:
         """
         The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+        - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+        - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
         """
         return pulumi.get(self, "notify_strategy")
 

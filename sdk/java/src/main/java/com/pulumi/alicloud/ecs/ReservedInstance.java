@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .instanceTypeFamily("ecs.g6")
  *             .build());
  * 
- *         var defaultReservedInstance = new ReservedInstance("defaultReservedInstance", ReservedInstanceArgs.builder()        
+ *         var defaultReservedInstance = new ReservedInstance("defaultReservedInstance", ReservedInstanceArgs.builder()
  *             .instanceType(default_.instanceTypes()[0].id())
  *             .instanceAmount("1")
  *             .periodUnit("Month")

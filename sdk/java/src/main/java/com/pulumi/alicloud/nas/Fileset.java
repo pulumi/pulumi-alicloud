@@ -61,19 +61,19 @@ import javax.annotation.Nullable;
  *             .fileSystemType("cpfs")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[1].zoneId()))
  *             .build());
  * 
- *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()        
+ *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()
  *             .protocolType("cpfs")
  *             .storageType("advance_200")
  *             .fileSystemType("cpfs")
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
- *         var exampleFileset = new Fileset("exampleFileset", FilesetArgs.builder()        
+ *         var exampleFileset = new Fileset("exampleFileset", FilesetArgs.builder()
  *             .fileSystemId(exampleFileSystem.id())
  *             .description("terraform-example")
  *             .fileSystemPath("/example_path/")

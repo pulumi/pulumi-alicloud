@@ -10,23 +10,39 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEcsDisksDiskMountInstance {
+    /**
+     * @return A mount of time.
+     * 
+     */
     private String attachedTime;
+    /**
+     * @return The mount point of the disk.
+     * 
+     */
     private String device;
     /**
-     * @return Filter the results by the specified ECS instance ID.
+     * @return The instance ID of the disk mount.
      * 
      */
     private String instanceId;
 
     private GetEcsDisksDiskMountInstance() {}
+    /**
+     * @return A mount of time.
+     * 
+     */
     public String attachedTime() {
         return this.attachedTime;
     }
+    /**
+     * @return The mount point of the disk.
+     * 
+     */
     public String device() {
         return this.device;
     }
     /**
-     * @return Filter the results by the specified ECS instance ID.
+     * @return The instance ID of the disk mount.
      * 
      */
     public String instanceId() {

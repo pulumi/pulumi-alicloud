@@ -60,12 +60,12 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
+ *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
  *             .resourceGroupId(default_.ids()[0])
  *             .serverGroupName(name)
  *             .serverGroupType("Ip")
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .addressIpVersion("Ipv4")
  *             .build());
  * 
- *         var defaultServerGroupServerAttachment = new ServerGroupServerAttachment("defaultServerGroupServerAttachment", ServerGroupServerAttachmentArgs.builder()        
+ *         var defaultServerGroupServerAttachment = new ServerGroupServerAttachment("defaultServerGroupServerAttachment", ServerGroupServerAttachmentArgs.builder()
  *             .serverType("Ip")
  *             .serverId("10.0.0.0")
  *             .description(name)

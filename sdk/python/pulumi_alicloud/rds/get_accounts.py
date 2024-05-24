@@ -137,7 +137,7 @@ def get_accounts(db_instance_id: Optional[str] = None,
     :param Sequence[str] ids: A list of Account IDs.
     :param str name_regex: A regex string to filter results by Account name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `Available`, `Unavailable`.
     """
     __args__ = dict()
     __args__['dbInstanceId'] = db_instance_id
@@ -189,6 +189,6 @@ def get_accounts_output(db_instance_id: Optional[pulumi.Input[str]] = None,
     :param Sequence[str] ids: A list of Account IDs.
     :param str name_regex: A regex string to filter results by Account name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `Available`, `Unavailable`.
     """
     ...

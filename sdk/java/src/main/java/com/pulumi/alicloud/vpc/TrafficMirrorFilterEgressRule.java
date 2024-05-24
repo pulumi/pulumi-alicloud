@@ -52,11 +52,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TrafficMirrorFilter("example", TrafficMirrorFilterArgs.builder()        
+ *         var example = new TrafficMirrorFilter("example", TrafficMirrorFilterArgs.builder()
  *             .trafficMirrorFilterName("example_value")
  *             .build());
  * 
- *         var default_ = new TrafficMirrorFilterEgressRule("default", TrafficMirrorFilterEgressRuleArgs.builder()        
+ *         var default_ = new TrafficMirrorFilterEgressRule("default", TrafficMirrorFilterEgressRuleArgs.builder()
  *             .action("drop")
  *             .priority("2")
  *             .sourceCidrBlock("10.0.0.0/11")

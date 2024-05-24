@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleUser = new AlertResource("exampleUser", AlertResourceArgs.builder()        
+ *         var exampleUser = new AlertResource("exampleUser", AlertResourceArgs.builder()
  *             .type("user")
  *             .lang("cn")
  *             .build());

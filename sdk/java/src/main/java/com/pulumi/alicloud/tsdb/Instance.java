@@ -58,18 +58,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var example = TsdbFunctions.getZones();
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .cidrBlock("192.168.0.0/16")
  *             .name("tf-testaccTsdbInstance")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.ids()[0]))
  *             .cidrBlock("192.168.1.0/24")
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .paymentType("PayAsYouGo")
  *             .vswitchId(exampleSwitch.id())
  *             .instanceStorage("50")

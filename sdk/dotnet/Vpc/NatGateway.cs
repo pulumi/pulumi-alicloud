@@ -43,6 +43,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        /// - `MULTI_BINDED`: Multi EIP network card visible mode.
+        /// - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         /// </summary>
         [Output("eipBindMode")]
         public Output<string> EipBindMode { get; private set; } = null!;
@@ -212,6 +214,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        /// - `MULTI_BINDED`: Multi EIP network card visible mode.
+        /// - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         /// </summary>
         [Input("eipBindMode")]
         public Input<string>? EipBindMode { get; set; }
@@ -331,6 +335,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        /// - `MULTI_BINDED`: Multi EIP network card visible mode.
+        /// - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         /// </summary>
         [Input("eipBindMode")]
         public Input<string>? EipBindMode { get; set; }

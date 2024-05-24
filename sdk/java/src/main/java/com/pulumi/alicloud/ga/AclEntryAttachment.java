@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Acl("default", AclArgs.builder()        
+ *         var default_ = new Acl("default", AclArgs.builder()
  *             .aclName("tf-example-value")
  *             .addressIpVersion("IPv4")
  *             .build());
  * 
- *         var defaultAclEntryAttachment = new AclEntryAttachment("defaultAclEntryAttachment", AclEntryAttachmentArgs.builder()        
+ *         var defaultAclEntryAttachment = new AclEntryAttachment("defaultAclEntryAttachment", AclEntryAttachmentArgs.builder()
  *             .aclId(default_.id())
  *             .entry("192.168.1.1/32")
  *             .entryDescription("tf-example-value")

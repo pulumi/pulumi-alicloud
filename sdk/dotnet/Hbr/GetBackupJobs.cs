@@ -258,13 +258,13 @@ namespace Pulumi.AliCloud.Hbr
         public string? SortDirection { get; set; }
 
         /// <summary>
-        /// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
         /// </summary>
         [Input("sourceType", required: true)]
         public string SourceType { get; set; } = null!;
 
         /// <summary>
-        /// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+        /// The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -310,13 +310,13 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? SortDirection { get; set; }
 
         /// <summary>
-        /// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+        /// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
         /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;
 
         /// <summary>
-        /// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+        /// The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

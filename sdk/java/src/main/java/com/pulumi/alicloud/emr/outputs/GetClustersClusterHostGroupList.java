@@ -84,7 +84,7 @@ public final class GetClustersClusterHostGroupList {
      */
     private List<GetClustersClusterHostGroupListNode> nodes;
     /**
-     * @return The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+     * @return Package year and month time (days).
      * 
      */
     private String period;
@@ -189,7 +189,7 @@ public final class GetClustersClusterHostGroupList {
         return this.nodes;
     }
     /**
-     * @return The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+     * @return Package year and month time (days).
      * 
      */
     public String period() {

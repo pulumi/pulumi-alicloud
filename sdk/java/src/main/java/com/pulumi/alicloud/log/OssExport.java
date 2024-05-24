@@ -57,12 +57,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project("example", ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()
  *             .name(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .tags(Map.ofEntries(
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
  *             .project(example.name())
  *             .name("example-store")
  *             .retentionPeriod(3650)
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var exampleOssExport = new OssExport("exampleOssExport", OssExportArgs.builder()        
+ *         var exampleOssExport = new OssExport("exampleOssExport", OssExportArgs.builder()
  *             .projectName(example.name())
  *             .logstoreName(exampleStore.name())
  *             .exportName("terraform-example")

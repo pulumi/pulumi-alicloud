@@ -70,28 +70,28 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .name(String.format("%s-%s", name,defaultInteger.result()))
  *             .partitionNum(50)
  *             .diskType("1")
@@ -105,19 +105,19 @@ import javax.annotation.Nullable;
  *             .securityGroup(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
+ *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .topic("example-topic")
  *             .remark("topic-remark")
  *             .build());
  * 
- *         var defaultSaslUser = new SaslUser("defaultSaslUser", SaslUserArgs.builder()        
+ *         var defaultSaslUser = new SaslUser("defaultSaslUser", SaslUserArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .username(name)
  *             .password("tf_example123")
  *             .build());
  * 
- *         var defaultSaslAcl = new SaslAcl("defaultSaslAcl", SaslAclArgs.builder()        
+ *         var defaultSaslAcl = new SaslAcl("defaultSaslAcl", SaslAclArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .username(defaultSaslUser.username())
  *             .aclResourceType("Topic")

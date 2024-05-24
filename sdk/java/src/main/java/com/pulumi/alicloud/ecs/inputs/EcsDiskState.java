@@ -250,6 +250,9 @@ public final class EcsDiskState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      * 
      */
     @Import(name="performanceLevel")
@@ -257,6 +260,9 @@ public final class EcsDiskState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
@@ -759,6 +765,9 @@ public final class EcsDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param performanceLevel Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+         * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+         * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+         * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
          * 
          * @return builder
          * 
@@ -770,6 +779,9 @@ public final class EcsDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param performanceLevel Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+         * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+         * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+         * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
          * 
          * @return builder
          * 

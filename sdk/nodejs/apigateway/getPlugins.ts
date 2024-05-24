@@ -62,15 +62,15 @@ export interface GetPluginsArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * The name of the plug-in that you want to create.
+     * The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
      */
     pluginName?: string;
     /**
-     * The type of the plug-in.
+     * The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
      */
     pluginType?: string;
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      */
     tags?: {[key: string]: any};
 }
@@ -138,15 +138,15 @@ export interface GetPluginsOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * The name of the plug-in that you want to create.
+     * The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
      */
     pluginName?: pulumi.Input<string>;
     /**
-     * The type of the plug-in.
+     * The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
      */
     pluginType?: pulumi.Input<string>;
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

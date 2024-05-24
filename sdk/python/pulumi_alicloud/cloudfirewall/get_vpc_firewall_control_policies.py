@@ -217,7 +217,7 @@ def get_vpc_firewall_control_policies(acl_action: Optional[str] = None,
     ```
 
 
-    :param str acl_action: Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+    :param str acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
     :param str acl_uuid: Access control over VPC firewalls strategy unique identifier.
     :param str description: Access control over VPC firewalls description of the strategy information.
     :param str destination: Access control over VPC firewalls strategy the destination address in.
@@ -227,8 +227,12 @@ def get_vpc_firewall_control_policies(acl_action: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str proto: Access control over VPC firewalls strategy access traffic of the protocol type.
     :param bool release: The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+           - **true**: Enable access control policies
+           - **false**: does not enable access control policies.
     :param str source: Access control over VPC firewalls strategy in the source address.
-    :param str vpc_firewall_id: The ID of the VPC firewall instance.
+    :param str vpc_firewall_id: The ID of the VPC firewall instance. Value:
+           - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+           - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
     """
     __args__ = dict()
     __args__['aclAction'] = acl_action
@@ -305,7 +309,7 @@ def get_vpc_firewall_control_policies_output(acl_action: Optional[pulumi.Input[O
     ```
 
 
-    :param str acl_action: Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+    :param str acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
     :param str acl_uuid: Access control over VPC firewalls strategy unique identifier.
     :param str description: Access control over VPC firewalls description of the strategy information.
     :param str destination: Access control over VPC firewalls strategy the destination address in.
@@ -315,7 +319,11 @@ def get_vpc_firewall_control_policies_output(acl_action: Optional[pulumi.Input[O
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str proto: Access control over VPC firewalls strategy access traffic of the protocol type.
     :param bool release: The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+           - **true**: Enable access control policies
+           - **false**: does not enable access control policies.
     :param str source: Access control over VPC firewalls strategy in the source address.
-    :param str vpc_firewall_id: The ID of the VPC firewall instance.
+    :param str vpc_firewall_id: The ID of the VPC firewall instance. Value:
+           - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+           - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
     """
     ...

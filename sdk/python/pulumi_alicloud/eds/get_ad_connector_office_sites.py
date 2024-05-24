@@ -127,7 +127,16 @@ def get_ad_connector_office_sites(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Ad Connector Office Site IDs.
     :param str name_regex: A regex string to filter results by Ad Connector Office Site name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The workspace status.
+    :param str status: The workspace status. Valid values:
+           - `REGISTERING`: The workspace is being registered.
+           - `REGISTERED`: The workspace is registered.
+           - `DEREGISTERING`: The workspace is being deregistered.
+           - `DEREGISTERED`: The workspace is deregistered.
+           - `ERROR`: The configurations of the workspace are invalid.
+           - `NEEDCONFIGTRUST`: The trust relationship needs to be configured.
+           - `NEEDCONFIGUSER`: Users need to be configured.
+           - `CONFIGTRUSTING`: The trust relationship is being configured.
+           - `CONFIGTRUSTFAILED`: The trust relationship fails to be configured.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -176,6 +185,15 @@ def get_ad_connector_office_sites_output(ids: Optional[pulumi.Input[Optional[Seq
     :param Sequence[str] ids: A list of Ad Connector Office Site IDs.
     :param str name_regex: A regex string to filter results by Ad Connector Office Site name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The workspace status.
+    :param str status: The workspace status. Valid values:
+           - `REGISTERING`: The workspace is being registered.
+           - `REGISTERED`: The workspace is registered.
+           - `DEREGISTERING`: The workspace is being deregistered.
+           - `DEREGISTERED`: The workspace is deregistered.
+           - `ERROR`: The configurations of the workspace are invalid.
+           - `NEEDCONFIGTRUST`: The trust relationship needs to be configured.
+           - `NEEDCONFIGUSER`: Users need to be configured.
+           - `CONFIGTRUSTING`: The trust relationship is being configured.
+           - `CONFIGTRUSTFAILED`: The trust relationship fails to be configured.
     """
     ...

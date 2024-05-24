@@ -60,7 +60,7 @@ export interface GetReceiversArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
      */
     status?: number;
 }
@@ -126,7 +126,7 @@ export interface GetReceiversOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
      */
     status?: pulumi.Input<number>;
 }
