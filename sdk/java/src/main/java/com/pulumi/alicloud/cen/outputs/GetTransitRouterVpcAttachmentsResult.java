@@ -15,10 +15,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetTransitRouterVpcAttachmentsResult {
     /**
-     * @return A list of CEN Transit Router VPC Attachments. Each element contains the following attributes:
+     * @return A list of Transit Router VPC Attachments. Each element contains the following attributes:
      * 
      */
     private List<GetTransitRouterVpcAttachmentsAttachment> attachments;
+    /**
+     * @return (Available since v1.224.0) The ID of the CEN instance.
+     * 
+     */
     private String cenId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -26,26 +30,46 @@ public final class GetTransitRouterVpcAttachmentsResult {
      */
     private String id;
     private List<String> ids;
+    private @Nullable String nameRegex;
+    /**
+     * @return A list of Transit Router VPC Attachment names.
+     * 
+     */
+    private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return The status of the transit router attachment.
+     * @return The status of the Transit Router VPC Attachment.
      * 
      */
     private @Nullable String status;
     /**
-     * @return ID of the transit router.
+     * @return The ID of the Transit Router VPC Attachment.
+     * 
+     */
+    private @Nullable String transitRouterAttachmentId;
+    /**
+     * @return (Available since v1.224.0) The ID of the transit router.
      * 
      */
     private @Nullable String transitRouterId;
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
+    private @Nullable String vpcId;
 
     private GetTransitRouterVpcAttachmentsResult() {}
     /**
-     * @return A list of CEN Transit Router VPC Attachments. Each element contains the following attributes:
+     * @return A list of Transit Router VPC Attachments. Each element contains the following attributes:
      * 
      */
     public List<GetTransitRouterVpcAttachmentsAttachment> attachments() {
         return this.attachments;
     }
+    /**
+     * @return (Available since v1.224.0) The ID of the CEN instance.
+     * 
+     */
     public String cenId() {
         return this.cenId;
     }
@@ -59,22 +83,46 @@ public final class GetTransitRouterVpcAttachmentsResult {
     public List<String> ids() {
         return this.ids;
     }
+    public Optional<String> nameRegex() {
+        return Optional.ofNullable(this.nameRegex);
+    }
+    /**
+     * @return A list of Transit Router VPC Attachment names.
+     * 
+     */
+    public List<String> names() {
+        return this.names;
+    }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return The status of the transit router attachment.
+     * @return The status of the Transit Router VPC Attachment.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return ID of the transit router.
+     * @return The ID of the Transit Router VPC Attachment.
+     * 
+     */
+    public Optional<String> transitRouterAttachmentId() {
+        return Optional.ofNullable(this.transitRouterAttachmentId);
+    }
+    /**
+     * @return (Available since v1.224.0) The ID of the transit router.
      * 
      */
     public Optional<String> transitRouterId() {
         return Optional.ofNullable(this.transitRouterId);
+    }
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
+    public Optional<String> vpcId() {
+        return Optional.ofNullable(this.vpcId);
     }
 
     public static Builder builder() {
@@ -90,9 +138,13 @@ public final class GetTransitRouterVpcAttachmentsResult {
         private String cenId;
         private String id;
         private List<String> ids;
+        private @Nullable String nameRegex;
+        private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String status;
+        private @Nullable String transitRouterAttachmentId;
         private @Nullable String transitRouterId;
+        private @Nullable String vpcId;
         public Builder() {}
         public Builder(GetTransitRouterVpcAttachmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,9 +152,13 @@ public final class GetTransitRouterVpcAttachmentsResult {
     	      this.cenId = defaults.cenId;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.nameRegex = defaults.nameRegex;
+    	      this.names = defaults.names;
     	      this.outputFile = defaults.outputFile;
     	      this.status = defaults.status;
+    	      this.transitRouterAttachmentId = defaults.transitRouterAttachmentId;
     	      this.transitRouterId = defaults.transitRouterId;
+    	      this.vpcId = defaults.vpcId;
         }
 
         @CustomType.Setter
@@ -144,6 +200,23 @@ public final class GetTransitRouterVpcAttachmentsResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
+        public Builder nameRegex(@Nullable String nameRegex) {
+
+            this.nameRegex = nameRegex;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder names(List<String> names) {
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsResult", "names");
+            }
+            this.names = names;
+            return this;
+        }
+        public Builder names(String... names) {
+            return names(List.of(names));
+        }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
 
             this.outputFile = outputFile;
@@ -156,9 +229,21 @@ public final class GetTransitRouterVpcAttachmentsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder transitRouterAttachmentId(@Nullable String transitRouterAttachmentId) {
+
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder transitRouterId(@Nullable String transitRouterId) {
 
             this.transitRouterId = transitRouterId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vpcId(@Nullable String vpcId) {
+
+            this.vpcId = vpcId;
             return this;
         }
         public GetTransitRouterVpcAttachmentsResult build() {
@@ -167,9 +252,13 @@ public final class GetTransitRouterVpcAttachmentsResult {
             _resultValue.cenId = cenId;
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
             _resultValue.outputFile = outputFile;
             _resultValue.status = status;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
             _resultValue.transitRouterId = transitRouterId;
+            _resultValue.vpcId = vpcId;
             return _resultValue;
         }
     }

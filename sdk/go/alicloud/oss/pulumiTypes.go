@@ -13,136 +13,136 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type BucketAccessMonitor struct {
+type BucketAccessMonitorType struct {
 	// The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
 	Status *string `pulumi:"status"`
 }
 
-// BucketAccessMonitorInput is an input type that accepts BucketAccessMonitorArgs and BucketAccessMonitorOutput values.
-// You can construct a concrete instance of `BucketAccessMonitorInput` via:
+// BucketAccessMonitorTypeInput is an input type that accepts BucketAccessMonitorTypeArgs and BucketAccessMonitorTypeOutput values.
+// You can construct a concrete instance of `BucketAccessMonitorTypeInput` via:
 //
-//	BucketAccessMonitorArgs{...}
-type BucketAccessMonitorInput interface {
+//	BucketAccessMonitorTypeArgs{...}
+type BucketAccessMonitorTypeInput interface {
 	pulumi.Input
 
-	ToBucketAccessMonitorOutput() BucketAccessMonitorOutput
-	ToBucketAccessMonitorOutputWithContext(context.Context) BucketAccessMonitorOutput
+	ToBucketAccessMonitorTypeOutput() BucketAccessMonitorTypeOutput
+	ToBucketAccessMonitorTypeOutputWithContext(context.Context) BucketAccessMonitorTypeOutput
 }
 
-type BucketAccessMonitorArgs struct {
+type BucketAccessMonitorTypeArgs struct {
 	// The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
-func (BucketAccessMonitorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketAccessMonitor)(nil)).Elem()
+func (BucketAccessMonitorTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketAccessMonitorType)(nil)).Elem()
 }
 
-func (i BucketAccessMonitorArgs) ToBucketAccessMonitorOutput() BucketAccessMonitorOutput {
-	return i.ToBucketAccessMonitorOutputWithContext(context.Background())
+func (i BucketAccessMonitorTypeArgs) ToBucketAccessMonitorTypeOutput() BucketAccessMonitorTypeOutput {
+	return i.ToBucketAccessMonitorTypeOutputWithContext(context.Background())
 }
 
-func (i BucketAccessMonitorArgs) ToBucketAccessMonitorOutputWithContext(ctx context.Context) BucketAccessMonitorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessMonitorOutput)
+func (i BucketAccessMonitorTypeArgs) ToBucketAccessMonitorTypeOutputWithContext(ctx context.Context) BucketAccessMonitorTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessMonitorTypeOutput)
 }
 
-func (i BucketAccessMonitorArgs) ToBucketAccessMonitorPtrOutput() BucketAccessMonitorPtrOutput {
-	return i.ToBucketAccessMonitorPtrOutputWithContext(context.Background())
+func (i BucketAccessMonitorTypeArgs) ToBucketAccessMonitorTypePtrOutput() BucketAccessMonitorTypePtrOutput {
+	return i.ToBucketAccessMonitorTypePtrOutputWithContext(context.Background())
 }
 
-func (i BucketAccessMonitorArgs) ToBucketAccessMonitorPtrOutputWithContext(ctx context.Context) BucketAccessMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessMonitorOutput).ToBucketAccessMonitorPtrOutputWithContext(ctx)
+func (i BucketAccessMonitorTypeArgs) ToBucketAccessMonitorTypePtrOutputWithContext(ctx context.Context) BucketAccessMonitorTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessMonitorTypeOutput).ToBucketAccessMonitorTypePtrOutputWithContext(ctx)
 }
 
-// BucketAccessMonitorPtrInput is an input type that accepts BucketAccessMonitorArgs, BucketAccessMonitorPtr and BucketAccessMonitorPtrOutput values.
-// You can construct a concrete instance of `BucketAccessMonitorPtrInput` via:
+// BucketAccessMonitorTypePtrInput is an input type that accepts BucketAccessMonitorTypeArgs, BucketAccessMonitorTypePtr and BucketAccessMonitorTypePtrOutput values.
+// You can construct a concrete instance of `BucketAccessMonitorTypePtrInput` via:
 //
-//	        BucketAccessMonitorArgs{...}
+//	        BucketAccessMonitorTypeArgs{...}
 //
 //	or:
 //
 //	        nil
-type BucketAccessMonitorPtrInput interface {
+type BucketAccessMonitorTypePtrInput interface {
 	pulumi.Input
 
-	ToBucketAccessMonitorPtrOutput() BucketAccessMonitorPtrOutput
-	ToBucketAccessMonitorPtrOutputWithContext(context.Context) BucketAccessMonitorPtrOutput
+	ToBucketAccessMonitorTypePtrOutput() BucketAccessMonitorTypePtrOutput
+	ToBucketAccessMonitorTypePtrOutputWithContext(context.Context) BucketAccessMonitorTypePtrOutput
 }
 
-type bucketAccessMonitorPtrType BucketAccessMonitorArgs
+type bucketAccessMonitorTypePtrType BucketAccessMonitorTypeArgs
 
-func BucketAccessMonitorPtr(v *BucketAccessMonitorArgs) BucketAccessMonitorPtrInput {
-	return (*bucketAccessMonitorPtrType)(v)
+func BucketAccessMonitorTypePtr(v *BucketAccessMonitorTypeArgs) BucketAccessMonitorTypePtrInput {
+	return (*bucketAccessMonitorTypePtrType)(v)
 }
 
-func (*bucketAccessMonitorPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketAccessMonitor)(nil)).Elem()
+func (*bucketAccessMonitorTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketAccessMonitorType)(nil)).Elem()
 }
 
-func (i *bucketAccessMonitorPtrType) ToBucketAccessMonitorPtrOutput() BucketAccessMonitorPtrOutput {
-	return i.ToBucketAccessMonitorPtrOutputWithContext(context.Background())
+func (i *bucketAccessMonitorTypePtrType) ToBucketAccessMonitorTypePtrOutput() BucketAccessMonitorTypePtrOutput {
+	return i.ToBucketAccessMonitorTypePtrOutputWithContext(context.Background())
 }
 
-func (i *bucketAccessMonitorPtrType) ToBucketAccessMonitorPtrOutputWithContext(ctx context.Context) BucketAccessMonitorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessMonitorPtrOutput)
+func (i *bucketAccessMonitorTypePtrType) ToBucketAccessMonitorTypePtrOutputWithContext(ctx context.Context) BucketAccessMonitorTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessMonitorTypePtrOutput)
 }
 
-type BucketAccessMonitorOutput struct{ *pulumi.OutputState }
+type BucketAccessMonitorTypeOutput struct{ *pulumi.OutputState }
 
-func (BucketAccessMonitorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketAccessMonitor)(nil)).Elem()
+func (BucketAccessMonitorTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketAccessMonitorType)(nil)).Elem()
 }
 
-func (o BucketAccessMonitorOutput) ToBucketAccessMonitorOutput() BucketAccessMonitorOutput {
+func (o BucketAccessMonitorTypeOutput) ToBucketAccessMonitorTypeOutput() BucketAccessMonitorTypeOutput {
 	return o
 }
 
-func (o BucketAccessMonitorOutput) ToBucketAccessMonitorOutputWithContext(ctx context.Context) BucketAccessMonitorOutput {
+func (o BucketAccessMonitorTypeOutput) ToBucketAccessMonitorTypeOutputWithContext(ctx context.Context) BucketAccessMonitorTypeOutput {
 	return o
 }
 
-func (o BucketAccessMonitorOutput) ToBucketAccessMonitorPtrOutput() BucketAccessMonitorPtrOutput {
-	return o.ToBucketAccessMonitorPtrOutputWithContext(context.Background())
+func (o BucketAccessMonitorTypeOutput) ToBucketAccessMonitorTypePtrOutput() BucketAccessMonitorTypePtrOutput {
+	return o.ToBucketAccessMonitorTypePtrOutputWithContext(context.Background())
 }
 
-func (o BucketAccessMonitorOutput) ToBucketAccessMonitorPtrOutputWithContext(ctx context.Context) BucketAccessMonitorPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketAccessMonitor) *BucketAccessMonitor {
+func (o BucketAccessMonitorTypeOutput) ToBucketAccessMonitorTypePtrOutputWithContext(ctx context.Context) BucketAccessMonitorTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketAccessMonitorType) *BucketAccessMonitorType {
 		return &v
-	}).(BucketAccessMonitorPtrOutput)
+	}).(BucketAccessMonitorTypePtrOutput)
 }
 
 // The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
-func (o BucketAccessMonitorOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketAccessMonitor) *string { return v.Status }).(pulumi.StringPtrOutput)
+func (o BucketAccessMonitorTypeOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketAccessMonitorType) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-type BucketAccessMonitorPtrOutput struct{ *pulumi.OutputState }
+type BucketAccessMonitorTypePtrOutput struct{ *pulumi.OutputState }
 
-func (BucketAccessMonitorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketAccessMonitor)(nil)).Elem()
+func (BucketAccessMonitorTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketAccessMonitorType)(nil)).Elem()
 }
 
-func (o BucketAccessMonitorPtrOutput) ToBucketAccessMonitorPtrOutput() BucketAccessMonitorPtrOutput {
+func (o BucketAccessMonitorTypePtrOutput) ToBucketAccessMonitorTypePtrOutput() BucketAccessMonitorTypePtrOutput {
 	return o
 }
 
-func (o BucketAccessMonitorPtrOutput) ToBucketAccessMonitorPtrOutputWithContext(ctx context.Context) BucketAccessMonitorPtrOutput {
+func (o BucketAccessMonitorTypePtrOutput) ToBucketAccessMonitorTypePtrOutputWithContext(ctx context.Context) BucketAccessMonitorTypePtrOutput {
 	return o
 }
 
-func (o BucketAccessMonitorPtrOutput) Elem() BucketAccessMonitorOutput {
-	return o.ApplyT(func(v *BucketAccessMonitor) BucketAccessMonitor {
+func (o BucketAccessMonitorTypePtrOutput) Elem() BucketAccessMonitorTypeOutput {
+	return o.ApplyT(func(v *BucketAccessMonitorType) BucketAccessMonitorType {
 		if v != nil {
 			return *v
 		}
-		var ret BucketAccessMonitor
+		var ret BucketAccessMonitorType
 		return ret
-	}).(BucketAccessMonitorOutput)
+	}).(BucketAccessMonitorTypeOutput)
 }
 
 // The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
-func (o BucketAccessMonitorPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketAccessMonitor) *string {
+func (o BucketAccessMonitorTypePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketAccessMonitorType) *string {
 		if v == nil {
 			return nil
 		}
@@ -2978,136 +2978,136 @@ func (o BucketServerSideEncryptionRulePtrOutput) SseAlgorithm() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-type BucketTransferAcceleration struct {
+type BucketTransferAccelerationType struct {
 	// Specifies the accelerate status of a bucket.
 	Enabled bool `pulumi:"enabled"`
 }
 
-// BucketTransferAccelerationInput is an input type that accepts BucketTransferAccelerationArgs and BucketTransferAccelerationOutput values.
-// You can construct a concrete instance of `BucketTransferAccelerationInput` via:
+// BucketTransferAccelerationTypeInput is an input type that accepts BucketTransferAccelerationTypeArgs and BucketTransferAccelerationTypeOutput values.
+// You can construct a concrete instance of `BucketTransferAccelerationTypeInput` via:
 //
-//	BucketTransferAccelerationArgs{...}
-type BucketTransferAccelerationInput interface {
+//	BucketTransferAccelerationTypeArgs{...}
+type BucketTransferAccelerationTypeInput interface {
 	pulumi.Input
 
-	ToBucketTransferAccelerationOutput() BucketTransferAccelerationOutput
-	ToBucketTransferAccelerationOutputWithContext(context.Context) BucketTransferAccelerationOutput
+	ToBucketTransferAccelerationTypeOutput() BucketTransferAccelerationTypeOutput
+	ToBucketTransferAccelerationTypeOutputWithContext(context.Context) BucketTransferAccelerationTypeOutput
 }
 
-type BucketTransferAccelerationArgs struct {
+type BucketTransferAccelerationTypeArgs struct {
 	// Specifies the accelerate status of a bucket.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
-func (BucketTransferAccelerationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketTransferAcceleration)(nil)).Elem()
+func (BucketTransferAccelerationTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketTransferAccelerationType)(nil)).Elem()
 }
 
-func (i BucketTransferAccelerationArgs) ToBucketTransferAccelerationOutput() BucketTransferAccelerationOutput {
-	return i.ToBucketTransferAccelerationOutputWithContext(context.Background())
+func (i BucketTransferAccelerationTypeArgs) ToBucketTransferAccelerationTypeOutput() BucketTransferAccelerationTypeOutput {
+	return i.ToBucketTransferAccelerationTypeOutputWithContext(context.Background())
 }
 
-func (i BucketTransferAccelerationArgs) ToBucketTransferAccelerationOutputWithContext(ctx context.Context) BucketTransferAccelerationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketTransferAccelerationOutput)
+func (i BucketTransferAccelerationTypeArgs) ToBucketTransferAccelerationTypeOutputWithContext(ctx context.Context) BucketTransferAccelerationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketTransferAccelerationTypeOutput)
 }
 
-func (i BucketTransferAccelerationArgs) ToBucketTransferAccelerationPtrOutput() BucketTransferAccelerationPtrOutput {
-	return i.ToBucketTransferAccelerationPtrOutputWithContext(context.Background())
+func (i BucketTransferAccelerationTypeArgs) ToBucketTransferAccelerationTypePtrOutput() BucketTransferAccelerationTypePtrOutput {
+	return i.ToBucketTransferAccelerationTypePtrOutputWithContext(context.Background())
 }
 
-func (i BucketTransferAccelerationArgs) ToBucketTransferAccelerationPtrOutputWithContext(ctx context.Context) BucketTransferAccelerationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketTransferAccelerationOutput).ToBucketTransferAccelerationPtrOutputWithContext(ctx)
+func (i BucketTransferAccelerationTypeArgs) ToBucketTransferAccelerationTypePtrOutputWithContext(ctx context.Context) BucketTransferAccelerationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketTransferAccelerationTypeOutput).ToBucketTransferAccelerationTypePtrOutputWithContext(ctx)
 }
 
-// BucketTransferAccelerationPtrInput is an input type that accepts BucketTransferAccelerationArgs, BucketTransferAccelerationPtr and BucketTransferAccelerationPtrOutput values.
-// You can construct a concrete instance of `BucketTransferAccelerationPtrInput` via:
+// BucketTransferAccelerationTypePtrInput is an input type that accepts BucketTransferAccelerationTypeArgs, BucketTransferAccelerationTypePtr and BucketTransferAccelerationTypePtrOutput values.
+// You can construct a concrete instance of `BucketTransferAccelerationTypePtrInput` via:
 //
-//	        BucketTransferAccelerationArgs{...}
+//	        BucketTransferAccelerationTypeArgs{...}
 //
 //	or:
 //
 //	        nil
-type BucketTransferAccelerationPtrInput interface {
+type BucketTransferAccelerationTypePtrInput interface {
 	pulumi.Input
 
-	ToBucketTransferAccelerationPtrOutput() BucketTransferAccelerationPtrOutput
-	ToBucketTransferAccelerationPtrOutputWithContext(context.Context) BucketTransferAccelerationPtrOutput
+	ToBucketTransferAccelerationTypePtrOutput() BucketTransferAccelerationTypePtrOutput
+	ToBucketTransferAccelerationTypePtrOutputWithContext(context.Context) BucketTransferAccelerationTypePtrOutput
 }
 
-type bucketTransferAccelerationPtrType BucketTransferAccelerationArgs
+type bucketTransferAccelerationTypePtrType BucketTransferAccelerationTypeArgs
 
-func BucketTransferAccelerationPtr(v *BucketTransferAccelerationArgs) BucketTransferAccelerationPtrInput {
-	return (*bucketTransferAccelerationPtrType)(v)
+func BucketTransferAccelerationTypePtr(v *BucketTransferAccelerationTypeArgs) BucketTransferAccelerationTypePtrInput {
+	return (*bucketTransferAccelerationTypePtrType)(v)
 }
 
-func (*bucketTransferAccelerationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketTransferAcceleration)(nil)).Elem()
+func (*bucketTransferAccelerationTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketTransferAccelerationType)(nil)).Elem()
 }
 
-func (i *bucketTransferAccelerationPtrType) ToBucketTransferAccelerationPtrOutput() BucketTransferAccelerationPtrOutput {
-	return i.ToBucketTransferAccelerationPtrOutputWithContext(context.Background())
+func (i *bucketTransferAccelerationTypePtrType) ToBucketTransferAccelerationTypePtrOutput() BucketTransferAccelerationTypePtrOutput {
+	return i.ToBucketTransferAccelerationTypePtrOutputWithContext(context.Background())
 }
 
-func (i *bucketTransferAccelerationPtrType) ToBucketTransferAccelerationPtrOutputWithContext(ctx context.Context) BucketTransferAccelerationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketTransferAccelerationPtrOutput)
+func (i *bucketTransferAccelerationTypePtrType) ToBucketTransferAccelerationTypePtrOutputWithContext(ctx context.Context) BucketTransferAccelerationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketTransferAccelerationTypePtrOutput)
 }
 
-type BucketTransferAccelerationOutput struct{ *pulumi.OutputState }
+type BucketTransferAccelerationTypeOutput struct{ *pulumi.OutputState }
 
-func (BucketTransferAccelerationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketTransferAcceleration)(nil)).Elem()
+func (BucketTransferAccelerationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketTransferAccelerationType)(nil)).Elem()
 }
 
-func (o BucketTransferAccelerationOutput) ToBucketTransferAccelerationOutput() BucketTransferAccelerationOutput {
+func (o BucketTransferAccelerationTypeOutput) ToBucketTransferAccelerationTypeOutput() BucketTransferAccelerationTypeOutput {
 	return o
 }
 
-func (o BucketTransferAccelerationOutput) ToBucketTransferAccelerationOutputWithContext(ctx context.Context) BucketTransferAccelerationOutput {
+func (o BucketTransferAccelerationTypeOutput) ToBucketTransferAccelerationTypeOutputWithContext(ctx context.Context) BucketTransferAccelerationTypeOutput {
 	return o
 }
 
-func (o BucketTransferAccelerationOutput) ToBucketTransferAccelerationPtrOutput() BucketTransferAccelerationPtrOutput {
-	return o.ToBucketTransferAccelerationPtrOutputWithContext(context.Background())
+func (o BucketTransferAccelerationTypeOutput) ToBucketTransferAccelerationTypePtrOutput() BucketTransferAccelerationTypePtrOutput {
+	return o.ToBucketTransferAccelerationTypePtrOutputWithContext(context.Background())
 }
 
-func (o BucketTransferAccelerationOutput) ToBucketTransferAccelerationPtrOutputWithContext(ctx context.Context) BucketTransferAccelerationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketTransferAcceleration) *BucketTransferAcceleration {
+func (o BucketTransferAccelerationTypeOutput) ToBucketTransferAccelerationTypePtrOutputWithContext(ctx context.Context) BucketTransferAccelerationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketTransferAccelerationType) *BucketTransferAccelerationType {
 		return &v
-	}).(BucketTransferAccelerationPtrOutput)
+	}).(BucketTransferAccelerationTypePtrOutput)
 }
 
 // Specifies the accelerate status of a bucket.
-func (o BucketTransferAccelerationOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v BucketTransferAcceleration) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o BucketTransferAccelerationTypeOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BucketTransferAccelerationType) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-type BucketTransferAccelerationPtrOutput struct{ *pulumi.OutputState }
+type BucketTransferAccelerationTypePtrOutput struct{ *pulumi.OutputState }
 
-func (BucketTransferAccelerationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketTransferAcceleration)(nil)).Elem()
+func (BucketTransferAccelerationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketTransferAccelerationType)(nil)).Elem()
 }
 
-func (o BucketTransferAccelerationPtrOutput) ToBucketTransferAccelerationPtrOutput() BucketTransferAccelerationPtrOutput {
+func (o BucketTransferAccelerationTypePtrOutput) ToBucketTransferAccelerationTypePtrOutput() BucketTransferAccelerationTypePtrOutput {
 	return o
 }
 
-func (o BucketTransferAccelerationPtrOutput) ToBucketTransferAccelerationPtrOutputWithContext(ctx context.Context) BucketTransferAccelerationPtrOutput {
+func (o BucketTransferAccelerationTypePtrOutput) ToBucketTransferAccelerationTypePtrOutputWithContext(ctx context.Context) BucketTransferAccelerationTypePtrOutput {
 	return o
 }
 
-func (o BucketTransferAccelerationPtrOutput) Elem() BucketTransferAccelerationOutput {
-	return o.ApplyT(func(v *BucketTransferAcceleration) BucketTransferAcceleration {
+func (o BucketTransferAccelerationTypePtrOutput) Elem() BucketTransferAccelerationTypeOutput {
+	return o.ApplyT(func(v *BucketTransferAccelerationType) BucketTransferAccelerationType {
 		if v != nil {
 			return *v
 		}
-		var ret BucketTransferAcceleration
+		var ret BucketTransferAccelerationType
 		return ret
-	}).(BucketTransferAccelerationOutput)
+	}).(BucketTransferAccelerationTypeOutput)
 }
 
 // Specifies the accelerate status of a bucket.
-func (o BucketTransferAccelerationPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BucketTransferAcceleration) *bool {
+func (o BucketTransferAccelerationTypePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketTransferAccelerationType) *bool {
 		if v == nil {
 			return nil
 		}
@@ -5287,8 +5287,8 @@ func (o GetTablesTablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) GetTablesT
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessMonitorInput)(nil)).Elem(), BucketAccessMonitorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessMonitorPtrInput)(nil)).Elem(), BucketAccessMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessMonitorTypeInput)(nil)).Elem(), BucketAccessMonitorTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessMonitorTypePtrInput)(nil)).Elem(), BucketAccessMonitorTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsCorsRuleInput)(nil)).Elem(), BucketCorsCorsRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsCorsRuleArrayInput)(nil)).Elem(), BucketCorsCorsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsRuleInput)(nil)).Elem(), BucketCorsRuleArgs{})
@@ -5329,8 +5329,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrInput)(nil)).Elem(), BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketServerSideEncryptionRuleInput)(nil)).Elem(), BucketServerSideEncryptionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketServerSideEncryptionRulePtrInput)(nil)).Elem(), BucketServerSideEncryptionRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketTransferAccelerationInput)(nil)).Elem(), BucketTransferAccelerationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketTransferAccelerationPtrInput)(nil)).Elem(), BucketTransferAccelerationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketTransferAccelerationTypeInput)(nil)).Elem(), BucketTransferAccelerationTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketTransferAccelerationTypePtrInput)(nil)).Elem(), BucketTransferAccelerationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningTypeInput)(nil)).Elem(), BucketVersioningTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningTypePtrInput)(nil)).Elem(), BucketVersioningTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteInput)(nil)).Elem(), BucketWebsiteArgs{})
@@ -5359,8 +5359,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableDefinedColumnArrayInput)(nil)).Elem(), GetTablesTableDefinedColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyInput)(nil)).Elem(), GetTablesTablePrimaryKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyArrayInput)(nil)).Elem(), GetTablesTablePrimaryKeyArray{})
-	pulumi.RegisterOutputType(BucketAccessMonitorOutput{})
-	pulumi.RegisterOutputType(BucketAccessMonitorPtrOutput{})
+	pulumi.RegisterOutputType(BucketAccessMonitorTypeOutput{})
+	pulumi.RegisterOutputType(BucketAccessMonitorTypePtrOutput{})
 	pulumi.RegisterOutputType(BucketCorsCorsRuleOutput{})
 	pulumi.RegisterOutputType(BucketCorsCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(BucketCorsRuleOutput{})
@@ -5401,8 +5401,8 @@ func init() {
 	pulumi.RegisterOutputType(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput{})
 	pulumi.RegisterOutputType(BucketServerSideEncryptionRuleOutput{})
 	pulumi.RegisterOutputType(BucketServerSideEncryptionRulePtrOutput{})
-	pulumi.RegisterOutputType(BucketTransferAccelerationOutput{})
-	pulumi.RegisterOutputType(BucketTransferAccelerationPtrOutput{})
+	pulumi.RegisterOutputType(BucketTransferAccelerationTypeOutput{})
+	pulumi.RegisterOutputType(BucketTransferAccelerationTypePtrOutput{})
 	pulumi.RegisterOutputType(BucketVersioningTypeOutput{})
 	pulumi.RegisterOutputType(BucketVersioningTypePtrOutput{})
 	pulumi.RegisterOutputType(BucketWebsiteOutput{})

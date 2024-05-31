@@ -10,6 +10,11 @@ export type AccessGroup = import("./accessGroup").AccessGroup;
 export const AccessGroup: typeof import("./accessGroup").AccessGroup = null as any;
 utilities.lazyLoad(exports, ["AccessGroup"], () => require("./accessGroup"));
 
+export { AccessPointArgs, AccessPointState } from "./accessPoint";
+export type AccessPoint = import("./accessPoint").AccessPoint;
+export const AccessPoint: typeof import("./accessPoint").AccessPoint = null as any;
+utilities.lazyLoad(exports, ["AccessPoint"], () => require("./accessPoint"));
+
 export { AccessRuleArgs, AccessRuleState } from "./accessRule";
 export type AccessRule = import("./accessRule").AccessRule;
 export const AccessRule: typeof import("./accessRule").AccessRule = null as any;
@@ -127,6 +132,8 @@ const _module = {
         switch (type) {
             case "alicloud:nas/accessGroup:AccessGroup":
                 return new AccessGroup(name, <any>undefined, { urn })
+            case "alicloud:nas/accessPoint:AccessPoint":
+                return new AccessPoint(name, <any>undefined, { urn })
             case "alicloud:nas/accessRule:AccessRule":
                 return new AccessRule(name, <any>undefined, { urn })
             case "alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy":
@@ -153,6 +160,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "nas/accessGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nas/accessPoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/accessRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/autoSnapshotPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/dataFlow", _module)

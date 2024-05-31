@@ -64,26 +64,42 @@ public final class PluginArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-     * - ipControl: indicates IP address-based access control.
-     * - trafficControl: indicates throttling.
-     * - backendSignature: indicates backend signature.
-     * - jwtAuth: indicates JWT (OpenId Connect).
-     * - cors: indicates cross-origin resource access (CORS).
-     * - caching: indicates caching.
+     * The type of the plug-in. Valid values:
+     * - &#34;trafficControl&#34;
+     * - &#34;ipControl&#34;
+     * - &#34;backendSignature&#34;
+     * - &#34;jwtAuth&#34;
+     * - &#34;basicAuth&#34;
+     * - &#34;cors&#34;
+     * - &#34;caching&#34;
+     * - &#34;routing&#34;
+     * - &#34;accessControl&#34;
+     * - &#34;errorMapping&#34;
+     * - &#34;circuitBreaker&#34;
+     * - &#34;remoteAuth&#34;
+     * - &#34;logMask&#34;
+     * - &#34;transformer&#34;.
      * 
      */
     @Import(name="pluginType", required=true)
     private Output<String> pluginType;
 
     /**
-     * @return The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-     * - ipControl: indicates IP address-based access control.
-     * - trafficControl: indicates throttling.
-     * - backendSignature: indicates backend signature.
-     * - jwtAuth: indicates JWT (OpenId Connect).
-     * - cors: indicates cross-origin resource access (CORS).
-     * - caching: indicates caching.
+     * @return The type of the plug-in. Valid values:
+     * - &#34;trafficControl&#34;
+     * - &#34;ipControl&#34;
+     * - &#34;backendSignature&#34;
+     * - &#34;jwtAuth&#34;
+     * - &#34;basicAuth&#34;
+     * - &#34;cors&#34;
+     * - &#34;caching&#34;
+     * - &#34;routing&#34;
+     * - &#34;accessControl&#34;
+     * - &#34;errorMapping&#34;
+     * - &#34;circuitBreaker&#34;
+     * - &#34;remoteAuth&#34;
+     * - &#34;logMask&#34;
+     * - &#34;transformer&#34;.
      * 
      */
     public Output<String> pluginType() {
@@ -91,14 +107,14 @@ public final class PluginArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -197,13 +213,21 @@ public final class PluginArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pluginType The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-         * - ipControl: indicates IP address-based access control.
-         * - trafficControl: indicates throttling.
-         * - backendSignature: indicates backend signature.
-         * - jwtAuth: indicates JWT (OpenId Connect).
-         * - cors: indicates cross-origin resource access (CORS).
-         * - caching: indicates caching.
+         * @param pluginType The type of the plug-in. Valid values:
+         * - &#34;trafficControl&#34;
+         * - &#34;ipControl&#34;
+         * - &#34;backendSignature&#34;
+         * - &#34;jwtAuth&#34;
+         * - &#34;basicAuth&#34;
+         * - &#34;cors&#34;
+         * - &#34;caching&#34;
+         * - &#34;routing&#34;
+         * - &#34;accessControl&#34;
+         * - &#34;errorMapping&#34;
+         * - &#34;circuitBreaker&#34;
+         * - &#34;remoteAuth&#34;
+         * - &#34;logMask&#34;
+         * - &#34;transformer&#34;.
          * 
          * @return builder
          * 
@@ -214,13 +238,21 @@ public final class PluginArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pluginType The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-         * - ipControl: indicates IP address-based access control.
-         * - trafficControl: indicates throttling.
-         * - backendSignature: indicates backend signature.
-         * - jwtAuth: indicates JWT (OpenId Connect).
-         * - cors: indicates cross-origin resource access (CORS).
-         * - caching: indicates caching.
+         * @param pluginType The type of the plug-in. Valid values:
+         * - &#34;trafficControl&#34;
+         * - &#34;ipControl&#34;
+         * - &#34;backendSignature&#34;
+         * - &#34;jwtAuth&#34;
+         * - &#34;basicAuth&#34;
+         * - &#34;cors&#34;
+         * - &#34;caching&#34;
+         * - &#34;routing&#34;
+         * - &#34;accessControl&#34;
+         * - &#34;errorMapping&#34;
+         * - &#34;circuitBreaker&#34;
+         * - &#34;remoteAuth&#34;
+         * - &#34;logMask&#34;
+         * - &#34;transformer&#34;.
          * 
          * @return builder
          * 
@@ -230,7 +262,7 @@ public final class PluginArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource.
          * 
          * @return builder
          * 
@@ -241,7 +273,7 @@ public final class PluginArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource.
          * 
          * @return builder
          * 

@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ess;
 
+import com.pulumi.alicloud.ess.inputs.ScalingGroupAlbServerGroupArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingGroupLaunchTemplateOverrideArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -21,6 +22,21 @@ import javax.annotation.Nullable;
 public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ScalingGroupArgs Empty = new ScalingGroupArgs();
+
+    /**
+     * If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+     * 
+     */
+    @Import(name="albServerGroups")
+    private @Nullable Output<List<ScalingGroupAlbServerGroupArgs>> albServerGroups;
+
+    /**
+     * @return If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+     * 
+     */
+    public Optional<Output<List<ScalingGroupAlbServerGroupArgs>>> albServerGroups() {
+        return Optional.ofNullable(this.albServerGroups);
+    }
 
     /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
@@ -132,14 +148,14 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
      * 
      */
     @Import(name="launchTemplateOverrides")
     private @Nullable Output<List<ScalingGroupLaunchTemplateOverrideArgs>> launchTemplateOverrides;
 
     /**
-     * @return The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+     * @return The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
      * 
      */
     public Optional<Output<List<ScalingGroupLaunchTemplateOverrideArgs>>> launchTemplateOverrides() {
@@ -304,6 +320,21 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the resource group to which you want to add the scaling group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group to which you want to add the scaling group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      * 
      */
@@ -408,6 +439,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     private ScalingGroupArgs() {}
 
     private ScalingGroupArgs(ScalingGroupArgs $) {
+        this.albServerGroups = $.albServerGroups;
         this.dbInstanceIds = $.dbInstanceIds;
         this.defaultCooldown = $.defaultCooldown;
         this.desiredCapacity = $.desiredCapacity;
@@ -425,6 +457,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.onDemandPercentageAboveBaseCapacity = $.onDemandPercentageAboveBaseCapacity;
         this.protectedInstances = $.protectedInstances;
         this.removalPolicies = $.removalPolicies;
+        this.resourceGroupId = $.resourceGroupId;
         this.scalingGroupName = $.scalingGroupName;
         this.spotInstancePools = $.spotInstancePools;
         this.spotInstanceRemedy = $.spotInstanceRemedy;
@@ -449,6 +482,37 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ScalingGroupArgs defaults) {
             $ = new ScalingGroupArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param albServerGroups If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder albServerGroups(@Nullable Output<List<ScalingGroupAlbServerGroupArgs>> albServerGroups) {
+            $.albServerGroups = albServerGroups;
+            return this;
+        }
+
+        /**
+         * @param albServerGroups If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder albServerGroups(List<ScalingGroupAlbServerGroupArgs> albServerGroups) {
+            return albServerGroups(Output.of(albServerGroups));
+        }
+
+        /**
+         * @param albServerGroups If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder albServerGroups(ScalingGroupAlbServerGroupArgs... albServerGroups) {
+            return albServerGroups(List.of(albServerGroups));
         }
 
         /**
@@ -615,7 +679,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
          * 
          * @return builder
          * 
@@ -626,7 +690,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
          * 
          * @return builder
          * 
@@ -636,7 +700,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+         * @param launchTemplateOverrides The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
          * 
          * @return builder
          * 
@@ -893,6 +957,27 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder removalPolicies(String... removalPolicies) {
             return removalPolicies(List.of(removalPolicies));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which you want to add the scaling group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which you want to add the scaling group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

@@ -60,6 +60,20 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenewPeriod);
     }
     /**
+     * The ID of the backup set of the cluster.  .
+     * 
+     */
+    @Export(name="clusterBackupId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> clusterBackupId;
+
+    /**
+     * @return The ID of the backup set of the cluster.  .
+     * 
+     */
+    public Output<Optional<String>> clusterBackupId() {
+        return Codegen.optional(this.clusterBackupId);
+    }
+    /**
      * The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
@@ -144,6 +158,20 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return this.instanceType;
     }
     /**
+     * Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * 
+     */
+    @Export(name="nodeType", refs={String.class}, tree="[0]")
+    private Output<String> nodeType;
+
+    /**
+     * @return Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * 
+     */
+    public Output<String> nodeType() {
+        return this.nodeType;
+    }
+    /**
      * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !{@literal @} # $ % ^ &amp; * ( ) _ + - =.
      * 
      */
@@ -200,6 +228,20 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return this.port;
     }
     /**
+     * Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+     * 
+     */
+    @Export(name="readOnlyCount", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> readOnlyCount;
+
+    /**
+     * @return Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+     * 
+     */
+    public Output<Optional<Integer>> readOnlyCount() {
+        return Codegen.optional(this.readOnlyCount);
+    }
+    /**
      * The ID of the resource group to which the instance belongs.
      * 
      */
@@ -240,6 +282,20 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> shardCount() {
         return this.shardCount;
+    }
+    /**
+     * Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+     * 
+     */
+    @Export(name="slaveReadOnlyCount", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> slaveReadOnlyCount;
+
+    /**
+     * @return Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+     * 
+     */
+    public Output<Optional<Integer>> slaveReadOnlyCount() {
+        return Codegen.optional(this.slaveReadOnlyCount);
     }
     /**
      * The status of the resource.

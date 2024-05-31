@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Cen.Outputs
     public sealed class GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult
     {
         /// <summary>
-        /// The VSwitch ID.
+        /// The ID of the vSwitch.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>
-        /// The zone ID.
+        /// The ID of the zone.
         /// </summary>
         public readonly string ZoneId;
 

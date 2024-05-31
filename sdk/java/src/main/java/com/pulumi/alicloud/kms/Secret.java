@@ -20,9 +20,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resouce used to create a secret and store its initial version.
+ * Provides a KMS Secret resource.
  * 
- * &gt; **NOTE:** Available in 1.76.0+.
+ * For information about KMS Secret and how to use it, see [What is Secret](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createsecret).
+ * 
+ * &gt; **NOTE:** Available since v1.76.0.
  * 
  * ## Example Usage
  * 
@@ -51,11 +53,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Secret("default", SecretArgs.builder()
- *             .secretName("secret-foo")
- *             .description("from terraform")
- *             .secretData("Secret data.")
- *             .versionId("000000000001")
+ *             .secretName(name)
+ *             .secretData("Secret data")
+ *             .versionId("v1")
  *             .forceDeleteWithoutRecovery(true)
  *             .build());
  * 
@@ -67,28 +70,42 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * KMS secret can be imported using the id, e.g.
+ * KMS Secret can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:kms/secret:Secret default &lt;id&gt;
+ * $ pulumi import alicloud:kms/secret:Secret example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:kms/secret:Secret")
 public class Secret extends com.pulumi.resources.CustomResource {
     /**
-     * The Alicloud Resource Name (ARN) of the secret.
+     * The ARN of the secret.
      * 
      */
     @Export(name="arn", refs={String.class}, tree="[0]")
     private Output<String> arn;
 
     /**
-     * @return The Alicloud Resource Name (ARN) of the secret.
+     * @return The ARN of the secret.
      * 
      */
     public Output<String> arn() {
         return this.arn;
+    }
+    /**
+     * (Available since v1.224.0) The time when the secret is created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.224.0) The time when the secret is created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * The description of the secret.
@@ -105,70 +122,70 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The instance ID of the exclusive KMS instance.
+     * The ID of the KMS instance.
      * 
      */
     @Export(name="dkmsInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dkmsInstanceId;
 
     /**
-     * @return The instance ID of the exclusive KMS instance.
+     * @return The ID of the KMS instance.
      * 
      */
     public Output<Optional<String>> dkmsInstanceId() {
         return Codegen.optional(this.dkmsInstanceId);
     }
     /**
-     * Whether to enable automatic key rotation.
+     * Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Export(name="enableAutomaticRotation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableAutomaticRotation;
 
     /**
-     * @return Whether to enable automatic key rotation.
+     * @return Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Output<Optional<Boolean>> enableAutomaticRotation() {
         return Codegen.optional(this.enableAutomaticRotation);
     }
     /**
-     * The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+     * The ID of the KMS key.
      * 
      */
     @Export(name="encryptionKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionKeyId;
 
     /**
-     * @return The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+     * @return The ID of the KMS key.
      * 
      */
     public Output<Optional<String>> encryptionKeyId() {
         return Codegen.optional(this.encryptionKeyId);
     }
     /**
-     * The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      * 
      */
     @Export(name="extendedConfig", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> extendedConfig;
 
     /**
-     * @return The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * @return The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      * 
      */
     public Output<Optional<String>> extendedConfig() {
         return Codegen.optional(this.extendedConfig);
     }
     /**
-     * Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
+     * Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Export(name="forceDeleteWithoutRecovery", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDeleteWithoutRecovery;
 
     /**
-     * @return Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
+     * @return Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Output<Optional<Boolean>> forceDeleteWithoutRecovery() {
@@ -189,56 +206,70 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return this.plannedDeleteTime;
     }
     /**
-     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+     * The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
+     * 
+     */
+    @Export(name="policy", refs={String.class}, tree="[0]")
+    private Output<String> policy;
+
+    /**
+     * @return The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
+     * 
+     */
+    public Output<String> policy() {
+        return this.policy;
+    }
+    /**
+     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
      * 
      */
     @Export(name="recoveryWindowInDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> recoveryWindowInDays;
 
     /**
-     * @return Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+     * @return Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
      * 
      */
     public Output<Optional<Integer>> recoveryWindowInDays() {
         return Codegen.optional(this.recoveryWindowInDays);
     }
     /**
-     * The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+     * The interval for automatic rotation.
      * 
      */
     @Export(name="rotationInterval", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rotationInterval;
 
     /**
-     * @return The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+     * @return The interval for automatic rotation.
      * 
      */
     public Output<Optional<String>> rotationInterval() {
         return Codegen.optional(this.rotationInterval);
     }
     /**
-     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+     * The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
      * 
      */
     @Export(name="secretData", refs={String.class}, tree="[0]")
     private Output<String> secretData;
 
     /**
-     * @return The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+     * @return The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
      * 
      */
     public Output<String> secretData() {
         return this.secretData;
     }
     /**
-     * The type of the secret value. Valid values: text, binary. Default to &#34;text&#34;.
+     * The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
      * 
      */
     @Export(name="secretDataType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretDataType;
 
     /**
-     * @return The type of the secret value. Valid values: text, binary. Default to &#34;text&#34;.
+     * @return The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
      * 
      */
     public Output<Optional<String>> secretDataType() {
@@ -260,10 +291,10 @@ public class Secret extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the secret. Valid values:
-     * - `Generic`: specifies a generic secret.
-     * - `Rds`: specifies a managed ApsaraDB RDS secret.
-     * - `RAMCredentials`: indicates a managed RAM secret.
-     * - `ECS`: specifies a managed ECS secret.
+     * - `Generic`: Generic secret.
+     * - `Rds`: ApsaraDB RDS secret.
+     * - `RAMCredentials`: RAM secret.
+     * - `ECS`: ECS secret.
      * 
      */
     @Export(name="secretType", refs={String.class}, tree="[0]")
@@ -271,10 +302,10 @@ public class Secret extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the secret. Valid values:
-     * - `Generic`: specifies a generic secret.
-     * - `Rds`: specifies a managed ApsaraDB RDS secret.
-     * - `RAMCredentials`: indicates a managed RAM secret.
-     * - `ECS`: specifies a managed ECS secret.
+     * - `Generic`: Generic secret.
+     * - `Rds`: ApsaraDB RDS secret.
+     * - `RAMCredentials`: RAM secret.
+     * - `ECS`: ECS secret.
      * 
      */
     public Output<String> secretType() {
@@ -295,28 +326,28 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The version number of the initial version. Version numbers are unique in each secret object.
+     * The version number of the initial version.
      * 
      */
     @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**
-     * @return The version number of the initial version. Version numbers are unique in each secret object.
+     * @return The version number of the initial version.
      * 
      */
     public Output<String> versionId() {
         return this.versionId;
     }
     /**
-     * ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with &#34;ACSCurrent&#34;.
+     * The stage label that is used to mark the new version.
      * 
      */
     @Export(name="versionStages", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> versionStages;
 
     /**
-     * @return ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with &#34;ACSCurrent&#34;.
+     * @return The stage label that is used to mark the new version.
      * 
      */
     public Output<List<String>> versionStages() {

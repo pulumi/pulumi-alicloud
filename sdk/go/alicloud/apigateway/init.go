@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:apigateway/accessControlList:AccessControlList":
+		r = &AccessControlList{}
 	case "alicloud:apigateway/api:Api":
 		r = &Api{}
 	case "alicloud:apigateway/app:App":
@@ -56,6 +58,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"apigateway/accessControlList",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"apigateway/api",

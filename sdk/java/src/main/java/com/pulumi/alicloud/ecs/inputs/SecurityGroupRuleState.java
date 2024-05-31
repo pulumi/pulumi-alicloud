@@ -34,6 +34,8 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
     /**
      * The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
      * 
+     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
@@ -41,20 +43,22 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
     /**
      * @return The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
      * 
+     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+     * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
     /**
-     * The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+     * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
      * 
      */
     @Import(name="ipProtocol")
     private @Nullable Output<String> ipProtocol;
 
     /**
-     * @return The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+     * @return The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
      * 
      */
     public Optional<Output<String>> ipProtocol() {
@@ -64,16 +68,12 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
     /**
      * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
      * 
-     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
-     * 
      */
     @Import(name="ipv6CidrIp")
     private @Nullable Output<String> ipv6CidrIp;
 
     /**
      * @return Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
-     * 
-     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
      * 
      */
     public Optional<Output<String>> ipv6CidrIp() {
@@ -96,14 +96,14 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
+     * The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
      * 
      */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
     /**
-     * @return Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
+     * @return The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
      * 
      */
     public Optional<Output<String>> policy() {
@@ -143,14 +143,14 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Authorization policy priority, with parameter values: `1-100`, default value: 1.
+     * The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return Authorization policy priority, with parameter values: `1-100`, default value: 1.
+     * @return The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -158,14 +158,14 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The security group to apply this rule to.
+     * The ID of the Security Group.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return The security group to apply this rule to.
+     * @return The ID of the Security Group.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -203,14 +203,14 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
+     * The type of the Security Group Rule. Valid values:
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
+     * @return The type of the Security Group Rule. Valid values:
      * 
      */
     public Optional<Output<String>> type() {
@@ -277,6 +277,8 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         /**
          * @param description The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
          * 
+         * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+         * 
          * @return builder
          * 
          */
@@ -288,6 +290,8 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         /**
          * @param description The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
          * 
+         * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+         * 
          * @return builder
          * 
          */
@@ -296,7 +300,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ipProtocol The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+         * @param ipProtocol The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
          * 
          * @return builder
          * 
@@ -307,7 +311,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ipProtocol The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+         * @param ipProtocol The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
          * 
          * @return builder
          * 
@@ -319,8 +323,6 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         /**
          * @param ipv6CidrIp Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
          * 
-         * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
-         * 
          * @return builder
          * 
          */
@@ -331,8 +333,6 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
 
         /**
          * @param ipv6CidrIp Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
-         * 
-         * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param policy Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
+         * @param policy The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param policy Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
+         * @param policy The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param priority Authorization policy priority, with parameter values: `1-100`, default value: 1.
+         * @param priority The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param priority Authorization policy priority, with parameter values: `1-100`, default value: 1.
+         * @param priority The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param securityGroupId The security group to apply this rule to.
+         * @param securityGroupId The ID of the Security Group.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param securityGroupId The security group to apply this rule to.
+         * @param securityGroupId The ID of the Security Group.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
+         * @param type The type of the Security Group Rule. Valid values:
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
+         * @param type The type of the Security Group Rule. Valid values:
          * 
          * @return builder
          * 

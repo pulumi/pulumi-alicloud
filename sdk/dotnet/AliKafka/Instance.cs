@@ -128,6 +128,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<int> PartitionUsed { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of security group for this instance. If the security group is empty, system will create a default one.
         /// </summary>
         [Output("securityGroup")]
@@ -335,6 +341,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<int>? PartitionNum { get; set; }
 
         /// <summary>
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The ID of security group for this instance. If the security group is empty, system will create a default one.
         /// </summary>
         [Input("securityGroup")]
@@ -526,6 +538,12 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("partitionUsed")]
         public Input<int>? PartitionUsed { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The ID of security group for this instance. If the security group is empty, system will create a default one.

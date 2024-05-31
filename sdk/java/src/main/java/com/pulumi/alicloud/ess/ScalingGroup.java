@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ess;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ess.ScalingGroupArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingGroupState;
+import com.pulumi.alicloud.ess.outputs.ScalingGroupAlbServerGroup;
 import com.pulumi.alicloud.ess.outputs.ScalingGroupLaunchTemplateOverride;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -168,6 +169,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ess/scalingGroup:ScalingGroup")
 public class ScalingGroup extends com.pulumi.resources.CustomResource {
     /**
+     * If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+     * 
+     */
+    @Export(name="albServerGroups", refs={List.class,ScalingGroupAlbServerGroup.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ScalingGroupAlbServerGroup>> albServerGroups;
+
+    /**
+     * @return If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+     * 
+     */
+    public Output<Optional<List<ScalingGroupAlbServerGroup>>> albServerGroups() {
+        return Codegen.optional(this.albServerGroups);
+    }
+    /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -270,14 +285,14 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.launchTemplateId);
     }
     /**
-     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
      * 
      */
     @Export(name="launchTemplateOverrides", refs={List.class,ScalingGroupLaunchTemplateOverride.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ScalingGroupLaunchTemplateOverride>> launchTemplateOverrides;
 
     /**
-     * @return The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+     * @return The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
      * 
      */
     public Output<Optional<List<ScalingGroupLaunchTemplateOverride>>> launchTemplateOverrides() {
@@ -430,6 +445,20 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> removalPolicies() {
         return this.removalPolicies;
+    }
+    /**
+     * The ID of the resource group to which you want to add the scaling group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group to which you want to add the scaling group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.

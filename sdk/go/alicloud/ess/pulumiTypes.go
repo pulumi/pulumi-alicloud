@@ -2538,6 +2538,121 @@ func (o ScalingConfigurationSpotPriceLimitArrayOutput) Index(i pulumi.IntInput) 
 	}).(ScalingConfigurationSpotPriceLimitOutput)
 }
 
+type ScalingGroupAlbServerGroup struct {
+	// The ID of ALB server group.
+	AlbServerGroupId *string `pulumi:"albServerGroupId"`
+	// The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
+	Port *int `pulumi:"port"`
+	// The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to ALB server group.
+	Weight *int `pulumi:"weight"`
+}
+
+// ScalingGroupAlbServerGroupInput is an input type that accepts ScalingGroupAlbServerGroupArgs and ScalingGroupAlbServerGroupOutput values.
+// You can construct a concrete instance of `ScalingGroupAlbServerGroupInput` via:
+//
+//	ScalingGroupAlbServerGroupArgs{...}
+type ScalingGroupAlbServerGroupInput interface {
+	pulumi.Input
+
+	ToScalingGroupAlbServerGroupOutput() ScalingGroupAlbServerGroupOutput
+	ToScalingGroupAlbServerGroupOutputWithContext(context.Context) ScalingGroupAlbServerGroupOutput
+}
+
+type ScalingGroupAlbServerGroupArgs struct {
+	// The ID of ALB server group.
+	AlbServerGroupId pulumi.StringPtrInput `pulumi:"albServerGroupId"`
+	// The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to ALB server group.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (ScalingGroupAlbServerGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingGroupAlbServerGroup)(nil)).Elem()
+}
+
+func (i ScalingGroupAlbServerGroupArgs) ToScalingGroupAlbServerGroupOutput() ScalingGroupAlbServerGroupOutput {
+	return i.ToScalingGroupAlbServerGroupOutputWithContext(context.Background())
+}
+
+func (i ScalingGroupAlbServerGroupArgs) ToScalingGroupAlbServerGroupOutputWithContext(ctx context.Context) ScalingGroupAlbServerGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupAlbServerGroupOutput)
+}
+
+// ScalingGroupAlbServerGroupArrayInput is an input type that accepts ScalingGroupAlbServerGroupArray and ScalingGroupAlbServerGroupArrayOutput values.
+// You can construct a concrete instance of `ScalingGroupAlbServerGroupArrayInput` via:
+//
+//	ScalingGroupAlbServerGroupArray{ ScalingGroupAlbServerGroupArgs{...} }
+type ScalingGroupAlbServerGroupArrayInput interface {
+	pulumi.Input
+
+	ToScalingGroupAlbServerGroupArrayOutput() ScalingGroupAlbServerGroupArrayOutput
+	ToScalingGroupAlbServerGroupArrayOutputWithContext(context.Context) ScalingGroupAlbServerGroupArrayOutput
+}
+
+type ScalingGroupAlbServerGroupArray []ScalingGroupAlbServerGroupInput
+
+func (ScalingGroupAlbServerGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingGroupAlbServerGroup)(nil)).Elem()
+}
+
+func (i ScalingGroupAlbServerGroupArray) ToScalingGroupAlbServerGroupArrayOutput() ScalingGroupAlbServerGroupArrayOutput {
+	return i.ToScalingGroupAlbServerGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingGroupAlbServerGroupArray) ToScalingGroupAlbServerGroupArrayOutputWithContext(ctx context.Context) ScalingGroupAlbServerGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingGroupAlbServerGroupArrayOutput)
+}
+
+type ScalingGroupAlbServerGroupOutput struct{ *pulumi.OutputState }
+
+func (ScalingGroupAlbServerGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingGroupAlbServerGroup)(nil)).Elem()
+}
+
+func (o ScalingGroupAlbServerGroupOutput) ToScalingGroupAlbServerGroupOutput() ScalingGroupAlbServerGroupOutput {
+	return o
+}
+
+func (o ScalingGroupAlbServerGroupOutput) ToScalingGroupAlbServerGroupOutputWithContext(ctx context.Context) ScalingGroupAlbServerGroupOutput {
+	return o
+}
+
+// The ID of ALB server group.
+func (o ScalingGroupAlbServerGroupOutput) AlbServerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingGroupAlbServerGroup) *string { return v.AlbServerGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
+func (o ScalingGroupAlbServerGroupOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingGroupAlbServerGroup) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to ALB server group.
+func (o ScalingGroupAlbServerGroupOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingGroupAlbServerGroup) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type ScalingGroupAlbServerGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingGroupAlbServerGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingGroupAlbServerGroup)(nil)).Elem()
+}
+
+func (o ScalingGroupAlbServerGroupArrayOutput) ToScalingGroupAlbServerGroupArrayOutput() ScalingGroupAlbServerGroupArrayOutput {
+	return o
+}
+
+func (o ScalingGroupAlbServerGroupArrayOutput) ToScalingGroupAlbServerGroupArrayOutputWithContext(ctx context.Context) ScalingGroupAlbServerGroupArrayOutput {
+	return o
+}
+
+func (o ScalingGroupAlbServerGroupArrayOutput) Index(i pulumi.IntInput) ScalingGroupAlbServerGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingGroupAlbServerGroup {
+		return vs[0].([]ScalingGroupAlbServerGroup)[vs[1].(int)]
+	}).(ScalingGroupAlbServerGroupOutput)
+}
+
 type ScalingGroupLaunchTemplateOverride struct {
 	// The instance type in launchTemplateOverride.
 	InstanceType *string `pulumi:"instanceType"`
@@ -4914,6 +5029,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationInstanceTypeOverrideArrayInput)(nil)).Elem(), ScalingConfigurationInstanceTypeOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationSpotPriceLimitInput)(nil)).Elem(), ScalingConfigurationSpotPriceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationSpotPriceLimitArrayInput)(nil)).Elem(), ScalingConfigurationSpotPriceLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupAlbServerGroupInput)(nil)).Elem(), ScalingGroupAlbServerGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupAlbServerGroupArrayInput)(nil)).Elem(), ScalingGroupAlbServerGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupLaunchTemplateOverrideInput)(nil)).Elem(), ScalingGroupLaunchTemplateOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupLaunchTemplateOverrideArrayInput)(nil)).Elem(), ScalingGroupLaunchTemplateOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupVServerGroupsVserverGroupInput)(nil)).Elem(), ScalingGroupVServerGroupsVserverGroupArgs{})
@@ -4976,6 +5093,8 @@ func init() {
 	pulumi.RegisterOutputType(ScalingConfigurationInstanceTypeOverrideArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationSpotPriceLimitOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationSpotPriceLimitArrayOutput{})
+	pulumi.RegisterOutputType(ScalingGroupAlbServerGroupOutput{})
+	pulumi.RegisterOutputType(ScalingGroupAlbServerGroupArrayOutput{})
 	pulumi.RegisterOutputType(ScalingGroupLaunchTemplateOverrideOutput{})
 	pulumi.RegisterOutputType(ScalingGroupLaunchTemplateOverrideArrayOutput{})
 	pulumi.RegisterOutputType(ScalingGroupVServerGroupsVserverGroupOutput{})

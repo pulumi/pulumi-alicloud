@@ -5136,25 +5136,30 @@ func (o GetTransitRouterVbrAttachmentsAttachmentArrayOutput) Index(i pulumi.IntI
 }
 
 type GetTransitRouterVpcAttachmentsAttachment struct {
-	// The ID of the transit router.
-	Id string `pulumi:"id"`
+	// (Available since v1.224.0) Whether the transit router is automatically published to the VPC instance.
+	AutoPublishRouteEnabled bool `pulumi:"autoPublishRouteEnabled"`
+	// The ID of the CEN instance.
+	CenId string `pulumi:"cenId"`
+	Id    string `pulumi:"id"`
 	// The payment type of the resource.
 	PaymentType string `pulumi:"paymentType"`
-	// Type of the resource.
+	// The resource type of the Transit Router VPC Attachment.
 	ResourceType string `pulumi:"resourceType"`
-	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+	// The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
 	Status string `pulumi:"status"`
-	// The description of transit router attachment.
+	// The description of the Transit Router VPC Attachment.
 	TransitRouterAttachmentDescription string `pulumi:"transitRouterAttachmentDescription"`
-	// ID of the transit router VBR attachment.
+	// The ID of the Transit Router VPC Attachment.
 	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
-	// Name of the transit router attachment.
+	// The name of the Transit Router VPC Attachment.
 	TransitRouterAttachmentName string `pulumi:"transitRouterAttachmentName"`
-	// ID of the VPC.
+	// The ID of the transit router.
+	TransitRouterId string `pulumi:"transitRouterId"`
+	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
 	// The Owner ID of the VPC.
 	VpcOwnerId string `pulumi:"vpcOwnerId"`
-	// The mappings of zone
+	// The list of zone mapping of the VPC.
 	ZoneMappings []GetTransitRouterVpcAttachmentsAttachmentZoneMapping `pulumi:"zoneMappings"`
 }
 
@@ -5170,25 +5175,30 @@ type GetTransitRouterVpcAttachmentsAttachmentInput interface {
 }
 
 type GetTransitRouterVpcAttachmentsAttachmentArgs struct {
-	// The ID of the transit router.
-	Id pulumi.StringInput `pulumi:"id"`
+	// (Available since v1.224.0) Whether the transit router is automatically published to the VPC instance.
+	AutoPublishRouteEnabled pulumi.BoolInput `pulumi:"autoPublishRouteEnabled"`
+	// The ID of the CEN instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	Id    pulumi.StringInput `pulumi:"id"`
 	// The payment type of the resource.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
-	// Type of the resource.
+	// The resource type of the Transit Router VPC Attachment.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
-	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+	// The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The description of transit router attachment.
+	// The description of the Transit Router VPC Attachment.
 	TransitRouterAttachmentDescription pulumi.StringInput `pulumi:"transitRouterAttachmentDescription"`
-	// ID of the transit router VBR attachment.
+	// The ID of the Transit Router VPC Attachment.
 	TransitRouterAttachmentId pulumi.StringInput `pulumi:"transitRouterAttachmentId"`
-	// Name of the transit router attachment.
+	// The name of the Transit Router VPC Attachment.
 	TransitRouterAttachmentName pulumi.StringInput `pulumi:"transitRouterAttachmentName"`
-	// ID of the VPC.
+	// The ID of the transit router.
+	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`
+	// The ID of the VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The Owner ID of the VPC.
 	VpcOwnerId pulumi.StringInput `pulumi:"vpcOwnerId"`
-	// The mappings of zone
+	// The list of zone mapping of the VPC.
 	ZoneMappings GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayInput `pulumi:"zoneMappings"`
 }
 
@@ -5243,7 +5253,16 @@ func (o GetTransitRouterVpcAttachmentsAttachmentOutput) ToGetTransitRouterVpcAtt
 	return o
 }
 
-// The ID of the transit router.
+// (Available since v1.224.0) Whether the transit router is automatically published to the VPC instance.
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) AutoPublishRouteEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) bool { return v.AutoPublishRouteEnabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the CEN instance.
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.CenId }).(pulumi.StringOutput)
+}
+
 func (o GetTransitRouterVpcAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -5253,32 +5272,37 @@ func (o GetTransitRouterVpcAttachmentsAttachmentOutput) PaymentType() pulumi.Str
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Type of the resource.
+// The resource type of the Transit Router VPC Attachment.
 func (o GetTransitRouterVpcAttachmentsAttachmentOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+// The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
 func (o GetTransitRouterVpcAttachmentsAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The description of transit router attachment.
+// The description of the Transit Router VPC Attachment.
 func (o GetTransitRouterVpcAttachmentsAttachmentOutput) TransitRouterAttachmentDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.TransitRouterAttachmentDescription }).(pulumi.StringOutput)
 }
 
-// ID of the transit router VBR attachment.
+// The ID of the Transit Router VPC Attachment.
 func (o GetTransitRouterVpcAttachmentsAttachmentOutput) TransitRouterAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
 }
 
-// Name of the transit router attachment.
+// The name of the Transit Router VPC Attachment.
 func (o GetTransitRouterVpcAttachmentsAttachmentOutput) TransitRouterAttachmentName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.TransitRouterAttachmentName }).(pulumi.StringOutput)
 }
 
-// ID of the VPC.
+// The ID of the transit router.
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) TransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.TransitRouterId }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC.
 func (o GetTransitRouterVpcAttachmentsAttachmentOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -5288,7 +5312,7 @@ func (o GetTransitRouterVpcAttachmentsAttachmentOutput) VpcOwnerId() pulumi.Stri
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.VpcOwnerId }).(pulumi.StringOutput)
 }
 
-// The mappings of zone
+// The list of zone mapping of the VPC.
 func (o GetTransitRouterVpcAttachmentsAttachmentOutput) ZoneMappings() GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) []GetTransitRouterVpcAttachmentsAttachmentZoneMapping {
 		return v.ZoneMappings
@@ -5316,9 +5340,9 @@ func (o GetTransitRouterVpcAttachmentsAttachmentArrayOutput) Index(i pulumi.IntI
 }
 
 type GetTransitRouterVpcAttachmentsAttachmentZoneMapping struct {
-	// The VSwitch ID.
+	// The ID of the vSwitch.
 	VswitchId string `pulumi:"vswitchId"`
-	// The zone ID.
+	// The ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -5334,9 +5358,9 @@ type GetTransitRouterVpcAttachmentsAttachmentZoneMappingInput interface {
 }
 
 type GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs struct {
-	// The VSwitch ID.
+	// The ID of the vSwitch.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	// The zone ID.
+	// The ID of the zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -5391,12 +5415,12 @@ func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput) ToGetTransitR
 	return o
 }
 
-// The VSwitch ID.
+// The ID of the vSwitch.
 func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachmentZoneMapping) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The zone ID.
+// The ID of the zone.
 func (o GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachmentZoneMapping) string { return v.ZoneId }).(pulumi.StringOutput)
 }

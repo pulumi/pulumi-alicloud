@@ -21,20 +21,30 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock":
+		r = &AccountPublicAccessBlock{}
 	case "alicloud:oss/bucket:Bucket":
 		r = &Bucket{}
+	case "alicloud:oss/bucketAccessMonitor:BucketAccessMonitor":
+		r = &BucketAccessMonitor{}
 	case "alicloud:oss/bucketAcl:BucketAcl":
 		r = &BucketAcl{}
 	case "alicloud:oss/bucketCors:BucketCors":
 		r = &BucketCors{}
+	case "alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition":
+		r = &BucketDataRedundancyTransition{}
 	case "alicloud:oss/bucketHttpsConfig:BucketHttpsConfig":
 		r = &BucketHttpsConfig{}
 	case "alicloud:oss/bucketLogging:BucketLogging":
 		r = &BucketLogging{}
+	case "alicloud:oss/bucketMetaQuery:BucketMetaQuery":
+		r = &BucketMetaQuery{}
 	case "alicloud:oss/bucketObject:BucketObject":
 		r = &BucketObject{}
 	case "alicloud:oss/bucketPolicy:BucketPolicy":
 		r = &BucketPolicy{}
+	case "alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock":
+		r = &BucketPublicAccessBlock{}
 	case "alicloud:oss/bucketReferer:BucketReferer":
 		r = &BucketReferer{}
 	case "alicloud:oss/bucketReplication:BucketReplication":
@@ -43,6 +53,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketRequestPayment{}
 	case "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption":
 		r = &BucketServerSideEncryption{}
+	case "alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration":
+		r = &BucketTransferAcceleration{}
+	case "alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields":
+		r = &BucketUserDefinedLogFields{}
 	case "alicloud:oss/bucketVersioning:BucketVersioning":
 		r = &BucketVersioning{}
 	default:
@@ -60,7 +74,17 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"oss/accountPublicAccessBlock",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"oss/bucket",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketAccessMonitor",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -75,6 +99,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"oss/bucketDataRedundancyTransition",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"oss/bucketHttpsConfig",
 		&module{version},
 	)
@@ -85,12 +114,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"oss/bucketMetaQuery",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"oss/bucketObject",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"oss/bucketPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketPublicAccessBlock",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -111,6 +150,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"oss/bucketServerSideEncryption",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketTransferAcceleration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketUserDefinedLogFields",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

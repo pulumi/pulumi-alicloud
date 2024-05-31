@@ -26,6 +26,7 @@ class InstanceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  paid_type: Optional[pulumi.Input[str]] = None,
                  partition_num: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
                  selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_version: Optional[pulumi.Input[str]] = None,
@@ -52,6 +53,7 @@ class InstanceArgs:
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
         :param pulumi.Input[int] partition_num: The number of partitions.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
@@ -94,6 +96,8 @@ class InstanceArgs:
             pulumi.set(__self__, "paid_type", paid_type)
         if partition_num is not None:
             pulumi.set(__self__, "partition_num", partition_num)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group is not None:
             pulumi.set(__self__, "security_group", security_group)
         if selected_zones is not None:
@@ -263,6 +267,18 @@ class InstanceArgs:
         pulumi.set(self, "partition_num", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> Optional[pulumi.Input[str]]:
         """
@@ -395,6 +411,7 @@ class _InstanceState:
                  partition_left: Optional[pulumi.Input[int]] = None,
                  partition_num: Optional[pulumi.Input[int]] = None,
                  partition_used: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
                  selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_version: Optional[pulumi.Input[str]] = None,
@@ -431,6 +448,7 @@ class _InstanceState:
         :param pulumi.Input[int] partition_left: (Available since v1.214.1) The number of available partitions.
         :param pulumi.Input[int] partition_num: The number of partitions.
         :param pulumi.Input[int] partition_used: (Available since v1.214.1) The number of used partitions.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
@@ -492,6 +510,8 @@ class _InstanceState:
             pulumi.set(__self__, "partition_num", partition_num)
         if partition_used is not None:
             pulumi.set(__self__, "partition_used", partition_used)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group is not None:
             pulumi.set(__self__, "security_group", security_group)
         if selected_zones is not None:
@@ -731,6 +751,18 @@ class _InstanceState:
         pulumi.set(self, "partition_used", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> Optional[pulumi.Input[str]]:
         """
@@ -919,6 +951,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  paid_type: Optional[pulumi.Input[str]] = None,
                  partition_num: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
                  selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_version: Optional[pulumi.Input[str]] = None,
@@ -955,6 +988,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         :param pulumi.Input[str] paid_type: The paid type of the instance. Support two type, "PrePaid": pre paid type instance, "PostPaid": post paid type instance. Default is PostPaid. When modify this value, it only support adjust from post pay to pre pay.
         :param pulumi.Input[int] partition_num: The number of partitions.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
@@ -1019,6 +1053,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  paid_type: Optional[pulumi.Input[str]] = None,
                  partition_num: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
                  selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_version: Optional[pulumi.Input[str]] = None,
@@ -1054,6 +1089,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["paid_type"] = paid_type
             __props__.__dict__["partition_num"] = partition_num
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_group"] = security_group
             __props__.__dict__["selected_zones"] = selected_zones
             __props__.__dict__["service_version"] = service_version
@@ -1102,6 +1138,7 @@ class Instance(pulumi.CustomResource):
             partition_left: Optional[pulumi.Input[int]] = None,
             partition_num: Optional[pulumi.Input[int]] = None,
             partition_used: Optional[pulumi.Input[int]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group: Optional[pulumi.Input[str]] = None,
             selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_version: Optional[pulumi.Input[str]] = None,
@@ -1143,6 +1180,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] partition_left: (Available since v1.214.1) The number of available partitions.
         :param pulumi.Input[int] partition_num: The number of partitions.
         :param pulumi.Input[int] partition_used: (Available since v1.214.1) The number of used partitions.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
@@ -1191,6 +1229,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["partition_left"] = partition_left
         __props__.__dict__["partition_num"] = partition_num
         __props__.__dict__["partition_used"] = partition_used
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group"] = security_group
         __props__.__dict__["selected_zones"] = selected_zones
         __props__.__dict__["service_version"] = service_version
@@ -1345,6 +1384,14 @@ class Instance(pulumi.CustomResource):
         (Available since v1.214.1) The number of used partitions.
         """
         return pulumi.get(self, "partition_used")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="securityGroup")

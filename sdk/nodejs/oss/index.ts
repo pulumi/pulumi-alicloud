@@ -5,10 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AccountPublicAccessBlockArgs, AccountPublicAccessBlockState } from "./accountPublicAccessBlock";
+export type AccountPublicAccessBlock = import("./accountPublicAccessBlock").AccountPublicAccessBlock;
+export const AccountPublicAccessBlock: typeof import("./accountPublicAccessBlock").AccountPublicAccessBlock = null as any;
+utilities.lazyLoad(exports, ["AccountPublicAccessBlock"], () => require("./accountPublicAccessBlock"));
+
 export { BucketArgs, BucketState } from "./bucket";
 export type Bucket = import("./bucket").Bucket;
 export const Bucket: typeof import("./bucket").Bucket = null as any;
 utilities.lazyLoad(exports, ["Bucket"], () => require("./bucket"));
+
+export { BucketAccessMonitorArgs, BucketAccessMonitorState } from "./bucketAccessMonitor";
+export type BucketAccessMonitor = import("./bucketAccessMonitor").BucketAccessMonitor;
+export const BucketAccessMonitor: typeof import("./bucketAccessMonitor").BucketAccessMonitor = null as any;
+utilities.lazyLoad(exports, ["BucketAccessMonitor"], () => require("./bucketAccessMonitor"));
 
 export { BucketAclArgs, BucketAclState } from "./bucketAcl";
 export type BucketAcl = import("./bucketAcl").BucketAcl;
@@ -20,6 +30,11 @@ export type BucketCors = import("./bucketCors").BucketCors;
 export const BucketCors: typeof import("./bucketCors").BucketCors = null as any;
 utilities.lazyLoad(exports, ["BucketCors"], () => require("./bucketCors"));
 
+export { BucketDataRedundancyTransitionArgs, BucketDataRedundancyTransitionState } from "./bucketDataRedundancyTransition";
+export type BucketDataRedundancyTransition = import("./bucketDataRedundancyTransition").BucketDataRedundancyTransition;
+export const BucketDataRedundancyTransition: typeof import("./bucketDataRedundancyTransition").BucketDataRedundancyTransition = null as any;
+utilities.lazyLoad(exports, ["BucketDataRedundancyTransition"], () => require("./bucketDataRedundancyTransition"));
+
 export { BucketHttpsConfigArgs, BucketHttpsConfigState } from "./bucketHttpsConfig";
 export type BucketHttpsConfig = import("./bucketHttpsConfig").BucketHttpsConfig;
 export const BucketHttpsConfig: typeof import("./bucketHttpsConfig").BucketHttpsConfig = null as any;
@@ -30,6 +45,11 @@ export type BucketLogging = import("./bucketLogging").BucketLogging;
 export const BucketLogging: typeof import("./bucketLogging").BucketLogging = null as any;
 utilities.lazyLoad(exports, ["BucketLogging"], () => require("./bucketLogging"));
 
+export { BucketMetaQueryArgs, BucketMetaQueryState } from "./bucketMetaQuery";
+export type BucketMetaQuery = import("./bucketMetaQuery").BucketMetaQuery;
+export const BucketMetaQuery: typeof import("./bucketMetaQuery").BucketMetaQuery = null as any;
+utilities.lazyLoad(exports, ["BucketMetaQuery"], () => require("./bucketMetaQuery"));
+
 export { BucketObjectArgs, BucketObjectState } from "./bucketObject";
 export type BucketObject = import("./bucketObject").BucketObject;
 export const BucketObject: typeof import("./bucketObject").BucketObject = null as any;
@@ -39,6 +59,11 @@ export { BucketPolicyArgs, BucketPolicyState } from "./bucketPolicy";
 export type BucketPolicy = import("./bucketPolicy").BucketPolicy;
 export const BucketPolicy: typeof import("./bucketPolicy").BucketPolicy = null as any;
 utilities.lazyLoad(exports, ["BucketPolicy"], () => require("./bucketPolicy"));
+
+export { BucketPublicAccessBlockArgs, BucketPublicAccessBlockState } from "./bucketPublicAccessBlock";
+export type BucketPublicAccessBlock = import("./bucketPublicAccessBlock").BucketPublicAccessBlock;
+export const BucketPublicAccessBlock: typeof import("./bucketPublicAccessBlock").BucketPublicAccessBlock = null as any;
+utilities.lazyLoad(exports, ["BucketPublicAccessBlock"], () => require("./bucketPublicAccessBlock"));
 
 export { BucketRefererArgs, BucketRefererState } from "./bucketReferer";
 export type BucketReferer = import("./bucketReferer").BucketReferer;
@@ -59,6 +84,16 @@ export { BucketServerSideEncryptionArgs, BucketServerSideEncryptionState } from 
 export type BucketServerSideEncryption = import("./bucketServerSideEncryption").BucketServerSideEncryption;
 export const BucketServerSideEncryption: typeof import("./bucketServerSideEncryption").BucketServerSideEncryption = null as any;
 utilities.lazyLoad(exports, ["BucketServerSideEncryption"], () => require("./bucketServerSideEncryption"));
+
+export { BucketTransferAccelerationArgs, BucketTransferAccelerationState } from "./bucketTransferAcceleration";
+export type BucketTransferAcceleration = import("./bucketTransferAcceleration").BucketTransferAcceleration;
+export const BucketTransferAcceleration: typeof import("./bucketTransferAcceleration").BucketTransferAcceleration = null as any;
+utilities.lazyLoad(exports, ["BucketTransferAcceleration"], () => require("./bucketTransferAcceleration"));
+
+export { BucketUserDefinedLogFieldsArgs, BucketUserDefinedLogFieldsState } from "./bucketUserDefinedLogFields";
+export type BucketUserDefinedLogFields = import("./bucketUserDefinedLogFields").BucketUserDefinedLogFields;
+export const BucketUserDefinedLogFields: typeof import("./bucketUserDefinedLogFields").BucketUserDefinedLogFields = null as any;
+utilities.lazyLoad(exports, ["BucketUserDefinedLogFields"], () => require("./bucketUserDefinedLogFields"));
 
 export { BucketVersioningArgs, BucketVersioningState } from "./bucketVersioning";
 export type BucketVersioning = import("./bucketVersioning").BucketVersioning;
@@ -100,20 +135,30 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock":
+                return new AccountPublicAccessBlock(name, <any>undefined, { urn })
             case "alicloud:oss/bucket:Bucket":
                 return new Bucket(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketAccessMonitor:BucketAccessMonitor":
+                return new BucketAccessMonitor(name, <any>undefined, { urn })
             case "alicloud:oss/bucketAcl:BucketAcl":
                 return new BucketAcl(name, <any>undefined, { urn })
             case "alicloud:oss/bucketCors:BucketCors":
                 return new BucketCors(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition":
+                return new BucketDataRedundancyTransition(name, <any>undefined, { urn })
             case "alicloud:oss/bucketHttpsConfig:BucketHttpsConfig":
                 return new BucketHttpsConfig(name, <any>undefined, { urn })
             case "alicloud:oss/bucketLogging:BucketLogging":
                 return new BucketLogging(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketMetaQuery:BucketMetaQuery":
+                return new BucketMetaQuery(name, <any>undefined, { urn })
             case "alicloud:oss/bucketObject:BucketObject":
                 return new BucketObject(name, <any>undefined, { urn })
             case "alicloud:oss/bucketPolicy:BucketPolicy":
                 return new BucketPolicy(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock":
+                return new BucketPublicAccessBlock(name, <any>undefined, { urn })
             case "alicloud:oss/bucketReferer:BucketReferer":
                 return new BucketReferer(name, <any>undefined, { urn })
             case "alicloud:oss/bucketReplication:BucketReplication":
@@ -122,6 +167,10 @@ const _module = {
                 return new BucketRequestPayment(name, <any>undefined, { urn })
             case "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption":
                 return new BucketServerSideEncryption(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration":
+                return new BucketTransferAcceleration(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields":
+                return new BucketUserDefinedLogFields(name, <any>undefined, { urn })
             case "alicloud:oss/bucketVersioning:BucketVersioning":
                 return new BucketVersioning(name, <any>undefined, { urn })
             default:
@@ -129,15 +178,22 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "oss/accountPublicAccessBlock", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucket", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketAccessMonitor", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketAcl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketCors", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketDataRedundancyTransition", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketHttpsConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketLogging", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketMetaQuery", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketObject", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketPublicAccessBlock", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketReferer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketReplication", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketRequestPayment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketServerSideEncryption", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketTransferAcceleration", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketUserDefinedLogFields", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketVersioning", _module)

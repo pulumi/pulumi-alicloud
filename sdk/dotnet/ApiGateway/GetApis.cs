@@ -12,9 +12,13 @@ namespace Pulumi.AliCloud.ApiGateway
     public static class GetApis
     {
         /// <summary>
-        /// This data source provides the apis of the current Alibaba Cloud user.
+        /// This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.22.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -24,14 +28,61 @@ namespace Pulumi.AliCloud.ApiGateway
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var dataApigatwayApis = AliCloud.ApiGateway.GetApis.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.ApiGateway.Group("default", new()
         ///     {
-        ///         OutputFile = "output_ApiGatawayApis",
+        ///         Name = name,
+        ///         Description = name,
+        ///     });
+        /// 
+        ///     var defaultApi = new AliCloud.ApiGateway.Api("default", new()
+        ///     {
+        ///         GroupId = @default.Id,
+        ///         Name = name,
+        ///         Description = name,
+        ///         AuthType = "APP",
+        ///         ServiceType = "HTTP",
+        ///         RequestConfig = new AliCloud.ApiGateway.Inputs.ApiRequestConfigArgs
+        ///         {
+        ///             Protocol = "HTTP",
+        ///             Method = "GET",
+        ///             Path = "/test/path",
+        ///             Mode = "MAPPING",
+        ///         },
+        ///         HttpServiceConfig = new AliCloud.ApiGateway.Inputs.ApiHttpServiceConfigArgs
+        ///         {
+        ///             Address = "http://apigateway-backend.alicloudapi.com:8080",
+        ///             Method = "GET",
+        ///             Path = "/web/cloudapi",
+        ///             Timeout = 20,
+        ///             AoneName = "cloudapi-openapi",
+        ///         },
+        ///         RequestParameters = new[]
+        ///         {
+        ///             new AliCloud.ApiGateway.Inputs.ApiRequestParameterArgs
+        ///             {
+        ///                 Name = name,
+        ///                 Type = "STRING",
+        ///                 Required = "OPTIONAL",
+        ///                 In = "QUERY",
+        ///                 InService = "QUERY",
+        ///                 NameService = name,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ApiGateway.GetApis.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultApi.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstApiId"] = dataApigatway.Apis[0].Id,
+        ///         ["apiGatewayApisId0"] = ids.Apply(getApisResult =&gt; getApisResult.Apis[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -40,9 +91,13 @@ namespace Pulumi.AliCloud.ApiGateway
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApisResult>("alicloud:apigateway/getApis:getApis", args ?? new GetApisArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the apis of the current Alibaba Cloud user.
+        /// This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.22.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -52,14 +107,61 @@ namespace Pulumi.AliCloud.ApiGateway
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var dataApigatwayApis = AliCloud.ApiGateway.GetApis.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.ApiGateway.Group("default", new()
         ///     {
-        ///         OutputFile = "output_ApiGatawayApis",
+        ///         Name = name,
+        ///         Description = name,
+        ///     });
+        /// 
+        ///     var defaultApi = new AliCloud.ApiGateway.Api("default", new()
+        ///     {
+        ///         GroupId = @default.Id,
+        ///         Name = name,
+        ///         Description = name,
+        ///         AuthType = "APP",
+        ///         ServiceType = "HTTP",
+        ///         RequestConfig = new AliCloud.ApiGateway.Inputs.ApiRequestConfigArgs
+        ///         {
+        ///             Protocol = "HTTP",
+        ///             Method = "GET",
+        ///             Path = "/test/path",
+        ///             Mode = "MAPPING",
+        ///         },
+        ///         HttpServiceConfig = new AliCloud.ApiGateway.Inputs.ApiHttpServiceConfigArgs
+        ///         {
+        ///             Address = "http://apigateway-backend.alicloudapi.com:8080",
+        ///             Method = "GET",
+        ///             Path = "/web/cloudapi",
+        ///             Timeout = 20,
+        ///             AoneName = "cloudapi-openapi",
+        ///         },
+        ///         RequestParameters = new[]
+        ///         {
+        ///             new AliCloud.ApiGateway.Inputs.ApiRequestParameterArgs
+        ///             {
+        ///                 Name = name,
+        ///                 Type = "STRING",
+        ///                 Required = "OPTIONAL",
+        ///                 In = "QUERY",
+        ///                 InService = "QUERY",
+        ///                 NameService = name,
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ApiGateway.GetApis.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultApi.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstApiId"] = dataApigatway.Apis[0].Id,
+        ///         ["apiGatewayApisId0"] = ids.Apply(getApisResult =&gt; getApisResult.Apis[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -72,13 +174,13 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class GetApisArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+        /// The ID of the API.
         /// </summary>
         [Input("apiId")]
         public string? ApiId { get; set; }
 
         /// <summary>
-        /// ID of the specified group.
+        /// The ID of the API group.
         /// </summary>
         [Input("groupId")]
         public string? GroupId { get; set; }
@@ -87,7 +189,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of api IDs.
+        /// A list of API IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -96,7 +198,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
 
         /// <summary>
-        /// A regex string to filter api gateway apis by name.
+        /// A regex string to filter results by API name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -116,13 +218,13 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class GetApisInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+        /// The ID of the API.
         /// </summary>
         [Input("apiId")]
         public Input<string>? ApiId { get; set; }
 
         /// <summary>
-        /// ID of the specified group.
+        /// The ID of the API group.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
@@ -131,7 +233,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of api IDs.
+        /// A list of API IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -140,7 +242,7 @@ namespace Pulumi.AliCloud.ApiGateway
         }
 
         /// <summary>
-        /// A regex string to filter api gateway apis by name.
+        /// A regex string to filter results by API name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -161,26 +263,26 @@ namespace Pulumi.AliCloud.ApiGateway
     [OutputType]
     public sealed class GetApisResult
     {
+        /// <summary>
+        /// (Available since v1.224.0) The ID of the API.
+        /// </summary>
         public readonly string? ApiId;
         /// <summary>
-        /// A list of apis. Each element contains the following attributes:
+        /// A list of APIs. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApisApiResult> Apis;
         /// <summary>
-        /// The group id that the apis belong to.
+        /// The ID of the API group.
         /// </summary>
         public readonly string? GroupId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of api IDs.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of api names.
+        /// A list of API names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;

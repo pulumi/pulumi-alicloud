@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Kms
 {
     /// <summary>
-    /// This resouce used to create a secret and store its initial version.
+    /// Provides a KMS Secret resource.
     /// 
-    /// &gt; **NOTE:** Available in 1.76.0+.
+    /// For information about KMS Secret and how to use it, see [What is Secret](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createsecret).
+    /// 
+    /// &gt; **NOTE:** Available since v1.76.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,12 +28,13 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Kms.Secret("default", new()
     ///     {
-    ///         SecretName = "secret-foo",
-    ///         Description = "from terraform",
-    ///         SecretData = "Secret data.",
-    ///         VersionId = "000000000001",
+    ///         SecretName = name,
+    ///         SecretData = "Secret data",
+    ///         VersionId = "v1",
     ///         ForceDeleteWithoutRecovery = true,
     ///     });
     /// 
@@ -40,20 +43,26 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// ## Import
     /// 
-    /// KMS secret can be imported using the id, e.g.
+    /// KMS Secret can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:kms/secret:Secret default &lt;id&gt;
+    /// $ pulumi import alicloud:kms/secret:Secret example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kms/secret:Secret")]
     public partial class Secret : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Alicloud Resource Name (ARN) of the secret.
+        /// The ARN of the secret.
         /// </summary>
         [Output("arn")]
         public Output<string> Arn { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.224.0) The time when the secret is created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// The description of the secret.
@@ -62,31 +71,31 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The instance ID of the exclusive KMS instance.
+        /// The ID of the KMS instance.
         /// </summary>
         [Output("dkmsInstanceId")]
         public Output<string?> DkmsInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable automatic key rotation.
+        /// Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Output("enableAutomaticRotation")]
         public Output<bool?> EnableAutomaticRotation { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+        /// The ID of the KMS key.
         /// </summary>
         [Output("encryptionKeyId")]
         public Output<string?> EncryptionKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        /// The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         /// </summary>
         [Output("extendedConfig")]
         public Output<string?> ExtendedConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
+        /// Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Output("forceDeleteWithoutRecovery")]
         public Output<bool?> ForceDeleteWithoutRecovery { get; private set; } = null!;
@@ -98,25 +107,31 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> PlannedDeleteTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+        /// The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
+        /// </summary>
+        [Output("policy")]
+        public Output<string> Policy { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         /// </summary>
         [Output("recoveryWindowInDays")]
         public Output<int?> RecoveryWindowInDays { get; private set; } = null!;
 
         /// <summary>
-        /// The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+        /// The interval for automatic rotation.
         /// </summary>
         [Output("rotationInterval")]
         public Output<string?> RotationInterval { get; private set; } = null!;
 
         /// <summary>
-        /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+        /// The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
         /// </summary>
         [Output("secretData")]
         public Output<string> SecretData { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the secret value. Valid values: text, binary. Default to "text".
+        /// The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
         /// </summary>
         [Output("secretDataType")]
         public Output<string?> SecretDataType { get; private set; } = null!;
@@ -129,10 +144,10 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The type of the secret. Valid values:
-        /// - `Generic`: specifies a generic secret.
-        /// - `Rds`: specifies a managed ApsaraDB RDS secret.
-        /// - `RAMCredentials`: indicates a managed RAM secret.
-        /// - `ECS`: specifies a managed ECS secret.
+        /// - `Generic`: Generic secret.
+        /// - `Rds`: ApsaraDB RDS secret.
+        /// - `RAMCredentials`: RAM secret.
+        /// - `ECS`: ECS secret.
         /// </summary>
         [Output("secretType")]
         public Output<string> SecretType { get; private set; } = null!;
@@ -144,13 +159,13 @@ namespace Pulumi.AliCloud.Kms
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The version number of the initial version. Version numbers are unique in each secret object.
+        /// The version number of the initial version.
         /// </summary>
         [Output("versionId")]
         public Output<string> VersionId { get; private set; } = null!;
 
         /// <summary>
-        /// ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        /// The stage label that is used to mark the new version.
         /// </summary>
         [Output("versionStages")]
         public Output<ImmutableArray<string>> VersionStages { get; private set; } = null!;
@@ -212,43 +227,49 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The instance ID of the exclusive KMS instance.
+        /// The ID of the KMS instance.
         /// </summary>
         [Input("dkmsInstanceId")]
         public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
-        /// Whether to enable automatic key rotation.
+        /// Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("enableAutomaticRotation")]
         public Input<bool>? EnableAutomaticRotation { get; set; }
 
         /// <summary>
-        /// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+        /// The ID of the KMS key.
         /// </summary>
         [Input("encryptionKeyId")]
         public Input<string>? EncryptionKeyId { get; set; }
 
         /// <summary>
-        /// The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        /// The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         /// </summary>
         [Input("extendedConfig")]
         public Input<string>? ExtendedConfig { get; set; }
 
         /// <summary>
-        /// Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
+        /// Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("forceDeleteWithoutRecovery")]
         public Input<bool>? ForceDeleteWithoutRecovery { get; set; }
 
         /// <summary>
-        /// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+        /// The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
+        /// </summary>
+        [Input("policy")]
+        public Input<string>? Policy { get; set; }
+
+        /// <summary>
+        /// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         /// </summary>
         [Input("recoveryWindowInDays")]
         public Input<int>? RecoveryWindowInDays { get; set; }
 
         /// <summary>
-        /// The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+        /// The interval for automatic rotation.
         /// </summary>
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }
@@ -257,7 +278,7 @@ namespace Pulumi.AliCloud.Kms
         private Input<string>? _secretData;
 
         /// <summary>
-        /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+        /// The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
         /// </summary>
         public Input<string>? SecretData
         {
@@ -270,7 +291,7 @@ namespace Pulumi.AliCloud.Kms
         }
 
         /// <summary>
-        /// The type of the secret value. Valid values: text, binary. Default to "text".
+        /// The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
         /// </summary>
         [Input("secretDataType")]
         public Input<string>? SecretDataType { get; set; }
@@ -283,10 +304,10 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The type of the secret. Valid values:
-        /// - `Generic`: specifies a generic secret.
-        /// - `Rds`: specifies a managed ApsaraDB RDS secret.
-        /// - `RAMCredentials`: indicates a managed RAM secret.
-        /// - `ECS`: specifies a managed ECS secret.
+        /// - `Generic`: Generic secret.
+        /// - `Rds`: ApsaraDB RDS secret.
+        /// - `RAMCredentials`: RAM secret.
+        /// - `ECS`: ECS secret.
         /// </summary>
         [Input("secretType")]
         public Input<string>? SecretType { get; set; }
@@ -304,7 +325,7 @@ namespace Pulumi.AliCloud.Kms
         }
 
         /// <summary>
-        /// The version number of the initial version. Version numbers are unique in each secret object.
+        /// The version number of the initial version.
         /// </summary>
         [Input("versionId", required: true)]
         public Input<string> VersionId { get; set; } = null!;
@@ -313,7 +334,7 @@ namespace Pulumi.AliCloud.Kms
         private InputList<string>? _versionStages;
 
         /// <summary>
-        /// ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        /// The stage label that is used to mark the new version.
         /// </summary>
         public InputList<string> VersionStages
         {
@@ -330,10 +351,16 @@ namespace Pulumi.AliCloud.Kms
     public sealed class SecretState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Alicloud Resource Name (ARN) of the secret.
+        /// The ARN of the secret.
         /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
+
+        /// <summary>
+        /// (Available since v1.224.0) The time when the secret is created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// The description of the secret.
@@ -342,31 +369,31 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The instance ID of the exclusive KMS instance.
+        /// The ID of the KMS instance.
         /// </summary>
         [Input("dkmsInstanceId")]
         public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
-        /// Whether to enable automatic key rotation.
+        /// Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("enableAutomaticRotation")]
         public Input<bool>? EnableAutomaticRotation { get; set; }
 
         /// <summary>
-        /// The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+        /// The ID of the KMS key.
         /// </summary>
         [Input("encryptionKeyId")]
         public Input<string>? EncryptionKeyId { get; set; }
 
         /// <summary>
-        /// The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        /// The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         /// </summary>
         [Input("extendedConfig")]
         public Input<string>? ExtendedConfig { get; set; }
 
         /// <summary>
-        /// Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
+        /// Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("forceDeleteWithoutRecovery")]
         public Input<bool>? ForceDeleteWithoutRecovery { get; set; }
@@ -378,13 +405,19 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? PlannedDeleteTime { get; set; }
 
         /// <summary>
-        /// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+        /// The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
+        /// </summary>
+        [Input("policy")]
+        public Input<string>? Policy { get; set; }
+
+        /// <summary>
+        /// Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         /// </summary>
         [Input("recoveryWindowInDays")]
         public Input<int>? RecoveryWindowInDays { get; set; }
 
         /// <summary>
-        /// The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+        /// The interval for automatic rotation.
         /// </summary>
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }
@@ -393,7 +426,7 @@ namespace Pulumi.AliCloud.Kms
         private Input<string>? _secretData;
 
         /// <summary>
-        /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+        /// The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
         /// </summary>
         public Input<string>? SecretData
         {
@@ -406,7 +439,7 @@ namespace Pulumi.AliCloud.Kms
         }
 
         /// <summary>
-        /// The type of the secret value. Valid values: text, binary. Default to "text".
+        /// The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
         /// </summary>
         [Input("secretDataType")]
         public Input<string>? SecretDataType { get; set; }
@@ -419,10 +452,10 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The type of the secret. Valid values:
-        /// - `Generic`: specifies a generic secret.
-        /// - `Rds`: specifies a managed ApsaraDB RDS secret.
-        /// - `RAMCredentials`: indicates a managed RAM secret.
-        /// - `ECS`: specifies a managed ECS secret.
+        /// - `Generic`: Generic secret.
+        /// - `Rds`: ApsaraDB RDS secret.
+        /// - `RAMCredentials`: RAM secret.
+        /// - `ECS`: ECS secret.
         /// </summary>
         [Input("secretType")]
         public Input<string>? SecretType { get; set; }
@@ -440,7 +473,7 @@ namespace Pulumi.AliCloud.Kms
         }
 
         /// <summary>
-        /// The version number of the initial version. Version numbers are unique in each secret object.
+        /// The version number of the initial version.
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
@@ -449,7 +482,7 @@ namespace Pulumi.AliCloud.Kms
         private InputList<string>? _versionStages;
 
         /// <summary>
-        /// ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        /// The stage label that is used to mark the new version.
         /// </summary>
         public InputList<string> VersionStages
         {

@@ -13,6 +13,356 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AccessPointPosixUser struct {
+	// The ID of the Posix user group.
+	PosixGroupId *int `pulumi:"posixGroupId"`
+	// The ID of the second user group.
+	PosixSecondaryGroupIds []int `pulumi:"posixSecondaryGroupIds"`
+	// The Posix user ID.
+	PosixUserId *int `pulumi:"posixUserId"`
+}
+
+// AccessPointPosixUserInput is an input type that accepts AccessPointPosixUserArgs and AccessPointPosixUserOutput values.
+// You can construct a concrete instance of `AccessPointPosixUserInput` via:
+//
+//	AccessPointPosixUserArgs{...}
+type AccessPointPosixUserInput interface {
+	pulumi.Input
+
+	ToAccessPointPosixUserOutput() AccessPointPosixUserOutput
+	ToAccessPointPosixUserOutputWithContext(context.Context) AccessPointPosixUserOutput
+}
+
+type AccessPointPosixUserArgs struct {
+	// The ID of the Posix user group.
+	PosixGroupId pulumi.IntPtrInput `pulumi:"posixGroupId"`
+	// The ID of the second user group.
+	PosixSecondaryGroupIds pulumi.IntArrayInput `pulumi:"posixSecondaryGroupIds"`
+	// The Posix user ID.
+	PosixUserId pulumi.IntPtrInput `pulumi:"posixUserId"`
+}
+
+func (AccessPointPosixUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPointPosixUser)(nil)).Elem()
+}
+
+func (i AccessPointPosixUserArgs) ToAccessPointPosixUserOutput() AccessPointPosixUserOutput {
+	return i.ToAccessPointPosixUserOutputWithContext(context.Background())
+}
+
+func (i AccessPointPosixUserArgs) ToAccessPointPosixUserOutputWithContext(ctx context.Context) AccessPointPosixUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPosixUserOutput)
+}
+
+func (i AccessPointPosixUserArgs) ToAccessPointPosixUserPtrOutput() AccessPointPosixUserPtrOutput {
+	return i.ToAccessPointPosixUserPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPointPosixUserArgs) ToAccessPointPosixUserPtrOutputWithContext(ctx context.Context) AccessPointPosixUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPosixUserOutput).ToAccessPointPosixUserPtrOutputWithContext(ctx)
+}
+
+// AccessPointPosixUserPtrInput is an input type that accepts AccessPointPosixUserArgs, AccessPointPosixUserPtr and AccessPointPosixUserPtrOutput values.
+// You can construct a concrete instance of `AccessPointPosixUserPtrInput` via:
+//
+//	        AccessPointPosixUserArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPointPosixUserPtrInput interface {
+	pulumi.Input
+
+	ToAccessPointPosixUserPtrOutput() AccessPointPosixUserPtrOutput
+	ToAccessPointPosixUserPtrOutputWithContext(context.Context) AccessPointPosixUserPtrOutput
+}
+
+type accessPointPosixUserPtrType AccessPointPosixUserArgs
+
+func AccessPointPosixUserPtr(v *AccessPointPosixUserArgs) AccessPointPosixUserPtrInput {
+	return (*accessPointPosixUserPtrType)(v)
+}
+
+func (*accessPointPosixUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPointPosixUser)(nil)).Elem()
+}
+
+func (i *accessPointPosixUserPtrType) ToAccessPointPosixUserPtrOutput() AccessPointPosixUserPtrOutput {
+	return i.ToAccessPointPosixUserPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPointPosixUserPtrType) ToAccessPointPosixUserPtrOutputWithContext(ctx context.Context) AccessPointPosixUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointPosixUserPtrOutput)
+}
+
+type AccessPointPosixUserOutput struct{ *pulumi.OutputState }
+
+func (AccessPointPosixUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPointPosixUser)(nil)).Elem()
+}
+
+func (o AccessPointPosixUserOutput) ToAccessPointPosixUserOutput() AccessPointPosixUserOutput {
+	return o
+}
+
+func (o AccessPointPosixUserOutput) ToAccessPointPosixUserOutputWithContext(ctx context.Context) AccessPointPosixUserOutput {
+	return o
+}
+
+func (o AccessPointPosixUserOutput) ToAccessPointPosixUserPtrOutput() AccessPointPosixUserPtrOutput {
+	return o.ToAccessPointPosixUserPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPointPosixUserOutput) ToAccessPointPosixUserPtrOutputWithContext(ctx context.Context) AccessPointPosixUserPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPointPosixUser) *AccessPointPosixUser {
+		return &v
+	}).(AccessPointPosixUserPtrOutput)
+}
+
+// The ID of the Posix user group.
+func (o AccessPointPosixUserOutput) PosixGroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessPointPosixUser) *int { return v.PosixGroupId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the second user group.
+func (o AccessPointPosixUserOutput) PosixSecondaryGroupIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v AccessPointPosixUser) []int { return v.PosixSecondaryGroupIds }).(pulumi.IntArrayOutput)
+}
+
+// The Posix user ID.
+func (o AccessPointPosixUserOutput) PosixUserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessPointPosixUser) *int { return v.PosixUserId }).(pulumi.IntPtrOutput)
+}
+
+type AccessPointPosixUserPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPointPosixUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPointPosixUser)(nil)).Elem()
+}
+
+func (o AccessPointPosixUserPtrOutput) ToAccessPointPosixUserPtrOutput() AccessPointPosixUserPtrOutput {
+	return o
+}
+
+func (o AccessPointPosixUserPtrOutput) ToAccessPointPosixUserPtrOutputWithContext(ctx context.Context) AccessPointPosixUserPtrOutput {
+	return o
+}
+
+func (o AccessPointPosixUserPtrOutput) Elem() AccessPointPosixUserOutput {
+	return o.ApplyT(func(v *AccessPointPosixUser) AccessPointPosixUser {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPointPosixUser
+		return ret
+	}).(AccessPointPosixUserOutput)
+}
+
+// The ID of the Posix user group.
+func (o AccessPointPosixUserPtrOutput) PosixGroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessPointPosixUser) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PosixGroupId
+	}).(pulumi.IntPtrOutput)
+}
+
+// The ID of the second user group.
+func (o AccessPointPosixUserPtrOutput) PosixSecondaryGroupIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *AccessPointPosixUser) []int {
+		if v == nil {
+			return nil
+		}
+		return v.PosixSecondaryGroupIds
+	}).(pulumi.IntArrayOutput)
+}
+
+// The Posix user ID.
+func (o AccessPointPosixUserPtrOutput) PosixUserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessPointPosixUser) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PosixUserId
+	}).(pulumi.IntPtrOutput)
+}
+
+type AccessPointRootPathPermission struct {
+	// The ID of the primary user group.
+	OwnerGroupId *int `pulumi:"ownerGroupId"`
+	// The owner user ID.
+	OwnerUserId *int `pulumi:"ownerUserId"`
+	// POSIX permission.
+	Permission *string `pulumi:"permission"`
+}
+
+// AccessPointRootPathPermissionInput is an input type that accepts AccessPointRootPathPermissionArgs and AccessPointRootPathPermissionOutput values.
+// You can construct a concrete instance of `AccessPointRootPathPermissionInput` via:
+//
+//	AccessPointRootPathPermissionArgs{...}
+type AccessPointRootPathPermissionInput interface {
+	pulumi.Input
+
+	ToAccessPointRootPathPermissionOutput() AccessPointRootPathPermissionOutput
+	ToAccessPointRootPathPermissionOutputWithContext(context.Context) AccessPointRootPathPermissionOutput
+}
+
+type AccessPointRootPathPermissionArgs struct {
+	// The ID of the primary user group.
+	OwnerGroupId pulumi.IntPtrInput `pulumi:"ownerGroupId"`
+	// The owner user ID.
+	OwnerUserId pulumi.IntPtrInput `pulumi:"ownerUserId"`
+	// POSIX permission.
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+}
+
+func (AccessPointRootPathPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPointRootPathPermission)(nil)).Elem()
+}
+
+func (i AccessPointRootPathPermissionArgs) ToAccessPointRootPathPermissionOutput() AccessPointRootPathPermissionOutput {
+	return i.ToAccessPointRootPathPermissionOutputWithContext(context.Background())
+}
+
+func (i AccessPointRootPathPermissionArgs) ToAccessPointRootPathPermissionOutputWithContext(ctx context.Context) AccessPointRootPathPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointRootPathPermissionOutput)
+}
+
+func (i AccessPointRootPathPermissionArgs) ToAccessPointRootPathPermissionPtrOutput() AccessPointRootPathPermissionPtrOutput {
+	return i.ToAccessPointRootPathPermissionPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPointRootPathPermissionArgs) ToAccessPointRootPathPermissionPtrOutputWithContext(ctx context.Context) AccessPointRootPathPermissionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointRootPathPermissionOutput).ToAccessPointRootPathPermissionPtrOutputWithContext(ctx)
+}
+
+// AccessPointRootPathPermissionPtrInput is an input type that accepts AccessPointRootPathPermissionArgs, AccessPointRootPathPermissionPtr and AccessPointRootPathPermissionPtrOutput values.
+// You can construct a concrete instance of `AccessPointRootPathPermissionPtrInput` via:
+//
+//	        AccessPointRootPathPermissionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPointRootPathPermissionPtrInput interface {
+	pulumi.Input
+
+	ToAccessPointRootPathPermissionPtrOutput() AccessPointRootPathPermissionPtrOutput
+	ToAccessPointRootPathPermissionPtrOutputWithContext(context.Context) AccessPointRootPathPermissionPtrOutput
+}
+
+type accessPointRootPathPermissionPtrType AccessPointRootPathPermissionArgs
+
+func AccessPointRootPathPermissionPtr(v *AccessPointRootPathPermissionArgs) AccessPointRootPathPermissionPtrInput {
+	return (*accessPointRootPathPermissionPtrType)(v)
+}
+
+func (*accessPointRootPathPermissionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPointRootPathPermission)(nil)).Elem()
+}
+
+func (i *accessPointRootPathPermissionPtrType) ToAccessPointRootPathPermissionPtrOutput() AccessPointRootPathPermissionPtrOutput {
+	return i.ToAccessPointRootPathPermissionPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPointRootPathPermissionPtrType) ToAccessPointRootPathPermissionPtrOutputWithContext(ctx context.Context) AccessPointRootPathPermissionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPointRootPathPermissionPtrOutput)
+}
+
+type AccessPointRootPathPermissionOutput struct{ *pulumi.OutputState }
+
+func (AccessPointRootPathPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPointRootPathPermission)(nil)).Elem()
+}
+
+func (o AccessPointRootPathPermissionOutput) ToAccessPointRootPathPermissionOutput() AccessPointRootPathPermissionOutput {
+	return o
+}
+
+func (o AccessPointRootPathPermissionOutput) ToAccessPointRootPathPermissionOutputWithContext(ctx context.Context) AccessPointRootPathPermissionOutput {
+	return o
+}
+
+func (o AccessPointRootPathPermissionOutput) ToAccessPointRootPathPermissionPtrOutput() AccessPointRootPathPermissionPtrOutput {
+	return o.ToAccessPointRootPathPermissionPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPointRootPathPermissionOutput) ToAccessPointRootPathPermissionPtrOutputWithContext(ctx context.Context) AccessPointRootPathPermissionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPointRootPathPermission) *AccessPointRootPathPermission {
+		return &v
+	}).(AccessPointRootPathPermissionPtrOutput)
+}
+
+// The ID of the primary user group.
+func (o AccessPointRootPathPermissionOutput) OwnerGroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessPointRootPathPermission) *int { return v.OwnerGroupId }).(pulumi.IntPtrOutput)
+}
+
+// The owner user ID.
+func (o AccessPointRootPathPermissionOutput) OwnerUserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessPointRootPathPermission) *int { return v.OwnerUserId }).(pulumi.IntPtrOutput)
+}
+
+// POSIX permission.
+func (o AccessPointRootPathPermissionOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPointRootPathPermission) *string { return v.Permission }).(pulumi.StringPtrOutput)
+}
+
+type AccessPointRootPathPermissionPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPointRootPathPermissionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPointRootPathPermission)(nil)).Elem()
+}
+
+func (o AccessPointRootPathPermissionPtrOutput) ToAccessPointRootPathPermissionPtrOutput() AccessPointRootPathPermissionPtrOutput {
+	return o
+}
+
+func (o AccessPointRootPathPermissionPtrOutput) ToAccessPointRootPathPermissionPtrOutputWithContext(ctx context.Context) AccessPointRootPathPermissionPtrOutput {
+	return o
+}
+
+func (o AccessPointRootPathPermissionPtrOutput) Elem() AccessPointRootPathPermissionOutput {
+	return o.ApplyT(func(v *AccessPointRootPathPermission) AccessPointRootPathPermission {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPointRootPathPermission
+		return ret
+	}).(AccessPointRootPathPermissionOutput)
+}
+
+// The ID of the primary user group.
+func (o AccessPointRootPathPermissionPtrOutput) OwnerGroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessPointRootPathPermission) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OwnerGroupId
+	}).(pulumi.IntPtrOutput)
+}
+
+// The owner user ID.
+func (o AccessPointRootPathPermissionPtrOutput) OwnerUserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessPointRootPathPermission) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OwnerUserId
+	}).(pulumi.IntPtrOutput)
+}
+
+// POSIX permission.
+func (o AccessPointRootPathPermissionPtrOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPointRootPathPermission) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Permission
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAccessGroupsGroup struct {
 	// The name of access group.
 	AccessGroupName string `pulumi:"accessGroupName"`
@@ -1786,6 +2136,10 @@ func (o GetZonesZoneInstanceTypeArrayOutput) Index(i pulumi.IntInput) GetZonesZo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointPosixUserInput)(nil)).Elem(), AccessPointPosixUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointPosixUserPtrInput)(nil)).Elem(), AccessPointPosixUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointRootPathPermissionInput)(nil)).Elem(), AccessPointRootPathPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointRootPathPermissionPtrInput)(nil)).Elem(), AccessPointRootPathPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessGroupsGroupInput)(nil)).Elem(), GetAccessGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessGroupsGroupArrayInput)(nil)).Elem(), GetAccessGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesRuleInput)(nil)).Elem(), GetAccessRulesRuleArgs{})
@@ -1808,6 +2162,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInstanceTypeInput)(nil)).Elem(), GetZonesZoneInstanceTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInstanceTypeArrayInput)(nil)).Elem(), GetZonesZoneInstanceTypeArray{})
+	pulumi.RegisterOutputType(AccessPointPosixUserOutput{})
+	pulumi.RegisterOutputType(AccessPointPosixUserPtrOutput{})
+	pulumi.RegisterOutputType(AccessPointRootPathPermissionOutput{})
+	pulumi.RegisterOutputType(AccessPointRootPathPermissionPtrOutput{})
 	pulumi.RegisterOutputType(GetAccessGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAccessGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessRulesRuleOutput{})

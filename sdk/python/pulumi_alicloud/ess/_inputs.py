@@ -27,6 +27,7 @@ __all__ = [
     'ScalingConfigurationInstancePatternInfoArgs',
     'ScalingConfigurationInstanceTypeOverrideArgs',
     'ScalingConfigurationSpotPriceLimitArgs',
+    'ScalingGroupAlbServerGroupArgs',
     'ScalingGroupLaunchTemplateOverrideArgs',
     'ScalingGroupVServerGroupsVserverGroupArgs',
     'ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs',
@@ -1901,6 +1902,61 @@ class ScalingConfigurationSpotPriceLimitArgs:
     @price_limit.setter
     def price_limit(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "price_limit", value)
+
+
+@pulumi.input_type
+class ScalingGroupAlbServerGroupArgs:
+    def __init__(__self__, *,
+                 alb_server_group_id: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] alb_server_group_id: The ID of ALB server group.
+        :param pulumi.Input[int] port: The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
+        :param pulumi.Input[int] weight: The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to ALB server group.
+        """
+        if alb_server_group_id is not None:
+            pulumi.set(__self__, "alb_server_group_id", alb_server_group_id)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="albServerGroupId")
+    def alb_server_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of ALB server group.
+        """
+        return pulumi.get(self, "alb_server_group_id")
+
+    @alb_server_group_id.setter
+    def alb_server_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alb_server_group_id", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to ALB server group.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
 
 
 @pulumi.input_type

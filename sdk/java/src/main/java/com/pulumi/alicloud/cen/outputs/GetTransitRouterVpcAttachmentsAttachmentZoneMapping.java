@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetTransitRouterVpcAttachmentsAttachmentZoneMapping {
     /**
-     * @return The VSwitch ID.
+     * @return The ID of the vSwitch.
      * 
      */
     private String vswitchId;
     /**
-     * @return The zone ID.
+     * @return The ID of the zone.
      * 
      */
     private String zoneId;
 
     private GetTransitRouterVpcAttachmentsAttachmentZoneMapping() {}
     /**
-     * @return The VSwitch ID.
+     * @return The ID of the vSwitch.
      * 
      */
     public String vswitchId() {
         return this.vswitchId;
     }
     /**
-     * @return The zone ID.
+     * @return The ID of the zone.
      * 
      */
     public String zoneId() {

@@ -28,6 +28,7 @@ __all__ = [
     'ScalingConfigurationInstancePatternInfo',
     'ScalingConfigurationInstanceTypeOverride',
     'ScalingConfigurationSpotPriceLimit',
+    'ScalingGroupAlbServerGroup',
     'ScalingGroupLaunchTemplateOverride',
     'ScalingGroupVServerGroupsVserverGroup',
     'ScalingGroupVServerGroupsVserverGroupVserverAttribute',
@@ -1774,6 +1775,66 @@ class ScalingConfigurationSpotPriceLimit(dict):
         Price limit hourly of instance type, 2 decimals is allowed at most.
         """
         return pulumi.get(self, "price_limit")
+
+
+@pulumi.output_type
+class ScalingGroupAlbServerGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "albServerGroupId":
+            suggest = "alb_server_group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingGroupAlbServerGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingGroupAlbServerGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingGroupAlbServerGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alb_server_group_id: Optional[str] = None,
+                 port: Optional[int] = None,
+                 weight: Optional[int] = None):
+        """
+        :param str alb_server_group_id: The ID of ALB server group.
+        :param int port: The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
+        :param int weight: The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to ALB server group.
+        """
+        if alb_server_group_id is not None:
+            pulumi.set(__self__, "alb_server_group_id", alb_server_group_id)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="albServerGroupId")
+    def alb_server_group_id(self) -> Optional[str]:
+        """
+        The ID of ALB server group.
+        """
+        return pulumi.get(self, "alb_server_group_id")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[int]:
+        """
+        The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to ALB server group.
+        """
+        return pulumi.get(self, "weight")
 
 
 @pulumi.output_type

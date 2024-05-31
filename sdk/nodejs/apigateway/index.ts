@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AccessControlListArgs, AccessControlListState } from "./accessControlList";
+export type AccessControlList = import("./accessControlList").AccessControlList;
+export const AccessControlList: typeof import("./accessControlList").AccessControlList = null as any;
+utilities.lazyLoad(exports, ["AccessControlList"], () => require("./accessControlList"));
+
 export { ApiArgs, ApiState } from "./api";
 export type Api = import("./api").Api;
 export const Api: typeof import("./api").Api = null as any;
@@ -105,6 +110,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:apigateway/accessControlList:AccessControlList":
+                return new AccessControlList(name, <any>undefined, { urn })
             case "alicloud:apigateway/api:Api":
                 return new Api(name, <any>undefined, { urn })
             case "alicloud:apigateway/app:App":
@@ -132,6 +139,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "apigateway/accessControlList", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/api", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/app", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/appAttachment", _module)

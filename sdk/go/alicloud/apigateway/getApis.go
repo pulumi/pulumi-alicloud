@@ -11,9 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the apis of the current Alibaba Cloud user.
+// This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+//
+// > **NOTE:** Available since v1.22.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -22,18 +26,65 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apigateway.GetApis(ctx, &apigateway.GetApisArgs{
-//				OutputFile: pulumi.StringRef("output_ApiGatawayApis"),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := apigateway.NewGroup(ctx, "default", &apigateway.GroupArgs{
+//				Name:        pulumi.String(name),
+//				Description: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstApiId", dataApigatway.Apis[0].Id)
+//			defaultApi, err := apigateway.NewApi(ctx, "default", &apigateway.ApiArgs{
+//				GroupId:     _default.ID(),
+//				Name:        pulumi.String(name),
+//				Description: pulumi.String(name),
+//				AuthType:    pulumi.String("APP"),
+//				ServiceType: pulumi.String("HTTP"),
+//				RequestConfig: &apigateway.ApiRequestConfigArgs{
+//					Protocol: pulumi.String("HTTP"),
+//					Method:   pulumi.String("GET"),
+//					Path:     pulumi.String("/test/path"),
+//					Mode:     pulumi.String("MAPPING"),
+//				},
+//				HttpServiceConfig: &apigateway.ApiHttpServiceConfigArgs{
+//					Address:  pulumi.String("http://apigateway-backend.alicloudapi.com:8080"),
+//					Method:   pulumi.String("GET"),
+//					Path:     pulumi.String("/web/cloudapi"),
+//					Timeout:  pulumi.Int(20),
+//					AoneName: pulumi.String("cloudapi-openapi"),
+//				},
+//				RequestParameters: apigateway.ApiRequestParameterArray{
+//					&apigateway.ApiRequestParameterArgs{
+//						Name:        pulumi.String(name),
+//						Type:        pulumi.String("STRING"),
+//						Required:    pulumi.String("OPTIONAL"),
+//						In:          pulumi.String("QUERY"),
+//						InService:   pulumi.String("QUERY"),
+//						NameService: pulumi.String(name),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := apigateway.GetApisOutput(ctx, apigateway.GetApisOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultApi.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("apiGatewayApisId0", ids.ApplyT(func(ids apigateway.GetApisResult) (*string, error) {
+//				return &ids.Apis[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -51,15 +102,13 @@ func GetApis(ctx *pulumi.Context, args *GetApisArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getApis.
 type GetApisArgs struct {
-	// (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
-	//
-	// Deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
+	// The ID of the API.
 	ApiId *string `pulumi:"apiId"`
-	// ID of the specified group.
+	// The ID of the API group.
 	GroupId *string `pulumi:"groupId"`
-	// A list of api IDs.
+	// A list of API IDs.
 	Ids []string `pulumi:"ids"`
-	// A regex string to filter api gateway apis by name.
+	// A regex string to filter results by API name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -67,18 +116,17 @@ type GetApisArgs struct {
 
 // A collection of values returned by getApis.
 type GetApisResult struct {
-	// Deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
+	// (Available since v1.224.0) The ID of the API.
 	ApiId *string `pulumi:"apiId"`
-	// A list of apis. Each element contains the following attributes:
+	// A list of APIs. Each element contains the following attributes:
 	Apis []GetApisApi `pulumi:"apis"`
-	// The group id that the apis belong to.
+	// The ID of the API group.
 	GroupId *string `pulumi:"groupId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of api IDs.
+	Id        string   `pulumi:"id"`
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
-	// A list of api names.
+	// A list of API names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 }
@@ -98,15 +146,13 @@ func GetApisOutput(ctx *pulumi.Context, args GetApisOutputArgs, opts ...pulumi.I
 
 // A collection of arguments for invoking getApis.
 type GetApisOutputArgs struct {
-	// (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
-	//
-	// Deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
+	// The ID of the API.
 	ApiId pulumi.StringPtrInput `pulumi:"apiId"`
-	// ID of the specified group.
+	// The ID of the API group.
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
-	// A list of api IDs.
+	// A list of API IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// A regex string to filter api gateway apis by name.
+	// A regex string to filter results by API name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -131,17 +177,17 @@ func (o GetApisResultOutput) ToGetApisResultOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
+// (Available since v1.224.0) The ID of the API.
 func (o GetApisResultOutput) ApiId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApisResult) *string { return v.ApiId }).(pulumi.StringPtrOutput)
 }
 
-// A list of apis. Each element contains the following attributes:
+// A list of APIs. Each element contains the following attributes:
 func (o GetApisResultOutput) Apis() GetApisApiArrayOutput {
 	return o.ApplyT(func(v GetApisResult) []GetApisApi { return v.Apis }).(GetApisApiArrayOutput)
 }
 
-// The group id that the apis belong to.
+// The ID of the API group.
 func (o GetApisResultOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApisResult) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
@@ -151,7 +197,6 @@ func (o GetApisResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApisResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of api IDs.
 func (o GetApisResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApisResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -160,7 +205,7 @@ func (o GetApisResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApisResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of api names.
+// A list of API names.
 func (o GetApisResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApisResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

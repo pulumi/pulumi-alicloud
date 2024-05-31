@@ -5850,36 +5850,416 @@ public final class CenFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", TypeShape.of(GetTransitRouterVbrAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Router VPC Attachments available to the user.[What is Cen Transit Router VPC Attachments](https://help.aliyun.com/document_detail/261222.html)
+     * This data source provides the CEN Transit Router VPC Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpcAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones();
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var defaultMaster = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[1])
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .protectionLevel("REDUCED")
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .transitRouterAttachmentName(name)
+     *             .transitRouterAttachmentDescription(name)
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *                     .zoneId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *                     .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .build())
+     *             .build());
+     * 
+     *         final var ids = CenFunctions.getTransitRouterVpcAttachments(GetTransitRouterVpcAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpcAttachment.id())
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult).applyValue(ids -> ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult.attachments()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterVpcAttachmentsResult> getTransitRouterVpcAttachments(GetTransitRouterVpcAttachmentsArgs args) {
         return getTransitRouterVpcAttachments(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Router VPC Attachments available to the user.[What is Cen Transit Router VPC Attachments](https://help.aliyun.com/document_detail/261222.html)
+     * This data source provides the CEN Transit Router VPC Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpcAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones();
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var defaultMaster = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[1])
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .protectionLevel("REDUCED")
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .transitRouterAttachmentName(name)
+     *             .transitRouterAttachmentDescription(name)
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *                     .zoneId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *                     .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .build())
+     *             .build());
+     * 
+     *         final var ids = CenFunctions.getTransitRouterVpcAttachments(GetTransitRouterVpcAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpcAttachment.id())
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult).applyValue(ids -> ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult.attachments()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterVpcAttachmentsResult> getTransitRouterVpcAttachmentsPlain(GetTransitRouterVpcAttachmentsPlainArgs args) {
         return getTransitRouterVpcAttachmentsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides CEN Transit Router VPC Attachments available to the user.[What is Cen Transit Router VPC Attachments](https://help.aliyun.com/document_detail/261222.html)
+     * This data source provides the CEN Transit Router VPC Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpcAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones();
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var defaultMaster = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[1])
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .protectionLevel("REDUCED")
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .transitRouterAttachmentName(name)
+     *             .transitRouterAttachmentDescription(name)
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *                     .zoneId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *                     .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .build())
+     *             .build());
+     * 
+     *         final var ids = CenFunctions.getTransitRouterVpcAttachments(GetTransitRouterVpcAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpcAttachment.id())
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult).applyValue(ids -> ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult.attachments()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitRouterVpcAttachmentsResult> getTransitRouterVpcAttachments(GetTransitRouterVpcAttachmentsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", TypeShape.of(GetTransitRouterVpcAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides CEN Transit Router VPC Attachments available to the user.[What is Cen Transit Router VPC Attachments](https://help.aliyun.com/document_detail/261222.html)
+     * This data source provides the CEN Transit Router VPC Attachments of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in 1.126.0+
+     * &gt; **NOTE:** Available since v1.126.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+     * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+     * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVpcAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getZones();
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var defaultMaster = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .zoneId(default_.ids()[1])
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .protectionLevel("REDUCED")
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .transitRouterAttachmentName(name)
+     *             .transitRouterAttachmentDescription(name)
+     *             .zoneMappings(            
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *                     .zoneId(defaultMaster.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .build(),
+     *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+     *                     .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
+     *                     .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+     *                     .build())
+     *             .build());
+     * 
+     *         final var ids = CenFunctions.getTransitRouterVpcAttachments(GetTransitRouterVpcAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpcAttachment.id())
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("cenTransitRouterVpcAttachmentsId0", ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult).applyValue(ids -> ids.applyValue(getTransitRouterVpcAttachmentsResult -> getTransitRouterVpcAttachmentsResult.attachments()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitRouterVpcAttachmentsResult> getTransitRouterVpcAttachmentsPlain(GetTransitRouterVpcAttachmentsPlainArgs args, InvokeOptions options) {

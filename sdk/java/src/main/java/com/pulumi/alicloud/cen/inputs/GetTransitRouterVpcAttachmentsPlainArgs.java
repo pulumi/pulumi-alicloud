@@ -17,14 +17,14 @@ public final class GetTransitRouterVpcAttachmentsPlainArgs extends com.pulumi.re
     public static final GetTransitRouterVpcAttachmentsPlainArgs Empty = new GetTransitRouterVpcAttachmentsPlainArgs();
 
     /**
-     * ID of the CEN instance.
+     * The ID of the CEN instance.
      * 
      */
     @Import(name="cenId", required=true)
     private String cenId;
 
     /**
-     * @return ID of the CEN instance.
+     * @return The ID of the CEN instance.
      * 
      */
     public String cenId() {
@@ -32,18 +32,33 @@ public final class GetTransitRouterVpcAttachmentsPlainArgs extends com.pulumi.re
     }
 
     /**
-     * A list of resource id. The element value is same as `transit_router_id`.
+     * A list of Transit Router VPC Attachment IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of resource id. The element value is same as `transit_router_id`.
+     * @return A list of Transit Router VPC Attachment IDs.
      * 
      */
     public Optional<List<String>> ids() {
         return Optional.ofNullable(this.ids);
+    }
+
+    /**
+     * A regex string to filter results by Transit Router VPC Attachment name.
+     * 
+     */
+    @Import(name="nameRegex")
+    private @Nullable String nameRegex;
+
+    /**
+     * @return A regex string to filter results by Transit Router VPC Attachment name.
+     * 
+     */
+    public Optional<String> nameRegex() {
+        return Optional.ofNullable(this.nameRegex);
     }
 
     /**
@@ -62,14 +77,14 @@ public final class GetTransitRouterVpcAttachmentsPlainArgs extends com.pulumi.re
     }
 
     /**
-     * The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+     * The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+     * @return The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
      * 
      */
     public Optional<String> status() {
@@ -77,18 +92,48 @@ public final class GetTransitRouterVpcAttachmentsPlainArgs extends com.pulumi.re
     }
 
     /**
-     * The transit router ID.
+     * The ID of the Transit Router VPC Attachment.
+     * 
+     */
+    @Import(name="transitRouterAttachmentId")
+    private @Nullable String transitRouterAttachmentId;
+
+    /**
+     * @return The ID of the Transit Router VPC Attachment.
+     * 
+     */
+    public Optional<String> transitRouterAttachmentId() {
+        return Optional.ofNullable(this.transitRouterAttachmentId);
+    }
+
+    /**
+     * The ID of the transit router.
      * 
      */
     @Import(name="transitRouterId")
     private @Nullable String transitRouterId;
 
     /**
-     * @return The transit router ID.
+     * @return The ID of the transit router.
      * 
      */
     public Optional<String> transitRouterId() {
         return Optional.ofNullable(this.transitRouterId);
+    }
+
+    /**
+     * The ID of the VPC.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable String vpcId;
+
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
+    public Optional<String> vpcId() {
+        return Optional.ofNullable(this.vpcId);
     }
 
     private GetTransitRouterVpcAttachmentsPlainArgs() {}
@@ -96,9 +141,12 @@ public final class GetTransitRouterVpcAttachmentsPlainArgs extends com.pulumi.re
     private GetTransitRouterVpcAttachmentsPlainArgs(GetTransitRouterVpcAttachmentsPlainArgs $) {
         this.cenId = $.cenId;
         this.ids = $.ids;
+        this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
         this.status = $.status;
+        this.transitRouterAttachmentId = $.transitRouterAttachmentId;
         this.transitRouterId = $.transitRouterId;
+        this.vpcId = $.vpcId;
     }
 
     public static Builder builder() {
@@ -120,7 +168,7 @@ public final class GetTransitRouterVpcAttachmentsPlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param cenId ID of the CEN instance.
+         * @param cenId The ID of the CEN instance.
          * 
          * @return builder
          * 
@@ -131,7 +179,7 @@ public final class GetTransitRouterVpcAttachmentsPlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param ids A list of resource id. The element value is same as `transit_router_id`.
+         * @param ids A list of Transit Router VPC Attachment IDs.
          * 
          * @return builder
          * 
@@ -142,13 +190,24 @@ public final class GetTransitRouterVpcAttachmentsPlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param ids A list of resource id. The element value is same as `transit_router_id`.
+         * @param ids A list of Transit Router VPC Attachment IDs.
          * 
          * @return builder
          * 
          */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
+        }
+
+        /**
+         * @param nameRegex A regex string to filter results by Transit Router VPC Attachment name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameRegex(@Nullable String nameRegex) {
+            $.nameRegex = nameRegex;
+            return this;
         }
 
         /**
@@ -163,7 +222,7 @@ public final class GetTransitRouterVpcAttachmentsPlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param status The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+         * @param status The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
          * 
          * @return builder
          * 
@@ -174,13 +233,35 @@ public final class GetTransitRouterVpcAttachmentsPlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param transitRouterId The transit router ID.
+         * @param transitRouterAttachmentId The ID of the Transit Router VPC Attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentId(@Nullable String transitRouterAttachmentId) {
+            $.transitRouterAttachmentId = transitRouterAttachmentId;
+            return this;
+        }
+
+        /**
+         * @param transitRouterId The ID of the transit router.
          * 
          * @return builder
          * 
          */
         public Builder transitRouterId(@Nullable String transitRouterId) {
             $.transitRouterId = transitRouterId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The ID of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable String vpcId) {
+            $.vpcId = vpcId;
             return this;
         }
 

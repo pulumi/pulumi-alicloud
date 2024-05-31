@@ -34,6 +34,12 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the backup set of the cluster.  .
+        /// </summary>
+        [Output("clusterBackupId")]
+        public Output<string?> ClusterBackupId { get; private set; } = null!;
+
+        /// <summary>
         /// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         /// </summary>
         [Output("createTime")]
@@ -70,6 +76,12 @@ namespace Pulumi.AliCloud.Redis
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
+        /// Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        /// </summary>
+        [Output("nodeType")]
+        public Output<string> NodeType { get; private set; } = null!;
+
+        /// <summary>
         /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =.
         /// </summary>
         [Output("password")]
@@ -94,6 +106,12 @@ namespace Pulumi.AliCloud.Redis
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
+        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+        /// </summary>
+        [Output("readOnlyCount")]
+        public Output<int?> ReadOnlyCount { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the resource group to which the instance belongs.
         /// </summary>
         [Output("resourceGroupId")]
@@ -110,6 +128,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Output("shardCount")]
         public Output<int> ShardCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+        /// </summary>
+        [Output("slaveReadOnlyCount")]
+        public Output<int?> SlaveReadOnlyCount { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource.
@@ -222,6 +246,12 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? AutoRenewPeriod { get; set; }
 
         /// <summary>
+        /// The ID of the backup set of the cluster.  .
+        /// </summary>
+        [Input("clusterBackupId")]
+        public Input<string>? ClusterBackupId { get; set; }
+
+        /// <summary>
         /// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
         /// </summary>
         [Input("effectiveTime")]
@@ -250,6 +280,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
+
+        /// <summary>
+        /// Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        /// </summary>
+        [Input("nodeType")]
+        public Input<string>? NodeType { get; set; }
 
         [Input("password")]
         private Input<string>? _password;
@@ -286,6 +322,12 @@ namespace Pulumi.AliCloud.Redis
         public Input<int>? Port { get; set; }
 
         /// <summary>
+        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+        /// </summary>
+        [Input("readOnlyCount")]
+        public Input<int>? ReadOnlyCount { get; set; }
+
+        /// <summary>
         /// The ID of the resource group to which the instance belongs.
         /// </summary>
         [Input("resourceGroupId")]
@@ -302,6 +344,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("shardCount")]
         public Input<int>? ShardCount { get; set; }
+
+        /// <summary>
+        /// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+        /// </summary>
+        [Input("slaveReadOnlyCount")]
+        public Input<int>? SlaveReadOnlyCount { get; set; }
 
         /// <summary>
         /// The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
@@ -372,6 +420,12 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? AutoRenewPeriod { get; set; }
 
         /// <summary>
+        /// The ID of the backup set of the cluster.  .
+        /// </summary>
+        [Input("clusterBackupId")]
+        public Input<string>? ClusterBackupId { get; set; }
+
+        /// <summary>
         /// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         /// </summary>
         [Input("createTime")]
@@ -406,6 +460,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        /// </summary>
+        [Input("nodeType")]
+        public Input<string>? NodeType { get; set; }
 
         [Input("password")]
         private Input<string>? _password;
@@ -442,6 +502,12 @@ namespace Pulumi.AliCloud.Redis
         public Input<int>? Port { get; set; }
 
         /// <summary>
+        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+        /// </summary>
+        [Input("readOnlyCount")]
+        public Input<int>? ReadOnlyCount { get; set; }
+
+        /// <summary>
         /// The ID of the resource group to which the instance belongs.
         /// </summary>
         [Input("resourceGroupId")]
@@ -458,6 +524,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("shardCount")]
         public Input<int>? ShardCount { get; set; }
+
+        /// <summary>
+        /// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+        /// </summary>
+        [Input("slaveReadOnlyCount")]
+        public Input<int>? SlaveReadOnlyCount { get; set; }
 
         /// <summary>
         /// The status of the resource.

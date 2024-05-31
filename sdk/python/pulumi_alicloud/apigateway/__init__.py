@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .access_control_list import *
 from .api import *
 from .app import *
 from .app_attachment import *

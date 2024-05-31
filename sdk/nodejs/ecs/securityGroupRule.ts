@@ -5,12 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a security group rule resource.
+ * Provides a Security Group Rule resource.
+ *
+ * For information about Security Group Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/ecs/user-guide/security-group-rules).
+ *
+ * > **NOTE:** Available since v0.1.0.
+ *
  * Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
  *
  * > **NOTE:**  `nicType` should set to `intranet` when security group type is `vpc` or specifying the `sourceSecurityGroupId`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
- *
- * > **NOTE:** Available since v0.1.0.
  *
  * ## Example Usage
  *
@@ -20,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ecs.SecurityGroup("default", {name: "default"});
+ * const _default = new alicloud.ecs.SecurityGroup("default", {name: "terraform-example"});
  * const allowAllTcp = new alicloud.ecs.SecurityGroupRule("allow_all_tcp", {
  *     type: "ingress",
  *     ipProtocol: "tcp",
@@ -37,6 +40,14 @@ import * as utilities from "../utilities";
  *
  * You can use the existing security-group module
  * to create a security group and add several rules one-click.
+ *
+ * ## Import
+ *
+ * Security Group Rule can be imported using the id, e.g.
+ *
+ * ```sh
+ * $ pulumi import alicloud:ecs/securityGroupRule:SecurityGroupRule example <id>
+ * ```
  */
 export class SecurityGroupRule extends pulumi.CustomResource {
     /**
@@ -72,16 +83,16 @@ export class SecurityGroupRule extends pulumi.CustomResource {
     public readonly cidrIp!: pulumi.Output<string | undefined>;
     /**
      * The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
+     *
+     * > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+     * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
      */
     public readonly ipProtocol!: pulumi.Output<string>;
     /**
      * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
-     *
-     * > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      */
     public readonly ipv6CidrIp!: pulumi.Output<string | undefined>;
     /**
@@ -89,7 +100,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     public readonly nicType!: pulumi.Output<string>;
     /**
-     * Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
+     * The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
      */
     public readonly policy!: pulumi.Output<string | undefined>;
     /**
@@ -102,11 +113,11 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     public readonly prefixListId!: pulumi.Output<string>;
     /**
-     * Authorization policy priority, with parameter values: `1-100`, default value: 1.
+     * The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
      */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
-     * The security group to apply this rule to.
+     * The ID of the Security Group.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
@@ -118,7 +129,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     public readonly sourceSecurityGroupId!: pulumi.Output<string | undefined>;
     /**
-     * The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
+     * The type of the Security Group Rule. Valid values:
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -188,16 +199,16 @@ export interface SecurityGroupRuleState {
     cidrIp?: pulumi.Input<string>;
     /**
      * The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
+     *
+     * > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      */
     description?: pulumi.Input<string>;
     /**
-     * The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+     * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
      */
     ipProtocol?: pulumi.Input<string>;
     /**
      * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
-     *
-     * > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      */
     ipv6CidrIp?: pulumi.Input<string>;
     /**
@@ -205,7 +216,7 @@ export interface SecurityGroupRuleState {
      */
     nicType?: pulumi.Input<string>;
     /**
-     * Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
+     * The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
      */
     policy?: pulumi.Input<string>;
     /**
@@ -218,11 +229,11 @@ export interface SecurityGroupRuleState {
      */
     prefixListId?: pulumi.Input<string>;
     /**
-     * Authorization policy priority, with parameter values: `1-100`, default value: 1.
+     * The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
      */
     priority?: pulumi.Input<number>;
     /**
-     * The security group to apply this rule to.
+     * The ID of the Security Group.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
@@ -234,7 +245,7 @@ export interface SecurityGroupRuleState {
      */
     sourceSecurityGroupId?: pulumi.Input<string>;
     /**
-     * The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
+     * The type of the Security Group Rule. Valid values:
      */
     type?: pulumi.Input<string>;
 }
@@ -249,16 +260,16 @@ export interface SecurityGroupRuleArgs {
     cidrIp?: pulumi.Input<string>;
     /**
      * The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
+     *
+     * > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      */
     description?: pulumi.Input<string>;
     /**
-     * The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+     * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
      */
     ipProtocol: pulumi.Input<string>;
     /**
      * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
-     *
-     * > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      */
     ipv6CidrIp?: pulumi.Input<string>;
     /**
@@ -266,7 +277,7 @@ export interface SecurityGroupRuleArgs {
      */
     nicType?: pulumi.Input<string>;
     /**
-     * Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
+     * The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
      */
     policy?: pulumi.Input<string>;
     /**
@@ -279,11 +290,11 @@ export interface SecurityGroupRuleArgs {
      */
     prefixListId?: pulumi.Input<string>;
     /**
-     * Authorization policy priority, with parameter values: `1-100`, default value: 1.
+     * The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
      */
     priority?: pulumi.Input<number>;
     /**
-     * The security group to apply this rule to.
+     * The ID of the Security Group.
      */
     securityGroupId: pulumi.Input<string>;
     /**
@@ -295,7 +306,7 @@ export interface SecurityGroupRuleArgs {
      */
     sourceSecurityGroupId?: pulumi.Input<string>;
     /**
-     * The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
+     * The type of the Security Group Rule. Valid values:
      */
     type: pulumi.Input<string>;
 }

@@ -23,22 +23,65 @@ namespace Pulumi.AliCloud.ApiGateway
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform_example";
     ///     var @default = new AliCloud.ApiGateway.Plugin("default", new()
     ///     {
-    ///         Description = "tf_example",
-    ///         PluginName = "tf_example",
-    ///         PluginData = "{\"allowOrigins\": \"api.foo.com\",\"allowMethods\": \"GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\",\"allowHeaders\": \"Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid\",\"exposeHeaders\": \"Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message\",\"maxAge\": 172800,\"allowCredentials\": true}",
-    ///         PluginType = "cors",
-    ///         Tags = 
+    ///         Description = name,
+    ///         PluginName = name,
+    ///         PluginData = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "example" },
-    ///         },
+    ///             ["routes"] = new[]
+    ///             {
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "Vip",
+    ///                     ["condition"] = "$CaAppId = 123456",
+    ///                     ["backend"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["type"] = "HTTP-VPC",
+    ///                         ["vpcAccessName"] = "slbAccessForVip",
+    ///                     },
+    ///                 },
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "MockForOldClient",
+    ///                     ["condition"] = "$ClientVersion &lt; '2.0.5'",
+    ///                     ["backend"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["type"] = "MOCK",
+    ///                         ["statusCode"] = 400,
+    ///                         ["mockBody"] = "This version is not supported!!!",
+    ///                     },
+    ///                 },
+    ///                 new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "BlueGreenPercent05",
+    ///                     ["condition"] = "1 = 1",
+    ///                     ["backend"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["type"] = "HTTP",
+    ///                         ["address"] = "https://beta-version.api.foo.com",
+    ///                     },
+    ///                     ["constant-parameters"] = new[]
+    ///                     {
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["name"] = "x-route-blue-green",
+    ///                             ["location"] = "header",
+    ///                             ["value"] = "route-blue-green",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }),
+    ///         PluginType = "routing",
     ///     });
     /// 
     /// });
@@ -55,6 +98,12 @@ namespace Pulumi.AliCloud.ApiGateway
     [AliCloudResourceType("alicloud:apigateway/plugin:Plugin")]
     public partial class Plugin : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Create time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         /// <summary>
         /// The description of the plug-in, which cannot exceed 200 characters.
         /// </summary>
@@ -74,19 +123,27 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> PluginName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-        /// - ipControl: indicates IP address-based access control.
-        /// - trafficControl: indicates throttling.
-        /// - backendSignature: indicates backend signature.
-        /// - jwtAuth: indicates JWT (OpenId Connect).
-        /// - cors: indicates cross-origin resource access (CORS).
-        /// - caching: indicates caching.
+        /// The type of the plug-in. Valid values:
+        /// - "trafficControl"
+        /// - "ipControl"
+        /// - "backendSignature"
+        /// - "jwtAuth"
+        /// - "basicAuth"
+        /// - "cors"
+        /// - "caching"
+        /// - "routing"
+        /// - "accessControl"
+        /// - "errorMapping"
+        /// - "circuitBreaker"
+        /// - "remoteAuth"
+        /// - "logMask"
+        /// - "transformer".
         /// </summary>
         [Output("pluginType")]
         public Output<string> PluginType { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -156,13 +213,21 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string> PluginName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-        /// - ipControl: indicates IP address-based access control.
-        /// - trafficControl: indicates throttling.
-        /// - backendSignature: indicates backend signature.
-        /// - jwtAuth: indicates JWT (OpenId Connect).
-        /// - cors: indicates cross-origin resource access (CORS).
-        /// - caching: indicates caching.
+        /// The type of the plug-in. Valid values:
+        /// - "trafficControl"
+        /// - "ipControl"
+        /// - "backendSignature"
+        /// - "jwtAuth"
+        /// - "basicAuth"
+        /// - "cors"
+        /// - "caching"
+        /// - "routing"
+        /// - "accessControl"
+        /// - "errorMapping"
+        /// - "circuitBreaker"
+        /// - "remoteAuth"
+        /// - "logMask"
+        /// - "transformer".
         /// </summary>
         [Input("pluginType", required: true)]
         public Input<string> PluginType { get; set; } = null!;
@@ -171,7 +236,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -187,6 +252,12 @@ namespace Pulumi.AliCloud.ApiGateway
 
     public sealed class PluginState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Create time.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         /// <summary>
         /// The description of the plug-in, which cannot exceed 200 characters.
         /// </summary>
@@ -206,13 +277,21 @@ namespace Pulumi.AliCloud.ApiGateway
         public Input<string>? PluginName { get; set; }
 
         /// <summary>
-        /// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-        /// - ipControl: indicates IP address-based access control.
-        /// - trafficControl: indicates throttling.
-        /// - backendSignature: indicates backend signature.
-        /// - jwtAuth: indicates JWT (OpenId Connect).
-        /// - cors: indicates cross-origin resource access (CORS).
-        /// - caching: indicates caching.
+        /// The type of the plug-in. Valid values:
+        /// - "trafficControl"
+        /// - "ipControl"
+        /// - "backendSignature"
+        /// - "jwtAuth"
+        /// - "basicAuth"
+        /// - "cors"
+        /// - "caching"
+        /// - "routing"
+        /// - "accessControl"
+        /// - "errorMapping"
+        /// - "circuitBreaker"
+        /// - "remoteAuth"
+        /// - "logMask"
+        /// - "transformer".
         /// </summary>
         [Input("pluginType")]
         public Input<string>? PluginType { get; set; }
@@ -221,7 +300,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource.
         /// </summary>
         public InputMap<object> Tags
         {

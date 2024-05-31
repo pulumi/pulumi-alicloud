@@ -14,35 +14,44 @@ namespace Pulumi.AliCloud.Cen.Outputs
     public sealed class GetTransitRouterVpcAttachmentsAttachmentResult
     {
         /// <summary>
-        /// The ID of the transit router.
+        /// (Available since v1.224.0) Whether the transit router is automatically published to the VPC instance.
         /// </summary>
+        public readonly bool AutoPublishRouteEnabled;
+        /// <summary>
+        /// The ID of the CEN instance.
+        /// </summary>
+        public readonly string CenId;
         public readonly string Id;
         /// <summary>
         /// The payment type of the resource.
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// Type of the resource.
+        /// The resource type of the Transit Router VPC Attachment.
         /// </summary>
         public readonly string ResourceType;
         /// <summary>
-        /// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+        /// The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The description of transit router attachment.
+        /// The description of the Transit Router VPC Attachment.
         /// </summary>
         public readonly string TransitRouterAttachmentDescription;
         /// <summary>
-        /// ID of the transit router VBR attachment.
+        /// The ID of the Transit Router VPC Attachment.
         /// </summary>
         public readonly string TransitRouterAttachmentId;
         /// <summary>
-        /// Name of the transit router attachment.
+        /// The name of the Transit Router VPC Attachment.
         /// </summary>
         public readonly string TransitRouterAttachmentName;
         /// <summary>
-        /// ID of the VPC.
+        /// The ID of the transit router.
+        /// </summary>
+        public readonly string TransitRouterId;
+        /// <summary>
+        /// The ID of the VPC.
         /// </summary>
         public readonly string VpcId;
         /// <summary>
@@ -50,12 +59,16 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string VpcOwnerId;
         /// <summary>
-        /// The mappings of zone
+        /// The list of zone mapping of the VPC.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult> ZoneMappings;
 
         [OutputConstructor]
         private GetTransitRouterVpcAttachmentsAttachmentResult(
+            bool autoPublishRouteEnabled,
+
+            string cenId,
+
             string id,
 
             string paymentType,
@@ -70,12 +83,16 @@ namespace Pulumi.AliCloud.Cen.Outputs
 
             string transitRouterAttachmentName,
 
+            string transitRouterId,
+
             string vpcId,
 
             string vpcOwnerId,
 
             ImmutableArray<Outputs.GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult> zoneMappings)
         {
+            AutoPublishRouteEnabled = autoPublishRouteEnabled;
+            CenId = cenId;
             Id = id;
             PaymentType = paymentType;
             ResourceType = resourceType;
@@ -83,6 +100,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
             TransitRouterAttachmentDescription = transitRouterAttachmentDescription;
             TransitRouterAttachmentId = transitRouterAttachmentId;
             TransitRouterAttachmentName = transitRouterAttachmentName;
+            TransitRouterId = transitRouterId;
             VpcId = vpcId;
             VpcOwnerId = vpcOwnerId;
             ZoneMappings = zoneMappings;

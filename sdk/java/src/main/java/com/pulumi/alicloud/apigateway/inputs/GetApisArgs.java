@@ -17,37 +17,29 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetApisArgs Empty = new GetApisArgs();
 
     /**
-     * (It has been deprecated from version 1.52.2, and use field &#39;ids&#39; to replace.) ID of the specified API.
-     * 
-     * @deprecated
-     * Field &#39;api_id&#39; has been deprecated from provider version 1.52.2. New field &#39;ids&#39; replaces it.
+     * The ID of the API.
      * 
      */
-    @Deprecated /* Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it. */
     @Import(name="apiId")
     private @Nullable Output<String> apiId;
 
     /**
-     * @return (It has been deprecated from version 1.52.2, and use field &#39;ids&#39; to replace.) ID of the specified API.
-     * 
-     * @deprecated
-     * Field &#39;api_id&#39; has been deprecated from provider version 1.52.2. New field &#39;ids&#39; replaces it.
+     * @return The ID of the API.
      * 
      */
-    @Deprecated /* Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it. */
     public Optional<Output<String>> apiId() {
         return Optional.ofNullable(this.apiId);
     }
 
     /**
-     * ID of the specified group.
+     * The ID of the API group.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
     /**
-     * @return ID of the specified group.
+     * @return The ID of the API group.
      * 
      */
     public Optional<Output<String>> groupId() {
@@ -55,14 +47,14 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A list of api IDs.
+     * A list of API IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of api IDs.
+     * @return A list of API IDs.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -70,14 +62,14 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A regex string to filter api gateway apis by name.
+     * A regex string to filter results by API name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
     /**
-     * @return A regex string to filter api gateway apis by name.
+     * @return A regex string to filter results by API name.
      * 
      */
     public Optional<Output<String>> nameRegex() {
@@ -128,36 +120,28 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param apiId (It has been deprecated from version 1.52.2, and use field &#39;ids&#39; to replace.) ID of the specified API.
+         * @param apiId The ID of the API.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;api_id&#39; has been deprecated from provider version 1.52.2. New field &#39;ids&#39; replaces it.
-         * 
          */
-        @Deprecated /* Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it. */
         public Builder apiId(@Nullable Output<String> apiId) {
             $.apiId = apiId;
             return this;
         }
 
         /**
-         * @param apiId (It has been deprecated from version 1.52.2, and use field &#39;ids&#39; to replace.) ID of the specified API.
+         * @param apiId The ID of the API.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;api_id&#39; has been deprecated from provider version 1.52.2. New field &#39;ids&#39; replaces it.
-         * 
          */
-        @Deprecated /* Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it. */
         public Builder apiId(String apiId) {
             return apiId(Output.of(apiId));
         }
 
         /**
-         * @param groupId ID of the specified group.
+         * @param groupId The ID of the API group.
          * 
          * @return builder
          * 
@@ -168,7 +152,7 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param groupId ID of the specified group.
+         * @param groupId The ID of the API group.
          * 
          * @return builder
          * 
@@ -178,7 +162,7 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of api IDs.
+         * @param ids A list of API IDs.
          * 
          * @return builder
          * 
@@ -189,7 +173,7 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of api IDs.
+         * @param ids A list of API IDs.
          * 
          * @return builder
          * 
@@ -199,7 +183,7 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of api IDs.
+         * @param ids A list of API IDs.
          * 
          * @return builder
          * 
@@ -209,7 +193,7 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nameRegex A regex string to filter api gateway apis by name.
+         * @param nameRegex A regex string to filter results by API name.
          * 
          * @return builder
          * 
@@ -220,7 +204,7 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nameRegex A regex string to filter api gateway apis by name.
+         * @param nameRegex A regex string to filter results by API name.
          * 
          * @return builder
          * 

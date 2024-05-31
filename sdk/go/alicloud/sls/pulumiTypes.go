@@ -2623,6 +2623,679 @@ func (o AlertSchedulePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ScheduledSqlSchedule struct {
+	// Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+	CronExpression *string `pulumi:"cronExpression"`
+	// Delay time.
+	Delay *int `pulumi:"delay"`
+	// Time interval, such as 5m, 1H.
+	Interval *string `pulumi:"interval"`
+	// Whether to execute the OSS import task immediately after it is created.
+	RunImmediately *bool `pulumi:"runImmediately"`
+	// Time Zone.
+	TimeZone *string `pulumi:"timeZone"`
+	// Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+	Type *string `pulumi:"type"`
+}
+
+// ScheduledSqlScheduleInput is an input type that accepts ScheduledSqlScheduleArgs and ScheduledSqlScheduleOutput values.
+// You can construct a concrete instance of `ScheduledSqlScheduleInput` via:
+//
+//	ScheduledSqlScheduleArgs{...}
+type ScheduledSqlScheduleInput interface {
+	pulumi.Input
+
+	ToScheduledSqlScheduleOutput() ScheduledSqlScheduleOutput
+	ToScheduledSqlScheduleOutputWithContext(context.Context) ScheduledSqlScheduleOutput
+}
+
+type ScheduledSqlScheduleArgs struct {
+	// Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+	CronExpression pulumi.StringPtrInput `pulumi:"cronExpression"`
+	// Delay time.
+	Delay pulumi.IntPtrInput `pulumi:"delay"`
+	// Time interval, such as 5m, 1H.
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// Whether to execute the OSS import task immediately after it is created.
+	RunImmediately pulumi.BoolPtrInput `pulumi:"runImmediately"`
+	// Time Zone.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+	// Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ScheduledSqlScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledSqlSchedule)(nil)).Elem()
+}
+
+func (i ScheduledSqlScheduleArgs) ToScheduledSqlScheduleOutput() ScheduledSqlScheduleOutput {
+	return i.ToScheduledSqlScheduleOutputWithContext(context.Background())
+}
+
+func (i ScheduledSqlScheduleArgs) ToScheduledSqlScheduleOutputWithContext(ctx context.Context) ScheduledSqlScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSqlScheduleOutput)
+}
+
+func (i ScheduledSqlScheduleArgs) ToScheduledSqlSchedulePtrOutput() ScheduledSqlSchedulePtrOutput {
+	return i.ToScheduledSqlSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i ScheduledSqlScheduleArgs) ToScheduledSqlSchedulePtrOutputWithContext(ctx context.Context) ScheduledSqlSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSqlScheduleOutput).ToScheduledSqlSchedulePtrOutputWithContext(ctx)
+}
+
+// ScheduledSqlSchedulePtrInput is an input type that accepts ScheduledSqlScheduleArgs, ScheduledSqlSchedulePtr and ScheduledSqlSchedulePtrOutput values.
+// You can construct a concrete instance of `ScheduledSqlSchedulePtrInput` via:
+//
+//	        ScheduledSqlScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduledSqlSchedulePtrInput interface {
+	pulumi.Input
+
+	ToScheduledSqlSchedulePtrOutput() ScheduledSqlSchedulePtrOutput
+	ToScheduledSqlSchedulePtrOutputWithContext(context.Context) ScheduledSqlSchedulePtrOutput
+}
+
+type scheduledSqlSchedulePtrType ScheduledSqlScheduleArgs
+
+func ScheduledSqlSchedulePtr(v *ScheduledSqlScheduleArgs) ScheduledSqlSchedulePtrInput {
+	return (*scheduledSqlSchedulePtrType)(v)
+}
+
+func (*scheduledSqlSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduledSqlSchedule)(nil)).Elem()
+}
+
+func (i *scheduledSqlSchedulePtrType) ToScheduledSqlSchedulePtrOutput() ScheduledSqlSchedulePtrOutput {
+	return i.ToScheduledSqlSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *scheduledSqlSchedulePtrType) ToScheduledSqlSchedulePtrOutputWithContext(ctx context.Context) ScheduledSqlSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSqlSchedulePtrOutput)
+}
+
+type ScheduledSqlScheduleOutput struct{ *pulumi.OutputState }
+
+func (ScheduledSqlScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledSqlSchedule)(nil)).Elem()
+}
+
+func (o ScheduledSqlScheduleOutput) ToScheduledSqlScheduleOutput() ScheduledSqlScheduleOutput {
+	return o
+}
+
+func (o ScheduledSqlScheduleOutput) ToScheduledSqlScheduleOutputWithContext(ctx context.Context) ScheduledSqlScheduleOutput {
+	return o
+}
+
+func (o ScheduledSqlScheduleOutput) ToScheduledSqlSchedulePtrOutput() ScheduledSqlSchedulePtrOutput {
+	return o.ToScheduledSqlSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o ScheduledSqlScheduleOutput) ToScheduledSqlSchedulePtrOutputWithContext(ctx context.Context) ScheduledSqlSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduledSqlSchedule) *ScheduledSqlSchedule {
+		return &v
+	}).(ScheduledSqlSchedulePtrOutput)
+}
+
+// Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+func (o ScheduledSqlScheduleOutput) CronExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlSchedule) *string { return v.CronExpression }).(pulumi.StringPtrOutput)
+}
+
+// Delay time.
+func (o ScheduledSqlScheduleOutput) Delay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlSchedule) *int { return v.Delay }).(pulumi.IntPtrOutput)
+}
+
+// Time interval, such as 5m, 1H.
+func (o ScheduledSqlScheduleOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlSchedule) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// Whether to execute the OSS import task immediately after it is created.
+func (o ScheduledSqlScheduleOutput) RunImmediately() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlSchedule) *bool { return v.RunImmediately }).(pulumi.BoolPtrOutput)
+}
+
+// Time Zone.
+func (o ScheduledSqlScheduleOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlSchedule) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+// Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+func (o ScheduledSqlScheduleOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlSchedule) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ScheduledSqlSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduledSqlSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduledSqlSchedule)(nil)).Elem()
+}
+
+func (o ScheduledSqlSchedulePtrOutput) ToScheduledSqlSchedulePtrOutput() ScheduledSqlSchedulePtrOutput {
+	return o
+}
+
+func (o ScheduledSqlSchedulePtrOutput) ToScheduledSqlSchedulePtrOutputWithContext(ctx context.Context) ScheduledSqlSchedulePtrOutput {
+	return o
+}
+
+func (o ScheduledSqlSchedulePtrOutput) Elem() ScheduledSqlScheduleOutput {
+	return o.ApplyT(func(v *ScheduledSqlSchedule) ScheduledSqlSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduledSqlSchedule
+		return ret
+	}).(ScheduledSqlScheduleOutput)
+}
+
+// Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+func (o ScheduledSqlSchedulePtrOutput) CronExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CronExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Delay time.
+func (o ScheduledSqlSchedulePtrOutput) Delay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlSchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Delay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time interval, such as 5m, 1H.
+func (o ScheduledSqlSchedulePtrOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to execute the OSS import task immediately after it is created.
+func (o ScheduledSqlSchedulePtrOutput) RunImmediately() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlSchedule) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RunImmediately
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Time Zone.
+func (o ScheduledSqlSchedulePtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+func (o ScheduledSqlSchedulePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScheduledSqlScheduledSqlConfiguration struct {
+	// Write Mode.
+	DataFormat *string `pulumi:"dataFormat"`
+	// Target Endpoint.
+	DestEndpoint *string `pulumi:"destEndpoint"`
+	// Target Logstore.
+	DestLogstore *string `pulumi:"destLogstore"`
+	// Target Project.
+	DestProject *string `pulumi:"destProject"`
+	// Write target role ARN.
+	DestRoleArn *string `pulumi:"destRoleArn"`
+	// Schedule Start Time.
+	FromTime *int `pulumi:"fromTime"`
+	// SQL time window-start.
+	FromTimeExpr *string `pulumi:"fromTimeExpr"`
+	// Maximum retries.
+	MaxRetries *int `pulumi:"maxRetries"`
+	// SQL timeout.
+	MaxRunTimeInSeconds *int `pulumi:"maxRunTimeInSeconds"`
+	// Parameter configuration.
+	Parameters map[string]interface{} `pulumi:"parameters"`
+	// Resource Pool.
+	ResourcePool *string `pulumi:"resourcePool"`
+	// Read role ARN.
+	RoleArn *string `pulumi:"roleArn"`
+	// SQL statement.
+	Script *string `pulumi:"script"`
+	// Source Logstore.
+	SourceLogstore *string `pulumi:"sourceLogstore"`
+	// SQL type.
+	SqlType *string `pulumi:"sqlType"`
+	// Time at end of schedule.
+	ToTime *int `pulumi:"toTime"`
+	// SQL time window-end.
+	ToTimeExpr *string `pulumi:"toTimeExpr"`
+}
+
+// ScheduledSqlScheduledSqlConfigurationInput is an input type that accepts ScheduledSqlScheduledSqlConfigurationArgs and ScheduledSqlScheduledSqlConfigurationOutput values.
+// You can construct a concrete instance of `ScheduledSqlScheduledSqlConfigurationInput` via:
+//
+//	ScheduledSqlScheduledSqlConfigurationArgs{...}
+type ScheduledSqlScheduledSqlConfigurationInput interface {
+	pulumi.Input
+
+	ToScheduledSqlScheduledSqlConfigurationOutput() ScheduledSqlScheduledSqlConfigurationOutput
+	ToScheduledSqlScheduledSqlConfigurationOutputWithContext(context.Context) ScheduledSqlScheduledSqlConfigurationOutput
+}
+
+type ScheduledSqlScheduledSqlConfigurationArgs struct {
+	// Write Mode.
+	DataFormat pulumi.StringPtrInput `pulumi:"dataFormat"`
+	// Target Endpoint.
+	DestEndpoint pulumi.StringPtrInput `pulumi:"destEndpoint"`
+	// Target Logstore.
+	DestLogstore pulumi.StringPtrInput `pulumi:"destLogstore"`
+	// Target Project.
+	DestProject pulumi.StringPtrInput `pulumi:"destProject"`
+	// Write target role ARN.
+	DestRoleArn pulumi.StringPtrInput `pulumi:"destRoleArn"`
+	// Schedule Start Time.
+	FromTime pulumi.IntPtrInput `pulumi:"fromTime"`
+	// SQL time window-start.
+	FromTimeExpr pulumi.StringPtrInput `pulumi:"fromTimeExpr"`
+	// Maximum retries.
+	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
+	// SQL timeout.
+	MaxRunTimeInSeconds pulumi.IntPtrInput `pulumi:"maxRunTimeInSeconds"`
+	// Parameter configuration.
+	Parameters pulumi.MapInput `pulumi:"parameters"`
+	// Resource Pool.
+	ResourcePool pulumi.StringPtrInput `pulumi:"resourcePool"`
+	// Read role ARN.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// SQL statement.
+	Script pulumi.StringPtrInput `pulumi:"script"`
+	// Source Logstore.
+	SourceLogstore pulumi.StringPtrInput `pulumi:"sourceLogstore"`
+	// SQL type.
+	SqlType pulumi.StringPtrInput `pulumi:"sqlType"`
+	// Time at end of schedule.
+	ToTime pulumi.IntPtrInput `pulumi:"toTime"`
+	// SQL time window-end.
+	ToTimeExpr pulumi.StringPtrInput `pulumi:"toTimeExpr"`
+}
+
+func (ScheduledSqlScheduledSqlConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledSqlScheduledSqlConfiguration)(nil)).Elem()
+}
+
+func (i ScheduledSqlScheduledSqlConfigurationArgs) ToScheduledSqlScheduledSqlConfigurationOutput() ScheduledSqlScheduledSqlConfigurationOutput {
+	return i.ToScheduledSqlScheduledSqlConfigurationOutputWithContext(context.Background())
+}
+
+func (i ScheduledSqlScheduledSqlConfigurationArgs) ToScheduledSqlScheduledSqlConfigurationOutputWithContext(ctx context.Context) ScheduledSqlScheduledSqlConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSqlScheduledSqlConfigurationOutput)
+}
+
+func (i ScheduledSqlScheduledSqlConfigurationArgs) ToScheduledSqlScheduledSqlConfigurationPtrOutput() ScheduledSqlScheduledSqlConfigurationPtrOutput {
+	return i.ToScheduledSqlScheduledSqlConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduledSqlScheduledSqlConfigurationArgs) ToScheduledSqlScheduledSqlConfigurationPtrOutputWithContext(ctx context.Context) ScheduledSqlScheduledSqlConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSqlScheduledSqlConfigurationOutput).ToScheduledSqlScheduledSqlConfigurationPtrOutputWithContext(ctx)
+}
+
+// ScheduledSqlScheduledSqlConfigurationPtrInput is an input type that accepts ScheduledSqlScheduledSqlConfigurationArgs, ScheduledSqlScheduledSqlConfigurationPtr and ScheduledSqlScheduledSqlConfigurationPtrOutput values.
+// You can construct a concrete instance of `ScheduledSqlScheduledSqlConfigurationPtrInput` via:
+//
+//	        ScheduledSqlScheduledSqlConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduledSqlScheduledSqlConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToScheduledSqlScheduledSqlConfigurationPtrOutput() ScheduledSqlScheduledSqlConfigurationPtrOutput
+	ToScheduledSqlScheduledSqlConfigurationPtrOutputWithContext(context.Context) ScheduledSqlScheduledSqlConfigurationPtrOutput
+}
+
+type scheduledSqlScheduledSqlConfigurationPtrType ScheduledSqlScheduledSqlConfigurationArgs
+
+func ScheduledSqlScheduledSqlConfigurationPtr(v *ScheduledSqlScheduledSqlConfigurationArgs) ScheduledSqlScheduledSqlConfigurationPtrInput {
+	return (*scheduledSqlScheduledSqlConfigurationPtrType)(v)
+}
+
+func (*scheduledSqlScheduledSqlConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduledSqlScheduledSqlConfiguration)(nil)).Elem()
+}
+
+func (i *scheduledSqlScheduledSqlConfigurationPtrType) ToScheduledSqlScheduledSqlConfigurationPtrOutput() ScheduledSqlScheduledSqlConfigurationPtrOutput {
+	return i.ToScheduledSqlScheduledSqlConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduledSqlScheduledSqlConfigurationPtrType) ToScheduledSqlScheduledSqlConfigurationPtrOutputWithContext(ctx context.Context) ScheduledSqlScheduledSqlConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSqlScheduledSqlConfigurationPtrOutput)
+}
+
+type ScheduledSqlScheduledSqlConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ScheduledSqlScheduledSqlConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledSqlScheduledSqlConfiguration)(nil)).Elem()
+}
+
+func (o ScheduledSqlScheduledSqlConfigurationOutput) ToScheduledSqlScheduledSqlConfigurationOutput() ScheduledSqlScheduledSqlConfigurationOutput {
+	return o
+}
+
+func (o ScheduledSqlScheduledSqlConfigurationOutput) ToScheduledSqlScheduledSqlConfigurationOutputWithContext(ctx context.Context) ScheduledSqlScheduledSqlConfigurationOutput {
+	return o
+}
+
+func (o ScheduledSqlScheduledSqlConfigurationOutput) ToScheduledSqlScheduledSqlConfigurationPtrOutput() ScheduledSqlScheduledSqlConfigurationPtrOutput {
+	return o.ToScheduledSqlScheduledSqlConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduledSqlScheduledSqlConfigurationOutput) ToScheduledSqlScheduledSqlConfigurationPtrOutputWithContext(ctx context.Context) ScheduledSqlScheduledSqlConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduledSqlScheduledSqlConfiguration) *ScheduledSqlScheduledSqlConfiguration {
+		return &v
+	}).(ScheduledSqlScheduledSqlConfigurationPtrOutput)
+}
+
+// Write Mode.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) DataFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.DataFormat }).(pulumi.StringPtrOutput)
+}
+
+// Target Endpoint.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) DestEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.DestEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Target Logstore.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) DestLogstore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.DestLogstore }).(pulumi.StringPtrOutput)
+}
+
+// Target Project.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) DestProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.DestProject }).(pulumi.StringPtrOutput)
+}
+
+// Write target role ARN.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) DestRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.DestRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Schedule Start Time.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) FromTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *int { return v.FromTime }).(pulumi.IntPtrOutput)
+}
+
+// SQL time window-start.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) FromTimeExpr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.FromTimeExpr }).(pulumi.StringPtrOutput)
+}
+
+// Maximum retries.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
+}
+
+// SQL timeout.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) MaxRunTimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *int { return v.MaxRunTimeInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Parameter configuration.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+}
+
+// Resource Pool.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) ResourcePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.ResourcePool }).(pulumi.StringPtrOutput)
+}
+
+// Read role ARN.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// SQL statement.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.Script }).(pulumi.StringPtrOutput)
+}
+
+// Source Logstore.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) SourceLogstore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.SourceLogstore }).(pulumi.StringPtrOutput)
+}
+
+// SQL type.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) SqlType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.SqlType }).(pulumi.StringPtrOutput)
+}
+
+// Time at end of schedule.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) ToTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *int { return v.ToTime }).(pulumi.IntPtrOutput)
+}
+
+// SQL time window-end.
+func (o ScheduledSqlScheduledSqlConfigurationOutput) ToTimeExpr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSqlScheduledSqlConfiguration) *string { return v.ToTimeExpr }).(pulumi.StringPtrOutput)
+}
+
+type ScheduledSqlScheduledSqlConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduledSqlScheduledSqlConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduledSqlScheduledSqlConfiguration)(nil)).Elem()
+}
+
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) ToScheduledSqlScheduledSqlConfigurationPtrOutput() ScheduledSqlScheduledSqlConfigurationPtrOutput {
+	return o
+}
+
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) ToScheduledSqlScheduledSqlConfigurationPtrOutputWithContext(ctx context.Context) ScheduledSqlScheduledSqlConfigurationPtrOutput {
+	return o
+}
+
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) Elem() ScheduledSqlScheduledSqlConfigurationOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) ScheduledSqlScheduledSqlConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduledSqlScheduledSqlConfiguration
+		return ret
+	}).(ScheduledSqlScheduledSqlConfigurationOutput)
+}
+
+// Write Mode.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DataFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target Endpoint.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DestEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target Logstore.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DestLogstore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestLogstore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target Project.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DestProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestProject
+	}).(pulumi.StringPtrOutput)
+}
+
+// Write target role ARN.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) DestRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Schedule Start Time.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) FromTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FromTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// SQL time window-start.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) FromTimeExpr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FromTimeExpr
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum retries.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// SQL timeout.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) MaxRunTimeInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRunTimeInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Parameter configuration.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.MapOutput)
+}
+
+// Resource Pool.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) ResourcePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourcePool
+	}).(pulumi.StringPtrOutput)
+}
+
+// Read role ARN.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL statement.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source Logstore.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) SourceLogstore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceLogstore
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL type.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) SqlType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time at end of schedule.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) ToTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ToTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// SQL time window-end.
+func (o ScheduledSqlScheduledSqlConfigurationPtrOutput) ToTimeExpr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSqlScheduledSqlConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ToTimeExpr
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConfigurationInput)(nil)).Elem(), AlertConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConfigurationPtrInput)(nil)).Elem(), AlertConfigurationArgs{})
@@ -2654,6 +3327,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConfigurationTemplateConfigurationPtrInput)(nil)).Elem(), AlertConfigurationTemplateConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertScheduleInput)(nil)).Elem(), AlertScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertSchedulePtrInput)(nil)).Elem(), AlertScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSqlScheduleInput)(nil)).Elem(), ScheduledSqlScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSqlSchedulePtrInput)(nil)).Elem(), ScheduledSqlScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSqlScheduledSqlConfigurationInput)(nil)).Elem(), ScheduledSqlScheduledSqlConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSqlScheduledSqlConfigurationPtrInput)(nil)).Elem(), ScheduledSqlScheduledSqlConfigurationArgs{})
 	pulumi.RegisterOutputType(AlertConfigurationOutput{})
 	pulumi.RegisterOutputType(AlertConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AlertConfigurationAnnotationOutput{})
@@ -2684,4 +3361,8 @@ func init() {
 	pulumi.RegisterOutputType(AlertConfigurationTemplateConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AlertScheduleOutput{})
 	pulumi.RegisterOutputType(AlertSchedulePtrOutput{})
+	pulumi.RegisterOutputType(ScheduledSqlScheduleOutput{})
+	pulumi.RegisterOutputType(ScheduledSqlSchedulePtrOutput{})
+	pulumi.RegisterOutputType(ScheduledSqlScheduledSqlConfigurationOutput{})
+	pulumi.RegisterOutputType(ScheduledSqlScheduledSqlConfigurationPtrOutput{})
 }

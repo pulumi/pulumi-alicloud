@@ -51,16 +51,16 @@ class GetApisResult:
     @property
     @pulumi.getter(name="apiId")
     def api_id(self) -> Optional[str]:
-        warnings.warn("""Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""api_id is deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.""")
-
+        """
+        (Available since v1.224.0) The ID of the API.
+        """
         return pulumi.get(self, "api_id")
 
     @property
     @pulumi.getter
     def apis(self) -> Sequence['outputs.GetApisApiResult']:
         """
-        A list of apis. Each element contains the following attributes:
+        A list of APIs. Each element contains the following attributes:
         """
         return pulumi.get(self, "apis")
 
@@ -68,7 +68,7 @@ class GetApisResult:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[str]:
         """
-        The group id that the apis belong to.
+        The ID of the API group.
         """
         return pulumi.get(self, "group_id")
 
@@ -83,9 +83,6 @@ class GetApisResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
-        """
-        A list of api IDs.
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -97,7 +94,7 @@ class GetApisResult:
     @pulumi.getter
     def names(self) -> Sequence[str]:
         """
-        A list of api names.
+        A list of API names.
         """
         return pulumi.get(self, "names")
 
@@ -130,23 +127,61 @@ def get_apis(api_id: Optional[str] = None,
              output_file: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApisResult:
     """
-    This data source provides the apis of the current Alibaba Cloud user.
+    This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.22.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    data_apigatway_apis = alicloud.apigateway.get_apis(output_file="output_ApiGatawayApis")
-    pulumi.export("firstApiId", data_apigatway["apis"][0]["id"])
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.apigateway.Group("default",
+        name=name,
+        description=name)
+    default_api = alicloud.apigateway.Api("default",
+        group_id=default.id,
+        name=name,
+        description=name,
+        auth_type="APP",
+        service_type="HTTP",
+        request_config=alicloud.apigateway.ApiRequestConfigArgs(
+            protocol="HTTP",
+            method="GET",
+            path="/test/path",
+            mode="MAPPING",
+        ),
+        http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
+            address="http://apigateway-backend.alicloudapi.com:8080",
+            method="GET",
+            path="/web/cloudapi",
+            timeout=20,
+            aone_name="cloudapi-openapi",
+        ),
+        request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
+            name=name,
+            type="STRING",
+            required="OPTIONAL",
+            in_="QUERY",
+            in_service="QUERY",
+            name_service=name,
+        )])
+    ids = alicloud.apigateway.get_apis_output(ids=[default_api.id])
+    pulumi.export("apiGatewayApisId0", ids.apis[0].id)
     ```
 
 
-    :param str api_id: (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
-    :param str group_id: ID of the specified group.
-    :param Sequence[str] ids: A list of api IDs.
-    :param str name_regex: A regex string to filter api gateway apis by name.
+    :param str api_id: The ID of the API.
+    :param str group_id: The ID of the API group.
+    :param Sequence[str] ids: A list of API IDs.
+    :param str name_regex: A regex string to filter results by API name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -177,23 +212,61 @@ def get_apis_output(api_id: Optional[pulumi.Input[Optional[str]]] = None,
                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApisResult]:
     """
-    This data source provides the apis of the current Alibaba Cloud user.
+    This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.22.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    data_apigatway_apis = alicloud.apigateway.get_apis(output_file="output_ApiGatawayApis")
-    pulumi.export("firstApiId", data_apigatway["apis"][0]["id"])
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.apigateway.Group("default",
+        name=name,
+        description=name)
+    default_api = alicloud.apigateway.Api("default",
+        group_id=default.id,
+        name=name,
+        description=name,
+        auth_type="APP",
+        service_type="HTTP",
+        request_config=alicloud.apigateway.ApiRequestConfigArgs(
+            protocol="HTTP",
+            method="GET",
+            path="/test/path",
+            mode="MAPPING",
+        ),
+        http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
+            address="http://apigateway-backend.alicloudapi.com:8080",
+            method="GET",
+            path="/web/cloudapi",
+            timeout=20,
+            aone_name="cloudapi-openapi",
+        ),
+        request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
+            name=name,
+            type="STRING",
+            required="OPTIONAL",
+            in_="QUERY",
+            in_service="QUERY",
+            name_service=name,
+        )])
+    ids = alicloud.apigateway.get_apis_output(ids=[default_api.id])
+    pulumi.export("apiGatewayApisId0", ids.apis[0].id)
     ```
 
 
-    :param str api_id: (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
-    :param str group_id: ID of the specified group.
-    :param Sequence[str] ids: A list of api IDs.
-    :param str name_regex: A regex string to filter api gateway apis by name.
+    :param str api_id: The ID of the API.
+    :param str group_id: The ID of the API group.
+    :param Sequence[str] ids: A list of API IDs.
+    :param str name_regex: A regex string to filter results by API name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

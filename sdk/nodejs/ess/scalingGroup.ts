@@ -133,6 +133,10 @@ export class ScalingGroup extends pulumi.CustomResource {
     }
 
     /**
+     * If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
+     */
+    public readonly albServerGroups!: pulumi.Output<outputs.ess.ScalingGroupAlbServerGroup[] | undefined>;
+    /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -163,7 +167,7 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly launchTemplateId!: pulumi.Output<string | undefined>;
     /**
-     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
      */
     public readonly launchTemplateOverrides!: pulumi.Output<outputs.ess.ScalingGroupLaunchTemplateOverride[] | undefined>;
     /**
@@ -214,6 +218,10 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly removalPolicies!: pulumi.Output<string[]>;
     /**
+     * The ID of the resource group to which you want to add the scaling group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      */
     public readonly scalingGroupName!: pulumi.Output<string | undefined>;
@@ -255,6 +263,7 @@ export class ScalingGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ScalingGroupState | undefined;
+            resourceInputs["albServerGroups"] = state ? state.albServerGroups : undefined;
             resourceInputs["dbInstanceIds"] = state ? state.dbInstanceIds : undefined;
             resourceInputs["defaultCooldown"] = state ? state.defaultCooldown : undefined;
             resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
@@ -272,6 +281,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["onDemandPercentageAboveBaseCapacity"] = state ? state.onDemandPercentageAboveBaseCapacity : undefined;
             resourceInputs["protectedInstances"] = state ? state.protectedInstances : undefined;
             resourceInputs["removalPolicies"] = state ? state.removalPolicies : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["scalingGroupName"] = state ? state.scalingGroupName : undefined;
             resourceInputs["spotInstancePools"] = state ? state.spotInstancePools : undefined;
             resourceInputs["spotInstanceRemedy"] = state ? state.spotInstanceRemedy : undefined;
@@ -286,6 +296,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             if ((!args || args.minSize === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'minSize'");
             }
+            resourceInputs["albServerGroups"] = args ? args.albServerGroups : undefined;
             resourceInputs["dbInstanceIds"] = args ? args.dbInstanceIds : undefined;
             resourceInputs["defaultCooldown"] = args ? args.defaultCooldown : undefined;
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
@@ -303,6 +314,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["onDemandPercentageAboveBaseCapacity"] = args ? args.onDemandPercentageAboveBaseCapacity : undefined;
             resourceInputs["protectedInstances"] = args ? args.protectedInstances : undefined;
             resourceInputs["removalPolicies"] = args ? args.removalPolicies : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["scalingGroupName"] = args ? args.scalingGroupName : undefined;
             resourceInputs["spotInstancePools"] = args ? args.spotInstancePools : undefined;
             resourceInputs["spotInstanceRemedy"] = args ? args.spotInstanceRemedy : undefined;
@@ -319,6 +331,10 @@ export class ScalingGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ScalingGroup resources.
  */
 export interface ScalingGroupState {
+    /**
+     * If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
+     */
+    albServerGroups?: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupAlbServerGroup>[]>;
     /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
@@ -350,7 +366,7 @@ export interface ScalingGroupState {
      */
     launchTemplateId?: pulumi.Input<string>;
     /**
-     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
      */
     launchTemplateOverrides?: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupLaunchTemplateOverride>[]>;
     /**
@@ -401,6 +417,10 @@ export interface ScalingGroupState {
      */
     removalPolicies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The ID of the resource group to which you want to add the scaling group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      */
     scalingGroupName?: pulumi.Input<string>;
@@ -435,6 +455,10 @@ export interface ScalingGroupState {
  */
 export interface ScalingGroupArgs {
     /**
+     * If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
+     */
+    albServerGroups?: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupAlbServerGroup>[]>;
+    /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -465,7 +489,7 @@ export interface ScalingGroupArgs {
      */
     launchTemplateId?: pulumi.Input<string>;
     /**
-     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+     * The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
      */
     launchTemplateOverrides?: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupLaunchTemplateOverride>[]>;
     /**
@@ -515,6 +539,10 @@ export interface ScalingGroupArgs {
      * - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
      */
     removalPolicies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the resource group to which you want to add the scaling group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      */

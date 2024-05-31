@@ -7,18 +7,56 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the apis of the current Alibaba Cloud user.
+ * This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.22.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const dataApigatwayApis = alicloud.apigateway.getApis({
- *     outputFile: "output_ApiGatawayApis",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.apigateway.Group("default", {
+ *     name: name,
+ *     description: name,
  * });
- * export const firstApiId = dataApigatway.apis[0].id;
+ * const defaultApi = new alicloud.apigateway.Api("default", {
+ *     groupId: _default.id,
+ *     name: name,
+ *     description: name,
+ *     authType: "APP",
+ *     serviceType: "HTTP",
+ *     requestConfig: {
+ *         protocol: "HTTP",
+ *         method: "GET",
+ *         path: "/test/path",
+ *         mode: "MAPPING",
+ *     },
+ *     httpServiceConfig: {
+ *         address: "http://apigateway-backend.alicloudapi.com:8080",
+ *         method: "GET",
+ *         path: "/web/cloudapi",
+ *         timeout: 20,
+ *         aoneName: "cloudapi-openapi",
+ *     },
+ *     requestParameters: [{
+ *         name: name,
+ *         type: "STRING",
+ *         required: "OPTIONAL",
+ *         "in": "QUERY",
+ *         inService: "QUERY",
+ *         nameService: name,
+ *     }],
+ * });
+ * const ids = alicloud.apigateway.getApisOutput({
+ *     ids: [defaultApi.id],
+ * });
+ * export const apiGatewayApisId0 = ids.apply(ids => ids.apis?.[0]?.id);
  * ```
  */
 export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promise<GetApisResult> {
@@ -39,21 +77,19 @@ export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promis
  */
 export interface GetApisArgs {
     /**
-     * (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
-     *
-     * @deprecated Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
+     * The ID of the API.
      */
     apiId?: string;
     /**
-     * ID of the specified group.
+     * The ID of the API group.
      */
     groupId?: string;
     /**
-     * A list of api IDs.
+     * A list of API IDs.
      */
     ids?: string[];
     /**
-     * A regex string to filter api gateway apis by name.
+     * A regex string to filter results by API name.
      */
     nameRegex?: string;
     /**
@@ -67,45 +103,80 @@ export interface GetApisArgs {
  */
 export interface GetApisResult {
     /**
-     * @deprecated Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
+     * (Available since v1.224.0) The ID of the API.
      */
     readonly apiId?: string;
     /**
-     * A list of apis. Each element contains the following attributes:
+     * A list of APIs. Each element contains the following attributes:
      */
     readonly apis: outputs.apigateway.GetApisApi[];
     /**
-     * The group id that the apis belong to.
+     * The ID of the API group.
      */
     readonly groupId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of api IDs.
-     */
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of api names.
+     * A list of API names.
      */
     readonly names: string[];
     readonly outputFile?: string;
 }
 /**
- * This data source provides the apis of the current Alibaba Cloud user.
+ * This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.22.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const dataApigatwayApis = alicloud.apigateway.getApis({
- *     outputFile: "output_ApiGatawayApis",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.apigateway.Group("default", {
+ *     name: name,
+ *     description: name,
  * });
- * export const firstApiId = dataApigatway.apis[0].id;
+ * const defaultApi = new alicloud.apigateway.Api("default", {
+ *     groupId: _default.id,
+ *     name: name,
+ *     description: name,
+ *     authType: "APP",
+ *     serviceType: "HTTP",
+ *     requestConfig: {
+ *         protocol: "HTTP",
+ *         method: "GET",
+ *         path: "/test/path",
+ *         mode: "MAPPING",
+ *     },
+ *     httpServiceConfig: {
+ *         address: "http://apigateway-backend.alicloudapi.com:8080",
+ *         method: "GET",
+ *         path: "/web/cloudapi",
+ *         timeout: 20,
+ *         aoneName: "cloudapi-openapi",
+ *     },
+ *     requestParameters: [{
+ *         name: name,
+ *         type: "STRING",
+ *         required: "OPTIONAL",
+ *         "in": "QUERY",
+ *         inService: "QUERY",
+ *         nameService: name,
+ *     }],
+ * });
+ * const ids = alicloud.apigateway.getApisOutput({
+ *     ids: [defaultApi.id],
+ * });
+ * export const apiGatewayApisId0 = ids.apply(ids => ids.apis?.[0]?.id);
  * ```
  */
 export function getApisOutput(args?: GetApisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApisResult> {
@@ -117,21 +188,19 @@ export function getApisOutput(args?: GetApisOutputArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetApisOutputArgs {
     /**
-     * (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
-     *
-     * @deprecated Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
+     * The ID of the API.
      */
     apiId?: pulumi.Input<string>;
     /**
-     * ID of the specified group.
+     * The ID of the API group.
      */
     groupId?: pulumi.Input<string>;
     /**
-     * A list of api IDs.
+     * A list of API IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A regex string to filter api gateway apis by name.
+     * A regex string to filter results by API name.
      */
     nameRegex?: pulumi.Input<string>;
     /**

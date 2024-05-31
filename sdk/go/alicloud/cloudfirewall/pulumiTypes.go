@@ -1802,6 +1802,130 @@ func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOut
 	}).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput)
 }
 
+type NatFirewallNatRouteEntryList struct {
+	// The destination network segment of the default route.
+	DestinationCidr string `pulumi:"destinationCidr"`
+	// The next hop address of the original NAT gateway.
+	NexthopId string `pulumi:"nexthopId"`
+	// The network type of the next hop. Value: NatGateway : NAT Gateway.
+	NexthopType string `pulumi:"nexthopType"`
+	// The route table where the default route of the NAT gateway is located.
+	RouteTableId string `pulumi:"routeTableId"`
+}
+
+// NatFirewallNatRouteEntryListInput is an input type that accepts NatFirewallNatRouteEntryListArgs and NatFirewallNatRouteEntryListOutput values.
+// You can construct a concrete instance of `NatFirewallNatRouteEntryListInput` via:
+//
+//	NatFirewallNatRouteEntryListArgs{...}
+type NatFirewallNatRouteEntryListInput interface {
+	pulumi.Input
+
+	ToNatFirewallNatRouteEntryListOutput() NatFirewallNatRouteEntryListOutput
+	ToNatFirewallNatRouteEntryListOutputWithContext(context.Context) NatFirewallNatRouteEntryListOutput
+}
+
+type NatFirewallNatRouteEntryListArgs struct {
+	// The destination network segment of the default route.
+	DestinationCidr pulumi.StringInput `pulumi:"destinationCidr"`
+	// The next hop address of the original NAT gateway.
+	NexthopId pulumi.StringInput `pulumi:"nexthopId"`
+	// The network type of the next hop. Value: NatGateway : NAT Gateway.
+	NexthopType pulumi.StringInput `pulumi:"nexthopType"`
+	// The route table where the default route of the NAT gateway is located.
+	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
+}
+
+func (NatFirewallNatRouteEntryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatFirewallNatRouteEntryList)(nil)).Elem()
+}
+
+func (i NatFirewallNatRouteEntryListArgs) ToNatFirewallNatRouteEntryListOutput() NatFirewallNatRouteEntryListOutput {
+	return i.ToNatFirewallNatRouteEntryListOutputWithContext(context.Background())
+}
+
+func (i NatFirewallNatRouteEntryListArgs) ToNatFirewallNatRouteEntryListOutputWithContext(ctx context.Context) NatFirewallNatRouteEntryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatFirewallNatRouteEntryListOutput)
+}
+
+// NatFirewallNatRouteEntryListArrayInput is an input type that accepts NatFirewallNatRouteEntryListArray and NatFirewallNatRouteEntryListArrayOutput values.
+// You can construct a concrete instance of `NatFirewallNatRouteEntryListArrayInput` via:
+//
+//	NatFirewallNatRouteEntryListArray{ NatFirewallNatRouteEntryListArgs{...} }
+type NatFirewallNatRouteEntryListArrayInput interface {
+	pulumi.Input
+
+	ToNatFirewallNatRouteEntryListArrayOutput() NatFirewallNatRouteEntryListArrayOutput
+	ToNatFirewallNatRouteEntryListArrayOutputWithContext(context.Context) NatFirewallNatRouteEntryListArrayOutput
+}
+
+type NatFirewallNatRouteEntryListArray []NatFirewallNatRouteEntryListInput
+
+func (NatFirewallNatRouteEntryListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NatFirewallNatRouteEntryList)(nil)).Elem()
+}
+
+func (i NatFirewallNatRouteEntryListArray) ToNatFirewallNatRouteEntryListArrayOutput() NatFirewallNatRouteEntryListArrayOutput {
+	return i.ToNatFirewallNatRouteEntryListArrayOutputWithContext(context.Background())
+}
+
+func (i NatFirewallNatRouteEntryListArray) ToNatFirewallNatRouteEntryListArrayOutputWithContext(ctx context.Context) NatFirewallNatRouteEntryListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatFirewallNatRouteEntryListArrayOutput)
+}
+
+type NatFirewallNatRouteEntryListOutput struct{ *pulumi.OutputState }
+
+func (NatFirewallNatRouteEntryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatFirewallNatRouteEntryList)(nil)).Elem()
+}
+
+func (o NatFirewallNatRouteEntryListOutput) ToNatFirewallNatRouteEntryListOutput() NatFirewallNatRouteEntryListOutput {
+	return o
+}
+
+func (o NatFirewallNatRouteEntryListOutput) ToNatFirewallNatRouteEntryListOutputWithContext(ctx context.Context) NatFirewallNatRouteEntryListOutput {
+	return o
+}
+
+// The destination network segment of the default route.
+func (o NatFirewallNatRouteEntryListOutput) DestinationCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v NatFirewallNatRouteEntryList) string { return v.DestinationCidr }).(pulumi.StringOutput)
+}
+
+// The next hop address of the original NAT gateway.
+func (o NatFirewallNatRouteEntryListOutput) NexthopId() pulumi.StringOutput {
+	return o.ApplyT(func(v NatFirewallNatRouteEntryList) string { return v.NexthopId }).(pulumi.StringOutput)
+}
+
+// The network type of the next hop. Value: NatGateway : NAT Gateway.
+func (o NatFirewallNatRouteEntryListOutput) NexthopType() pulumi.StringOutput {
+	return o.ApplyT(func(v NatFirewallNatRouteEntryList) string { return v.NexthopType }).(pulumi.StringOutput)
+}
+
+// The route table where the default route of the NAT gateway is located.
+func (o NatFirewallNatRouteEntryListOutput) RouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v NatFirewallNatRouteEntryList) string { return v.RouteTableId }).(pulumi.StringOutput)
+}
+
+type NatFirewallNatRouteEntryListArrayOutput struct{ *pulumi.OutputState }
+
+func (NatFirewallNatRouteEntryListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NatFirewallNatRouteEntryList)(nil)).Elem()
+}
+
+func (o NatFirewallNatRouteEntryListArrayOutput) ToNatFirewallNatRouteEntryListArrayOutput() NatFirewallNatRouteEntryListArrayOutput {
+	return o
+}
+
+func (o NatFirewallNatRouteEntryListArrayOutput) ToNatFirewallNatRouteEntryListArrayOutputWithContext(ctx context.Context) NatFirewallNatRouteEntryListArrayOutput {
+	return o
+}
+
+func (o NatFirewallNatRouteEntryListArrayOutput) Index(i pulumi.IntInput) NatFirewallNatRouteEntryListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NatFirewallNatRouteEntryList {
+		return vs[0].([]NatFirewallNatRouteEntryList)[vs[1].(int)]
+	}).(NatFirewallNatRouteEntryListOutput)
+}
+
 type GetAddressBooksBook struct {
 	// The addresses in the Address Book.
 	AddressLists []string `pulumi:"addressLists"`
@@ -4623,6 +4747,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayInput)(nil)).Elem(), FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListInput)(nil)).Elem(), FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput)(nil)).Elem(), FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NatFirewallNatRouteEntryListInput)(nil)).Elem(), NatFirewallNatRouteEntryListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NatFirewallNatRouteEntryListArrayInput)(nil)).Elem(), NatFirewallNatRouteEntryListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookInput)(nil)).Elem(), GetAddressBooksBookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookArrayInput)(nil)).Elem(), GetAddressBooksBookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookEcsTagInput)(nil)).Elem(), GetAddressBooksBookEcsTagArgs{})
@@ -4681,6 +4807,8 @@ func init() {
 	pulumi.RegisterOutputType(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput{})
 	pulumi.RegisterOutputType(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput{})
 	pulumi.RegisterOutputType(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput{})
+	pulumi.RegisterOutputType(NatFirewallNatRouteEntryListOutput{})
+	pulumi.RegisterOutputType(NatFirewallNatRouteEntryListArrayOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookArrayOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookEcsTagOutput{})

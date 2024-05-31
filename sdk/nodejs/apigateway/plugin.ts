@@ -19,15 +19,46 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform_example";
  * const _default = new alicloud.apigateway.Plugin("default", {
- *     description: "tf_example",
- *     pluginName: "tf_example",
- *     pluginData: "{\"allowOrigins\": \"api.foo.com\",\"allowMethods\": \"GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\",\"allowHeaders\": \"Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid\",\"exposeHeaders\": \"Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message\",\"maxAge\": 172800,\"allowCredentials\": true}",
- *     pluginType: "cors",
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
+ *     description: name,
+ *     pluginName: name,
+ *     pluginData: JSON.stringify({
+ *         routes: [
+ *             {
+ *                 name: "Vip",
+ *                 condition: "$CaAppId = 123456",
+ *                 backend: {
+ *                     type: "HTTP-VPC",
+ *                     vpcAccessName: "slbAccessForVip",
+ *                 },
+ *             },
+ *             {
+ *                 name: "MockForOldClient",
+ *                 condition: "$ClientVersion < '2.0.5'",
+ *                 backend: {
+ *                     type: "MOCK",
+ *                     statusCode: 400,
+ *                     mockBody: "This version is not supported!!!",
+ *                 },
+ *             },
+ *             {
+ *                 name: "BlueGreenPercent05",
+ *                 condition: "1 = 1",
+ *                 backend: {
+ *                     type: "HTTP",
+ *                     address: "https://beta-version.api.foo.com",
+ *                 },
+ *                 "constant-parameters": [{
+ *                     name: "x-route-blue-green",
+ *                     location: "header",
+ *                     value: "route-blue-green",
+ *                 }],
+ *             },
+ *         ],
+ *     }),
+ *     pluginType: "routing",
  * });
  * ```
  *
@@ -68,6 +99,10 @@ export class Plugin extends pulumi.CustomResource {
     }
 
     /**
+     * Create time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * The description of the plug-in, which cannot exceed 200 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -80,17 +115,25 @@ export class Plugin extends pulumi.CustomResource {
      */
     public readonly pluginName!: pulumi.Output<string>;
     /**
-     * The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-     * - ipControl: indicates IP address-based access control.
-     * - trafficControl: indicates throttling.
-     * - backendSignature: indicates backend signature.
-     * - jwtAuth: indicates JWT (OpenId Connect).
-     * - cors: indicates cross-origin resource access (CORS).
-     * - caching: indicates caching.
+     * The type of the plug-in. Valid values:
+     * - "trafficControl"
+     * - "ipControl"
+     * - "backendSignature"
+     * - "jwtAuth"
+     * - "basicAuth"
+     * - "cors"
+     * - "caching"
+     * - "routing"
+     * - "accessControl"
+     * - "errorMapping"
+     * - "circuitBreaker"
+     * - "remoteAuth"
+     * - "logMask"
+     * - "transformer".
      */
     public readonly pluginType!: pulumi.Output<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
@@ -107,6 +150,7 @@ export class Plugin extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PluginState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["pluginData"] = state ? state.pluginData : undefined;
             resourceInputs["pluginName"] = state ? state.pluginName : undefined;
@@ -128,6 +172,7 @@ export class Plugin extends pulumi.CustomResource {
             resourceInputs["pluginName"] = args ? args.pluginName : undefined;
             resourceInputs["pluginType"] = args ? args.pluginType : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Plugin.__pulumiType, name, resourceInputs, opts);
@@ -138,6 +183,10 @@ export class Plugin extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Plugin resources.
  */
 export interface PluginState {
+    /**
+     * Create time.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * The description of the plug-in, which cannot exceed 200 characters.
      */
@@ -151,17 +200,25 @@ export interface PluginState {
      */
     pluginName?: pulumi.Input<string>;
     /**
-     * The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-     * - ipControl: indicates IP address-based access control.
-     * - trafficControl: indicates throttling.
-     * - backendSignature: indicates backend signature.
-     * - jwtAuth: indicates JWT (OpenId Connect).
-     * - cors: indicates cross-origin resource access (CORS).
-     * - caching: indicates caching.
+     * The type of the plug-in. Valid values:
+     * - "trafficControl"
+     * - "ipControl"
+     * - "backendSignature"
+     * - "jwtAuth"
+     * - "basicAuth"
+     * - "cors"
+     * - "caching"
+     * - "routing"
+     * - "accessControl"
+     * - "errorMapping"
+     * - "circuitBreaker"
+     * - "remoteAuth"
+     * - "logMask"
+     * - "transformer".
      */
     pluginType?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }
@@ -183,17 +240,25 @@ export interface PluginArgs {
      */
     pluginName: pulumi.Input<string>;
     /**
-     * The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-     * - ipControl: indicates IP address-based access control.
-     * - trafficControl: indicates throttling.
-     * - backendSignature: indicates backend signature.
-     * - jwtAuth: indicates JWT (OpenId Connect).
-     * - cors: indicates cross-origin resource access (CORS).
-     * - caching: indicates caching.
+     * The type of the plug-in. Valid values:
+     * - "trafficControl"
+     * - "ipControl"
+     * - "backendSignature"
+     * - "jwtAuth"
+     * - "basicAuth"
+     * - "cors"
+     * - "caching"
+     * - "routing"
+     * - "accessControl"
+     * - "errorMapping"
+     * - "circuitBreaker"
+     * - "remoteAuth"
+     * - "logMask"
+     * - "transformer".
      */
     pluginType: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -515,6 +515,14 @@
             "alicloud_amqp_virtual_host": {
                 "current": "alicloud:amqp/virtualHost:VirtualHost"
             },
+            "alicloud_api_gateway_access_control_list": {
+                "current": "alicloud:apigateway/accessControlList:AccessControlList",
+                "fields": {
+                    "acl_entrys": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_api_gateway_api": {
                 "current": "alicloud:apigateway/api:Api",
                 "fields": {
@@ -1190,6 +1198,25 @@
             },
             "alicloud_cloud_firewall_instance_member": {
                 "current": "alicloud:cloudfirewall/instanceMember:InstanceMember"
+            },
+            "alicloud_cloud_firewall_nat_firewall": {
+                "current": "alicloud:cloudfirewall/natFirewall:NatFirewall",
+                "fields": {
+                    "nat_route_entry_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_cloud_firewall_nat_firewall_control_policy": {
+                "current": "alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy",
+                "fields": {
+                    "application_name_list": {
+                        "maxItemsOne": false
+                    },
+                    "repeat_days": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_cloud_firewall_vpc_firewall": {
                 "current": "alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall",
@@ -3896,6 +3923,9 @@
             "alicloud_ess_scaling_group": {
                 "current": "alicloud:ess/scalingGroup:ScalingGroup",
                 "fields": {
+                    "alb_server_group": {
+                        "maxItemsOne": false
+                    },
                     "db_instance_ids": {
                         "maxItemsOne": false
                     },
@@ -5156,6 +5186,24 @@
             "alicloud_nas_access_group": {
                 "current": "alicloud:nas/accessGroup:AccessGroup"
             },
+            "alicloud_nas_access_point": {
+                "current": "alicloud:nas/accessPoint:AccessPoint",
+                "fields": {
+                    "posix_user": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "posix_secondary_group_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "root_path_permission": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "alicloud_nas_access_rule": {
                 "current": "alicloud:nas/accessRule:AccessRule"
             },
@@ -5401,6 +5449,9 @@
                     }
                 }
             },
+            "alicloud_oss_account_public_access_block": {
+                "current": "alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock"
+            },
             "alicloud_oss_bucket": {
                 "current": "alicloud:oss/bucket:Bucket",
                 "fields": {
@@ -5492,6 +5543,9 @@
                     }
                 }
             },
+            "alicloud_oss_bucket_access_monitor": {
+                "current": "alicloud:oss/bucketAccessMonitor:BucketAccessMonitor"
+            },
             "alicloud_oss_bucket_acl": {
                 "current": "alicloud:oss/bucketAcl:BucketAcl"
             },
@@ -5519,6 +5573,9 @@
                     }
                 }
             },
+            "alicloud_oss_bucket_data_redundancy_transition": {
+                "current": "alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition"
+            },
             "alicloud_oss_bucket_https_config": {
                 "current": "alicloud:oss/bucketHttpsConfig:BucketHttpsConfig",
                 "fields": {
@@ -5530,11 +5587,17 @@
             "alicloud_oss_bucket_logging": {
                 "current": "alicloud:oss/bucketLogging:BucketLogging"
             },
+            "alicloud_oss_bucket_meta_query": {
+                "current": "alicloud:oss/bucketMetaQuery:BucketMetaQuery"
+            },
             "alicloud_oss_bucket_object": {
                 "current": "alicloud:oss/bucketObject:BucketObject"
             },
             "alicloud_oss_bucket_policy": {
                 "current": "alicloud:oss/bucketPolicy:BucketPolicy"
+            },
+            "alicloud_oss_bucket_public_access_block": {
+                "current": "alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock"
             },
             "alicloud_oss_bucket_referer": {
                 "current": "alicloud:oss/bucketReferer:BucketReferer",
@@ -5586,6 +5649,20 @@
             },
             "alicloud_oss_bucket_server_side_encryption": {
                 "current": "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption"
+            },
+            "alicloud_oss_bucket_transfer_acceleration": {
+                "current": "alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration"
+            },
+            "alicloud_oss_bucket_user_defined_log_fields": {
+                "current": "alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields",
+                "fields": {
+                    "header_set": {
+                        "maxItemsOne": false
+                    },
+                    "param_set": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_oss_bucket_versioning": {
                 "current": "alicloud:oss/bucketVersioning:BucketVersioning"
@@ -6849,6 +6926,17 @@
                         }
                     },
                     "schedule": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "alicloud_sls_scheduled_sql": {
+                "current": "alicloud:sls/scheduledSql:ScheduledSql",
+                "fields": {
+                    "schedule": {
+                        "maxItemsOne": true
+                    },
+                    "scheduled_sql_configuration": {
                         "maxItemsOne": true
                     }
                 }
@@ -9389,6 +9477,9 @@
                         }
                     },
                     "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
                         "maxItemsOne": false
                     }
                 }

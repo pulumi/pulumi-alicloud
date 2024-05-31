@@ -139,6 +139,12 @@ namespace Pulumi.AliCloud.Ess
     public partial class ScalingGroup : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+        /// </summary>
+        [Output("albServerGroups")]
+        public Output<ImmutableArray<Outputs.ScalingGroupAlbServerGroup>> AlbServerGroups { get; private set; } = null!;
+
+        /// <summary>
         /// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
         /// - The specified RDS instance must be in running status.
         /// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -183,7 +189,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> LaunchTemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
         /// </summary>
         [Output("launchTemplateOverrides")]
         public Output<ImmutableArray<Outputs.ScalingGroupLaunchTemplateOverride>> LaunchTemplateOverrides { get; private set; } = null!;
@@ -252,6 +258,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("removalPolicies")]
         public Output<ImmutableArray<string>> RemovalPolicies { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group to which you want to add the scaling group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
@@ -337,6 +349,18 @@ namespace Pulumi.AliCloud.Ess
 
     public sealed class ScalingGroupArgs : global::Pulumi.ResourceArgs
     {
+        [Input("albServerGroups")]
+        private InputList<Inputs.ScalingGroupAlbServerGroupArgs>? _albServerGroups;
+
+        /// <summary>
+        /// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+        /// </summary>
+        public InputList<Inputs.ScalingGroupAlbServerGroupArgs> AlbServerGroups
+        {
+            get => _albServerGroups ?? (_albServerGroups = new InputList<Inputs.ScalingGroupAlbServerGroupArgs>());
+            set => _albServerGroups = value;
+        }
+
         [Input("dbInstanceIds")]
         private InputList<string>? _dbInstanceIds;
 
@@ -391,7 +415,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingGroupLaunchTemplateOverrideArgs>? _launchTemplateOverrides;
 
         /// <summary>
-        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
         /// </summary>
         public InputList<Inputs.ScalingGroupLaunchTemplateOverrideArgs> LaunchTemplateOverrides
         {
@@ -483,6 +507,12 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
+        /// The ID of the resource group to which you want to add the scaling group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
         /// </summary>
         [Input("scalingGroupName")]
@@ -540,6 +570,18 @@ namespace Pulumi.AliCloud.Ess
 
     public sealed class ScalingGroupState : global::Pulumi.ResourceArgs
     {
+        [Input("albServerGroups")]
+        private InputList<Inputs.ScalingGroupAlbServerGroupGetArgs>? _albServerGroups;
+
+        /// <summary>
+        /// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
+        /// </summary>
+        public InputList<Inputs.ScalingGroupAlbServerGroupGetArgs> AlbServerGroups
+        {
+            get => _albServerGroups ?? (_albServerGroups = new InputList<Inputs.ScalingGroupAlbServerGroupGetArgs>());
+            set => _albServerGroups = value;
+        }
+
         [Input("dbInstanceIds")]
         private InputList<string>? _dbInstanceIds;
 
@@ -594,7 +636,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingGroupLaunchTemplateOverrideGetArgs>? _launchTemplateOverrides;
 
         /// <summary>
-        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launch_template_override` below for details.
+        /// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
         /// </summary>
         public InputList<Inputs.ScalingGroupLaunchTemplateOverrideGetArgs> LaunchTemplateOverrides
         {
@@ -684,6 +726,12 @@ namespace Pulumi.AliCloud.Ess
             get => _removalPolicies ?? (_removalPolicies = new InputList<string>());
             set => _removalPolicies = value;
         }
+
+        /// <summary>
+        /// The ID of the resource group to which you want to add the scaling group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.

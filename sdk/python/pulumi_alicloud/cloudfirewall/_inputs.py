@@ -21,6 +21,7 @@ __all__ = [
     'FirewallVpcFirewallPeerVpcArgs',
     'FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs',
     'FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs',
+    'NatFirewallNatRouteEntryListArgs',
 ]
 
 @pulumi.input_type
@@ -795,5 +796,72 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs:
     @peer_next_hop_instance_id.setter
     def peer_next_hop_instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "peer_next_hop_instance_id", value)
+
+
+@pulumi.input_type
+class NatFirewallNatRouteEntryListArgs:
+    def __init__(__self__, *,
+                 destination_cidr: pulumi.Input[str],
+                 nexthop_id: pulumi.Input[str],
+                 nexthop_type: pulumi.Input[str],
+                 route_table_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] destination_cidr: The destination network segment of the default route.
+        :param pulumi.Input[str] nexthop_id: The next hop address of the original NAT gateway.
+        :param pulumi.Input[str] nexthop_type: The network type of the next hop. Value: NatGateway : NAT Gateway.
+        :param pulumi.Input[str] route_table_id: The route table where the default route of the NAT gateway is located.
+        """
+        pulumi.set(__self__, "destination_cidr", destination_cidr)
+        pulumi.set(__self__, "nexthop_id", nexthop_id)
+        pulumi.set(__self__, "nexthop_type", nexthop_type)
+        pulumi.set(__self__, "route_table_id", route_table_id)
+
+    @property
+    @pulumi.getter(name="destinationCidr")
+    def destination_cidr(self) -> pulumi.Input[str]:
+        """
+        The destination network segment of the default route.
+        """
+        return pulumi.get(self, "destination_cidr")
+
+    @destination_cidr.setter
+    def destination_cidr(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination_cidr", value)
+
+    @property
+    @pulumi.getter(name="nexthopId")
+    def nexthop_id(self) -> pulumi.Input[str]:
+        """
+        The next hop address of the original NAT gateway.
+        """
+        return pulumi.get(self, "nexthop_id")
+
+    @nexthop_id.setter
+    def nexthop_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "nexthop_id", value)
+
+    @property
+    @pulumi.getter(name="nexthopType")
+    def nexthop_type(self) -> pulumi.Input[str]:
+        """
+        The network type of the next hop. Value: NatGateway : NAT Gateway.
+        """
+        return pulumi.get(self, "nexthop_type")
+
+    @nexthop_type.setter
+    def nexthop_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "nexthop_type", value)
+
+    @property
+    @pulumi.getter(name="routeTableId")
+    def route_table_id(self) -> pulumi.Input[str]:
+        """
+        The route table where the default route of the NAT gateway is located.
+        """
+        return pulumi.get(self, "route_table_id")
+
+    @route_table_id.setter
+    def route_table_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "route_table_id", value)
 
 

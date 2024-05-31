@@ -3106,6 +3106,8 @@ class GetTransitRouterVbrAttachmentsAttachmentResult(dict):
 @pulumi.output_type
 class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
     def __init__(__self__, *,
+                 auto_publish_route_enabled: bool,
+                 cen_id: str,
                  id: str,
                  payment_type: str,
                  resource_type: str,
@@ -3113,21 +3115,26 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
                  transit_router_attachment_description: str,
                  transit_router_attachment_id: str,
                  transit_router_attachment_name: str,
+                 transit_router_id: str,
                  vpc_id: str,
                  vpc_owner_id: str,
                  zone_mappings: Sequence['outputs.GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult']):
         """
-        :param str id: The ID of the transit router.
+        :param bool auto_publish_route_enabled: (Available since v1.224.0) Whether the transit router is automatically published to the VPC instance.
+        :param str cen_id: The ID of the CEN instance.
         :param str payment_type: The payment type of the resource.
-        :param str resource_type: Type of the resource.
-        :param str status: The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
-        :param str transit_router_attachment_description: The description of transit router attachment.
-        :param str transit_router_attachment_id: ID of the transit router VBR attachment.
-        :param str transit_router_attachment_name: Name of the transit router attachment.
-        :param str vpc_id: ID of the VPC.
+        :param str resource_type: The resource type of the Transit Router VPC Attachment.
+        :param str status: The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
+        :param str transit_router_attachment_description: The description of the Transit Router VPC Attachment.
+        :param str transit_router_attachment_id: The ID of the Transit Router VPC Attachment.
+        :param str transit_router_attachment_name: The name of the Transit Router VPC Attachment.
+        :param str transit_router_id: The ID of the transit router.
+        :param str vpc_id: The ID of the VPC.
         :param str vpc_owner_id: The Owner ID of the VPC.
-        :param Sequence['GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs'] zone_mappings: The mappings of zone
+        :param Sequence['GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs'] zone_mappings: The list of zone mapping of the VPC.
         """
+        pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
+        pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "resource_type", resource_type)
@@ -3135,16 +3142,30 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
         pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
         pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
         pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vpc_owner_id", vpc_owner_id)
         pulumi.set(__self__, "zone_mappings", zone_mappings)
 
     @property
+    @pulumi.getter(name="autoPublishRouteEnabled")
+    def auto_publish_route_enabled(self) -> bool:
+        """
+        (Available since v1.224.0) Whether the transit router is automatically published to the VPC instance.
+        """
+        return pulumi.get(self, "auto_publish_route_enabled")
+
+    @property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> str:
+        """
+        The ID of the CEN instance.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the transit router.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -3159,7 +3180,7 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> str:
         """
-        Type of the resource.
+        The resource type of the Transit Router VPC Attachment.
         """
         return pulumi.get(self, "resource_type")
 
@@ -3167,7 +3188,7 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+        The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
         """
         return pulumi.get(self, "status")
 
@@ -3175,7 +3196,7 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="transitRouterAttachmentDescription")
     def transit_router_attachment_description(self) -> str:
         """
-        The description of transit router attachment.
+        The description of the Transit Router VPC Attachment.
         """
         return pulumi.get(self, "transit_router_attachment_description")
 
@@ -3183,7 +3204,7 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> str:
         """
-        ID of the transit router VBR attachment.
+        The ID of the Transit Router VPC Attachment.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -3191,15 +3212,23 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="transitRouterAttachmentName")
     def transit_router_attachment_name(self) -> str:
         """
-        Name of the transit router attachment.
+        The name of the Transit Router VPC Attachment.
         """
         return pulumi.get(self, "transit_router_attachment_name")
+
+    @property
+    @pulumi.getter(name="transitRouterId")
+    def transit_router_id(self) -> str:
+        """
+        The ID of the transit router.
+        """
+        return pulumi.get(self, "transit_router_id")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
         """
-        ID of the VPC.
+        The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -3215,7 +3244,7 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> Sequence['outputs.GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult']:
         """
-        The mappings of zone
+        The list of zone mapping of the VPC.
         """
         return pulumi.get(self, "zone_mappings")
 
@@ -3226,8 +3255,8 @@ class GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult(dict):
                  vswitch_id: str,
                  zone_id: str):
         """
-        :param str vswitch_id: The VSwitch ID.
-        :param str zone_id: The zone ID.
+        :param str vswitch_id: The ID of the vSwitch.
+        :param str zone_id: The ID of the zone.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -3236,7 +3265,7 @@ class GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The VSwitch ID.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -3244,7 +3273,7 @@ class GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        The zone ID.
+        The ID of the zone.
         """
         return pulumi.get(self, "zone_id")
 

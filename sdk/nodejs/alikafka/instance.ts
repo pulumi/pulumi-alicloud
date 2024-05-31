@@ -114,6 +114,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly partitionUsed!: pulumi.Output<number>;
     /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
     public readonly securityGroup!: pulumi.Output<string>;
@@ -211,6 +215,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["partitionLeft"] = state ? state.partitionLeft : undefined;
             resourceInputs["partitionNum"] = state ? state.partitionNum : undefined;
             resourceInputs["partitionUsed"] = state ? state.partitionUsed : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityGroup"] = state ? state.securityGroup : undefined;
             resourceInputs["selectedZones"] = state ? state.selectedZones : undefined;
             resourceInputs["serviceVersion"] = state ? state.serviceVersion : undefined;
@@ -249,6 +254,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["paidType"] = args ? args.paidType : undefined;
             resourceInputs["partitionNum"] = args ? args.partitionNum : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityGroup"] = args ? args.securityGroup : undefined;
             resourceInputs["selectedZones"] = args ? args.selectedZones : undefined;
             resourceInputs["serviceVersion"] = args ? args.serviceVersion : undefined;
@@ -350,6 +356,10 @@ export interface InstanceState {
      * (Available since v1.214.1) The number of used partitions.
      */
     partitionUsed?: pulumi.Input<number>;
+    /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
@@ -471,6 +481,10 @@ export interface InstanceArgs {
      * The number of partitions.
      */
     partitionNum?: pulumi.Input<number>;
+    /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */

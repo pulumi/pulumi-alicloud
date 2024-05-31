@@ -37,14 +37,14 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The instance ID of the exclusive KMS instance.
+     * The ID of the KMS instance.
      * 
      */
     @Import(name="dkmsInstanceId")
     private @Nullable Output<String> dkmsInstanceId;
 
     /**
-     * @return The instance ID of the exclusive KMS instance.
+     * @return The ID of the KMS instance.
      * 
      */
     public Optional<Output<String>> dkmsInstanceId() {
@@ -52,14 +52,14 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable automatic key rotation.
+     * Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="enableAutomaticRotation")
     private @Nullable Output<Boolean> enableAutomaticRotation;
 
     /**
-     * @return Whether to enable automatic key rotation.
+     * @return Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> enableAutomaticRotation() {
@@ -67,14 +67,14 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+     * The ID of the KMS key.
      * 
      */
     @Import(name="encryptionKeyId")
     private @Nullable Output<String> encryptionKeyId;
 
     /**
-     * @return The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+     * @return The ID of the KMS key.
      * 
      */
     public Optional<Output<String>> encryptionKeyId() {
@@ -82,14 +82,14 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      * 
      */
     @Import(name="extendedConfig")
     private @Nullable Output<String> extendedConfig;
 
     /**
-     * @return The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * @return The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      * 
      */
     public Optional<Output<String>> extendedConfig() {
@@ -97,14 +97,14 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
+     * Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="forceDeleteWithoutRecovery")
     private @Nullable Output<Boolean> forceDeleteWithoutRecovery;
 
     /**
-     * @return Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
+     * @return Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> forceDeleteWithoutRecovery() {
@@ -112,14 +112,29 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+     * The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
+     * 
+     */
+    @Import(name="policy")
+    private @Nullable Output<String> policy;
+
+    /**
+     * @return The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
+     * 
+     */
+    public Optional<Output<String>> policy() {
+        return Optional.ofNullable(this.policy);
+    }
+
+    /**
+     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
      * 
      */
     @Import(name="recoveryWindowInDays")
     private @Nullable Output<Integer> recoveryWindowInDays;
 
     /**
-     * @return Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+     * @return Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
      * 
      */
     public Optional<Output<Integer>> recoveryWindowInDays() {
@@ -127,14 +142,14 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+     * The interval for automatic rotation.
      * 
      */
     @Import(name="rotationInterval")
     private @Nullable Output<String> rotationInterval;
 
     /**
-     * @return The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+     * @return The interval for automatic rotation.
      * 
      */
     public Optional<Output<String>> rotationInterval() {
@@ -142,14 +157,14 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+     * The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
      * 
      */
     @Import(name="secretData", required=true)
     private Output<String> secretData;
 
     /**
-     * @return The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+     * @return The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
      * 
      */
     public Output<String> secretData() {
@@ -157,14 +172,14 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the secret value. Valid values: text, binary. Default to &#34;text&#34;.
+     * The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
      * 
      */
     @Import(name="secretDataType")
     private @Nullable Output<String> secretDataType;
 
     /**
-     * @return The type of the secret value. Valid values: text, binary. Default to &#34;text&#34;.
+     * @return The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
      * 
      */
     public Optional<Output<String>> secretDataType() {
@@ -188,10 +203,10 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the secret. Valid values:
-     * - `Generic`: specifies a generic secret.
-     * - `Rds`: specifies a managed ApsaraDB RDS secret.
-     * - `RAMCredentials`: indicates a managed RAM secret.
-     * - `ECS`: specifies a managed ECS secret.
+     * - `Generic`: Generic secret.
+     * - `Rds`: ApsaraDB RDS secret.
+     * - `RAMCredentials`: RAM secret.
+     * - `ECS`: ECS secret.
      * 
      */
     @Import(name="secretType")
@@ -199,10 +214,10 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the secret. Valid values:
-     * - `Generic`: specifies a generic secret.
-     * - `Rds`: specifies a managed ApsaraDB RDS secret.
-     * - `RAMCredentials`: indicates a managed RAM secret.
-     * - `ECS`: specifies a managed ECS secret.
+     * - `Generic`: Generic secret.
+     * - `Rds`: ApsaraDB RDS secret.
+     * - `RAMCredentials`: RAM secret.
+     * - `ECS`: ECS secret.
      * 
      */
     public Optional<Output<String>> secretType() {
@@ -225,14 +240,14 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The version number of the initial version. Version numbers are unique in each secret object.
+     * The version number of the initial version.
      * 
      */
     @Import(name="versionId", required=true)
     private Output<String> versionId;
 
     /**
-     * @return The version number of the initial version. Version numbers are unique in each secret object.
+     * @return The version number of the initial version.
      * 
      */
     public Output<String> versionId() {
@@ -240,14 +255,14 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with &#34;ACSCurrent&#34;.
+     * The stage label that is used to mark the new version.
      * 
      */
     @Import(name="versionStages")
     private @Nullable Output<List<String>> versionStages;
 
     /**
-     * @return ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with &#34;ACSCurrent&#34;.
+     * @return The stage label that is used to mark the new version.
      * 
      */
     public Optional<Output<List<String>>> versionStages() {
@@ -263,6 +278,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         this.encryptionKeyId = $.encryptionKeyId;
         this.extendedConfig = $.extendedConfig;
         this.forceDeleteWithoutRecovery = $.forceDeleteWithoutRecovery;
+        this.policy = $.policy;
         this.recoveryWindowInDays = $.recoveryWindowInDays;
         this.rotationInterval = $.rotationInterval;
         this.secretData = $.secretData;
@@ -314,7 +330,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dkmsInstanceId The instance ID of the exclusive KMS instance.
+         * @param dkmsInstanceId The ID of the KMS instance.
          * 
          * @return builder
          * 
@@ -325,7 +341,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dkmsInstanceId The instance ID of the exclusive KMS instance.
+         * @param dkmsInstanceId The ID of the KMS instance.
          * 
          * @return builder
          * 
@@ -335,7 +351,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableAutomaticRotation Whether to enable automatic key rotation.
+         * @param enableAutomaticRotation Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -346,7 +362,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableAutomaticRotation Whether to enable automatic key rotation.
+         * @param enableAutomaticRotation Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -356,7 +372,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionKeyId The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+         * @param encryptionKeyId The ID of the KMS key.
          * 
          * @return builder
          * 
@@ -367,7 +383,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionKeyId The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+         * @param encryptionKeyId The ID of the KMS key.
          * 
          * @return builder
          * 
@@ -377,7 +393,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extendedConfig The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+         * @param extendedConfig The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
          * 
          * @return builder
          * 
@@ -388,7 +404,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extendedConfig The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+         * @param extendedConfig The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
          * 
          * @return builder
          * 
@@ -398,7 +414,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDeleteWithoutRecovery Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
+         * @param forceDeleteWithoutRecovery Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -409,7 +425,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDeleteWithoutRecovery Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
+         * @param forceDeleteWithoutRecovery Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -419,7 +435,28 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recoveryWindowInDays Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+         * @param policy The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(@Nullable Output<String> policy) {
+            $.policy = policy;
+            return this;
+        }
+
+        /**
+         * @param policy The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(String policy) {
+            return policy(Output.of(policy));
+        }
+
+        /**
+         * @param recoveryWindowInDays Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
          * 
          * @return builder
          * 
@@ -430,7 +467,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recoveryWindowInDays Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
+         * @param recoveryWindowInDays Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
          * 
          * @return builder
          * 
@@ -440,7 +477,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotationInterval The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+         * @param rotationInterval The interval for automatic rotation.
          * 
          * @return builder
          * 
@@ -451,7 +488,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rotationInterval The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+         * @param rotationInterval The interval for automatic rotation.
          * 
          * @return builder
          * 
@@ -461,7 +498,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretData The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+         * @param secretData The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
          * 
          * @return builder
          * 
@@ -472,7 +509,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretData The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
+         * @param secretData The data of the secret. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
          * 
          * @return builder
          * 
@@ -482,7 +519,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretDataType The type of the secret value. Valid values: text, binary. Default to &#34;text&#34;.
+         * @param secretDataType The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
          * 
          * @return builder
          * 
@@ -493,7 +530,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretDataType The type of the secret value. Valid values: text, binary. Default to &#34;text&#34;.
+         * @param secretDataType The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
          * 
          * @return builder
          * 
@@ -525,10 +562,10 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secretType The type of the secret. Valid values:
-         * - `Generic`: specifies a generic secret.
-         * - `Rds`: specifies a managed ApsaraDB RDS secret.
-         * - `RAMCredentials`: indicates a managed RAM secret.
-         * - `ECS`: specifies a managed ECS secret.
+         * - `Generic`: Generic secret.
+         * - `Rds`: ApsaraDB RDS secret.
+         * - `RAMCredentials`: RAM secret.
+         * - `ECS`: ECS secret.
          * 
          * @return builder
          * 
@@ -540,10 +577,10 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secretType The type of the secret. Valid values:
-         * - `Generic`: specifies a generic secret.
-         * - `Rds`: specifies a managed ApsaraDB RDS secret.
-         * - `RAMCredentials`: indicates a managed RAM secret.
-         * - `ECS`: specifies a managed ECS secret.
+         * - `Generic`: Generic secret.
+         * - `Rds`: ApsaraDB RDS secret.
+         * - `RAMCredentials`: RAM secret.
+         * - `ECS`: ECS secret.
          * 
          * @return builder
          * 
@@ -574,7 +611,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionId The version number of the initial version. Version numbers are unique in each secret object.
+         * @param versionId The version number of the initial version.
          * 
          * @return builder
          * 
@@ -585,7 +622,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionId The version number of the initial version. Version numbers are unique in each secret object.
+         * @param versionId The version number of the initial version.
          * 
          * @return builder
          * 
@@ -595,7 +632,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionStages ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with &#34;ACSCurrent&#34;.
+         * @param versionStages The stage label that is used to mark the new version.
          * 
          * @return builder
          * 
@@ -606,7 +643,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionStages ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with &#34;ACSCurrent&#34;.
+         * @param versionStages The stage label that is used to mark the new version.
          * 
          * @return builder
          * 
@@ -616,7 +653,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versionStages ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with &#34;ACSCurrent&#34;.
+         * @param versionStages The stage label that is used to mark the new version.
          * 
          * @return builder
          * 
