@@ -200,7 +200,7 @@ type Bucket struct {
 	pulumi.CustomResourceState
 
 	// A access monitor status of a bucket. See `accessMonitor` below.
-	AccessMonitor BucketAccessMonitorOutput `pulumi:"accessMonitor"`
+	AccessMonitor BucketAccessMonitorTypeOutput `pulumi:"accessMonitor"`
 	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
 	//
 	// Deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
@@ -245,7 +245,7 @@ type Bucket struct {
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
-	TransferAcceleration BucketTransferAccelerationPtrOutput `pulumi:"transferAcceleration"`
+	TransferAcceleration BucketTransferAccelerationTypePtrOutput `pulumi:"transferAcceleration"`
 	// A state of versioning. See `versioning` below.
 	Versioning BucketVersioningTypePtrOutput `pulumi:"versioning"`
 	// A website configuration. See `website` below.
@@ -283,7 +283,7 @@ func GetBucket(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Bucket resources.
 type bucketState struct {
 	// A access monitor status of a bucket. See `accessMonitor` below.
-	AccessMonitor *BucketAccessMonitor `pulumi:"accessMonitor"`
+	AccessMonitor *BucketAccessMonitorType `pulumi:"accessMonitor"`
 	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
 	//
 	// Deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
@@ -328,7 +328,7 @@ type bucketState struct {
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
-	TransferAcceleration *BucketTransferAcceleration `pulumi:"transferAcceleration"`
+	TransferAcceleration *BucketTransferAccelerationType `pulumi:"transferAcceleration"`
 	// A state of versioning. See `versioning` below.
 	Versioning *BucketVersioningType `pulumi:"versioning"`
 	// A website configuration. See `website` below.
@@ -337,7 +337,7 @@ type bucketState struct {
 
 type BucketState struct {
 	// A access monitor status of a bucket. See `accessMonitor` below.
-	AccessMonitor BucketAccessMonitorPtrInput
+	AccessMonitor BucketAccessMonitorTypePtrInput
 	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
 	//
 	// Deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
@@ -382,7 +382,7 @@ type BucketState struct {
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags pulumi.MapInput
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
-	TransferAcceleration BucketTransferAccelerationPtrInput
+	TransferAcceleration BucketTransferAccelerationTypePtrInput
 	// A state of versioning. See `versioning` below.
 	Versioning BucketVersioningTypePtrInput
 	// A website configuration. See `website` below.
@@ -395,7 +395,7 @@ func (BucketState) ElementType() reflect.Type {
 
 type bucketArgs struct {
 	// A access monitor status of a bucket. See `accessMonitor` below.
-	AccessMonitor *BucketAccessMonitor `pulumi:"accessMonitor"`
+	AccessMonitor *BucketAccessMonitorType `pulumi:"accessMonitor"`
 	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
 	//
 	// Deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
@@ -430,7 +430,7 @@ type bucketArgs struct {
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
-	TransferAcceleration *BucketTransferAcceleration `pulumi:"transferAcceleration"`
+	TransferAcceleration *BucketTransferAccelerationType `pulumi:"transferAcceleration"`
 	// A state of versioning. See `versioning` below.
 	Versioning *BucketVersioningType `pulumi:"versioning"`
 	// A website configuration. See `website` below.
@@ -440,7 +440,7 @@ type bucketArgs struct {
 // The set of arguments for constructing a Bucket resource.
 type BucketArgs struct {
 	// A access monitor status of a bucket. See `accessMonitor` below.
-	AccessMonitor BucketAccessMonitorPtrInput
+	AccessMonitor BucketAccessMonitorTypePtrInput
 	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
 	//
 	// Deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.
@@ -475,7 +475,7 @@ type BucketArgs struct {
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags pulumi.MapInput
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
-	TransferAcceleration BucketTransferAccelerationPtrInput
+	TransferAcceleration BucketTransferAccelerationTypePtrInput
 	// A state of versioning. See `versioning` below.
 	Versioning BucketVersioningTypePtrInput
 	// A website configuration. See `website` below.
@@ -570,8 +570,8 @@ func (o BucketOutput) ToBucketOutputWithContext(ctx context.Context) BucketOutpu
 }
 
 // A access monitor status of a bucket. See `accessMonitor` below.
-func (o BucketOutput) AccessMonitor() BucketAccessMonitorOutput {
-	return o.ApplyT(func(v *Bucket) BucketAccessMonitorOutput { return v.AccessMonitor }).(BucketAccessMonitorOutput)
+func (o BucketOutput) AccessMonitor() BucketAccessMonitorTypeOutput {
+	return o.ApplyT(func(v *Bucket) BucketAccessMonitorTypeOutput { return v.AccessMonitor }).(BucketAccessMonitorTypeOutput)
 }
 
 // The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
@@ -678,8 +678,8 @@ func (o BucketOutput) Tags() pulumi.MapOutput {
 }
 
 // A transfer acceleration status of a bucket. See `transferAcceleration` below.
-func (o BucketOutput) TransferAcceleration() BucketTransferAccelerationPtrOutput {
-	return o.ApplyT(func(v *Bucket) BucketTransferAccelerationPtrOutput { return v.TransferAcceleration }).(BucketTransferAccelerationPtrOutput)
+func (o BucketOutput) TransferAcceleration() BucketTransferAccelerationTypePtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketTransferAccelerationTypePtrOutput { return v.TransferAcceleration }).(BucketTransferAccelerationTypePtrOutput)
 }
 
 // A state of versioning. See `versioning` below.

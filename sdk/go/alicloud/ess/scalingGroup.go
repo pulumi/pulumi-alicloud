@@ -162,6 +162,8 @@ import (
 type ScalingGroup struct {
 	pulumi.CustomResourceState
 
+	// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
+	AlbServerGroups ScalingGroupAlbServerGroupArrayOutput `pulumi:"albServerGroups"`
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -178,7 +180,7 @@ type ScalingGroup struct {
 	HealthCheckType pulumi.StringOutput `pulumi:"healthCheckType"`
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrOutput `pulumi:"launchTemplateId"`
-	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
 	LaunchTemplateOverrides ScalingGroupLaunchTemplateOverrideArrayOutput `pulumi:"launchTemplateOverrides"`
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
 	LaunchTemplateVersion pulumi.StringPtrOutput `pulumi:"launchTemplateVersion"`
@@ -209,6 +211,8 @@ type ScalingGroup struct {
 	// - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
 	// - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
 	RemovalPolicies pulumi.StringArrayOutput `pulumi:"removalPolicies"`
+	// The ID of the resource group to which you want to add the scaling group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName pulumi.StringPtrOutput `pulumi:"scalingGroupName"`
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
@@ -263,6 +267,8 @@ func GetScalingGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ScalingGroup resources.
 type scalingGroupState struct {
+	// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
+	AlbServerGroups []ScalingGroupAlbServerGroup `pulumi:"albServerGroups"`
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -279,7 +285,7 @@ type scalingGroupState struct {
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
-	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
 	LaunchTemplateOverrides []ScalingGroupLaunchTemplateOverride `pulumi:"launchTemplateOverrides"`
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
 	LaunchTemplateVersion *string `pulumi:"launchTemplateVersion"`
@@ -310,6 +316,8 @@ type scalingGroupState struct {
 	// - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
 	// - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
 	RemovalPolicies []string `pulumi:"removalPolicies"`
+	// The ID of the resource group to which you want to add the scaling group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName *string `pulumi:"scalingGroupName"`
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
@@ -329,6 +337,8 @@ type scalingGroupState struct {
 }
 
 type ScalingGroupState struct {
+	// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
+	AlbServerGroups ScalingGroupAlbServerGroupArrayInput
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -345,7 +355,7 @@ type ScalingGroupState struct {
 	HealthCheckType pulumi.StringPtrInput
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrInput
-	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
 	LaunchTemplateOverrides ScalingGroupLaunchTemplateOverrideArrayInput
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
 	LaunchTemplateVersion pulumi.StringPtrInput
@@ -376,6 +386,8 @@ type ScalingGroupState struct {
 	// - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
 	// - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
 	RemovalPolicies pulumi.StringArrayInput
+	// The ID of the resource group to which you want to add the scaling group.
+	ResourceGroupId pulumi.StringPtrInput
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName pulumi.StringPtrInput
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
@@ -399,6 +411,8 @@ func (ScalingGroupState) ElementType() reflect.Type {
 }
 
 type scalingGroupArgs struct {
+	// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
+	AlbServerGroups []ScalingGroupAlbServerGroup `pulumi:"albServerGroups"`
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -415,7 +429,7 @@ type scalingGroupArgs struct {
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
-	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
 	LaunchTemplateOverrides []ScalingGroupLaunchTemplateOverride `pulumi:"launchTemplateOverrides"`
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
 	LaunchTemplateVersion *string `pulumi:"launchTemplateVersion"`
@@ -446,6 +460,8 @@ type scalingGroupArgs struct {
 	// - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
 	// - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
 	RemovalPolicies []string `pulumi:"removalPolicies"`
+	// The ID of the resource group to which you want to add the scaling group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName *string `pulumi:"scalingGroupName"`
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
@@ -466,6 +482,8 @@ type scalingGroupArgs struct {
 
 // The set of arguments for constructing a ScalingGroup resource.
 type ScalingGroupArgs struct {
+	// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
+	AlbServerGroups ScalingGroupAlbServerGroupArrayInput
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -482,7 +500,7 @@ type ScalingGroupArgs struct {
 	HealthCheckType pulumi.StringPtrInput
 	// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
 	LaunchTemplateId pulumi.StringPtrInput
-	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+	// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
 	LaunchTemplateOverrides ScalingGroupLaunchTemplateOverrideArrayInput
 	// The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
 	LaunchTemplateVersion pulumi.StringPtrInput
@@ -513,6 +531,8 @@ type ScalingGroupArgs struct {
 	// - OldestScalingConfiguration: removes the ECS instance that is created based on the earliest scaling configuration.
 	// - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
 	RemovalPolicies pulumi.StringArrayInput
+	// The ID of the resource group to which you want to add the scaling group.
+	ResourceGroupId pulumi.StringPtrInput
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName pulumi.StringPtrInput
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
@@ -618,6 +638,11 @@ func (o ScalingGroupOutput) ToScalingGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
+// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
+func (o ScalingGroupOutput) AlbServerGroups() ScalingGroupAlbServerGroupArrayOutput {
+	return o.ApplyT(func(v *ScalingGroup) ScalingGroupAlbServerGroupArrayOutput { return v.AlbServerGroups }).(ScalingGroupAlbServerGroupArrayOutput)
+}
+
 // If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 // - The specified RDS instance must be in running status.
 // - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -655,7 +680,7 @@ func (o ScalingGroupOutput) LaunchTemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.LaunchTemplateId }).(pulumi.StringPtrOutput)
 }
 
-// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature..  See `launchTemplateOverride` below for details.
+// The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launchTemplateOverride` below for details.
 func (o ScalingGroupOutput) LaunchTemplateOverrides() ScalingGroupLaunchTemplateOverrideArrayOutput {
 	return o.ApplyT(func(v *ScalingGroup) ScalingGroupLaunchTemplateOverrideArrayOutput { return v.LaunchTemplateOverrides }).(ScalingGroupLaunchTemplateOverrideArrayOutput)
 }
@@ -714,6 +739,11 @@ func (o ScalingGroupOutput) ProtectedInstances() pulumi.StringArrayOutput {
 // - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
 func (o ScalingGroupOutput) RemovalPolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringArrayOutput { return v.RemovalPolicies }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the resource group to which you want to add the scaling group.
+func (o ScalingGroupOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.

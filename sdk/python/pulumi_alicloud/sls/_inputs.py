@@ -25,6 +25,8 @@ __all__ = [
     'AlertConfigurationSinkEventStoreArgs',
     'AlertConfigurationTemplateConfigurationArgs',
     'AlertScheduleArgs',
+    'ScheduledSqlScheduleArgs',
+    'ScheduledSqlScheduledSqlConfigurationArgs',
 ]
 
 @pulumi.input_type
@@ -1068,5 +1070,387 @@ class AlertScheduleArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ScheduledSqlScheduleArgs:
+    def __init__(__self__, *,
+                 cron_expression: Optional[pulumi.Input[str]] = None,
+                 delay: Optional[pulumi.Input[int]] = None,
+                 interval: Optional[pulumi.Input[str]] = None,
+                 run_immediately: Optional[pulumi.Input[bool]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cron_expression: Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+        :param pulumi.Input[int] delay: Delay time.
+        :param pulumi.Input[str] interval: Time interval, such as 5m, 1H.
+        :param pulumi.Input[bool] run_immediately: Whether to execute the OSS import task immediately after it is created.
+        :param pulumi.Input[str] time_zone: Time Zone.
+        :param pulumi.Input[str] type: Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+        """
+        if cron_expression is not None:
+            pulumi.set(__self__, "cron_expression", cron_expression)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if run_immediately is not None:
+            pulumi.set(__self__, "run_immediately", run_immediately)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="cronExpression")
+    def cron_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+        """
+        return pulumi.get(self, "cron_expression")
+
+    @cron_expression.setter
+    def cron_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cron_expression", value)
+
+    @property
+    @pulumi.getter
+    def delay(self) -> Optional[pulumi.Input[int]]:
+        """
+        Delay time.
+        """
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "delay", value)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time interval, such as 5m, 1H.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter(name="runImmediately")
+    def run_immediately(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to execute the OSS import task immediately after it is created.
+        """
+        return pulumi.get(self, "run_immediately")
+
+    @run_immediately.setter
+    def run_immediately(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_immediately", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time Zone.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ScheduledSqlScheduledSqlConfigurationArgs:
+    def __init__(__self__, *,
+                 data_format: Optional[pulumi.Input[str]] = None,
+                 dest_endpoint: Optional[pulumi.Input[str]] = None,
+                 dest_logstore: Optional[pulumi.Input[str]] = None,
+                 dest_project: Optional[pulumi.Input[str]] = None,
+                 dest_role_arn: Optional[pulumi.Input[str]] = None,
+                 from_time: Optional[pulumi.Input[int]] = None,
+                 from_time_expr: Optional[pulumi.Input[str]] = None,
+                 max_retries: Optional[pulumi.Input[int]] = None,
+                 max_run_time_in_seconds: Optional[pulumi.Input[int]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 resource_pool: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
+                 script: Optional[pulumi.Input[str]] = None,
+                 source_logstore: Optional[pulumi.Input[str]] = None,
+                 sql_type: Optional[pulumi.Input[str]] = None,
+                 to_time: Optional[pulumi.Input[int]] = None,
+                 to_time_expr: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] data_format: Write Mode.
+        :param pulumi.Input[str] dest_endpoint: Target Endpoint.
+        :param pulumi.Input[str] dest_logstore: Target Logstore.
+        :param pulumi.Input[str] dest_project: Target Project.
+        :param pulumi.Input[str] dest_role_arn: Write target role ARN.
+        :param pulumi.Input[int] from_time: Schedule Start Time.
+        :param pulumi.Input[str] from_time_expr: SQL time window-start.
+        :param pulumi.Input[int] max_retries: Maximum retries.
+        :param pulumi.Input[int] max_run_time_in_seconds: SQL timeout.
+        :param pulumi.Input[Mapping[str, Any]] parameters: Parameter configuration.
+        :param pulumi.Input[str] resource_pool: Resource Pool.
+        :param pulumi.Input[str] role_arn: Read role ARN.
+        :param pulumi.Input[str] script: SQL statement.
+        :param pulumi.Input[str] source_logstore: Source Logstore.
+        :param pulumi.Input[str] sql_type: SQL type.
+        :param pulumi.Input[int] to_time: Time at end of schedule.
+        :param pulumi.Input[str] to_time_expr: SQL time window-end.
+        """
+        if data_format is not None:
+            pulumi.set(__self__, "data_format", data_format)
+        if dest_endpoint is not None:
+            pulumi.set(__self__, "dest_endpoint", dest_endpoint)
+        if dest_logstore is not None:
+            pulumi.set(__self__, "dest_logstore", dest_logstore)
+        if dest_project is not None:
+            pulumi.set(__self__, "dest_project", dest_project)
+        if dest_role_arn is not None:
+            pulumi.set(__self__, "dest_role_arn", dest_role_arn)
+        if from_time is not None:
+            pulumi.set(__self__, "from_time", from_time)
+        if from_time_expr is not None:
+            pulumi.set(__self__, "from_time_expr", from_time_expr)
+        if max_retries is not None:
+            pulumi.set(__self__, "max_retries", max_retries)
+        if max_run_time_in_seconds is not None:
+            pulumi.set(__self__, "max_run_time_in_seconds", max_run_time_in_seconds)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if resource_pool is not None:
+            pulumi.set(__self__, "resource_pool", resource_pool)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if script is not None:
+            pulumi.set(__self__, "script", script)
+        if source_logstore is not None:
+            pulumi.set(__self__, "source_logstore", source_logstore)
+        if sql_type is not None:
+            pulumi.set(__self__, "sql_type", sql_type)
+        if to_time is not None:
+            pulumi.set(__self__, "to_time", to_time)
+        if to_time_expr is not None:
+            pulumi.set(__self__, "to_time_expr", to_time_expr)
+
+    @property
+    @pulumi.getter(name="dataFormat")
+    def data_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        Write Mode.
+        """
+        return pulumi.get(self, "data_format")
+
+    @data_format.setter
+    def data_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_format", value)
+
+    @property
+    @pulumi.getter(name="destEndpoint")
+    def dest_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Target Endpoint.
+        """
+        return pulumi.get(self, "dest_endpoint")
+
+    @dest_endpoint.setter
+    def dest_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_endpoint", value)
+
+    @property
+    @pulumi.getter(name="destLogstore")
+    def dest_logstore(self) -> Optional[pulumi.Input[str]]:
+        """
+        Target Logstore.
+        """
+        return pulumi.get(self, "dest_logstore")
+
+    @dest_logstore.setter
+    def dest_logstore(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_logstore", value)
+
+    @property
+    @pulumi.getter(name="destProject")
+    def dest_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Target Project.
+        """
+        return pulumi.get(self, "dest_project")
+
+    @dest_project.setter
+    def dest_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_project", value)
+
+    @property
+    @pulumi.getter(name="destRoleArn")
+    def dest_role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Write target role ARN.
+        """
+        return pulumi.get(self, "dest_role_arn")
+
+    @dest_role_arn.setter
+    def dest_role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_role_arn", value)
+
+    @property
+    @pulumi.getter(name="fromTime")
+    def from_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Schedule Start Time.
+        """
+        return pulumi.get(self, "from_time")
+
+    @from_time.setter
+    def from_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "from_time", value)
+
+    @property
+    @pulumi.getter(name="fromTimeExpr")
+    def from_time_expr(self) -> Optional[pulumi.Input[str]]:
+        """
+        SQL time window-start.
+        """
+        return pulumi.get(self, "from_time_expr")
+
+    @from_time_expr.setter
+    def from_time_expr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_time_expr", value)
+
+    @property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum retries.
+        """
+        return pulumi.get(self, "max_retries")
+
+    @max_retries.setter
+    def max_retries(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_retries", value)
+
+    @property
+    @pulumi.getter(name="maxRunTimeInSeconds")
+    def max_run_time_in_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        SQL timeout.
+        """
+        return pulumi.get(self, "max_run_time_in_seconds")
+
+    @max_run_time_in_seconds.setter
+    def max_run_time_in_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_run_time_in_seconds", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Parameter configuration.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="resourcePool")
+    def resource_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource Pool.
+        """
+        return pulumi.get(self, "resource_pool")
+
+    @resource_pool.setter
+    def resource_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_pool", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Read role ARN.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter
+    def script(self) -> Optional[pulumi.Input[str]]:
+        """
+        SQL statement.
+        """
+        return pulumi.get(self, "script")
+
+    @script.setter
+    def script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "script", value)
+
+    @property
+    @pulumi.getter(name="sourceLogstore")
+    def source_logstore(self) -> Optional[pulumi.Input[str]]:
+        """
+        Source Logstore.
+        """
+        return pulumi.get(self, "source_logstore")
+
+    @source_logstore.setter
+    def source_logstore(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_logstore", value)
+
+    @property
+    @pulumi.getter(name="sqlType")
+    def sql_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        SQL type.
+        """
+        return pulumi.get(self, "sql_type")
+
+    @sql_type.setter
+    def sql_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_type", value)
+
+    @property
+    @pulumi.getter(name="toTime")
+    def to_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time at end of schedule.
+        """
+        return pulumi.get(self, "to_time")
+
+    @to_time.setter
+    def to_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "to_time", value)
+
+    @property
+    @pulumi.getter(name="toTimeExpr")
+    def to_time_expr(self) -> Optional[pulumi.Input[str]]:
+        """
+        SQL time window-end.
+        """
+        return pulumi.get(self, "to_time_expr")
+
+    @to_time_expr.setter
+    def to_time_expr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "to_time_expr", value)
 
 

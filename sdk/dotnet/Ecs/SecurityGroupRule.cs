@@ -10,12 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides a security group rule resource.
+    /// Provides a Security Group Rule resource.
+    /// 
+    /// For information about Security Group Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/ecs/user-guide/security-group-rules).
+    /// 
+    /// &gt; **NOTE:** Available since v0.1.0.
+    /// 
     /// Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
     /// 
     /// &gt; **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
-    /// 
-    /// &gt; **NOTE:** Available since v0.1.0.
     /// 
     /// ## Example Usage
     /// 
@@ -31,7 +34,7 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var @default = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = "default",
+    ///         Name = "terraform-example",
     ///     });
     /// 
     ///     var allowAllTcp = new AliCloud.Ecs.SecurityGroupRule("allow_all_tcp", new()
@@ -53,6 +56,14 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// You can use the existing security-group module
     /// to create a security group and add several rules one-click.
+    /// 
+    /// ## Import
+    /// 
+    /// Security Group Rule can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import alicloud:ecs/securityGroupRule:SecurityGroupRule example &lt;id&gt;
+    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/securityGroupRule:SecurityGroupRule")]
     public partial class SecurityGroupRule : global::Pulumi.CustomResource
@@ -65,20 +76,20 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
+        /// 
+        /// &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+        /// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
         /// </summary>
         [Output("ipProtocol")]
         public Output<string> IpProtocol { get; private set; } = null!;
 
         /// <summary>
         /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
-        /// 
-        /// &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         /// </summary>
         [Output("ipv6CidrIp")]
         public Output<string?> Ipv6CidrIp { get; private set; } = null!;
@@ -90,7 +101,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> NicType { get; private set; } = null!;
 
         /// <summary>
-        /// Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
+        /// The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
         /// </summary>
         [Output("policy")]
         public Output<string?> Policy { get; private set; } = null!;
@@ -109,13 +120,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> PrefixListId { get; private set; } = null!;
 
         /// <summary>
-        /// Authorization policy priority, with parameter values: `1-100`, default value: 1.
+        /// The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
         /// </summary>
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// The security group to apply this rule to.
+        /// The ID of the Security Group.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
@@ -133,7 +144,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SourceSecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
+        /// The type of the Security Group Rule. Valid values:
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -192,20 +203,20 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
+        /// 
+        /// &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+        /// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
         /// </summary>
         [Input("ipProtocol", required: true)]
         public Input<string> IpProtocol { get; set; } = null!;
 
         /// <summary>
         /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
-        /// 
-        /// &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         /// </summary>
         [Input("ipv6CidrIp")]
         public Input<string>? Ipv6CidrIp { get; set; }
@@ -217,7 +228,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? NicType { get; set; }
 
         /// <summary>
-        /// Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
+        /// The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
@@ -236,13 +247,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PrefixListId { get; set; }
 
         /// <summary>
-        /// Authorization policy priority, with parameter values: `1-100`, default value: 1.
+        /// The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// The security group to apply this rule to.
+        /// The ID of the Security Group.
         /// </summary>
         [Input("securityGroupId", required: true)]
         public Input<string> SecurityGroupId { get; set; } = null!;
@@ -260,7 +271,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SourceSecurityGroupId { get; set; }
 
         /// <summary>
-        /// The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
+        /// The type of the Security Group Rule. Valid values:
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -281,20 +292,20 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
+        /// 
+        /// &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+        /// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
         /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
-        /// 
-        /// &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         /// </summary>
         [Input("ipv6CidrIp")]
         public Input<string>? Ipv6CidrIp { get; set; }
@@ -306,7 +317,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? NicType { get; set; }
 
         /// <summary>
-        /// Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
+        /// The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
@@ -325,13 +336,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PrefixListId { get; set; }
 
         /// <summary>
-        /// Authorization policy priority, with parameter values: `1-100`, default value: 1.
+        /// The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// The security group to apply this rule to.
+        /// The ID of the Security Group.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -349,7 +360,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SourceSecurityGroupId { get; set; }
 
         /// <summary>
-        /// The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
+        /// The type of the Security Group Rule. Valid values:
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

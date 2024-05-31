@@ -15,19 +15,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetApisResult {
     /**
-     * @deprecated
-     * Field &#39;api_id&#39; has been deprecated from provider version 1.52.2. New field &#39;ids&#39; replaces it.
+     * @return (Available since v1.224.0) The ID of the API.
      * 
      */
-    @Deprecated /* Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it. */
     private @Nullable String apiId;
     /**
-     * @return A list of apis. Each element contains the following attributes:
+     * @return A list of APIs. Each element contains the following attributes:
      * 
      */
     private List<GetApisApi> apis;
     /**
-     * @return The group id that the apis belong to.
+     * @return The ID of the API group.
      * 
      */
     private @Nullable String groupId;
@@ -36,14 +34,10 @@ public final class GetApisResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of api IDs.
-     * 
-     */
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
-     * @return A list of api names.
+     * @return A list of API names.
      * 
      */
     private List<String> names;
@@ -51,23 +45,21 @@ public final class GetApisResult {
 
     private GetApisResult() {}
     /**
-     * @deprecated
-     * Field &#39;api_id&#39; has been deprecated from provider version 1.52.2. New field &#39;ids&#39; replaces it.
+     * @return (Available since v1.224.0) The ID of the API.
      * 
      */
-    @Deprecated /* Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it. */
     public Optional<String> apiId() {
         return Optional.ofNullable(this.apiId);
     }
     /**
-     * @return A list of apis. Each element contains the following attributes:
+     * @return A list of APIs. Each element contains the following attributes:
      * 
      */
     public List<GetApisApi> apis() {
         return this.apis;
     }
     /**
-     * @return The group id that the apis belong to.
+     * @return The ID of the API group.
      * 
      */
     public Optional<String> groupId() {
@@ -80,10 +72,6 @@ public final class GetApisResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of api IDs.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
@@ -91,7 +79,7 @@ public final class GetApisResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of api names.
+     * @return A list of API names.
      * 
      */
     public List<String> names() {

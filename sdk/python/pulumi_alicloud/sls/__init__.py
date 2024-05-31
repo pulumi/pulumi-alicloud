@@ -6,5 +6,6 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .alert import *
+from .scheduled_sql import *
 from ._inputs import *
 from . import outputs

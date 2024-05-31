@@ -23,15 +23,23 @@ class PluginArgs:
         The set of arguments for constructing a Plugin resource.
         :param pulumi.Input[str] plugin_data: The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
         :param pulumi.Input[str] plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
-        :param pulumi.Input[str] plugin_type: The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-               - ipControl: indicates IP address-based access control.
-               - trafficControl: indicates throttling.
-               - backendSignature: indicates backend signature.
-               - jwtAuth: indicates JWT (OpenId Connect).
-               - cors: indicates cross-origin resource access (CORS).
-               - caching: indicates caching.
+        :param pulumi.Input[str] plugin_type: The type of the plug-in. Valid values:
+               - "trafficControl"
+               - "ipControl"
+               - "backendSignature"
+               - "jwtAuth"
+               - "basicAuth"
+               - "cors"
+               - "caching"
+               - "routing"
+               - "accessControl"
+               - "errorMapping"
+               - "circuitBreaker"
+               - "remoteAuth"
+               - "logMask"
+               - "transformer".
         :param pulumi.Input[str] description: The description of the plug-in, which cannot exceed 200 characters.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "plugin_data", plugin_data)
         pulumi.set(__self__, "plugin_name", plugin_name)
@@ -69,13 +77,21 @@ class PluginArgs:
     @pulumi.getter(name="pluginType")
     def plugin_type(self) -> pulumi.Input[str]:
         """
-        The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-        - ipControl: indicates IP address-based access control.
-        - trafficControl: indicates throttling.
-        - backendSignature: indicates backend signature.
-        - jwtAuth: indicates JWT (OpenId Connect).
-        - cors: indicates cross-origin resource access (CORS).
-        - caching: indicates caching.
+        The type of the plug-in. Valid values:
+        - "trafficControl"
+        - "ipControl"
+        - "backendSignature"
+        - "jwtAuth"
+        - "basicAuth"
+        - "cors"
+        - "caching"
+        - "routing"
+        - "accessControl"
+        - "errorMapping"
+        - "circuitBreaker"
+        - "remoteAuth"
+        - "logMask"
+        - "transformer".
         """
         return pulumi.get(self, "plugin_type")
 
@@ -99,7 +115,7 @@ class PluginArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -111,6 +127,7 @@ class PluginArgs:
 @pulumi.input_type
 class _PluginState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  plugin_data: Optional[pulumi.Input[str]] = None,
                  plugin_name: Optional[pulumi.Input[str]] = None,
@@ -118,18 +135,29 @@ class _PluginState:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Plugin resources.
+        :param pulumi.Input[str] create_time: Create time.
         :param pulumi.Input[str] description: The description of the plug-in, which cannot exceed 200 characters.
         :param pulumi.Input[str] plugin_data: The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
         :param pulumi.Input[str] plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
-        :param pulumi.Input[str] plugin_type: The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-               - ipControl: indicates IP address-based access control.
-               - trafficControl: indicates throttling.
-               - backendSignature: indicates backend signature.
-               - jwtAuth: indicates JWT (OpenId Connect).
-               - cors: indicates cross-origin resource access (CORS).
-               - caching: indicates caching.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] plugin_type: The type of the plug-in. Valid values:
+               - "trafficControl"
+               - "ipControl"
+               - "backendSignature"
+               - "jwtAuth"
+               - "basicAuth"
+               - "cors"
+               - "caching"
+               - "routing"
+               - "accessControl"
+               - "errorMapping"
+               - "circuitBreaker"
+               - "remoteAuth"
+               - "logMask"
+               - "transformer".
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if plugin_data is not None:
@@ -140,6 +168,18 @@ class _PluginState:
             pulumi.set(__self__, "plugin_type", plugin_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Create time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -181,13 +221,21 @@ class _PluginState:
     @pulumi.getter(name="pluginType")
     def plugin_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-        - ipControl: indicates IP address-based access control.
-        - trafficControl: indicates throttling.
-        - backendSignature: indicates backend signature.
-        - jwtAuth: indicates JWT (OpenId Connect).
-        - cors: indicates cross-origin resource access (CORS).
-        - caching: indicates caching.
+        The type of the plug-in. Valid values:
+        - "trafficControl"
+        - "ipControl"
+        - "backendSignature"
+        - "jwtAuth"
+        - "basicAuth"
+        - "cors"
+        - "caching"
+        - "routing"
+        - "accessControl"
+        - "errorMapping"
+        - "circuitBreaker"
+        - "remoteAuth"
+        - "logMask"
+        - "transformer".
         """
         return pulumi.get(self, "plugin_type")
 
@@ -199,7 +247,7 @@ class _PluginState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -232,17 +280,51 @@ class Plugin(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
         default = alicloud.apigateway.Plugin("default",
-            description="tf_example",
-            plugin_name="tf_example",
-            plugin_data="{\\"allowOrigins\\": \\"api.foo.com\\",\\"allowMethods\\": \\"GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\\",\\"allowHeaders\\": \\"Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid\\",\\"exposeHeaders\\": \\"Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message\\",\\"maxAge\\": 172800,\\"allowCredentials\\": true}",
-            plugin_type="cors",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
+            description=name,
+            plugin_name=name,
+            plugin_data=json.dumps({
+                "routes": [
+                    {
+                        "name": "Vip",
+                        "condition": "$CaAppId = 123456",
+                        "backend": {
+                            "type": "HTTP-VPC",
+                            "vpcAccessName": "slbAccessForVip",
+                        },
+                    },
+                    {
+                        "name": "MockForOldClient",
+                        "condition": "$ClientVersion < '2.0.5'",
+                        "backend": {
+                            "type": "MOCK",
+                            "statusCode": 400,
+                            "mockBody": "This version is not supported!!!",
+                        },
+                    },
+                    {
+                        "name": "BlueGreenPercent05",
+                        "condition": "1 = 1",
+                        "backend": {
+                            "type": "HTTP",
+                            "address": "https://beta-version.api.foo.com",
+                        },
+                        "constant-parameters": [{
+                            "name": "x-route-blue-green",
+                            "location": "header",
+                            "value": "route-blue-green",
+                        }],
+                    },
+                ],
+            }),
+            plugin_type="routing")
         ```
 
         ## Import
@@ -258,14 +340,22 @@ class Plugin(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the plug-in, which cannot exceed 200 characters.
         :param pulumi.Input[str] plugin_data: The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
         :param pulumi.Input[str] plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
-        :param pulumi.Input[str] plugin_type: The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-               - ipControl: indicates IP address-based access control.
-               - trafficControl: indicates throttling.
-               - backendSignature: indicates backend signature.
-               - jwtAuth: indicates JWT (OpenId Connect).
-               - cors: indicates cross-origin resource access (CORS).
-               - caching: indicates caching.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] plugin_type: The type of the plug-in. Valid values:
+               - "trafficControl"
+               - "ipControl"
+               - "backendSignature"
+               - "jwtAuth"
+               - "basicAuth"
+               - "cors"
+               - "caching"
+               - "routing"
+               - "accessControl"
+               - "errorMapping"
+               - "circuitBreaker"
+               - "remoteAuth"
+               - "logMask"
+               - "transformer".
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         ...
     @overload
@@ -286,17 +376,51 @@ class Plugin(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform_example"
         default = alicloud.apigateway.Plugin("default",
-            description="tf_example",
-            plugin_name="tf_example",
-            plugin_data="{\\"allowOrigins\\": \\"api.foo.com\\",\\"allowMethods\\": \\"GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\\",\\"allowHeaders\\": \\"Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid\\",\\"exposeHeaders\\": \\"Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message\\",\\"maxAge\\": 172800,\\"allowCredentials\\": true}",
-            plugin_type="cors",
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
+            description=name,
+            plugin_name=name,
+            plugin_data=json.dumps({
+                "routes": [
+                    {
+                        "name": "Vip",
+                        "condition": "$CaAppId = 123456",
+                        "backend": {
+                            "type": "HTTP-VPC",
+                            "vpcAccessName": "slbAccessForVip",
+                        },
+                    },
+                    {
+                        "name": "MockForOldClient",
+                        "condition": "$ClientVersion < '2.0.5'",
+                        "backend": {
+                            "type": "MOCK",
+                            "statusCode": 400,
+                            "mockBody": "This version is not supported!!!",
+                        },
+                    },
+                    {
+                        "name": "BlueGreenPercent05",
+                        "condition": "1 = 1",
+                        "backend": {
+                            "type": "HTTP",
+                            "address": "https://beta-version.api.foo.com",
+                        },
+                        "constant-parameters": [{
+                            "name": "x-route-blue-green",
+                            "location": "header",
+                            "value": "route-blue-green",
+                        }],
+                    },
+                ],
+            }),
+            plugin_type="routing")
         ```
 
         ## Import
@@ -347,6 +471,7 @@ class Plugin(pulumi.CustomResource):
                 raise TypeError("Missing required property 'plugin_type'")
             __props__.__dict__["plugin_type"] = plugin_type
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["create_time"] = None
         super(Plugin, __self__).__init__(
             'alicloud:apigateway/plugin:Plugin',
             resource_name,
@@ -357,6 +482,7 @@ class Plugin(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             plugin_data: Optional[pulumi.Input[str]] = None,
             plugin_name: Optional[pulumi.Input[str]] = None,
@@ -369,28 +495,46 @@ class Plugin(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] create_time: Create time.
         :param pulumi.Input[str] description: The description of the plug-in, which cannot exceed 200 characters.
         :param pulumi.Input[str] plugin_data: The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
         :param pulumi.Input[str] plugin_name: The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
-        :param pulumi.Input[str] plugin_type: The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-               - ipControl: indicates IP address-based access control.
-               - trafficControl: indicates throttling.
-               - backendSignature: indicates backend signature.
-               - jwtAuth: indicates JWT (OpenId Connect).
-               - cors: indicates cross-origin resource access (CORS).
-               - caching: indicates caching.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] plugin_type: The type of the plug-in. Valid values:
+               - "trafficControl"
+               - "ipControl"
+               - "backendSignature"
+               - "jwtAuth"
+               - "basicAuth"
+               - "cors"
+               - "caching"
+               - "routing"
+               - "accessControl"
+               - "errorMapping"
+               - "circuitBreaker"
+               - "remoteAuth"
+               - "logMask"
+               - "transformer".
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _PluginState.__new__(_PluginState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["plugin_data"] = plugin_data
         __props__.__dict__["plugin_name"] = plugin_name
         __props__.__dict__["plugin_type"] = plugin_type
         __props__.__dict__["tags"] = tags
         return Plugin(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Create time.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -420,13 +564,21 @@ class Plugin(pulumi.CustomResource):
     @pulumi.getter(name="pluginType")
     def plugin_type(self) -> pulumi.Output[str]:
         """
-        The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-        - ipControl: indicates IP address-based access control.
-        - trafficControl: indicates throttling.
-        - backendSignature: indicates backend signature.
-        - jwtAuth: indicates JWT (OpenId Connect).
-        - cors: indicates cross-origin resource access (CORS).
-        - caching: indicates caching.
+        The type of the plug-in. Valid values:
+        - "trafficControl"
+        - "ipControl"
+        - "backendSignature"
+        - "jwtAuth"
+        - "basicAuth"
+        - "cors"
+        - "caching"
+        - "routing"
+        - "accessControl"
+        - "errorMapping"
+        - "circuitBreaker"
+        - "remoteAuth"
+        - "logMask"
+        - "transformer".
         """
         return pulumi.get(self, "plugin_type")
 
@@ -434,7 +586,7 @@ class Plugin(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource.
         """
         return pulumi.get(self, "tags")
 

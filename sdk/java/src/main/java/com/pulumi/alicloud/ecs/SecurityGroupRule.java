@@ -16,12 +16,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a security group rule resource.
+ * Provides a Security Group Rule resource.
+ * 
+ * For information about Security Group Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/ecs/user-guide/security-group-rules).
+ * 
+ * &gt; **NOTE:** Available since v0.1.0.
+ * 
  * Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
  * 
  * &gt; **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
- * 
- * &gt; **NOTE:** Available since v0.1.0.
  * 
  * ## Example Usage
  * 
@@ -53,7 +56,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new SecurityGroup("default", SecurityGroupArgs.builder()
- *             .name("default")
+ *             .name("terraform-example")
  *             .build());
  * 
  *         var allowAllTcp = new SecurityGroupRule("allowAllTcp", SecurityGroupRuleArgs.builder()
@@ -78,6 +81,14 @@ import javax.annotation.Nullable;
  * You can use the existing security-group module
  * to create a security group and add several rules one-click.
  * 
+ * ## Import
+ * 
+ * Security Group Rule can be imported using the id, e.g.
+ * 
+ * ```sh
+ * $ pulumi import alicloud:ecs/securityGroupRule:SecurityGroupRule example &lt;id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="alicloud:ecs/securityGroupRule:SecurityGroupRule")
 public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
@@ -98,6 +109,8 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
     /**
      * The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
      * 
+     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+     * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
@@ -105,19 +118,21 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
     /**
      * @return The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
      * 
+     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+     * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+     * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
      * 
      */
     @Export(name="ipProtocol", refs={String.class}, tree="[0]")
     private Output<String> ipProtocol;
 
     /**
-     * @return The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
+     * @return The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
      * 
      */
     public Output<String> ipProtocol() {
@@ -126,16 +141,12 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
     /**
      * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
      * 
-     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
-     * 
      */
     @Export(name="ipv6CidrIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipv6CidrIp;
 
     /**
      * @return Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
-     * 
-     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
      * 
      */
     public Output<Optional<String>> ipv6CidrIp() {
@@ -156,14 +167,14 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
         return this.nicType;
     }
     /**
-     * Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
+     * The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
      * 
      */
     @Export(name="policy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policy;
 
     /**
-     * @return Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
+     * @return The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
      * 
      */
     public Output<Optional<String>> policy() {
@@ -200,28 +211,28 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
         return this.prefixListId;
     }
     /**
-     * Authorization policy priority, with parameter values: `1-100`, default value: 1.
+     * The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
-     * @return Authorization policy priority, with parameter values: `1-100`, default value: 1.
+     * @return The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
      * 
      */
     public Output<Optional<Integer>> priority() {
         return Codegen.optional(this.priority);
     }
     /**
-     * The security group to apply this rule to.
+     * The ID of the Security Group.
      * 
      */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
-     * @return The security group to apply this rule to.
+     * @return The ID of the Security Group.
      * 
      */
     public Output<String> securityGroupId() {
@@ -256,14 +267,14 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceSecurityGroupId);
     }
     /**
-     * The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
+     * The type of the Security Group Rule. Valid values:
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
+     * @return The type of the Security Group Rule. Valid values:
      * 
      */
     public Output<String> type() {

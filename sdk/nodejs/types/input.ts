@@ -1191,6 +1191,17 @@ export namespace amqp {
 }
 
 export namespace apigateway {
+    export interface AccessControlListAclEntry {
+        /**
+         * The description of the ACL.
+         */
+        aclEntryComment?: pulumi.Input<string>;
+        /**
+         * The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
+         */
+        aclEntryIp?: pulumi.Input<string>;
+    }
+
     export interface ApiConstantParameter {
         /**
          * The description of Constant parameter.
@@ -2297,6 +2308,24 @@ export namespace cloudfirewall {
         peerNextHopInstanceId: pulumi.Input<string>;
     }
 
+    export interface NatFirewallNatRouteEntryList {
+        /**
+         * The destination network segment of the default route.
+         */
+        destinationCidr: pulumi.Input<string>;
+        /**
+         * The next hop address of the original NAT gateway.
+         */
+        nexthopId: pulumi.Input<string>;
+        /**
+         * The network type of the next hop. Value: NatGateway : NAT Gateway.
+         */
+        nexthopType: pulumi.Input<string>;
+        /**
+         * The route table where the default route of the NAT gateway is located.
+         */
+        routeTableId: pulumi.Input<string>;
+    }
 }
 
 export namespace cloudmonitor {
@@ -6573,6 +6602,21 @@ export namespace ess {
         priceLimit?: pulumi.Input<number>;
     }
 
+    export interface ScalingGroupAlbServerGroup {
+        /**
+         * The ID of ALB server group.
+         */
+        albServerGroupId?: pulumi.Input<string>;
+        /**
+         * The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to ALB server group.
+         */
+        weight?: pulumi.Input<number>;
+    }
+
     export interface ScalingGroupLaunchTemplateOverride {
         /**
          * The instance type in launchTemplateOverride.
@@ -8343,6 +8387,36 @@ export namespace mse {
 }
 
 export namespace nas {
+    export interface AccessPointPosixUser {
+        /**
+         * The ID of the Posix user group.
+         */
+        posixGroupId?: pulumi.Input<number>;
+        /**
+         * The ID of the second user group.
+         */
+        posixSecondaryGroupIds?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * The Posix user ID.
+         */
+        posixUserId?: pulumi.Input<number>;
+    }
+
+    export interface AccessPointRootPathPermission {
+        /**
+         * The ID of the primary user group.
+         */
+        ownerGroupId?: pulumi.Input<number>;
+        /**
+         * The owner user ID.
+         */
+        ownerUserId?: pulumi.Input<number>;
+        /**
+         * POSIX permission.
+         */
+        permission?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace nlb {
@@ -10907,6 +10981,104 @@ export namespace sls {
          * Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows: Fixedate: checks query and analysis results at regular intervals. Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
          */
         type?: pulumi.Input<string>;
+    }
+
+    export interface ScheduledSqlSchedule {
+        /**
+         * Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
+         */
+        cronExpression?: pulumi.Input<string>;
+        /**
+         * Delay time.
+         */
+        delay?: pulumi.Input<number>;
+        /**
+         * Time interval, such as 5m, 1H.
+         */
+        interval?: pulumi.Input<string>;
+        /**
+         * Whether to execute the OSS import task immediately after it is created.
+         */
+        runImmediately?: pulumi.Input<boolean>;
+        /**
+         * Time Zone.
+         */
+        timeZone?: pulumi.Input<string>;
+        /**
+         * Check the frequency type. Log Service checks the query and analysis results based on the frequency you configured. The value is as follows: FixedRate: checks the query and analysis results at fixed intervals. Cron: specifies a time interval through a Cron expression, and checks the query and analysis results at the specified time interval. Weekly: Check the query and analysis results at a fixed point in time on the day of the week. Daily: checks the query and analysis results at a fixed time point every day. Hourly: Check query and analysis results every hour.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface ScheduledSqlScheduledSqlConfiguration {
+        /**
+         * Write Mode.
+         */
+        dataFormat?: pulumi.Input<string>;
+        /**
+         * Target Endpoint.
+         */
+        destEndpoint?: pulumi.Input<string>;
+        /**
+         * Target Logstore.
+         */
+        destLogstore?: pulumi.Input<string>;
+        /**
+         * Target Project.
+         */
+        destProject?: pulumi.Input<string>;
+        /**
+         * Write target role ARN.
+         */
+        destRoleArn?: pulumi.Input<string>;
+        /**
+         * Schedule Start Time.
+         */
+        fromTime?: pulumi.Input<number>;
+        /**
+         * SQL time window-start.
+         */
+        fromTimeExpr?: pulumi.Input<string>;
+        /**
+         * Maximum retries.
+         */
+        maxRetries?: pulumi.Input<number>;
+        /**
+         * SQL timeout.
+         */
+        maxRunTimeInSeconds?: pulumi.Input<number>;
+        /**
+         * Parameter configuration.
+         */
+        parameters?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Resource Pool.
+         */
+        resourcePool?: pulumi.Input<string>;
+        /**
+         * Read role ARN.
+         */
+        roleArn?: pulumi.Input<string>;
+        /**
+         * SQL statement.
+         */
+        script?: pulumi.Input<string>;
+        /**
+         * Source Logstore.
+         */
+        sourceLogstore?: pulumi.Input<string>;
+        /**
+         * SQL type.
+         */
+        sqlType?: pulumi.Input<string>;
+        /**
+         * Time at end of schedule.
+         */
+        toTime?: pulumi.Input<number>;
+        /**
+         * SQL time window-end.
+         */
+        toTimeExpr?: pulumi.Input<string>;
     }
 }
 

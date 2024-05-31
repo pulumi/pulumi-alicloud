@@ -21,16 +21,20 @@ class TairInstanceArgs:
                  zone_id: pulumi.Input[str],
                  auto_renew: Optional[pulumi.Input[str]] = None,
                  auto_renew_period: Optional[pulumi.Input[str]] = None,
+                 cluster_backup_id: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_upgrade: Optional[pulumi.Input[bool]] = None,
+                 node_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 read_only_count: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
+                 slave_read_only_count: Optional[pulumi.Input[int]] = None,
                  storage_performance_level: Optional[pulumi.Input[str]] = None,
                  storage_size_gb: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -44,16 +48,20 @@ class TairInstanceArgs:
         :param pulumi.Input[str] zone_id: Zone ID.
         :param pulumi.Input[str] auto_renew: Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         :param pulumi.Input[str] auto_renew_period: The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
+        :param pulumi.Input[str] cluster_backup_id: The ID of the backup set of the cluster.  .
         :param pulumi.Input[str] effective_time: The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
         :param pulumi.Input[str] engine_version: Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         :param pulumi.Input[bool] force_upgrade: Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
+        :param pulumi.Input[str] node_type: Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
         :param pulumi.Input[str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
         :param pulumi.Input[str] payment_type: The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[int] period: The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
         :param pulumi.Input[int] port: The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
+        :param pulumi.Input[int] read_only_count: Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
         :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
+        :param pulumi.Input[int] slave_read_only_count: Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
         :param pulumi.Input[str] storage_performance_level: The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
         :param pulumi.Input[int] storage_size_gb: The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
@@ -68,12 +76,16 @@ class TairInstanceArgs:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if cluster_backup_id is not None:
+            pulumi.set(__self__, "cluster_backup_id", cluster_backup_id)
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
         if force_upgrade is not None:
             pulumi.set(__self__, "force_upgrade", force_upgrade)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if payment_type is not None:
@@ -82,12 +94,16 @@ class TairInstanceArgs:
             pulumi.set(__self__, "period", period)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if read_only_count is not None:
+            pulumi.set(__self__, "read_only_count", read_only_count)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if secondary_zone_id is not None:
             pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if shard_count is not None:
             pulumi.set(__self__, "shard_count", shard_count)
+        if slave_read_only_count is not None:
+            pulumi.set(__self__, "slave_read_only_count", slave_read_only_count)
         if storage_performance_level is not None:
             pulumi.set(__self__, "storage_performance_level", storage_performance_level)
         if storage_size_gb is not None:
@@ -182,6 +198,18 @@ class TairInstanceArgs:
         pulumi.set(self, "auto_renew_period", value)
 
     @property
+    @pulumi.getter(name="clusterBackupId")
+    def cluster_backup_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the backup set of the cluster.  .
+        """
+        return pulumi.get(self, "cluster_backup_id")
+
+    @cluster_backup_id.setter
+    def cluster_backup_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_backup_id", value)
+
+    @property
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -216,6 +244,18 @@ class TairInstanceArgs:
     @force_upgrade.setter
     def force_upgrade(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_upgrade", value)
+
+    @property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        """
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_type", value)
 
     @property
     @pulumi.getter
@@ -266,6 +306,18 @@ class TairInstanceArgs:
         pulumi.set(self, "port", value)
 
     @property
+    @pulumi.getter(name="readOnlyCount")
+    def read_only_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+        """
+        return pulumi.get(self, "read_only_count")
+
+    @read_only_count.setter
+    def read_only_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "read_only_count", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -300,6 +352,18 @@ class TairInstanceArgs:
     @shard_count.setter
     def shard_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "shard_count", value)
+
+    @property
+    @pulumi.getter(name="slaveReadOnlyCount")
+    def slave_read_only_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+        """
+        return pulumi.get(self, "slave_read_only_count")
+
+    @slave_read_only_count.setter
+    def slave_read_only_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "slave_read_only_count", value)
 
     @property
     @pulumi.getter(name="storagePerformanceLevel")
@@ -355,19 +419,23 @@ class _TairInstanceState:
     def __init__(__self__, *,
                  auto_renew: Optional[pulumi.Input[str]] = None,
                  auto_renew_period: Optional[pulumi.Input[str]] = None,
+                 cluster_backup_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_upgrade: Optional[pulumi.Input[bool]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 node_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 read_only_count: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
+                 slave_read_only_count: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_performance_level: Optional[pulumi.Input[str]] = None,
                  storage_size_gb: Optional[pulumi.Input[int]] = None,
@@ -380,19 +448,23 @@ class _TairInstanceState:
         Input properties used for looking up and filtering TairInstance resources.
         :param pulumi.Input[str] auto_renew: Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         :param pulumi.Input[str] auto_renew_period: The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
+        :param pulumi.Input[str] cluster_backup_id: The ID of the backup set of the cluster.  .
         :param pulumi.Input[str] create_time: The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[str] effective_time: The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
         :param pulumi.Input[str] engine_version: Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         :param pulumi.Input[bool] force_upgrade: Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
         :param pulumi.Input[str] instance_class: The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
         :param pulumi.Input[str] instance_type: The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
+        :param pulumi.Input[str] node_type: Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
         :param pulumi.Input[str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
         :param pulumi.Input[str] payment_type: The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[int] period: The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
         :param pulumi.Input[int] port: The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
+        :param pulumi.Input[int] read_only_count: Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
         :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
+        :param pulumi.Input[int] slave_read_only_count: Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] storage_performance_level: The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
         :param pulumi.Input[int] storage_size_gb: The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
@@ -406,6 +478,8 @@ class _TairInstanceState:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if cluster_backup_id is not None:
+            pulumi.set(__self__, "cluster_backup_id", cluster_backup_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if effective_time is not None:
@@ -418,6 +492,8 @@ class _TairInstanceState:
             pulumi.set(__self__, "instance_class", instance_class)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if payment_type is not None:
@@ -426,12 +502,16 @@ class _TairInstanceState:
             pulumi.set(__self__, "period", period)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if read_only_count is not None:
+            pulumi.set(__self__, "read_only_count", read_only_count)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if secondary_zone_id is not None:
             pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if shard_count is not None:
             pulumi.set(__self__, "shard_count", shard_count)
+        if slave_read_only_count is not None:
+            pulumi.set(__self__, "slave_read_only_count", slave_read_only_count)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if storage_performance_level is not None:
@@ -472,6 +552,18 @@ class _TairInstanceState:
     @auto_renew_period.setter
     def auto_renew_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auto_renew_period", value)
+
+    @property
+    @pulumi.getter(name="clusterBackupId")
+    def cluster_backup_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the backup set of the cluster.  .
+        """
+        return pulumi.get(self, "cluster_backup_id")
+
+    @cluster_backup_id.setter
+    def cluster_backup_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_backup_id", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -546,6 +638,18 @@ class _TairInstanceState:
         pulumi.set(self, "instance_type", value)
 
     @property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        """
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_type", value)
+
+    @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
@@ -594,6 +698,18 @@ class _TairInstanceState:
         pulumi.set(self, "port", value)
 
     @property
+    @pulumi.getter(name="readOnlyCount")
+    def read_only_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+        """
+        return pulumi.get(self, "read_only_count")
+
+    @read_only_count.setter
+    def read_only_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "read_only_count", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -628,6 +744,18 @@ class _TairInstanceState:
     @shard_count.setter
     def shard_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "shard_count", value)
+
+    @property
+    @pulumi.getter(name="slaveReadOnlyCount")
+    def slave_read_only_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+        """
+        return pulumi.get(self, "slave_read_only_count")
+
+    @slave_read_only_count.setter
+    def slave_read_only_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "slave_read_only_count", value)
 
     @property
     @pulumi.getter
@@ -733,18 +861,22 @@ class TairInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[str]] = None,
                  auto_renew_period: Optional[pulumi.Input[str]] = None,
+                 cluster_backup_id: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_upgrade: Optional[pulumi.Input[bool]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 node_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 read_only_count: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
+                 slave_read_only_count: Optional[pulumi.Input[int]] = None,
                  storage_performance_level: Optional[pulumi.Input[str]] = None,
                  storage_size_gb: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -766,18 +898,22 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_renew: Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         :param pulumi.Input[str] auto_renew_period: The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
+        :param pulumi.Input[str] cluster_backup_id: The ID of the backup set of the cluster.  .
         :param pulumi.Input[str] effective_time: The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
         :param pulumi.Input[str] engine_version: Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         :param pulumi.Input[bool] force_upgrade: Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
         :param pulumi.Input[str] instance_class: The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
         :param pulumi.Input[str] instance_type: The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
+        :param pulumi.Input[str] node_type: Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
         :param pulumi.Input[str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
         :param pulumi.Input[str] payment_type: The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[int] period: The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
         :param pulumi.Input[int] port: The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
+        :param pulumi.Input[int] read_only_count: Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
         :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
+        :param pulumi.Input[int] slave_read_only_count: Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
         :param pulumi.Input[str] storage_performance_level: The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
         :param pulumi.Input[int] storage_size_gb: The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
@@ -818,18 +954,22 @@ class TairInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[str]] = None,
                  auto_renew_period: Optional[pulumi.Input[str]] = None,
+                 cluster_backup_id: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_upgrade: Optional[pulumi.Input[bool]] = None,
                  instance_class: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 node_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 read_only_count: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  shard_count: Optional[pulumi.Input[int]] = None,
+                 slave_read_only_count: Optional[pulumi.Input[int]] = None,
                  storage_performance_level: Optional[pulumi.Input[str]] = None,
                  storage_size_gb: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -848,6 +988,7 @@ class TairInstance(pulumi.CustomResource):
 
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["auto_renew_period"] = auto_renew_period
+            __props__.__dict__["cluster_backup_id"] = cluster_backup_id
             __props__.__dict__["effective_time"] = effective_time
             __props__.__dict__["engine_version"] = engine_version
             __props__.__dict__["force_upgrade"] = force_upgrade
@@ -857,13 +998,16 @@ class TairInstance(pulumi.CustomResource):
             if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
+            __props__.__dict__["node_type"] = node_type
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["port"] = port
+            __props__.__dict__["read_only_count"] = read_only_count
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["secondary_zone_id"] = secondary_zone_id
             __props__.__dict__["shard_count"] = shard_count
+            __props__.__dict__["slave_read_only_count"] = slave_read_only_count
             __props__.__dict__["storage_performance_level"] = storage_performance_level
             __props__.__dict__["storage_size_gb"] = storage_size_gb
             __props__.__dict__["tags"] = tags
@@ -893,19 +1037,23 @@ class TairInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renew: Optional[pulumi.Input[str]] = None,
             auto_renew_period: Optional[pulumi.Input[str]] = None,
+            cluster_backup_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             effective_time: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             force_upgrade: Optional[pulumi.Input[bool]] = None,
             instance_class: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
+            node_type: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             port: Optional[pulumi.Input[int]] = None,
+            read_only_count: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             secondary_zone_id: Optional[pulumi.Input[str]] = None,
             shard_count: Optional[pulumi.Input[int]] = None,
+            slave_read_only_count: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_performance_level: Optional[pulumi.Input[str]] = None,
             storage_size_gb: Optional[pulumi.Input[int]] = None,
@@ -923,19 +1071,23 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_renew: Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         :param pulumi.Input[str] auto_renew_period: The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
+        :param pulumi.Input[str] cluster_backup_id: The ID of the backup set of the cluster.  .
         :param pulumi.Input[str] create_time: The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[str] effective_time: The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
         :param pulumi.Input[str] engine_version: Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         :param pulumi.Input[bool] force_upgrade: Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
         :param pulumi.Input[str] instance_class: The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
         :param pulumi.Input[str] instance_type: The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
+        :param pulumi.Input[str] node_type: Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
         :param pulumi.Input[str] password: The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
         :param pulumi.Input[str] payment_type: The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[int] period: The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
         :param pulumi.Input[int] port: The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
+        :param pulumi.Input[int] read_only_count: Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
         :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
+        :param pulumi.Input[int] slave_read_only_count: Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] storage_performance_level: The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
         :param pulumi.Input[int] storage_size_gb: The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
@@ -951,19 +1103,23 @@ class TairInstance(pulumi.CustomResource):
 
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_renew_period"] = auto_renew_period
+        __props__.__dict__["cluster_backup_id"] = cluster_backup_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["effective_time"] = effective_time
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["force_upgrade"] = force_upgrade
         __props__.__dict__["instance_class"] = instance_class
         __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["node_type"] = node_type
         __props__.__dict__["password"] = password
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["port"] = port
+        __props__.__dict__["read_only_count"] = read_only_count
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["secondary_zone_id"] = secondary_zone_id
         __props__.__dict__["shard_count"] = shard_count
+        __props__.__dict__["slave_read_only_count"] = slave_read_only_count
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_performance_level"] = storage_performance_level
         __props__.__dict__["storage_size_gb"] = storage_size_gb
@@ -989,6 +1145,14 @@ class TairInstance(pulumi.CustomResource):
         The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
         """
         return pulumi.get(self, "auto_renew_period")
+
+    @property
+    @pulumi.getter(name="clusterBackupId")
+    def cluster_backup_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the backup set of the cluster.  .
+        """
+        return pulumi.get(self, "cluster_backup_id")
 
     @property
     @pulumi.getter(name="createTime")
@@ -1039,6 +1203,14 @@ class TairInstance(pulumi.CustomResource):
         return pulumi.get(self, "instance_type")
 
     @property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> pulumi.Output[str]:
+        """
+        Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        """
+        return pulumi.get(self, "node_type")
+
+    @property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1071,6 +1243,14 @@ class TairInstance(pulumi.CustomResource):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="readOnlyCount")
+    def read_only_count(self) -> pulumi.Output[Optional[int]]:
+        """
+        Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+        """
+        return pulumi.get(self, "read_only_count")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
@@ -1093,6 +1273,14 @@ class TairInstance(pulumi.CustomResource):
         The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
         """
         return pulumi.get(self, "shard_count")
+
+    @property
+    @pulumi.getter(name="slaveReadOnlyCount")
+    def slave_read_only_count(self) -> pulumi.Output[Optional[int]]:
+        """
+        Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+        """
+        return pulumi.get(self, "slave_read_only_count")
 
     @property
     @pulumi.getter

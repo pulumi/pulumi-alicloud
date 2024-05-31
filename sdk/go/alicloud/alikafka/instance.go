@@ -60,6 +60,8 @@ type Instance struct {
 	PartitionNum pulumi.IntPtrOutput `pulumi:"partitionNum"`
 	// (Available since v1.214.1) The number of used partitions.
 	PartitionUsed pulumi.IntOutput `pulumi:"partitionUsed"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringOutput `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
@@ -183,6 +185,8 @@ type instanceState struct {
 	PartitionNum *int `pulumi:"partitionNum"`
 	// (Available since v1.214.1) The number of used partitions.
 	PartitionUsed *int `pulumi:"partitionUsed"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
@@ -265,6 +269,8 @@ type InstanceState struct {
 	PartitionNum pulumi.IntPtrInput
 	// (Available since v1.214.1) The number of used partitions.
 	PartitionUsed pulumi.IntPtrInput
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringPtrInput
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
 	// The zones among which you want to deploy the instance.
@@ -339,6 +345,8 @@ type instanceArgs struct {
 	PaidType *string `pulumi:"paidType"`
 	// The number of partitions.
 	PartitionNum *int `pulumi:"partitionNum"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
@@ -402,6 +410,8 @@ type InstanceArgs struct {
 	PaidType pulumi.StringPtrInput
 	// The number of partitions.
 	PartitionNum pulumi.IntPtrInput
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringPtrInput
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
 	// The zones among which you want to deploy the instance.
@@ -611,6 +621,11 @@ func (o InstanceOutput) PartitionNum() pulumi.IntPtrOutput {
 // (Available since v1.214.1) The number of used partitions.
 func (o InstanceOutput) PartitionUsed() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.PartitionUsed }).(pulumi.IntOutput)
+}
+
+// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The ID of security group for this instance. If the security group is empty, system will create a default one.

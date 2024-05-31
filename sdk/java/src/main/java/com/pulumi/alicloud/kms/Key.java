@@ -19,7 +19,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A kms key can help user to protect data security in the transmission process. For information about Alikms Key and how to use it, see [What is Resource Alikms Key](https://www.alibabacloud.com/help/doc-detail/28947.htm).
+ * Provides a KMS Key resource.
+ * 
+ * For information about KMS Key and how to use it, see [What is Key](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createkey).
  * 
  * &gt; **NOTE:** Available since v1.85.0.
  * 
@@ -50,10 +52,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var key = new Key("key", KeyArgs.builder()
+ *         var default_ = new Key("default", KeyArgs.builder()
  *             .description("Hello KMS")
- *             .pendingWindowInDays("7")
  *             .status("Enabled")
+ *             .pendingWindowInDays("7")
  *             .build());
  * 
  *     }
@@ -64,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Alikms key can be imported using the id, e.g.
+ * KMS Key can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:kms/key:Key example &lt;id&gt;
@@ -74,48 +76,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:kms/key:Key")
 public class Key extends com.pulumi.resources.CustomResource {
     /**
-     * The Alicloud Resource Name (ARN) of the key.
+     * The ARN of the key.
      * 
      */
     @Export(name="arn", refs={String.class}, tree="[0]")
     private Output<String> arn;
 
     /**
-     * @return The Alicloud Resource Name (ARN) of the key.
+     * @return The ARN of the key.
      * 
      */
     public Output<String> arn() {
         return this.arn;
     }
     /**
-     * Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
-     * - `Enabled`
-     * - `Disabled`
-     *   **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+     * Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
      * 
      */
     @Export(name="automaticRotation", refs={String.class}, tree="[0]")
     private Output<String> automaticRotation;
 
     /**
-     * @return Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
-     * - `Enabled`
-     * - `Disabled`
-     *   **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+     * @return Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`.
      * 
      */
     public Output<String> automaticRotation() {
         return this.automaticRotation;
     }
     /**
-     * The date and time when the CMK was created. The time is displayed in UTC.
+     * The time when the CMK was created.
      * 
      */
     @Export(name="creationDate", refs={String.class}, tree="[0]")
     private Output<String> creationDate;
 
     /**
-     * @return The date and time when the CMK was created. The time is displayed in UTC.
+     * @return The time when the CMK was created.
      * 
      */
     public Output<String> creationDate() {
@@ -136,14 +132,14 @@ public class Key extends com.pulumi.resources.CustomResource {
         return this.creator;
     }
     /**
-     * The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+     * The time at which the CMK is scheduled for deletion.
      * 
      */
     @Export(name="deleteDate", refs={String.class}, tree="[0]")
     private Output<String> deleteDate;
 
     /**
-     * @return The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
+     * @return The time at which the CMK is scheduled for deletion.
      * 
      */
     public Output<String> deleteDate() {
@@ -153,43 +149,43 @@ public class Key extends com.pulumi.resources.CustomResource {
      * Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
      * 
      * @deprecated
-     * Field &#39;deletion_window_in_days&#39; has been deprecated from provider version 1.85.0. New field &#39;pending_window_in_days&#39; instead.
+     * Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
      * 
      */
-    @Deprecated /* Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead. */
+    @Deprecated /* Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead. */
     @Export(name="deletionWindowInDays", refs={Integer.class}, tree="[0]")
-    private Output<Integer> deletionWindowInDays;
+    private Output</* @Nullable */ Integer> deletionWindowInDays;
 
     /**
      * @return Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
      * 
      */
-    public Output<Integer> deletionWindowInDays() {
-        return this.deletionWindowInDays;
+    public Output<Optional<Integer>> deletionWindowInDays() {
+        return Codegen.optional(this.deletionWindowInDays);
     }
     /**
-     * The description of the CMK. The description can be 0 to 8,192 characters in length.
+     * The description of the key.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the CMK. The description can be 0 to 8,192 characters in length.
+     * @return The description of the key.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The instance ID of the exclusive KMS instance.
+     * The ID of the KMS instance.
      * 
      */
     @Export(name="dkmsInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dkmsInstanceId;
 
     /**
-     * @return The instance ID of the exclusive KMS instance.
+     * @return The ID of the KMS instance.
      * 
      */
     public Output<Optional<String>> dkmsInstanceId() {
@@ -198,34 +194,42 @@ public class Key extends com.pulumi.resources.CustomResource {
     /**
      * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      * 
+     * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+     * 
+     * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+     * 
+     * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
+     * 
      * @deprecated
-     * Field &#39;is_enabled&#39; has been deprecated from provider version 1.85.0. New field &#39;key_state&#39; instead.
+     * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
      * 
      */
-    @Deprecated /* Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead. */
+    @Deprecated /* Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead. */
     @Export(name="isEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isEnabled;
+    private Output<Boolean> isEnabled;
 
     /**
      * @return Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      * 
+     * &gt; **NOTE:** If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+     * 
+     * &gt; **NOTE:** The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+     * 
+     * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
+     * 
      */
-    public Output<Optional<Boolean>> isEnabled() {
-        return Codegen.optional(this.isEnabled);
+    public Output<Boolean> isEnabled() {
+        return this.isEnabled;
     }
     /**
-     * The type of the CMK. Default value: `Aliyun_AES_256`. Valid values:
-     * `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
-     * Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+     * The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
      * 
      */
     @Export(name="keySpec", refs={String.class}, tree="[0]")
     private Output<String> keySpec;
 
     /**
-     * @return The type of the CMK. Default value: `Aliyun_AES_256`. Valid values:
-     * `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
-     * Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
+     * @return The specification of the key. Default value: `Aliyun_AES_256`. Valid values: `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
      * 
      */
     public Output<String> keySpec() {
@@ -235,10 +239,10 @@ public class Key extends com.pulumi.resources.CustomResource {
      * Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
      * @deprecated
-     * Field &#39;key_state&#39; has been deprecated from provider version 1.123.1. New field &#39;status&#39; instead.
+     * Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
      */
-    @Deprecated /* Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead. */
+    @Deprecated /* Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead. */
     @Export(name="keyState", refs={String.class}, tree="[0]")
     private Output<String> keyState;
 
@@ -250,108 +254,108 @@ public class Key extends com.pulumi.resources.CustomResource {
         return this.keyState;
     }
     /**
-     * The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-     * - `SIGN/VERIFY`: generates or verifies a digital signature.
+     * The usage of the key. Default value: `ENCRYPT/DECRYPT`. Valid values:
+     * - `ENCRYPT/DECRYPT`: Encrypts or decrypts data.
+     * - `SIGN/VERIFY`: Generates or verifies a digital signature.
      * 
      */
     @Export(name="keyUsage", refs={String.class}, tree="[0]")
     private Output<String> keyUsage;
 
     /**
-     * @return The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-     * - `SIGN/VERIFY`: generates or verifies a digital signature.
+     * @return The usage of the key. Default value: `ENCRYPT/DECRYPT`. Valid values:
+     * - `ENCRYPT/DECRYPT`: Encrypts or decrypts data.
+     * - `SIGN/VERIFY`: Generates or verifies a digital signature.
      * 
      */
     public Output<String> keyUsage() {
         return this.keyUsage;
     }
     /**
-     * The date and time the last rotation was performed. The time is displayed in UTC.
+     * The time when the last rotation was performed.
      * 
      */
     @Export(name="lastRotationDate", refs={String.class}, tree="[0]")
     private Output<String> lastRotationDate;
 
     /**
-     * @return The date and time the last rotation was performed. The time is displayed in UTC.
+     * @return The time when the last rotation was performed.
      * 
      */
     public Output<String> lastRotationDate() {
         return this.lastRotationDate;
     }
     /**
-     * The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
+     * The time when the key material expires.
      * 
      */
     @Export(name="materialExpireTime", refs={String.class}, tree="[0]")
     private Output<String> materialExpireTime;
 
     /**
-     * @return The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
+     * @return The time when the key material expires.
      * 
      */
     public Output<String> materialExpireTime() {
         return this.materialExpireTime;
     }
     /**
-     * The time the next rotation is scheduled for execution.
+     * The time when the next rotation will be performed.
      * 
      */
     @Export(name="nextRotationDate", refs={String.class}, tree="[0]")
     private Output<String> nextRotationDate;
 
     /**
-     * @return The time the next rotation is scheduled for execution.
+     * @return The time when the next rotation will be performed.
      * 
      */
     public Output<String> nextRotationDate() {
         return this.nextRotationDate;
     }
     /**
-     * The source of key material. Default value: `Aliyun_KMS`. Valid values:
-     * - `Aliyun_KMS`
-     * - `EXTERNAL`
-     *   **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-     *   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-     *   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+     * The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
      * 
      */
     @Export(name="origin", refs={String.class}, tree="[0]")
     private Output<String> origin;
 
     /**
-     * @return The source of key material. Default value: `Aliyun_KMS`. Valid values:
-     * - `Aliyun_KMS`
-     * - `EXTERNAL`
-     *   **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-     *   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-     *   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+     * @return The key material origin. Default value: `Aliyun_KMS`. Valid values: `Aliyun_KMS`, `EXTERNAL`.
      * 
      */
     public Output<String> origin() {
         return this.origin;
     }
     /**
-     * The number of days before the CMK is deleted.
-     * During this period, the CMK is in the PendingDeletion state.
-     * After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+     * The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
      * **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
      * 
      */
     @Export(name="pendingWindowInDays", refs={Integer.class}, tree="[0]")
-    private Output<Integer> pendingWindowInDays;
+    private Output</* @Nullable */ Integer> pendingWindowInDays;
 
     /**
-     * @return The number of days before the CMK is deleted.
-     * During this period, the CMK is in the PendingDeletion state.
-     * After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
+     * @return The number of days before the CMK is deleted. During this period, the CMK is in the PendingDeletion state. After this period ends, you cannot cancel the deletion. Unit: days. Valid values: `7` to `366`.
      * **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
      * 
      */
-    public Output<Integer> pendingWindowInDays() {
-        return this.pendingWindowInDays;
+    public Output<Optional<Integer>> pendingWindowInDays() {
+        return Codegen.optional(this.pendingWindowInDays);
+    }
+    /**
+     * The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
+     * 
+     */
+    @Export(name="policy", refs={String.class}, tree="[0]")
+    private Output<String> policy;
+
+    /**
+     * @return The content of the key policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setkeypolicy).
+     * 
+     */
+    public Output<String> policy() {
+        return this.policy;
     }
     /**
      * The ID of the current primary key version of the symmetric CMK.
@@ -368,70 +372,44 @@ public class Key extends com.pulumi.resources.CustomResource {
         return this.primaryKeyVersion;
     }
     /**
-     * The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
-     * - `SOFTWARE`
-     * - `HSM`
-     *   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-     *   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-     *   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+     * The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
      * 
      */
     @Export(name="protectionLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> protectionLevel;
 
     /**
-     * @return The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
-     * - `SOFTWARE`
-     * - `HSM`
-     *   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-     *   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-     *   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+     * @return The protection level of the key. Default value: `SOFTWARE`. Valid values: `SOFTWARE`, `HSM`.
      * 
      */
     public Output<Optional<String>> protectionLevel() {
         return Codegen.optional(this.protectionLevel);
     }
     /**
-     * The interval for automatic key rotation. Specify the value in the integer[unit] format.
-     * The following units are supported: d (day), h (hour), m (minute), and s (second).
-     * For example, you can use either 7d or 604800s to specify a seven-day interval.
-     * The interval can range from 7 days to 730 days.
-     * **NOTE**: It is Required when `automatic_rotation = &#34;Enabled&#34;`
-     * 
-     * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
+     * The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
+     * **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
      * 
      */
     @Export(name="rotationInterval", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rotationInterval;
 
     /**
-     * @return The interval for automatic key rotation. Specify the value in the integer[unit] format.
-     * The following units are supported: d (day), h (hour), m (minute), and s (second).
-     * For example, you can use either 7d or 604800s to specify a seven-day interval.
-     * The interval can range from 7 days to 730 days.
-     * **NOTE**: It is Required when `automatic_rotation = &#34;Enabled&#34;`
-     * 
-     * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
+     * @return The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval.
+     * **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
      * 
      */
     public Output<Optional<String>> rotationInterval() {
         return Codegen.optional(this.rotationInterval);
     }
     /**
-     * The status of CMK. Default value: `Enabled`. Valid Values:
-     * - `Disabled`
-     * - `Enabled`
-     * - `PendingDeletion`
+     * The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of CMK. Default value: `Enabled`. Valid Values:
-     * - `Disabled`
-     * - `Enabled`
-     * - `PendingDeletion`
+     * @return The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
      * 
      */
     public Output<String> status() {

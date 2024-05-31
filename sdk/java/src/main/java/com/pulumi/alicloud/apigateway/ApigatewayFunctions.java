@@ -36,9 +36,13 @@ import java.util.concurrent.CompletableFuture;
 
 public final class ApigatewayFunctions {
     /**
-     * This data source provides the apis of the current Alibaba Cloud user.
+     * This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.22.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -48,6 +52,13 @@ public final class ApigatewayFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.Group;
+     * import com.pulumi.alicloud.apigateway.GroupArgs;
+     * import com.pulumi.alicloud.apigateway.Api;
+     * import com.pulumi.alicloud.apigateway.ApiArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiRequestConfigArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiHttpServiceConfigArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
      * import java.util.List;
@@ -63,11 +74,47 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
-     *             .outputFile("output_ApiGatawayApis")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Group("default", GroupArgs.builder()
+     *             .name(name)
+     *             .description(name)
      *             .build());
      * 
-     *         ctx.export("firstApiId", dataApigatway.apis()[0].id());
+     *         var defaultApi = new Api("defaultApi", ApiArgs.builder()
+     *             .groupId(default_.id())
+     *             .name(name)
+     *             .description(name)
+     *             .authType("APP")
+     *             .serviceType("HTTP")
+     *             .requestConfig(ApiRequestConfigArgs.builder()
+     *                 .protocol("HTTP")
+     *                 .method("GET")
+     *                 .path("/test/path")
+     *                 .mode("MAPPING")
+     *                 .build())
+     *             .httpServiceConfig(ApiHttpServiceConfigArgs.builder()
+     *                 .address("http://apigateway-backend.alicloudapi.com:8080")
+     *                 .method("GET")
+     *                 .path("/web/cloudapi")
+     *                 .timeout(20)
+     *                 .aoneName("cloudapi-openapi")
+     *                 .build())
+     *             .requestParameters(ApiRequestParameterArgs.builder()
+     *                 .name(name)
+     *                 .type("STRING")
+     *                 .required("OPTIONAL")
+     *                 .in("QUERY")
+     *                 .inService("QUERY")
+     *                 .nameService(name)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ApigatewayFunctions.getApis(GetApisArgs.builder()
+     *             .ids(defaultApi.id())
+     *             .build());
+     * 
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(getApisResult -> getApisResult).applyValue(ids -> ids.applyValue(getApisResult -> getApisResult.apis()[0].id())));
      *     }
      * }
      * }
@@ -79,9 +126,13 @@ public final class ApigatewayFunctions {
         return getApis(GetApisArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the apis of the current Alibaba Cloud user.
+     * This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.22.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -91,6 +142,13 @@ public final class ApigatewayFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.Group;
+     * import com.pulumi.alicloud.apigateway.GroupArgs;
+     * import com.pulumi.alicloud.apigateway.Api;
+     * import com.pulumi.alicloud.apigateway.ApiArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiRequestConfigArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiHttpServiceConfigArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
      * import java.util.List;
@@ -106,11 +164,47 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
-     *             .outputFile("output_ApiGatawayApis")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Group("default", GroupArgs.builder()
+     *             .name(name)
+     *             .description(name)
      *             .build());
      * 
-     *         ctx.export("firstApiId", dataApigatway.apis()[0].id());
+     *         var defaultApi = new Api("defaultApi", ApiArgs.builder()
+     *             .groupId(default_.id())
+     *             .name(name)
+     *             .description(name)
+     *             .authType("APP")
+     *             .serviceType("HTTP")
+     *             .requestConfig(ApiRequestConfigArgs.builder()
+     *                 .protocol("HTTP")
+     *                 .method("GET")
+     *                 .path("/test/path")
+     *                 .mode("MAPPING")
+     *                 .build())
+     *             .httpServiceConfig(ApiHttpServiceConfigArgs.builder()
+     *                 .address("http://apigateway-backend.alicloudapi.com:8080")
+     *                 .method("GET")
+     *                 .path("/web/cloudapi")
+     *                 .timeout(20)
+     *                 .aoneName("cloudapi-openapi")
+     *                 .build())
+     *             .requestParameters(ApiRequestParameterArgs.builder()
+     *                 .name(name)
+     *                 .type("STRING")
+     *                 .required("OPTIONAL")
+     *                 .in("QUERY")
+     *                 .inService("QUERY")
+     *                 .nameService(name)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ApigatewayFunctions.getApis(GetApisArgs.builder()
+     *             .ids(defaultApi.id())
+     *             .build());
+     * 
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(getApisResult -> getApisResult).applyValue(ids -> ids.applyValue(getApisResult -> getApisResult.apis()[0].id())));
      *     }
      * }
      * }
@@ -122,9 +216,13 @@ public final class ApigatewayFunctions {
         return getApisPlain(GetApisPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the apis of the current Alibaba Cloud user.
+     * This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.22.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -134,6 +232,13 @@ public final class ApigatewayFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.Group;
+     * import com.pulumi.alicloud.apigateway.GroupArgs;
+     * import com.pulumi.alicloud.apigateway.Api;
+     * import com.pulumi.alicloud.apigateway.ApiArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiRequestConfigArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiHttpServiceConfigArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
      * import java.util.List;
@@ -149,11 +254,47 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
-     *             .outputFile("output_ApiGatawayApis")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Group("default", GroupArgs.builder()
+     *             .name(name)
+     *             .description(name)
      *             .build());
      * 
-     *         ctx.export("firstApiId", dataApigatway.apis()[0].id());
+     *         var defaultApi = new Api("defaultApi", ApiArgs.builder()
+     *             .groupId(default_.id())
+     *             .name(name)
+     *             .description(name)
+     *             .authType("APP")
+     *             .serviceType("HTTP")
+     *             .requestConfig(ApiRequestConfigArgs.builder()
+     *                 .protocol("HTTP")
+     *                 .method("GET")
+     *                 .path("/test/path")
+     *                 .mode("MAPPING")
+     *                 .build())
+     *             .httpServiceConfig(ApiHttpServiceConfigArgs.builder()
+     *                 .address("http://apigateway-backend.alicloudapi.com:8080")
+     *                 .method("GET")
+     *                 .path("/web/cloudapi")
+     *                 .timeout(20)
+     *                 .aoneName("cloudapi-openapi")
+     *                 .build())
+     *             .requestParameters(ApiRequestParameterArgs.builder()
+     *                 .name(name)
+     *                 .type("STRING")
+     *                 .required("OPTIONAL")
+     *                 .in("QUERY")
+     *                 .inService("QUERY")
+     *                 .nameService(name)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ApigatewayFunctions.getApis(GetApisArgs.builder()
+     *             .ids(defaultApi.id())
+     *             .build());
+     * 
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(getApisResult -> getApisResult).applyValue(ids -> ids.applyValue(getApisResult -> getApisResult.apis()[0].id())));
      *     }
      * }
      * }
@@ -165,9 +306,13 @@ public final class ApigatewayFunctions {
         return getApis(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the apis of the current Alibaba Cloud user.
+     * This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.22.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -177,6 +322,13 @@ public final class ApigatewayFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.Group;
+     * import com.pulumi.alicloud.apigateway.GroupArgs;
+     * import com.pulumi.alicloud.apigateway.Api;
+     * import com.pulumi.alicloud.apigateway.ApiArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiRequestConfigArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiHttpServiceConfigArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
      * import java.util.List;
@@ -192,11 +344,47 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
-     *             .outputFile("output_ApiGatawayApis")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Group("default", GroupArgs.builder()
+     *             .name(name)
+     *             .description(name)
      *             .build());
      * 
-     *         ctx.export("firstApiId", dataApigatway.apis()[0].id());
+     *         var defaultApi = new Api("defaultApi", ApiArgs.builder()
+     *             .groupId(default_.id())
+     *             .name(name)
+     *             .description(name)
+     *             .authType("APP")
+     *             .serviceType("HTTP")
+     *             .requestConfig(ApiRequestConfigArgs.builder()
+     *                 .protocol("HTTP")
+     *                 .method("GET")
+     *                 .path("/test/path")
+     *                 .mode("MAPPING")
+     *                 .build())
+     *             .httpServiceConfig(ApiHttpServiceConfigArgs.builder()
+     *                 .address("http://apigateway-backend.alicloudapi.com:8080")
+     *                 .method("GET")
+     *                 .path("/web/cloudapi")
+     *                 .timeout(20)
+     *                 .aoneName("cloudapi-openapi")
+     *                 .build())
+     *             .requestParameters(ApiRequestParameterArgs.builder()
+     *                 .name(name)
+     *                 .type("STRING")
+     *                 .required("OPTIONAL")
+     *                 .in("QUERY")
+     *                 .inService("QUERY")
+     *                 .nameService(name)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ApigatewayFunctions.getApis(GetApisArgs.builder()
+     *             .ids(defaultApi.id())
+     *             .build());
+     * 
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(getApisResult -> getApisResult).applyValue(ids -> ids.applyValue(getApisResult -> getApisResult.apis()[0].id())));
      *     }
      * }
      * }
@@ -208,9 +396,13 @@ public final class ApigatewayFunctions {
         return getApisPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the apis of the current Alibaba Cloud user.
+     * This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.22.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -220,6 +412,13 @@ public final class ApigatewayFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.Group;
+     * import com.pulumi.alicloud.apigateway.GroupArgs;
+     * import com.pulumi.alicloud.apigateway.Api;
+     * import com.pulumi.alicloud.apigateway.ApiArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiRequestConfigArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiHttpServiceConfigArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
      * import java.util.List;
@@ -235,11 +434,47 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
-     *             .outputFile("output_ApiGatawayApis")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Group("default", GroupArgs.builder()
+     *             .name(name)
+     *             .description(name)
      *             .build());
      * 
-     *         ctx.export("firstApiId", dataApigatway.apis()[0].id());
+     *         var defaultApi = new Api("defaultApi", ApiArgs.builder()
+     *             .groupId(default_.id())
+     *             .name(name)
+     *             .description(name)
+     *             .authType("APP")
+     *             .serviceType("HTTP")
+     *             .requestConfig(ApiRequestConfigArgs.builder()
+     *                 .protocol("HTTP")
+     *                 .method("GET")
+     *                 .path("/test/path")
+     *                 .mode("MAPPING")
+     *                 .build())
+     *             .httpServiceConfig(ApiHttpServiceConfigArgs.builder()
+     *                 .address("http://apigateway-backend.alicloudapi.com:8080")
+     *                 .method("GET")
+     *                 .path("/web/cloudapi")
+     *                 .timeout(20)
+     *                 .aoneName("cloudapi-openapi")
+     *                 .build())
+     *             .requestParameters(ApiRequestParameterArgs.builder()
+     *                 .name(name)
+     *                 .type("STRING")
+     *                 .required("OPTIONAL")
+     *                 .in("QUERY")
+     *                 .inService("QUERY")
+     *                 .nameService(name)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ApigatewayFunctions.getApis(GetApisArgs.builder()
+     *             .ids(defaultApi.id())
+     *             .build());
+     * 
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(getApisResult -> getApisResult).applyValue(ids -> ids.applyValue(getApisResult -> getApisResult.apis()[0].id())));
      *     }
      * }
      * }
@@ -251,9 +486,13 @@ public final class ApigatewayFunctions {
         return Deployment.getInstance().invoke("alicloud:apigateway/getApis:getApis", TypeShape.of(GetApisResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the apis of the current Alibaba Cloud user.
+     * This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.22.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -263,6 +502,13 @@ public final class ApigatewayFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apigateway.Group;
+     * import com.pulumi.alicloud.apigateway.GroupArgs;
+     * import com.pulumi.alicloud.apigateway.Api;
+     * import com.pulumi.alicloud.apigateway.ApiArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiRequestConfigArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiHttpServiceConfigArgs;
+     * import com.pulumi.alicloud.apigateway.inputs.ApiRequestParameterArgs;
      * import com.pulumi.alicloud.apigateway.ApigatewayFunctions;
      * import com.pulumi.alicloud.apigateway.inputs.GetApisArgs;
      * import java.util.List;
@@ -278,11 +524,47 @@ public final class ApigatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
-     *             .outputFile("output_ApiGatawayApis")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Group("default", GroupArgs.builder()
+     *             .name(name)
+     *             .description(name)
      *             .build());
      * 
-     *         ctx.export("firstApiId", dataApigatway.apis()[0].id());
+     *         var defaultApi = new Api("defaultApi", ApiArgs.builder()
+     *             .groupId(default_.id())
+     *             .name(name)
+     *             .description(name)
+     *             .authType("APP")
+     *             .serviceType("HTTP")
+     *             .requestConfig(ApiRequestConfigArgs.builder()
+     *                 .protocol("HTTP")
+     *                 .method("GET")
+     *                 .path("/test/path")
+     *                 .mode("MAPPING")
+     *                 .build())
+     *             .httpServiceConfig(ApiHttpServiceConfigArgs.builder()
+     *                 .address("http://apigateway-backend.alicloudapi.com:8080")
+     *                 .method("GET")
+     *                 .path("/web/cloudapi")
+     *                 .timeout(20)
+     *                 .aoneName("cloudapi-openapi")
+     *                 .build())
+     *             .requestParameters(ApiRequestParameterArgs.builder()
+     *                 .name(name)
+     *                 .type("STRING")
+     *                 .required("OPTIONAL")
+     *                 .in("QUERY")
+     *                 .inService("QUERY")
+     *                 .nameService(name)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = ApigatewayFunctions.getApis(GetApisArgs.builder()
+     *             .ids(defaultApi.id())
+     *             .build());
+     * 
+     *         ctx.export("apiGatewayApisId0", ids.applyValue(getApisResult -> getApisResult).applyValue(ids -> ids.applyValue(getApisResult -> getApisResult.apis()[0].id())));
      *     }
      * }
      * }

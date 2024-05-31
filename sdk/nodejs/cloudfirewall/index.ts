@@ -80,6 +80,16 @@ export type InstanceMember = import("./instanceMember").InstanceMember;
 export const InstanceMember: typeof import("./instanceMember").InstanceMember = null as any;
 utilities.lazyLoad(exports, ["InstanceMember"], () => require("./instanceMember"));
 
+export { NatFirewallArgs, NatFirewallState } from "./natFirewall";
+export type NatFirewall = import("./natFirewall").NatFirewall;
+export const NatFirewall: typeof import("./natFirewall").NatFirewall = null as any;
+utilities.lazyLoad(exports, ["NatFirewall"], () => require("./natFirewall"));
+
+export { NatFirewallControlPolicyArgs, NatFirewallControlPolicyState } from "./natFirewallControlPolicy";
+export type NatFirewallControlPolicy = import("./natFirewallControlPolicy").NatFirewallControlPolicy;
+export const NatFirewallControlPolicy: typeof import("./natFirewallControlPolicy").NatFirewallControlPolicy = null as any;
+utilities.lazyLoad(exports, ["NatFirewallControlPolicy"], () => require("./natFirewallControlPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -101,6 +111,10 @@ const _module = {
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/instanceMember:InstanceMember":
                 return new InstanceMember(name, <any>undefined, { urn })
+            case "alicloud:cloudfirewall/natFirewall:NatFirewall":
+                return new NatFirewall(name, <any>undefined, { urn })
+            case "alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy":
+                return new NatFirewallControlPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -114,3 +128,5 @@ pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/firewallVpcFire
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/firewallVpcFirewallControlPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/instanceMember", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/natFirewall", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/natFirewallControlPolicy", _module)

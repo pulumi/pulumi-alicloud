@@ -37,6 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.apigateway.Plugin;
  * import com.pulumi.alicloud.apigateway.PluginArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,15 +51,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform_example");
  *         var default_ = new Plugin("default", PluginArgs.builder()
- *             .description("tf_example")
- *             .pluginName("tf_example")
- *             .pluginData("{\"allowOrigins\": \"api.foo.com\",\"allowMethods\": \"GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\",\"allowHeaders\": \"Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid\",\"exposeHeaders\": \"Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message\",\"maxAge\": 172800,\"allowCredentials\": true}")
- *             .pluginType("cors")
- *             .tags(Map.ofEntries(
- *                 Map.entry("Created", "TF"),
- *                 Map.entry("For", "example")
- *             ))
+ *             .description(name)
+ *             .pluginName(name)
+ *             .pluginData(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("routes", jsonArray(
+ *                         jsonObject(
+ *                             jsonProperty("name", "Vip"),
+ *                             jsonProperty("condition", "$CaAppId = 123456"),
+ *                             jsonProperty("backend", jsonObject(
+ *                                 jsonProperty("type", "HTTP-VPC"),
+ *                                 jsonProperty("vpcAccessName", "slbAccessForVip")
+ *                             ))
+ *                         ), 
+ *                         jsonObject(
+ *                             jsonProperty("name", "MockForOldClient"),
+ *                             jsonProperty("condition", "$ClientVersion < '2.0.5'"),
+ *                             jsonProperty("backend", jsonObject(
+ *                                 jsonProperty("type", "MOCK"),
+ *                                 jsonProperty("statusCode", 400),
+ *                                 jsonProperty("mockBody", "This version is not supported!!!")
+ *                             ))
+ *                         ), 
+ *                         jsonObject(
+ *                             jsonProperty("name", "BlueGreenPercent05"),
+ *                             jsonProperty("condition", "1 = 1"),
+ *                             jsonProperty("backend", jsonObject(
+ *                                 jsonProperty("type", "HTTP"),
+ *                                 jsonProperty("address", "https://beta-version.api.foo.com")
+ *                             )),
+ *                             jsonProperty("constant-parameters", jsonArray(jsonObject(
+ *                                 jsonProperty("name", "x-route-blue-green"),
+ *                                 jsonProperty("location", "header"),
+ *                                 jsonProperty("value", "route-blue-green")
+ *                             )))
+ *                         )
+ *                     ))
+ *                 )))
+ *             .pluginType("routing")
  *             .build());
  * 
  *     }
@@ -78,6 +111,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:apigateway/plugin:Plugin")
 public class Plugin extends com.pulumi.resources.CustomResource {
+    /**
+     * Create time.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Create time.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     /**
      * The description of the plug-in, which cannot exceed 200 characters.
      * 
@@ -121,40 +168,56 @@ public class Plugin extends com.pulumi.resources.CustomResource {
         return this.pluginName;
     }
     /**
-     * The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-     * - ipControl: indicates IP address-based access control.
-     * - trafficControl: indicates throttling.
-     * - backendSignature: indicates backend signature.
-     * - jwtAuth: indicates JWT (OpenId Connect).
-     * - cors: indicates cross-origin resource access (CORS).
-     * - caching: indicates caching.
+     * The type of the plug-in. Valid values:
+     * - &#34;trafficControl&#34;
+     * - &#34;ipControl&#34;
+     * - &#34;backendSignature&#34;
+     * - &#34;jwtAuth&#34;
+     * - &#34;basicAuth&#34;
+     * - &#34;cors&#34;
+     * - &#34;caching&#34;
+     * - &#34;routing&#34;
+     * - &#34;accessControl&#34;
+     * - &#34;errorMapping&#34;
+     * - &#34;circuitBreaker&#34;
+     * - &#34;remoteAuth&#34;
+     * - &#34;logMask&#34;
+     * - &#34;transformer&#34;.
      * 
      */
     @Export(name="pluginType", refs={String.class}, tree="[0]")
     private Output<String> pluginType;
 
     /**
-     * @return The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-     * - ipControl: indicates IP address-based access control.
-     * - trafficControl: indicates throttling.
-     * - backendSignature: indicates backend signature.
-     * - jwtAuth: indicates JWT (OpenId Connect).
-     * - cors: indicates cross-origin resource access (CORS).
-     * - caching: indicates caching.
+     * @return The type of the plug-in. Valid values:
+     * - &#34;trafficControl&#34;
+     * - &#34;ipControl&#34;
+     * - &#34;backendSignature&#34;
+     * - &#34;jwtAuth&#34;
+     * - &#34;basicAuth&#34;
+     * - &#34;cors&#34;
+     * - &#34;caching&#34;
+     * - &#34;routing&#34;
+     * - &#34;accessControl&#34;
+     * - &#34;errorMapping&#34;
+     * - &#34;circuitBreaker&#34;
+     * - &#34;remoteAuth&#34;
+     * - &#34;logMask&#34;
+     * - &#34;transformer&#34;.
      * 
      */
     public Output<String> pluginType() {
         return this.pluginType;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {

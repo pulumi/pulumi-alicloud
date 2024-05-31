@@ -11,6 +11,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AccessPointPosixUser',
+    'AccessPointRootPathPermission',
     'GetAccessGroupsGroupResult',
     'GetAccessRulesRuleResult',
     'GetAutoSnapshotPoliciesPolicyResult',
@@ -23,6 +25,132 @@ __all__ = [
     'GetZonesZoneResult',
     'GetZonesZoneInstanceTypeResult',
 ]
+
+@pulumi.output_type
+class AccessPointPosixUser(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "posixGroupId":
+            suggest = "posix_group_id"
+        elif key == "posixSecondaryGroupIds":
+            suggest = "posix_secondary_group_ids"
+        elif key == "posixUserId":
+            suggest = "posix_user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPointPosixUser. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPointPosixUser.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPointPosixUser.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 posix_group_id: Optional[int] = None,
+                 posix_secondary_group_ids: Optional[Sequence[int]] = None,
+                 posix_user_id: Optional[int] = None):
+        """
+        :param int posix_group_id: The ID of the Posix user group.
+        :param Sequence[int] posix_secondary_group_ids: The ID of the second user group.
+        :param int posix_user_id: The Posix user ID.
+        """
+        if posix_group_id is not None:
+            pulumi.set(__self__, "posix_group_id", posix_group_id)
+        if posix_secondary_group_ids is not None:
+            pulumi.set(__self__, "posix_secondary_group_ids", posix_secondary_group_ids)
+        if posix_user_id is not None:
+            pulumi.set(__self__, "posix_user_id", posix_user_id)
+
+    @property
+    @pulumi.getter(name="posixGroupId")
+    def posix_group_id(self) -> Optional[int]:
+        """
+        The ID of the Posix user group.
+        """
+        return pulumi.get(self, "posix_group_id")
+
+    @property
+    @pulumi.getter(name="posixSecondaryGroupIds")
+    def posix_secondary_group_ids(self) -> Optional[Sequence[int]]:
+        """
+        The ID of the second user group.
+        """
+        return pulumi.get(self, "posix_secondary_group_ids")
+
+    @property
+    @pulumi.getter(name="posixUserId")
+    def posix_user_id(self) -> Optional[int]:
+        """
+        The Posix user ID.
+        """
+        return pulumi.get(self, "posix_user_id")
+
+
+@pulumi.output_type
+class AccessPointRootPathPermission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ownerGroupId":
+            suggest = "owner_group_id"
+        elif key == "ownerUserId":
+            suggest = "owner_user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPointRootPathPermission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPointRootPathPermission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPointRootPathPermission.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 owner_group_id: Optional[int] = None,
+                 owner_user_id: Optional[int] = None,
+                 permission: Optional[str] = None):
+        """
+        :param int owner_group_id: The ID of the primary user group.
+        :param int owner_user_id: The owner user ID.
+        :param str permission: POSIX permission.
+        """
+        if owner_group_id is not None:
+            pulumi.set(__self__, "owner_group_id", owner_group_id)
+        if owner_user_id is not None:
+            pulumi.set(__self__, "owner_user_id", owner_user_id)
+        if permission is not None:
+            pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter(name="ownerGroupId")
+    def owner_group_id(self) -> Optional[int]:
+        """
+        The ID of the primary user group.
+        """
+        return pulumi.get(self, "owner_group_id")
+
+    @property
+    @pulumi.getter(name="ownerUserId")
+    def owner_user_id(self) -> Optional[int]:
+        """
+        The owner user ID.
+        """
+        return pulumi.get(self, "owner_user_id")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> Optional[str]:
+        """
+        POSIX permission.
+        """
+        return pulumi.get(self, "permission")
+
 
 @pulumi.output_type
 class GetAccessGroupsGroupResult(dict):

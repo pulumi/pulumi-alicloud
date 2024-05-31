@@ -12,17 +12,181 @@ namespace Pulumi.AliCloud.Cen
     public static class GetTransitRouterVpcAttachments
     {
         /// <summary>
-        /// This data source provides CEN Transit Router VPC Attachments available to the user.[What is Cen Transit Router VPC Attachments](https://help.aliyun.com/document_detail/261222.html)
+        /// This data source provides the CEN Transit Router VPC Attachments of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke();
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultMaster = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
+        ///     {
+        ///         CenInstanceName = name,
+        ///         ProtectionLevel = "REDUCED",
+        ///     });
+        /// 
+        ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         TransitRouterAttachmentName = name,
+        ///         TransitRouterAttachmentDescription = name,
+        ///         ZoneMappings = new[]
+        ///         {
+        ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+        ///             {
+        ///                 VswitchId = defaultMaster.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
+        ///                 ZoneId = defaultMaster.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
+        ///             },
+        ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+        ///             {
+        ///                 VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
+        ///                 ZoneId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Cen.GetTransitRouterVpcAttachments.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultTransitRouterVpcAttachment.Id,
+        ///         },
+        ///         CenId = defaultInstance.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cenTransitRouterVpcAttachmentsId0"] = ids.Apply(getTransitRouterVpcAttachmentsResult =&gt; getTransitRouterVpcAttachmentsResult.Attachments[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetTransitRouterVpcAttachmentsResult> InvokeAsync(GetTransitRouterVpcAttachmentsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterVpcAttachmentsResult>("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", args ?? new GetTransitRouterVpcAttachmentsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides CEN Transit Router VPC Attachments available to the user.[What is Cen Transit Router VPC Attachments](https://help.aliyun.com/document_detail/261222.html)
+        /// This data source provides the CEN Transit Router VPC Attachments of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in 1.126.0+
+        /// &gt; **NOTE:** Available since v1.126.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke();
+        /// 
+        ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     {
+        ///         NameRegex = "^default-NODELETING$",
+        ///     });
+        /// 
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+        ///     });
+        /// 
+        ///     var defaultMaster = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     {
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+        ///     });
+        /// 
+        ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
+        ///     {
+        ///         CenInstanceName = name,
+        ///         ProtectionLevel = "REDUCED",
+        ///     });
+        /// 
+        ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///     });
+        /// 
+        ///     var defaultTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("default", new()
+        ///     {
+        ///         CenId = defaultInstance.Id,
+        ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+        ///         TransitRouterAttachmentName = name,
+        ///         TransitRouterAttachmentDescription = name,
+        ///         ZoneMappings = new[]
+        ///         {
+        ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+        ///             {
+        ///                 VswitchId = defaultMaster.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
+        ///                 ZoneId = defaultMaster.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
+        ///             },
+        ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
+        ///             {
+        ///                 VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.Id),
+        ///                 ZoneId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Cen.GetTransitRouterVpcAttachments.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultTransitRouterVpcAttachment.Id,
+        ///         },
+        ///         CenId = defaultInstance.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cenTransitRouterVpcAttachmentsId0"] = ids.Apply(getTransitRouterVpcAttachmentsResult =&gt; getTransitRouterVpcAttachmentsResult.Attachments[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTransitRouterVpcAttachmentsResult> Invoke(GetTransitRouterVpcAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterVpcAttachmentsResult>("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", args ?? new GetTransitRouterVpcAttachmentsInvokeArgs(), options.WithDefaults());
@@ -32,7 +196,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class GetTransitRouterVpcAttachmentsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the CEN instance.
+        /// The ID of the CEN instance.
         /// </summary>
         [Input("cenId", required: true)]
         public string CenId { get; set; } = null!;
@@ -41,7 +205,7 @@ namespace Pulumi.AliCloud.Cen
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of resource id. The element value is same as `transit_router_id`.
+        /// A list of Transit Router VPC Attachment IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -50,22 +214,40 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
+        /// A regex string to filter results by Transit Router VPC Attachment name.
+        /// </summary>
+        [Input("nameRegex")]
+        public string? NameRegex { get; set; }
+
+        /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+        /// The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// The transit router ID.
+        /// The ID of the Transit Router VPC Attachment.
+        /// </summary>
+        [Input("transitRouterAttachmentId")]
+        public string? TransitRouterAttachmentId { get; set; }
+
+        /// <summary>
+        /// The ID of the transit router.
         /// </summary>
         [Input("transitRouterId")]
         public string? TransitRouterId { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public string? VpcId { get; set; }
 
         public GetTransitRouterVpcAttachmentsArgs()
         {
@@ -76,7 +258,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class GetTransitRouterVpcAttachmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the CEN instance.
+        /// The ID of the CEN instance.
         /// </summary>
         [Input("cenId", required: true)]
         public Input<string> CenId { get; set; } = null!;
@@ -85,7 +267,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of resource id. The element value is same as `transit_router_id`.
+        /// A list of Transit Router VPC Attachment IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -94,22 +276,40 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
+        /// A regex string to filter results by Transit Router VPC Attachment name.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
+
+        /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+        /// The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The transit router ID.
+        /// The ID of the Transit Router VPC Attachment.
+        /// </summary>
+        [Input("transitRouterAttachmentId")]
+        public Input<string>? TransitRouterAttachmentId { get; set; }
+
+        /// <summary>
+        /// The ID of the transit router.
         /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         public GetTransitRouterVpcAttachmentsInvokeArgs()
         {
@@ -122,24 +322,40 @@ namespace Pulumi.AliCloud.Cen
     public sealed class GetTransitRouterVpcAttachmentsResult
     {
         /// <summary>
-        /// A list of CEN Transit Router VPC Attachments. Each element contains the following attributes:
+        /// A list of Transit Router VPC Attachments. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTransitRouterVpcAttachmentsAttachmentResult> Attachments;
+        /// <summary>
+        /// (Available since v1.224.0) The ID of the CEN instance.
+        /// </summary>
         public readonly string CenId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Transit Router VPC Attachment names.
+        /// </summary>
+        public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// The status of the transit router attachment.
+        /// The status of the Transit Router VPC Attachment.
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// ID of the transit router.
+        /// The ID of the Transit Router VPC Attachment.
+        /// </summary>
+        public readonly string? TransitRouterAttachmentId;
+        /// <summary>
+        /// (Available since v1.224.0) The ID of the transit router.
         /// </summary>
         public readonly string? TransitRouterId;
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
+        public readonly string? VpcId;
 
         [OutputConstructor]
         private GetTransitRouterVpcAttachmentsResult(
@@ -151,19 +367,31 @@ namespace Pulumi.AliCloud.Cen
 
             ImmutableArray<string> ids,
 
+            string? nameRegex,
+
+            ImmutableArray<string> names,
+
             string? outputFile,
 
             string? status,
 
-            string? transitRouterId)
+            string? transitRouterAttachmentId,
+
+            string? transitRouterId,
+
+            string? vpcId)
         {
             Attachments = attachments;
             CenId = cenId;
             Id = id;
             Ids = ids;
+            NameRegex = nameRegex;
+            Names = names;
             OutputFile = outputFile;
             Status = status;
+            TransitRouterAttachmentId = transitRouterAttachmentId;
             TransitRouterId = transitRouterId;
+            VpcId = vpcId;
         }
     }
 }

@@ -11,9 +11,105 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides CEN Transit Router VPC Attachments available to the user.[What is Cen Transit Router VPC Attachments](https://help.aliyun.com/document_detail/261222.html)
+// This data source provides the CEN Transit Router VPC Attachments of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in 1.126.0+
+// > **NOTE:** Available since v1.126.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[0]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultMaster, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[1]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//				ProtectionLevel: pulumi.String("REDUCED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
+//				CenId: defaultInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouterVpcAttachment, err := cen.NewTransitRouterVpcAttachment(ctx, "default", &cen.TransitRouterVpcAttachmentArgs{
+//				CenId:                              defaultInstance.ID(),
+//				VpcId:                              pulumi.String(defaultGetNetworks.Ids[0]),
+//				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
+//				TransitRouterAttachmentName:        pulumi.String(name),
+//				TransitRouterAttachmentDescription: pulumi.String(name),
+//				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						VswitchId: pulumi.String(defaultMaster.Vswitches[0].Id),
+//						ZoneId:    pulumi.String(defaultMaster.Vswitches[0].ZoneId),
+//					},
+//					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
+//						VswitchId: pulumi.String(defaultGetSwitches.Vswitches[0].Id),
+//						ZoneId:    pulumi.String(defaultGetSwitches.Vswitches[0].ZoneId),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := cen.GetTransitRouterVpcAttachmentsOutput(ctx, cen.GetTransitRouterVpcAttachmentsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultTransitRouterVpcAttachment.ID(),
+//				},
+//				CenId: defaultInstance.ID(),
+//			}, nil)
+//			ctx.Export("cenTransitRouterVpcAttachmentsId0", ids.ApplyT(func(ids cen.GetTransitRouterVpcAttachmentsResult) (*string, error) {
+//				return &ids.Attachments[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTransitRouterVpcAttachments(ctx *pulumi.Context, args *GetTransitRouterVpcAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterVpcAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterVpcAttachmentsResult
@@ -26,31 +122,45 @@ func GetTransitRouterVpcAttachments(ctx *pulumi.Context, args *GetTransitRouterV
 
 // A collection of arguments for invoking getTransitRouterVpcAttachments.
 type GetTransitRouterVpcAttachmentsArgs struct {
-	// ID of the CEN instance.
+	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
-	// A list of resource id. The element value is same as `transitRouterId`.
+	// A list of Transit Router VPC Attachment IDs.
 	Ids []string `pulumi:"ids"`
+	// A regex string to filter results by Transit Router VPC Attachment name.
+	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+	// The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
 	Status *string `pulumi:"status"`
-	// The transit router ID.
+	// The ID of the Transit Router VPC Attachment.
+	TransitRouterAttachmentId *string `pulumi:"transitRouterAttachmentId"`
+	// The ID of the transit router.
 	TransitRouterId *string `pulumi:"transitRouterId"`
+	// The ID of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getTransitRouterVpcAttachments.
 type GetTransitRouterVpcAttachmentsResult struct {
-	// A list of CEN Transit Router VPC Attachments. Each element contains the following attributes:
+	// A list of Transit Router VPC Attachments. Each element contains the following attributes:
 	Attachments []GetTransitRouterVpcAttachmentsAttachment `pulumi:"attachments"`
-	CenId       string                                     `pulumi:"cenId"`
+	// (Available since v1.224.0) The ID of the CEN instance.
+	CenId string `pulumi:"cenId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Transit Router VPC Attachment names.
+	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// The status of the transit router attachment.
+	// The status of the Transit Router VPC Attachment.
 	Status *string `pulumi:"status"`
-	// ID of the transit router.
+	// The ID of the Transit Router VPC Attachment.
+	TransitRouterAttachmentId *string `pulumi:"transitRouterAttachmentId"`
+	// (Available since v1.224.0) The ID of the transit router.
 	TransitRouterId *string `pulumi:"transitRouterId"`
+	// The ID of the VPC.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 func GetTransitRouterVpcAttachmentsOutput(ctx *pulumi.Context, args GetTransitRouterVpcAttachmentsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterVpcAttachmentsResultOutput {
@@ -68,16 +178,22 @@ func GetTransitRouterVpcAttachmentsOutput(ctx *pulumi.Context, args GetTransitRo
 
 // A collection of arguments for invoking getTransitRouterVpcAttachments.
 type GetTransitRouterVpcAttachmentsOutputArgs struct {
-	// ID of the CEN instance.
+	// The ID of the CEN instance.
 	CenId pulumi.StringInput `pulumi:"cenId"`
-	// A list of resource id. The element value is same as `transitRouterId`.
+	// A list of Transit Router VPC Attachment IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// A regex string to filter results by Transit Router VPC Attachment name.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+	// The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The transit router ID.
+	// The ID of the Transit Router VPC Attachment.
+	TransitRouterAttachmentId pulumi.StringPtrInput `pulumi:"transitRouterAttachmentId"`
+	// The ID of the transit router.
 	TransitRouterId pulumi.StringPtrInput `pulumi:"transitRouterId"`
+	// The ID of the VPC.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
 func (GetTransitRouterVpcAttachmentsOutputArgs) ElementType() reflect.Type {
@@ -99,13 +215,14 @@ func (o GetTransitRouterVpcAttachmentsResultOutput) ToGetTransitRouterVpcAttachm
 	return o
 }
 
-// A list of CEN Transit Router VPC Attachments. Each element contains the following attributes:
+// A list of Transit Router VPC Attachments. Each element contains the following attributes:
 func (o GetTransitRouterVpcAttachmentsResultOutput) Attachments() GetTransitRouterVpcAttachmentsAttachmentArrayOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) []GetTransitRouterVpcAttachmentsAttachment {
 		return v.Attachments
 	}).(GetTransitRouterVpcAttachmentsAttachmentArrayOutput)
 }
 
+// (Available since v1.224.0) The ID of the CEN instance.
 func (o GetTransitRouterVpcAttachmentsResultOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) string { return v.CenId }).(pulumi.StringOutput)
 }
@@ -119,18 +236,37 @@ func (o GetTransitRouterVpcAttachmentsResultOutput) Ids() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+func (o GetTransitRouterVpcAttachmentsResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
+}
+
+// A list of Transit Router VPC Attachment names.
+func (o GetTransitRouterVpcAttachmentsResultOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
 func (o GetTransitRouterVpcAttachmentsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// The status of the transit router attachment.
+// The status of the Transit Router VPC Attachment.
 func (o GetTransitRouterVpcAttachmentsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// ID of the transit router.
+// The ID of the Transit Router VPC Attachment.
+func (o GetTransitRouterVpcAttachmentsResultOutput) TransitRouterAttachmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) *string { return v.TransitRouterAttachmentId }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.224.0) The ID of the transit router.
 func (o GetTransitRouterVpcAttachmentsResultOutput) TransitRouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) *string { return v.TransitRouterId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VPC.
+func (o GetTransitRouterVpcAttachmentsResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

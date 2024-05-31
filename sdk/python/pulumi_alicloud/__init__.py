@@ -710,6 +710,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "apigateway/accessControlList",
+  "fqn": "pulumi_alicloud.apigateway",
+  "classes": {
+   "alicloud:apigateway/accessControlList:AccessControlList": "AccessControlList"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "apigateway/api",
   "fqn": "pulumi_alicloud.apigateway",
   "classes": {
@@ -1658,6 +1666,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
    "alicloud:cloudfirewall/instanceMember:InstanceMember": "InstanceMember"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudfirewall/natFirewall",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/natFirewall:NatFirewall": "NatFirewall"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudfirewall/natFirewallControlPolicy",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy": "NatFirewallControlPolicy"
   }
  },
  {
@@ -4782,6 +4806,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "nas/accessPoint",
+  "fqn": "pulumi_alicloud.nas",
+  "classes": {
+   "alicloud:nas/accessPoint:AccessPoint": "AccessPoint"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "nas/accessRule",
   "fqn": "pulumi_alicloud.nas",
   "classes": {
@@ -5022,10 +5054,26 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oss/accountPublicAccessBlock",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock": "AccountPublicAccessBlock"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oss/bucket",
   "fqn": "pulumi_alicloud.oss",
   "classes": {
    "alicloud:oss/bucket:Bucket": "Bucket"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketAccessMonitor",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketAccessMonitor:BucketAccessMonitor": "BucketAccessMonitor"
   }
  },
  {
@@ -5046,6 +5094,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oss/bucketDataRedundancyTransition",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition": "BucketDataRedundancyTransition"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oss/bucketHttpsConfig",
   "fqn": "pulumi_alicloud.oss",
   "classes": {
@@ -5062,6 +5118,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oss/bucketMetaQuery",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketMetaQuery:BucketMetaQuery": "BucketMetaQuery"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oss/bucketObject",
   "fqn": "pulumi_alicloud.oss",
   "classes": {
@@ -5074,6 +5138,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.oss",
   "classes": {
    "alicloud:oss/bucketPolicy:BucketPolicy": "BucketPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketPublicAccessBlock",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketPublicAccessBlock:BucketPublicAccessBlock": "BucketPublicAccessBlock"
   }
  },
  {
@@ -5106,6 +5178,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.oss",
   "classes": {
    "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption": "BucketServerSideEncryption"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketTransferAcceleration",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketTransferAcceleration:BucketTransferAcceleration": "BucketTransferAcceleration"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketUserDefinedLogFields",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketUserDefinedLogFields:BucketUserDefinedLogFields": "BucketUserDefinedLogFields"
   }
  },
  {
@@ -6354,6 +6442,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sls",
   "classes": {
    "alicloud:sls/alert:Alert": "Alert"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sls/scheduledSql",
+  "fqn": "pulumi_alicloud.sls",
+  "classes": {
+   "alicloud:sls/scheduledSql:ScheduledSql": "ScheduledSql"
   }
  },
  {

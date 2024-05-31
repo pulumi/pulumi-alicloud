@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .access_group import *
+from .access_point import *
 from .access_rule import *
 from .auto_snapshot_policy import *
 from .data_flow import *
@@ -28,4 +29,5 @@ from .mount_target import *
 from .recycle_bin import *
 from .smb_acl_attachment import *
 from .snapshot import *
+from ._inputs import *
 from . import outputs

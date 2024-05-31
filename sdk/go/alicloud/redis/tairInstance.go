@@ -26,6 +26,8 @@ type TairInstance struct {
 	AutoRenew pulumi.StringPtrOutput `pulumi:"autoRenew"`
 	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
 	AutoRenewPeriod pulumi.StringPtrOutput `pulumi:"autoRenewPeriod"`
+	// The ID of the backup set of the cluster.  .
+	ClusterBackupId pulumi.StringPtrOutput `pulumi:"clusterBackupId"`
 	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
@@ -38,6 +40,8 @@ type TairInstance struct {
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
+	// Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	NodeType pulumi.StringOutput `pulumi:"nodeType"`
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
@@ -46,12 +50,16 @@ type TairInstance struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
 	Port pulumi.IntOutput `pulumi:"port"`
+	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+	ReadOnlyCount pulumi.IntPtrOutput `pulumi:"readOnlyCount"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
 	SecondaryZoneId pulumi.StringPtrOutput `pulumi:"secondaryZoneId"`
 	// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
 	ShardCount pulumi.IntOutput `pulumi:"shardCount"`
+	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+	SlaveReadOnlyCount pulumi.IntPtrOutput `pulumi:"slaveReadOnlyCount"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instanceType is "tairEssd", this attribute takes effect and is required.
@@ -126,6 +134,8 @@ type tairInstanceState struct {
 	AutoRenew *string `pulumi:"autoRenew"`
 	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
 	AutoRenewPeriod *string `pulumi:"autoRenewPeriod"`
+	// The ID of the backup set of the cluster.  .
+	ClusterBackupId *string `pulumi:"clusterBackupId"`
 	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime *string `pulumi:"createTime"`
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
@@ -138,6 +148,8 @@ type tairInstanceState struct {
 	InstanceClass *string `pulumi:"instanceClass"`
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType *string `pulumi:"instanceType"`
+	// Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	NodeType *string `pulumi:"nodeType"`
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
 	Password *string `pulumi:"password"`
 	// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
@@ -146,12 +158,16 @@ type tairInstanceState struct {
 	Period *int `pulumi:"period"`
 	// The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
 	Port *int `pulumi:"port"`
+	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+	ReadOnlyCount *int `pulumi:"readOnlyCount"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
 	ShardCount *int `pulumi:"shardCount"`
+	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+	SlaveReadOnlyCount *int `pulumi:"slaveReadOnlyCount"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instanceType is "tairEssd", this attribute takes effect and is required.
@@ -175,6 +191,8 @@ type TairInstanceState struct {
 	AutoRenew pulumi.StringPtrInput
 	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
 	AutoRenewPeriod pulumi.StringPtrInput
+	// The ID of the backup set of the cluster.  .
+	ClusterBackupId pulumi.StringPtrInput
 	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime pulumi.StringPtrInput
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
@@ -187,6 +205,8 @@ type TairInstanceState struct {
 	InstanceClass pulumi.StringPtrInput
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType pulumi.StringPtrInput
+	// Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	NodeType pulumi.StringPtrInput
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
 	Password pulumi.StringPtrInput
 	// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
@@ -195,12 +215,16 @@ type TairInstanceState struct {
 	Period pulumi.IntPtrInput
 	// The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
 	Port pulumi.IntPtrInput
+	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+	ReadOnlyCount pulumi.IntPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
 	ShardCount pulumi.IntPtrInput
+	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+	SlaveReadOnlyCount pulumi.IntPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instanceType is "tairEssd", this attribute takes effect and is required.
@@ -228,6 +252,8 @@ type tairInstanceArgs struct {
 	AutoRenew *string `pulumi:"autoRenew"`
 	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
 	AutoRenewPeriod *string `pulumi:"autoRenewPeriod"`
+	// The ID of the backup set of the cluster.  .
+	ClusterBackupId *string `pulumi:"clusterBackupId"`
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
@@ -238,6 +264,8 @@ type tairInstanceArgs struct {
 	InstanceClass string `pulumi:"instanceClass"`
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType string `pulumi:"instanceType"`
+	// Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	NodeType *string `pulumi:"nodeType"`
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
 	Password *string `pulumi:"password"`
 	// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
@@ -246,12 +274,16 @@ type tairInstanceArgs struct {
 	Period *int `pulumi:"period"`
 	// The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
 	Port *int `pulumi:"port"`
+	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+	ReadOnlyCount *int `pulumi:"readOnlyCount"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
 	ShardCount *int `pulumi:"shardCount"`
+	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+	SlaveReadOnlyCount *int `pulumi:"slaveReadOnlyCount"`
 	// The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instanceType is "tairEssd", this attribute takes effect and is required.
 	StoragePerformanceLevel *string `pulumi:"storagePerformanceLevel"`
 	// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
@@ -274,6 +306,8 @@ type TairInstanceArgs struct {
 	AutoRenew pulumi.StringPtrInput
 	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
 	AutoRenewPeriod pulumi.StringPtrInput
+	// The ID of the backup set of the cluster.  .
+	ClusterBackupId pulumi.StringPtrInput
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
 	EffectiveTime pulumi.StringPtrInput
 	// Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
@@ -284,6 +318,8 @@ type TairInstanceArgs struct {
 	InstanceClass pulumi.StringInput
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType pulumi.StringInput
+	// Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	NodeType pulumi.StringPtrInput
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
 	Password pulumi.StringPtrInput
 	// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
@@ -292,12 +328,16 @@ type TairInstanceArgs struct {
 	Period pulumi.IntPtrInput
 	// The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
 	Port pulumi.IntPtrInput
+	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+	ReadOnlyCount pulumi.IntPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
 	ShardCount pulumi.IntPtrInput
+	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+	SlaveReadOnlyCount pulumi.IntPtrInput
 	// The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instanceType is "tairEssd", this attribute takes effect and is required.
 	StoragePerformanceLevel pulumi.StringPtrInput
 	// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
@@ -411,6 +451,11 @@ func (o TairInstanceOutput) AutoRenewPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.AutoRenewPeriod }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the backup set of the cluster.  .
+func (o TairInstanceOutput) ClusterBackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.ClusterBackupId }).(pulumi.StringPtrOutput)
+}
+
 // The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 func (o TairInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -441,6 +486,11 @@ func (o TairInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
+// Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+func (o TairInstanceOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
+}
+
 // The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
 func (o TairInstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
@@ -461,6 +511,11 @@ func (o TairInstanceOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }
 
+// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+func (o TairInstanceOutput) ReadOnlyCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.IntPtrOutput { return v.ReadOnlyCount }).(pulumi.IntPtrOutput)
+}
+
 // The ID of the resource group to which the instance belongs.
 func (o TairInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
@@ -474,6 +529,11 @@ func (o TairInstanceOutput) SecondaryZoneId() pulumi.StringPtrOutput {
 // The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
 func (o TairInstanceOutput) ShardCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.IntOutput { return v.ShardCount }).(pulumi.IntOutput)
+}
+
+// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+func (o TairInstanceOutput) SlaveReadOnlyCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.IntPtrOutput { return v.SlaveReadOnlyCount }).(pulumi.IntPtrOutput)
 }
 
 // The status of the resource.

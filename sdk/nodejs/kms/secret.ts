@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resouce used to create a secret and store its initial version.
+ * Provides a KMS Secret resource.
  *
- * > **NOTE:** Available in 1.76.0+.
+ * For information about KMS Secret and how to use it, see [What is Secret](https://www.alibabacloud.com/help/en/kms/developer-reference/api-createsecret).
+ *
+ * > **NOTE:** Available since v1.76.0.
  *
  * ## Example Usage
  *
@@ -17,21 +19,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.kms.Secret("default", {
- *     secretName: "secret-foo",
- *     description: "from terraform",
- *     secretData: "Secret data.",
- *     versionId: "000000000001",
+ *     secretName: name,
+ *     secretData: "Secret data",
+ *     versionId: "v1",
  *     forceDeleteWithoutRecovery: true,
  * });
  * ```
  *
  * ## Import
  *
- * KMS secret can be imported using the id, e.g.
+ * KMS Secret can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:kms/secret:Secret default <id>
+ * $ pulumi import alicloud:kms/secret:Secret example <id>
  * ```
  */
 export class Secret extends pulumi.CustomResource {
@@ -63,31 +66,35 @@ export class Secret extends pulumi.CustomResource {
     }
 
     /**
-     * The Alicloud Resource Name (ARN) of the secret.
+     * The ARN of the secret.
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
+    /**
+     * (Available since v1.224.0) The time when the secret is created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The description of the secret.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The instance ID of the exclusive KMS instance.
+     * The ID of the KMS instance.
      */
     public readonly dkmsInstanceId!: pulumi.Output<string | undefined>;
     /**
-     * Whether to enable automatic key rotation.
+     * Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
      */
     public readonly enableAutomaticRotation!: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+     * The ID of the KMS key.
      */
     public readonly encryptionKeyId!: pulumi.Output<string | undefined>;
     /**
-     * The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
     public readonly extendedConfig!: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
+     * Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
      */
     public readonly forceDeleteWithoutRecovery!: pulumi.Output<boolean | undefined>;
     /**
@@ -95,19 +102,23 @@ export class Secret extends pulumi.CustomResource {
      */
     public /*out*/ readonly plannedDeleteTime!: pulumi.Output<string>;
     /**
-     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
+     * The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
+     */
+    public readonly policy!: pulumi.Output<string>;
+    /**
+     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
      */
     public readonly recoveryWindowInDays!: pulumi.Output<number | undefined>;
     /**
-     * The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+     * The interval for automatic rotation.
      */
     public readonly rotationInterval!: pulumi.Output<string | undefined>;
     /**
-     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
+     * The data of the secret. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
      */
     public readonly secretData!: pulumi.Output<string>;
     /**
-     * The type of the secret value. Valid values: text, binary. Default to "text".
+     * The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
      */
     public readonly secretDataType!: pulumi.Output<string | undefined>;
     /**
@@ -116,10 +127,10 @@ export class Secret extends pulumi.CustomResource {
     public readonly secretName!: pulumi.Output<string>;
     /**
      * The type of the secret. Valid values:
-     * - `Generic`: specifies a generic secret.
-     * - `Rds`: specifies a managed ApsaraDB RDS secret.
-     * - `RAMCredentials`: indicates a managed RAM secret.
-     * - `ECS`: specifies a managed ECS secret.
+     * - `Generic`: Generic secret.
+     * - `Rds`: ApsaraDB RDS secret.
+     * - `RAMCredentials`: RAM secret.
+     * - `ECS`: ECS secret.
      */
     public readonly secretType!: pulumi.Output<string>;
     /**
@@ -127,11 +138,11 @@ export class Secret extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The version number of the initial version. Version numbers are unique in each secret object.
+     * The version number of the initial version.
      */
     public readonly versionId!: pulumi.Output<string>;
     /**
-     * ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+     * The stage label that is used to mark the new version.
      */
     public readonly versionStages!: pulumi.Output<string[]>;
 
@@ -149,6 +160,7 @@ export class Secret extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SecretState | undefined;
             resourceInputs["arn"] = state ? state.arn : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dkmsInstanceId"] = state ? state.dkmsInstanceId : undefined;
             resourceInputs["enableAutomaticRotation"] = state ? state.enableAutomaticRotation : undefined;
@@ -156,6 +168,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["extendedConfig"] = state ? state.extendedConfig : undefined;
             resourceInputs["forceDeleteWithoutRecovery"] = state ? state.forceDeleteWithoutRecovery : undefined;
             resourceInputs["plannedDeleteTime"] = state ? state.plannedDeleteTime : undefined;
+            resourceInputs["policy"] = state ? state.policy : undefined;
             resourceInputs["recoveryWindowInDays"] = state ? state.recoveryWindowInDays : undefined;
             resourceInputs["rotationInterval"] = state ? state.rotationInterval : undefined;
             resourceInputs["secretData"] = state ? state.secretData : undefined;
@@ -182,6 +195,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["encryptionKeyId"] = args ? args.encryptionKeyId : undefined;
             resourceInputs["extendedConfig"] = args ? args.extendedConfig : undefined;
             resourceInputs["forceDeleteWithoutRecovery"] = args ? args.forceDeleteWithoutRecovery : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
             resourceInputs["recoveryWindowInDays"] = args ? args.recoveryWindowInDays : undefined;
             resourceInputs["rotationInterval"] = args ? args.rotationInterval : undefined;
             resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
@@ -192,6 +206,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["versionId"] = args ? args.versionId : undefined;
             resourceInputs["versionStages"] = args ? args.versionStages : undefined;
             resourceInputs["arn"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["plannedDeleteTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -206,31 +221,35 @@ export class Secret extends pulumi.CustomResource {
  */
 export interface SecretState {
     /**
-     * The Alicloud Resource Name (ARN) of the secret.
+     * The ARN of the secret.
      */
     arn?: pulumi.Input<string>;
+    /**
+     * (Available since v1.224.0) The time when the secret is created.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * The description of the secret.
      */
     description?: pulumi.Input<string>;
     /**
-     * The instance ID of the exclusive KMS instance.
+     * The ID of the KMS instance.
      */
     dkmsInstanceId?: pulumi.Input<string>;
     /**
-     * Whether to enable automatic key rotation.
+     * Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
      */
     enableAutomaticRotation?: pulumi.Input<boolean>;
     /**
-     * The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+     * The ID of the KMS key.
      */
     encryptionKeyId?: pulumi.Input<string>;
     /**
-     * The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
     extendedConfig?: pulumi.Input<string>;
     /**
-     * Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
+     * Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
      */
     forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
     /**
@@ -238,19 +257,23 @@ export interface SecretState {
      */
     plannedDeleteTime?: pulumi.Input<string>;
     /**
-     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
+     * The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
+     */
+    policy?: pulumi.Input<string>;
+    /**
+     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
      */
     recoveryWindowInDays?: pulumi.Input<number>;
     /**
-     * The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+     * The interval for automatic rotation.
      */
     rotationInterval?: pulumi.Input<string>;
     /**
-     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
+     * The data of the secret. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
      */
     secretData?: pulumi.Input<string>;
     /**
-     * The type of the secret value. Valid values: text, binary. Default to "text".
+     * The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
      */
     secretDataType?: pulumi.Input<string>;
     /**
@@ -259,10 +282,10 @@ export interface SecretState {
     secretName?: pulumi.Input<string>;
     /**
      * The type of the secret. Valid values:
-     * - `Generic`: specifies a generic secret.
-     * - `Rds`: specifies a managed ApsaraDB RDS secret.
-     * - `RAMCredentials`: indicates a managed RAM secret.
-     * - `ECS`: specifies a managed ECS secret.
+     * - `Generic`: Generic secret.
+     * - `Rds`: ApsaraDB RDS secret.
+     * - `RAMCredentials`: RAM secret.
+     * - `ECS`: ECS secret.
      */
     secretType?: pulumi.Input<string>;
     /**
@@ -270,11 +293,11 @@ export interface SecretState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The version number of the initial version. Version numbers are unique in each secret object.
+     * The version number of the initial version.
      */
     versionId?: pulumi.Input<string>;
     /**
-     * ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+     * The stage label that is used to mark the new version.
      */
     versionStages?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -288,39 +311,43 @@ export interface SecretArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The instance ID of the exclusive KMS instance.
+     * The ID of the KMS instance.
      */
     dkmsInstanceId?: pulumi.Input<string>;
     /**
-     * Whether to enable automatic key rotation.
+     * Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
      */
     enableAutomaticRotation?: pulumi.Input<boolean>;
     /**
-     * The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+     * The ID of the KMS key.
      */
     encryptionKeyId?: pulumi.Input<string>;
     /**
-     * The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
     extendedConfig?: pulumi.Input<string>;
     /**
-     * Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
+     * Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
      */
     forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
     /**
-     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `forceDeleteWithoutRecovery` is true.
+     * The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
+     */
+    policy?: pulumi.Input<string>;
+    /**
+     * Specifies the recovery period of the secret if you do not forcibly delete it. Default value: `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
      */
     recoveryWindowInDays?: pulumi.Input<number>;
     /**
-     * The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
+     * The interval for automatic rotation.
      */
     rotationInterval?: pulumi.Input<string>;
     /**
-     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
+     * The data of the secret. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
      */
     secretData: pulumi.Input<string>;
     /**
-     * The type of the secret value. Valid values: text, binary. Default to "text".
+     * The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
      */
     secretDataType?: pulumi.Input<string>;
     /**
@@ -329,10 +356,10 @@ export interface SecretArgs {
     secretName: pulumi.Input<string>;
     /**
      * The type of the secret. Valid values:
-     * - `Generic`: specifies a generic secret.
-     * - `Rds`: specifies a managed ApsaraDB RDS secret.
-     * - `RAMCredentials`: indicates a managed RAM secret.
-     * - `ECS`: specifies a managed ECS secret.
+     * - `Generic`: Generic secret.
+     * - `Rds`: ApsaraDB RDS secret.
+     * - `RAMCredentials`: RAM secret.
+     * - `ECS`: ECS secret.
      */
     secretType?: pulumi.Input<string>;
     /**
@@ -340,11 +367,11 @@ export interface SecretArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The version number of the initial version. Version numbers are unique in each secret object.
+     * The version number of the initial version.
      */
     versionId: pulumi.Input<string>;
     /**
-     * ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+     * The stage label that is used to mark the new version.
      */
     versionStages?: pulumi.Input<pulumi.Input<string>[]>;
 }

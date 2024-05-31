@@ -27,22 +27,66 @@ import (
 //
 // import (
 //
+//	"encoding/json"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apigateway.NewPlugin(ctx, "default", &apigateway.PluginArgs{
-//				Description: pulumi.String("tf_example"),
-//				PluginName:  pulumi.String("tf_example"),
-//				PluginData:  pulumi.String("{\"allowOrigins\": \"api.foo.com\",\"allowMethods\": \"GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\",\"allowHeaders\": \"Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid\",\"exposeHeaders\": \"Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message\",\"maxAge\": 172800,\"allowCredentials\": true}"),
-//				PluginType:  pulumi.String("cors"),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"routes": []interface{}{
+//					map[string]interface{}{
+//						"name":      "Vip",
+//						"condition": "$CaAppId = 123456",
+//						"backend": map[string]interface{}{
+//							"type":          "HTTP-VPC",
+//							"vpcAccessName": "slbAccessForVip",
+//						},
+//					},
+//					map[string]interface{}{
+//						"name":      "MockForOldClient",
+//						"condition": "$ClientVersion < '2.0.5'",
+//						"backend": map[string]interface{}{
+//							"type":       "MOCK",
+//							"statusCode": 400,
+//							"mockBody":   "This version is not supported!!!",
+//						},
+//					},
+//					map[string]interface{}{
+//						"name":      "BlueGreenPercent05",
+//						"condition": "1 = 1",
+//						"backend": map[string]interface{}{
+//							"type":    "HTTP",
+//							"address": "https://beta-version.api.foo.com",
+//						},
+//						"constant-parameters": []map[string]interface{}{
+//							map[string]interface{}{
+//								"name":     "x-route-blue-green",
+//								"location": "header",
+//								"value":    "route-blue-green",
+//							},
+//						},
+//					},
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = apigateway.NewPlugin(ctx, "default", &apigateway.PluginArgs{
+//				Description: pulumi.String(name),
+//				PluginName:  pulumi.String(name),
+//				PluginData:  pulumi.String(json0),
+//				PluginType:  pulumi.String("routing"),
 //			})
 //			if err != nil {
 //				return err
@@ -63,21 +107,31 @@ import (
 type Plugin struct {
 	pulumi.CustomResourceState
 
+	// Create time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the plug-in, which cannot exceed 200 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
 	PluginData pulumi.StringOutput `pulumi:"pluginData"`
 	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
 	PluginName pulumi.StringOutput `pulumi:"pluginName"`
-	// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-	// - ipControl: indicates IP address-based access control.
-	// - trafficControl: indicates throttling.
-	// - backendSignature: indicates backend signature.
-	// - jwtAuth: indicates JWT (OpenId Connect).
-	// - cors: indicates cross-origin resource access (CORS).
-	// - caching: indicates caching.
+	// The type of the plug-in. Valid values:
+	// - "trafficControl"
+	// - "ipControl"
+	// - "backendSignature"
+	// - "jwtAuth"
+	// - "basicAuth"
+	// - "cors"
+	// - "caching"
+	// - "routing"
+	// - "accessControl"
+	// - "errorMapping"
+	// - "circuitBreaker"
+	// - "remoteAuth"
+	// - "logMask"
+	// - "transformer".
 	PluginType pulumi.StringOutput `pulumi:"pluginType"`
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
@@ -120,40 +174,60 @@ func GetPlugin(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Plugin resources.
 type pluginState struct {
+	// Create time.
+	CreateTime *string `pulumi:"createTime"`
 	// The description of the plug-in, which cannot exceed 200 characters.
 	Description *string `pulumi:"description"`
 	// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
 	PluginData *string `pulumi:"pluginData"`
 	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
 	PluginName *string `pulumi:"pluginName"`
-	// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-	// - ipControl: indicates IP address-based access control.
-	// - trafficControl: indicates throttling.
-	// - backendSignature: indicates backend signature.
-	// - jwtAuth: indicates JWT (OpenId Connect).
-	// - cors: indicates cross-origin resource access (CORS).
-	// - caching: indicates caching.
+	// The type of the plug-in. Valid values:
+	// - "trafficControl"
+	// - "ipControl"
+	// - "backendSignature"
+	// - "jwtAuth"
+	// - "basicAuth"
+	// - "cors"
+	// - "caching"
+	// - "routing"
+	// - "accessControl"
+	// - "errorMapping"
+	// - "circuitBreaker"
+	// - "remoteAuth"
+	// - "logMask"
+	// - "transformer".
 	PluginType *string `pulumi:"pluginType"`
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type PluginState struct {
+	// Create time.
+	CreateTime pulumi.StringPtrInput
 	// The description of the plug-in, which cannot exceed 200 characters.
 	Description pulumi.StringPtrInput
 	// The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
 	PluginData pulumi.StringPtrInput
 	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
 	PluginName pulumi.StringPtrInput
-	// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-	// - ipControl: indicates IP address-based access control.
-	// - trafficControl: indicates throttling.
-	// - backendSignature: indicates backend signature.
-	// - jwtAuth: indicates JWT (OpenId Connect).
-	// - cors: indicates cross-origin resource access (CORS).
-	// - caching: indicates caching.
+	// The type of the plug-in. Valid values:
+	// - "trafficControl"
+	// - "ipControl"
+	// - "backendSignature"
+	// - "jwtAuth"
+	// - "basicAuth"
+	// - "cors"
+	// - "caching"
+	// - "routing"
+	// - "accessControl"
+	// - "errorMapping"
+	// - "circuitBreaker"
+	// - "remoteAuth"
+	// - "logMask"
+	// - "transformer".
 	PluginType pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource.
 	Tags pulumi.MapInput
 }
 
@@ -168,15 +242,23 @@ type pluginArgs struct {
 	PluginData string `pulumi:"pluginData"`
 	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
 	PluginName string `pulumi:"pluginName"`
-	// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-	// - ipControl: indicates IP address-based access control.
-	// - trafficControl: indicates throttling.
-	// - backendSignature: indicates backend signature.
-	// - jwtAuth: indicates JWT (OpenId Connect).
-	// - cors: indicates cross-origin resource access (CORS).
-	// - caching: indicates caching.
+	// The type of the plug-in. Valid values:
+	// - "trafficControl"
+	// - "ipControl"
+	// - "backendSignature"
+	// - "jwtAuth"
+	// - "basicAuth"
+	// - "cors"
+	// - "caching"
+	// - "routing"
+	// - "accessControl"
+	// - "errorMapping"
+	// - "circuitBreaker"
+	// - "remoteAuth"
+	// - "logMask"
+	// - "transformer".
 	PluginType string `pulumi:"pluginType"`
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -188,15 +270,23 @@ type PluginArgs struct {
 	PluginData pulumi.StringInput
 	// The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
 	PluginName pulumi.StringInput
-	// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-	// - ipControl: indicates IP address-based access control.
-	// - trafficControl: indicates throttling.
-	// - backendSignature: indicates backend signature.
-	// - jwtAuth: indicates JWT (OpenId Connect).
-	// - cors: indicates cross-origin resource access (CORS).
-	// - caching: indicates caching.
+	// The type of the plug-in. Valid values:
+	// - "trafficControl"
+	// - "ipControl"
+	// - "backendSignature"
+	// - "jwtAuth"
+	// - "basicAuth"
+	// - "cors"
+	// - "caching"
+	// - "routing"
+	// - "accessControl"
+	// - "errorMapping"
+	// - "circuitBreaker"
+	// - "remoteAuth"
+	// - "logMask"
+	// - "transformer".
 	PluginType pulumi.StringInput
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource.
 	Tags pulumi.MapInput
 }
 
@@ -287,6 +377,11 @@ func (o PluginOutput) ToPluginOutputWithContext(ctx context.Context) PluginOutpu
 	return o
 }
 
+// Create time.
+func (o PluginOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Plugin) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // The description of the plug-in, which cannot exceed 200 characters.
 func (o PluginOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Plugin) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -302,18 +397,26 @@ func (o PluginOutput) PluginName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Plugin) pulumi.StringOutput { return v.PluginName }).(pulumi.StringOutput)
 }
 
-// The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
-// - ipControl: indicates IP address-based access control.
-// - trafficControl: indicates throttling.
-// - backendSignature: indicates backend signature.
-// - jwtAuth: indicates JWT (OpenId Connect).
-// - cors: indicates cross-origin resource access (CORS).
-// - caching: indicates caching.
+// The type of the plug-in. Valid values:
+// - "trafficControl"
+// - "ipControl"
+// - "backendSignature"
+// - "jwtAuth"
+// - "basicAuth"
+// - "cors"
+// - "caching"
+// - "routing"
+// - "accessControl"
+// - "errorMapping"
+// - "circuitBreaker"
+// - "remoteAuth"
+// - "logMask"
+// - "transformer".
 func (o PluginOutput) PluginType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Plugin) pulumi.StringOutput { return v.PluginType }).(pulumi.StringOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// The tag of the resource.
 func (o PluginOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Plugin) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

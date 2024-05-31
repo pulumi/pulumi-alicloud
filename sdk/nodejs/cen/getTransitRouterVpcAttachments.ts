@@ -7,9 +7,60 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides CEN Transit Router VPC Attachments available to the user.[What is Cen Transit Router VPC Attachments](https://help.aliyun.com/document_detail/261222.html)
+ * This data source provides the CEN Transit Router VPC Attachments of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.126.0+
+ * > **NOTE:** Available since v1.126.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const default = alicloud.getZones({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[0],
+ * }));
+ * const defaultMaster = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[1],
+ * }));
+ * const defaultInstance = new alicloud.cen.Instance("default", {
+ *     cenInstanceName: name,
+ *     protectionLevel: "REDUCED",
+ * });
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {cenId: defaultInstance.id});
+ * const defaultTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("default", {
+ *     cenId: defaultInstance.id,
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     transitRouterAttachmentName: name,
+ *     transitRouterAttachmentDescription: name,
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: defaultMaster.then(defaultMaster => defaultMaster.vswitches?.[0]?.id),
+ *             zoneId: defaultMaster.then(defaultMaster => defaultMaster.vswitches?.[0]?.zoneId),
+ *         },
+ *         {
+ *             vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vswitches?.[0]?.id),
+ *             zoneId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vswitches?.[0]?.zoneId),
+ *         },
+ *     ],
+ * });
+ * const ids = alicloud.cen.getTransitRouterVpcAttachmentsOutput({
+ *     ids: [defaultTransitRouterVpcAttachment.id],
+ *     cenId: defaultInstance.id,
+ * });
+ * export const cenTransitRouterVpcAttachmentsId0 = ids.apply(ids => ids.attachments?.[0]?.id);
+ * ```
  */
 export function getTransitRouterVpcAttachments(args: GetTransitRouterVpcAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterVpcAttachmentsResult> {
 
@@ -17,9 +68,12 @@ export function getTransitRouterVpcAttachments(args: GetTransitRouterVpcAttachme
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", {
         "cenId": args.cenId,
         "ids": args.ids,
+        "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "status": args.status,
+        "transitRouterAttachmentId": args.transitRouterAttachmentId,
         "transitRouterId": args.transitRouterId,
+        "vpcId": args.vpcId,
     }, opts);
 }
 
@@ -28,25 +82,37 @@ export function getTransitRouterVpcAttachments(args: GetTransitRouterVpcAttachme
  */
 export interface GetTransitRouterVpcAttachmentsArgs {
     /**
-     * ID of the CEN instance.
+     * The ID of the CEN instance.
      */
     cenId: string;
     /**
-     * A list of resource id. The element value is same as `transitRouterId`.
+     * A list of Transit Router VPC Attachment IDs.
      */
     ids?: string[];
+    /**
+     * A regex string to filter results by Transit Router VPC Attachment name.
+     */
+    nameRegex?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
     /**
-     * The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+     * The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
      */
     status?: string;
     /**
-     * The transit router ID.
+     * The ID of the Transit Router VPC Attachment.
+     */
+    transitRouterAttachmentId?: string;
+    /**
+     * The ID of the transit router.
      */
     transitRouterId?: string;
+    /**
+     * The ID of the VPC.
+     */
+    vpcId?: string;
 }
 
 /**
@@ -54,29 +120,96 @@ export interface GetTransitRouterVpcAttachmentsArgs {
  */
 export interface GetTransitRouterVpcAttachmentsResult {
     /**
-     * A list of CEN Transit Router VPC Attachments. Each element contains the following attributes:
+     * A list of Transit Router VPC Attachments. Each element contains the following attributes:
      */
     readonly attachments: outputs.cen.GetTransitRouterVpcAttachmentsAttachment[];
+    /**
+     * (Available since v1.224.0) The ID of the CEN instance.
+     */
     readonly cenId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ids: string[];
+    readonly nameRegex?: string;
+    /**
+     * A list of Transit Router VPC Attachment names.
+     */
+    readonly names: string[];
     readonly outputFile?: string;
     /**
-     * The status of the transit router attachment.
+     * The status of the Transit Router VPC Attachment.
      */
     readonly status?: string;
     /**
-     * ID of the transit router.
+     * The ID of the Transit Router VPC Attachment.
+     */
+    readonly transitRouterAttachmentId?: string;
+    /**
+     * (Available since v1.224.0) The ID of the transit router.
      */
     readonly transitRouterId?: string;
+    /**
+     * The ID of the VPC.
+     */
+    readonly vpcId?: string;
 }
 /**
- * This data source provides CEN Transit Router VPC Attachments available to the user.[What is Cen Transit Router VPC Attachments](https://help.aliyun.com/document_detail/261222.html)
+ * This data source provides the CEN Transit Router VPC Attachments of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in 1.126.0+
+ * > **NOTE:** Available since v1.126.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const default = alicloud.getZones({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[0],
+ * }));
+ * const defaultMaster = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[1],
+ * }));
+ * const defaultInstance = new alicloud.cen.Instance("default", {
+ *     cenInstanceName: name,
+ *     protectionLevel: "REDUCED",
+ * });
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {cenId: defaultInstance.id});
+ * const defaultTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("default", {
+ *     cenId: defaultInstance.id,
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     transitRouterAttachmentName: name,
+ *     transitRouterAttachmentDescription: name,
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: defaultMaster.then(defaultMaster => defaultMaster.vswitches?.[0]?.id),
+ *             zoneId: defaultMaster.then(defaultMaster => defaultMaster.vswitches?.[0]?.zoneId),
+ *         },
+ *         {
+ *             vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vswitches?.[0]?.id),
+ *             zoneId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vswitches?.[0]?.zoneId),
+ *         },
+ *     ],
+ * });
+ * const ids = alicloud.cen.getTransitRouterVpcAttachmentsOutput({
+ *     ids: [defaultTransitRouterVpcAttachment.id],
+ *     cenId: defaultInstance.id,
+ * });
+ * export const cenTransitRouterVpcAttachmentsId0 = ids.apply(ids => ids.attachments?.[0]?.id);
+ * ```
  */
 export function getTransitRouterVpcAttachmentsOutput(args: GetTransitRouterVpcAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterVpcAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterVpcAttachments(a, opts))
@@ -87,23 +220,35 @@ export function getTransitRouterVpcAttachmentsOutput(args: GetTransitRouterVpcAt
  */
 export interface GetTransitRouterVpcAttachmentsOutputArgs {
     /**
-     * ID of the CEN instance.
+     * The ID of the CEN instance.
      */
     cenId: pulumi.Input<string>;
     /**
-     * A list of resource id. The element value is same as `transitRouterId`.
+     * A list of Transit Router VPC Attachment IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex string to filter results by Transit Router VPC Attachment name.
+     */
+    nameRegex?: pulumi.Input<string>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+     * The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The transit router ID.
+     * The ID of the Transit Router VPC Attachment.
+     */
+    transitRouterAttachmentId?: pulumi.Input<string>;
+    /**
+     * The ID of the transit router.
      */
     transitRouterId?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC.
+     */
+    vpcId?: pulumi.Input<string>;
 }

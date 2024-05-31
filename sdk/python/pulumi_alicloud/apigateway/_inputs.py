@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AccessControlListAclEntryArgs',
     'ApiConstantParameterArgs',
     'ApiFcServiceConfigArgs',
     'ApiHttpServiceConfigArgs',
@@ -19,6 +20,45 @@ __all__ = [
     'ApiRequestParameterArgs',
     'ApiSystemParameterArgs',
 ]
+
+@pulumi.input_type
+class AccessControlListAclEntryArgs:
+    def __init__(__self__, *,
+                 acl_entry_comment: Optional[pulumi.Input[str]] = None,
+                 acl_entry_ip: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] acl_entry_comment: The description of the ACL.
+        :param pulumi.Input[str] acl_entry_ip: The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
+        """
+        if acl_entry_comment is not None:
+            pulumi.set(__self__, "acl_entry_comment", acl_entry_comment)
+        if acl_entry_ip is not None:
+            pulumi.set(__self__, "acl_entry_ip", acl_entry_ip)
+
+    @property
+    @pulumi.getter(name="aclEntryComment")
+    def acl_entry_comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the ACL.
+        """
+        return pulumi.get(self, "acl_entry_comment")
+
+    @acl_entry_comment.setter
+    def acl_entry_comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_entry_comment", value)
+
+    @property
+    @pulumi.getter(name="aclEntryIp")
+    def acl_entry_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
+        """
+        return pulumi.get(self, "acl_entry_ip")
+
+    @acl_entry_ip.setter
+    def acl_entry_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_entry_ip", value)
+
 
 @pulumi.input_type
 class ApiConstantParameterArgs:

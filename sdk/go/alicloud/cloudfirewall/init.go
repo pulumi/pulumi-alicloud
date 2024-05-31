@@ -37,6 +37,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Instance{}
 	case "alicloud:cloudfirewall/instanceMember:InstanceMember":
 		r = &InstanceMember{}
+	case "alicloud:cloudfirewall/natFirewall:NatFirewall":
+		r = &NatFirewall{}
+	case "alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy":
+		r = &NatFirewallControlPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -88,6 +92,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudfirewall/instanceMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/natFirewall",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/natFirewallControlPolicy",
 		&module{version},
 	)
 }

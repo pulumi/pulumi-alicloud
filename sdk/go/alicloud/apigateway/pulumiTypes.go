@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AccessControlListAclEntry struct {
+	// The description of the ACL.
+	AclEntryComment *string `pulumi:"aclEntryComment"`
+	// The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
+	AclEntryIp *string `pulumi:"aclEntryIp"`
+}
+
+// AccessControlListAclEntryInput is an input type that accepts AccessControlListAclEntryArgs and AccessControlListAclEntryOutput values.
+// You can construct a concrete instance of `AccessControlListAclEntryInput` via:
+//
+//	AccessControlListAclEntryArgs{...}
+type AccessControlListAclEntryInput interface {
+	pulumi.Input
+
+	ToAccessControlListAclEntryOutput() AccessControlListAclEntryOutput
+	ToAccessControlListAclEntryOutputWithContext(context.Context) AccessControlListAclEntryOutput
+}
+
+type AccessControlListAclEntryArgs struct {
+	// The description of the ACL.
+	AclEntryComment pulumi.StringPtrInput `pulumi:"aclEntryComment"`
+	// The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
+	AclEntryIp pulumi.StringPtrInput `pulumi:"aclEntryIp"`
+}
+
+func (AccessControlListAclEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListAclEntry)(nil)).Elem()
+}
+
+func (i AccessControlListAclEntryArgs) ToAccessControlListAclEntryOutput() AccessControlListAclEntryOutput {
+	return i.ToAccessControlListAclEntryOutputWithContext(context.Background())
+}
+
+func (i AccessControlListAclEntryArgs) ToAccessControlListAclEntryOutputWithContext(ctx context.Context) AccessControlListAclEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessControlListAclEntryOutput)
+}
+
+// AccessControlListAclEntryArrayInput is an input type that accepts AccessControlListAclEntryArray and AccessControlListAclEntryArrayOutput values.
+// You can construct a concrete instance of `AccessControlListAclEntryArrayInput` via:
+//
+//	AccessControlListAclEntryArray{ AccessControlListAclEntryArgs{...} }
+type AccessControlListAclEntryArrayInput interface {
+	pulumi.Input
+
+	ToAccessControlListAclEntryArrayOutput() AccessControlListAclEntryArrayOutput
+	ToAccessControlListAclEntryArrayOutputWithContext(context.Context) AccessControlListAclEntryArrayOutput
+}
+
+type AccessControlListAclEntryArray []AccessControlListAclEntryInput
+
+func (AccessControlListAclEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessControlListAclEntry)(nil)).Elem()
+}
+
+func (i AccessControlListAclEntryArray) ToAccessControlListAclEntryArrayOutput() AccessControlListAclEntryArrayOutput {
+	return i.ToAccessControlListAclEntryArrayOutputWithContext(context.Background())
+}
+
+func (i AccessControlListAclEntryArray) ToAccessControlListAclEntryArrayOutputWithContext(ctx context.Context) AccessControlListAclEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessControlListAclEntryArrayOutput)
+}
+
+type AccessControlListAclEntryOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListAclEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessControlListAclEntry)(nil)).Elem()
+}
+
+func (o AccessControlListAclEntryOutput) ToAccessControlListAclEntryOutput() AccessControlListAclEntryOutput {
+	return o
+}
+
+func (o AccessControlListAclEntryOutput) ToAccessControlListAclEntryOutputWithContext(ctx context.Context) AccessControlListAclEntryOutput {
+	return o
+}
+
+// The description of the ACL.
+func (o AccessControlListAclEntryOutput) AclEntryComment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessControlListAclEntry) *string { return v.AclEntryComment }).(pulumi.StringPtrOutput)
+}
+
+// The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
+func (o AccessControlListAclEntryOutput) AclEntryIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessControlListAclEntry) *string { return v.AclEntryIp }).(pulumi.StringPtrOutput)
+}
+
+type AccessControlListAclEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessControlListAclEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessControlListAclEntry)(nil)).Elem()
+}
+
+func (o AccessControlListAclEntryArrayOutput) ToAccessControlListAclEntryArrayOutput() AccessControlListAclEntryArrayOutput {
+	return o
+}
+
+func (o AccessControlListAclEntryArrayOutput) ToAccessControlListAclEntryArrayOutputWithContext(ctx context.Context) AccessControlListAclEntryArrayOutput {
+	return o
+}
+
+func (o AccessControlListAclEntryArrayOutput) Index(i pulumi.IntInput) AccessControlListAclEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessControlListAclEntry {
+		return vs[0].([]AccessControlListAclEntry)[vs[1].(int)]
+	}).(AccessControlListAclEntryOutput)
+}
+
 type ApiConstantParameter struct {
 	// The description of Constant parameter.
 	Description *string `pulumi:"description"`
@@ -1535,17 +1641,18 @@ func (o ApiSystemParameterArrayOutput) Index(i pulumi.IntInput) ApiSystemParamet
 }
 
 type GetApisApi struct {
-	// API description.
+	// The ID of the API.
+	ApiId string `pulumi:"apiId"`
+	// The description of the API.
 	Description string `pulumi:"description"`
-	// ID of the specified group.
+	// The ID of the API group.
 	GroupId string `pulumi:"groupId"`
-	// The group name that the apis belong to.
+	// The name of the API group.
 	GroupName string `pulumi:"groupName"`
-	// API ID, which is generated by the system and globally unique.
-	Id string `pulumi:"id"`
-	// API name.
+	Id        string `pulumi:"id"`
+	// The name of the API.
 	Name string `pulumi:"name"`
-	// The ID of the region where the API is located.
+	// The region ID of the API.
 	RegionId string `pulumi:"regionId"`
 }
 
@@ -1561,17 +1668,18 @@ type GetApisApiInput interface {
 }
 
 type GetApisApiArgs struct {
-	// API description.
+	// The ID of the API.
+	ApiId pulumi.StringInput `pulumi:"apiId"`
+	// The description of the API.
 	Description pulumi.StringInput `pulumi:"description"`
-	// ID of the specified group.
+	// The ID of the API group.
 	GroupId pulumi.StringInput `pulumi:"groupId"`
-	// The group name that the apis belong to.
+	// The name of the API group.
 	GroupName pulumi.StringInput `pulumi:"groupName"`
-	// API ID, which is generated by the system and globally unique.
-	Id pulumi.StringInput `pulumi:"id"`
-	// API name.
+	Id        pulumi.StringInput `pulumi:"id"`
+	// The name of the API.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The ID of the region where the API is located.
+	// The region ID of the API.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 }
 
@@ -1626,32 +1734,36 @@ func (o GetApisApiOutput) ToGetApisApiOutputWithContext(ctx context.Context) Get
 	return o
 }
 
-// API description.
+// The ID of the API.
+func (o GetApisApiOutput) ApiId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApisApi) string { return v.ApiId }).(pulumi.StringOutput)
+}
+
+// The description of the API.
 func (o GetApisApiOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApisApi) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// ID of the specified group.
+// The ID of the API group.
 func (o GetApisApiOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApisApi) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// The group name that the apis belong to.
+// The name of the API group.
 func (o GetApisApiOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApisApi) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// API ID, which is generated by the system and globally unique.
 func (o GetApisApiOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApisApi) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// API name.
+// The name of the API.
 func (o GetApisApiOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApisApi) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the region where the API is located.
+// The region ID of the API.
 func (o GetApisApiOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApisApi) string { return v.RegionId }).(pulumi.StringOutput)
 }
@@ -2628,6 +2740,8 @@ func (o GetPluginsPluginArrayOutput) Index(i pulumi.IntInput) GetPluginsPluginOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlListAclEntryInput)(nil)).Elem(), AccessControlListAclEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessControlListAclEntryArrayInput)(nil)).Elem(), AccessControlListAclEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiConstantParameterInput)(nil)).Elem(), ApiConstantParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiConstantParameterArrayInput)(nil)).Elem(), ApiConstantParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiFcServiceConfigInput)(nil)).Elem(), ApiFcServiceConfigArgs{})
@@ -2658,6 +2772,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetModelsModelArrayInput)(nil)).Elem(), GetModelsModelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginInput)(nil)).Elem(), GetPluginsPluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginArrayInput)(nil)).Elem(), GetPluginsPluginArray{})
+	pulumi.RegisterOutputType(AccessControlListAclEntryOutput{})
+	pulumi.RegisterOutputType(AccessControlListAclEntryArrayOutput{})
 	pulumi.RegisterOutputType(ApiConstantParameterOutput{})
 	pulumi.RegisterOutputType(ApiConstantParameterArrayOutput{})
 	pulumi.RegisterOutputType(ApiFcServiceConfigOutput{})

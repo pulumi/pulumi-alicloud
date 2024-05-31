@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cen.outputs;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterVpcAttachmentsAttachmentZoneMapping;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,9 +14,15 @@ import java.util.Objects;
 @CustomType
 public final class GetTransitRouterVpcAttachmentsAttachment {
     /**
-     * @return The ID of the transit router.
+     * @return (Available since v1.224.0) Whether the transit router is automatically published to the VPC instance.
      * 
      */
+    private Boolean autoPublishRouteEnabled;
+    /**
+     * @return The ID of the CEN instance.
+     * 
+     */
+    private String cenId;
     private String id;
     /**
      * @return The payment type of the resource.
@@ -23,32 +30,37 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
      */
     private String paymentType;
     /**
-     * @return Type of the resource.
+     * @return The resource type of the Transit Router VPC Attachment.
      * 
      */
     private String resourceType;
     /**
-     * @return The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+     * @return The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
      * 
      */
     private String status;
     /**
-     * @return The description of transit router attachment.
+     * @return The description of the Transit Router VPC Attachment.
      * 
      */
     private String transitRouterAttachmentDescription;
     /**
-     * @return ID of the transit router VBR attachment.
+     * @return The ID of the Transit Router VPC Attachment.
      * 
      */
     private String transitRouterAttachmentId;
     /**
-     * @return Name of the transit router attachment.
+     * @return The name of the Transit Router VPC Attachment.
      * 
      */
     private String transitRouterAttachmentName;
     /**
-     * @return ID of the VPC.
+     * @return The ID of the transit router.
+     * 
+     */
+    private String transitRouterId;
+    /**
+     * @return The ID of the VPC.
      * 
      */
     private String vpcId;
@@ -58,16 +70,26 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
      */
     private String vpcOwnerId;
     /**
-     * @return The mappings of zone
+     * @return The list of zone mapping of the VPC.
      * 
      */
     private List<GetTransitRouterVpcAttachmentsAttachmentZoneMapping> zoneMappings;
 
     private GetTransitRouterVpcAttachmentsAttachment() {}
     /**
-     * @return The ID of the transit router.
+     * @return (Available since v1.224.0) Whether the transit router is automatically published to the VPC instance.
      * 
      */
+    public Boolean autoPublishRouteEnabled() {
+        return this.autoPublishRouteEnabled;
+    }
+    /**
+     * @return The ID of the CEN instance.
+     * 
+     */
+    public String cenId() {
+        return this.cenId;
+    }
     public String id() {
         return this.id;
     }
@@ -79,42 +101,49 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
         return this.paymentType;
     }
     /**
-     * @return Type of the resource.
+     * @return The resource type of the Transit Router VPC Attachment.
      * 
      */
     public String resourceType() {
         return this.resourceType;
     }
     /**
-     * @return The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
+     * @return The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The description of transit router attachment.
+     * @return The description of the Transit Router VPC Attachment.
      * 
      */
     public String transitRouterAttachmentDescription() {
         return this.transitRouterAttachmentDescription;
     }
     /**
-     * @return ID of the transit router VBR attachment.
+     * @return The ID of the Transit Router VPC Attachment.
      * 
      */
     public String transitRouterAttachmentId() {
         return this.transitRouterAttachmentId;
     }
     /**
-     * @return Name of the transit router attachment.
+     * @return The name of the Transit Router VPC Attachment.
      * 
      */
     public String transitRouterAttachmentName() {
         return this.transitRouterAttachmentName;
     }
     /**
-     * @return ID of the VPC.
+     * @return The ID of the transit router.
+     * 
+     */
+    public String transitRouterId() {
+        return this.transitRouterId;
+    }
+    /**
+     * @return The ID of the VPC.
      * 
      */
     public String vpcId() {
@@ -128,7 +157,7 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
         return this.vpcOwnerId;
     }
     /**
-     * @return The mappings of zone
+     * @return The list of zone mapping of the VPC.
      * 
      */
     public List<GetTransitRouterVpcAttachmentsAttachmentZoneMapping> zoneMappings() {
@@ -144,6 +173,8 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean autoPublishRouteEnabled;
+        private String cenId;
         private String id;
         private String paymentType;
         private String resourceType;
@@ -151,12 +182,15 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
         private String transitRouterAttachmentDescription;
         private String transitRouterAttachmentId;
         private String transitRouterAttachmentName;
+        private String transitRouterId;
         private String vpcId;
         private String vpcOwnerId;
         private List<GetTransitRouterVpcAttachmentsAttachmentZoneMapping> zoneMappings;
         public Builder() {}
         public Builder(GetTransitRouterVpcAttachmentsAttachment defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoPublishRouteEnabled = defaults.autoPublishRouteEnabled;
+    	      this.cenId = defaults.cenId;
     	      this.id = defaults.id;
     	      this.paymentType = defaults.paymentType;
     	      this.resourceType = defaults.resourceType;
@@ -164,11 +198,28 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
     	      this.transitRouterAttachmentDescription = defaults.transitRouterAttachmentDescription;
     	      this.transitRouterAttachmentId = defaults.transitRouterAttachmentId;
     	      this.transitRouterAttachmentName = defaults.transitRouterAttachmentName;
+    	      this.transitRouterId = defaults.transitRouterId;
     	      this.vpcId = defaults.vpcId;
     	      this.vpcOwnerId = defaults.vpcOwnerId;
     	      this.zoneMappings = defaults.zoneMappings;
         }
 
+        @CustomType.Setter
+        public Builder autoPublishRouteEnabled(Boolean autoPublishRouteEnabled) {
+            if (autoPublishRouteEnabled == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "autoPublishRouteEnabled");
+            }
+            this.autoPublishRouteEnabled = autoPublishRouteEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cenId(String cenId) {
+            if (cenId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "cenId");
+            }
+            this.cenId = cenId;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -226,6 +277,14 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
             return this;
         }
         @CustomType.Setter
+        public Builder transitRouterId(String transitRouterId) {
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             if (vpcId == null) {
               throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "vpcId");
@@ -254,6 +313,8 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
         }
         public GetTransitRouterVpcAttachmentsAttachment build() {
             final var _resultValue = new GetTransitRouterVpcAttachmentsAttachment();
+            _resultValue.autoPublishRouteEnabled = autoPublishRouteEnabled;
+            _resultValue.cenId = cenId;
             _resultValue.id = id;
             _resultValue.paymentType = paymentType;
             _resultValue.resourceType = resourceType;
@@ -261,6 +322,7 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
             _resultValue.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
             _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
             _resultValue.transitRouterAttachmentName = transitRouterAttachmentName;
+            _resultValue.transitRouterId = transitRouterId;
             _resultValue.vpcId = vpcId;
             _resultValue.vpcOwnerId = vpcOwnerId;
             _resultValue.zoneMappings = zoneMappings;

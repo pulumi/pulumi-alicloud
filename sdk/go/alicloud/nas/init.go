@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:nas/accessGroup:AccessGroup":
 		r = &AccessGroup{}
+	case "alicloud:nas/accessPoint:AccessPoint":
+		r = &AccessPoint{}
 	case "alicloud:nas/accessRule:AccessRule":
 		r = &AccessRule{}
 	case "alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy":
@@ -59,6 +61,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"nas/accessGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"nas/accessPoint",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
