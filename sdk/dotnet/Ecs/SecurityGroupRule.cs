@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var @default = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = "terraform-example",
+    ///         Name = "default",
     ///     });
     /// 
     ///     var allowAllTcp = new AliCloud.Ecs.SecurityGroupRule("allow_all_tcp", new()

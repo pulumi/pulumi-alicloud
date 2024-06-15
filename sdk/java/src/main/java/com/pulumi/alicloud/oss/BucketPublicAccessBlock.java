@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.BucketPublicAccessBlock;
@@ -52,12 +54,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var createBucket = new Bucket("createBucket", BucketArgs.builder()
- *             .storageClass("Standard")
- *             .bucket(name)
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
  *             .build());
  * 
- *         var default_ = new BucketPublicAccessBlock("default", BucketPublicAccessBlockArgs.builder()
+ *         var createBucket = new Bucket("createBucket", BucketArgs.builder()
+ *             .storageClass("Standard")
+ *             .bucket(String.format("%s-%s", name,default_.result()))
+ *             .build());
+ * 
+ *         var defaultBucketPublicAccessBlock = new BucketPublicAccessBlock("defaultBucketPublicAccessBlock", BucketPublicAccessBlockArgs.builder()
  *             .bucket(createBucket.bucket())
  *             .blockPublicAccess(true)
  *             .build());

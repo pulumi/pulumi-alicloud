@@ -127,11 +127,15 @@ class Snapshot(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf_example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default = alicloud.simpleapplicationserver.get_images(platform="Linux")
         default_get_server_plans = alicloud.simpleapplicationserver.get_server_plans(platform="Linux")
         default_instance = alicloud.simpleapplicationserver.Instance("default",
@@ -144,7 +148,7 @@ class Snapshot(pulumi.CustomResource):
         default_get_server_disks = alicloud.simpleapplicationserver.get_server_disks_output(instance_id=default_instance.id)
         default_snapshot = alicloud.simpleapplicationserver.Snapshot("default",
             disk_id=default_get_server_disks.ids[0],
-            snapshot_name=name)
+            snapshot_name=f"{name}-{default_integer['result']}")
         ```
 
         ## Import
@@ -180,11 +184,15 @@ class Snapshot(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf_example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default = alicloud.simpleapplicationserver.get_images(platform="Linux")
         default_get_server_plans = alicloud.simpleapplicationserver.get_server_plans(platform="Linux")
         default_instance = alicloud.simpleapplicationserver.Instance("default",
@@ -197,7 +205,7 @@ class Snapshot(pulumi.CustomResource):
         default_get_server_disks = alicloud.simpleapplicationserver.get_server_disks_output(instance_id=default_instance.id)
         default_snapshot = alicloud.simpleapplicationserver.Snapshot("default",
             disk_id=default_get_server_disks.ids[0],
-            snapshot_name=name)
+            snapshot_name=f"{name}-{default_integer['result']}")
         ```
 
         ## Import

@@ -13,33 +13,31 @@ namespace Pulumi.AliCloud.Ecs.Inputs
     public sealed class ImageImportDiskDeviceMappingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of disk N in the custom image.
+        /// The device name of the disk.
         /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
 
         /// <summary>
-        /// Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+        /// The size of the disk. Default value: `5`.
         /// </summary>
         [Input("diskImageSize")]
         public Input<int>? DiskImageSize { get; set; }
 
         /// <summary>
-        /// Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+        /// The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
 
         /// <summary>
-        /// Save the exported OSS bucket.
+        /// The OSS bucket where the image file is stored.
         /// </summary>
         [Input("ossBucket")]
         public Input<string>? OssBucket { get; set; }
 
         /// <summary>
-        /// The file name of your OSS Object.
-        /// 
-        /// &gt; **NOTE:** The disk_device_mapping is a list and it's first item will be used to system disk and other items are used to data disks.
+        /// The name (key) of the object that the uploaded image is stored as in the OSS bucket.
         /// </summary>
         [Input("ossObject")]
         public Input<string>? OssObject { get; set; }

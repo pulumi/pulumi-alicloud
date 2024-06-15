@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Bgp Peer resource.
+// Provides a Express Connect Bgp Peer resource.
 //
 // For information about VPC Bgp Peer and how to use it, see [What is Bgp Peer](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
 //
@@ -98,7 +98,7 @@ import (
 //
 // ## Import
 //
-// VPC Bgp Peer can be imported using the id, e.g.
+// Express Connect Bgp Peer can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example <id>
@@ -110,13 +110,15 @@ type BgpPeer struct {
 	BfdMultiHop pulumi.IntPtrOutput `pulumi:"bfdMultiHop"`
 	// The ID of the BGP group.
 	BgpGroupId pulumi.StringOutput `pulumi:"bgpGroupId"`
+	// The name of the BGP neighbor.
+	BgpPeerName pulumi.StringOutput `pulumi:"bgpPeerName"`
 	// Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
 	EnableBfd pulumi.BoolPtrOutput `pulumi:"enableBfd"`
 	// The IP version.
 	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
 	// The IP address of the BGP peer.
 	PeerIpAddress pulumi.StringPtrOutput `pulumi:"peerIpAddress"`
-	// The status of the BGP peer.
+	// Status of BGP neighbors.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -157,13 +159,15 @@ type bgpPeerState struct {
 	BfdMultiHop *int `pulumi:"bfdMultiHop"`
 	// The ID of the BGP group.
 	BgpGroupId *string `pulumi:"bgpGroupId"`
+	// The name of the BGP neighbor.
+	BgpPeerName *string `pulumi:"bgpPeerName"`
 	// Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
 	EnableBfd *bool `pulumi:"enableBfd"`
 	// The IP version.
 	IpVersion *string `pulumi:"ipVersion"`
 	// The IP address of the BGP peer.
 	PeerIpAddress *string `pulumi:"peerIpAddress"`
-	// The status of the BGP peer.
+	// Status of BGP neighbors.
 	Status *string `pulumi:"status"`
 }
 
@@ -172,13 +176,15 @@ type BgpPeerState struct {
 	BfdMultiHop pulumi.IntPtrInput
 	// The ID of the BGP group.
 	BgpGroupId pulumi.StringPtrInput
+	// The name of the BGP neighbor.
+	BgpPeerName pulumi.StringPtrInput
 	// Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
 	EnableBfd pulumi.BoolPtrInput
 	// The IP version.
 	IpVersion pulumi.StringPtrInput
 	// The IP address of the BGP peer.
 	PeerIpAddress pulumi.StringPtrInput
-	// The status of the BGP peer.
+	// Status of BGP neighbors.
 	Status pulumi.StringPtrInput
 }
 
@@ -310,6 +316,11 @@ func (o BgpPeerOutput) BgpGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpPeer) pulumi.StringOutput { return v.BgpGroupId }).(pulumi.StringOutput)
 }
 
+// The name of the BGP neighbor.
+func (o BgpPeerOutput) BgpPeerName() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpPeer) pulumi.StringOutput { return v.BgpPeerName }).(pulumi.StringOutput)
+}
+
 // Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
 func (o BgpPeerOutput) EnableBfd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BgpPeer) pulumi.BoolPtrOutput { return v.EnableBfd }).(pulumi.BoolPtrOutput)
@@ -325,7 +336,7 @@ func (o BgpPeerOutput) PeerIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BgpPeer) pulumi.StringPtrOutput { return v.PeerIpAddress }).(pulumi.StringPtrOutput)
 }
 
-// The status of the BGP peer.
+// Status of BGP neighbors.
 func (o BgpPeerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpPeer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -25,6 +25,7 @@ namespace Pulumi.AliCloud.Cfg
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -35,9 +36,15 @@ namespace Pulumi.AliCloud.Cfg
     ///         Current = true,
     ///     });
     /// 
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
-    ///         BucketName = name,
+    ///         BucketName = $"{name}-{defaultInteger.Result}",
     ///         Acl = "public-read",
     ///         Tags = 
     ///         {

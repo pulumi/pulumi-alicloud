@@ -5,12 +5,18 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetTransitRouterAvailableResourcesResource {
+    /**
+     * @return (Available since v1.225.0) The list of available zones.
+     * 
+     */
+    private List<String> availableZones;
     /**
      * @return The list of primary zones.
      * 
@@ -21,8 +27,20 @@ public final class GetTransitRouterAvailableResourcesResource {
      * 
      */
     private List<String> slaveZones;
+    /**
+     * @return Specifies whether to query only the zones in which the multicast feature is supported.
+     * 
+     */
+    private Boolean supportMulticast;
 
     private GetTransitRouterAvailableResourcesResource() {}
+    /**
+     * @return (Available since v1.225.0) The list of available zones.
+     * 
+     */
+    public List<String> availableZones() {
+        return this.availableZones;
+    }
     /**
      * @return The list of primary zones.
      * 
@@ -37,6 +55,13 @@ public final class GetTransitRouterAvailableResourcesResource {
     public List<String> slaveZones() {
         return this.slaveZones;
     }
+    /**
+     * @return Specifies whether to query only the zones in which the multicast feature is supported.
+     * 
+     */
+    public Boolean supportMulticast() {
+        return this.supportMulticast;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -47,15 +72,30 @@ public final class GetTransitRouterAvailableResourcesResource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> availableZones;
         private List<String> masterZones;
         private List<String> slaveZones;
+        private Boolean supportMulticast;
         public Builder() {}
         public Builder(GetTransitRouterAvailableResourcesResource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.availableZones = defaults.availableZones;
     	      this.masterZones = defaults.masterZones;
     	      this.slaveZones = defaults.slaveZones;
+    	      this.supportMulticast = defaults.supportMulticast;
         }
 
+        @CustomType.Setter
+        public Builder availableZones(List<String> availableZones) {
+            if (availableZones == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterAvailableResourcesResource", "availableZones");
+            }
+            this.availableZones = availableZones;
+            return this;
+        }
+        public Builder availableZones(String... availableZones) {
+            return availableZones(List.of(availableZones));
+        }
         @CustomType.Setter
         public Builder masterZones(List<String> masterZones) {
             if (masterZones == null) {
@@ -78,10 +118,20 @@ public final class GetTransitRouterAvailableResourcesResource {
         public Builder slaveZones(String... slaveZones) {
             return slaveZones(List.of(slaveZones));
         }
+        @CustomType.Setter
+        public Builder supportMulticast(Boolean supportMulticast) {
+            if (supportMulticast == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterAvailableResourcesResource", "supportMulticast");
+            }
+            this.supportMulticast = supportMulticast;
+            return this;
+        }
         public GetTransitRouterAvailableResourcesResource build() {
             final var _resultValue = new GetTransitRouterAvailableResourcesResource();
+            _resultValue.availableZones = availableZones;
             _resultValue.masterZones = masterZones;
             _resultValue.slaveZones = slaveZones;
+            _resultValue.supportMulticast = supportMulticast;
             return _resultValue;
         }
     }

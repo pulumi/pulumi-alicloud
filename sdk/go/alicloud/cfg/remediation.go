@@ -32,6 +32,7 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cfg"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -50,8 +51,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
-//				Bucket: pulumi.String(name),
+//				Bucket: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
 //				Acl:    pulumi.String("public-read"),
 //				Tags: pulumi.Map{
 //					"For": pulumi.Any("example"),

@@ -120,6 +120,7 @@ import javax.annotation.Nullable;
  *             .replicas("5")
  *             .cpu("500")
  *             .memory("2048")
+ *             .microRegistration("0")
  *             .build());
  * 
  *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()

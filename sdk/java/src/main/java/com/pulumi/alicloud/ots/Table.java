@@ -44,6 +44,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ots/table:Table")
 public class Table extends com.pulumi.resources.CustomResource {
     /**
+     * Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+     * 
+     */
+    @Export(name="allowUpdate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> allowUpdate;
+
+    /**
+     * @return Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+     * 
+     */
+    public Output<Optional<Boolean>> allowUpdate() {
+        return Codegen.optional(this.allowUpdate);
+    }
+    /**
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
      * 
      */
@@ -128,18 +142,46 @@ public class Table extends com.pulumi.resources.CustomResource {
         return this.primaryKeys;
     }
     /**
-     * The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+     * . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * 
+     */
+    @Export(name="sseKeyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sseKeyId;
+
+    /**
+     * @return . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * 
+     */
+    public Output<Optional<String>> sseKeyId() {
+        return Codegen.optional(this.sseKeyId);
+    }
+    /**
+     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
      * 
      */
     @Export(name="sseKeyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sseKeyType;
 
     /**
-     * @return The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+     * @return The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
      * 
      */
     public Output<Optional<String>> sseKeyType() {
         return Codegen.optional(this.sseKeyType);
+    }
+    /**
+     * The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * 
+     */
+    @Export(name="sseRoleArn", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sseRoleArn;
+
+    /**
+     * @return The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * 
+     */
+    public Output<Optional<String>> sseRoleArn() {
+        return Codegen.optional(this.sseRoleArn);
     }
     /**
      * The table name of the OTS instance. If changed, a new table would be created.

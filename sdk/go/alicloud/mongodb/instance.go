@@ -136,7 +136,7 @@ type Instance struct {
 	EncryptionKey pulumi.StringOutput `pulumi:"encryptionKey"`
 	// The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
 	EncryptorName pulumi.StringOutput `pulumi:"encryptorName"`
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
 	HiddenZoneId pulumi.StringPtrOutput `pulumi:"hiddenZoneId"`
@@ -287,7 +287,7 @@ type instanceState struct {
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
 	EncryptorName *string `pulumi:"encryptorName"`
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
 	HiddenZoneId *string `pulumi:"hiddenZoneId"`
@@ -393,7 +393,7 @@ type InstanceState struct {
 	EncryptionKey pulumi.StringPtrInput
 	// The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
 	EncryptorName pulumi.StringPtrInput
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
 	EngineVersion pulumi.StringPtrInput
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
 	HiddenZoneId pulumi.StringPtrInput
@@ -503,7 +503,7 @@ type instanceArgs struct {
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
 	EncryptorName *string `pulumi:"encryptorName"`
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
 	EngineVersion string `pulumi:"engineVersion"`
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
 	HiddenZoneId *string `pulumi:"hiddenZoneId"`
@@ -602,7 +602,7 @@ type InstanceArgs struct {
 	EncryptionKey pulumi.StringPtrInput
 	// The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
 	EncryptorName pulumi.StringPtrInput
-	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
 	EngineVersion pulumi.StringInput
 	// Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values.
 	HiddenZoneId pulumi.StringPtrInput
@@ -825,7 +825,7 @@ func (o InstanceOutput) EncryptorName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EncryptorName }).(pulumi.StringOutput)
 }
 
-// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
 func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }

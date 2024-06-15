@@ -30,22 +30,22 @@ namespace Pulumi.AliCloud.Cms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
-    ///         Owners = "system",
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = "Instance",
+    ///         MostRecent = true,
+    ///         Owners = "system",
     ///     });
     /// 
     ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         AvailabilityZone = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Cms
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
@@ -70,9 +70,9 @@ namespace Pulumi.AliCloud.Cms
     /// 
     ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
     ///     {
-    ///         AvailabilityZone = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         InstanceName = name,
-    ///         ImageId = @default.Apply(@default =&gt; @default.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id)),
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         SecurityGroups = new[]
     ///         {
@@ -91,7 +91,19 @@ namespace Pulumi.AliCloud.Cms
     ///         Name = name,
     ///         Project = "acs_ecs_dashboard",
     ///         Metric = "disk_writebytes",
-    ///         MetricDimensions = defaultInstance.Id.Apply(id =&gt; $"[{{\"instanceId\":\"{id}\",\"device\":\"/dev/vda1\"}}]"),
+    ///         Period = 900,
+    ///         ContactGroups = new[]
+    ///         {
+    ///             defaultAlarmContactGroup.AlarmContactGroupName,
+    ///         },
+    ///         EffectiveInterval = "06:00-20:00",
+    ///         MetricDimensions = defaultInstance.Id.Apply(id =&gt; @$"  [
+    ///     {{
+    ///       ""instanceId"": ""{id}"",
+    ///       ""device"": ""/dev/vda1""
+    ///     }}
+    ///   ]
+    /// "),
     ///         EscalationsCritical = new AliCloud.Cms.Inputs.AlarmEscalationsCriticalArgs
     ///         {
     ///             Statistics = "Average",
@@ -99,12 +111,6 @@ namespace Pulumi.AliCloud.Cms
     ///             Threshold = "35",
     ///             Times = 2,
     ///         },
-    ///         Period = 900,
-    ///         ContactGroups = new[]
-    ///         {
-    ///             defaultAlarmContactGroup.AlarmContactGroupName,
-    ///         },
-    ///         EffectiveInterval = "06:00-20:00",
     ///     });
     /// 
     /// });

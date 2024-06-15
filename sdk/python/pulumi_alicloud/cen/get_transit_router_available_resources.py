@@ -22,7 +22,7 @@ class GetTransitRouterAvailableResourcesResult:
     """
     A collection of values returned by getTransitRouterAvailableResources.
     """
-    def __init__(__self__, id=None, output_file=None, resources=None):
+    def __init__(__self__, id=None, output_file=None, resources=None, support_multicast=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -32,6 +32,9 @@ class GetTransitRouterAvailableResourcesResult:
         if resources and not isinstance(resources, list):
             raise TypeError("Expected argument 'resources' to be a list")
         pulumi.set(__self__, "resources", resources)
+        if support_multicast and not isinstance(support_multicast, bool):
+            raise TypeError("Expected argument 'support_multicast' to be a bool")
+        pulumi.set(__self__, "support_multicast", support_multicast)
 
     @property
     @pulumi.getter
@@ -49,7 +52,18 @@ class GetTransitRouterAvailableResourcesResult:
     @property
     @pulumi.getter
     def resources(self) -> Sequence['outputs.GetTransitRouterAvailableResourcesResourceResult']:
+        """
+        A list of Cen Transit Router Available Resources. Each element contains the following attributes:
+        """
         return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter(name="supportMulticast")
+    def support_multicast(self) -> Optional[bool]:
+        """
+        (Available since v1.225.0) Indicates whether the zone supports the multicast feature.
+        """
+        return pulumi.get(self, "support_multicast")
 
 
 class AwaitableGetTransitRouterAvailableResourcesResult(GetTransitRouterAvailableResourcesResult):
@@ -60,15 +74,17 @@ class AwaitableGetTransitRouterAvailableResourcesResult(GetTransitRouterAvailabl
         return GetTransitRouterAvailableResourcesResult(
             id=self.id,
             output_file=self.output_file,
-            resources=self.resources)
+            resources=self.resources,
+            support_multicast=self.support_multicast)
 
 
 def get_transit_router_available_resources(output_file: Optional[str] = None,
+                                           support_multicast: Optional[bool] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransitRouterAvailableResourcesResult:
     """
-    This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+    This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.163.0+.
+    > **NOTE:** Available since v1.163.0.
 
     ## Example Usage
 
@@ -79,31 +95,35 @@ def get_transit_router_available_resources(output_file: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     ids = alicloud.cen.get_transit_router_available_resources()
-    pulumi.export("masterId", default["resources"][0]["masterZones"])
-    pulumi.export("slaveId", default["resources"][0]["slaveZones"])
+    pulumi.export("masterId", ids.resources[0].master_zones[0])
+    pulumi.export("slaveId", ids.resources[0].slave_zones[0])
     ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param bool support_multicast: Specifies whether to query only the zones in which the multicast feature is supported.
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
+    __args__['supportMulticast'] = support_multicast
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources', __args__, opts=opts, typ=GetTransitRouterAvailableResourcesResult).value
 
     return AwaitableGetTransitRouterAvailableResourcesResult(
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'),
-        resources=pulumi.get(__ret__, 'resources'))
+        resources=pulumi.get(__ret__, 'resources'),
+        support_multicast=pulumi.get(__ret__, 'support_multicast'))
 
 
 @_utilities.lift_output_func(get_transit_router_available_resources)
 def get_transit_router_available_resources_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
+                                                  support_multicast: Optional[pulumi.Input[Optional[bool]]] = None,
                                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterAvailableResourcesResult]:
     """
-    This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+    This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.163.0+.
+    > **NOTE:** Available since v1.163.0.
 
     ## Example Usage
 
@@ -114,11 +134,12 @@ def get_transit_router_available_resources_output(output_file: Optional[pulumi.I
     import pulumi_alicloud as alicloud
 
     ids = alicloud.cen.get_transit_router_available_resources()
-    pulumi.export("masterId", default["resources"][0]["masterZones"])
-    pulumi.export("slaveId", default["resources"][0]["slaveZones"])
+    pulumi.export("masterId", ids.resources[0].master_zones[0])
+    pulumi.export("slaveId", ids.resources[0].slave_zones[0])
     ```
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param bool support_multicast: Specifies whether to query only the zones in which the multicast feature is supported.
     """
     ...

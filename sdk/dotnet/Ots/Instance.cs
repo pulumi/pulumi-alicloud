@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.Ots
         /// * `VPC` - VPC network.
         /// * `INTERNET` - Public internet.
         /// 
-        /// Default to ["VPC", "CLASSIC"].
+        /// Default to ["VPC", "CLASSIC", "INTERNET"].
         /// </summary>
         [Output("networkTypeAcls")]
         public Output<ImmutableArray<string>> NetworkTypeAcls { get; private set; } = null!;
@@ -221,7 +221,7 @@ namespace Pulumi.AliCloud.Ots
         /// * `VPC` - VPC network.
         /// * `INTERNET` - Public internet.
         /// 
-        /// Default to ["VPC", "CLASSIC"].
+        /// Default to ["VPC", "CLASSIC", "INTERNET"].
         /// </summary>
         public InputList<string> NetworkTypeAcls
         {
@@ -309,7 +309,7 @@ namespace Pulumi.AliCloud.Ots
         /// * `VPC` - VPC network.
         /// * `INTERNET` - Public internet.
         /// 
-        /// Default to ["VPC", "CLASSIC"].
+        /// Default to ["VPC", "CLASSIC", "INTERNET"].
         /// </summary>
         public InputList<string> NetworkTypeAcls
         {

@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type RouterExpressConnectRouterRegion struct {
+	// Representative region ID.
+	RegionId *string `pulumi:"regionId"`
+	// Represents the forwarding mode of the current region.
+	TransitMode *string `pulumi:"transitMode"`
+}
+
+// RouterExpressConnectRouterRegionInput is an input type that accepts RouterExpressConnectRouterRegionArgs and RouterExpressConnectRouterRegionOutput values.
+// You can construct a concrete instance of `RouterExpressConnectRouterRegionInput` via:
+//
+//	RouterExpressConnectRouterRegionArgs{...}
+type RouterExpressConnectRouterRegionInput interface {
+	pulumi.Input
+
+	ToRouterExpressConnectRouterRegionOutput() RouterExpressConnectRouterRegionOutput
+	ToRouterExpressConnectRouterRegionOutputWithContext(context.Context) RouterExpressConnectRouterRegionOutput
+}
+
+type RouterExpressConnectRouterRegionArgs struct {
+	// Representative region ID.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// Represents the forwarding mode of the current region.
+	TransitMode pulumi.StringPtrInput `pulumi:"transitMode"`
+}
+
+func (RouterExpressConnectRouterRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterExpressConnectRouterRegion)(nil)).Elem()
+}
+
+func (i RouterExpressConnectRouterRegionArgs) ToRouterExpressConnectRouterRegionOutput() RouterExpressConnectRouterRegionOutput {
+	return i.ToRouterExpressConnectRouterRegionOutputWithContext(context.Background())
+}
+
+func (i RouterExpressConnectRouterRegionArgs) ToRouterExpressConnectRouterRegionOutputWithContext(ctx context.Context) RouterExpressConnectRouterRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterExpressConnectRouterRegionOutput)
+}
+
+// RouterExpressConnectRouterRegionArrayInput is an input type that accepts RouterExpressConnectRouterRegionArray and RouterExpressConnectRouterRegionArrayOutput values.
+// You can construct a concrete instance of `RouterExpressConnectRouterRegionArrayInput` via:
+//
+//	RouterExpressConnectRouterRegionArray{ RouterExpressConnectRouterRegionArgs{...} }
+type RouterExpressConnectRouterRegionArrayInput interface {
+	pulumi.Input
+
+	ToRouterExpressConnectRouterRegionArrayOutput() RouterExpressConnectRouterRegionArrayOutput
+	ToRouterExpressConnectRouterRegionArrayOutputWithContext(context.Context) RouterExpressConnectRouterRegionArrayOutput
+}
+
+type RouterExpressConnectRouterRegionArray []RouterExpressConnectRouterRegionInput
+
+func (RouterExpressConnectRouterRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterExpressConnectRouterRegion)(nil)).Elem()
+}
+
+func (i RouterExpressConnectRouterRegionArray) ToRouterExpressConnectRouterRegionArrayOutput() RouterExpressConnectRouterRegionArrayOutput {
+	return i.ToRouterExpressConnectRouterRegionArrayOutputWithContext(context.Background())
+}
+
+func (i RouterExpressConnectRouterRegionArray) ToRouterExpressConnectRouterRegionArrayOutputWithContext(ctx context.Context) RouterExpressConnectRouterRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterExpressConnectRouterRegionArrayOutput)
+}
+
+type RouterExpressConnectRouterRegionOutput struct{ *pulumi.OutputState }
+
+func (RouterExpressConnectRouterRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterExpressConnectRouterRegion)(nil)).Elem()
+}
+
+func (o RouterExpressConnectRouterRegionOutput) ToRouterExpressConnectRouterRegionOutput() RouterExpressConnectRouterRegionOutput {
+	return o
+}
+
+func (o RouterExpressConnectRouterRegionOutput) ToRouterExpressConnectRouterRegionOutputWithContext(ctx context.Context) RouterExpressConnectRouterRegionOutput {
+	return o
+}
+
+// Representative region ID.
+func (o RouterExpressConnectRouterRegionOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterExpressConnectRouterRegion) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+// Represents the forwarding mode of the current region.
+func (o RouterExpressConnectRouterRegionOutput) TransitMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterExpressConnectRouterRegion) *string { return v.TransitMode }).(pulumi.StringPtrOutput)
+}
+
+type RouterExpressConnectRouterRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterExpressConnectRouterRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterExpressConnectRouterRegion)(nil)).Elem()
+}
+
+func (o RouterExpressConnectRouterRegionArrayOutput) ToRouterExpressConnectRouterRegionArrayOutput() RouterExpressConnectRouterRegionArrayOutput {
+	return o
+}
+
+func (o RouterExpressConnectRouterRegionArrayOutput) ToRouterExpressConnectRouterRegionArrayOutputWithContext(ctx context.Context) RouterExpressConnectRouterRegionArrayOutput {
+	return o
+}
+
+func (o RouterExpressConnectRouterRegionArrayOutput) Index(i pulumi.IntInput) RouterExpressConnectRouterRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterExpressConnectRouterRegion {
+		return vs[0].([]RouterExpressConnectRouterRegion)[vs[1].(int)]
+	}).(RouterExpressConnectRouterRegionOutput)
+}
+
 type GetAccessPointsPoint struct {
 	// Query to the Access Point Feature Model.
 	AccessPointFeatureModels []GetAccessPointsPointAccessPointFeatureModel `pulumi:"accessPointFeatureModels"`
@@ -2312,6 +2418,8 @@ func (o GetVirtualPhysicalConnectionsConnectionArrayOutput) Index(i pulumi.IntIn
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterExpressConnectRouterRegionInput)(nil)).Elem(), RouterExpressConnectRouterRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterExpressConnectRouterRegionArrayInput)(nil)).Elem(), RouterExpressConnectRouterRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessPointsPointInput)(nil)).Elem(), GetAccessPointsPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessPointsPointArrayInput)(nil)).Elem(), GetAccessPointsPointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessPointsPointAccessPointFeatureModelInput)(nil)).Elem(), GetAccessPointsPointAccessPointFeatureModelArgs{})
@@ -2332,6 +2440,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualBorderRoutersRouterArrayInput)(nil)).Elem(), GetVirtualBorderRoutersRouterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualPhysicalConnectionsConnectionInput)(nil)).Elem(), GetVirtualPhysicalConnectionsConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualPhysicalConnectionsConnectionArrayInput)(nil)).Elem(), GetVirtualPhysicalConnectionsConnectionArray{})
+	pulumi.RegisterOutputType(RouterExpressConnectRouterRegionOutput{})
+	pulumi.RegisterOutputType(RouterExpressConnectRouterRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessPointsPointOutput{})
 	pulumi.RegisterOutputType(GetAccessPointsPointArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessPointsPointAccessPointFeatureModelOutput{})

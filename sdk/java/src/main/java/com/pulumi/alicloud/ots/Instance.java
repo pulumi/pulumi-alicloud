@@ -176,7 +176,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * `VPC` - VPC network.
      * * `INTERNET` - Public internet.
      * 
-     * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
+     * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;, &#34;INTERNET&#34;].
      * 
      */
     @Export(name="networkTypeAcls", refs={List.class,String.class}, tree="[0,1]")
@@ -188,7 +188,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * `VPC` - VPC network.
      * * `INTERNET` - Public internet.
      * 
-     * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
+     * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;, &#34;INTERNET&#34;].
      * 
      */
     public Output<List<String>> networkTypeAcls() {

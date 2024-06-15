@@ -14,39 +14,90 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const default = alicloud.getZones({
- *     availableDiskCategory: "cloud_efficiency",
- *     availableResourceCreation: "VSwitch",
+ * const name = config.get("name") || "terraform-example";
+ * const default = alicloud.vpn.getGateways({});
+ * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("defaultCustomerGateway", {
+ *     description: "defaultCustomerGateway",
+ *     ipAddress: "2.2.2.5",
+ *     asn: "2224",
+ *     customerGatewayName: name,
  * });
- * const defaultGetNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "^default-NODELETING$",
- * });
- * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultGetNetworks.ids?.[0],
- *     zoneId: _default.ids?.[0],
- * }));
- * const defaultGateway = new alicloud.vpn.Gateway("default", {
- *     name: "terraform-example",
- *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
- *     bandwidth: 10,
- *     instanceChargeType: "PrePaid",
- *     enableSsl: false,
- *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
- * });
- * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("default", {
- *     name: name,
- *     ipAddress: "192.168.1.1",
+ * const changeCustomerGateway = new alicloud.vpn.CustomerGateway("changeCustomerGateway", {
+ *     description: "changeCustomerGateway",
+ *     ipAddress: "2.2.2.6",
+ *     asn: "2225",
+ *     customerGatewayName: name,
  * });
  * const defaultConnection = new alicloud.vpn.Connection("default", {
- *     name: name,
- *     customerGatewayId: defaultCustomerGateway.id,
- *     vpnGatewayId: defaultGateway.id,
- *     localSubnets: ["192.168.2.0/24"],
- *     remoteSubnets: ["192.168.3.0/24"],
+ *     vpnGatewayId: _default.then(_default => _default.ids?.[0]),
+ *     vpnConnectionName: name,
+ *     localSubnets: ["3.0.0.0/24"],
+ *     remoteSubnets: [
+ *         "10.0.0.0/24",
+ *         "10.0.1.0/24",
+ *     ],
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ *     enableTunnelsBgp: true,
+ *     tunnelOptionsSpecifications: [
+ *         {
+ *             tunnelIpsecConfig: {
+ *                 ipsecAuthAlg: "md5",
+ *                 ipsecEncAlg: "aes256",
+ *                 ipsecLifetime: 16400,
+ *                 ipsecPfs: "group5",
+ *             },
+ *             customerGatewayId: defaultCustomerGateway.id,
+ *             role: "master",
+ *             tunnelBgpConfig: {
+ *                 localAsn: "1219002",
+ *                 tunnelCidr: "169.254.30.0/30",
+ *                 localBgpIp: "169.254.30.1",
+ *             },
+ *             tunnelIkeConfig: {
+ *                 ikeMode: "aggressive",
+ *                 ikeVersion: "ikev2",
+ *                 localId: "localid_tunnel2",
+ *                 psk: "12345678",
+ *                 remoteId: "remote2",
+ *                 ikeAuthAlg: "md5",
+ *                 ikeEncAlg: "aes256",
+ *                 ikeLifetime: 3600,
+ *                 ikePfs: "group14",
+ *             },
+ *         },
+ *         {
+ *             tunnelIkeConfig: {
+ *                 remoteId: "remote24",
+ *                 ikeEncAlg: "aes256",
+ *                 ikeLifetime: 27000,
+ *                 ikeMode: "aggressive",
+ *                 ikePfs: "group5",
+ *                 ikeAuthAlg: "md5",
+ *                 ikeVersion: "ikev2",
+ *                 localId: "localid_tunnel2",
+ *                 psk: "12345678",
+ *             },
+ *             tunnelIpsecConfig: {
+ *                 ipsecLifetime: 2700,
+ *                 ipsecPfs: "group14",
+ *                 ipsecAuthAlg: "md5",
+ *                 ipsecEncAlg: "aes256",
+ *             },
+ *             customerGatewayId: defaultCustomerGateway.id,
+ *             role: "slave",
+ *             tunnelBgpConfig: {
+ *                 localAsn: "1219002",
+ *                 localBgpIp: "169.254.40.1",
+ *                 tunnelCidr: "169.254.40.0/30",
+ *             },
+ *         },
+ *     ],
  * });
  * const defaultRouteEntry = new alicloud.vpn.RouteEntry("default", {
- *     vpnGatewayId: defaultGateway.id,
+ *     vpnGatewayId: _default.then(_default => _default.ids?.[0]),
  *     routeDest: "10.0.0.0/24",
  *     nextHop: defaultConnection.id,
  *     weight: 0,

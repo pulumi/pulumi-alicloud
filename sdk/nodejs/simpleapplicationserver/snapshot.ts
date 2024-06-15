@@ -18,9 +18,14 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const default = alicloud.simpleapplicationserver.getImages({
  *     platform: "Linux",
  * });
@@ -40,7 +45,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultSnapshot = new alicloud.simpleapplicationserver.Snapshot("default", {
  *     diskId: defaultGetServerDisks.apply(defaultGetServerDisks => defaultGetServerDisks.ids?.[0]),
- *     snapshotName: name,
+ *     snapshotName: `${name}-${defaultInteger.result}`,
  * });
  * ```
  *

@@ -25,18 +25,21 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Uuid("default");
+    /// 
     ///     var createBucket = new AliCloud.Oss.Bucket("CreateBucket", new()
     ///     {
     ///         StorageClass = "Standard",
-    ///         BucketName = name,
+    ///         BucketName = $"{name}-{@default.Result}",
     ///     });
     /// 
-    ///     var @default = new AliCloud.Oss.BucketCors("default", new()
+    ///     var defaultBucketCors = new AliCloud.Oss.BucketCors("default", new()
     ///     {
     ///         Bucket = createBucket.BucketName,
     ///         ResponseVary = true,

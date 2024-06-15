@@ -25,6 +25,11 @@ export type DbInstancePlan = import("./dbInstancePlan").DbInstancePlan;
 export const DbInstancePlan: typeof import("./dbInstancePlan").DbInstancePlan = null as any;
 utilities.lazyLoad(exports, ["DbInstancePlan"], () => require("./dbInstancePlan"));
 
+export { DbResourceGroupArgs, DbResourceGroupState } from "./dbResourceGroup";
+export type DbResourceGroup = import("./dbResourceGroup").DbResourceGroup;
+export const DbResourceGroup: typeof import("./dbResourceGroup").DbResourceGroup = null as any;
+utilities.lazyLoad(exports, ["DbResourceGroup"], () => require("./dbResourceGroup"));
+
 export { ElasticInstanceArgs, ElasticInstanceState } from "./elasticInstance";
 export type ElasticInstance = import("./elasticInstance").ElasticInstance;
 export const ElasticInstance: typeof import("./elasticInstance").ElasticInstance = null as any;
@@ -68,6 +73,8 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "alicloud:gpdb/dbInstancePlan:DbInstancePlan":
                 return new DbInstancePlan(name, <any>undefined, { urn })
+            case "alicloud:gpdb/dbResourceGroup:DbResourceGroup":
+                return new DbResourceGroup(name, <any>undefined, { urn })
             case "alicloud:gpdb/elasticInstance:ElasticInstance":
                 return new ElasticInstance(name, <any>undefined, { urn })
             case "alicloud:gpdb/instance:Instance":
@@ -81,5 +88,6 @@ pulumi.runtime.registerResourceModule("alicloud", "gpdb/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbInstancePlan", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbResourceGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/elasticInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/instance", _module)

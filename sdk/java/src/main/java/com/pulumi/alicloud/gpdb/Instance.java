@@ -499,6 +499,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
+     * Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+     * 
+     */
+    @Export(name="resourceManagementMode", refs={String.class}, tree="[0]")
+    private Output<String> resourceManagementMode;
+
+    /**
+     * @return Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+     * 
+     */
+    public Output<String> resourceManagementMode() {
+        return this.resourceManagementMode;
+    }
+    /**
      * Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
      * 
      * @deprecated

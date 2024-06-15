@@ -1599,17 +1599,15 @@ func (o ImageDiskDeviceMappingArrayOutput) Index(i pulumi.IntInput) ImageDiskDev
 }
 
 type ImageImportDiskDeviceMapping struct {
-	// The name of disk N in the custom image.
+	// The device name of the disk.
 	Device *string `pulumi:"device"`
-	// Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+	// The size of the disk. Default value: `5`.
 	DiskImageSize *int `pulumi:"diskImageSize"`
-	// Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+	// The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
 	Format *string `pulumi:"format"`
-	// Save the exported OSS bucket.
+	// The OSS bucket where the image file is stored.
 	OssBucket *string `pulumi:"ossBucket"`
-	// The file name of your OSS Object.
-	//
-	// > **NOTE:** The diskDeviceMapping is a list and it's first item will be used to system disk and other items are used to data disks.
+	// The name (key) of the object that the uploaded image is stored as in the OSS bucket.
 	OssObject *string `pulumi:"ossObject"`
 }
 
@@ -1625,17 +1623,15 @@ type ImageImportDiskDeviceMappingInput interface {
 }
 
 type ImageImportDiskDeviceMappingArgs struct {
-	// The name of disk N in the custom image.
+	// The device name of the disk.
 	Device pulumi.StringPtrInput `pulumi:"device"`
-	// Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+	// The size of the disk. Default value: `5`.
 	DiskImageSize pulumi.IntPtrInput `pulumi:"diskImageSize"`
-	// Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+	// The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
 	Format pulumi.StringPtrInput `pulumi:"format"`
-	// Save the exported OSS bucket.
+	// The OSS bucket where the image file is stored.
 	OssBucket pulumi.StringPtrInput `pulumi:"ossBucket"`
-	// The file name of your OSS Object.
-	//
-	// > **NOTE:** The diskDeviceMapping is a list and it's first item will be used to system disk and other items are used to data disks.
+	// The name (key) of the object that the uploaded image is stored as in the OSS bucket.
 	OssObject pulumi.StringPtrInput `pulumi:"ossObject"`
 }
 
@@ -1690,29 +1686,27 @@ func (o ImageImportDiskDeviceMappingOutput) ToImageImportDiskDeviceMappingOutput
 	return o
 }
 
-// The name of disk N in the custom image.
+// The device name of the disk.
 func (o ImageImportDiskDeviceMappingOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
-// Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+// The size of the disk. Default value: `5`.
 func (o ImageImportDiskDeviceMappingOutput) DiskImageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *int { return v.DiskImageSize }).(pulumi.IntPtrOutput)
 }
 
-// Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+// The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
 func (o ImageImportDiskDeviceMappingOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
-// Save the exported OSS bucket.
+// The OSS bucket where the image file is stored.
 func (o ImageImportDiskDeviceMappingOutput) OssBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *string { return v.OssBucket }).(pulumi.StringPtrOutput)
 }
 
-// The file name of your OSS Object.
-//
-// > **NOTE:** The diskDeviceMapping is a list and it's first item will be used to system disk and other items are used to data disks.
+// The name (key) of the object that the uploaded image is stored as in the OSS bucket.
 func (o ImageImportDiskDeviceMappingOutput) OssObject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *string { return v.OssObject }).(pulumi.StringPtrOutput)
 }

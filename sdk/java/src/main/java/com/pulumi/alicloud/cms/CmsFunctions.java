@@ -32,6 +32,8 @@ import com.pulumi.alicloud.cms.inputs.GetNamespacesArgs;
 import com.pulumi.alicloud.cms.inputs.GetNamespacesPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetServiceArgs;
 import com.pulumi.alicloud.cms.inputs.GetServicePlainArgs;
+import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
+import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetSlsGroupsArgs;
 import com.pulumi.alicloud.cms.inputs.GetSlsGroupsPlainArgs;
 import com.pulumi.alicloud.cms.outputs.GetAlarmContactGroupsResult;
@@ -48,6 +50,7 @@ import com.pulumi.alicloud.cms.outputs.GetMonitorGroupInstancesResult;
 import com.pulumi.alicloud.cms.outputs.GetMonitorGroupsResult;
 import com.pulumi.alicloud.cms.outputs.GetNamespacesResult;
 import com.pulumi.alicloud.cms.outputs.GetServiceResult;
+import com.pulumi.alicloud.cms.outputs.GetSiteMonitorsResult;
 import com.pulumi.alicloud.cms.outputs.GetSlsGroupsResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -3915,6 +3918,522 @@ public final class CmsFunctions {
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.224.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cms.SiteMonitor;
+     * import com.pulumi.alicloud.cms.SiteMonitorArgs;
+     * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf_example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
+     *             .address("http://www.alibabacloud.com")
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskType("HTTP")
+     *             .interval(5)
+     *             .ispCities(SiteMonitorIspCityArgs.builder()
+     *                 .city("546")
+     *                 .isp("465")
+     *                 .build())
+     *             .optionsJson("""
+     * {
+     *     "http_method": "get",
+     *     "waitTime_after_completion": null,
+     *     "ipv6_task": false,
+     *     "diagnosis_ping": false,
+     *     "diagnosis_mtr": false,
+     *     "assertions": [
+     *         {
+     *             "operator": "lessThan",
+     *             "type": "response_time",
+     *             "target": 1000
+     *         }
+     *     ],
+     *     "time_out": 30000
+     * }
+     *             """)
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getSiteMonitors(GetSiteMonitorsArgs.builder()
+     *             .ids(defaultSiteMonitor.id())
+     *             .taskType("HTTP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSiteMonitorsResult> getSiteMonitors() {
+        return getSiteMonitors(GetSiteMonitorsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.224.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cms.SiteMonitor;
+     * import com.pulumi.alicloud.cms.SiteMonitorArgs;
+     * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf_example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
+     *             .address("http://www.alibabacloud.com")
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskType("HTTP")
+     *             .interval(5)
+     *             .ispCities(SiteMonitorIspCityArgs.builder()
+     *                 .city("546")
+     *                 .isp("465")
+     *                 .build())
+     *             .optionsJson("""
+     * {
+     *     "http_method": "get",
+     *     "waitTime_after_completion": null,
+     *     "ipv6_task": false,
+     *     "diagnosis_ping": false,
+     *     "diagnosis_mtr": false,
+     *     "assertions": [
+     *         {
+     *             "operator": "lessThan",
+     *             "type": "response_time",
+     *             "target": 1000
+     *         }
+     *     ],
+     *     "time_out": 30000
+     * }
+     *             """)
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getSiteMonitors(GetSiteMonitorsArgs.builder()
+     *             .ids(defaultSiteMonitor.id())
+     *             .taskType("HTTP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSiteMonitorsResult> getSiteMonitorsPlain() {
+        return getSiteMonitorsPlain(GetSiteMonitorsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.224.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cms.SiteMonitor;
+     * import com.pulumi.alicloud.cms.SiteMonitorArgs;
+     * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf_example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
+     *             .address("http://www.alibabacloud.com")
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskType("HTTP")
+     *             .interval(5)
+     *             .ispCities(SiteMonitorIspCityArgs.builder()
+     *                 .city("546")
+     *                 .isp("465")
+     *                 .build())
+     *             .optionsJson("""
+     * {
+     *     "http_method": "get",
+     *     "waitTime_after_completion": null,
+     *     "ipv6_task": false,
+     *     "diagnosis_ping": false,
+     *     "diagnosis_mtr": false,
+     *     "assertions": [
+     *         {
+     *             "operator": "lessThan",
+     *             "type": "response_time",
+     *             "target": 1000
+     *         }
+     *     ],
+     *     "time_out": 30000
+     * }
+     *             """)
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getSiteMonitors(GetSiteMonitorsArgs.builder()
+     *             .ids(defaultSiteMonitor.id())
+     *             .taskType("HTTP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSiteMonitorsResult> getSiteMonitors(GetSiteMonitorsArgs args) {
+        return getSiteMonitors(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.224.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cms.SiteMonitor;
+     * import com.pulumi.alicloud.cms.SiteMonitorArgs;
+     * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf_example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
+     *             .address("http://www.alibabacloud.com")
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskType("HTTP")
+     *             .interval(5)
+     *             .ispCities(SiteMonitorIspCityArgs.builder()
+     *                 .city("546")
+     *                 .isp("465")
+     *                 .build())
+     *             .optionsJson("""
+     * {
+     *     "http_method": "get",
+     *     "waitTime_after_completion": null,
+     *     "ipv6_task": false,
+     *     "diagnosis_ping": false,
+     *     "diagnosis_mtr": false,
+     *     "assertions": [
+     *         {
+     *             "operator": "lessThan",
+     *             "type": "response_time",
+     *             "target": 1000
+     *         }
+     *     ],
+     *     "time_out": 30000
+     * }
+     *             """)
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getSiteMonitors(GetSiteMonitorsArgs.builder()
+     *             .ids(defaultSiteMonitor.id())
+     *             .taskType("HTTP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSiteMonitorsResult> getSiteMonitorsPlain(GetSiteMonitorsPlainArgs args) {
+        return getSiteMonitorsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.224.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cms.SiteMonitor;
+     * import com.pulumi.alicloud.cms.SiteMonitorArgs;
+     * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf_example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
+     *             .address("http://www.alibabacloud.com")
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskType("HTTP")
+     *             .interval(5)
+     *             .ispCities(SiteMonitorIspCityArgs.builder()
+     *                 .city("546")
+     *                 .isp("465")
+     *                 .build())
+     *             .optionsJson("""
+     * {
+     *     "http_method": "get",
+     *     "waitTime_after_completion": null,
+     *     "ipv6_task": false,
+     *     "diagnosis_ping": false,
+     *     "diagnosis_mtr": false,
+     *     "assertions": [
+     *         {
+     *             "operator": "lessThan",
+     *             "type": "response_time",
+     *             "target": 1000
+     *         }
+     *     ],
+     *     "time_out": 30000
+     * }
+     *             """)
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getSiteMonitors(GetSiteMonitorsArgs.builder()
+     *             .ids(defaultSiteMonitor.id())
+     *             .taskType("HTTP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSiteMonitorsResult> getSiteMonitors(GetSiteMonitorsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getSiteMonitors:getSiteMonitors", TypeShape.of(GetSiteMonitorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
+     * 
+     * &gt; **NOTE:** Available since v1.224.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cms.SiteMonitor;
+     * import com.pulumi.alicloud.cms.SiteMonitorArgs;
+     * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetSiteMonitorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf_example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultSiteMonitor = new SiteMonitor("defaultSiteMonitor", SiteMonitorArgs.builder()
+     *             .address("http://www.alibabacloud.com")
+     *             .taskName(String.format("terraform-example-%s", defaultInteger.result()))
+     *             .taskType("HTTP")
+     *             .interval(5)
+     *             .ispCities(SiteMonitorIspCityArgs.builder()
+     *                 .city("546")
+     *                 .isp("465")
+     *                 .build())
+     *             .optionsJson("""
+     * {
+     *     "http_method": "get",
+     *     "waitTime_after_completion": null,
+     *     "ipv6_task": false,
+     *     "diagnosis_ping": false,
+     *     "diagnosis_mtr": false,
+     *     "assertions": [
+     *         {
+     *             "operator": "lessThan",
+     *             "type": "response_time",
+     *             "target": 1000
+     *         }
+     *     ],
+     *     "time_out": 30000
+     * }
+     *             """)
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getSiteMonitors(GetSiteMonitorsArgs.builder()
+     *             .ids(defaultSiteMonitor.id())
+     *             .taskType("HTTP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsSiteMonitorExampleId", default_.applyValue(default_ -> default_.monitors()[0].taskId()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSiteMonitorsResult> getSiteMonitorsPlain(GetSiteMonitorsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cms/getSiteMonitors:getSiteMonitors", TypeShape.of(GetSiteMonitorsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Cms Sls Groups of the current Alibaba Cloud user.

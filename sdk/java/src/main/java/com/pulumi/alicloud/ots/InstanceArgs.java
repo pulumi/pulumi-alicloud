@@ -115,7 +115,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * * `VPC` - VPC network.
      * * `INTERNET` - Public internet.
      * 
-     * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
+     * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;, &#34;INTERNET&#34;].
      * 
      */
     @Import(name="networkTypeAcls")
@@ -127,7 +127,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * * `VPC` - VPC network.
      * * `INTERNET` - Public internet.
      * 
-     * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
+     * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;, &#34;INTERNET&#34;].
      * 
      */
     public Optional<Output<List<String>>> networkTypeAcls() {
@@ -337,7 +337,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * * `VPC` - VPC network.
          * * `INTERNET` - Public internet.
          * 
-         * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
+         * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;, &#34;INTERNET&#34;].
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * * `VPC` - VPC network.
          * * `INTERNET` - Public internet.
          * 
-         * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
+         * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;, &#34;INTERNET&#34;].
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * * `VPC` - VPC network.
          * * `INTERNET` - Public internet.
          * 
-         * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
+         * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;, &#34;INTERNET&#34;].
          * 
          * @return builder
          * 

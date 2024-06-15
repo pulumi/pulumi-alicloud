@@ -27,8 +27,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GrantRuleToCen{}
 	case "alicloud:expressconnect/physicalConnection:PhysicalConnection":
 		r = &PhysicalConnection{}
+	case "alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter":
+		r = &RouterExpressConnectRouter{}
 	case "alicloud:expressconnect/routerInterface:RouterInterface":
 		r = &RouterInterface{}
+	case "alicloud:expressconnect/routerTrAssociation:RouterTrAssociation":
+		r = &RouterTrAssociation{}
+	case "alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance":
+		r = &RouterVbrChildInstance{}
+	case "alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation":
+		r = &RouterVpcAssociation{}
+	case "alicloud:expressconnect/trafficQos:TrafficQos":
+		r = &TrafficQos{}
+	case "alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation":
+		r = &TrafficQosAssociation{}
+	case "alicloud:expressconnect/trafficQosQueue:TrafficQosQueue":
+		r = &TrafficQosQueue{}
+	case "alicloud:expressconnect/trafficQosRule:TrafficQosRule":
+		r = &TrafficQosRule{}
 	case "alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation":
 		r = &VbrPconnAssociation{}
 	case "alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter":
@@ -65,7 +81,47 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"expressconnect/routerExpressConnectRouter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"expressconnect/routerInterface",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"expressconnect/routerTrAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"expressconnect/routerVbrChildInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"expressconnect/routerVpcAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"expressconnect/trafficQos",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"expressconnect/trafficQosAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"expressconnect/trafficQosQueue",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"expressconnect/trafficQosRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

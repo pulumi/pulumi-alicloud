@@ -116,6 +116,8 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
+	// Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+	AllowUpdate pulumi.BoolPtrOutput `pulumi:"allowUpdate"`
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
 	DefinedColumns TableDefinedColumnArrayOutput `pulumi:"definedColumns"`
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
@@ -128,8 +130,12 @@ type Table struct {
 	MaxVersion pulumi.IntOutput `pulumi:"maxVersion"`
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys TablePrimaryKeyArrayOutput `pulumi:"primaryKeys"`
-	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	SseKeyId pulumi.StringPtrOutput `pulumi:"sseKeyId"`
+	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
 	SseKeyType pulumi.StringPtrOutput `pulumi:"sseKeyType"`
+	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	SseRoleArn pulumi.StringPtrOutput `pulumi:"sseRoleArn"`
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName pulumi.StringOutput `pulumi:"tableName"`
 	// The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
@@ -181,6 +187,8 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
+	// Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+	AllowUpdate *bool `pulumi:"allowUpdate"`
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
 	DefinedColumns []TableDefinedColumn `pulumi:"definedColumns"`
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
@@ -193,8 +201,12 @@ type tableState struct {
 	MaxVersion *int `pulumi:"maxVersion"`
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys []TablePrimaryKey `pulumi:"primaryKeys"`
-	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	SseKeyId *string `pulumi:"sseKeyId"`
+	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
 	SseKeyType *string `pulumi:"sseKeyType"`
+	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	SseRoleArn *string `pulumi:"sseRoleArn"`
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName *string `pulumi:"tableName"`
 	// The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
@@ -202,6 +214,8 @@ type tableState struct {
 }
 
 type TableState struct {
+	// Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+	AllowUpdate pulumi.BoolPtrInput
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
 	DefinedColumns TableDefinedColumnArrayInput
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
@@ -214,8 +228,12 @@ type TableState struct {
 	MaxVersion pulumi.IntPtrInput
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys TablePrimaryKeyArrayInput
-	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	SseKeyId pulumi.StringPtrInput
+	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
 	SseKeyType pulumi.StringPtrInput
+	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	SseRoleArn pulumi.StringPtrInput
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName pulumi.StringPtrInput
 	// The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
@@ -227,6 +245,8 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
+	// Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+	AllowUpdate *bool `pulumi:"allowUpdate"`
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
 	DefinedColumns []TableDefinedColumn `pulumi:"definedColumns"`
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
@@ -239,8 +259,12 @@ type tableArgs struct {
 	MaxVersion int `pulumi:"maxVersion"`
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys []TablePrimaryKey `pulumi:"primaryKeys"`
-	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	SseKeyId *string `pulumi:"sseKeyId"`
+	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
 	SseKeyType *string `pulumi:"sseKeyType"`
+	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	SseRoleArn *string `pulumi:"sseRoleArn"`
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName string `pulumi:"tableName"`
 	// The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
@@ -249,6 +273,8 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
+	// Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+	AllowUpdate pulumi.BoolPtrInput
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
 	DefinedColumns TableDefinedColumnArrayInput
 	// The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
@@ -261,8 +287,12 @@ type TableArgs struct {
 	MaxVersion pulumi.IntInput
 	// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
 	PrimaryKeys TablePrimaryKeyArrayInput
-	// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+	// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	SseKeyId pulumi.StringPtrInput
+	// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
 	SseKeyType pulumi.StringPtrInput
+	// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+	SseRoleArn pulumi.StringPtrInput
 	// The table name of the OTS instance. If changed, a new table would be created.
 	TableName pulumi.StringInput
 	// The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
@@ -356,6 +386,11 @@ func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
 }
 
+// Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+func (o TableOutput) AllowUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.AllowUpdate }).(pulumi.BoolPtrOutput)
+}
+
 // The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
 func (o TableOutput) DefinedColumns() TableDefinedColumnArrayOutput {
 	return o.ApplyT(func(v *Table) TableDefinedColumnArrayOutput { return v.DefinedColumns }).(TableDefinedColumnArrayOutput)
@@ -386,9 +421,19 @@ func (o TableOutput) PrimaryKeys() TablePrimaryKeyArrayOutput {
 	return o.ApplyT(func(v *Table) TablePrimaryKeyArrayOutput { return v.PrimaryKeys }).(TablePrimaryKeyArrayOutput)
 }
 
-// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+// . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+func (o TableOutput) SseKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.SseKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
 func (o TableOutput) SseKeyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.SseKeyType }).(pulumi.StringPtrOutput)
+}
+
+// The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+func (o TableOutput) SseRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.SseRoleArn }).(pulumi.StringPtrOutput)
 }
 
 // The table name of the OTS instance. If changed, a new table would be created.

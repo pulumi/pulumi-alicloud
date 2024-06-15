@@ -3332,9 +3332,9 @@ public final class CenFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", TypeShape.of(GetTransitRouteTableAggregationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+     * This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.163.0+.
+     * &gt; **NOTE:** Available since v1.163.0.
      * 
      * ## Example Usage
      * 
@@ -3365,8 +3365,8 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export("masterId", default_.resources()[0].masterZones()[0]);
-     *         ctx.export("slaveId", default_.resources()[0].slaveZones()[0]);
+     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
+     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
      *     }
      * }
      * }
@@ -3378,9 +3378,9 @@ public final class CenFunctions {
         return getTransitRouterAvailableResources(GetTransitRouterAvailableResourcesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+     * This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.163.0+.
+     * &gt; **NOTE:** Available since v1.163.0.
      * 
      * ## Example Usage
      * 
@@ -3411,8 +3411,8 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export("masterId", default_.resources()[0].masterZones()[0]);
-     *         ctx.export("slaveId", default_.resources()[0].slaveZones()[0]);
+     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
+     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
      *     }
      * }
      * }
@@ -3424,9 +3424,9 @@ public final class CenFunctions {
         return getTransitRouterAvailableResourcesPlain(GetTransitRouterAvailableResourcesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+     * This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.163.0+.
+     * &gt; **NOTE:** Available since v1.163.0.
      * 
      * ## Example Usage
      * 
@@ -3457,8 +3457,8 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export("masterId", default_.resources()[0].masterZones()[0]);
-     *         ctx.export("slaveId", default_.resources()[0].slaveZones()[0]);
+     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
+     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
      *     }
      * }
      * }
@@ -3470,9 +3470,9 @@ public final class CenFunctions {
         return getTransitRouterAvailableResources(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+     * This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.163.0+.
+     * &gt; **NOTE:** Available since v1.163.0.
      * 
      * ## Example Usage
      * 
@@ -3503,8 +3503,8 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export("masterId", default_.resources()[0].masterZones()[0]);
-     *         ctx.export("slaveId", default_.resources()[0].slaveZones()[0]);
+     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
+     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
      *     }
      * }
      * }
@@ -3516,9 +3516,9 @@ public final class CenFunctions {
         return getTransitRouterAvailableResourcesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+     * This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.163.0+.
+     * &gt; **NOTE:** Available since v1.163.0.
      * 
      * ## Example Usage
      * 
@@ -3549,8 +3549,8 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export("masterId", default_.resources()[0].masterZones()[0]);
-     *         ctx.export("slaveId", default_.resources()[0].slaveZones()[0]);
+     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
+     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
      *     }
      * }
      * }
@@ -3562,9 +3562,9 @@ public final class CenFunctions {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", TypeShape.of(GetTransitRouterAvailableResourcesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+     * This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.163.0+.
+     * &gt; **NOTE:** Available since v1.163.0.
      * 
      * ## Example Usage
      * 
@@ -3595,8 +3595,8 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export("masterId", default_.resources()[0].masterZones()[0]);
-     *         ctx.export("slaveId", default_.resources()[0].slaveZones()[0]);
+     *         ctx.export("masterId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]));
+     *         ctx.export("slaveId", ids.applyValue(getTransitRouterAvailableResourcesResult -> getTransitRouterAvailableResourcesResult.resources()[0].slaveZones()[0]));
      *     }
      * }
      * }

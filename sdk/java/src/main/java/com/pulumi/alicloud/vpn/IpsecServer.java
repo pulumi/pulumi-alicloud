@@ -60,28 +60,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex("^default-NODELETING$")
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *         final var default0 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
  *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
+ *         final var default1 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .zoneId(default_.ids()[1])
+ *             .build());
+ * 
  *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
- *             .name(name)
+ *             .vpnGatewayName(name)
  *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .bandwidth("10")
  *             .enableSsl(true)
  *             .description(name)
- *             .instanceChargeType("PrePaid")
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .paymentType("Subscription")
+ *             .vswitchId(default0.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .disasterRecoveryVswitchId(default1.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
  *             .build());
  * 
  *         var foo = new IpsecServer("foo", IpsecServerArgs.builder()

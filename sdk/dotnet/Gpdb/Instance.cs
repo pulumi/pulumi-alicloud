@@ -244,6 +244,12 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+        /// </summary>
+        [Output("resourceManagementMode")]
+        public Output<string> ResourceManagementMode { get; private set; } = null!;
+
+        /// <summary>
         /// Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         /// </summary>
         [Output("securityIpLists")]
@@ -517,6 +523,12 @@ namespace Pulumi.AliCloud.Gpdb
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        /// <summary>
+        /// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+        /// </summary>
+        [Input("resourceManagementMode")]
+        public Input<string>? ResourceManagementMode { get; set; }
+
         [Input("securityIpLists")]
         private InputList<string>? _securityIpLists;
 
@@ -771,6 +783,12 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+        /// </summary>
+        [Input("resourceManagementMode")]
+        public Input<string>? ResourceManagementMode { get; set; }
 
         [Input("securityIpLists")]
         private InputList<string>? _securityIpLists;

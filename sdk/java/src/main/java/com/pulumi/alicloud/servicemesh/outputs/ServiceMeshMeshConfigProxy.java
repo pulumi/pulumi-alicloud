@@ -11,10 +11,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceMeshMeshConfigProxy {
-    /**
-     * @return Cluster domain name.
-     * 
-     */
     private @Nullable String clusterDomain;
     private @Nullable String limitCpu;
     private @Nullable String limitMemory;
@@ -22,10 +18,6 @@ public final class ServiceMeshMeshConfigProxy {
     private @Nullable String requestMemory;
 
     private ServiceMeshMeshConfigProxy() {}
-    /**
-     * @return Cluster domain name.
-     * 
-     */
     public Optional<String> clusterDomain() {
         return Optional.ofNullable(this.clusterDomain);
     }

@@ -146,15 +146,17 @@ class BucketCors(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default = random.index.Uuid("default")
         create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
-            bucket=name)
-        default = alicloud.oss.BucketCors("default",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_cors = alicloud.oss.BucketCors("default",
             bucket=create_bucket.bucket,
             response_vary=True,
             cors_rules=[alicloud.oss.BucketCorsCorsRuleArgs(
@@ -203,15 +205,17 @@ class BucketCors(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default = random.index.Uuid("default")
         create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
-            bucket=name)
-        default = alicloud.oss.BucketCors("default",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_cors = alicloud.oss.BucketCors("default",
             bucket=create_bucket.bucket,
             response_vary=True,
             cors_rules=[alicloud.oss.BucketCorsCorsRuleArgs(

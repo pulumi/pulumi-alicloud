@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> EncryptorName { get; private set; } = null!;
 
         /// <summary>
-        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engine_version` can be modified.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
@@ -524,7 +524,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? EncryptorName { get; set; }
 
         /// <summary>
-        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engine_version` can be modified.
         /// </summary>
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
@@ -831,7 +831,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? EncryptorName { get; set; }
 
         /// <summary>
-        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+        /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engine_version` can be modified.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }

@@ -9,6 +9,7 @@ from .account import *
 from .backup_policy import *
 from .connection import *
 from .db_instance_plan import *
+from .db_resource_group import *
 from .elastic_instance import *
 from .get_accounts import *
 from .get_db_instance_plans import *

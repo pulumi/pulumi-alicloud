@@ -43,10 +43,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
@@ -76,19 +76,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .mostRecent(true)
  *             .owners("system")
  *             .build());
  * 
- *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation("Instance")
- *             .build());
- * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
- *             .cpuCoreCount(1)
- *             .memorySize(2)
+ *             .availabilityZone(default_.zones()[0].id())
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
@@ -109,9 +109,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .availabilityZone(default_.zones()[0].id())
  *             .instanceName(name)
- *             .imageId(default_.images()[0].id())
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
@@ -125,16 +125,23 @@ import javax.annotation.Nullable;
  *             .name(name)
  *             .project("acs_ecs_dashboard")
  *             .metric("disk_writebytes")
- *             .metricDimensions(defaultInstance.id().applyValue(id -> String.format("[{{\"instanceId\":\"%s\",\"device\":\"/dev/vda1\"}}]", id)))
+ *             .period(900)
+ *             .contactGroups(defaultAlarmContactGroup.alarmContactGroupName())
+ *             .effectiveInterval("06:00-20:00")
+ *             .metricDimensions(defaultInstance.id().applyValue(id -> """
+ *   [
+ *     {
+ *       "instanceId": "%s",
+ *       "device": "/dev/vda1"
+ *     }
+ *   ]
+ * ", id)))
  *             .escalationsCritical(AlarmEscalationsCriticalArgs.builder()
  *                 .statistics("Average")
  *                 .comparisonOperator("<=")
  *                 .threshold(35)
  *                 .times(2)
  *                 .build())
- *             .period(900)
- *             .contactGroups(defaultAlarmContactGroup.alarmContactGroupName())
- *             .effectiveInterval("06:00-20:00")
  *             .build());
  * 
  *     }

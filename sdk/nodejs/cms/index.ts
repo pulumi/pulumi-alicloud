@@ -100,6 +100,11 @@ export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
 utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 
+export { GetSiteMonitorsArgs, GetSiteMonitorsResult, GetSiteMonitorsOutputArgs } from "./getSiteMonitors";
+export const getSiteMonitors: typeof import("./getSiteMonitors").getSiteMonitors = null as any;
+export const getSiteMonitorsOutput: typeof import("./getSiteMonitors").getSiteMonitorsOutput = null as any;
+utilities.lazyLoad(exports, ["getSiteMonitors","getSiteMonitorsOutput"], () => require("./getSiteMonitors"));
+
 export { GetSlsGroupsArgs, GetSlsGroupsResult, GetSlsGroupsOutputArgs } from "./getSlsGroups";
 export const getSlsGroups: typeof import("./getSlsGroups").getSlsGroups = null as any;
 export const getSlsGroupsOutput: typeof import("./getSlsGroups").getSlsGroupsOutput = null as any;

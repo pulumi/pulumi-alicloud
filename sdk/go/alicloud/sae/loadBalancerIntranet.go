@@ -98,19 +98,20 @@ import (
 //				return err
 //			}
 //			defaultApplication, err := sae.NewApplication(ctx, "default", &sae.ApplicationArgs{
-//				AppDescription:  pulumi.String(name),
-//				AppName:         pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
-//				NamespaceId:     defaultNamespace.ID(),
-//				ImageUrl:        pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5"),
-//				PackageType:     pulumi.String("Image"),
-//				Jdk:             pulumi.String("Open JDK 8"),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
-//				VpcId:           defaultNetwork.ID(),
-//				VswitchId:       defaultSwitch.ID(),
-//				Timezone:        pulumi.String("Asia/Beijing"),
-//				Replicas:        pulumi.Int(5),
-//				Cpu:             pulumi.Int(500),
-//				Memory:          pulumi.Int(2048),
+//				AppDescription:    pulumi.String(name),
+//				AppName:           pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				NamespaceId:       defaultNamespace.ID(),
+//				ImageUrl:          pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5"),
+//				PackageType:       pulumi.String("Image"),
+//				Jdk:               pulumi.String("Open JDK 8"),
+//				SecurityGroupId:   defaultSecurityGroup.ID(),
+//				VpcId:             defaultNetwork.ID(),
+//				VswitchId:         defaultSwitch.ID(),
+//				Timezone:          pulumi.String("Asia/Beijing"),
+//				Replicas:          pulumi.Int(5),
+//				Cpu:               pulumi.Int(500),
+//				Memory:            pulumi.Int(2048),
+//				MicroRegistration: pulumi.String("0"),
 //			})
 //			if err != nil {
 //				return err

@@ -82,6 +82,7 @@ __all__ = [
     'GetMonitorGroupInstancesInstanceInstanceResult',
     'GetMonitorGroupsGroupResult',
     'GetNamespacesNamespaceResult',
+    'GetSiteMonitorsMonitorResult',
     'GetSlsGroupsGroupResult',
     'GetSlsGroupsGroupSlsGroupConfigResult',
 ]
@@ -111,7 +112,7 @@ class AlarmEscalationsCritical(dict):
                  threshold: Optional[str] = None,
                  times: Optional[int] = None):
         """
-        :param str comparison_operator: Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+        :param str comparison_operator: Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
         :param str statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param int times: Critical level alarm retry times. Default value: `3`.
@@ -129,7 +130,7 @@ class AlarmEscalationsCritical(dict):
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[str]:
         """
-        Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+        Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -183,10 +184,10 @@ class AlarmEscalationsInfo(dict):
                  threshold: Optional[str] = None,
                  times: Optional[int] = None):
         """
-        :param str comparison_operator: Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
-        :param str statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
-        :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
-        :param int times: Critical level alarm retry times. Default value: `3`.
+        :param str comparison_operator: Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
+        :param str statistics: Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+        :param str threshold: Info level alarm threshold value, which must be a numeric value currently.
+        :param int times: Info level alarm retry times. Default value: `3`.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -201,7 +202,7 @@ class AlarmEscalationsInfo(dict):
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[str]:
         """
-        Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+        Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -209,7 +210,7 @@ class AlarmEscalationsInfo(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+        Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         """
         return pulumi.get(self, "statistics")
 
@@ -217,7 +218,7 @@ class AlarmEscalationsInfo(dict):
     @pulumi.getter
     def threshold(self) -> Optional[str]:
         """
-        Critical level alarm threshold value, which must be a numeric value currently.
+        Info level alarm threshold value, which must be a numeric value currently.
         """
         return pulumi.get(self, "threshold")
 
@@ -225,7 +226,7 @@ class AlarmEscalationsInfo(dict):
     @pulumi.getter
     def times(self) -> Optional[int]:
         """
-        Critical level alarm retry times. Default value: `3`.
+        Info level alarm retry times. Default value: `3`.
         """
         return pulumi.get(self, "times")
 
@@ -255,10 +256,10 @@ class AlarmEscalationsWarn(dict):
                  threshold: Optional[str] = None,
                  times: Optional[int] = None):
         """
-        :param str comparison_operator: Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
-        :param str statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
-        :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
-        :param int times: Critical level alarm retry times. Default value: `3`.
+        :param str comparison_operator: Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
+        :param str statistics: Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+        :param str threshold: Warn level alarm threshold value, which must be a numeric value currently.
+        :param int times: Warn level alarm retry times. Default value: `3`.
         """
         if comparison_operator is not None:
             pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -273,7 +274,7 @@ class AlarmEscalationsWarn(dict):
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[str]:
         """
-        Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+        Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -281,7 +282,7 @@ class AlarmEscalationsWarn(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+        Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         """
         return pulumi.get(self, "statistics")
 
@@ -289,7 +290,7 @@ class AlarmEscalationsWarn(dict):
     @pulumi.getter
     def threshold(self) -> Optional[str]:
         """
-        Critical level alarm threshold value, which must be a numeric value currently.
+        Warn level alarm threshold value, which must be a numeric value currently.
         """
         return pulumi.get(self, "threshold")
 
@@ -297,7 +298,7 @@ class AlarmEscalationsWarn(dict):
     @pulumi.getter
     def times(self) -> Optional[int]:
         """
-        Critical level alarm retry times. Default value: `3`.
+        Warn level alarm retry times. Default value: `3`.
         """
         return pulumi.get(self, "times")
 
@@ -4626,6 +4627,79 @@ class GetNamespacesNamespaceResult(dict):
         Data storage duration.
         """
         return pulumi.get(self, "specification")
+
+
+@pulumi.output_type
+class GetSiteMonitorsMonitorResult(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 create_time: str,
+                 interval: str,
+                 task_id: str,
+                 task_name: str,
+                 task_type: str):
+        """
+        :param str address: Address.
+        :param str create_time: CreateTime.
+        :param str interval: Monitoring frequency.
+        :param str task_id: Task ID.
+        :param str task_name: Task Name.
+        :param str task_type: Task Type.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "task_id", task_id)
+        pulumi.set(__self__, "task_name", task_name)
+        pulumi.set(__self__, "task_type", task_type)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        Address.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        CreateTime.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def interval(self) -> str:
+        """
+        Monitoring frequency.
+        """
+        return pulumi.get(self, "interval")
+
+    @property
+    @pulumi.getter(name="taskId")
+    def task_id(self) -> str:
+        """
+        Task ID.
+        """
+        return pulumi.get(self, "task_id")
+
+    @property
+    @pulumi.getter(name="taskName")
+    def task_name(self) -> str:
+        """
+        Task Name.
+        """
+        return pulumi.get(self, "task_name")
+
+    @property
+    @pulumi.getter(name="taskType")
+    def task_type(self) -> str:
+        """
+        Task Type.
+        """
+        return pulumi.get(self, "task_type")
 
 
 @pulumi.output_type

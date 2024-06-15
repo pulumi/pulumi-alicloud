@@ -11,6 +11,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'RouterExpressConnectRouterRegion',
     'GetAccessPointsPointResult',
     'GetAccessPointsPointAccessPointFeatureModelResult',
     'GetGrantRuleToCensCenResult',
@@ -22,6 +23,56 @@ __all__ = [
     'GetVirtualBorderRoutersRouterResult',
     'GetVirtualPhysicalConnectionsConnectionResult',
 ]
+
+@pulumi.output_type
+class RouterExpressConnectRouterRegion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "regionId":
+            suggest = "region_id"
+        elif key == "transitMode":
+            suggest = "transit_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterExpressConnectRouterRegion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterExpressConnectRouterRegion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterExpressConnectRouterRegion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 region_id: Optional[str] = None,
+                 transit_mode: Optional[str] = None):
+        """
+        :param str region_id: Representative region ID.
+        :param str transit_mode: Represents the forwarding mode of the current region.
+        """
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if transit_mode is not None:
+            pulumi.set(__self__, "transit_mode", transit_mode)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[str]:
+        """
+        Representative region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="transitMode")
+    def transit_mode(self) -> Optional[str]:
+        """
+        Represents the forwarding mode of the current region.
+        """
+        return pulumi.get(self, "transit_mode")
+
 
 @pulumi.output_type
 class GetAccessPointsPointResult(dict):

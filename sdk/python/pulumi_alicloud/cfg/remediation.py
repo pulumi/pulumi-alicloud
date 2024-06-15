@@ -264,14 +264,18 @@ class Remediation(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example-oss"
         default = alicloud.get_regions(current=True)
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default_bucket = alicloud.oss.Bucket("default",
-            bucket=name,
+            bucket=f"{name}-{default_integer['result']}",
             acl="public-read",
             tags={
                 "For": "example",
@@ -335,14 +339,18 @@ class Remediation(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example-oss"
         default = alicloud.get_regions(current=True)
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default_bucket = alicloud.oss.Bucket("default",
-            bucket=name,
+            bucket=f"{name}-{default_integer['result']}",
             acl="public-read",
             tags={
                 "For": "example",

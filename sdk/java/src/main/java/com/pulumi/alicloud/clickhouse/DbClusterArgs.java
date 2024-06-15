@@ -219,6 +219,21 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+     * 
+     */
+    @Import(name="renewalStatus")
+    private @Nullable Output<String> renewalStatus;
+
+    /**
+     * @return The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+     * 
+     */
+    public Optional<Output<String>> renewalStatus() {
+        return Optional.ofNullable(this.renewalStatus);
+    }
+
+    /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      * 
      */
@@ -324,6 +339,7 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.maintainTime = $.maintainTime;
         this.paymentType = $.paymentType;
         this.period = $.period;
+        this.renewalStatus = $.renewalStatus;
         this.status = $.status;
         this.storageType = $.storageType;
         this.usedTime = $.usedTime;
@@ -635,6 +651,27 @@ public final class DbClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder period(String period) {
             return period(Output.of(period));
+        }
+
+        /**
+         * @param renewalStatus The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalStatus(@Nullable Output<String> renewalStatus) {
+            $.renewalStatus = renewalStatus;
+            return this;
+        }
+
+        /**
+         * @param renewalStatus The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder renewalStatus(String renewalStatus) {
+            return renewalStatus(Output.of(renewalStatus));
         }
 
         /**

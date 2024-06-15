@@ -127,15 +127,19 @@ class BucketDataRedundancyTransition(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
-            bucket=name)
-        default = alicloud.oss.BucketDataRedundancyTransition("default", bucket=create_bucket.bucket)
+            bucket=f"{name}-{default['result']}")
+        default_bucket_data_redundancy_transition = alicloud.oss.BucketDataRedundancyTransition("default", bucket=create_bucket.bucket)
         ```
 
         ## Import
@@ -170,15 +174,19 @@ class BucketDataRedundancyTransition(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
-            bucket=name)
-        default = alicloud.oss.BucketDataRedundancyTransition("default", bucket=create_bucket.bucket)
+            bucket=f"{name}-{default['result']}")
+        default_bucket_data_redundancy_transition = alicloud.oss.BucketDataRedundancyTransition("default", bucket=create_bucket.bucket)
         ```
 
         ## Import

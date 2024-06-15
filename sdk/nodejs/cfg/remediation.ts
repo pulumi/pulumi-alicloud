@@ -18,14 +18,19 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example-oss";
  * const default = alicloud.getRegions({
  *     current: true,
  * });
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const defaultBucket = new alicloud.oss.Bucket("default", {
- *     bucket: name,
+ *     bucket: `${name}-${defaultInteger.result}`,
  *     acl: "public-read",
  *     tags: {
  *         For: "example",

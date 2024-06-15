@@ -1959,14 +1959,28 @@ class GetTransitRouteTableAggregationsTransitRouteTableAggregationResult(dict):
 @pulumi.output_type
 class GetTransitRouterAvailableResourcesResourceResult(dict):
     def __init__(__self__, *,
+                 available_zones: Sequence[str],
                  master_zones: Sequence[str],
-                 slave_zones: Sequence[str]):
+                 slave_zones: Sequence[str],
+                 support_multicast: bool):
         """
+        :param Sequence[str] available_zones: (Available since v1.225.0) The list of available zones.
         :param Sequence[str] master_zones: The list of primary zones.
         :param Sequence[str] slave_zones: The list of secondary zones.
+        :param bool support_multicast: Specifies whether to query only the zones in which the multicast feature is supported.
         """
+        pulumi.set(__self__, "available_zones", available_zones)
         pulumi.set(__self__, "master_zones", master_zones)
         pulumi.set(__self__, "slave_zones", slave_zones)
+        pulumi.set(__self__, "support_multicast", support_multicast)
+
+    @property
+    @pulumi.getter(name="availableZones")
+    def available_zones(self) -> Sequence[str]:
+        """
+        (Available since v1.225.0) The list of available zones.
+        """
+        return pulumi.get(self, "available_zones")
 
     @property
     @pulumi.getter(name="masterZones")
@@ -1983,6 +1997,14 @@ class GetTransitRouterAvailableResourcesResourceResult(dict):
         The list of secondary zones.
         """
         return pulumi.get(self, "slave_zones")
+
+    @property
+    @pulumi.getter(name="supportMulticast")
+    def support_multicast(self) -> bool:
+        """
+        Specifies whether to query only the zones in which the multicast feature is supported.
+        """
+        return pulumi.get(self, "support_multicast")
 
 
 @pulumi.output_type

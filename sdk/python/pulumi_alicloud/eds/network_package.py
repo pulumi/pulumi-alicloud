@@ -143,12 +143,19 @@ class NetworkPackage(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.eds.get_simple_office_sites(status="REGISTERED",
-            name_regex="default")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
+            cidr_block="172.16.0.0/12",
+            enable_admin_access=True,
+            desktop_access_type="Internet",
+            office_site_name=f"terraform-example-{default['result']}")
         default_network_package = alicloud.eds.NetworkPackage("default",
             bandwidth=10,
-            office_site_id=default.ids[0])
+            office_site_id=default_simple_office_site.id)
         ```
 
         ## Import
@@ -184,12 +191,19 @@ class NetworkPackage(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.eds.get_simple_office_sites(status="REGISTERED",
-            name_regex="default")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
+            cidr_block="172.16.0.0/12",
+            enable_admin_access=True,
+            desktop_access_type="Internet",
+            office_site_name=f"terraform-example-{default['result']}")
         default_network_package = alicloud.eds.NetworkPackage("default",
             bandwidth=10,
-            office_site_id=default.ids[0])
+            office_site_id=default_simple_office_site.id)
         ```
 
         ## Import

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cen
     public static class GetTransitRouterAvailableResources
     {
         /// <summary>
-        /// This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+        /// This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.163.0+.
+        /// &gt; **NOTE:** Available since v1.163.0.
         /// 
         /// ## Example Usage
         /// 
@@ -32,8 +32,8 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["masterId"] = @default.Resources[0].MasterZones[0],
-        ///         ["slaveId"] = @default.Resources[0].SlaveZones[0],
+        ///         ["masterId"] = ids.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0]),
+        ///         ["slaveId"] = ids.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.SlaveZones[0]),
         ///     };
         /// });
         /// ```
@@ -42,9 +42,9 @@ namespace Pulumi.AliCloud.Cen
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterAvailableResourcesResult>("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", args ?? new GetTransitRouterAvailableResourcesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+        /// This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.163.0+.
+        /// &gt; **NOTE:** Available since v1.163.0.
         /// 
         /// ## Example Usage
         /// 
@@ -62,8 +62,8 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["masterId"] = @default.Resources[0].MasterZones[0],
-        ///         ["slaveId"] = @default.Resources[0].SlaveZones[0],
+        ///         ["masterId"] = ids.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0]),
+        ///         ["slaveId"] = ids.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.SlaveZones[0]),
         ///     };
         /// });
         /// ```
@@ -81,6 +81,12 @@ namespace Pulumi.AliCloud.Cen
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// Specifies whether to query only the zones in which the multicast feature is supported.
+        /// </summary>
+        [Input("supportMulticast")]
+        public bool? SupportMulticast { get; set; }
+
         public GetTransitRouterAvailableResourcesArgs()
         {
         }
@@ -94,6 +100,12 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Specifies whether to query only the zones in which the multicast feature is supported.
+        /// </summary>
+        [Input("supportMulticast")]
+        public Input<bool>? SupportMulticast { get; set; }
 
         public GetTransitRouterAvailableResourcesInvokeArgs()
         {
@@ -110,7 +122,14 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public readonly string Id;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Cen Transit Router Available Resources. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTransitRouterAvailableResourcesResourceResult> Resources;
+        /// <summary>
+        /// (Available since v1.225.0) Indicates whether the zone supports the multicast feature.
+        /// </summary>
+        public readonly bool? SupportMulticast;
 
         [OutputConstructor]
         private GetTransitRouterAvailableResourcesResult(
@@ -118,11 +137,14 @@ namespace Pulumi.AliCloud.Cen
 
             string? outputFile,
 
-            ImmutableArray<Outputs.GetTransitRouterAvailableResourcesResourceResult> resources)
+            ImmutableArray<Outputs.GetTransitRouterAvailableResourcesResourceResult> resources,
+
+            bool? supportMulticast)
         {
             Id = id;
             OutputFile = outputFile;
             Resources = resources;
+            SupportMulticast = supportMulticast;
         }
     }
 }

@@ -200,7 +200,8 @@ class LoadBalancerIntranet(pulumi.CustomResource):
             timezone="Asia/Beijing",
             replicas=5,
             cpu=500,
-            memory=2048)
+            memory=2048,
+            micro_registration="0")
         default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
             load_balancer_name=name,
             vswitch_id=default_switch.id,
@@ -288,7 +289,8 @@ class LoadBalancerIntranet(pulumi.CustomResource):
             timezone="Asia/Beijing",
             replicas=5,
             cpu=500,
-            memory=2048)
+            memory=2048,
+            micro_registration="0")
         default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
             load_balancer_name=name,
             vswitch_id=default_switch.id,

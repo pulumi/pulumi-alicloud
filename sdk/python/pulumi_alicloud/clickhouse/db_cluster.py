@@ -30,6 +30,7 @@ class DbClusterArgs:
                  encryption_type: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -53,6 +54,7 @@ class DbClusterArgs:
         :param pulumi.Input[str] encryption_type: Currently only supports ECS disk encryption, with a value of CloudDisk, not encrypted when empty.
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] renewal_status: The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] used_time: The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
@@ -79,6 +81,8 @@ class DbClusterArgs:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if used_time is not None:
@@ -261,6 +265,18 @@ class DbClusterArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -339,6 +355,7 @@ class _DbClusterState:
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
@@ -364,6 +381,7 @@ class _DbClusterState:
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the cluster.
+        :param pulumi.Input[str] renewal_status: The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
@@ -401,6 +419,8 @@ class _DbClusterState:
             pulumi.set(__self__, "period", period)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if renewal_status is not None:
+            pulumi.set(__self__, "renewal_status", renewal_status)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if storage_type is not None:
@@ -597,6 +617,18 @@ class _DbClusterState:
         pulumi.set(self, "port", value)
 
     @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+        """
+        return pulumi.get(self, "renewal_status")
+
+    @renewal_status.setter
+    def renewal_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_status", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -687,6 +719,7 @@ class DbCluster(pulumi.CustomResource):
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
@@ -760,6 +793,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_time: The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] renewal_status: The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
@@ -850,6 +884,7 @@ class DbCluster(pulumi.CustomResource):
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
+                 renewal_status: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  used_time: Optional[pulumi.Input[str]] = None,
@@ -892,6 +927,7 @@ class DbCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
+            __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["status"] = status
             if storage_type is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_type'")
@@ -927,6 +963,7 @@ class DbCluster(pulumi.CustomResource):
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[str]] = None,
+            renewal_status: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_type: Optional[pulumi.Input[str]] = None,
             used_time: Optional[pulumi.Input[str]] = None,
@@ -957,6 +994,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         :param pulumi.Input[str] period: Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when payment_type is `Subscription`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the cluster.
+        :param pulumi.Input[str] renewal_status: The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         :param pulumi.Input[str] storage_type: Storage type of DBCluster. Valid values: `cloud_essd`, `cloud_efficiency`, `cloud_essd_pl2`, `cloud_essd_pl3`.
         :param pulumi.Input[str] used_time: The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
@@ -983,6 +1021,7 @@ class DbCluster(pulumi.CustomResource):
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["port"] = port
+        __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_type"] = storage_type
         __props__.__dict__["used_time"] = used_time
@@ -1112,6 +1151,14 @@ class DbCluster(pulumi.CustomResource):
         (Available since v1.196.0) The connection port of the cluster.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="renewalStatus")
+    def renewal_status(self) -> pulumi.Output[str]:
+        """
+        The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+        """
+        return pulumi.get(self, "renewal_status")
 
     @property
     @pulumi.getter

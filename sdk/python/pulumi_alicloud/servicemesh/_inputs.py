@@ -702,9 +702,6 @@ class ServiceMeshMeshConfigProxyArgs:
                  limit_memory: Optional[pulumi.Input[str]] = None,
                  request_cpu: Optional[pulumi.Input[str]] = None,
                  request_memory: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] cluster_domain: Cluster domain name.
-        """
         if cluster_domain is not None:
             pulumi.set(__self__, "cluster_domain", cluster_domain)
         if limit_cpu is not None:
@@ -719,9 +716,6 @@ class ServiceMeshMeshConfigProxyArgs:
     @property
     @pulumi.getter(name="clusterDomain")
     def cluster_domain(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cluster domain name.
-        """
         return pulumi.get(self, "cluster_domain")
 
     @cluster_domain.setter

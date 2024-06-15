@@ -418,6 +418,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+     * 
+     */
+    @Import(name="resourceManagementMode")
+    private @Nullable Output<String> resourceManagementMode;
+
+    /**
+     * @return Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+     * 
+     */
+    public Optional<Output<String>> resourceManagementMode() {
+        return Optional.ofNullable(this.resourceManagementMode);
+    }
+
+    /**
      * Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
      * 
      * @deprecated
@@ -622,6 +637,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.period = $.period;
         this.privateIpAddress = $.privateIpAddress;
         this.resourceGroupId = $.resourceGroupId;
+        this.resourceManagementMode = $.resourceManagementMode;
         this.securityIpLists = $.securityIpLists;
         this.segNodeNum = $.segNodeNum;
         this.segStorageType = $.segStorageType;
@@ -1195,6 +1211,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param resourceManagementMode Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagementMode(@Nullable Output<String> resourceManagementMode) {
+            $.resourceManagementMode = resourceManagementMode;
+            return this;
+        }
+
+        /**
+         * @param resourceManagementMode Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagementMode(String resourceManagementMode) {
+            return resourceManagementMode(Output.of(resourceManagementMode));
         }
 
         /**

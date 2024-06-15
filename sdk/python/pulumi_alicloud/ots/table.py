@@ -21,10 +21,13 @@ class TableArgs:
                  primary_keys: pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]],
                  table_name: pulumi.Input[str],
                  time_to_live: pulumi.Input[int],
+                 allow_update: Optional[pulumi.Input[bool]] = None,
                  defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]] = None,
                  deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
                  enable_sse: Optional[pulumi.Input[bool]] = None,
-                 sse_key_type: Optional[pulumi.Input[str]] = None):
+                 sse_key_id: Optional[pulumi.Input[str]] = None,
+                 sse_key_type: Optional[pulumi.Input[str]] = None,
+                 sse_role_arn: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Table resource.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
@@ -32,24 +35,33 @@ class TableArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
+        :param pulumi.Input[bool] allow_update: Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
         :param pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
-        :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+        :param pulumi.Input[str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+        :param pulumi.Input[str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
         """
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "max_version", max_version)
         pulumi.set(__self__, "primary_keys", primary_keys)
         pulumi.set(__self__, "table_name", table_name)
         pulumi.set(__self__, "time_to_live", time_to_live)
+        if allow_update is not None:
+            pulumi.set(__self__, "allow_update", allow_update)
         if defined_columns is not None:
             pulumi.set(__self__, "defined_columns", defined_columns)
         if deviation_cell_version_in_sec is not None:
             pulumi.set(__self__, "deviation_cell_version_in_sec", deviation_cell_version_in_sec)
         if enable_sse is not None:
             pulumi.set(__self__, "enable_sse", enable_sse)
+        if sse_key_id is not None:
+            pulumi.set(__self__, "sse_key_id", sse_key_id)
         if sse_key_type is not None:
             pulumi.set(__self__, "sse_key_type", sse_key_type)
+        if sse_role_arn is not None:
+            pulumi.set(__self__, "sse_role_arn", sse_role_arn)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -112,6 +124,18 @@ class TableArgs:
         pulumi.set(self, "time_to_live", value)
 
     @property
+    @pulumi.getter(name="allowUpdate")
+    def allow_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+        """
+        return pulumi.get(self, "allow_update")
+
+    @allow_update.setter
+    def allow_update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_update", value)
+
+    @property
     @pulumi.getter(name="definedColumns")
     def defined_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]:
         """
@@ -148,10 +172,22 @@ class TableArgs:
         pulumi.set(self, "enable_sse", value)
 
     @property
+    @pulumi.getter(name="sseKeyId")
+    def sse_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        """
+        return pulumi.get(self, "sse_key_id")
+
+    @sse_key_id.setter
+    def sse_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sse_key_id", value)
+
+    @property
     @pulumi.getter(name="sseKeyType")
     def sse_key_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+        The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
         """
         return pulumi.get(self, "sse_key_type")
 
@@ -159,31 +195,51 @@ class TableArgs:
     def sse_key_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sse_key_type", value)
 
+    @property
+    @pulumi.getter(name="sseRoleArn")
+    def sse_role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        """
+        return pulumi.get(self, "sse_role_arn")
+
+    @sse_role_arn.setter
+    def sse_role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sse_role_arn", value)
+
 
 @pulumi.input_type
 class _TableState:
     def __init__(__self__, *,
+                 allow_update: Optional[pulumi.Input[bool]] = None,
                  defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]] = None,
                  deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
                  enable_sse: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  max_version: Optional[pulumi.Input[int]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]] = None,
+                 sse_key_id: Optional[pulumi.Input[str]] = None,
                  sse_key_type: Optional[pulumi.Input[str]] = None,
+                 sse_role_arn: Optional[pulumi.Input[str]] = None,
                  table_name: Optional[pulumi.Input[str]] = None,
                  time_to_live: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Table resources.
+        :param pulumi.Input[bool] allow_update: Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
         :param pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
         :param pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
-        :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+        :param pulumi.Input[str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+        :param pulumi.Input[str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """
+        if allow_update is not None:
+            pulumi.set(__self__, "allow_update", allow_update)
         if defined_columns is not None:
             pulumi.set(__self__, "defined_columns", defined_columns)
         if deviation_cell_version_in_sec is not None:
@@ -196,12 +252,28 @@ class _TableState:
             pulumi.set(__self__, "max_version", max_version)
         if primary_keys is not None:
             pulumi.set(__self__, "primary_keys", primary_keys)
+        if sse_key_id is not None:
+            pulumi.set(__self__, "sse_key_id", sse_key_id)
         if sse_key_type is not None:
             pulumi.set(__self__, "sse_key_type", sse_key_type)
+        if sse_role_arn is not None:
+            pulumi.set(__self__, "sse_role_arn", sse_role_arn)
         if table_name is not None:
             pulumi.set(__self__, "table_name", table_name)
         if time_to_live is not None:
             pulumi.set(__self__, "time_to_live", time_to_live)
+
+    @property
+    @pulumi.getter(name="allowUpdate")
+    def allow_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+        """
+        return pulumi.get(self, "allow_update")
+
+    @allow_update.setter
+    def allow_update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_update", value)
 
     @property
     @pulumi.getter(name="definedColumns")
@@ -276,16 +348,40 @@ class _TableState:
         pulumi.set(self, "primary_keys", value)
 
     @property
+    @pulumi.getter(name="sseKeyId")
+    def sse_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        """
+        return pulumi.get(self, "sse_key_id")
+
+    @sse_key_id.setter
+    def sse_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sse_key_id", value)
+
+    @property
     @pulumi.getter(name="sseKeyType")
     def sse_key_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+        The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
         """
         return pulumi.get(self, "sse_key_type")
 
     @sse_key_type.setter
     def sse_key_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sse_key_type", value)
+
+    @property
+    @pulumi.getter(name="sseRoleArn")
+    def sse_role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        """
+        return pulumi.get(self, "sse_role_arn")
+
+    @sse_role_arn.setter
+    def sse_role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sse_role_arn", value)
 
     @property
     @pulumi.getter(name="tableName")
@@ -317,13 +413,16 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_update: Optional[pulumi.Input[bool]] = None,
                  defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]]] = None,
                  deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
                  enable_sse: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  max_version: Optional[pulumi.Input[int]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]]] = None,
+                 sse_key_id: Optional[pulumi.Input[str]] = None,
                  sse_key_type: Optional[pulumi.Input[str]] = None,
+                 sse_role_arn: Optional[pulumi.Input[str]] = None,
                  table_name: Optional[pulumi.Input[str]] = None,
                  time_to_live: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -404,13 +503,16 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_update: Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
-        :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+        :param pulumi.Input[str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+        :param pulumi.Input[str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """
@@ -510,13 +612,16 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_update: Optional[pulumi.Input[bool]] = None,
                  defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]]] = None,
                  deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
                  enable_sse: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  max_version: Optional[pulumi.Input[int]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]]] = None,
+                 sse_key_id: Optional[pulumi.Input[str]] = None,
                  sse_key_type: Optional[pulumi.Input[str]] = None,
+                 sse_role_arn: Optional[pulumi.Input[str]] = None,
                  table_name: Optional[pulumi.Input[str]] = None,
                  time_to_live: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -528,6 +633,7 @@ class Table(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TableArgs.__new__(TableArgs)
 
+            __props__.__dict__["allow_update"] = allow_update
             __props__.__dict__["defined_columns"] = defined_columns
             __props__.__dict__["deviation_cell_version_in_sec"] = deviation_cell_version_in_sec
             __props__.__dict__["enable_sse"] = enable_sse
@@ -540,7 +646,9 @@ class Table(pulumi.CustomResource):
             if primary_keys is None and not opts.urn:
                 raise TypeError("Missing required property 'primary_keys'")
             __props__.__dict__["primary_keys"] = primary_keys
+            __props__.__dict__["sse_key_id"] = sse_key_id
             __props__.__dict__["sse_key_type"] = sse_key_type
+            __props__.__dict__["sse_role_arn"] = sse_role_arn
             if table_name is None and not opts.urn:
                 raise TypeError("Missing required property 'table_name'")
             __props__.__dict__["table_name"] = table_name
@@ -557,13 +665,16 @@ class Table(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_update: Optional[pulumi.Input[bool]] = None,
             defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]]] = None,
             deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
             enable_sse: Optional[pulumi.Input[bool]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             max_version: Optional[pulumi.Input[int]] = None,
             primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]]] = None,
+            sse_key_id: Optional[pulumi.Input[str]] = None,
             sse_key_type: Optional[pulumi.Input[str]] = None,
+            sse_role_arn: Optional[pulumi.Input[str]] = None,
             table_name: Optional[pulumi.Input[str]] = None,
             time_to_live: Optional[pulumi.Input[int]] = None) -> 'Table':
         """
@@ -573,13 +684,16 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_update: Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableDefinedColumnArgs']]]] defined_columns: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         :param pulumi.Input[str] deviation_cell_version_in_sec: The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         :param pulumi.Input[bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
         :param pulumi.Input[int] max_version: The maximum number of versions stored in this table. The valid value is 1-2147483647.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TablePrimaryKeyArgs']]]] primary_keys: The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
-        :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+        :param pulumi.Input[str] sse_key_id: . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
+        :param pulumi.Input[str] sse_role_arn: The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """
@@ -587,16 +701,27 @@ class Table(pulumi.CustomResource):
 
         __props__ = _TableState.__new__(_TableState)
 
+        __props__.__dict__["allow_update"] = allow_update
         __props__.__dict__["defined_columns"] = defined_columns
         __props__.__dict__["deviation_cell_version_in_sec"] = deviation_cell_version_in_sec
         __props__.__dict__["enable_sse"] = enable_sse
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["max_version"] = max_version
         __props__.__dict__["primary_keys"] = primary_keys
+        __props__.__dict__["sse_key_id"] = sse_key_id
         __props__.__dict__["sse_key_type"] = sse_key_type
+        __props__.__dict__["sse_role_arn"] = sse_role_arn
         __props__.__dict__["table_name"] = table_name
         __props__.__dict__["time_to_live"] = time_to_live
         return Table(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowUpdate")
+    def allow_update(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+        """
+        return pulumi.get(self, "allow_update")
 
     @property
     @pulumi.getter(name="definedColumns")
@@ -647,12 +772,28 @@ class Table(pulumi.CustomResource):
         return pulumi.get(self, "primary_keys")
 
     @property
+    @pulumi.getter(name="sseKeyId")
+    def sse_key_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        """
+        return pulumi.get(self, "sse_key_id")
+
+    @property
     @pulumi.getter(name="sseKeyType")
     def sse_key_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+        The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
         """
         return pulumi.get(self, "sse_key_type")
+
+    @property
+    @pulumi.getter(name="sseRoleArn")
+    def sse_role_arn(self) -> pulumi.Output[Optional[str]]:
+        """
+        The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        """
+        return pulumi.get(self, "sse_role_arn")
 
     @property
     @pulumi.getter(name="tableName")

@@ -27,23 +27,35 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := eds.GetSimpleOfficeSites(ctx, &eds.GetSimpleOfficeSitesArgs{
-//				Status:    pulumi.StringRef("REGISTERED"),
-//				NameRegex: pulumi.StringRef("default"),
-//			}, nil)
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
+//				CidrBlock:         pulumi.String("172.16.0.0/12"),
+//				EnableAdminAccess: pulumi.Bool(true),
+//				DesktopAccessType: pulumi.String("Internet"),
+//				OfficeSiteName:    pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = eds.NewNetworkPackage(ctx, "default", &eds.NetworkPackageArgs{
 //				Bandwidth:    pulumi.Int(10),
-//				OfficeSiteId: pulumi.String(_default.Ids[0]),
+//				OfficeSiteId: defaultSimpleOfficeSite.ID(),
 //			})
 //			if err != nil {
 //				return err

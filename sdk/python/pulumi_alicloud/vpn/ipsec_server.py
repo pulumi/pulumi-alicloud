@@ -380,19 +380,23 @@ class IpsecServer(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="172.16.0.0/16")
+        default0 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id=default.ids[0])
+        default1 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[1])
         default_gateway = alicloud.vpn.Gateway("default",
-            name=name,
+            vpn_gateway_name=name,
             vpc_id=default_get_networks.ids[0],
             bandwidth=10,
             enable_ssl=True,
             description=name,
-            instance_charge_type="PrePaid",
-            vswitch_id=default_get_switches.ids[0])
+            payment_type="Subscription",
+            vswitch_id=default0.ids[0],
+            disaster_recovery_vswitch_id=default1.ids[0])
         foo = alicloud.vpn.IpsecServer("foo",
             client_ip_pool="10.0.0.0/24",
             ipsec_server_name=name,
@@ -446,19 +450,23 @@ class IpsecServer(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="172.16.0.0/16")
+        default0 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id=default.ids[0])
+        default1 = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[1])
         default_gateway = alicloud.vpn.Gateway("default",
-            name=name,
+            vpn_gateway_name=name,
             vpc_id=default_get_networks.ids[0],
             bandwidth=10,
             enable_ssl=True,
             description=name,
-            instance_charge_type="PrePaid",
-            vswitch_id=default_get_switches.ids[0])
+            payment_type="Subscription",
+            vswitch_id=default0.ids[0],
+            disaster_recovery_vswitch_id=default1.ids[0])
         foo = alicloud.vpn.IpsecServer("foo",
             client_ip_pool="10.0.0.0/24",
             ipsec_server_name=name,

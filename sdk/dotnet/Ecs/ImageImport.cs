@@ -10,15 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Import a copy of your local on-premise file to ECS, and appear as a custom replacement in the corresponding domain.
+    /// Provides a ECS Image Import resource.
+    /// 
+    /// For information about ECS Image Import and how to use it, see [What is Image Import](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-importimage).
+    /// 
+    /// &gt; **NOTE:** Available since v1.69.0.
     /// 
     /// &gt; **NOTE:** You must upload the image file to the object storage OSS in advance.
     /// 
     /// &gt; **NOTE:** The region where the image is imported must be the same region as the OSS bucket where the image file is uploaded.
     /// 
-    /// &gt; **NOTE:** Available in 1.69.0+.
-    /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -28,21 +32,39 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new AliCloud.Ecs.ImageImport("this", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-image-import-example";
+    ///     var @default = new AliCloud.Oss.Bucket("default", new()
     ///     {
-    ///         Description = "test import image",
+    ///         BucketName = name,
+    ///     });
+    /// 
+    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("default", new()
+    ///     {
+    ///         Bucket = @default.Id,
+    ///         Key = "fc/hello.zip",
+    ///         Content = @"    # -*- coding: utf-8 -*-
+    ///     def handler(event, context):
+    ///     print ""hello world""
+    ///     return 'hello world'
+    /// ",
+    ///     });
+    /// 
+    ///     var defaultImageImport = new AliCloud.Ecs.ImageImport("default", new()
+    ///     {
     ///         Architecture = "x86_64",
-    ///         ImageName = "test-import-image",
-    ///         LicenseType = "Auto",
-    ///         Platform = "Ubuntu",
     ///         OsType = "linux",
+    ///         Platform = "Ubuntu",
+    ///         LicenseType = "Auto",
+    ///         ImageName = name,
+    ///         Description = name,
     ///         DiskDeviceMappings = new[]
     ///         {
     ///             new AliCloud.Ecs.Inputs.ImageImportDiskDeviceMappingArgs
     ///             {
+    ///                 OssBucket = @default.Id,
+    ///                 OssObject = defaultBucketObject.Id,
     ///                 DiskImageSize = 5,
-    ///                 OssBucket = "testimportimage",
-    ///                 OssObject = "root.img",
     ///             },
     ///         },
     ///     });
@@ -50,63 +72,62 @@ namespace Pulumi.AliCloud.Ecs
     /// });
     /// ```
     /// 
-    /// ## Attributes Reference0
-    /// 
-    ///  The following attributes are exported:
-    /// 
-    /// * `id` - ID of the image.
-    /// 
     /// ## Import
     /// 
-    /// image can be imported using the id, e.g.
+    /// ECS Image Import can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ecs/imageImport:ImageImport default m-uf66871ape***yg1q***
+    /// $ pulumi import alicloud:ecs/imageImport:ImageImport example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/imageImport:ImageImport")]
     public partial class ImageImport : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+        /// The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
         /// </summary>
         [Output("architecture")]
         public Output<string?> Architecture { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
+        /// The boot mode of the image. Valid values: `BIOS`, `UEFI`.
+        /// </summary>
+        [Output("bootMode")]
+        public Output<string> BootMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the system with disks and snapshots under the image.
+        /// The information about the custom image. See `disk_device_mapping` below.
         /// </summary>
         [Output("diskDeviceMappings")]
         public Output<ImmutableArray<Outputs.ImageImportDiskDeviceMapping>> DiskDeviceMappings { get; private set; } = null!;
 
         /// <summary>
-        /// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+        /// The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Output("imageName")]
-        public Output<string?> ImageName { get; private set; } = null!;
+        public Output<string> ImageName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+        /// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         /// </summary>
         [Output("licenseType")]
         public Output<string?> LicenseType { get; private set; } = null!;
 
         /// <summary>
-        /// Operating system platform type. Valid values: `windows`, Default is `linux`.
+        /// The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
         /// </summary>
         [Output("osType")]
         public Output<string?> OsType { get; private set; } = null!;
 
         /// <summary>
-        /// The operating system distribution. Default value: Others Linux. 
-        /// More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-        /// **NOTE**: It's default value is Ubuntu before version 1.197.0.
+        /// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+        /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
         /// </summary>
         [Output("platform")]
         public Output<string> Platform { get; private set; } = null!;
@@ -158,13 +179,19 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class ImageImportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+        /// The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
 
         /// <summary>
-        /// Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
+        /// The boot mode of the image. Valid values: `BIOS`, `UEFI`.
+        /// </summary>
+        [Input("bootMode")]
+        public Input<string>? BootMode { get; set; }
+
+        /// <summary>
+        /// The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -173,7 +200,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.ImageImportDiskDeviceMappingArgs>? _diskDeviceMappings;
 
         /// <summary>
-        /// Description of the system with disks and snapshots under the image.
+        /// The information about the custom image. See `disk_device_mapping` below.
         /// </summary>
         public InputList<Inputs.ImageImportDiskDeviceMappingArgs> DiskDeviceMappings
         {
@@ -182,27 +209,26 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+        /// The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
 
         /// <summary>
-        /// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+        /// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         /// </summary>
         [Input("licenseType")]
         public Input<string>? LicenseType { get; set; }
 
         /// <summary>
-        /// Operating system platform type. Valid values: `windows`, Default is `linux`.
+        /// The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
         /// </summary>
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
         /// <summary>
-        /// The operating system distribution. Default value: Others Linux. 
-        /// More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-        /// **NOTE**: It's default value is Ubuntu before version 1.197.0.
+        /// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+        /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
@@ -216,13 +242,19 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class ImageImportState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+        /// The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
 
         /// <summary>
-        /// Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
+        /// The boot mode of the image. Valid values: `BIOS`, `UEFI`.
+        /// </summary>
+        [Input("bootMode")]
+        public Input<string>? BootMode { get; set; }
+
+        /// <summary>
+        /// The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -231,7 +263,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.ImageImportDiskDeviceMappingGetArgs>? _diskDeviceMappings;
 
         /// <summary>
-        /// Description of the system with disks and snapshots under the image.
+        /// The information about the custom image. See `disk_device_mapping` below.
         /// </summary>
         public InputList<Inputs.ImageImportDiskDeviceMappingGetArgs> DiskDeviceMappings
         {
@@ -240,27 +272,26 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+        /// The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
 
         /// <summary>
-        /// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+        /// The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         /// </summary>
         [Input("licenseType")]
         public Input<string>? LicenseType { get; set; }
 
         /// <summary>
-        /// Operating system platform type. Valid values: `windows`, Default is `linux`.
+        /// The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
         /// </summary>
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
         /// <summary>
-        /// The operating system distribution. Default value: Others Linux. 
-        /// More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-        /// **NOTE**: It's default value is Ubuntu before version 1.197.0.
+        /// The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+        /// &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }

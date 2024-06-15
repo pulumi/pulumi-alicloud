@@ -103,6 +103,7 @@ class _BgpPeerState:
     def __init__(__self__, *,
                  bfd_multi_hop: Optional[pulumi.Input[int]] = None,
                  bgp_group_id: Optional[pulumi.Input[str]] = None,
+                 bgp_peer_name: Optional[pulumi.Input[str]] = None,
                  enable_bfd: Optional[pulumi.Input[bool]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
@@ -111,15 +112,18 @@ class _BgpPeerState:
         Input properties used for looking up and filtering BgpPeer resources.
         :param pulumi.Input[int] bfd_multi_hop: The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
         :param pulumi.Input[str] bgp_group_id: The ID of the BGP group.
+        :param pulumi.Input[str] bgp_peer_name: The name of the BGP neighbor.
         :param pulumi.Input[bool] enable_bfd: Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
         :param pulumi.Input[str] ip_version: The IP version.
         :param pulumi.Input[str] peer_ip_address: The IP address of the BGP peer.
-        :param pulumi.Input[str] status: The status of the BGP peer.
+        :param pulumi.Input[str] status: Status of BGP neighbors.
         """
         if bfd_multi_hop is not None:
             pulumi.set(__self__, "bfd_multi_hop", bfd_multi_hop)
         if bgp_group_id is not None:
             pulumi.set(__self__, "bgp_group_id", bgp_group_id)
+        if bgp_peer_name is not None:
+            pulumi.set(__self__, "bgp_peer_name", bgp_peer_name)
         if enable_bfd is not None:
             pulumi.set(__self__, "enable_bfd", enable_bfd)
         if ip_version is not None:
@@ -152,6 +156,18 @@ class _BgpPeerState:
     @bgp_group_id.setter
     def bgp_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bgp_group_id", value)
+
+    @property
+    @pulumi.getter(name="bgpPeerName")
+    def bgp_peer_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the BGP neighbor.
+        """
+        return pulumi.get(self, "bgp_peer_name")
+
+    @bgp_peer_name.setter
+    def bgp_peer_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bgp_peer_name", value)
 
     @property
     @pulumi.getter(name="enableBfd")
@@ -193,7 +209,7 @@ class _BgpPeerState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the BGP peer.
+        Status of BGP neighbors.
         """
         return pulumi.get(self, "status")
 
@@ -214,7 +230,7 @@ class BgpPeer(pulumi.CustomResource):
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a VPC Bgp Peer resource.
+        Provides a Express Connect Bgp Peer resource.
 
         For information about VPC Bgp Peer and how to use it, see [What is Bgp Peer](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
 
@@ -264,7 +280,7 @@ class BgpPeer(pulumi.CustomResource):
 
         ## Import
 
-        VPC Bgp Peer can be imported using the id, e.g.
+        Express Connect Bgp Peer can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example <id>
@@ -285,7 +301,7 @@ class BgpPeer(pulumi.CustomResource):
                  args: BgpPeerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Bgp Peer resource.
+        Provides a Express Connect Bgp Peer resource.
 
         For information about VPC Bgp Peer and how to use it, see [What is Bgp Peer](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
 
@@ -335,7 +351,7 @@ class BgpPeer(pulumi.CustomResource):
 
         ## Import
 
-        VPC Bgp Peer can be imported using the id, e.g.
+        Express Connect Bgp Peer can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example <id>
@@ -377,6 +393,7 @@ class BgpPeer(pulumi.CustomResource):
             __props__.__dict__["enable_bfd"] = enable_bfd
             __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["peer_ip_address"] = peer_ip_address
+            __props__.__dict__["bgp_peer_name"] = None
             __props__.__dict__["status"] = None
         super(BgpPeer, __self__).__init__(
             'alicloud:vpc/bgpPeer:BgpPeer',
@@ -390,6 +407,7 @@ class BgpPeer(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bfd_multi_hop: Optional[pulumi.Input[int]] = None,
             bgp_group_id: Optional[pulumi.Input[str]] = None,
+            bgp_peer_name: Optional[pulumi.Input[str]] = None,
             enable_bfd: Optional[pulumi.Input[bool]] = None,
             ip_version: Optional[pulumi.Input[str]] = None,
             peer_ip_address: Optional[pulumi.Input[str]] = None,
@@ -403,10 +421,11 @@ class BgpPeer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bfd_multi_hop: The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enable_bfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
         :param pulumi.Input[str] bgp_group_id: The ID of the BGP group.
+        :param pulumi.Input[str] bgp_peer_name: The name of the BGP neighbor.
         :param pulumi.Input[bool] enable_bfd: Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
         :param pulumi.Input[str] ip_version: The IP version.
         :param pulumi.Input[str] peer_ip_address: The IP address of the BGP peer.
-        :param pulumi.Input[str] status: The status of the BGP peer.
+        :param pulumi.Input[str] status: Status of BGP neighbors.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -414,6 +433,7 @@ class BgpPeer(pulumi.CustomResource):
 
         __props__.__dict__["bfd_multi_hop"] = bfd_multi_hop
         __props__.__dict__["bgp_group_id"] = bgp_group_id
+        __props__.__dict__["bgp_peer_name"] = bgp_peer_name
         __props__.__dict__["enable_bfd"] = enable_bfd
         __props__.__dict__["ip_version"] = ip_version
         __props__.__dict__["peer_ip_address"] = peer_ip_address
@@ -435,6 +455,14 @@ class BgpPeer(pulumi.CustomResource):
         The ID of the BGP group.
         """
         return pulumi.get(self, "bgp_group_id")
+
+    @property
+    @pulumi.getter(name="bgpPeerName")
+    def bgp_peer_name(self) -> pulumi.Output[str]:
+        """
+        The name of the BGP neighbor.
+        """
+        return pulumi.get(self, "bgp_peer_name")
 
     @property
     @pulumi.getter(name="enableBfd")
@@ -464,7 +492,7 @@ class BgpPeer(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the BGP peer.
+        Status of BGP neighbors.
         """
         return pulumi.get(self, "status")
 

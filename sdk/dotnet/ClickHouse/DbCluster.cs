@@ -170,6 +170,12 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
+        /// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+        /// </summary>
+        [Output("renewalStatus")]
+        public Output<string> RenewalStatus { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         /// </summary>
         [Output("status")]
@@ -338,6 +344,12 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? Period { get; set; }
 
         /// <summary>
+        /// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+        /// </summary>
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
+
+        /// <summary>
         /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
         /// </summary>
         [Input("status")]
@@ -478,6 +490,12 @@ namespace Pulumi.AliCloud.ClickHouse
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
+
+        /// <summary>
+        /// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+        /// </summary>
+        [Input("renewalStatus")]
+        public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
         /// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.

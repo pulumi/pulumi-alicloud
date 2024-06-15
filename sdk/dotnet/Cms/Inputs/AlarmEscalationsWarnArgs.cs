@@ -13,25 +13,25 @@ namespace Pulumi.AliCloud.Cms.Inputs
     public sealed class AlarmEscalationsWarnArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Critical level alarm comparison operator. Default value: `==`. Valid values: ["&lt;=", "&lt;", "&gt;", "&gt;=", "==", "!="].
+        /// Warn level alarm comparison operator. Default value: `&gt;`. Valid values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
         /// </summary>
         [Input("comparisonOperator")]
         public Input<string>? ComparisonOperator { get; set; }
 
         /// <summary>
-        /// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+        /// Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         /// </summary>
         [Input("statistics")]
         public Input<string>? Statistics { get; set; }
 
         /// <summary>
-        /// Critical level alarm threshold value, which must be a numeric value currently.
+        /// Warn level alarm threshold value, which must be a numeric value currently.
         /// </summary>
         [Input("threshold")]
         public Input<string>? Threshold { get; set; }
 
         /// <summary>
-        /// Critical level alarm retry times. Default value: `3`.
+        /// Warn level alarm retry times. Default value: `3`.
         /// </summary>
         [Input("times")]
         public Input<int>? Times { get; set; }

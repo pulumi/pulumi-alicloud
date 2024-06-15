@@ -107,14 +107,14 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="edition", refs={String.class}, tree="[0]")
-    private Output<String> edition;
+    private Output</* @Nullable */ String> edition;
 
     /**
      * @return Grid instance version type (for example: the standard, the Pro version, etc.).
      * 
      */
-    public Output<String> edition() {
-        return this.edition;
+    public Output<Optional<String>> edition() {
+        return Codegen.optional(this.edition);
     }
     /**
      * Data plane KubeAPI access capability. See `extra_configuration` below.
@@ -253,14 +253,14 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="version", refs={String.class}, tree="[0]")
-    private Output<String> version;
+    private Output</* @Nullable */ String> version;
 
     /**
      * @return Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `alicloud.servicemesh.getServiceMeshes`.
      * 
      */
-    public Output<String> version() {
-        return this.version;
+    public Output<Optional<String>> version() {
+        return Codegen.optional(this.version);
     }
 
     /**

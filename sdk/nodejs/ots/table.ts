@@ -111,6 +111,10 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
+     * Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+     */
+    public readonly allowUpdate!: pulumi.Output<boolean | undefined>;
+    /**
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
      */
     public readonly definedColumns!: pulumi.Output<outputs.ots.TableDefinedColumn[] | undefined>;
@@ -135,9 +139,17 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly primaryKeys!: pulumi.Output<outputs.ots.TablePrimaryKey[]>;
     /**
-     * The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     */
+    public readonly sseKeyId!: pulumi.Output<string | undefined>;
+    /**
+     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
      */
     public readonly sseKeyType!: pulumi.Output<string | undefined>;
+    /**
+     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     */
+    public readonly sseRoleArn!: pulumi.Output<string | undefined>;
     /**
      * The table name of the OTS instance. If changed, a new table would be created.
      */
@@ -160,13 +172,16 @@ export class Table extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableState | undefined;
+            resourceInputs["allowUpdate"] = state ? state.allowUpdate : undefined;
             resourceInputs["definedColumns"] = state ? state.definedColumns : undefined;
             resourceInputs["deviationCellVersionInSec"] = state ? state.deviationCellVersionInSec : undefined;
             resourceInputs["enableSse"] = state ? state.enableSse : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["maxVersion"] = state ? state.maxVersion : undefined;
             resourceInputs["primaryKeys"] = state ? state.primaryKeys : undefined;
+            resourceInputs["sseKeyId"] = state ? state.sseKeyId : undefined;
             resourceInputs["sseKeyType"] = state ? state.sseKeyType : undefined;
+            resourceInputs["sseRoleArn"] = state ? state.sseRoleArn : undefined;
             resourceInputs["tableName"] = state ? state.tableName : undefined;
             resourceInputs["timeToLive"] = state ? state.timeToLive : undefined;
         } else {
@@ -186,13 +201,16 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.timeToLive === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeToLive'");
             }
+            resourceInputs["allowUpdate"] = args ? args.allowUpdate : undefined;
             resourceInputs["definedColumns"] = args ? args.definedColumns : undefined;
             resourceInputs["deviationCellVersionInSec"] = args ? args.deviationCellVersionInSec : undefined;
             resourceInputs["enableSse"] = args ? args.enableSse : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["maxVersion"] = args ? args.maxVersion : undefined;
             resourceInputs["primaryKeys"] = args ? args.primaryKeys : undefined;
+            resourceInputs["sseKeyId"] = args ? args.sseKeyId : undefined;
             resourceInputs["sseKeyType"] = args ? args.sseKeyType : undefined;
+            resourceInputs["sseRoleArn"] = args ? args.sseRoleArn : undefined;
             resourceInputs["tableName"] = args ? args.tableName : undefined;
             resourceInputs["timeToLive"] = args ? args.timeToLive : undefined;
         }
@@ -205,6 +223,10 @@ export class Table extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Table resources.
  */
 export interface TableState {
+    /**
+     * Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+     */
+    allowUpdate?: pulumi.Input<boolean>;
     /**
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
      */
@@ -230,9 +252,17 @@ export interface TableState {
      */
     primaryKeys?: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[]>;
     /**
-     * The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     */
+    sseKeyId?: pulumi.Input<string>;
+    /**
+     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
      */
     sseKeyType?: pulumi.Input<string>;
+    /**
+     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     */
+    sseRoleArn?: pulumi.Input<string>;
     /**
      * The table name of the OTS instance. If changed, a new table would be created.
      */
@@ -247,6 +277,10 @@ export interface TableState {
  * The set of arguments for constructing a Table resource.
  */
 export interface TableArgs {
+    /**
+     * Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+     */
+    allowUpdate?: pulumi.Input<boolean>;
     /**
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
      */
@@ -272,9 +306,17 @@ export interface TableArgs {
      */
     primaryKeys: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[]>;
     /**
-     * The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+     * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     */
+    sseKeyId?: pulumi.Input<string>;
+    /**
+     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
      */
     sseKeyType?: pulumi.Input<string>;
+    /**
+     * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
+     */
+    sseRoleArn?: pulumi.Input<string>;
     /**
      * The table name of the OTS instance. If changed, a new table would be created.
      */

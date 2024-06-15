@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class AlarmEscalationsCritical
     {
         /// <summary>
-        /// Critical level alarm comparison operator. Default value: `==`. Valid values: ["&lt;=", "&lt;", "&gt;", "&gt;=", "==", "!="].
+        /// Critical level alarm comparison operator. Default value: `&gt;`. Valid values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
         /// </summary>
         public readonly string? ComparisonOperator;
         /// <summary>

@@ -16,7 +16,15 @@ from .get_virtual_border_routers import *
 from .get_virtual_physical_connections import *
 from .grant_rule_to_cen import *
 from .physical_connection import *
+from .router_express_connect_router import *
 from .router_interface import *
+from .router_tr_association import *
+from .router_vbr_child_instance import *
+from .router_vpc_association import *
+from .traffic_qos import *
+from .traffic_qos_association import *
+from .traffic_qos_queue import *
+from .traffic_qos_rule import *
 from .vbr_pconn_association import *
 from .virtual_border_router import *
 from .virtual_physical_connection import *

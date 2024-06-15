@@ -2426,7 +2426,7 @@ export namespace cloudstoragegateway {
 export namespace cms {
     export interface AlarmEscalationsCritical {
         /**
-         * Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+         * Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
@@ -2445,38 +2445,38 @@ export namespace cms {
 
     export interface AlarmEscalationsInfo {
         /**
-         * Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+         * Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+         * Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
          */
         statistics?: pulumi.Input<string>;
         /**
-         * Critical level alarm threshold value, which must be a numeric value currently.
+         * Info level alarm threshold value, which must be a numeric value currently.
          */
         threshold?: pulumi.Input<string>;
         /**
-         * Critical level alarm retry times. Default value: `3`.
+         * Info level alarm retry times. Default value: `3`.
          */
         times?: pulumi.Input<number>;
     }
 
     export interface AlarmEscalationsWarn {
         /**
-         * Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+         * Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+         * Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
          */
         statistics?: pulumi.Input<string>;
         /**
-         * Critical level alarm threshold value, which must be a numeric value currently.
+         * Warn level alarm threshold value, which must be a numeric value currently.
          */
         threshold?: pulumi.Input<string>;
         /**
-         * Critical level alarm retry times. Default value: `3`.
+         * Warn level alarm retry times. Default value: `3`.
          */
         times?: pulumi.Input<number>;
     }
@@ -5391,25 +5391,23 @@ export namespace ecs {
 
     export interface ImageImportDiskDeviceMapping {
         /**
-         * The name of disk N in the custom image.
+         * The device name of the disk.
          */
         device?: pulumi.Input<string>;
         /**
-         * Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+         * The size of the disk. Default value: `5`.
          */
         diskImageSize?: pulumi.Input<number>;
         /**
-         * Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+         * The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
          */
         format?: pulumi.Input<string>;
         /**
-         * Save the exported OSS bucket.
+         * The OSS bucket where the image file is stored.
          */
         ossBucket?: pulumi.Input<string>;
         /**
-         * The file name of your OSS Object.
-         *
-         * > **NOTE:** The diskDeviceMapping is a list and it's first item will be used to system disk and other items are used to data disks.
+         * The name (key) of the object that the uploaded image is stored as in the OSS bucket.
          */
         ossObject?: pulumi.Input<string>;
     }
@@ -6842,6 +6840,16 @@ export namespace expressconnect {
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface RouterExpressConnectRouterRegion {
+        /**
+         * Representative region ID.
+         */
+        regionId?: pulumi.Input<string>;
+        /**
+         * Represents the forwarding mode of the current region.
+         */
+        transitMode?: pulumi.Input<string>;
+    }
 }
 
 export namespace fc {
@@ -10647,9 +10655,6 @@ export namespace servicemesh {
     }
 
     export interface ServiceMeshMeshConfigProxy {
-        /**
-         * Cluster domain name.
-         */
         clusterDomain?: pulumi.Input<string>;
         limitCpu?: pulumi.Input<string>;
         limitMemory?: pulumi.Input<string>;

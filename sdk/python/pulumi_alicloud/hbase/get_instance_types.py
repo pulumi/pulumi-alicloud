@@ -186,7 +186,7 @@ def get_instance_types(charge_type: Optional[str] = None,
     """
     This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
-    > **NOTE:** Available in v1.106.0+.
+    > **NOTE:** Available since v1.106.0.
 
 
     :param str charge_type: The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.
@@ -239,7 +239,7 @@ def get_instance_types_output(charge_type: Optional[pulumi.Input[Optional[str]]]
     """
     This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
-    > **NOTE:** Available in v1.106.0+.
+    > **NOTE:** Available since v1.106.0.
 
 
     :param str charge_type: The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.

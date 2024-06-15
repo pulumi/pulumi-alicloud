@@ -40,6 +40,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
  * import com.pulumi.alicloud.vpn.Connection;
  * import com.pulumi.alicloud.vpn.ConnectionArgs;
+ * import com.pulumi.alicloud.vpn.inputs.ConnectionTunnelOptionsSpecificationArgs;
+ * import com.pulumi.alicloud.vpn.inputs.ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs;
  * import com.pulumi.alicloud.vpn.PbrRouteEntry;
  * import com.pulumi.alicloud.vpn.PbrRouteEntryArgs;
  * import java.util.List;
@@ -56,20 +60,88 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tfacc");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = VpnFunctions.getGateways();
  * 
  *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
- *             .name(name)
- *             .ipAddress("192.168.1.1")
+ *             .description("defaultCustomerGateway")
+ *             .ipAddress("2.2.2.5")
+ *             .asn("2224")
+ *             .customerGatewayName(name)
+ *             .build());
+ * 
+ *         var changeCustomerGateway = new CustomerGateway("changeCustomerGateway", CustomerGatewayArgs.builder()
+ *             .description("changeCustomerGateway")
+ *             .ipAddress("2.2.2.6")
+ *             .asn("2225")
+ *             .customerGatewayName(name)
  *             .build());
  * 
  *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()
- *             .name(name)
- *             .customerGatewayId(defaultCustomerGateway.id())
  *             .vpnGatewayId(default_.ids()[0])
- *             .localSubnets("192.168.2.0/24")
- *             .remoteSubnets("192.168.3.0/24")
+ *             .vpnConnectionName(name)
+ *             .localSubnets("3.0.0.0/24")
+ *             .remoteSubnets(            
+ *                 "10.0.0.0/24",
+ *                 "10.0.1.0/24")
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .enableTunnelsBgp("true")
+ *             .tunnelOptionsSpecifications(            
+ *                 ConnectionTunnelOptionsSpecificationArgs.builder()
+ *                     .tunnelIpsecConfig(ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
+ *                         .ipsecAuthAlg("md5")
+ *                         .ipsecEncAlg("aes256")
+ *                         .ipsecLifetime("16400")
+ *                         .ipsecPfs("group5")
+ *                         .build())
+ *                     .customerGatewayId(defaultCustomerGateway.id())
+ *                     .role("master")
+ *                     .tunnelBgpConfig(ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs.builder()
+ *                         .localAsn("1219002")
+ *                         .tunnelCidr("169.254.30.0/30")
+ *                         .localBgpIp("169.254.30.1")
+ *                         .build())
+ *                     .tunnelIkeConfig(ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
+ *                         .ikeMode("aggressive")
+ *                         .ikeVersion("ikev2")
+ *                         .localId("localid_tunnel2")
+ *                         .psk("12345678")
+ *                         .remoteId("remote2")
+ *                         .ikeAuthAlg("md5")
+ *                         .ikeEncAlg("aes256")
+ *                         .ikeLifetime("3600")
+ *                         .ikePfs("group14")
+ *                         .build())
+ *                     .build(),
+ *                 ConnectionTunnelOptionsSpecificationArgs.builder()
+ *                     .tunnelIkeConfig(ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
+ *                         .remoteId("remote24")
+ *                         .ikeEncAlg("aes256")
+ *                         .ikeLifetime("27000")
+ *                         .ikeMode("aggressive")
+ *                         .ikePfs("group5")
+ *                         .ikeAuthAlg("md5")
+ *                         .ikeVersion("ikev2")
+ *                         .localId("localid_tunnel2")
+ *                         .psk("12345678")
+ *                         .build())
+ *                     .tunnelIpsecConfig(ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
+ *                         .ipsecLifetime("2700")
+ *                         .ipsecPfs("group14")
+ *                         .ipsecAuthAlg("md5")
+ *                         .ipsecEncAlg("aes256")
+ *                         .build())
+ *                     .customerGatewayId(defaultCustomerGateway.id())
+ *                     .role("slave")
+ *                     .tunnelBgpConfig(ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs.builder()
+ *                         .localAsn("1219002")
+ *                         .localBgpIp("169.254.40.1")
+ *                         .tunnelCidr("169.254.40.0/30")
+ *                         .build())
+ *                     .build())
  *             .build());
  * 
  *         var defaultPbrRouteEntry = new PbrRouteEntry("defaultPbrRouteEntry", PbrRouteEntryArgs.builder()

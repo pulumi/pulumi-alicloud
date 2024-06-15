@@ -155,7 +155,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly encryptorName!: pulumi.Output<string>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
@@ -475,7 +475,7 @@ export interface InstanceState {
      */
     encryptorName?: pulumi.Input<string>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
      */
     engineVersion?: pulumi.Input<string>;
     /**
@@ -674,7 +674,7 @@ export interface InstanceArgs {
      */
     encryptorName?: pulumi.Input<string>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
      */
     engineVersion: pulumi.Input<string>;
     /**
