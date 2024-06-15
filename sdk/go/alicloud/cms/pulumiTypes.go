@@ -14,7 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AlarmEscalationsCritical struct {
-	// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+	// Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
 	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics *string `pulumi:"statistics"`
@@ -36,7 +36,7 @@ type AlarmEscalationsCriticalInput interface {
 }
 
 type AlarmEscalationsCriticalArgs struct {
-	// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+	// Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
 	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
@@ -123,7 +123,7 @@ func (o AlarmEscalationsCriticalOutput) ToAlarmEscalationsCriticalPtrOutputWithC
 	}).(AlarmEscalationsCriticalPtrOutput)
 }
 
-// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+// Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
 func (o AlarmEscalationsCriticalOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsCritical) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
@@ -167,7 +167,7 @@ func (o AlarmEscalationsCriticalPtrOutput) Elem() AlarmEscalationsCriticalOutput
 	}).(AlarmEscalationsCriticalOutput)
 }
 
-// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+// Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
 func (o AlarmEscalationsCriticalPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsCritical) *string {
 		if v == nil {
@@ -208,13 +208,13 @@ func (o AlarmEscalationsCriticalPtrOutput) Times() pulumi.IntPtrOutput {
 }
 
 type AlarmEscalationsInfo struct {
-	// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+	// Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+	// Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics *string `pulumi:"statistics"`
-	// Critical level alarm threshold value, which must be a numeric value currently.
+	// Info level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
-	// Critical level alarm retry times. Default value: `3`.
+	// Info level alarm retry times. Default value: `3`.
 	Times *int `pulumi:"times"`
 }
 
@@ -230,13 +230,13 @@ type AlarmEscalationsInfoInput interface {
 }
 
 type AlarmEscalationsInfoArgs struct {
-	// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+	// Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+	// Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
-	// Critical level alarm threshold value, which must be a numeric value currently.
+	// Info level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
-	// Critical level alarm retry times. Default value: `3`.
+	// Info level alarm retry times. Default value: `3`.
 	Times pulumi.IntPtrInput `pulumi:"times"`
 }
 
@@ -317,22 +317,22 @@ func (o AlarmEscalationsInfoOutput) ToAlarmEscalationsInfoPtrOutputWithContext(c
 	}).(AlarmEscalationsInfoPtrOutput)
 }
 
-// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+// Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
 func (o AlarmEscalationsInfoOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+// Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 func (o AlarmEscalationsInfoOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm threshold value, which must be a numeric value currently.
+// Info level alarm threshold value, which must be a numeric value currently.
 func (o AlarmEscalationsInfoOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsInfo) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default value: `3`.
+// Info level alarm retry times. Default value: `3`.
 func (o AlarmEscalationsInfoOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsInfo) *int { return v.Times }).(pulumi.IntPtrOutput)
 }
@@ -361,7 +361,7 @@ func (o AlarmEscalationsInfoPtrOutput) Elem() AlarmEscalationsInfoOutput {
 	}).(AlarmEscalationsInfoOutput)
 }
 
-// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+// Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
 func (o AlarmEscalationsInfoPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsInfo) *string {
 		if v == nil {
@@ -371,7 +371,7 @@ func (o AlarmEscalationsInfoPtrOutput) ComparisonOperator() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+// Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 func (o AlarmEscalationsInfoPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsInfo) *string {
 		if v == nil {
@@ -381,7 +381,7 @@ func (o AlarmEscalationsInfoPtrOutput) Statistics() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm threshold value, which must be a numeric value currently.
+// Info level alarm threshold value, which must be a numeric value currently.
 func (o AlarmEscalationsInfoPtrOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsInfo) *string {
 		if v == nil {
@@ -391,7 +391,7 @@ func (o AlarmEscalationsInfoPtrOutput) Threshold() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default value: `3`.
+// Info level alarm retry times. Default value: `3`.
 func (o AlarmEscalationsInfoPtrOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsInfo) *int {
 		if v == nil {
@@ -402,13 +402,13 @@ func (o AlarmEscalationsInfoPtrOutput) Times() pulumi.IntPtrOutput {
 }
 
 type AlarmEscalationsWarn struct {
-	// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+	// Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+	// Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics *string `pulumi:"statistics"`
-	// Critical level alarm threshold value, which must be a numeric value currently.
+	// Warn level alarm threshold value, which must be a numeric value currently.
 	Threshold *string `pulumi:"threshold"`
-	// Critical level alarm retry times. Default value: `3`.
+	// Warn level alarm retry times. Default value: `3`.
 	Times *int `pulumi:"times"`
 }
 
@@ -424,13 +424,13 @@ type AlarmEscalationsWarnInput interface {
 }
 
 type AlarmEscalationsWarnArgs struct {
-	// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+	// Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+	// Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
-	// Critical level alarm threshold value, which must be a numeric value currently.
+	// Warn level alarm threshold value, which must be a numeric value currently.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
-	// Critical level alarm retry times. Default value: `3`.
+	// Warn level alarm retry times. Default value: `3`.
 	Times pulumi.IntPtrInput `pulumi:"times"`
 }
 
@@ -511,22 +511,22 @@ func (o AlarmEscalationsWarnOutput) ToAlarmEscalationsWarnPtrOutputWithContext(c
 	}).(AlarmEscalationsWarnPtrOutput)
 }
 
-// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+// Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
 func (o AlarmEscalationsWarnOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+// Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 func (o AlarmEscalationsWarnOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm threshold value, which must be a numeric value currently.
+// Warn level alarm threshold value, which must be a numeric value currently.
 func (o AlarmEscalationsWarnOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsWarn) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default value: `3`.
+// Warn level alarm retry times. Default value: `3`.
 func (o AlarmEscalationsWarnOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AlarmEscalationsWarn) *int { return v.Times }).(pulumi.IntPtrOutput)
 }
@@ -555,7 +555,7 @@ func (o AlarmEscalationsWarnPtrOutput) Elem() AlarmEscalationsWarnOutput {
 	}).(AlarmEscalationsWarnOutput)
 }
 
-// Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+// Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
 func (o AlarmEscalationsWarnPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsWarn) *string {
 		if v == nil {
@@ -565,7 +565,7 @@ func (o AlarmEscalationsWarnPtrOutput) ComparisonOperator() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+// Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 func (o AlarmEscalationsWarnPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsWarn) *string {
 		if v == nil {
@@ -575,7 +575,7 @@ func (o AlarmEscalationsWarnPtrOutput) Statistics() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm threshold value, which must be a numeric value currently.
+// Warn level alarm threshold value, which must be a numeric value currently.
 func (o AlarmEscalationsWarnPtrOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsWarn) *string {
 		if v == nil {
@@ -585,7 +585,7 @@ func (o AlarmEscalationsWarnPtrOutput) Threshold() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Critical level alarm retry times. Default value: `3`.
+// Warn level alarm retry times. Default value: `3`.
 func (o AlarmEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AlarmEscalationsWarn) *int {
 		if v == nil {
@@ -10120,6 +10120,148 @@ func (o GetNamespacesNamespaceArrayOutput) Index(i pulumi.IntInput) GetNamespace
 	}).(GetNamespacesNamespaceOutput)
 }
 
+type GetSiteMonitorsMonitor struct {
+	// Address.
+	Address string `pulumi:"address"`
+	// CreateTime.
+	CreateTime string `pulumi:"createTime"`
+	// Monitoring frequency.
+	Interval string `pulumi:"interval"`
+	// Task ID.
+	TaskId string `pulumi:"taskId"`
+	// Task Name.
+	TaskName string `pulumi:"taskName"`
+	// Task Type.
+	TaskType string `pulumi:"taskType"`
+}
+
+// GetSiteMonitorsMonitorInput is an input type that accepts GetSiteMonitorsMonitorArgs and GetSiteMonitorsMonitorOutput values.
+// You can construct a concrete instance of `GetSiteMonitorsMonitorInput` via:
+//
+//	GetSiteMonitorsMonitorArgs{...}
+type GetSiteMonitorsMonitorInput interface {
+	pulumi.Input
+
+	ToGetSiteMonitorsMonitorOutput() GetSiteMonitorsMonitorOutput
+	ToGetSiteMonitorsMonitorOutputWithContext(context.Context) GetSiteMonitorsMonitorOutput
+}
+
+type GetSiteMonitorsMonitorArgs struct {
+	// Address.
+	Address pulumi.StringInput `pulumi:"address"`
+	// CreateTime.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Monitoring frequency.
+	Interval pulumi.StringInput `pulumi:"interval"`
+	// Task ID.
+	TaskId pulumi.StringInput `pulumi:"taskId"`
+	// Task Name.
+	TaskName pulumi.StringInput `pulumi:"taskName"`
+	// Task Type.
+	TaskType pulumi.StringInput `pulumi:"taskType"`
+}
+
+func (GetSiteMonitorsMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSiteMonitorsMonitor)(nil)).Elem()
+}
+
+func (i GetSiteMonitorsMonitorArgs) ToGetSiteMonitorsMonitorOutput() GetSiteMonitorsMonitorOutput {
+	return i.ToGetSiteMonitorsMonitorOutputWithContext(context.Background())
+}
+
+func (i GetSiteMonitorsMonitorArgs) ToGetSiteMonitorsMonitorOutputWithContext(ctx context.Context) GetSiteMonitorsMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSiteMonitorsMonitorOutput)
+}
+
+// GetSiteMonitorsMonitorArrayInput is an input type that accepts GetSiteMonitorsMonitorArray and GetSiteMonitorsMonitorArrayOutput values.
+// You can construct a concrete instance of `GetSiteMonitorsMonitorArrayInput` via:
+//
+//	GetSiteMonitorsMonitorArray{ GetSiteMonitorsMonitorArgs{...} }
+type GetSiteMonitorsMonitorArrayInput interface {
+	pulumi.Input
+
+	ToGetSiteMonitorsMonitorArrayOutput() GetSiteMonitorsMonitorArrayOutput
+	ToGetSiteMonitorsMonitorArrayOutputWithContext(context.Context) GetSiteMonitorsMonitorArrayOutput
+}
+
+type GetSiteMonitorsMonitorArray []GetSiteMonitorsMonitorInput
+
+func (GetSiteMonitorsMonitorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSiteMonitorsMonitor)(nil)).Elem()
+}
+
+func (i GetSiteMonitorsMonitorArray) ToGetSiteMonitorsMonitorArrayOutput() GetSiteMonitorsMonitorArrayOutput {
+	return i.ToGetSiteMonitorsMonitorArrayOutputWithContext(context.Background())
+}
+
+func (i GetSiteMonitorsMonitorArray) ToGetSiteMonitorsMonitorArrayOutputWithContext(ctx context.Context) GetSiteMonitorsMonitorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSiteMonitorsMonitorArrayOutput)
+}
+
+type GetSiteMonitorsMonitorOutput struct{ *pulumi.OutputState }
+
+func (GetSiteMonitorsMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSiteMonitorsMonitor)(nil)).Elem()
+}
+
+func (o GetSiteMonitorsMonitorOutput) ToGetSiteMonitorsMonitorOutput() GetSiteMonitorsMonitorOutput {
+	return o
+}
+
+func (o GetSiteMonitorsMonitorOutput) ToGetSiteMonitorsMonitorOutputWithContext(ctx context.Context) GetSiteMonitorsMonitorOutput {
+	return o
+}
+
+// Address.
+func (o GetSiteMonitorsMonitorOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSiteMonitorsMonitor) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// CreateTime.
+func (o GetSiteMonitorsMonitorOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSiteMonitorsMonitor) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Monitoring frequency.
+func (o GetSiteMonitorsMonitorOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSiteMonitorsMonitor) string { return v.Interval }).(pulumi.StringOutput)
+}
+
+// Task ID.
+func (o GetSiteMonitorsMonitorOutput) TaskId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSiteMonitorsMonitor) string { return v.TaskId }).(pulumi.StringOutput)
+}
+
+// Task Name.
+func (o GetSiteMonitorsMonitorOutput) TaskName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSiteMonitorsMonitor) string { return v.TaskName }).(pulumi.StringOutput)
+}
+
+// Task Type.
+func (o GetSiteMonitorsMonitorOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSiteMonitorsMonitor) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
+type GetSiteMonitorsMonitorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSiteMonitorsMonitorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSiteMonitorsMonitor)(nil)).Elem()
+}
+
+func (o GetSiteMonitorsMonitorArrayOutput) ToGetSiteMonitorsMonitorArrayOutput() GetSiteMonitorsMonitorArrayOutput {
+	return o
+}
+
+func (o GetSiteMonitorsMonitorArrayOutput) ToGetSiteMonitorsMonitorArrayOutputWithContext(ctx context.Context) GetSiteMonitorsMonitorArrayOutput {
+	return o
+}
+
+func (o GetSiteMonitorsMonitorArrayOutput) Index(i pulumi.IntInput) GetSiteMonitorsMonitorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSiteMonitorsMonitor {
+		return vs[0].([]GetSiteMonitorsMonitor)[vs[1].(int)]
+	}).(GetSiteMonitorsMonitorOutput)
+}
+
 type GetSlsGroupsGroup struct {
 	// The creation time of the resource.
 	CreateTime string `pulumi:"createTime"`
@@ -10520,6 +10662,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorGroupsGroupArrayInput)(nil)).Elem(), GetMonitorGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceInput)(nil)).Elem(), GetNamespacesNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamespacesNamespaceArrayInput)(nil)).Elem(), GetNamespacesNamespaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSiteMonitorsMonitorInput)(nil)).Elem(), GetSiteMonitorsMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSiteMonitorsMonitorArrayInput)(nil)).Elem(), GetSiteMonitorsMonitorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSlsGroupsGroupInput)(nil)).Elem(), GetSlsGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSlsGroupsGroupArrayInput)(nil)).Elem(), GetSlsGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSlsGroupsGroupSlsGroupConfigInput)(nil)).Elem(), GetSlsGroupsGroupSlsGroupConfigArgs{})
@@ -10666,6 +10810,8 @@ func init() {
 	pulumi.RegisterOutputType(GetMonitorGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceOutput{})
 	pulumi.RegisterOutputType(GetNamespacesNamespaceArrayOutput{})
+	pulumi.RegisterOutputType(GetSiteMonitorsMonitorOutput{})
+	pulumi.RegisterOutputType(GetSiteMonitorsMonitorArrayOutput{})
 	pulumi.RegisterOutputType(GetSlsGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetSlsGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetSlsGroupsGroupSlsGroupConfigOutput{})

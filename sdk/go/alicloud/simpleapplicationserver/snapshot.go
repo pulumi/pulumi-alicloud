@@ -27,7 +27,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/simpleapplicationserver"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -39,6 +42,13 @@ import (
 //			name := "tf_example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
 //			}
 //			_default, err := simpleapplicationserver.GetImages(ctx, &simpleapplicationserver.GetImagesArgs{
 //				Platform: pulumi.StringRef("Linux"),
@@ -70,7 +80,7 @@ import (
 //				DiskId: defaultGetServerDisks.ApplyT(func(defaultGetServerDisks simpleapplicationserver.GetServerDisksResult) (*string, error) {
 //					return &defaultGetServerDisks.Ids[0], nil
 //				}).(pulumi.StringPtrOutput),
-//				SnapshotName: pulumi.String(name),
+//				SnapshotName: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
 //			})
 //			if err != nil {
 //				return err

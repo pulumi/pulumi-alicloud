@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.cfg.Rule;
@@ -59,8 +61,13 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
- *             .bucket(name)
+ *             .bucket(String.format("%s-%s", name,defaultInteger.result()))
  *             .acl("public-read")
  *             .tags(Map.of("For", "example"))
  *             .build());

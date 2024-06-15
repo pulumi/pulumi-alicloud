@@ -21,6 +21,21 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     public static final TableState Empty = new TableState();
 
     /**
+     * Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+     * 
+     */
+    @Import(name="allowUpdate")
+    private @Nullable Output<Boolean> allowUpdate;
+
+    /**
+     * @return Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+     * 
+     */
+    public Optional<Output<Boolean>> allowUpdate() {
+        return Optional.ofNullable(this.allowUpdate);
+    }
+
+    /**
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
      * 
      */
@@ -111,18 +126,48 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+     * . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * 
+     */
+    @Import(name="sseKeyId")
+    private @Nullable Output<String> sseKeyId;
+
+    /**
+     * @return . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * 
+     */
+    public Optional<Output<String>> sseKeyId() {
+        return Optional.ofNullable(this.sseKeyId);
+    }
+
+    /**
+     * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
      * 
      */
     @Import(name="sseKeyType")
     private @Nullable Output<String> sseKeyType;
 
     /**
-     * @return The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+     * @return The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
      * 
      */
     public Optional<Output<String>> sseKeyType() {
         return Optional.ofNullable(this.sseKeyType);
+    }
+
+    /**
+     * The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * 
+     */
+    @Import(name="sseRoleArn")
+    private @Nullable Output<String> sseRoleArn;
+
+    /**
+     * @return The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+     * 
+     */
+    public Optional<Output<String>> sseRoleArn() {
+        return Optional.ofNullable(this.sseRoleArn);
     }
 
     /**
@@ -158,13 +203,16 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     private TableState() {}
 
     private TableState(TableState $) {
+        this.allowUpdate = $.allowUpdate;
         this.definedColumns = $.definedColumns;
         this.deviationCellVersionInSec = $.deviationCellVersionInSec;
         this.enableSse = $.enableSse;
         this.instanceName = $.instanceName;
         this.maxVersion = $.maxVersion;
         this.primaryKeys = $.primaryKeys;
+        this.sseKeyId = $.sseKeyId;
         this.sseKeyType = $.sseKeyType;
+        this.sseRoleArn = $.sseRoleArn;
         this.tableName = $.tableName;
         this.timeToLive = $.timeToLive;
     }
@@ -185,6 +233,27 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TableState defaults) {
             $ = new TableState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowUpdate Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowUpdate(@Nullable Output<Boolean> allowUpdate) {
+            $.allowUpdate = allowUpdate;
+            return this;
+        }
+
+        /**
+         * @param allowUpdate Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowUpdate(Boolean allowUpdate) {
+            return allowUpdate(Output.of(allowUpdate));
         }
 
         /**
@@ -334,7 +403,28 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sseKeyType The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+         * @param sseKeyId . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sseKeyId(@Nullable Output<String> sseKeyId) {
+            $.sseKeyId = sseKeyId;
+            return this;
+        }
+
+        /**
+         * @param sseKeyId . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sseKeyId(String sseKeyId) {
+            return sseKeyId(Output.of(sseKeyId));
+        }
+
+        /**
+         * @param sseKeyType The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
          * 
          * @return builder
          * 
@@ -345,13 +435,34 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sseKeyType The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+         * @param sseKeyType The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
          * 
          * @return builder
          * 
          */
         public Builder sseKeyType(String sseKeyType) {
             return sseKeyType(Output.of(sseKeyType));
+        }
+
+        /**
+         * @param sseRoleArn The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sseRoleArn(@Nullable Output<String> sseRoleArn) {
+            $.sseRoleArn = sseRoleArn;
+            return this;
+        }
+
+        /**
+         * @param sseRoleArn The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sseRoleArn(String sseRoleArn) {
+            return sseRoleArn(Output.of(sseRoleArn));
         }
 
         /**

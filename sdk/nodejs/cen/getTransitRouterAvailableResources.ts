@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+ * This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.163.0+.
+ * > **NOTE:** Available since v1.163.0.
  *
  * ## Example Usage
  *
@@ -20,8 +20,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.cen.getTransitRouterAvailableResources({});
- * export const masterId = _default.resources[0].masterZones[0];
- * export const slaveId = _default.resources[0].slaveZones[0];
+ * export const masterId = ids.then(ids => ids.resources?.[0]?.masterZones?.[0]);
+ * export const slaveId = ids.then(ids => ids.resources?.[0]?.slaveZones?.[0]);
  * ```
  */
 export function getTransitRouterAvailableResources(args?: GetTransitRouterAvailableResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterAvailableResourcesResult> {
@@ -30,6 +30,7 @@ export function getTransitRouterAvailableResources(args?: GetTransitRouterAvaila
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", {
         "outputFile": args.outputFile,
+        "supportMulticast": args.supportMulticast,
     }, opts);
 }
 
@@ -41,6 +42,10 @@ export interface GetTransitRouterAvailableResourcesArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * Specifies whether to query only the zones in which the multicast feature is supported.
+     */
+    supportMulticast?: boolean;
 }
 
 /**
@@ -52,12 +57,19 @@ export interface GetTransitRouterAvailableResourcesResult {
      */
     readonly id: string;
     readonly outputFile?: string;
+    /**
+     * A list of Cen Transit Router Available Resources. Each element contains the following attributes:
+     */
     readonly resources: outputs.cen.GetTransitRouterAvailableResourcesResource[];
+    /**
+     * (Available since v1.225.0) Indicates whether the zone supports the multicast feature.
+     */
+    readonly supportMulticast?: boolean;
 }
 /**
- * This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+ * This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.163.0+.
+ * > **NOTE:** Available since v1.163.0.
  *
  * ## Example Usage
  *
@@ -68,8 +80,8 @@ export interface GetTransitRouterAvailableResourcesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ids = alicloud.cen.getTransitRouterAvailableResources({});
- * export const masterId = _default.resources[0].masterZones[0];
- * export const slaveId = _default.resources[0].slaveZones[0];
+ * export const masterId = ids.then(ids => ids.resources?.[0]?.masterZones?.[0]);
+ * export const slaveId = ids.then(ids => ids.resources?.[0]?.slaveZones?.[0]);
  * ```
  */
 export function getTransitRouterAvailableResourcesOutput(args?: GetTransitRouterAvailableResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterAvailableResourcesResult> {
@@ -84,4 +96,8 @@ export interface GetTransitRouterAvailableResourcesOutputArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string>;
+    /**
+     * Specifies whether to query only the zones in which the multicast feature is supported.
+     */
+    supportMulticast?: pulumi.Input<boolean>;
 }

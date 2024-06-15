@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Vpn
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = new AliCloud.Vpn.CustomerGateway("default", new()
     ///     {
-    ///         Name = name,
+    ///         CustomerGatewayName = name,
     ///         IpAddress = "42.104.22.210",
     ///         Asn = "45014",
     ///         Description = name,

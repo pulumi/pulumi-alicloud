@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Bgp Peer resource.
+    /// Provides a Express Connect Bgp Peer resource.
     /// 
     /// For information about VPC Bgp Peer and how to use it, see [What is Bgp Peer](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
     /// 
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// VPC Bgp Peer can be imported using the id, e.g.
+    /// Express Connect Bgp Peer can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example &lt;id&gt;
@@ -101,6 +101,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> BgpGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the BGP neighbor.
+        /// </summary>
+        [Output("bgpPeerName")]
+        public Output<string> BgpPeerName { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
         /// </summary>
         [Output("enableBfd")]
@@ -119,7 +125,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> PeerIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the BGP peer.
+        /// Status of BGP neighbors.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -221,6 +227,12 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? BgpGroupId { get; set; }
 
         /// <summary>
+        /// The name of the BGP neighbor.
+        /// </summary>
+        [Input("bgpPeerName")]
+        public Input<string>? BgpPeerName { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
         /// </summary>
         [Input("enableBfd")]
@@ -239,7 +251,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? PeerIpAddress { get; set; }
 
         /// <summary>
-        /// The status of the BGP peer.
+        /// Status of BGP neighbors.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

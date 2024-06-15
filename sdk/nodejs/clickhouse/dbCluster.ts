@@ -149,6 +149,10 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
+     * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
+     */
+    public readonly renewalStatus!: pulumi.Output<string>;
+    /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
     public readonly status!: pulumi.Output<string>;
@@ -201,6 +205,7 @@ export class DbCluster extends pulumi.CustomResource {
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["storageType"] = state ? state.storageType : undefined;
             resourceInputs["usedTime"] = state ? state.usedTime : undefined;
@@ -246,6 +251,7 @@ export class DbCluster extends pulumi.CustomResource {
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["storageType"] = args ? args.storageType : undefined;
             resourceInputs["usedTime"] = args ? args.usedTime : undefined;
@@ -326,6 +332,10 @@ export interface DbClusterState {
      * (Available since v1.196.0) The connection port of the cluster.
      */
     port?: pulumi.Input<string>;
+    /**
+     * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
+     */
+    renewalStatus?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */
@@ -410,6 +420,10 @@ export interface DbClusterArgs {
      * Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
      */
     period?: pulumi.Input<string>;
+    /**
+     * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
+     */
+    renewalStatus?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      */

@@ -42,7 +42,7 @@ class InstanceArgs:
                * `VPC` - VPC network.
                * `INTERNET` - Public internet.
                
-               Default to ["VPC", "CLASSIC"].
+               Default to ["VPC", "CLASSIC", "INTERNET"].
         :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
                Default to Alibaba Cloud default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
@@ -141,7 +141,7 @@ class InstanceArgs:
         * `VPC` - VPC network.
         * `INTERNET` - Public internet.
 
-        Default to ["VPC", "CLASSIC"].
+        Default to ["VPC", "CLASSIC", "INTERNET"].
         """
         return pulumi.get(self, "network_type_acls")
 
@@ -206,7 +206,7 @@ class _InstanceState:
                * `VPC` - VPC network.
                * `INTERNET` - Public internet.
                
-               Default to ["VPC", "CLASSIC"].
+               Default to ["VPC", "CLASSIC", "INTERNET"].
         :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
                Default to Alibaba Cloud default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
@@ -305,7 +305,7 @@ class _InstanceState:
         * `VPC` - VPC network.
         * `INTERNET` - Public internet.
 
-        Default to ["VPC", "CLASSIC"].
+        Default to ["VPC", "CLASSIC", "INTERNET"].
         """
         return pulumi.get(self, "network_type_acls")
 
@@ -411,7 +411,7 @@ class Instance(pulumi.CustomResource):
                * `VPC` - VPC network.
                * `INTERNET` - Public internet.
                
-               Default to ["VPC", "CLASSIC"].
+               Default to ["VPC", "CLASSIC", "INTERNET"].
         :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
                Default to Alibaba Cloud default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
@@ -543,7 +543,7 @@ class Instance(pulumi.CustomResource):
                * `VPC` - VPC network.
                * `INTERNET` - Public internet.
                
-               Default to ["VPC", "CLASSIC"].
+               Default to ["VPC", "CLASSIC", "INTERNET"].
         :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
                Default to Alibaba Cloud default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
@@ -619,7 +619,7 @@ class Instance(pulumi.CustomResource):
         * `VPC` - VPC network.
         * `INTERNET` - Public internet.
 
-        Default to ["VPC", "CLASSIC"].
+        Default to ["VPC", "CLASSIC", "INTERNET"].
         """
         return pulumi.get(self, "network_type_acls")
 

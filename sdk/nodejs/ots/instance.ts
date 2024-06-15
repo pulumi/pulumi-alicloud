@@ -104,7 +104,7 @@ export class Instance extends pulumi.CustomResource {
      * * `VPC` - VPC network.
      * * `INTERNET` - Public internet.
      *
-     * Default to ["VPC", "CLASSIC"].
+     * Default to ["VPC", "CLASSIC", "INTERNET"].
      */
     public readonly networkTypeAcls!: pulumi.Output<string[]>;
     /**
@@ -192,7 +192,7 @@ export interface InstanceState {
      * * `VPC` - VPC network.
      * * `INTERNET` - Public internet.
      *
-     * Default to ["VPC", "CLASSIC"].
+     * Default to ["VPC", "CLASSIC", "INTERNET"].
      */
     networkTypeAcls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -244,7 +244,7 @@ export interface InstanceArgs {
      * * `VPC` - VPC network.
      * * `INTERNET` - Public internet.
      *
-     * Default to ["VPC", "CLASSIC"].
+     * Default to ["VPC", "CLASSIC", "INTERNET"].
      */
     networkTypeAcls?: pulumi.Input<pulumi.Input<string>[]>;
     /**

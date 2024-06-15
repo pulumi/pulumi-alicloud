@@ -3033,10 +3033,14 @@ func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput)
 }
 
 type GetTransitRouterAvailableResourcesResource struct {
+	// (Available since v1.225.0) The list of available zones.
+	AvailableZones []string `pulumi:"availableZones"`
 	// The list of primary zones.
 	MasterZones []string `pulumi:"masterZones"`
 	// The list of secondary zones.
 	SlaveZones []string `pulumi:"slaveZones"`
+	// Specifies whether to query only the zones in which the multicast feature is supported.
+	SupportMulticast bool `pulumi:"supportMulticast"`
 }
 
 // GetTransitRouterAvailableResourcesResourceInput is an input type that accepts GetTransitRouterAvailableResourcesResourceArgs and GetTransitRouterAvailableResourcesResourceOutput values.
@@ -3051,10 +3055,14 @@ type GetTransitRouterAvailableResourcesResourceInput interface {
 }
 
 type GetTransitRouterAvailableResourcesResourceArgs struct {
+	// (Available since v1.225.0) The list of available zones.
+	AvailableZones pulumi.StringArrayInput `pulumi:"availableZones"`
 	// The list of primary zones.
 	MasterZones pulumi.StringArrayInput `pulumi:"masterZones"`
 	// The list of secondary zones.
 	SlaveZones pulumi.StringArrayInput `pulumi:"slaveZones"`
+	// Specifies whether to query only the zones in which the multicast feature is supported.
+	SupportMulticast pulumi.BoolInput `pulumi:"supportMulticast"`
 }
 
 func (GetTransitRouterAvailableResourcesResourceArgs) ElementType() reflect.Type {
@@ -3108,6 +3116,11 @@ func (o GetTransitRouterAvailableResourcesResourceOutput) ToGetTransitRouterAvai
 	return o
 }
 
+// (Available since v1.225.0) The list of available zones.
+func (o GetTransitRouterAvailableResourcesResourceOutput) AvailableZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTransitRouterAvailableResourcesResource) []string { return v.AvailableZones }).(pulumi.StringArrayOutput)
+}
+
 // The list of primary zones.
 func (o GetTransitRouterAvailableResourcesResourceOutput) MasterZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTransitRouterAvailableResourcesResource) []string { return v.MasterZones }).(pulumi.StringArrayOutput)
@@ -3116,6 +3129,11 @@ func (o GetTransitRouterAvailableResourcesResourceOutput) MasterZones() pulumi.S
 // The list of secondary zones.
 func (o GetTransitRouterAvailableResourcesResourceOutput) SlaveZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTransitRouterAvailableResourcesResource) []string { return v.SlaveZones }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether to query only the zones in which the multicast feature is supported.
+func (o GetTransitRouterAvailableResourcesResourceOutput) SupportMulticast() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTransitRouterAvailableResourcesResource) bool { return v.SupportMulticast }).(pulumi.BoolOutput)
 }
 
 type GetTransitRouterAvailableResourcesResourceArrayOutput struct{ *pulumi.OutputState }

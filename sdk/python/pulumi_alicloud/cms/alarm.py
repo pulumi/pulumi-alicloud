@@ -734,12 +734,12 @@ class Alarm(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(most_recent=True,
             owners="system")
-        default_get_zones = alicloud.get_zones(available_resource_creation="Instance")
-        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            image_id=default_get_images.images[0].id)
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
@@ -747,14 +747,14 @@ class Alarm(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_get_zones.zones[0].id)
+            zone_id=default.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
             vpc_id=default_network.id)
         default_instance = alicloud.ecs.Instance("default",
-            availability_zone=default_get_zones.zones[0].id,
+            availability_zone=default.zones[0].id,
             instance_name=name,
-            image_id=default.images[0].id,
+            image_id=default_get_images.images[0].id,
             instance_type=default_get_instance_types.instance_types[0].id,
             security_groups=[default_security_group.id],
             vswitch_id=default_switch.id)
@@ -763,16 +763,22 @@ class Alarm(pulumi.CustomResource):
             name=name,
             project="acs_ecs_dashboard",
             metric="disk_writebytes",
-            metric_dimensions=default_instance.id.apply(lambda id: f"[{{\\"instanceId\\":\\"{id}\\",\\"device\\":\\"/dev/vda1\\"}}]"),
+            period=900,
+            contact_groups=[default_alarm_contact_group.alarm_contact_group_name],
+            effective_interval="06:00-20:00",
+            metric_dimensions=default_instance.id.apply(lambda id: f\"\"\"  [
+            {{
+              "instanceId": "{id}",
+              "device": "/dev/vda1"
+            }}
+          ]
+        \"\"\"),
             escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
                 statistics="Average",
                 comparison_operator="<=",
                 threshold="35",
                 times=2,
-            ),
-            period=900,
-            contact_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            effective_interval="06:00-20:00")
+            ))
         ```
 
         ## Import
@@ -831,12 +837,12 @@ class Alarm(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(most_recent=True,
             owners="system")
-        default_get_zones = alicloud.get_zones(available_resource_creation="Instance")
-        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            image_id=default_get_images.images[0].id)
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
@@ -844,14 +850,14 @@ class Alarm(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_get_zones.zones[0].id)
+            zone_id=default.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
             vpc_id=default_network.id)
         default_instance = alicloud.ecs.Instance("default",
-            availability_zone=default_get_zones.zones[0].id,
+            availability_zone=default.zones[0].id,
             instance_name=name,
-            image_id=default.images[0].id,
+            image_id=default_get_images.images[0].id,
             instance_type=default_get_instance_types.instance_types[0].id,
             security_groups=[default_security_group.id],
             vswitch_id=default_switch.id)
@@ -860,16 +866,22 @@ class Alarm(pulumi.CustomResource):
             name=name,
             project="acs_ecs_dashboard",
             metric="disk_writebytes",
-            metric_dimensions=default_instance.id.apply(lambda id: f"[{{\\"instanceId\\":\\"{id}\\",\\"device\\":\\"/dev/vda1\\"}}]"),
+            period=900,
+            contact_groups=[default_alarm_contact_group.alarm_contact_group_name],
+            effective_interval="06:00-20:00",
+            metric_dimensions=default_instance.id.apply(lambda id: f\"\"\"  [
+            {{
+              "instanceId": "{id}",
+              "device": "/dev/vda1"
+            }}
+          ]
+        \"\"\"),
             escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
                 statistics="Average",
                 comparison_operator="<=",
                 threshold="35",
                 times=2,
-            ),
-            period=900,
-            contact_groups=[default_alarm_contact_group.alarm_contact_group_name],
-            effective_interval="06:00-20:00")
+            ))
         ```
 
         ## Import

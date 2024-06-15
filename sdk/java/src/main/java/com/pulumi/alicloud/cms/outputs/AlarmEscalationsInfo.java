@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AlarmEscalationsInfo {
     /**
-     * @return Critical level alarm comparison operator. Default value: `==`. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;].
+     * @return Info level alarm comparison operator. Default value: `&gt;`. Valid values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
      * 
      */
     private @Nullable String comparisonOperator;
     /**
-     * @return Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+     * @return Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
      * 
      */
     private @Nullable String statistics;
     /**
-     * @return Critical level alarm threshold value, which must be a numeric value currently.
+     * @return Info level alarm threshold value, which must be a numeric value currently.
      * 
      */
     private @Nullable String threshold;
     /**
-     * @return Critical level alarm retry times. Default value: `3`.
+     * @return Info level alarm retry times. Default value: `3`.
      * 
      */
     private @Nullable Integer times;
 
     private AlarmEscalationsInfo() {}
     /**
-     * @return Critical level alarm comparison operator. Default value: `==`. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;].
+     * @return Info level alarm comparison operator. Default value: `&gt;`. Valid values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
      * 
      */
     public Optional<String> comparisonOperator() {
         return Optional.ofNullable(this.comparisonOperator);
     }
     /**
-     * @return Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+     * @return Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
      * 
      */
     public Optional<String> statistics() {
         return Optional.ofNullable(this.statistics);
     }
     /**
-     * @return Critical level alarm threshold value, which must be a numeric value currently.
+     * @return Info level alarm threshold value, which must be a numeric value currently.
      * 
      */
     public Optional<String> threshold() {
         return Optional.ofNullable(this.threshold);
     }
     /**
-     * @return Critical level alarm retry times. Default value: `3`.
+     * @return Info level alarm retry times. Default value: `3`.
      * 
      */
     public Optional<Integer> times() {

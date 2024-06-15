@@ -497,7 +497,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.
      * - The prefix and suffix can be composed of one or more parts separated by &#39;.&#39;, each part can use lowercase letters, numbers and &#39;-&#39;, and the beginning and end of the node name must be lowercase letters and numbers.
      * - The node IP address is the complete private IP address of the node.
-     * - For example, if the string `customized,aliyun,ip,com` is passed in (where &#39;customized&#39; and &#39;ip&#39; are fixed strings, &#39;aliyun&#39; is the prefix, and &#39;com&#39; is the suffix), the name of the node is `aliyun.192.168.xxx.xxx.com`.
+     * - For example, if the string `customized,aliyun,ip,com` is passed in (where &#39;customized&#39; and &#39;ip&#39; are fixed strings, &#39;aliyun&#39; is the prefix, and &#39;com&#39; is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
      * 
      */
     @Export(name="nodeNameMode", refs={String.class}, tree="[0]")
@@ -507,7 +507,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * @return Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.
      * - The prefix and suffix can be composed of one or more parts separated by &#39;.&#39;, each part can use lowercase letters, numbers and &#39;-&#39;, and the beginning and end of the node name must be lowercase letters and numbers.
      * - The node IP address is the complete private IP address of the node.
-     * - For example, if the string `customized,aliyun,ip,com` is passed in (where &#39;customized&#39; and &#39;ip&#39; are fixed strings, &#39;aliyun&#39; is the prefix, and &#39;com&#39; is the suffix), the name of the node is `aliyun.192.168.xxx.xxx.com`.
+     * - For example, if the string `customized,aliyun,ip,com` is passed in (where &#39;customized&#39; and &#39;ip&#39; are fixed strings, &#39;aliyun&#39; is the prefix, and &#39;com&#39; is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
      * 
      */
     public Output<String> nodeNameMode() {

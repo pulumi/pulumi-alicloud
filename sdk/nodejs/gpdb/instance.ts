@@ -207,6 +207,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
+     * Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+     */
+    public readonly resourceManagementMode!: pulumi.Output<string>;
+    /**
      * Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
      *
      * @deprecated Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
@@ -298,6 +302,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["resourceManagementMode"] = state ? state.resourceManagementMode : undefined;
             resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
             resourceInputs["segNodeNum"] = state ? state.segNodeNum : undefined;
             resourceInputs["segStorageType"] = state ? state.segStorageType : undefined;
@@ -347,6 +352,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["resourceManagementMode"] = args ? args.resourceManagementMode : undefined;
             resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
             resourceInputs["segNodeNum"] = args ? args.segNodeNum : undefined;
             resourceInputs["segStorageType"] = args ? args.segStorageType : undefined;
@@ -488,6 +494,10 @@ export interface InstanceState {
      * The ID of the enterprise resource group to which the instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+     */
+    resourceManagementMode?: pulumi.Input<string>;
     /**
      * Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
      *
@@ -656,6 +666,10 @@ export interface InstanceArgs {
      * The ID of the enterprise resource group to which the instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+     */
+    resourceManagementMode?: pulumi.Input<string>;
     /**
      * Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
      *

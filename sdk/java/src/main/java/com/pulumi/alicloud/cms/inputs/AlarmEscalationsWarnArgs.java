@@ -17,14 +17,14 @@ public final class AlarmEscalationsWarnArgs extends com.pulumi.resources.Resourc
     public static final AlarmEscalationsWarnArgs Empty = new AlarmEscalationsWarnArgs();
 
     /**
-     * Critical level alarm comparison operator. Default value: `==`. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;].
+     * Warn level alarm comparison operator. Default value: `&gt;`. Valid values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
      * 
      */
     @Import(name="comparisonOperator")
     private @Nullable Output<String> comparisonOperator;
 
     /**
-     * @return Critical level alarm comparison operator. Default value: `==`. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;].
+     * @return Warn level alarm comparison operator. Default value: `&gt;`. Valid values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
      * 
      */
     public Optional<Output<String>> comparisonOperator() {
@@ -32,14 +32,14 @@ public final class AlarmEscalationsWarnArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+     * Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
      * 
      */
     @Import(name="statistics")
     private @Nullable Output<String> statistics;
 
     /**
-     * @return Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+     * @return Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
      * 
      */
     public Optional<Output<String>> statistics() {
@@ -47,14 +47,14 @@ public final class AlarmEscalationsWarnArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Critical level alarm threshold value, which must be a numeric value currently.
+     * Warn level alarm threshold value, which must be a numeric value currently.
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<String> threshold;
 
     /**
-     * @return Critical level alarm threshold value, which must be a numeric value currently.
+     * @return Warn level alarm threshold value, which must be a numeric value currently.
      * 
      */
     public Optional<Output<String>> threshold() {
@@ -62,14 +62,14 @@ public final class AlarmEscalationsWarnArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Critical level alarm retry times. Default value: `3`.
+     * Warn level alarm retry times. Default value: `3`.
      * 
      */
     @Import(name="times")
     private @Nullable Output<Integer> times;
 
     /**
-     * @return Critical level alarm retry times. Default value: `3`.
+     * @return Warn level alarm retry times. Default value: `3`.
      * 
      */
     public Optional<Output<Integer>> times() {
@@ -104,7 +104,7 @@ public final class AlarmEscalationsWarnArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param comparisonOperator Critical level alarm comparison operator. Default value: `==`. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;].
+         * @param comparisonOperator Warn level alarm comparison operator. Default value: `&gt;`. Valid values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class AlarmEscalationsWarnArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param comparisonOperator Critical level alarm comparison operator. Default value: `==`. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;].
+         * @param comparisonOperator Warn level alarm comparison operator. Default value: `&gt;`. Valid values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparison_operator` cannot be set to `==`.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class AlarmEscalationsWarnArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param statistics Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+         * @param statistics Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class AlarmEscalationsWarnArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param statistics Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+         * @param statistics Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class AlarmEscalationsWarnArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param threshold Critical level alarm threshold value, which must be a numeric value currently.
+         * @param threshold Warn level alarm threshold value, which must be a numeric value currently.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class AlarmEscalationsWarnArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param threshold Critical level alarm threshold value, which must be a numeric value currently.
+         * @param threshold Warn level alarm threshold value, which must be a numeric value currently.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class AlarmEscalationsWarnArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param times Critical level alarm retry times. Default value: `3`.
+         * @param times Warn level alarm retry times. Default value: `3`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class AlarmEscalationsWarnArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param times Critical level alarm retry times. Default value: `3`.
+         * @param times Warn level alarm retry times. Default value: `3`.
          * 
          * @return builder
          * 

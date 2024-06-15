@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Hbase
         /// <summary>
         /// This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
-        /// &gt; **NOTE:** Available in v1.106.0+.
+        /// &gt; **NOTE:** Available since v1.106.0.
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:hbase/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Hbase
         /// <summary>
         /// This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
-        /// &gt; **NOTE:** Available in v1.106.0+.
+        /// &gt; **NOTE:** Available since v1.106.0.
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:hbase/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());

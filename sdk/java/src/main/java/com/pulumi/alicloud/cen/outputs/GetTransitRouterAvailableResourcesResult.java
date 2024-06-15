@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cen.outputs;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterAvailableResourcesResource;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +21,16 @@ public final class GetTransitRouterAvailableResourcesResult {
      */
     private String id;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Cen Transit Router Available Resources. Each element contains the following attributes:
+     * 
+     */
     private List<GetTransitRouterAvailableResourcesResource> resources;
+    /**
+     * @return (Available since v1.225.0) Indicates whether the zone supports the multicast feature.
+     * 
+     */
+    private @Nullable Boolean supportMulticast;
 
     private GetTransitRouterAvailableResourcesResult() {}
     /**
@@ -33,8 +43,19 @@ public final class GetTransitRouterAvailableResourcesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Cen Transit Router Available Resources. Each element contains the following attributes:
+     * 
+     */
     public List<GetTransitRouterAvailableResourcesResource> resources() {
         return this.resources;
+    }
+    /**
+     * @return (Available since v1.225.0) Indicates whether the zone supports the multicast feature.
+     * 
+     */
+    public Optional<Boolean> supportMulticast() {
+        return Optional.ofNullable(this.supportMulticast);
     }
 
     public static Builder builder() {
@@ -49,12 +70,14 @@ public final class GetTransitRouterAvailableResourcesResult {
         private String id;
         private @Nullable String outputFile;
         private List<GetTransitRouterAvailableResourcesResource> resources;
+        private @Nullable Boolean supportMulticast;
         public Builder() {}
         public Builder(GetTransitRouterAvailableResourcesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.outputFile = defaults.outputFile;
     	      this.resources = defaults.resources;
+    	      this.supportMulticast = defaults.supportMulticast;
         }
 
         @CustomType.Setter
@@ -82,11 +105,18 @@ public final class GetTransitRouterAvailableResourcesResult {
         public Builder resources(GetTransitRouterAvailableResourcesResource... resources) {
             return resources(List.of(resources));
         }
+        @CustomType.Setter
+        public Builder supportMulticast(@Nullable Boolean supportMulticast) {
+
+            this.supportMulticast = supportMulticast;
+            return this;
+        }
         public GetTransitRouterAvailableResourcesResult build() {
             final var _resultValue = new GetTransitRouterAvailableResourcesResult();
             _resultValue.id = id;
             _resultValue.outputFile = outputFile;
             _resultValue.resources = resources;
+            _resultValue.supportMulticast = supportMulticast;
             return _resultValue;
         }
     }

@@ -490,7 +490,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.SecurityGroup("default", name="terraform-example")
+        default = alicloud.ecs.SecurityGroup("default", name="default")
         allow_all_tcp = alicloud.ecs.SecurityGroupRule("allow_all_tcp",
             type="ingress",
             ip_protocol="tcp",
@@ -559,7 +559,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.SecurityGroup("default", name="terraform-example")
+        default = alicloud.ecs.SecurityGroup("default", name="default")
         allow_all_tcp = alicloud.ecs.SecurityGroupRule("allow_all_tcp",
             type="ingress",
             ip_protocol="tcp",

@@ -17,14 +17,14 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
     public static final ImageImportDiskDeviceMappingArgs Empty = new ImageImportDiskDeviceMappingArgs();
 
     /**
-     * The name of disk N in the custom image.
+     * The device name of the disk.
      * 
      */
     @Import(name="device")
     private @Nullable Output<String> device;
 
     /**
-     * @return The name of disk N in the custom image.
+     * @return The device name of the disk.
      * 
      */
     public Optional<Output<String>> device() {
@@ -32,14 +32,14 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
     }
 
     /**
-     * Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+     * The size of the disk. Default value: `5`.
      * 
      */
     @Import(name="diskImageSize")
     private @Nullable Output<Integer> diskImageSize;
 
     /**
-     * @return Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+     * @return The size of the disk. Default value: `5`.
      * 
      */
     public Optional<Output<Integer>> diskImageSize() {
@@ -47,14 +47,14 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
     }
 
     /**
-     * Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+     * The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
      * 
      */
     @Import(name="format")
     private @Nullable Output<String> format;
 
     /**
-     * @return Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+     * @return The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
      * 
      */
     public Optional<Output<String>> format() {
@@ -62,14 +62,14 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
     }
 
     /**
-     * Save the exported OSS bucket.
+     * The OSS bucket where the image file is stored.
      * 
      */
     @Import(name="ossBucket")
     private @Nullable Output<String> ossBucket;
 
     /**
-     * @return Save the exported OSS bucket.
+     * @return The OSS bucket where the image file is stored.
      * 
      */
     public Optional<Output<String>> ossBucket() {
@@ -77,18 +77,14 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
     }
 
     /**
-     * The file name of your OSS Object.
-     * 
-     * &gt; **NOTE:** The disk_device_mapping is a list and it&#39;s first item will be used to system disk and other items are used to data disks.
+     * The name (key) of the object that the uploaded image is stored as in the OSS bucket.
      * 
      */
     @Import(name="ossObject")
     private @Nullable Output<String> ossObject;
 
     /**
-     * @return The file name of your OSS Object.
-     * 
-     * &gt; **NOTE:** The disk_device_mapping is a list and it&#39;s first item will be used to system disk and other items are used to data disks.
+     * @return The name (key) of the object that the uploaded image is stored as in the OSS bucket.
      * 
      */
     public Optional<Output<String>> ossObject() {
@@ -124,7 +120,7 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param device The name of disk N in the custom image.
+         * @param device The device name of the disk.
          * 
          * @return builder
          * 
@@ -135,7 +131,7 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param device The name of disk N in the custom image.
+         * @param device The device name of the disk.
          * 
          * @return builder
          * 
@@ -145,7 +141,7 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param diskImageSize Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+         * @param diskImageSize The size of the disk. Default value: `5`.
          * 
          * @return builder
          * 
@@ -156,7 +152,7 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param diskImageSize Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+         * @param diskImageSize The size of the disk. Default value: `5`.
          * 
          * @return builder
          * 
@@ -166,7 +162,7 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param format Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+         * @param format The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
          * 
          * @return builder
          * 
@@ -177,7 +173,7 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param format Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+         * @param format The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
          * 
          * @return builder
          * 
@@ -187,7 +183,7 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ossBucket Save the exported OSS bucket.
+         * @param ossBucket The OSS bucket where the image file is stored.
          * 
          * @return builder
          * 
@@ -198,7 +194,7 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ossBucket Save the exported OSS bucket.
+         * @param ossBucket The OSS bucket where the image file is stored.
          * 
          * @return builder
          * 
@@ -208,9 +204,7 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ossObject The file name of your OSS Object.
-         * 
-         * &gt; **NOTE:** The disk_device_mapping is a list and it&#39;s first item will be used to system disk and other items are used to data disks.
+         * @param ossObject The name (key) of the object that the uploaded image is stored as in the OSS bucket.
          * 
          * @return builder
          * 
@@ -221,9 +215,7 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ossObject The file name of your OSS Object.
-         * 
-         * &gt; **NOTE:** The disk_device_mapping is a list and it&#39;s first item will be used to system disk and other items are used to data disks.
+         * @param ossObject The name (key) of the object that the uploaded image is stored as in the OSS bucket.
          * 
          * @return builder
          * 

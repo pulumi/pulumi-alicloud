@@ -38,7 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -50,25 +50,34 @@ import (
 //			}
 //			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//				CidrBlock: pulumi.StringRef("172.16.0.0/16"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//			default0, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
 //				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
 //				ZoneId: pulumi.StringRef(_default.Ids[0]),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			default1, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[1]),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			defaultGateway, err := vpn.NewGateway(ctx, "default", &vpn.GatewayArgs{
-//				Name:               pulumi.String(name),
-//				VpcId:              pulumi.String(defaultGetNetworks.Ids[0]),
-//				Bandwidth:          pulumi.Int(10),
-//				EnableSsl:          pulumi.Bool(true),
-//				Description:        pulumi.String(name),
-//				InstanceChargeType: pulumi.String("PrePaid"),
-//				VswitchId:          pulumi.String(defaultGetSwitches.Ids[0]),
+//				VpnGatewayName:            pulumi.String(name),
+//				VpcId:                     pulumi.String(defaultGetNetworks.Ids[0]),
+//				Bandwidth:                 pulumi.Int(10),
+//				EnableSsl:                 pulumi.Bool(true),
+//				Description:               pulumi.String(name),
+//				PaymentType:               pulumi.String("Subscription"),
+//				VswitchId:                 pulumi.String(default0.Ids[0]),
+//				DisasterRecoveryVswitchId: pulumi.String(default1.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

@@ -6228,6 +6228,10 @@ export namespace cen {
 
     export interface GetTransitRouterAvailableResourcesResource {
         /**
+         * (Available since v1.225.0) The list of available zones.
+         */
+        availableZones: string[];
+        /**
          * The list of primary zones.
          */
         masterZones: string[];
@@ -6235,6 +6239,10 @@ export namespace cen {
          * The list of secondary zones.
          */
         slaveZones: string[];
+        /**
+         * Specifies whether to query only the zones in which the multicast feature is supported.
+         */
+        supportMulticast: boolean;
     }
 
     export interface GetTransitRouterCidrsCidr {
@@ -9702,7 +9710,7 @@ export namespace cloudstoragegateway {
 export namespace cms {
     export interface AlarmEscalationsCritical {
         /**
-         * Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+         * Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
          */
         comparisonOperator?: string;
         /**
@@ -9721,38 +9729,38 @@ export namespace cms {
 
     export interface AlarmEscalationsInfo {
         /**
-         * Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+         * Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
          */
         comparisonOperator?: string;
         /**
-         * Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+         * Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
          */
         statistics?: string;
         /**
-         * Critical level alarm threshold value, which must be a numeric value currently.
+         * Info level alarm threshold value, which must be a numeric value currently.
          */
         threshold?: string;
         /**
-         * Critical level alarm retry times. Default value: `3`.
+         * Info level alarm retry times. Default value: `3`.
          */
         times?: number;
     }
 
     export interface AlarmEscalationsWarn {
         /**
-         * Critical level alarm comparison operator. Default value: `==`. Valid values: ["<=", "<", ">", ">=", "==", "!="].
+         * Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
          */
         comparisonOperator?: string;
         /**
-         * Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+         * Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
          */
         statistics?: string;
         /**
-         * Critical level alarm threshold value, which must be a numeric value currently.
+         * Warn level alarm threshold value, which must be a numeric value currently.
          */
         threshold?: string;
         /**
-         * Critical level alarm retry times. Default value: `3`.
+         * Warn level alarm retry times. Default value: `3`.
          */
         times?: number;
     }
@@ -10838,6 +10846,33 @@ export namespace cms {
          * Data storage duration.
          */
         specification: string;
+    }
+
+    export interface GetSiteMonitorsMonitor {
+        /**
+         * Address.
+         */
+        address: string;
+        /**
+         * CreateTime.
+         */
+        createTime: string;
+        /**
+         * Monitoring frequency.
+         */
+        interval: string;
+        /**
+         * Task ID.
+         */
+        taskId: string;
+        /**
+         * Task Name.
+         */
+        taskName: string;
+        /**
+         * Task Type.
+         */
+        taskType: string;
     }
 
     export interface GetSlsGroupsGroup {
@@ -22103,25 +22138,23 @@ export namespace ecs {
 
     export interface ImageImportDiskDeviceMapping {
         /**
-         * The name of disk N in the custom image.
+         * The device name of the disk.
          */
         device: string;
         /**
-         * Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+         * The size of the disk. Default value: `5`.
          */
         diskImageSize?: number;
         /**
-         * Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+         * The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
          */
         format: string;
         /**
-         * Save the exported OSS bucket.
+         * The OSS bucket where the image file is stored.
          */
         ossBucket?: string;
         /**
-         * The file name of your OSS Object.
-         *
-         * > **NOTE:** The diskDeviceMapping is a list and it's first item will be used to system disk and other items are used to data disks.
+         * The name (key) of the object that the uploaded image is stored as in the OSS bucket.
          */
         ossObject?: string;
     }
@@ -27018,6 +27051,17 @@ export namespace expressconnect {
          * The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
          */
         vpconnAliUid: string;
+    }
+
+    export interface RouterExpressConnectRouterRegion {
+        /**
+         * Representative region ID.
+         */
+        regionId?: string;
+        /**
+         * Represents the forwarding mode of the current region.
+         */
+        transitMode: string;
     }
 
 }
@@ -42862,7 +42906,7 @@ export namespace servicemesh {
         /**
          * The access logging configuration. See `accessLog` below.
          */
-        accessLog: outputs.servicemesh.ServiceMeshMeshConfigAccessLog;
+        accessLog?: outputs.servicemesh.ServiceMeshMeshConfigAccessLog;
         /**
          * Audit information. See `audit` below.
          */
@@ -42870,11 +42914,11 @@ export namespace servicemesh {
         /**
          * Control plane log collection configuration. See `controlPlaneLog` below.
          */
-        controlPlaneLog: outputs.servicemesh.ServiceMeshMeshConfigControlPlaneLog;
+        controlPlaneLog?: outputs.servicemesh.ServiceMeshMeshConfigControlPlaneLog;
         /**
          * Whether or not to enable the use of a custom zipkin.
          */
-        customizedZipkin: boolean;
+        customizedZipkin?: boolean;
         /**
          * Whether to enable service can access the service through the nearest node access.
          */
@@ -42886,7 +42930,7 @@ export namespace servicemesh {
         /**
          * Kiali configuration. See `kiali` below.
          */
-        kiali: outputs.servicemesh.ServiceMeshMeshConfigKiali;
+        kiali?: outputs.servicemesh.ServiceMeshMeshConfigKiali;
         /**
          * The open-door policy of agent (OPA) plug-in information. See `opa` below.
          */
@@ -42910,7 +42954,7 @@ export namespace servicemesh {
         /**
          * Sidecar injector configuration. See `sidecarInjector` below.
          */
-        sidecarInjector: outputs.servicemesh.ServiceMeshMeshConfigSidecarInjector;
+        sidecarInjector?: outputs.servicemesh.ServiceMeshMeshConfigSidecarInjector;
         /**
          * Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
          */
@@ -42923,10 +42967,10 @@ export namespace servicemesh {
 
     export interface ServiceMeshMeshConfigAccessLog {
         enabled?: boolean;
-        gatewayEnabled: boolean;
+        gatewayEnabled?: boolean;
         gatewayLifecycle: number;
         project?: string;
-        sidecarEnabled: boolean;
+        sidecarEnabled?: boolean;
         sidecarLifecycle: number;
     }
 
@@ -42975,9 +43019,6 @@ export namespace servicemesh {
     }
 
     export interface ServiceMeshMeshConfigProxy {
-        /**
-         * Cluster domain name.
-         */
         clusterDomain: string;
         limitCpu?: string;
         limitMemory?: string;
@@ -42986,13 +43027,13 @@ export namespace servicemesh {
     }
 
     export interface ServiceMeshMeshConfigSidecarInjector {
-        autoInjectionPolicyEnabled: boolean;
+        autoInjectionPolicyEnabled?: boolean;
         enableNamespacesByDefault?: boolean;
         initCniConfiguration: outputs.servicemesh.ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration;
-        limitCpu: string;
-        limitMemory: string;
-        requestCpu: string;
-        requestMemory: string;
+        limitCpu?: string;
+        limitMemory?: string;
+        requestCpu?: string;
+        requestMemory?: string;
         /**
          * Other automatic injection Sidecar configuration (in YAML format).
          */

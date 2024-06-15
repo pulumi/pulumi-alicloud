@@ -25,11 +25,18 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var @default = AliCloud.SimpleApplicationServer.GetImages.Invoke(new()
     ///     {
     ///         Platform = "Linux",
@@ -58,7 +65,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     ///     var defaultSnapshot = new AliCloud.SimpleApplicationServer.Snapshot("default", new()
     ///     {
     ///         DiskId = defaultGetServerDisks.Apply(getServerDisksResult =&gt; getServerDisksResult.Ids[0]),
-    ///         SnapshotName = name,
+    ///         SnapshotName = $"{name}-{defaultInteger.Result}",
     ///     });
     /// 
     /// });

@@ -259,17 +259,85 @@ class PbrRouteEntry(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfacc"
+            name = "terraform-example"
         default = alicloud.vpn.get_gateways()
-        default_customer_gateway = alicloud.vpn.CustomerGateway("default",
-            name=name,
-            ip_address="192.168.1.1")
+        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
+            description="defaultCustomerGateway",
+            ip_address="2.2.2.5",
+            asn="2224",
+            customer_gateway_name=name)
+        change_customer_gateway = alicloud.vpn.CustomerGateway("changeCustomerGateway",
+            description="changeCustomerGateway",
+            ip_address="2.2.2.6",
+            asn="2225",
+            customer_gateway_name=name)
         default_connection = alicloud.vpn.Connection("default",
-            name=name,
-            customer_gateway_id=default_customer_gateway.id,
             vpn_gateway_id=default.ids[0],
-            local_subnets=["192.168.2.0/24"],
-            remote_subnets=["192.168.3.0/24"])
+            vpn_connection_name=name,
+            local_subnets=["3.0.0.0/24"],
+            remote_subnets=[
+                "10.0.0.0/24",
+                "10.0.1.0/24",
+            ],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            enable_tunnels_bgp=True,
+            tunnel_options_specifications=[
+                alicloud.vpn.ConnectionTunnelOptionsSpecificationArgs(
+                    tunnel_ipsec_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs(
+                        ipsec_auth_alg="md5",
+                        ipsec_enc_alg="aes256",
+                        ipsec_lifetime=16400,
+                        ipsec_pfs="group5",
+                    ),
+                    customer_gateway_id=default_customer_gateway.id,
+                    role="master",
+                    tunnel_bgp_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs(
+                        local_asn="1219002",
+                        tunnel_cidr="169.254.30.0/30",
+                        local_bgp_ip="169.254.30.1",
+                    ),
+                    tunnel_ike_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs(
+                        ike_mode="aggressive",
+                        ike_version="ikev2",
+                        local_id="localid_tunnel2",
+                        psk="12345678",
+                        remote_id="remote2",
+                        ike_auth_alg="md5",
+                        ike_enc_alg="aes256",
+                        ike_lifetime=3600,
+                        ike_pfs="group14",
+                    ),
+                ),
+                alicloud.vpn.ConnectionTunnelOptionsSpecificationArgs(
+                    tunnel_ike_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs(
+                        remote_id="remote24",
+                        ike_enc_alg="aes256",
+                        ike_lifetime=27000,
+                        ike_mode="aggressive",
+                        ike_pfs="group5",
+                        ike_auth_alg="md5",
+                        ike_version="ikev2",
+                        local_id="localid_tunnel2",
+                        psk="12345678",
+                    ),
+                    tunnel_ipsec_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs(
+                        ipsec_lifetime=2700,
+                        ipsec_pfs="group14",
+                        ipsec_auth_alg="md5",
+                        ipsec_enc_alg="aes256",
+                    ),
+                    customer_gateway_id=default_customer_gateway.id,
+                    role="slave",
+                    tunnel_bgp_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs(
+                        local_asn="1219002",
+                        local_bgp_ip="169.254.40.1",
+                        tunnel_cidr="169.254.40.0/30",
+                    ),
+                ),
+            ])
         default_pbr_route_entry = alicloud.vpn.PbrRouteEntry("default",
             vpn_gateway_id=default.ids[0],
             route_source="192.168.1.0/24",
@@ -320,17 +388,85 @@ class PbrRouteEntry(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfacc"
+            name = "terraform-example"
         default = alicloud.vpn.get_gateways()
-        default_customer_gateway = alicloud.vpn.CustomerGateway("default",
-            name=name,
-            ip_address="192.168.1.1")
+        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
+            description="defaultCustomerGateway",
+            ip_address="2.2.2.5",
+            asn="2224",
+            customer_gateway_name=name)
+        change_customer_gateway = alicloud.vpn.CustomerGateway("changeCustomerGateway",
+            description="changeCustomerGateway",
+            ip_address="2.2.2.6",
+            asn="2225",
+            customer_gateway_name=name)
         default_connection = alicloud.vpn.Connection("default",
-            name=name,
-            customer_gateway_id=default_customer_gateway.id,
             vpn_gateway_id=default.ids[0],
-            local_subnets=["192.168.2.0/24"],
-            remote_subnets=["192.168.3.0/24"])
+            vpn_connection_name=name,
+            local_subnets=["3.0.0.0/24"],
+            remote_subnets=[
+                "10.0.0.0/24",
+                "10.0.1.0/24",
+            ],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            enable_tunnels_bgp=True,
+            tunnel_options_specifications=[
+                alicloud.vpn.ConnectionTunnelOptionsSpecificationArgs(
+                    tunnel_ipsec_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs(
+                        ipsec_auth_alg="md5",
+                        ipsec_enc_alg="aes256",
+                        ipsec_lifetime=16400,
+                        ipsec_pfs="group5",
+                    ),
+                    customer_gateway_id=default_customer_gateway.id,
+                    role="master",
+                    tunnel_bgp_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs(
+                        local_asn="1219002",
+                        tunnel_cidr="169.254.30.0/30",
+                        local_bgp_ip="169.254.30.1",
+                    ),
+                    tunnel_ike_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs(
+                        ike_mode="aggressive",
+                        ike_version="ikev2",
+                        local_id="localid_tunnel2",
+                        psk="12345678",
+                        remote_id="remote2",
+                        ike_auth_alg="md5",
+                        ike_enc_alg="aes256",
+                        ike_lifetime=3600,
+                        ike_pfs="group14",
+                    ),
+                ),
+                alicloud.vpn.ConnectionTunnelOptionsSpecificationArgs(
+                    tunnel_ike_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs(
+                        remote_id="remote24",
+                        ike_enc_alg="aes256",
+                        ike_lifetime=27000,
+                        ike_mode="aggressive",
+                        ike_pfs="group5",
+                        ike_auth_alg="md5",
+                        ike_version="ikev2",
+                        local_id="localid_tunnel2",
+                        psk="12345678",
+                    ),
+                    tunnel_ipsec_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs(
+                        ipsec_lifetime=2700,
+                        ipsec_pfs="group14",
+                        ipsec_auth_alg="md5",
+                        ipsec_enc_alg="aes256",
+                    ),
+                    customer_gateway_id=default_customer_gateway.id,
+                    role="slave",
+                    tunnel_bgp_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs(
+                        local_asn="1219002",
+                        local_bgp_ip="169.254.40.1",
+                        tunnel_cidr="169.254.40.0/30",
+                    ),
+                ),
+            ])
         default_pbr_route_entry = alicloud.vpn.PbrRouteEntry("default",
             vpn_gateway_id=default.ids[0],
             route_source="192.168.1.0/24",

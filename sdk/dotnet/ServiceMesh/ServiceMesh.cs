@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// Grid instance version type (for example: the standard, the Pro version, etc.).
         /// </summary>
         [Output("edition")]
-        public Output<string> Edition { get; private set; } = null!;
+        public Output<string?> Edition { get; private set; } = null!;
 
         /// <summary>
         /// Data plane KubeAPI access capability. See `extra_configuration` below.
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `alicloud.servicemesh.getServiceMeshes`.
         /// </summary>
         [Output("version")]
-        public Output<string> Version { get; private set; } = null!;
+        public Output<string?> Version { get; private set; } = null!;
 
 
         /// <summary>

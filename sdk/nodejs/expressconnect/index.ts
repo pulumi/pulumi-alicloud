@@ -60,10 +60,50 @@ export type PhysicalConnection = import("./physicalConnection").PhysicalConnecti
 export const PhysicalConnection: typeof import("./physicalConnection").PhysicalConnection = null as any;
 utilities.lazyLoad(exports, ["PhysicalConnection"], () => require("./physicalConnection"));
 
+export { RouterExpressConnectRouterArgs, RouterExpressConnectRouterState } from "./routerExpressConnectRouter";
+export type RouterExpressConnectRouter = import("./routerExpressConnectRouter").RouterExpressConnectRouter;
+export const RouterExpressConnectRouter: typeof import("./routerExpressConnectRouter").RouterExpressConnectRouter = null as any;
+utilities.lazyLoad(exports, ["RouterExpressConnectRouter"], () => require("./routerExpressConnectRouter"));
+
 export { RouterInterfaceArgs, RouterInterfaceState } from "./routerInterface";
 export type RouterInterface = import("./routerInterface").RouterInterface;
 export const RouterInterface: typeof import("./routerInterface").RouterInterface = null as any;
 utilities.lazyLoad(exports, ["RouterInterface"], () => require("./routerInterface"));
+
+export { RouterTrAssociationArgs, RouterTrAssociationState } from "./routerTrAssociation";
+export type RouterTrAssociation = import("./routerTrAssociation").RouterTrAssociation;
+export const RouterTrAssociation: typeof import("./routerTrAssociation").RouterTrAssociation = null as any;
+utilities.lazyLoad(exports, ["RouterTrAssociation"], () => require("./routerTrAssociation"));
+
+export { RouterVbrChildInstanceArgs, RouterVbrChildInstanceState } from "./routerVbrChildInstance";
+export type RouterVbrChildInstance = import("./routerVbrChildInstance").RouterVbrChildInstance;
+export const RouterVbrChildInstance: typeof import("./routerVbrChildInstance").RouterVbrChildInstance = null as any;
+utilities.lazyLoad(exports, ["RouterVbrChildInstance"], () => require("./routerVbrChildInstance"));
+
+export { RouterVpcAssociationArgs, RouterVpcAssociationState } from "./routerVpcAssociation";
+export type RouterVpcAssociation = import("./routerVpcAssociation").RouterVpcAssociation;
+export const RouterVpcAssociation: typeof import("./routerVpcAssociation").RouterVpcAssociation = null as any;
+utilities.lazyLoad(exports, ["RouterVpcAssociation"], () => require("./routerVpcAssociation"));
+
+export { TrafficQosArgs, TrafficQosState } from "./trafficQos";
+export type TrafficQos = import("./trafficQos").TrafficQos;
+export const TrafficQos: typeof import("./trafficQos").TrafficQos = null as any;
+utilities.lazyLoad(exports, ["TrafficQos"], () => require("./trafficQos"));
+
+export { TrafficQosAssociationArgs, TrafficQosAssociationState } from "./trafficQosAssociation";
+export type TrafficQosAssociation = import("./trafficQosAssociation").TrafficQosAssociation;
+export const TrafficQosAssociation: typeof import("./trafficQosAssociation").TrafficQosAssociation = null as any;
+utilities.lazyLoad(exports, ["TrafficQosAssociation"], () => require("./trafficQosAssociation"));
+
+export { TrafficQosQueueArgs, TrafficQosQueueState } from "./trafficQosQueue";
+export type TrafficQosQueue = import("./trafficQosQueue").TrafficQosQueue;
+export const TrafficQosQueue: typeof import("./trafficQosQueue").TrafficQosQueue = null as any;
+utilities.lazyLoad(exports, ["TrafficQosQueue"], () => require("./trafficQosQueue"));
+
+export { TrafficQosRuleArgs, TrafficQosRuleState } from "./trafficQosRule";
+export type TrafficQosRule = import("./trafficQosRule").TrafficQosRule;
+export const TrafficQosRule: typeof import("./trafficQosRule").TrafficQosRule = null as any;
+utilities.lazyLoad(exports, ["TrafficQosRule"], () => require("./trafficQosRule"));
 
 export { VbrPconnAssociationArgs, VbrPconnAssociationState } from "./vbrPconnAssociation";
 export type VbrPconnAssociation = import("./vbrPconnAssociation").VbrPconnAssociation;
@@ -91,8 +131,24 @@ const _module = {
                 return new GrantRuleToCen(name, <any>undefined, { urn })
             case "alicloud:expressconnect/physicalConnection:PhysicalConnection":
                 return new PhysicalConnection(name, <any>undefined, { urn })
+            case "alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter":
+                return new RouterExpressConnectRouter(name, <any>undefined, { urn })
             case "alicloud:expressconnect/routerInterface:RouterInterface":
                 return new RouterInterface(name, <any>undefined, { urn })
+            case "alicloud:expressconnect/routerTrAssociation:RouterTrAssociation":
+                return new RouterTrAssociation(name, <any>undefined, { urn })
+            case "alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance":
+                return new RouterVbrChildInstance(name, <any>undefined, { urn })
+            case "alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation":
+                return new RouterVpcAssociation(name, <any>undefined, { urn })
+            case "alicloud:expressconnect/trafficQos:TrafficQos":
+                return new TrafficQos(name, <any>undefined, { urn })
+            case "alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation":
+                return new TrafficQosAssociation(name, <any>undefined, { urn })
+            case "alicloud:expressconnect/trafficQosQueue:TrafficQosQueue":
+                return new TrafficQosQueue(name, <any>undefined, { urn })
+            case "alicloud:expressconnect/trafficQosRule:TrafficQosRule":
+                return new TrafficQosRule(name, <any>undefined, { urn })
             case "alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation":
                 return new VbrPconnAssociation(name, <any>undefined, { urn })
             case "alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter":
@@ -107,7 +163,15 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/ecFailoverTestJob", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/grantRuleToCen", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/physicalConnection", _module)
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/routerExpressConnectRouter", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/routerInterface", _module)
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/routerTrAssociation", _module)
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/routerVbrChildInstance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/routerVpcAssociation", _module)
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/trafficQos", _module)
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/trafficQosAssociation", _module)
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/trafficQosQueue", _module)
+pulumi.runtime.registerResourceModule("alicloud", "expressconnect/trafficQosRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/vbrPconnAssociation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/virtualBorderRouter", _module)
 pulumi.runtime.registerResourceModule("alicloud", "expressconnect/virtualPhysicalConnection", _module)

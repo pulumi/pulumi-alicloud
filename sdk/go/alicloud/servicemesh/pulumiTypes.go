@@ -1931,7 +1931,6 @@ func (o ServiceMeshMeshConfigPrometheusPtrOutput) UseExternal() pulumi.BoolPtrOu
 }
 
 type ServiceMeshMeshConfigProxy struct {
-	// Cluster domain name.
 	ClusterDomain *string `pulumi:"clusterDomain"`
 	LimitCpu      *string `pulumi:"limitCpu"`
 	LimitMemory   *string `pulumi:"limitMemory"`
@@ -1951,7 +1950,6 @@ type ServiceMeshMeshConfigProxyInput interface {
 }
 
 type ServiceMeshMeshConfigProxyArgs struct {
-	// Cluster domain name.
 	ClusterDomain pulumi.StringPtrInput `pulumi:"clusterDomain"`
 	LimitCpu      pulumi.StringPtrInput `pulumi:"limitCpu"`
 	LimitMemory   pulumi.StringPtrInput `pulumi:"limitMemory"`
@@ -2036,7 +2034,6 @@ func (o ServiceMeshMeshConfigProxyOutput) ToServiceMeshMeshConfigProxyPtrOutputW
 	}).(ServiceMeshMeshConfigProxyPtrOutput)
 }
 
-// Cluster domain name.
 func (o ServiceMeshMeshConfigProxyOutput) ClusterDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.ClusterDomain }).(pulumi.StringPtrOutput)
 }
@@ -2081,7 +2078,6 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) Elem() ServiceMeshMeshConfigProxyOu
 	}).(ServiceMeshMeshConfigProxyOutput)
 }
 
-// Cluster domain name.
 func (o ServiceMeshMeshConfigProxyPtrOutput) ClusterDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {

@@ -964,13 +964,11 @@ class ImageImportDiskDeviceMapping(dict):
                  oss_bucket: Optional[str] = None,
                  oss_object: Optional[str] = None):
         """
-        :param str device: The name of disk N in the custom image.
-        :param int disk_image_size: Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
-        :param str format: Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
-        :param str oss_bucket: Save the exported OSS bucket.
-        :param str oss_object: The file name of your OSS Object.
-               
-               > **NOTE:** The disk_device_mapping is a list and it's first item will be used to system disk and other items are used to data disks.
+        :param str device: The device name of the disk.
+        :param int disk_image_size: The size of the disk. Default value: `5`.
+        :param str format: The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
+        :param str oss_bucket: The OSS bucket where the image file is stored.
+        :param str oss_object: The name (key) of the object that the uploaded image is stored as in the OSS bucket.
         """
         if device is not None:
             pulumi.set(__self__, "device", device)
@@ -987,7 +985,7 @@ class ImageImportDiskDeviceMapping(dict):
     @pulumi.getter
     def device(self) -> Optional[str]:
         """
-        The name of disk N in the custom image.
+        The device name of the disk.
         """
         return pulumi.get(self, "device")
 
@@ -995,7 +993,7 @@ class ImageImportDiskDeviceMapping(dict):
     @pulumi.getter(name="diskImageSize")
     def disk_image_size(self) -> Optional[int]:
         """
-        Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+        The size of the disk. Default value: `5`.
         """
         return pulumi.get(self, "disk_image_size")
 
@@ -1003,7 +1001,7 @@ class ImageImportDiskDeviceMapping(dict):
     @pulumi.getter
     def format(self) -> Optional[str]:
         """
-        Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+        The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
         """
         return pulumi.get(self, "format")
 
@@ -1011,7 +1009,7 @@ class ImageImportDiskDeviceMapping(dict):
     @pulumi.getter(name="ossBucket")
     def oss_bucket(self) -> Optional[str]:
         """
-        Save the exported OSS bucket.
+        The OSS bucket where the image file is stored.
         """
         return pulumi.get(self, "oss_bucket")
 
@@ -1019,9 +1017,7 @@ class ImageImportDiskDeviceMapping(dict):
     @pulumi.getter(name="ossObject")
     def oss_object(self) -> Optional[str]:
         """
-        The file name of your OSS Object.
-
-        > **NOTE:** The disk_device_mapping is a list and it's first item will be used to system disk and other items are used to data disks.
+        The name (key) of the object that the uploaded image is stored as in the OSS bucket.
         """
         return pulumi.get(self, "oss_object")
 

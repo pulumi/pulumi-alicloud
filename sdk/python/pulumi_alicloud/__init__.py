@@ -3822,10 +3822,74 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "expressconnect/routerExpressConnectRouter",
+  "fqn": "pulumi_alicloud.expressconnect",
+  "classes": {
+   "alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter": "RouterExpressConnectRouter"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "expressconnect/routerInterface",
   "fqn": "pulumi_alicloud.expressconnect",
   "classes": {
    "alicloud:expressconnect/routerInterface:RouterInterface": "RouterInterface"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "expressconnect/routerTrAssociation",
+  "fqn": "pulumi_alicloud.expressconnect",
+  "classes": {
+   "alicloud:expressconnect/routerTrAssociation:RouterTrAssociation": "RouterTrAssociation"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "expressconnect/routerVbrChildInstance",
+  "fqn": "pulumi_alicloud.expressconnect",
+  "classes": {
+   "alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance": "RouterVbrChildInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "expressconnect/routerVpcAssociation",
+  "fqn": "pulumi_alicloud.expressconnect",
+  "classes": {
+   "alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation": "RouterVpcAssociation"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "expressconnect/trafficQos",
+  "fqn": "pulumi_alicloud.expressconnect",
+  "classes": {
+   "alicloud:expressconnect/trafficQos:TrafficQos": "TrafficQos"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "expressconnect/trafficQosAssociation",
+  "fqn": "pulumi_alicloud.expressconnect",
+  "classes": {
+   "alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation": "TrafficQosAssociation"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "expressconnect/trafficQosQueue",
+  "fqn": "pulumi_alicloud.expressconnect",
+  "classes": {
+   "alicloud:expressconnect/trafficQosQueue:TrafficQosQueue": "TrafficQosQueue"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "expressconnect/trafficQosRule",
+  "fqn": "pulumi_alicloud.expressconnect",
+  "classes": {
+   "alicloud:expressconnect/trafficQosRule:TrafficQosRule": "TrafficQosRule"
   }
  },
  {
@@ -4162,6 +4226,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.gpdb",
   "classes": {
    "alicloud:gpdb/dbInstancePlan:DbInstancePlan": "DbInstancePlan"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "gpdb/dbResourceGroup",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/dbResourceGroup:DbResourceGroup": "DbResourceGroup"
   }
  },
  {

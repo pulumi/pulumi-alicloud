@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Cen.Outputs
     public sealed class GetTransitRouterAvailableResourcesResourceResult
     {
         /// <summary>
+        /// (Available since v1.225.0) The list of available zones.
+        /// </summary>
+        public readonly ImmutableArray<string> AvailableZones;
+        /// <summary>
         /// The list of primary zones.
         /// </summary>
         public readonly ImmutableArray<string> MasterZones;
@@ -21,15 +25,25 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// The list of secondary zones.
         /// </summary>
         public readonly ImmutableArray<string> SlaveZones;
+        /// <summary>
+        /// Specifies whether to query only the zones in which the multicast feature is supported.
+        /// </summary>
+        public readonly bool SupportMulticast;
 
         [OutputConstructor]
         private GetTransitRouterAvailableResourcesResourceResult(
+            ImmutableArray<string> availableZones,
+
             ImmutableArray<string> masterZones,
 
-            ImmutableArray<string> slaveZones)
+            ImmutableArray<string> slaveZones,
+
+            bool supportMulticast)
         {
+            AvailableZones = availableZones;
             MasterZones = masterZones;
             SlaveZones = slaveZones;
+            SupportMulticast = supportMulticast;
         }
     }
 }

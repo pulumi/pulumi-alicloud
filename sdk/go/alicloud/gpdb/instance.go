@@ -170,6 +170,8 @@ type Instance struct {
 	PrivateIpAddress pulumi.StringPtrOutput `pulumi:"privateIpAddress"`
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+	ResourceManagementMode pulumi.StringOutput `pulumi:"resourceManagementMode"`
 	// Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
@@ -310,6 +312,8 @@ type instanceState struct {
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+	ResourceManagementMode *string `pulumi:"resourceManagementMode"`
 	// Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
@@ -409,6 +413,8 @@ type InstanceState struct {
 	PrivateIpAddress pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+	ResourceManagementMode pulumi.StringPtrInput
 	// Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
@@ -508,6 +514,8 @@ type instanceArgs struct {
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+	ResourceManagementMode *string `pulumi:"resourceManagementMode"`
 	// Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
@@ -602,6 +610,8 @@ type InstanceArgs struct {
 	PrivateIpAddress pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+	ResourceManagementMode pulumi.StringPtrInput
 	// Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
@@ -858,6 +868,11 @@ func (o InstanceOutput) PrivateIpAddress() pulumi.StringPtrOutput {
 // The ID of the enterprise resource group to which the instance belongs.
 func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+func (o InstanceOutput) ResourceManagementMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceManagementMode }).(pulumi.StringOutput)
 }
 
 // Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.

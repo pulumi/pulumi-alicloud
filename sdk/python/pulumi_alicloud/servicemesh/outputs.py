@@ -745,9 +745,6 @@ class ServiceMeshMeshConfigProxy(dict):
                  limit_memory: Optional[str] = None,
                  request_cpu: Optional[str] = None,
                  request_memory: Optional[str] = None):
-        """
-        :param str cluster_domain: Cluster domain name.
-        """
         if cluster_domain is not None:
             pulumi.set(__self__, "cluster_domain", cluster_domain)
         if limit_cpu is not None:
@@ -762,9 +759,6 @@ class ServiceMeshMeshConfigProxy(dict):
     @property
     @pulumi.getter(name="clusterDomain")
     def cluster_domain(self) -> Optional[str]:
-        """
-        Cluster domain name.
-        """
         return pulumi.get(self, "cluster_domain")
 
     @property

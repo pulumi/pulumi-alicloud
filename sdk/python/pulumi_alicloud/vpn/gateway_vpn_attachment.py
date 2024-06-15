@@ -480,7 +480,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.vpn.CustomerGateway("default",
-            name=name,
+            customer_gateway_name=name,
             ip_address="42.104.22.210",
             asn="45014",
             description=name)
@@ -575,7 +575,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.vpn.CustomerGateway("default",
-            name=name,
+            customer_gateway_name=name,
             ip_address="42.104.22.210",
             asn="45014",
             description=name)

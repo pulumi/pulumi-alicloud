@@ -33,8 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.eds.EdsFunctions;
- * import com.pulumi.alicloud.eds.inputs.GetSimpleOfficeSitesArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.eds.SimpleOfficeSite;
+ * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
  * import com.pulumi.alicloud.eds.NetworkPackage;
  * import com.pulumi.alicloud.eds.NetworkPackageArgs;
  * import java.util.List;
@@ -50,14 +52,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
- *             .status("REGISTERED")
- *             .nameRegex("default")
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .enableAdminAccess(true)
+ *             .desktopAccessType("Internet")
+ *             .officeSiteName(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
  *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
  *             .bandwidth(10)
- *             .officeSiteId(default_.ids()[0])
+ *             .officeSiteId(defaultSimpleOfficeSite.id())
  *             .build());
  * 
  *     }

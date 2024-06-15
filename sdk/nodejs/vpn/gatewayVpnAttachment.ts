@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const _default = new alicloud.vpn.CustomerGateway("default", {
- *     name: name,
+ *     customerGatewayName: name,
  *     ipAddress: "42.104.22.210",
  *     asn: "45014",
  *     description: name,

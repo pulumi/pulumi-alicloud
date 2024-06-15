@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "alicloud:gpdb/dbInstancePlan:DbInstancePlan":
 		r = &DbInstancePlan{}
+	case "alicloud:gpdb/dbResourceGroup:DbResourceGroup":
+		r = &DbResourceGroup{}
 	case "alicloud:gpdb/elasticInstance:ElasticInstance":
 		r = &ElasticInstance{}
 	case "alicloud:gpdb/instance:Instance":
@@ -64,6 +66,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"gpdb/dbInstancePlan",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"gpdb/dbResourceGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

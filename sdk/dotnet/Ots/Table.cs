@@ -109,6 +109,12 @@ namespace Pulumi.AliCloud.Ots
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+        /// </summary>
+        [Output("allowUpdate")]
+        public Output<bool?> AllowUpdate { get; private set; } = null!;
+
+        /// <summary>
         /// The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         /// </summary>
         [Output("definedColumns")]
@@ -145,10 +151,22 @@ namespace Pulumi.AliCloud.Ots
         public Output<ImmutableArray<Outputs.TablePrimaryKey>> PrimaryKeys { get; private set; } = null!;
 
         /// <summary>
-        /// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+        /// . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        /// </summary>
+        [Output("sseKeyId")]
+        public Output<string?> SseKeyId { get; private set; } = null!;
+
+        /// <summary>
+        /// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
         /// </summary>
         [Output("sseKeyType")]
         public Output<string?> SseKeyType { get; private set; } = null!;
+
+        /// <summary>
+        /// The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        /// </summary>
+        [Output("sseRoleArn")]
+        public Output<string?> SseRoleArn { get; private set; } = null!;
 
         /// <summary>
         /// The table name of the OTS instance. If changed, a new table would be created.
@@ -208,6 +226,12 @@ namespace Pulumi.AliCloud.Ots
 
     public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+        /// </summary>
+        [Input("allowUpdate")]
+        public Input<bool>? AllowUpdate { get; set; }
+
         [Input("definedColumns")]
         private InputList<Inputs.TableDefinedColumnArgs>? _definedColumns;
 
@@ -257,10 +281,22 @@ namespace Pulumi.AliCloud.Ots
         }
 
         /// <summary>
-        /// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+        /// . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        /// </summary>
+        [Input("sseKeyId")]
+        public Input<string>? SseKeyId { get; set; }
+
+        /// <summary>
+        /// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
         /// </summary>
         [Input("sseKeyType")]
         public Input<string>? SseKeyType { get; set; }
+
+        /// <summary>
+        /// The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        /// </summary>
+        [Input("sseRoleArn")]
+        public Input<string>? SseRoleArn { get; set; }
 
         /// <summary>
         /// The table name of the OTS instance. If changed, a new table would be created.
@@ -282,6 +318,12 @@ namespace Pulumi.AliCloud.Ots
 
     public sealed class TableState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
+        /// </summary>
+        [Input("allowUpdate")]
+        public Input<bool>? AllowUpdate { get; set; }
+
         [Input("definedColumns")]
         private InputList<Inputs.TableDefinedColumnGetArgs>? _definedColumns;
 
@@ -331,10 +373,22 @@ namespace Pulumi.AliCloud.Ots
         }
 
         /// <summary>
-        /// The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
+        /// . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        /// </summary>
+        [Input("sseKeyId")]
+        public Input<string>? SseKeyId { get; set; }
+
+        /// <summary>
+        /// The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
         /// </summary>
         [Input("sseKeyType")]
         public Input<string>? SseKeyType { get; set; }
+
+        /// <summary>
+        /// The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
+        /// </summary>
+        [Input("sseRoleArn")]
+        public Input<string>? SseRoleArn { get; set; }
 
         /// <summary>
         /// The table name of the OTS instance. If changed, a new table would be created.

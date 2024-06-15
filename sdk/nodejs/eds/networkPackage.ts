@@ -18,14 +18,21 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const default = alicloud.eds.getSimpleOfficeSites({
- *     status: "REGISTERED",
- *     nameRegex: "default",
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("default", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     enableAdminAccess: true,
+ *     desktopAccessType: "Internet",
+ *     officeSiteName: `terraform-example-${_default.result}`,
  * });
  * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("default", {
  *     bandwidth: 10,
- *     officeSiteId: _default.then(_default => _default.ids?.[0]),
+ *     officeSiteId: defaultSimpleOfficeSite.id,
  * });
  * ```
  *

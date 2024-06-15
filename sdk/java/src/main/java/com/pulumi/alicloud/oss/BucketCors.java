@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.uuid;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.BucketCors;
@@ -55,12 +56,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Uuid("default");
+ * 
  *         var createBucket = new Bucket("createBucket", BucketArgs.builder()
  *             .storageClass("Standard")
- *             .bucket(name)
+ *             .bucket(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var default_ = new BucketCors("default", BucketCorsArgs.builder()
+ *         var defaultBucketCors = new BucketCors("defaultBucketCors", BucketCorsArgs.builder()
  *             .bucket(createBucket.bucket())
  *             .responseVary(true)
  *             .corsRules(BucketCorsCorsRuleArgs.builder()

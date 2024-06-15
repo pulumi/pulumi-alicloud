@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Vpn
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -38,23 +38,31 @@ namespace Pulumi.AliCloud.Vpn
     ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
     ///         NameRegex = "^default-NODELETING$",
+    ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var default0 = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
     ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///     });
     /// 
+    ///     var default1 = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[1]),
+    ///     });
+    /// 
     ///     var defaultGateway = new AliCloud.Vpn.Gateway("default", new()
     ///     {
-    ///         Name = name,
+    ///         VpnGatewayName = name,
     ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         Bandwidth = 10,
     ///         EnableSsl = true,
     ///         Description = name,
-    ///         InstanceChargeType = "PrePaid",
-    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         PaymentType = "Subscription",
+    ///         VswitchId = default0.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         DisasterRecoveryVswitchId = default1.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///     });
     /// 
     ///     var foo = new AliCloud.Vpn.IpsecServer("foo", new()

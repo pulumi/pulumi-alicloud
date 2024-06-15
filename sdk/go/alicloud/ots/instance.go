@@ -97,7 +97,7 @@ type Instance struct {
 	// * `VPC` - VPC network.
 	// * `INTERNET` - Public internet.
 	//
-	// Default to ["VPC", "CLASSIC"].
+	// Default to ["VPC", "CLASSIC", "INTERNET"].
 	NetworkTypeAcls pulumi.StringArrayOutput `pulumi:"networkTypeAcls"`
 	// The resource group the instance belongs to.
 	// Default to Alibaba Cloud default resource group.
@@ -159,7 +159,7 @@ type instanceState struct {
 	// * `VPC` - VPC network.
 	// * `INTERNET` - Public internet.
 	//
-	// Default to ["VPC", "CLASSIC"].
+	// Default to ["VPC", "CLASSIC", "INTERNET"].
 	NetworkTypeAcls []string `pulumi:"networkTypeAcls"`
 	// The resource group the instance belongs to.
 	// Default to Alibaba Cloud default resource group.
@@ -192,7 +192,7 @@ type InstanceState struct {
 	// * `VPC` - VPC network.
 	// * `INTERNET` - Public internet.
 	//
-	// Default to ["VPC", "CLASSIC"].
+	// Default to ["VPC", "CLASSIC", "INTERNET"].
 	NetworkTypeAcls pulumi.StringArrayInput
 	// The resource group the instance belongs to.
 	// Default to Alibaba Cloud default resource group.
@@ -229,7 +229,7 @@ type instanceArgs struct {
 	// * `VPC` - VPC network.
 	// * `INTERNET` - Public internet.
 	//
-	// Default to ["VPC", "CLASSIC"].
+	// Default to ["VPC", "CLASSIC", "INTERNET"].
 	NetworkTypeAcls []string `pulumi:"networkTypeAcls"`
 	// The resource group the instance belongs to.
 	// Default to Alibaba Cloud default resource group.
@@ -263,7 +263,7 @@ type InstanceArgs struct {
 	// * `VPC` - VPC network.
 	// * `INTERNET` - Public internet.
 	//
-	// Default to ["VPC", "CLASSIC"].
+	// Default to ["VPC", "CLASSIC", "INTERNET"].
 	NetworkTypeAcls pulumi.StringArrayInput
 	// The resource group the instance belongs to.
 	// Default to Alibaba Cloud default resource group.
@@ -397,7 +397,7 @@ func (o InstanceOutput) NetworkSourceAcls() pulumi.StringArrayOutput {
 // * `VPC` - VPC network.
 // * `INTERNET` - Public internet.
 //
-// Default to ["VPC", "CLASSIC"].
+// Default to ["VPC", "CLASSIC", "INTERNET"].
 func (o InstanceOutput) NetworkTypeAcls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.NetworkTypeAcls }).(pulumi.StringArrayOutput)
 }

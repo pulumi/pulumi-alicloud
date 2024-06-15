@@ -15,17 +15,9 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
 
     public static final ServiceMeshMeshConfigProxyArgs Empty = new ServiceMeshMeshConfigProxyArgs();
 
-    /**
-     * Cluster domain name.
-     * 
-     */
     @Import(name="clusterDomain")
     private @Nullable Output<String> clusterDomain;
 
-    /**
-     * @return Cluster domain name.
-     * 
-     */
     public Optional<Output<String>> clusterDomain() {
         return Optional.ofNullable(this.clusterDomain);
     }
@@ -86,23 +78,11 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
             $ = new ServiceMeshMeshConfigProxyArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param clusterDomain Cluster domain name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterDomain(@Nullable Output<String> clusterDomain) {
             $.clusterDomain = clusterDomain;
             return this;
         }
 
-        /**
-         * @param clusterDomain Cluster domain name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder clusterDomain(String clusterDomain) {
             return clusterDomain(Output.of(clusterDomain));
         }

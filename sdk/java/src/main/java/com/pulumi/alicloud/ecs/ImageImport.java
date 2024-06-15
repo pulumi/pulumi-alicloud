@@ -17,15 +17,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Import a copy of your local on-premise file to ECS, and appear as a custom replacement in the corresponding domain.
+ * Provides a ECS Image Import resource.
+ * 
+ * For information about ECS Image Import and how to use it, see [What is Image Import](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-importimage).
+ * 
+ * &gt; **NOTE:** Available since v1.69.0.
  * 
  * &gt; **NOTE:** You must upload the image file to the object storage OSS in advance.
  * 
  * &gt; **NOTE:** The region where the image is imported must be the same region as the OSS bucket where the image file is uploaded.
  * 
- * &gt; **NOTE:** Available in 1.69.0+.
- * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -35,6 +39,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketObject;
+ * import com.pulumi.alicloud.oss.BucketObjectArgs;
  * import com.pulumi.alicloud.ecs.ImageImport;
  * import com.pulumi.alicloud.ecs.ImageImportArgs;
  * import com.pulumi.alicloud.ecs.inputs.ImageImportDiskDeviceMappingArgs;
@@ -51,17 +59,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new ImageImport("this", ImageImportArgs.builder()
- *             .description("test import image")
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-image-import-example");
+ *         var default_ = new Bucket("default", BucketArgs.builder()
+ *             .bucket(name)
+ *             .build());
+ * 
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
+ *             .bucket(default_.id())
+ *             .key("fc/hello.zip")
+ *             .content("""
+ *     # -*- coding: utf-8 -*-
+ *     def handler(event, context):
+ *     print "hello world"
+ *     return 'hello world'
+ *             """)
+ *             .build());
+ * 
+ *         var defaultImageImport = new ImageImport("defaultImageImport", ImageImportArgs.builder()
  *             .architecture("x86_64")
- *             .imageName("test-import-image")
- *             .licenseType("Auto")
- *             .platform("Ubuntu")
  *             .osType("linux")
+ *             .platform("Ubuntu")
+ *             .licenseType("Auto")
+ *             .imageName(name)
+ *             .description(name)
  *             .diskDeviceMappings(ImageImportDiskDeviceMappingArgs.builder()
+ *                 .ossBucket(default_.id())
+ *                 .ossObject(defaultBucketObject.id())
  *                 .diskImageSize(5)
- *                 .ossBucket("testimportimage")
- *                 .ossObject("root.img")
  *                 .build())
  *             .build());
  * 
@@ -71,120 +96,126 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Attributes Reference0
- * 
- *  The following attributes are exported:
- * 
- * * `id` - ID of the image.
- * 
  * ## Import
  * 
- * image can be imported using the id, e.g.
+ * ECS Image Import can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ecs/imageImport:ImageImport default m-uf66871ape***yg1q***
+ * $ pulumi import alicloud:ecs/imageImport:ImageImport example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ecs/imageImport:ImageImport")
 public class ImageImport extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+     * The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
      * 
      */
     @Export(name="architecture", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> architecture;
 
     /**
-     * @return Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+     * @return The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
      * 
      */
     public Output<Optional<String>> architecture() {
         return Codegen.optional(this.architecture);
     }
     /**
-     * Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
+     * The boot mode of the image. Valid values: `BIOS`, `UEFI`.
+     * 
+     */
+    @Export(name="bootMode", refs={String.class}, tree="[0]")
+    private Output<String> bootMode;
+
+    /**
+     * @return The boot mode of the image. Valid values: `BIOS`, `UEFI`.
+     * 
+     */
+    public Output<String> bootMode() {
+        return this.bootMode;
+    }
+    /**
+     * The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
+     * @return The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Description of the system with disks and snapshots under the image.
+     * The information about the custom image. See `disk_device_mapping` below.
      * 
      */
     @Export(name="diskDeviceMappings", refs={List.class,ImageImportDiskDeviceMapping.class}, tree="[0,1]")
     private Output<List<ImageImportDiskDeviceMapping>> diskDeviceMappings;
 
     /**
-     * @return Description of the system with disks and snapshots under the image.
+     * @return The information about the custom image. See `disk_device_mapping` below.
      * 
      */
     public Output<List<ImageImportDiskDeviceMapping>> diskDeviceMappings() {
         return this.diskDeviceMappings;
     }
     /**
-     * The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+     * The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
     @Export(name="imageName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> imageName;
+    private Output<String> imageName;
 
     /**
-     * @return The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+     * @return The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
-    public Output<Optional<String>> imageName() {
-        return Codegen.optional(this.imageName);
+    public Output<String> imageName() {
+        return this.imageName;
     }
     /**
-     * The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+     * The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
      * 
      */
     @Export(name="licenseType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> licenseType;
 
     /**
-     * @return The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+     * @return The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
      * 
      */
     public Output<Optional<String>> licenseType() {
         return Codegen.optional(this.licenseType);
     }
     /**
-     * Operating system platform type. Valid values: `windows`, Default is `linux`.
+     * The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
      * 
      */
     @Export(name="osType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osType;
 
     /**
-     * @return Operating system platform type. Valid values: `windows`, Default is `linux`.
+     * @return The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
      * 
      */
     public Output<Optional<String>> osType() {
         return Codegen.optional(this.osType);
     }
     /**
-     * The operating system distribution. Default value: Others Linux.
-     * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-     * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
+     * The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     * &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
      * 
      */
     @Export(name="platform", refs={String.class}, tree="[0]")
     private Output<String> platform;
 
     /**
-     * @return The operating system distribution. Default value: Others Linux.
-     * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-     * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
+     * @return The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     * &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
      * 
      */
     public Output<String> platform() {

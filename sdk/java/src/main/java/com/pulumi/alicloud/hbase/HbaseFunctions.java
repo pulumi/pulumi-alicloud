@@ -23,7 +23,7 @@ public final class HbaseFunctions {
     /**
      * This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.106.0+.
+     * &gt; **NOTE:** Available since v1.106.0.
      * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes() {
@@ -32,7 +32,7 @@ public final class HbaseFunctions {
     /**
      * This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.106.0+.
+     * &gt; **NOTE:** Available since v1.106.0.
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain() {
@@ -41,7 +41,7 @@ public final class HbaseFunctions {
     /**
      * This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.106.0+.
+     * &gt; **NOTE:** Available since v1.106.0.
      * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes(GetInstanceTypesArgs args) {
@@ -50,7 +50,7 @@ public final class HbaseFunctions {
     /**
      * This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.106.0+.
+     * &gt; **NOTE:** Available since v1.106.0.
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain(GetInstanceTypesPlainArgs args) {
@@ -59,7 +59,7 @@ public final class HbaseFunctions {
     /**
      * This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.106.0+.
+     * &gt; **NOTE:** Available since v1.106.0.
      * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes(GetInstanceTypesArgs args, InvokeOptions options) {
@@ -68,7 +68,7 @@ public final class HbaseFunctions {
     /**
      * This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.106.0+.
+     * &gt; **NOTE:** Available since v1.106.0.
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain(GetInstanceTypesPlainArgs args, InvokeOptions options) {

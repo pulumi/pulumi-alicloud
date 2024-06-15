@@ -39,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name: pulumi.String("terraform-example"),
+//				Name: pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err

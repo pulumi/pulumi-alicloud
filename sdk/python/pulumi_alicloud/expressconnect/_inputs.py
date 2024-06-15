@@ -10,9 +10,49 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'RouterExpressConnectRouterRegionArgs',
     'GetRouterInterfacesFilterArgs',
     'GetVirtualBorderRoutersFilterArgs',
 ]
+
+@pulumi.input_type
+class RouterExpressConnectRouterRegionArgs:
+    def __init__(__self__, *,
+                 region_id: Optional[pulumi.Input[str]] = None,
+                 transit_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] region_id: Representative region ID.
+        :param pulumi.Input[str] transit_mode: Represents the forwarding mode of the current region.
+        """
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if transit_mode is not None:
+            pulumi.set(__self__, "transit_mode", transit_mode)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Representative region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
+    @pulumi.getter(name="transitMode")
+    def transit_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Represents the forwarding mode of the current region.
+        """
+        return pulumi.get(self, "transit_mode")
+
+    @transit_mode.setter
+    def transit_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transit_mode", value)
+
 
 @pulumi.input_type
 class GetRouterInterfacesFilterArgs:

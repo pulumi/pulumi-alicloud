@@ -18,14 +18,19 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const createBucket = new alicloud.oss.Bucket("CreateBucket", {
  *     storageClass: "Standard",
- *     bucket: name,
+ *     bucket: `${name}-${_default.result}`,
  * });
- * const _default = new alicloud.oss.BucketPublicAccessBlock("default", {
+ * const defaultBucketPublicAccessBlock = new alicloud.oss.BucketPublicAccessBlock("default", {
  *     bucket: createBucket.bucket,
  *     blockPublicAccess: true,
  * });

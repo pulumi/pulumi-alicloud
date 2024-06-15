@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ecs.SecurityGroup("default", {name: "terraform-example"});
+ * const _default = new alicloud.ecs.SecurityGroup("default", {name: "default"});
  * const allowAllTcp = new alicloud.ecs.SecurityGroupRule("allow_all_tcp", {
  *     type: "ingress",
  *     ipProtocol: "tcp",

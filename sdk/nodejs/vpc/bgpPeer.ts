@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Bgp Peer resource.
+ * Provides a Express Connect Bgp Peer resource.
  *
  * For information about VPC Bgp Peer and how to use it, see [What is Bgp Peer](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
  *
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * VPC Bgp Peer can be imported using the id, e.g.
+ * Express Connect Bgp Peer can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example <id>
@@ -102,6 +102,10 @@ export class BgpPeer extends pulumi.CustomResource {
      */
     public readonly bgpGroupId!: pulumi.Output<string>;
     /**
+     * The name of the BGP neighbor.
+     */
+    public /*out*/ readonly bgpPeerName!: pulumi.Output<string>;
+    /**
      * Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
      */
     public readonly enableBfd!: pulumi.Output<boolean | undefined>;
@@ -114,7 +118,7 @@ export class BgpPeer extends pulumi.CustomResource {
      */
     public readonly peerIpAddress!: pulumi.Output<string | undefined>;
     /**
-     * The status of the BGP peer.
+     * Status of BGP neighbors.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -133,6 +137,7 @@ export class BgpPeer extends pulumi.CustomResource {
             const state = argsOrState as BgpPeerState | undefined;
             resourceInputs["bfdMultiHop"] = state ? state.bfdMultiHop : undefined;
             resourceInputs["bgpGroupId"] = state ? state.bgpGroupId : undefined;
+            resourceInputs["bgpPeerName"] = state ? state.bgpPeerName : undefined;
             resourceInputs["enableBfd"] = state ? state.enableBfd : undefined;
             resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
             resourceInputs["peerIpAddress"] = state ? state.peerIpAddress : undefined;
@@ -147,6 +152,7 @@ export class BgpPeer extends pulumi.CustomResource {
             resourceInputs["enableBfd"] = args ? args.enableBfd : undefined;
             resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
             resourceInputs["peerIpAddress"] = args ? args.peerIpAddress : undefined;
+            resourceInputs["bgpPeerName"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -167,6 +173,10 @@ export interface BgpPeerState {
      */
     bgpGroupId?: pulumi.Input<string>;
     /**
+     * The name of the BGP neighbor.
+     */
+    bgpPeerName?: pulumi.Input<string>;
+    /**
      * Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
      */
     enableBfd?: pulumi.Input<boolean>;
@@ -179,7 +189,7 @@ export interface BgpPeerState {
      */
     peerIpAddress?: pulumi.Input<string>;
     /**
-     * The status of the BGP peer.
+     * Status of BGP neighbors.
      */
     status?: pulumi.Input<string>;
 }

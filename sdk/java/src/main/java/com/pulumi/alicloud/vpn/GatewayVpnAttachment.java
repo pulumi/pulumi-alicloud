@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         var default_ = new CustomerGateway("default", CustomerGatewayArgs.builder()
- *             .name(name)
+ *             .customerGatewayName(name)
  *             .ipAddress("42.104.22.210")
  *             .asn("45014")
  *             .description(name)

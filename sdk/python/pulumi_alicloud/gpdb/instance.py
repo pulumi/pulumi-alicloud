@@ -40,6 +40,7 @@ class InstanceArgs:
                  period: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 resource_management_mode: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  seg_node_num: Optional[pulumi.Input[int]] = None,
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
@@ -85,6 +86,7 @@ class InstanceArgs:
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
+        :param pulumi.Input[str] resource_management_mode: Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
@@ -155,6 +157,8 @@ class InstanceArgs:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resource_management_mode is not None:
+            pulumi.set(__self__, "resource_management_mode", resource_management_mode)
         if security_ip_lists is not None:
             warnings.warn("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""", DeprecationWarning)
             pulumi.log.warn("""security_ip_lists is deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
@@ -489,6 +493,18 @@ class InstanceArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="resourceManagementMode")
+    def resource_management_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+        """
+        return pulumi.get(self, "resource_management_mode")
+
+    @resource_management_mode.setter
+    def resource_management_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_management_mode", value)
+
+    @property
     @pulumi.getter(name="securityIpLists")
     def security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -643,6 +659,7 @@ class _InstanceState:
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 resource_management_mode: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  seg_node_num: Optional[pulumi.Input[int]] = None,
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
@@ -691,6 +708,7 @@ class _InstanceState:
         :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the instance.
         :param pulumi.Input[str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
+        :param pulumi.Input[str] resource_management_mode: Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
@@ -769,6 +787,8 @@ class _InstanceState:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resource_management_mode is not None:
+            pulumi.set(__self__, "resource_management_mode", resource_management_mode)
         if security_ip_lists is not None:
             warnings.warn("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""", DeprecationWarning)
             pulumi.log.warn("""security_ip_lists is deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
@@ -1119,6 +1139,18 @@ class _InstanceState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="resourceManagementMode")
+    def resource_management_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+        """
+        return pulumi.get(self, "resource_management_mode")
+
+    @resource_management_mode.setter
+    def resource_management_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_management_mode", value)
+
+    @property
     @pulumi.getter(name="securityIpLists")
     def security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1297,6 +1329,7 @@ class Instance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 resource_management_mode: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  seg_node_num: Optional[pulumi.Input[int]] = None,
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
@@ -1395,6 +1428,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
+        :param pulumi.Input[str] resource_management_mode: Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
@@ -1506,6 +1540,7 @@ class Instance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 resource_management_mode: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  seg_node_num: Optional[pulumi.Input[int]] = None,
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
@@ -1555,6 +1590,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["period"] = period
             __props__.__dict__["private_ip_address"] = private_ip_address
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["resource_management_mode"] = resource_management_mode
             __props__.__dict__["security_ip_lists"] = security_ip_lists
             __props__.__dict__["seg_node_num"] = seg_node_num
             __props__.__dict__["seg_storage_type"] = seg_storage_type
@@ -1606,6 +1642,7 @@ class Instance(pulumi.CustomResource):
             port: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            resource_management_mode: Optional[pulumi.Input[str]] = None,
             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             seg_node_num: Optional[pulumi.Input[int]] = None,
             seg_storage_type: Optional[pulumi.Input[str]] = None,
@@ -1659,6 +1696,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the instance.
         :param pulumi.Input[str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
+        :param pulumi.Input[str] resource_management_mode: Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
@@ -1704,6 +1742,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["port"] = port
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["resource_management_mode"] = resource_management_mode
         __props__.__dict__["security_ip_lists"] = security_ip_lists
         __props__.__dict__["seg_node_num"] = seg_node_num
         __props__.__dict__["seg_storage_type"] = seg_storage_type
@@ -1938,6 +1977,14 @@ class Instance(pulumi.CustomResource):
         The ID of the enterprise resource group to which the instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="resourceManagementMode")
+    def resource_management_mode(self) -> pulumi.Output[str]:
+        """
+        Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
+        """
+        return pulumi.get(self, "resource_management_mode")
 
     @property
     @pulumi.getter(name="securityIpLists")

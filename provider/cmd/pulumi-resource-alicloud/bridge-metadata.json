@@ -4080,8 +4080,47 @@
             "alicloud_express_connect_physical_connection": {
                 "current": "alicloud:expressconnect/physicalConnection:PhysicalConnection"
             },
+            "alicloud_express_connect_router_express_connect_router": {
+                "current": "alicloud:expressconnect/routerExpressConnectRouter:RouterExpressConnectRouter",
+                "fields": {
+                    "regions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_express_connect_router_interface": {
                 "current": "alicloud:expressconnect/routerInterface:RouterInterface"
+            },
+            "alicloud_express_connect_router_tr_association": {
+                "current": "alicloud:expressconnect/routerTrAssociation:RouterTrAssociation",
+                "fields": {
+                    "allowed_prefixes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_express_connect_router_vbr_child_instance": {
+                "current": "alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance"
+            },
+            "alicloud_express_connect_router_vpc_association": {
+                "current": "alicloud:expressconnect/routerVpcAssociation:RouterVpcAssociation",
+                "fields": {
+                    "allowed_prefixes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_express_connect_traffic_qos": {
+                "current": "alicloud:expressconnect/trafficQos:TrafficQos"
+            },
+            "alicloud_express_connect_traffic_qos_association": {
+                "current": "alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation"
+            },
+            "alicloud_express_connect_traffic_qos_queue": {
+                "current": "alicloud:expressconnect/trafficQosQueue:TrafficQosQueue"
+            },
+            "alicloud_express_connect_traffic_qos_rule": {
+                "current": "alicloud:expressconnect/trafficQosRule:TrafficQosRule"
             },
             "alicloud_express_connect_vbr_pconn_association": {
                 "current": "alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation"
@@ -4457,6 +4496,9 @@
                         }
                     }
                 }
+            },
+            "alicloud_gpdb_db_resource_group": {
+                "current": "alicloud:gpdb/dbResourceGroup:DbResourceGroup"
             },
             "alicloud_gpdb_elastic_instance": {
                 "current": "alicloud:gpdb/elasticInstance:ElasticInstance",
@@ -9276,6 +9318,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "available_zones": {
+                                    "maxItemsOne": false
+                                },
                                 "master_zones": {
                                     "maxItemsOne": false
                                 },
@@ -10390,6 +10435,17 @@
             },
             "alicloud_cms_service": {
                 "current": "alicloud:cms/getService:getService"
+            },
+            "alicloud_cms_site_monitors": {
+                "current": "alicloud:cms/getSiteMonitors:getSiteMonitors",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "monitors": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_cms_sls_groups": {
                 "current": "alicloud:cms/getSlsGroups:getSlsGroups",

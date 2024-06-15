@@ -103,7 +103,7 @@ type NodePool struct {
 	// Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.
 	// - The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.
 	// - The node IP address is the complete private IP address of the node.
-	// - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun.192.168.xxx.xxx.com`.
+	// - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
 	NodeNameMode pulumi.StringOutput `pulumi:"nodeNameMode"`
 	// The first ID of the resource.
 	NodePoolId pulumi.StringOutput `pulumi:"nodePoolId"`
@@ -330,7 +330,7 @@ type nodePoolState struct {
 	// Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.
 	// - The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.
 	// - The node IP address is the complete private IP address of the node.
-	// - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun.192.168.xxx.xxx.com`.
+	// - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
 	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The first ID of the resource.
 	NodePoolId *string `pulumi:"nodePoolId"`
@@ -508,7 +508,7 @@ type NodePoolState struct {
 	// Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.
 	// - The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.
 	// - The node IP address is the complete private IP address of the node.
-	// - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun.192.168.xxx.xxx.com`.
+	// - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
 	NodeNameMode pulumi.StringPtrInput
 	// The first ID of the resource.
 	NodePoolId pulumi.StringPtrInput
@@ -690,7 +690,7 @@ type nodePoolArgs struct {
 	// Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.
 	// - The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.
 	// - The node IP address is the complete private IP address of the node.
-	// - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun.192.168.xxx.xxx.com`.
+	// - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
 	NodeNameMode *string `pulumi:"nodeNameMode"`
 	// The name of node pool.
 	NodePoolName *string `pulumi:"nodePoolName"`
@@ -865,7 +865,7 @@ type NodePoolArgs struct {
 	// Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.
 	// - The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.
 	// - The node IP address is the complete private IP address of the node.
-	// - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun.192.168.xxx.xxx.com`.
+	// - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
 	NodeNameMode pulumi.StringPtrInput
 	// The name of node pool.
 	NodePoolName pulumi.StringPtrInput
@@ -1215,7 +1215,7 @@ func (o NodePoolOutput) NodeCount() pulumi.IntOutput {
 // Each node name consists of a prefix, its private network IP, and a suffix, separated by commas. The input format is `customized,,ip,`.
 // - The prefix and suffix can be composed of one or more parts separated by '.', each part can use lowercase letters, numbers and '-', and the beginning and end of the node name must be lowercase letters and numbers.
 // - The node IP address is the complete private IP address of the node.
-// - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun.192.168.xxx.xxx.com`.
+// - For example, if the string `customized,aliyun,ip,com` is passed in (where 'customized' and 'ip' are fixed strings, 'aliyun' is the prefix, and 'com' is the suffix), the name of the node is `aliyun192.168.xxx.xxxcom`.
 func (o NodePoolOutput) NodeNameMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.NodeNameMode }).(pulumi.StringOutput)
 }

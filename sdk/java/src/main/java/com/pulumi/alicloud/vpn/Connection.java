@@ -29,6 +29,166 @@ import javax.annotation.Nullable;
  * 
  * Basic Usage
  * 
+ * [IPsec-VPN connections support the dual-tunnel mode](https://www.alibabacloud.com/help/en/vpn/product-overview/ipsec-vpn-connections-support-the-dual-tunnel-mode)
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpn.VpnFunctions;
+ * import com.pulumi.alicloud.vpn.inputs.GetGatewayZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpn.Gateway;
+ * import com.pulumi.alicloud.vpn.GatewayArgs;
+ * import com.pulumi.alicloud.vpn.CustomerGateway;
+ * import com.pulumi.alicloud.vpn.CustomerGatewayArgs;
+ * import com.pulumi.alicloud.vpn.Connection;
+ * import com.pulumi.alicloud.vpn.ConnectionArgs;
+ * import com.pulumi.alicloud.vpn.inputs.ConnectionTunnelOptionsSpecificationArgs;
+ * import com.pulumi.alicloud.vpn.inputs.ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs;
+ * import com.pulumi.alicloud.vpn.inputs.ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var spec = config.get("spec").orElse("5");
+ *         final var default = VpnFunctions.getGatewayZones(GetGatewayZonesArgs.builder()
+ *             .spec("5M")
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("^default-NODELETING$")
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         final var default0 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .zoneId(default_.ids()[0])
+ *             .build());
+ * 
+ *         final var default1 = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .zoneId(default_.ids()[1])
+ *             .build());
+ * 
+ *         var hA_VPN = new Gateway("HA-VPN", GatewayArgs.builder()
+ *             .vpnType("Normal")
+ *             .disasterRecoveryVswitchId(default1.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .vpnGatewayName(name)
+ *             .vswitchId(default0.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .autoPay(true)
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .networkType("public")
+ *             .paymentType("Subscription")
+ *             .enableIpsec(true)
+ *             .bandwidth(spec)
+ *             .build());
+ * 
+ *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
+ *             .description("defaultCustomerGateway")
+ *             .ipAddress("2.2.2.5")
+ *             .asn("2224")
+ *             .customerGatewayName(name)
+ *             .build());
+ * 
+ *         var changeCustomerGateway = new CustomerGateway("changeCustomerGateway", CustomerGatewayArgs.builder()
+ *             .description("changeCustomerGateway")
+ *             .ipAddress("2.2.2.6")
+ *             .asn("2225")
+ *             .customerGatewayName(name)
+ *             .build());
+ * 
+ *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()
+ *             .vpnGatewayId(HA_VPN.id())
+ *             .vpnConnectionName(name)
+ *             .localSubnets("3.0.0.0/24")
+ *             .remoteSubnets(            
+ *                 "10.0.0.0/24",
+ *                 "10.0.1.0/24")
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .enableTunnelsBgp("true")
+ *             .tunnelOptionsSpecifications(            
+ *                 ConnectionTunnelOptionsSpecificationArgs.builder()
+ *                     .tunnelIpsecConfig(ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
+ *                         .ipsecAuthAlg("md5")
+ *                         .ipsecEncAlg("aes256")
+ *                         .ipsecLifetime("16400")
+ *                         .ipsecPfs("group5")
+ *                         .build())
+ *                     .customerGatewayId(defaultCustomerGateway.id())
+ *                     .role("master")
+ *                     .tunnelBgpConfig(ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs.builder()
+ *                         .localAsn("1219002")
+ *                         .tunnelCidr("169.254.30.0/30")
+ *                         .localBgpIp("169.254.30.1")
+ *                         .build())
+ *                     .tunnelIkeConfig(ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
+ *                         .ikeMode("aggressive")
+ *                         .ikeVersion("ikev2")
+ *                         .localId("localid_tunnel2")
+ *                         .psk("12345678")
+ *                         .remoteId("remote2")
+ *                         .ikeAuthAlg("md5")
+ *                         .ikeEncAlg("aes256")
+ *                         .ikeLifetime("3600")
+ *                         .ikePfs("group14")
+ *                         .build())
+ *                     .build(),
+ *                 ConnectionTunnelOptionsSpecificationArgs.builder()
+ *                     .tunnelIkeConfig(ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs.builder()
+ *                         .remoteId("remote24")
+ *                         .ikeEncAlg("aes256")
+ *                         .ikeLifetime("27000")
+ *                         .ikeMode("aggressive")
+ *                         .ikePfs("group5")
+ *                         .ikeAuthAlg("md5")
+ *                         .ikeVersion("ikev2")
+ *                         .localId("localid_tunnel2")
+ *                         .psk("12345678")
+ *                         .build())
+ *                     .tunnelIpsecConfig(ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs.builder()
+ *                         .ipsecLifetime("2700")
+ *                         .ipsecPfs("group14")
+ *                         .ipsecAuthAlg("md5")
+ *                         .ipsecEncAlg("aes256")
+ *                         .build())
+ *                     .customerGatewayId(defaultCustomerGateway.id())
+ *                     .role("slave")
+ *                     .tunnelBgpConfig(ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs.builder()
+ *                         .localAsn("1219002")
+ *                         .localBgpIp("169.254.40.1")
+ *                         .tunnelCidr("169.254.40.0/30")
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * VPN connection can be imported using the id, e.g.

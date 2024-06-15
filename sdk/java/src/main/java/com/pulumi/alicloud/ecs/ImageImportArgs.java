@@ -19,14 +19,14 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
     public static final ImageImportArgs Empty = new ImageImportArgs();
 
     /**
-     * Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+     * The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
      * 
      */
     @Import(name="architecture")
     private @Nullable Output<String> architecture;
 
     /**
-     * @return Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+     * @return The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
      * 
      */
     public Optional<Output<String>> architecture() {
@@ -34,14 +34,29 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
+     * The boot mode of the image. Valid values: `BIOS`, `UEFI`.
+     * 
+     */
+    @Import(name="bootMode")
+    private @Nullable Output<String> bootMode;
+
+    /**
+     * @return The boot mode of the image. Valid values: `BIOS`, `UEFI`.
+     * 
+     */
+    public Optional<Output<String>> bootMode() {
+        return Optional.ofNullable(this.bootMode);
+    }
+
+    /**
+     * The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
+     * @return The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
     public Optional<Output<String>> description() {
@@ -49,14 +64,14 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the system with disks and snapshots under the image.
+     * The information about the custom image. See `disk_device_mapping` below.
      * 
      */
     @Import(name="diskDeviceMappings", required=true)
     private Output<List<ImageImportDiskDeviceMappingArgs>> diskDeviceMappings;
 
     /**
-     * @return Description of the system with disks and snapshots under the image.
+     * @return The information about the custom image. See `disk_device_mapping` below.
      * 
      */
     public Output<List<ImageImportDiskDeviceMappingArgs>> diskDeviceMappings() {
@@ -64,14 +79,14 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+     * The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
     @Import(name="imageName")
     private @Nullable Output<String> imageName;
 
     /**
-     * @return The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+     * @return The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> imageName() {
@@ -79,14 +94,14 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+     * The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
      * 
      */
     @Import(name="licenseType")
     private @Nullable Output<String> licenseType;
 
     /**
-     * @return The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+     * @return The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
      * 
      */
     public Optional<Output<String>> licenseType() {
@@ -94,14 +109,14 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Operating system platform type. Valid values: `windows`, Default is `linux`.
+     * The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
      * 
      */
     @Import(name="osType")
     private @Nullable Output<String> osType;
 
     /**
-     * @return Operating system platform type. Valid values: `windows`, Default is `linux`.
+     * @return The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
      * 
      */
     public Optional<Output<String>> osType() {
@@ -109,18 +124,16 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The operating system distribution. Default value: Others Linux.
-     * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-     * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
+     * The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     * &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
      * 
      */
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
     /**
-     * @return The operating system distribution. Default value: Others Linux.
-     * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-     * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
+     * @return The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+     * &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
      * 
      */
     public Optional<Output<String>> platform() {
@@ -131,6 +144,7 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
 
     private ImageImportArgs(ImageImportArgs $) {
         this.architecture = $.architecture;
+        this.bootMode = $.bootMode;
         this.description = $.description;
         this.diskDeviceMappings = $.diskDeviceMappings;
         this.imageName = $.imageName;
@@ -158,7 +172,7 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param architecture Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+         * @param architecture The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
          * 
          * @return builder
          * 
@@ -169,7 +183,7 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param architecture Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+         * @param architecture The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
          * 
          * @return builder
          * 
@@ -179,7 +193,28 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
+         * @param bootMode The boot mode of the image. Valid values: `BIOS`, `UEFI`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootMode(@Nullable Output<String> bootMode) {
+            $.bootMode = bootMode;
+            return this;
+        }
+
+        /**
+         * @param bootMode The boot mode of the image. Valid values: `BIOS`, `UEFI`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootMode(String bootMode) {
+            return bootMode(Output.of(bootMode));
+        }
+
+        /**
+         * @param description The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -190,7 +225,7 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
+         * @param description The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -200,7 +235,7 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskDeviceMappings Description of the system with disks and snapshots under the image.
+         * @param diskDeviceMappings The information about the custom image. See `disk_device_mapping` below.
          * 
          * @return builder
          * 
@@ -211,7 +246,7 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskDeviceMappings Description of the system with disks and snapshots under the image.
+         * @param diskDeviceMappings The information about the custom image. See `disk_device_mapping` below.
          * 
          * @return builder
          * 
@@ -221,7 +256,7 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskDeviceMappings Description of the system with disks and snapshots under the image.
+         * @param diskDeviceMappings The information about the custom image. See `disk_device_mapping` below.
          * 
          * @return builder
          * 
@@ -231,7 +266,7 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageName The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+         * @param imageName The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -242,7 +277,7 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageName The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
+         * @param imageName The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -252,7 +287,7 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param licenseType The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+         * @param licenseType The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
          * 
          * @return builder
          * 
@@ -263,7 +298,7 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param licenseType The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
+         * @param licenseType The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
          * 
          * @return builder
          * 
@@ -273,7 +308,7 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param osType Operating system platform type. Valid values: `windows`, Default is `linux`.
+         * @param osType The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
          * 
          * @return builder
          * 
@@ -284,7 +319,7 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param osType Operating system platform type. Valid values: `windows`, Default is `linux`.
+         * @param osType The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
          * 
          * @return builder
          * 
@@ -294,9 +329,8 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param platform The operating system distribution. Default value: Others Linux.
-         * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-         * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
+         * @param platform The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+         * &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
          * 
          * @return builder
          * 
@@ -307,9 +341,8 @@ public final class ImageImportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param platform The operating system distribution. Default value: Others Linux.
-         * More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
-         * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
+         * @param platform The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
+         * &gt; **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
          * 
          * @return builder
          * 

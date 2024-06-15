@@ -320,6 +320,20 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.port;
     }
     /**
+     * The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+     * 
+     */
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
+    private Output<String> renewalStatus;
+
+    /**
+     * @return The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when payment_type is `Subscription`. When `renewal_status` is set to `AutoRenewal`, the resource is renewed automatically.
+     * 
+     */
+    public Output<String> renewalStatus() {
+        return this.renewalStatus;
+    }
+    /**
      * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
      * 
      */

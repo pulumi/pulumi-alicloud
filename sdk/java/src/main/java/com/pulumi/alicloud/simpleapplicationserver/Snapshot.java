@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
  * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
@@ -55,6 +57,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         final var default = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
  *             .platform("Linux")
  *             .build());
@@ -78,7 +85,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultSnapshot = new Snapshot("defaultSnapshot", SnapshotArgs.builder()
  *             .diskId(defaultGetServerDisks.applyValue(getServerDisksResult -> getServerDisksResult).applyValue(defaultGetServerDisks -> defaultGetServerDisks.applyValue(getServerDisksResult -> getServerDisksResult.ids()[0])))
- *             .snapshotName(name)
+ *             .snapshotName(String.format("%s-%s", name,defaultInteger.result()))
  *             .build());
  * 
  *     }

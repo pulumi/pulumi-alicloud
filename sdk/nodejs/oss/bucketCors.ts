@@ -20,14 +20,16 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Uuid("default", {});
  * const createBucket = new alicloud.oss.Bucket("CreateBucket", {
  *     storageClass: "Standard",
- *     bucket: name,
+ *     bucket: `${name}-${_default.result}`,
  * });
- * const _default = new alicloud.oss.BucketCors("default", {
+ * const defaultBucketCors = new alicloud.oss.BucketCors("default", {
  *     bucket: createBucket.bucket,
  *     responseVary: true,
  *     corsRules: [{

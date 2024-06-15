@@ -126,6 +126,8 @@ type DbCluster struct {
 	Period pulumi.StringPtrOutput `pulumi:"period"`
 	// (Available since v1.196.0) The connection port of the cluster.
 	Port pulumi.StringOutput `pulumi:"port"`
+	// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
+	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
@@ -226,6 +228,8 @@ type dbClusterState struct {
 	Period *string `pulumi:"period"`
 	// (Available since v1.196.0) The connection port of the cluster.
 	Port *string `pulumi:"port"`
+	// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
+	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status *string `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
@@ -273,6 +277,8 @@ type DbClusterState struct {
 	Period pulumi.StringPtrInput
 	// (Available since v1.196.0) The connection port of the cluster.
 	Port pulumi.StringPtrInput
+	// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
+	RenewalStatus pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringPtrInput
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
@@ -320,6 +326,8 @@ type dbClusterArgs struct {
 	PaymentType string `pulumi:"paymentType"`
 	// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
 	Period *string `pulumi:"period"`
+	// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
+	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status *string `pulumi:"status"`
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
@@ -364,6 +372,8 @@ type DbClusterArgs struct {
 	PaymentType pulumi.StringInput
 	// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
 	Period pulumi.StringPtrInput
+	// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
+	RenewalStatus pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
 	Status pulumi.StringPtrInput
 	// Storage type of DBCluster. Valid values: `cloudEssd`, `cloudEfficiency`, `cloudEssdPl2`, `cloudEssdPl3`.
@@ -540,6 +550,11 @@ func (o DbClusterOutput) Period() pulumi.StringPtrOutput {
 // (Available since v1.196.0) The connection port of the cluster.
 func (o DbClusterOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
+// The renewal status of the resource. Valid values: `AutoRenewal`,`Normal`. It is valid and required when paymentType is `Subscription`. When `renewalStatus` is set to `AutoRenewal`, the resource is renewed automatically.
+func (o DbClusterOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
 }
 
 // The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.

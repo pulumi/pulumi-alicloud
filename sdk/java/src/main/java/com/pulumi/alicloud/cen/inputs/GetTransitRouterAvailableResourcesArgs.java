@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,10 +31,26 @@ public final class GetTransitRouterAvailableResourcesArgs extends com.pulumi.res
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * Specifies whether to query only the zones in which the multicast feature is supported.
+     * 
+     */
+    @Import(name="supportMulticast")
+    private @Nullable Output<Boolean> supportMulticast;
+
+    /**
+     * @return Specifies whether to query only the zones in which the multicast feature is supported.
+     * 
+     */
+    public Optional<Output<Boolean>> supportMulticast() {
+        return Optional.ofNullable(this.supportMulticast);
+    }
+
     private GetTransitRouterAvailableResourcesArgs() {}
 
     private GetTransitRouterAvailableResourcesArgs(GetTransitRouterAvailableResourcesArgs $) {
         this.outputFile = $.outputFile;
+        this.supportMulticast = $.supportMulticast;
     }
 
     public static Builder builder() {
@@ -73,6 +90,27 @@ public final class GetTransitRouterAvailableResourcesArgs extends com.pulumi.res
          */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
+        }
+
+        /**
+         * @param supportMulticast Specifies whether to query only the zones in which the multicast feature is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportMulticast(@Nullable Output<Boolean> supportMulticast) {
+            $.supportMulticast = supportMulticast;
+            return this;
+        }
+
+        /**
+         * @param supportMulticast Specifies whether to query only the zones in which the multicast feature is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportMulticast(Boolean supportMulticast) {
+            return supportMulticast(Output.of(supportMulticast));
         }
 
         public GetTransitRouterAvailableResourcesArgs build() {

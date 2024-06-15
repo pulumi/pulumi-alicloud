@@ -12,9 +12,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
 
     public sealed class ServiceMeshMeshConfigProxyGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Cluster domain name.
-        /// </summary>
         [Input("clusterDomain")]
         public Input<string>? ClusterDomain { get; set; }
 

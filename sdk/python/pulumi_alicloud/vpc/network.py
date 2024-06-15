@@ -649,8 +649,6 @@ class Network(pulumi.CustomResource):
 
         > **NOTE:** This resource will auto build a router and a route table while it uses `vpc.Network` to build a vpc resource.
 
-        > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://www.alibabacloud.com/help/en/vpc/getting-started/create-a-vpc-with-an-ipv6-cidr-block).
-
         ## Module Support
 
         You can use the existing vpc module
@@ -724,8 +722,6 @@ class Network(pulumi.CustomResource):
         > **NOTE:** Available since v1.0.0.
 
         > **NOTE:** This resource will auto build a router and a route table while it uses `vpc.Network` to build a vpc resource.
-
-        > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://www.alibabacloud.com/help/en/vpc/getting-started/create-a-vpc-with-an-ipv6-cidr-block).
 
         ## Module Support
 

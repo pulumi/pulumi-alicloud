@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.
+// This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.163.0+.
+// > **NOTE:** Available since v1.163.0.
 //
 // ## Example Usage
 //
@@ -31,12 +31,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cen.GetTransitRouterAvailableResources(ctx, nil, nil)
+//			ids, err := cen.GetTransitRouterAvailableResources(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("masterId", _default.Resources[0].MasterZones[0])
-//			ctx.Export("slaveId", _default.Resources[0].SlaveZones[0])
+//			ctx.Export("masterId", ids.Resources[0].MasterZones[0])
+//			ctx.Export("slaveId", ids.Resources[0].SlaveZones[0])
 //			return nil
 //		})
 //	}
@@ -56,14 +56,19 @@ func GetTransitRouterAvailableResources(ctx *pulumi.Context, args *GetTransitRou
 type GetTransitRouterAvailableResourcesArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
+	// Specifies whether to query only the zones in which the multicast feature is supported.
+	SupportMulticast *bool `pulumi:"supportMulticast"`
 }
 
 // A collection of values returned by getTransitRouterAvailableResources.
 type GetTransitRouterAvailableResourcesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                                       `pulumi:"id"`
-	OutputFile *string                                      `pulumi:"outputFile"`
-	Resources  []GetTransitRouterAvailableResourcesResource `pulumi:"resources"`
+	Id         string  `pulumi:"id"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of Cen Transit Router Available Resources. Each element contains the following attributes:
+	Resources []GetTransitRouterAvailableResourcesResource `pulumi:"resources"`
+	// (Available since v1.225.0) Indicates whether the zone supports the multicast feature.
+	SupportMulticast *bool `pulumi:"supportMulticast"`
 }
 
 func GetTransitRouterAvailableResourcesOutput(ctx *pulumi.Context, args GetTransitRouterAvailableResourcesOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterAvailableResourcesResultOutput {
@@ -83,6 +88,8 @@ func GetTransitRouterAvailableResourcesOutput(ctx *pulumi.Context, args GetTrans
 type GetTransitRouterAvailableResourcesOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Specifies whether to query only the zones in which the multicast feature is supported.
+	SupportMulticast pulumi.BoolPtrInput `pulumi:"supportMulticast"`
 }
 
 func (GetTransitRouterAvailableResourcesOutputArgs) ElementType() reflect.Type {
@@ -113,10 +120,16 @@ func (o GetTransitRouterAvailableResourcesResultOutput) OutputFile() pulumi.Stri
 	return o.ApplyT(func(v GetTransitRouterAvailableResourcesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Cen Transit Router Available Resources. Each element contains the following attributes:
 func (o GetTransitRouterAvailableResourcesResultOutput) Resources() GetTransitRouterAvailableResourcesResourceArrayOutput {
 	return o.ApplyT(func(v GetTransitRouterAvailableResourcesResult) []GetTransitRouterAvailableResourcesResource {
 		return v.Resources
 	}).(GetTransitRouterAvailableResourcesResourceArrayOutput)
+}
+
+// (Available since v1.225.0) Indicates whether the zone supports the multicast feature.
+func (o GetTransitRouterAvailableResourcesResultOutput) SupportMulticast() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetTransitRouterAvailableResourcesResult) *bool { return v.SupportMulticast }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

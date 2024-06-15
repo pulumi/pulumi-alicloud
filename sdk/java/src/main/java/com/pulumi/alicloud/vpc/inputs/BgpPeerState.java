@@ -48,6 +48,21 @@ public final class BgpPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The name of the BGP neighbor.
+     * 
+     */
+    @Import(name="bgpPeerName")
+    private @Nullable Output<String> bgpPeerName;
+
+    /**
+     * @return The name of the BGP neighbor.
+     * 
+     */
+    public Optional<Output<String>> bgpPeerName() {
+        return Optional.ofNullable(this.bgpPeerName);
+    }
+
+    /**
      * Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
      * 
      */
@@ -93,14 +108,14 @@ public final class BgpPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the BGP peer.
+     * Status of BGP neighbors.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the BGP peer.
+     * @return Status of BGP neighbors.
      * 
      */
     public Optional<Output<String>> status() {
@@ -112,6 +127,7 @@ public final class BgpPeerState extends com.pulumi.resources.ResourceArgs {
     private BgpPeerState(BgpPeerState $) {
         this.bfdMultiHop = $.bfdMultiHop;
         this.bgpGroupId = $.bgpGroupId;
+        this.bgpPeerName = $.bgpPeerName;
         this.enableBfd = $.enableBfd;
         this.ipVersion = $.ipVersion;
         this.peerIpAddress = $.peerIpAddress;
@@ -179,6 +195,27 @@ public final class BgpPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param bgpPeerName The name of the BGP neighbor.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpPeerName(@Nullable Output<String> bgpPeerName) {
+            $.bgpPeerName = bgpPeerName;
+            return this;
+        }
+
+        /**
+         * @param bgpPeerName The name of the BGP neighbor.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpPeerName(String bgpPeerName) {
+            return bgpPeerName(Output.of(bgpPeerName));
+        }
+
+        /**
          * @param enableBfd Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
          * 
          * @return builder
@@ -242,7 +279,7 @@ public final class BgpPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the BGP peer.
+         * @param status Status of BGP neighbors.
          * 
          * @return builder
          * 
@@ -253,7 +290,7 @@ public final class BgpPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the BGP peer.
+         * @param status Status of BGP neighbors.
          * 
          * @return builder
          * 

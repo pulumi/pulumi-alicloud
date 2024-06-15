@@ -40,7 +40,7 @@ type ServiceMesh struct {
 	// Default value: 'false '.
 	CustomizedPrometheus pulumi.BoolPtrOutput `pulumi:"customizedPrometheus"`
 	// Grid instance version type (for example: the standard, the Pro version, etc.).
-	Edition pulumi.StringOutput `pulumi:"edition"`
+	Edition pulumi.StringPtrOutput `pulumi:"edition"`
 	// Data plane KubeAPI access capability. See `extraConfiguration` below.
 	ExtraConfiguration ServiceMeshExtraConfigurationOutput `pulumi:"extraConfiguration"`
 	// Whether to forcibly delete the ASM instance. Value:
@@ -63,7 +63,7 @@ type ServiceMesh struct {
 	// The tag of the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.
-	Version pulumi.StringOutput `pulumi:"version"`
+	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
 // NewServiceMesh registers a new resource with the given unique name, arguments, and options.
@@ -362,8 +362,8 @@ func (o ServiceMeshOutput) CustomizedPrometheus() pulumi.BoolPtrOutput {
 }
 
 // Grid instance version type (for example: the standard, the Pro version, etc.).
-func (o ServiceMeshOutput) Edition() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.Edition }).(pulumi.StringOutput)
+func (o ServiceMeshOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringPtrOutput { return v.Edition }).(pulumi.StringPtrOutput)
 }
 
 // Data plane KubeAPI access capability. See `extraConfiguration` below.
@@ -415,8 +415,8 @@ func (o ServiceMeshOutput) Tags() pulumi.MapOutput {
 }
 
 // Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `servicemesh.getServiceMeshes`.
-func (o ServiceMeshOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+func (o ServiceMeshOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMesh) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type ServiceMeshArrayOutput struct{ *pulumi.OutputState }

@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Bgp Peer resource.
+ * Provides a Express Connect Bgp Peer resource.
  * 
  * For information about VPC Bgp Peer and how to use it, see [What is Bgp Peer](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
  * 
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Bgp Peer can be imported using the id, e.g.
+ * Express Connect Bgp Peer can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/bgpPeer:BgpPeer example &lt;id&gt;
@@ -142,6 +142,20 @@ public class BgpPeer extends com.pulumi.resources.CustomResource {
      */
     public Output<String> bgpGroupId() {
         return this.bgpGroupId;
+    }
+    /**
+     * The name of the BGP neighbor.
+     * 
+     */
+    @Export(name="bgpPeerName", refs={String.class}, tree="[0]")
+    private Output<String> bgpPeerName;
+
+    /**
+     * @return The name of the BGP neighbor.
+     * 
+     */
+    public Output<String> bgpPeerName() {
+        return this.bgpPeerName;
     }
     /**
      * Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
@@ -186,14 +200,14 @@ public class BgpPeer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.peerIpAddress);
     }
     /**
-     * The status of the BGP peer.
+     * Status of BGP neighbors.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the BGP peer.
+     * @return Status of BGP neighbors.
      * 
      */
     public Output<String> status() {

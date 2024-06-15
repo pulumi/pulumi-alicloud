@@ -89,6 +89,7 @@ namespace Pulumi.AliCloud.Sae
     ///         Replicas = 5,
     ///         Cpu = 500,
     ///         Memory = 2048,
+    ///         MicroRegistration = "0",
     ///     });
     /// 
     ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("default", new()

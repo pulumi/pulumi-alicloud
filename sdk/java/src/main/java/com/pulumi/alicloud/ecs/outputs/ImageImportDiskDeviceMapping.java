@@ -13,66 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ImageImportDiskDeviceMapping {
     /**
-     * @return The name of disk N in the custom image.
+     * @return The device name of the disk.
      * 
      */
     private @Nullable String device;
     /**
-     * @return Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+     * @return The size of the disk. Default value: `5`.
      * 
      */
     private @Nullable Integer diskImageSize;
     /**
-     * @return Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+     * @return The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
      * 
      */
     private @Nullable String format;
     /**
-     * @return Save the exported OSS bucket.
+     * @return The OSS bucket where the image file is stored.
      * 
      */
     private @Nullable String ossBucket;
     /**
-     * @return The file name of your OSS Object.
-     * 
-     * &gt; **NOTE:** The disk_device_mapping is a list and it&#39;s first item will be used to system disk and other items are used to data disks.
+     * @return The name (key) of the object that the uploaded image is stored as in the OSS bucket.
      * 
      */
     private @Nullable String ossObject;
 
     private ImageImportDiskDeviceMapping() {}
     /**
-     * @return The name of disk N in the custom image.
+     * @return The device name of the disk.
      * 
      */
     public Optional<String> device() {
         return Optional.ofNullable(this.device);
     }
     /**
-     * @return Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
+     * @return The size of the disk. Default value: `5`.
      * 
      */
     public Optional<Integer> diskImageSize() {
         return Optional.ofNullable(this.diskImageSize);
     }
     /**
-     * @return Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
+     * @return The format of the image. Valid values: `RAW`, `VHD`, `qcow2`.
      * 
      */
     public Optional<String> format() {
         return Optional.ofNullable(this.format);
     }
     /**
-     * @return Save the exported OSS bucket.
+     * @return The OSS bucket where the image file is stored.
      * 
      */
     public Optional<String> ossBucket() {
         return Optional.ofNullable(this.ossBucket);
     }
     /**
-     * @return The file name of your OSS Object.
-     * 
-     * &gt; **NOTE:** The disk_device_mapping is a list and it&#39;s first item will be used to system disk and other items are used to data disks.
+     * @return The name (key) of the object that the uploaded image is stored as in the OSS bucket.
      * 
      */
     public Optional<String> ossObject() {

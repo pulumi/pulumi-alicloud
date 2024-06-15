@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
- * > **NOTE:** Available in v1.106.0+.
+ * > **NOTE:** Available since v1.106.0.
  */
 export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
     args = args || {};
@@ -110,7 +110,7 @@ export interface GetInstanceTypesResult {
 /**
  * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
- * > **NOTE:** Available in v1.106.0+.
+ * > **NOTE:** Available since v1.106.0.
  */
 export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
     return pulumi.output(args).apply((a: any) => getInstanceTypes(a, opts))

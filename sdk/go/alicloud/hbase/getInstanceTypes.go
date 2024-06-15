@@ -13,7 +13,7 @@ import (
 
 // This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 //
-// > **NOTE:** Available in v1.106.0+.
+// > **NOTE:** Available since v1.106.0.
 func GetInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceTypesResult

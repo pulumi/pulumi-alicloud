@@ -24,6 +24,7 @@ from .get_monitor_group_instances import *
 from .get_monitor_groups import *
 from .get_namespaces import *
 from .get_service import *
+from .get_site_monitors import *
 from .get_sls_groups import *
 from .group_metric_rule import *
 from .hybrid_monitor_fc_task import *

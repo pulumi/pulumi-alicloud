@@ -111,15 +111,19 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
-            bucket=name)
-        default = alicloud.oss.BucketPublicAccessBlock("default",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_public_access_block = alicloud.oss.BucketPublicAccessBlock("default",
             bucket=create_bucket.bucket,
             block_public_access=True)
         ```
@@ -157,15 +161,19 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
-            bucket=name)
-        default = alicloud.oss.BucketPublicAccessBlock("default",
+            bucket=f"{name}-{default['result']}")
+        default_bucket_public_access_block = alicloud.oss.BucketPublicAccessBlock("default",
             bucket=create_bucket.bucket,
             block_public_access=True)
         ```

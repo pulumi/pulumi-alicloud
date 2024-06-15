@@ -27,7 +27,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -40,9 +43,13 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			_, err := random.NewUuid(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
 //			createBucket, err := oss.NewBucket(ctx, "CreateBucket", &oss.BucketArgs{
 //				StorageClass: pulumi.String("Standard"),
-//				Bucket:       pulumi.String(name),
+//				Bucket:       pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
 //			})
 //			if err != nil {
 //				return err

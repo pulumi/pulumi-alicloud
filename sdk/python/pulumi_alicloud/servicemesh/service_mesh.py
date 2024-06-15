@@ -743,7 +743,7 @@ class ServiceMesh(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def edition(self) -> pulumi.Output[str]:
+    def edition(self) -> pulumi.Output[Optional[str]]:
         """
         Grid instance version type (for example: the standard, the Pro version, etc.).
         """
@@ -826,7 +826,7 @@ class ServiceMesh(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def version(self) -> pulumi.Output[str]:
+    def version(self) -> pulumi.Output[Optional[str]]:
         """
         Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
         """

@@ -65,6 +65,7 @@ import * as utilities from "../utilities";
  *     replicas: 5,
  *     cpu: 500,
  *     memory: 2048,
+ *     microRegistration: "0",
  * });
  * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("default", {
  *     loadBalancerName: name,
