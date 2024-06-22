@@ -198,13 +198,11 @@ class StoreArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -213,13 +211,11 @@ class StoreArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""")
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
         """
-        warnings.warn("""Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""project is deprecated: Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""")
-
         return pulumi.get(self, "project")
 
     @project.setter
@@ -482,13 +478,11 @@ class _StoreState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -497,13 +491,11 @@ class _StoreState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""")
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
         """
-        warnings.warn("""Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""project is deprecated: Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""")
-
         return pulumi.get(self, "project")
 
     @project.setter
@@ -1003,24 +995,20 @@ class Store(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""")
     def project(self) -> pulumi.Output[str]:
         """
         . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
         """
-        warnings.warn("""Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""project is deprecated: Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""")
-
         return pulumi.get(self, "project")
 
     @property

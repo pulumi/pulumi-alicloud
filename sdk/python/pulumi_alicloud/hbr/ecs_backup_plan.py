@@ -279,13 +279,11 @@ class EcsBackupPlanArgs:
 
     @property
     @pulumi.getter(name="updatePaths")
+    @_utilities.deprecated("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
     def update_paths(self) -> Optional[pulumi.Input[bool]]:
         """
         Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         """
-        warnings.warn("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""", DeprecationWarning)
-        pulumi.log.warn("""update_paths is deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
-
         return pulumi.get(self, "update_paths")
 
     @update_paths.setter
@@ -555,13 +553,11 @@ class _EcsBackupPlanState:
 
     @property
     @pulumi.getter(name="updatePaths")
+    @_utilities.deprecated("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
     def update_paths(self) -> Optional[pulumi.Input[bool]]:
         """
         Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         """
-        warnings.warn("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""", DeprecationWarning)
-        pulumi.log.warn("""update_paths is deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
-
         return pulumi.get(self, "update_paths")
 
     @update_paths.setter
@@ -1074,13 +1070,11 @@ class EcsBackupPlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updatePaths")
+    @_utilities.deprecated("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
     def update_paths(self) -> pulumi.Output[Optional[bool]]:
         """
         Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         """
-        warnings.warn("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""", DeprecationWarning)
-        pulumi.log.warn("""update_paths is deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
-
         return pulumi.get(self, "update_paths")
 
     @property

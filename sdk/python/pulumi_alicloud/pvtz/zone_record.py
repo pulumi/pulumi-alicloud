@@ -137,13 +137,11 @@ class ZoneRecordArgs:
 
     @property
     @pulumi.getter(name="resourceRecord")
+    @_utilities.deprecated("""Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""")
     def resource_record(self) -> Optional[pulumi.Input[str]]:
         """
         The resource record of the Private Zone Record.
         """
-        warnings.warn("""Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""", DeprecationWarning)
-        pulumi.log.warn("""resource_record is deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""")
-
         return pulumi.get(self, "resource_record")
 
     @resource_record.setter
@@ -307,13 +305,11 @@ class _ZoneRecordState:
 
     @property
     @pulumi.getter(name="resourceRecord")
+    @_utilities.deprecated("""Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""")
     def resource_record(self) -> Optional[pulumi.Input[str]]:
         """
         The resource record of the Private Zone Record.
         """
-        warnings.warn("""Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""", DeprecationWarning)
-        pulumi.log.warn("""resource_record is deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""")
-
         return pulumi.get(self, "resource_record")
 
     @resource_record.setter
@@ -642,13 +638,11 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceRecord")
+    @_utilities.deprecated("""Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""")
     def resource_record(self) -> pulumi.Output[str]:
         """
         The resource record of the Private Zone Record.
         """
-        warnings.warn("""Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""", DeprecationWarning)
-        pulumi.log.warn("""resource_record is deprecated: Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""")
-
         return pulumi.get(self, "resource_record")
 
     @property

@@ -57,13 +57,11 @@ class PolicyVersionArgs:
 
     @property
     @pulumi.getter(name="isDefaultVersion")
+    @_utilities.deprecated("""Field 'is_default_version' has been deprecated from provider version 1.90.0""")
     def is_default_version(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether to set the policy version as the default version. Default to `false`.
         """
-        warnings.warn("""Field 'is_default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
-        pulumi.log.warn("""is_default_version is deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0""")
-
         return pulumi.get(self, "is_default_version")
 
     @is_default_version.setter
@@ -95,13 +93,11 @@ class _PolicyVersionState:
 
     @property
     @pulumi.getter(name="isDefaultVersion")
+    @_utilities.deprecated("""Field 'is_default_version' has been deprecated from provider version 1.90.0""")
     def is_default_version(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether to set the policy version as the default version. Default to `false`.
         """
-        warnings.warn("""Field 'is_default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
-        pulumi.log.warn("""is_default_version is deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0""")
-
         return pulumi.get(self, "is_default_version")
 
     @is_default_version.setter
@@ -327,13 +323,11 @@ class PolicyVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isDefaultVersion")
+    @_utilities.deprecated("""Field 'is_default_version' has been deprecated from provider version 1.90.0""")
     def is_default_version(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to set the policy version as the default version. Default to `false`.
         """
-        warnings.warn("""Field 'is_default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
-        pulumi.log.warn("""is_default_version is deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0""")
-
         return pulumi.get(self, "is_default_version")
 
     @property

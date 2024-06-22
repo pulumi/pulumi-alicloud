@@ -56,13 +56,11 @@ class AclArgs:
 
     @property
     @pulumi.getter(name="aclEntries")
+    @_utilities.deprecated("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""")
     def acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]]:
         """
         The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         """
-        warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""", DeprecationWarning)
-        pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""")
-
         return pulumi.get(self, "acl_entries")
 
     @acl_entries.setter
@@ -142,13 +140,11 @@ class _AclState:
 
     @property
     @pulumi.getter(name="aclEntries")
+    @_utilities.deprecated("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""")
     def acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]]:
         """
         The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         """
-        warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""", DeprecationWarning)
-        pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""")
-
         return pulumi.get(self, "acl_entries")
 
     @acl_entries.setter
@@ -386,13 +382,11 @@ class Acl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclEntries")
+    @_utilities.deprecated("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""")
     def acl_entries(self) -> pulumi.Output[Sequence['outputs.AclAclEntry']]:
         """
         The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         """
-        warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""", DeprecationWarning)
-        pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`.""")
-
         return pulumi.get(self, "acl_entries")
 
     @property

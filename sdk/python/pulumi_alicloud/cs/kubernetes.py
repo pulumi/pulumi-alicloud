@@ -590,10 +590,8 @@ class KubernetesArgs:
 
     @property
     @pulumi.getter(name="namePrefix")
+    @_utilities.deprecated("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
     def name_prefix(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""", DeprecationWarning)
-        pulumi.log.warn("""name_prefix is deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
-
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
@@ -1506,10 +1504,8 @@ class _KubernetesState:
 
     @property
     @pulumi.getter(name="namePrefix")
+    @_utilities.deprecated("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
     def name_prefix(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""", DeprecationWarning)
-        pulumi.log.warn("""name_prefix is deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
-
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
@@ -2673,10 +2669,8 @@ class Kubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namePrefix")
+    @_utilities.deprecated("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
     def name_prefix(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""", DeprecationWarning)
-        pulumi.log.warn("""name_prefix is deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
-
         return pulumi.get(self, "name_prefix")
 
     @property

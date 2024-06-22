@@ -98,10 +98,8 @@ class TrailDeprecatedArgs:
 
     @property
     @pulumi.getter(name="mnsTopicArn")
+    @_utilities.deprecated("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
     def mns_topic_arn(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
-        pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
-
         return pulumi.get(self, "mns_topic_arn")
 
     @mns_topic_arn.setter
@@ -110,13 +108,11 @@ class TrailDeprecatedArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the trail to be created, which must be unique for an account.
         """
-        warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -158,13 +154,11 @@ class TrailDeprecatedArgs:
 
     @property
     @pulumi.getter(name="roleName")
+    @_utilities.deprecated("""Field 'role_name' has been deprecated from version 1.118.0""")
     def role_name(self) -> Optional[pulumi.Input[str]]:
         """
         The RAM role in ActionTrail permitted by the user.
         """
-        warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
-        pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
-
         return pulumi.get(self, "role_name")
 
     @role_name.setter
@@ -312,10 +306,8 @@ class _TrailDeprecatedState:
 
     @property
     @pulumi.getter(name="mnsTopicArn")
+    @_utilities.deprecated("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
     def mns_topic_arn(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
-        pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
-
         return pulumi.get(self, "mns_topic_arn")
 
     @mns_topic_arn.setter
@@ -324,13 +316,11 @@ class _TrailDeprecatedState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the trail to be created, which must be unique for an account.
         """
-        warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -372,13 +362,11 @@ class _TrailDeprecatedState:
 
     @property
     @pulumi.getter(name="roleName")
+    @_utilities.deprecated("""Field 'role_name' has been deprecated from version 1.118.0""")
     def role_name(self) -> Optional[pulumi.Input[str]]:
         """
         The RAM role in ActionTrail permitted by the user.
         """
-        warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
-        pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
-
         return pulumi.get(self, "role_name")
 
     @role_name.setter
@@ -666,21 +654,17 @@ class TrailDeprecated(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mnsTopicArn")
+    @_utilities.deprecated("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
     def mns_topic_arn(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
-        pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
-
         return pulumi.get(self, "mns_topic_arn")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         The name of the trail to be created, which must be unique for an account.
         """
-        warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property
@@ -706,13 +690,11 @@ class TrailDeprecated(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleName")
+    @_utilities.deprecated("""Field 'role_name' has been deprecated from version 1.118.0""")
     def role_name(self) -> pulumi.Output[str]:
         """
         The RAM role in ActionTrail permitted by the user.
         """
-        warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
-        pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
-
         return pulumi.get(self, "role_name")
 
     @property

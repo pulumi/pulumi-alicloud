@@ -67,13 +67,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
         """
-        warnings.warn("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -165,13 +163,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
         """
-        warnings.warn("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -391,13 +387,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
         """
-        warnings.warn("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property

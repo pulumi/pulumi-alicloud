@@ -422,13 +422,11 @@ class LaunchTemplateArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -587,6 +585,7 @@ class LaunchTemplateArgs:
 
     @property
     @pulumi.getter(name="systemDiskCategory")
+    @_utilities.deprecated("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
         The category of the system disk. System disk type. Optional values:
@@ -596,9 +595,6 @@ class LaunchTemplateArgs:
         - ephemeral_ssd: local SSD Disks
         - cloud_essd: ESSD cloud Disks.
         """
-        warnings.warn("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-        pulumi.log.warn("""system_disk_category is deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
-
         return pulumi.get(self, "system_disk_category")
 
     @system_disk_category.setter
@@ -607,13 +603,11 @@ class LaunchTemplateArgs:
 
     @property
     @pulumi.getter(name="systemDiskDescription")
+    @_utilities.deprecated("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_description(self) -> Optional[pulumi.Input[str]]:
         """
         System disk description. It cannot begin with http:// or https://.
         """
-        warnings.warn("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-        pulumi.log.warn("""system_disk_description is deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
-
         return pulumi.get(self, "system_disk_description")
 
     @system_disk_description.setter
@@ -622,13 +616,11 @@ class LaunchTemplateArgs:
 
     @property
     @pulumi.getter(name="systemDiskName")
+    @_utilities.deprecated("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_name(self) -> Optional[pulumi.Input[str]]:
         """
         System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         """
-        warnings.warn("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-        pulumi.log.warn("""system_disk_name is deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
-
         return pulumi.get(self, "system_disk_name")
 
     @system_disk_name.setter
@@ -637,13 +629,11 @@ class LaunchTemplateArgs:
 
     @property
     @pulumi.getter(name="systemDiskSize")
+    @_utilities.deprecated("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_size(self) -> Optional[pulumi.Input[int]]:
         """
         Size of the system disk, measured in GB. Value range: [20, 500].
         """
-        warnings.warn("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-        pulumi.log.warn("""system_disk_size is deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
-
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
@@ -693,13 +683,11 @@ class LaunchTemplateArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
     def userdata(self) -> Optional[pulumi.Input[str]]:
         """
         User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
         """
-        warnings.warn("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""", DeprecationWarning)
-        pulumi.log.warn("""userdata is deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
-
         return pulumi.get(self, "userdata")
 
     @userdata.setter
@@ -1158,13 +1146,11 @@ class _LaunchTemplateState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1323,6 +1309,7 @@ class _LaunchTemplateState:
 
     @property
     @pulumi.getter(name="systemDiskCategory")
+    @_utilities.deprecated("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
         The category of the system disk. System disk type. Optional values:
@@ -1332,9 +1319,6 @@ class _LaunchTemplateState:
         - ephemeral_ssd: local SSD Disks
         - cloud_essd: ESSD cloud Disks.
         """
-        warnings.warn("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-        pulumi.log.warn("""system_disk_category is deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
-
         return pulumi.get(self, "system_disk_category")
 
     @system_disk_category.setter
@@ -1343,13 +1327,11 @@ class _LaunchTemplateState:
 
     @property
     @pulumi.getter(name="systemDiskDescription")
+    @_utilities.deprecated("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_description(self) -> Optional[pulumi.Input[str]]:
         """
         System disk description. It cannot begin with http:// or https://.
         """
-        warnings.warn("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-        pulumi.log.warn("""system_disk_description is deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
-
         return pulumi.get(self, "system_disk_description")
 
     @system_disk_description.setter
@@ -1358,13 +1340,11 @@ class _LaunchTemplateState:
 
     @property
     @pulumi.getter(name="systemDiskName")
+    @_utilities.deprecated("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_name(self) -> Optional[pulumi.Input[str]]:
         """
         System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         """
-        warnings.warn("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-        pulumi.log.warn("""system_disk_name is deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
-
         return pulumi.get(self, "system_disk_name")
 
     @system_disk_name.setter
@@ -1373,13 +1353,11 @@ class _LaunchTemplateState:
 
     @property
     @pulumi.getter(name="systemDiskSize")
+    @_utilities.deprecated("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_size(self) -> Optional[pulumi.Input[int]]:
         """
         Size of the system disk, measured in GB. Value range: [20, 500].
         """
-        warnings.warn("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-        pulumi.log.warn("""system_disk_size is deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
-
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
@@ -1429,13 +1407,11 @@ class _LaunchTemplateState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
     def userdata(self) -> Optional[pulumi.Input[str]]:
         """
         User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
         """
-        warnings.warn("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""", DeprecationWarning)
-        pulumi.log.warn("""userdata is deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
-
         return pulumi.get(self, "userdata")
 
     @userdata.setter
@@ -2149,13 +2125,11 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property
@@ -2254,6 +2228,7 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="systemDiskCategory")
+    @_utilities.deprecated("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_category(self) -> pulumi.Output[str]:
         """
         The category of the system disk. System disk type. Optional values:
@@ -2263,42 +2238,33 @@ class LaunchTemplate(pulumi.CustomResource):
         - ephemeral_ssd: local SSD Disks
         - cloud_essd: ESSD cloud Disks.
         """
-        warnings.warn("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-        pulumi.log.warn("""system_disk_category is deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
-
         return pulumi.get(self, "system_disk_category")
 
     @property
     @pulumi.getter(name="systemDiskDescription")
+    @_utilities.deprecated("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_description(self) -> pulumi.Output[str]:
         """
         System disk description. It cannot begin with http:// or https://.
         """
-        warnings.warn("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-        pulumi.log.warn("""system_disk_description is deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
-
         return pulumi.get(self, "system_disk_description")
 
     @property
     @pulumi.getter(name="systemDiskName")
+    @_utilities.deprecated("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_name(self) -> pulumi.Output[str]:
         """
         System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         """
-        warnings.warn("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-        pulumi.log.warn("""system_disk_name is deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
-
         return pulumi.get(self, "system_disk_name")
 
     @property
     @pulumi.getter(name="systemDiskSize")
+    @_utilities.deprecated("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
     def system_disk_size(self) -> pulumi.Output[int]:
         """
         Size of the system disk, measured in GB. Value range: [20, 500].
         """
-        warnings.warn("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-        pulumi.log.warn("""system_disk_size is deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
-
         return pulumi.get(self, "system_disk_size")
 
     @property
@@ -2328,13 +2294,11 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
     def userdata(self) -> pulumi.Output[str]:
         """
         User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
         """
-        warnings.warn("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""", DeprecationWarning)
-        pulumi.log.warn("""userdata is deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
-
         return pulumi.get(self, "userdata")
 
     @property

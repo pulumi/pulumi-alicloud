@@ -142,13 +142,11 @@ class AlarmArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         """
-        warnings.warn("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""", DeprecationWarning)
-        pulumi.log.warn("""dimensions is deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
-
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
@@ -181,13 +179,11 @@ class AlarmArgs:
 
     @property
     @pulumi.getter(name="endTime")
+    @_utilities.deprecated("""Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
         Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
-        warnings.warn("""Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
-        pulumi.log.warn("""end_time is deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
-
         return pulumi.get(self, "end_time")
 
     @end_time.setter
@@ -292,13 +288,11 @@ class AlarmArgs:
 
     @property
     @pulumi.getter(name="startTime")
+    @_utilities.deprecated("""Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
         Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
-        warnings.warn("""Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
-        pulumi.log.warn("""start_time is deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
-
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -453,13 +447,11 @@ class _AlarmState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         """
-        warnings.warn("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""", DeprecationWarning)
-        pulumi.log.warn("""dimensions is deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
-
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
@@ -492,13 +484,11 @@ class _AlarmState:
 
     @property
     @pulumi.getter(name="endTime")
+    @_utilities.deprecated("""Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
         Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
-        warnings.warn("""Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
-        pulumi.log.warn("""end_time is deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
-
         return pulumi.get(self, "end_time")
 
     @end_time.setter
@@ -628,13 +618,11 @@ class _AlarmState:
 
     @property
     @pulumi.getter(name="startTime")
+    @_utilities.deprecated("""Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
         Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
-        warnings.warn("""Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
-        pulumi.log.warn("""start_time is deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
-
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -1056,13 +1044,11 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
     def dimensions(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         """
-        warnings.warn("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""", DeprecationWarning)
-        pulumi.log.warn("""dimensions is deprecated: Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
-
         return pulumi.get(self, "dimensions")
 
     @property
@@ -1083,13 +1069,11 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endTime")
+    @_utilities.deprecated("""Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
     def end_time(self) -> pulumi.Output[Optional[int]]:
         """
         Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
-        warnings.warn("""Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
-        pulumi.log.warn("""end_time is deprecated: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
-
         return pulumi.get(self, "end_time")
 
     @property
@@ -1175,13 +1159,11 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startTime")
+    @_utilities.deprecated("""Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
     def start_time(self) -> pulumi.Output[Optional[int]]:
         """
         Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
-        warnings.warn("""Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""", DeprecationWarning)
-        pulumi.log.warn("""start_time is deprecated: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
-
         return pulumi.get(self, "start_time")
 
     @property

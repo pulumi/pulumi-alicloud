@@ -3086,13 +3086,11 @@ class GetSimpleOfficeSitesSiteResult(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
     def bandwidth(self) -> int:
         """
         The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
         """
-        warnings.warn("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
-        pulumi.log.warn("""bandwidth is deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
-
         return pulumi.get(self, "bandwidth")
 
     @property
@@ -3201,13 +3199,11 @@ class GetSimpleOfficeSitesSiteResult(dict):
 
     @property
     @pulumi.getter(name="enableInternetAccess")
+    @_utilities.deprecated("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")
     def enable_internet_access(self) -> bool:
         """
         Whether the Open Internet Access Function.
         """
-        warnings.warn("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
-        pulumi.log.warn("""enable_internet_access is deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")
-
         return pulumi.get(self, "enable_internet_access")
 
     @property

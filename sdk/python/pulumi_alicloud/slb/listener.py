@@ -413,10 +413,8 @@ class ListenerArgs:
 
     @property
     @pulumi.getter(name="lbPort")
+    @_utilities.deprecated("""Field 'lb_port' has been removed since 1.211.0.""")
     def lb_port(self) -> Optional[pulumi.Input[int]]:
-        warnings.warn("""Field 'lb_port' has been removed since 1.211.0.""", DeprecationWarning)
-        pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been removed since 1.211.0.""")
-
         return pulumi.get(self, "lb_port")
 
     @lb_port.setter
@@ -425,10 +423,8 @@ class ListenerArgs:
 
     @property
     @pulumi.getter(name="lbProtocol")
+    @_utilities.deprecated("""Field 'lb_protocol' has been removed since 1.211.0.""")
     def lb_protocol(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'lb_protocol' has been removed since 1.211.0.""", DeprecationWarning)
-        pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been removed since 1.211.0.""")
-
         return pulumi.get(self, "lb_protocol")
 
     @lb_protocol.setter
@@ -509,10 +505,8 @@ class ListenerArgs:
 
     @property
     @pulumi.getter(name="sslCertificateId")
+    @_utilities.deprecated("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
     def ssl_certificate_id(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
-
         return pulumi.get(self, "ssl_certificate_id")
 
     @ssl_certificate_id.setter
@@ -953,10 +947,8 @@ class _ListenerState:
 
     @property
     @pulumi.getter(name="lbPort")
+    @_utilities.deprecated("""Field 'lb_port' has been removed since 1.211.0.""")
     def lb_port(self) -> Optional[pulumi.Input[int]]:
-        warnings.warn("""Field 'lb_port' has been removed since 1.211.0.""", DeprecationWarning)
-        pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been removed since 1.211.0.""")
-
         return pulumi.get(self, "lb_port")
 
     @lb_port.setter
@@ -965,10 +957,8 @@ class _ListenerState:
 
     @property
     @pulumi.getter(name="lbProtocol")
+    @_utilities.deprecated("""Field 'lb_protocol' has been removed since 1.211.0.""")
     def lb_protocol(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'lb_protocol' has been removed since 1.211.0.""", DeprecationWarning)
-        pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been removed since 1.211.0.""")
-
         return pulumi.get(self, "lb_protocol")
 
     @lb_protocol.setter
@@ -1067,10 +1057,8 @@ class _ListenerState:
 
     @property
     @pulumi.getter(name="sslCertificateId")
+    @_utilities.deprecated("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
     def ssl_certificate_id(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
-
         return pulumi.get(self, "ssl_certificate_id")
 
     @ssl_certificate_id.setter
@@ -1725,18 +1713,14 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="lbPort")
+    @_utilities.deprecated("""Field 'lb_port' has been removed since 1.211.0.""")
     def lb_port(self) -> pulumi.Output[Optional[int]]:
-        warnings.warn("""Field 'lb_port' has been removed since 1.211.0.""", DeprecationWarning)
-        pulumi.log.warn("""lb_port is deprecated: Field 'lb_port' has been removed since 1.211.0.""")
-
         return pulumi.get(self, "lb_port")
 
     @property
     @pulumi.getter(name="lbProtocol")
+    @_utilities.deprecated("""Field 'lb_protocol' has been removed since 1.211.0.""")
     def lb_protocol(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Field 'lb_protocol' has been removed since 1.211.0.""", DeprecationWarning)
-        pulumi.log.warn("""lb_protocol is deprecated: Field 'lb_protocol' has been removed since 1.211.0.""")
-
         return pulumi.get(self, "lb_protocol")
 
     @property
@@ -1791,10 +1775,8 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sslCertificateId")
+    @_utilities.deprecated("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
     def ssl_certificate_id(self) -> pulumi.Output[str]:
-        warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
-
         return pulumi.get(self, "ssl_certificate_id")
 
     @property

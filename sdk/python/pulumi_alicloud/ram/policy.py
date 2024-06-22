@@ -82,13 +82,11 @@ class PolicyArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""")
     def document(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated since provider version 1.114.0 and `policy_document` instead.
         """
-        warnings.warn("""Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""", DeprecationWarning)
-        pulumi.log.warn("""document is deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""")
-
         return pulumi.get(self, "document")
 
     @document.setter
@@ -109,13 +107,11 @@ class PolicyArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated since provider version 1.114.0 and `policy_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -160,13 +156,11 @@ class PolicyArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
     def statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]]]:
         """
         (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         """
-        warnings.warn("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-        pulumi.log.warn("""statements is deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
-
         return pulumi.get(self, "statements")
 
     @statements.setter
@@ -175,13 +169,11 @@ class PolicyArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
     def version(self) -> Optional[pulumi.Input[str]]:
         """
         (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
-        warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-        pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
-
         return pulumi.get(self, "version")
 
     @version.setter
@@ -298,13 +290,11 @@ class _PolicyState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""")
     def document(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated since provider version 1.114.0 and `policy_document` instead.
         """
-        warnings.warn("""Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""", DeprecationWarning)
-        pulumi.log.warn("""document is deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""")
-
         return pulumi.get(self, "document")
 
     @document.setter
@@ -325,13 +315,11 @@ class _PolicyState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated since provider version 1.114.0 and `policy_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -376,13 +364,11 @@ class _PolicyState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
     def statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]]]:
         """
         (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         """
-        warnings.warn("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-        pulumi.log.warn("""statements is deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
-
         return pulumi.get(self, "statements")
 
     @statements.setter
@@ -403,13 +389,11 @@ class _PolicyState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
     def version(self) -> Optional[pulumi.Input[str]]:
         """
         (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
-        warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-        pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
-
         return pulumi.get(self, "version")
 
     @version.setter
@@ -701,13 +685,11 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""")
     def document(self) -> pulumi.Output[str]:
         """
         It has been deprecated since provider version 1.114.0 and `policy_document` instead.
         """
-        warnings.warn("""Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""", DeprecationWarning)
-        pulumi.log.warn("""document is deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.""")
-
         return pulumi.get(self, "document")
 
     @property
@@ -720,13 +702,11 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         It has been deprecated since provider version 1.114.0 and `policy_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property
@@ -755,13 +735,11 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
     def statements(self) -> pulumi.Output[Sequence['outputs.PolicyStatement']]:
         """
         (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         """
-        warnings.warn("""Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-        pulumi.log.warn("""statements is deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
-
         return pulumi.get(self, "statements")
 
     @property
@@ -774,13 +752,11 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
     def version(self) -> pulumi.Output[Optional[str]]:
         """
         (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
-        warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-        pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
-
         return pulumi.get(self, "version")
 
     @property

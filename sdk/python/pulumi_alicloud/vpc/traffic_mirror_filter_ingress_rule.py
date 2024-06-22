@@ -162,13 +162,11 @@ class TrafficMirrorFilterIngressRuleInitArgs:
 
     @property
     @pulumi.getter(name="ruleAction")
+    @_utilities.deprecated("""Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""")
     def rule_action(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         """
-        warnings.warn("""Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""", DeprecationWarning)
-        pulumi.log.warn("""rule_action is deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""")
-
         return pulumi.get(self, "rule_action")
 
     @rule_action.setter
@@ -326,13 +324,11 @@ class _TrafficMirrorFilterIngressRuleState:
 
     @property
     @pulumi.getter(name="ruleAction")
+    @_utilities.deprecated("""Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""")
     def rule_action(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         """
-        warnings.warn("""Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""", DeprecationWarning)
-        pulumi.log.warn("""rule_action is deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""")
-
         return pulumi.get(self, "rule_action")
 
     @rule_action.setter
@@ -683,13 +679,11 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ruleAction")
+    @_utilities.deprecated("""Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""")
     def rule_action(self) -> pulumi.Output[str]:
         """
         . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         """
-        warnings.warn("""Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""", DeprecationWarning)
-        pulumi.log.warn("""rule_action is deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""")
-
         return pulumi.get(self, "rule_action")
 
     @property

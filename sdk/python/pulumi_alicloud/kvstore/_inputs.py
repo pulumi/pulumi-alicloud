@@ -35,13 +35,11 @@ class InstanceParameterArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         """
-        warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -50,13 +48,11 @@ class InstanceParameterArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         """
-        warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
-        pulumi.log.warn("""value is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
-
         return pulumi.get(self, "value")
 
     @value.setter

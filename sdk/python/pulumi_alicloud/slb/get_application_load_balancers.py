@@ -254,10 +254,8 @@ class GetApplicationLoadBalancersResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.""")
     def slbs(self) -> Sequence['outputs.GetApplicationLoadBalancersSlbResult']:
-        warnings.warn("""Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.""", DeprecationWarning)
-        pulumi.log.warn("""slbs is deprecated: Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.""")
-
         return pulumi.get(self, "slbs")
 
     @property

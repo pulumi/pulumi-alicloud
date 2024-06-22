@@ -105,10 +105,8 @@ class GetProductVersionsResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'versions' has been deprecated from provider version 1.197.0.""")
     def versions(self) -> Sequence['outputs.GetProductVersionsVersionResult']:
-        warnings.warn("""Field 'versions' has been deprecated from provider version 1.197.0.""", DeprecationWarning)
-        pulumi.log.warn("""versions is deprecated: Field 'versions' has been deprecated from provider version 1.197.0.""")
-
         return pulumi.get(self, "versions")
 
 

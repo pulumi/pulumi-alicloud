@@ -100,10 +100,8 @@ class GetZonesResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""It has been deprecated from version 1.137.0 and using `multi_zone` instead.""")
     def multi(self) -> Optional[bool]:
-        warnings.warn("""It has been deprecated from version 1.137.0 and using `multi_zone` instead.""", DeprecationWarning)
-        pulumi.log.warn("""multi is deprecated: It has been deprecated from version 1.137.0 and using `multi_zone` instead.""")
-
         return pulumi.get(self, "multi")
 
     @property

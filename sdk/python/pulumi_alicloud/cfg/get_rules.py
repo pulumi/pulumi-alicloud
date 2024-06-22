@@ -59,13 +59,11 @@ class GetRulesResult:
 
     @property
     @pulumi.getter(name="configRuleState")
+    @_utilities.deprecated("""Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.""")
     def config_rule_state(self) -> Optional[str]:
         """
         The state of the Config Rule.
         """
-        warnings.warn("""Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_rule_state is deprecated: Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.""")
-
         return pulumi.get(self, "config_rule_state")
 
     @property

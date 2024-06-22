@@ -370,13 +370,11 @@ class EdgeKubernetesArgs:
 
     @property
     @pulumi.getter(name="kubeConfig")
+    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
     def kube_config(self) -> Optional[pulumi.Input[str]]:
         """
         The path of kube config, like `~/.kube/config`.
         """
-        warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
-        pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
-
         return pulumi.get(self, "kube_config")
 
     @kube_config.setter
@@ -400,13 +398,11 @@ class EdgeKubernetesArgs:
 
     @property
     @pulumi.getter(name="logConfig")
+    @_utilities.deprecated("""Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""")
     def log_config(self) -> Optional[pulumi.Input['EdgeKubernetesLogConfigArgs']]:
         """
         A list of one element containing information about the associated log store. See `log_config` below.
         """
-        warnings.warn("""Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""log_config is deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""")
-
         return pulumi.get(self, "log_config")
 
     @log_config.setter
@@ -1068,13 +1064,11 @@ class _EdgeKubernetesState:
 
     @property
     @pulumi.getter(name="kubeConfig")
+    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
     def kube_config(self) -> Optional[pulumi.Input[str]]:
         """
         The path of kube config, like `~/.kube/config`.
         """
-        warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
-        pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
-
         return pulumi.get(self, "kube_config")
 
     @kube_config.setter
@@ -1098,13 +1092,11 @@ class _EdgeKubernetesState:
 
     @property
     @pulumi.getter(name="logConfig")
+    @_utilities.deprecated("""Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""")
     def log_config(self) -> Optional[pulumi.Input['EdgeKubernetesLogConfigArgs']]:
         """
         A list of one element containing information about the associated log store. See `log_config` below.
         """
-        warnings.warn("""Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""log_config is deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""")
-
         return pulumi.get(self, "log_config")
 
     @log_config.setter
@@ -2253,13 +2245,11 @@ class EdgeKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubeConfig")
+    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
     def kube_config(self) -> pulumi.Output[Optional[str]]:
         """
         The path of kube config, like `~/.kube/config`.
         """
-        warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
-        pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
-
         return pulumi.get(self, "kube_config")
 
     @property
@@ -2275,13 +2265,11 @@ class EdgeKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logConfig")
+    @_utilities.deprecated("""Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""")
     def log_config(self) -> pulumi.Output[Optional['outputs.EdgeKubernetesLogConfig']]:
         """
         A list of one element containing information about the associated log store. See `log_config` below.
         """
-        warnings.warn("""Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""log_config is deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""")
-
         return pulumi.get(self, "log_config")
 
     @property

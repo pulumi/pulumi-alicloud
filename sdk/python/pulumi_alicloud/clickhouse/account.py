@@ -163,13 +163,11 @@ class AccountArgs:
 
     @property
     @pulumi.getter(name="totalDatabases")
+    @_utilities.deprecated("""Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
     def total_databases(self) -> Optional[pulumi.Input[str]]:
         """
         The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
         """
-        warnings.warn("""Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
-        pulumi.log.warn("""total_databases is deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
-
         return pulumi.get(self, "total_databases")
 
     @total_databases.setter
@@ -178,13 +176,11 @@ class AccountArgs:
 
     @property
     @pulumi.getter(name="totalDictionaries")
+    @_utilities.deprecated("""Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
     def total_dictionaries(self) -> Optional[pulumi.Input[str]]:
         """
         The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
         """
-        warnings.warn("""Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
-        pulumi.log.warn("""total_dictionaries is deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
-
         return pulumi.get(self, "total_dictionaries")
 
     @total_dictionaries.setter
@@ -375,13 +371,11 @@ class _AccountState:
 
     @property
     @pulumi.getter(name="totalDatabases")
+    @_utilities.deprecated("""Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
     def total_databases(self) -> Optional[pulumi.Input[str]]:
         """
         The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
         """
-        warnings.warn("""Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
-        pulumi.log.warn("""total_databases is deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
-
         return pulumi.get(self, "total_databases")
 
     @total_databases.setter
@@ -390,13 +384,11 @@ class _AccountState:
 
     @property
     @pulumi.getter(name="totalDictionaries")
+    @_utilities.deprecated("""Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
     def total_dictionaries(self) -> Optional[pulumi.Input[str]]:
         """
         The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
         """
-        warnings.warn("""Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
-        pulumi.log.warn("""total_dictionaries is deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
-
         return pulumi.get(self, "total_dictionaries")
 
     @total_dictionaries.setter
@@ -756,24 +748,20 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="totalDatabases")
+    @_utilities.deprecated("""Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
     def total_databases(self) -> pulumi.Output[str]:
         """
         The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
         """
-        warnings.warn("""Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
-        pulumi.log.warn("""total_databases is deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
-
         return pulumi.get(self, "total_databases")
 
     @property
     @pulumi.getter(name="totalDictionaries")
+    @_utilities.deprecated("""Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
     def total_dictionaries(self) -> pulumi.Output[str]:
         """
         The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
         """
-        warnings.warn("""Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
-        pulumi.log.warn("""total_dictionaries is deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
-
         return pulumi.get(self, "total_dictionaries")
 
     @property

@@ -69,15 +69,13 @@ class SecurityGroupArgs:
 
     @property
     @pulumi.getter(name="innerAccess")
+    @_utilities.deprecated("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
     def inner_access(self) -> Optional[pulumi.Input[bool]]:
         """
         Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
 
         Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
-        warnings.warn("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""inner_access is deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
-
         return pulumi.get(self, "inner_access")
 
     @inner_access.setter
@@ -215,15 +213,13 @@ class _SecurityGroupState:
 
     @property
     @pulumi.getter(name="innerAccess")
+    @_utilities.deprecated("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
     def inner_access(self) -> Optional[pulumi.Input[bool]]:
         """
         Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
 
         Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
-        warnings.warn("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""inner_access is deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
-
         return pulumi.get(self, "inner_access")
 
     @inner_access.setter
@@ -538,15 +534,13 @@ class SecurityGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="innerAccess")
+    @_utilities.deprecated("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
     def inner_access(self) -> pulumi.Output[bool]:
         """
         Field `inner_access` has been deprecated from provider version 1.55.3. New field `inner_access_policy` instead.
 
         Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
-        warnings.warn("""Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""inner_access is deprecated: Field `inner_access` has been deprecated from provider version 1.55.3. Use `inner_access_policy` replaces it.""")
-
         return pulumi.get(self, "inner_access")
 
     @property

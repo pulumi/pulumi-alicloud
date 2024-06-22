@@ -45,13 +45,11 @@ class AclArgs:
 
     @property
     @pulumi.getter(name="entryLists")
+    @_utilities.deprecated("""Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""")
     def entry_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclEntryListArgs']]]]:
         """
         A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
         """
-        warnings.warn("""Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""", DeprecationWarning)
-        pulumi.log.warn("""entry_lists is deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""")
-
         return pulumi.get(self, "entry_lists")
 
     @entry_lists.setter
@@ -139,13 +137,11 @@ class _AclState:
 
     @property
     @pulumi.getter(name="entryLists")
+    @_utilities.deprecated("""Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""")
     def entry_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclEntryListArgs']]]]:
         """
         A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
         """
-        warnings.warn("""Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""", DeprecationWarning)
-        pulumi.log.warn("""entry_lists is deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""")
-
         return pulumi.get(self, "entry_lists")
 
     @entry_lists.setter
@@ -403,13 +399,11 @@ class Acl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="entryLists")
+    @_utilities.deprecated("""Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""")
     def entry_lists(self) -> pulumi.Output[Sequence['outputs.AclEntryList']]:
         """
         A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
         """
-        warnings.warn("""Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""", DeprecationWarning)
-        pulumi.log.warn("""entry_lists is deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""")
-
         return pulumi.get(self, "entry_lists")
 
     @property

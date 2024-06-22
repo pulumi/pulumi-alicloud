@@ -64,13 +64,11 @@ class GroupArgs:
 
     @property
     @pulumi.getter(name="groupId")
+    @_utilities.deprecated("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
     def group_id(self) -> Optional[pulumi.Input[str]]:
         """
         Replaced by `group_name` after version 1.98.0.
         """
-        warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""group_id is deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
-
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -182,13 +180,11 @@ class _GroupState:
 
     @property
     @pulumi.getter(name="groupId")
+    @_utilities.deprecated("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
     def group_id(self) -> Optional[pulumi.Input[str]]:
         """
         Replaced by `group_name` after version 1.98.0.
         """
-        warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""group_id is deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
-
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -472,13 +468,11 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
+    @_utilities.deprecated("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
     def group_id(self) -> pulumi.Output[str]:
         """
         Replaced by `group_name` after version 1.98.0.
         """
-        warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""group_id is deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
-
         return pulumi.get(self, "group_id")
 
     @property

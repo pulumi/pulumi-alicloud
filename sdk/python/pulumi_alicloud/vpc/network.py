@@ -180,13 +180,11 @@ class NetworkArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -207,13 +205,11 @@ class NetworkArgs:
 
     @property
     @pulumi.getter(name="secondaryCidrBlocks")
+    @_utilities.deprecated("""Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""")
     def secondary_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         """
-        warnings.warn("""Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""", DeprecationWarning)
-        pulumi.log.warn("""secondary_cidr_blocks is deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""")
-
         return pulumi.get(self, "secondary_cidr_blocks")
 
     @secondary_cidr_blocks.setter
@@ -493,13 +489,11 @@ class _NetworkState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -544,13 +538,11 @@ class _NetworkState:
 
     @property
     @pulumi.getter(name="routerTableId")
+    @_utilities.deprecated("""Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead.""")
     def router_table_id(self) -> Optional[pulumi.Input[str]]:
         """
         Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         """
-        warnings.warn("""Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""router_table_id is deprecated: Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead.""")
-
         return pulumi.get(self, "router_table_id")
 
     @router_table_id.setter
@@ -559,13 +551,11 @@ class _NetworkState:
 
     @property
     @pulumi.getter(name="secondaryCidrBlocks")
+    @_utilities.deprecated("""Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""")
     def secondary_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         """
-        warnings.warn("""Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""", DeprecationWarning)
-        pulumi.log.warn("""secondary_cidr_blocks is deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""")
-
         return pulumi.get(self, "secondary_cidr_blocks")
 
     @secondary_cidr_blocks.setter
@@ -997,13 +987,11 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property
@@ -1032,24 +1020,20 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routerTableId")
+    @_utilities.deprecated("""Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead.""")
     def router_table_id(self) -> pulumi.Output[str]:
         """
         Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         """
-        warnings.warn("""Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""router_table_id is deprecated: Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead.""")
-
         return pulumi.get(self, "router_table_id")
 
     @property
     @pulumi.getter(name="secondaryCidrBlocks")
+    @_utilities.deprecated("""Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""")
     def secondary_cidr_blocks(self) -> pulumi.Output[Sequence[str]]:
         """
         Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         """
-        warnings.warn("""Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""", DeprecationWarning)
-        pulumi.log.warn("""secondary_cidr_blocks is deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.""")
-
         return pulumi.get(self, "secondary_cidr_blocks")
 
     @property

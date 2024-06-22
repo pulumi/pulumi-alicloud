@@ -84,10 +84,8 @@ class GetInstancesResult:
 
     @property
     @pulumi.getter(name="nameRegex")
+    @_utilities.deprecated("""Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.""")
     def name_regex(self) -> Optional[str]:
-        warnings.warn("""Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name_regex is deprecated: Field 'name_regex' is deprecated and will be removed in a future release. Please use 'description_regex' instead.""")
-
         return pulumi.get(self, "name_regex")
 
     @property

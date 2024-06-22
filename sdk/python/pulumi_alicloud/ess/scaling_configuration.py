@@ -323,13 +323,11 @@ class ScalingConfigurationArgs:
 
     @property
     @pulumi.getter(name="instanceIds")
+    @_utilities.deprecated("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
     def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         """
-        warnings.warn("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
-
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
@@ -434,13 +432,11 @@ class ScalingConfigurationArgs:
 
     @property
     @pulumi.getter(name="ioOptimized")
+    @_utilities.deprecated("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
     def io_optimized(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
-        warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
-        pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
-
         return pulumi.get(self, "io_optimized")
 
     @io_optimized.setter
@@ -1051,13 +1047,11 @@ class _ScalingConfigurationState:
 
     @property
     @pulumi.getter(name="instanceIds")
+    @_utilities.deprecated("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
     def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         """
-        warnings.warn("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
-
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
@@ -1162,13 +1156,11 @@ class _ScalingConfigurationState:
 
     @property
     @pulumi.getter(name="ioOptimized")
+    @_utilities.deprecated("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
     def io_optimized(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
-        warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
-        pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
-
         return pulumi.get(self, "io_optimized")
 
     @io_optimized.setter
@@ -2118,13 +2110,11 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceIds")
+    @_utilities.deprecated("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
     def instance_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         """
-        warnings.warn("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
-
         return pulumi.get(self, "instance_ids")
 
     @property
@@ -2193,13 +2183,11 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ioOptimized")
+    @_utilities.deprecated("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
     def io_optimized(self) -> pulumi.Output[Optional[str]]:
         """
         It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
-        warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
-        pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
-
         return pulumi.get(self, "io_optimized")
 
     @property

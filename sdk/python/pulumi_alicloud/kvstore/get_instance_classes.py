@@ -139,18 +139,14 @@ class GetInstanceClassesResult:
 
     @property
     @pulumi.getter(name="packageType")
+    @_utilities.deprecated("""The parameter 'package_type' has been deprecated from 1.68.0.""")
     def package_type(self) -> Optional[str]:
-        warnings.warn("""The parameter 'package_type' has been deprecated from 1.68.0.""", DeprecationWarning)
-        pulumi.log.warn("""package_type is deprecated: The parameter 'package_type' has been deprecated from 1.68.0.""")
-
         return pulumi.get(self, "package_type")
 
     @property
     @pulumi.getter(name="performanceType")
+    @_utilities.deprecated("""The parameter 'performance_type' has been deprecated from 1.68.0.""")
     def performance_type(self) -> Optional[str]:
-        warnings.warn("""The parameter 'performance_type' has been deprecated from 1.68.0.""", DeprecationWarning)
-        pulumi.log.warn("""performance_type is deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.""")
-
         return pulumi.get(self, "performance_type")
 
     @property
@@ -175,10 +171,8 @@ class GetInstanceClassesResult:
 
     @property
     @pulumi.getter(name="storageType")
+    @_utilities.deprecated("""The parameter 'storage_type' has been deprecated from 1.68.0.""")
     def storage_type(self) -> Optional[str]:
-        warnings.warn("""The parameter 'storage_type' has been deprecated from 1.68.0.""", DeprecationWarning)
-        pulumi.log.warn("""storage_type is deprecated: The parameter 'storage_type' has been deprecated from 1.68.0.""")
-
         return pulumi.get(self, "storage_type")
 
     @property

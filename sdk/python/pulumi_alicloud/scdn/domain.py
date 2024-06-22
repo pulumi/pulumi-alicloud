@@ -79,13 +79,11 @@ class DomainArgs:
 
     @property
     @pulumi.getter(name="bizName")
+    @_utilities.deprecated("""Attribute biz_name has been deprecated and suggest removing it from your template.""")
     def biz_name(self) -> Optional[pulumi.Input[str]]:
         """
         Attribute perm has been deprecated and suggest removing it from your template.
         """
-        warnings.warn("""Attribute biz_name has been deprecated and suggest removing it from your template.""", DeprecationWarning)
-        pulumi.log.warn("""biz_name is deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.""")
-
         return pulumi.get(self, "biz_name")
 
     @biz_name.setter
@@ -197,13 +195,11 @@ class _DomainState:
 
     @property
     @pulumi.getter(name="bizName")
+    @_utilities.deprecated("""Attribute biz_name has been deprecated and suggest removing it from your template.""")
     def biz_name(self) -> Optional[pulumi.Input[str]]:
         """
         Attribute perm has been deprecated and suggest removing it from your template.
         """
-        warnings.warn("""Attribute biz_name has been deprecated and suggest removing it from your template.""", DeprecationWarning)
-        pulumi.log.warn("""biz_name is deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.""")
-
         return pulumi.get(self, "biz_name")
 
     @biz_name.setter
@@ -496,13 +492,11 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bizName")
+    @_utilities.deprecated("""Attribute biz_name has been deprecated and suggest removing it from your template.""")
     def biz_name(self) -> pulumi.Output[Optional[str]]:
         """
         Attribute perm has been deprecated and suggest removing it from your template.
         """
-        warnings.warn("""Attribute biz_name has been deprecated and suggest removing it from your template.""", DeprecationWarning)
-        pulumi.log.warn("""biz_name is deprecated: Attribute biz_name has been deprecated and suggest removing it from your template.""")
-
         return pulumi.get(self, "biz_name")
 
     @property

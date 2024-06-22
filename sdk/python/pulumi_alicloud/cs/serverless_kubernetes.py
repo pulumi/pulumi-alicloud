@@ -296,13 +296,11 @@ class ServerlessKubernetesArgs:
 
     @property
     @pulumi.getter(name="kubeConfig")
+    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
     def kube_config(self) -> Optional[pulumi.Input[str]]:
         """
         The path of kube config, like `~/.kube/config`.
         """
-        warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
-        pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
-
         return pulumi.get(self, "kube_config")
 
     @kube_config.setter
@@ -368,13 +366,11 @@ class ServerlessKubernetesArgs:
 
     @property
     @pulumi.getter(name="privateZone")
+    @_utilities.deprecated("""Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
     def private_zone(self) -> Optional[pulumi.Input[bool]]:
         """
         Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         """
-        warnings.warn("""Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""", DeprecationWarning)
-        pulumi.log.warn("""private_zone is deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
-
         return pulumi.get(self, "private_zone")
 
     @private_zone.setter
@@ -500,13 +496,11 @@ class ServerlessKubernetesArgs:
 
     @property
     @pulumi.getter(name="vswitchId")
+    @_utilities.deprecated("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
         The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         """
-        warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""", DeprecationWarning)
-        pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")
-
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
@@ -810,13 +804,11 @@ class _ServerlessKubernetesState:
 
     @property
     @pulumi.getter(name="kubeConfig")
+    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
     def kube_config(self) -> Optional[pulumi.Input[str]]:
         """
         The path of kube config, like `~/.kube/config`.
         """
-        warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
-        pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
-
         return pulumi.get(self, "kube_config")
 
     @kube_config.setter
@@ -882,13 +874,11 @@ class _ServerlessKubernetesState:
 
     @property
     @pulumi.getter(name="privateZone")
+    @_utilities.deprecated("""Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
     def private_zone(self) -> Optional[pulumi.Input[bool]]:
         """
         Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         """
-        warnings.warn("""Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""", DeprecationWarning)
-        pulumi.log.warn("""private_zone is deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
-
         return pulumi.get(self, "private_zone")
 
     @private_zone.setter
@@ -1026,13 +1016,11 @@ class _ServerlessKubernetesState:
 
     @property
     @pulumi.getter(name="vswitchId")
+    @_utilities.deprecated("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
         The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         """
-        warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""", DeprecationWarning)
-        pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")
-
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
@@ -1602,13 +1590,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kubeConfig")
+    @_utilities.deprecated("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
     def kube_config(self) -> pulumi.Output[Optional[str]]:
         """
         The path of kube config, like `~/.kube/config`.
         """
-        warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
-        pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
-
         return pulumi.get(self, "kube_config")
 
     @property
@@ -1650,13 +1636,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateZone")
+    @_utilities.deprecated("""Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
     def private_zone(self) -> pulumi.Output[Optional[bool]]:
         """
         Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         """
-        warnings.warn("""Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""", DeprecationWarning)
-        pulumi.log.warn("""private_zone is deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
-
         return pulumi.get(self, "private_zone")
 
     @property
@@ -1746,13 +1730,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vswitchId")
+    @_utilities.deprecated("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")
     def vswitch_id(self) -> pulumi.Output[str]:
         """
         The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         """
-        warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""", DeprecationWarning)
-        pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.""")
-
         return pulumi.get(self, "vswitch_id")
 
     @property

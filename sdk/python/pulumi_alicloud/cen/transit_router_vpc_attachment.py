@@ -167,13 +167,11 @@ class TransitRouterVpcAttachmentArgs:
 
     @property
     @pulumi.getter(name="routeTableAssociationEnabled")
+    @_utilities.deprecated("""Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""")
     def route_table_association_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
-        warnings.warn("""Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""", DeprecationWarning)
-        pulumi.log.warn("""route_table_association_enabled is deprecated: Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""")
-
         return pulumi.get(self, "route_table_association_enabled")
 
     @route_table_association_enabled.setter
@@ -182,13 +180,11 @@ class TransitRouterVpcAttachmentArgs:
 
     @property
     @pulumi.getter(name="routeTablePropagationEnabled")
+    @_utilities.deprecated("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""")
     def route_table_propagation_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         """
-        warnings.warn("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""", DeprecationWarning)
-        pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""")
-
         return pulumi.get(self, "route_table_propagation_enabled")
 
     @route_table_propagation_enabled.setter
@@ -396,13 +392,11 @@ class _TransitRouterVpcAttachmentState:
 
     @property
     @pulumi.getter(name="routeTableAssociationEnabled")
+    @_utilities.deprecated("""Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""")
     def route_table_association_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
-        warnings.warn("""Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""", DeprecationWarning)
-        pulumi.log.warn("""route_table_association_enabled is deprecated: Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""")
-
         return pulumi.get(self, "route_table_association_enabled")
 
     @route_table_association_enabled.setter
@@ -411,13 +405,11 @@ class _TransitRouterVpcAttachmentState:
 
     @property
     @pulumi.getter(name="routeTablePropagationEnabled")
+    @_utilities.deprecated("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""")
     def route_table_propagation_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         """
-        warnings.warn("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""", DeprecationWarning)
-        pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""")
-
         return pulumi.get(self, "route_table_propagation_enabled")
 
     @route_table_propagation_enabled.setter
@@ -883,24 +875,20 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routeTableAssociationEnabled")
+    @_utilities.deprecated("""Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""")
     def route_table_association_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
-        warnings.warn("""Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""", DeprecationWarning)
-        pulumi.log.warn("""route_table_association_enabled is deprecated: Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""")
-
         return pulumi.get(self, "route_table_association_enabled")
 
     @property
     @pulumi.getter(name="routeTablePropagationEnabled")
+    @_utilities.deprecated("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""")
     def route_table_propagation_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         """
-        warnings.warn("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""", DeprecationWarning)
-        pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""")
-
         return pulumi.get(self, "route_table_propagation_enabled")
 
     @property

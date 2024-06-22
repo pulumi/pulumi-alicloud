@@ -53,13 +53,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Replaced by `instance_name` after version 1.97.0.
         """
-        warnings.warn("""Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -175,13 +173,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Replaced by `instance_name` after version 1.97.0.
         """
-        warnings.warn("""Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -452,13 +448,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         Replaced by `instance_name` after version 1.97.0.
         """
-        warnings.warn("""Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.97.0. Use 'instance_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property

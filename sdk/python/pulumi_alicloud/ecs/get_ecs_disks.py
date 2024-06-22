@@ -136,10 +136,8 @@ class GetEcsDisksResult:
 
     @property
     @pulumi.getter(name="availabilityZone")
+    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
     def availability_zone(self) -> Optional[str]:
-        warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
-        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
-
         return pulumi.get(self, "availability_zone")
 
     @property
@@ -287,10 +285,8 @@ class GetEcsDisksResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.""")
     def type(self) -> Optional[str]:
-        warnings.warn("""Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.""", DeprecationWarning)
-        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.""")
-
         return pulumi.get(self, "type")
 
     @property

@@ -239,13 +239,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="renewPeriod")
+    @_utilities.deprecated("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
         Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
         """
-        warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
-        pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
-
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
@@ -587,13 +585,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="renewPeriod")
+    @_utilities.deprecated("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
         Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
         """
-        warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
-        pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
-
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
@@ -1082,13 +1078,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="renewPeriod")
+    @_utilities.deprecated("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
     def renew_period(self) -> pulumi.Output[int]:
         """
         Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
         """
-        warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
-        pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
-
         return pulumi.get(self, "renew_period")
 
     @property

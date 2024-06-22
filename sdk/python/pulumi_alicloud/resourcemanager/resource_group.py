@@ -52,13 +52,11 @@ class ResourceGroupArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
         """
-        warnings.warn("""Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -154,13 +152,11 @@ class _ResourceGroupState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
         """
-        warnings.warn("""Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -403,13 +399,11 @@ class ResourceGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
         """
-        warnings.warn("""Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.""")
-
         return pulumi.get(self, "name")
 
     @property

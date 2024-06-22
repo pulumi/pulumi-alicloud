@@ -140,13 +140,11 @@ class EcsSnapshotArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -338,13 +336,11 @@ class _EcsSnapshotState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -644,13 +640,11 @@ class EcsSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property

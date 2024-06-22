@@ -47,13 +47,11 @@ class DomainGroupArgs:
 
     @property
     @pulumi.getter(name="groupName")
+    @_utilities.deprecated("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
     def group_name(self) -> Optional[pulumi.Input[str]]:
         """
         The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         """
-        warnings.warn("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""group_name is deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
-
         return pulumi.get(self, "group_name")
 
     @group_name.setter
@@ -109,13 +107,11 @@ class _DomainGroupState:
 
     @property
     @pulumi.getter(name="groupName")
+    @_utilities.deprecated("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
     def group_name(self) -> Optional[pulumi.Input[str]]:
         """
         The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         """
-        warnings.warn("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""group_name is deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
-
         return pulumi.get(self, "group_name")
 
     @group_name.setter
@@ -273,13 +269,11 @@ class DomainGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupName")
+    @_utilities.deprecated("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
     def group_name(self) -> pulumi.Output[str]:
         """
         The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         """
-        warnings.warn("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""group_name is deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
-
         return pulumi.get(self, "group_name")
 
     @property

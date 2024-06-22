@@ -91,13 +91,11 @@ class GetMountTargetsResult:
 
     @property
     @pulumi.getter(name="mountTargetDomain")
+    @_utilities.deprecated("""Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.""")
     def mount_target_domain(self) -> Optional[str]:
         """
         MountTargetDomain of the MountTarget.
         """
-        warnings.warn("""Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""mount_target_domain is deprecated: Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it.""")
-
         return pulumi.get(self, "mount_target_domain")
 
     @property
@@ -131,13 +129,11 @@ class GetMountTargetsResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.""")
     def type(self) -> Optional[str]:
         """
         Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
         """
-        warnings.warn("""Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it.""")
-
         return pulumi.get(self, "type")
 
     @property
