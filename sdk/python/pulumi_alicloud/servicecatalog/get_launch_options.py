@@ -73,13 +73,11 @@ class GetLaunchOptionsResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'options' has been deprecated from provider version 1.197.0.""")
     def options(self) -> Sequence['outputs.GetLaunchOptionsOptionResult']:
         """
         (Deprecated since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
         """
-        warnings.warn("""Field 'options' has been deprecated from provider version 1.197.0.""", DeprecationWarning)
-        pulumi.log.warn("""options is deprecated: Field 'options' has been deprecated from provider version 1.197.0.""")
-
         return pulumi.get(self, "options")
 
     @property

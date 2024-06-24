@@ -106,10 +106,8 @@ class GetEcsNetworkInterfacesResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
     def name(self) -> Optional[str]:
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
-
         return pulumi.get(self, "name")
 
     @property
@@ -139,10 +137,8 @@ class GetEcsNetworkInterfacesResult:
 
     @property
     @pulumi.getter(name="privateIp")
+    @_utilities.deprecated("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
     def private_ip(self) -> Optional[str]:
-        warnings.warn("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""", DeprecationWarning)
-        pulumi.log.warn("""private_ip is deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
-
         return pulumi.get(self, "private_ip")
 
     @property

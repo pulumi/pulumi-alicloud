@@ -112,13 +112,11 @@ class NetworkAclArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -280,13 +278,11 @@ class _NetworkAclState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -666,13 +662,11 @@ class NetworkAcl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.122.0. New field 'network_acl_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property

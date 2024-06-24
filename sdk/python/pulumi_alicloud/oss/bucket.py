@@ -115,13 +115,11 @@ class BucketArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""")
     def acl(self) -> Optional[pulumi.Input[str]]:
         """
         The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         """
-        warnings.warn("""Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""", DeprecationWarning)
-        pulumi.log.warn("""acl is deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""")
-
         return pulumi.get(self, "acl")
 
     @acl.setter
@@ -199,13 +197,11 @@ class BucketArgs:
 
     @property
     @pulumi.getter(name="loggingIsenable")
+    @_utilities.deprecated("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
     def logging_isenable(self) -> Optional[pulumi.Input[bool]]:
         """
         The flag of using logging enable container. Defaults true.
         """
-        warnings.warn("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""", DeprecationWarning)
-        pulumi.log.warn("""logging_isenable is deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
-
         return pulumi.get(self, "logging_isenable")
 
     @logging_isenable.setter
@@ -455,13 +451,11 @@ class _BucketState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""")
     def acl(self) -> Optional[pulumi.Input[str]]:
         """
         The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         """
-        warnings.warn("""Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""", DeprecationWarning)
-        pulumi.log.warn("""acl is deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""")
-
         return pulumi.get(self, "acl")
 
     @acl.setter
@@ -587,13 +581,11 @@ class _BucketState:
 
     @property
     @pulumi.getter(name="loggingIsenable")
+    @_utilities.deprecated("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
     def logging_isenable(self) -> Optional[pulumi.Input[bool]]:
         """
         The flag of using logging enable container. Defaults true.
         """
-        warnings.warn("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""", DeprecationWarning)
-        pulumi.log.warn("""logging_isenable is deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
-
         return pulumi.get(self, "logging_isenable")
 
     @logging_isenable.setter
@@ -1147,13 +1139,11 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""")
     def acl(self) -> pulumi.Output[str]:
         """
         The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `oss.BucketAcl` instead.
         """
-        warnings.warn("""Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""", DeprecationWarning)
-        pulumi.log.warn("""acl is deprecated: Field 'acl' has been deprecated since provider version 1.220.0. New resource 'alicloud_oss_bucket_acl' instead.""")
-
         return pulumi.get(self, "acl")
 
     @property
@@ -1235,13 +1225,11 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loggingIsenable")
+    @_utilities.deprecated("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
     def logging_isenable(self) -> pulumi.Output[Optional[bool]]:
         """
         The flag of using logging enable container. Defaults true.
         """
-        warnings.warn("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""", DeprecationWarning)
-        pulumi.log.warn("""logging_isenable is deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
-
         return pulumi.get(self, "logging_isenable")
 
     @property

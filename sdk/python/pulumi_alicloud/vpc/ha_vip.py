@@ -86,13 +86,11 @@ class HAVipArgs:
 
     @property
     @pulumi.getter(name="havipName")
+    @_utilities.deprecated("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
     def havip_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the HaVip instance.
         """
-        warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
-
         return pulumi.get(self, "havip_name")
 
     @havip_name.setter
@@ -296,13 +294,11 @@ class _HAVipState:
 
     @property
     @pulumi.getter(name="havipName")
+    @_utilities.deprecated("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
     def havip_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the HaVip instance.
         """
-        warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
-
         return pulumi.get(self, "havip_name")
 
     @havip_name.setter
@@ -672,13 +668,11 @@ class HAVip(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="havipName")
+    @_utilities.deprecated("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
     def havip_name(self) -> pulumi.Output[str]:
         """
         The name of the HaVip instance.
         """
-        warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
-
         return pulumi.get(self, "havip_name")
 
     @property

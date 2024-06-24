@@ -397,13 +397,11 @@ class NodePoolArgs:
 
     @property
     @pulumi.getter(name="cisEnabled")
+    @_utilities.deprecated("""Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""")
     def cis_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         """
-        warnings.warn("""Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""", DeprecationWarning)
-        pulumi.log.warn("""cis_enabled is deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""")
-
         return pulumi.get(self, "cis_enabled")
 
     @cis_enabled.setter
@@ -696,13 +694,11 @@ class NodePoolArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.219.0. New field 'node_pool_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -711,13 +707,11 @@ class NodePoolArgs:
 
     @property
     @pulumi.getter(name="nodeCount")
+    @_utilities.deprecated("""Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""")
     def node_count(self) -> Optional[pulumi.Input[int]]:
         """
         The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
         """
-        warnings.warn("""Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""", DeprecationWarning)
-        pulumi.log.warn("""node_count is deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""")
-
         return pulumi.get(self, "node_count")
 
     @node_count.setter
@@ -813,13 +807,11 @@ class NodePoolArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.""")
     def platform(self) -> Optional[pulumi.Input[str]]:
         """
         Operating system release, using `image_type` instead.
         """
-        warnings.warn("""Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.""", DeprecationWarning)
-        pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.""")
-
         return pulumi.get(self, "platform")
 
     @platform.setter
@@ -924,13 +916,11 @@ class NodePoolArgs:
 
     @property
     @pulumi.getter(name="securityGroupId")
+    @_utilities.deprecated("""Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.""")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
         The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
         """
-        warnings.warn("""Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.""", DeprecationWarning)
-        pulumi.log.warn("""security_group_id is deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.""")
-
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -1581,13 +1571,11 @@ class _NodePoolState:
 
     @property
     @pulumi.getter(name="cisEnabled")
+    @_utilities.deprecated("""Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""")
     def cis_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         """
-        warnings.warn("""Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""", DeprecationWarning)
-        pulumi.log.warn("""cis_enabled is deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""")
-
         return pulumi.get(self, "cis_enabled")
 
     @cis_enabled.setter
@@ -1904,13 +1892,11 @@ class _NodePoolState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.219.0. New field 'node_pool_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1919,13 +1905,11 @@ class _NodePoolState:
 
     @property
     @pulumi.getter(name="nodeCount")
+    @_utilities.deprecated("""Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""")
     def node_count(self) -> Optional[pulumi.Input[int]]:
         """
         The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
         """
-        warnings.warn("""Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""", DeprecationWarning)
-        pulumi.log.warn("""node_count is deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""")
-
         return pulumi.get(self, "node_count")
 
     @node_count.setter
@@ -2033,13 +2017,11 @@ class _NodePoolState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.""")
     def platform(self) -> Optional[pulumi.Input[str]]:
         """
         Operating system release, using `image_type` instead.
         """
-        warnings.warn("""Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.""", DeprecationWarning)
-        pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.""")
-
         return pulumi.get(self, "platform")
 
     @platform.setter
@@ -2156,13 +2138,11 @@ class _NodePoolState:
 
     @property
     @pulumi.getter(name="securityGroupId")
+    @_utilities.deprecated("""Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.""")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
         The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
         """
-        warnings.warn("""Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.""", DeprecationWarning)
-        pulumi.log.warn("""security_group_id is deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.""")
-
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -3124,13 +3104,11 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cisEnabled")
+    @_utilities.deprecated("""Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""")
     def cis_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         """
-        warnings.warn("""Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""", DeprecationWarning)
-        pulumi.log.warn("""cis_enabled is deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""")
-
         return pulumi.get(self, "cis_enabled")
 
     @property
@@ -3343,24 +3321,20 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         . Field 'name' has been deprecated from provider version 1.219.0. New field 'node_pool_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.219.0. New field 'node_pool_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nodeCount")
+    @_utilities.deprecated("""Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""")
     def node_count(self) -> pulumi.Output[int]:
         """
         The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
         """
-        warnings.warn("""Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""", DeprecationWarning)
-        pulumi.log.warn("""node_count is deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""")
-
         return pulumi.get(self, "node_count")
 
     @property
@@ -3432,13 +3406,11 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.""")
     def platform(self) -> pulumi.Output[str]:
         """
         Operating system release, using `image_type` instead.
         """
-        warnings.warn("""Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.""", DeprecationWarning)
-        pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.""")
-
         return pulumi.get(self, "platform")
 
     @property
@@ -3515,13 +3487,11 @@ class NodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
+    @_utilities.deprecated("""Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.""")
     def security_group_id(self) -> pulumi.Output[str]:
         """
         The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
         """
-        warnings.warn("""Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.""", DeprecationWarning)
-        pulumi.log.warn("""security_group_id is deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.""")
-
         return pulumi.get(self, "security_group_id")
 
     @property

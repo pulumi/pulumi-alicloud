@@ -104,10 +104,8 @@ class GetGatewayVpnAttachmentsResult:
 
     @property
     @pulumi.getter(name="vpnGatewayId")
+    @_utilities.deprecated("""The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.""")
     def vpn_gateway_id(self) -> Optional[str]:
-        warnings.warn("""The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.""", DeprecationWarning)
-        pulumi.log.warn("""vpn_gateway_id is deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.""")
-
         return pulumi.get(self, "vpn_gateway_id")
 
 

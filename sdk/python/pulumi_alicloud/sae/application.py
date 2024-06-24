@@ -462,13 +462,11 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter(name="commandArgs")
+    @_utilities.deprecated("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
     def command_args(self) -> Optional[pulumi.Input[str]]:
         """
         Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
         """
-        warnings.warn("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""command_args is deprecated: Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
-
         return pulumi.get(self, "command_args")
 
     @command_args.setter
@@ -489,13 +487,11 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter(name="configMapMountDesc")
+    @_utilities.deprecated("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
     def config_map_mount_desc(self) -> Optional[pulumi.Input[str]]:
         """
         ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
         """
-        warnings.warn("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_map_mount_desc is deprecated: Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
-
         return pulumi.get(self, "config_map_mount_desc")
 
     @config_map_mount_desc.setter
@@ -528,13 +524,11 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter(name="customHostAlias")
+    @_utilities.deprecated("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
     def custom_host_alias(self) -> Optional[pulumi.Input[str]]:
         """
         Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
         """
-        warnings.warn("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""custom_host_alias is deprecated: Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
-
         return pulumi.get(self, "custom_host_alias")
 
     @custom_host_alias.setter
@@ -687,14 +681,12 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
     def liveness(self) -> Optional[pulumi.Input[str]]:
         """
         Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
         """
-        warnings.warn("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""liveness is deprecated: Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
-
         return pulumi.get(self, "liveness")
 
     @liveness.setter
@@ -813,13 +805,11 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter(name="ossMountDescs")
+    @_utilities.deprecated("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
     def oss_mount_descs(self) -> Optional[pulumi.Input[str]]:
         """
         OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
         """
-        warnings.warn("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""oss_mount_descs is deprecated: Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
-
         return pulumi.get(self, "oss_mount_descs")
 
     @oss_mount_descs.setter
@@ -912,13 +902,11 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter(name="postStart")
+    @_utilities.deprecated("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
     def post_start(self) -> Optional[pulumi.Input[str]]:
         """
         Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
         """
-        warnings.warn("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""post_start is deprecated: Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
-
         return pulumi.get(self, "post_start")
 
     @post_start.setter
@@ -939,13 +927,11 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter(name="preStop")
+    @_utilities.deprecated("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
     def pre_stop(self) -> Optional[pulumi.Input[str]]:
         """
         Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
         """
-        warnings.warn("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""pre_stop is deprecated: Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
-
         return pulumi.get(self, "pre_stop")
 
     @pre_stop.setter
@@ -990,14 +976,12 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
     def readiness(self) -> Optional[pulumi.Input[str]]:
         """
         Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
         **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
         """
-        warnings.warn("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""readiness is deprecated: Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
-
         return pulumi.get(self, "readiness")
 
     @readiness.setter
@@ -1090,14 +1074,12 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter(name="tomcatConfig")
+    @_utilities.deprecated("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
     def tomcat_config(self) -> Optional[pulumi.Input[str]]:
         """
         Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
         **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
         """
-        warnings.warn("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""tomcat_config is deprecated: Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
-
         return pulumi.get(self, "tomcat_config")
 
     @tomcat_config.setter
@@ -1118,13 +1100,11 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter(name="updateStrategy")
+    @_utilities.deprecated("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
     def update_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
         """
-        warnings.warn("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""update_strategy is deprecated: Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
-
         return pulumi.get(self, "update_strategy")
 
     @update_strategy.setter
@@ -1620,13 +1600,11 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="commandArgs")
+    @_utilities.deprecated("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
     def command_args(self) -> Optional[pulumi.Input[str]]:
         """
         Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
         """
-        warnings.warn("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""command_args is deprecated: Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
-
         return pulumi.get(self, "command_args")
 
     @command_args.setter
@@ -1647,13 +1625,11 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="configMapMountDesc")
+    @_utilities.deprecated("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
     def config_map_mount_desc(self) -> Optional[pulumi.Input[str]]:
         """
         ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
         """
-        warnings.warn("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_map_mount_desc is deprecated: Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
-
         return pulumi.get(self, "config_map_mount_desc")
 
     @config_map_mount_desc.setter
@@ -1686,13 +1662,11 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="customHostAlias")
+    @_utilities.deprecated("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
     def custom_host_alias(self) -> Optional[pulumi.Input[str]]:
         """
         Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
         """
-        warnings.warn("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""custom_host_alias is deprecated: Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
-
         return pulumi.get(self, "custom_host_alias")
 
     @custom_host_alias.setter
@@ -1845,14 +1819,12 @@ class _ApplicationState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
     def liveness(self) -> Optional[pulumi.Input[str]]:
         """
         Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
         """
-        warnings.warn("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""liveness is deprecated: Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
-
         return pulumi.get(self, "liveness")
 
     @liveness.setter
@@ -1971,13 +1943,11 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="ossMountDescs")
+    @_utilities.deprecated("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
     def oss_mount_descs(self) -> Optional[pulumi.Input[str]]:
         """
         OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
         """
-        warnings.warn("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""oss_mount_descs is deprecated: Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
-
         return pulumi.get(self, "oss_mount_descs")
 
     @oss_mount_descs.setter
@@ -2082,13 +2052,11 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="postStart")
+    @_utilities.deprecated("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
     def post_start(self) -> Optional[pulumi.Input[str]]:
         """
         Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
         """
-        warnings.warn("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""post_start is deprecated: Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
-
         return pulumi.get(self, "post_start")
 
     @post_start.setter
@@ -2109,13 +2077,11 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="preStop")
+    @_utilities.deprecated("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
     def pre_stop(self) -> Optional[pulumi.Input[str]]:
         """
         Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
         """
-        warnings.warn("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""pre_stop is deprecated: Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
-
         return pulumi.get(self, "pre_stop")
 
     @pre_stop.setter
@@ -2160,14 +2126,12 @@ class _ApplicationState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
     def readiness(self) -> Optional[pulumi.Input[str]]:
         """
         Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
         **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
         """
-        warnings.warn("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""readiness is deprecated: Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
-
         return pulumi.get(self, "readiness")
 
     @readiness.setter
@@ -2272,14 +2236,12 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="tomcatConfig")
+    @_utilities.deprecated("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
     def tomcat_config(self) -> Optional[pulumi.Input[str]]:
         """
         Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
         **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
         """
-        warnings.warn("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""tomcat_config is deprecated: Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
-
         return pulumi.get(self, "tomcat_config")
 
     @tomcat_config.setter
@@ -2300,13 +2262,11 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="updateStrategy")
+    @_utilities.deprecated("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
     def update_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
         """
-        warnings.warn("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""update_strategy is deprecated: Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
-
         return pulumi.get(self, "update_strategy")
 
     @update_strategy.setter
@@ -3142,13 +3102,11 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="commandArgs")
+    @_utilities.deprecated("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
     def command_args(self) -> pulumi.Output[str]:
         """
         Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
         """
-        warnings.warn("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""command_args is deprecated: Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
-
         return pulumi.get(self, "command_args")
 
     @property
@@ -3161,13 +3119,11 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="configMapMountDesc")
+    @_utilities.deprecated("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
     def config_map_mount_desc(self) -> pulumi.Output[str]:
         """
         ConfigMap mount description. **NOTE:** Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
         """
-        warnings.warn("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_map_mount_desc is deprecated: Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
-
         return pulumi.get(self, "config_map_mount_desc")
 
     @property
@@ -3188,13 +3144,11 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customHostAlias")
+    @_utilities.deprecated("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
     def custom_host_alias(self) -> pulumi.Output[str]:
         """
         Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
         """
-        warnings.warn("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""custom_host_alias is deprecated: Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
-
         return pulumi.get(self, "custom_host_alias")
 
     @property
@@ -3295,14 +3249,12 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
     def liveness(self) -> pulumi.Output[str]:
         """
         Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
         **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
         """
-        warnings.warn("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""liveness is deprecated: Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
-
         return pulumi.get(self, "liveness")
 
     @property
@@ -3381,13 +3333,11 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ossMountDescs")
+    @_utilities.deprecated("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
     def oss_mount_descs(self) -> pulumi.Output[str]:
         """
         OSS mount description information. **NOTE:** Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
         """
-        warnings.warn("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""oss_mount_descs is deprecated: Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
-
         return pulumi.get(self, "oss_mount_descs")
 
     @property
@@ -3456,13 +3406,11 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="postStart")
+    @_utilities.deprecated("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
     def post_start(self) -> pulumi.Output[str]:
         """
         Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
         """
-        warnings.warn("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""post_start is deprecated: Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
-
         return pulumi.get(self, "post_start")
 
     @property
@@ -3475,13 +3423,11 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preStop")
+    @_utilities.deprecated("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
     def pre_stop(self) -> pulumi.Output[str]:
         """
         Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
         """
-        warnings.warn("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""pre_stop is deprecated: Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
-
         return pulumi.get(self, "pre_stop")
 
     @property
@@ -3510,14 +3456,12 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
     def readiness(self) -> pulumi.Output[str]:
         """
         Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
         **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
         """
-        warnings.warn("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""readiness is deprecated: Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
-
         return pulumi.get(self, "readiness")
 
     @property
@@ -3586,14 +3530,12 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tomcatConfig")
+    @_utilities.deprecated("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
     def tomcat_config(self) -> pulumi.Output[str]:
         """
         Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
         **NOTE:** Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
         """
-        warnings.warn("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""tomcat_config is deprecated: Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
-
         return pulumi.get(self, "tomcat_config")
 
     @property
@@ -3606,13 +3548,11 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="updateStrategy")
+    @_utilities.deprecated("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
     def update_strategy(self) -> pulumi.Output[str]:
         """
         The update strategy. **NOTE:** Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
         """
-        warnings.warn("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""", DeprecationWarning)
-        pulumi.log.warn("""update_strategy is deprecated: Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
-
         return pulumi.get(self, "update_strategy")
 
     @property

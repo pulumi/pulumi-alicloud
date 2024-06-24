@@ -265,7 +265,7 @@ class BucketReferer(pulumi.CustomResource):
                 "*.aliyun.com",
                 "*.example.com",
             ],
-            opts=pulumi.ResourceOptions(depends_on=[create_bucket]))
+            opts = pulumi.ResourceOptions(depends_on=[create_bucket]))
         ```
 
         ## Import
@@ -327,7 +327,7 @@ class BucketReferer(pulumi.CustomResource):
                 "*.aliyun.com",
                 "*.example.com",
             ],
-            opts=pulumi.ResourceOptions(depends_on=[create_bucket]))
+            opts = pulumi.ResourceOptions(depends_on=[create_bucket]))
         ```
 
         ## Import

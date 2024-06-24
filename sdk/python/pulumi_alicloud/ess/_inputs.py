@@ -1621,13 +1621,11 @@ class ScalingConfigurationDataDiskArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.""")
     def device(self) -> Optional[pulumi.Input[str]]:
         """
         The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
         """
-        warnings.warn("""Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.""", DeprecationWarning)
-        pulumi.log.warn("""device is deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.""")
-
         return pulumi.get(self, "device")
 
     @device.setter

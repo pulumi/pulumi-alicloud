@@ -137,13 +137,11 @@ class ReservedInstanceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -461,13 +459,11 @@ class _ReservedInstanceState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -960,13 +956,11 @@ class ReservedInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property

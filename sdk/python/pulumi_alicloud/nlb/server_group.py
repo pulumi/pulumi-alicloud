@@ -138,13 +138,11 @@ class ServerGroupArgs:
 
     @property
     @pulumi.getter(name="connectionDrain")
+    @_utilities.deprecated("""Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""")
     def connection_drain(self) -> Optional[pulumi.Input[bool]]:
         """
         . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
         """
-        warnings.warn("""Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""", DeprecationWarning)
-        pulumi.log.warn("""connection_drain is deprecated: Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""")
-
         return pulumi.get(self, "connection_drain")
 
     @connection_drain.setter
@@ -372,13 +370,11 @@ class _ServerGroupState:
 
     @property
     @pulumi.getter(name="connectionDrain")
+    @_utilities.deprecated("""Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""")
     def connection_drain(self) -> Optional[pulumi.Input[bool]]:
         """
         . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
         """
-        warnings.warn("""Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""", DeprecationWarning)
-        pulumi.log.warn("""connection_drain is deprecated: Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""")
-
         return pulumi.get(self, "connection_drain")
 
     @connection_drain.setter
@@ -868,13 +864,11 @@ class ServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionDrain")
+    @_utilities.deprecated("""Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""")
     def connection_drain(self) -> pulumi.Output[bool]:
         """
         . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
         """
-        warnings.warn("""Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""", DeprecationWarning)
-        pulumi.log.warn("""connection_drain is deprecated: Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""")
-
         return pulumi.get(self, "connection_drain")
 
     @property

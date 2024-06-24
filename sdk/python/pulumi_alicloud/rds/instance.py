@@ -1130,13 +1130,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="securityGroupId")
+    @_utilities.deprecated("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         """
-        warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
-        pulumi.log.warn("""security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
-
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -1404,15 +1402,13 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="upgradeDbInstanceKernelVersion")
+    @_utilities.deprecated("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
     def upgrade_db_instance_kernel_version(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to upgrade a minor version of the kernel. Valid values:
         - true: upgrade
         - false: not to upgrade
         """
-        warnings.warn("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""", DeprecationWarning)
-        pulumi.log.warn("""upgrade_db_instance_kernel_version is deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
-
         return pulumi.get(self, "upgrade_db_instance_kernel_version")
 
     @upgrade_db_instance_kernel_version.setter
@@ -2682,13 +2678,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="securityGroupId")
+    @_utilities.deprecated("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         """
-        warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
-        pulumi.log.warn("""security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
-
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -2980,15 +2974,13 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="upgradeDbInstanceKernelVersion")
+    @_utilities.deprecated("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
     def upgrade_db_instance_kernel_version(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to upgrade a minor version of the kernel. Valid values:
         - true: upgrade
         - false: not to upgrade
         """
-        warnings.warn("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""", DeprecationWarning)
-        pulumi.log.warn("""upgrade_db_instance_kernel_version is deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
-
         return pulumi.get(self, "upgrade_db_instance_kernel_version")
 
     @upgrade_db_instance_kernel_version.setter
@@ -4502,13 +4494,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroupId")
+    @_utilities.deprecated("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
     def security_group_id(self) -> pulumi.Output[str]:
         """
         It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         """
-        warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
-        pulumi.log.warn("""security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
-
         return pulumi.get(self, "security_group_id")
 
     @property
@@ -4712,15 +4702,13 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="upgradeDbInstanceKernelVersion")
+    @_utilities.deprecated("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
     def upgrade_db_instance_kernel_version(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to upgrade a minor version of the kernel. Valid values:
         - true: upgrade
         - false: not to upgrade
         """
-        warnings.warn("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""", DeprecationWarning)
-        pulumi.log.warn("""upgrade_db_instance_kernel_version is deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
-
         return pulumi.get(self, "upgrade_db_instance_kernel_version")
 
     @property

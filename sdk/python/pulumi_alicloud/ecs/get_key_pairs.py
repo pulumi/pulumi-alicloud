@@ -77,13 +77,11 @@ class GetKeyPairsResult:
 
     @property
     @pulumi.getter(name="keyPairs")
+    @_utilities.deprecated("""Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.""")
     def key_pairs(self) -> Sequence['outputs.GetKeyPairsKeyPairResult']:
         """
         A list of key pairs. Each element contains the following attributes:
         """
-        warnings.warn("""Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.""", DeprecationWarning)
-        pulumi.log.warn("""key_pairs is deprecated: Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead.""")
-
         return pulumi.get(self, "key_pairs")
 
     @property

@@ -133,13 +133,11 @@ class GetAccessGroupsResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.""")
     def type(self) -> Optional[str]:
         """
         (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `access_group_type` after version 1.95.0.
         """
-        warnings.warn("""Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.""")
-
         return pulumi.get(self, "type")
 
     @property

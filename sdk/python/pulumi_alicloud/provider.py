@@ -248,10 +248,8 @@ class ProviderArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""")
     def fc(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""", DeprecationWarning)
-        pulumi.log.warn("""fc is deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""")
-
         return pulumi.get(self, "fc")
 
     @fc.setter
@@ -260,10 +258,8 @@ class ProviderArgs:
 
     @property
     @pulumi.getter(name="logEndpoint")
+    @_utilities.deprecated("""Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""")
     def log_endpoint(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""", DeprecationWarning)
-        pulumi.log.warn("""log_endpoint is deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""")
-
         return pulumi.get(self, "log_endpoint")
 
     @log_endpoint.setter
@@ -284,10 +280,8 @@ class ProviderArgs:
 
     @property
     @pulumi.getter(name="mnsEndpoint")
+    @_utilities.deprecated("""Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""")
     def mns_endpoint(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""", DeprecationWarning)
-        pulumi.log.warn("""mns_endpoint is deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""")
-
         return pulumi.get(self, "mns_endpoint")
 
     @mns_endpoint.setter
@@ -296,10 +290,8 @@ class ProviderArgs:
 
     @property
     @pulumi.getter(name="otsInstanceName")
+    @_utilities.deprecated("""Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.""")
     def ots_instance_name(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.""", DeprecationWarning)
-        pulumi.log.warn("""ots_instance_name is deprecated: Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.""")
-
         return pulumi.get(self, "ots_instance_name")
 
     @ots_instance_name.setter
@@ -635,34 +627,26 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""")
     def fc(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""", DeprecationWarning)
-        pulumi.log.warn("""fc is deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""")
-
         return pulumi.get(self, "fc")
 
     @property
     @pulumi.getter(name="logEndpoint")
+    @_utilities.deprecated("""Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""")
     def log_endpoint(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""", DeprecationWarning)
-        pulumi.log.warn("""log_endpoint is deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""")
-
         return pulumi.get(self, "log_endpoint")
 
     @property
     @pulumi.getter(name="mnsEndpoint")
+    @_utilities.deprecated("""Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""")
     def mns_endpoint(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""", DeprecationWarning)
-        pulumi.log.warn("""mns_endpoint is deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""")
-
         return pulumi.get(self, "mns_endpoint")
 
     @property
     @pulumi.getter(name="otsInstanceName")
+    @_utilities.deprecated("""Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.""")
     def ots_instance_name(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.""", DeprecationWarning)
-        pulumi.log.warn("""ots_instance_name is deprecated: Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.""")
-
         return pulumi.get(self, "ots_instance_name")
 
     @property

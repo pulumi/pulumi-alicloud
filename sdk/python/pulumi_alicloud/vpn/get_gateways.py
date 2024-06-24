@@ -67,13 +67,11 @@ class GetGatewaysResult:
 
     @property
     @pulumi.getter(name="enableIpsec")
+    @_utilities.deprecated("""Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.""")
     def enable_ipsec(self) -> Optional[bool]:
         """
         Whether the ipsec function is enabled.
         """
-        warnings.warn("""Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.""", DeprecationWarning)
-        pulumi.log.warn("""enable_ipsec is deprecated: Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.""")
-
         return pulumi.get(self, "enable_ipsec")
 
     @property

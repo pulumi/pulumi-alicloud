@@ -60,13 +60,11 @@ class KeyPairArgs:
 
     @property
     @pulumi.getter(name="keyName")
+    @_utilities.deprecated("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
     def key_name(self) -> Optional[pulumi.Input[str]]:
         """
         The key pair's name. It is the only in one Alicloud account.
         """
-        warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
-
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -186,13 +184,11 @@ class _KeyPairState:
 
     @property
     @pulumi.getter(name="keyName")
+    @_utilities.deprecated("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
     def key_name(self) -> Optional[pulumi.Input[str]]:
         """
         The key pair's name. It is the only in one Alicloud account.
         """
-        warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
-
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -435,13 +431,11 @@ class KeyPair(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyName")
+    @_utilities.deprecated("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
     def key_name(self) -> pulumi.Output[str]:
         """
         The key pair's name. It is the only in one Alicloud account.
         """
-        warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
-
         return pulumi.get(self, "key_name")
 
     @property

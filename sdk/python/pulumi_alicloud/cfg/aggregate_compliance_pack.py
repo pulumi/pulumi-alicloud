@@ -121,13 +121,11 @@ class AggregateCompliancePackArgs:
 
     @property
     @pulumi.getter(name="configRules")
+    @_utilities.deprecated("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
     def config_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]]:
         """
         A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
-        warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
-
         return pulumi.get(self, "config_rules")
 
     @config_rules.setter
@@ -243,13 +241,11 @@ class _AggregateCompliancePackState:
 
     @property
     @pulumi.getter(name="configRules")
+    @_utilities.deprecated("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
     def config_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]]:
         """
         A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
-        warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
-
         return pulumi.get(self, "config_rules")
 
     @config_rules.setter
@@ -583,13 +579,11 @@ class AggregateCompliancePack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="configRules")
+    @_utilities.deprecated("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
     def config_rules(self) -> pulumi.Output[Optional[Sequence['outputs.AggregateCompliancePackConfigRule']]]:
         """
         A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
-        warnings.warn("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""", DeprecationWarning)
-        pulumi.log.warn("""config_rules is deprecated: Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
-
         return pulumi.get(self, "config_rules")
 
     @property

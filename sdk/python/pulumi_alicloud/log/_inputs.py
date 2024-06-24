@@ -434,13 +434,11 @@ class AlertQueryListArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use store""")
     def logstore(self) -> Optional[pulumi.Input[str]]:
         """
         Query logstore, use store for new alert, Deprecated from 1.161.0+.
         """
-        warnings.warn("""Deprecated from 1.161.0+, use store""", DeprecationWarning)
-        pulumi.log.warn("""logstore is deprecated: Deprecated from 1.161.0+, use store""")
-
         return pulumi.get(self, "logstore")
 
     @logstore.setter

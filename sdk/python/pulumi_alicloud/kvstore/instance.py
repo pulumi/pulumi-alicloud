@@ -323,13 +323,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="availabilityZone")
+    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from provider version 1.101.0 and `zone_id` instead.
         """
-        warnings.warn("""Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""")
-
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -410,13 +408,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="connectionStringPrefix")
+    @_utilities.deprecated("""Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
     def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         """
-        warnings.warn("""Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
-        pulumi.log.warn("""connection_string_prefix is deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
-
         return pulumi.get(self, "connection_string_prefix")
 
     @connection_string_prefix.setter
@@ -499,13 +495,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="enablePublic")
+    @_utilities.deprecated("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
     def enable_public(self) -> Optional[pulumi.Input[bool]]:
         """
         It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         """
-        warnings.warn("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
-        pulumi.log.warn("""enable_public is deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
-
         return pulumi.get(self, "enable_public")
 
     @enable_public.setter
@@ -587,13 +581,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         """
-        warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
-
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
@@ -615,13 +607,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="instanceName")
+    @_utilities.deprecated("""Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.""")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         """
-        warnings.warn("""Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_name is deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.""")
-
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
@@ -702,13 +692,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="nodeType")
+    @_utilities.deprecated("""Field 'node_type' has been deprecated from version 1.120.1""")
     def node_type(self) -> Optional[pulumi.Input[str]]:
         """
         "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         """
-        warnings.warn("""Field 'node_type' has been deprecated from version 1.120.1""", DeprecationWarning)
-        pulumi.log.warn("""node_type is deprecated: Field 'node_type' has been deprecated from version 1.120.1""")
-
         return pulumi.get(self, "node_type")
 
     @node_type.setter
@@ -729,13 +717,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
         """
         It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         """
-        warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
-        pulumi.log.warn("""parameters is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
-
         return pulumi.get(self, "parameters")
 
     @parameters.setter
@@ -1360,13 +1346,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="availabilityZone")
+    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from provider version 1.101.0 and `zone_id` instead.
         """
-        warnings.warn("""Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""")
-
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -1471,13 +1455,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="connectionString")
+    @_utilities.deprecated("""Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
     def connection_string(self) -> Optional[pulumi.Input[str]]:
         """
         Indicates whether the address is a private endpoint.
         """
-        warnings.warn("""Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
-        pulumi.log.warn("""connection_string is deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
-
         return pulumi.get(self, "connection_string")
 
     @connection_string.setter
@@ -1486,13 +1468,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="connectionStringPrefix")
+    @_utilities.deprecated("""Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
     def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         """
-        warnings.warn("""Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
-        pulumi.log.warn("""connection_string_prefix is deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
-
         return pulumi.get(self, "connection_string_prefix")
 
     @connection_string_prefix.setter
@@ -1575,13 +1555,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="enablePublic")
+    @_utilities.deprecated("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
     def enable_public(self) -> Optional[pulumi.Input[bool]]:
         """
         It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         """
-        warnings.warn("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
-        pulumi.log.warn("""enable_public is deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
-
         return pulumi.get(self, "enable_public")
 
     @enable_public.setter
@@ -1675,13 +1653,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         """
-        warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
-
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
@@ -1703,13 +1679,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="instanceName")
+    @_utilities.deprecated("""Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.""")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         """
-        warnings.warn("""Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_name is deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.""")
-
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
@@ -1790,13 +1764,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="nodeType")
+    @_utilities.deprecated("""Field 'node_type' has been deprecated from version 1.120.1""")
     def node_type(self) -> Optional[pulumi.Input[str]]:
         """
         "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         """
-        warnings.warn("""Field 'node_type' has been deprecated from version 1.120.1""", DeprecationWarning)
-        pulumi.log.warn("""node_type is deprecated: Field 'node_type' has been deprecated from version 1.120.1""")
-
         return pulumi.get(self, "node_type")
 
     @node_type.setter
@@ -1817,13 +1789,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
         """
         It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         """
-        warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
-        pulumi.log.warn("""parameters is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
-
         return pulumi.get(self, "parameters")
 
     @parameters.setter
@@ -2697,13 +2667,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZone")
+    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""")
     def availability_zone(self) -> pulumi.Output[str]:
         """
         It has been deprecated from provider version 1.101.0 and `zone_id` instead.
         """
-        warnings.warn("""Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.""")
-
         return pulumi.get(self, "availability_zone")
 
     @property
@@ -2772,24 +2740,20 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionString")
+    @_utilities.deprecated("""Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
     def connection_string(self) -> pulumi.Output[str]:
         """
         Indicates whether the address is a private endpoint.
         """
-        warnings.warn("""Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
-        pulumi.log.warn("""connection_string is deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
-
         return pulumi.get(self, "connection_string")
 
     @property
     @pulumi.getter(name="connectionStringPrefix")
+    @_utilities.deprecated("""Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
     def connection_string_prefix(self) -> pulumi.Output[Optional[str]]:
         """
         It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         """
-        warnings.warn("""Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
-        pulumi.log.warn("""connection_string_prefix is deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
-
         return pulumi.get(self, "connection_string_prefix")
 
     @property
@@ -2844,13 +2808,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enablePublic")
+    @_utilities.deprecated("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
     def enable_public(self) -> pulumi.Output[bool]:
         """
         It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         """
-        warnings.warn("""Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""", DeprecationWarning)
-        pulumi.log.warn("""enable_public is deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.""")
-
         return pulumi.get(self, "enable_public")
 
     @property
@@ -2912,13 +2874,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
     def instance_charge_type(self) -> pulumi.Output[str]:
         """
         It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         """
-        warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.""")
-
         return pulumi.get(self, "instance_charge_type")
 
     @property
@@ -2932,13 +2892,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceName")
+    @_utilities.deprecated("""Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.""")
     def instance_name(self) -> pulumi.Output[str]:
         """
         It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         """
-        warnings.warn("""Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_name is deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.""")
-
         return pulumi.get(self, "instance_name")
 
     @property
@@ -2991,13 +2949,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nodeType")
+    @_utilities.deprecated("""Field 'node_type' has been deprecated from version 1.120.1""")
     def node_type(self) -> pulumi.Output[str]:
         """
         "Field `node_type` has been deprecated from version 1.120.1". This parameter is determined by the `instance_class`.
         """
-        warnings.warn("""Field 'node_type' has been deprecated from version 1.120.1""", DeprecationWarning)
-        pulumi.log.warn("""node_type is deprecated: Field 'node_type' has been deprecated from version 1.120.1""")
-
         return pulumi.get(self, "node_type")
 
     @property
@@ -3010,13 +2966,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
     def parameters(self) -> pulumi.Output[Sequence['outputs.InstanceParameter']]:
         """
         It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
         """
-        warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
-        pulumi.log.warn("""parameters is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
-
         return pulumi.get(self, "parameters")
 
     @property

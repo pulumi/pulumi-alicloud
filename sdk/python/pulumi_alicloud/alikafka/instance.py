@@ -350,6 +350,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="topicQuota")
+    @_utilities.deprecated("""Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""")
     def topic_quota(self) -> Optional[pulumi.Input[int]]:
         """
         The max num of topic can be creation of the instance.
@@ -357,9 +358,6 @@ class InstanceArgs:
         Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
         Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         """
-        warnings.warn("""Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""", DeprecationWarning)
-        pulumi.log.warn("""topic_quota is deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""")
-
         return pulumi.get(self, "topic_quota")
 
     @topic_quota.setter
@@ -870,6 +868,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="topicQuota")
+    @_utilities.deprecated("""Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""")
     def topic_quota(self) -> Optional[pulumi.Input[int]]:
         """
         The max num of topic can be creation of the instance.
@@ -877,9 +876,6 @@ class _InstanceState:
         Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
         Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         """
-        warnings.warn("""Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""", DeprecationWarning)
-        pulumi.log.warn("""topic_quota is deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""")
-
         return pulumi.get(self, "topic_quota")
 
     @topic_quota.setter
@@ -1469,6 +1465,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="topicQuota")
+    @_utilities.deprecated("""Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""")
     def topic_quota(self) -> pulumi.Output[int]:
         """
         The max num of topic can be creation of the instance.
@@ -1476,9 +1473,6 @@ class Instance(pulumi.CustomResource):
         Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
         Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         """
-        warnings.warn("""Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""", DeprecationWarning)
-        pulumi.log.warn("""topic_quota is deprecated: Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""")
-
         return pulumi.get(self, "topic_quota")
 
     @property

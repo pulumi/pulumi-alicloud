@@ -105,13 +105,11 @@ class TrailArgs:
 
     @property
     @pulumi.getter(name="mnsTopicArn")
+    @_utilities.deprecated("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
     def mns_topic_arn(self) -> Optional[pulumi.Input[str]]:
         """
         Field `mns_topic_arn` has been deprecated from version 1.118.0.
         """
-        warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
-        pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
-
         return pulumi.get(self, "mns_topic_arn")
 
     @mns_topic_arn.setter
@@ -120,13 +118,11 @@ class TrailArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -171,13 +167,11 @@ class TrailArgs:
 
     @property
     @pulumi.getter(name="roleName")
+    @_utilities.deprecated("""Field 'role_name' has been deprecated from version 1.118.0""")
     def role_name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from version 1.118.0.
         """
-        warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
-        pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
-
         return pulumi.get(self, "role_name")
 
     @role_name.setter
@@ -339,13 +333,11 @@ class _TrailState:
 
     @property
     @pulumi.getter(name="mnsTopicArn")
+    @_utilities.deprecated("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
     def mns_topic_arn(self) -> Optional[pulumi.Input[str]]:
         """
         Field `mns_topic_arn` has been deprecated from version 1.118.0.
         """
-        warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
-        pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
-
         return pulumi.get(self, "mns_topic_arn")
 
     @mns_topic_arn.setter
@@ -354,13 +346,11 @@ class _TrailState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -405,13 +395,11 @@ class _TrailState:
 
     @property
     @pulumi.getter(name="roleName")
+    @_utilities.deprecated("""Field 'role_name' has been deprecated from version 1.118.0""")
     def role_name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from version 1.118.0.
         """
-        warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
-        pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
-
         return pulumi.get(self, "role_name")
 
     @role_name.setter
@@ -737,24 +725,20 @@ class Trail(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mnsTopicArn")
+    @_utilities.deprecated("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
     def mns_topic_arn(self) -> pulumi.Output[Optional[str]]:
         """
         Field `mns_topic_arn` has been deprecated from version 1.118.0.
         """
-        warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
-        pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
-
         return pulumi.get(self, "mns_topic_arn")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property
@@ -783,13 +767,11 @@ class Trail(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleName")
+    @_utilities.deprecated("""Field 'role_name' has been deprecated from version 1.118.0""")
     def role_name(self) -> pulumi.Output[str]:
         """
         Field `name` has been deprecated from version 1.118.0.
         """
-        warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
-        pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
-
         return pulumi.get(self, "role_name")
 
     @property

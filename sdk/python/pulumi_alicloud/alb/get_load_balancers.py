@@ -113,10 +113,8 @@ class GetLoadBalancersResult:
 
     @property
     @pulumi.getter(name="loadBalancerBussinessStatus")
+    @_utilities.deprecated("""Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.""")
     def load_balancer_bussiness_status(self) -> Optional[str]:
-        warnings.warn("""Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.""", DeprecationWarning)
-        pulumi.log.warn("""load_balancer_bussiness_status is deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.""")
-
         return pulumi.get(self, "load_balancer_bussiness_status")
 
     @property

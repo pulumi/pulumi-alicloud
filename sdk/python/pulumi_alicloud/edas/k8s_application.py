@@ -252,14 +252,12 @@ class K8sApplicationArgs:
 
     @property
     @pulumi.getter(name="internetSlbId")
+    @_utilities.deprecated("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
     def internet_slb_id(self) -> Optional[pulumi.Input[str]]:
         """
         Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
         It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
-        warnings.warn("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
-        pulumi.log.warn("""internet_slb_id is deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-
         return pulumi.get(self, "internet_slb_id")
 
     @internet_slb_id.setter
@@ -268,13 +266,11 @@ class K8sApplicationArgs:
 
     @property
     @pulumi.getter(name="internetSlbPort")
+    @_utilities.deprecated("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
     def internet_slb_port(self) -> Optional[pulumi.Input[int]]:
         """
         The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
-        warnings.warn("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
-        pulumi.log.warn("""internet_slb_port is deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-
         return pulumi.get(self, "internet_slb_port")
 
     @internet_slb_port.setter
@@ -283,13 +279,11 @@ class K8sApplicationArgs:
 
     @property
     @pulumi.getter(name="internetSlbProtocol")
+    @_utilities.deprecated("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
     def internet_slb_protocol(self) -> Optional[pulumi.Input[str]]:
         """
         The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
-        warnings.warn("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
-        pulumi.log.warn("""internet_slb_protocol is deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-
         return pulumi.get(self, "internet_slb_protocol")
 
     @internet_slb_protocol.setter
@@ -298,14 +292,12 @@ class K8sApplicationArgs:
 
     @property
     @pulumi.getter(name="internetTargetPort")
+    @_utilities.deprecated("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
     def internet_target_port(self) -> Optional[pulumi.Input[int]]:
         """
         The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
         It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
-        warnings.warn("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
-        pulumi.log.warn("""internet_target_port is deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-
         return pulumi.get(self, "internet_target_port")
 
     @internet_target_port.setter
@@ -784,14 +776,12 @@ class _K8sApplicationState:
 
     @property
     @pulumi.getter(name="internetSlbId")
+    @_utilities.deprecated("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
     def internet_slb_id(self) -> Optional[pulumi.Input[str]]:
         """
         Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
         It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
-        warnings.warn("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
-        pulumi.log.warn("""internet_slb_id is deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-
         return pulumi.get(self, "internet_slb_id")
 
     @internet_slb_id.setter
@@ -800,13 +790,11 @@ class _K8sApplicationState:
 
     @property
     @pulumi.getter(name="internetSlbPort")
+    @_utilities.deprecated("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
     def internet_slb_port(self) -> Optional[pulumi.Input[int]]:
         """
         The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
-        warnings.warn("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
-        pulumi.log.warn("""internet_slb_port is deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-
         return pulumi.get(self, "internet_slb_port")
 
     @internet_slb_port.setter
@@ -815,13 +803,11 @@ class _K8sApplicationState:
 
     @property
     @pulumi.getter(name="internetSlbProtocol")
+    @_utilities.deprecated("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
     def internet_slb_protocol(self) -> Optional[pulumi.Input[str]]:
         """
         The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
-        warnings.warn("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
-        pulumi.log.warn("""internet_slb_protocol is deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-
         return pulumi.get(self, "internet_slb_protocol")
 
     @internet_slb_protocol.setter
@@ -830,14 +816,12 @@ class _K8sApplicationState:
 
     @property
     @pulumi.getter(name="internetTargetPort")
+    @_utilities.deprecated("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
     def internet_target_port(self) -> Optional[pulumi.Input[int]]:
         """
         The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
         It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
-        warnings.warn("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
-        pulumi.log.warn("""internet_target_port is deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-
         return pulumi.get(self, "internet_target_port")
 
     @internet_target_port.setter
@@ -1453,48 +1437,40 @@ class K8sApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetSlbId")
+    @_utilities.deprecated("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
     def internet_slb_id(self) -> pulumi.Output[Optional[str]]:
         """
         Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
         It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
-        warnings.warn("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
-        pulumi.log.warn("""internet_slb_id is deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-
         return pulumi.get(self, "internet_slb_id")
 
     @property
     @pulumi.getter(name="internetSlbPort")
+    @_utilities.deprecated("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
     def internet_slb_port(self) -> pulumi.Output[Optional[int]]:
         """
         The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
-        warnings.warn("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
-        pulumi.log.warn("""internet_slb_port is deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-
         return pulumi.get(self, "internet_slb_port")
 
     @property
     @pulumi.getter(name="internetSlbProtocol")
+    @_utilities.deprecated("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
     def internet_slb_protocol(self) -> pulumi.Output[Optional[str]]:
         """
         The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
-        warnings.warn("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
-        pulumi.log.warn("""internet_slb_protocol is deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-
         return pulumi.get(self, "internet_slb_protocol")
 
     @property
     @pulumi.getter(name="internetTargetPort")
+    @_utilities.deprecated("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
     def internet_target_port(self) -> pulumi.Output[Optional[int]]:
         """
         The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
         It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
-        warnings.warn("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
-        pulumi.log.warn("""internet_target_port is deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
-
         return pulumi.get(self, "internet_target_port")
 
     @property
