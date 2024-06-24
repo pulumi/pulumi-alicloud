@@ -2901,14 +2901,12 @@ class GetZonesZoneResult(dict):
 
     @property
     @pulumi.getter(name="slbSlaveZoneIds")
+    @_utilities.deprecated("""the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead.""")
     def slb_slave_zone_ids(self) -> Sequence[str]:
         """
         (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone. 
         It has been deprecated from v1.157.0 and use `slave_zone_id` instead.
         """
-        warnings.warn("""the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead.""", DeprecationWarning)
-        pulumi.log.warn("""slb_slave_zone_ids is deprecated: the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead.""")
-
         return pulumi.get(self, "slb_slave_zone_ids")
 
     @property

@@ -233,13 +233,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="availabilityZone")
+    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
         Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         """
-        warnings.warn("""Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
-
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -324,13 +322,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
         Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         """
-        warnings.warn("""Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_charge_type is deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""")
-
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
@@ -428,13 +424,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="masterNodeNum")
+    @_utilities.deprecated("""Field `master_node_num` has been deprecated from provider version 1.213.0.""")
     def master_node_num(self) -> Optional[pulumi.Input[int]]:
         """
         The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
         """
-        warnings.warn("""Field `master_node_num` has been deprecated from provider version 1.213.0.""", DeprecationWarning)
-        pulumi.log.warn("""master_node_num is deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.""")
-
         return pulumi.get(self, "master_node_num")
 
     @master_node_num.setter
@@ -467,13 +461,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="privateIpAddress")
+    @_utilities.deprecated("""Field `private_ip_address` has been deprecated from provider version 1.213.0.""")
     def private_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
         The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         """
-        warnings.warn("""Field `private_ip_address` has been deprecated from provider version 1.213.0.""", DeprecationWarning)
-        pulumi.log.warn("""private_ip_address is deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.""")
-
         return pulumi.get(self, "private_ip_address")
 
     @private_ip_address.setter
@@ -506,13 +498,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="securityIpLists")
+    @_utilities.deprecated("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
     def security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         """
-        warnings.warn("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""", DeprecationWarning)
-        pulumi.log.warn("""security_ip_lists is deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
-
         return pulumi.get(self, "security_ip_lists")
 
     @security_ip_lists.setter
@@ -819,13 +809,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="availabilityZone")
+    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
         Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         """
-        warnings.warn("""Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
-
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -958,13 +946,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
         Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         """
-        warnings.warn("""Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_charge_type is deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""")
-
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
@@ -1062,13 +1048,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="masterNodeNum")
+    @_utilities.deprecated("""Field `master_node_num` has been deprecated from provider version 1.213.0.""")
     def master_node_num(self) -> Optional[pulumi.Input[int]]:
         """
         The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
         """
-        warnings.warn("""Field `master_node_num` has been deprecated from provider version 1.213.0.""", DeprecationWarning)
-        pulumi.log.warn("""master_node_num is deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.""")
-
         return pulumi.get(self, "master_node_num")
 
     @master_node_num.setter
@@ -1113,13 +1097,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="privateIpAddress")
+    @_utilities.deprecated("""Field `private_ip_address` has been deprecated from provider version 1.213.0.""")
     def private_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
         The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         """
-        warnings.warn("""Field `private_ip_address` has been deprecated from provider version 1.213.0.""", DeprecationWarning)
-        pulumi.log.warn("""private_ip_address is deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.""")
-
         return pulumi.get(self, "private_ip_address")
 
     @private_ip_address.setter
@@ -1152,13 +1134,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="securityIpLists")
+    @_utilities.deprecated("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
     def security_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         """
-        warnings.warn("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""", DeprecationWarning)
-        pulumi.log.warn("""security_ip_lists is deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
-
         return pulumi.get(self, "security_ip_lists")
 
     @security_ip_lists.setter
@@ -1759,13 +1739,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZone")
+    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
     def availability_zone(self) -> pulumi.Output[str]:
         """
         Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         """
-        warnings.warn("""Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
-
         return pulumi.get(self, "availability_zone")
 
     @property
@@ -1854,13 +1832,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""")
     def instance_charge_type(self) -> pulumi.Output[str]:
         """
         Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         """
-        warnings.warn("""Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_charge_type is deprecated: Field `instance_charge_type` has been deprecated from version 1.187.0. Use `payment_type` instead.""")
-
         return pulumi.get(self, "instance_charge_type")
 
     @property
@@ -1926,13 +1902,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="masterNodeNum")
+    @_utilities.deprecated("""Field `master_node_num` has been deprecated from provider version 1.213.0.""")
     def master_node_num(self) -> pulumi.Output[Optional[int]]:
         """
         The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
         """
-        warnings.warn("""Field `master_node_num` has been deprecated from provider version 1.213.0.""", DeprecationWarning)
-        pulumi.log.warn("""master_node_num is deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.""")
-
         return pulumi.get(self, "master_node_num")
 
     @property
@@ -1961,13 +1935,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIpAddress")
+    @_utilities.deprecated("""Field `private_ip_address` has been deprecated from provider version 1.213.0.""")
     def private_ip_address(self) -> pulumi.Output[Optional[str]]:
         """
         The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         """
-        warnings.warn("""Field `private_ip_address` has been deprecated from provider version 1.213.0.""", DeprecationWarning)
-        pulumi.log.warn("""private_ip_address is deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.""")
-
         return pulumi.get(self, "private_ip_address")
 
     @property
@@ -1988,13 +1960,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityIpLists")
+    @_utilities.deprecated("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
     def security_ip_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         """
-        warnings.warn("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""", DeprecationWarning)
-        pulumi.log.warn("""security_ip_lists is deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
-
         return pulumi.get(self, "security_ip_lists")
 
     @property

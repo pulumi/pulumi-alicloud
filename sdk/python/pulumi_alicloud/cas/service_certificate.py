@@ -97,13 +97,11 @@ class ServiceCertificateArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from version 1.129.0 and using `certificate_name` instead.
         """
-        warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -199,13 +197,11 @@ class _ServiceCertificateState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from version 1.129.0 and using `certificate_name` instead.
         """
-        warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -525,12 +521,10 @@ class ServiceCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         It has been deprecated from version 1.129.0 and using `certificate_name` instead.
         """
-        warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
-
         return pulumi.get(self, "name")
 

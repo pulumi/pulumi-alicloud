@@ -175,13 +175,11 @@ class NetworkInterfaceArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -217,13 +215,11 @@ class NetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="privateIp")
+    @_utilities.deprecated("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
         """
         The primary private IP of the ENI.
         """
-        warnings.warn("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""", DeprecationWarning)
-        pulumi.log.warn("""private_ip is deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
-
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -241,13 +237,11 @@ class NetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="privateIps")
+    @_utilities.deprecated("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         """
-        warnings.warn("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""", DeprecationWarning)
-        pulumi.log.warn("""private_ips is deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
-
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
@@ -256,13 +250,11 @@ class NetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="privateIpsCount")
+    @_utilities.deprecated("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
     def private_ips_count(self) -> Optional[pulumi.Input[int]]:
         """
         Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         """
-        warnings.warn("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""", DeprecationWarning)
-        pulumi.log.warn("""private_ips_count is deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
-
         return pulumi.get(self, "private_ips_count")
 
     @private_ips_count.setter
@@ -310,13 +302,11 @@ class NetworkInterfaceArgs:
 
     @property
     @pulumi.getter(name="securityGroups")
+    @_utilities.deprecated("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of security group ids to associate with.
         """
-        warnings.warn("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""", DeprecationWarning)
-        pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
-
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
@@ -508,13 +498,11 @@ class _NetworkInterfaceState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -550,13 +538,11 @@ class _NetworkInterfaceState:
 
     @property
     @pulumi.getter(name="privateIp")
+    @_utilities.deprecated("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
     def private_ip(self) -> Optional[pulumi.Input[str]]:
         """
         The primary private IP of the ENI.
         """
-        warnings.warn("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""", DeprecationWarning)
-        pulumi.log.warn("""private_ip is deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
-
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -574,13 +560,11 @@ class _NetworkInterfaceState:
 
     @property
     @pulumi.getter(name="privateIps")
+    @_utilities.deprecated("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
     def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         """
-        warnings.warn("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""", DeprecationWarning)
-        pulumi.log.warn("""private_ips is deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
-
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
@@ -589,13 +573,11 @@ class _NetworkInterfaceState:
 
     @property
     @pulumi.getter(name="privateIpsCount")
+    @_utilities.deprecated("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
     def private_ips_count(self) -> Optional[pulumi.Input[int]]:
         """
         Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         """
-        warnings.warn("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""", DeprecationWarning)
-        pulumi.log.warn("""private_ips_count is deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
-
         return pulumi.get(self, "private_ips_count")
 
     @private_ips_count.setter
@@ -643,13 +625,11 @@ class _NetworkInterfaceState:
 
     @property
     @pulumi.getter(name="securityGroups")
+    @_utilities.deprecated("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of security group ids to associate with.
         """
-        warnings.warn("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""", DeprecationWarning)
-        pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
-
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
@@ -1022,13 +1002,11 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
     def name(self) -> pulumi.Output[str]:
         """
         Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
-
         return pulumi.get(self, "name")
 
     @property
@@ -1048,13 +1026,11 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIp")
+    @_utilities.deprecated("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
     def private_ip(self) -> pulumi.Output[str]:
         """
         The primary private IP of the ENI.
         """
-        warnings.warn("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""", DeprecationWarning)
-        pulumi.log.warn("""private_ip is deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
-
         return pulumi.get(self, "private_ip")
 
     @property
@@ -1064,24 +1040,20 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="privateIps")
+    @_utilities.deprecated("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
     def private_ips(self) -> pulumi.Output[Sequence[str]]:
         """
         List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         """
-        warnings.warn("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""", DeprecationWarning)
-        pulumi.log.warn("""private_ips is deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
-
         return pulumi.get(self, "private_ips")
 
     @property
     @pulumi.getter(name="privateIpsCount")
+    @_utilities.deprecated("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
     def private_ips_count(self) -> pulumi.Output[int]:
         """
         Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         """
-        warnings.warn("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""", DeprecationWarning)
-        pulumi.log.warn("""private_ips_count is deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
-
         return pulumi.get(self, "private_ips_count")
 
     @property
@@ -1109,13 +1081,11 @@ class NetworkInterface(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityGroups")
+    @_utilities.deprecated("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
     def security_groups(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of security group ids to associate with.
         """
-        warnings.warn("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""", DeprecationWarning)
-        pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
-
         return pulumi.get(self, "security_groups")
 
     @property

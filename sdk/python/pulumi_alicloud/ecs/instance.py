@@ -362,13 +362,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="allocatePublicIp")
+    @_utilities.deprecated("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
     def allocate_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
         It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         """
-        warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
-        pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
-
         return pulumi.get(self, "allocate_public_ip")
 
     @allocate_public_ip.setter
@@ -679,13 +677,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="internetMaxBandwidthIn")
+    @_utilities.deprecated("""The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""")
     def internet_max_bandwidth_in(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         """
-        warnings.warn("""The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""", DeprecationWarning)
-        pulumi.log.warn("""internet_max_bandwidth_in is deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""")
-
         return pulumi.get(self, "internet_max_bandwidth_in")
 
     @internet_max_bandwidth_in.setter
@@ -1644,13 +1640,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="allocatePublicIp")
+    @_utilities.deprecated("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
     def allocate_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
         It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         """
-        warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
-        pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
-
         return pulumi.get(self, "allocate_public_ip")
 
     @allocate_public_ip.setter
@@ -1985,13 +1979,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="internetMaxBandwidthIn")
+    @_utilities.deprecated("""The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""")
     def internet_max_bandwidth_in(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         """
-        warnings.warn("""The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""", DeprecationWarning)
-        pulumi.log.warn("""internet_max_bandwidth_in is deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""")
-
         return pulumi.get(self, "internet_max_bandwidth_in")
 
     @internet_max_bandwidth_in.setter
@@ -3492,13 +3484,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allocatePublicIp")
+    @_utilities.deprecated("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
     def allocate_public_ip(self) -> pulumi.Output[Optional[bool]]:
         """
         It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         """
-        warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
-        pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
-
         return pulumi.get(self, "allocate_public_ip")
 
     @property
@@ -3729,13 +3719,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthIn")
+    @_utilities.deprecated("""The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""")
     def internet_max_bandwidth_in(self) -> pulumi.Output[int]:
         """
         Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         """
-        warnings.warn("""The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""", DeprecationWarning)
-        pulumi.log.warn("""internet_max_bandwidth_in is deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""")
-
         return pulumi.get(self, "internet_max_bandwidth_in")
 
     @property

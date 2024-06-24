@@ -80,13 +80,11 @@ class ZoneArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -280,13 +278,11 @@ class _ZoneState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -610,13 +606,11 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property

@@ -269,13 +269,11 @@ class LoadBalancerArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -333,15 +331,13 @@ class LoadBalancerArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
     def specification(self) -> Optional[pulumi.Input[str]]:
         """
         The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
         Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
         "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
         """
-        warnings.warn("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""", DeprecationWarning)
-        pulumi.log.warn("""specification is deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
-
         return pulumi.get(self, "specification")
 
     @specification.setter
@@ -649,13 +645,11 @@ class _LoadBalancerState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -713,15 +707,13 @@ class _LoadBalancerState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
     def specification(self) -> Optional[pulumi.Input[str]]:
         """
         The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
         Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
         "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
         """
-        warnings.warn("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""", DeprecationWarning)
-        pulumi.log.warn("""specification is deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
-
         return pulumi.get(self, "specification")
 
     @specification.setter
@@ -1227,13 +1219,11 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
     def name(self) -> pulumi.Output[str]:
         """
         Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
-
         return pulumi.get(self, "name")
 
     @property
@@ -1271,15 +1261,13 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
     def specification(self) -> pulumi.Output[str]:
         """
         The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
         Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
         "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
         """
-        warnings.warn("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""", DeprecationWarning)
-        pulumi.log.warn("""specification is deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
-
         return pulumi.get(self, "specification")
 
     @property

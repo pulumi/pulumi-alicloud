@@ -142,13 +142,11 @@ class DomainArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
         Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
         """
-        warnings.warn("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
-
         return pulumi.get(self, "domain")
 
     @domain.setter
@@ -426,13 +424,11 @@ class _DomainState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
         Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
         """
-        warnings.warn("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
-
         return pulumi.get(self, "domain")
 
     @domain.setter
@@ -915,13 +911,11 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
     def domain(self) -> pulumi.Output[str]:
         """
         Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
         """
-        warnings.warn("""Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""domain is deprecated: Field 'domain' has been deprecated from version 1.94.0. Use 'domain_name' instead.""")
-
         return pulumi.get(self, "domain")
 
     @property

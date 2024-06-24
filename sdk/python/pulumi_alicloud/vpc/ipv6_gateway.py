@@ -94,13 +94,11 @@ class Ipv6GatewayArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""")
     def spec(self) -> Optional[pulumi.Input[str]]:
         """
         IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         """
-        warnings.warn("""Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""", DeprecationWarning)
-        pulumi.log.warn("""spec is deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""")
-
         return pulumi.get(self, "spec")
 
     @spec.setter
@@ -276,13 +274,11 @@ class _Ipv6GatewayState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""")
     def spec(self) -> Optional[pulumi.Input[str]]:
         """
         IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         """
-        warnings.warn("""Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""", DeprecationWarning)
-        pulumi.log.warn("""spec is deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""")
-
         return pulumi.get(self, "spec")
 
     @spec.setter
@@ -609,13 +605,11 @@ class Ipv6Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""")
     def spec(self) -> pulumi.Output[str]:
         """
         IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         """
-        warnings.warn("""Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""", DeprecationWarning)
-        pulumi.log.warn("""spec is deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""")
-
         return pulumi.get(self, "spec")
 
     @property

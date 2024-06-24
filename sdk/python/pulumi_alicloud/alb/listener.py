@@ -166,13 +166,11 @@ class ListenerArgs:
 
     @property
     @pulumi.getter(name="aclConfig")
+    @_utilities.deprecated("""Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""")
     def acl_config(self) -> Optional[pulumi.Input['ListenerAclConfigArgs']]:
         """
         The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
         """
-        warnings.warn("""Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""", DeprecationWarning)
-        pulumi.log.warn("""acl_config is deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""")
-
         return pulumi.get(self, "acl_config")
 
     @acl_config.setter
@@ -460,13 +458,11 @@ class _ListenerState:
 
     @property
     @pulumi.getter(name="aclConfig")
+    @_utilities.deprecated("""Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""")
     def acl_config(self) -> Optional[pulumi.Input['ListenerAclConfigArgs']]:
         """
         The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
         """
-        warnings.warn("""Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""", DeprecationWarning)
-        pulumi.log.warn("""acl_config is deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""")
-
         return pulumi.get(self, "acl_config")
 
     @acl_config.setter
@@ -934,13 +930,11 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclConfig")
+    @_utilities.deprecated("""Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""")
     def acl_config(self) -> pulumi.Output['outputs.ListenerAclConfig']:
         """
         The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
         """
-        warnings.warn("""Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""", DeprecationWarning)
-        pulumi.log.warn("""acl_config is deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""")
-
         return pulumi.get(self, "acl_config")
 
     @property

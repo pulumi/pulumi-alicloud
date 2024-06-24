@@ -200,13 +200,11 @@ class GatewayArgs:
 
     @property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.""")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
         """
-        warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.""")
-
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
@@ -215,13 +213,11 @@ class GatewayArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -576,13 +572,11 @@ class _GatewayState:
 
     @property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.""")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
         """
-        warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.""")
-
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
@@ -603,13 +597,11 @@ class _GatewayState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1091,13 +1083,11 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.""")
     def instance_charge_type(self) -> pulumi.Output[str]:
         """
         . Field 'instance_charge_type' has been deprecated from provider version 1.216.0. New field 'payment_type' instead.
         """
-        warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.215.0. New field 'payment_type' instead.""")
-
         return pulumi.get(self, "instance_charge_type")
 
     @property
@@ -1110,13 +1100,11 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_gateway_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.215.0. New field 'vpn_gateway_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property

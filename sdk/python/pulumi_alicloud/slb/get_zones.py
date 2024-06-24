@@ -63,10 +63,8 @@ class GetZonesResult:
 
     @property
     @pulumi.getter(name="enableDetails")
+    @_utilities.deprecated("""The parameter enable_details has been deprecated from version v1.154.0+""")
     def enable_details(self) -> Optional[bool]:
-        warnings.warn("""The parameter enable_details has been deprecated from version v1.154.0+""", DeprecationWarning)
-        pulumi.log.warn("""enable_details is deprecated: The parameter enable_details has been deprecated from version v1.154.0+""")
-
         return pulumi.get(self, "enable_details")
 
     @property

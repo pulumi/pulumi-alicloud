@@ -162,13 +162,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="ecsLists")
+    @_utilities.deprecated("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
     def ecs_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]]:
         """
         The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         """
-        warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
-        pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
-
         return pulumi.get(self, "ecs_lists")
 
     @ecs_lists.setter
@@ -213,10 +211,8 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="instanceName")
+    @_utilities.deprecated("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_name is deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
-
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
@@ -466,13 +462,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="ecsLists")
+    @_utilities.deprecated("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
     def ecs_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]]:
         """
         The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         """
-        warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
-        pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
-
         return pulumi.get(self, "ecs_lists")
 
     @ecs_lists.setter
@@ -517,10 +511,8 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="instanceName")
+    @_utilities.deprecated("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_name is deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
-
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
@@ -976,13 +968,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ecsLists")
+    @_utilities.deprecated("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
     def ecs_lists(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceEcsList']]]:
         """
         The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         """
-        warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
-        pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
-
         return pulumi.get(self, "ecs_lists")
 
     @property
@@ -1011,10 +1001,8 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instanceName")
+    @_utilities.deprecated("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
     def instance_name(self) -> pulumi.Output[str]:
-        warnings.warn("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""instance_name is deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
-
         return pulumi.get(self, "instance_name")
 
     @property

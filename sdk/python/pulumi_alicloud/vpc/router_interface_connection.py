@@ -261,7 +261,7 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         foo_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("foo",
             interface_id=initiate.id,
             opposite_interface_id=opposite.id,
-            opts=pulumi.ResourceOptions(depends_on=[bar_router_interface_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[bar_router_interface_connection]))
         ```
 
         ## Import
@@ -345,7 +345,7 @@ class RouterInterfaceConnection(pulumi.CustomResource):
         foo_router_interface_connection = alicloud.vpc.RouterInterfaceConnection("foo",
             interface_id=initiate.id,
             opposite_interface_id=opposite.id,
-            opts=pulumi.ResourceOptions(depends_on=[bar_router_interface_connection]))
+            opts = pulumi.ResourceOptions(depends_on=[bar_router_interface_connection]))
         ```
 
         ## Import

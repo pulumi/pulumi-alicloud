@@ -208,14 +208,12 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="containerImageScan")
+    @_utilities.deprecated("""Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""")
     def container_image_scan(self) -> Optional[pulumi.Input[str]]:
         """
         Container Image security scan. Interval type, value interval:[0,200000].
         > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
         """
-        warnings.warn("""Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""", DeprecationWarning)
-        pulumi.log.warn("""container_image_scan is deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""")
-
         return pulumi.get(self, "container_image_scan")
 
     @container_image_scan.setter
@@ -709,14 +707,12 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="containerImageScan")
+    @_utilities.deprecated("""Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""")
     def container_image_scan(self) -> Optional[pulumi.Input[str]]:
         """
         Container Image security scan. Interval type, value interval:[0,200000].
         > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
         """
-        warnings.warn("""Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""", DeprecationWarning)
-        pulumi.log.warn("""container_image_scan is deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""")
-
         return pulumi.get(self, "container_image_scan")
 
     @container_image_scan.setter
@@ -1453,14 +1449,12 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="containerImageScan")
+    @_utilities.deprecated("""Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""")
     def container_image_scan(self) -> pulumi.Output[Optional[str]]:
         """
         Container Image security scan. Interval type, value interval:[0,200000].
         > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
         """
-        warnings.warn("""Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""", DeprecationWarning)
-        pulumi.log.warn("""container_image_scan is deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.""")
-
         return pulumi.get(self, "container_image_scan")
 
     @property

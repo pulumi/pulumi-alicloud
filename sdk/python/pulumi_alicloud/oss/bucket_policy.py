@@ -138,7 +138,7 @@ class BucketPolicy(pulumi.CustomResource):
                 }],
             }),
             bucket=create_bucket.bucket,
-            opts=pulumi.ResourceOptions(depends_on=[create_bucket]))
+            opts = pulumi.ResourceOptions(depends_on=[create_bucket]))
         ```
 
         ## Import
@@ -201,7 +201,7 @@ class BucketPolicy(pulumi.CustomResource):
                 }],
             }),
             bucket=create_bucket.bucket,
-            opts=pulumi.ResourceOptions(depends_on=[create_bucket]))
+            opts = pulumi.ResourceOptions(depends_on=[create_bucket]))
         ```
 
         ## Import

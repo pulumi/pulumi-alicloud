@@ -125,13 +125,11 @@ class DiskArgs:
 
     @property
     @pulumi.getter(name="availabilityZone")
+    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
         The Zone to create the disk in.
         """
-        warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
-        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
-
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -260,13 +258,11 @@ class DiskArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -501,13 +497,11 @@ class _DiskState:
 
     @property
     @pulumi.getter(name="availabilityZone")
+    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
         The Zone to create the disk in.
         """
-        warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
-        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
-
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -636,13 +630,11 @@ class _DiskState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1071,13 +1063,11 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZone")
+    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
     def availability_zone(self) -> pulumi.Output[str]:
         """
         The Zone to create the disk in.
         """
-        warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
-        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
-
         return pulumi.get(self, "availability_zone")
 
     @property
@@ -1158,13 +1148,11 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property

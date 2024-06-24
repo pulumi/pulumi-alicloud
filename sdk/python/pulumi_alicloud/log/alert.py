@@ -223,13 +223,11 @@ class AlertArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use eval_condition in severity_configurations""")
     def condition(self) -> Optional[pulumi.Input[str]]:
         """
         Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
         """
-        warnings.warn("""Deprecated from 1.161.0+, use eval_condition in severity_configurations""", DeprecationWarning)
-        pulumi.log.warn("""condition is deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations""")
-
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -238,10 +236,8 @@ class AlertArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use dashboardId in query_list""")
     def dashboard(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Deprecated from 1.161.0+, use dashboardId in query_list""", DeprecationWarning)
-        pulumi.log.warn("""dashboard is deprecated: Deprecated from 1.161.0+, use dashboardId in query_list""")
-
         return pulumi.get(self, "dashboard")
 
     @dashboard.setter
@@ -322,13 +318,11 @@ class AlertArgs:
 
     @property
     @pulumi.getter(name="notificationLists")
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use policy_configuration for notification""")
     def notification_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]]:
         """
         Alarm information notification list, Deprecated from 1.161.0+.
         """
-        warnings.warn("""Deprecated from 1.161.0+, use policy_configuration for notification""", DeprecationWarning)
-        pulumi.log.warn("""notification_lists is deprecated: Deprecated from 1.161.0+, use policy_configuration for notification""")
-
         return pulumi.get(self, "notification_lists")
 
     @notification_lists.setter
@@ -337,13 +331,11 @@ class AlertArgs:
 
     @property
     @pulumi.getter(name="notifyThreshold")
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use threshold""")
     def notify_threshold(self) -> Optional[pulumi.Input[int]]:
         """
         Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
         """
-        warnings.warn("""Deprecated from 1.161.0+, use threshold""", DeprecationWarning)
-        pulumi.log.warn("""notify_threshold is deprecated: Deprecated from 1.161.0+, use threshold""")
-
         return pulumi.get(self, "notify_threshold")
 
     @notify_threshold.setter
@@ -388,13 +380,11 @@ class AlertArgs:
 
     @property
     @pulumi.getter(name="scheduleInterval")
+    @_utilities.deprecated("""Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
     def schedule_interval(self) -> Optional[pulumi.Input[str]]:
         """
         Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         """
-        warnings.warn("""Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
-        pulumi.log.warn("""schedule_interval is deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
-
         return pulumi.get(self, "schedule_interval")
 
     @schedule_interval.setter
@@ -403,13 +393,11 @@ class AlertArgs:
 
     @property
     @pulumi.getter(name="scheduleType")
+    @_utilities.deprecated("""Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
     def schedule_type(self) -> Optional[pulumi.Input[str]]:
         """
         Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         """
-        warnings.warn("""Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
-        pulumi.log.warn("""schedule_type is deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
-
         return pulumi.get(self, "schedule_type")
 
     @schedule_type.setter
@@ -466,13 +454,11 @@ class AlertArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use repeat_interval in policy_configuration""")
     def throttling(self) -> Optional[pulumi.Input[str]]:
         """
         Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         """
-        warnings.warn("""Deprecated from 1.161.0+, use repeat_interval in policy_configuration""", DeprecationWarning)
-        pulumi.log.warn("""throttling is deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration""")
-
         return pulumi.get(self, "throttling")
 
     @throttling.setter
@@ -705,13 +691,11 @@ class _AlertState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use eval_condition in severity_configurations""")
     def condition(self) -> Optional[pulumi.Input[str]]:
         """
         Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
         """
-        warnings.warn("""Deprecated from 1.161.0+, use eval_condition in severity_configurations""", DeprecationWarning)
-        pulumi.log.warn("""condition is deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations""")
-
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -720,10 +704,8 @@ class _AlertState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use dashboardId in query_list""")
     def dashboard(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Deprecated from 1.161.0+, use dashboardId in query_list""", DeprecationWarning)
-        pulumi.log.warn("""dashboard is deprecated: Deprecated from 1.161.0+, use dashboardId in query_list""")
-
         return pulumi.get(self, "dashboard")
 
     @dashboard.setter
@@ -804,13 +786,11 @@ class _AlertState:
 
     @property
     @pulumi.getter(name="notificationLists")
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use policy_configuration for notification""")
     def notification_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]]:
         """
         Alarm information notification list, Deprecated from 1.161.0+.
         """
-        warnings.warn("""Deprecated from 1.161.0+, use policy_configuration for notification""", DeprecationWarning)
-        pulumi.log.warn("""notification_lists is deprecated: Deprecated from 1.161.0+, use policy_configuration for notification""")
-
         return pulumi.get(self, "notification_lists")
 
     @notification_lists.setter
@@ -819,13 +799,11 @@ class _AlertState:
 
     @property
     @pulumi.getter(name="notifyThreshold")
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use threshold""")
     def notify_threshold(self) -> Optional[pulumi.Input[int]]:
         """
         Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
         """
-        warnings.warn("""Deprecated from 1.161.0+, use threshold""", DeprecationWarning)
-        pulumi.log.warn("""notify_threshold is deprecated: Deprecated from 1.161.0+, use threshold""")
-
         return pulumi.get(self, "notify_threshold")
 
     @notify_threshold.setter
@@ -882,13 +860,11 @@ class _AlertState:
 
     @property
     @pulumi.getter(name="scheduleInterval")
+    @_utilities.deprecated("""Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
     def schedule_interval(self) -> Optional[pulumi.Input[str]]:
         """
         Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         """
-        warnings.warn("""Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
-        pulumi.log.warn("""schedule_interval is deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
-
         return pulumi.get(self, "schedule_interval")
 
     @schedule_interval.setter
@@ -897,13 +873,11 @@ class _AlertState:
 
     @property
     @pulumi.getter(name="scheduleType")
+    @_utilities.deprecated("""Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
     def schedule_type(self) -> Optional[pulumi.Input[str]]:
         """
         Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         """
-        warnings.warn("""Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
-        pulumi.log.warn("""schedule_type is deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
-
         return pulumi.get(self, "schedule_type")
 
     @schedule_type.setter
@@ -960,13 +934,11 @@ class _AlertState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use repeat_interval in policy_configuration""")
     def throttling(self) -> Optional[pulumi.Input[str]]:
         """
         Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         """
-        warnings.warn("""Deprecated from 1.161.0+, use repeat_interval in policy_configuration""", DeprecationWarning)
-        pulumi.log.warn("""throttling is deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration""")
-
         return pulumi.get(self, "throttling")
 
     @throttling.setter
@@ -1825,21 +1797,17 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use eval_condition in severity_configurations""")
     def condition(self) -> pulumi.Output[Optional[str]]:
         """
         Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
         """
-        warnings.warn("""Deprecated from 1.161.0+, use eval_condition in severity_configurations""", DeprecationWarning)
-        pulumi.log.warn("""condition is deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations""")
-
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use dashboardId in query_list""")
     def dashboard(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Deprecated from 1.161.0+, use dashboardId in query_list""", DeprecationWarning)
-        pulumi.log.warn("""dashboard is deprecated: Deprecated from 1.161.0+, use dashboardId in query_list""")
-
         return pulumi.get(self, "dashboard")
 
     @property
@@ -1892,24 +1860,20 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationLists")
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use policy_configuration for notification""")
     def notification_lists(self) -> pulumi.Output[Optional[Sequence['outputs.AlertNotificationList']]]:
         """
         Alarm information notification list, Deprecated from 1.161.0+.
         """
-        warnings.warn("""Deprecated from 1.161.0+, use policy_configuration for notification""", DeprecationWarning)
-        pulumi.log.warn("""notification_lists is deprecated: Deprecated from 1.161.0+, use policy_configuration for notification""")
-
         return pulumi.get(self, "notification_lists")
 
     @property
     @pulumi.getter(name="notifyThreshold")
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use threshold""")
     def notify_threshold(self) -> pulumi.Output[Optional[int]]:
         """
         Notification threshold, which is not notified until the number of triggers is reached. The default is 1, Deprecated from 1.161.0+.
         """
-        warnings.warn("""Deprecated from 1.161.0+, use threshold""", DeprecationWarning)
-        pulumi.log.warn("""notify_threshold is deprecated: Deprecated from 1.161.0+, use threshold""")
-
         return pulumi.get(self, "notify_threshold")
 
     @property
@@ -1946,24 +1910,20 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scheduleInterval")
+    @_utilities.deprecated("""Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
     def schedule_interval(self) -> pulumi.Output[str]:
         """
         Execution interval. 60 seconds minimum, such as 60s, 1h. Deprecated from 1.176.0+. use interval in schedule.
         """
-        warnings.warn("""Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
-        pulumi.log.warn("""schedule_interval is deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
-
         return pulumi.get(self, "schedule_interval")
 
     @property
     @pulumi.getter(name="scheduleType")
+    @_utilities.deprecated("""Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
     def schedule_type(self) -> pulumi.Output[str]:
         """
         Default FixedRate. No need to configure this parameter. Deprecated from 1.176.0+. use type in schedule.
         """
-        warnings.warn("""Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
-        pulumi.log.warn("""schedule_type is deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
-
         return pulumi.get(self, "schedule_type")
 
     @property
@@ -2000,13 +1960,11 @@ class Alert(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated from 1.161.0+, use repeat_interval in policy_configuration""")
     def throttling(self) -> pulumi.Output[Optional[str]]:
         """
         Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
         """
-        warnings.warn("""Deprecated from 1.161.0+, use repeat_interval in policy_configuration""", DeprecationWarning)
-        pulumi.log.warn("""throttling is deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration""")
-
         return pulumi.get(self, "throttling")
 
     @property

@@ -139,13 +139,11 @@ class ForwardEntryArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -321,13 +319,11 @@ class _ForwardEntryState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -679,13 +675,11 @@ class ForwardEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         """
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property

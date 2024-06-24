@@ -86,13 +86,11 @@ class HAVipAttachmentArgs:
 
     @property
     @pulumi.getter(name="havipId")
+    @_utilities.deprecated("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
     def havip_id(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         """
-        warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
-
         return pulumi.get(self, "havip_id")
 
     @havip_id.setter
@@ -182,13 +180,11 @@ class _HAVipAttachmentState:
 
     @property
     @pulumi.getter(name="havipId")
+    @_utilities.deprecated("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
     def havip_id(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         """
-        warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
-
         return pulumi.get(self, "havip_id")
 
     @havip_id.setter
@@ -485,13 +481,11 @@ class HAVipAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="havipId")
+    @_utilities.deprecated("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
     def havip_id(self) -> pulumi.Output[str]:
         """
         . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         """
-        warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
-
         return pulumi.get(self, "havip_id")
 
     @property

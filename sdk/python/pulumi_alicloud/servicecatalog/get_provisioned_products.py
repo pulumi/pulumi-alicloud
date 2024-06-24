@@ -119,13 +119,11 @@ class GetProvisionedProductsResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'products' has been deprecated from provider version 1.197.0.""")
     def products(self) -> Sequence['outputs.GetProvisionedProductsProductResult']:
         """
         (Deprecated since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
         """
-        warnings.warn("""Field 'products' has been deprecated from provider version 1.197.0.""", DeprecationWarning)
-        pulumi.log.warn("""products is deprecated: Field 'products' has been deprecated from provider version 1.197.0.""")
-
         return pulumi.get(self, "products")
 
     @property

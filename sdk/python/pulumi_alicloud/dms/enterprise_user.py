@@ -106,13 +106,11 @@ class EnterpriseUserArgs:
 
     @property
     @pulumi.getter(name="nickName")
+    @_utilities.deprecated("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
     def nick_name(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from 1.100.0 and use `user_name` instead.
         """
-        warnings.warn("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""nick_name is deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
-
         return pulumi.get(self, "nick_name")
 
     @nick_name.setter
@@ -252,13 +250,11 @@ class _EnterpriseUserState:
 
     @property
     @pulumi.getter(name="nickName")
+    @_utilities.deprecated("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
     def nick_name(self) -> Optional[pulumi.Input[str]]:
         """
         It has been deprecated from 1.100.0 and use `user_name` instead.
         """
-        warnings.warn("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""nick_name is deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
-
         return pulumi.get(self, "nick_name")
 
     @nick_name.setter
@@ -552,13 +548,11 @@ class EnterpriseUser(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nickName")
+    @_utilities.deprecated("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
     def nick_name(self) -> pulumi.Output[str]:
         """
         It has been deprecated from 1.100.0 and use `user_name` instead.
         """
-        warnings.warn("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""nick_name is deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
-
         return pulumi.get(self, "nick_name")
 
     @property

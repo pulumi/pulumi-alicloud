@@ -111,13 +111,11 @@ class KeyArgs:
 
     @property
     @pulumi.getter(name="deletionWindowInDays")
+    @_utilities.deprecated("""Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""")
     def deletion_window_in_days(self) -> Optional[pulumi.Input[int]]:
         """
         Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         """
-        warnings.warn("""Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""", DeprecationWarning)
-        pulumi.log.warn("""deletion_window_in_days is deprecated: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""")
-
         return pulumi.get(self, "deletion_window_in_days")
 
     @deletion_window_in_days.setter
@@ -150,6 +148,7 @@ class KeyArgs:
 
     @property
     @pulumi.getter(name="isEnabled")
+    @_utilities.deprecated("""Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.""")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
@@ -160,9 +159,6 @@ class KeyArgs:
 
         > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
         """
-        warnings.warn("""Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.""", DeprecationWarning)
-        pulumi.log.warn("""is_enabled is deprecated: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.""")
-
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -183,13 +179,11 @@ class KeyArgs:
 
     @property
     @pulumi.getter(name="keyState")
+    @_utilities.deprecated("""Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.""")
     def key_state(self) -> Optional[pulumi.Input[str]]:
         """
         Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         """
-        warnings.warn("""Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.""", DeprecationWarning)
-        pulumi.log.warn("""key_state is deprecated: Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.""")
-
         return pulumi.get(self, "key_state")
 
     @key_state.setter
@@ -477,13 +471,11 @@ class _KeyState:
 
     @property
     @pulumi.getter(name="deletionWindowInDays")
+    @_utilities.deprecated("""Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""")
     def deletion_window_in_days(self) -> Optional[pulumi.Input[int]]:
         """
         Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         """
-        warnings.warn("""Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""", DeprecationWarning)
-        pulumi.log.warn("""deletion_window_in_days is deprecated: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""")
-
         return pulumi.get(self, "deletion_window_in_days")
 
     @deletion_window_in_days.setter
@@ -516,6 +508,7 @@ class _KeyState:
 
     @property
     @pulumi.getter(name="isEnabled")
+    @_utilities.deprecated("""Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.""")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
@@ -526,9 +519,6 @@ class _KeyState:
 
         > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
         """
-        warnings.warn("""Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.""", DeprecationWarning)
-        pulumi.log.warn("""is_enabled is deprecated: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.""")
-
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -549,13 +539,11 @@ class _KeyState:
 
     @property
     @pulumi.getter(name="keyState")
+    @_utilities.deprecated("""Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.""")
     def key_state(self) -> Optional[pulumi.Input[str]]:
         """
         Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         """
-        warnings.warn("""Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.""", DeprecationWarning)
-        pulumi.log.warn("""key_state is deprecated: Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.""")
-
         return pulumi.get(self, "key_state")
 
     @key_state.setter
@@ -1031,13 +1019,11 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deletionWindowInDays")
+    @_utilities.deprecated("""Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""")
     def deletion_window_in_days(self) -> pulumi.Output[Optional[int]]:
         """
         Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         """
-        warnings.warn("""Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""", DeprecationWarning)
-        pulumi.log.warn("""deletion_window_in_days is deprecated: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.""")
-
         return pulumi.get(self, "deletion_window_in_days")
 
     @property
@@ -1058,6 +1044,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isEnabled")
+    @_utilities.deprecated("""Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.""")
     def is_enabled(self) -> pulumi.Output[bool]:
         """
         Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
@@ -1068,9 +1055,6 @@ class Key(pulumi.CustomResource):
 
         > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
         """
-        warnings.warn("""Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.""", DeprecationWarning)
-        pulumi.log.warn("""is_enabled is deprecated: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.""")
-
         return pulumi.get(self, "is_enabled")
 
     @property
@@ -1083,13 +1067,11 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyState")
+    @_utilities.deprecated("""Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.""")
     def key_state(self) -> pulumi.Output[str]:
         """
         Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         """
-        warnings.warn("""Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.""", DeprecationWarning)
-        pulumi.log.warn("""key_state is deprecated: Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.""")
-
         return pulumi.get(self, "key_state")
 
     @property

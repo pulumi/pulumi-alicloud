@@ -72,10 +72,8 @@ class SubnetArgs:
 
     @property
     @pulumi.getter(name="availabilityZone")
+    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
-
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -111,10 +109,8 @@ class SubnetArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -203,10 +199,8 @@ class _SubnetState:
 
     @property
     @pulumi.getter(name="availabilityZone")
+    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
-
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -269,10 +263,8 @@ class _SubnetState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -463,10 +455,8 @@ class Subnet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availabilityZone")
+    @_utilities.deprecated("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
     def availability_zone(self) -> pulumi.Output[str]:
-        warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
-        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
-
         return pulumi.get(self, "availability_zone")
 
     @property
@@ -501,10 +491,8 @@ class Subnet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
     def name(self) -> pulumi.Output[str]:
-        warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property

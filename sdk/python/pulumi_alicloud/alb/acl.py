@@ -57,14 +57,12 @@ class AclArgs:
 
     @property
     @pulumi.getter(name="aclEntries")
+    @_utilities.deprecated("""Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""")
     def acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]]:
         """
         The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
         **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         """
-        warnings.warn("""Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""", DeprecationWarning)
-        pulumi.log.warn("""acl_entries is deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""")
-
         return pulumi.get(self, "acl_entries")
 
     @acl_entries.setter
@@ -145,14 +143,12 @@ class _AclState:
 
     @property
     @pulumi.getter(name="aclEntries")
+    @_utilities.deprecated("""Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""")
     def acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]]:
         """
         The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
         **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         """
-        warnings.warn("""Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""", DeprecationWarning)
-        pulumi.log.warn("""acl_entries is deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""")
-
         return pulumi.get(self, "acl_entries")
 
     @acl_entries.setter
@@ -386,14 +382,12 @@ class Acl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclEntries")
+    @_utilities.deprecated("""Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""")
     def acl_entries(self) -> pulumi.Output[Sequence['outputs.AclAclEntry']]:
         """
         The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
         **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         """
-        warnings.warn("""Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""", DeprecationWarning)
-        pulumi.log.warn("""acl_entries is deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""")
-
         return pulumi.get(self, "acl_entries")
 
     @property

@@ -119,13 +119,11 @@ class GetEipsResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.""")
     def eips(self) -> Sequence['outputs.GetEipsEipResult']:
         """
         A list of EIPs. Each element contains the following attributes:
         """
-        warnings.warn("""Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.""", DeprecationWarning)
-        pulumi.log.warn("""eips is deprecated: Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead.""")
-
         return pulumi.get(self, "eips")
 
     @property
@@ -164,10 +162,8 @@ class GetEipsResult:
 
     @property
     @pulumi.getter(name="ipAddresses")
+    @_utilities.deprecated("""Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.""")
     def ip_addresses(self) -> Optional[Sequence[str]]:
-        warnings.warn("""Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_addresses is deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.""")
-
         return pulumi.get(self, "ip_addresses")
 
     @property

@@ -56,13 +56,11 @@ class GetTrailsResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""")
     def actiontrails(self) -> Sequence['outputs.GetTrailsActiontrailResult']:
         """
         Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead."
         """
-        warnings.warn("""Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""", DeprecationWarning)
-        pulumi.log.warn("""actiontrails is deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""")
-
         return pulumi.get(self, "actiontrails")
 
     @property

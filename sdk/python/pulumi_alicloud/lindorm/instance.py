@@ -644,13 +644,11 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="timeSeriresEngineSpecification")
+    @_utilities.deprecated("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
     def time_serires_engine_specification(self) -> Optional[pulumi.Input[str]]:
         """
         Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
-        warnings.warn("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""", DeprecationWarning)
-        pulumi.log.warn("""time_serires_engine_specification is deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
-
         return pulumi.get(self, "time_serires_engine_specification")
 
     @time_serires_engine_specification.setter
@@ -1434,13 +1432,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="timeSeriresEngineSpecification")
+    @_utilities.deprecated("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
     def time_serires_engine_specification(self) -> Optional[pulumi.Input[str]]:
         """
         Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
-        warnings.warn("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""", DeprecationWarning)
-        pulumi.log.warn("""time_serires_engine_specification is deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
-
         return pulumi.get(self, "time_serires_engine_specification")
 
     @time_serires_engine_specification.setter
@@ -2334,13 +2330,11 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeSeriresEngineSpecification")
+    @_utilities.deprecated("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
     def time_serires_engine_specification(self) -> pulumi.Output[str]:
         """
         Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
-        warnings.warn("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""", DeprecationWarning)
-        pulumi.log.warn("""time_serires_engine_specification is deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
-
         return pulumi.get(self, "time_serires_engine_specification")
 
     @property

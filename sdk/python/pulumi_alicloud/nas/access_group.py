@@ -104,13 +104,11 @@ class AccessGroupArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -119,13 +117,11 @@ class AccessGroupArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
-        warnings.warn("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""", DeprecationWarning)
-        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
-
         return pulumi.get(self, "type")
 
     @type.setter
@@ -242,13 +238,11 @@ class _AccessGroupState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @name.setter
@@ -257,13 +251,11 @@ class _AccessGroupState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
-        warnings.warn("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""", DeprecationWarning)
-        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
-
         return pulumi.get(self, "type")
 
     @type.setter
@@ -493,23 +485,19 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         . Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
-
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
     def type(self) -> pulumi.Output[str]:
         """
         . Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
-        warnings.warn("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""", DeprecationWarning)
-        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
-
         return pulumi.get(self, "type")
 

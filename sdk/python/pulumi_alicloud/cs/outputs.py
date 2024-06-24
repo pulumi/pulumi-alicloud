@@ -2375,24 +2375,20 @@ class NodePoolManagement(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.""")
     def surge(self) -> Optional[int]:
         """
         Number of additional nodes. You have to specify one of surge, surge_percentage.
         """
-        warnings.warn("""Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.""", DeprecationWarning)
-        pulumi.log.warn("""surge is deprecated: Field 'surge' has been deprecated from provider version 1.219.0. Number of additional nodes. You have to specify one of surge, surge_percentage.""")
-
         return pulumi.get(self, "surge")
 
     @property
     @pulumi.getter(name="surgePercentage")
+    @_utilities.deprecated("""Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.""")
     def surge_percentage(self) -> Optional[int]:
         """
         Proportion of additional nodes. You have to specify one of surge, surge_percentage.
         """
-        warnings.warn("""Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.""", DeprecationWarning)
-        pulumi.log.warn("""surge_percentage is deprecated: Field 'surge_percentage' has been deprecated from provider version 1.219.0. Proportion of additional nodes. You have to specify one of surge, surge_percentage.""")
-
         return pulumi.get(self, "surge_percentage")
 
 
