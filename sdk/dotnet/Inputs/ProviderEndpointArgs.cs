@@ -666,8 +666,8 @@ namespace Pulumi.AliCloud.Inputs
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
         /// </summary>
-        [Input("resourcesharing")]
-        public Input<string>? Resourcesharing { get; set; }
+        [Input("ressharing")]
+        public Input<string>? Ressharing { get; set; }
 
         /// <summary>
         /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.

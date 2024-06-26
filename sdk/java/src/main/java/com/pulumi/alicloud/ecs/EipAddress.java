@@ -32,70 +32,88 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/eipAddress:EipAddress")
 public class EipAddress extends com.pulumi.resources.CustomResource {
     /**
-     * Special activity ID. This parameter is not required.
+     * The promotion code. This parameter is not required.
      * 
      */
     @Export(name="activityId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> activityId;
 
     /**
-     * @return Special activity ID. This parameter is not required.
+     * @return The promotion code. This parameter is not required.
      * 
      */
     public Output<Optional<String>> activityId() {
         return Codegen.optional(this.activityId);
     }
     /**
-     * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * The EIP name.
+     * 
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+     * 
+     * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      * 
      */
     @Export(name="addressName", refs={String.class}, tree="[0]")
     private Output<String> addressName;
 
     /**
-     * @return The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * @return The EIP name.
+     * 
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+     * 
+     * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      * 
      */
     public Output<String> addressName() {
         return this.addressName;
     }
     /**
-     * The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     * The ID of the EIP instance.
      * 
      */
     @Export(name="allocationId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> allocationId;
+    private Output<String> allocationId;
 
     /**
-     * @return The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     * @return The ID of the EIP instance.
      * 
      */
-    public Output<Optional<String>> allocationId() {
-        return Codegen.optional(this.allocationId);
+    public Output<String> allocationId() {
+        return this.allocationId;
     }
     /**
-     * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
+     * Specifies whether to enable automatic payment. Valid values:
      * 
      */
     @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     /**
-     * @return Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
+     * @return Specifies whether to enable automatic payment. Valid values:
      * 
      */
     public Output<Optional<Boolean>> autoPay() {
         return Codegen.optional(this.autoPay);
     }
     /**
-     * The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
+     * The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+     * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
+     * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
+     * - When `payment_type` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+     * 
+     * Default value: `5` Mbit /s.
      * 
      */
     @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     /**
-     * @return The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
+     * @return The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+     * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
+     * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
+     * - When `payment_type` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+     * 
+     * Default value: `5` Mbit /s.
      * 
      */
     public Output<String> bandwidth() {
@@ -116,18 +134,14 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Whether the delete protection function is turned on.
-     * - **true**: enabled.
-     * - **false**: not enabled.
+     * Specifies whether to enable deletion protection. Valid values:
      * 
      */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deletionProtection;
 
     /**
-     * @return Whether the delete protection function is turned on.
-     * - **true**: enabled.
-     * - **false**: not enabled.
+     * @return Specifies whether to enable deletion protection. Valid values:
      * 
      */
     public Output<Boolean> deletionProtection() {
@@ -136,6 +150,10 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
     /**
      * The description of the EIP.
      * 
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+     * 
+     * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
+     * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
@@ -143,23 +161,27 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
     /**
      * @return The description of the EIP.
      * 
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+     * 
+     * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
+     * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether the second-level monitoring is enabled for the EIP.
-     * - **OFF**: not enabled.
-     * - **ON**: enabled.
+     * The status of fine-grained monitoring. Valid values:
+     * - `ON`
+     * - `OFF`
      * 
      */
     @Export(name="highDefinitionMonitorLogStatus", refs={String.class}, tree="[0]")
     private Output<String> highDefinitionMonitorLogStatus;
 
     /**
-     * @return Whether the second-level monitoring is enabled for the EIP.
-     * - **OFF**: not enabled.
-     * - **ON**: enabled.
+     * @return The status of fine-grained monitoring. Valid values:
+     * - `ON`
+     * - `OFF`
      * 
      */
     public Output<String> highDefinitionMonitorLogStatus() {
@@ -184,116 +206,130 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
         return this.instanceChargeType;
     }
     /**
-     * Renewal Payment type.
-     * - **PayByBandwidth**: billed by fixed bandwidth.
-     * - **PayByTraffic**: Billing by traffic.
+     * The metering method of the EIP. Valid values:
+     * - `PayByBandwidth` (default): pay-by-bandwidth.
+     * - `PayByTraffic`: pay-by-data-transfer.
+     * 
+     * When `payment_type` is set to `Subscription`, you must set `internet_charge_type` to `PayByBandwidth`.
+     * 
+     * When `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output<String> internetChargeType;
 
     /**
-     * @return Renewal Payment type.
-     * - **PayByBandwidth**: billed by fixed bandwidth.
-     * - **PayByTraffic**: Billing by traffic.
+     * @return The metering method of the EIP. Valid values:
+     * - `PayByBandwidth` (default): pay-by-bandwidth.
+     * - `PayByTraffic`: pay-by-data-transfer.
+     * 
+     * When `payment_type` is set to `Subscription`, you must set `internet_charge_type` to `PayByBandwidth`.
+     * 
+     * When `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
      * 
      */
     public Output<String> internetChargeType() {
         return this.internetChargeType;
     }
     /**
-     * The IP address of the EIP.
+     * The IP address of the EIP. Supports a maximum of 50 EIPs.
      * 
      */
     @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
-     * @return The IP address of the EIP.
+     * @return The IP address of the EIP. Supports a maximum of 50 EIPs.
      * 
      */
     public Output<String> ipAddress() {
         return this.ipAddress;
     }
     /**
-     * The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
-     * - `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China.
-     * - `BGP_PRO`: BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
-     * - `ChinaTelecom`: China Telecom.
-     * - `ChinaUnicom`: China Unicom.
-     * - `ChinaMobile`: China Mobile.
-     * - `ChinaTelecom_L2`: China Telecom L2.
-     * - `ChinaUnicom_L2`: China Unicom L2.
-     * - `ChinaMobile_L2`: China Mobile L2.
-     * - `BGP_FinanceCloud`: If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
-     * - `BGP_International`: BGP_International.
-     * &gt; **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+     * The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     * 
+     * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the &#34;Line types&#34; section of [What is EIP?](https://www.alibabacloud.com/help/en/doc-detail/32321.html)
+     * 
+     * If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     * 
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      * 
      */
     @Export(name="isp", refs={String.class}, tree="[0]")
     private Output<String> isp;
 
     /**
-     * @return The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
-     * - `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China.
-     * - `BGP_PRO`: BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
-     * - `ChinaTelecom`: China Telecom.
-     * - `ChinaUnicom`: China Unicom.
-     * - `ChinaMobile`: China Mobile.
-     * - `ChinaTelecom_L2`: China Telecom L2.
-     * - `ChinaUnicom_L2`: China Unicom L2.
-     * - `ChinaMobile_L2`: China Mobile L2.
-     * - `BGP_FinanceCloud`: If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
-     * - `BGP_International`: BGP_International.
-     * &gt; **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+     * @return The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     * 
+     * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the &#34;Line types&#34; section of [What is EIP?](https://www.alibabacloud.com/help/en/doc-detail/32321.html)
+     * 
+     * If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     * 
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      * 
      */
     public Output<String> isp() {
         return this.isp;
     }
     /**
-     * The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * The name of the Simple Log Service (SLS) project.
      * 
      */
     @Export(name="logProject", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logProject;
 
     /**
-     * @return The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * @return The name of the Simple Log Service (SLS) project.
      * 
      */
     public Output<Optional<String>> logProject() {
         return Codegen.optional(this.logProject);
     }
     /**
-     * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * The name of the Logstore.
      * 
      */
     @Export(name="logStore", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logStore;
 
     /**
-     * @return The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * @return The name of the Logstore.
      * 
      */
     public Output<Optional<String>> logStore() {
         return Codegen.optional(this.logStore);
     }
     /**
-     * Binding mode, value:
-     * - **NAT** (default):NAT mode (normal mode).
-     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
-     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     * The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
-     * @return Binding mode, value:
-     * - **NAT** (default):NAT mode (normal mode).
-     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
-     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     * @return The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
      * 
      */
     public Output<String> mode() {
@@ -318,84 +354,104 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The type of the network. Valid value is `public` (Internet).
+     * The network type. By default, this value is set to `public`, which specifies the public network type.
      * 
      */
     @Export(name="netmode", refs={String.class}, tree="[0]")
     private Output<String> netmode;
 
     /**
-     * @return The type of the network. Valid value is `public` (Internet).
+     * @return The network type. By default, this value is set to `public`, which specifies the public network type.
      * 
      */
     public Output<String> netmode() {
         return this.netmode;
     }
     /**
-     * The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
+     * The billing method of the EIP. Valid values:
+     * - `Subscription`: subscription
+     * - `PayAsYouGo` (default): pay-as-you-go
+     * 
+     * If `payment_type` is set to `Subscription`, set `internet_charge_type` to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
+     * @return The billing method of the EIP. Valid values:
+     * - `Subscription`: subscription
+     * - `PayAsYouGo` (default): pay-as-you-go
+     * 
+     * If `payment_type` is set to `Subscription`, set `internet_charge_type` to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * When the PricingCycle is set to Month, the Period value ranges from 1 to 9.  When the PricingCycle is set to Year, the Period range is 1 to 5.  If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+     * Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return When the PricingCycle is set to Month, the Period value ranges from 1 to 9.  When the PricingCycle is set to Year, the Period range is 1 to 5.  If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+     * @return Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * Value: Month (default): Pay monthly. Year: Pay per Year. This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+     * The billing cycle of the subscription EIP. Valid values:
+     * - `Month` (default)
+     * - `Year`
+     * 
+     * If `payment_type` is set to `Subscription`, this parameter is required. If `payment_type` is set to `PayAsYouGo`, this parameter is not required.
      * 
      */
     @Export(name="pricingCycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pricingCycle;
 
     /**
-     * @return Value: Month (default): Pay monthly. Year: Pay per Year. This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+     * @return The billing cycle of the subscription EIP. Valid values:
+     * - `Month` (default)
+     * - `Year`
+     * 
+     * If `payment_type` is set to `Subscription`, this parameter is required. If `payment_type` is set to `PayAsYouGo`, this parameter is not required.
      * 
      */
     public Output<Optional<String>> pricingCycle() {
         return Codegen.optional(this.pricingCycle);
     }
     /**
-     * The ID of the IP address pool to which the EIP belongs.
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool. By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the &#34;Request a quota increase in the Quota Center console&#34; section in [Manage EIP quotas](https://www.alibabacloud.com/help/en/doc-detail/108213.html).
      * 
      */
     @Export(name="publicIpAddressPoolId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> publicIpAddressPoolId;
 
     /**
-     * @return The ID of the IP address pool to which the EIP belongs.
+     * @return The ID of the IP address pool. The EIP is allocated from the IP address pool. By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the &#34;Request a quota increase in the Quota Center console&#34; section in [Manage EIP quotas](https://www.alibabacloud.com/help/en/doc-detail/108213.html).
      * 
      */
     public Output<Optional<String>> publicIpAddressPoolId() {
         return Codegen.optional(this.publicIpAddressPoolId);
     }
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which you want to move the resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group to which you want to move the resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     public Output<String> resourceGroupId() {
@@ -404,7 +460,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
     /**
      * Security protection level.
      * - When the return is empty, the basic DDoS protection is specified.
-     * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+     * - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
      * 
      */
     @Export(name="securityProtectionTypes", refs={List.class,String.class}, tree="[0,1]")
@@ -413,42 +469,42 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
     /**
      * @return Security protection level.
      * - When the return is empty, the basic DDoS protection is specified.
-     * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+     * - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
      * 
      */
     public Output<Optional<List<String>>> securityProtectionTypes() {
         return Codegen.optional(this.securityProtectionTypes);
     }
     /**
-     * The status of the EIP.
+     * The state of the EIP.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the EIP.
+     * @return The state of the EIP.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The zone of the EIP.  This parameter is returned only for whitelist users that are visible to the zone.
+     * The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -457,7 +513,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
     private Output<String> zone;
 
     /**
-     * @return The zone of the EIP.  This parameter is returned only for whitelist users that are visible to the zone.
+     * @return The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 

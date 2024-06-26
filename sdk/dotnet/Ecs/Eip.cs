@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> AddressName { get; private set; } = null!;
 
         [Output("allocationId")]
-        public Output<string?> AllocationId { get; private set; } = null!;
+        public Output<string> AllocationId { get; private set; } = null!;
 
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;

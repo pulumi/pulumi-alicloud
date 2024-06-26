@@ -107,10 +107,10 @@ public class Eip extends com.pulumi.resources.CustomResource {
         return this.addressName;
     }
     @Export(name="allocationId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> allocationId;
+    private Output<String> allocationId;
 
-    public Output<Optional<String>> allocationId() {
-        return Codegen.optional(this.allocationId);
+    public Output<String> allocationId() {
+        return this.allocationId;
     }
     @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;

@@ -962,12 +962,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The Alibaba Cloud Resource Name (ARN) of the RAM role.
      * 
+     * &gt; **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+     * You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {&#34;Version&#34;:&#34;1&#34;,&#34;Statement&#34;:[{&#34;Effect&#34;:&#34;Deny&#34;,&#34;Action&#34;:&#34;rds:CreateDBInstance&#34;,&#34;Resource&#34;:&#34;*&#34;,&#34;Condition&#34;:{&#34;StringEquals&#34;:{&#34;rds:DiskEncryptionRequired&#34;:&#34;false&#34;}}}]}
+     * 
      */
     @Import(name="roleArn")
     private @Nullable Output<String> roleArn;
 
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     * 
+     * &gt; **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+     * You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {&#34;Version&#34;:&#34;1&#34;,&#34;Statement&#34;:[{&#34;Effect&#34;:&#34;Deny&#34;,&#34;Action&#34;:&#34;rds:CreateDBInstance&#34;,&#34;Resource&#34;:&#34;*&#34;,&#34;Condition&#34;:{&#34;StringEquals&#34;:{&#34;rds:DiskEncryptionRequired&#34;:&#34;false&#34;}}}]}
      * 
      */
     public Optional<Output<String>> roleArn() {
@@ -2881,6 +2887,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param roleArn The Alibaba Cloud Resource Name (ARN) of the RAM role.
          * 
+         * &gt; **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+         * You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {&#34;Version&#34;:&#34;1&#34;,&#34;Statement&#34;:[{&#34;Effect&#34;:&#34;Deny&#34;,&#34;Action&#34;:&#34;rds:CreateDBInstance&#34;,&#34;Resource&#34;:&#34;*&#34;,&#34;Condition&#34;:{&#34;StringEquals&#34;:{&#34;rds:DiskEncryptionRequired&#34;:&#34;false&#34;}}}]}
+         * 
          * @return builder
          * 
          */
@@ -2891,6 +2900,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param roleArn The Alibaba Cloud Resource Name (ARN) of the RAM role.
+         * 
+         * &gt; **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+         * You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {&#34;Version&#34;:&#34;1&#34;,&#34;Statement&#34;:[{&#34;Effect&#34;:&#34;Deny&#34;,&#34;Action&#34;:&#34;rds:CreateDBInstance&#34;,&#34;Resource&#34;:&#34;*&#34;,&#34;Condition&#34;:{&#34;StringEquals&#34;:{&#34;rds:DiskEncryptionRequired&#34;:&#34;false&#34;}}}]}
          * 
          * @return builder
          * 

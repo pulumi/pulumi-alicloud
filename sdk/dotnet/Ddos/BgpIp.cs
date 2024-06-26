@@ -32,6 +32,8 @@ namespace Pulumi.AliCloud.Ddos
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
+    ///     var current = AliCloud.GetAccount.Invoke();
+    /// 
     ///     var instance = new AliCloud.Ddos.DdosBgpInstance("instance", new()
     ///     {
     ///         Name = name,
@@ -53,6 +55,7 @@ namespace Pulumi.AliCloud.Ddos
     ///         InstanceId = instance.Id,
     ///         Ip = defaultEipAddress.IpAddress,
     ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
+    ///         MemberUid = current.Apply(getAccountResult =&gt; getAccountResult.Id),
     ///     });
     /// 
     /// });
@@ -80,6 +83,12 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
+
+        /// <summary>
+        /// The member account id of the IP address.
+        /// </summary>
+        [Output("memberUid")]
+        public Output<string?> MemberUid { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group.
@@ -152,6 +161,12 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string> Ip { get; set; } = null!;
 
         /// <summary>
+        /// The member account id of the IP address.
+        /// </summary>
+        [Input("memberUid")]
+        public Input<string>? MemberUid { get; set; }
+
+        /// <summary>
         /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
@@ -176,6 +191,12 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
+
+        /// <summary>
+        /// The member account id of the IP address.
+        /// </summary>
+        [Input("memberUid")]
+        public Input<string>? MemberUid { get; set; }
 
         /// <summary>
         /// The ID of the resource group.

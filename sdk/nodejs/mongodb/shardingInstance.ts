@@ -130,7 +130,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly configServerLists!: pulumi.Output<outputs.mongodb.ShardingInstanceConfigServerList[]>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
@@ -197,6 +197,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly storageEngine!: pulumi.Output<string>;
     /**
+     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+     */
+    public readonly storageType!: pulumi.Output<string>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
@@ -252,6 +256,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
             resourceInputs["shardLists"] = state ? state.shardLists : undefined;
             resourceInputs["storageEngine"] = state ? state.storageEngine : undefined;
+            resourceInputs["storageType"] = state ? state.storageType : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tdeStatus"] = state ? state.tdeStatus : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
@@ -288,6 +293,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
             resourceInputs["shardLists"] = args ? args.shardLists : undefined;
             resourceInputs["storageEngine"] = args ? args.storageEngine : undefined;
+            resourceInputs["storageType"] = args ? args.storageType : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
@@ -327,7 +333,7 @@ export interface ShardingInstanceState {
      */
     configServerLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceConfigServerList>[]>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
     engineVersion?: pulumi.Input<string>;
     /**
@@ -394,6 +400,10 @@ export interface ShardingInstanceState {
      */
     storageEngine?: pulumi.Input<string>;
     /**
+     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+     */
+    storageType?: pulumi.Input<string>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
@@ -441,7 +451,7 @@ export interface ShardingInstanceArgs {
      */
     configServerLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceConfigServerList>[]>;
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engineVersion` can be modified.
      */
     engineVersion: pulumi.Input<string>;
     /**
@@ -503,6 +513,10 @@ export interface ShardingInstanceArgs {
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */
     storageEngine?: pulumi.Input<string>;
+    /**
+     * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `localSsd`.
+     */
+    storageType?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

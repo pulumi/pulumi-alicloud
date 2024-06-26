@@ -46,14 +46,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cs/nodePool:NodePool")
 public class NodePool extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
+     * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
+     * @return Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {

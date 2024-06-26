@@ -17,14 +17,24 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
     public static final EipSegmentAddressArgs Empty = new EipSegmentAddressArgs();
 
     /**
-     * The peak bandwidth of the EIP. Unit: Mbps. When the value of instancargetype is PostPaid and the value of InternetChargeType is PayByBandwidth, the range of Bandwidth is 1 to 500. If the value of instancargetype is PostPaid and the value of InternetChargeType is PayByTraffic, the range of Bandwidth is 1 to 200. When instancargetype is set to PrePaid, the range of Bandwidth is 1 to 1000. The default value is 5 Mbps.
+     * The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
+     * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByBandwidth`: `1` to `500`.****
+     * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByTraffic`: `1` to `200`.****
+     * - Valid values when `InstanceChargeType` is set to `PrePaid`: `1` to `1000`.****
+     * 
+     * Default value: `5`. Unit: Mbit/s.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<String> bandwidth;
 
     /**
-     * @return The peak bandwidth of the EIP. Unit: Mbps. When the value of instancargetype is PostPaid and the value of InternetChargeType is PayByBandwidth, the range of Bandwidth is 1 to 500. If the value of instancargetype is PostPaid and the value of InternetChargeType is PayByTraffic, the range of Bandwidth is 1 to 200. When instancargetype is set to PrePaid, the range of Bandwidth is 1 to 1000. The default value is 5 Mbps.
+     * @return The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
+     * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByBandwidth`: `1` to `500`.****
+     * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByTraffic`: `1` to `200`.****
+     * - Valid values when `InstanceChargeType` is set to `PrePaid`: `1` to `1000`.****
+     * 
+     * Default value: `5`. Unit: Mbit/s.
      * 
      */
     public Optional<Output<String>> bandwidth() {
@@ -32,14 +42,14 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Mask of consecutive EIPs. Value:28: For a single call, the system will allocate 16 consecutive EIPs.27: For a single call, the system will allocate 32 consecutive EIPs.26: For a single call, the system will allocate 64 consecutive EIPs.25: For a single call, the system will allocate 128 consecutive EIPs.24: For a single call, the system will allocate 256 consecutive EIPs.
+     * The subnet mask of the contiguous EIP group. Valid values:
      * 
      */
     @Import(name="eipMask", required=true)
     private Output<String> eipMask;
 
     /**
-     * @return Mask of consecutive EIPs. Value:28: For a single call, the system will allocate 16 consecutive EIPs.27: For a single call, the system will allocate 32 consecutive EIPs.26: For a single call, the system will allocate 64 consecutive EIPs.25: For a single call, the system will allocate 128 consecutive EIPs.24: For a single call, the system will allocate 256 consecutive EIPs.
+     * @return The subnet mask of the contiguous EIP group. Valid values:
      * 
      */
     public Output<String> eipMask() {
@@ -47,18 +57,18 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Continuous EIP billing method, valid values:
-     * - **PayByBandwidth** (default): Billing based on fixed bandwidth.
-     * - **PayByTraffic**: Billing by usage flow.
+     * The metering method of the contiguous EIP group. Valid values:
+     * - `PayByBandwidth` (default)
+     * - `PayByTraffic`
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return Continuous EIP billing method, valid values:
-     * - **PayByBandwidth** (default): Billing based on fixed bandwidth.
-     * - **PayByTraffic**: Billing by usage flow.
+     * @return The metering method of the contiguous EIP group. Valid values:
+     * - `PayByBandwidth` (default)
+     * - `PayByTraffic`
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -66,36 +76,42 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Line type. Valid values:
-     * - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
-     * - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-     *   For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-     *   If you are a whitelist user with single-line bandwidth, you can also select the following types:
-     * - **ChinaTelecom** : China Telecom
-     * - **ChinaUnicom** : China Unicom
-     * - **ChinaMobile** : China Mobile
-     * - **ChinaTelecom_L2** : China Telecom L2
-     * - **ChinaUnicom_L2** : China Unicom L2
-     * - **ChinaMobile_L2** : China Mobile L2
-     *   If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+     * The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     * 
+     * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see [EIP line types](https://www.alibabacloud.com/help/en/doc-detail/32321.html).
+     * 
+     * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     * 
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      * 
      */
     @Import(name="isp")
     private @Nullable Output<String> isp;
 
     /**
-     * @return Line type. Valid values:
-     * - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
-     * - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-     *   For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-     *   If you are a whitelist user with single-line bandwidth, you can also select the following types:
-     * - **ChinaTelecom** : China Telecom
-     * - **ChinaUnicom** : China Unicom
-     * - **ChinaMobile** : China Mobile
-     * - **ChinaTelecom_L2** : China Telecom L2
-     * - **ChinaUnicom_L2** : China Unicom L2
-     * - **ChinaMobile_L2** : China Mobile L2
-     *   If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+     * @return The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     * 
+     * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see [EIP line types](https://www.alibabacloud.com/help/en/doc-detail/32321.html).
+     * 
+     * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     * 
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      * 
      */
     public Optional<Output<String>> isp() {
@@ -103,18 +119,48 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The network type. Set the value to **public**.
+     * The network type. Set the value to `public`, which specifies the public network type.
      * 
      */
     @Import(name="netmode")
     private @Nullable Output<String> netmode;
 
     /**
-     * @return The network type. Set the value to **public**.
+     * @return The network type. Set the value to `public`, which specifies the public network type.
      * 
      */
     public Optional<Output<String>> netmode() {
         return Optional.ofNullable(this.netmode);
+    }
+
+    /**
+     * The resource group ID.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The resource group ID.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The zone of the contiguous EIP group.
+     * 
+     */
+    @Import(name="zone")
+    private @Nullable Output<String> zone;
+
+    /**
+     * @return The zone of the contiguous EIP group.
+     * 
+     */
+    public Optional<Output<String>> zone() {
+        return Optional.ofNullable(this.zone);
     }
 
     private EipSegmentAddressArgs() {}
@@ -125,6 +171,8 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
         this.internetChargeType = $.internetChargeType;
         this.isp = $.isp;
         this.netmode = $.netmode;
+        this.resourceGroupId = $.resourceGroupId;
+        this.zone = $.zone;
     }
 
     public static Builder builder() {
@@ -146,7 +194,12 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bandwidth The peak bandwidth of the EIP. Unit: Mbps. When the value of instancargetype is PostPaid and the value of InternetChargeType is PayByBandwidth, the range of Bandwidth is 1 to 500. If the value of instancargetype is PostPaid and the value of InternetChargeType is PayByTraffic, the range of Bandwidth is 1 to 200. When instancargetype is set to PrePaid, the range of Bandwidth is 1 to 1000. The default value is 5 Mbps.
+         * @param bandwidth The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
+         * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByBandwidth`: `1` to `500`.****
+         * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByTraffic`: `1` to `200`.****
+         * - Valid values when `InstanceChargeType` is set to `PrePaid`: `1` to `1000`.****
+         * 
+         * Default value: `5`. Unit: Mbit/s.
          * 
          * @return builder
          * 
@@ -157,7 +210,12 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bandwidth The peak bandwidth of the EIP. Unit: Mbps. When the value of instancargetype is PostPaid and the value of InternetChargeType is PayByBandwidth, the range of Bandwidth is 1 to 500. If the value of instancargetype is PostPaid and the value of InternetChargeType is PayByTraffic, the range of Bandwidth is 1 to 200. When instancargetype is set to PrePaid, the range of Bandwidth is 1 to 1000. The default value is 5 Mbps.
+         * @param bandwidth The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
+         * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByBandwidth`: `1` to `500`.****
+         * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByTraffic`: `1` to `200`.****
+         * - Valid values when `InstanceChargeType` is set to `PrePaid`: `1` to `1000`.****
+         * 
+         * Default value: `5`. Unit: Mbit/s.
          * 
          * @return builder
          * 
@@ -167,7 +225,7 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param eipMask Mask of consecutive EIPs. Value:28: For a single call, the system will allocate 16 consecutive EIPs.27: For a single call, the system will allocate 32 consecutive EIPs.26: For a single call, the system will allocate 64 consecutive EIPs.25: For a single call, the system will allocate 128 consecutive EIPs.24: For a single call, the system will allocate 256 consecutive EIPs.
+         * @param eipMask The subnet mask of the contiguous EIP group. Valid values:
          * 
          * @return builder
          * 
@@ -178,7 +236,7 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param eipMask Mask of consecutive EIPs. Value:28: For a single call, the system will allocate 16 consecutive EIPs.27: For a single call, the system will allocate 32 consecutive EIPs.26: For a single call, the system will allocate 64 consecutive EIPs.25: For a single call, the system will allocate 128 consecutive EIPs.24: For a single call, the system will allocate 256 consecutive EIPs.
+         * @param eipMask The subnet mask of the contiguous EIP group. Valid values:
          * 
          * @return builder
          * 
@@ -188,9 +246,9 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param internetChargeType Continuous EIP billing method, valid values:
-         * - **PayByBandwidth** (default): Billing based on fixed bandwidth.
-         * - **PayByTraffic**: Billing by usage flow.
+         * @param internetChargeType The metering method of the contiguous EIP group. Valid values:
+         * - `PayByBandwidth` (default)
+         * - `PayByTraffic`
          * 
          * @return builder
          * 
@@ -201,9 +259,9 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param internetChargeType Continuous EIP billing method, valid values:
-         * - **PayByBandwidth** (default): Billing based on fixed bandwidth.
-         * - **PayByTraffic**: Billing by usage flow.
+         * @param internetChargeType The metering method of the contiguous EIP group. Valid values:
+         * - `PayByBandwidth` (default)
+         * - `PayByTraffic`
          * 
          * @return builder
          * 
@@ -213,18 +271,21 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isp Line type. Valid values:
-         * - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
-         * - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-         *   For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-         *   If you are a whitelist user with single-line bandwidth, you can also select the following types:
-         * - **ChinaTelecom** : China Telecom
-         * - **ChinaUnicom** : China Unicom
-         * - **ChinaMobile** : China Mobile
-         * - **ChinaTelecom_L2** : China Telecom L2
-         * - **ChinaUnicom_L2** : China Unicom L2
-         * - **ChinaMobile_L2** : China Mobile L2
-         *   If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+         * @param isp The line type. Valid values:
+         * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+         * - `BGP_PRO`: BGP (Multi-ISP) Pro line BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+         * 
+         * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see [EIP line types](https://www.alibabacloud.com/help/en/doc-detail/32321.html).
+         * 
+         * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+         * - `ChinaTelecom`
+         * - `ChinaUnicom`
+         * - `ChinaMobile`
+         * - `ChinaTelecom_L2`
+         * - `ChinaUnicom_L2`
+         * - `ChinaMobile_L2`
+         * 
+         * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
          * 
          * @return builder
          * 
@@ -235,18 +296,21 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isp Line type. Valid values:
-         * - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
-         * - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-         *   For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-         *   If you are a whitelist user with single-line bandwidth, you can also select the following types:
-         * - **ChinaTelecom** : China Telecom
-         * - **ChinaUnicom** : China Unicom
-         * - **ChinaMobile** : China Mobile
-         * - **ChinaTelecom_L2** : China Telecom L2
-         * - **ChinaUnicom_L2** : China Unicom L2
-         * - **ChinaMobile_L2** : China Mobile L2
-         *   If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+         * @param isp The line type. Valid values:
+         * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+         * - `BGP_PRO`: BGP (Multi-ISP) Pro line BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+         * 
+         * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see [EIP line types](https://www.alibabacloud.com/help/en/doc-detail/32321.html).
+         * 
+         * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+         * - `ChinaTelecom`
+         * - `ChinaUnicom`
+         * - `ChinaMobile`
+         * - `ChinaTelecom_L2`
+         * - `ChinaUnicom_L2`
+         * - `ChinaMobile_L2`
+         * 
+         * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
          * 
          * @return builder
          * 
@@ -256,7 +320,7 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param netmode The network type. Set the value to **public**.
+         * @param netmode The network type. Set the value to `public`, which specifies the public network type.
          * 
          * @return builder
          * 
@@ -267,13 +331,55 @@ public final class EipSegmentAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param netmode The network type. Set the value to **public**.
+         * @param netmode The network type. Set the value to `public`, which specifies the public network type.
          * 
          * @return builder
          * 
          */
         public Builder netmode(String netmode) {
             return netmode(Output.of(netmode));
+        }
+
+        /**
+         * @param resourceGroupId The resource group ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The resource group ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param zone The zone of the contiguous EIP group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(@Nullable Output<String> zone) {
+            $.zone = zone;
+            return this;
+        }
+
+        /**
+         * @param zone The zone of the contiguous EIP group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(String zone) {
+            return zone(Output.of(zone));
         }
 
         public EipSegmentAddressArgs build() {

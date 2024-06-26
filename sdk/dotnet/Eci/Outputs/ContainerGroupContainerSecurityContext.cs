@@ -14,15 +14,19 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupContainerSecurityContext
     {
         public readonly ImmutableArray<Outputs.ContainerGroupContainerSecurityContextCapability> Capabilities;
+        public readonly bool? Privileged;
         public readonly int? RunAsUser;
 
         [OutputConstructor]
         private ContainerGroupContainerSecurityContext(
             ImmutableArray<Outputs.ContainerGroupContainerSecurityContextCapability> capabilities,
 
+            bool? privileged,
+
             int? runAsUser)
         {
             Capabilities = capabilities;
+            Privileged = privileged;
             RunAsUser = runAsUser;
         }
     }

@@ -652,6 +652,8 @@ class OssShipper(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.121.0+
 
+        > **DEPRECATED:**  This resource has been deprecated from version `1.215.0`. Please use new resource alicloud_log_oss_export.
+
         ## Example Usage
 
         Basic Usage
@@ -739,6 +741,8 @@ class OssShipper(pulumi.CustomResource):
         [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/43724.htm).
 
         > **NOTE:** Available in 1.121.0+
+
+        > **DEPRECATED:**  This resource has been deprecated from version `1.215.0`. Please use new resource alicloud_log_oss_export.
 
         ## Example Usage
 

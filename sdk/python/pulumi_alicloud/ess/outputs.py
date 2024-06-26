@@ -11,6 +11,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AlarmExpression',
     'EciScalingConfigurationAcrRegistryInfo',
     'EciScalingConfigurationContainer',
     'EciScalingConfigurationContainerEnvironmentVar',
@@ -44,6 +45,92 @@ __all__ = [
     'GetScalingRulesRuleResult',
     'GetScheduledTasksTaskResult',
 ]
+
+@pulumi.output_type
+class AlarmExpression(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+        elif key == "metricName":
+            suggest = "metric_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlarmExpression. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlarmExpression.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlarmExpression.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: Optional[str] = None,
+                 metric_name: Optional[str] = None,
+                 period: Optional[int] = None,
+                 statistics: Optional[str] = None,
+                 threshold: Optional[float] = None):
+        """
+        :param str comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
+        :param str metric_name: The name for the alarm's associated metric. See `dimensions` below for details.
+        :param int period: The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
+        :param str statistics: The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
+        :param float threshold: The value against which the specified statistics is compared.
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> Optional[str]:
+        """
+        The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> Optional[str]:
+        """
+        The name for the alarm's associated metric. See `dimensions` below for details.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[int]:
+        """
+        The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
+        """
+        return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter
+    def statistics(self) -> Optional[str]:
+        """
+        The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
+        """
+        return pulumi.get(self, "statistics")
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[float]:
+        """
+        The value against which the specified statistics is compared.
+        """
+        return pulumi.get(self, "threshold")
+
 
 @pulumi.output_type
 class EciScalingConfigurationAcrRegistryInfo(dict):

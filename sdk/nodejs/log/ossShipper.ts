@@ -12,6 +12,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in 1.121.0+
  *
+ * > **DEPRECATED:**  This resource has been deprecated from version `1.215.0`. Please use new resource alicloud_log_oss_export.
+ *
  * ## Example Usage
  *
  * Basic Usage

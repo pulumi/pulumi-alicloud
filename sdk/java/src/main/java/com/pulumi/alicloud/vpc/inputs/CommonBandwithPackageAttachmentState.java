@@ -17,14 +17,14 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
     public static final CommonBandwithPackageAttachmentState Empty = new CommonBandwithPackageAttachmentState();
 
     /**
-     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
      * 
      */
     @Import(name="bandwidthPackageBandwidth")
     private @Nullable Output<String> bandwidthPackageBandwidth;
 
     /**
-     * @return The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     * @return The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
      * 
      */
     public Optional<Output<String>> bandwidthPackageBandwidth() {
@@ -32,14 +32,14 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
     }
 
     /**
-     * The bandwidth_package_id of the common bandwidth package attachment, the field can&#39;t be changed.
+     * The ID of the Internet Shared Bandwidth instance.
      * 
      */
     @Import(name="bandwidthPackageId")
     private @Nullable Output<String> bandwidthPackageId;
 
     /**
-     * @return The bandwidth_package_id of the common bandwidth package attachment, the field can&#39;t be changed.
+     * @return The ID of the Internet Shared Bandwidth instance.
      * 
      */
     public Optional<Output<String>> bandwidthPackageId() {
@@ -62,14 +62,22 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
     }
 
     /**
-     * The instance_id of the common bandwidth package attachment, the field can&#39;t be changed.
+     * The ID of the EIP that you want to query.
+     * 
+     * You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+     * 
+     * &gt; **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The instance_id of the common bandwidth package attachment, the field can&#39;t be changed.
+     * @return The ID of the EIP that you want to query.
+     * 
+     * You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+     * 
+     * &gt; **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -77,14 +85,14 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
     }
 
     /**
-     * IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     * The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
      * 
      */
     @Import(name="ipType")
     private @Nullable Output<String> ipType;
 
     /**
-     * @return IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     * @return The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
      * 
      */
     public Optional<Output<String>> ipType() {
@@ -136,7 +144,7 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
         }
 
         /**
-         * @param bandwidthPackageBandwidth The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+         * @param bandwidthPackageBandwidth The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
          * 
          * @return builder
          * 
@@ -147,7 +155,7 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
         }
 
         /**
-         * @param bandwidthPackageBandwidth The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+         * @param bandwidthPackageBandwidth The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
          * 
          * @return builder
          * 
@@ -157,7 +165,7 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
         }
 
         /**
-         * @param bandwidthPackageId The bandwidth_package_id of the common bandwidth package attachment, the field can&#39;t be changed.
+         * @param bandwidthPackageId The ID of the Internet Shared Bandwidth instance.
          * 
          * @return builder
          * 
@@ -168,7 +176,7 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
         }
 
         /**
-         * @param bandwidthPackageId The bandwidth_package_id of the common bandwidth package attachment, the field can&#39;t be changed.
+         * @param bandwidthPackageId The ID of the Internet Shared Bandwidth instance.
          * 
          * @return builder
          * 
@@ -199,7 +207,11 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
         }
 
         /**
-         * @param instanceId The instance_id of the common bandwidth package attachment, the field can&#39;t be changed.
+         * @param instanceId The ID of the EIP that you want to query.
+         * 
+         * You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+         * 
+         * &gt; **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
          * 
          * @return builder
          * 
@@ -210,7 +222,11 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
         }
 
         /**
-         * @param instanceId The instance_id of the common bandwidth package attachment, the field can&#39;t be changed.
+         * @param instanceId The ID of the EIP that you want to query.
+         * 
+         * You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+         * 
+         * &gt; **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
          * 
          * @return builder
          * 
@@ -220,7 +236,7 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
         }
 
         /**
-         * @param ipType IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+         * @param ipType The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
          * 
          * @return builder
          * 
@@ -231,7 +247,7 @@ public final class CommonBandwithPackageAttachmentState extends com.pulumi.resou
         }
 
         /**
-         * @param ipType IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+         * @param ipType The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
          * 
          * @return builder
          * 

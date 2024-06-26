@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ess;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ess.AlarmArgs;
 import com.pulumi.alicloud.ess.inputs.AlarmState;
+import com.pulumi.alicloud.ess.outputs.AlarmExpression;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -221,14 +222,14 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="comparisonOperator", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> comparisonOperator;
+    private Output<String> comparisonOperator;
 
     /**
      * @return The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: &gt;=, &lt;=, &gt;, &lt;. Defaults to &gt;=.
      * 
      */
-    public Output<Optional<String>> comparisonOperator() {
-        return Codegen.optional(this.comparisonOperator);
+    public Output<String> comparisonOperator() {
+        return this.comparisonOperator;
     }
     /**
      * The description for the alarm.
@@ -287,6 +288,34 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.evaluationCount);
     }
     /**
+     * Support multi alert rule. See `expressions` below for details.
+     * 
+     */
+    @Export(name="expressions", refs={List.class,AlarmExpression.class}, tree="[0,1]")
+    private Output<List<AlarmExpression>> expressions;
+
+    /**
+     * @return Support multi alert rule. See `expressions` below for details.
+     * 
+     */
+    public Output<List<AlarmExpression>> expressions() {
+        return this.expressions;
+    }
+    /**
+     * The relationship between the trigger conditions in the multi-metric alert rule.
+     * 
+     */
+    @Export(name="expressionsLogicOperator", refs={String.class}, tree="[0]")
+    private Output<String> expressionsLogicOperator;
+
+    /**
+     * @return The relationship between the trigger conditions in the multi-metric alert rule.
+     * 
+     */
+    public Output<String> expressionsLogicOperator() {
+        return this.expressionsLogicOperator;
+    }
+    /**
      * The name for the alarm&#39;s associated metric. See `dimensions` below for details.
      * 
      */
@@ -333,14 +362,14 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> period;
+    private Output<Integer> period;
 
     /**
      * @return The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
      * 
      */
-    public Output<Optional<Integer>> period() {
-        return Codegen.optional(this.period);
+    public Output<Integer> period() {
+        return this.period;
     }
     /**
      * The scaling group associated with this alarm, the &#39;ForceNew&#39; attribute is available in 1.56.0+.
@@ -381,14 +410,14 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="statistics", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> statistics;
+    private Output<String> statistics;
 
     /**
      * @return The statistic to apply to the alarm&#39;s associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
      * 
      */
-    public Output<Optional<String>> statistics() {
-        return Codegen.optional(this.statistics);
+    public Output<String> statistics() {
+        return this.statistics;
     }
     /**
      * The value against which the specified statistics is compared.

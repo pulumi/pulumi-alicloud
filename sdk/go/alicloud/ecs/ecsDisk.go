@@ -26,7 +26,7 @@ type EcsDisk struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
 	Category pulumi.StringPtrOutput `pulumi:"category"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot pulumi.BoolPtrOutput `pulumi:"deleteAutoSnapshot"`
@@ -115,7 +115,7 @@ type ecsDiskState struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
 	Category *string `pulumi:"category"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
@@ -175,7 +175,7 @@ type EcsDiskState struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringPtrInput
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
 	Category pulumi.StringPtrInput
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot pulumi.BoolPtrInput
@@ -239,7 +239,7 @@ type ecsDiskArgs struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
 	Category *string `pulumi:"category"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
@@ -298,7 +298,7 @@ type EcsDiskArgs struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringPtrInput
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
 	Category pulumi.StringPtrInput
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot pulumi.BoolPtrInput
@@ -448,7 +448,7 @@ func (o EcsDiskOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`. Default is `cloudEfficiency`.
+// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
 func (o EcsDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
 }

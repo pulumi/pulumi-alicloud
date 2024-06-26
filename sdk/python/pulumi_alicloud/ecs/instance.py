@@ -2734,6 +2734,12 @@ class Instance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        instance_type = config.get("instanceType")
+        if instance_type is None:
+            instance_type = "ecs.n4.large"
+        image_id = config.get("imageId")
+        if image_id is None:
+            image_id = "ubuntu_18_04_64_20G_alibase_20190624.vhd"
         # Create a new ECS instance for VPC
         vpc = alicloud.vpc.Network("vpc",
             vpc_name=name,
@@ -2748,7 +2754,8 @@ class Instance(pulumi.CustomResource):
             pending_window_in_days=7,
             status="Enabled")
         default = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
+            available_resource_creation="VSwitch",
+            available_instance_type=instance_type)
         vswitch = alicloud.vpc.Switch("vswitch",
             vpc_id=vpc.id,
             cidr_block="172.16.0.0/24",
@@ -2757,11 +2764,11 @@ class Instance(pulumi.CustomResource):
         instance = alicloud.ecs.Instance("instance",
             availability_zone=default.zones[0].id,
             security_groups=[__item.id for __item in [group]],
-            instance_type="ecs.n4.large",
+            instance_type=instance_type,
             system_disk_category="cloud_efficiency",
             system_disk_name=name,
             system_disk_description="test_foo_system_disk_description",
-            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
+            image_id=image_id,
             instance_name=name,
             vswitch_id=vswitch.id,
             internet_max_bandwidth_out=10,
@@ -2938,6 +2945,12 @@ class Instance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        instance_type = config.get("instanceType")
+        if instance_type is None:
+            instance_type = "ecs.n4.large"
+        image_id = config.get("imageId")
+        if image_id is None:
+            image_id = "ubuntu_18_04_64_20G_alibase_20190624.vhd"
         # Create a new ECS instance for VPC
         vpc = alicloud.vpc.Network("vpc",
             vpc_name=name,
@@ -2952,7 +2965,8 @@ class Instance(pulumi.CustomResource):
             pending_window_in_days=7,
             status="Enabled")
         default = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
+            available_resource_creation="VSwitch",
+            available_instance_type=instance_type)
         vswitch = alicloud.vpc.Switch("vswitch",
             vpc_id=vpc.id,
             cidr_block="172.16.0.0/24",
@@ -2961,11 +2975,11 @@ class Instance(pulumi.CustomResource):
         instance = alicloud.ecs.Instance("instance",
             availability_zone=default.zones[0].id,
             security_groups=[__item.id for __item in [group]],
-            instance_type="ecs.n4.large",
+            instance_type=instance_type,
             system_disk_category="cloud_efficiency",
             system_disk_name=name,
             system_disk_description="test_foo_system_disk_description",
-            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
+            image_id=image_id,
             instance_name=name,
             vswitch_id=vswitch.id,
             internet_max_bandwidth_out=10,

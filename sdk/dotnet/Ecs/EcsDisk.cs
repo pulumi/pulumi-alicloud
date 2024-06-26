@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
         /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -383,7 +383,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`. Default is `cloud_efficiency`.
+        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }

@@ -1646,15 +1646,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
      * Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
      * 
      */
-    @Import(name="resourcesharing")
-    private @Nullable Output<String> resourcesharing;
+    @Import(name="ressharing")
+    private @Nullable Output<String> ressharing;
 
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
      * 
      */
-    public Optional<Output<String>> resourcesharing() {
-        return Optional.ofNullable(this.resourcesharing);
+    public Optional<Output<String>> ressharing() {
+        return Optional.ofNullable(this.ressharing);
     }
 
     /**
@@ -2054,7 +2054,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.rds = $.rds;
         this.redisa = $.redisa;
         this.resourcemanager = $.resourcemanager;
-        this.resourcesharing = $.resourcesharing;
+        this.ressharing = $.ressharing;
         this.ros = $.ros;
         this.sas = $.sas;
         this.scdn = $.scdn;
@@ -4372,24 +4372,24 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourcesharing Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
+         * @param ressharing Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
          * 
          * @return builder
          * 
          */
-        public Builder resourcesharing(@Nullable Output<String> resourcesharing) {
-            $.resourcesharing = resourcesharing;
+        public Builder ressharing(@Nullable Output<String> ressharing) {
+            $.ressharing = ressharing;
             return this;
         }
 
         /**
-         * @param resourcesharing Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
+         * @param ressharing Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
          * 
          * @return builder
          * 
          */
-        public Builder resourcesharing(String resourcesharing) {
-            return resourcesharing(Output.of(resourcesharing));
+        public Builder ressharing(String ressharing) {
+            return ressharing(Output.of(ressharing));
         }
 
         /**

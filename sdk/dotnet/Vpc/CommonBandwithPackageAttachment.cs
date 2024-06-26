@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
+    /// CBWP Common Bandwidth Package Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example &lt;bandwidth_package_id&gt;:&lt;instance_id&gt;
@@ -59,13 +59,13 @@ namespace Pulumi.AliCloud.Vpc
     public partial class CommonBandwithPackageAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        /// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         /// </summary>
         [Output("bandwidthPackageBandwidth")]
         public Output<string> BandwidthPackageBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
+        /// The ID of the Internet Shared Bandwidth instance.
         /// </summary>
         [Output("bandwidthPackageId")]
         public Output<string> BandwidthPackageId { get; private set; } = null!;
@@ -77,13 +77,17 @@ namespace Pulumi.AliCloud.Vpc
         public Output<bool?> CancelCommonBandwidthPackageIpBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The instance_id of the common bandwidth package attachment, the field can't be changed.
+        /// The ID of the EIP that you want to query.
+        /// 
+        /// You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+        /// 
+        /// &gt; **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        /// The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         /// </summary>
         [Output("ipType")]
         public Output<string?> IpType { get; private set; } = null!;
@@ -141,13 +145,13 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class CommonBandwithPackageAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        /// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         /// </summary>
         [Input("bandwidthPackageBandwidth")]
         public Input<string>? BandwidthPackageBandwidth { get; set; }
 
         /// <summary>
-        /// The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
+        /// The ID of the Internet Shared Bandwidth instance.
         /// </summary>
         [Input("bandwidthPackageId", required: true)]
         public Input<string> BandwidthPackageId { get; set; } = null!;
@@ -159,13 +163,17 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? CancelCommonBandwidthPackageIpBandwidth { get; set; }
 
         /// <summary>
-        /// The instance_id of the common bandwidth package attachment, the field can't be changed.
+        /// The ID of the EIP that you want to query.
+        /// 
+        /// You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+        /// 
+        /// &gt; **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        /// The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         /// </summary>
         [Input("ipType")]
         public Input<string>? IpType { get; set; }
@@ -179,13 +187,13 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class CommonBandwithPackageAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        /// The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         /// </summary>
         [Input("bandwidthPackageBandwidth")]
         public Input<string>? BandwidthPackageBandwidth { get; set; }
 
         /// <summary>
-        /// The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
+        /// The ID of the Internet Shared Bandwidth instance.
         /// </summary>
         [Input("bandwidthPackageId")]
         public Input<string>? BandwidthPackageId { get; set; }
@@ -197,13 +205,17 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? CancelCommonBandwidthPackageIpBandwidth { get; set; }
 
         /// <summary>
-        /// The instance_id of the common bandwidth package attachment, the field can't be changed.
+        /// The ID of the EIP that you want to query.
+        /// 
+        /// You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+        /// 
+        /// &gt; **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        /// The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         /// </summary>
         [Input("ipType")]
         public Input<string>? IpType { get; set; }

@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
+ * CBWP Common Bandwidth Package Attachment can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example &lt;bandwidth_package_id&gt;:&lt;instance_id&gt;
@@ -84,28 +84,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment")
 public class CommonBandwithPackageAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
      * 
      */
     @Export(name="bandwidthPackageBandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageBandwidth;
 
     /**
-     * @return The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     * @return The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
      * 
      */
     public Output<String> bandwidthPackageBandwidth() {
         return this.bandwidthPackageBandwidth;
     }
     /**
-     * The bandwidth_package_id of the common bandwidth package attachment, the field can&#39;t be changed.
+     * The ID of the Internet Shared Bandwidth instance.
      * 
      */
     @Export(name="bandwidthPackageId", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageId;
 
     /**
-     * @return The bandwidth_package_id of the common bandwidth package attachment, the field can&#39;t be changed.
+     * @return The ID of the Internet Shared Bandwidth instance.
      * 
      */
     public Output<String> bandwidthPackageId() {
@@ -126,28 +126,36 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
         return Codegen.optional(this.cancelCommonBandwidthPackageIpBandwidth);
     }
     /**
-     * The instance_id of the common bandwidth package attachment, the field can&#39;t be changed.
+     * The ID of the EIP that you want to query.
+     * 
+     * You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+     * 
+     * &gt; **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The instance_id of the common bandwidth package attachment, the field can&#39;t be changed.
+     * @return The ID of the EIP that you want to query.
+     * 
+     * You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+     * 
+     * &gt; **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     * The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
      * 
      */
     @Export(name="ipType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipType;
 
     /**
-     * @return IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     * @return The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
      * 
      */
     public Output<Optional<String>> ipType() {

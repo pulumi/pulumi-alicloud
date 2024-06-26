@@ -22,16 +22,14 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
     public static final CommonBandwithPackageArgs Empty = new CommonBandwithPackageArgs();
 
     /**
-     * The peak bandwidth of the shared bandwidth. Unit: Mbps.
-     * Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
+     * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
      * 
      */
     @Import(name="bandwidth", required=true)
     private Output<String> bandwidth;
 
     /**
-     * @return The peak bandwidth of the shared bandwidth. Unit: Mbps.
-     * Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
+     * @return The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
      * 
      */
     public Output<String> bandwidth() {
@@ -39,14 +37,14 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The name of the Internet Shared Bandwidth instance.
+     * The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Import(name="bandwidthPackageName")
     private @Nullable Output<String> bandwidthPackageName;
 
     /**
-     * @return The name of the Internet Shared Bandwidth instance.
+     * @return The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Optional<Output<String>> bandwidthPackageName() {
@@ -54,18 +52,14 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether enable the deletion protection or not. Default value: false.
-     * - **true**: Enable deletion protection.
-     * - **false**: Disable deletion protection.
+     * Specifies whether to enable deletion protection. Valid values:
      * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
     /**
-     * @return Whether enable the deletion protection or not. Default value: false.
-     * - **true**: Enable deletion protection.
-     * - **false**: Disable deletion protection.
+     * @return Specifies whether to enable deletion protection. Valid values:
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -73,14 +67,14 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The description of the shared bandwidth.
+     * The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the shared bandwidth.
+     * @return The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -88,18 +82,14 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
-     * - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
-     * - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
+     * Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
      * 
      */
     @Import(name="force")
     private @Nullable Output<String> force;
 
     /**
-     * @return Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
-     * - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
-     * - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
+     * @return Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
      * 
      */
     public Optional<Output<String>> force() {
@@ -107,14 +97,14 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn&#39;t support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+     * The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn&#39;t support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+     * @return The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -122,14 +112,38 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+     * The line type. Valid values:
+     * - `BGP` All regions support BGP (Multi-ISP).
+     * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     * 
+     * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     * 
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
      * 
      */
     @Import(name="isp")
     private @Nullable Output<String> isp;
 
     /**
-     * @return The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+     * @return The line type. Valid values:
+     * - `BGP` All regions support BGP (Multi-ISP).
+     * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     * 
+     * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     * 
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
      * 
      */
     public Optional<Output<String>> isp() {
@@ -160,14 +174,18 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
+     * The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+     * 
+     * &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
      * 
      */
     @Import(name="ratio")
     private @Nullable Output<Integer> ratio;
 
     /**
-     * @return Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
+     * @return The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+     * 
+     * &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
      * 
      */
     public Optional<Output<Integer>> ratio() {
@@ -175,14 +193,18 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The Id of resource group which the common bandwidth package belongs.
+     * The ID of the resource group to which you want to move the resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the common bandwidth package belongs.
+     * @return The ID of the resource group to which you want to move the resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -205,14 +227,14 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -220,7 +242,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The available area of the shared bandwidth.
+     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -229,7 +251,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> zone;
 
     /**
-     * @return The available area of the shared bandwidth.
+     * @return The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -275,8 +297,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bandwidth The peak bandwidth of the shared bandwidth. Unit: Mbps.
-         * Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
+         * @param bandwidth The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
          * 
          * @return builder
          * 
@@ -287,8 +308,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bandwidth The peak bandwidth of the shared bandwidth. Unit: Mbps.
-         * Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
+         * @param bandwidth The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
          * 
          * @return builder
          * 
@@ -298,7 +318,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bandwidthPackageName The name of the Internet Shared Bandwidth instance.
+         * @param bandwidthPackageName The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -309,7 +329,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bandwidthPackageName The name of the Internet Shared Bandwidth instance.
+         * @param bandwidthPackageName The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -319,9 +339,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param deletionProtection Whether enable the deletion protection or not. Default value: false.
-         * - **true**: Enable deletion protection.
-         * - **false**: Disable deletion protection.
+         * @param deletionProtection Specifies whether to enable deletion protection. Valid values:
          * 
          * @return builder
          * 
@@ -332,9 +350,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param deletionProtection Whether enable the deletion protection or not. Default value: false.
-         * - **true**: Enable deletion protection.
-         * - **false**: Disable deletion protection.
+         * @param deletionProtection Specifies whether to enable deletion protection. Valid values:
          * 
          * @return builder
          * 
@@ -344,7 +360,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param description The description of the shared bandwidth.
+         * @param description The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -355,7 +371,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param description The description of the shared bandwidth.
+         * @param description The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -365,9 +381,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param force Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
-         * - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
-         * - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
+         * @param force Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
          * 
          * @return builder
          * 
@@ -378,9 +392,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param force Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
-         * - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
-         * - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
+         * @param force Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
          * 
          * @return builder
          * 
@@ -390,7 +402,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param internetChargeType The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn&#39;t support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+         * @param internetChargeType The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
          * 
          * @return builder
          * 
@@ -401,7 +413,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param internetChargeType The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn&#39;t support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+         * @param internetChargeType The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
          * 
          * @return builder
          * 
@@ -411,7 +423,19 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param isp The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+         * @param isp The line type. Valid values:
+         * - `BGP` All regions support BGP (Multi-ISP).
+         * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+         * 
+         * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+         * - `ChinaTelecom`
+         * - `ChinaUnicom`
+         * - `ChinaMobile`
+         * - `ChinaTelecom_L2`
+         * - `ChinaUnicom_L2`
+         * - `ChinaMobile_L2`
+         * 
+         * If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
          * 
          * @return builder
          * 
@@ -422,7 +446,19 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param isp The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+         * @param isp The line type. Valid values:
+         * - `BGP` All regions support BGP (Multi-ISP).
+         * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+         * 
+         * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+         * - `ChinaTelecom`
+         * - `ChinaUnicom`
+         * - `ChinaMobile`
+         * - `ChinaTelecom_L2`
+         * - `ChinaUnicom_L2`
+         * - `ChinaMobile_L2`
+         * 
+         * If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
          * 
          * @return builder
          * 
@@ -461,7 +497,9 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ratio Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
+         * @param ratio The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+         * 
+         * &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
          * 
          * @return builder
          * 
@@ -472,7 +510,9 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ratio Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
+         * @param ratio The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+         * 
+         * &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
          * 
          * @return builder
          * 
@@ -482,7 +522,9 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the common bandwidth package belongs.
+         * @param resourceGroupId The ID of the resource group to which you want to move the resource.
+         * 
+         * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
          * 
          * @return builder
          * 
@@ -493,7 +535,9 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the common bandwidth package belongs.
+         * @param resourceGroupId The ID of the resource group to which you want to move the resource.
+         * 
+         * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
          * 
          * @return builder
          * 
@@ -534,7 +578,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -545,7 +589,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -555,7 +599,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zone The available area of the shared bandwidth.
+         * @param zone The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
@@ -568,7 +612,7 @@ public final class CommonBandwithPackageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zone The available area of the shared bandwidth.
+         * @param zone The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 

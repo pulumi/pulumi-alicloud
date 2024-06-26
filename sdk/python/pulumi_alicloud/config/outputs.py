@@ -271,7 +271,7 @@ class Endpoints(dict):
                  rds: Optional[str] = None,
                  redisa: Optional[str] = None,
                  resourcemanager: Optional[str] = None,
-                 resourcesharing: Optional[str] = None,
+                 ressharing: Optional[str] = None,
                  ros: Optional[str] = None,
                  sas: Optional[str] = None,
                  scdn: Optional[str] = None,
@@ -400,7 +400,7 @@ class Endpoints(dict):
         :param str rds: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
         :param str redisa: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
         :param str resourcemanager: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
-        :param str resourcesharing: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
+        :param str ressharing: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
         :param str ros: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
         :param str sas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
         :param str scdn: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
@@ -639,8 +639,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "redisa", redisa)
         if resourcemanager is not None:
             pulumi.set(__self__, "resourcemanager", resourcemanager)
-        if resourcesharing is not None:
-            pulumi.set(__self__, "resourcesharing", resourcesharing)
+        if ressharing is not None:
+            pulumi.set(__self__, "ressharing", ressharing)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
         if sas is not None:
@@ -1551,11 +1551,11 @@ class Endpoints(dict):
 
     @property
     @pulumi.getter
-    def resourcesharing(self) -> Optional[str]:
+    def ressharing(self) -> Optional[str]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
         """
-        return pulumi.get(self, "resourcesharing")
+        return pulumi.get(self, "ressharing")
 
     @property
     @pulumi.getter

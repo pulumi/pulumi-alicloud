@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.CS
     public partial class NodePool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
+        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
@@ -534,7 +534,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class NodePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
+        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
@@ -1079,7 +1079,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class NodePoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
+        /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }

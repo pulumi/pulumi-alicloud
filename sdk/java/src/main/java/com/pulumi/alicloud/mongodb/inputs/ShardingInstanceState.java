@@ -99,14 +99,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
+     * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
      * 
      */
     @Import(name="engineVersion")
     private @Nullable Output<String> engineVersion;
 
     /**
-     * @return Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
+     * @return Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
      * 
      */
     public Optional<Output<String>> engineVersion() {
@@ -345,6 +345,21 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+     * 
+     */
+    @Import(name="storageType")
+    private @Nullable Output<String> storageType;
+
+    /**
+     * @return The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+     * 
+     */
+    public Optional<Output<String>> storageType() {
+        return Optional.ofNullable(this.storageType);
+    }
+
+    /**
      * A mapping of tags to assign to the resource.
      * 
      */
@@ -445,6 +460,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         this.securityIpLists = $.securityIpLists;
         this.shardLists = $.shardLists;
         this.storageEngine = $.storageEngine;
+        this.storageType = $.storageType;
         this.tags = $.tags;
         this.tdeStatus = $.tdeStatus;
         this.vpcId = $.vpcId;
@@ -596,7 +612,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param engineVersion Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
+         * @param engineVersion Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
          * 
          * @return builder
          * 
@@ -607,7 +623,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param engineVersion Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
+         * @param engineVersion Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
          * 
          * @return builder
          * 
@@ -965,6 +981,27 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder storageEngine(String storageEngine) {
             return storageEngine(Output.of(storageEngine));
+        }
+
+        /**
+         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageType(@Nullable Output<String> storageType) {
+            $.storageType = storageType;
+            return this;
+        }
+
+        /**
+         * @param storageType The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageType(String storageType) {
+            return storageType(Output.of(storageType));
         }
 
         /**

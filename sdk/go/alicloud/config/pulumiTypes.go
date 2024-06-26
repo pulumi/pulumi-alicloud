@@ -417,7 +417,7 @@ type Endpoints struct {
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
 	Resourcemanager *string `pulumi:"resourcemanager"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
-	Resourcesharing *string `pulumi:"resourcesharing"`
+	Ressharing *string `pulumi:"ressharing"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
 	Ros *string `pulumi:"ros"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
@@ -688,7 +688,7 @@ type EndpointsArgs struct {
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
 	Resourcemanager pulumi.StringPtrInput `pulumi:"resourcemanager"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
-	Resourcesharing pulumi.StringPtrInput `pulumi:"resourcesharing"`
+	Ressharing pulumi.StringPtrInput `pulumi:"ressharing"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
 	Ros pulumi.StringPtrInput `pulumi:"ros"`
 	// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
@@ -1325,8 +1325,8 @@ func (o EndpointsOutput) Resourcemanager() pulumi.StringPtrOutput {
 }
 
 // Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
-func (o EndpointsOutput) Resourcesharing() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Endpoints) *string { return v.Resourcesharing }).(pulumi.StringPtrOutput)
+func (o EndpointsOutput) Ressharing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Ressharing }).(pulumi.StringPtrOutput)
 }
 
 // Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.

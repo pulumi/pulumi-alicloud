@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an Alicloud EIP Association resource for associating Elastic IP to ECS Instance, SLB Instance or Nat Gateway.
+ * Provides a EIP Association resource.
  * 
  * &gt; **NOTE:** `alicloud.ecs.EipAssociation` is useful in scenarios where EIPs are either
  *  pre-existing or distributed to customers or users and therefore cannot be changed.
@@ -25,9 +25,13 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
  * 
+ * For information about EIP Association and how to use it, see [What is Association](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-associateeipaddress).
+ * 
  * &gt; **NOTE:** Available since v1.117.0.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -82,6 +86,7 @@ import javax.annotation.Nullable;
  *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
  *             .owners("system")
+ *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .build());
  * 
  *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
@@ -129,14 +134,9 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Module Support
- * 
- * You can use the existing eip module
- * to create several EIP instances and associate them with other resources one-click, like ECS instances, SLB, Nat Gateway and so on.
- * 
  * ## Import
  * 
- * Elastic IP address association can be imported using the id, e.g.
+ * EIP Association can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ecs/eipAssociation:EipAssociation example &lt;allocation_id&gt;:&lt;instance_id&gt;
@@ -146,70 +146,96 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/eipAssociation:EipAssociation")
 public class EipAssociation extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the EIP that you want to associate with an instance.
+     * The ID of the EIP instance.
      * 
      */
     @Export(name="allocationId", refs={String.class}, tree="[0]")
     private Output<String> allocationId;
 
     /**
-     * @return The ID of the EIP that you want to associate with an instance.
+     * @return The ID of the EIP instance.
      * 
      */
     public Output<String> allocationId() {
         return this.allocationId;
     }
     /**
-     * When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default value: `false`. Valid values: `true`, `false`.
+     * Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default value: `false`. Valid values: `true`, `false`.
+     * @return Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
+     * The ID of the instance with which you want to associate the EIP. You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
+     * @return The ID of the instance with which you want to associate the EIP. You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * The type of the instance with which you want to associate the EIP. Valid values: `Nat`, `SlbInstance`, `EcsInstance`, `NetworkInterface`, `HaVip` and `IpAddress`.
+     * The type of the instance with which you want to associate the EIP. Valid values:
+     * - `Nat`: NAT gateway
+     * - `SlbInstance`: CLB instance
+     * - `EcsInstance` (default): ECS instance
+     * - `NetworkInterface`: secondary ENI
+     * - `HaVip`: HAVIP
+     * - `IpAddress`: IP address
+     * 
+     * &gt; **NOTE:**   The default value is `EcsInstance`. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return The type of the instance with which you want to associate the EIP. Valid values: `Nat`, `SlbInstance`, `EcsInstance`, `NetworkInterface`, `HaVip` and `IpAddress`.
+     * @return The type of the instance with which you want to associate the EIP. Valid values:
+     * - `Nat`: NAT gateway
+     * - `SlbInstance`: CLB instance
+     * - `EcsInstance` (default): ECS instance
+     * - `NetworkInterface`: secondary ENI
+     * - `HaVip`: HAVIP
+     * - `IpAddress`: IP address
+     * 
+     * &gt; **NOTE:**   The default value is `EcsInstance`. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
      * 
      */
     public Output<String> instanceType() {
         return this.instanceType;
     }
     /**
-     * The association mode. Default value: `NAT`. Valid values: `NAT`, `BINDED`, `MULTI_BINDED`. **Note:** This parameter is required only when `instance_type` is set to `NetworkInterface`.
+     * The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
+     * 
+     * &gt; **NOTE:**   This parameter is required only when `instance_type` is set to `NetworkInterface`.
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
-     * @return The association mode. Default value: `NAT`. Valid values: `NAT`, `BINDED`, `MULTI_BINDED`. **Note:** This parameter is required only when `instance_type` is set to `NetworkInterface`.
+     * @return The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
+     * 
+     * &gt; **NOTE:**   This parameter is required only when `instance_type` is set to `NetworkInterface`.
      * 
      */
     public Output<String> mode() {
@@ -218,6 +244,10 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
     /**
      * The IP address in the CIDR block of the vSwitch.
      * 
+     * If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
+     * 
+     * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+     * 
      */
     @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateIpAddress;
@@ -225,19 +255,31 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
     /**
      * @return The IP address in the CIDR block of the vSwitch.
      * 
+     * If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
+     * 
+     * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+     * 
      */
     public Output<Optional<String>> privateIpAddress() {
         return Codegen.optional(this.privateIpAddress);
     }
     /**
-     * The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to `IpAddress`.
+     * The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
+     * 
+     * When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
+     * 
+     * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
-     * @return The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to `IpAddress`.
+     * @return The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
+     * 
+     * When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
+     * 
+     * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      * 
      */
     public Output<Optional<String>> vpcId() {

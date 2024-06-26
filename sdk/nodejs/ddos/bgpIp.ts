@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const current = alicloud.getAccount({});
  * const instance = new alicloud.ddos.DdosBgpInstance("instance", {
  *     name: name,
  *     baseBandwidth: 20,
@@ -36,6 +37,7 @@ import * as utilities from "../utilities";
  *     instanceId: instance.id,
  *     ip: defaultEipAddress.ipAddress,
  *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
+ *     memberUid: current.then(current => current.id),
  * });
  * ```
  *
@@ -84,6 +86,10 @@ export class BgpIp extends pulumi.CustomResource {
      */
     public readonly ip!: pulumi.Output<string>;
     /**
+     * The member account id of the IP address.
+     */
+    public readonly memberUid!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
@@ -107,6 +113,7 @@ export class BgpIp extends pulumi.CustomResource {
             const state = argsOrState as BgpIpState | undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
+            resourceInputs["memberUid"] = state ? state.memberUid : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
@@ -119,6 +126,7 @@ export class BgpIp extends pulumi.CustomResource {
             }
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["ip"] = args ? args.ip : undefined;
+            resourceInputs["memberUid"] = args ? args.memberUid : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -139,6 +147,10 @@ export interface BgpIpState {
      * The IP address.
      */
     ip?: pulumi.Input<string>;
+    /**
+     * The member account id of the IP address.
+     */
+    memberUid?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
@@ -161,6 +173,10 @@ export interface BgpIpArgs {
      * The IP address.
      */
     ip: pulumi.Input<string>;
+    /**
+     * The member account id of the IP address.
+     */
+    memberUid?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */

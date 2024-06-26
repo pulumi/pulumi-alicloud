@@ -1563,6 +1563,7 @@ func (o ContainerGroupContainerReadinessProbeTcpSocketArrayOutput) Index(i pulum
 
 type ContainerGroupContainerSecurityContext struct {
 	Capabilities []ContainerGroupContainerSecurityContextCapability `pulumi:"capabilities"`
+	Privileged   *bool                                              `pulumi:"privileged"`
 	RunAsUser    *int                                               `pulumi:"runAsUser"`
 }
 
@@ -1579,6 +1580,7 @@ type ContainerGroupContainerSecurityContextInput interface {
 
 type ContainerGroupContainerSecurityContextArgs struct {
 	Capabilities ContainerGroupContainerSecurityContextCapabilityArrayInput `pulumi:"capabilities"`
+	Privileged   pulumi.BoolPtrInput                                        `pulumi:"privileged"`
 	RunAsUser    pulumi.IntPtrInput                                         `pulumi:"runAsUser"`
 }
 
@@ -1637,6 +1639,10 @@ func (o ContainerGroupContainerSecurityContextOutput) Capabilities() ContainerGr
 	return o.ApplyT(func(v ContainerGroupContainerSecurityContext) []ContainerGroupContainerSecurityContextCapability {
 		return v.Capabilities
 	}).(ContainerGroupContainerSecurityContextCapabilityArrayOutput)
+}
+
+func (o ContainerGroupContainerSecurityContextOutput) Privileged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerGroupContainerSecurityContext) *bool { return v.Privileged }).(pulumi.BoolPtrOutput)
 }
 
 func (o ContainerGroupContainerSecurityContextOutput) RunAsUser() pulumi.IntPtrOutput {

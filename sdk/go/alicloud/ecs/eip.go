@@ -67,9 +67,9 @@ type Eip struct {
 
 	ActivityId pulumi.StringPtrOutput `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-	AddressName  pulumi.StringOutput    `pulumi:"addressName"`
-	AllocationId pulumi.StringPtrOutput `pulumi:"allocationId"`
-	AutoPay      pulumi.BoolPtrOutput   `pulumi:"autoPay"`
+	AddressName  pulumi.StringOutput  `pulumi:"addressName"`
+	AllocationId pulumi.StringOutput  `pulumi:"allocationId"`
+	AutoPay      pulumi.BoolPtrOutput `pulumi:"autoPay"`
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth  pulumi.StringOutput `pulumi:"bandwidth"`
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -443,8 +443,8 @@ func (o EipOutput) AddressName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.AddressName }).(pulumi.StringOutput)
 }
 
-func (o EipOutput) AllocationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.AllocationId }).(pulumi.StringPtrOutput)
+func (o EipOutput) AllocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.AllocationId }).(pulumi.StringOutput)
 }
 
 func (o EipOutput) AutoPay() pulumi.BoolPtrOutput {

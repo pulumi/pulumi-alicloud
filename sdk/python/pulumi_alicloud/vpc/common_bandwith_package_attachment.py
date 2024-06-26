@@ -21,11 +21,15 @@ class CommonBandwithPackageAttachmentArgs:
                  ip_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CommonBandwithPackageAttachment resource.
-        :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
-        :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
-        :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        :param pulumi.Input[str] bandwidth_package_id: The ID of the Internet Shared Bandwidth instance.
+        :param pulumi.Input[str] instance_id: The ID of the EIP that you want to query.
+               
+               You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+               
+               > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+        :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         :param pulumi.Input[bool] cancel_common_bandwidth_package_ip_bandwidth: Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
-        :param pulumi.Input[str] ip_type: IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        :param pulumi.Input[str] ip_type: The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         """
         pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -40,7 +44,7 @@ class CommonBandwithPackageAttachmentArgs:
     @pulumi.getter(name="bandwidthPackageId")
     def bandwidth_package_id(self) -> pulumi.Input[str]:
         """
-        The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
+        The ID of the Internet Shared Bandwidth instance.
         """
         return pulumi.get(self, "bandwidth_package_id")
 
@@ -52,7 +56,11 @@ class CommonBandwithPackageAttachmentArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        The instance_id of the common bandwidth package attachment, the field can't be changed.
+        The ID of the EIP that you want to query.
+
+        You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+
+        > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         """
         return pulumi.get(self, "instance_id")
 
@@ -64,7 +72,7 @@ class CommonBandwithPackageAttachmentArgs:
     @pulumi.getter(name="bandwidthPackageBandwidth")
     def bandwidth_package_bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth_package_bandwidth")
 
@@ -88,7 +96,7 @@ class CommonBandwithPackageAttachmentArgs:
     @pulumi.getter(name="ipType")
     def ip_type(self) -> Optional[pulumi.Input[str]]:
         """
-        IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         """
         return pulumi.get(self, "ip_type")
 
@@ -108,11 +116,15 @@ class _CommonBandwithPackageAttachmentState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CommonBandwithPackageAttachment resources.
-        :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
-        :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
+        :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+        :param pulumi.Input[str] bandwidth_package_id: The ID of the Internet Shared Bandwidth instance.
         :param pulumi.Input[bool] cancel_common_bandwidth_package_ip_bandwidth: Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
-        :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
-        :param pulumi.Input[str] ip_type: IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        :param pulumi.Input[str] instance_id: The ID of the EIP that you want to query.
+               
+               You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+               
+               > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+        :param pulumi.Input[str] ip_type: The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         :param pulumi.Input[str] status: The status of the Internet Shared Bandwidth instance.
         """
         if bandwidth_package_bandwidth is not None:
@@ -132,7 +144,7 @@ class _CommonBandwithPackageAttachmentState:
     @pulumi.getter(name="bandwidthPackageBandwidth")
     def bandwidth_package_bandwidth(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth_package_bandwidth")
 
@@ -144,7 +156,7 @@ class _CommonBandwithPackageAttachmentState:
     @pulumi.getter(name="bandwidthPackageId")
     def bandwidth_package_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
+        The ID of the Internet Shared Bandwidth instance.
         """
         return pulumi.get(self, "bandwidth_package_id")
 
@@ -168,7 +180,11 @@ class _CommonBandwithPackageAttachmentState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance_id of the common bandwidth package attachment, the field can't be changed.
+        The ID of the EIP that you want to query.
+
+        You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+
+        > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         """
         return pulumi.get(self, "instance_id")
 
@@ -180,7 +196,7 @@ class _CommonBandwithPackageAttachmentState:
     @pulumi.getter(name="ipType")
     def ip_type(self) -> Optional[pulumi.Input[str]]:
         """
-        IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         """
         return pulumi.get(self, "ip_type")
 
@@ -240,7 +256,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
 
         ## Import
 
-        cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
+        CBWP Common Bandwidth Package Attachment can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>
@@ -248,11 +264,15 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
-        :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
+        :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+        :param pulumi.Input[str] bandwidth_package_id: The ID of the Internet Shared Bandwidth instance.
         :param pulumi.Input[bool] cancel_common_bandwidth_package_ip_bandwidth: Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
-        :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
-        :param pulumi.Input[str] ip_type: IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        :param pulumi.Input[str] instance_id: The ID of the EIP that you want to query.
+               
+               You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+               
+               > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+        :param pulumi.Input[str] ip_type: The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         """
         ...
     @overload
@@ -288,7 +308,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
 
         ## Import
 
-        cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
+        CBWP Common Bandwidth Package Attachment can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>
@@ -356,11 +376,15 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
-        :param pulumi.Input[str] bandwidth_package_id: The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
+        :param pulumi.Input[str] bandwidth_package_bandwidth: The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+        :param pulumi.Input[str] bandwidth_package_id: The ID of the Internet Shared Bandwidth instance.
         :param pulumi.Input[bool] cancel_common_bandwidth_package_ip_bandwidth: Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
-        :param pulumi.Input[str] instance_id: The instance_id of the common bandwidth package attachment, the field can't be changed.
-        :param pulumi.Input[str] ip_type: IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        :param pulumi.Input[str] instance_id: The ID of the EIP that you want to query.
+               
+               You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+               
+               > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+        :param pulumi.Input[str] ip_type: The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         :param pulumi.Input[str] status: The status of the Internet Shared Bandwidth instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -379,7 +403,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
     @pulumi.getter(name="bandwidthPackageBandwidth")
     def bandwidth_package_bandwidth(self) -> pulumi.Output[str]:
         """
-        The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         """
         return pulumi.get(self, "bandwidth_package_bandwidth")
 
@@ -387,7 +411,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
     @pulumi.getter(name="bandwidthPackageId")
     def bandwidth_package_id(self) -> pulumi.Output[str]:
         """
-        The bandwidth_package_id of the common bandwidth package attachment, the field can't be changed.
+        The ID of the Internet Shared Bandwidth instance.
         """
         return pulumi.get(self, "bandwidth_package_id")
 
@@ -403,7 +427,11 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        The instance_id of the common bandwidth package attachment, the field can't be changed.
+        The ID of the EIP that you want to query.
+
+        You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+
+        > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
         """
         return pulumi.get(self, "instance_id")
 
@@ -411,7 +439,7 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
     @pulumi.getter(name="ipType")
     def ip_type(self) -> pulumi.Output[Optional[str]]:
         """
-        IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+        The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
         """
         return pulumi.get(self, "ip_type")
 

@@ -28,6 +28,8 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var instanceType = config.Get("instanceType") ?? "ecs.n4.large";
+    ///     var imageId = config.Get("imageId") ?? "ubuntu_18_04_64_20G_alibase_20190624.vhd";
     ///     // Create a new ECS instance for VPC
     ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
     ///     {
@@ -54,6 +56,7 @@ namespace Pulumi.AliCloud.Ecs
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",
+    ///         AvailableInstanceType = instanceType,
     ///     });
     /// 
     ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
@@ -71,11 +74,11 @@ namespace Pulumi.AliCloud.Ecs
     ///         {
     ///             @group,
     ///         }.Select(__item =&gt; __item.Id).ToList(),
-    ///         InstanceType = "ecs.n4.large",
+    ///         InstanceType = instanceType,
     ///         SystemDiskCategory = "cloud_efficiency",
     ///         SystemDiskName = name,
     ///         SystemDiskDescription = "test_foo_system_disk_description",
-    ///         ImageId = "ubuntu_18_04_64_20G_alibase_20190624.vhd",
+    ///         ImageId = imageId,
     ///         InstanceName = name,
     ///         VswitchId = vswitch.Id,
     ///         InternetMaxBandwidthOut = 10,

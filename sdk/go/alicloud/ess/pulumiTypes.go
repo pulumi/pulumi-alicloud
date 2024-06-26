@@ -13,6 +13,139 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AlarmExpression struct {
+	// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
+	ComparisonOperator *string `pulumi:"comparisonOperator"`
+	// The name for the alarm's associated metric. See `dimensions` below for details.
+	MetricName *string `pulumi:"metricName"`
+	// The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
+	Period *int `pulumi:"period"`
+	// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
+	Statistics *string `pulumi:"statistics"`
+	// The value against which the specified statistics is compared.
+	Threshold *float64 `pulumi:"threshold"`
+}
+
+// AlarmExpressionInput is an input type that accepts AlarmExpressionArgs and AlarmExpressionOutput values.
+// You can construct a concrete instance of `AlarmExpressionInput` via:
+//
+//	AlarmExpressionArgs{...}
+type AlarmExpressionInput interface {
+	pulumi.Input
+
+	ToAlarmExpressionOutput() AlarmExpressionOutput
+	ToAlarmExpressionOutputWithContext(context.Context) AlarmExpressionOutput
+}
+
+type AlarmExpressionArgs struct {
+	// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
+	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
+	// The name for the alarm's associated metric. See `dimensions` below for details.
+	MetricName pulumi.StringPtrInput `pulumi:"metricName"`
+	// The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
+	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
+	// The value against which the specified statistics is compared.
+	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
+}
+
+func (AlarmExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmExpression)(nil)).Elem()
+}
+
+func (i AlarmExpressionArgs) ToAlarmExpressionOutput() AlarmExpressionOutput {
+	return i.ToAlarmExpressionOutputWithContext(context.Background())
+}
+
+func (i AlarmExpressionArgs) ToAlarmExpressionOutputWithContext(ctx context.Context) AlarmExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmExpressionOutput)
+}
+
+// AlarmExpressionArrayInput is an input type that accepts AlarmExpressionArray and AlarmExpressionArrayOutput values.
+// You can construct a concrete instance of `AlarmExpressionArrayInput` via:
+//
+//	AlarmExpressionArray{ AlarmExpressionArgs{...} }
+type AlarmExpressionArrayInput interface {
+	pulumi.Input
+
+	ToAlarmExpressionArrayOutput() AlarmExpressionArrayOutput
+	ToAlarmExpressionArrayOutputWithContext(context.Context) AlarmExpressionArrayOutput
+}
+
+type AlarmExpressionArray []AlarmExpressionInput
+
+func (AlarmExpressionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmExpression)(nil)).Elem()
+}
+
+func (i AlarmExpressionArray) ToAlarmExpressionArrayOutput() AlarmExpressionArrayOutput {
+	return i.ToAlarmExpressionArrayOutputWithContext(context.Background())
+}
+
+func (i AlarmExpressionArray) ToAlarmExpressionArrayOutputWithContext(ctx context.Context) AlarmExpressionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmExpressionArrayOutput)
+}
+
+type AlarmExpressionOutput struct{ *pulumi.OutputState }
+
+func (AlarmExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmExpression)(nil)).Elem()
+}
+
+func (o AlarmExpressionOutput) ToAlarmExpressionOutput() AlarmExpressionOutput {
+	return o
+}
+
+func (o AlarmExpressionOutput) ToAlarmExpressionOutputWithContext(ctx context.Context) AlarmExpressionOutput {
+	return o
+}
+
+// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
+func (o AlarmExpressionOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmExpression) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// The name for the alarm's associated metric. See `dimensions` below for details.
+func (o AlarmExpressionOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmExpression) *string { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+// The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
+func (o AlarmExpressionOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlarmExpression) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
+func (o AlarmExpressionOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmExpression) *string { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// The value against which the specified statistics is compared.
+func (o AlarmExpressionOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AlarmExpression) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
+}
+
+type AlarmExpressionArrayOutput struct{ *pulumi.OutputState }
+
+func (AlarmExpressionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmExpression)(nil)).Elem()
+}
+
+func (o AlarmExpressionArrayOutput) ToAlarmExpressionArrayOutput() AlarmExpressionArrayOutput {
+	return o
+}
+
+func (o AlarmExpressionArrayOutput) ToAlarmExpressionArrayOutputWithContext(ctx context.Context) AlarmExpressionArrayOutput {
+	return o
+}
+
+func (o AlarmExpressionArrayOutput) Index(i pulumi.IntInput) AlarmExpressionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlarmExpression {
+		return vs[0].([]AlarmExpression)[vs[1].(int)]
+	}).(AlarmExpressionOutput)
+}
+
 type EciScalingConfigurationAcrRegistryInfo struct {
 	// Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
 	// when `acrRegistryInfo` is configured.
@@ -4995,6 +5128,8 @@ func (o GetScheduledTasksTaskArrayOutput) Index(i pulumi.IntInput) GetScheduledT
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmExpressionInput)(nil)).Elem(), AlarmExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmExpressionArrayInput)(nil)).Elem(), AlarmExpressionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationAcrRegistryInfoInput)(nil)).Elem(), EciScalingConfigurationAcrRegistryInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationAcrRegistryInfoArrayInput)(nil)).Elem(), EciScalingConfigurationAcrRegistryInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationContainerInput)(nil)).Elem(), EciScalingConfigurationContainerArgs{})
@@ -5059,6 +5194,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScalingRulesRuleArrayInput)(nil)).Elem(), GetScalingRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduledTasksTaskInput)(nil)).Elem(), GetScheduledTasksTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScheduledTasksTaskArrayInput)(nil)).Elem(), GetScheduledTasksTaskArray{})
+	pulumi.RegisterOutputType(AlarmExpressionOutput{})
+	pulumi.RegisterOutputType(AlarmExpressionArrayOutput{})
 	pulumi.RegisterOutputType(EciScalingConfigurationAcrRegistryInfoOutput{})
 	pulumi.RegisterOutputType(EciScalingConfigurationAcrRegistryInfoArrayOutput{})
 	pulumi.RegisterOutputType(EciScalingConfigurationContainerOutput{})

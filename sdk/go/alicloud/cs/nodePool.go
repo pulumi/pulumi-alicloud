@@ -26,7 +26,7 @@ import (
 type NodePool struct {
 	pulumi.CustomResourceState
 
-	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `true`. Valid values:
+	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
@@ -253,7 +253,7 @@ func GetNodePool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodePool resources.
 type nodePoolState struct {
-	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `true`. Valid values:
+	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
@@ -431,7 +431,7 @@ type nodePoolState struct {
 }
 
 type NodePoolState struct {
-	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `true`. Valid values:
+	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
 	AutoRenew pulumi.BoolPtrInput
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
 	AutoRenewPeriod pulumi.IntPtrInput
@@ -613,7 +613,7 @@ func (NodePoolState) ElementType() reflect.Type {
 }
 
 type nodePoolArgs struct {
-	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `true`. Valid values:
+	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
@@ -788,7 +788,7 @@ type nodePoolArgs struct {
 
 // The set of arguments for constructing a NodePool resource.
 type NodePoolArgs struct {
-	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `true`. Valid values:
+	// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
 	AutoRenew pulumi.BoolPtrInput
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
 	AutoRenewPeriod pulumi.IntPtrInput
@@ -1048,7 +1048,7 @@ func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoo
 	return o
 }
 
-// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `true`. Valid values:
+// Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
 func (o NodePoolOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }

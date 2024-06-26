@@ -6,6 +6,7 @@ package com.pulumi.alicloud.eci.inputs;
 import com.pulumi.alicloud.eci.inputs.ContainerGroupContainerSecurityContextCapabilityArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +25,13 @@ public final class ContainerGroupContainerSecurityContextArgs extends com.pulumi
         return Optional.ofNullable(this.capabilities);
     }
 
+    @Import(name="privileged")
+    private @Nullable Output<Boolean> privileged;
+
+    public Optional<Output<Boolean>> privileged() {
+        return Optional.ofNullable(this.privileged);
+    }
+
     @Import(name="runAsUser")
     private @Nullable Output<Integer> runAsUser;
 
@@ -35,6 +43,7 @@ public final class ContainerGroupContainerSecurityContextArgs extends com.pulumi
 
     private ContainerGroupContainerSecurityContextArgs(ContainerGroupContainerSecurityContextArgs $) {
         this.capabilities = $.capabilities;
+        this.privileged = $.privileged;
         this.runAsUser = $.runAsUser;
     }
 
@@ -67,6 +76,15 @@ public final class ContainerGroupContainerSecurityContextArgs extends com.pulumi
 
         public Builder capabilities(ContainerGroupContainerSecurityContextCapabilityArgs... capabilities) {
             return capabilities(List.of(capabilities));
+        }
+
+        public Builder privileged(@Nullable Output<Boolean> privileged) {
+            $.privileged = privileged;
+            return this;
+        }
+
+        public Builder privileged(Boolean privileged) {
+            return privileged(Output.of(privileged));
         }
 
         public Builder runAsUser(@Nullable Output<Integer> runAsUser) {

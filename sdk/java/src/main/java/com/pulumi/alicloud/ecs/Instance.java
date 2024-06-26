@@ -68,6 +68,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
+ *         final var instanceType = config.get("instanceType").orElse("ecs.n4.large");
+ *         final var imageId = config.get("imageId").orElse("ubuntu_18_04_64_20G_alibase_20190624.vhd");
  *         // Create a new ECS instance for VPC
  *         var vpc = new Network("vpc", NetworkArgs.builder()
  *             .vpcName(name)
@@ -90,6 +92,7 @@ import javax.annotation.Nullable;
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory("cloud_efficiency")
  *             .availableResourceCreation("VSwitch")
+ *             .availableInstanceType(instanceType)
  *             .build());
  * 
  *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
@@ -102,11 +105,11 @@ import javax.annotation.Nullable;
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .securityGroups(group.stream().map(element -> element.id()).collect(toList()))
- *             .instanceType("ecs.n4.large")
+ *             .instanceType(instanceType)
  *             .systemDiskCategory("cloud_efficiency")
  *             .systemDiskName(name)
  *             .systemDiskDescription("test_foo_system_disk_description")
- *             .imageId("ubuntu_18_04_64_20G_alibase_20190624.vhd")
+ *             .imageId(imageId)
  *             .instanceName(name)
  *             .vswitchId(vswitch.id())
  *             .internetMaxBandwidthOut(10)

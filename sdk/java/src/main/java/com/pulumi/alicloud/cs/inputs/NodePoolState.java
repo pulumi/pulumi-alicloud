@@ -31,14 +31,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     public static final NodePoolState Empty = new NodePoolState();
 
     /**
-     * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
+     * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
+     * @return Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -1300,7 +1300,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
+         * @param autoRenew Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -1311,7 +1311,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
+         * @param autoRenew Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
          * 
          * @return builder
          * 

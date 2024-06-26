@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource will help you to manage addon in Kubernetes Cluster, see [What is kubernetes addon](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-install-a-component-in-an-ack-cluster).
+// This resource will help you to manage addon in Kubernetes Cluster, see What is kubernetes addon.
 //
 // > **NOTE:** Available since v1.150.0.
 //

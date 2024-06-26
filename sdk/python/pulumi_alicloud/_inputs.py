@@ -319,7 +319,7 @@ class ProviderEndpointArgs:
                  rds: Optional[pulumi.Input[str]] = None,
                  redisa: Optional[pulumi.Input[str]] = None,
                  resourcemanager: Optional[pulumi.Input[str]] = None,
-                 resourcesharing: Optional[pulumi.Input[str]] = None,
+                 ressharing: Optional[pulumi.Input[str]] = None,
                  ros: Optional[pulumi.Input[str]] = None,
                  sas: Optional[pulumi.Input[str]] = None,
                  scdn: Optional[pulumi.Input[str]] = None,
@@ -448,7 +448,7 @@ class ProviderEndpointArgs:
         :param pulumi.Input[str] rds: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom RDS endpoints.
         :param pulumi.Input[str] redisa: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom redisa endpoints.
         :param pulumi.Input[str] resourcemanager: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcemanager endpoints.
-        :param pulumi.Input[str] resourcesharing: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
+        :param pulumi.Input[str] ressharing: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
         :param pulumi.Input[str] ros: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
         :param pulumi.Input[str] sas: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom sas endpoints.
         :param pulumi.Input[str] scdn: Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom scdn endpoints.
@@ -687,8 +687,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "redisa", redisa)
         if resourcemanager is not None:
             pulumi.set(__self__, "resourcemanager", resourcemanager)
-        if resourcesharing is not None:
-            pulumi.set(__self__, "resourcesharing", resourcesharing)
+        if ressharing is not None:
+            pulumi.set(__self__, "ressharing", ressharing)
         if ros is not None:
             pulumi.set(__self__, "ros", ros)
         if sas is not None:
@@ -2035,15 +2035,15 @@ class ProviderEndpointArgs:
 
     @property
     @pulumi.getter
-    def resourcesharing(self) -> Optional[pulumi.Input[str]]:
+    def ressharing(self) -> Optional[pulumi.Input[str]]:
         """
         Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
         """
-        return pulumi.get(self, "resourcesharing")
+        return pulumi.get(self, "ressharing")
 
-    @resourcesharing.setter
-    def resourcesharing(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "resourcesharing", value)
+    @ressharing.setter
+    def ressharing(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ressharing", value)
 
     @property
     @pulumi.getter

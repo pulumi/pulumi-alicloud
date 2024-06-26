@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -157,7 +159,7 @@ export class Alarm extends pulumi.CustomResource {
     /**
      * The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
      */
-    public readonly comparisonOperator!: pulumi.Output<string | undefined>;
+    public readonly comparisonOperator!: pulumi.Output<string>;
     /**
      * The description for the alarm.
      */
@@ -175,6 +177,14 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly evaluationCount!: pulumi.Output<number | undefined>;
     /**
+     * Support multi alert rule. See `expressions` below for details.
+     */
+    public readonly expressions!: pulumi.Output<outputs.ess.AlarmExpression[]>;
+    /**
+     * The relationship between the trigger conditions in the multi-metric alert rule.
+     */
+    public readonly expressionsLogicOperator!: pulumi.Output<string>;
+    /**
      * The name for the alarm's associated metric. See `dimensions` below for details.
      */
     public readonly metricName!: pulumi.Output<string>;
@@ -189,7 +199,7 @@ export class Alarm extends pulumi.CustomResource {
     /**
      * The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number>;
     /**
      * The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
      */
@@ -204,7 +214,7 @@ export class Alarm extends pulumi.CustomResource {
     /**
      * The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
      */
-    public readonly statistics!: pulumi.Output<string | undefined>;
+    public readonly statistics!: pulumi.Output<string>;
     /**
      * The value against which the specified statistics is compared.
      */
@@ -230,6 +240,8 @@ export class Alarm extends pulumi.CustomResource {
             resourceInputs["dimensions"] = state ? state.dimensions : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
             resourceInputs["evaluationCount"] = state ? state.evaluationCount : undefined;
+            resourceInputs["expressions"] = state ? state.expressions : undefined;
+            resourceInputs["expressionsLogicOperator"] = state ? state.expressionsLogicOperator : undefined;
             resourceInputs["metricName"] = state ? state.metricName : undefined;
             resourceInputs["metricType"] = state ? state.metricType : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -243,14 +255,8 @@ export class Alarm extends pulumi.CustomResource {
             if ((!args || args.alarmActions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'alarmActions'");
             }
-            if ((!args || args.metricName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'metricName'");
-            }
             if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
-            }
-            if ((!args || args.threshold === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'threshold'");
             }
             resourceInputs["alarmActions"] = args ? args.alarmActions : undefined;
             resourceInputs["cloudMonitorGroupId"] = args ? args.cloudMonitorGroupId : undefined;
@@ -259,6 +265,8 @@ export class Alarm extends pulumi.CustomResource {
             resourceInputs["dimensions"] = args ? args.dimensions : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
             resourceInputs["evaluationCount"] = args ? args.evaluationCount : undefined;
+            resourceInputs["expressions"] = args ? args.expressions : undefined;
+            resourceInputs["expressionsLogicOperator"] = args ? args.expressionsLogicOperator : undefined;
             resourceInputs["metricName"] = args ? args.metricName : undefined;
             resourceInputs["metricType"] = args ? args.metricType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -305,6 +313,14 @@ export interface AlarmState {
      * The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
      */
     evaluationCount?: pulumi.Input<number>;
+    /**
+     * Support multi alert rule. See `expressions` below for details.
+     */
+    expressions?: pulumi.Input<pulumi.Input<inputs.ess.AlarmExpression>[]>;
+    /**
+     * The relationship between the trigger conditions in the multi-metric alert rule.
+     */
+    expressionsLogicOperator?: pulumi.Input<string>;
     /**
      * The name for the alarm's associated metric. See `dimensions` below for details.
      */
@@ -375,9 +391,17 @@ export interface AlarmArgs {
      */
     evaluationCount?: pulumi.Input<number>;
     /**
+     * Support multi alert rule. See `expressions` below for details.
+     */
+    expressions?: pulumi.Input<pulumi.Input<inputs.ess.AlarmExpression>[]>;
+    /**
+     * The relationship between the trigger conditions in the multi-metric alert rule.
+     */
+    expressionsLogicOperator?: pulumi.Input<string>;
+    /**
      * The name for the alarm's associated metric. See `dimensions` below for details.
      */
-    metricName: pulumi.Input<string>;
+    metricName?: pulumi.Input<string>;
     /**
      * The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
      */
@@ -401,5 +425,5 @@ export interface AlarmArgs {
     /**
      * The value against which the specified statistics is compared.
      */
-    threshold: pulumi.Input<string>;
+    threshold?: pulumi.Input<string>;
 }

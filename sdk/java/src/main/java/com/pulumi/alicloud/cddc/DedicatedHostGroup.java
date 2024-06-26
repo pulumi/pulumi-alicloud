@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.132.0.
  * 
+ * &gt; **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/help/en/apsaradb-for-mybase/latest/notice-stop-selling-mybase-hosted-instances-from-august-31-2023) from version `1.225.1`.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

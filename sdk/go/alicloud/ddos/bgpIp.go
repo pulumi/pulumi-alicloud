@@ -27,6 +27,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ddos"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
@@ -43,6 +44,10 @@ import (
 //				name = param
 //			}
 //			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			current, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -68,6 +73,7 @@ import (
 //				InstanceId:      instance.ID(),
 //				Ip:              defaultEipAddress.IpAddress,
 //				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
+//				MemberUid:       pulumi.String(current.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -92,6 +98,8 @@ type BgpIp struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The IP address.
 	Ip pulumi.StringOutput `pulumi:"ip"`
+	// The member account id of the IP address.
+	MemberUid pulumi.StringPtrOutput `pulumi:"memberUid"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The current state of the IP address. Valid Value: `normal`, `holeBegin`.
@@ -138,6 +146,8 @@ type bgpIpState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// The IP address.
 	Ip *string `pulumi:"ip"`
+	// The member account id of the IP address.
+	MemberUid *string `pulumi:"memberUid"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The current state of the IP address. Valid Value: `normal`, `holeBegin`.
@@ -149,6 +159,8 @@ type BgpIpState struct {
 	InstanceId pulumi.StringPtrInput
 	// The IP address.
 	Ip pulumi.StringPtrInput
+	// The member account id of the IP address.
+	MemberUid pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The current state of the IP address. Valid Value: `normal`, `holeBegin`.
@@ -164,6 +176,8 @@ type bgpIpArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// The IP address.
 	Ip string `pulumi:"ip"`
+	// The member account id of the IP address.
+	MemberUid *string `pulumi:"memberUid"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 }
@@ -174,6 +188,8 @@ type BgpIpArgs struct {
 	InstanceId pulumi.StringInput
 	// The IP address.
 	Ip pulumi.StringInput
+	// The member account id of the IP address.
+	MemberUid pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 }
@@ -273,6 +289,11 @@ func (o BgpIpOutput) InstanceId() pulumi.StringOutput {
 // The IP address.
 func (o BgpIpOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpIp) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The member account id of the IP address.
+func (o BgpIpOutput) MemberUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BgpIp) pulumi.StringPtrOutput { return v.MemberUid }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the resource group.

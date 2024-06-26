@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.Ess
         /// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: &gt;=, &lt;=, &gt;, &lt;. Defaults to &gt;=.
         /// </summary>
         [Output("comparisonOperator")]
-        public Output<string?> ComparisonOperator { get; private set; } = null!;
+        public Output<string> ComparisonOperator { get; private set; } = null!;
 
         /// <summary>
         /// The description for the alarm.
@@ -204,6 +204,18 @@ namespace Pulumi.AliCloud.Ess
         public Output<int?> EvaluationCount { get; private set; } = null!;
 
         /// <summary>
+        /// Support multi alert rule. See `expressions` below for details.
+        /// </summary>
+        [Output("expressions")]
+        public Output<ImmutableArray<Outputs.AlarmExpression>> Expressions { get; private set; } = null!;
+
+        /// <summary>
+        /// The relationship between the trigger conditions in the multi-metric alert rule.
+        /// </summary>
+        [Output("expressionsLogicOperator")]
+        public Output<string> ExpressionsLogicOperator { get; private set; } = null!;
+
+        /// <summary>
         /// The name for the alarm's associated metric. See `dimensions` below for details.
         /// </summary>
         [Output("metricName")]
@@ -225,7 +237,7 @@ namespace Pulumi.AliCloud.Ess
         /// The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
         /// </summary>
         [Output("period")]
-        public Output<int?> Period { get; private set; } = null!;
+        public Output<int> Period { get; private set; } = null!;
 
         /// <summary>
         /// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
@@ -246,7 +258,7 @@ namespace Pulumi.AliCloud.Ess
         /// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
         /// </summary>
         [Output("statistics")]
-        public Output<string?> Statistics { get; private set; } = null!;
+        public Output<string> Statistics { get; private set; } = null!;
 
         /// <summary>
         /// The value against which the specified statistics is compared.
@@ -354,11 +366,29 @@ namespace Pulumi.AliCloud.Ess
         [Input("evaluationCount")]
         public Input<int>? EvaluationCount { get; set; }
 
+        [Input("expressions")]
+        private InputList<Inputs.AlarmExpressionArgs>? _expressions;
+
+        /// <summary>
+        /// Support multi alert rule. See `expressions` below for details.
+        /// </summary>
+        public InputList<Inputs.AlarmExpressionArgs> Expressions
+        {
+            get => _expressions ?? (_expressions = new InputList<Inputs.AlarmExpressionArgs>());
+            set => _expressions = value;
+        }
+
+        /// <summary>
+        /// The relationship between the trigger conditions in the multi-metric alert rule.
+        /// </summary>
+        [Input("expressionsLogicOperator")]
+        public Input<string>? ExpressionsLogicOperator { get; set; }
+
         /// <summary>
         /// The name for the alarm's associated metric. See `dimensions` below for details.
         /// </summary>
-        [Input("metricName", required: true)]
-        public Input<string> MetricName { get; set; } = null!;
+        [Input("metricName")]
+        public Input<string>? MetricName { get; set; }
 
         /// <summary>
         /// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
@@ -393,8 +423,8 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// The value against which the specified statistics is compared.
         /// </summary>
-        [Input("threshold", required: true)]
-        public Input<string> Threshold { get; set; } = null!;
+        [Input("threshold")]
+        public Input<string>? Threshold { get; set; }
 
         public AlarmArgs()
         {
@@ -457,6 +487,24 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("evaluationCount")]
         public Input<int>? EvaluationCount { get; set; }
+
+        [Input("expressions")]
+        private InputList<Inputs.AlarmExpressionGetArgs>? _expressions;
+
+        /// <summary>
+        /// Support multi alert rule. See `expressions` below for details.
+        /// </summary>
+        public InputList<Inputs.AlarmExpressionGetArgs> Expressions
+        {
+            get => _expressions ?? (_expressions = new InputList<Inputs.AlarmExpressionGetArgs>());
+            set => _expressions = value;
+        }
+
+        /// <summary>
+        /// The relationship between the trigger conditions in the multi-metric alert rule.
+        /// </summary>
+        [Input("expressionsLogicOperator")]
+        public Input<string>? ExpressionsLogicOperator { get; set; }
 
         /// <summary>
         /// The name for the alarm's associated metric. See `dimensions` below for details.

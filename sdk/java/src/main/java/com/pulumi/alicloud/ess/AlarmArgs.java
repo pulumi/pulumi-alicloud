@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ess;
 
+import com.pulumi.alicloud.ess.inputs.AlarmExpressionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -127,18 +128,48 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Support multi alert rule. See `expressions` below for details.
+     * 
+     */
+    @Import(name="expressions")
+    private @Nullable Output<List<AlarmExpressionArgs>> expressions;
+
+    /**
+     * @return Support multi alert rule. See `expressions` below for details.
+     * 
+     */
+    public Optional<Output<List<AlarmExpressionArgs>>> expressions() {
+        return Optional.ofNullable(this.expressions);
+    }
+
+    /**
+     * The relationship between the trigger conditions in the multi-metric alert rule.
+     * 
+     */
+    @Import(name="expressionsLogicOperator")
+    private @Nullable Output<String> expressionsLogicOperator;
+
+    /**
+     * @return The relationship between the trigger conditions in the multi-metric alert rule.
+     * 
+     */
+    public Optional<Output<String>> expressionsLogicOperator() {
+        return Optional.ofNullable(this.expressionsLogicOperator);
+    }
+
+    /**
      * The name for the alarm&#39;s associated metric. See `dimensions` below for details.
      * 
      */
-    @Import(name="metricName", required=true)
-    private Output<String> metricName;
+    @Import(name="metricName")
+    private @Nullable Output<String> metricName;
 
     /**
      * @return The name for the alarm&#39;s associated metric. See `dimensions` below for details.
      * 
      */
-    public Output<String> metricName() {
-        return this.metricName;
+    public Optional<Output<String>> metricName() {
+        return Optional.ofNullable(this.metricName);
     }
 
     /**
@@ -220,15 +251,15 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
      * The value against which the specified statistics is compared.
      * 
      */
-    @Import(name="threshold", required=true)
-    private Output<String> threshold;
+    @Import(name="threshold")
+    private @Nullable Output<String> threshold;
 
     /**
      * @return The value against which the specified statistics is compared.
      * 
      */
-    public Output<String> threshold() {
-        return this.threshold;
+    public Optional<Output<String>> threshold() {
+        return Optional.ofNullable(this.threshold);
     }
 
     private AlarmArgs() {}
@@ -241,6 +272,8 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
         this.dimensions = $.dimensions;
         this.enable = $.enable;
         this.evaluationCount = $.evaluationCount;
+        this.expressions = $.expressions;
+        this.expressionsLogicOperator = $.expressionsLogicOperator;
         this.metricName = $.metricName;
         this.metricType = $.metricType;
         this.name = $.name;
@@ -426,12 +459,64 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param expressions Support multi alert rule. See `expressions` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressions(@Nullable Output<List<AlarmExpressionArgs>> expressions) {
+            $.expressions = expressions;
+            return this;
+        }
+
+        /**
+         * @param expressions Support multi alert rule. See `expressions` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressions(List<AlarmExpressionArgs> expressions) {
+            return expressions(Output.of(expressions));
+        }
+
+        /**
+         * @param expressions Support multi alert rule. See `expressions` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressions(AlarmExpressionArgs... expressions) {
+            return expressions(List.of(expressions));
+        }
+
+        /**
+         * @param expressionsLogicOperator The relationship between the trigger conditions in the multi-metric alert rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressionsLogicOperator(@Nullable Output<String> expressionsLogicOperator) {
+            $.expressionsLogicOperator = expressionsLogicOperator;
+            return this;
+        }
+
+        /**
+         * @param expressionsLogicOperator The relationship between the trigger conditions in the multi-metric alert rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressionsLogicOperator(String expressionsLogicOperator) {
+            return expressionsLogicOperator(Output.of(expressionsLogicOperator));
+        }
+
+        /**
          * @param metricName The name for the alarm&#39;s associated metric. See `dimensions` below for details.
          * 
          * @return builder
          * 
          */
-        public Builder metricName(Output<String> metricName) {
+        public Builder metricName(@Nullable Output<String> metricName) {
             $.metricName = metricName;
             return this;
         }
@@ -557,7 +642,7 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder threshold(Output<String> threshold) {
+        public Builder threshold(@Nullable Output<String> threshold) {
             $.threshold = threshold;
             return this;
         }
@@ -576,14 +661,8 @@ public final class AlarmArgs extends com.pulumi.resources.ResourceArgs {
             if ($.alarmActions == null) {
                 throw new MissingRequiredPropertyException("AlarmArgs", "alarmActions");
             }
-            if ($.metricName == null) {
-                throw new MissingRequiredPropertyException("AlarmArgs", "metricName");
-            }
             if ($.scalingGroupId == null) {
                 throw new MissingRequiredPropertyException("AlarmArgs", "scalingGroupId");
-            }
-            if ($.threshold == null) {
-                throw new MissingRequiredPropertyException("AlarmArgs", "threshold");
             }
             return $;
         }

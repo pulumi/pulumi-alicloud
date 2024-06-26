@@ -18,14 +18,14 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
     public static final EipAssociationArgs Empty = new EipAssociationArgs();
 
     /**
-     * The ID of the EIP that you want to associate with an instance.
+     * The ID of the EIP instance.
      * 
      */
     @Import(name="allocationId", required=true)
     private Output<String> allocationId;
 
     /**
-     * @return The ID of the EIP that you want to associate with an instance.
+     * @return The ID of the EIP instance.
      * 
      */
     public Output<String> allocationId() {
@@ -33,14 +33,14 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default value: `false`. Valid values: `true`, `false`.
+     * Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default value: `false`. Valid values: `true`, `false`.
+     * @return Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -48,14 +48,14 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
+     * The ID of the instance with which you want to associate the EIP. You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
+     * @return The ID of the instance with which you want to associate the EIP. You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
      * 
      */
     public Output<String> instanceId() {
@@ -63,14 +63,30 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The type of the instance with which you want to associate the EIP. Valid values: `Nat`, `SlbInstance`, `EcsInstance`, `NetworkInterface`, `HaVip` and `IpAddress`.
+     * The type of the instance with which you want to associate the EIP. Valid values:
+     * - `Nat`: NAT gateway
+     * - `SlbInstance`: CLB instance
+     * - `EcsInstance` (default): ECS instance
+     * - `NetworkInterface`: secondary ENI
+     * - `HaVip`: HAVIP
+     * - `IpAddress`: IP address
+     * 
+     * &gt; **NOTE:**   The default value is `EcsInstance`. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return The type of the instance with which you want to associate the EIP. Valid values: `Nat`, `SlbInstance`, `EcsInstance`, `NetworkInterface`, `HaVip` and `IpAddress`.
+     * @return The type of the instance with which you want to associate the EIP. Valid values:
+     * - `Nat`: NAT gateway
+     * - `SlbInstance`: CLB instance
+     * - `EcsInstance` (default): ECS instance
+     * - `NetworkInterface`: secondary ENI
+     * - `HaVip`: HAVIP
+     * - `IpAddress`: IP address
+     * 
+     * &gt; **NOTE:**   The default value is `EcsInstance`. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -78,14 +94,24 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The association mode. Default value: `NAT`. Valid values: `NAT`, `BINDED`, `MULTI_BINDED`. **Note:** This parameter is required only when `instance_type` is set to `NetworkInterface`.
+     * The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
+     * 
+     * &gt; **NOTE:**   This parameter is required only when `instance_type` is set to `NetworkInterface`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return The association mode. Default value: `NAT`. Valid values: `NAT`, `BINDED`, `MULTI_BINDED`. **Note:** This parameter is required only when `instance_type` is set to `NetworkInterface`.
+     * @return The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
+     * 
+     * &gt; **NOTE:**   This parameter is required only when `instance_type` is set to `NetworkInterface`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -95,6 +121,10 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The IP address in the CIDR block of the vSwitch.
      * 
+     * If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
+     * 
+     * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+     * 
      */
     @Import(name="privateIpAddress")
     private @Nullable Output<String> privateIpAddress;
@@ -102,20 +132,32 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The IP address in the CIDR block of the vSwitch.
      * 
+     * If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
+     * 
+     * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+     * 
      */
     public Optional<Output<String>> privateIpAddress() {
         return Optional.ofNullable(this.privateIpAddress);
     }
 
     /**
-     * The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to `IpAddress`.
+     * The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
+     * 
+     * When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
+     * 
+     * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to `IpAddress`.
+     * @return The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
+     * 
+     * When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
+     * 
+     * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -153,7 +195,7 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allocationId The ID of the EIP that you want to associate with an instance.
+         * @param allocationId The ID of the EIP instance.
          * 
          * @return builder
          * 
@@ -164,7 +206,7 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allocationId The ID of the EIP that you want to associate with an instance.
+         * @param allocationId The ID of the EIP instance.
          * 
          * @return builder
          * 
@@ -174,7 +216,7 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param force When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default value: `false`. Valid values: `true`, `false`.
+         * @param force Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
          * 
          * @return builder
          * 
@@ -185,7 +227,7 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param force When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default value: `false`. Valid values: `true`, `false`.
+         * @param force Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
          * 
          * @return builder
          * 
@@ -195,7 +237,7 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instanceId The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
+         * @param instanceId The ID of the instance with which you want to associate the EIP. You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
          * 
          * @return builder
          * 
@@ -206,7 +248,7 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instanceId The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
+         * @param instanceId The ID of the instance with which you want to associate the EIP. You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
          * 
          * @return builder
          * 
@@ -216,7 +258,15 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instanceType The type of the instance with which you want to associate the EIP. Valid values: `Nat`, `SlbInstance`, `EcsInstance`, `NetworkInterface`, `HaVip` and `IpAddress`.
+         * @param instanceType The type of the instance with which you want to associate the EIP. Valid values:
+         * - `Nat`: NAT gateway
+         * - `SlbInstance`: CLB instance
+         * - `EcsInstance` (default): ECS instance
+         * - `NetworkInterface`: secondary ENI
+         * - `HaVip`: HAVIP
+         * - `IpAddress`: IP address
+         * 
+         * &gt; **NOTE:**   The default value is `EcsInstance`. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
          * 
          * @return builder
          * 
@@ -227,7 +277,15 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instanceType The type of the instance with which you want to associate the EIP. Valid values: `Nat`, `SlbInstance`, `EcsInstance`, `NetworkInterface`, `HaVip` and `IpAddress`.
+         * @param instanceType The type of the instance with which you want to associate the EIP. Valid values:
+         * - `Nat`: NAT gateway
+         * - `SlbInstance`: CLB instance
+         * - `EcsInstance` (default): ECS instance
+         * - `NetworkInterface`: secondary ENI
+         * - `HaVip`: HAVIP
+         * - `IpAddress`: IP address
+         * 
+         * &gt; **NOTE:**   The default value is `EcsInstance`. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
          * 
          * @return builder
          * 
@@ -237,7 +295,12 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param mode The association mode. Default value: `NAT`. Valid values: `NAT`, `BINDED`, `MULTI_BINDED`. **Note:** This parameter is required only when `instance_type` is set to `NetworkInterface`.
+         * @param mode The association mode. Valid values:
+         * - `NAT` (default): NAT mode
+         * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+         * - `BINDED`: cut-network interface controller mode
+         * 
+         * &gt; **NOTE:**   This parameter is required only when `instance_type` is set to `NetworkInterface`.
          * 
          * @return builder
          * 
@@ -248,7 +311,12 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param mode The association mode. Default value: `NAT`. Valid values: `NAT`, `BINDED`, `MULTI_BINDED`. **Note:** This parameter is required only when `instance_type` is set to `NetworkInterface`.
+         * @param mode The association mode. Valid values:
+         * - `NAT` (default): NAT mode
+         * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+         * - `BINDED`: cut-network interface controller mode
+         * 
+         * &gt; **NOTE:**   This parameter is required only when `instance_type` is set to `NetworkInterface`.
          * 
          * @return builder
          * 
@@ -259,6 +327,10 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param privateIpAddress The IP address in the CIDR block of the vSwitch.
+         * 
+         * If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
+         * 
+         * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
          * 
          * @return builder
          * 
@@ -271,6 +343,10 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param privateIpAddress The IP address in the CIDR block of the vSwitch.
          * 
+         * If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
+         * 
+         * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
+         * 
          * @return builder
          * 
          */
@@ -279,7 +355,11 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to `IpAddress`.
+         * @param vpcId The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
+         * 
+         * When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
+         * 
+         * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
          * 
          * @return builder
          * 
@@ -290,7 +370,11 @@ public final class EipAssociationArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to `IpAddress`.
+         * @param vpcId The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
+         * 
+         * When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
+         * 
+         * &gt; **NOTE:**   This parameter is required if `instance_type` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
          * 
          * @return builder
          * 

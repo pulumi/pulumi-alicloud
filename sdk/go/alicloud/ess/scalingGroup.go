@@ -164,6 +164,10 @@ type ScalingGroup struct {
 
 	// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
 	AlbServerGroups ScalingGroupAlbServerGroupArrayOutput `pulumi:"albServerGroups"`
+	// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	AllocationStrategy pulumi.StringOutput `pulumi:"allocationStrategy"`
+	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	AzBalance pulumi.BoolPtrOutput `pulumi:"azBalance"`
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -197,7 +201,7 @@ type ScalingGroup struct {
 	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
-	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
 	MultiAzPolicy pulumi.StringPtrOutput `pulumi:"multiAzPolicy"`
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity pulumi.IntOutput `pulumi:"onDemandBaseCapacity"`
@@ -215,6 +219,8 @@ type ScalingGroup struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName pulumi.StringPtrOutput `pulumi:"scalingGroupName"`
+	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	SpotAllocationStrategy pulumi.StringOutput `pulumi:"spotAllocationStrategy"`
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
 	SpotInstancePools pulumi.IntOutput `pulumi:"spotInstancePools"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
@@ -269,6 +275,10 @@ func GetScalingGroup(ctx *pulumi.Context,
 type scalingGroupState struct {
 	// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
 	AlbServerGroups []ScalingGroupAlbServerGroup `pulumi:"albServerGroups"`
+	// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	AllocationStrategy *string `pulumi:"allocationStrategy"`
+	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	AzBalance *bool `pulumi:"azBalance"`
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -302,7 +312,7 @@ type scalingGroupState struct {
 	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize *int `pulumi:"minSize"`
-	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
 	MultiAzPolicy *string `pulumi:"multiAzPolicy"`
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity *int `pulumi:"onDemandBaseCapacity"`
@@ -320,6 +330,8 @@ type scalingGroupState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName *string `pulumi:"scalingGroupName"`
+	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	SpotAllocationStrategy *string `pulumi:"spotAllocationStrategy"`
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
 	SpotInstancePools *int `pulumi:"spotInstancePools"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
@@ -339,6 +351,10 @@ type scalingGroupState struct {
 type ScalingGroupState struct {
 	// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
 	AlbServerGroups ScalingGroupAlbServerGroupArrayInput
+	// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	AllocationStrategy pulumi.StringPtrInput
+	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	AzBalance pulumi.BoolPtrInput
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -372,7 +388,7 @@ type ScalingGroupState struct {
 	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize pulumi.IntPtrInput
-	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
 	MultiAzPolicy pulumi.StringPtrInput
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity pulumi.IntPtrInput
@@ -390,6 +406,8 @@ type ScalingGroupState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName pulumi.StringPtrInput
+	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	SpotAllocationStrategy pulumi.StringPtrInput
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
 	SpotInstancePools pulumi.IntPtrInput
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
@@ -413,6 +431,10 @@ func (ScalingGroupState) ElementType() reflect.Type {
 type scalingGroupArgs struct {
 	// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
 	AlbServerGroups []ScalingGroupAlbServerGroup `pulumi:"albServerGroups"`
+	// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	AllocationStrategy *string `pulumi:"allocationStrategy"`
+	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	AzBalance *bool `pulumi:"azBalance"`
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -446,7 +468,7 @@ type scalingGroupArgs struct {
 	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize int `pulumi:"minSize"`
-	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
 	MultiAzPolicy *string `pulumi:"multiAzPolicy"`
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity *int `pulumi:"onDemandBaseCapacity"`
@@ -464,6 +486,8 @@ type scalingGroupArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName *string `pulumi:"scalingGroupName"`
+	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	SpotAllocationStrategy *string `pulumi:"spotAllocationStrategy"`
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
 	SpotInstancePools *int `pulumi:"spotInstancePools"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
@@ -484,6 +508,10 @@ type scalingGroupArgs struct {
 type ScalingGroupArgs struct {
 	// If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
 	AlbServerGroups ScalingGroupAlbServerGroupArrayInput
+	// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	AllocationStrategy pulumi.StringPtrInput
+	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	AzBalance pulumi.BoolPtrInput
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -517,7 +545,7 @@ type ScalingGroupArgs struct {
 	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize pulumi.IntInput
-	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
 	MultiAzPolicy pulumi.StringPtrInput
 	// The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
 	OnDemandBaseCapacity pulumi.IntPtrInput
@@ -535,6 +563,8 @@ type ScalingGroupArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName pulumi.StringPtrInput
+	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+	SpotAllocationStrategy pulumi.StringPtrInput
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
 	SpotInstancePools pulumi.IntPtrInput
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
@@ -643,6 +673,16 @@ func (o ScalingGroupOutput) AlbServerGroups() ScalingGroupAlbServerGroupArrayOut
 	return o.ApplyT(func(v *ScalingGroup) ScalingGroupAlbServerGroupArrayOutput { return v.AlbServerGroups }).(ScalingGroupAlbServerGroupArrayOutput)
 }
 
+// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+func (o ScalingGroupOutput) AllocationStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringOutput { return v.AllocationStrategy }).(pulumi.StringOutput)
+}
+
+// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+func (o ScalingGroupOutput) AzBalance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.BoolPtrOutput { return v.AzBalance }).(pulumi.BoolPtrOutput)
+}
+
 // If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 // - The specified RDS instance must be in running status.
 // - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -712,7 +752,7 @@ func (o ScalingGroupOutput) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
 }
 
-// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
 func (o ScalingGroupOutput) MultiAzPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.MultiAzPolicy }).(pulumi.StringPtrOutput)
 }
@@ -749,6 +789,11 @@ func (o ScalingGroupOutput) ResourceGroupId() pulumi.StringOutput {
 // Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 func (o ScalingGroupOutput) ScalingGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.ScalingGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+func (o ScalingGroupOutput) SpotAllocationStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringOutput { return v.SpotAllocationStrategy }).(pulumi.StringOutput)
 }
 
 // The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.

@@ -191,7 +191,7 @@ type Alarm struct {
 	// Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
 	CloudMonitorGroupId pulumi.IntPtrOutput `pulumi:"cloudMonitorGroupId"`
 	// The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
-	ComparisonOperator pulumi.StringPtrOutput `pulumi:"comparisonOperator"`
+	ComparisonOperator pulumi.StringOutput `pulumi:"comparisonOperator"`
 	// The description for the alarm.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
@@ -200,6 +200,10 @@ type Alarm struct {
 	Enable pulumi.BoolPtrOutput `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
 	EvaluationCount pulumi.IntPtrOutput `pulumi:"evaluationCount"`
+	// Support multi alert rule. See `expressions` below for details.
+	Expressions AlarmExpressionArrayOutput `pulumi:"expressions"`
+	// The relationship between the trigger conditions in the multi-metric alert rule.
+	ExpressionsLogicOperator pulumi.StringOutput `pulumi:"expressionsLogicOperator"`
 	// The name for the alarm's associated metric. See `dimensions` below for details.
 	MetricName pulumi.StringOutput `pulumi:"metricName"`
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
@@ -207,7 +211,7 @@ type Alarm struct {
 	// The name for ess alarm.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period pulumi.IntOutput `pulumi:"period"`
 	// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
 	// The status of the event-triggered task. Valid values:
@@ -216,7 +220,7 @@ type Alarm struct {
 	// - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
-	Statistics pulumi.StringPtrOutput `pulumi:"statistics"`
+	Statistics pulumi.StringOutput `pulumi:"statistics"`
 	// The value against which the specified statistics is compared.
 	Threshold pulumi.StringOutput `pulumi:"threshold"`
 }
@@ -231,14 +235,8 @@ func NewAlarm(ctx *pulumi.Context,
 	if args.AlarmActions == nil {
 		return nil, errors.New("invalid value for required argument 'AlarmActions'")
 	}
-	if args.MetricName == nil {
-		return nil, errors.New("invalid value for required argument 'MetricName'")
-	}
 	if args.ScalingGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'ScalingGroupId'")
-	}
-	if args.Threshold == nil {
-		return nil, errors.New("invalid value for required argument 'Threshold'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Alarm
@@ -277,6 +275,10 @@ type alarmState struct {
 	Enable *bool `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
 	EvaluationCount *int `pulumi:"evaluationCount"`
+	// Support multi alert rule. See `expressions` below for details.
+	Expressions []AlarmExpression `pulumi:"expressions"`
+	// The relationship between the trigger conditions in the multi-metric alert rule.
+	ExpressionsLogicOperator *string `pulumi:"expressionsLogicOperator"`
 	// The name for the alarm's associated metric. See `dimensions` below for details.
 	MetricName *string `pulumi:"metricName"`
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
@@ -313,6 +315,10 @@ type AlarmState struct {
 	Enable pulumi.BoolPtrInput
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
 	EvaluationCount pulumi.IntPtrInput
+	// Support multi alert rule. See `expressions` below for details.
+	Expressions AlarmExpressionArrayInput
+	// The relationship between the trigger conditions in the multi-metric alert rule.
+	ExpressionsLogicOperator pulumi.StringPtrInput
 	// The name for the alarm's associated metric. See `dimensions` below for details.
 	MetricName pulumi.StringPtrInput
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
@@ -353,8 +359,12 @@ type alarmArgs struct {
 	Enable *bool `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
 	EvaluationCount *int `pulumi:"evaluationCount"`
+	// Support multi alert rule. See `expressions` below for details.
+	Expressions []AlarmExpression `pulumi:"expressions"`
+	// The relationship between the trigger conditions in the multi-metric alert rule.
+	ExpressionsLogicOperator *string `pulumi:"expressionsLogicOperator"`
 	// The name for the alarm's associated metric. See `dimensions` below for details.
-	MetricName string `pulumi:"metricName"`
+	MetricName *string `pulumi:"metricName"`
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType *string `pulumi:"metricType"`
 	// The name for ess alarm.
@@ -366,7 +376,7 @@ type alarmArgs struct {
 	// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
 	Statistics *string `pulumi:"statistics"`
 	// The value against which the specified statistics is compared.
-	Threshold string `pulumi:"threshold"`
+	Threshold *string `pulumi:"threshold"`
 }
 
 // The set of arguments for constructing a Alarm resource.
@@ -385,8 +395,12 @@ type AlarmArgs struct {
 	Enable pulumi.BoolPtrInput
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
 	EvaluationCount pulumi.IntPtrInput
+	// Support multi alert rule. See `expressions` below for details.
+	Expressions AlarmExpressionArrayInput
+	// The relationship between the trigger conditions in the multi-metric alert rule.
+	ExpressionsLogicOperator pulumi.StringPtrInput
 	// The name for the alarm's associated metric. See `dimensions` below for details.
-	MetricName pulumi.StringInput
+	MetricName pulumi.StringPtrInput
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType pulumi.StringPtrInput
 	// The name for ess alarm.
@@ -398,7 +412,7 @@ type AlarmArgs struct {
 	// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
 	Statistics pulumi.StringPtrInput
 	// The value against which the specified statistics is compared.
-	Threshold pulumi.StringInput
+	Threshold pulumi.StringPtrInput
 }
 
 func (AlarmArgs) ElementType() reflect.Type {
@@ -499,8 +513,8 @@ func (o AlarmOutput) CloudMonitorGroupId() pulumi.IntPtrOutput {
 }
 
 // The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
-func (o AlarmOutput) ComparisonOperator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Alarm) pulumi.StringPtrOutput { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+func (o AlarmOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.ComparisonOperator }).(pulumi.StringOutput)
 }
 
 // The description for the alarm.
@@ -523,6 +537,16 @@ func (o AlarmOutput) EvaluationCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.EvaluationCount }).(pulumi.IntPtrOutput)
 }
 
+// Support multi alert rule. See `expressions` below for details.
+func (o AlarmOutput) Expressions() AlarmExpressionArrayOutput {
+	return o.ApplyT(func(v *Alarm) AlarmExpressionArrayOutput { return v.Expressions }).(AlarmExpressionArrayOutput)
+}
+
+// The relationship between the trigger conditions in the multi-metric alert rule.
+func (o AlarmOutput) ExpressionsLogicOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.ExpressionsLogicOperator }).(pulumi.StringOutput)
+}
+
 // The name for the alarm's associated metric. See `dimensions` below for details.
 func (o AlarmOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.MetricName }).(pulumi.StringOutput)
@@ -539,8 +563,8 @@ func (o AlarmOutput) Name() pulumi.StringOutput {
 }
 
 // The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
-func (o AlarmOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+func (o AlarmOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
 }
 
 // The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
@@ -557,8 +581,8 @@ func (o AlarmOutput) State() pulumi.StringOutput {
 }
 
 // The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
-func (o AlarmOutput) Statistics() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Alarm) pulumi.StringPtrOutput { return v.Statistics }).(pulumi.StringPtrOutput)
+func (o AlarmOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Statistics }).(pulumi.StringOutput)
 }
 
 // The value against which the specified statistics is compared.
