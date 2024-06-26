@@ -853,9 +853,12 @@ class ContainerGroupContainerReadinessProbeTcpSocketArgs:
 class ContainerGroupContainerSecurityContextArgs:
     def __init__(__self__, *,
                  capabilities: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]] = None,
+                 privileged: Optional[pulumi.Input[bool]] = None,
                  run_as_user: Optional[pulumi.Input[int]] = None):
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
+        if privileged is not None:
+            pulumi.set(__self__, "privileged", privileged)
         if run_as_user is not None:
             pulumi.set(__self__, "run_as_user", run_as_user)
 
@@ -867,6 +870,15 @@ class ContainerGroupContainerSecurityContextArgs:
     @capabilities.setter
     def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]]):
         pulumi.set(self, "capabilities", value)
+
+    @property
+    @pulumi.getter
+    def privileged(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "privileged")
+
+    @privileged.setter
+    def privileged(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "privileged", value)
 
     @property
     @pulumi.getter(name="runAsUser")

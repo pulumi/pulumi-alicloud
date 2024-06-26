@@ -183,6 +183,34 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.albServerGroups);
     }
     /**
+     * The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     * 
+     */
+    @Export(name="allocationStrategy", refs={String.class}, tree="[0]")
+    private Output<String> allocationStrategy;
+
+    /**
+     * @return The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     * 
+     */
+    public Output<String> allocationStrategy() {
+        return this.allocationStrategy;
+    }
+    /**
+     * Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     * 
+     */
+    @Export(name="azBalance", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> azBalance;
+
+    /**
+     * @return Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     * 
+     */
+    public Output<Optional<Boolean>> azBalance() {
+        return Codegen.optional(this.azBalance);
+    }
+    /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -369,14 +397,14 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return this.minSize;
     }
     /**
-     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
      * 
      */
     @Export(name="multiAzPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> multiAzPolicy;
 
     /**
-     * @return Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+     * @return Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
      * 
      */
     public Output<Optional<String>> multiAzPolicy() {
@@ -473,6 +501,20 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> scalingGroupName() {
         return Codegen.optional(this.scalingGroupName);
+    }
+    /**
+     * The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     * 
+     */
+    @Export(name="spotAllocationStrategy", refs={String.class}, tree="[0]")
+    private Output<String> spotAllocationStrategy;
+
+    /**
+     * @return The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     * 
+     */
+    public Output<String> spotAllocationStrategy() {
+        return this.spotAllocationStrategy;
     }
     /**
      * The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.

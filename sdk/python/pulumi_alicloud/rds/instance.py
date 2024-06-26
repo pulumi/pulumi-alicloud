@@ -239,6 +239,9 @@ class InstanceArgs:
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role.
+               
+               > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+               You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
@@ -1121,6 +1124,9 @@ class InstanceArgs:
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the RAM role.
+
+        > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+        You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
         """
         return pulumi.get(self, "role_arn")
 
@@ -1735,6 +1741,9 @@ class _InstanceState:
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role.
+               
+               > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+               You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
@@ -2669,6 +2678,9 @@ class _InstanceState:
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the RAM role.
+
+        > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+        You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
         """
         return pulumi.get(self, "role_arn")
 
@@ -3311,6 +3323,9 @@ class Instance(pulumi.CustomResource):
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role.
+               
+               > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+               You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
@@ -3831,6 +3846,9 @@ class Instance(pulumi.CustomResource):
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role.
+               
+               > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+               You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
         :param pulumi.Input[str] security_group_id: It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: , Available since 1.69.0) The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
@@ -4489,6 +4507,9 @@ class Instance(pulumi.CustomResource):
     def role_arn(self) -> pulumi.Output[str]:
         """
         The Alibaba Cloud Resource Name (ARN) of the RAM role.
+
+        > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+        You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
         """
         return pulumi.get(self, "role_arn")
 

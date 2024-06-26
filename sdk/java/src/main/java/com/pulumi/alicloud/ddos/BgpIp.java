@@ -68,6 +68,20 @@ public class BgpIp extends com.pulumi.resources.CustomResource {
         return this.ip;
     }
     /**
+     * The member account id of the IP address.
+     * 
+     */
+    @Export(name="memberUid", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> memberUid;
+
+    /**
+     * @return The member account id of the IP address.
+     * 
+     */
+    public Output<Optional<String>> memberUid() {
+        return Codegen.optional(this.memberUid);
+    }
+    /**
      * The ID of the resource group.
      * 
      */

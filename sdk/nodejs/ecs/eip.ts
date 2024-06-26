@@ -76,7 +76,7 @@ export class Eip extends pulumi.CustomResource {
      * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
      */
     public readonly addressName!: pulumi.Output<string>;
-    public readonly allocationId!: pulumi.Output<string | undefined>;
+    public readonly allocationId!: pulumi.Output<string>;
     public readonly autoPay!: pulumi.Output<boolean | undefined>;
     /**
      * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.

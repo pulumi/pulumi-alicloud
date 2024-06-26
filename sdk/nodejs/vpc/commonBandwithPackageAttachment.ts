@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * cbwp Common Bandwidth Package Attachment can be imported using the id, e.g.
+ * CBWP Common Bandwidth Package Attachment can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment example <bandwidth_package_id>:<instance_id>
@@ -68,11 +68,11 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
      */
     public readonly bandwidthPackageBandwidth!: pulumi.Output<string>;
     /**
-     * The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
+     * The ID of the Internet Shared Bandwidth instance.
      */
     public readonly bandwidthPackageId!: pulumi.Output<string>;
     /**
@@ -80,11 +80,15 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
      */
     public readonly cancelCommonBandwidthPackageIpBandwidth!: pulumi.Output<boolean | undefined>;
     /**
-     * The instanceId of the common bandwidth package attachment, the field can't be changed.
+     * The ID of the EIP that you want to query.
+     *
+     * You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+     *
+     * > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     * The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
      */
     public readonly ipType!: pulumi.Output<string | undefined>;
     /**
@@ -136,11 +140,11 @@ export class CommonBandwithPackageAttachment extends pulumi.CustomResource {
  */
 export interface CommonBandwithPackageAttachmentState {
     /**
-     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
      */
     bandwidthPackageBandwidth?: pulumi.Input<string>;
     /**
-     * The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
+     * The ID of the Internet Shared Bandwidth instance.
      */
     bandwidthPackageId?: pulumi.Input<string>;
     /**
@@ -148,11 +152,15 @@ export interface CommonBandwithPackageAttachmentState {
      */
     cancelCommonBandwidthPackageIpBandwidth?: pulumi.Input<boolean>;
     /**
-     * The instanceId of the common bandwidth package attachment, the field can't be changed.
+     * The ID of the EIP that you want to query.
+     *
+     * You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+     *
+     * > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     * The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
      */
     ipType?: pulumi.Input<string>;
     /**
@@ -166,11 +174,11 @@ export interface CommonBandwithPackageAttachmentState {
  */
 export interface CommonBandwithPackageAttachmentArgs {
     /**
-     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+     * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
      */
     bandwidthPackageBandwidth?: pulumi.Input<string>;
     /**
-     * The bandwidthPackageId of the common bandwidth package attachment, the field can't be changed.
+     * The ID of the Internet Shared Bandwidth instance.
      */
     bandwidthPackageId: pulumi.Input<string>;
     /**
@@ -178,11 +186,15 @@ export interface CommonBandwithPackageAttachmentArgs {
      */
     cancelCommonBandwidthPackageIpBandwidth?: pulumi.Input<boolean>;
     /**
-     * The instanceId of the common bandwidth package attachment, the field can't be changed.
+     * The ID of the EIP that you want to query.
+     *
+     * You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
+     *
+     * > **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
+     * The type of IP address. Set the value to `EIP` to associate EIPs with the Internet Shared Bandwidth instance.
      */
     ipType?: pulumi.Input<string>;
 }

@@ -20,6 +20,9 @@ namespace Pulumi.AliCloud.Eci.Inputs
             set => _capabilities = value;
         }
 
+        [Input("privileged")]
+        public Input<bool>? Privileged { get; set; }
+
         [Input("runAsUser")]
         public Input<int>? RunAsUser { get; set; }
 

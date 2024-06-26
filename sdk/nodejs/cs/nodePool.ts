@@ -48,7 +48,7 @@ export class NodePool extends pulumi.CustomResource {
     }
 
     /**
-     * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `true`. Valid values:
+     * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
      */
     public readonly autoRenew!: pulumi.Output<boolean | undefined>;
     /**
@@ -552,7 +552,7 @@ export class NodePool extends pulumi.CustomResource {
  */
 export interface NodePoolState {
     /**
-     * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `true`. Valid values:
+     * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
@@ -879,7 +879,7 @@ export interface NodePoolState {
  */
 export interface NodePoolArgs {
     /**
-     * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `true`. Valid values:
+     * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
      */
     autoRenew?: pulumi.Input<boolean>;
     /**

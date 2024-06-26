@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// &gt; **NOTE:** Available in 1.121.0+
     /// 
+    /// &gt; **DEPRECATED:**  This resource has been deprecated from version `1.215.0`. Please use new resource alicloud_log_oss_export.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

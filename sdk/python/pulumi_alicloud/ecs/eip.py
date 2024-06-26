@@ -1105,7 +1105,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allocationId")
-    def allocation_id(self) -> pulumi.Output[Optional[str]]:
+    def allocation_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "allocation_id")
 
     @property

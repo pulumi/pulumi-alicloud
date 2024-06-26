@@ -137,6 +137,14 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly albServerGroups!: pulumi.Output<outputs.ess.ScalingGroupAlbServerGroup[] | undefined>;
     /**
+     * The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     */
+    public readonly allocationStrategy!: pulumi.Output<string>;
+    /**
+     * Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     */
+    public readonly azBalance!: pulumi.Output<boolean | undefined>;
+    /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -194,7 +202,7 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
-     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
      */
     public readonly multiAzPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -225,6 +233,10 @@ export class ScalingGroup extends pulumi.CustomResource {
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      */
     public readonly scalingGroupName!: pulumi.Output<string | undefined>;
+    /**
+     * The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     */
+    public readonly spotAllocationStrategy!: pulumi.Output<string>;
     /**
      * The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
      */
@@ -264,6 +276,8 @@ export class ScalingGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ScalingGroupState | undefined;
             resourceInputs["albServerGroups"] = state ? state.albServerGroups : undefined;
+            resourceInputs["allocationStrategy"] = state ? state.allocationStrategy : undefined;
+            resourceInputs["azBalance"] = state ? state.azBalance : undefined;
             resourceInputs["dbInstanceIds"] = state ? state.dbInstanceIds : undefined;
             resourceInputs["defaultCooldown"] = state ? state.defaultCooldown : undefined;
             resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
@@ -283,6 +297,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["removalPolicies"] = state ? state.removalPolicies : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["scalingGroupName"] = state ? state.scalingGroupName : undefined;
+            resourceInputs["spotAllocationStrategy"] = state ? state.spotAllocationStrategy : undefined;
             resourceInputs["spotInstancePools"] = state ? state.spotInstancePools : undefined;
             resourceInputs["spotInstanceRemedy"] = state ? state.spotInstanceRemedy : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -297,6 +312,8 @@ export class ScalingGroup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'minSize'");
             }
             resourceInputs["albServerGroups"] = args ? args.albServerGroups : undefined;
+            resourceInputs["allocationStrategy"] = args ? args.allocationStrategy : undefined;
+            resourceInputs["azBalance"] = args ? args.azBalance : undefined;
             resourceInputs["dbInstanceIds"] = args ? args.dbInstanceIds : undefined;
             resourceInputs["defaultCooldown"] = args ? args.defaultCooldown : undefined;
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
@@ -316,6 +333,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["removalPolicies"] = args ? args.removalPolicies : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["scalingGroupName"] = args ? args.scalingGroupName : undefined;
+            resourceInputs["spotAllocationStrategy"] = args ? args.spotAllocationStrategy : undefined;
             resourceInputs["spotInstancePools"] = args ? args.spotInstancePools : undefined;
             resourceInputs["spotInstanceRemedy"] = args ? args.spotInstanceRemedy : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -335,6 +353,14 @@ export interface ScalingGroupState {
      * If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
      */
     albServerGroups?: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupAlbServerGroup>[]>;
+    /**
+     * The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     */
+    allocationStrategy?: pulumi.Input<string>;
+    /**
+     * Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     */
+    azBalance?: pulumi.Input<boolean>;
     /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
@@ -393,7 +419,7 @@ export interface ScalingGroupState {
      */
     minSize?: pulumi.Input<number>;
     /**
-     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
      */
     multiAzPolicy?: pulumi.Input<string>;
     /**
@@ -424,6 +450,10 @@ export interface ScalingGroupState {
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      */
     scalingGroupName?: pulumi.Input<string>;
+    /**
+     * The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     */
+    spotAllocationStrategy?: pulumi.Input<string>;
     /**
      * The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
      */
@@ -458,6 +488,14 @@ export interface ScalingGroupArgs {
      * If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `albServerGroup` below for details.
      */
     albServerGroups?: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupAlbServerGroup>[]>;
+    /**
+     * The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     */
+    allocationStrategy?: pulumi.Input<string>;
+    /**
+     * Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     */
+    azBalance?: pulumi.Input<boolean>;
     /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
@@ -516,7 +554,7 @@ export interface ScalingGroupArgs {
      */
     minSize: pulumi.Input<number>;
     /**
-     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+     * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
      */
     multiAzPolicy?: pulumi.Input<string>;
     /**
@@ -547,6 +585,10 @@ export interface ScalingGroupArgs {
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      */
     scalingGroupName?: pulumi.Input<string>;
+    /**
+     * The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+     */
+    spotAllocationStrategy?: pulumi.Input<string>;
     /**
      * The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
      */

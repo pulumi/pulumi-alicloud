@@ -39,6 +39,14 @@ import (
 // if param := cfg.Get("name"); param != ""{
 // name = param
 // }
+// instanceType := "ecs.n4.large";
+// if param := cfg.Get("instanceType"); param != ""{
+// instanceType = param
+// }
+// imageId := "ubuntu_18_04_64_20G_alibase_20190624.vhd";
+// if param := cfg.Get("imageId"); param != ""{
+// imageId = param
+// }
 // // Create a new ECS instance for VPC
 // vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 // VpcName: pulumi.String(name),
@@ -67,6 +75,7 @@ import (
 // _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 // AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
 // AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// AvailableInstanceType: pulumi.StringRef(instanceType),
 // }, nil);
 // if err != nil {
 // return err
@@ -87,11 +96,11 @@ import (
 // _, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
 // AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 // SecurityGroups: splat0,
-// InstanceType: pulumi.String("ecs.n4.large"),
+// InstanceType: pulumi.String(instanceType),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // SystemDiskName: pulumi.String(name),
 // SystemDiskDescription: pulumi.String("test_foo_system_disk_description"),
-// ImageId: pulumi.String("ubuntu_18_04_64_20G_alibase_20190624.vhd"),
+// ImageId: pulumi.String(imageId),
 // InstanceName: pulumi.String(name),
 // VswitchId: vswitch.ID(),
 // InternetMaxBandwidthOut: pulumi.Int(10),

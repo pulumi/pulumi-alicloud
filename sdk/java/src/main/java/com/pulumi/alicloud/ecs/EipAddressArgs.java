@@ -21,14 +21,14 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     public static final EipAddressArgs Empty = new EipAddressArgs();
 
     /**
-     * Special activity ID. This parameter is not required.
+     * The promotion code. This parameter is not required.
      * 
      */
     @Import(name="activityId")
     private @Nullable Output<String> activityId;
 
     /**
-     * @return Special activity ID. This parameter is not required.
+     * @return The promotion code. This parameter is not required.
      * 
      */
     public Optional<Output<String>> activityId() {
@@ -36,14 +36,22 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * The EIP name.
+     * 
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+     * 
+     * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      * 
      */
     @Import(name="addressName")
     private @Nullable Output<String> addressName;
 
     /**
-     * @return The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * @return The EIP name.
+     * 
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+     * 
+     * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      * 
      */
     public Optional<Output<String>> addressName() {
@@ -51,14 +59,14 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     * The ID of the EIP instance.
      * 
      */
     @Import(name="allocationId")
     private @Nullable Output<String> allocationId;
 
     /**
-     * @return The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     * @return The ID of the EIP instance.
      * 
      */
     public Optional<Output<String>> allocationId() {
@@ -66,14 +74,14 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
+     * Specifies whether to enable automatic payment. Valid values:
      * 
      */
     @Import(name="autoPay")
     private @Nullable Output<Boolean> autoPay;
 
     /**
-     * @return Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
+     * @return Specifies whether to enable automatic payment. Valid values:
      * 
      */
     public Optional<Output<Boolean>> autoPay() {
@@ -81,14 +89,24 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
+     * The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+     * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
+     * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
+     * - When `payment_type` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+     * 
+     * Default value: `5` Mbit /s.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<String> bandwidth;
 
     /**
-     * @return The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
+     * @return The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+     * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
+     * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
+     * - When `payment_type` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+     * 
+     * Default value: `5` Mbit /s.
      * 
      */
     public Optional<Output<String>> bandwidth() {
@@ -96,18 +114,14 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the delete protection function is turned on.
-     * - **true**: enabled.
-     * - **false**: not enabled.
+     * Specifies whether to enable deletion protection. Valid values:
      * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
     /**
-     * @return Whether the delete protection function is turned on.
-     * - **true**: enabled.
-     * - **false**: not enabled.
+     * @return Specifies whether to enable deletion protection. Valid values:
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -117,6 +131,10 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The description of the EIP.
      * 
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+     * 
+     * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
+     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
@@ -124,24 +142,28 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The description of the EIP.
      * 
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+     * 
+     * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
+     * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
     /**
-     * Whether the second-level monitoring is enabled for the EIP.
-     * - **OFF**: not enabled.
-     * - **ON**: enabled.
+     * The status of fine-grained monitoring. Valid values:
+     * - `ON`
+     * - `OFF`
      * 
      */
     @Import(name="highDefinitionMonitorLogStatus")
     private @Nullable Output<String> highDefinitionMonitorLogStatus;
 
     /**
-     * @return Whether the second-level monitoring is enabled for the EIP.
-     * - **OFF**: not enabled.
-     * - **ON**: enabled.
+     * @return The status of fine-grained monitoring. Valid values:
+     * - `ON`
+     * - `OFF`
      * 
      */
     public Optional<Output<String>> highDefinitionMonitorLogStatus() {
@@ -172,18 +194,26 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Renewal Payment type.
-     * - **PayByBandwidth**: billed by fixed bandwidth.
-     * - **PayByTraffic**: Billing by traffic.
+     * The metering method of the EIP. Valid values:
+     * - `PayByBandwidth` (default): pay-by-bandwidth.
+     * - `PayByTraffic`: pay-by-data-transfer.
+     * 
+     * When `payment_type` is set to `Subscription`, you must set `internet_charge_type` to `PayByBandwidth`.
+     * 
+     * When `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return Renewal Payment type.
-     * - **PayByBandwidth**: billed by fixed bandwidth.
-     * - **PayByTraffic**: Billing by traffic.
+     * @return The metering method of the EIP. Valid values:
+     * - `PayByBandwidth` (default): pay-by-bandwidth.
+     * - `PayByTraffic`: pay-by-data-transfer.
+     * 
+     * When `payment_type` is set to `Subscription`, you must set `internet_charge_type` to `PayByBandwidth`.
+     * 
+     * When `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -191,14 +221,14 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IP address of the EIP.
+     * The IP address of the EIP. Supports a maximum of 50 EIPs.
      * 
      */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return The IP address of the EIP.
+     * @return The IP address of the EIP. Supports a maximum of 50 EIPs.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -206,36 +236,42 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
-     * - `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China.
-     * - `BGP_PRO`: BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
-     * - `ChinaTelecom`: China Telecom.
-     * - `ChinaUnicom`: China Unicom.
-     * - `ChinaMobile`: China Mobile.
-     * - `ChinaTelecom_L2`: China Telecom L2.
-     * - `ChinaUnicom_L2`: China Unicom L2.
-     * - `ChinaMobile_L2`: China Mobile L2.
-     * - `BGP_FinanceCloud`: If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
-     * - `BGP_International`: BGP_International.
-     * &gt; **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+     * The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     * 
+     * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the &#34;Line types&#34; section of [What is EIP?](https://www.alibabacloud.com/help/en/doc-detail/32321.html)
+     * 
+     * If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     * 
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      * 
      */
     @Import(name="isp")
     private @Nullable Output<String> isp;
 
     /**
-     * @return The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
-     * - `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China.
-     * - `BGP_PRO`: BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
-     * - `ChinaTelecom`: China Telecom.
-     * - `ChinaUnicom`: China Unicom.
-     * - `ChinaMobile`: China Mobile.
-     * - `ChinaTelecom_L2`: China Telecom L2.
-     * - `ChinaUnicom_L2`: China Unicom L2.
-     * - `ChinaMobile_L2`: China Mobile L2.
-     * - `BGP_FinanceCloud`: If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
-     * - `BGP_International`: BGP_International.
-     * &gt; **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+     * @return The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     * 
+     * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the &#34;Line types&#34; section of [What is EIP?](https://www.alibabacloud.com/help/en/doc-detail/32321.html)
+     * 
+     * If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     * 
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      * 
      */
     public Optional<Output<String>> isp() {
@@ -243,14 +279,14 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * The name of the Simple Log Service (SLS) project.
      * 
      */
     @Import(name="logProject")
     private @Nullable Output<String> logProject;
 
     /**
-     * @return The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * @return The name of the Simple Log Service (SLS) project.
      * 
      */
     public Optional<Output<String>> logProject() {
@@ -258,14 +294,14 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * The name of the Logstore.
      * 
      */
     @Import(name="logStore")
     private @Nullable Output<String> logStore;
 
     /**
-     * @return The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * @return The name of the Logstore.
      * 
      */
     public Optional<Output<String>> logStore() {
@@ -273,20 +309,20 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Binding mode, value:
-     * - **NAT** (default):NAT mode (normal mode).
-     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
-     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     * The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Binding mode, value:
-     * - **NAT** (default):NAT mode (normal mode).
-     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
-     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     * @return The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
      * 
      */
     public Optional<Output<String>> mode() {
@@ -317,14 +353,14 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the network. Valid value is `public` (Internet).
+     * The network type. By default, this value is set to `public`, which specifies the public network type.
      * 
      */
     @Import(name="netmode")
     private @Nullable Output<String> netmode;
 
     /**
-     * @return The type of the network. Valid value is `public` (Internet).
+     * @return The network type. By default, this value is set to `public`, which specifies the public network type.
      * 
      */
     public Optional<Output<String>> netmode() {
@@ -332,14 +368,22 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
+     * The billing method of the EIP. Valid values:
+     * - `Subscription`: subscription
+     * - `PayAsYouGo` (default): pay-as-you-go
+     * 
+     * If `payment_type` is set to `Subscription`, set `internet_charge_type` to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
+     * @return The billing method of the EIP. Valid values:
+     * - `Subscription`: subscription
+     * - `PayAsYouGo` (default): pay-as-you-go
+     * 
+     * If `payment_type` is set to `Subscription`, set `internet_charge_type` to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -347,14 +391,14 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When the PricingCycle is set to Month, the Period value ranges from 1 to 9.  When the PricingCycle is set to Year, the Period range is 1 to 5.  If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+     * Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return When the PricingCycle is set to Month, the Period value ranges from 1 to 9.  When the PricingCycle is set to Year, the Period range is 1 to 5.  If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+     * @return Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -362,14 +406,22 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Value: Month (default): Pay monthly. Year: Pay per Year. This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+     * The billing cycle of the subscription EIP. Valid values:
+     * - `Month` (default)
+     * - `Year`
+     * 
+     * If `payment_type` is set to `Subscription`, this parameter is required. If `payment_type` is set to `PayAsYouGo`, this parameter is not required.
      * 
      */
     @Import(name="pricingCycle")
     private @Nullable Output<String> pricingCycle;
 
     /**
-     * @return Value: Month (default): Pay monthly. Year: Pay per Year. This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+     * @return The billing cycle of the subscription EIP. Valid values:
+     * - `Month` (default)
+     * - `Year`
+     * 
+     * If `payment_type` is set to `Subscription`, this parameter is required. If `payment_type` is set to `PayAsYouGo`, this parameter is not required.
      * 
      */
     public Optional<Output<String>> pricingCycle() {
@@ -377,14 +429,14 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the IP address pool to which the EIP belongs.
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool. By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the &#34;Request a quota increase in the Quota Center console&#34; section in [Manage EIP quotas](https://www.alibabacloud.com/help/en/doc-detail/108213.html).
      * 
      */
     @Import(name="publicIpAddressPoolId")
     private @Nullable Output<String> publicIpAddressPoolId;
 
     /**
-     * @return The ID of the IP address pool to which the EIP belongs.
+     * @return The ID of the IP address pool. The EIP is allocated from the IP address pool. By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the &#34;Request a quota increase in the Quota Center console&#34; section in [Manage EIP quotas](https://www.alibabacloud.com/help/en/doc-detail/108213.html).
      * 
      */
     public Optional<Output<String>> publicIpAddressPoolId() {
@@ -392,14 +444,18 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which you want to move the resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group to which you want to move the resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -409,7 +465,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Security protection level.
      * - When the return is empty, the basic DDoS protection is specified.
-     * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+     * - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
      * 
      */
     @Import(name="securityProtectionTypes")
@@ -418,7 +474,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Security protection level.
      * - When the return is empty, the basic DDoS protection is specified.
-     * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+     * - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
      * 
      */
     public Optional<Output<List<String>>> securityProtectionTypes() {
@@ -426,14 +482,14 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -441,7 +497,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone of the EIP.  This parameter is returned only for whitelist users that are visible to the zone.
+     * The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -450,7 +506,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> zone;
 
     /**
-     * @return The zone of the EIP.  This parameter is returned only for whitelist users that are visible to the zone.
+     * @return The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -508,7 +564,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param activityId Special activity ID. This parameter is not required.
+         * @param activityId The promotion code. This parameter is not required.
          * 
          * @return builder
          * 
@@ -519,7 +575,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param activityId Special activity ID. This parameter is not required.
+         * @param activityId The promotion code. This parameter is not required.
          * 
          * @return builder
          * 
@@ -529,7 +585,11 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressName The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+         * @param addressName The EIP name.
+         * 
+         * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+         * 
+         * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
          * 
          * @return builder
          * 
@@ -540,7 +600,11 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressName The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+         * @param addressName The EIP name.
+         * 
+         * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+         * 
+         * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
          * 
          * @return builder
          * 
@@ -550,7 +614,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allocationId The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+         * @param allocationId The ID of the EIP instance.
          * 
          * @return builder
          * 
@@ -561,7 +625,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allocationId The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+         * @param allocationId The ID of the EIP instance.
          * 
          * @return builder
          * 
@@ -571,7 +635,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoPay Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
+         * @param autoPay Specifies whether to enable automatic payment. Valid values:
          * 
          * @return builder
          * 
@@ -582,7 +646,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoPay Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
+         * @param autoPay Specifies whether to enable automatic payment. Valid values:
          * 
          * @return builder
          * 
@@ -592,7 +656,12 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
+         * @param bandwidth The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+         * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
+         * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
+         * - When `payment_type` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+         * 
+         * Default value: `5` Mbit /s.
          * 
          * @return builder
          * 
@@ -603,7 +672,12 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
+         * @param bandwidth The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+         * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
+         * - When `payment_type` is set to `PayAsYouGo` and `internet_charge_type` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
+         * - When `payment_type` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+         * 
+         * Default value: `5` Mbit /s.
          * 
          * @return builder
          * 
@@ -613,9 +687,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Whether the delete protection function is turned on.
-         * - **true**: enabled.
-         * - **false**: not enabled.
+         * @param deletionProtection Specifies whether to enable deletion protection. Valid values:
          * 
          * @return builder
          * 
@@ -626,9 +698,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Whether the delete protection function is turned on.
-         * - **true**: enabled.
-         * - **false**: not enabled.
+         * @param deletionProtection Specifies whether to enable deletion protection. Valid values:
          * 
          * @return builder
          * 
@@ -639,6 +709,10 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param description The description of the EIP.
+         * 
+         * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+         * 
+         * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
          * 
          * @return builder
          * 
@@ -651,6 +725,10 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description The description of the EIP.
          * 
+         * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+         * 
+         * &gt; **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
+         * 
          * @return builder
          * 
          */
@@ -659,9 +737,9 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param highDefinitionMonitorLogStatus Whether the second-level monitoring is enabled for the EIP.
-         * - **OFF**: not enabled.
-         * - **ON**: enabled.
+         * @param highDefinitionMonitorLogStatus The status of fine-grained monitoring. Valid values:
+         * - `ON`
+         * - `OFF`
          * 
          * @return builder
          * 
@@ -672,9 +750,9 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param highDefinitionMonitorLogStatus Whether the second-level monitoring is enabled for the EIP.
-         * - **OFF**: not enabled.
-         * - **ON**: enabled.
+         * @param highDefinitionMonitorLogStatus The status of fine-grained monitoring. Valid values:
+         * - `ON`
+         * - `OFF`
          * 
          * @return builder
          * 
@@ -713,9 +791,13 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType Renewal Payment type.
-         * - **PayByBandwidth**: billed by fixed bandwidth.
-         * - **PayByTraffic**: Billing by traffic.
+         * @param internetChargeType The metering method of the EIP. Valid values:
+         * - `PayByBandwidth` (default): pay-by-bandwidth.
+         * - `PayByTraffic`: pay-by-data-transfer.
+         * 
+         * When `payment_type` is set to `Subscription`, you must set `internet_charge_type` to `PayByBandwidth`.
+         * 
+         * When `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
          * 
          * @return builder
          * 
@@ -726,9 +808,13 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType Renewal Payment type.
-         * - **PayByBandwidth**: billed by fixed bandwidth.
-         * - **PayByTraffic**: Billing by traffic.
+         * @param internetChargeType The metering method of the EIP. Valid values:
+         * - `PayByBandwidth` (default): pay-by-bandwidth.
+         * - `PayByTraffic`: pay-by-data-transfer.
+         * 
+         * When `payment_type` is set to `Subscription`, you must set `internet_charge_type` to `PayByBandwidth`.
+         * 
+         * When `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
          * 
          * @return builder
          * 
@@ -738,7 +824,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The IP address of the EIP.
+         * @param ipAddress The IP address of the EIP. Supports a maximum of 50 EIPs.
          * 
          * @return builder
          * 
@@ -749,7 +835,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The IP address of the EIP.
+         * @param ipAddress The IP address of the EIP. Supports a maximum of 50 EIPs.
          * 
          * @return builder
          * 
@@ -759,18 +845,21 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isp The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
-         * - `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China.
-         * - `BGP_PRO`: BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
-         * - `ChinaTelecom`: China Telecom.
-         * - `ChinaUnicom`: China Unicom.
-         * - `ChinaMobile`: China Mobile.
-         * - `ChinaTelecom_L2`: China Telecom L2.
-         * - `ChinaUnicom_L2`: China Unicom L2.
-         * - `ChinaMobile_L2`: China Mobile L2.
-         * - `BGP_FinanceCloud`: If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
-         * - `BGP_International`: BGP_International.
-         * &gt; **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+         * @param isp The line type. Valid values:
+         * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+         * - `BGP_PRO`: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+         * 
+         * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the &#34;Line types&#34; section of [What is EIP?](https://www.alibabacloud.com/help/en/doc-detail/32321.html)
+         * 
+         * If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+         * - `ChinaTelecom`
+         * - `ChinaUnicom`
+         * - `ChinaMobile`
+         * - `ChinaTelecom_L2`
+         * - `ChinaUnicom_L2`
+         * - `ChinaMobile_L2`
+         * 
+         * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
          * 
          * @return builder
          * 
@@ -781,18 +870,21 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isp The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
-         * - `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China.
-         * - `BGP_PRO`: BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
-         * - `ChinaTelecom`: China Telecom.
-         * - `ChinaUnicom`: China Unicom.
-         * - `ChinaMobile`: China Mobile.
-         * - `ChinaTelecom_L2`: China Telecom L2.
-         * - `ChinaUnicom_L2`: China Unicom L2.
-         * - `ChinaMobile_L2`: China Mobile L2.
-         * - `BGP_FinanceCloud`: If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
-         * - `BGP_International`: BGP_International.
-         * &gt; **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+         * @param isp The line type. Valid values:
+         * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+         * - `BGP_PRO`: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+         * 
+         * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the &#34;Line types&#34; section of [What is EIP?](https://www.alibabacloud.com/help/en/doc-detail/32321.html)
+         * 
+         * If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+         * - `ChinaTelecom`
+         * - `ChinaUnicom`
+         * - `ChinaMobile`
+         * - `ChinaTelecom_L2`
+         * - `ChinaUnicom_L2`
+         * - `ChinaMobile_L2`
+         * 
+         * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
          * 
          * @return builder
          * 
@@ -802,7 +894,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logProject The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+         * @param logProject The name of the Simple Log Service (SLS) project.
          * 
          * @return builder
          * 
@@ -813,7 +905,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logProject The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+         * @param logProject The name of the Simple Log Service (SLS) project.
          * 
          * @return builder
          * 
@@ -823,7 +915,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStore The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+         * @param logStore The name of the Logstore.
          * 
          * @return builder
          * 
@@ -834,7 +926,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStore The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+         * @param logStore The name of the Logstore.
          * 
          * @return builder
          * 
@@ -844,10 +936,10 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode Binding mode, value:
-         * - **NAT** (default):NAT mode (normal mode).
-         * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
-         * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+         * @param mode The association mode. Valid values:
+         * - `NAT` (default): NAT mode
+         * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+         * - `BINDED`: cut-network interface controller mode
          * 
          * @return builder
          * 
@@ -858,10 +950,10 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode Binding mode, value:
-         * - **NAT** (default):NAT mode (normal mode).
-         * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
-         * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+         * @param mode The association mode. Valid values:
+         * - `NAT` (default): NAT mode
+         * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+         * - `BINDED`: cut-network interface controller mode
          * 
          * @return builder
          * 
@@ -900,7 +992,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netmode The type of the network. Valid value is `public` (Internet).
+         * @param netmode The network type. By default, this value is set to `public`, which specifies the public network type.
          * 
          * @return builder
          * 
@@ -911,7 +1003,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netmode The type of the network. Valid value is `public` (Internet).
+         * @param netmode The network type. By default, this value is set to `public`, which specifies the public network type.
          * 
          * @return builder
          * 
@@ -921,7 +1013,11 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
+         * @param paymentType The billing method of the EIP. Valid values:
+         * - `Subscription`: subscription
+         * - `PayAsYouGo` (default): pay-as-you-go
+         * 
+         * If `payment_type` is set to `Subscription`, set `internet_charge_type` to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
          * 
          * @return builder
          * 
@@ -932,7 +1028,11 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
+         * @param paymentType The billing method of the EIP. Valid values:
+         * - `Subscription`: subscription
+         * - `PayAsYouGo` (default): pay-as-you-go
+         * 
+         * If `payment_type` is set to `Subscription`, set `internet_charge_type` to `PayByBandwidth`. If `payment_type` is set to `PayAsYouGo`, set `internet_charge_type` to `PayByBandwidth` or `PayByTraffic`.
          * 
          * @return builder
          * 
@@ -942,7 +1042,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period When the PricingCycle is set to Month, the Period value ranges from 1 to 9.  When the PricingCycle is set to Year, the Period range is 1 to 5.  If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+         * @param period Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
          * 
          * @return builder
          * 
@@ -953,7 +1053,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period When the PricingCycle is set to Month, the Period value ranges from 1 to 9.  When the PricingCycle is set to Year, the Period range is 1 to 5.  If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+         * @param period Duration of purchase. When the value of `pricing_cycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricing_cycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `payment_type` parameter is `Subscription`, this parameter is required. If the value of the `payment_type` parameter is `PayAsYouGo`, this parameter is left blank.
          * 
          * @return builder
          * 
@@ -963,7 +1063,11 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pricingCycle Value: Month (default): Pay monthly. Year: Pay per Year. This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+         * @param pricingCycle The billing cycle of the subscription EIP. Valid values:
+         * - `Month` (default)
+         * - `Year`
+         * 
+         * If `payment_type` is set to `Subscription`, this parameter is required. If `payment_type` is set to `PayAsYouGo`, this parameter is not required.
          * 
          * @return builder
          * 
@@ -974,7 +1078,11 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pricingCycle Value: Month (default): Pay monthly. Year: Pay per Year. This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+         * @param pricingCycle The billing cycle of the subscription EIP. Valid values:
+         * - `Month` (default)
+         * - `Year`
+         * 
+         * If `payment_type` is set to `Subscription`, this parameter is required. If `payment_type` is set to `PayAsYouGo`, this parameter is not required.
          * 
          * @return builder
          * 
@@ -984,7 +1092,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicIpAddressPoolId The ID of the IP address pool to which the EIP belongs.
+         * @param publicIpAddressPoolId The ID of the IP address pool. The EIP is allocated from the IP address pool. By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the &#34;Request a quota increase in the Quota Center console&#34; section in [Manage EIP quotas](https://www.alibabacloud.com/help/en/doc-detail/108213.html).
          * 
          * @return builder
          * 
@@ -995,7 +1103,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicIpAddressPoolId The ID of the IP address pool to which the EIP belongs.
+         * @param publicIpAddressPoolId The ID of the IP address pool. The EIP is allocated from the IP address pool. By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the &#34;Request a quota increase in the Quota Center console&#34; section in [Manage EIP quotas](https://www.alibabacloud.com/help/en/doc-detail/108213.html).
          * 
          * @return builder
          * 
@@ -1005,7 +1113,9 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group to which you want to move the resource.
+         * 
+         * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
          * 
          * @return builder
          * 
@@ -1016,7 +1126,9 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group to which you want to move the resource.
+         * 
+         * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
          * 
          * @return builder
          * 
@@ -1028,7 +1140,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param securityProtectionTypes Security protection level.
          * - When the return is empty, the basic DDoS protection is specified.
-         * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+         * - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
          * 
          * @return builder
          * 
@@ -1041,7 +1153,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param securityProtectionTypes Security protection level.
          * - When the return is empty, the basic DDoS protection is specified.
-         * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+         * - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
          * 
          * @return builder
          * 
@@ -1053,7 +1165,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param securityProtectionTypes Security protection level.
          * - When the return is empty, the basic DDoS protection is specified.
-         * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+         * - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
          * 
          * @return builder
          * 
@@ -1063,7 +1175,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -1074,7 +1186,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -1084,7 +1196,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone The zone of the EIP.  This parameter is returned only for whitelist users that are visible to the zone.
+         * @param zone The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
@@ -1097,7 +1209,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone The zone of the EIP.  This parameter is returned only for whitelist users that are visible to the zone.
+         * @param zone The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
          * 
          * The following arguments will be discarded. Please use new fields as soon as possible:
          * 

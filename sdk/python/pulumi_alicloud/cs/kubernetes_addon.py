@@ -246,7 +246,7 @@ class KubernetesAddon(pulumi.CustomResource):
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource will help you to manage addon in Kubernetes Cluster, see [What is kubernetes addon](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-install-a-component-in-an-ack-cluster).
+        This resource will help you to manage addon in Kubernetes Cluster, see What is kubernetes addon.
 
         > **NOTE:** Available since v1.150.0.
 
@@ -275,7 +275,7 @@ class KubernetesAddon(pulumi.CustomResource):
                  args: KubernetesAddonInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource will help you to manage addon in Kubernetes Cluster, see [What is kubernetes addon](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-install-a-component-in-an-ack-cluster).
+        This resource will help you to manage addon in Kubernetes Cluster, see What is kubernetes addon.
 
         > **NOTE:** Available since v1.150.0.
 

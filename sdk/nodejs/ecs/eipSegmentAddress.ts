@@ -67,7 +67,12 @@ export class EipSegmentAddress extends pulumi.CustomResource {
     }
 
     /**
-     * The peak bandwidth of the EIP. Unit: Mbps. When the value of instancargetype is PostPaid and the value of InternetChargeType is PayByBandwidth, the range of Bandwidth is 1 to 500. If the value of instancargetype is PostPaid and the value of InternetChargeType is PayByTraffic, the range of Bandwidth is 1 to 200. When instancargetype is set to PrePaid, the range of Bandwidth is 1 to 1000. The default value is 5 Mbps.
+     * The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
+     * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByBandwidth`: `1` to `500`.****
+     * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByTraffic`: `1` to `200`.****
+     * - Valid values when `InstanceChargeType` is set to `PrePaid`: `1` to `1000`.****
+     *
+     * Default value: `5`. Unit: Mbit/s.
      */
     public readonly bandwidth!: pulumi.Output<string | undefined>;
     /**
@@ -75,38 +80,53 @@ export class EipSegmentAddress extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Mask of consecutive EIPs. Value:28: For a single call, the system will allocate 16 consecutive EIPs.27: For a single call, the system will allocate 32 consecutive EIPs.26: For a single call, the system will allocate 64 consecutive EIPs.25: For a single call, the system will allocate 128 consecutive EIPs.24: For a single call, the system will allocate 256 consecutive EIPs.
+     * The subnet mask of the contiguous EIP group. Valid values:
      */
     public readonly eipMask!: pulumi.Output<string>;
     /**
-     * Continuous EIP billing method, valid values:
-     * - **PayByBandwidth** (default): Billing based on fixed bandwidth.
-     * - **PayByTraffic**: Billing by usage flow.
+     * The metering method of the contiguous EIP group. Valid values:
+     * - `PayByBandwidth` (default)
+     * - `PayByTraffic`
      */
     public readonly internetChargeType!: pulumi.Output<string | undefined>;
     /**
-     * Line type. Valid values:
-     * - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
-     * - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-     * For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-     * If you are a whitelist user with single-line bandwidth, you can also select the following types:
-     * - **ChinaTelecom** : China Telecom
-     * - **ChinaUnicom** : China Unicom
-     * - **ChinaMobile** : China Mobile
-     * - **ChinaTelecom_L2** : China Telecom L2
-     * - **ChinaUnicom_L2** : China Unicom L2
-     * - **ChinaMobile_L2** : China Mobile L2
-     * If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+     * The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     *
+     * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see [EIP line types](https://www.alibabacloud.com/help/en/doc-detail/32321.html).
+     *
+     * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     *
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      */
     public readonly isp!: pulumi.Output<string | undefined>;
     /**
-     * The network type. Set the value to **public**.
+     * The network type. Set the value to `public`, which specifies the public network type.
      */
     public readonly netmode!: pulumi.Output<string | undefined>;
     /**
-     * The status of the resource.
+     * The resource group ID.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the contiguous Elastic IP address group.
+     */
+    public /*out*/ readonly segmentAddressName!: pulumi.Output<string>;
+    /**
+     * The status of the resource
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The zone of the contiguous EIP group.
+     */
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a EipSegmentAddress resource with the given unique name, arguments, and options.
@@ -127,7 +147,10 @@ export class EipSegmentAddress extends pulumi.CustomResource {
             resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
             resourceInputs["isp"] = state ? state.isp : undefined;
             resourceInputs["netmode"] = state ? state.netmode : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["segmentAddressName"] = state ? state.segmentAddressName : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as EipSegmentAddressArgs | undefined;
             if ((!args || args.eipMask === undefined) && !opts.urn) {
@@ -138,7 +161,10 @@ export class EipSegmentAddress extends pulumi.CustomResource {
             resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
             resourceInputs["isp"] = args ? args.isp : undefined;
             resourceInputs["netmode"] = args ? args.netmode : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["segmentAddressName"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -151,7 +177,12 @@ export class EipSegmentAddress extends pulumi.CustomResource {
  */
 export interface EipSegmentAddressState {
     /**
-     * The peak bandwidth of the EIP. Unit: Mbps. When the value of instancargetype is PostPaid and the value of InternetChargeType is PayByBandwidth, the range of Bandwidth is 1 to 500. If the value of instancargetype is PostPaid and the value of InternetChargeType is PayByTraffic, the range of Bandwidth is 1 to 200. When instancargetype is set to PrePaid, the range of Bandwidth is 1 to 1000. The default value is 5 Mbps.
+     * The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
+     * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByBandwidth`: `1` to `500`.****
+     * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByTraffic`: `1` to `200`.****
+     * - Valid values when `InstanceChargeType` is set to `PrePaid`: `1` to `1000`.****
+     *
+     * Default value: `5`. Unit: Mbit/s.
      */
     bandwidth?: pulumi.Input<string>;
     /**
@@ -159,38 +190,53 @@ export interface EipSegmentAddressState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Mask of consecutive EIPs. Value:28: For a single call, the system will allocate 16 consecutive EIPs.27: For a single call, the system will allocate 32 consecutive EIPs.26: For a single call, the system will allocate 64 consecutive EIPs.25: For a single call, the system will allocate 128 consecutive EIPs.24: For a single call, the system will allocate 256 consecutive EIPs.
+     * The subnet mask of the contiguous EIP group. Valid values:
      */
     eipMask?: pulumi.Input<string>;
     /**
-     * Continuous EIP billing method, valid values:
-     * - **PayByBandwidth** (default): Billing based on fixed bandwidth.
-     * - **PayByTraffic**: Billing by usage flow.
+     * The metering method of the contiguous EIP group. Valid values:
+     * - `PayByBandwidth` (default)
+     * - `PayByTraffic`
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * Line type. Valid values:
-     * - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
-     * - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-     * For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-     * If you are a whitelist user with single-line bandwidth, you can also select the following types:
-     * - **ChinaTelecom** : China Telecom
-     * - **ChinaUnicom** : China Unicom
-     * - **ChinaMobile** : China Mobile
-     * - **ChinaTelecom_L2** : China Telecom L2
-     * - **ChinaUnicom_L2** : China Unicom L2
-     * - **ChinaMobile_L2** : China Mobile L2
-     * If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+     * The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     *
+     * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see [EIP line types](https://www.alibabacloud.com/help/en/doc-detail/32321.html).
+     *
+     * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     *
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      */
     isp?: pulumi.Input<string>;
     /**
-     * The network type. Set the value to **public**.
+     * The network type. Set the value to `public`, which specifies the public network type.
      */
     netmode?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The resource group ID.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The name of the contiguous Elastic IP address group.
+     */
+    segmentAddressName?: pulumi.Input<string>;
+    /**
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
+    /**
+     * The zone of the contiguous EIP group.
+     */
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -198,36 +244,52 @@ export interface EipSegmentAddressState {
  */
 export interface EipSegmentAddressArgs {
     /**
-     * The peak bandwidth of the EIP. Unit: Mbps. When the value of instancargetype is PostPaid and the value of InternetChargeType is PayByBandwidth, the range of Bandwidth is 1 to 500. If the value of instancargetype is PostPaid and the value of InternetChargeType is PayByTraffic, the range of Bandwidth is 1 to 200. When instancargetype is set to PrePaid, the range of Bandwidth is 1 to 1000. The default value is 5 Mbps.
+     * The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
+     * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByBandwidth`: `1` to `500`.****
+     * - Valid values when `InstanceChargeType` is set to `PostPaid` and `InternetChargeType` is set to `PayByTraffic`: `1` to `200`.****
+     * - Valid values when `InstanceChargeType` is set to `PrePaid`: `1` to `1000`.****
+     *
+     * Default value: `5`. Unit: Mbit/s.
      */
     bandwidth?: pulumi.Input<string>;
     /**
-     * Mask of consecutive EIPs. Value:28: For a single call, the system will allocate 16 consecutive EIPs.27: For a single call, the system will allocate 32 consecutive EIPs.26: For a single call, the system will allocate 64 consecutive EIPs.25: For a single call, the system will allocate 128 consecutive EIPs.24: For a single call, the system will allocate 256 consecutive EIPs.
+     * The subnet mask of the contiguous EIP group. Valid values:
      */
     eipMask: pulumi.Input<string>;
     /**
-     * Continuous EIP billing method, valid values:
-     * - **PayByBandwidth** (default): Billing based on fixed bandwidth.
-     * - **PayByTraffic**: Billing by usage flow.
+     * The metering method of the contiguous EIP group. Valid values:
+     * - `PayByBandwidth` (default)
+     * - `PayByTraffic`
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * Line type. Valid values:
-     * - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
-     * - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-     * For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-     * If you are a whitelist user with single-line bandwidth, you can also select the following types:
-     * - **ChinaTelecom** : China Telecom
-     * - **ChinaUnicom** : China Unicom
-     * - **ChinaMobile** : China Mobile
-     * - **ChinaTelecom_L2** : China Telecom L2
-     * - **ChinaUnicom_L2** : China Unicom L2
-     * - **ChinaMobile_L2** : China Mobile L2
-     * If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+     * The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     *
+     * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see [EIP line types](https://www.alibabacloud.com/help/en/doc-detail/32321.html).
+     *
+     * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     *
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      */
     isp?: pulumi.Input<string>;
     /**
-     * The network type. Set the value to **public**.
+     * The network type. Set the value to `public`, which specifies the public network type.
      */
     netmode?: pulumi.Input<string>;
+    /**
+     * The resource group ID.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The zone of the contiguous EIP group.
+     */
+    zone?: pulumi.Input<string>;
 }

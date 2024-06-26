@@ -752,7 +752,7 @@ namespace Pulumi.AliCloud
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
             /// </summary>
-                public string? Resourcesharing { get; set; } = null!;
+                public string? Ressharing { get; set; } = null!;
             /// <summary>
             /// Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
             /// </summary>

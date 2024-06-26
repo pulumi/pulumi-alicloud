@@ -47,6 +47,21 @@ public final class BgpIpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The member account id of the IP address.
+     * 
+     */
+    @Import(name="memberUid")
+    private @Nullable Output<String> memberUid;
+
+    /**
+     * @return The member account id of the IP address.
+     * 
+     */
+    public Optional<Output<String>> memberUid() {
+        return Optional.ofNullable(this.memberUid);
+    }
+
+    /**
      * The ID of the resource group.
      * 
      */
@@ -66,6 +81,7 @@ public final class BgpIpArgs extends com.pulumi.resources.ResourceArgs {
     private BgpIpArgs(BgpIpArgs $) {
         this.instanceId = $.instanceId;
         this.ip = $.ip;
+        this.memberUid = $.memberUid;
         this.resourceGroupId = $.resourceGroupId;
     }
 
@@ -127,6 +143,27 @@ public final class BgpIpArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
+        }
+
+        /**
+         * @param memberUid The member account id of the IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberUid(@Nullable Output<String> memberUid) {
+            $.memberUid = memberUid;
+            return this;
+        }
+
+        /**
+         * @param memberUid The member account id of the IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder memberUid(String memberUid) {
+            return memberUid(Output.of(memberUid));
         }
 
         /**

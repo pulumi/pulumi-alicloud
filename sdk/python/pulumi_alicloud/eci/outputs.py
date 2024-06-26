@@ -823,9 +823,12 @@ class ContainerGroupContainerSecurityContext(dict):
 
     def __init__(__self__, *,
                  capabilities: Optional[Sequence['outputs.ContainerGroupContainerSecurityContextCapability']] = None,
+                 privileged: Optional[bool] = None,
                  run_as_user: Optional[int] = None):
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
+        if privileged is not None:
+            pulumi.set(__self__, "privileged", privileged)
         if run_as_user is not None:
             pulumi.set(__self__, "run_as_user", run_as_user)
 
@@ -833,6 +836,11 @@ class ContainerGroupContainerSecurityContext(dict):
     @pulumi.getter
     def capabilities(self) -> Optional[Sequence['outputs.ContainerGroupContainerSecurityContextCapability']]:
         return pulumi.get(self, "capabilities")
+
+    @property
+    @pulumi.getter
+    def privileged(self) -> Optional[bool]:
+        return pulumi.get(self, "privileged")
 
     @property
     @pulumi.getter(name="runAsUser")

@@ -32,122 +32,136 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/commonBandwithPackage:CommonBandwithPackage")
 public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
     /**
-     * The peak bandwidth of the shared bandwidth. Unit: Mbps.
-     * Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
+     * The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
      * 
      */
     @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     /**
-     * @return The peak bandwidth of the shared bandwidth. Unit: Mbps.
-     * Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
+     * @return The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
      * 
      */
     public Output<String> bandwidth() {
         return this.bandwidth;
     }
     /**
-     * The name of the Internet Shared Bandwidth instance.
+     * The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Export(name="bandwidthPackageName", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageName;
 
     /**
-     * @return The name of the Internet Shared Bandwidth instance.
+     * @return The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Output<String> bandwidthPackageName() {
         return this.bandwidthPackageName;
     }
     /**
-     * The create time.
+     * The creation time.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The create time.
+     * @return The creation time.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Whether enable the deletion protection or not. Default value: false.
-     * - **true**: Enable deletion protection.
-     * - **false**: Disable deletion protection.
+     * Specifies whether to enable deletion protection. Valid values:
      * 
      */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
-     * @return Whether enable the deletion protection or not. Default value: false.
-     * - **true**: Enable deletion protection.
-     * - **false**: Disable deletion protection.
+     * @return Specifies whether to enable deletion protection. Valid values:
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
     /**
-     * The description of the shared bandwidth.
+     * The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the shared bandwidth.
+     * @return The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
-     * - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
-     * - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
+     * Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
      * 
      */
     @Export(name="force", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> force;
 
     /**
-     * @return Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
-     * - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
-     * - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
+     * @return Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
      * 
      */
     public Output<Optional<String>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn&#39;t support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+     * The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
-     * @return The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn&#39;t support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+     * @return The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
      * 
      */
     public Output<Optional<String>> internetChargeType() {
         return Codegen.optional(this.internetChargeType);
     }
     /**
-     * The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+     * The line type. Valid values:
+     * - `BGP` All regions support BGP (Multi-ISP).
+     * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     * 
+     * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     * 
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
      * 
      */
     @Export(name="isp", refs={String.class}, tree="[0]")
     private Output<String> isp;
 
     /**
-     * @return The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+     * @return The line type. Valid values:
+     * - `BGP` All regions support BGP (Multi-ISP).
+     * - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     * 
+     * If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     * 
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
      * 
      */
     public Output<String> isp() {
@@ -186,28 +200,36 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
+     * The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+     * 
+     * &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
      * 
      */
     @Export(name="ratio", refs={Integer.class}, tree="[0]")
     private Output<Integer> ratio;
 
     /**
-     * @return Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
+     * @return The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+     * 
+     * &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
      * 
      */
     public Output<Integer> ratio() {
         return this.ratio;
     }
     /**
-     * The Id of resource group which the common bandwidth package belongs.
+     * The ID of the resource group to which you want to move the resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the common bandwidth package belongs.
+     * @return The ID of the resource group to which you want to move the resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     public Output<String> resourceGroupId() {
@@ -228,35 +250,35 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.securityProtectionTypes);
     }
     /**
-     * The status of the Internet Shared Bandwidth instance. Default value: **Available**.
+     * The status of the Internet Shared Bandwidth instance. Default value: `Available`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the Internet Shared Bandwidth instance. Default value: **Available**.
+     * @return The status of the Internet Shared Bandwidth instance. Default value: `Available`.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The available area of the shared bandwidth.
+     * The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -265,7 +287,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> zone;
 
     /**
-     * @return The available area of the shared bandwidth.
+     * @return The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 

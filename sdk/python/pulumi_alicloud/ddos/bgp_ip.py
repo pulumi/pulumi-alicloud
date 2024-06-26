@@ -16,15 +16,19 @@ class BgpIpArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  ip: pulumi.Input[str],
+                 member_uid: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BgpIp resource.
         :param pulumi.Input[str] instance_id: The ID of the native protection enterprise instance to be operated.
         :param pulumi.Input[str] ip: The IP address.
+        :param pulumi.Input[str] member_uid: The member account id of the IP address.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "ip", ip)
+        if member_uid is not None:
+            pulumi.set(__self__, "member_uid", member_uid)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
 
@@ -53,6 +57,18 @@ class BgpIpArgs:
         pulumi.set(self, "ip", value)
 
     @property
+    @pulumi.getter(name="memberUid")
+    def member_uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The member account id of the IP address.
+        """
+        return pulumi.get(self, "member_uid")
+
+    @member_uid.setter
+    def member_uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member_uid", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -70,12 +86,14 @@ class _BgpIpState:
     def __init__(__self__, *,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
+                 member_uid: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BgpIp resources.
         :param pulumi.Input[str] instance_id: The ID of the native protection enterprise instance to be operated.
         :param pulumi.Input[str] ip: The IP address.
+        :param pulumi.Input[str] member_uid: The member account id of the IP address.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The current state of the IP address. Valid Value: `normal`, `hole_begin`.
         """
@@ -83,6 +101,8 @@ class _BgpIpState:
             pulumi.set(__self__, "instance_id", instance_id)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
+        if member_uid is not None:
+            pulumi.set(__self__, "member_uid", member_uid)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
@@ -111,6 +131,18 @@ class _BgpIpState:
     @ip.setter
     def ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter(name="memberUid")
+    def member_uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        The member account id of the IP address.
+        """
+        return pulumi.get(self, "member_uid")
+
+    @member_uid.setter
+    def member_uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member_uid", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -144,6 +176,7 @@ class BgpIp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
+                 member_uid: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -166,6 +199,7 @@ class BgpIp(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.resourcemanager.get_resource_groups()
+        current = alicloud.get_account()
         instance = alicloud.ddos.DdosBgpInstance("instance",
             name=name,
             base_bandwidth=20,
@@ -178,7 +212,8 @@ class BgpIp(pulumi.CustomResource):
         default_bgp_ip = alicloud.ddos.BgpIp("default",
             instance_id=instance.id,
             ip=default_eip_address.ip_address,
-            resource_group_id=default.groups[0].id)
+            resource_group_id=default.groups[0].id,
+            member_uid=current.id)
         ```
 
         ## Import
@@ -193,6 +228,7 @@ class BgpIp(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: The ID of the native protection enterprise instance to be operated.
         :param pulumi.Input[str] ip: The IP address.
+        :param pulumi.Input[str] member_uid: The member account id of the IP address.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         """
         ...
@@ -221,6 +257,7 @@ class BgpIp(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.resourcemanager.get_resource_groups()
+        current = alicloud.get_account()
         instance = alicloud.ddos.DdosBgpInstance("instance",
             name=name,
             base_bandwidth=20,
@@ -233,7 +270,8 @@ class BgpIp(pulumi.CustomResource):
         default_bgp_ip = alicloud.ddos.BgpIp("default",
             instance_id=instance.id,
             ip=default_eip_address.ip_address,
-            resource_group_id=default.groups[0].id)
+            resource_group_id=default.groups[0].id,
+            member_uid=current.id)
         ```
 
         ## Import
@@ -261,6 +299,7 @@ class BgpIp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
+                 member_uid: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -277,6 +316,7 @@ class BgpIp(pulumi.CustomResource):
             if ip is None and not opts.urn:
                 raise TypeError("Missing required property 'ip'")
             __props__.__dict__["ip"] = ip
+            __props__.__dict__["member_uid"] = member_uid
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["status"] = None
         super(BgpIp, __self__).__init__(
@@ -291,6 +331,7 @@ class BgpIp(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             ip: Optional[pulumi.Input[str]] = None,
+            member_uid: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'BgpIp':
         """
@@ -302,6 +343,7 @@ class BgpIp(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: The ID of the native protection enterprise instance to be operated.
         :param pulumi.Input[str] ip: The IP address.
+        :param pulumi.Input[str] member_uid: The member account id of the IP address.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The current state of the IP address. Valid Value: `normal`, `hole_begin`.
         """
@@ -311,6 +353,7 @@ class BgpIp(pulumi.CustomResource):
 
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["ip"] = ip
+        __props__.__dict__["member_uid"] = member_uid
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
         return BgpIp(resource_name, opts=opts, __props__=__props__)
@@ -330,6 +373,14 @@ class BgpIp(pulumi.CustomResource):
         The IP address.
         """
         return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter(name="memberUid")
+    def member_uid(self) -> pulumi.Output[Optional[str]]:
+        """
+        The member account id of the IP address.
+        """
+        return pulumi.get(self, "member_uid")
 
     @property
     @pulumi.getter(name="resourceGroupId")

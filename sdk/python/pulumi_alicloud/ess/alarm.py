@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AlarmArgs', 'Alarm']
 
@@ -15,40 +17,42 @@ __all__ = ['AlarmArgs', 'Alarm']
 class AlarmArgs:
     def __init__(__self__, *,
                  alarm_actions: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 metric_name: pulumi.Input[str],
                  scaling_group_id: pulumi.Input[str],
-                 threshold: pulumi.Input[str],
                  cloud_monitor_group_id: Optional[pulumi.Input[int]] = None,
                  comparison_operator: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
+                 expressions: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]] = None,
+                 expressions_logic_operator: Optional[pulumi.Input[str]] = None,
+                 metric_name: Optional[pulumi.Input[str]] = None,
                  metric_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
-                 statistics: Optional[pulumi.Input[str]] = None):
+                 statistics: Optional[pulumi.Input[str]] = None,
+                 threshold: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Alarm resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alarm_actions: The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
-        :param pulumi.Input[str] metric_name: The name for the alarm's associated metric. See `dimensions` below for details.
         :param pulumi.Input[str] scaling_group_id: The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
-        :param pulumi.Input[str] threshold: The value against which the specified statistics is compared.
         :param pulumi.Input[int] cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[str] description: The description for the alarm.
         :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
+        :param pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]] expressions: Support multi alert rule. See `expressions` below for details.
+        :param pulumi.Input[str] expressions_logic_operator: The relationship between the trigger conditions in the multi-metric alert rule.
+        :param pulumi.Input[str] metric_name: The name for the alarm's associated metric. See `dimensions` below for details.
         :param pulumi.Input[str] metric_type: The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
         :param pulumi.Input[str] name: The name for ess alarm.
         :param pulumi.Input[int] period: The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
         :param pulumi.Input[str] statistics: The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
+        :param pulumi.Input[str] threshold: The value against which the specified statistics is compared.
         """
         pulumi.set(__self__, "alarm_actions", alarm_actions)
-        pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
-        pulumi.set(__self__, "threshold", threshold)
         if cloud_monitor_group_id is not None:
             pulumi.set(__self__, "cloud_monitor_group_id", cloud_monitor_group_id)
         if comparison_operator is not None:
@@ -61,6 +65,12 @@ class AlarmArgs:
             pulumi.set(__self__, "enable", enable)
         if evaluation_count is not None:
             pulumi.set(__self__, "evaluation_count", evaluation_count)
+        if expressions is not None:
+            pulumi.set(__self__, "expressions", expressions)
+        if expressions_logic_operator is not None:
+            pulumi.set(__self__, "expressions_logic_operator", expressions_logic_operator)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
         if metric_type is not None:
             pulumi.set(__self__, "metric_type", metric_type)
         if name is not None:
@@ -69,6 +79,8 @@ class AlarmArgs:
             pulumi.set(__self__, "period", period)
         if statistics is not None:
             pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
 
     @property
     @pulumi.getter(name="alarmActions")
@@ -83,18 +95,6 @@ class AlarmArgs:
         pulumi.set(self, "alarm_actions", value)
 
     @property
-    @pulumi.getter(name="metricName")
-    def metric_name(self) -> pulumi.Input[str]:
-        """
-        The name for the alarm's associated metric. See `dimensions` below for details.
-        """
-        return pulumi.get(self, "metric_name")
-
-    @metric_name.setter
-    def metric_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "metric_name", value)
-
-    @property
     @pulumi.getter(name="scalingGroupId")
     def scaling_group_id(self) -> pulumi.Input[str]:
         """
@@ -105,18 +105,6 @@ class AlarmArgs:
     @scaling_group_id.setter
     def scaling_group_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "scaling_group_id", value)
-
-    @property
-    @pulumi.getter
-    def threshold(self) -> pulumi.Input[str]:
-        """
-        The value against which the specified statistics is compared.
-        """
-        return pulumi.get(self, "threshold")
-
-    @threshold.setter
-    def threshold(self, value: pulumi.Input[str]):
-        pulumi.set(self, "threshold", value)
 
     @property
     @pulumi.getter(name="cloudMonitorGroupId")
@@ -191,6 +179,42 @@ class AlarmArgs:
         pulumi.set(self, "evaluation_count", value)
 
     @property
+    @pulumi.getter
+    def expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]]:
+        """
+        Support multi alert rule. See `expressions` below for details.
+        """
+        return pulumi.get(self, "expressions")
+
+    @expressions.setter
+    def expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]]):
+        pulumi.set(self, "expressions", value)
+
+    @property
+    @pulumi.getter(name="expressionsLogicOperator")
+    def expressions_logic_operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relationship between the trigger conditions in the multi-metric alert rule.
+        """
+        return pulumi.get(self, "expressions_logic_operator")
+
+    @expressions_logic_operator.setter
+    def expressions_logic_operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expressions_logic_operator", value)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for the alarm's associated metric. See `dimensions` below for details.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_name", value)
+
+    @property
     @pulumi.getter(name="metricType")
     def metric_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -238,6 +262,18 @@ class AlarmArgs:
     def statistics(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "statistics", value)
 
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value against which the specified statistics is compared.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "threshold", value)
+
 
 @pulumi.input_type
 class _AlarmState:
@@ -249,6 +285,8 @@ class _AlarmState:
                  dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
+                 expressions: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]] = None,
+                 expressions_logic_operator: Optional[pulumi.Input[str]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
                  metric_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -266,6 +304,8 @@ class _AlarmState:
         :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
+        :param pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]] expressions: Support multi alert rule. See `expressions` below for details.
+        :param pulumi.Input[str] expressions_logic_operator: The relationship between the trigger conditions in the multi-metric alert rule.
         :param pulumi.Input[str] metric_name: The name for the alarm's associated metric. See `dimensions` below for details.
         :param pulumi.Input[str] metric_type: The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
         :param pulumi.Input[str] name: The name for ess alarm.
@@ -292,6 +332,10 @@ class _AlarmState:
             pulumi.set(__self__, "enable", enable)
         if evaluation_count is not None:
             pulumi.set(__self__, "evaluation_count", evaluation_count)
+        if expressions is not None:
+            pulumi.set(__self__, "expressions", expressions)
+        if expressions_logic_operator is not None:
+            pulumi.set(__self__, "expressions_logic_operator", expressions_logic_operator)
         if metric_name is not None:
             pulumi.set(__self__, "metric_name", metric_name)
         if metric_type is not None:
@@ -392,6 +436,30 @@ class _AlarmState:
     @evaluation_count.setter
     def evaluation_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "evaluation_count", value)
+
+    @property
+    @pulumi.getter
+    def expressions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]]:
+        """
+        Support multi alert rule. See `expressions` below for details.
+        """
+        return pulumi.get(self, "expressions")
+
+    @expressions.setter
+    def expressions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]]):
+        pulumi.set(self, "expressions", value)
+
+    @property
+    @pulumi.getter(name="expressionsLogicOperator")
+    def expressions_logic_operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relationship between the trigger conditions in the multi-metric alert rule.
+        """
+        return pulumi.get(self, "expressions_logic_operator")
+
+    @expressions_logic_operator.setter
+    def expressions_logic_operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expressions_logic_operator", value)
 
     @property
     @pulumi.getter(name="metricName")
@@ -505,6 +573,8 @@ class Alarm(pulumi.CustomResource):
                  dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
+                 expressions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmExpressionArgs']]]]] = None,
+                 expressions_logic_operator: Optional[pulumi.Input[str]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
                  metric_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -623,6 +693,8 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmExpressionArgs']]]] expressions: Support multi alert rule. See `expressions` below for details.
+        :param pulumi.Input[str] expressions_logic_operator: The relationship between the trigger conditions in the multi-metric alert rule.
         :param pulumi.Input[str] metric_name: The name for the alarm's associated metric. See `dimensions` below for details.
         :param pulumi.Input[str] metric_type: The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
         :param pulumi.Input[str] name: The name for ess alarm.
@@ -760,6 +832,8 @@ class Alarm(pulumi.CustomResource):
                  dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
+                 expressions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmExpressionArgs']]]]] = None,
+                 expressions_logic_operator: Optional[pulumi.Input[str]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
                  metric_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -785,8 +859,8 @@ class Alarm(pulumi.CustomResource):
             __props__.__dict__["dimensions"] = dimensions
             __props__.__dict__["enable"] = enable
             __props__.__dict__["evaluation_count"] = evaluation_count
-            if metric_name is None and not opts.urn:
-                raise TypeError("Missing required property 'metric_name'")
+            __props__.__dict__["expressions"] = expressions
+            __props__.__dict__["expressions_logic_operator"] = expressions_logic_operator
             __props__.__dict__["metric_name"] = metric_name
             __props__.__dict__["metric_type"] = metric_type
             __props__.__dict__["name"] = name
@@ -795,8 +869,6 @@ class Alarm(pulumi.CustomResource):
                 raise TypeError("Missing required property 'scaling_group_id'")
             __props__.__dict__["scaling_group_id"] = scaling_group_id
             __props__.__dict__["statistics"] = statistics
-            if threshold is None and not opts.urn:
-                raise TypeError("Missing required property 'threshold'")
             __props__.__dict__["threshold"] = threshold
             __props__.__dict__["state"] = None
         super(Alarm, __self__).__init__(
@@ -816,6 +888,8 @@ class Alarm(pulumi.CustomResource):
             dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
             evaluation_count: Optional[pulumi.Input[int]] = None,
+            expressions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmExpressionArgs']]]]] = None,
+            expressions_logic_operator: Optional[pulumi.Input[str]] = None,
             metric_name: Optional[pulumi.Input[str]] = None,
             metric_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -838,6 +912,8 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmExpressionArgs']]]] expressions: Support multi alert rule. See `expressions` below for details.
+        :param pulumi.Input[str] expressions_logic_operator: The relationship between the trigger conditions in the multi-metric alert rule.
         :param pulumi.Input[str] metric_name: The name for the alarm's associated metric. See `dimensions` below for details.
         :param pulumi.Input[str] metric_type: The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
         :param pulumi.Input[str] name: The name for ess alarm.
@@ -861,6 +937,8 @@ class Alarm(pulumi.CustomResource):
         __props__.__dict__["dimensions"] = dimensions
         __props__.__dict__["enable"] = enable
         __props__.__dict__["evaluation_count"] = evaluation_count
+        __props__.__dict__["expressions"] = expressions
+        __props__.__dict__["expressions_logic_operator"] = expressions_logic_operator
         __props__.__dict__["metric_name"] = metric_name
         __props__.__dict__["metric_type"] = metric_type
         __props__.__dict__["name"] = name
@@ -889,7 +967,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> pulumi.Output[Optional[str]]:
+    def comparison_operator(self) -> pulumi.Output[str]:
         """
         The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         """
@@ -928,6 +1006,22 @@ class Alarm(pulumi.CustomResource):
         return pulumi.get(self, "evaluation_count")
 
     @property
+    @pulumi.getter
+    def expressions(self) -> pulumi.Output[Sequence['outputs.AlarmExpression']]:
+        """
+        Support multi alert rule. See `expressions` below for details.
+        """
+        return pulumi.get(self, "expressions")
+
+    @property
+    @pulumi.getter(name="expressionsLogicOperator")
+    def expressions_logic_operator(self) -> pulumi.Output[str]:
+        """
+        The relationship between the trigger conditions in the multi-metric alert rule.
+        """
+        return pulumi.get(self, "expressions_logic_operator")
+
+    @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> pulumi.Output[str]:
         """
@@ -953,7 +1047,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[int]]:
+    def period(self) -> pulumi.Output[int]:
         """
         The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
         """
@@ -980,7 +1074,7 @@ class Alarm(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def statistics(self) -> pulumi.Output[Optional[str]]:
+    def statistics(self) -> pulumi.Output[str]:
         """
         The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
         """

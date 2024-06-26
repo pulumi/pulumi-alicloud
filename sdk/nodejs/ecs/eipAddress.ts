@@ -42,23 +42,32 @@ export class EipAddress extends pulumi.CustomResource {
     }
 
     /**
-     * Special activity ID. This parameter is not required.
+     * The promotion code. This parameter is not required.
      */
     public readonly activityId!: pulumi.Output<string | undefined>;
     /**
-     * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * The EIP name.
+     *
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+     *
+     * > **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      */
     public readonly addressName!: pulumi.Output<string>;
     /**
-     * The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     * The ID of the EIP instance.
      */
-    public readonly allocationId!: pulumi.Output<string | undefined>;
+    public readonly allocationId!: pulumi.Output<string>;
     /**
-     * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
+     * Specifies whether to enable automatic payment. Valid values:
      */
     public readonly autoPay!: pulumi.Output<boolean | undefined>;
     /**
-     * The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
+     * The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+     * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
+     * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
+     * - When `paymentType` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+     *
+     * Default value: `5` Mbit /s.
      */
     public readonly bandwidth!: pulumi.Output<string>;
     /**
@@ -66,19 +75,21 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Whether the delete protection function is turned on.
-     * - **true**: enabled.
-     * - **false**: not enabled.
+     * Specifies whether to enable deletion protection. Valid values:
      */
     public readonly deletionProtection!: pulumi.Output<boolean>;
     /**
      * The description of the EIP.
+     *
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+     *
+     * > **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether the second-level monitoring is enabled for the EIP.
-     * - **OFF**: not enabled.
-     * - **ON**: enabled.
+     * The status of fine-grained monitoring. Valid values:
+     * - `ON`
+     * - `OFF`
      */
     public readonly highDefinitionMonitorLogStatus!: pulumi.Output<string>;
     /**
@@ -88,43 +99,50 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
-     * Renewal Payment type.
-     * - **PayByBandwidth**: billed by fixed bandwidth.
-     * - **PayByTraffic**: Billing by traffic.
+     * The metering method of the EIP. Valid values:
+     * - `PayByBandwidth` (default): pay-by-bandwidth.
+     * - `PayByTraffic`: pay-by-data-transfer.
+     *
+     * When `paymentType` is set to `Subscription`, you must set `internetChargeType` to `PayByBandwidth`.
+     *
+     * When `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
      */
     public readonly internetChargeType!: pulumi.Output<string>;
     /**
-     * The IP address of the EIP.
+     * The IP address of the EIP. Supports a maximum of 50 EIPs.
      */
     public readonly ipAddress!: pulumi.Output<string>;
     /**
-     * The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: 
-     * - `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China.
-     * - `BGP_PRO`: BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
-     * - `ChinaTelecom`: China Telecom.
-     * - `ChinaUnicom`: China Unicom.
-     * - `ChinaMobile`: China Mobile.
-     * - `ChinaTelecom_L2`: China Telecom L2.
-     * - `ChinaUnicom_L2`: China Unicom L2.
-     * - `ChinaMobile_L2`: China Mobile L2.
-     * - `BGP_FinanceCloud`: If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
-     * - `BGP_International`: BGP_International.
-     * > **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+     * The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     *
+     * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](https://www.alibabacloud.com/help/en/doc-detail/32321.html)
+     *
+     * If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     *
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      */
     public readonly isp!: pulumi.Output<string>;
     /**
-     * The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * The name of the Simple Log Service (SLS) project.
      */
     public readonly logProject!: pulumi.Output<string | undefined>;
     /**
-     * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * The name of the Logstore.
      */
     public readonly logStore!: pulumi.Output<string | undefined>;
     /**
-     * Binding mode, value:
-     * - **NAT** (default):NAT mode (normal mode).
-     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
-     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     * The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
      */
     public readonly mode!: pulumi.Output<string>;
     /**
@@ -134,45 +152,55 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The type of the network. Valid value is `public` (Internet).
+     * The network type. By default, this value is set to `public`, which specifies the public network type.
      */
     public readonly netmode!: pulumi.Output<string>;
     /**
-     * The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
+     * The billing method of the EIP. Valid values:
+     * - `Subscription`: subscription
+     * - `PayAsYouGo` (default): pay-as-you-go
+     *
+     * If `paymentType` is set to `Subscription`, set `internetChargeType` to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * When the PricingCycle is set to Month, the Period value ranges from 1 to 9.  When the PricingCycle is set to Year, the Period range is 1 to 5.  If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+     * Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * Value: Month (default): Pay monthly. Year: Pay per Year. This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+     * The billing cycle of the subscription EIP. Valid values:
+     * - `Month` (default)
+     * - `Year`
+     *
+     * If `paymentType` is set to `Subscription`, this parameter is required. If `paymentType` is set to `PayAsYouGo`, this parameter is not required.
      */
     public readonly pricingCycle!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the IP address pool to which the EIP belongs.
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool. By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in [Manage EIP quotas](https://www.alibabacloud.com/help/en/doc-detail/108213.html).
      */
     public readonly publicIpAddressPoolId!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which you want to move the resource.
+     *
+     * > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * Security protection level.
      * - When the return is empty, the basic DDoS protection is specified.
-     * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+     * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
      */
     public readonly securityProtectionTypes!: pulumi.Output<string[] | undefined>;
     /**
-     * The status of the EIP.
+     * The state of the EIP.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The zone of the EIP.  This parameter is returned only for whitelist users that are visible to the zone.
+     * The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -258,23 +286,32 @@ export class EipAddress extends pulumi.CustomResource {
  */
 export interface EipAddressState {
     /**
-     * Special activity ID. This parameter is not required.
+     * The promotion code. This parameter is not required.
      */
     activityId?: pulumi.Input<string>;
     /**
-     * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * The EIP name.
+     *
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+     *
+     * > **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      */
     addressName?: pulumi.Input<string>;
     /**
-     * The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     * The ID of the EIP instance.
      */
     allocationId?: pulumi.Input<string>;
     /**
-     * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
+     * Specifies whether to enable automatic payment. Valid values:
      */
     autoPay?: pulumi.Input<boolean>;
     /**
-     * The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
+     * The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+     * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
+     * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
+     * - When `paymentType` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+     *
+     * Default value: `5` Mbit /s.
      */
     bandwidth?: pulumi.Input<string>;
     /**
@@ -282,19 +319,21 @@ export interface EipAddressState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Whether the delete protection function is turned on.
-     * - **true**: enabled.
-     * - **false**: not enabled.
+     * Specifies whether to enable deletion protection. Valid values:
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The description of the EIP.
+     *
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+     *
+     * > **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether the second-level monitoring is enabled for the EIP.
-     * - **OFF**: not enabled.
-     * - **ON**: enabled.
+     * The status of fine-grained monitoring. Valid values:
+     * - `ON`
+     * - `OFF`
      */
     highDefinitionMonitorLogStatus?: pulumi.Input<string>;
     /**
@@ -304,43 +343,50 @@ export interface EipAddressState {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * Renewal Payment type.
-     * - **PayByBandwidth**: billed by fixed bandwidth.
-     * - **PayByTraffic**: Billing by traffic.
+     * The metering method of the EIP. Valid values:
+     * - `PayByBandwidth` (default): pay-by-bandwidth.
+     * - `PayByTraffic`: pay-by-data-transfer.
+     *
+     * When `paymentType` is set to `Subscription`, you must set `internetChargeType` to `PayByBandwidth`.
+     *
+     * When `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * The IP address of the EIP.
+     * The IP address of the EIP. Supports a maximum of 50 EIPs.
      */
     ipAddress?: pulumi.Input<string>;
     /**
-     * The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: 
-     * - `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China.
-     * - `BGP_PRO`: BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
-     * - `ChinaTelecom`: China Telecom.
-     * - `ChinaUnicom`: China Unicom.
-     * - `ChinaMobile`: China Mobile.
-     * - `ChinaTelecom_L2`: China Telecom L2.
-     * - `ChinaUnicom_L2`: China Unicom L2.
-     * - `ChinaMobile_L2`: China Mobile L2.
-     * - `BGP_FinanceCloud`: If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
-     * - `BGP_International`: BGP_International.
-     * > **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+     * The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     *
+     * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](https://www.alibabacloud.com/help/en/doc-detail/32321.html)
+     *
+     * If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     *
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      */
     isp?: pulumi.Input<string>;
     /**
-     * The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * The name of the Simple Log Service (SLS) project.
      */
     logProject?: pulumi.Input<string>;
     /**
-     * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * The name of the Logstore.
      */
     logStore?: pulumi.Input<string>;
     /**
-     * Binding mode, value:
-     * - **NAT** (default):NAT mode (normal mode).
-     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
-     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     * The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
      */
     mode?: pulumi.Input<string>;
     /**
@@ -350,45 +396,55 @@ export interface EipAddressState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The type of the network. Valid value is `public` (Internet).
+     * The network type. By default, this value is set to `public`, which specifies the public network type.
      */
     netmode?: pulumi.Input<string>;
     /**
-     * The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
+     * The billing method of the EIP. Valid values:
+     * - `Subscription`: subscription
+     * - `PayAsYouGo` (default): pay-as-you-go
+     *
+     * If `paymentType` is set to `Subscription`, set `internetChargeType` to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * When the PricingCycle is set to Month, the Period value ranges from 1 to 9.  When the PricingCycle is set to Year, the Period range is 1 to 5.  If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+     * Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
      */
     period?: pulumi.Input<number>;
     /**
-     * Value: Month (default): Pay monthly. Year: Pay per Year. This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+     * The billing cycle of the subscription EIP. Valid values:
+     * - `Month` (default)
+     * - `Year`
+     *
+     * If `paymentType` is set to `Subscription`, this parameter is required. If `paymentType` is set to `PayAsYouGo`, this parameter is not required.
      */
     pricingCycle?: pulumi.Input<string>;
     /**
-     * The ID of the IP address pool to which the EIP belongs.
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool. By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in [Manage EIP quotas](https://www.alibabacloud.com/help/en/doc-detail/108213.html).
      */
     publicIpAddressPoolId?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which you want to move the resource.
+     *
+     * > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
      * Security protection level.
      * - When the return is empty, the basic DDoS protection is specified.
-     * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+     * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
      */
     securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The status of the EIP.
+     * The state of the EIP.
      */
     status?: pulumi.Input<string>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The zone of the EIP.  This parameter is returned only for whitelist users that are visible to the zone.
+     * The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -400,39 +456,50 @@ export interface EipAddressState {
  */
 export interface EipAddressArgs {
     /**
-     * Special activity ID. This parameter is not required.
+     * The promotion code. This parameter is not required.
      */
     activityId?: pulumi.Input<string>;
     /**
-     * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * The EIP name.
+     *
+     * The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+     *
+     * > **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      */
     addressName?: pulumi.Input<string>;
     /**
-     * The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     * The ID of the EIP instance.
      */
     allocationId?: pulumi.Input<string>;
     /**
-     * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
+     * Specifies whether to enable automatic payment. Valid values:
      */
     autoPay?: pulumi.Input<boolean>;
     /**
-     * The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
+     * The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+     * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByBandwidth`, valid values for `bandwidth` are `1` to `500`.
+     * - When `paymentType` is set to `PayAsYouGo` and `internetChargeType` is set to `PayByTraffic`, valid values for `bandwidth` are `1` to `200`.
+     * - When `paymentType` is set to `Subscription`, valid values for `bandwidth` are `1` to `1000`.
+     *
+     * Default value: `5` Mbit /s.
      */
     bandwidth?: pulumi.Input<string>;
     /**
-     * Whether the delete protection function is turned on.
-     * - **true**: enabled.
-     * - **false**: not enabled.
+     * Specifies whether to enable deletion protection. Valid values:
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
      * The description of the EIP.
+     *
+     * The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+     *
+     * > **NOTE:**   You cannot specify this parameter if you create a subscription EIP.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether the second-level monitoring is enabled for the EIP.
-     * - **OFF**: not enabled.
-     * - **ON**: enabled.
+     * The status of fine-grained monitoring. Valid values:
+     * - `ON`
+     * - `OFF`
      */
     highDefinitionMonitorLogStatus?: pulumi.Input<string>;
     /**
@@ -442,43 +509,50 @@ export interface EipAddressArgs {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * Renewal Payment type.
-     * - **PayByBandwidth**: billed by fixed bandwidth.
-     * - **PayByTraffic**: Billing by traffic.
+     * The metering method of the EIP. Valid values:
+     * - `PayByBandwidth` (default): pay-by-bandwidth.
+     * - `PayByTraffic`: pay-by-data-transfer.
+     *
+     * When `paymentType` is set to `Subscription`, you must set `internetChargeType` to `PayByBandwidth`.
+     *
+     * When `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * The IP address of the EIP.
+     * The IP address of the EIP. Supports a maximum of 50 EIPs.
      */
     ipAddress?: pulumi.Input<string>;
     /**
-     * The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: 
-     * - `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China.
-     * - `BGP_PRO`: BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
-     * - `ChinaTelecom`: China Telecom.
-     * - `ChinaUnicom`: China Unicom.
-     * - `ChinaMobile`: China Mobile.
-     * - `ChinaTelecom_L2`: China Telecom L2.
-     * - `ChinaUnicom_L2`: China Unicom L2.
-     * - `ChinaMobile_L2`: China Mobile L2.
-     * - `BGP_FinanceCloud`: If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
-     * - `BGP_International`: BGP_International.
-     * > **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+     * The line type. Valid values:
+     * - `BGP` (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+     *
+     * For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](https://www.alibabacloud.com/help/en/doc-detail/32321.html)
+     *
+     * If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+     * - `ChinaTelecom`
+     * - `ChinaUnicom`
+     * - `ChinaMobile`
+     * - `ChinaTelecom_L2`
+     * - `ChinaUnicom_L2`
+     * - `ChinaMobile_L2`
+     *
+     * If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to `BGP_FinanceCloud`.
      */
     isp?: pulumi.Input<string>;
     /**
-     * The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * The name of the Simple Log Service (SLS) project.
      */
     logProject?: pulumi.Input<string>;
     /**
-     * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+     * The name of the Logstore.
      */
     logStore?: pulumi.Input<string>;
     /**
-     * Binding mode, value:
-     * - **NAT** (default):NAT mode (normal mode).
-     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
-     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     * The association mode. Valid values:
+     * - `NAT` (default): NAT mode
+     * - `MULTI_BINDED`: multi-EIP-to-ENI mode
+     * - `BINDED`: cut-network interface controller mode
      */
     mode?: pulumi.Input<string>;
     /**
@@ -488,41 +562,51 @@ export interface EipAddressArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The type of the network. Valid value is `public` (Internet).
+     * The network type. By default, this value is set to `public`, which specifies the public network type.
      */
     netmode?: pulumi.Input<string>;
     /**
-     * The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
+     * The billing method of the EIP. Valid values:
+     * - `Subscription`: subscription
+     * - `PayAsYouGo` (default): pay-as-you-go
+     *
+     * If `paymentType` is set to `Subscription`, set `internetChargeType` to `PayByBandwidth`. If `paymentType` is set to `PayAsYouGo`, set `internetChargeType` to `PayByBandwidth` or `PayByTraffic`.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * When the PricingCycle is set to Month, the Period value ranges from 1 to 9.  When the PricingCycle is set to Year, the Period range is 1 to 5.  If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+     * Duration of purchase. When the value of `pricingCycle` is `Month`, the value range of `period` is `1` to `9`. When the value of `pricingCycle` is `Year`, the value range of `period` is `1` to `5`. If the value of the `paymentType` parameter is `Subscription`, this parameter is required. If the value of the `paymentType` parameter is `PayAsYouGo`, this parameter is left blank.
      */
     period?: pulumi.Input<number>;
     /**
-     * Value: Month (default): Pay monthly. Year: Pay per Year. This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+     * The billing cycle of the subscription EIP. Valid values:
+     * - `Month` (default)
+     * - `Year`
+     *
+     * If `paymentType` is set to `Subscription`, this parameter is required. If `paymentType` is set to `PayAsYouGo`, this parameter is not required.
      */
     pricingCycle?: pulumi.Input<string>;
     /**
-     * The ID of the IP address pool to which the EIP belongs.
+     * The ID of the IP address pool. The EIP is allocated from the IP address pool. By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in [Manage EIP quotas](https://www.alibabacloud.com/help/en/doc-detail/108213.html).
      */
     publicIpAddressPoolId?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group to which you want to move the resource.
+     *
+     * > **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
      * Security protection level.
      * - When the return is empty, the basic DDoS protection is specified.
-     * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+     * - When `antidosEnhanced` is returned, it indicates DDoS protection (enhanced version).
      */
     securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The zone of the EIP.  This parameter is returned only for whitelist users that are visible to the zone.
+     * The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */

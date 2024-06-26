@@ -145,6 +145,18 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableArray<Outputs.ScalingGroupAlbServerGroup>> AlbServerGroups { get; private set; } = null!;
 
         /// <summary>
+        /// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        /// </summary>
+        [Output("allocationStrategy")]
+        public Output<string> AllocationStrategy { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        /// </summary>
+        [Output("azBalance")]
+        public Output<bool?> AzBalance { get; private set; } = null!;
+
+        /// <summary>
         /// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
         /// - The specified RDS instance must be in running status.
         /// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -226,7 +238,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<int> MinSize { get; private set; } = null!;
 
         /// <summary>
-        /// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+        /// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         /// </summary>
         [Output("multiAzPolicy")]
         public Output<string?> MultiAzPolicy { get; private set; } = null!;
@@ -270,6 +282,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("scalingGroupName")]
         public Output<string?> ScalingGroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        /// </summary>
+        [Output("spotAllocationStrategy")]
+        public Output<string> SpotAllocationStrategy { get; private set; } = null!;
 
         /// <summary>
         /// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
@@ -360,6 +378,18 @@ namespace Pulumi.AliCloud.Ess
             get => _albServerGroups ?? (_albServerGroups = new InputList<Inputs.ScalingGroupAlbServerGroupArgs>());
             set => _albServerGroups = value;
         }
+
+        /// <summary>
+        /// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        /// </summary>
+        [Input("allocationStrategy")]
+        public Input<string>? AllocationStrategy { get; set; }
+
+        /// <summary>
+        /// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        /// </summary>
+        [Input("azBalance")]
+        public Input<bool>? AzBalance { get; set; }
 
         [Input("dbInstanceIds")]
         private InputList<string>? _dbInstanceIds;
@@ -461,7 +491,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int> MinSize { get; set; } = null!;
 
         /// <summary>
-        /// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+        /// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         /// </summary>
         [Input("multiAzPolicy")]
         public Input<string>? MultiAzPolicy { get; set; }
@@ -517,6 +547,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("scalingGroupName")]
         public Input<string>? ScalingGroupName { get; set; }
+
+        /// <summary>
+        /// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        /// </summary>
+        [Input("spotAllocationStrategy")]
+        public Input<string>? SpotAllocationStrategy { get; set; }
 
         /// <summary>
         /// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
@@ -581,6 +617,18 @@ namespace Pulumi.AliCloud.Ess
             get => _albServerGroups ?? (_albServerGroups = new InputList<Inputs.ScalingGroupAlbServerGroupGetArgs>());
             set => _albServerGroups = value;
         }
+
+        /// <summary>
+        /// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        /// </summary>
+        [Input("allocationStrategy")]
+        public Input<string>? AllocationStrategy { get; set; }
+
+        /// <summary>
+        /// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        /// </summary>
+        [Input("azBalance")]
+        public Input<bool>? AzBalance { get; set; }
 
         [Input("dbInstanceIds")]
         private InputList<string>? _dbInstanceIds;
@@ -682,7 +730,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? MinSize { get; set; }
 
         /// <summary>
-        /// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
+        /// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         /// </summary>
         [Input("multiAzPolicy")]
         public Input<string>? MultiAzPolicy { get; set; }
@@ -738,6 +786,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("scalingGroupName")]
         public Input<string>? ScalingGroupName { get; set; }
+
+        /// <summary>
+        /// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        /// </summary>
+        [Input("spotAllocationStrategy")]
+        public Input<string>? SpotAllocationStrategy { get; set; }
 
         /// <summary>
         /// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.

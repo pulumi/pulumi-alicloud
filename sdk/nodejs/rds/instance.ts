@@ -341,6 +341,9 @@ export class Instance extends pulumi.CustomResource {
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     *
+     * > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+     * You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
      */
     public readonly roleArn!: pulumi.Output<string>;
     /**
@@ -1003,6 +1006,9 @@ export interface InstanceState {
     resourceGroupId?: pulumi.Input<string>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     *
+     * > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+     * You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
      */
     roleArn?: pulumi.Input<string>;
     /**
@@ -1463,6 +1469,9 @@ export interface InstanceArgs {
     resourceGroupId?: pulumi.Input<string>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     *
+     * > **NOTE:**  This parameter is not required when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the RoleARN parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+     * You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: {"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}
      */
     roleArn?: pulumi.Input<string>;
     /**

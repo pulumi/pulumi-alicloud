@@ -487,7 +487,7 @@ export interface ProviderEndpoint {
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom resourcesharing endpoints.
      */
-    resourcesharing?: pulumi.Input<string>;
+    ressharing?: pulumi.Input<string>;
     /**
      * Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom ros endpoints.
      */
@@ -4876,6 +4876,7 @@ export namespace eci {
 
     export interface ContainerGroupContainerSecurityContext {
         capabilities?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainerSecurityContextCapability>[]>;
+        privileged?: pulumi.Input<boolean>;
         runAsUser?: pulumi.Input<number>;
     }
 
@@ -6134,6 +6135,29 @@ export namespace ens {
 }
 
 export namespace ess {
+    export interface AlarmExpression {
+        /**
+         * The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
+         */
+        comparisonOperator?: pulumi.Input<string>;
+        /**
+         * The name for the alarm's associated metric. See `dimensions` below for details.
+         */
+        metricName?: pulumi.Input<string>;
+        /**
+         * The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
+         */
+        period?: pulumi.Input<number>;
+        /**
+         * The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
+         */
+        statistics?: pulumi.Input<string>;
+        /**
+         * The value against which the specified statistics is compared.
+         */
+        threshold?: pulumi.Input<number>;
+    }
+
     export interface EciScalingConfigurationAcrRegistryInfo {
         /**
          * Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required

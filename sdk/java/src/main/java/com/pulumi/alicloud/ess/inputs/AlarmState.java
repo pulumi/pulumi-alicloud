@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ess.inputs;
 
+import com.pulumi.alicloud.ess.inputs.AlarmExpressionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -123,6 +124,36 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> evaluationCount() {
         return Optional.ofNullable(this.evaluationCount);
+    }
+
+    /**
+     * Support multi alert rule. See `expressions` below for details.
+     * 
+     */
+    @Import(name="expressions")
+    private @Nullable Output<List<AlarmExpressionArgs>> expressions;
+
+    /**
+     * @return Support multi alert rule. See `expressions` below for details.
+     * 
+     */
+    public Optional<Output<List<AlarmExpressionArgs>>> expressions() {
+        return Optional.ofNullable(this.expressions);
+    }
+
+    /**
+     * The relationship between the trigger conditions in the multi-metric alert rule.
+     * 
+     */
+    @Import(name="expressionsLogicOperator")
+    private @Nullable Output<String> expressionsLogicOperator;
+
+    /**
+     * @return The relationship between the trigger conditions in the multi-metric alert rule.
+     * 
+     */
+    public Optional<Output<String>> expressionsLogicOperator() {
+        return Optional.ofNullable(this.expressionsLogicOperator);
     }
 
     /**
@@ -261,6 +292,8 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         this.dimensions = $.dimensions;
         this.enable = $.enable;
         this.evaluationCount = $.evaluationCount;
+        this.expressions = $.expressions;
+        this.expressionsLogicOperator = $.expressionsLogicOperator;
         this.metricName = $.metricName;
         this.metricType = $.metricType;
         this.name = $.name;
@@ -444,6 +477,58 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder evaluationCount(Integer evaluationCount) {
             return evaluationCount(Output.of(evaluationCount));
+        }
+
+        /**
+         * @param expressions Support multi alert rule. See `expressions` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressions(@Nullable Output<List<AlarmExpressionArgs>> expressions) {
+            $.expressions = expressions;
+            return this;
+        }
+
+        /**
+         * @param expressions Support multi alert rule. See `expressions` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressions(List<AlarmExpressionArgs> expressions) {
+            return expressions(Output.of(expressions));
+        }
+
+        /**
+         * @param expressions Support multi alert rule. See `expressions` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressions(AlarmExpressionArgs... expressions) {
+            return expressions(List.of(expressions));
+        }
+
+        /**
+         * @param expressionsLogicOperator The relationship between the trigger conditions in the multi-metric alert rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressionsLogicOperator(@Nullable Output<String> expressionsLogicOperator) {
+            $.expressionsLogicOperator = expressionsLogicOperator;
+            return this;
+        }
+
+        /**
+         * @param expressionsLogicOperator The relationship between the trigger conditions in the multi-metric alert rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expressionsLogicOperator(String expressionsLogicOperator) {
+            return expressionsLogicOperator(Output.of(expressionsLogicOperator));
         }
 
         /**

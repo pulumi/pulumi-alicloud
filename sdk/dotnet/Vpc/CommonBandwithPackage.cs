@@ -22,54 +22,61 @@ namespace Pulumi.AliCloud.Vpc
     public partial class CommonBandwithPackage : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The peak bandwidth of the shared bandwidth. Unit: Mbps. 
-        /// Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
+        /// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
         /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Internet Shared Bandwidth instance.
+        /// The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Output("bandwidthPackageName")]
         public Output<string> BandwidthPackageName { get; private set; } = null!;
 
         /// <summary>
-        /// The create time.
+        /// The creation time.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: false.
-        /// - **true**: Enable deletion protection.
-        /// - **false**: Disable deletion protection.
+        /// Specifies whether to enable deletion protection. Valid values:
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the shared bandwidth.
+        /// The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
-        /// - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
-        /// - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
+        /// Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
         /// </summary>
         [Output("force")]
         public Output<string?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn't support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+        /// The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+        /// The line type. Valid values:
+        /// - `BGP` All regions support BGP (Multi-ISP).
+        /// - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+        /// 
+        /// If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+        /// - `ChinaTelecom`
+        /// - `ChinaUnicom`
+        /// - `ChinaMobile`
+        /// - `ChinaTelecom_L2`
+        /// - `ChinaUnicom_L2`
+        /// - `ChinaMobile_L2`
+        /// 
+        /// If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
         /// </summary>
         [Output("isp")]
         public Output<string> Isp { get; private set; } = null!;
@@ -87,13 +94,17 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
+        /// The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+        /// 
+        /// &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
         /// </summary>
         [Output("ratio")]
         public Output<int> Ratio { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of resource group which the common bandwidth package belongs.
+        /// The ID of the resource group to which you want to move the resource.
+        /// 
+        /// &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -105,19 +116,19 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableArray<string>> SecurityProtectionTypes { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the Internet Shared Bandwidth instance. Default value: **Available**.
+        /// The status of the Internet Shared Bandwidth instance. Default value: `Available`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The available area of the shared bandwidth.
+        /// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -171,48 +182,55 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class CommonBandwithPackageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The peak bandwidth of the shared bandwidth. Unit: Mbps. 
-        /// Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
+        /// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
         /// </summary>
         [Input("bandwidth", required: true)]
         public Input<string> Bandwidth { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Internet Shared Bandwidth instance.
+        /// The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("bandwidthPackageName")]
         public Input<string>? BandwidthPackageName { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: false.
-        /// - **true**: Enable deletion protection.
-        /// - **false**: Disable deletion protection.
+        /// Specifies whether to enable deletion protection. Valid values:
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The description of the shared bandwidth.
+        /// The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
-        /// - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
-        /// - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
+        /// Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
         /// </summary>
         [Input("force")]
         public Input<string>? Force { get; set; }
 
         /// <summary>
-        /// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn't support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+        /// The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+        /// The line type. Valid values:
+        /// - `BGP` All regions support BGP (Multi-ISP).
+        /// - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+        /// 
+        /// If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+        /// - `ChinaTelecom`
+        /// - `ChinaUnicom`
+        /// - `ChinaMobile`
+        /// - `ChinaTelecom_L2`
+        /// - `ChinaUnicom_L2`
+        /// - `ChinaMobile_L2`
+        /// 
+        /// If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
@@ -224,13 +242,17 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
+        /// The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+        /// 
+        /// &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the common bandwidth package belongs.
+        /// The ID of the resource group to which you want to move the resource.
+        /// 
+        /// &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -251,7 +273,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<object> Tags
         {
@@ -260,7 +282,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The available area of the shared bandwidth.
+        /// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -276,54 +298,61 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class CommonBandwithPackageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The peak bandwidth of the shared bandwidth. Unit: Mbps. 
-        /// Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
+        /// The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. Valid values: `1` to `1000`. Default value: `1`.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The name of the Internet Shared Bandwidth instance.
+        /// The name of the Internet Shared Bandwidth instance. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("bandwidthPackageName")]
         public Input<string>? BandwidthPackageName { get; set; }
 
         /// <summary>
-        /// The create time.
+        /// The creation time.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: false.
-        /// - **true**: Enable deletion protection.
-        /// - **false**: Disable deletion protection.
+        /// Specifies whether to enable deletion protection. Valid values:
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The description of the shared bandwidth.
+        /// The description of the Internet Shared Bandwidth instance. The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
-        /// - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
-        /// - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
+        /// Specifies whether to forcefully delete the Internet Shared Bandwidth instance. Valid values:
         /// </summary>
         [Input("force")]
         public Input<string>? Force { get; set; }
 
         /// <summary>
-        /// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn't support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+        /// The billing method of the Internet Shared Bandwidth instance. Set the value to `PayByTraffic`, which specifies the pay-by-data-transfer billing method.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+        /// The line type. Valid values:
+        /// - `BGP` All regions support BGP (Multi-ISP).
+        /// - `BGP_PRO` BGP (Multi-ISP) Pro lines are available in the China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+        /// 
+        /// If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
+        /// - `ChinaTelecom`
+        /// - `ChinaUnicom`
+        /// - `ChinaMobile`
+        /// - `ChinaTelecom_L2`
+        /// - `ChinaUnicom_L2`
+        /// - `ChinaMobile_L2`
+        /// 
+        /// If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
@@ -341,13 +370,17 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
+        /// The percentage of the minimum bandwidth commitment. Set the parameter to `20`.
+        /// 
+        /// &gt; **NOTE:**  This parameter is available only on the Alibaba Cloud China site.
         /// </summary>
         [Input("ratio")]
         public Input<int>? Ratio { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the common bandwidth package belongs.
+        /// The ID of the resource group to which you want to move the resource.
+        /// 
+        /// &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -365,7 +398,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The status of the Internet Shared Bandwidth instance. Default value: **Available**.
+        /// The status of the Internet Shared Bandwidth instance. Default value: `Available`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -374,7 +407,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<object> Tags
         {
@@ -383,7 +416,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The available area of the shared bandwidth.
+        /// The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box. 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>

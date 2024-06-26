@@ -556,7 +556,7 @@ public final class Endpoints {
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
      * 
      */
-    private @Nullable String resourcesharing;
+    private @Nullable String ressharing;
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ros endpoints.
      * 
@@ -1417,8 +1417,8 @@ public final class Endpoints {
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom resourcesharing endpoints.
      * 
      */
-    public Optional<String> resourcesharing() {
-        return Optional.ofNullable(this.resourcesharing);
+    public Optional<String> ressharing() {
+        return Optional.ofNullable(this.ressharing);
     }
     /**
      * @return Use this to override the default endpoint URL constructed from the `region`. It&#39;s typically used to connect to custom ros endpoints.
@@ -1672,7 +1672,7 @@ public final class Endpoints {
         private @Nullable String rds;
         private @Nullable String redisa;
         private @Nullable String resourcemanager;
-        private @Nullable String resourcesharing;
+        private @Nullable String ressharing;
         private @Nullable String ros;
         private @Nullable String sas;
         private @Nullable String scdn;
@@ -1804,7 +1804,7 @@ public final class Endpoints {
     	      this.rds = defaults.rds;
     	      this.redisa = defaults.redisa;
     	      this.resourcemanager = defaults.resourcemanager;
-    	      this.resourcesharing = defaults.resourcesharing;
+    	      this.ressharing = defaults.ressharing;
     	      this.ros = defaults.ros;
     	      this.sas = defaults.sas;
     	      this.scdn = defaults.scdn;
@@ -2481,9 +2481,9 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
-        public Builder resourcesharing(@Nullable String resourcesharing) {
+        public Builder ressharing(@Nullable String ressharing) {
 
-            this.resourcesharing = resourcesharing;
+            this.ressharing = ressharing;
             return this;
         }
         @CustomType.Setter
@@ -2711,7 +2711,7 @@ public final class Endpoints {
             _resultValue.rds = rds;
             _resultValue.redisa = redisa;
             _resultValue.resourcemanager = resourcemanager;
-            _resultValue.resourcesharing = resourcesharing;
+            _resultValue.ressharing = ressharing;
             _resultValue.ros = ros;
             _resultValue.sas = sas;
             _resultValue.scdn = scdn;

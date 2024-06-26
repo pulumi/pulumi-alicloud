@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
+ * const instanceType = config.get("instanceType") || "ecs.n4.large";
+ * const imageId = config.get("imageId") || "ubuntu_18_04_64_20G_alibase_20190624.vhd";
  * // Create a new ECS instance for VPC
  * const vpc = new alicloud.vpc.Network("vpc", {
  *     vpcName: name,
@@ -40,6 +42,7 @@ import * as utilities from "../utilities";
  * const default = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
+ *     availableInstanceType: instanceType,
  * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
  *     vpcId: vpc.id,
@@ -50,11 +53,11 @@ import * as utilities from "../utilities";
  * const instance = new alicloud.ecs.Instance("instance", {
  *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
  *     securityGroups: [group].map(__item => __item.id),
- *     instanceType: "ecs.n4.large",
+ *     instanceType: instanceType,
  *     systemDiskCategory: "cloud_efficiency",
  *     systemDiskName: name,
  *     systemDiskDescription: "test_foo_system_disk_description",
- *     imageId: "ubuntu_18_04_64_20G_alibase_20190624.vhd",
+ *     imageId: imageId,
  *     instanceName: name,
  *     vswitchId: vswitch.id,
  *     internetMaxBandwidthOut: 10,
