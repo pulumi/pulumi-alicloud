@@ -3756,6 +3756,9 @@
                 "fields": {
                     "alarm_actions": {
                         "maxItemsOne": false
+                    },
+                    "expressions": {
+                        "maxItemsOne": false
                     }
                 }
             },
