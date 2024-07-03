@@ -36,14 +36,14 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+     * Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
      * 
      */
     @Import(name="autoRenewDuration")
     private @Nullable Output<Integer> autoRenewDuration;
 
     /**
-     * @return Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+     * @return Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
      * 
      */
     public Optional<Output<Integer>> autoRenewDuration() {
@@ -254,6 +254,21 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * A mapping of tags to assign to the resource.
      * 
      */
@@ -301,6 +316,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         this.promotionOptionNo = $.promotionOptionNo;
         this.ratio = $.ratio;
         this.renewalStatus = $.renewalStatus;
+        this.resourceGroupId = $.resourceGroupId;
         this.tags = $.tags;
         this.type = $.type;
     }
@@ -345,7 +361,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoRenewDuration Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+         * @param autoRenewDuration Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
          * 
          * @return builder
          * 
@@ -356,7 +372,7 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoRenewDuration Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+         * @param autoRenewDuration Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
          * 
          * @return builder
          * 
@@ -644,6 +660,27 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder renewalStatus(String renewalStatus) {
             return renewalStatus(Output.of(renewalStatus));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

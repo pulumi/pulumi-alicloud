@@ -131,6 +131,12 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         /// </summary>
         [Output("spec")]
@@ -276,6 +282,12 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         /// </summary>
         [Input("spec")]
@@ -381,6 +393,12 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The instance type of the GA instance. Specification of global acceleration instance. Valid values:

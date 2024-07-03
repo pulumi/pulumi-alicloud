@@ -151,6 +151,14 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly autoReleaseTime!: pulumi.Output<string | undefined>;
     /**
+     * Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
+     */
+    public readonly autoRenew!: pulumi.Output<boolean>;
+    /**
+     * The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+     */
+    public readonly autoRenewPeriod!: pulumi.Output<number>;
+    /**
      * The list of data disks created with instance. See `dataDisks` below.
      */
     public readonly dataDisks!: pulumi.Output<outputs.ecs.EcsLaunchTemplateDataDisk[] | undefined>;
@@ -239,7 +247,11 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      * - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
      * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number>;
+    /**
+     * The unit of the subscription period. Valid values: `Month` (default).
+     */
+    public readonly periodUnit!: pulumi.Output<string>;
     /**
      * The private IP address of the instance.
      */
@@ -359,6 +371,8 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EcsLaunchTemplateState | undefined;
             resourceInputs["autoReleaseTime"] = state ? state.autoReleaseTime : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
             resourceInputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -380,6 +394,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
             resourceInputs["networkType"] = state ? state.networkType : undefined;
             resourceInputs["passwordInherit"] = state ? state.passwordInherit : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -406,6 +421,8 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
         } else {
             const args = argsOrState as EcsLaunchTemplateArgs | undefined;
             resourceInputs["autoReleaseTime"] = args ? args.autoReleaseTime : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
             resourceInputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -427,6 +444,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
             resourceInputs["networkType"] = args ? args.networkType : undefined;
             resourceInputs["passwordInherit"] = args ? args.passwordInherit : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
             resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
             resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -464,6 +482,14 @@ export interface EcsLaunchTemplateState {
      * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
      */
     autoReleaseTime?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
+     */
+    autoRenew?: pulumi.Input<boolean>;
+    /**
+     * The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+     */
+    autoRenewPeriod?: pulumi.Input<number>;
     /**
      * The list of data disks created with instance. See `dataDisks` below.
      */
@@ -554,6 +580,10 @@ export interface EcsLaunchTemplateState {
      * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
      */
     period?: pulumi.Input<number>;
+    /**
+     * The unit of the subscription period. Valid values: `Month` (default).
+     */
+    periodUnit?: pulumi.Input<string>;
     /**
      * The private IP address of the instance.
      */
@@ -669,6 +699,14 @@ export interface EcsLaunchTemplateArgs {
      */
     autoReleaseTime?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
+     */
+    autoRenew?: pulumi.Input<boolean>;
+    /**
+     * The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+     */
+    autoRenewPeriod?: pulumi.Input<number>;
+    /**
      * The list of data disks created with instance. See `dataDisks` below.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsLaunchTemplateDataDisk>[]>;
@@ -758,6 +796,10 @@ export interface EcsLaunchTemplateArgs {
      * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
      */
     period?: pulumi.Input<number>;
+    /**
+     * The unit of the subscription period. Valid values: `Month` (default).
+     */
+    periodUnit?: pulumi.Input<string>;
     /**
      * The private IP address of the instance.
      */

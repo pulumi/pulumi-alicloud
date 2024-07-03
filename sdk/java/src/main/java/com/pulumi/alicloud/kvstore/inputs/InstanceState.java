@@ -814,6 +814,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of read replicas in the primary zone. Valid values: `1` to `9`.
+     * 
+     */
+    @Import(name="readOnlyCount")
+    private @Nullable Output<Integer> readOnlyCount;
+
+    /**
+     * @return The number of read replicas in the primary zone. Valid values: `1` to `9`.
+     * 
+     */
+    public Optional<Output<Integer>> readOnlyCount() {
+        return Optional.ofNullable(this.readOnlyCount);
+    }
+
+    /**
      * The ID of resource group which the resource belongs.
      * 
      */
@@ -948,6 +963,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> shardCount() {
         return Optional.ofNullable(this.shardCount);
+    }
+
+    /**
+     * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+     * &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+     * 
+     */
+    @Import(name="slaveReadOnlyCount")
+    private @Nullable Output<Integer> slaveReadOnlyCount;
+
+    /**
+     * @return The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+     * &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+     * 
+     */
+    public Optional<Output<Integer>> slaveReadOnlyCount() {
+        return Optional.ofNullable(this.slaveReadOnlyCount);
     }
 
     /**
@@ -1127,6 +1159,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.privateConnectionPrefix = $.privateConnectionPrefix;
         this.privateIp = $.privateIp;
         this.qps = $.qps;
+        this.readOnlyCount = $.readOnlyCount;
         this.resourceGroupId = $.resourceGroupId;
         this.restoreTime = $.restoreTime;
         this.roleArn = $.roleArn;
@@ -1136,6 +1169,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.securityIpGroupName = $.securityIpGroupName;
         this.securityIps = $.securityIps;
         this.shardCount = $.shardCount;
+        this.slaveReadOnlyCount = $.slaveReadOnlyCount;
         this.srcdbInstanceId = $.srcdbInstanceId;
         this.sslEnable = $.sslEnable;
         this.status = $.status;
@@ -2269,6 +2303,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param readOnlyCount The number of read replicas in the primary zone. Valid values: `1` to `9`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnlyCount(@Nullable Output<Integer> readOnlyCount) {
+            $.readOnlyCount = readOnlyCount;
+            return this;
+        }
+
+        /**
+         * @param readOnlyCount The number of read replicas in the primary zone. Valid values: `1` to `9`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnlyCount(Integer readOnlyCount) {
+            return readOnlyCount(Output.of(readOnlyCount));
+        }
+
+        /**
          * @param resourceGroupId The ID of resource group which the resource belongs.
          * 
          * @return builder
@@ -2467,6 +2522,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder shardCount(Integer shardCount) {
             return shardCount(Output.of(shardCount));
+        }
+
+        /**
+         * @param slaveReadOnlyCount The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+         * &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slaveReadOnlyCount(@Nullable Output<Integer> slaveReadOnlyCount) {
+            $.slaveReadOnlyCount = slaveReadOnlyCount;
+            return this;
+        }
+
+        /**
+         * @param slaveReadOnlyCount The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+         * &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slaveReadOnlyCount(Integer slaveReadOnlyCount) {
+            return slaveReadOnlyCount(Output.of(slaveReadOnlyCount));
         }
 
         /**

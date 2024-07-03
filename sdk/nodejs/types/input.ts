@@ -4439,6 +4439,125 @@ export namespace dcdn {
 }
 
 export namespace ddos {
+    export interface BgpPolicyContent {
+        /**
+         * Blacklist and whitelist timeout.
+         */
+        blackIpListExpireAt?: pulumi.Input<number>;
+        /**
+         * Whether to enable L4 protection.
+         */
+        enableDefense?: pulumi.Input<boolean>;
+        /**
+         * Switch to discard ICMP.
+         */
+        enableDropIcmp?: pulumi.Input<boolean>;
+        /**
+         * Whether the intelligent switch is on.
+         */
+        enableIntelligence?: pulumi.Input<boolean>;
+        /**
+         * Fingerprint Rules. See `fingerPrintRuleList` below.
+         */
+        fingerPrintRuleLists?: pulumi.Input<pulumi.Input<inputs.ddos.BgpPolicyContentFingerPrintRuleList>[]>;
+        /**
+         * Smart mode. Valid values: weak, hard, and default.
+         */
+        intelligenceLevel?: pulumi.Input<string>;
+        /**
+         * L4 protection rules. See `layer4RuleList` below.
+         */
+        layer4RuleLists?: pulumi.Input<pulumi.Input<inputs.ddos.BgpPolicyContentLayer4RuleList>[]>;
+        /**
+         * Port Rule List. See `portRuleList` below.
+         */
+        portRuleLists?: pulumi.Input<pulumi.Input<inputs.ddos.BgpPolicyContentPortRuleList>[]>;
+        /**
+         * Reflective port filtering.
+         */
+        reflectBlockUdpPortLists?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * List of Regional Banned Countries.
+         */
+        regionBlockCountryLists?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * List of Prohibited Provinces by Region.
+         */
+        regionBlockProvinceLists?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * Source pull Black. See `sourceBlockList` below.
+         */
+        sourceBlockLists?: pulumi.Input<pulumi.Input<inputs.ddos.BgpPolicyContentSourceBlockList>[]>;
+        /**
+         * Do not fill in when the source speed limit is deleted. See `sourceLimit` below.
+         */
+        sourceLimit?: pulumi.Input<inputs.ddos.BgpPolicyContentSourceLimit>;
+        /**
+         * Add white high protection back to source network segment switch.
+         */
+        whitenGfbrNets?: pulumi.Input<boolean>;
+    }
+
+    export interface BgpPolicyContentFingerPrintRuleList {
+        dstPortEnd: pulumi.Input<number>;
+        dstPortStart: pulumi.Input<number>;
+        fingerPrintRuleId?: pulumi.Input<string>;
+        matchAction: pulumi.Input<string>;
+        maxPktLen: pulumi.Input<number>;
+        minPktLen: pulumi.Input<number>;
+        offset?: pulumi.Input<number>;
+        payloadBytes?: pulumi.Input<string>;
+        protocol: pulumi.Input<string>;
+        rateValue?: pulumi.Input<number>;
+        seqNo: pulumi.Input<number>;
+        srcPortEnd: pulumi.Input<number>;
+        srcPortStart: pulumi.Input<number>;
+    }
+
+    export interface BgpPolicyContentLayer4RuleList {
+        action: pulumi.Input<string>;
+        conditionLists: pulumi.Input<pulumi.Input<inputs.ddos.BgpPolicyContentLayer4RuleListConditionList>[]>;
+        limited: pulumi.Input<number>;
+        match: pulumi.Input<string>;
+        method: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        priority: pulumi.Input<number>;
+    }
+
+    export interface BgpPolicyContentLayer4RuleListConditionList {
+        arg: pulumi.Input<string>;
+        depth: pulumi.Input<number>;
+        position: pulumi.Input<number>;
+    }
+
+    export interface BgpPolicyContentPortRuleList {
+        dstPortEnd: pulumi.Input<number>;
+        dstPortStart: pulumi.Input<number>;
+        matchAction: pulumi.Input<string>;
+        portRuleId?: pulumi.Input<string>;
+        protocol: pulumi.Input<string>;
+        seqNo: pulumi.Input<number>;
+        srcPortEnd: pulumi.Input<number>;
+        srcPortStart: pulumi.Input<number>;
+    }
+
+    export interface BgpPolicyContentSourceBlockList {
+        blockExpireSeconds: pulumi.Input<number>;
+        everySeconds: pulumi.Input<number>;
+        exceedLimitTimes: pulumi.Input<number>;
+        /**
+         * Type
+         */
+        type: pulumi.Input<number>;
+    }
+
+    export interface BgpPolicyContentSourceLimit {
+        bps?: pulumi.Input<number>;
+        pps?: pulumi.Input<number>;
+        synBps?: pulumi.Input<number>;
+        synPps?: pulumi.Input<number>;
+    }
+
     export interface DomainResourceProxyType {
         /**
          * the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxyPorts` can be modified.

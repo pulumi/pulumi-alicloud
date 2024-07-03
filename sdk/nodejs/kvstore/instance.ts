@@ -256,6 +256,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly qps!: pulumi.Output<number>;
     /**
+     * The number of read replicas in the primary zone. Valid values: `1` to `9`.
+     */
+    public readonly readOnlyCount!: pulumi.Output<number | undefined>;
+    /**
      * The ID of resource group which the resource belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
@@ -292,6 +296,11 @@ export class Instance extends pulumi.CustomResource {
      * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
      */
     public readonly shardCount!: pulumi.Output<number>;
+    /**
+     * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
+     */
+    public readonly slaveReadOnlyCount!: pulumi.Output<number | undefined>;
     /**
      * The ID of the source instance.
      */
@@ -389,6 +398,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["privateConnectionPrefix"] = state ? state.privateConnectionPrefix : undefined;
             resourceInputs["privateIp"] = state ? state.privateIp : undefined;
             resourceInputs["qps"] = state ? state.qps : undefined;
+            resourceInputs["readOnlyCount"] = state ? state.readOnlyCount : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["restoreTime"] = state ? state.restoreTime : undefined;
             resourceInputs["roleArn"] = state ? state.roleArn : undefined;
@@ -398,6 +408,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["securityIpGroupName"] = state ? state.securityIpGroupName : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
             resourceInputs["shardCount"] = state ? state.shardCount : undefined;
+            resourceInputs["slaveReadOnlyCount"] = state ? state.slaveReadOnlyCount : undefined;
             resourceInputs["srcdbInstanceId"] = state ? state.srcdbInstanceId : undefined;
             resourceInputs["sslEnable"] = state ? state.sslEnable : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -451,6 +462,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["privateConnectionPort"] = args ? args.privateConnectionPort : undefined;
             resourceInputs["privateConnectionPrefix"] = args ? args.privateConnectionPrefix : undefined;
             resourceInputs["privateIp"] = args ? args.privateIp : undefined;
+            resourceInputs["readOnlyCount"] = args ? args.readOnlyCount : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["restoreTime"] = args ? args.restoreTime : undefined;
             resourceInputs["roleArn"] = args ? args.roleArn : undefined;
@@ -460,6 +472,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["securityIpGroupName"] = args ? args.securityIpGroupName : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
             resourceInputs["shardCount"] = args ? args.shardCount : undefined;
+            resourceInputs["slaveReadOnlyCount"] = args ? args.slaveReadOnlyCount : undefined;
             resourceInputs["srcdbInstanceId"] = args ? args.srcdbInstanceId : undefined;
             resourceInputs["sslEnable"] = args ? args.sslEnable : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -698,6 +711,10 @@ export interface InstanceState {
      */
     qps?: pulumi.Input<number>;
     /**
+     * The number of read replicas in the primary zone. Valid values: `1` to `9`.
+     */
+    readOnlyCount?: pulumi.Input<number>;
+    /**
      * The ID of resource group which the resource belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
@@ -734,6 +751,11 @@ export interface InstanceState {
      * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
      */
     shardCount?: pulumi.Input<number>;
+    /**
+     * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
+     */
+    slaveReadOnlyCount?: pulumi.Input<number>;
     /**
      * The ID of the source instance.
      */
@@ -966,6 +988,10 @@ export interface InstanceArgs {
      */
     privateIp?: pulumi.Input<string>;
     /**
+     * The number of read replicas in the primary zone. Valid values: `1` to `9`.
+     */
+    readOnlyCount?: pulumi.Input<number>;
+    /**
      * The ID of resource group which the resource belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
@@ -1002,6 +1028,11 @@ export interface InstanceArgs {
      * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
      */
     shardCount?: pulumi.Input<number>;
+    /**
+     * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+     * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
+     */
+    slaveReadOnlyCount?: pulumi.Input<number>;
     /**
      * The ID of the source instance.
      */

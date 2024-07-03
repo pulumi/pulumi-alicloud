@@ -159,6 +159,18 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> AutoReleaseTime { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+        /// </summary>
+        [Output("autoRenew")]
+        public Output<bool> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
+        /// The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+        /// </summary>
+        [Output("autoRenewPeriod")]
+        public Output<int> AutoRenewPeriod { get; private set; } = null!;
+
+        /// <summary>
         /// The list of data disks created with instance. See `data_disks` below.
         /// </summary>
         [Output("dataDisks")]
@@ -286,7 +298,13 @@ namespace Pulumi.AliCloud.Ecs
         /// - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
         /// </summary>
         [Output("period")]
-        public Output<int?> Period { get; private set; } = null!;
+        public Output<int> Period { get; private set; } = null!;
+
+        /// <summary>
+        /// The unit of the subscription period. Valid values: `Month` (default).
+        /// </summary>
+        [Output("periodUnit")]
+        public Output<string> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
         /// The private IP address of the instance.
@@ -480,6 +498,18 @@ namespace Pulumi.AliCloud.Ecs
         [Input("autoReleaseTime")]
         public Input<string>? AutoReleaseTime { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+        /// </summary>
+        [Input("autoRenewPeriod")]
+        public Input<int>? AutoRenewPeriod { get; set; }
+
         [Input("dataDisks")]
         private InputList<Inputs.EcsLaunchTemplateDataDiskArgs>? _dataDisks;
 
@@ -615,6 +645,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// The unit of the subscription period. Valid values: `Month` (default).
+        /// </summary>
+        [Input("periodUnit")]
+        public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
         /// The private IP address of the instance.
@@ -788,6 +824,18 @@ namespace Pulumi.AliCloud.Ecs
         [Input("autoReleaseTime")]
         public Input<string>? AutoReleaseTime { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+        /// </summary>
+        [Input("autoRenewPeriod")]
+        public Input<int>? AutoRenewPeriod { get; set; }
+
         [Input("dataDisks")]
         private InputList<Inputs.EcsLaunchTemplateDataDiskGetArgs>? _dataDisks;
 
@@ -923,6 +971,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// The unit of the subscription period. Valid values: `Month` (default).
+        /// </summary>
+        [Input("periodUnit")]
+        public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
         /// The private IP address of the instance.

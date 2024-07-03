@@ -196,6 +196,34 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoReleaseTime);
     }
     /**
+     * Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+     * 
+     */
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> autoRenew;
+
+    /**
+     * @return Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+     * 
+     */
+    public Output<Boolean> autoRenew() {
+        return this.autoRenew;
+    }
+    /**
+     * The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+     * 
+     */
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> autoRenewPeriod;
+
+    /**
+     * @return The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+     * 
+     */
+    public Output<Integer> autoRenewPeriod() {
+        return this.autoRenewPeriod;
+    }
+    /**
      * The list of data disks created with instance. See `data_disks` below.
      * 
      */
@@ -490,7 +518,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> period;
+    private Output<Integer> period;
 
     /**
      * @return The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
@@ -498,8 +526,22 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
      * 
      */
-    public Output<Optional<Integer>> period() {
-        return Codegen.optional(this.period);
+    public Output<Integer> period() {
+        return this.period;
+    }
+    /**
+     * The unit of the subscription period. Valid values: `Month` (default).
+     * 
+     */
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
+    private Output<String> periodUnit;
+
+    /**
+     * @return The unit of the subscription period. Valid values: `Month` (default).
+     * 
+     */
+    public Output<String> periodUnit() {
+        return this.periodUnit;
     }
     /**
      * The private IP address of the instance.

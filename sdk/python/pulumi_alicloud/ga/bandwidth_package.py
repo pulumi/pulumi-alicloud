@@ -30,13 +30,14 @@ class BandwidthPackageArgs:
                  promotion_option_no: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a BandwidthPackage resource.
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
-        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
         :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value: `false`. Valid values:
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
         :param pulumi.Input[str] bandwidth_type: The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
@@ -53,6 +54,7 @@ class BandwidthPackageArgs:
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
@@ -85,6 +87,8 @@ class BandwidthPackageArgs:
             pulumi.set(__self__, "ratio", ratio)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -128,7 +132,7 @@ class BandwidthPackageArgs:
     @pulumi.getter(name="autoRenewDuration")
     def auto_renew_duration(self) -> Optional[pulumi.Input[int]]:
         """
-        Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
         """
         return pulumi.get(self, "auto_renew_duration")
 
@@ -285,6 +289,18 @@ class BandwidthPackageArgs:
         pulumi.set(self, "renewal_status", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -315,13 +331,14 @@ class _BandwidthPackageState:
                  promotion_option_no: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BandwidthPackage resources.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
-        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
         :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value: `false`. Valid values:
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
@@ -339,6 +356,7 @@ class _BandwidthPackageState:
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] status: The status of the Bandwidth Package.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
@@ -373,6 +391,8 @@ class _BandwidthPackageState:
             pulumi.set(__self__, "ratio", ratio)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -396,7 +416,7 @@ class _BandwidthPackageState:
     @pulumi.getter(name="autoRenewDuration")
     def auto_renew_duration(self) -> Optional[pulumi.Input[int]]:
         """
-        Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
         """
         return pulumi.get(self, "auto_renew_duration")
 
@@ -565,6 +585,18 @@ class _BandwidthPackageState:
         pulumi.set(self, "renewal_status", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -621,6 +653,7 @@ class BandwidthPackage(pulumi.CustomResource):
                  promotion_option_no: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -646,8 +679,7 @@ class BandwidthPackage(pulumi.CustomResource):
             type="Basic",
             bandwidth_type="Basic",
             duration="1",
-            auto_pay=True,
-            ratio=30)
+            auto_pay=True)
         ```
 
         ## Import
@@ -661,7 +693,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
-        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
         :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value: `false`. Valid values:
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
@@ -679,6 +711,7 @@ class BandwidthPackage(pulumi.CustomResource):
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
         """
@@ -710,8 +743,7 @@ class BandwidthPackage(pulumi.CustomResource):
             type="Basic",
             bandwidth_type="Basic",
             duration="1",
-            auto_pay=True,
-            ratio=30)
+            auto_pay=True)
         ```
 
         ## Import
@@ -752,6 +784,7 @@ class BandwidthPackage(pulumi.CustomResource):
                  promotion_option_no: Optional[pulumi.Input[str]] = None,
                  ratio: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -780,6 +813,7 @@ class BandwidthPackage(pulumi.CustomResource):
             __props__.__dict__["promotion_option_no"] = promotion_option_no
             __props__.__dict__["ratio"] = ratio
             __props__.__dict__["renewal_status"] = renewal_status
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
@@ -810,6 +844,7 @@ class BandwidthPackage(pulumi.CustomResource):
             promotion_option_no: Optional[pulumi.Input[str]] = None,
             ratio: Optional[pulumi.Input[int]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'BandwidthPackage':
@@ -821,7 +856,7 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values:
-        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        :param pulumi.Input[int] auto_renew_duration: Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
         :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value: `false`. Valid values:
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
@@ -839,6 +874,7 @@ class BandwidthPackage(pulumi.CustomResource):
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] status: The status of the Bandwidth Package.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
@@ -862,6 +898,7 @@ class BandwidthPackage(pulumi.CustomResource):
         __props__.__dict__["promotion_option_no"] = promotion_option_no
         __props__.__dict__["ratio"] = ratio
         __props__.__dict__["renewal_status"] = renewal_status
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
@@ -877,9 +914,9 @@ class BandwidthPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRenewDuration")
-    def auto_renew_duration(self) -> pulumi.Output[Optional[int]]:
+    def auto_renew_duration(self) -> pulumi.Output[int]:
         """
-        Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
         """
         return pulumi.get(self, "auto_renew_duration")
 
@@ -990,6 +1027,14 @@ class BandwidthPackage(pulumi.CustomResource):
         - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter

@@ -163,6 +163,10 @@ type EcsLaunchTemplate struct {
 
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrOutput `pulumi:"autoReleaseTime"`
+	// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
+	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
+	// The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+	AutoRenewPeriod pulumi.IntOutput `pulumi:"autoRenewPeriod"`
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks EcsLaunchTemplateDataDiskArrayOutput `pulumi:"dataDisks"`
 	// The Deployment Set Id.
@@ -210,7 +214,9 @@ type EcsLaunchTemplate struct {
 	// The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
 	// - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
 	// - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
+	Period pulumi.IntOutput `pulumi:"period"`
+	// The unit of the subscription period. Valid values: `Month` (default).
+	PeriodUnit pulumi.StringOutput `pulumi:"periodUnit"`
 	// The private IP address of the instance.
 	PrivateIpAddress pulumi.StringPtrOutput `pulumi:"privateIpAddress"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
@@ -303,6 +309,10 @@ func GetEcsLaunchTemplate(ctx *pulumi.Context,
 type ecsLaunchTemplateState struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
+	// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks []EcsLaunchTemplateDataDisk `pulumi:"dataDisks"`
 	// The Deployment Set Id.
@@ -351,6 +361,8 @@ type ecsLaunchTemplateState struct {
 	// - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
 	// - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
 	Period *int `pulumi:"period"`
+	// The unit of the subscription period. Valid values: `Month` (default).
+	PeriodUnit *string `pulumi:"periodUnit"`
 	// The private IP address of the instance.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
@@ -414,6 +426,10 @@ type ecsLaunchTemplateState struct {
 type EcsLaunchTemplateState struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrInput
+	// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
+	AutoRenew pulumi.BoolPtrInput
+	// The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+	AutoRenewPeriod pulumi.IntPtrInput
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks EcsLaunchTemplateDataDiskArrayInput
 	// The Deployment Set Id.
@@ -462,6 +478,8 @@ type EcsLaunchTemplateState struct {
 	// - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
 	// - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
 	Period pulumi.IntPtrInput
+	// The unit of the subscription period. Valid values: `Month` (default).
+	PeriodUnit pulumi.StringPtrInput
 	// The private IP address of the instance.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
@@ -529,6 +547,10 @@ func (EcsLaunchTemplateState) ElementType() reflect.Type {
 type ecsLaunchTemplateArgs struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
+	// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks []EcsLaunchTemplateDataDisk `pulumi:"dataDisks"`
 	// The Deployment Set Id.
@@ -577,6 +599,8 @@ type ecsLaunchTemplateArgs struct {
 	// - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
 	// - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
 	Period *int `pulumi:"period"`
+	// The unit of the subscription period. Valid values: `Month` (default).
+	PeriodUnit *string `pulumi:"periodUnit"`
 	// The private IP address of the instance.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
@@ -641,6 +665,10 @@ type ecsLaunchTemplateArgs struct {
 type EcsLaunchTemplateArgs struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrInput
+	// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
+	AutoRenew pulumi.BoolPtrInput
+	// The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+	AutoRenewPeriod pulumi.IntPtrInput
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks EcsLaunchTemplateDataDiskArrayInput
 	// The Deployment Set Id.
@@ -689,6 +717,8 @@ type EcsLaunchTemplateArgs struct {
 	// - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
 	// - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
 	Period pulumi.IntPtrInput
+	// The unit of the subscription period. Valid values: `Month` (default).
+	PeriodUnit pulumi.StringPtrInput
 	// The private IP address of the instance.
 	PrivateIpAddress pulumi.StringPtrInput
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
@@ -841,6 +871,16 @@ func (o EcsLaunchTemplateOutput) AutoReleaseTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringPtrOutput { return v.AutoReleaseTime }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
+func (o EcsLaunchTemplateOutput) AutoRenew() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
+}
+
+// The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+func (o EcsLaunchTemplateOutput) AutoRenewPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.IntOutput { return v.AutoRenewPeriod }).(pulumi.IntOutput)
+}
+
 // The list of data disks created with instance. See `dataDisks` below.
 func (o EcsLaunchTemplateOutput) DataDisks() EcsLaunchTemplateDataDiskArrayOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) EcsLaunchTemplateDataDiskArrayOutput { return v.DataDisks }).(EcsLaunchTemplateDataDiskArrayOutput)
@@ -948,8 +988,13 @@ func (o EcsLaunchTemplateOutput) PasswordInherit() pulumi.BoolPtrOutput {
 // The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
 // - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
 // - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
-func (o EcsLaunchTemplateOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+func (o EcsLaunchTemplateOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
+}
+
+// The unit of the subscription period. Valid values: `Month` (default).
+func (o EcsLaunchTemplateOutput) PeriodUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.PeriodUnit }).(pulumi.StringOutput)
 }
 
 // The private IP address of the instance.

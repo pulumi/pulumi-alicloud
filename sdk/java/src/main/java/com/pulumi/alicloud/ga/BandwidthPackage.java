@@ -60,7 +60,6 @@ import javax.annotation.Nullable;
  *             .bandwidthType("Basic")
  *             .duration(1)
  *             .autoPay(true)
- *             .ratio(30)
  *             .build());
  * 
  *     }
@@ -95,18 +94,18 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoPay);
     }
     /**
-     * Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+     * Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
      * 
      */
     @Export(name="autoRenewDuration", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> autoRenewDuration;
+    private Output<Integer> autoRenewDuration;
 
     /**
-     * @return Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+     * @return Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
      * 
      */
-    public Output<Optional<Integer>> autoRenewDuration() {
-        return Codegen.optional(this.autoRenewDuration);
+    public Output<Integer> autoRenewDuration() {
+        return this.autoRenewDuration;
     }
     /**
      * Whether use vouchers. Default value: `false`. Valid values:
@@ -297,6 +296,20 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      */
     public Output<String> renewalStatus() {
         return this.renewalStatus;
+    }
+    /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * The status of the Bandwidth Package.

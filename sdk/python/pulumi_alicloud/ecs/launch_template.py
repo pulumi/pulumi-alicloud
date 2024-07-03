@@ -17,6 +17,8 @@ __all__ = ['LaunchTemplateArgs', 'LaunchTemplate']
 class LaunchTemplateArgs:
     def __init__(__self__, *,
                  auto_release_time: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -38,6 +40,7 @@ class LaunchTemplateArgs:
                  network_type: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 period_unit: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -113,6 +116,10 @@ class LaunchTemplateArgs:
         """
         if auto_release_time is not None:
             pulumi.set(__self__, "auto_release_time", auto_release_time)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if deployment_set_id is not None:
@@ -158,6 +165,8 @@ class LaunchTemplateArgs:
             pulumi.set(__self__, "password_inherit", password_inherit)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if period_unit is not None:
+            pulumi.set(__self__, "period_unit", period_unit)
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if ram_role_name is not None:
@@ -231,6 +240,24 @@ class LaunchTemplateArgs:
     @auto_release_time.setter
     def auto_release_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auto_release_time", value)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_period", value)
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -474,6 +501,15 @@ class LaunchTemplateArgs:
     @period.setter
     def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="periodUnit")
+    def period_unit(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "period_unit")
+
+    @period_unit.setter
+    def period_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period_unit", value)
 
     @property
     @pulumi.getter(name="privateIpAddress")
@@ -741,6 +777,8 @@ class LaunchTemplateArgs:
 class _LaunchTemplateState:
     def __init__(__self__, *,
                  auto_release_time: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -762,6 +800,7 @@ class _LaunchTemplateState:
                  network_type: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 period_unit: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -837,6 +876,10 @@ class _LaunchTemplateState:
         """
         if auto_release_time is not None:
             pulumi.set(__self__, "auto_release_time", auto_release_time)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if deployment_set_id is not None:
@@ -882,6 +925,8 @@ class _LaunchTemplateState:
             pulumi.set(__self__, "password_inherit", password_inherit)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if period_unit is not None:
+            pulumi.set(__self__, "period_unit", period_unit)
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if ram_role_name is not None:
@@ -955,6 +1000,24 @@ class _LaunchTemplateState:
     @auto_release_time.setter
     def auto_release_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auto_release_time", value)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_period", value)
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -1198,6 +1261,15 @@ class _LaunchTemplateState:
     @period.setter
     def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="periodUnit")
+    def period_unit(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "period_unit")
+
+    @period_unit.setter
+    def period_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period_unit", value)
 
     @property
     @pulumi.getter(name="privateIpAddress")
@@ -1467,6 +1539,8 @@ class LaunchTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_release_time: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1488,6 +1562,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  network_type: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 period_unit: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -1732,6 +1807,8 @@ class LaunchTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_release_time: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1753,6 +1830,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  network_type: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 period_unit: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -1786,6 +1864,8 @@ class LaunchTemplate(pulumi.CustomResource):
             __props__ = LaunchTemplateArgs.__new__(LaunchTemplateArgs)
 
             __props__.__dict__["auto_release_time"] = auto_release_time
+            __props__.__dict__["auto_renew"] = auto_renew
+            __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["deployment_set_id"] = deployment_set_id
             __props__.__dict__["description"] = description
@@ -1807,6 +1887,7 @@ class LaunchTemplate(pulumi.CustomResource):
             __props__.__dict__["network_type"] = network_type
             __props__.__dict__["password_inherit"] = password_inherit
             __props__.__dict__["period"] = period
+            __props__.__dict__["period_unit"] = period_unit
             __props__.__dict__["private_ip_address"] = private_ip_address
             __props__.__dict__["ram_role_name"] = ram_role_name
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -1841,6 +1922,8 @@ class LaunchTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_release_time: Optional[pulumi.Input[str]] = None,
+            auto_renew: Optional[pulumi.Input[bool]] = None,
+            auto_renew_period: Optional[pulumi.Input[int]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]]] = None,
             deployment_set_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1862,6 +1945,7 @@ class LaunchTemplate(pulumi.CustomResource):
             network_type: Optional[pulumi.Input[str]] = None,
             password_inherit: Optional[pulumi.Input[bool]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            period_unit: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             ram_role_name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -1945,6 +2029,8 @@ class LaunchTemplate(pulumi.CustomResource):
         __props__ = _LaunchTemplateState.__new__(_LaunchTemplateState)
 
         __props__.__dict__["auto_release_time"] = auto_release_time
+        __props__.__dict__["auto_renew"] = auto_renew
+        __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["deployment_set_id"] = deployment_set_id
         __props__.__dict__["description"] = description
@@ -1966,6 +2052,7 @@ class LaunchTemplate(pulumi.CustomResource):
         __props__.__dict__["network_type"] = network_type
         __props__.__dict__["password_inherit"] = password_inherit
         __props__.__dict__["period"] = period
+        __props__.__dict__["period_unit"] = period_unit
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["ram_role_name"] = ram_role_name
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -1998,6 +2085,16 @@ class LaunchTemplate(pulumi.CustomResource):
         Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         """
         return pulumi.get(self, "auto_release_time")
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> pulumi.Output[bool]:
+        return pulumi.get(self, "auto_renew")
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "auto_renew_period")
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -2155,8 +2252,13 @@ class LaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[int]]:
+    def period(self) -> pulumi.Output[int]:
         return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="periodUnit")
+    def period_unit(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "period_unit")
 
     @property
     @pulumi.getter(name="privateIpAddress")

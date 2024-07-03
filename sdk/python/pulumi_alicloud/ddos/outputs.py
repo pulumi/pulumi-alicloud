@@ -11,6 +11,13 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'BgpPolicyContent',
+    'BgpPolicyContentFingerPrintRuleList',
+    'BgpPolicyContentLayer4RuleList',
+    'BgpPolicyContentLayer4RuleListConditionList',
+    'BgpPolicyContentPortRuleList',
+    'BgpPolicyContentSourceBlockList',
+    'BgpPolicyContentSourceLimit',
     'DomainResourceProxyType',
     'SchedulerRuleRule',
     'GetDdosBgpInstancesInstanceResult',
@@ -20,6 +27,665 @@ __all__ = [
     'GetDdosCooInstancesInstanceResult',
     'GetDdosCooPortsPortResult',
 ]
+
+@pulumi.output_type
+class BgpPolicyContent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blackIpListExpireAt":
+            suggest = "black_ip_list_expire_at"
+        elif key == "enableDefense":
+            suggest = "enable_defense"
+        elif key == "enableDropIcmp":
+            suggest = "enable_drop_icmp"
+        elif key == "enableIntelligence":
+            suggest = "enable_intelligence"
+        elif key == "fingerPrintRuleLists":
+            suggest = "finger_print_rule_lists"
+        elif key == "intelligenceLevel":
+            suggest = "intelligence_level"
+        elif key == "layer4RuleLists":
+            suggest = "layer4_rule_lists"
+        elif key == "portRuleLists":
+            suggest = "port_rule_lists"
+        elif key == "reflectBlockUdpPortLists":
+            suggest = "reflect_block_udp_port_lists"
+        elif key == "regionBlockCountryLists":
+            suggest = "region_block_country_lists"
+        elif key == "regionBlockProvinceLists":
+            suggest = "region_block_province_lists"
+        elif key == "sourceBlockLists":
+            suggest = "source_block_lists"
+        elif key == "sourceLimit":
+            suggest = "source_limit"
+        elif key == "whitenGfbrNets":
+            suggest = "whiten_gfbr_nets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BgpPolicyContent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BgpPolicyContent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BgpPolicyContent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 black_ip_list_expire_at: Optional[int] = None,
+                 enable_defense: Optional[bool] = None,
+                 enable_drop_icmp: Optional[bool] = None,
+                 enable_intelligence: Optional[bool] = None,
+                 finger_print_rule_lists: Optional[Sequence['outputs.BgpPolicyContentFingerPrintRuleList']] = None,
+                 intelligence_level: Optional[str] = None,
+                 layer4_rule_lists: Optional[Sequence['outputs.BgpPolicyContentLayer4RuleList']] = None,
+                 port_rule_lists: Optional[Sequence['outputs.BgpPolicyContentPortRuleList']] = None,
+                 reflect_block_udp_port_lists: Optional[Sequence[int]] = None,
+                 region_block_country_lists: Optional[Sequence[int]] = None,
+                 region_block_province_lists: Optional[Sequence[int]] = None,
+                 source_block_lists: Optional[Sequence['outputs.BgpPolicyContentSourceBlockList']] = None,
+                 source_limit: Optional['outputs.BgpPolicyContentSourceLimit'] = None,
+                 whiten_gfbr_nets: Optional[bool] = None):
+        """
+        :param int black_ip_list_expire_at: Blacklist and whitelist timeout.
+        :param bool enable_defense: Whether to enable L4 protection.
+        :param bool enable_drop_icmp: Switch to discard ICMP.
+        :param bool enable_intelligence: Whether the intelligent switch is on.
+        :param Sequence['BgpPolicyContentFingerPrintRuleListArgs'] finger_print_rule_lists: Fingerprint Rules. See `finger_print_rule_list` below.
+        :param str intelligence_level: Smart mode. Valid values: weak, hard, and default.
+        :param Sequence['BgpPolicyContentLayer4RuleListArgs'] layer4_rule_lists: L4 protection rules. See `layer4_rule_list` below.
+        :param Sequence['BgpPolicyContentPortRuleListArgs'] port_rule_lists: Port Rule List. See `port_rule_list` below.
+        :param Sequence[int] reflect_block_udp_port_lists: Reflective port filtering.
+        :param Sequence[int] region_block_country_lists: List of Regional Banned Countries.
+        :param Sequence[int] region_block_province_lists: List of Prohibited Provinces by Region.
+        :param Sequence['BgpPolicyContentSourceBlockListArgs'] source_block_lists: Source pull Black. See `source_block_list` below.
+        :param 'BgpPolicyContentSourceLimitArgs' source_limit: Do not fill in when the source speed limit is deleted. See `source_limit` below.
+        :param bool whiten_gfbr_nets: Add white high protection back to source network segment switch.
+        """
+        if black_ip_list_expire_at is not None:
+            pulumi.set(__self__, "black_ip_list_expire_at", black_ip_list_expire_at)
+        if enable_defense is not None:
+            pulumi.set(__self__, "enable_defense", enable_defense)
+        if enable_drop_icmp is not None:
+            pulumi.set(__self__, "enable_drop_icmp", enable_drop_icmp)
+        if enable_intelligence is not None:
+            pulumi.set(__self__, "enable_intelligence", enable_intelligence)
+        if finger_print_rule_lists is not None:
+            pulumi.set(__self__, "finger_print_rule_lists", finger_print_rule_lists)
+        if intelligence_level is not None:
+            pulumi.set(__self__, "intelligence_level", intelligence_level)
+        if layer4_rule_lists is not None:
+            pulumi.set(__self__, "layer4_rule_lists", layer4_rule_lists)
+        if port_rule_lists is not None:
+            pulumi.set(__self__, "port_rule_lists", port_rule_lists)
+        if reflect_block_udp_port_lists is not None:
+            pulumi.set(__self__, "reflect_block_udp_port_lists", reflect_block_udp_port_lists)
+        if region_block_country_lists is not None:
+            pulumi.set(__self__, "region_block_country_lists", region_block_country_lists)
+        if region_block_province_lists is not None:
+            pulumi.set(__self__, "region_block_province_lists", region_block_province_lists)
+        if source_block_lists is not None:
+            pulumi.set(__self__, "source_block_lists", source_block_lists)
+        if source_limit is not None:
+            pulumi.set(__self__, "source_limit", source_limit)
+        if whiten_gfbr_nets is not None:
+            pulumi.set(__self__, "whiten_gfbr_nets", whiten_gfbr_nets)
+
+    @property
+    @pulumi.getter(name="blackIpListExpireAt")
+    def black_ip_list_expire_at(self) -> Optional[int]:
+        """
+        Blacklist and whitelist timeout.
+        """
+        return pulumi.get(self, "black_ip_list_expire_at")
+
+    @property
+    @pulumi.getter(name="enableDefense")
+    def enable_defense(self) -> Optional[bool]:
+        """
+        Whether to enable L4 protection.
+        """
+        return pulumi.get(self, "enable_defense")
+
+    @property
+    @pulumi.getter(name="enableDropIcmp")
+    def enable_drop_icmp(self) -> Optional[bool]:
+        """
+        Switch to discard ICMP.
+        """
+        return pulumi.get(self, "enable_drop_icmp")
+
+    @property
+    @pulumi.getter(name="enableIntelligence")
+    def enable_intelligence(self) -> Optional[bool]:
+        """
+        Whether the intelligent switch is on.
+        """
+        return pulumi.get(self, "enable_intelligence")
+
+    @property
+    @pulumi.getter(name="fingerPrintRuleLists")
+    def finger_print_rule_lists(self) -> Optional[Sequence['outputs.BgpPolicyContentFingerPrintRuleList']]:
+        """
+        Fingerprint Rules. See `finger_print_rule_list` below.
+        """
+        return pulumi.get(self, "finger_print_rule_lists")
+
+    @property
+    @pulumi.getter(name="intelligenceLevel")
+    def intelligence_level(self) -> Optional[str]:
+        """
+        Smart mode. Valid values: weak, hard, and default.
+        """
+        return pulumi.get(self, "intelligence_level")
+
+    @property
+    @pulumi.getter(name="layer4RuleLists")
+    def layer4_rule_lists(self) -> Optional[Sequence['outputs.BgpPolicyContentLayer4RuleList']]:
+        """
+        L4 protection rules. See `layer4_rule_list` below.
+        """
+        return pulumi.get(self, "layer4_rule_lists")
+
+    @property
+    @pulumi.getter(name="portRuleLists")
+    def port_rule_lists(self) -> Optional[Sequence['outputs.BgpPolicyContentPortRuleList']]:
+        """
+        Port Rule List. See `port_rule_list` below.
+        """
+        return pulumi.get(self, "port_rule_lists")
+
+    @property
+    @pulumi.getter(name="reflectBlockUdpPortLists")
+    def reflect_block_udp_port_lists(self) -> Optional[Sequence[int]]:
+        """
+        Reflective port filtering.
+        """
+        return pulumi.get(self, "reflect_block_udp_port_lists")
+
+    @property
+    @pulumi.getter(name="regionBlockCountryLists")
+    def region_block_country_lists(self) -> Optional[Sequence[int]]:
+        """
+        List of Regional Banned Countries.
+        """
+        return pulumi.get(self, "region_block_country_lists")
+
+    @property
+    @pulumi.getter(name="regionBlockProvinceLists")
+    def region_block_province_lists(self) -> Optional[Sequence[int]]:
+        """
+        List of Prohibited Provinces by Region.
+        """
+        return pulumi.get(self, "region_block_province_lists")
+
+    @property
+    @pulumi.getter(name="sourceBlockLists")
+    def source_block_lists(self) -> Optional[Sequence['outputs.BgpPolicyContentSourceBlockList']]:
+        """
+        Source pull Black. See `source_block_list` below.
+        """
+        return pulumi.get(self, "source_block_lists")
+
+    @property
+    @pulumi.getter(name="sourceLimit")
+    def source_limit(self) -> Optional['outputs.BgpPolicyContentSourceLimit']:
+        """
+        Do not fill in when the source speed limit is deleted. See `source_limit` below.
+        """
+        return pulumi.get(self, "source_limit")
+
+    @property
+    @pulumi.getter(name="whitenGfbrNets")
+    def whiten_gfbr_nets(self) -> Optional[bool]:
+        """
+        Add white high protection back to source network segment switch.
+        """
+        return pulumi.get(self, "whiten_gfbr_nets")
+
+
+@pulumi.output_type
+class BgpPolicyContentFingerPrintRuleList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dstPortEnd":
+            suggest = "dst_port_end"
+        elif key == "dstPortStart":
+            suggest = "dst_port_start"
+        elif key == "matchAction":
+            suggest = "match_action"
+        elif key == "maxPktLen":
+            suggest = "max_pkt_len"
+        elif key == "minPktLen":
+            suggest = "min_pkt_len"
+        elif key == "seqNo":
+            suggest = "seq_no"
+        elif key == "srcPortEnd":
+            suggest = "src_port_end"
+        elif key == "srcPortStart":
+            suggest = "src_port_start"
+        elif key == "fingerPrintRuleId":
+            suggest = "finger_print_rule_id"
+        elif key == "payloadBytes":
+            suggest = "payload_bytes"
+        elif key == "rateValue":
+            suggest = "rate_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BgpPolicyContentFingerPrintRuleList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BgpPolicyContentFingerPrintRuleList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BgpPolicyContentFingerPrintRuleList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dst_port_end: int,
+                 dst_port_start: int,
+                 match_action: str,
+                 max_pkt_len: int,
+                 min_pkt_len: int,
+                 protocol: str,
+                 seq_no: int,
+                 src_port_end: int,
+                 src_port_start: int,
+                 finger_print_rule_id: Optional[str] = None,
+                 offset: Optional[int] = None,
+                 payload_bytes: Optional[str] = None,
+                 rate_value: Optional[int] = None):
+        pulumi.set(__self__, "dst_port_end", dst_port_end)
+        pulumi.set(__self__, "dst_port_start", dst_port_start)
+        pulumi.set(__self__, "match_action", match_action)
+        pulumi.set(__self__, "max_pkt_len", max_pkt_len)
+        pulumi.set(__self__, "min_pkt_len", min_pkt_len)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "seq_no", seq_no)
+        pulumi.set(__self__, "src_port_end", src_port_end)
+        pulumi.set(__self__, "src_port_start", src_port_start)
+        if finger_print_rule_id is not None:
+            pulumi.set(__self__, "finger_print_rule_id", finger_print_rule_id)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+        if payload_bytes is not None:
+            pulumi.set(__self__, "payload_bytes", payload_bytes)
+        if rate_value is not None:
+            pulumi.set(__self__, "rate_value", rate_value)
+
+    @property
+    @pulumi.getter(name="dstPortEnd")
+    def dst_port_end(self) -> int:
+        return pulumi.get(self, "dst_port_end")
+
+    @property
+    @pulumi.getter(name="dstPortStart")
+    def dst_port_start(self) -> int:
+        return pulumi.get(self, "dst_port_start")
+
+    @property
+    @pulumi.getter(name="matchAction")
+    def match_action(self) -> str:
+        return pulumi.get(self, "match_action")
+
+    @property
+    @pulumi.getter(name="maxPktLen")
+    def max_pkt_len(self) -> int:
+        return pulumi.get(self, "max_pkt_len")
+
+    @property
+    @pulumi.getter(name="minPktLen")
+    def min_pkt_len(self) -> int:
+        return pulumi.get(self, "min_pkt_len")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="seqNo")
+    def seq_no(self) -> int:
+        return pulumi.get(self, "seq_no")
+
+    @property
+    @pulumi.getter(name="srcPortEnd")
+    def src_port_end(self) -> int:
+        return pulumi.get(self, "src_port_end")
+
+    @property
+    @pulumi.getter(name="srcPortStart")
+    def src_port_start(self) -> int:
+        return pulumi.get(self, "src_port_start")
+
+    @property
+    @pulumi.getter(name="fingerPrintRuleId")
+    def finger_print_rule_id(self) -> Optional[str]:
+        return pulumi.get(self, "finger_print_rule_id")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> Optional[int]:
+        return pulumi.get(self, "offset")
+
+    @property
+    @pulumi.getter(name="payloadBytes")
+    def payload_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "payload_bytes")
+
+    @property
+    @pulumi.getter(name="rateValue")
+    def rate_value(self) -> Optional[int]:
+        return pulumi.get(self, "rate_value")
+
+
+@pulumi.output_type
+class BgpPolicyContentLayer4RuleList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conditionLists":
+            suggest = "condition_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BgpPolicyContentLayer4RuleList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BgpPolicyContentLayer4RuleList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BgpPolicyContentLayer4RuleList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: str,
+                 condition_lists: Sequence['outputs.BgpPolicyContentLayer4RuleListConditionList'],
+                 limited: int,
+                 match: str,
+                 method: str,
+                 name: str,
+                 priority: int):
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "condition_lists", condition_lists)
+        pulumi.set(__self__, "limited", limited)
+        pulumi.set(__self__, "match", match)
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter(name="conditionLists")
+    def condition_lists(self) -> Sequence['outputs.BgpPolicyContentLayer4RuleListConditionList']:
+        return pulumi.get(self, "condition_lists")
+
+    @property
+    @pulumi.getter
+    def limited(self) -> int:
+        return pulumi.get(self, "limited")
+
+    @property
+    @pulumi.getter
+    def match(self) -> str:
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter
+    def method(self) -> str:
+        return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        return pulumi.get(self, "priority")
+
+
+@pulumi.output_type
+class BgpPolicyContentLayer4RuleListConditionList(dict):
+    def __init__(__self__, *,
+                 arg: str,
+                 depth: int,
+                 position: int):
+        pulumi.set(__self__, "arg", arg)
+        pulumi.set(__self__, "depth", depth)
+        pulumi.set(__self__, "position", position)
+
+    @property
+    @pulumi.getter
+    def arg(self) -> str:
+        return pulumi.get(self, "arg")
+
+    @property
+    @pulumi.getter
+    def depth(self) -> int:
+        return pulumi.get(self, "depth")
+
+    @property
+    @pulumi.getter
+    def position(self) -> int:
+        return pulumi.get(self, "position")
+
+
+@pulumi.output_type
+class BgpPolicyContentPortRuleList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dstPortEnd":
+            suggest = "dst_port_end"
+        elif key == "dstPortStart":
+            suggest = "dst_port_start"
+        elif key == "matchAction":
+            suggest = "match_action"
+        elif key == "seqNo":
+            suggest = "seq_no"
+        elif key == "srcPortEnd":
+            suggest = "src_port_end"
+        elif key == "srcPortStart":
+            suggest = "src_port_start"
+        elif key == "portRuleId":
+            suggest = "port_rule_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BgpPolicyContentPortRuleList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BgpPolicyContentPortRuleList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BgpPolicyContentPortRuleList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dst_port_end: int,
+                 dst_port_start: int,
+                 match_action: str,
+                 protocol: str,
+                 seq_no: int,
+                 src_port_end: int,
+                 src_port_start: int,
+                 port_rule_id: Optional[str] = None):
+        pulumi.set(__self__, "dst_port_end", dst_port_end)
+        pulumi.set(__self__, "dst_port_start", dst_port_start)
+        pulumi.set(__self__, "match_action", match_action)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "seq_no", seq_no)
+        pulumi.set(__self__, "src_port_end", src_port_end)
+        pulumi.set(__self__, "src_port_start", src_port_start)
+        if port_rule_id is not None:
+            pulumi.set(__self__, "port_rule_id", port_rule_id)
+
+    @property
+    @pulumi.getter(name="dstPortEnd")
+    def dst_port_end(self) -> int:
+        return pulumi.get(self, "dst_port_end")
+
+    @property
+    @pulumi.getter(name="dstPortStart")
+    def dst_port_start(self) -> int:
+        return pulumi.get(self, "dst_port_start")
+
+    @property
+    @pulumi.getter(name="matchAction")
+    def match_action(self) -> str:
+        return pulumi.get(self, "match_action")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="seqNo")
+    def seq_no(self) -> int:
+        return pulumi.get(self, "seq_no")
+
+    @property
+    @pulumi.getter(name="srcPortEnd")
+    def src_port_end(self) -> int:
+        return pulumi.get(self, "src_port_end")
+
+    @property
+    @pulumi.getter(name="srcPortStart")
+    def src_port_start(self) -> int:
+        return pulumi.get(self, "src_port_start")
+
+    @property
+    @pulumi.getter(name="portRuleId")
+    def port_rule_id(self) -> Optional[str]:
+        return pulumi.get(self, "port_rule_id")
+
+
+@pulumi.output_type
+class BgpPolicyContentSourceBlockList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockExpireSeconds":
+            suggest = "block_expire_seconds"
+        elif key == "everySeconds":
+            suggest = "every_seconds"
+        elif key == "exceedLimitTimes":
+            suggest = "exceed_limit_times"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BgpPolicyContentSourceBlockList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BgpPolicyContentSourceBlockList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BgpPolicyContentSourceBlockList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_expire_seconds: int,
+                 every_seconds: int,
+                 exceed_limit_times: int,
+                 type: int):
+        """
+        :param int type: Type
+        """
+        pulumi.set(__self__, "block_expire_seconds", block_expire_seconds)
+        pulumi.set(__self__, "every_seconds", every_seconds)
+        pulumi.set(__self__, "exceed_limit_times", exceed_limit_times)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="blockExpireSeconds")
+    def block_expire_seconds(self) -> int:
+        return pulumi.get(self, "block_expire_seconds")
+
+    @property
+    @pulumi.getter(name="everySeconds")
+    def every_seconds(self) -> int:
+        return pulumi.get(self, "every_seconds")
+
+    @property
+    @pulumi.getter(name="exceedLimitTimes")
+    def exceed_limit_times(self) -> int:
+        return pulumi.get(self, "exceed_limit_times")
+
+    @property
+    @pulumi.getter
+    def type(self) -> int:
+        """
+        Type
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class BgpPolicyContentSourceLimit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "synBps":
+            suggest = "syn_bps"
+        elif key == "synPps":
+            suggest = "syn_pps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BgpPolicyContentSourceLimit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BgpPolicyContentSourceLimit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BgpPolicyContentSourceLimit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bps: Optional[int] = None,
+                 pps: Optional[int] = None,
+                 syn_bps: Optional[int] = None,
+                 syn_pps: Optional[int] = None):
+        if bps is not None:
+            pulumi.set(__self__, "bps", bps)
+        if pps is not None:
+            pulumi.set(__self__, "pps", pps)
+        if syn_bps is not None:
+            pulumi.set(__self__, "syn_bps", syn_bps)
+        if syn_pps is not None:
+            pulumi.set(__self__, "syn_pps", syn_pps)
+
+    @property
+    @pulumi.getter
+    def bps(self) -> Optional[int]:
+        return pulumi.get(self, "bps")
+
+    @property
+    @pulumi.getter
+    def pps(self) -> Optional[int]:
+        return pulumi.get(self, "pps")
+
+    @property
+    @pulumi.getter(name="synBps")
+    def syn_bps(self) -> Optional[int]:
+        return pulumi.get(self, "syn_bps")
+
+    @property
+    @pulumi.getter(name="synPps")
+    def syn_pps(self) -> Optional[int]:
+        return pulumi.get(self, "syn_pps")
+
 
 @pulumi.output_type
 class DomainResourceProxyType(dict):

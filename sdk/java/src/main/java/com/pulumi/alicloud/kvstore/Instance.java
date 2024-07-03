@@ -745,6 +745,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.qps;
     }
     /**
+     * The number of read replicas in the primary zone. Valid values: `1` to `9`.
+     * 
+     */
+    @Export(name="readOnlyCount", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> readOnlyCount;
+
+    /**
+     * @return The number of read replicas in the primary zone. Valid values: `1` to `9`.
+     * 
+     */
+    public Output<Optional<Integer>> readOnlyCount() {
+        return Codegen.optional(this.readOnlyCount);
+    }
+    /**
      * The ID of resource group which the resource belongs.
      * 
      */
@@ -871,6 +885,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> shardCount() {
         return this.shardCount;
+    }
+    /**
+     * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+     * &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+     * 
+     */
+    @Export(name="slaveReadOnlyCount", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> slaveReadOnlyCount;
+
+    /**
+     * @return The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+     * &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+     * 
+     */
+    public Output<Optional<Integer>> slaveReadOnlyCount() {
+        return Codegen.optional(this.slaveReadOnlyCount);
     }
     /**
      * The ID of the source instance.

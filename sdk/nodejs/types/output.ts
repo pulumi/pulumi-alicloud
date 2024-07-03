@@ -15086,6 +15086,125 @@ export namespace dcdn {
 }
 
 export namespace ddos {
+    export interface BgpPolicyContent {
+        /**
+         * Blacklist and whitelist timeout.
+         */
+        blackIpListExpireAt?: number;
+        /**
+         * Whether to enable L4 protection.
+         */
+        enableDefense?: boolean;
+        /**
+         * Switch to discard ICMP.
+         */
+        enableDropIcmp?: boolean;
+        /**
+         * Whether the intelligent switch is on.
+         */
+        enableIntelligence: boolean;
+        /**
+         * Fingerprint Rules. See `fingerPrintRuleList` below.
+         */
+        fingerPrintRuleLists?: outputs.ddos.BgpPolicyContentFingerPrintRuleList[];
+        /**
+         * Smart mode. Valid values: weak, hard, and default.
+         */
+        intelligenceLevel: string;
+        /**
+         * L4 protection rules. See `layer4RuleList` below.
+         */
+        layer4RuleLists?: outputs.ddos.BgpPolicyContentLayer4RuleList[];
+        /**
+         * Port Rule List. See `portRuleList` below.
+         */
+        portRuleLists?: outputs.ddos.BgpPolicyContentPortRuleList[];
+        /**
+         * Reflective port filtering.
+         */
+        reflectBlockUdpPortLists?: number[];
+        /**
+         * List of Regional Banned Countries.
+         */
+        regionBlockCountryLists?: number[];
+        /**
+         * List of Prohibited Provinces by Region.
+         */
+        regionBlockProvinceLists?: number[];
+        /**
+         * Source pull Black. See `sourceBlockList` below.
+         */
+        sourceBlockLists?: outputs.ddos.BgpPolicyContentSourceBlockList[];
+        /**
+         * Do not fill in when the source speed limit is deleted. See `sourceLimit` below.
+         */
+        sourceLimit?: outputs.ddos.BgpPolicyContentSourceLimit;
+        /**
+         * Add white high protection back to source network segment switch.
+         */
+        whitenGfbrNets?: boolean;
+    }
+
+    export interface BgpPolicyContentFingerPrintRuleList {
+        dstPortEnd: number;
+        dstPortStart: number;
+        fingerPrintRuleId?: string;
+        matchAction: string;
+        maxPktLen: number;
+        minPktLen: number;
+        offset?: number;
+        payloadBytes?: string;
+        protocol: string;
+        rateValue?: number;
+        seqNo: number;
+        srcPortEnd: number;
+        srcPortStart: number;
+    }
+
+    export interface BgpPolicyContentLayer4RuleList {
+        action: string;
+        conditionLists: outputs.ddos.BgpPolicyContentLayer4RuleListConditionList[];
+        limited: number;
+        match: string;
+        method: string;
+        name: string;
+        priority: number;
+    }
+
+    export interface BgpPolicyContentLayer4RuleListConditionList {
+        arg: string;
+        depth: number;
+        position: number;
+    }
+
+    export interface BgpPolicyContentPortRuleList {
+        dstPortEnd: number;
+        dstPortStart: number;
+        matchAction: string;
+        portRuleId?: string;
+        protocol: string;
+        seqNo: number;
+        srcPortEnd: number;
+        srcPortStart: number;
+    }
+
+    export interface BgpPolicyContentSourceBlockList {
+        blockExpireSeconds: number;
+        everySeconds: number;
+        exceedLimitTimes: number;
+        /**
+         * Type
+         */
+        type: number;
+    }
+
+    export interface BgpPolicyContentSourceLimit {
+        bps?: number;
+        pps?: number;
+        synBps?: number;
+        synPps?: number;
+    }
+
     export interface DomainResourceProxyType {
         /**
          * the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxyPorts` can be modified.

@@ -18,14 +18,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     public static final GatewayState Empty = new GatewayState();
 
     /**
-     * the description of gateway.
+     * The description of the gateway.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return the description of gateway.
+     * @return The description of the gateway.
      * 
      */
     public Optional<Output<String>> description() {
@@ -33,14 +33,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+     * The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
      * 
      */
     @Import(name="gatewayClass")
     private @Nullable Output<String> gatewayClass;
 
     /**
-     * @return the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+     * @return The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
      * 
      */
     public Optional<Output<String>> gatewayClass() {
@@ -48,14 +48,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * the name of gateway.
+     * The name of the gateway.
      * 
      */
     @Import(name="gatewayName")
     private @Nullable Output<String> gatewayName;
 
     /**
-     * @return the name of gateway.
+     * @return The name of the gateway.
      * 
      */
     public Optional<Output<String>> gatewayName() {
@@ -63,14 +63,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * gateway location. the valid values: `Cloud`, `On_Premise`.
+     * The location of the gateway. Valid values: `Cloud`, `On_Premise`.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return gateway location. the valid values: `Cloud`, `On_Premise`.
+     * @return The location of the gateway. Valid values: `Cloud`, `On_Premise`.
      * 
      */
     public Optional<Output<String>> location() {
@@ -78,14 +78,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Payment type of gateway. The valid value: `PayAsYouGo`.
+     * The Payment type of gateway. Valid values: `PayAsYouGo`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The Payment type of gateway. The valid value: `PayAsYouGo`.
+     * @return The Payment type of gateway. Valid values: `PayAsYouGo`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -93,14 +93,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+     * The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
      * 
      */
     @Import(name="publicNetworkBandwidth")
     private @Nullable Output<Integer> publicNetworkBandwidth;
 
     /**
-     * @return The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+     * @return The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
      * 
      */
     public Optional<Output<Integer>> publicNetworkBandwidth() {
@@ -153,14 +153,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * gateway status.
+     * The status of the Gateway.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return gateway status.
+     * @return The status of the Gateway.
      * 
      */
     public Optional<Output<String>> status() {
@@ -168,14 +168,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * storage bundle id.
+     * The ID of the gateway cluster.
      * 
      */
     @Import(name="storageBundleId")
     private @Nullable Output<String> storageBundleId;
 
     /**
-     * @return storage bundle id.
+     * @return The ID of the gateway cluster.
      * 
      */
     public Optional<Output<String>> storageBundleId() {
@@ -183,14 +183,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * gateway type. the valid values: `Type`, `Iscsi`.
+     * The type of the gateway. Valid values: `File`, `Iscsi`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return gateway type. the valid values: `Type`, `Iscsi`.
+     * @return The type of the gateway. Valid values: `File`, `Iscsi`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -198,14 +198,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vswitch id of gateway.
+     * The ID of the vSwitch.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vswitch id of gateway.
+     * @return The ID of the vSwitch.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -249,7 +249,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description the description of gateway.
+         * @param description The description of the gateway.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description the description of gateway.
+         * @param description The description of the gateway.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayClass the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+         * @param gatewayClass The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayClass the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+         * @param gatewayClass The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayName the name of gateway.
+         * @param gatewayName The name of the gateway.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayName the name of gateway.
+         * @param gatewayName The name of the gateway.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location gateway location. the valid values: `Cloud`, `On_Premise`.
+         * @param location The location of the gateway. Valid values: `Cloud`, `On_Premise`.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location gateway location. the valid values: `Cloud`, `On_Premise`.
+         * @param location The location of the gateway. Valid values: `Cloud`, `On_Premise`.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The Payment type of gateway. The valid value: `PayAsYouGo`.
+         * @param paymentType The Payment type of gateway. Valid values: `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The Payment type of gateway. The valid value: `PayAsYouGo`.
+         * @param paymentType The Payment type of gateway. Valid values: `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicNetworkBandwidth The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+         * @param publicNetworkBandwidth The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicNetworkBandwidth The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+         * @param publicNetworkBandwidth The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status gateway status.
+         * @param status The status of the Gateway.
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status gateway status.
+         * @param status The status of the Gateway.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageBundleId storage bundle id.
+         * @param storageBundleId The ID of the gateway cluster.
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageBundleId storage bundle id.
+         * @param storageBundleId The ID of the gateway cluster.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type gateway type. the valid values: `Type`, `Iscsi`.
+         * @param type The type of the gateway. Valid values: `File`, `Iscsi`.
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type gateway type. the valid values: `Type`, `Iscsi`.
+         * @param type The type of the gateway. Valid values: `File`, `Iscsi`.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch id of gateway.
+         * @param vswitchId The ID of the vSwitch.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch id of gateway.
+         * @param vswitchId The ID of the vSwitch.
          * 
          * @return builder
          * 

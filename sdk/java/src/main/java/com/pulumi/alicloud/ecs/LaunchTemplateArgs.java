@@ -39,6 +39,20 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.autoReleaseTime);
     }
 
+    @Import(name="autoRenew")
+    private @Nullable Output<Boolean> autoRenew;
+
+    public Optional<Output<Boolean>> autoRenew() {
+        return Optional.ofNullable(this.autoRenew);
+    }
+
+    @Import(name="autoRenewPeriod")
+    private @Nullable Output<Integer> autoRenewPeriod;
+
+    public Optional<Output<Integer>> autoRenewPeriod() {
+        return Optional.ofNullable(this.autoRenewPeriod);
+    }
+
     /**
      * The list of data disks created with instance.
      * 
@@ -328,6 +342,13 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
 
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
+    }
+
+    @Import(name="periodUnit")
+    private @Nullable Output<String> periodUnit;
+
+    public Optional<Output<String>> periodUnit() {
+        return Optional.ofNullable(this.periodUnit);
     }
 
     @Import(name="privateIpAddress")
@@ -659,6 +680,8 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
 
     private LaunchTemplateArgs(LaunchTemplateArgs $) {
         this.autoReleaseTime = $.autoReleaseTime;
+        this.autoRenew = $.autoRenew;
+        this.autoRenewPeriod = $.autoRenewPeriod;
         this.dataDisks = $.dataDisks;
         this.deploymentSetId = $.deploymentSetId;
         this.description = $.description;
@@ -680,6 +703,7 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         this.networkType = $.networkType;
         this.passwordInherit = $.passwordInherit;
         this.period = $.period;
+        this.periodUnit = $.periodUnit;
         this.privateIpAddress = $.privateIpAddress;
         this.ramRoleName = $.ramRoleName;
         this.resourceGroupId = $.resourceGroupId;
@@ -742,6 +766,24 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder autoReleaseTime(String autoReleaseTime) {
             return autoReleaseTime(Output.of(autoReleaseTime));
+        }
+
+        public Builder autoRenew(@Nullable Output<Boolean> autoRenew) {
+            $.autoRenew = autoRenew;
+            return this;
+        }
+
+        public Builder autoRenew(Boolean autoRenew) {
+            return autoRenew(Output.of(autoRenew));
+        }
+
+        public Builder autoRenewPeriod(@Nullable Output<Integer> autoRenewPeriod) {
+            $.autoRenewPeriod = autoRenewPeriod;
+            return this;
+        }
+
+        public Builder autoRenewPeriod(Integer autoRenewPeriod) {
+            return autoRenewPeriod(Output.of(autoRenewPeriod));
         }
 
         /**
@@ -1145,6 +1187,15 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder period(Integer period) {
             return period(Output.of(period));
+        }
+
+        public Builder periodUnit(@Nullable Output<String> periodUnit) {
+            $.periodUnit = periodUnit;
+            return this;
+        }
+
+        public Builder periodUnit(String periodUnit) {
+            return periodUnit(Output.of(periodUnit));
         }
 
         public Builder privateIpAddress(@Nullable Output<String> privateIpAddress) {

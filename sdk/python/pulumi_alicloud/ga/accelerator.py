@@ -26,6 +26,7 @@ class AcceleratorArgs:
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  promotion_option_no: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
@@ -51,6 +52,7 @@ class AcceleratorArgs:
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -78,6 +80,8 @@ class AcceleratorArgs:
             pulumi.set(__self__, "promotion_option_no", promotion_option_no)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if tags is not None:
@@ -237,6 +241,18 @@ class AcceleratorArgs:
         pulumi.set(self, "renewal_status", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[str]]:
         """
@@ -276,6 +292,7 @@ class _AcceleratorState:
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  promotion_option_no: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
@@ -302,6 +319,7 @@ class _AcceleratorState:
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[str] status: The status of the GA instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -330,6 +348,8 @@ class _AcceleratorState:
             pulumi.set(__self__, "promotion_option_no", promotion_option_no)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
@@ -491,6 +511,18 @@ class _AcceleratorState:
         pulumi.set(self, "renewal_status", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[str]]:
         """
@@ -544,6 +576,7 @@ class Accelerator(pulumi.CustomResource):
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  promotion_option_no: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
@@ -599,6 +632,7 @@ class Accelerator(pulumi.CustomResource):
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -664,6 +698,7 @@ class Accelerator(pulumi.CustomResource):
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  promotion_option_no: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
@@ -687,6 +722,7 @@ class Accelerator(pulumi.CustomResource):
             __props__.__dict__["pricing_cycle"] = pricing_cycle
             __props__.__dict__["promotion_option_no"] = promotion_option_no
             __props__.__dict__["renewal_status"] = renewal_status
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["spec"] = spec
             __props__.__dict__["tags"] = tags
             __props__.__dict__["status"] = None
@@ -712,6 +748,7 @@ class Accelerator(pulumi.CustomResource):
             pricing_cycle: Optional[pulumi.Input[str]] = None,
             promotion_option_no: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Accelerator':
@@ -743,6 +780,7 @@ class Accelerator(pulumi.CustomResource):
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] spec: The instance type of the GA instance. Specification of global acceleration instance. Valid values:
         :param pulumi.Input[str] status: The status of the GA instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -763,6 +801,7 @@ class Accelerator(pulumi.CustomResource):
         __props__.__dict__["pricing_cycle"] = pricing_cycle
         __props__.__dict__["promotion_option_no"] = promotion_option_no
         __props__.__dict__["renewal_status"] = renewal_status
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -872,6 +911,14 @@ class Accelerator(pulumi.CustomResource):
         - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter

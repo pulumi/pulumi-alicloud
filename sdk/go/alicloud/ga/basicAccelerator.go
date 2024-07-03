@@ -34,13 +34,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ga.NewBasicAccelerator(ctx, "default", &ga.BasicAcceleratorArgs{
-//				Duration:             pulumi.Int(1),
-//				PricingCycle:         pulumi.String("Month"),
-//				BasicAcceleratorName: pulumi.String("tf-example-value"),
-//				Description:          pulumi.String("tf-example-value"),
 //				BandwidthBillingType: pulumi.String("BandwidthPackage"),
 //				AutoPay:              pulumi.Bool(true),
+//				Duration:             pulumi.Int(1),
+//				PricingCycle:         pulumi.String("Month"),
 //				AutoUseCoupon:        pulumi.String("true"),
+//				BasicAcceleratorName: pulumi.String("tf-example-value"),
+//				Description:          pulumi.String("tf-example-value"),
 //			})
 //			if err != nil {
 //				return err
@@ -87,6 +87,8 @@ type BasicAccelerator struct {
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo pulumi.StringPtrOutput `pulumi:"promotionOptionNo"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The status of the Basic Accelerator instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -149,6 +151,8 @@ type basicAcceleratorState struct {
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo *string `pulumi:"promotionOptionNo"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the Basic Accelerator instance.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -182,6 +186,8 @@ type BasicAcceleratorState struct {
 	PricingCycle pulumi.StringPtrInput
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo pulumi.StringPtrInput
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringPtrInput
 	// The status of the Basic Accelerator instance.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -219,6 +225,8 @@ type basicAcceleratorArgs struct {
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo *string `pulumi:"promotionOptionNo"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -251,6 +259,8 @@ type BasicAcceleratorArgs struct {
 	PricingCycle pulumi.StringPtrInput
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo pulumi.StringPtrInput
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }
@@ -402,6 +412,11 @@ func (o BasicAcceleratorOutput) PricingCycle() pulumi.StringPtrOutput {
 // The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 func (o BasicAcceleratorOutput) PromotionOptionNo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BasicAccelerator) pulumi.StringPtrOutput { return v.PromotionOptionNo }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+func (o BasicAcceleratorOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BasicAccelerator) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The status of the Basic Accelerator instance.

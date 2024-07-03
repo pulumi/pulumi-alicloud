@@ -80,6 +80,12 @@ namespace Pulumi.AliCloud.Ga
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the resource.
         /// </summary>
         [Output("status")]
@@ -168,6 +174,12 @@ namespace Pulumi.AliCloud.Ga
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -218,6 +230,12 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The status of the resource.

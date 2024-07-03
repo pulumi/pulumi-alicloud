@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Cloud Storage Gateway: Gateway resource.
+ * Provides a Cloud Storage Gateway Gateway resource.
  *
  * For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
  *
@@ -48,27 +48,27 @@ export class Gateway extends pulumi.CustomResource {
     }
 
     /**
-     * the description of gateway.
+     * The description of the gateway.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+     * The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
      */
     public readonly gatewayClass!: pulumi.Output<string | undefined>;
     /**
-     * the name of gateway.
+     * The name of the gateway.
      */
     public readonly gatewayName!: pulumi.Output<string>;
     /**
-     * gateway location. the valid values: `Cloud`, `On_Premise`.
+     * The location of the gateway. Valid values: `Cloud`, `On_Premise`.
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The Payment type of gateway. The valid value: `PayAsYouGo`.
+     * The Payment type of gateway. Valid values: `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string | undefined>;
     /**
-     * The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+     * The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
      */
     public readonly publicNetworkBandwidth!: pulumi.Output<number>;
     /**
@@ -84,19 +84,19 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly releaseAfterExpiration!: pulumi.Output<boolean | undefined>;
     /**
-     * gateway status.
+     * The status of the Gateway.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * storage bundle id.
+     * The ID of the gateway cluster.
      */
     public readonly storageBundleId!: pulumi.Output<string>;
     /**
-     * gateway type. the valid values: `Type`, `Iscsi`.
+     * The type of the gateway. Valid values: `File`, `Iscsi`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The vswitch id of gateway.
+     * The ID of the vSwitch.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
 
@@ -164,27 +164,27 @@ export class Gateway extends pulumi.CustomResource {
  */
 export interface GatewayState {
     /**
-     * the description of gateway.
+     * The description of the gateway.
      */
     description?: pulumi.Input<string>;
     /**
-     * the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+     * The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
      */
     gatewayClass?: pulumi.Input<string>;
     /**
-     * the name of gateway.
+     * The name of the gateway.
      */
     gatewayName?: pulumi.Input<string>;
     /**
-     * gateway location. the valid values: `Cloud`, `On_Premise`.
+     * The location of the gateway. Valid values: `Cloud`, `On_Premise`.
      */
     location?: pulumi.Input<string>;
     /**
-     * The Payment type of gateway. The valid value: `PayAsYouGo`.
+     * The Payment type of gateway. Valid values: `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+     * The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
      */
     publicNetworkBandwidth?: pulumi.Input<number>;
     /**
@@ -200,19 +200,19 @@ export interface GatewayState {
      */
     releaseAfterExpiration?: pulumi.Input<boolean>;
     /**
-     * gateway status.
+     * The status of the Gateway.
      */
     status?: pulumi.Input<string>;
     /**
-     * storage bundle id.
+     * The ID of the gateway cluster.
      */
     storageBundleId?: pulumi.Input<string>;
     /**
-     * gateway type. the valid values: `Type`, `Iscsi`.
+     * The type of the gateway. Valid values: `File`, `Iscsi`.
      */
     type?: pulumi.Input<string>;
     /**
-     * The vswitch id of gateway.
+     * The ID of the vSwitch.
      */
     vswitchId?: pulumi.Input<string>;
 }
@@ -222,27 +222,27 @@ export interface GatewayState {
  */
 export interface GatewayArgs {
     /**
-     * the description of gateway.
+     * The description of the gateway.
      */
     description?: pulumi.Input<string>;
     /**
-     * the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+     * The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
      */
     gatewayClass?: pulumi.Input<string>;
     /**
-     * the name of gateway.
+     * The name of the gateway.
      */
     gatewayName: pulumi.Input<string>;
     /**
-     * gateway location. the valid values: `Cloud`, `On_Premise`.
+     * The location of the gateway. Valid values: `Cloud`, `On_Premise`.
      */
     location: pulumi.Input<string>;
     /**
-     * The Payment type of gateway. The valid value: `PayAsYouGo`.
+     * The Payment type of gateway. Valid values: `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+     * The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
      */
     publicNetworkBandwidth?: pulumi.Input<number>;
     /**
@@ -258,15 +258,15 @@ export interface GatewayArgs {
      */
     releaseAfterExpiration?: pulumi.Input<boolean>;
     /**
-     * storage bundle id.
+     * The ID of the gateway cluster.
      */
     storageBundleId: pulumi.Input<string>;
     /**
-     * gateway type. the valid values: `Type`, `Iscsi`.
+     * The type of the gateway. Valid values: `File`, `Iscsi`.
      */
     type: pulumi.Input<string>;
     /**
-     * The vswitch id of gateway.
+     * The ID of the vSwitch.
      */
     vswitchId?: pulumi.Input<string>;
 }

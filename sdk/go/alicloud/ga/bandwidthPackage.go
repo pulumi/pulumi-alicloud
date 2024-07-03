@@ -42,7 +42,6 @@ import (
 //				BandwidthType: pulumi.String("Basic"),
 //				Duration:      pulumi.String("1"),
 //				AutoPay:       pulumi.Bool(true),
-//				Ratio:         pulumi.Int(30),
 //			})
 //			if err != nil {
 //				return err
@@ -65,8 +64,8 @@ type BandwidthPackage struct {
 
 	// Whether to pay automatically. Valid values:
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
-	// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
-	AutoRenewDuration pulumi.IntPtrOutput `pulumi:"autoRenewDuration"`
+	// Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
+	AutoRenewDuration pulumi.IntOutput `pulumi:"autoRenewDuration"`
 	// Whether use vouchers. Default value: `false`. Valid values:
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
 	// The bandwidth value of bandwidth packet.
@@ -97,6 +96,8 @@ type BandwidthPackage struct {
 	// - `Normal`: Disable auto renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The status of the Bandwidth Package.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -143,7 +144,7 @@ func GetBandwidthPackage(ctx *pulumi.Context,
 type bandwidthPackageState struct {
 	// Whether to pay automatically. Valid values:
 	AutoPay *bool `pulumi:"autoPay"`
-	// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+	// Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// Whether use vouchers. Default value: `false`. Valid values:
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
@@ -175,6 +176,8 @@ type bandwidthPackageState struct {
 	// - `Normal`: Disable auto renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the Bandwidth Package.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -186,7 +189,7 @@ type bandwidthPackageState struct {
 type BandwidthPackageState struct {
 	// Whether to pay automatically. Valid values:
 	AutoPay pulumi.BoolPtrInput
-	// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+	// Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
 	AutoRenewDuration pulumi.IntPtrInput
 	// Whether use vouchers. Default value: `false`. Valid values:
 	AutoUseCoupon pulumi.BoolPtrInput
@@ -218,6 +221,8 @@ type BandwidthPackageState struct {
 	// - `Normal`: Disable auto renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringPtrInput
 	// The status of the Bandwidth Package.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -233,7 +238,7 @@ func (BandwidthPackageState) ElementType() reflect.Type {
 type bandwidthPackageArgs struct {
 	// Whether to pay automatically. Valid values:
 	AutoPay *bool `pulumi:"autoPay"`
-	// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+	// Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// Whether use vouchers. Default value: `false`. Valid values:
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
@@ -265,6 +270,8 @@ type bandwidthPackageArgs struct {
 	// - `Normal`: Disable auto renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
@@ -275,7 +282,7 @@ type bandwidthPackageArgs struct {
 type BandwidthPackageArgs struct {
 	// Whether to pay automatically. Valid values:
 	AutoPay pulumi.BoolPtrInput
-	// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+	// Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
 	AutoRenewDuration pulumi.IntPtrInput
 	// Whether use vouchers. Default value: `false`. Valid values:
 	AutoUseCoupon pulumi.BoolPtrInput
@@ -307,6 +314,8 @@ type BandwidthPackageArgs struct {
 	// - `Normal`: Disable auto renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
@@ -405,9 +414,9 @@ func (o BandwidthPackageOutput) AutoPay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
 }
 
-// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
-func (o BandwidthPackageOutput) AutoRenewDuration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *BandwidthPackage) pulumi.IntPtrOutput { return v.AutoRenewDuration }).(pulumi.IntPtrOutput)
+// Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
+func (o BandwidthPackageOutput) AutoRenewDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.IntOutput { return v.AutoRenewDuration }).(pulumi.IntOutput)
 }
 
 // Whether use vouchers. Default value: `false`. Valid values:
@@ -477,6 +486,11 @@ func (o BandwidthPackageOutput) Ratio() pulumi.IntPtrOutput {
 // - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 func (o BandwidthPackageOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+func (o BandwidthPackageOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The status of the Bandwidth Package.

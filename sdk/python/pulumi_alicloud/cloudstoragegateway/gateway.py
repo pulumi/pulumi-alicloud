@@ -28,18 +28,18 @@ class GatewayArgs:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
-        :param pulumi.Input[str] gateway_name: the name of gateway.
-        :param pulumi.Input[str] location: gateway location. the valid values: `Cloud`, `On_Premise`.
-        :param pulumi.Input[str] storage_bundle_id: storage bundle id.
-        :param pulumi.Input[str] type: gateway type. the valid values: `Type`, `Iscsi`.
-        :param pulumi.Input[str] description: the description of gateway.
-        :param pulumi.Input[str] gateway_class: the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
-        :param pulumi.Input[str] payment_type: The Payment type of gateway. The valid value: `PayAsYouGo`.
-        :param pulumi.Input[int] public_network_bandwidth: The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+        :param pulumi.Input[str] gateway_name: The name of the gateway.
+        :param pulumi.Input[str] location: The location of the gateway. Valid values: `Cloud`, `On_Premise`.
+        :param pulumi.Input[str] storage_bundle_id: The ID of the gateway cluster.
+        :param pulumi.Input[str] type: The type of the gateway. Valid values: `File`, `Iscsi`.
+        :param pulumi.Input[str] description: The description of the gateway.
+        :param pulumi.Input[str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+        :param pulumi.Input[str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[int] public_network_bandwidth: The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
         :param pulumi.Input[str] reason_detail: The reason detail of gateway.
         :param pulumi.Input[str] reason_type: The reason type when user deletes the gateway.
         :param pulumi.Input[bool] release_after_expiration: Whether to release the gateway due to expiration.
-        :param pulumi.Input[str] vswitch_id: The vswitch id of gateway.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
         pulumi.set(__self__, "gateway_name", gateway_name)
         pulumi.set(__self__, "location", location)
@@ -66,7 +66,7 @@ class GatewayArgs:
     @pulumi.getter(name="gatewayName")
     def gateway_name(self) -> pulumi.Input[str]:
         """
-        the name of gateway.
+        The name of the gateway.
         """
         return pulumi.get(self, "gateway_name")
 
@@ -78,7 +78,7 @@ class GatewayArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        gateway location. the valid values: `Cloud`, `On_Premise`.
+        The location of the gateway. Valid values: `Cloud`, `On_Premise`.
         """
         return pulumi.get(self, "location")
 
@@ -90,7 +90,7 @@ class GatewayArgs:
     @pulumi.getter(name="storageBundleId")
     def storage_bundle_id(self) -> pulumi.Input[str]:
         """
-        storage bundle id.
+        The ID of the gateway cluster.
         """
         return pulumi.get(self, "storage_bundle_id")
 
@@ -102,7 +102,7 @@ class GatewayArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        gateway type. the valid values: `Type`, `Iscsi`.
+        The type of the gateway. Valid values: `File`, `Iscsi`.
         """
         return pulumi.get(self, "type")
 
@@ -114,7 +114,7 @@ class GatewayArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        the description of gateway.
+        The description of the gateway.
         """
         return pulumi.get(self, "description")
 
@@ -126,7 +126,7 @@ class GatewayArgs:
     @pulumi.getter(name="gatewayClass")
     def gateway_class(self) -> Optional[pulumi.Input[str]]:
         """
-        the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+        The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
         """
         return pulumi.get(self, "gateway_class")
 
@@ -138,7 +138,7 @@ class GatewayArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Payment type of gateway. The valid value: `PayAsYouGo`.
+        The Payment type of gateway. Valid values: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -150,7 +150,7 @@ class GatewayArgs:
     @pulumi.getter(name="publicNetworkBandwidth")
     def public_network_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+        The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
         """
         return pulumi.get(self, "public_network_bandwidth")
 
@@ -198,7 +198,7 @@ class GatewayArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The vswitch id of gateway.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -225,19 +225,19 @@ class _GatewayState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
-        :param pulumi.Input[str] description: the description of gateway.
-        :param pulumi.Input[str] gateway_class: the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
-        :param pulumi.Input[str] gateway_name: the name of gateway.
-        :param pulumi.Input[str] location: gateway location. the valid values: `Cloud`, `On_Premise`.
-        :param pulumi.Input[str] payment_type: The Payment type of gateway. The valid value: `PayAsYouGo`.
-        :param pulumi.Input[int] public_network_bandwidth: The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+        :param pulumi.Input[str] description: The description of the gateway.
+        :param pulumi.Input[str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+        :param pulumi.Input[str] gateway_name: The name of the gateway.
+        :param pulumi.Input[str] location: The location of the gateway. Valid values: `Cloud`, `On_Premise`.
+        :param pulumi.Input[str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[int] public_network_bandwidth: The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
         :param pulumi.Input[str] reason_detail: The reason detail of gateway.
         :param pulumi.Input[str] reason_type: The reason type when user deletes the gateway.
         :param pulumi.Input[bool] release_after_expiration: Whether to release the gateway due to expiration.
-        :param pulumi.Input[str] status: gateway status.
-        :param pulumi.Input[str] storage_bundle_id: storage bundle id.
-        :param pulumi.Input[str] type: gateway type. the valid values: `Type`, `Iscsi`.
-        :param pulumi.Input[str] vswitch_id: The vswitch id of gateway.
+        :param pulumi.Input[str] status: The status of the Gateway.
+        :param pulumi.Input[str] storage_bundle_id: The ID of the gateway cluster.
+        :param pulumi.Input[str] type: The type of the gateway. Valid values: `File`, `Iscsi`.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -270,7 +270,7 @@ class _GatewayState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        the description of gateway.
+        The description of the gateway.
         """
         return pulumi.get(self, "description")
 
@@ -282,7 +282,7 @@ class _GatewayState:
     @pulumi.getter(name="gatewayClass")
     def gateway_class(self) -> Optional[pulumi.Input[str]]:
         """
-        the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+        The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
         """
         return pulumi.get(self, "gateway_class")
 
@@ -294,7 +294,7 @@ class _GatewayState:
     @pulumi.getter(name="gatewayName")
     def gateway_name(self) -> Optional[pulumi.Input[str]]:
         """
-        the name of gateway.
+        The name of the gateway.
         """
         return pulumi.get(self, "gateway_name")
 
@@ -306,7 +306,7 @@ class _GatewayState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        gateway location. the valid values: `Cloud`, `On_Premise`.
+        The location of the gateway. Valid values: `Cloud`, `On_Premise`.
         """
         return pulumi.get(self, "location")
 
@@ -318,7 +318,7 @@ class _GatewayState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Payment type of gateway. The valid value: `PayAsYouGo`.
+        The Payment type of gateway. Valid values: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -330,7 +330,7 @@ class _GatewayState:
     @pulumi.getter(name="publicNetworkBandwidth")
     def public_network_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+        The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
         """
         return pulumi.get(self, "public_network_bandwidth")
 
@@ -378,7 +378,7 @@ class _GatewayState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        gateway status.
+        The status of the Gateway.
         """
         return pulumi.get(self, "status")
 
@@ -390,7 +390,7 @@ class _GatewayState:
     @pulumi.getter(name="storageBundleId")
     def storage_bundle_id(self) -> Optional[pulumi.Input[str]]:
         """
-        storage bundle id.
+        The ID of the gateway cluster.
         """
         return pulumi.get(self, "storage_bundle_id")
 
@@ -402,7 +402,7 @@ class _GatewayState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        gateway type. the valid values: `Type`, `Iscsi`.
+        The type of the gateway. Valid values: `File`, `Iscsi`.
         """
         return pulumi.get(self, "type")
 
@@ -414,7 +414,7 @@ class _GatewayState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The vswitch id of gateway.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -442,7 +442,7 @@ class Gateway(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloud Storage Gateway: Gateway resource.
+        Provides a Cloud Storage Gateway Gateway resource.
 
         For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
 
@@ -458,18 +458,18 @@ class Gateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: the description of gateway.
-        :param pulumi.Input[str] gateway_class: the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
-        :param pulumi.Input[str] gateway_name: the name of gateway.
-        :param pulumi.Input[str] location: gateway location. the valid values: `Cloud`, `On_Premise`.
-        :param pulumi.Input[str] payment_type: The Payment type of gateway. The valid value: `PayAsYouGo`.
-        :param pulumi.Input[int] public_network_bandwidth: The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+        :param pulumi.Input[str] description: The description of the gateway.
+        :param pulumi.Input[str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+        :param pulumi.Input[str] gateway_name: The name of the gateway.
+        :param pulumi.Input[str] location: The location of the gateway. Valid values: `Cloud`, `On_Premise`.
+        :param pulumi.Input[str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[int] public_network_bandwidth: The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
         :param pulumi.Input[str] reason_detail: The reason detail of gateway.
         :param pulumi.Input[str] reason_type: The reason type when user deletes the gateway.
         :param pulumi.Input[bool] release_after_expiration: Whether to release the gateway due to expiration.
-        :param pulumi.Input[str] storage_bundle_id: storage bundle id.
-        :param pulumi.Input[str] type: gateway type. the valid values: `Type`, `Iscsi`.
-        :param pulumi.Input[str] vswitch_id: The vswitch id of gateway.
+        :param pulumi.Input[str] storage_bundle_id: The ID of the gateway cluster.
+        :param pulumi.Input[str] type: The type of the gateway. Valid values: `File`, `Iscsi`.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
         ...
     @overload
@@ -478,7 +478,7 @@ class Gateway(pulumi.CustomResource):
                  args: GatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloud Storage Gateway: Gateway resource.
+        Provides a Cloud Storage Gateway Gateway resource.
 
         For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
 
@@ -579,19 +579,19 @@ class Gateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: the description of gateway.
-        :param pulumi.Input[str] gateway_class: the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
-        :param pulumi.Input[str] gateway_name: the name of gateway.
-        :param pulumi.Input[str] location: gateway location. the valid values: `Cloud`, `On_Premise`.
-        :param pulumi.Input[str] payment_type: The Payment type of gateway. The valid value: `PayAsYouGo`.
-        :param pulumi.Input[int] public_network_bandwidth: The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+        :param pulumi.Input[str] description: The description of the gateway.
+        :param pulumi.Input[str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+        :param pulumi.Input[str] gateway_name: The name of the gateway.
+        :param pulumi.Input[str] location: The location of the gateway. Valid values: `Cloud`, `On_Premise`.
+        :param pulumi.Input[str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`.
+        :param pulumi.Input[int] public_network_bandwidth: The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
         :param pulumi.Input[str] reason_detail: The reason detail of gateway.
         :param pulumi.Input[str] reason_type: The reason type when user deletes the gateway.
         :param pulumi.Input[bool] release_after_expiration: Whether to release the gateway due to expiration.
-        :param pulumi.Input[str] status: gateway status.
-        :param pulumi.Input[str] storage_bundle_id: storage bundle id.
-        :param pulumi.Input[str] type: gateway type. the valid values: `Type`, `Iscsi`.
-        :param pulumi.Input[str] vswitch_id: The vswitch id of gateway.
+        :param pulumi.Input[str] status: The status of the Gateway.
+        :param pulumi.Input[str] storage_bundle_id: The ID of the gateway cluster.
+        :param pulumi.Input[str] type: The type of the gateway. Valid values: `File`, `Iscsi`.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -616,7 +616,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        the description of gateway.
+        The description of the gateway.
         """
         return pulumi.get(self, "description")
 
@@ -624,7 +624,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="gatewayClass")
     def gateway_class(self) -> pulumi.Output[Optional[str]]:
         """
-        the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+        The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
         """
         return pulumi.get(self, "gateway_class")
 
@@ -632,7 +632,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="gatewayName")
     def gateway_name(self) -> pulumi.Output[str]:
         """
-        the name of gateway.
+        The name of the gateway.
         """
         return pulumi.get(self, "gateway_name")
 
@@ -640,7 +640,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        gateway location. the valid values: `Cloud`, `On_Premise`.
+        The location of the gateway. Valid values: `Cloud`, `On_Premise`.
         """
         return pulumi.get(self, "location")
 
@@ -648,7 +648,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The Payment type of gateway. The valid value: `PayAsYouGo`.
+        The Payment type of gateway. Valid values: `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -656,7 +656,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="publicNetworkBandwidth")
     def public_network_bandwidth(self) -> pulumi.Output[int]:
         """
-        The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+        The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
         """
         return pulumi.get(self, "public_network_bandwidth")
 
@@ -688,7 +688,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        gateway status.
+        The status of the Gateway.
         """
         return pulumi.get(self, "status")
 
@@ -696,7 +696,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="storageBundleId")
     def storage_bundle_id(self) -> pulumi.Output[str]:
         """
-        storage bundle id.
+        The ID of the gateway cluster.
         """
         return pulumi.get(self, "storage_bundle_id")
 
@@ -704,7 +704,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        gateway type. the valid values: `Type`, `Iscsi`.
+        The type of the gateway. Valid values: `File`, `Iscsi`.
         """
         return pulumi.get(self, "type")
 
@@ -712,7 +712,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The vswitch id of gateway.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 

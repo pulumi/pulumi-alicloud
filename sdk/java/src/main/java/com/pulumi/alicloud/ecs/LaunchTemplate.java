@@ -147,6 +147,18 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> autoReleaseTime() {
         return Codegen.optional(this.autoReleaseTime);
     }
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> autoRenew;
+
+    public Output<Boolean> autoRenew() {
+        return this.autoRenew;
+    }
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> autoRenewPeriod;
+
+    public Output<Integer> autoRenewPeriod() {
+        return this.autoRenewPeriod;
+    }
     /**
      * The list of data disks created with instance.
      * 
@@ -408,10 +420,16 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.passwordInherit);
     }
     @Export(name="period", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> period;
+    private Output<Integer> period;
 
-    public Output<Optional<Integer>> period() {
-        return Codegen.optional(this.period);
+    public Output<Integer> period() {
+        return this.period;
+    }
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
+    private Output<String> periodUnit;
+
+    public Output<String> periodUnit() {
+        return this.periodUnit;
     }
     @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateIpAddress;

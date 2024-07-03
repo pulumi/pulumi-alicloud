@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CloudStorageGateway
 {
     /// <summary>
-    /// Provides a Cloud Storage Gateway: Gateway resource.
+    /// Provides a Cloud Storage Gateway Gateway resource.
     /// 
     /// For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
     /// 
@@ -28,37 +28,37 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// the description of gateway.
+        /// The description of the gateway.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+        /// The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
         /// </summary>
         [Output("gatewayClass")]
         public Output<string?> GatewayClass { get; private set; } = null!;
 
         /// <summary>
-        /// the name of gateway.
+        /// The name of the gateway.
         /// </summary>
         [Output("gatewayName")]
         public Output<string> GatewayName { get; private set; } = null!;
 
         /// <summary>
-        /// gateway location. the valid values: `Cloud`, `On_Premise`.
+        /// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The Payment type of gateway. The valid value: `PayAsYouGo`.
+        /// The Payment type of gateway. Valid values: `PayAsYouGo`.
         /// </summary>
         [Output("paymentType")]
         public Output<string?> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+        /// The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
         /// </summary>
         [Output("publicNetworkBandwidth")]
         public Output<int> PublicNetworkBandwidth { get; private set; } = null!;
@@ -82,25 +82,25 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<bool?> ReleaseAfterExpiration { get; private set; } = null!;
 
         /// <summary>
-        /// gateway status.
+        /// The status of the Gateway.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// storage bundle id.
+        /// The ID of the gateway cluster.
         /// </summary>
         [Output("storageBundleId")]
         public Output<string> StorageBundleId { get; private set; } = null!;
 
         /// <summary>
-        /// gateway type. the valid values: `Type`, `Iscsi`.
+        /// The type of the gateway. Valid values: `File`, `Iscsi`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The vswitch id of gateway.
+        /// The ID of the vSwitch.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -152,37 +152,37 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// the description of gateway.
+        /// The description of the gateway.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+        /// The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
         /// </summary>
         [Input("gatewayClass")]
         public Input<string>? GatewayClass { get; set; }
 
         /// <summary>
-        /// the name of gateway.
+        /// The name of the gateway.
         /// </summary>
         [Input("gatewayName", required: true)]
         public Input<string> GatewayName { get; set; } = null!;
 
         /// <summary>
-        /// gateway location. the valid values: `Cloud`, `On_Premise`.
+        /// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The Payment type of gateway. The valid value: `PayAsYouGo`.
+        /// The Payment type of gateway. Valid values: `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+        /// The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
         /// </summary>
         [Input("publicNetworkBandwidth")]
         public Input<int>? PublicNetworkBandwidth { get; set; }
@@ -206,19 +206,19 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<bool>? ReleaseAfterExpiration { get; set; }
 
         /// <summary>
-        /// storage bundle id.
+        /// The ID of the gateway cluster.
         /// </summary>
         [Input("storageBundleId", required: true)]
         public Input<string> StorageBundleId { get; set; } = null!;
 
         /// <summary>
-        /// gateway type. the valid values: `Type`, `Iscsi`.
+        /// The type of the gateway. Valid values: `File`, `Iscsi`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The vswitch id of gateway.
+        /// The ID of the vSwitch.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -232,37 +232,37 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     public sealed class GatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// the description of gateway.
+        /// The description of the gateway.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+        /// The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
         /// </summary>
         [Input("gatewayClass")]
         public Input<string>? GatewayClass { get; set; }
 
         /// <summary>
-        /// the name of gateway.
+        /// The name of the gateway.
         /// </summary>
         [Input("gatewayName")]
         public Input<string>? GatewayName { get; set; }
 
         /// <summary>
-        /// gateway location. the valid values: `Cloud`, `On_Premise`.
+        /// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The Payment type of gateway. The valid value: `PayAsYouGo`.
+        /// The Payment type of gateway. Valid values: `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+        /// The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
         /// </summary>
         [Input("publicNetworkBandwidth")]
         public Input<int>? PublicNetworkBandwidth { get; set; }
@@ -286,25 +286,25 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<bool>? ReleaseAfterExpiration { get; set; }
 
         /// <summary>
-        /// gateway status.
+        /// The status of the Gateway.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// storage bundle id.
+        /// The ID of the gateway cluster.
         /// </summary>
         [Input("storageBundleId")]
         public Input<string>? StorageBundleId { get; set; }
 
         /// <summary>
-        /// gateway type. the valid values: `Type`, `Iscsi`.
+        /// The type of the gateway. Valid values: `File`, `Iscsi`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The vswitch id of gateway.
+        /// The ID of the vSwitch.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
