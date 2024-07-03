@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  *     bandwidthType: "Basic",
  *     duration: "1",
  *     autoPay: true,
- *     ratio: 30,
  * });
  * ```
  *
@@ -72,9 +71,9 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public readonly autoPay!: pulumi.Output<boolean | undefined>;
     /**
-     * Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+     * Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
      */
-    public readonly autoRenewDuration!: pulumi.Output<number | undefined>;
+    public readonly autoRenewDuration!: pulumi.Output<number>;
     /**
      * Whether use vouchers. Default value: `false`. Valid values:
      */
@@ -132,6 +131,10 @@ export class BandwidthPackage extends pulumi.CustomResource {
      */
     public readonly renewalStatus!: pulumi.Output<string>;
     /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The status of the Bandwidth Package.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -172,6 +175,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
             resourceInputs["promotionOptionNo"] = state ? state.promotionOptionNo : undefined;
             resourceInputs["ratio"] = state ? state.ratio : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -198,6 +202,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
             resourceInputs["promotionOptionNo"] = args ? args.promotionOptionNo : undefined;
             resourceInputs["ratio"] = args ? args.ratio : undefined;
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["status"] = undefined /*out*/;
@@ -216,7 +221,7 @@ export interface BandwidthPackageState {
      */
     autoPay?: pulumi.Input<boolean>;
     /**
-     * Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+     * Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
      */
     autoRenewDuration?: pulumi.Input<number>;
     /**
@@ -276,6 +281,10 @@ export interface BandwidthPackageState {
      */
     renewalStatus?: pulumi.Input<string>;
     /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The status of the Bandwidth Package.
      */
     status?: pulumi.Input<string>;
@@ -298,7 +307,7 @@ export interface BandwidthPackageArgs {
      */
     autoPay?: pulumi.Input<boolean>;
     /**
-     * Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+     * Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
      */
     autoRenewDuration?: pulumi.Input<number>;
     /**
@@ -357,6 +366,10 @@ export interface BandwidthPackageArgs {
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     renewalStatus?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

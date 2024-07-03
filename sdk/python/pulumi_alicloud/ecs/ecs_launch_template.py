@@ -17,6 +17,8 @@ __all__ = ['EcsLaunchTemplateArgs', 'EcsLaunchTemplate']
 class EcsLaunchTemplateArgs:
     def __init__(__self__, *,
                  auto_release_time: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -38,6 +40,7 @@ class EcsLaunchTemplateArgs:
                  network_type: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 period_unit: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -64,6 +67,8 @@ class EcsLaunchTemplateArgs:
         """
         The set of arguments for constructing a EcsLaunchTemplate resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+        :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
         :param pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -89,6 +94,7 @@ class EcsLaunchTemplateArgs:
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
                - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
                - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+        :param pulumi.Input[str] period_unit: The unit of the subscription period. Valid values: `Month` (default).
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
@@ -117,6 +123,10 @@ class EcsLaunchTemplateArgs:
         """
         if auto_release_time is not None:
             pulumi.set(__self__, "auto_release_time", auto_release_time)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if deployment_set_id is not None:
@@ -162,6 +172,8 @@ class EcsLaunchTemplateArgs:
             pulumi.set(__self__, "password_inherit", password_inherit)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if period_unit is not None:
+            pulumi.set(__self__, "period_unit", period_unit)
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if ram_role_name is not None:
@@ -235,6 +247,30 @@ class EcsLaunchTemplateArgs:
     @auto_release_time.setter
     def auto_release_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auto_release_time", value)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_period", value)
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -492,6 +528,18 @@ class EcsLaunchTemplateArgs:
     @period.setter
     def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="periodUnit")
+    def period_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unit of the subscription period. Valid values: `Month` (default).
+        """
+        return pulumi.get(self, "period_unit")
+
+    @period_unit.setter
+    def period_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period_unit", value)
 
     @property
     @pulumi.getter(name="privateIpAddress")
@@ -781,6 +829,8 @@ class EcsLaunchTemplateArgs:
 class _EcsLaunchTemplateState:
     def __init__(__self__, *,
                  auto_release_time: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -802,6 +852,7 @@ class _EcsLaunchTemplateState:
                  network_type: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 period_unit: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -828,6 +879,8 @@ class _EcsLaunchTemplateState:
         """
         Input properties used for looking up and filtering EcsLaunchTemplate resources.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+        :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
         :param pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -853,6 +906,7 @@ class _EcsLaunchTemplateState:
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
                - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
                - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+        :param pulumi.Input[str] period_unit: The unit of the subscription period. Valid values: `Month` (default).
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
@@ -881,6 +935,10 @@ class _EcsLaunchTemplateState:
         """
         if auto_release_time is not None:
             pulumi.set(__self__, "auto_release_time", auto_release_time)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
         if deployment_set_id is not None:
@@ -926,6 +984,8 @@ class _EcsLaunchTemplateState:
             pulumi.set(__self__, "password_inherit", password_inherit)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if period_unit is not None:
+            pulumi.set(__self__, "period_unit", period_unit)
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if ram_role_name is not None:
@@ -999,6 +1059,30 @@ class _EcsLaunchTemplateState:
     @auto_release_time.setter
     def auto_release_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auto_release_time", value)
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @auto_renew_period.setter
+    def auto_renew_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_renew_period", value)
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -1256,6 +1340,18 @@ class _EcsLaunchTemplateState:
     @period.setter
     def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="periodUnit")
+    def period_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unit of the subscription period. Valid values: `Month` (default).
+        """
+        return pulumi.get(self, "period_unit")
+
+    @period_unit.setter
+    def period_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period_unit", value)
 
     @property
     @pulumi.getter(name="privateIpAddress")
@@ -1547,6 +1643,8 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_release_time: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1568,6 +1666,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  network_type: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 period_unit: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -1697,6 +1796,8 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+        :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -1722,6 +1823,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
                - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
                - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+        :param pulumi.Input[str] period_unit: The unit of the subscription period. Valid values: `Month` (default).
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
@@ -1872,6 +1974,8 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_release_time: Optional[pulumi.Input[str]] = None,
+                 auto_renew: Optional[pulumi.Input[bool]] = None,
+                 auto_renew_period: Optional[pulumi.Input[int]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -1893,6 +1997,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  network_type: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 period_unit: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -1926,6 +2031,8 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             __props__ = EcsLaunchTemplateArgs.__new__(EcsLaunchTemplateArgs)
 
             __props__.__dict__["auto_release_time"] = auto_release_time
+            __props__.__dict__["auto_renew"] = auto_renew
+            __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["deployment_set_id"] = deployment_set_id
             __props__.__dict__["description"] = description
@@ -1947,6 +2054,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             __props__.__dict__["network_type"] = network_type
             __props__.__dict__["password_inherit"] = password_inherit
             __props__.__dict__["period"] = period
+            __props__.__dict__["period_unit"] = period_unit
             __props__.__dict__["private_ip_address"] = private_ip_address
             __props__.__dict__["ram_role_name"] = ram_role_name
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -1981,6 +2089,8 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_release_time: Optional[pulumi.Input[str]] = None,
+            auto_renew: Optional[pulumi.Input[bool]] = None,
+            auto_renew_period: Optional[pulumi.Input[int]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]]] = None,
             deployment_set_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -2002,6 +2112,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             network_type: Optional[pulumi.Input[str]] = None,
             password_inherit: Optional[pulumi.Input[bool]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            period_unit: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             ram_role_name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -2033,6 +2144,8 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
+        :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
@@ -2058,6 +2171,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
                - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
                - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
+        :param pulumi.Input[str] period_unit: The unit of the subscription period. Valid values: `Month` (default).
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
@@ -2089,6 +2203,8 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         __props__ = _EcsLaunchTemplateState.__new__(_EcsLaunchTemplateState)
 
         __props__.__dict__["auto_release_time"] = auto_release_time
+        __props__.__dict__["auto_renew"] = auto_renew
+        __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["deployment_set_id"] = deployment_set_id
         __props__.__dict__["description"] = description
@@ -2110,6 +2226,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         __props__.__dict__["network_type"] = network_type
         __props__.__dict__["password_inherit"] = password_inherit
         __props__.__dict__["period"] = period
+        __props__.__dict__["period_unit"] = period_unit
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["ram_role_name"] = ram_role_name
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -2142,6 +2259,22 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         """
         return pulumi.get(self, "auto_release_time")
+
+    @property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> pulumi.Output[int]:
+        """
+        The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+        """
+        return pulumi.get(self, "auto_renew_period")
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -2308,13 +2441,21 @@ class EcsLaunchTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[int]]:
+    def period(self) -> pulumi.Output[int]:
         """
         The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
         - When the PeriodUnit parameter is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`, and `4`.
         - When the PeriodUnit parameter is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, and `60`.
         """
         return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="periodUnit")
+    def period_unit(self) -> pulumi.Output[str]:
+        """
+        The unit of the subscription period. Valid values: `Month` (default).
+        """
+        return pulumi.get(self, "period_unit")
 
     @property
     @pulumi.getter(name="privateIpAddress")

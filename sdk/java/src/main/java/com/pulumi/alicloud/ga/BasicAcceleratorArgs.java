@@ -204,6 +204,21 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * A mapping of tags to assign to the resource.
      * 
      */
@@ -233,6 +248,7 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
         this.paymentType = $.paymentType;
         this.pricingCycle = $.pricingCycle;
         this.promotionOptionNo = $.promotionOptionNo;
+        this.resourceGroupId = $.resourceGroupId;
         this.tags = $.tags;
     }
 
@@ -508,6 +524,27 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder promotionOptionNo(String promotionOptionNo) {
             return promotionOptionNo(Output.of(promotionOptionNo));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

@@ -112,6 +112,8 @@ type LaunchTemplate struct {
 
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrOutput `pulumi:"autoReleaseTime"`
+	AutoRenew       pulumi.BoolOutput      `pulumi:"autoRenew"`
+	AutoRenewPeriod pulumi.IntOutput       `pulumi:"autoRenewPeriod"`
 	// The list of data disks created with instance.
 	DataDisks       LaunchTemplateDataDiskArrayOutput `pulumi:"dataDisks"`
 	DeploymentSetId pulumi.StringPtrOutput            `pulumi:"deploymentSetId"`
@@ -157,7 +159,8 @@ type LaunchTemplate struct {
 	// Network type of the instance. Value options: `classic` | `vpc`.
 	NetworkType      pulumi.StringPtrOutput `pulumi:"networkType"`
 	PasswordInherit  pulumi.BoolPtrOutput   `pulumi:"passwordInherit"`
-	Period           pulumi.IntPtrOutput    `pulumi:"period"`
+	Period           pulumi.IntOutput       `pulumi:"period"`
+	PeriodUnit       pulumi.StringOutput    `pulumi:"periodUnit"`
 	PrivateIpAddress pulumi.StringPtrOutput `pulumi:"privateIpAddress"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     pulumi.StringPtrOutput `pulumi:"ramRoleName"`
@@ -248,6 +251,8 @@ func GetLaunchTemplate(ctx *pulumi.Context,
 type launchTemplateState struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
+	AutoRenew       *bool   `pulumi:"autoRenew"`
+	AutoRenewPeriod *int    `pulumi:"autoRenewPeriod"`
 	// The list of data disks created with instance.
 	DataDisks       []LaunchTemplateDataDisk `pulumi:"dataDisks"`
 	DeploymentSetId *string                  `pulumi:"deploymentSetId"`
@@ -294,6 +299,7 @@ type launchTemplateState struct {
 	NetworkType      *string `pulumi:"networkType"`
 	PasswordInherit  *bool   `pulumi:"passwordInherit"`
 	Period           *int    `pulumi:"period"`
+	PeriodUnit       *string `pulumi:"periodUnit"`
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     *string `pulumi:"ramRoleName"`
@@ -355,6 +361,8 @@ type launchTemplateState struct {
 type LaunchTemplateState struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrInput
+	AutoRenew       pulumi.BoolPtrInput
+	AutoRenewPeriod pulumi.IntPtrInput
 	// The list of data disks created with instance.
 	DataDisks       LaunchTemplateDataDiskArrayInput
 	DeploymentSetId pulumi.StringPtrInput
@@ -401,6 +409,7 @@ type LaunchTemplateState struct {
 	NetworkType      pulumi.StringPtrInput
 	PasswordInherit  pulumi.BoolPtrInput
 	Period           pulumi.IntPtrInput
+	PeriodUnit       pulumi.StringPtrInput
 	PrivateIpAddress pulumi.StringPtrInput
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     pulumi.StringPtrInput
@@ -466,6 +475,8 @@ func (LaunchTemplateState) ElementType() reflect.Type {
 type launchTemplateArgs struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
+	AutoRenew       *bool   `pulumi:"autoRenew"`
+	AutoRenewPeriod *int    `pulumi:"autoRenewPeriod"`
 	// The list of data disks created with instance.
 	DataDisks       []LaunchTemplateDataDisk `pulumi:"dataDisks"`
 	DeploymentSetId *string                  `pulumi:"deploymentSetId"`
@@ -512,6 +523,7 @@ type launchTemplateArgs struct {
 	NetworkType      *string `pulumi:"networkType"`
 	PasswordInherit  *bool   `pulumi:"passwordInherit"`
 	Period           *int    `pulumi:"period"`
+	PeriodUnit       *string `pulumi:"periodUnit"`
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     *string `pulumi:"ramRoleName"`
@@ -574,6 +586,8 @@ type launchTemplateArgs struct {
 type LaunchTemplateArgs struct {
 	// Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
 	AutoReleaseTime pulumi.StringPtrInput
+	AutoRenew       pulumi.BoolPtrInput
+	AutoRenewPeriod pulumi.IntPtrInput
 	// The list of data disks created with instance.
 	DataDisks       LaunchTemplateDataDiskArrayInput
 	DeploymentSetId pulumi.StringPtrInput
@@ -620,6 +634,7 @@ type LaunchTemplateArgs struct {
 	NetworkType      pulumi.StringPtrInput
 	PasswordInherit  pulumi.BoolPtrInput
 	Period           pulumi.IntPtrInput
+	PeriodUnit       pulumi.StringPtrInput
 	PrivateIpAddress pulumi.StringPtrInput
 	// The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
 	RamRoleName     pulumi.StringPtrInput
@@ -770,6 +785,14 @@ func (o LaunchTemplateOutput) AutoReleaseTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.AutoReleaseTime }).(pulumi.StringPtrOutput)
 }
 
+func (o LaunchTemplateOutput) AutoRenew() pulumi.BoolOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
+}
+
+func (o LaunchTemplateOutput) AutoRenewPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntOutput { return v.AutoRenewPeriod }).(pulumi.IntOutput)
+}
+
 // The list of data disks created with instance.
 func (o LaunchTemplateOutput) DataDisks() LaunchTemplateDataDiskArrayOutput {
 	return o.ApplyT(func(v *LaunchTemplate) LaunchTemplateDataDiskArrayOutput { return v.DataDisks }).(LaunchTemplateDataDiskArrayOutput)
@@ -875,8 +898,12 @@ func (o LaunchTemplateOutput) PasswordInherit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.BoolPtrOutput { return v.PasswordInherit }).(pulumi.BoolPtrOutput)
 }
 
-func (o LaunchTemplateOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+func (o LaunchTemplateOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
+}
+
+func (o LaunchTemplateOutput) PeriodUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.PeriodUnit }).(pulumi.StringOutput)
 }
 
 func (o LaunchTemplateOutput) PrivateIpAddress() pulumi.StringPtrOutput {

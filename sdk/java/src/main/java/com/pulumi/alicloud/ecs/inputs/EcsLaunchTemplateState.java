@@ -40,6 +40,36 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+     * 
+     */
+    @Import(name="autoRenew")
+    private @Nullable Output<Boolean> autoRenew;
+
+    /**
+     * @return Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+     * 
+     */
+    public Optional<Output<Boolean>> autoRenew() {
+        return Optional.ofNullable(this.autoRenew);
+    }
+
+    /**
+     * The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+     * 
+     */
+    @Import(name="autoRenewPeriod")
+    private @Nullable Output<Integer> autoRenewPeriod;
+
+    /**
+     * @return The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+     * 
+     */
+    public Optional<Output<Integer>> autoRenewPeriod() {
+        return Optional.ofNullable(this.autoRenewPeriod);
+    }
+
+    /**
      * The list of data disks created with instance. See `data_disks` below.
      * 
      */
@@ -368,6 +398,21 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
+    }
+
+    /**
+     * The unit of the subscription period. Valid values: `Month` (default).
+     * 
+     */
+    @Import(name="periodUnit")
+    private @Nullable Output<String> periodUnit;
+
+    /**
+     * @return The unit of the subscription period. Valid values: `Month` (default).
+     * 
+     */
+    public Optional<Output<String>> periodUnit() {
+        return Optional.ofNullable(this.periodUnit);
     }
 
     /**
@@ -763,6 +808,8 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
 
     private EcsLaunchTemplateState(EcsLaunchTemplateState $) {
         this.autoReleaseTime = $.autoReleaseTime;
+        this.autoRenew = $.autoRenew;
+        this.autoRenewPeriod = $.autoRenewPeriod;
         this.dataDisks = $.dataDisks;
         this.deploymentSetId = $.deploymentSetId;
         this.description = $.description;
@@ -784,6 +831,7 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
         this.networkType = $.networkType;
         this.passwordInherit = $.passwordInherit;
         this.period = $.period;
+        this.periodUnit = $.periodUnit;
         this.privateIpAddress = $.privateIpAddress;
         this.ramRoleName = $.ramRoleName;
         this.resourceGroupId = $.resourceGroupId;
@@ -846,6 +894,48 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
          */
         public Builder autoReleaseTime(String autoReleaseTime) {
             return autoReleaseTime(Output.of(autoReleaseTime));
+        }
+
+        /**
+         * @param autoRenew Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(@Nullable Output<Boolean> autoRenew) {
+            $.autoRenew = autoRenew;
+            return this;
+        }
+
+        /**
+         * @param autoRenew Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(Boolean autoRenew) {
+            return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
+         * @param autoRenewPeriod The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewPeriod(@Nullable Output<Integer> autoRenewPeriod) {
+            $.autoRenewPeriod = autoRenewPeriod;
+            return this;
+        }
+
+        /**
+         * @param autoRenewPeriod The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewPeriod(Integer autoRenewPeriod) {
+            return autoRenewPeriod(Output.of(autoRenewPeriod));
         }
 
         /**
@@ -1313,6 +1403,27 @@ public final class EcsLaunchTemplateState extends com.pulumi.resources.ResourceA
          */
         public Builder period(Integer period) {
             return period(Output.of(period));
+        }
+
+        /**
+         * @param periodUnit The unit of the subscription period. Valid values: `Month` (default).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder periodUnit(@Nullable Output<String> periodUnit) {
+            $.periodUnit = periodUnit;
+            return this;
+        }
+
+        /**
+         * @param periodUnit The unit of the subscription period. Valid values: `Month` (default).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder periodUnit(String periodUnit) {
+            return periodUnit(Output.of(periodUnit));
         }
 
         /**

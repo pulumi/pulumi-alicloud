@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloud Storage Gateway: Gateway resource.
+ * Provides a Cloud Storage Gateway Gateway resource.
  * 
  * For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
  * 
@@ -35,84 +35,84 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cloudstoragegateway/gateway:Gateway")
 public class Gateway extends com.pulumi.resources.CustomResource {
     /**
-     * the description of gateway.
+     * The description of the gateway.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return the description of gateway.
+     * @return The description of the gateway.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+     * The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
      * 
      */
     @Export(name="gatewayClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gatewayClass;
 
     /**
-     * @return the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
+     * @return The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
      * 
      */
     public Output<Optional<String>> gatewayClass() {
         return Codegen.optional(this.gatewayClass);
     }
     /**
-     * the name of gateway.
+     * The name of the gateway.
      * 
      */
     @Export(name="gatewayName", refs={String.class}, tree="[0]")
     private Output<String> gatewayName;
 
     /**
-     * @return the name of gateway.
+     * @return The name of the gateway.
      * 
      */
     public Output<String> gatewayName() {
         return this.gatewayName;
     }
     /**
-     * gateway location. the valid values: `Cloud`, `On_Premise`.
+     * The location of the gateway. Valid values: `Cloud`, `On_Premise`.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return gateway location. the valid values: `Cloud`, `On_Premise`.
+     * @return The location of the gateway. Valid values: `Cloud`, `On_Premise`.
      * 
      */
     public Output<String> location() {
         return this.location;
     }
     /**
-     * The Payment type of gateway. The valid value: `PayAsYouGo`.
+     * The Payment type of gateway. Valid values: `PayAsYouGo`.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentType;
 
     /**
-     * @return The Payment type of gateway. The valid value: `PayAsYouGo`.
+     * @return The Payment type of gateway. Valid values: `PayAsYouGo`.
      * 
      */
     public Output<Optional<String>> paymentType() {
         return Codegen.optional(this.paymentType);
     }
     /**
-     * The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+     * The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
      * 
      */
     @Export(name="publicNetworkBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> publicNetworkBandwidth;
 
     /**
-     * @return The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
+     * @return The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
      * 
      */
     public Output<Integer> publicNetworkBandwidth() {
@@ -161,56 +161,56 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.releaseAfterExpiration);
     }
     /**
-     * gateway status.
+     * The status of the Gateway.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return gateway status.
+     * @return The status of the Gateway.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * storage bundle id.
+     * The ID of the gateway cluster.
      * 
      */
     @Export(name="storageBundleId", refs={String.class}, tree="[0]")
     private Output<String> storageBundleId;
 
     /**
-     * @return storage bundle id.
+     * @return The ID of the gateway cluster.
      * 
      */
     public Output<String> storageBundleId() {
         return this.storageBundleId;
     }
     /**
-     * gateway type. the valid values: `Type`, `Iscsi`.
+     * The type of the gateway. Valid values: `File`, `Iscsi`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return gateway type. the valid values: `Type`, `Iscsi`.
+     * @return The type of the gateway. Valid values: `File`, `Iscsi`.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The vswitch id of gateway.
+     * The ID of the vSwitch.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The vswitch id of gateway.
+     * @return The ID of the vSwitch.
      * 
      */
     public Output<Optional<String>> vswitchId() {

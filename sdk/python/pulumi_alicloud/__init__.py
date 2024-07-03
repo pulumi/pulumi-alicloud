@@ -590,6 +590,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "alb/loadBalancerSecurityGroupAttachment",
+  "fqn": "pulumi_alicloud.alb",
+  "classes": {
+   "alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment": "LoadBalancerSecurityGroupAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "alb/rule",
   "fqn": "pulumi_alicloud.alb",
   "classes": {
@@ -1330,6 +1338,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cen",
   "classes": {
    "alicloud:cen/transitRouterCidr:TransitRouterCidr": "TransitRouterCidr"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cen/transitRouterEcrAttachment",
+  "fqn": "pulumi_alicloud.cen",
+  "classes": {
+   "alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment": "TransitRouterEcrAttachment"
   }
  },
  {
@@ -2370,6 +2386,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ddos",
   "classes": {
    "alicloud:ddos/bgpIp:BgpIp": "BgpIp"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ddos/bgpPolicy",
+  "fqn": "pulumi_alicloud.ddos",
+  "classes": {
+   "alicloud:ddos/bgpPolicy:BgpPolicy": "BgpPolicy"
   }
  },
  {

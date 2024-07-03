@@ -110,6 +110,12 @@ namespace Pulumi.AliCloud.Ecs
         [Output("autoReleaseTime")]
         public Output<string?> AutoReleaseTime { get; private set; } = null!;
 
+        [Output("autoRenew")]
+        public Output<bool> AutoRenew { get; private set; } = null!;
+
+        [Output("autoRenewPeriod")]
+        public Output<int> AutoRenewPeriod { get; private set; } = null!;
+
         /// <summary>
         /// The list of data disks created with instance.
         /// </summary>
@@ -224,7 +230,10 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> PasswordInherit { get; private set; } = null!;
 
         [Output("period")]
-        public Output<int?> Period { get; private set; } = null!;
+        public Output<int> Period { get; private set; } = null!;
+
+        [Output("periodUnit")]
+        public Output<string> PeriodUnit { get; private set; } = null!;
 
         [Output("privateIpAddress")]
         public Output<string?> PrivateIpAddress { get; private set; } = null!;
@@ -396,6 +405,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("autoReleaseTime")]
         public Input<string>? AutoReleaseTime { get; set; }
 
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        [Input("autoRenewPeriod")]
+        public Input<int>? AutoRenewPeriod { get; set; }
+
         [Input("dataDisks")]
         private InputList<Inputs.LaunchTemplateDataDiskArgs>? _dataDisks;
 
@@ -517,6 +532,9 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        [Input("periodUnit")]
+        public Input<string>? PeriodUnit { get; set; }
 
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
@@ -666,6 +684,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("autoReleaseTime")]
         public Input<string>? AutoReleaseTime { get; set; }
 
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        [Input("autoRenewPeriod")]
+        public Input<int>? AutoRenewPeriod { get; set; }
+
         [Input("dataDisks")]
         private InputList<Inputs.LaunchTemplateDataDiskGetArgs>? _dataDisks;
 
@@ -787,6 +811,9 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("period")]
         public Input<int>? Period { get; set; }
+
+        [Input("periodUnit")]
+        public Input<string>? PeriodUnit { get; set; }
 
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }

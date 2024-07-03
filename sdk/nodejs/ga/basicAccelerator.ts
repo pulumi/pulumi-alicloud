@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.ga.BasicAccelerator("default", {
- *     duration: 1,
- *     pricingCycle: "Month",
- *     basicAcceleratorName: "tf-example-value",
- *     description: "tf-example-value",
  *     bandwidthBillingType: "BandwidthPackage",
  *     autoPay: true,
+ *     duration: 1,
+ *     pricingCycle: "Month",
  *     autoUseCoupon: "true",
+ *     basicAcceleratorName: "tf-example-value",
+ *     description: "tf-example-value",
  * });
  * ```
  *
@@ -117,6 +117,10 @@ export class BasicAccelerator extends pulumi.CustomResource {
      */
     public readonly promotionOptionNo!: pulumi.Output<string | undefined>;
     /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The status of the Basic Accelerator instance.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -150,6 +154,7 @@ export class BasicAccelerator extends pulumi.CustomResource {
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
             resourceInputs["promotionOptionNo"] = state ? state.promotionOptionNo : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -166,6 +171,7 @@ export class BasicAccelerator extends pulumi.CustomResource {
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
             resourceInputs["promotionOptionNo"] = args ? args.promotionOptionNo : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -228,6 +234,10 @@ export interface BasicAcceleratorState {
      * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      */
     promotionOptionNo?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The status of the Basic Accelerator instance.
      */
@@ -292,6 +302,10 @@ export interface BasicAcceleratorArgs {
      * The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
      */
     promotionOptionNo?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

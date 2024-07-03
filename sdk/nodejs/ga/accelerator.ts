@@ -120,6 +120,10 @@ export class Accelerator extends pulumi.CustomResource {
      */
     public readonly renewalStatus!: pulumi.Output<string>;
     /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The instance type of the GA instance. Specification of global acceleration instance. Valid values:
      */
     public readonly spec!: pulumi.Output<string | undefined>;
@@ -157,6 +161,7 @@ export class Accelerator extends pulumi.CustomResource {
             resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
             resourceInputs["promotionOptionNo"] = state ? state.promotionOptionNo : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["spec"] = state ? state.spec : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -174,6 +179,7 @@ export class Accelerator extends pulumi.CustomResource {
             resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
             resourceInputs["promotionOptionNo"] = args ? args.promotionOptionNo : undefined;
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["status"] = undefined /*out*/;
@@ -244,6 +250,10 @@ export interface AcceleratorState {
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     renewalStatus?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The instance type of the GA instance. Specification of global acceleration instance. Valid values:
      */
@@ -319,6 +329,10 @@ export interface AcceleratorArgs {
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     renewalStatus?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The instance type of the GA instance. Specification of global acceleration instance. Valid values:
      */

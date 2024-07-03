@@ -90,6 +90,21 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * A mapping of tags to assign to the resource.
      * 
      */
@@ -111,6 +126,7 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
         this.aclName = $.aclName;
         this.addressIpVersion = $.addressIpVersion;
         this.dryRun = $.dryRun;
+        this.resourceGroupId = $.resourceGroupId;
         this.tags = $.tags;
     }
 
@@ -236,6 +252,27 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dryRun(Boolean dryRun) {
             return dryRun(Output.of(dryRun));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

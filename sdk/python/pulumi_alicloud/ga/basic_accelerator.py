@@ -26,6 +26,7 @@ class BasicAcceleratorArgs:
                  payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  promotion_option_no: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a BasicAccelerator resource.
@@ -43,6 +44,7 @@ class BasicAcceleratorArgs:
         :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if auto_pay is not None:
@@ -69,6 +71,8 @@ class BasicAcceleratorArgs:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if promotion_option_no is not None:
             pulumi.set(__self__, "promotion_option_no", promotion_option_no)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -219,6 +223,18 @@ class BasicAcceleratorArgs:
         pulumi.set(self, "promotion_option_no", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -246,6 +262,7 @@ class _BasicAcceleratorState:
                  payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  promotion_option_no: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
@@ -264,6 +281,7 @@ class _BasicAcceleratorState:
         :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] status: The status of the Basic Accelerator instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -291,6 +309,8 @@ class _BasicAcceleratorState:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if promotion_option_no is not None:
             pulumi.set(__self__, "promotion_option_no", promotion_option_no)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -443,6 +463,18 @@ class _BasicAcceleratorState:
         pulumi.set(self, "promotion_option_no", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -484,6 +516,7 @@ class BasicAccelerator(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  promotion_option_no: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
@@ -502,13 +535,13 @@ class BasicAccelerator(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.ga.BasicAccelerator("default",
-            duration=1,
-            pricing_cycle="Month",
-            basic_accelerator_name="tf-example-value",
-            description="tf-example-value",
             bandwidth_billing_type="BandwidthPackage",
             auto_pay=True,
-            auto_use_coupon="true")
+            duration=1,
+            pricing_cycle="Month",
+            auto_use_coupon="true",
+            basic_accelerator_name="tf-example-value",
+            description="tf-example-value")
         ```
 
         ## Import
@@ -535,6 +568,7 @@ class BasicAccelerator(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
@@ -559,13 +593,13 @@ class BasicAccelerator(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.ga.BasicAccelerator("default",
-            duration=1,
-            pricing_cycle="Month",
-            basic_accelerator_name="tf-example-value",
-            description="tf-example-value",
             bandwidth_billing_type="BandwidthPackage",
             auto_pay=True,
-            auto_use_coupon="true")
+            duration=1,
+            pricing_cycle="Month",
+            auto_use_coupon="true",
+            basic_accelerator_name="tf-example-value",
+            description="tf-example-value")
         ```
 
         ## Import
@@ -603,6 +637,7 @@ class BasicAccelerator(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  promotion_option_no: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -625,6 +660,7 @@ class BasicAccelerator(pulumi.CustomResource):
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["pricing_cycle"] = pricing_cycle
             __props__.__dict__["promotion_option_no"] = promotion_option_no
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["status"] = None
         super(BasicAccelerator, __self__).__init__(
@@ -649,6 +685,7 @@ class BasicAccelerator(pulumi.CustomResource):
             payment_type: Optional[pulumi.Input[str]] = None,
             pricing_cycle: Optional[pulumi.Input[str]] = None,
             promotion_option_no: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'BasicAccelerator':
         """
@@ -672,6 +709,7 @@ class BasicAccelerator(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[str] status: The status of the Basic Accelerator instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -691,6 +729,7 @@ class BasicAccelerator(pulumi.CustomResource):
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["pricing_cycle"] = pricing_cycle
         __props__.__dict__["promotion_option_no"] = promotion_option_no
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         return BasicAccelerator(resource_name, opts=opts, __props__=__props__)
@@ -792,6 +831,14 @@ class BasicAccelerator(pulumi.CustomResource):
         The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         """
         return pulumi.get(self, "promotion_option_no")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter

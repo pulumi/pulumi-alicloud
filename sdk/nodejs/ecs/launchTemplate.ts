@@ -115,6 +115,8 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
      */
     public readonly autoReleaseTime!: pulumi.Output<string | undefined>;
+    public readonly autoRenew!: pulumi.Output<boolean>;
+    public readonly autoRenewPeriod!: pulumi.Output<number>;
     /**
      * The list of data disks created with instance.
      */
@@ -190,7 +192,8 @@ export class LaunchTemplate extends pulumi.CustomResource {
      */
     public readonly networkType!: pulumi.Output<string | undefined>;
     public readonly passwordInherit!: pulumi.Output<boolean | undefined>;
-    public readonly period!: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number>;
+    public readonly periodUnit!: pulumi.Output<string>;
     public readonly privateIpAddress!: pulumi.Output<string | undefined>;
     /**
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
@@ -288,6 +291,8 @@ export class LaunchTemplate extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as LaunchTemplateState | undefined;
             resourceInputs["autoReleaseTime"] = state ? state.autoReleaseTime : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
             resourceInputs["deploymentSetId"] = state ? state.deploymentSetId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -309,6 +314,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
             resourceInputs["networkType"] = state ? state.networkType : undefined;
             resourceInputs["passwordInherit"] = state ? state.passwordInherit : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             resourceInputs["ramRoleName"] = state ? state.ramRoleName : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -335,6 +341,8 @@ export class LaunchTemplate extends pulumi.CustomResource {
         } else {
             const args = argsOrState as LaunchTemplateArgs | undefined;
             resourceInputs["autoReleaseTime"] = args ? args.autoReleaseTime : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
             resourceInputs["deploymentSetId"] = args ? args.deploymentSetId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -356,6 +364,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
             resourceInputs["networkType"] = args ? args.networkType : undefined;
             resourceInputs["passwordInherit"] = args ? args.passwordInherit : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
             resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
             resourceInputs["ramRoleName"] = args ? args.ramRoleName : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -393,6 +402,8 @@ export interface LaunchTemplateState {
      * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
      */
     autoReleaseTime?: pulumi.Input<string>;
+    autoRenew?: pulumi.Input<boolean>;
+    autoRenewPeriod?: pulumi.Input<number>;
     /**
      * The list of data disks created with instance.
      */
@@ -469,6 +480,7 @@ export interface LaunchTemplateState {
     networkType?: pulumi.Input<string>;
     passwordInherit?: pulumi.Input<boolean>;
     period?: pulumi.Input<number>;
+    periodUnit?: pulumi.Input<string>;
     privateIpAddress?: pulumi.Input<string>;
     /**
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
@@ -561,6 +573,8 @@ export interface LaunchTemplateArgs {
      * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
      */
     autoReleaseTime?: pulumi.Input<string>;
+    autoRenew?: pulumi.Input<boolean>;
+    autoRenewPeriod?: pulumi.Input<number>;
     /**
      * The list of data disks created with instance.
      */
@@ -637,6 +651,7 @@ export interface LaunchTemplateArgs {
     networkType?: pulumi.Input<string>;
     passwordInherit?: pulumi.Input<boolean>;
     period?: pulumi.Input<number>;
+    periodUnit?: pulumi.Input<string>;
     privateIpAddress?: pulumi.Input<string>;
     /**
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.

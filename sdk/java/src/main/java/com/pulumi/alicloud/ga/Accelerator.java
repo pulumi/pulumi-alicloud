@@ -262,6 +262,20 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
         return this.renewalStatus;
     }
     /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * The instance type of the GA instance. Specification of global acceleration instance. Valid values:
      * 
      */

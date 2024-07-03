@@ -13,6 +13,1223 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type BgpPolicyContent struct {
+	// Blacklist and whitelist timeout.
+	BlackIpListExpireAt *int `pulumi:"blackIpListExpireAt"`
+	// Whether to enable L4 protection.
+	EnableDefense *bool `pulumi:"enableDefense"`
+	// Switch to discard ICMP.
+	EnableDropIcmp *bool `pulumi:"enableDropIcmp"`
+	// Whether the intelligent switch is on.
+	EnableIntelligence *bool `pulumi:"enableIntelligence"`
+	// Fingerprint Rules. See `fingerPrintRuleList` below.
+	FingerPrintRuleLists []BgpPolicyContentFingerPrintRuleList `pulumi:"fingerPrintRuleLists"`
+	// Smart mode. Valid values: weak, hard, and default.
+	IntelligenceLevel *string `pulumi:"intelligenceLevel"`
+	// L4 protection rules. See `layer4RuleList` below.
+	Layer4RuleLists []BgpPolicyContentLayer4RuleList `pulumi:"layer4RuleLists"`
+	// Port Rule List. See `portRuleList` below.
+	PortRuleLists []BgpPolicyContentPortRuleList `pulumi:"portRuleLists"`
+	// Reflective port filtering.
+	ReflectBlockUdpPortLists []int `pulumi:"reflectBlockUdpPortLists"`
+	// List of Regional Banned Countries.
+	RegionBlockCountryLists []int `pulumi:"regionBlockCountryLists"`
+	// List of Prohibited Provinces by Region.
+	RegionBlockProvinceLists []int `pulumi:"regionBlockProvinceLists"`
+	// Source pull Black. See `sourceBlockList` below.
+	SourceBlockLists []BgpPolicyContentSourceBlockList `pulumi:"sourceBlockLists"`
+	// Do not fill in when the source speed limit is deleted. See `sourceLimit` below.
+	SourceLimit *BgpPolicyContentSourceLimit `pulumi:"sourceLimit"`
+	// Add white high protection back to source network segment switch.
+	WhitenGfbrNets *bool `pulumi:"whitenGfbrNets"`
+}
+
+// BgpPolicyContentInput is an input type that accepts BgpPolicyContentArgs and BgpPolicyContentOutput values.
+// You can construct a concrete instance of `BgpPolicyContentInput` via:
+//
+//	BgpPolicyContentArgs{...}
+type BgpPolicyContentInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentOutput() BgpPolicyContentOutput
+	ToBgpPolicyContentOutputWithContext(context.Context) BgpPolicyContentOutput
+}
+
+type BgpPolicyContentArgs struct {
+	// Blacklist and whitelist timeout.
+	BlackIpListExpireAt pulumi.IntPtrInput `pulumi:"blackIpListExpireAt"`
+	// Whether to enable L4 protection.
+	EnableDefense pulumi.BoolPtrInput `pulumi:"enableDefense"`
+	// Switch to discard ICMP.
+	EnableDropIcmp pulumi.BoolPtrInput `pulumi:"enableDropIcmp"`
+	// Whether the intelligent switch is on.
+	EnableIntelligence pulumi.BoolPtrInput `pulumi:"enableIntelligence"`
+	// Fingerprint Rules. See `fingerPrintRuleList` below.
+	FingerPrintRuleLists BgpPolicyContentFingerPrintRuleListArrayInput `pulumi:"fingerPrintRuleLists"`
+	// Smart mode. Valid values: weak, hard, and default.
+	IntelligenceLevel pulumi.StringPtrInput `pulumi:"intelligenceLevel"`
+	// L4 protection rules. See `layer4RuleList` below.
+	Layer4RuleLists BgpPolicyContentLayer4RuleListArrayInput `pulumi:"layer4RuleLists"`
+	// Port Rule List. See `portRuleList` below.
+	PortRuleLists BgpPolicyContentPortRuleListArrayInput `pulumi:"portRuleLists"`
+	// Reflective port filtering.
+	ReflectBlockUdpPortLists pulumi.IntArrayInput `pulumi:"reflectBlockUdpPortLists"`
+	// List of Regional Banned Countries.
+	RegionBlockCountryLists pulumi.IntArrayInput `pulumi:"regionBlockCountryLists"`
+	// List of Prohibited Provinces by Region.
+	RegionBlockProvinceLists pulumi.IntArrayInput `pulumi:"regionBlockProvinceLists"`
+	// Source pull Black. See `sourceBlockList` below.
+	SourceBlockLists BgpPolicyContentSourceBlockListArrayInput `pulumi:"sourceBlockLists"`
+	// Do not fill in when the source speed limit is deleted. See `sourceLimit` below.
+	SourceLimit BgpPolicyContentSourceLimitPtrInput `pulumi:"sourceLimit"`
+	// Add white high protection back to source network segment switch.
+	WhitenGfbrNets pulumi.BoolPtrInput `pulumi:"whitenGfbrNets"`
+}
+
+func (BgpPolicyContentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContent)(nil)).Elem()
+}
+
+func (i BgpPolicyContentArgs) ToBgpPolicyContentOutput() BgpPolicyContentOutput {
+	return i.ToBgpPolicyContentOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentArgs) ToBgpPolicyContentOutputWithContext(ctx context.Context) BgpPolicyContentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentOutput)
+}
+
+func (i BgpPolicyContentArgs) ToBgpPolicyContentPtrOutput() BgpPolicyContentPtrOutput {
+	return i.ToBgpPolicyContentPtrOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentArgs) ToBgpPolicyContentPtrOutputWithContext(ctx context.Context) BgpPolicyContentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentOutput).ToBgpPolicyContentPtrOutputWithContext(ctx)
+}
+
+// BgpPolicyContentPtrInput is an input type that accepts BgpPolicyContentArgs, BgpPolicyContentPtr and BgpPolicyContentPtrOutput values.
+// You can construct a concrete instance of `BgpPolicyContentPtrInput` via:
+//
+//	        BgpPolicyContentArgs{...}
+//
+//	or:
+//
+//	        nil
+type BgpPolicyContentPtrInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentPtrOutput() BgpPolicyContentPtrOutput
+	ToBgpPolicyContentPtrOutputWithContext(context.Context) BgpPolicyContentPtrOutput
+}
+
+type bgpPolicyContentPtrType BgpPolicyContentArgs
+
+func BgpPolicyContentPtr(v *BgpPolicyContentArgs) BgpPolicyContentPtrInput {
+	return (*bgpPolicyContentPtrType)(v)
+}
+
+func (*bgpPolicyContentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BgpPolicyContent)(nil)).Elem()
+}
+
+func (i *bgpPolicyContentPtrType) ToBgpPolicyContentPtrOutput() BgpPolicyContentPtrOutput {
+	return i.ToBgpPolicyContentPtrOutputWithContext(context.Background())
+}
+
+func (i *bgpPolicyContentPtrType) ToBgpPolicyContentPtrOutputWithContext(ctx context.Context) BgpPolicyContentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentPtrOutput)
+}
+
+type BgpPolicyContentOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContent)(nil)).Elem()
+}
+
+func (o BgpPolicyContentOutput) ToBgpPolicyContentOutput() BgpPolicyContentOutput {
+	return o
+}
+
+func (o BgpPolicyContentOutput) ToBgpPolicyContentOutputWithContext(ctx context.Context) BgpPolicyContentOutput {
+	return o
+}
+
+func (o BgpPolicyContentOutput) ToBgpPolicyContentPtrOutput() BgpPolicyContentPtrOutput {
+	return o.ToBgpPolicyContentPtrOutputWithContext(context.Background())
+}
+
+func (o BgpPolicyContentOutput) ToBgpPolicyContentPtrOutputWithContext(ctx context.Context) BgpPolicyContentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BgpPolicyContent) *BgpPolicyContent {
+		return &v
+	}).(BgpPolicyContentPtrOutput)
+}
+
+// Blacklist and whitelist timeout.
+func (o BgpPolicyContentOutput) BlackIpListExpireAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContent) *int { return v.BlackIpListExpireAt }).(pulumi.IntPtrOutput)
+}
+
+// Whether to enable L4 protection.
+func (o BgpPolicyContentOutput) EnableDefense() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContent) *bool { return v.EnableDefense }).(pulumi.BoolPtrOutput)
+}
+
+// Switch to discard ICMP.
+func (o BgpPolicyContentOutput) EnableDropIcmp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContent) *bool { return v.EnableDropIcmp }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the intelligent switch is on.
+func (o BgpPolicyContentOutput) EnableIntelligence() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContent) *bool { return v.EnableIntelligence }).(pulumi.BoolPtrOutput)
+}
+
+// Fingerprint Rules. See `fingerPrintRuleList` below.
+func (o BgpPolicyContentOutput) FingerPrintRuleLists() BgpPolicyContentFingerPrintRuleListArrayOutput {
+	return o.ApplyT(func(v BgpPolicyContent) []BgpPolicyContentFingerPrintRuleList { return v.FingerPrintRuleLists }).(BgpPolicyContentFingerPrintRuleListArrayOutput)
+}
+
+// Smart mode. Valid values: weak, hard, and default.
+func (o BgpPolicyContentOutput) IntelligenceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContent) *string { return v.IntelligenceLevel }).(pulumi.StringPtrOutput)
+}
+
+// L4 protection rules. See `layer4RuleList` below.
+func (o BgpPolicyContentOutput) Layer4RuleLists() BgpPolicyContentLayer4RuleListArrayOutput {
+	return o.ApplyT(func(v BgpPolicyContent) []BgpPolicyContentLayer4RuleList { return v.Layer4RuleLists }).(BgpPolicyContentLayer4RuleListArrayOutput)
+}
+
+// Port Rule List. See `portRuleList` below.
+func (o BgpPolicyContentOutput) PortRuleLists() BgpPolicyContentPortRuleListArrayOutput {
+	return o.ApplyT(func(v BgpPolicyContent) []BgpPolicyContentPortRuleList { return v.PortRuleLists }).(BgpPolicyContentPortRuleListArrayOutput)
+}
+
+// Reflective port filtering.
+func (o BgpPolicyContentOutput) ReflectBlockUdpPortLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v BgpPolicyContent) []int { return v.ReflectBlockUdpPortLists }).(pulumi.IntArrayOutput)
+}
+
+// List of Regional Banned Countries.
+func (o BgpPolicyContentOutput) RegionBlockCountryLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v BgpPolicyContent) []int { return v.RegionBlockCountryLists }).(pulumi.IntArrayOutput)
+}
+
+// List of Prohibited Provinces by Region.
+func (o BgpPolicyContentOutput) RegionBlockProvinceLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v BgpPolicyContent) []int { return v.RegionBlockProvinceLists }).(pulumi.IntArrayOutput)
+}
+
+// Source pull Black. See `sourceBlockList` below.
+func (o BgpPolicyContentOutput) SourceBlockLists() BgpPolicyContentSourceBlockListArrayOutput {
+	return o.ApplyT(func(v BgpPolicyContent) []BgpPolicyContentSourceBlockList { return v.SourceBlockLists }).(BgpPolicyContentSourceBlockListArrayOutput)
+}
+
+// Do not fill in when the source speed limit is deleted. See `sourceLimit` below.
+func (o BgpPolicyContentOutput) SourceLimit() BgpPolicyContentSourceLimitPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContent) *BgpPolicyContentSourceLimit { return v.SourceLimit }).(BgpPolicyContentSourceLimitPtrOutput)
+}
+
+// Add white high protection back to source network segment switch.
+func (o BgpPolicyContentOutput) WhitenGfbrNets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContent) *bool { return v.WhitenGfbrNets }).(pulumi.BoolPtrOutput)
+}
+
+type BgpPolicyContentPtrOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BgpPolicyContent)(nil)).Elem()
+}
+
+func (o BgpPolicyContentPtrOutput) ToBgpPolicyContentPtrOutput() BgpPolicyContentPtrOutput {
+	return o
+}
+
+func (o BgpPolicyContentPtrOutput) ToBgpPolicyContentPtrOutputWithContext(ctx context.Context) BgpPolicyContentPtrOutput {
+	return o
+}
+
+func (o BgpPolicyContentPtrOutput) Elem() BgpPolicyContentOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) BgpPolicyContent {
+		if v != nil {
+			return *v
+		}
+		var ret BgpPolicyContent
+		return ret
+	}).(BgpPolicyContentOutput)
+}
+
+// Blacklist and whitelist timeout.
+func (o BgpPolicyContentPtrOutput) BlackIpListExpireAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BlackIpListExpireAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to enable L4 protection.
+func (o BgpPolicyContentPtrOutput) EnableDefense() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDefense
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Switch to discard ICMP.
+func (o BgpPolicyContentPtrOutput) EnableDropIcmp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDropIcmp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the intelligent switch is on.
+func (o BgpPolicyContentPtrOutput) EnableIntelligence() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntelligence
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Fingerprint Rules. See `fingerPrintRuleList` below.
+func (o BgpPolicyContentPtrOutput) FingerPrintRuleLists() BgpPolicyContentFingerPrintRuleListArrayOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) []BgpPolicyContentFingerPrintRuleList {
+		if v == nil {
+			return nil
+		}
+		return v.FingerPrintRuleLists
+	}).(BgpPolicyContentFingerPrintRuleListArrayOutput)
+}
+
+// Smart mode. Valid values: weak, hard, and default.
+func (o BgpPolicyContentPtrOutput) IntelligenceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IntelligenceLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// L4 protection rules. See `layer4RuleList` below.
+func (o BgpPolicyContentPtrOutput) Layer4RuleLists() BgpPolicyContentLayer4RuleListArrayOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) []BgpPolicyContentLayer4RuleList {
+		if v == nil {
+			return nil
+		}
+		return v.Layer4RuleLists
+	}).(BgpPolicyContentLayer4RuleListArrayOutput)
+}
+
+// Port Rule List. See `portRuleList` below.
+func (o BgpPolicyContentPtrOutput) PortRuleLists() BgpPolicyContentPortRuleListArrayOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) []BgpPolicyContentPortRuleList {
+		if v == nil {
+			return nil
+		}
+		return v.PortRuleLists
+	}).(BgpPolicyContentPortRuleListArrayOutput)
+}
+
+// Reflective port filtering.
+func (o BgpPolicyContentPtrOutput) ReflectBlockUdpPortLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) []int {
+		if v == nil {
+			return nil
+		}
+		return v.ReflectBlockUdpPortLists
+	}).(pulumi.IntArrayOutput)
+}
+
+// List of Regional Banned Countries.
+func (o BgpPolicyContentPtrOutput) RegionBlockCountryLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) []int {
+		if v == nil {
+			return nil
+		}
+		return v.RegionBlockCountryLists
+	}).(pulumi.IntArrayOutput)
+}
+
+// List of Prohibited Provinces by Region.
+func (o BgpPolicyContentPtrOutput) RegionBlockProvinceLists() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) []int {
+		if v == nil {
+			return nil
+		}
+		return v.RegionBlockProvinceLists
+	}).(pulumi.IntArrayOutput)
+}
+
+// Source pull Black. See `sourceBlockList` below.
+func (o BgpPolicyContentPtrOutput) SourceBlockLists() BgpPolicyContentSourceBlockListArrayOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) []BgpPolicyContentSourceBlockList {
+		if v == nil {
+			return nil
+		}
+		return v.SourceBlockLists
+	}).(BgpPolicyContentSourceBlockListArrayOutput)
+}
+
+// Do not fill in when the source speed limit is deleted. See `sourceLimit` below.
+func (o BgpPolicyContentPtrOutput) SourceLimit() BgpPolicyContentSourceLimitPtrOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) *BgpPolicyContentSourceLimit {
+		if v == nil {
+			return nil
+		}
+		return v.SourceLimit
+	}).(BgpPolicyContentSourceLimitPtrOutput)
+}
+
+// Add white high protection back to source network segment switch.
+func (o BgpPolicyContentPtrOutput) WhitenGfbrNets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BgpPolicyContent) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WhitenGfbrNets
+	}).(pulumi.BoolPtrOutput)
+}
+
+type BgpPolicyContentFingerPrintRuleList struct {
+	DstPortEnd        int     `pulumi:"dstPortEnd"`
+	DstPortStart      int     `pulumi:"dstPortStart"`
+	FingerPrintRuleId *string `pulumi:"fingerPrintRuleId"`
+	MatchAction       string  `pulumi:"matchAction"`
+	MaxPktLen         int     `pulumi:"maxPktLen"`
+	MinPktLen         int     `pulumi:"minPktLen"`
+	Offset            *int    `pulumi:"offset"`
+	PayloadBytes      *string `pulumi:"payloadBytes"`
+	Protocol          string  `pulumi:"protocol"`
+	RateValue         *int    `pulumi:"rateValue"`
+	SeqNo             int     `pulumi:"seqNo"`
+	SrcPortEnd        int     `pulumi:"srcPortEnd"`
+	SrcPortStart      int     `pulumi:"srcPortStart"`
+}
+
+// BgpPolicyContentFingerPrintRuleListInput is an input type that accepts BgpPolicyContentFingerPrintRuleListArgs and BgpPolicyContentFingerPrintRuleListOutput values.
+// You can construct a concrete instance of `BgpPolicyContentFingerPrintRuleListInput` via:
+//
+//	BgpPolicyContentFingerPrintRuleListArgs{...}
+type BgpPolicyContentFingerPrintRuleListInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentFingerPrintRuleListOutput() BgpPolicyContentFingerPrintRuleListOutput
+	ToBgpPolicyContentFingerPrintRuleListOutputWithContext(context.Context) BgpPolicyContentFingerPrintRuleListOutput
+}
+
+type BgpPolicyContentFingerPrintRuleListArgs struct {
+	DstPortEnd        pulumi.IntInput       `pulumi:"dstPortEnd"`
+	DstPortStart      pulumi.IntInput       `pulumi:"dstPortStart"`
+	FingerPrintRuleId pulumi.StringPtrInput `pulumi:"fingerPrintRuleId"`
+	MatchAction       pulumi.StringInput    `pulumi:"matchAction"`
+	MaxPktLen         pulumi.IntInput       `pulumi:"maxPktLen"`
+	MinPktLen         pulumi.IntInput       `pulumi:"minPktLen"`
+	Offset            pulumi.IntPtrInput    `pulumi:"offset"`
+	PayloadBytes      pulumi.StringPtrInput `pulumi:"payloadBytes"`
+	Protocol          pulumi.StringInput    `pulumi:"protocol"`
+	RateValue         pulumi.IntPtrInput    `pulumi:"rateValue"`
+	SeqNo             pulumi.IntInput       `pulumi:"seqNo"`
+	SrcPortEnd        pulumi.IntInput       `pulumi:"srcPortEnd"`
+	SrcPortStart      pulumi.IntInput       `pulumi:"srcPortStart"`
+}
+
+func (BgpPolicyContentFingerPrintRuleListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContentFingerPrintRuleList)(nil)).Elem()
+}
+
+func (i BgpPolicyContentFingerPrintRuleListArgs) ToBgpPolicyContentFingerPrintRuleListOutput() BgpPolicyContentFingerPrintRuleListOutput {
+	return i.ToBgpPolicyContentFingerPrintRuleListOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentFingerPrintRuleListArgs) ToBgpPolicyContentFingerPrintRuleListOutputWithContext(ctx context.Context) BgpPolicyContentFingerPrintRuleListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentFingerPrintRuleListOutput)
+}
+
+// BgpPolicyContentFingerPrintRuleListArrayInput is an input type that accepts BgpPolicyContentFingerPrintRuleListArray and BgpPolicyContentFingerPrintRuleListArrayOutput values.
+// You can construct a concrete instance of `BgpPolicyContentFingerPrintRuleListArrayInput` via:
+//
+//	BgpPolicyContentFingerPrintRuleListArray{ BgpPolicyContentFingerPrintRuleListArgs{...} }
+type BgpPolicyContentFingerPrintRuleListArrayInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentFingerPrintRuleListArrayOutput() BgpPolicyContentFingerPrintRuleListArrayOutput
+	ToBgpPolicyContentFingerPrintRuleListArrayOutputWithContext(context.Context) BgpPolicyContentFingerPrintRuleListArrayOutput
+}
+
+type BgpPolicyContentFingerPrintRuleListArray []BgpPolicyContentFingerPrintRuleListInput
+
+func (BgpPolicyContentFingerPrintRuleListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpPolicyContentFingerPrintRuleList)(nil)).Elem()
+}
+
+func (i BgpPolicyContentFingerPrintRuleListArray) ToBgpPolicyContentFingerPrintRuleListArrayOutput() BgpPolicyContentFingerPrintRuleListArrayOutput {
+	return i.ToBgpPolicyContentFingerPrintRuleListArrayOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentFingerPrintRuleListArray) ToBgpPolicyContentFingerPrintRuleListArrayOutputWithContext(ctx context.Context) BgpPolicyContentFingerPrintRuleListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentFingerPrintRuleListArrayOutput)
+}
+
+type BgpPolicyContentFingerPrintRuleListOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentFingerPrintRuleListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContentFingerPrintRuleList)(nil)).Elem()
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) ToBgpPolicyContentFingerPrintRuleListOutput() BgpPolicyContentFingerPrintRuleListOutput {
+	return o
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) ToBgpPolicyContentFingerPrintRuleListOutputWithContext(ctx context.Context) BgpPolicyContentFingerPrintRuleListOutput {
+	return o
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) DstPortEnd() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.DstPortEnd }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) DstPortStart() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.DstPortStart }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) FingerPrintRuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) *string { return v.FingerPrintRuleId }).(pulumi.StringPtrOutput)
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) MatchAction() pulumi.StringOutput {
+	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) string { return v.MatchAction }).(pulumi.StringOutput)
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) MaxPktLen() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.MaxPktLen }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) MinPktLen() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.MinPktLen }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) *int { return v.Offset }).(pulumi.IntPtrOutput)
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) PayloadBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) *string { return v.PayloadBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) RateValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) *int { return v.RateValue }).(pulumi.IntPtrOutput)
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) SeqNo() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.SeqNo }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) SrcPortEnd() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.SrcPortEnd }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentFingerPrintRuleListOutput) SrcPortStart() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.SrcPortStart }).(pulumi.IntOutput)
+}
+
+type BgpPolicyContentFingerPrintRuleListArrayOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentFingerPrintRuleListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpPolicyContentFingerPrintRuleList)(nil)).Elem()
+}
+
+func (o BgpPolicyContentFingerPrintRuleListArrayOutput) ToBgpPolicyContentFingerPrintRuleListArrayOutput() BgpPolicyContentFingerPrintRuleListArrayOutput {
+	return o
+}
+
+func (o BgpPolicyContentFingerPrintRuleListArrayOutput) ToBgpPolicyContentFingerPrintRuleListArrayOutputWithContext(ctx context.Context) BgpPolicyContentFingerPrintRuleListArrayOutput {
+	return o
+}
+
+func (o BgpPolicyContentFingerPrintRuleListArrayOutput) Index(i pulumi.IntInput) BgpPolicyContentFingerPrintRuleListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BgpPolicyContentFingerPrintRuleList {
+		return vs[0].([]BgpPolicyContentFingerPrintRuleList)[vs[1].(int)]
+	}).(BgpPolicyContentFingerPrintRuleListOutput)
+}
+
+type BgpPolicyContentLayer4RuleList struct {
+	Action         string                                        `pulumi:"action"`
+	ConditionLists []BgpPolicyContentLayer4RuleListConditionList `pulumi:"conditionLists"`
+	Limited        int                                           `pulumi:"limited"`
+	Match          string                                        `pulumi:"match"`
+	Method         string                                        `pulumi:"method"`
+	Name           string                                        `pulumi:"name"`
+	Priority       int                                           `pulumi:"priority"`
+}
+
+// BgpPolicyContentLayer4RuleListInput is an input type that accepts BgpPolicyContentLayer4RuleListArgs and BgpPolicyContentLayer4RuleListOutput values.
+// You can construct a concrete instance of `BgpPolicyContentLayer4RuleListInput` via:
+//
+//	BgpPolicyContentLayer4RuleListArgs{...}
+type BgpPolicyContentLayer4RuleListInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentLayer4RuleListOutput() BgpPolicyContentLayer4RuleListOutput
+	ToBgpPolicyContentLayer4RuleListOutputWithContext(context.Context) BgpPolicyContentLayer4RuleListOutput
+}
+
+type BgpPolicyContentLayer4RuleListArgs struct {
+	Action         pulumi.StringInput                                    `pulumi:"action"`
+	ConditionLists BgpPolicyContentLayer4RuleListConditionListArrayInput `pulumi:"conditionLists"`
+	Limited        pulumi.IntInput                                       `pulumi:"limited"`
+	Match          pulumi.StringInput                                    `pulumi:"match"`
+	Method         pulumi.StringInput                                    `pulumi:"method"`
+	Name           pulumi.StringInput                                    `pulumi:"name"`
+	Priority       pulumi.IntInput                                       `pulumi:"priority"`
+}
+
+func (BgpPolicyContentLayer4RuleListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContentLayer4RuleList)(nil)).Elem()
+}
+
+func (i BgpPolicyContentLayer4RuleListArgs) ToBgpPolicyContentLayer4RuleListOutput() BgpPolicyContentLayer4RuleListOutput {
+	return i.ToBgpPolicyContentLayer4RuleListOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentLayer4RuleListArgs) ToBgpPolicyContentLayer4RuleListOutputWithContext(ctx context.Context) BgpPolicyContentLayer4RuleListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentLayer4RuleListOutput)
+}
+
+// BgpPolicyContentLayer4RuleListArrayInput is an input type that accepts BgpPolicyContentLayer4RuleListArray and BgpPolicyContentLayer4RuleListArrayOutput values.
+// You can construct a concrete instance of `BgpPolicyContentLayer4RuleListArrayInput` via:
+//
+//	BgpPolicyContentLayer4RuleListArray{ BgpPolicyContentLayer4RuleListArgs{...} }
+type BgpPolicyContentLayer4RuleListArrayInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentLayer4RuleListArrayOutput() BgpPolicyContentLayer4RuleListArrayOutput
+	ToBgpPolicyContentLayer4RuleListArrayOutputWithContext(context.Context) BgpPolicyContentLayer4RuleListArrayOutput
+}
+
+type BgpPolicyContentLayer4RuleListArray []BgpPolicyContentLayer4RuleListInput
+
+func (BgpPolicyContentLayer4RuleListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpPolicyContentLayer4RuleList)(nil)).Elem()
+}
+
+func (i BgpPolicyContentLayer4RuleListArray) ToBgpPolicyContentLayer4RuleListArrayOutput() BgpPolicyContentLayer4RuleListArrayOutput {
+	return i.ToBgpPolicyContentLayer4RuleListArrayOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentLayer4RuleListArray) ToBgpPolicyContentLayer4RuleListArrayOutputWithContext(ctx context.Context) BgpPolicyContentLayer4RuleListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentLayer4RuleListArrayOutput)
+}
+
+type BgpPolicyContentLayer4RuleListOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentLayer4RuleListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContentLayer4RuleList)(nil)).Elem()
+}
+
+func (o BgpPolicyContentLayer4RuleListOutput) ToBgpPolicyContentLayer4RuleListOutput() BgpPolicyContentLayer4RuleListOutput {
+	return o
+}
+
+func (o BgpPolicyContentLayer4RuleListOutput) ToBgpPolicyContentLayer4RuleListOutputWithContext(ctx context.Context) BgpPolicyContentLayer4RuleListOutput {
+	return o
+}
+
+func (o BgpPolicyContentLayer4RuleListOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o BgpPolicyContentLayer4RuleListOutput) ConditionLists() BgpPolicyContentLayer4RuleListConditionListArrayOutput {
+	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) []BgpPolicyContentLayer4RuleListConditionList {
+		return v.ConditionLists
+	}).(BgpPolicyContentLayer4RuleListConditionListArrayOutput)
+}
+
+func (o BgpPolicyContentLayer4RuleListOutput) Limited() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) int { return v.Limited }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentLayer4RuleListOutput) Match() pulumi.StringOutput {
+	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) string { return v.Match }).(pulumi.StringOutput)
+}
+
+func (o BgpPolicyContentLayer4RuleListOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) string { return v.Method }).(pulumi.StringOutput)
+}
+
+func (o BgpPolicyContentLayer4RuleListOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o BgpPolicyContentLayer4RuleListOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+type BgpPolicyContentLayer4RuleListArrayOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentLayer4RuleListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpPolicyContentLayer4RuleList)(nil)).Elem()
+}
+
+func (o BgpPolicyContentLayer4RuleListArrayOutput) ToBgpPolicyContentLayer4RuleListArrayOutput() BgpPolicyContentLayer4RuleListArrayOutput {
+	return o
+}
+
+func (o BgpPolicyContentLayer4RuleListArrayOutput) ToBgpPolicyContentLayer4RuleListArrayOutputWithContext(ctx context.Context) BgpPolicyContentLayer4RuleListArrayOutput {
+	return o
+}
+
+func (o BgpPolicyContentLayer4RuleListArrayOutput) Index(i pulumi.IntInput) BgpPolicyContentLayer4RuleListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BgpPolicyContentLayer4RuleList {
+		return vs[0].([]BgpPolicyContentLayer4RuleList)[vs[1].(int)]
+	}).(BgpPolicyContentLayer4RuleListOutput)
+}
+
+type BgpPolicyContentLayer4RuleListConditionList struct {
+	Arg      string `pulumi:"arg"`
+	Depth    int    `pulumi:"depth"`
+	Position int    `pulumi:"position"`
+}
+
+// BgpPolicyContentLayer4RuleListConditionListInput is an input type that accepts BgpPolicyContentLayer4RuleListConditionListArgs and BgpPolicyContentLayer4RuleListConditionListOutput values.
+// You can construct a concrete instance of `BgpPolicyContentLayer4RuleListConditionListInput` via:
+//
+//	BgpPolicyContentLayer4RuleListConditionListArgs{...}
+type BgpPolicyContentLayer4RuleListConditionListInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentLayer4RuleListConditionListOutput() BgpPolicyContentLayer4RuleListConditionListOutput
+	ToBgpPolicyContentLayer4RuleListConditionListOutputWithContext(context.Context) BgpPolicyContentLayer4RuleListConditionListOutput
+}
+
+type BgpPolicyContentLayer4RuleListConditionListArgs struct {
+	Arg      pulumi.StringInput `pulumi:"arg"`
+	Depth    pulumi.IntInput    `pulumi:"depth"`
+	Position pulumi.IntInput    `pulumi:"position"`
+}
+
+func (BgpPolicyContentLayer4RuleListConditionListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContentLayer4RuleListConditionList)(nil)).Elem()
+}
+
+func (i BgpPolicyContentLayer4RuleListConditionListArgs) ToBgpPolicyContentLayer4RuleListConditionListOutput() BgpPolicyContentLayer4RuleListConditionListOutput {
+	return i.ToBgpPolicyContentLayer4RuleListConditionListOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentLayer4RuleListConditionListArgs) ToBgpPolicyContentLayer4RuleListConditionListOutputWithContext(ctx context.Context) BgpPolicyContentLayer4RuleListConditionListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentLayer4RuleListConditionListOutput)
+}
+
+// BgpPolicyContentLayer4RuleListConditionListArrayInput is an input type that accepts BgpPolicyContentLayer4RuleListConditionListArray and BgpPolicyContentLayer4RuleListConditionListArrayOutput values.
+// You can construct a concrete instance of `BgpPolicyContentLayer4RuleListConditionListArrayInput` via:
+//
+//	BgpPolicyContentLayer4RuleListConditionListArray{ BgpPolicyContentLayer4RuleListConditionListArgs{...} }
+type BgpPolicyContentLayer4RuleListConditionListArrayInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentLayer4RuleListConditionListArrayOutput() BgpPolicyContentLayer4RuleListConditionListArrayOutput
+	ToBgpPolicyContentLayer4RuleListConditionListArrayOutputWithContext(context.Context) BgpPolicyContentLayer4RuleListConditionListArrayOutput
+}
+
+type BgpPolicyContentLayer4RuleListConditionListArray []BgpPolicyContentLayer4RuleListConditionListInput
+
+func (BgpPolicyContentLayer4RuleListConditionListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpPolicyContentLayer4RuleListConditionList)(nil)).Elem()
+}
+
+func (i BgpPolicyContentLayer4RuleListConditionListArray) ToBgpPolicyContentLayer4RuleListConditionListArrayOutput() BgpPolicyContentLayer4RuleListConditionListArrayOutput {
+	return i.ToBgpPolicyContentLayer4RuleListConditionListArrayOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentLayer4RuleListConditionListArray) ToBgpPolicyContentLayer4RuleListConditionListArrayOutputWithContext(ctx context.Context) BgpPolicyContentLayer4RuleListConditionListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentLayer4RuleListConditionListArrayOutput)
+}
+
+type BgpPolicyContentLayer4RuleListConditionListOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentLayer4RuleListConditionListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContentLayer4RuleListConditionList)(nil)).Elem()
+}
+
+func (o BgpPolicyContentLayer4RuleListConditionListOutput) ToBgpPolicyContentLayer4RuleListConditionListOutput() BgpPolicyContentLayer4RuleListConditionListOutput {
+	return o
+}
+
+func (o BgpPolicyContentLayer4RuleListConditionListOutput) ToBgpPolicyContentLayer4RuleListConditionListOutputWithContext(ctx context.Context) BgpPolicyContentLayer4RuleListConditionListOutput {
+	return o
+}
+
+func (o BgpPolicyContentLayer4RuleListConditionListOutput) Arg() pulumi.StringOutput {
+	return o.ApplyT(func(v BgpPolicyContentLayer4RuleListConditionList) string { return v.Arg }).(pulumi.StringOutput)
+}
+
+func (o BgpPolicyContentLayer4RuleListConditionListOutput) Depth() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentLayer4RuleListConditionList) int { return v.Depth }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentLayer4RuleListConditionListOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentLayer4RuleListConditionList) int { return v.Position }).(pulumi.IntOutput)
+}
+
+type BgpPolicyContentLayer4RuleListConditionListArrayOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentLayer4RuleListConditionListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpPolicyContentLayer4RuleListConditionList)(nil)).Elem()
+}
+
+func (o BgpPolicyContentLayer4RuleListConditionListArrayOutput) ToBgpPolicyContentLayer4RuleListConditionListArrayOutput() BgpPolicyContentLayer4RuleListConditionListArrayOutput {
+	return o
+}
+
+func (o BgpPolicyContentLayer4RuleListConditionListArrayOutput) ToBgpPolicyContentLayer4RuleListConditionListArrayOutputWithContext(ctx context.Context) BgpPolicyContentLayer4RuleListConditionListArrayOutput {
+	return o
+}
+
+func (o BgpPolicyContentLayer4RuleListConditionListArrayOutput) Index(i pulumi.IntInput) BgpPolicyContentLayer4RuleListConditionListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BgpPolicyContentLayer4RuleListConditionList {
+		return vs[0].([]BgpPolicyContentLayer4RuleListConditionList)[vs[1].(int)]
+	}).(BgpPolicyContentLayer4RuleListConditionListOutput)
+}
+
+type BgpPolicyContentPortRuleList struct {
+	DstPortEnd   int     `pulumi:"dstPortEnd"`
+	DstPortStart int     `pulumi:"dstPortStart"`
+	MatchAction  string  `pulumi:"matchAction"`
+	PortRuleId   *string `pulumi:"portRuleId"`
+	Protocol     string  `pulumi:"protocol"`
+	SeqNo        int     `pulumi:"seqNo"`
+	SrcPortEnd   int     `pulumi:"srcPortEnd"`
+	SrcPortStart int     `pulumi:"srcPortStart"`
+}
+
+// BgpPolicyContentPortRuleListInput is an input type that accepts BgpPolicyContentPortRuleListArgs and BgpPolicyContentPortRuleListOutput values.
+// You can construct a concrete instance of `BgpPolicyContentPortRuleListInput` via:
+//
+//	BgpPolicyContentPortRuleListArgs{...}
+type BgpPolicyContentPortRuleListInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentPortRuleListOutput() BgpPolicyContentPortRuleListOutput
+	ToBgpPolicyContentPortRuleListOutputWithContext(context.Context) BgpPolicyContentPortRuleListOutput
+}
+
+type BgpPolicyContentPortRuleListArgs struct {
+	DstPortEnd   pulumi.IntInput       `pulumi:"dstPortEnd"`
+	DstPortStart pulumi.IntInput       `pulumi:"dstPortStart"`
+	MatchAction  pulumi.StringInput    `pulumi:"matchAction"`
+	PortRuleId   pulumi.StringPtrInput `pulumi:"portRuleId"`
+	Protocol     pulumi.StringInput    `pulumi:"protocol"`
+	SeqNo        pulumi.IntInput       `pulumi:"seqNo"`
+	SrcPortEnd   pulumi.IntInput       `pulumi:"srcPortEnd"`
+	SrcPortStart pulumi.IntInput       `pulumi:"srcPortStart"`
+}
+
+func (BgpPolicyContentPortRuleListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContentPortRuleList)(nil)).Elem()
+}
+
+func (i BgpPolicyContentPortRuleListArgs) ToBgpPolicyContentPortRuleListOutput() BgpPolicyContentPortRuleListOutput {
+	return i.ToBgpPolicyContentPortRuleListOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentPortRuleListArgs) ToBgpPolicyContentPortRuleListOutputWithContext(ctx context.Context) BgpPolicyContentPortRuleListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentPortRuleListOutput)
+}
+
+// BgpPolicyContentPortRuleListArrayInput is an input type that accepts BgpPolicyContentPortRuleListArray and BgpPolicyContentPortRuleListArrayOutput values.
+// You can construct a concrete instance of `BgpPolicyContentPortRuleListArrayInput` via:
+//
+//	BgpPolicyContentPortRuleListArray{ BgpPolicyContentPortRuleListArgs{...} }
+type BgpPolicyContentPortRuleListArrayInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentPortRuleListArrayOutput() BgpPolicyContentPortRuleListArrayOutput
+	ToBgpPolicyContentPortRuleListArrayOutputWithContext(context.Context) BgpPolicyContentPortRuleListArrayOutput
+}
+
+type BgpPolicyContentPortRuleListArray []BgpPolicyContentPortRuleListInput
+
+func (BgpPolicyContentPortRuleListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpPolicyContentPortRuleList)(nil)).Elem()
+}
+
+func (i BgpPolicyContentPortRuleListArray) ToBgpPolicyContentPortRuleListArrayOutput() BgpPolicyContentPortRuleListArrayOutput {
+	return i.ToBgpPolicyContentPortRuleListArrayOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentPortRuleListArray) ToBgpPolicyContentPortRuleListArrayOutputWithContext(ctx context.Context) BgpPolicyContentPortRuleListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentPortRuleListArrayOutput)
+}
+
+type BgpPolicyContentPortRuleListOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentPortRuleListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContentPortRuleList)(nil)).Elem()
+}
+
+func (o BgpPolicyContentPortRuleListOutput) ToBgpPolicyContentPortRuleListOutput() BgpPolicyContentPortRuleListOutput {
+	return o
+}
+
+func (o BgpPolicyContentPortRuleListOutput) ToBgpPolicyContentPortRuleListOutputWithContext(ctx context.Context) BgpPolicyContentPortRuleListOutput {
+	return o
+}
+
+func (o BgpPolicyContentPortRuleListOutput) DstPortEnd() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentPortRuleList) int { return v.DstPortEnd }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentPortRuleListOutput) DstPortStart() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentPortRuleList) int { return v.DstPortStart }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentPortRuleListOutput) MatchAction() pulumi.StringOutput {
+	return o.ApplyT(func(v BgpPolicyContentPortRuleList) string { return v.MatchAction }).(pulumi.StringOutput)
+}
+
+func (o BgpPolicyContentPortRuleListOutput) PortRuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContentPortRuleList) *string { return v.PortRuleId }).(pulumi.StringPtrOutput)
+}
+
+func (o BgpPolicyContentPortRuleListOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v BgpPolicyContentPortRuleList) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+func (o BgpPolicyContentPortRuleListOutput) SeqNo() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentPortRuleList) int { return v.SeqNo }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentPortRuleListOutput) SrcPortEnd() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentPortRuleList) int { return v.SrcPortEnd }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentPortRuleListOutput) SrcPortStart() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentPortRuleList) int { return v.SrcPortStart }).(pulumi.IntOutput)
+}
+
+type BgpPolicyContentPortRuleListArrayOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentPortRuleListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpPolicyContentPortRuleList)(nil)).Elem()
+}
+
+func (o BgpPolicyContentPortRuleListArrayOutput) ToBgpPolicyContentPortRuleListArrayOutput() BgpPolicyContentPortRuleListArrayOutput {
+	return o
+}
+
+func (o BgpPolicyContentPortRuleListArrayOutput) ToBgpPolicyContentPortRuleListArrayOutputWithContext(ctx context.Context) BgpPolicyContentPortRuleListArrayOutput {
+	return o
+}
+
+func (o BgpPolicyContentPortRuleListArrayOutput) Index(i pulumi.IntInput) BgpPolicyContentPortRuleListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BgpPolicyContentPortRuleList {
+		return vs[0].([]BgpPolicyContentPortRuleList)[vs[1].(int)]
+	}).(BgpPolicyContentPortRuleListOutput)
+}
+
+type BgpPolicyContentSourceBlockList struct {
+	BlockExpireSeconds int `pulumi:"blockExpireSeconds"`
+	EverySeconds       int `pulumi:"everySeconds"`
+	ExceedLimitTimes   int `pulumi:"exceedLimitTimes"`
+	// Type
+	Type int `pulumi:"type"`
+}
+
+// BgpPolicyContentSourceBlockListInput is an input type that accepts BgpPolicyContentSourceBlockListArgs and BgpPolicyContentSourceBlockListOutput values.
+// You can construct a concrete instance of `BgpPolicyContentSourceBlockListInput` via:
+//
+//	BgpPolicyContentSourceBlockListArgs{...}
+type BgpPolicyContentSourceBlockListInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentSourceBlockListOutput() BgpPolicyContentSourceBlockListOutput
+	ToBgpPolicyContentSourceBlockListOutputWithContext(context.Context) BgpPolicyContentSourceBlockListOutput
+}
+
+type BgpPolicyContentSourceBlockListArgs struct {
+	BlockExpireSeconds pulumi.IntInput `pulumi:"blockExpireSeconds"`
+	EverySeconds       pulumi.IntInput `pulumi:"everySeconds"`
+	ExceedLimitTimes   pulumi.IntInput `pulumi:"exceedLimitTimes"`
+	// Type
+	Type pulumi.IntInput `pulumi:"type"`
+}
+
+func (BgpPolicyContentSourceBlockListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContentSourceBlockList)(nil)).Elem()
+}
+
+func (i BgpPolicyContentSourceBlockListArgs) ToBgpPolicyContentSourceBlockListOutput() BgpPolicyContentSourceBlockListOutput {
+	return i.ToBgpPolicyContentSourceBlockListOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentSourceBlockListArgs) ToBgpPolicyContentSourceBlockListOutputWithContext(ctx context.Context) BgpPolicyContentSourceBlockListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentSourceBlockListOutput)
+}
+
+// BgpPolicyContentSourceBlockListArrayInput is an input type that accepts BgpPolicyContentSourceBlockListArray and BgpPolicyContentSourceBlockListArrayOutput values.
+// You can construct a concrete instance of `BgpPolicyContentSourceBlockListArrayInput` via:
+//
+//	BgpPolicyContentSourceBlockListArray{ BgpPolicyContentSourceBlockListArgs{...} }
+type BgpPolicyContentSourceBlockListArrayInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentSourceBlockListArrayOutput() BgpPolicyContentSourceBlockListArrayOutput
+	ToBgpPolicyContentSourceBlockListArrayOutputWithContext(context.Context) BgpPolicyContentSourceBlockListArrayOutput
+}
+
+type BgpPolicyContentSourceBlockListArray []BgpPolicyContentSourceBlockListInput
+
+func (BgpPolicyContentSourceBlockListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpPolicyContentSourceBlockList)(nil)).Elem()
+}
+
+func (i BgpPolicyContentSourceBlockListArray) ToBgpPolicyContentSourceBlockListArrayOutput() BgpPolicyContentSourceBlockListArrayOutput {
+	return i.ToBgpPolicyContentSourceBlockListArrayOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentSourceBlockListArray) ToBgpPolicyContentSourceBlockListArrayOutputWithContext(ctx context.Context) BgpPolicyContentSourceBlockListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentSourceBlockListArrayOutput)
+}
+
+type BgpPolicyContentSourceBlockListOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentSourceBlockListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContentSourceBlockList)(nil)).Elem()
+}
+
+func (o BgpPolicyContentSourceBlockListOutput) ToBgpPolicyContentSourceBlockListOutput() BgpPolicyContentSourceBlockListOutput {
+	return o
+}
+
+func (o BgpPolicyContentSourceBlockListOutput) ToBgpPolicyContentSourceBlockListOutputWithContext(ctx context.Context) BgpPolicyContentSourceBlockListOutput {
+	return o
+}
+
+func (o BgpPolicyContentSourceBlockListOutput) BlockExpireSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentSourceBlockList) int { return v.BlockExpireSeconds }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentSourceBlockListOutput) EverySeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentSourceBlockList) int { return v.EverySeconds }).(pulumi.IntOutput)
+}
+
+func (o BgpPolicyContentSourceBlockListOutput) ExceedLimitTimes() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentSourceBlockList) int { return v.ExceedLimitTimes }).(pulumi.IntOutput)
+}
+
+// Type
+func (o BgpPolicyContentSourceBlockListOutput) Type() pulumi.IntOutput {
+	return o.ApplyT(func(v BgpPolicyContentSourceBlockList) int { return v.Type }).(pulumi.IntOutput)
+}
+
+type BgpPolicyContentSourceBlockListArrayOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentSourceBlockListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpPolicyContentSourceBlockList)(nil)).Elem()
+}
+
+func (o BgpPolicyContentSourceBlockListArrayOutput) ToBgpPolicyContentSourceBlockListArrayOutput() BgpPolicyContentSourceBlockListArrayOutput {
+	return o
+}
+
+func (o BgpPolicyContentSourceBlockListArrayOutput) ToBgpPolicyContentSourceBlockListArrayOutputWithContext(ctx context.Context) BgpPolicyContentSourceBlockListArrayOutput {
+	return o
+}
+
+func (o BgpPolicyContentSourceBlockListArrayOutput) Index(i pulumi.IntInput) BgpPolicyContentSourceBlockListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BgpPolicyContentSourceBlockList {
+		return vs[0].([]BgpPolicyContentSourceBlockList)[vs[1].(int)]
+	}).(BgpPolicyContentSourceBlockListOutput)
+}
+
+type BgpPolicyContentSourceLimit struct {
+	Bps    *int `pulumi:"bps"`
+	Pps    *int `pulumi:"pps"`
+	SynBps *int `pulumi:"synBps"`
+	SynPps *int `pulumi:"synPps"`
+}
+
+// BgpPolicyContentSourceLimitInput is an input type that accepts BgpPolicyContentSourceLimitArgs and BgpPolicyContentSourceLimitOutput values.
+// You can construct a concrete instance of `BgpPolicyContentSourceLimitInput` via:
+//
+//	BgpPolicyContentSourceLimitArgs{...}
+type BgpPolicyContentSourceLimitInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentSourceLimitOutput() BgpPolicyContentSourceLimitOutput
+	ToBgpPolicyContentSourceLimitOutputWithContext(context.Context) BgpPolicyContentSourceLimitOutput
+}
+
+type BgpPolicyContentSourceLimitArgs struct {
+	Bps    pulumi.IntPtrInput `pulumi:"bps"`
+	Pps    pulumi.IntPtrInput `pulumi:"pps"`
+	SynBps pulumi.IntPtrInput `pulumi:"synBps"`
+	SynPps pulumi.IntPtrInput `pulumi:"synPps"`
+}
+
+func (BgpPolicyContentSourceLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContentSourceLimit)(nil)).Elem()
+}
+
+func (i BgpPolicyContentSourceLimitArgs) ToBgpPolicyContentSourceLimitOutput() BgpPolicyContentSourceLimitOutput {
+	return i.ToBgpPolicyContentSourceLimitOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentSourceLimitArgs) ToBgpPolicyContentSourceLimitOutputWithContext(ctx context.Context) BgpPolicyContentSourceLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentSourceLimitOutput)
+}
+
+func (i BgpPolicyContentSourceLimitArgs) ToBgpPolicyContentSourceLimitPtrOutput() BgpPolicyContentSourceLimitPtrOutput {
+	return i.ToBgpPolicyContentSourceLimitPtrOutputWithContext(context.Background())
+}
+
+func (i BgpPolicyContentSourceLimitArgs) ToBgpPolicyContentSourceLimitPtrOutputWithContext(ctx context.Context) BgpPolicyContentSourceLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentSourceLimitOutput).ToBgpPolicyContentSourceLimitPtrOutputWithContext(ctx)
+}
+
+// BgpPolicyContentSourceLimitPtrInput is an input type that accepts BgpPolicyContentSourceLimitArgs, BgpPolicyContentSourceLimitPtr and BgpPolicyContentSourceLimitPtrOutput values.
+// You can construct a concrete instance of `BgpPolicyContentSourceLimitPtrInput` via:
+//
+//	        BgpPolicyContentSourceLimitArgs{...}
+//
+//	or:
+//
+//	        nil
+type BgpPolicyContentSourceLimitPtrInput interface {
+	pulumi.Input
+
+	ToBgpPolicyContentSourceLimitPtrOutput() BgpPolicyContentSourceLimitPtrOutput
+	ToBgpPolicyContentSourceLimitPtrOutputWithContext(context.Context) BgpPolicyContentSourceLimitPtrOutput
+}
+
+type bgpPolicyContentSourceLimitPtrType BgpPolicyContentSourceLimitArgs
+
+func BgpPolicyContentSourceLimitPtr(v *BgpPolicyContentSourceLimitArgs) BgpPolicyContentSourceLimitPtrInput {
+	return (*bgpPolicyContentSourceLimitPtrType)(v)
+}
+
+func (*bgpPolicyContentSourceLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BgpPolicyContentSourceLimit)(nil)).Elem()
+}
+
+func (i *bgpPolicyContentSourceLimitPtrType) ToBgpPolicyContentSourceLimitPtrOutput() BgpPolicyContentSourceLimitPtrOutput {
+	return i.ToBgpPolicyContentSourceLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *bgpPolicyContentSourceLimitPtrType) ToBgpPolicyContentSourceLimitPtrOutputWithContext(ctx context.Context) BgpPolicyContentSourceLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpPolicyContentSourceLimitPtrOutput)
+}
+
+type BgpPolicyContentSourceLimitOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentSourceLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpPolicyContentSourceLimit)(nil)).Elem()
+}
+
+func (o BgpPolicyContentSourceLimitOutput) ToBgpPolicyContentSourceLimitOutput() BgpPolicyContentSourceLimitOutput {
+	return o
+}
+
+func (o BgpPolicyContentSourceLimitOutput) ToBgpPolicyContentSourceLimitOutputWithContext(ctx context.Context) BgpPolicyContentSourceLimitOutput {
+	return o
+}
+
+func (o BgpPolicyContentSourceLimitOutput) ToBgpPolicyContentSourceLimitPtrOutput() BgpPolicyContentSourceLimitPtrOutput {
+	return o.ToBgpPolicyContentSourceLimitPtrOutputWithContext(context.Background())
+}
+
+func (o BgpPolicyContentSourceLimitOutput) ToBgpPolicyContentSourceLimitPtrOutputWithContext(ctx context.Context) BgpPolicyContentSourceLimitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BgpPolicyContentSourceLimit) *BgpPolicyContentSourceLimit {
+		return &v
+	}).(BgpPolicyContentSourceLimitPtrOutput)
+}
+
+func (o BgpPolicyContentSourceLimitOutput) Bps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContentSourceLimit) *int { return v.Bps }).(pulumi.IntPtrOutput)
+}
+
+func (o BgpPolicyContentSourceLimitOutput) Pps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContentSourceLimit) *int { return v.Pps }).(pulumi.IntPtrOutput)
+}
+
+func (o BgpPolicyContentSourceLimitOutput) SynBps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContentSourceLimit) *int { return v.SynBps }).(pulumi.IntPtrOutput)
+}
+
+func (o BgpPolicyContentSourceLimitOutput) SynPps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BgpPolicyContentSourceLimit) *int { return v.SynPps }).(pulumi.IntPtrOutput)
+}
+
+type BgpPolicyContentSourceLimitPtrOutput struct{ *pulumi.OutputState }
+
+func (BgpPolicyContentSourceLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BgpPolicyContentSourceLimit)(nil)).Elem()
+}
+
+func (o BgpPolicyContentSourceLimitPtrOutput) ToBgpPolicyContentSourceLimitPtrOutput() BgpPolicyContentSourceLimitPtrOutput {
+	return o
+}
+
+func (o BgpPolicyContentSourceLimitPtrOutput) ToBgpPolicyContentSourceLimitPtrOutputWithContext(ctx context.Context) BgpPolicyContentSourceLimitPtrOutput {
+	return o
+}
+
+func (o BgpPolicyContentSourceLimitPtrOutput) Elem() BgpPolicyContentSourceLimitOutput {
+	return o.ApplyT(func(v *BgpPolicyContentSourceLimit) BgpPolicyContentSourceLimit {
+		if v != nil {
+			return *v
+		}
+		var ret BgpPolicyContentSourceLimit
+		return ret
+	}).(BgpPolicyContentSourceLimitOutput)
+}
+
+func (o BgpPolicyContentSourceLimitPtrOutput) Bps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BgpPolicyContentSourceLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Bps
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o BgpPolicyContentSourceLimitPtrOutput) Pps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BgpPolicyContentSourceLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Pps
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o BgpPolicyContentSourceLimitPtrOutput) SynBps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BgpPolicyContentSourceLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SynBps
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o BgpPolicyContentSourceLimitPtrOutput) SynPps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BgpPolicyContentSourceLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SynPps
+	}).(pulumi.IntPtrOutput)
+}
+
 type DomainResourceProxyType struct {
 	// the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxyPorts` can be modified.
 	ProxyPorts []int `pulumi:"proxyPorts"`
@@ -1314,6 +2531,20 @@ func (o GetDdosCooPortsPortArrayOutput) Index(i pulumi.IntInput) GetDdosCooPorts
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentInput)(nil)).Elem(), BgpPolicyContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentPtrInput)(nil)).Elem(), BgpPolicyContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentFingerPrintRuleListInput)(nil)).Elem(), BgpPolicyContentFingerPrintRuleListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentFingerPrintRuleListArrayInput)(nil)).Elem(), BgpPolicyContentFingerPrintRuleListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentLayer4RuleListInput)(nil)).Elem(), BgpPolicyContentLayer4RuleListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentLayer4RuleListArrayInput)(nil)).Elem(), BgpPolicyContentLayer4RuleListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentLayer4RuleListConditionListInput)(nil)).Elem(), BgpPolicyContentLayer4RuleListConditionListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentLayer4RuleListConditionListArrayInput)(nil)).Elem(), BgpPolicyContentLayer4RuleListConditionListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentPortRuleListInput)(nil)).Elem(), BgpPolicyContentPortRuleListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentPortRuleListArrayInput)(nil)).Elem(), BgpPolicyContentPortRuleListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentSourceBlockListInput)(nil)).Elem(), BgpPolicyContentSourceBlockListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentSourceBlockListArrayInput)(nil)).Elem(), BgpPolicyContentSourceBlockListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentSourceLimitInput)(nil)).Elem(), BgpPolicyContentSourceLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpPolicyContentSourceLimitPtrInput)(nil)).Elem(), BgpPolicyContentSourceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceProxyTypeInput)(nil)).Elem(), DomainResourceProxyTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainResourceProxyTypeArrayInput)(nil)).Elem(), DomainResourceProxyTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerRuleRuleInput)(nil)).Elem(), SchedulerRuleRuleArgs{})
@@ -1330,6 +2561,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooInstancesInstanceArrayInput)(nil)).Elem(), GetDdosCooInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooPortsPortInput)(nil)).Elem(), GetDdosCooPortsPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDdosCooPortsPortArrayInput)(nil)).Elem(), GetDdosCooPortsPortArray{})
+	pulumi.RegisterOutputType(BgpPolicyContentOutput{})
+	pulumi.RegisterOutputType(BgpPolicyContentPtrOutput{})
+	pulumi.RegisterOutputType(BgpPolicyContentFingerPrintRuleListOutput{})
+	pulumi.RegisterOutputType(BgpPolicyContentFingerPrintRuleListArrayOutput{})
+	pulumi.RegisterOutputType(BgpPolicyContentLayer4RuleListOutput{})
+	pulumi.RegisterOutputType(BgpPolicyContentLayer4RuleListArrayOutput{})
+	pulumi.RegisterOutputType(BgpPolicyContentLayer4RuleListConditionListOutput{})
+	pulumi.RegisterOutputType(BgpPolicyContentLayer4RuleListConditionListArrayOutput{})
+	pulumi.RegisterOutputType(BgpPolicyContentPortRuleListOutput{})
+	pulumi.RegisterOutputType(BgpPolicyContentPortRuleListArrayOutput{})
+	pulumi.RegisterOutputType(BgpPolicyContentSourceBlockListOutput{})
+	pulumi.RegisterOutputType(BgpPolicyContentSourceBlockListArrayOutput{})
+	pulumi.RegisterOutputType(BgpPolicyContentSourceLimitOutput{})
+	pulumi.RegisterOutputType(BgpPolicyContentSourceLimitPtrOutput{})
 	pulumi.RegisterOutputType(DomainResourceProxyTypeOutput{})
 	pulumi.RegisterOutputType(DomainResourceProxyTypeArrayOutput{})
 	pulumi.RegisterOutputType(SchedulerRuleRuleOutput{})

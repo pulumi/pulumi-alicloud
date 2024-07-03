@@ -137,6 +137,8 @@ type Instance struct {
 	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
 	// Theoretical maximum QPS value.
 	Qps pulumi.IntOutput `pulumi:"qps"`
+	// The number of read replicas in the primary zone. Valid values: `1` to `9`.
+	ReadOnlyCount pulumi.IntPtrOutput `pulumi:"readOnlyCount"`
 	// The ID of resource group which the resource belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The point in time of a backup file.
@@ -156,6 +158,9 @@ type Instance struct {
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount pulumi.IntOutput `pulumi:"shardCount"`
+	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
+	SlaveReadOnlyCount pulumi.IntPtrOutput `pulumi:"slaveReadOnlyCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrOutput `pulumi:"srcdbInstanceId"`
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -330,6 +335,8 @@ type instanceState struct {
 	PrivateIp *string `pulumi:"privateIp"`
 	// Theoretical maximum QPS value.
 	Qps *int `pulumi:"qps"`
+	// The number of read replicas in the primary zone. Valid values: `1` to `9`.
+	ReadOnlyCount *int `pulumi:"readOnlyCount"`
 	// The ID of resource group which the resource belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The point in time of a backup file.
@@ -349,6 +356,9 @@ type instanceState struct {
 	SecurityIps []string `pulumi:"securityIps"`
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount *int `pulumi:"shardCount"`
+	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
+	SlaveReadOnlyCount *int `pulumi:"slaveReadOnlyCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId *string `pulumi:"srcdbInstanceId"`
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -487,6 +497,8 @@ type InstanceState struct {
 	PrivateIp pulumi.StringPtrInput
 	// Theoretical maximum QPS value.
 	Qps pulumi.IntPtrInput
+	// The number of read replicas in the primary zone. Valid values: `1` to `9`.
+	ReadOnlyCount pulumi.IntPtrInput
 	// The ID of resource group which the resource belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The point in time of a backup file.
@@ -506,6 +518,9 @@ type InstanceState struct {
 	SecurityIps pulumi.StringArrayInput
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount pulumi.IntPtrInput
+	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
+	SlaveReadOnlyCount pulumi.IntPtrInput
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrInput
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -636,6 +651,8 @@ type instanceArgs struct {
 	PrivateConnectionPrefix *string `pulumi:"privateConnectionPrefix"`
 	// The internal IP address of the instance.
 	PrivateIp *string `pulumi:"privateIp"`
+	// The number of read replicas in the primary zone. Valid values: `1` to `9`.
+	ReadOnlyCount *int `pulumi:"readOnlyCount"`
 	// The ID of resource group which the resource belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The point in time of a backup file.
@@ -655,6 +672,9 @@ type instanceArgs struct {
 	SecurityIps []string `pulumi:"securityIps"`
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount *int `pulumi:"shardCount"`
+	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
+	SlaveReadOnlyCount *int `pulumi:"slaveReadOnlyCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId *string `pulumi:"srcdbInstanceId"`
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -780,6 +800,8 @@ type InstanceArgs struct {
 	PrivateConnectionPrefix pulumi.StringPtrInput
 	// The internal IP address of the instance.
 	PrivateIp pulumi.StringPtrInput
+	// The number of read replicas in the primary zone. Valid values: `1` to `9`.
+	ReadOnlyCount pulumi.IntPtrInput
 	// The ID of resource group which the resource belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The point in time of a backup file.
@@ -799,6 +821,9 @@ type InstanceArgs struct {
 	SecurityIps pulumi.StringArrayInput
 	// The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 	ShardCount pulumi.IntPtrInput
+	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
+	SlaveReadOnlyCount pulumi.IntPtrInput
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrInput
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -1165,6 +1190,11 @@ func (o InstanceOutput) Qps() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Qps }).(pulumi.IntOutput)
 }
 
+// The number of read replicas in the primary zone. Valid values: `1` to `9`.
+func (o InstanceOutput) ReadOnlyCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ReadOnlyCount }).(pulumi.IntPtrOutput)
+}
+
 // The ID of resource group which the resource belongs.
 func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
@@ -1209,6 +1239,12 @@ func (o InstanceOutput) SecurityIps() pulumi.StringArrayOutput {
 // The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
 func (o InstanceOutput) ShardCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ShardCount }).(pulumi.IntOutput)
+}
+
+// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
+// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
+func (o InstanceOutput) SlaveReadOnlyCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.SlaveReadOnlyCount }).(pulumi.IntPtrOutput)
 }
 
 // The ID of the source instance.

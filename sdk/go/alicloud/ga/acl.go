@@ -75,6 +75,8 @@ type Acl struct {
 	AddressIpVersion pulumi.StringOutput `pulumi:"addressIpVersion"`
 	// The dry run.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -124,6 +126,8 @@ type aclState struct {
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -141,6 +145,8 @@ type AclState struct {
 	AddressIpVersion pulumi.StringPtrInput
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -162,6 +168,8 @@ type aclArgs struct {
 	AddressIpVersion string `pulumi:"addressIpVersion"`
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
@@ -178,6 +186,8 @@ type AclArgs struct {
 	AddressIpVersion pulumi.StringInput
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 }
@@ -289,6 +299,11 @@ func (o AclOutput) AddressIpVersion() pulumi.StringOutput {
 // The dry run.
 func (o AclOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Acl) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+func (o AclOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The status of the resource.

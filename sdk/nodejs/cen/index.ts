@@ -265,6 +265,11 @@ export type TransitRouterCidr = import("./transitRouterCidr").TransitRouterCidr;
 export const TransitRouterCidr: typeof import("./transitRouterCidr").TransitRouterCidr = null as any;
 utilities.lazyLoad(exports, ["TransitRouterCidr"], () => require("./transitRouterCidr"));
 
+export { TransitRouterEcrAttachmentArgs, TransitRouterEcrAttachmentState } from "./transitRouterEcrAttachment";
+export type TransitRouterEcrAttachment = import("./transitRouterEcrAttachment").TransitRouterEcrAttachment;
+export const TransitRouterEcrAttachment: typeof import("./transitRouterEcrAttachment").TransitRouterEcrAttachment = null as any;
+utilities.lazyLoad(exports, ["TransitRouterEcrAttachment"], () => require("./transitRouterEcrAttachment"));
+
 export { TransitRouterGrantAttachmentArgs, TransitRouterGrantAttachmentState } from "./transitRouterGrantAttachment";
 export type TransitRouterGrantAttachment = import("./transitRouterGrantAttachment").TransitRouterGrantAttachment;
 export const TransitRouterGrantAttachment: typeof import("./transitRouterGrantAttachment").TransitRouterGrantAttachment = null as any;
@@ -386,6 +391,8 @@ const _module = {
                 return new TransitRouter(name, <any>undefined, { urn })
             case "alicloud:cen/transitRouterCidr:TransitRouterCidr":
                 return new TransitRouterCidr(name, <any>undefined, { urn })
+            case "alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment":
+                return new TransitRouterEcrAttachment(name, <any>undefined, { urn })
             case "alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment":
                 return new TransitRouterGrantAttachment(name, <any>undefined, { urn })
             case "alicloud:cen/transitRouterMulticastDomain:TransitRouterMulticastDomain":
@@ -441,6 +448,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cen/trafficMarkingPolicy", _m
 pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouteTableAggregation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouter", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterCidr", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterEcrAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterGrantAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterMulticastDomain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterMulticastDomainAssociation", _module)

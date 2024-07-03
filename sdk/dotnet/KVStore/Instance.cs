@@ -314,6 +314,12 @@ namespace Pulumi.AliCloud.KVStore
         public Output<int> Qps { get; private set; } = null!;
 
         /// <summary>
+        /// The number of read replicas in the primary zone. Valid values: `1` to `9`.
+        /// </summary>
+        [Output("readOnlyCount")]
+        public Output<int?> ReadOnlyCount { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of resource group which the resource belongs.
         /// </summary>
         [Output("resourceGroupId")]
@@ -367,6 +373,13 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Output("shardCount")]
         public Output<int> ShardCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+        /// &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+        /// </summary>
+        [Output("slaveReadOnlyCount")]
+        public Output<int?> SlaveReadOnlyCount { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the source instance.
@@ -767,6 +780,12 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? PrivateIp { get; set; }
 
         /// <summary>
+        /// The number of read replicas in the primary zone. Valid values: `1` to `9`.
+        /// </summary>
+        [Input("readOnlyCount")]
+        public Input<int>? ReadOnlyCount { get; set; }
+
+        /// <summary>
         /// The ID of resource group which the resource belongs.
         /// </summary>
         [Input("resourceGroupId")]
@@ -826,6 +845,13 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("shardCount")]
         public Input<int>? ShardCount { get; set; }
+
+        /// <summary>
+        /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+        /// &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+        /// </summary>
+        [Input("slaveReadOnlyCount")]
+        public Input<int>? SlaveReadOnlyCount { get; set; }
 
         /// <summary>
         /// The ID of the source instance.
@@ -1214,6 +1240,12 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? Qps { get; set; }
 
         /// <summary>
+        /// The number of read replicas in the primary zone. Valid values: `1` to `9`.
+        /// </summary>
+        [Input("readOnlyCount")]
+        public Input<int>? ReadOnlyCount { get; set; }
+
+        /// <summary>
         /// The ID of resource group which the resource belongs.
         /// </summary>
         [Input("resourceGroupId")]
@@ -1273,6 +1305,13 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("shardCount")]
         public Input<int>? ShardCount { get; set; }
+
+        /// <summary>
+        /// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
+        /// &gt; **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+        /// </summary>
+        [Input("slaveReadOnlyCount")]
+        public Input<int>? SlaveReadOnlyCount { get; set; }
 
         /// <summary>
         /// The ID of the source instance.

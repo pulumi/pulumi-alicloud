@@ -37,7 +37,6 @@ namespace Pulumi.AliCloud.Ga
     ///         BandwidthType = "Basic",
     ///         Duration = "1",
     ///         AutoPay = true,
-    ///         Ratio = 30,
     ///     });
     /// 
     /// });
@@ -61,10 +60,10 @@ namespace Pulumi.AliCloud.Ga
         public Output<bool?> AutoPay { get; private set; } = null!;
 
         /// <summary>
-        /// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        /// Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
         /// </summary>
         [Output("autoRenewDuration")]
-        public Output<int?> AutoRenewDuration { get; private set; } = null!;
+        public Output<int> AutoRenewDuration { get; private set; } = null!;
 
         /// <summary>
         /// Whether use vouchers. Default value: `false`. Valid values:
@@ -149,6 +148,12 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the Bandwidth Package.
         /// </summary>
         [Output("status")]
@@ -219,7 +224,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        /// Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
         /// </summary>
         [Input("autoRenewDuration")]
         public Input<int>? AutoRenewDuration { get; set; }
@@ -306,6 +311,12 @@ namespace Pulumi.AliCloud.Ga
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
+        /// <summary>
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -339,7 +350,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
+        /// Auto renewal period of a bandwidth packet, in the unit of month. Valid values: `1` to `12`.
         /// </summary>
         [Input("autoRenewDuration")]
         public Input<int>? AutoRenewDuration { get; set; }
@@ -425,6 +436,12 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The status of the Bandwidth Package.

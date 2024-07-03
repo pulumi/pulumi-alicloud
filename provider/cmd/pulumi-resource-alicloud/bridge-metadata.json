@@ -192,6 +192,9 @@
             "alicloud_alb_load_balancer_common_bandwidth_package_attachment": {
                 "current": "alicloud:alb/loadBalancerCommonBandwidthPackageAttachment:LoadBalancerCommonBandwidthPackageAttachment"
             },
+            "alicloud_alb_load_balancer_security_group_attachment": {
+                "current": "alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment"
+            },
             "alicloud_alb_rule": {
                 "current": "alicloud:alb/rule:Rule",
                 "fields": {
@@ -1081,6 +1084,9 @@
             },
             "alicloud_cen_transit_router_cidr": {
                 "current": "alicloud:cen/transitRouterCidr:TransitRouterCidr"
+            },
+            "alicloud_cen_transit_router_ecr_attachment": {
+                "current": "alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment"
             },
             "alicloud_cen_transit_router_grant_attachment": {
                 "current": "alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment"
@@ -2657,6 +2663,49 @@
             },
             "alicloud_ddos_basic_threshold": {
                 "current": "alicloud:ddos/basicThreshold:BasicThreshold"
+            },
+            "alicloud_ddos_bgp_policy": {
+                "current": "alicloud:ddos/bgpPolicy:BgpPolicy",
+                "fields": {
+                    "content": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "finger_print_rule_list": {
+                                    "maxItemsOne": false
+                                },
+                                "layer4_rule_list": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "condition_list": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "port_rule_list": {
+                                    "maxItemsOne": false
+                                },
+                                "reflect_block_udp_port_list": {
+                                    "maxItemsOne": false
+                                },
+                                "region_block_country_list": {
+                                    "maxItemsOne": false
+                                },
+                                "region_block_province_list": {
+                                    "maxItemsOne": false
+                                },
+                                "source_block_list": {
+                                    "maxItemsOne": false
+                                },
+                                "source_limit": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "alicloud_ddosbgp_instance": {
                 "current": "alicloud:ddos/ddosBgpInstance:DdosBgpInstance"

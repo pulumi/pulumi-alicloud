@@ -53,13 +53,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new BasicAccelerator("default", BasicAcceleratorArgs.builder()
- *             .duration(1)
- *             .pricingCycle("Month")
- *             .basicAcceleratorName("tf-example-value")
- *             .description("tf-example-value")
  *             .bandwidthBillingType("BandwidthPackage")
  *             .autoPay(true)
+ *             .duration(1)
+ *             .pricingCycle("Month")
  *             .autoUseCoupon("true")
+ *             .basicAcceleratorName("tf-example-value")
+ *             .description("tf-example-value")
  *             .build());
  * 
  *     }
@@ -250,6 +250,20 @@ public class BasicAccelerator extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> promotionOptionNo() {
         return Codegen.optional(this.promotionOptionNo);
+    }
+    /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * The status of the Basic Accelerator instance.

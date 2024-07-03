@@ -87,6 +87,10 @@ export class Acl extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -112,6 +116,7 @@ export class Acl extends pulumi.CustomResource {
             resourceInputs["aclName"] = state ? state.aclName : undefined;
             resourceInputs["addressIpVersion"] = state ? state.addressIpVersion : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -123,6 +128,7 @@ export class Acl extends pulumi.CustomResource {
             resourceInputs["aclName"] = args ? args.aclName : undefined;
             resourceInputs["addressIpVersion"] = args ? args.addressIpVersion : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -153,6 +159,10 @@ export interface AclState {
      * The dry run.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The status of the resource.
      */
@@ -185,6 +195,10 @@ export interface AclArgs {
      * The dry run.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

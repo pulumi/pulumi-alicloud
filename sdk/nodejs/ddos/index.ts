@@ -20,6 +20,11 @@ export type BgpIp = import("./bgpIp").BgpIp;
 export const BgpIp: typeof import("./bgpIp").BgpIp = null as any;
 utilities.lazyLoad(exports, ["BgpIp"], () => require("./bgpIp"));
 
+export { BgpPolicyArgs, BgpPolicyState } from "./bgpPolicy";
+export type BgpPolicy = import("./bgpPolicy").BgpPolicy;
+export const BgpPolicy: typeof import("./bgpPolicy").BgpPolicy = null as any;
+utilities.lazyLoad(exports, ["BgpPolicy"], () => require("./bgpPolicy"));
+
 export { DdosBgpInstanceArgs, DdosBgpInstanceState } from "./ddosBgpInstance";
 export type DdosBgpInstance = import("./ddosBgpInstance").DdosBgpInstance;
 export const DdosBgpInstance: typeof import("./ddosBgpInstance").DdosBgpInstance = null as any;
@@ -81,6 +86,8 @@ const _module = {
                 return new BasicThreshold(name, <any>undefined, { urn })
             case "alicloud:ddos/bgpIp:BgpIp":
                 return new BgpIp(name, <any>undefined, { urn })
+            case "alicloud:ddos/bgpPolicy:BgpPolicy":
+                return new BgpPolicy(name, <any>undefined, { urn })
             case "alicloud:ddos/ddosBgpInstance:DdosBgpInstance":
                 return new DdosBgpInstance(name, <any>undefined, { urn })
             case "alicloud:ddos/ddosCooInstance:DdosCooInstance":
@@ -99,6 +106,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "ddos/basicDefenseThreshold", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/basicThreshold", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/bgpIp", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ddos/bgpPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/ddosBgpInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/ddosCooInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ddos/domainResource", _module)

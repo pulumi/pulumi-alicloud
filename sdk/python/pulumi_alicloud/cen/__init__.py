@@ -57,6 +57,7 @@ from .traffic_marking_policy import *
 from .transit_route_table_aggregation import *
 from .transit_router import *
 from .transit_router_cidr import *
+from .transit_router_ecr_attachment import *
 from .transit_router_grant_attachment import *
 from .transit_router_multicast_domain import *
 from .transit_router_multicast_domain_association import *

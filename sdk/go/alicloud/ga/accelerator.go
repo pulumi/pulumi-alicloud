@@ -90,6 +90,8 @@ type Accelerator struct {
 	// - `Normal`: Disable auto renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec pulumi.StringPtrOutput `pulumi:"spec"`
 	// The status of the GA instance.
@@ -161,6 +163,8 @@ type acceleratorState struct {
 	// - `Normal`: Disable auto renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec *string `pulumi:"spec"`
 	// The status of the GA instance.
@@ -203,6 +207,8 @@ type AcceleratorState struct {
 	// - `Normal`: Disable auto renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringPtrInput
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec pulumi.StringPtrInput
 	// The status of the GA instance.
@@ -249,6 +255,8 @@ type acceleratorArgs struct {
 	// - `Normal`: Disable auto renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec *string `pulumi:"spec"`
 	// A mapping of tags to assign to the resource.
@@ -290,6 +298,8 @@ type AcceleratorArgs struct {
 	// - `Normal`: Disable auto renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringPtrInput
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -450,6 +460,11 @@ func (o AcceleratorOutput) PromotionOptionNo() pulumi.StringPtrOutput {
 // - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 func (o AcceleratorOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+func (o AcceleratorOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The instance type of the GA instance. Specification of global acceleration instance. Valid values:
