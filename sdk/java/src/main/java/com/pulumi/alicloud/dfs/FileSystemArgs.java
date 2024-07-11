@@ -36,6 +36,13 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dataRedundancyType);
     }
 
+    @Import(name="dedicatedClusterId")
+    private @Nullable Output<String> dedicatedClusterId;
+
+    public Optional<Output<String>> dedicatedClusterId() {
+        return Optional.ofNullable(this.dedicatedClusterId);
+    }
+
     /**
      * The description of the file system resource. No more than 32 characters in length.
      * 
@@ -175,21 +182,22 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
      * Zone Id, which is used to create file system resources to the specified zone.
      * 
      */
-    @Import(name="zoneId", required=true)
-    private Output<String> zoneId;
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
     /**
      * @return Zone Id, which is used to create file system resources to the specified zone.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
     }
 
     private FileSystemArgs() {}
 
     private FileSystemArgs(FileSystemArgs $) {
         this.dataRedundancyType = $.dataRedundancyType;
+        this.dedicatedClusterId = $.dedicatedClusterId;
         this.description = $.description;
         this.fileSystemName = $.fileSystemName;
         this.partitionNumber = $.partitionNumber;
@@ -243,6 +251,15 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataRedundancyType(String dataRedundancyType) {
             return dataRedundancyType(Output.of(dataRedundancyType));
+        }
+
+        public Builder dedicatedClusterId(@Nullable Output<String> dedicatedClusterId) {
+            $.dedicatedClusterId = dedicatedClusterId;
+            return this;
+        }
+
+        public Builder dedicatedClusterId(String dedicatedClusterId) {
+            return dedicatedClusterId(Output.of(dedicatedClusterId));
         }
 
         /**
@@ -440,7 +457,7 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder zoneId(Output<String> zoneId) {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
@@ -467,9 +484,6 @@ public final class FileSystemArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.storageType == null) {
                 throw new MissingRequiredPropertyException("FileSystemArgs", "storageType");
-            }
-            if ($.zoneId == null) {
-                throw new MissingRequiredPropertyException("FileSystemArgs", "zoneId");
             }
             return $;
         }

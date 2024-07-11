@@ -35,6 +35,11 @@ export type ElasticInstance = import("./elasticInstance").ElasticInstance;
 export const ElasticInstance: typeof import("./elasticInstance").ElasticInstance = null as any;
 utilities.lazyLoad(exports, ["ElasticInstance"], () => require("./elasticInstance"));
 
+export { ExternalDataServiceArgs, ExternalDataServiceState } from "./externalDataService";
+export type ExternalDataService = import("./externalDataService").ExternalDataService;
+export const ExternalDataService: typeof import("./externalDataService").ExternalDataService = null as any;
+utilities.lazyLoad(exports, ["ExternalDataService"], () => require("./externalDataService"));
+
 export { GetAccountsArgs, GetAccountsResult, GetAccountsOutputArgs } from "./getAccounts";
 export const getAccounts: typeof import("./getAccounts").getAccounts = null as any;
 export const getAccountsOutput: typeof import("./getAccounts").getAccountsOutput = null as any;
@@ -60,6 +65,21 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { RemoteAdbDataSourceArgs, RemoteAdbDataSourceState } from "./remoteAdbDataSource";
+export type RemoteAdbDataSource = import("./remoteAdbDataSource").RemoteAdbDataSource;
+export const RemoteAdbDataSource: typeof import("./remoteAdbDataSource").RemoteAdbDataSource = null as any;
+utilities.lazyLoad(exports, ["RemoteAdbDataSource"], () => require("./remoteAdbDataSource"));
+
+export { StreamingDataServiceArgs, StreamingDataServiceState } from "./streamingDataService";
+export type StreamingDataService = import("./streamingDataService").StreamingDataService;
+export const StreamingDataService: typeof import("./streamingDataService").StreamingDataService = null as any;
+utilities.lazyLoad(exports, ["StreamingDataService"], () => require("./streamingDataService"));
+
+export { StreamingDataSourceArgs, StreamingDataSourceState } from "./streamingDataSource";
+export type StreamingDataSource = import("./streamingDataSource").StreamingDataSource;
+export const StreamingDataSource: typeof import("./streamingDataSource").StreamingDataSource = null as any;
+utilities.lazyLoad(exports, ["StreamingDataSource"], () => require("./streamingDataSource"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -77,8 +97,16 @@ const _module = {
                 return new DbResourceGroup(name, <any>undefined, { urn })
             case "alicloud:gpdb/elasticInstance:ElasticInstance":
                 return new ElasticInstance(name, <any>undefined, { urn })
+            case "alicloud:gpdb/externalDataService:ExternalDataService":
+                return new ExternalDataService(name, <any>undefined, { urn })
             case "alicloud:gpdb/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource":
+                return new RemoteAdbDataSource(name, <any>undefined, { urn })
+            case "alicloud:gpdb/streamingDataService:StreamingDataService":
+                return new StreamingDataService(name, <any>undefined, { urn })
+            case "alicloud:gpdb/streamingDataSource:StreamingDataSource":
+                return new StreamingDataSource(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -90,4 +118,8 @@ pulumi.runtime.registerResourceModule("alicloud", "gpdb/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbInstancePlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbResourceGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/elasticInstance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/externalDataService", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/remoteAdbDataSource", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/streamingDataService", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/streamingDataSource", _module)

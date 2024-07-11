@@ -50,6 +50,13 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dataRedundancyType);
     }
 
+    @Import(name="dedicatedClusterId")
+    private @Nullable Output<String> dedicatedClusterId;
+
+    public Optional<Output<String>> dedicatedClusterId() {
+        return Optional.ofNullable(this.dedicatedClusterId);
+    }
+
     /**
      * The description of the file system resource. No more than 32 characters in length.
      * 
@@ -205,6 +212,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     private FileSystemState(FileSystemState $) {
         this.createTime = $.createTime;
         this.dataRedundancyType = $.dataRedundancyType;
+        this.dedicatedClusterId = $.dedicatedClusterId;
         this.description = $.description;
         this.fileSystemName = $.fileSystemName;
         this.partitionNumber = $.partitionNumber;
@@ -279,6 +287,15 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataRedundancyType(String dataRedundancyType) {
             return dataRedundancyType(Output.of(dataRedundancyType));
+        }
+
+        public Builder dedicatedClusterId(@Nullable Output<String> dedicatedClusterId) {
+            $.dedicatedClusterId = dedicatedClusterId;
+            return this;
+        }
+
+        public Builder dedicatedClusterId(String dedicatedClusterId) {
+            return dedicatedClusterId(Output.of(dedicatedClusterId));
         }
 
         /**

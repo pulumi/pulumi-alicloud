@@ -14,6 +14,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -198,6 +199,26 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.httpVersion;
     }
     /**
+     * The timeout period of idle connections. Unit: seconds. Valid values:
+     * - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+     * - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+     * - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+     * 
+     */
+    @Export(name="idleTimeout", refs={Integer.class}, tree="[0]")
+    private Output<Integer> idleTimeout;
+
+    /**
+     * @return The timeout period of idle connections. Unit: seconds. Valid values:
+     * - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+     * - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+     * - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+     * 
+     */
+    public Output<Integer> idleTimeout() {
+        return this.idleTimeout;
+    }
+    /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      * - `Standard`: intelligent routing.
      * - `CustomRouting`: custom routing.
@@ -272,6 +293,22 @@ public class Listener extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> proxyProtocol() {
         return Codegen.optional(this.proxyProtocol);
+    }
+    /**
+     * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+     * &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+     * 
+     */
+    @Export(name="requestTimeout", refs={Integer.class}, tree="[0]")
+    private Output<Integer> requestTimeout;
+
+    /**
+     * @return The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+     * &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+     * 
+     */
+    public Output<Integer> requestTimeout() {
+        return this.requestTimeout;
     }
     /**
      * The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:

@@ -16,23 +16,27 @@ class GatewayCacheDiskArgs:
     def __init__(__self__, *,
                  cache_disk_size_in_gb: pulumi.Input[int],
                  gateway_id: pulumi.Input[str],
-                 cache_disk_category: Optional[pulumi.Input[str]] = None):
+                 cache_disk_category: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GatewayCacheDisk resource.
-        :param pulumi.Input[int] cache_disk_size_in_gb: size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+        :param pulumi.Input[int] cache_disk_size_in_gb: The capacity of the cache disk.
         :param pulumi.Input[str] gateway_id: The ID of the gateway.
-        :param pulumi.Input[str] cache_disk_category: The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        :param pulumi.Input[str] cache_disk_category: The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
+        :param pulumi.Input[str] performance_level: The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
         """
         pulumi.set(__self__, "cache_disk_size_in_gb", cache_disk_size_in_gb)
         pulumi.set(__self__, "gateway_id", gateway_id)
         if cache_disk_category is not None:
             pulumi.set(__self__, "cache_disk_category", cache_disk_category)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
 
     @property
     @pulumi.getter(name="cacheDiskSizeInGb")
     def cache_disk_size_in_gb(self) -> pulumi.Input[int]:
         """
-        size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+        The capacity of the cache disk.
         """
         return pulumi.get(self, "cache_disk_size_in_gb")
 
@@ -56,13 +60,25 @@ class GatewayCacheDiskArgs:
     @pulumi.getter(name="cacheDiskCategory")
     def cache_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
         """
         return pulumi.get(self, "cache_disk_category")
 
     @cache_disk_category.setter
     def cache_disk_category(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cache_disk_category", value)
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_level", value)
 
 
 @pulumi.input_type
@@ -73,15 +89,17 @@ class _GatewayCacheDiskState:
                  cache_id: Optional[pulumi.Input[str]] = None,
                  gateway_id: Optional[pulumi.Input[str]] = None,
                  local_file_path: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering GatewayCacheDisk resources.
-        :param pulumi.Input[str] cache_disk_category: The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
-        :param pulumi.Input[int] cache_disk_size_in_gb: size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
-        :param pulumi.Input[str] cache_id: The ID of the cache.
+        :param pulumi.Input[str] cache_disk_category: The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
+        :param pulumi.Input[int] cache_disk_size_in_gb: The capacity of the cache disk.
+        :param pulumi.Input[str] cache_id: The ID of the cache disk.
         :param pulumi.Input[str] gateway_id: The ID of the gateway.
-        :param pulumi.Input[str] local_file_path: The cache disk inside the device name.
-        :param pulumi.Input[int] status: The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
+        :param pulumi.Input[str] local_file_path: The path of the cache disk.
+        :param pulumi.Input[str] performance_level: The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+        :param pulumi.Input[int] status: The status of the Gateway Cache Disk.
         """
         if cache_disk_category is not None:
             pulumi.set(__self__, "cache_disk_category", cache_disk_category)
@@ -93,6 +111,8 @@ class _GatewayCacheDiskState:
             pulumi.set(__self__, "gateway_id", gateway_id)
         if local_file_path is not None:
             pulumi.set(__self__, "local_file_path", local_file_path)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -100,7 +120,7 @@ class _GatewayCacheDiskState:
     @pulumi.getter(name="cacheDiskCategory")
     def cache_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
         """
         return pulumi.get(self, "cache_disk_category")
 
@@ -112,7 +132,7 @@ class _GatewayCacheDiskState:
     @pulumi.getter(name="cacheDiskSizeInGb")
     def cache_disk_size_in_gb(self) -> Optional[pulumi.Input[int]]:
         """
-        size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+        The capacity of the cache disk.
         """
         return pulumi.get(self, "cache_disk_size_in_gb")
 
@@ -124,7 +144,7 @@ class _GatewayCacheDiskState:
     @pulumi.getter(name="cacheId")
     def cache_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the cache.
+        The ID of the cache disk.
         """
         return pulumi.get(self, "cache_id")
 
@@ -148,7 +168,7 @@ class _GatewayCacheDiskState:
     @pulumi.getter(name="localFilePath")
     def local_file_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The cache disk inside the device name.
+        The path of the cache disk.
         """
         return pulumi.get(self, "local_file_path")
 
@@ -157,10 +177,22 @@ class _GatewayCacheDiskState:
         pulumi.set(self, "local_file_path", value)
 
     @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_level", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[int]]:
         """
-        The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
+        The status of the Gateway Cache Disk.
         """
         return pulumi.get(self, "status")
 
@@ -177,6 +209,7 @@ class GatewayCacheDisk(pulumi.CustomResource):
                  cache_disk_category: Optional[pulumi.Input[str]] = None,
                  cache_disk_size_in_gb: Optional[pulumi.Input[int]] = None,
                  gateway_id: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Cloud Storage Gateway Gateway Cache Disk resource.
@@ -184,6 +217,44 @@ class GatewayCacheDisk(pulumi.CustomResource):
         For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaycachedisk).
 
         > **NOTE:** Available since v1.144.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.stocks[0].zone_id,
+            vswitch_name=name)
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=name)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            description=name,
+            gateway_class="Standard",
+            type="File",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            release_after_expiration=True,
+            storage_bundle_id=default_storage_bundle.id,
+            location="Cloud",
+            gateway_name=name)
+        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("default",
+            gateway_id=default_gateway.id,
+            cache_disk_size_in_gb=50,
+            cache_disk_category="cloud_efficiency")
+        ```
 
         ## Import
 
@@ -195,9 +266,10 @@ class GatewayCacheDisk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cache_disk_category: The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
-        :param pulumi.Input[int] cache_disk_size_in_gb: size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+        :param pulumi.Input[str] cache_disk_category: The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
+        :param pulumi.Input[int] cache_disk_size_in_gb: The capacity of the cache disk.
         :param pulumi.Input[str] gateway_id: The ID of the gateway.
+        :param pulumi.Input[str] performance_level: The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
         """
         ...
     @overload
@@ -211,6 +283,44 @@ class GatewayCacheDisk(pulumi.CustomResource):
         For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaycachedisk).
 
         > **NOTE:** Available since v1.144.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.stocks[0].zone_id,
+            vswitch_name=name)
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=name)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            description=name,
+            gateway_class="Standard",
+            type="File",
+            payment_type="PayAsYouGo",
+            vswitch_id=default_switch.id,
+            release_after_expiration=True,
+            storage_bundle_id=default_storage_bundle.id,
+            location="Cloud",
+            gateway_name=name)
+        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("default",
+            gateway_id=default_gateway.id,
+            cache_disk_size_in_gb=50,
+            cache_disk_category="cloud_efficiency")
+        ```
 
         ## Import
 
@@ -238,6 +348,7 @@ class GatewayCacheDisk(pulumi.CustomResource):
                  cache_disk_category: Optional[pulumi.Input[str]] = None,
                  cache_disk_size_in_gb: Optional[pulumi.Input[int]] = None,
                  gateway_id: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -254,6 +365,7 @@ class GatewayCacheDisk(pulumi.CustomResource):
             if gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'gateway_id'")
             __props__.__dict__["gateway_id"] = gateway_id
+            __props__.__dict__["performance_level"] = performance_level
             __props__.__dict__["cache_id"] = None
             __props__.__dict__["local_file_path"] = None
             __props__.__dict__["status"] = None
@@ -272,6 +384,7 @@ class GatewayCacheDisk(pulumi.CustomResource):
             cache_id: Optional[pulumi.Input[str]] = None,
             gateway_id: Optional[pulumi.Input[str]] = None,
             local_file_path: Optional[pulumi.Input[str]] = None,
+            performance_level: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[int]] = None) -> 'GatewayCacheDisk':
         """
         Get an existing GatewayCacheDisk resource's state with the given name, id, and optional extra
@@ -280,12 +393,13 @@ class GatewayCacheDisk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cache_disk_category: The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
-        :param pulumi.Input[int] cache_disk_size_in_gb: size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
-        :param pulumi.Input[str] cache_id: The ID of the cache.
+        :param pulumi.Input[str] cache_disk_category: The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
+        :param pulumi.Input[int] cache_disk_size_in_gb: The capacity of the cache disk.
+        :param pulumi.Input[str] cache_id: The ID of the cache disk.
         :param pulumi.Input[str] gateway_id: The ID of the gateway.
-        :param pulumi.Input[str] local_file_path: The cache disk inside the device name.
-        :param pulumi.Input[int] status: The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
+        :param pulumi.Input[str] local_file_path: The path of the cache disk.
+        :param pulumi.Input[str] performance_level: The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+        :param pulumi.Input[int] status: The status of the Gateway Cache Disk.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -296,6 +410,7 @@ class GatewayCacheDisk(pulumi.CustomResource):
         __props__.__dict__["cache_id"] = cache_id
         __props__.__dict__["gateway_id"] = gateway_id
         __props__.__dict__["local_file_path"] = local_file_path
+        __props__.__dict__["performance_level"] = performance_level
         __props__.__dict__["status"] = status
         return GatewayCacheDisk(resource_name, opts=opts, __props__=__props__)
 
@@ -303,7 +418,7 @@ class GatewayCacheDisk(pulumi.CustomResource):
     @pulumi.getter(name="cacheDiskCategory")
     def cache_disk_category(self) -> pulumi.Output[str]:
         """
-        The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
+        The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
         """
         return pulumi.get(self, "cache_disk_category")
 
@@ -311,7 +426,7 @@ class GatewayCacheDisk(pulumi.CustomResource):
     @pulumi.getter(name="cacheDiskSizeInGb")
     def cache_disk_size_in_gb(self) -> pulumi.Output[int]:
         """
-        size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+        The capacity of the cache disk.
         """
         return pulumi.get(self, "cache_disk_size_in_gb")
 
@@ -319,7 +434,7 @@ class GatewayCacheDisk(pulumi.CustomResource):
     @pulumi.getter(name="cacheId")
     def cache_id(self) -> pulumi.Output[str]:
         """
-        The ID of the cache.
+        The ID of the cache disk.
         """
         return pulumi.get(self, "cache_id")
 
@@ -335,15 +450,23 @@ class GatewayCacheDisk(pulumi.CustomResource):
     @pulumi.getter(name="localFilePath")
     def local_file_path(self) -> pulumi.Output[str]:
         """
-        The cache disk inside the device name.
+        The path of the cache disk.
         """
         return pulumi.get(self, "local_file_path")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+        """
+        return pulumi.get(self, "performance_level")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[int]:
         """
-        The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
+        The status of the Gateway Cache Disk.
         """
         return pulumi.get(self, "status")
 

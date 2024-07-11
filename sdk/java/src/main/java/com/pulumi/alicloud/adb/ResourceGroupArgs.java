@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +19,14 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final ResourceGroupArgs Empty = new ResourceGroupArgs();
 
     /**
-     * DB cluster id.
+     * The ID of the DBCluster.
      * 
      */
     @Import(name="dbClusterId", required=true)
     private Output<String> dbClusterId;
 
     /**
-     * @return DB cluster id.
+     * @return The ID of the DBCluster.
      * 
      */
     public Output<String> dbClusterId() {
@@ -33,14 +34,14 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+     * The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      * 
      */
     @Import(name="groupName", required=true)
     private Output<String> groupName;
 
     /**
-     * @return The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+     * @return The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      * 
      */
     public Output<String> groupName() {
@@ -48,20 +49,14 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Query type, value description:
-     * * **etl**: Batch query mode.
-     * * **interactive**: interactive Query mode.
-     * * **default_type**: the default query mode.
+     * The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
      * 
      */
     @Import(name="groupType")
     private @Nullable Output<String> groupType;
 
     /**
-     * @return Query type, value description:
-     * * **etl**: Batch query mode.
-     * * **interactive**: interactive Query mode.
-     * * **default_type**: the default query mode.
+     * @return The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
      * 
      */
     public Optional<Output<String>> groupType() {
@@ -69,18 +64,33 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+     * The number of nodes.
      * 
      */
     @Import(name="nodeNum")
     private @Nullable Output<Integer> nodeNum;
 
     /**
-     * @return The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+     * @return The number of nodes.
      * 
      */
     public Optional<Output<Integer>> nodeNum() {
         return Optional.ofNullable(this.nodeNum);
+    }
+
+    /**
+     * The database accounts with which to associate the resource group.
+     * 
+     */
+    @Import(name="users")
+    private @Nullable Output<List<String>> users;
+
+    /**
+     * @return The database accounts with which to associate the resource group.
+     * 
+     */
+    public Optional<Output<List<String>>> users() {
+        return Optional.ofNullable(this.users);
     }
 
     private ResourceGroupArgs() {}
@@ -90,6 +100,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.groupName = $.groupName;
         this.groupType = $.groupType;
         this.nodeNum = $.nodeNum;
+        this.users = $.users;
     }
 
     public static Builder builder() {
@@ -111,7 +122,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterId DB cluster id.
+         * @param dbClusterId The ID of the DBCluster.
          * 
          * @return builder
          * 
@@ -122,7 +133,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterId DB cluster id.
+         * @param dbClusterId The ID of the DBCluster.
          * 
          * @return builder
          * 
@@ -132,7 +143,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupName The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+         * @param groupName The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
          * 
          * @return builder
          * 
@@ -143,7 +154,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupName The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+         * @param groupName The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
          * 
          * @return builder
          * 
@@ -153,10 +164,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupType Query type, value description:
-         * * **etl**: Batch query mode.
-         * * **interactive**: interactive Query mode.
-         * * **default_type**: the default query mode.
+         * @param groupType The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
          * 
          * @return builder
          * 
@@ -167,10 +175,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupType Query type, value description:
-         * * **etl**: Batch query mode.
-         * * **interactive**: interactive Query mode.
-         * * **default_type**: the default query mode.
+         * @param groupType The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
          * 
          * @return builder
          * 
@@ -180,7 +185,7 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeNum The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+         * @param nodeNum The number of nodes.
          * 
          * @return builder
          * 
@@ -191,13 +196,44 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeNum The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+         * @param nodeNum The number of nodes.
          * 
          * @return builder
          * 
          */
         public Builder nodeNum(Integer nodeNum) {
             return nodeNum(Output.of(nodeNum));
+        }
+
+        /**
+         * @param users The database accounts with which to associate the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder users(@Nullable Output<List<String>> users) {
+            $.users = users;
+            return this;
+        }
+
+        /**
+         * @param users The database accounts with which to associate the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder users(List<String> users) {
+            return users(Output.of(users));
+        }
+
+        /**
+         * @param users The database accounts with which to associate the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder users(String... users) {
+            return users(List.of(users));
         }
 
         public ResourceGroupArgs build() {

@@ -268,9 +268,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.instanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
-            if ((!args || args.internetMaxBandwidthOut === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'internetMaxBandwidthOut'");
-            }
             if ((!args || args.paymentType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
@@ -578,7 +575,7 @@ export interface InstanceArgs {
     /**
      * Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
      */
-    internetMaxBandwidthOut: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
      * The IP type. Value:
      * - ipv4 (default):IPv4

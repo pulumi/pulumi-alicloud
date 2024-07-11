@@ -17,18 +17,56 @@ public final class ClusterBootstrapScriptNodeSelectorArgs extends com.pulumi.res
 
     public static final ClusterBootstrapScriptNodeSelectorArgs Empty = new ClusterBootstrapScriptNodeSelectorArgs();
 
+    /**
+     * @deprecated
+     * Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
+     * 
+     */
+    @Deprecated /* Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it. */
     @Import(name="nodeGroupId")
     private @Nullable Output<String> nodeGroupId;
 
+    /**
+     * @deprecated
+     * Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
+     * 
+     */
+    @Deprecated /* Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it. */
     public Optional<Output<String>> nodeGroupId() {
         return Optional.ofNullable(this.nodeGroupId);
     }
 
+    @Import(name="nodeGroupIds")
+    private @Nullable Output<List<String>> nodeGroupIds;
+
+    public Optional<Output<List<String>>> nodeGroupIds() {
+        return Optional.ofNullable(this.nodeGroupIds);
+    }
+
+    /**
+     * @deprecated
+     * Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
+     * 
+     */
+    @Deprecated /* Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it. */
     @Import(name="nodeGroupName")
     private @Nullable Output<String> nodeGroupName;
 
+    /**
+     * @deprecated
+     * Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
+     * 
+     */
+    @Deprecated /* Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it. */
     public Optional<Output<String>> nodeGroupName() {
         return Optional.ofNullable(this.nodeGroupName);
+    }
+
+    @Import(name="nodeGroupNames")
+    private @Nullable Output<List<String>> nodeGroupNames;
+
+    public Optional<Output<List<String>>> nodeGroupNames() {
+        return Optional.ofNullable(this.nodeGroupNames);
     }
 
     @Import(name="nodeGroupTypes")
@@ -56,7 +94,9 @@ public final class ClusterBootstrapScriptNodeSelectorArgs extends com.pulumi.res
 
     private ClusterBootstrapScriptNodeSelectorArgs(ClusterBootstrapScriptNodeSelectorArgs $) {
         this.nodeGroupId = $.nodeGroupId;
+        this.nodeGroupIds = $.nodeGroupIds;
         this.nodeGroupName = $.nodeGroupName;
+        this.nodeGroupNames = $.nodeGroupNames;
         this.nodeGroupTypes = $.nodeGroupTypes;
         this.nodeNames = $.nodeNames;
         this.nodeSelectType = $.nodeSelectType;
@@ -80,22 +120,80 @@ public final class ClusterBootstrapScriptNodeSelectorArgs extends com.pulumi.res
             $ = new ClusterBootstrapScriptNodeSelectorArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
+         * 
+         */
+        @Deprecated /* Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it. */
         public Builder nodeGroupId(@Nullable Output<String> nodeGroupId) {
             $.nodeGroupId = nodeGroupId;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
+         * 
+         */
+        @Deprecated /* Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it. */
         public Builder nodeGroupId(String nodeGroupId) {
             return nodeGroupId(Output.of(nodeGroupId));
         }
 
+        public Builder nodeGroupIds(@Nullable Output<List<String>> nodeGroupIds) {
+            $.nodeGroupIds = nodeGroupIds;
+            return this;
+        }
+
+        public Builder nodeGroupIds(List<String> nodeGroupIds) {
+            return nodeGroupIds(Output.of(nodeGroupIds));
+        }
+
+        public Builder nodeGroupIds(String... nodeGroupIds) {
+            return nodeGroupIds(List.of(nodeGroupIds));
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
+         * 
+         */
+        @Deprecated /* Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it. */
         public Builder nodeGroupName(@Nullable Output<String> nodeGroupName) {
             $.nodeGroupName = nodeGroupName;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
+         * 
+         */
+        @Deprecated /* Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it. */
         public Builder nodeGroupName(String nodeGroupName) {
             return nodeGroupName(Output.of(nodeGroupName));
+        }
+
+        public Builder nodeGroupNames(@Nullable Output<List<String>> nodeGroupNames) {
+            $.nodeGroupNames = nodeGroupNames;
+            return this;
+        }
+
+        public Builder nodeGroupNames(List<String> nodeGroupNames) {
+            return nodeGroupNames(Output.of(nodeGroupNames));
+        }
+
+        public Builder nodeGroupNames(String... nodeGroupNames) {
+            return nodeGroupNames(List.of(nodeGroupNames));
         }
 
         public Builder nodeGroupTypes(@Nullable Output<List<String>> nodeGroupTypes) {

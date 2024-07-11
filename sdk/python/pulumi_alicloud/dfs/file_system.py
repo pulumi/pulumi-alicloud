@@ -18,20 +18,20 @@ class FileSystemArgs:
                  protocol_type: pulumi.Input[str],
                  space_capacity: pulumi.Input[int],
                  storage_type: pulumi.Input[str],
-                 zone_id: pulumi.Input[str],
                  data_redundancy_type: Optional[pulumi.Input[str]] = None,
+                 dedicated_cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  partition_number: Optional[pulumi.Input[int]] = None,
                  provisioned_throughput_in_mi_bps: Optional[pulumi.Input[int]] = None,
                  storage_set_name: Optional[pulumi.Input[str]] = None,
-                 throughput_mode: Optional[pulumi.Input[str]] = None):
+                 throughput_mode: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FileSystem resource.
         :param pulumi.Input[str] file_system_name: The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
         :param pulumi.Input[str] protocol_type: The protocol type.  Only HDFS(Hadoop Distributed File System) is supported.
         :param pulumi.Input[int] space_capacity: File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
         :param pulumi.Input[str] storage_type: The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
-        :param pulumi.Input[str] zone_id: Zone Id, which is used to create file system resources to the specified zone.
         :param pulumi.Input[str] data_redundancy_type: Redundancy mode of the file system. Value:
                - LRS (default): Local redundancy.
                - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
@@ -40,14 +40,16 @@ class FileSystemArgs:
         :param pulumi.Input[int] provisioned_throughput_in_mi_bps: Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
         :param pulumi.Input[str] storage_set_name: Save set identity, used to select a user-specified save set.
         :param pulumi.Input[str] throughput_mode: The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
+        :param pulumi.Input[str] zone_id: Zone Id, which is used to create file system resources to the specified zone.
         """
         pulumi.set(__self__, "file_system_name", file_system_name)
         pulumi.set(__self__, "protocol_type", protocol_type)
         pulumi.set(__self__, "space_capacity", space_capacity)
         pulumi.set(__self__, "storage_type", storage_type)
-        pulumi.set(__self__, "zone_id", zone_id)
         if data_redundancy_type is not None:
             pulumi.set(__self__, "data_redundancy_type", data_redundancy_type)
+        if dedicated_cluster_id is not None:
+            pulumi.set(__self__, "dedicated_cluster_id", dedicated_cluster_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if partition_number is not None:
@@ -58,6 +60,8 @@ class FileSystemArgs:
             pulumi.set(__self__, "storage_set_name", storage_set_name)
         if throughput_mode is not None:
             pulumi.set(__self__, "throughput_mode", throughput_mode)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="fileSystemName")
@@ -108,18 +112,6 @@ class FileSystemArgs:
         pulumi.set(self, "storage_type", value)
 
     @property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Input[str]:
-        """
-        Zone Id, which is used to create file system resources to the specified zone.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone_id", value)
-
-    @property
     @pulumi.getter(name="dataRedundancyType")
     def data_redundancy_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -132,6 +124,15 @@ class FileSystemArgs:
     @data_redundancy_type.setter
     def data_redundancy_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "data_redundancy_type", value)
+
+    @property
+    @pulumi.getter(name="dedicatedClusterId")
+    def dedicated_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dedicated_cluster_id")
+
+    @dedicated_cluster_id.setter
+    def dedicated_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dedicated_cluster_id", value)
 
     @property
     @pulumi.getter
@@ -193,12 +194,25 @@ class FileSystemArgs:
     def throughput_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "throughput_mode", value)
 
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone Id, which is used to create file system resources to the specified zone.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 @pulumi.input_type
 class _FileSystemState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  data_redundancy_type: Optional[pulumi.Input[str]] = None,
+                 dedicated_cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_system_name: Optional[pulumi.Input[str]] = None,
                  partition_number: Optional[pulumi.Input[int]] = None,
@@ -230,6 +244,8 @@ class _FileSystemState:
             pulumi.set(__self__, "create_time", create_time)
         if data_redundancy_type is not None:
             pulumi.set(__self__, "data_redundancy_type", data_redundancy_type)
+        if dedicated_cluster_id is not None:
+            pulumi.set(__self__, "dedicated_cluster_id", dedicated_cluster_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if file_system_name is not None:
@@ -276,6 +292,15 @@ class _FileSystemState:
     @data_redundancy_type.setter
     def data_redundancy_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "data_redundancy_type", value)
+
+    @property
+    @pulumi.getter(name="dedicatedClusterId")
+    def dedicated_cluster_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dedicated_cluster_id")
+
+    @dedicated_cluster_id.setter
+    def dedicated_cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dedicated_cluster_id", value)
 
     @property
     @pulumi.getter
@@ -404,6 +429,7 @@ class FileSystem(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_redundancy_type: Optional[pulumi.Input[str]] = None,
+                 dedicated_cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_system_name: Optional[pulumi.Input[str]] = None,
                  partition_number: Optional[pulumi.Input[int]] = None,
@@ -531,6 +557,7 @@ class FileSystem(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_redundancy_type: Optional[pulumi.Input[str]] = None,
+                 dedicated_cluster_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_system_name: Optional[pulumi.Input[str]] = None,
                  partition_number: Optional[pulumi.Input[int]] = None,
@@ -551,6 +578,7 @@ class FileSystem(pulumi.CustomResource):
             __props__ = FileSystemArgs.__new__(FileSystemArgs)
 
             __props__.__dict__["data_redundancy_type"] = data_redundancy_type
+            __props__.__dict__["dedicated_cluster_id"] = dedicated_cluster_id
             __props__.__dict__["description"] = description
             if file_system_name is None and not opts.urn:
                 raise TypeError("Missing required property 'file_system_name'")
@@ -568,8 +596,6 @@ class FileSystem(pulumi.CustomResource):
                 raise TypeError("Missing required property 'storage_type'")
             __props__.__dict__["storage_type"] = storage_type
             __props__.__dict__["throughput_mode"] = throughput_mode
-            if zone_id is None and not opts.urn:
-                raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["create_time"] = None
         super(FileSystem, __self__).__init__(
@@ -584,6 +610,7 @@ class FileSystem(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             data_redundancy_type: Optional[pulumi.Input[str]] = None,
+            dedicated_cluster_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             file_system_name: Optional[pulumi.Input[str]] = None,
             partition_number: Optional[pulumi.Input[int]] = None,
@@ -622,6 +649,7 @@ class FileSystem(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_redundancy_type"] = data_redundancy_type
+        __props__.__dict__["dedicated_cluster_id"] = dedicated_cluster_id
         __props__.__dict__["description"] = description
         __props__.__dict__["file_system_name"] = file_system_name
         __props__.__dict__["partition_number"] = partition_number
@@ -651,6 +679,11 @@ class FileSystem(pulumi.CustomResource):
         - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
         """
         return pulumi.get(self, "data_redundancy_type")
+
+    @property
+    @pulumi.getter(name="dedicatedClusterId")
+    def dedicated_cluster_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "dedicated_cluster_id")
 
     @property
     @pulumi.getter
@@ -726,7 +759,7 @@ class FileSystem(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[str]:
+    def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
         Zone Id, which is used to create file system resources to the specified zone.
         """

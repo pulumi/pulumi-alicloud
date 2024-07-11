@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the Click House Accounts of the current Alibaba Cloud user.
+// This data source provides the Click House Regions of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.138.0+.
 //

@@ -181,6 +181,8 @@ type ClusterBootstrapScript struct {
 	// The bootstrap scripts execution target. See `nodeSelector` below.
 	NodeSelector ClusterBootstrapScriptNodeSelector `pulumi:"nodeSelector"`
 	// The bootstrap scripts priority.
+	//
+	// Deprecated: Field 'priority' has been deprecated from provider version 1.227.0.
 	Priority *int `pulumi:"priority"`
 	// The bootstrap script args, e.g. "--a=b".
 	ScriptArgs string `pulumi:"scriptArgs"`
@@ -209,6 +211,8 @@ type ClusterBootstrapScriptArgs struct {
 	// The bootstrap scripts execution target. See `nodeSelector` below.
 	NodeSelector ClusterBootstrapScriptNodeSelectorInput `pulumi:"nodeSelector"`
 	// The bootstrap scripts priority.
+	//
+	// Deprecated: Field 'priority' has been deprecated from provider version 1.227.0.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// The bootstrap script args, e.g. "--a=b".
 	ScriptArgs pulumi.StringInput `pulumi:"scriptArgs"`
@@ -285,6 +289,8 @@ func (o ClusterBootstrapScriptOutput) NodeSelector() ClusterBootstrapScriptNodeS
 }
 
 // The bootstrap scripts priority.
+//
+// Deprecated: Field 'priority' has been deprecated from provider version 1.227.0.
 func (o ClusterBootstrapScriptOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapScript) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
@@ -325,8 +331,12 @@ func (o ClusterBootstrapScriptArrayOutput) Index(i pulumi.IntInput) ClusterBoots
 }
 
 type ClusterBootstrapScriptNodeSelector struct {
-	NodeGroupId    *string  `pulumi:"nodeGroupId"`
+	// Deprecated: Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it.
+	NodeGroupId  *string  `pulumi:"nodeGroupId"`
+	NodeGroupIds []string `pulumi:"nodeGroupIds"`
+	// Deprecated: Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it.
 	NodeGroupName  *string  `pulumi:"nodeGroupName"`
+	NodeGroupNames []string `pulumi:"nodeGroupNames"`
 	NodeGroupTypes []string `pulumi:"nodeGroupTypes"`
 	NodeNames      []string `pulumi:"nodeNames"`
 	NodeSelectType string   `pulumi:"nodeSelectType"`
@@ -344,8 +354,12 @@ type ClusterBootstrapScriptNodeSelectorInput interface {
 }
 
 type ClusterBootstrapScriptNodeSelectorArgs struct {
-	NodeGroupId    pulumi.StringPtrInput   `pulumi:"nodeGroupId"`
+	// Deprecated: Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it.
+	NodeGroupId  pulumi.StringPtrInput   `pulumi:"nodeGroupId"`
+	NodeGroupIds pulumi.StringArrayInput `pulumi:"nodeGroupIds"`
+	// Deprecated: Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it.
 	NodeGroupName  pulumi.StringPtrInput   `pulumi:"nodeGroupName"`
+	NodeGroupNames pulumi.StringArrayInput `pulumi:"nodeGroupNames"`
 	NodeGroupTypes pulumi.StringArrayInput `pulumi:"nodeGroupTypes"`
 	NodeNames      pulumi.StringArrayInput `pulumi:"nodeNames"`
 	NodeSelectType pulumi.StringInput      `pulumi:"nodeSelectType"`
@@ -377,12 +391,22 @@ func (o ClusterBootstrapScriptNodeSelectorOutput) ToClusterBootstrapScriptNodeSe
 	return o
 }
 
+// Deprecated: Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it.
 func (o ClusterBootstrapScriptNodeSelectorOutput) NodeGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) *string { return v.NodeGroupId }).(pulumi.StringPtrOutput)
 }
 
+func (o ClusterBootstrapScriptNodeSelectorOutput) NodeGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) []string { return v.NodeGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it.
 func (o ClusterBootstrapScriptNodeSelectorOutput) NodeGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) *string { return v.NodeGroupName }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterBootstrapScriptNodeSelectorOutput) NodeGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) []string { return v.NodeGroupNames }).(pulumi.StringArrayOutput)
 }
 
 func (o ClusterBootstrapScriptNodeSelectorOutput) NodeGroupTypes() pulumi.StringArrayOutput {
@@ -551,6 +575,8 @@ func (o ClusterNodeAttributeArrayOutput) Index(i pulumi.IntInput) ClusterNodeAtt
 type ClusterNodeGroup struct {
 	// Additional security Group IDS for Cluster, you can also specify this key for each node group.
 	AdditionalSecurityGroupIds []string `pulumi:"additionalSecurityGroupIds"`
+	// The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
+	AutoScalingPolicy *ClusterNodeGroupAutoScalingPolicy `pulumi:"autoScalingPolicy"`
 	// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
 	CostOptimizedConfig *ClusterNodeGroupCostOptimizedConfig `pulumi:"costOptimizedConfig"`
 	// Host Ecs data disks information in this node group. See `dataDisks` below.
@@ -599,6 +625,8 @@ type ClusterNodeGroupInput interface {
 type ClusterNodeGroupArgs struct {
 	// Additional security Group IDS for Cluster, you can also specify this key for each node group.
 	AdditionalSecurityGroupIds pulumi.StringArrayInput `pulumi:"additionalSecurityGroupIds"`
+	// The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
+	AutoScalingPolicy ClusterNodeGroupAutoScalingPolicyPtrInput `pulumi:"autoScalingPolicy"`
 	// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
 	CostOptimizedConfig ClusterNodeGroupCostOptimizedConfigPtrInput `pulumi:"costOptimizedConfig"`
 	// Host Ecs data disks information in this node group. See `dataDisks` below.
@@ -687,6 +715,11 @@ func (o ClusterNodeGroupOutput) ToClusterNodeGroupOutputWithContext(ctx context.
 // Additional security Group IDS for Cluster, you can also specify this key for each node group.
 func (o ClusterNodeGroupOutput) AdditionalSecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) []string { return v.AdditionalSecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
+func (o ClusterNodeGroupOutput) AutoScalingPolicy() ClusterNodeGroupAutoScalingPolicyPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroup) *ClusterNodeGroupAutoScalingPolicy { return v.AutoScalingPolicy }).(ClusterNodeGroupAutoScalingPolicyPtrOutput)
 }
 
 // The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
@@ -787,6 +820,1203 @@ func (o ClusterNodeGroupArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroup {
 		return vs[0].([]ClusterNodeGroup)[vs[1].(int)]
 	}).(ClusterNodeGroupOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicy struct {
+	Constraints  *ClusterNodeGroupAutoScalingPolicyConstraints  `pulumi:"constraints"`
+	ScalingRules []ClusterNodeGroupAutoScalingPolicyScalingRule `pulumi:"scalingRules"`
+}
+
+// ClusterNodeGroupAutoScalingPolicyInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyArgs and ClusterNodeGroupAutoScalingPolicyOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyInput` via:
+//
+//	ClusterNodeGroupAutoScalingPolicyArgs{...}
+type ClusterNodeGroupAutoScalingPolicyInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyOutput() ClusterNodeGroupAutoScalingPolicyOutput
+	ToClusterNodeGroupAutoScalingPolicyOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyOutput
+}
+
+type ClusterNodeGroupAutoScalingPolicyArgs struct {
+	Constraints  ClusterNodeGroupAutoScalingPolicyConstraintsPtrInput   `pulumi:"constraints"`
+	ScalingRules ClusterNodeGroupAutoScalingPolicyScalingRuleArrayInput `pulumi:"scalingRules"`
+}
+
+func (ClusterNodeGroupAutoScalingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicy)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyArgs) ToClusterNodeGroupAutoScalingPolicyOutput() ClusterNodeGroupAutoScalingPolicyOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyArgs) ToClusterNodeGroupAutoScalingPolicyOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyOutput)
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyArgs) ToClusterNodeGroupAutoScalingPolicyPtrOutput() ClusterNodeGroupAutoScalingPolicyPtrOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyArgs) ToClusterNodeGroupAutoScalingPolicyPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyOutput).ToClusterNodeGroupAutoScalingPolicyPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeGroupAutoScalingPolicyPtrInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyArgs, ClusterNodeGroupAutoScalingPolicyPtr and ClusterNodeGroupAutoScalingPolicyPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyPtrInput` via:
+//
+//	        ClusterNodeGroupAutoScalingPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeGroupAutoScalingPolicyPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyPtrOutput() ClusterNodeGroupAutoScalingPolicyPtrOutput
+	ToClusterNodeGroupAutoScalingPolicyPtrOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyPtrOutput
+}
+
+type clusterNodeGroupAutoScalingPolicyPtrType ClusterNodeGroupAutoScalingPolicyArgs
+
+func ClusterNodeGroupAutoScalingPolicyPtr(v *ClusterNodeGroupAutoScalingPolicyArgs) ClusterNodeGroupAutoScalingPolicyPtrInput {
+	return (*clusterNodeGroupAutoScalingPolicyPtrType)(v)
+}
+
+func (*clusterNodeGroupAutoScalingPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeGroupAutoScalingPolicy)(nil)).Elem()
+}
+
+func (i *clusterNodeGroupAutoScalingPolicyPtrType) ToClusterNodeGroupAutoScalingPolicyPtrOutput() ClusterNodeGroupAutoScalingPolicyPtrOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeGroupAutoScalingPolicyPtrType) ToClusterNodeGroupAutoScalingPolicyPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyPtrOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicy)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyOutput) ToClusterNodeGroupAutoScalingPolicyOutput() ClusterNodeGroupAutoScalingPolicyOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyOutput) ToClusterNodeGroupAutoScalingPolicyOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyOutput) ToClusterNodeGroupAutoScalingPolicyPtrOutput() ClusterNodeGroupAutoScalingPolicyPtrOutput {
+	return o.ToClusterNodeGroupAutoScalingPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyOutput) ToClusterNodeGroupAutoScalingPolicyPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeGroupAutoScalingPolicy) *ClusterNodeGroupAutoScalingPolicy {
+		return &v
+	}).(ClusterNodeGroupAutoScalingPolicyPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyOutput) Constraints() ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicy) *ClusterNodeGroupAutoScalingPolicyConstraints {
+		return v.Constraints
+	}).(ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyOutput) ScalingRules() ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicy) []ClusterNodeGroupAutoScalingPolicyScalingRule {
+		return v.ScalingRules
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeGroupAutoScalingPolicy)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyPtrOutput) ToClusterNodeGroupAutoScalingPolicyPtrOutput() ClusterNodeGroupAutoScalingPolicyPtrOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyPtrOutput) ToClusterNodeGroupAutoScalingPolicyPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyPtrOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyPtrOutput) Elem() ClusterNodeGroupAutoScalingPolicyOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicy) ClusterNodeGroupAutoScalingPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeGroupAutoScalingPolicy
+		return ret
+	}).(ClusterNodeGroupAutoScalingPolicyOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyPtrOutput) Constraints() ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicy) *ClusterNodeGroupAutoScalingPolicyConstraints {
+		if v == nil {
+			return nil
+		}
+		return v.Constraints
+	}).(ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyPtrOutput) ScalingRules() ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicy) []ClusterNodeGroupAutoScalingPolicyScalingRule {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingRules
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyConstraints struct {
+	MaxCapacity *int `pulumi:"maxCapacity"`
+	MinCapacity *int `pulumi:"minCapacity"`
+}
+
+// ClusterNodeGroupAutoScalingPolicyConstraintsInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyConstraintsArgs and ClusterNodeGroupAutoScalingPolicyConstraintsOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyConstraintsInput` via:
+//
+//	ClusterNodeGroupAutoScalingPolicyConstraintsArgs{...}
+type ClusterNodeGroupAutoScalingPolicyConstraintsInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyConstraintsOutput() ClusterNodeGroupAutoScalingPolicyConstraintsOutput
+	ToClusterNodeGroupAutoScalingPolicyConstraintsOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyConstraintsOutput
+}
+
+type ClusterNodeGroupAutoScalingPolicyConstraintsArgs struct {
+	MaxCapacity pulumi.IntPtrInput `pulumi:"maxCapacity"`
+	MinCapacity pulumi.IntPtrInput `pulumi:"minCapacity"`
+}
+
+func (ClusterNodeGroupAutoScalingPolicyConstraintsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyConstraints)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyConstraintsArgs) ToClusterNodeGroupAutoScalingPolicyConstraintsOutput() ClusterNodeGroupAutoScalingPolicyConstraintsOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyConstraintsOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyConstraintsArgs) ToClusterNodeGroupAutoScalingPolicyConstraintsOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyConstraintsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyConstraintsOutput)
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyConstraintsArgs) ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput() ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyConstraintsArgs) ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyConstraintsOutput).ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeGroupAutoScalingPolicyConstraintsPtrInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyConstraintsArgs, ClusterNodeGroupAutoScalingPolicyConstraintsPtr and ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyConstraintsPtrInput` via:
+//
+//	        ClusterNodeGroupAutoScalingPolicyConstraintsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeGroupAutoScalingPolicyConstraintsPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput() ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput
+	ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput
+}
+
+type clusterNodeGroupAutoScalingPolicyConstraintsPtrType ClusterNodeGroupAutoScalingPolicyConstraintsArgs
+
+func ClusterNodeGroupAutoScalingPolicyConstraintsPtr(v *ClusterNodeGroupAutoScalingPolicyConstraintsArgs) ClusterNodeGroupAutoScalingPolicyConstraintsPtrInput {
+	return (*clusterNodeGroupAutoScalingPolicyConstraintsPtrType)(v)
+}
+
+func (*clusterNodeGroupAutoScalingPolicyConstraintsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeGroupAutoScalingPolicyConstraints)(nil)).Elem()
+}
+
+func (i *clusterNodeGroupAutoScalingPolicyConstraintsPtrType) ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput() ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeGroupAutoScalingPolicyConstraintsPtrType) ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyConstraintsOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyConstraintsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyConstraints)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyConstraintsOutput) ToClusterNodeGroupAutoScalingPolicyConstraintsOutput() ClusterNodeGroupAutoScalingPolicyConstraintsOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyConstraintsOutput) ToClusterNodeGroupAutoScalingPolicyConstraintsOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyConstraintsOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyConstraintsOutput) ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput() ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput {
+	return o.ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyConstraintsOutput) ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeGroupAutoScalingPolicyConstraints) *ClusterNodeGroupAutoScalingPolicyConstraints {
+		return &v
+	}).(ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyConstraintsOutput) MaxCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyConstraints) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyConstraintsOutput) MinCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyConstraints) *int { return v.MinCapacity }).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeGroupAutoScalingPolicyConstraints)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput) ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput() ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput) ToClusterNodeGroupAutoScalingPolicyConstraintsPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput) Elem() ClusterNodeGroupAutoScalingPolicyConstraintsOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyConstraints) ClusterNodeGroupAutoScalingPolicyConstraints {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeGroupAutoScalingPolicyConstraints
+		return ret
+	}).(ClusterNodeGroupAutoScalingPolicyConstraintsOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput) MaxCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyConstraints) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxCapacity
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput) MinCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyConstraints) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinCapacity
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRule struct {
+	ActivityType       string                                                      `pulumi:"activityType"`
+	AdjustmentType     *string                                                     `pulumi:"adjustmentType"`
+	AdjustmentValue    int                                                         `pulumi:"adjustmentValue"`
+	MetricsTrigger     *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger `pulumi:"metricsTrigger"`
+	MinAdjustmentValue *int                                                        `pulumi:"minAdjustmentValue"`
+	RuleName           string                                                      `pulumi:"ruleName"`
+	TimeTrigger        *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger    `pulumi:"timeTrigger"`
+	TriggerType        string                                                      `pulumi:"triggerType"`
+}
+
+// ClusterNodeGroupAutoScalingPolicyScalingRuleInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleArgs and ClusterNodeGroupAutoScalingPolicyScalingRuleOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyScalingRuleInput` via:
+//
+//	ClusterNodeGroupAutoScalingPolicyScalingRuleArgs{...}
+type ClusterNodeGroupAutoScalingPolicyScalingRuleInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleOutput
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleOutput
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleArgs struct {
+	ActivityType       pulumi.StringInput                                                 `pulumi:"activityType"`
+	AdjustmentType     pulumi.StringPtrInput                                              `pulumi:"adjustmentType"`
+	AdjustmentValue    pulumi.IntInput                                                    `pulumi:"adjustmentValue"`
+	MetricsTrigger     ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrInput `pulumi:"metricsTrigger"`
+	MinAdjustmentValue pulumi.IntPtrInput                                                 `pulumi:"minAdjustmentValue"`
+	RuleName           pulumi.StringInput                                                 `pulumi:"ruleName"`
+	TimeTrigger        ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrInput    `pulumi:"timeTrigger"`
+	TriggerType        pulumi.StringInput                                                 `pulumi:"triggerType"`
+}
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRule)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleOutput)
+}
+
+// ClusterNodeGroupAutoScalingPolicyScalingRuleArrayInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleArray and ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyScalingRuleArrayInput` via:
+//
+//	ClusterNodeGroupAutoScalingPolicyScalingRuleArray{ ClusterNodeGroupAutoScalingPolicyScalingRuleArgs{...} }
+type ClusterNodeGroupAutoScalingPolicyScalingRuleArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleArray []ClusterNodeGroupAutoScalingPolicyScalingRuleInput
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAutoScalingPolicyScalingRule)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleArray) ToClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleArray) ToClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRule)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) ActivityType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) string { return v.ActivityType }).(pulumi.StringOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) AdjustmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) *string { return v.AdjustmentType }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) AdjustmentValue() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) int { return v.AdjustmentValue }).(pulumi.IntOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) MetricsTrigger() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger {
+		return v.MetricsTrigger
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) MinAdjustmentValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) *int { return v.MinAdjustmentValue }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) string { return v.RuleName }).(pulumi.StringOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) TimeTrigger() ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger {
+		return v.TimeTrigger
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) TriggerType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) string { return v.TriggerType }).(pulumi.StringOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAutoScalingPolicyScalingRule)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupAutoScalingPolicyScalingRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroupAutoScalingPolicyScalingRule {
+		return vs[0].([]ClusterNodeGroupAutoScalingPolicyScalingRule)[vs[1].(int)]
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger struct {
+	ConditionLogicOperator *string                                                                    `pulumi:"conditionLogicOperator"`
+	Conditions             []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition      `pulumi:"conditions"`
+	CoolDownInterval       *int                                                                       `pulumi:"coolDownInterval"`
+	EvaluationCount        int                                                                        `pulumi:"evaluationCount"`
+	TimeConstraints        []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint `pulumi:"timeConstraints"`
+	TimeWindow             int                                                                        `pulumi:"timeWindow"`
+}
+
+// ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs and ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerInput` via:
+//
+//	ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs{...}
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs struct {
+	ConditionLogicOperator pulumi.StringPtrInput                                                              `pulumi:"conditionLogicOperator"`
+	Conditions             ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayInput      `pulumi:"conditions"`
+	CoolDownInterval       pulumi.IntPtrInput                                                                 `pulumi:"coolDownInterval"`
+	EvaluationCount        pulumi.IntInput                                                                    `pulumi:"evaluationCount"`
+	TimeConstraints        ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayInput `pulumi:"timeConstraints"`
+	TimeWindow             pulumi.IntInput                                                                    `pulumi:"timeWindow"`
+}
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput)
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput).ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs, ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtr and ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrInput` via:
+//
+//	        ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput
+}
+
+type clusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrType ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs
+
+func ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtr(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrInput {
+	return (*clusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrType)(v)
+}
+
+func (*clusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger)(nil)).Elem()
+}
+
+func (i *clusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrType) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrType) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput {
+	return o.ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger {
+		return &v
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) ConditionLogicOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) *string {
+		return v.ConditionLogicOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) Conditions() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition {
+		return v.Conditions
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) CoolDownInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) *int { return v.CoolDownInterval }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) EvaluationCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) int { return v.EvaluationCount }).(pulumi.IntOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) TimeConstraints() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint {
+		return v.TimeConstraints
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) TimeWindow() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) int { return v.TimeWindow }).(pulumi.IntOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) Elem() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger
+		return ret
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) ConditionLogicOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionLogicOperator
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) Conditions() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) CoolDownInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CoolDownInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) EvaluationCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.EvaluationCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) TimeConstraints() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint {
+		if v == nil {
+			return nil
+		}
+		return v.TimeConstraints
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) TimeWindow() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeWindow
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition struct {
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	MetricName         string `pulumi:"metricName"`
+	Statistics         string `pulumi:"statistics"`
+	// A mapping of tags to assign to the resource.
+	Tags      []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag `pulumi:"tags"`
+	Threshold float64                                                                  `pulumi:"threshold"`
+}
+
+// ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs and ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionInput` via:
+//
+//	ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs{...}
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs struct {
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	MetricName         pulumi.StringInput `pulumi:"metricName"`
+	Statistics         pulumi.StringInput `pulumi:"statistics"`
+	// A mapping of tags to assign to the resource.
+	Tags      ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayInput `pulumi:"tags"`
+	Threshold pulumi.Float64Input                                                              `pulumi:"threshold"`
+}
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput)
+}
+
+// ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArray and ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayInput` via:
+//
+//	ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArray{ ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs{...} }
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArray []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionInput
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArray) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArray) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition) string {
+		return v.MetricName
+	}).(pulumi.StringOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition) string {
+		return v.Statistics
+	}).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput) Tags() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition) []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag {
+		return v.Tags
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition) float64 {
+		return v.Threshold
+	}).(pulumi.Float64Output)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition {
+		return vs[0].([]ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition)[vs[1].(int)]
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag struct {
+	Key   string  `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs and ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagInput` via:
+//
+//	ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs{...}
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs struct {
+	Key   pulumi.StringInput    `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput)
+}
+
+// ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArray and ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayInput` via:
+//
+//	ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArray{ ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs{...} }
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArray []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagInput
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArray) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArray) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag {
+		return vs[0].([]ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag)[vs[1].(int)]
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint struct {
+	EndTime   *string `pulumi:"endTime"`
+	StartTime *string `pulumi:"startTime"`
+}
+
+// ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs and ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintInput` via:
+//
+//	ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs{...}
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs struct {
+	EndTime   pulumi.StringPtrInput `pulumi:"endTime"`
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput)
+}
+
+// ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArray and ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayInput` via:
+//
+//	ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArray{ ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs{...} }
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArray []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintInput
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArray) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArray) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint) *string {
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint) *string {
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint {
+		return vs[0].([]ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint)[vs[1].(int)]
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger struct {
+	EndTime              *string `pulumi:"endTime"`
+	LaunchExpirationTime *int    `pulumi:"launchExpirationTime"`
+	LaunchTime           string  `pulumi:"launchTime"`
+	RecurrenceType       *string `pulumi:"recurrenceType"`
+	RecurrenceValue      *string `pulumi:"recurrenceValue"`
+	StartTime            *string `pulumi:"startTime"`
+}
+
+// ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs and ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerInput` via:
+//
+//	ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs{...}
+type ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs struct {
+	EndTime              pulumi.StringPtrInput `pulumi:"endTime"`
+	LaunchExpirationTime pulumi.IntPtrInput    `pulumi:"launchExpirationTime"`
+	LaunchTime           pulumi.StringInput    `pulumi:"launchTime"`
+	RecurrenceType       pulumi.StringPtrInput `pulumi:"recurrenceType"`
+	RecurrenceValue      pulumi.StringPtrInput `pulumi:"recurrenceValue"`
+	StartTime            pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput)
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs) ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput).ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs, ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtr and ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrInput` via:
+//
+//	        ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput
+	ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutputWithContext(context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput
+}
+
+type clusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrType ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs
+
+func ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtr(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs) ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrInput {
+	return (*clusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrType)(v)
+}
+
+func (*clusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger)(nil)).Elem()
+}
+
+func (i *clusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrType) ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput {
+	return i.ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrType) ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput {
+	return o.ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger {
+		return &v
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) LaunchExpirationTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *int { return v.LaunchExpirationTime }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) LaunchTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) string { return v.LaunchTime }).(pulumi.StringOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) RecurrenceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string { return v.RecurrenceType }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) RecurrenceValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string { return v.RecurrenceValue }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput() ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) ToClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) Elem() ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger
+		return ret
+	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) LaunchExpirationTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LaunchExpirationTime
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) LaunchTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LaunchTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) RecurrenceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecurrenceType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) RecurrenceValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecurrenceValue
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodeGroupCostOptimizedConfig struct {
@@ -2019,6 +3249,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeAttributeArrayInput)(nil)).Elem(), ClusterNodeAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupInput)(nil)).Elem(), ClusterNodeGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupArrayInput)(nil)).Elem(), ClusterNodeGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyPtrInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyConstraintsInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyConstraintsPtrInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyScalingRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleArrayInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyScalingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupCostOptimizedConfigInput)(nil)).Elem(), ClusterNodeGroupCostOptimizedConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupCostOptimizedConfigPtrInput)(nil)).Elem(), ClusterNodeGroupCostOptimizedConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupDataDiskInput)(nil)).Elem(), ClusterNodeGroupDataDiskArgs{})
@@ -2043,6 +3289,22 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeAttributeArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyConstraintsOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyScalingRuleOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupCostOptimizedConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupCostOptimizedConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupDataDiskOutput{})

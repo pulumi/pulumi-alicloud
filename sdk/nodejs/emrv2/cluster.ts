@@ -218,11 +218,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly nodeAttributes!: pulumi.Output<outputs.emrv2.ClusterNodeAttribute[]>;
     /**
-     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
+     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below. **NOTE:** Since version 1.227.0, the type of `nodeGroups` changed from Set to List.
      */
     public readonly nodeGroups!: pulumi.Output<outputs.emrv2.ClusterNodeGroup[]>;
     /**
-     * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+     * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
@@ -352,11 +352,11 @@ export interface ClusterState {
      */
     nodeAttributes?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeAttribute>[]>;
     /**
-     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
+     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below. **NOTE:** Since version 1.227.0, the type of `nodeGroups` changed from Set to List.
      */
     nodeGroups?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroup>[]>;
     /**
-     * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+     * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -418,11 +418,11 @@ export interface ClusterArgs {
      */
     nodeAttributes: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeAttribute>[]>;
     /**
-     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
+     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below. **NOTE:** Since version 1.227.0, the type of `nodeGroups` changed from Set to List.
      */
     nodeGroups: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroup>[]>;
     /**
-     * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+     * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
      */
     paymentType?: pulumi.Input<string>;
     /**

@@ -224,6 +224,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableArray<string>> LoadbalancerIds { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum life span of an instance in the scaling group. Unit: seconds.
+        /// </summary>
+        [Output("maxInstanceLifetime")]
+        public Output<int?> MaxInstanceLifetime { get; private set; } = null!;
+
+        /// <summary>
         /// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
         /// **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         /// </summary>
@@ -282,6 +288,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("scalingGroupName")]
         public Output<string?> ScalingGroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+        /// </summary>
+        [Output("scalingPolicy")]
+        public Output<string> ScalingPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
@@ -477,6 +489,12 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
+        /// The maximum life span of an instance in the scaling group. Unit: seconds.
+        /// </summary>
+        [Input("maxInstanceLifetime")]
+        public Input<int>? MaxInstanceLifetime { get; set; }
+
+        /// <summary>
         /// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
         /// **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         /// </summary>
@@ -547,6 +565,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("scalingGroupName")]
         public Input<string>? ScalingGroupName { get; set; }
+
+        /// <summary>
+        /// The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+        /// </summary>
+        [Input("scalingPolicy")]
+        public Input<string>? ScalingPolicy { get; set; }
 
         /// <summary>
         /// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
@@ -716,6 +740,12 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
+        /// The maximum life span of an instance in the scaling group. Unit: seconds.
+        /// </summary>
+        [Input("maxInstanceLifetime")]
+        public Input<int>? MaxInstanceLifetime { get; set; }
+
+        /// <summary>
         /// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
         /// **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         /// </summary>
@@ -786,6 +816,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("scalingGroupName")]
         public Input<string>? ScalingGroupName { get; set; }
+
+        /// <summary>
+        /// The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+        /// </summary>
+        [Input("scalingPolicy")]
+        public Input<string>? ScalingPolicy { get; set; }
 
         /// <summary>
         /// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.

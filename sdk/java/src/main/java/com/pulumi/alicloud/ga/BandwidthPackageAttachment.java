@@ -52,24 +52,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Accelerator("example", AcceleratorArgs.builder()
+ *         var default_ = new Accelerator("default", AcceleratorArgs.builder()
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec("1")
  *             .build());
  * 
- *         var exampleBandwidthPackage = new BandwidthPackage("exampleBandwidthPackage", BandwidthPackageArgs.builder()
- *             .bandwidth(20)
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
+ *             .bandwidth(100)
  *             .type("Basic")
  *             .bandwidthType("Basic")
- *             .duration(1)
- *             .autoPay(true)
+ *             .paymentType("PayAsYouGo")
+ *             .billingType("PayBy95")
  *             .ratio(30)
  *             .build());
  * 
- *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment("exampleBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
- *             .acceleratorId(example.id())
- *             .bandwidthPackageId(exampleBandwidthPackage.id())
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
+ *             .acceleratorId(default_.id())
+ *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
  *     }
@@ -80,24 +80,24 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Ga Bandwidth Package Attachment can be imported using the id. Format to `&lt;accelerator_id&gt;:&lt;bandwidth_package_id&gt;`, e.g.
+ * Ga Bandwidth Package Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example your_accelerator_id:your_bandwidth_package_id
+ * $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example &lt;accelerator_id&gt;:&lt;bandwidth_package_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment")
 public class BandwidthPackageAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+     * The ID of the Global Accelerator instance.
      * 
      */
     @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
-     * @return The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+     * @return The ID of the Global Accelerator instance.
      * 
      */
     public Output<String> acceleratorId() {
@@ -118,14 +118,14 @@ public class BandwidthPackageAttachment extends com.pulumi.resources.CustomResou
         return this.accelerators;
     }
     /**
-     * The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+     * The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
      * 
      */
     @Export(name="bandwidthPackageId", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageId;
 
     /**
-     * @return The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+     * @return The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
      * 
      */
     public Output<String> bandwidthPackageId() {

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ClickHouse
     public static class GetRegions
     {
         /// <summary>
-        /// This data source provides the Click House Accounts of the current Alibaba Cloud user.
+        /// This data source provides the Click House Regions of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.138.0+.
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.ClickHouse
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:clickhouse/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the Click House Accounts of the current Alibaba Cloud user.
+        /// This data source provides the Click House Regions of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.138.0+.
         /// 

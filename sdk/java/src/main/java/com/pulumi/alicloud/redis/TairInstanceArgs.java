@@ -51,14 +51,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the backup set of the cluster.  .
+     * The ID of the backup set of the cluster.
      * 
      */
     @Import(name="clusterBackupId")
     private @Nullable Output<String> clusterBackupId;
 
     /**
-     * @return The ID of the backup set of the cluster.  .
+     * @return The ID of the backup set of the cluster.
      * 
      */
     public Optional<Output<String>> clusterBackupId() {
@@ -81,14 +81,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+     * Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
      * 
      */
     @Import(name="engineVersion")
     private @Nullable Output<String> engineVersion;
 
     /**
-     * @return Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+     * @return Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
      * 
      */
     public Optional<Output<String>> engineVersion() {
@@ -141,14 +141,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
      * 
      */
     @Import(name="nodeType")
     private @Nullable Output<String> nodeType;
 
     /**
-     * @return Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * @return Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
      * 
      */
     public Optional<Output<String>> nodeType() {
@@ -156,14 +156,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !{@literal @} # $ % ^ &amp; * ( ) _ + - =.
+     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !{@literal @} # $ % ^ &amp; * ( ) _ + - =
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !{@literal @} # $ % ^ &amp; * ( ) _ + - =.
+     * @return The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !{@literal @} # $ % ^ &amp; * ( ) _ + - =
      * 
      */
     public Optional<Output<String>> password() {
@@ -171,14 +171,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * @return Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -216,14 +216,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+     * Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
      * 
      */
     @Import(name="readOnlyCount")
     private @Nullable Output<Integer> readOnlyCount;
 
     /**
-     * @return Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+     * @return Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
      * 
      */
     public Optional<Output<Integer>> readOnlyCount() {
@@ -261,6 +261,21 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Security group ID
+     * 
+     */
+    @Import(name="securityGroupId")
+    private @Nullable Output<String> securityGroupId;
+
+    /**
+     * @return Security group ID
+     * 
+     */
+    public Optional<Output<String>> securityGroupId() {
+        return Optional.ofNullable(this.securityGroupId);
+    }
+
+    /**
      * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
      * 
      */
@@ -291,14 +306,29 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+     * 
+     */
+    @Import(name="sslEnabled")
+    private @Nullable Output<String> sslEnabled;
+
+    /**
+     * @return Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+     * 
+     */
+    public Optional<Output<String>> sslEnabled() {
+        return Optional.ofNullable(this.sslEnabled);
+    }
+
+    /**
+     * The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
      * 
      */
     @Import(name="storagePerformanceLevel")
     private @Nullable Output<String> storagePerformanceLevel;
 
     /**
-     * @return The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * @return The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
      * 
      */
     public Optional<Output<String>> storagePerformanceLevel() {
@@ -321,14 +351,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -381,14 +411,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Zone ID.
+     * Zone ID
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Zone ID.
+     * @return Zone ID
      * 
      */
     public Output<String> zoneId() {
@@ -414,8 +444,10 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.readOnlyCount = $.readOnlyCount;
         this.resourceGroupId = $.resourceGroupId;
         this.secondaryZoneId = $.secondaryZoneId;
+        this.securityGroupId = $.securityGroupId;
         this.shardCount = $.shardCount;
         this.slaveReadOnlyCount = $.slaveReadOnlyCount;
+        this.sslEnabled = $.sslEnabled;
         this.storagePerformanceLevel = $.storagePerformanceLevel;
         this.storageSizeGb = $.storageSizeGb;
         this.tags = $.tags;
@@ -486,7 +518,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterBackupId The ID of the backup set of the cluster.  .
+         * @param clusterBackupId The ID of the backup set of the cluster.
          * 
          * @return builder
          * 
@@ -497,7 +529,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterBackupId The ID of the backup set of the cluster.  .
+         * @param clusterBackupId The ID of the backup set of the cluster.
          * 
          * @return builder
          * 
@@ -528,7 +560,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineVersion Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+         * @param engineVersion Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
          * 
          * @return builder
          * 
@@ -539,7 +571,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineVersion Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+         * @param engineVersion Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
          * 
          * @return builder
          * 
@@ -612,7 +644,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+         * @param nodeType Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
          * 
          * @return builder
          * 
@@ -623,7 +655,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+         * @param nodeType Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
          * 
          * @return builder
          * 
@@ -633,7 +665,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !{@literal @} # $ % ^ &amp; * ( ) _ + - =.
+         * @param password The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !{@literal @} # $ % ^ &amp; * ( ) _ + - =
          * 
          * @return builder
          * 
@@ -644,7 +676,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !{@literal @} # $ % ^ &amp; * ( ) _ + - =.
+         * @param password The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !{@literal @} # $ % ^ &amp; * ( ) _ + - =
          * 
          * @return builder
          * 
@@ -654,7 +686,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+         * @param paymentType Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
          * 
          * @return builder
          * 
@@ -665,7 +697,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+         * @param paymentType Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
          * 
          * @return builder
          * 
@@ -717,7 +749,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnlyCount Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+         * @param readOnlyCount Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
          * 
          * @return builder
          * 
@@ -728,7 +760,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnlyCount Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+         * @param readOnlyCount Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
          * 
          * @return builder
          * 
@@ -780,6 +812,27 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param securityGroupId Security group ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupId(@Nullable Output<String> securityGroupId) {
+            $.securityGroupId = securityGroupId;
+            return this;
+        }
+
+        /**
+         * @param securityGroupId Security group ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupId(String securityGroupId) {
+            return securityGroupId(Output.of(securityGroupId));
+        }
+
+        /**
          * @param shardCount The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
          * 
          * @return builder
@@ -822,7 +875,28 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePerformanceLevel The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+         * @param sslEnabled Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslEnabled(@Nullable Output<String> sslEnabled) {
+            $.sslEnabled = sslEnabled;
+            return this;
+        }
+
+        /**
+         * @param sslEnabled Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslEnabled(String sslEnabled) {
+            return sslEnabled(Output.of(sslEnabled));
+        }
+
+        /**
+         * @param storagePerformanceLevel The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
          * 
          * @return builder
          * 
@@ -833,7 +907,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePerformanceLevel The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+         * @param storagePerformanceLevel The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
          * 
          * @return builder
          * 
@@ -864,7 +938,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -875,7 +949,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -948,7 +1022,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Zone ID.
+         * @param zoneId Zone ID
          * 
          * @return builder
          * 
@@ -959,7 +1033,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Zone ID.
+         * @param zoneId Zone ID
          * 
          * @return builder
          * 

@@ -22239,21 +22239,58 @@ export namespace ecs {
 
     export interface ImageDiskDeviceMapping {
         /**
-         * Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+         * The device name of disk N in the custom image. Valid values:
+         * - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+         * - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
          */
         device: string;
         /**
-         * Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+         * The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+         * - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+         * - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
          */
         diskType: string;
         /**
-         * Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+         * Image format.
+         */
+        format: string;
+        /**
+         * Import the bucket of the OSS to which the image belongs.
+         */
+        importOssBucket: string;
+        /**
+         * Import the object of the OSS to which the image file belongs.
+         */
+        importOssObject: string;
+        /**
+         * Copy the progress of the task.
+         */
+        progress: string;
+        /**
+         * For an image being replicated, return the remaining time of the replication task, in seconds.
+         */
+        remainTime: number;
+        /**
+         * The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+         * - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+         * *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+         * *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+         * - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
          */
         size: number;
         /**
-         * Specifies a snapshot that is used to create a combined custom image.
+         * The ID of snapshot N to use to create the custom image. .
          */
         snapshotId: string;
+    }
+
+    export interface ImageFeatures {
+        /**
+         * Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+         * - supported: The image supports NVMe. Instances created from this image also support NVMe.
+         * - unsupported: The image does not support NVMe. Instances created from this image do not support NVMe.
+         */
+        nvmeSupport: string;
     }
 
     export interface ImageImportDiskDeviceMapping {
@@ -24981,6 +25018,8 @@ export namespace emrv2 {
         nodeSelector: outputs.emrv2.ClusterBootstrapScriptNodeSelector;
         /**
          * The bootstrap scripts priority.
+         *
+         * @deprecated Field 'priority' has been deprecated from provider version 1.227.0.
          */
         priority?: number;
         /**
@@ -24998,8 +25037,16 @@ export namespace emrv2 {
     }
 
     export interface ClusterBootstrapScriptNodeSelector {
+        /**
+         * @deprecated Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it.
+         */
         nodeGroupId?: string;
+        nodeGroupIds?: string[];
+        /**
+         * @deprecated Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it.
+         */
         nodeGroupName?: string;
+        nodeGroupNames?: string[];
         nodeGroupTypes?: string[];
         nodeNames?: string[];
         nodeSelectType: string;
@@ -25041,6 +25088,10 @@ export namespace emrv2 {
          * Additional security Group IDS for Cluster, you can also specify this key for each node group.
          */
         additionalSecurityGroupIds?: string[];
+        /**
+         * The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
+         */
+        autoScalingPolicy?: outputs.emrv2.ClusterNodeGroupAutoScalingPolicy;
         /**
          * The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
          */
@@ -25105,6 +25156,66 @@ export namespace emrv2 {
          * Whether the node has a public IP address enabled.
          */
         withPublicIp: boolean;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicy {
+        constraints?: outputs.emrv2.ClusterNodeGroupAutoScalingPolicyConstraints;
+        scalingRules?: outputs.emrv2.ClusterNodeGroupAutoScalingPolicyScalingRule[];
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyConstraints {
+        maxCapacity?: number;
+        minCapacity?: number;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyScalingRule {
+        activityType: string;
+        adjustmentType?: string;
+        adjustmentValue: number;
+        metricsTrigger?: outputs.emrv2.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger;
+        minAdjustmentValue?: number;
+        ruleName: string;
+        timeTrigger?: outputs.emrv2.ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger;
+        triggerType: string;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger {
+        conditionLogicOperator?: string;
+        conditions?: outputs.emrv2.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition[];
+        coolDownInterval?: number;
+        evaluationCount: number;
+        timeConstraints?: outputs.emrv2.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint[];
+        timeWindow: number;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition {
+        comparisonOperator: string;
+        metricName: string;
+        statistics: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags?: outputs.emrv2.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag[];
+        threshold: number;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag {
+        key: string;
+        value?: string;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint {
+        endTime?: string;
+        startTime?: string;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger {
+        endTime?: string;
+        launchExpirationTime?: number;
+        launchTime: string;
+        recurrenceType?: string;
+        recurrenceValue?: string;
+        startTime?: string;
     }
 
     export interface ClusterNodeGroupCostOptimizedConfig {

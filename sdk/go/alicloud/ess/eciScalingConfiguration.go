@@ -152,6 +152,10 @@ type EciScalingConfiguration struct {
 	Containers EciScalingConfigurationContainerArrayOutput `pulumi:"containers"`
 	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrOutput `pulumi:"cpu"`
+	// The number of physical CPU cores. You can specify this parameter for only specific instance types.
+	CpuOptionsCore pulumi.IntPtrOutput `pulumi:"cpuOptionsCore"`
+	// The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+	CpuOptionsThreadsPerCore pulumi.IntPtrOutput `pulumi:"cpuOptionsThreadsPerCore"`
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -273,6 +277,10 @@ type eciScalingConfigurationState struct {
 	Containers []EciScalingConfigurationContainer `pulumi:"containers"`
 	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
+	// The number of physical CPU cores. You can specify this parameter for only specific instance types.
+	CpuOptionsCore *int `pulumi:"cpuOptionsCore"`
+	// The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+	CpuOptionsThreadsPerCore *int `pulumi:"cpuOptionsThreadsPerCore"`
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
@@ -362,6 +370,10 @@ type EciScalingConfigurationState struct {
 	Containers EciScalingConfigurationContainerArrayInput
 	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput
+	// The number of physical CPU cores. You can specify this parameter for only specific instance types.
+	CpuOptionsCore pulumi.IntPtrInput
+	// The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+	CpuOptionsThreadsPerCore pulumi.IntPtrInput
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
@@ -455,6 +467,10 @@ type eciScalingConfigurationArgs struct {
 	Containers []EciScalingConfigurationContainer `pulumi:"containers"`
 	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
+	// The number of physical CPU cores. You can specify this parameter for only specific instance types.
+	CpuOptionsCore *int `pulumi:"cpuOptionsCore"`
+	// The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+	CpuOptionsThreadsPerCore *int `pulumi:"cpuOptionsThreadsPerCore"`
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
@@ -545,6 +561,10 @@ type EciScalingConfigurationArgs struct {
 	Containers EciScalingConfigurationContainerArrayInput
 	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput
+	// The number of physical CPU cores. You can specify this parameter for only specific instance types.
+	CpuOptionsCore pulumi.IntPtrInput
+	// The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+	CpuOptionsThreadsPerCore pulumi.IntPtrInput
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
@@ -744,6 +764,16 @@ func (o EciScalingConfigurationOutput) Containers() EciScalingConfigurationConta
 // The amount of CPU resources allocated to the container group.
 func (o EciScalingConfigurationOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.Float64PtrOutput { return v.Cpu }).(pulumi.Float64PtrOutput)
+}
+
+// The number of physical CPU cores. You can specify this parameter for only specific instance types.
+func (o EciScalingConfigurationOutput) CpuOptionsCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.IntPtrOutput { return v.CpuOptionsCore }).(pulumi.IntPtrOutput)
+}
+
+// The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+func (o EciScalingConfigurationOutput) CpuOptionsThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.IntPtrOutput { return v.CpuOptionsThreadsPerCore }).(pulumi.IntPtrOutput)
 }
 
 // The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to

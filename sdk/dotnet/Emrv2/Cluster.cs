@@ -270,13 +270,13 @@ namespace Pulumi.AliCloud.Emrv2
         public Output<ImmutableArray<Outputs.ClusterNodeAttribute>> NodeAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+        /// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
         /// </summary>
         [Output("nodeGroups")]
         public Output<ImmutableArray<Outputs.ClusterNodeGroup>> NodeGroups { get; private set; } = null!;
 
         /// <summary>
-        /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+        /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -433,7 +433,7 @@ namespace Pulumi.AliCloud.Emrv2
         private InputList<Inputs.ClusterNodeGroupArgs>? _nodeGroups;
 
         /// <summary>
-        /// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+        /// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupArgs> NodeGroups
         {
@@ -442,7 +442,7 @@ namespace Pulumi.AliCloud.Emrv2
         }
 
         /// <summary>
-        /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+        /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -567,7 +567,7 @@ namespace Pulumi.AliCloud.Emrv2
         private InputList<Inputs.ClusterNodeGroupGetArgs>? _nodeGroups;
 
         /// <summary>
-        /// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+        /// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
         /// </summary>
         public InputList<Inputs.ClusterNodeGroupGetArgs> NodeGroups
         {
@@ -576,7 +576,7 @@ namespace Pulumi.AliCloud.Emrv2
         }
 
         /// <summary>
-        /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+        /// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }

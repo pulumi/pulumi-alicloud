@@ -5492,21 +5492,58 @@ export namespace ecs {
 
     export interface ImageDiskDeviceMapping {
         /**
-         * Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+         * The device name of disk N in the custom image. Valid values:
+         * - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+         * - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
          */
         device?: pulumi.Input<string>;
         /**
-         * Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+         * The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+         * - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+         * - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
          */
         diskType?: pulumi.Input<string>;
         /**
-         * Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+         * Image format.
+         */
+        format?: pulumi.Input<string>;
+        /**
+         * Import the bucket of the OSS to which the image belongs.
+         */
+        importOssBucket?: pulumi.Input<string>;
+        /**
+         * Import the object of the OSS to which the image file belongs.
+         */
+        importOssObject?: pulumi.Input<string>;
+        /**
+         * Copy the progress of the task.
+         */
+        progress?: pulumi.Input<string>;
+        /**
+         * For an image being replicated, return the remaining time of the replication task, in seconds.
+         */
+        remainTime?: pulumi.Input<number>;
+        /**
+         * The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+         * - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+         * *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+         * *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+         * - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
          */
         size?: pulumi.Input<number>;
         /**
-         * Specifies a snapshot that is used to create a combined custom image.
+         * The ID of snapshot N to use to create the custom image. .
          */
         snapshotId?: pulumi.Input<string>;
+    }
+
+    export interface ImageFeatures {
+        /**
+         * Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+         * - supported: The image supports NVMe. Instances created from this image also support NVMe.
+         * - unsupported: The image does not support NVMe. Instances created from this image do not support NVMe.
+         */
+        nvmeSupport?: pulumi.Input<string>;
     }
 
     export interface ImageImportDiskDeviceMapping {
@@ -6014,6 +6051,8 @@ export namespace emrv2 {
         nodeSelector: pulumi.Input<inputs.emrv2.ClusterBootstrapScriptNodeSelector>;
         /**
          * The bootstrap scripts priority.
+         *
+         * @deprecated Field 'priority' has been deprecated from provider version 1.227.0.
          */
         priority?: pulumi.Input<number>;
         /**
@@ -6031,8 +6070,16 @@ export namespace emrv2 {
     }
 
     export interface ClusterBootstrapScriptNodeSelector {
+        /**
+         * @deprecated Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it.
+         */
         nodeGroupId?: pulumi.Input<string>;
+        nodeGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * @deprecated Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it.
+         */
         nodeGroupName?: pulumi.Input<string>;
+        nodeGroupNames?: pulumi.Input<pulumi.Input<string>[]>;
         nodeGroupTypes?: pulumi.Input<pulumi.Input<string>[]>;
         nodeNames?: pulumi.Input<pulumi.Input<string>[]>;
         nodeSelectType: pulumi.Input<string>;
@@ -6074,6 +6121,10 @@ export namespace emrv2 {
          * Additional security Group IDS for Cluster, you can also specify this key for each node group.
          */
         additionalSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
+         */
+        autoScalingPolicy?: pulumi.Input<inputs.emrv2.ClusterNodeGroupAutoScalingPolicy>;
         /**
          * The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below.
          */
@@ -6138,6 +6189,66 @@ export namespace emrv2 {
          * Whether the node has a public IP address enabled.
          */
         withPublicIp?: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicy {
+        constraints?: pulumi.Input<inputs.emrv2.ClusterNodeGroupAutoScalingPolicyConstraints>;
+        scalingRules?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroupAutoScalingPolicyScalingRule>[]>;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyConstraints {
+        maxCapacity?: pulumi.Input<number>;
+        minCapacity?: pulumi.Input<number>;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyScalingRule {
+        activityType: pulumi.Input<string>;
+        adjustmentType?: pulumi.Input<string>;
+        adjustmentValue: pulumi.Input<number>;
+        metricsTrigger?: pulumi.Input<inputs.emrv2.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger>;
+        minAdjustmentValue?: pulumi.Input<number>;
+        ruleName: pulumi.Input<string>;
+        timeTrigger?: pulumi.Input<inputs.emrv2.ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger>;
+        triggerType: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger {
+        conditionLogicOperator?: pulumi.Input<string>;
+        conditions?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition>[]>;
+        coolDownInterval?: pulumi.Input<number>;
+        evaluationCount: pulumi.Input<number>;
+        timeConstraints?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint>[]>;
+        timeWindow: pulumi.Input<number>;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition {
+        comparisonOperator: pulumi.Input<string>;
+        metricName: pulumi.Input<string>;
+        statistics: pulumi.Input<string>;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag>[]>;
+        threshold: pulumi.Input<number>;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag {
+        key: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint {
+        endTime?: pulumi.Input<string>;
+        startTime?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger {
+        endTime?: pulumi.Input<string>;
+        launchExpirationTime?: pulumi.Input<number>;
+        launchTime: pulumi.Input<string>;
+        recurrenceType?: pulumi.Input<string>;
+        recurrenceValue?: pulumi.Input<string>;
+        startTime?: pulumi.Input<string>;
     }
 
     export interface ClusterNodeGroupCostOptimizedConfig {

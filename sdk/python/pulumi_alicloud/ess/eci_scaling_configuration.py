@@ -25,6 +25,8 @@ class EciScalingConfigurationArgs:
                  container_group_name: Optional[pulumi.Input[str]] = None,
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
+                 cpu_options_core: Optional[pulumi.Input[int]] = None,
+                 cpu_options_threads_per_core: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_policy: Optional[pulumi.Input[str]] = None,
                  egress_bandwidth: Optional[pulumi.Input[int]] = None,
@@ -65,6 +67,8 @@ class EciScalingConfigurationArgs:
                English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
+        :param pulumi.Input[int] cpu_options_core: The number of physical CPU cores. You can specify this parameter for only specific instance types.
+        :param pulumi.Input[int] cpu_options_threads_per_core: The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] dns_policy: dns policy of contain group.
@@ -122,6 +126,10 @@ class EciScalingConfigurationArgs:
             pulumi.set(__self__, "containers", containers)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
+        if cpu_options_core is not None:
+            pulumi.set(__self__, "cpu_options_core", cpu_options_core)
+        if cpu_options_threads_per_core is not None:
+            pulumi.set(__self__, "cpu_options_threads_per_core", cpu_options_threads_per_core)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dns_policy is not None:
@@ -286,6 +294,30 @@ class EciScalingConfigurationArgs:
     @cpu.setter
     def cpu(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter(name="cpuOptionsCore")
+    def cpu_options_core(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of physical CPU cores. You can specify this parameter for only specific instance types.
+        """
+        return pulumi.get(self, "cpu_options_core")
+
+    @cpu_options_core.setter
+    def cpu_options_core(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_options_core", value)
+
+    @property
+    @pulumi.getter(name="cpuOptionsThreadsPerCore")
+    def cpu_options_threads_per_core(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+        """
+        return pulumi.get(self, "cpu_options_threads_per_core")
+
+    @cpu_options_threads_per_core.setter
+    def cpu_options_threads_per_core(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_options_threads_per_core", value)
 
     @property
     @pulumi.getter
@@ -635,6 +667,8 @@ class _EciScalingConfigurationState:
                  container_group_name: Optional[pulumi.Input[str]] = None,
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
+                 cpu_options_core: Optional[pulumi.Input[int]] = None,
+                 cpu_options_threads_per_core: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_policy: Optional[pulumi.Input[str]] = None,
                  egress_bandwidth: Optional[pulumi.Input[int]] = None,
@@ -675,6 +709,8 @@ class _EciScalingConfigurationState:
                English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
+        :param pulumi.Input[int] cpu_options_core: The number of physical CPU cores. You can specify this parameter for only specific instance types.
+        :param pulumi.Input[int] cpu_options_threads_per_core: The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] dns_policy: dns policy of contain group.
@@ -732,6 +768,10 @@ class _EciScalingConfigurationState:
             pulumi.set(__self__, "containers", containers)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
+        if cpu_options_core is not None:
+            pulumi.set(__self__, "cpu_options_core", cpu_options_core)
+        if cpu_options_threads_per_core is not None:
+            pulumi.set(__self__, "cpu_options_threads_per_core", cpu_options_threads_per_core)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dns_policy is not None:
@@ -886,6 +926,30 @@ class _EciScalingConfigurationState:
     @cpu.setter
     def cpu(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter(name="cpuOptionsCore")
+    def cpu_options_core(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of physical CPU cores. You can specify this parameter for only specific instance types.
+        """
+        return pulumi.get(self, "cpu_options_core")
+
+    @cpu_options_core.setter
+    def cpu_options_core(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_options_core", value)
+
+    @property
+    @pulumi.getter(name="cpuOptionsThreadsPerCore")
+    def cpu_options_threads_per_core(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+        """
+        return pulumi.get(self, "cpu_options_threads_per_core")
+
+    @cpu_options_threads_per_core.setter
+    def cpu_options_threads_per_core(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_options_threads_per_core", value)
 
     @property
     @pulumi.getter
@@ -1249,6 +1313,8 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  container_group_name: Optional[pulumi.Input[str]] = None,
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
+                 cpu_options_core: Optional[pulumi.Input[int]] = None,
+                 cpu_options_threads_per_core: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_policy: Optional[pulumi.Input[str]] = None,
                  egress_bandwidth: Optional[pulumi.Input[int]] = None,
@@ -1359,6 +1425,8 @@ class EciScalingConfiguration(pulumi.CustomResource):
                English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
+        :param pulumi.Input[int] cpu_options_core: The number of physical CPU cores. You can specify this parameter for only specific instance types.
+        :param pulumi.Input[int] cpu_options_threads_per_core: The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] dns_policy: dns policy of contain group.
@@ -1498,6 +1566,8 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  container_group_name: Optional[pulumi.Input[str]] = None,
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
+                 cpu_options_core: Optional[pulumi.Input[int]] = None,
+                 cpu_options_threads_per_core: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_policy: Optional[pulumi.Input[str]] = None,
                  egress_bandwidth: Optional[pulumi.Input[int]] = None,
@@ -1543,6 +1613,8 @@ class EciScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["container_group_name"] = container_group_name
             __props__.__dict__["containers"] = containers
             __props__.__dict__["cpu"] = cpu
+            __props__.__dict__["cpu_options_core"] = cpu_options_core
+            __props__.__dict__["cpu_options_threads_per_core"] = cpu_options_threads_per_core
             __props__.__dict__["description"] = description
             __props__.__dict__["dns_policy"] = dns_policy
             __props__.__dict__["egress_bandwidth"] = egress_bandwidth
@@ -1591,6 +1663,8 @@ class EciScalingConfiguration(pulumi.CustomResource):
             container_group_name: Optional[pulumi.Input[str]] = None,
             containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]]] = None,
             cpu: Optional[pulumi.Input[float]] = None,
+            cpu_options_core: Optional[pulumi.Input[int]] = None,
+            cpu_options_threads_per_core: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dns_policy: Optional[pulumi.Input[str]] = None,
             egress_bandwidth: Optional[pulumi.Input[int]] = None,
@@ -1636,6 +1710,8 @@ class EciScalingConfiguration(pulumi.CustomResource):
                English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
+        :param pulumi.Input[int] cpu_options_core: The number of physical CPU cores. You can specify this parameter for only specific instance types.
+        :param pulumi.Input[int] cpu_options_threads_per_core: The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] dns_policy: dns policy of contain group.
@@ -1689,6 +1765,8 @@ class EciScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["container_group_name"] = container_group_name
         __props__.__dict__["containers"] = containers
         __props__.__dict__["cpu"] = cpu
+        __props__.__dict__["cpu_options_core"] = cpu_options_core
+        __props__.__dict__["cpu_options_threads_per_core"] = cpu_options_threads_per_core
         __props__.__dict__["description"] = description
         __props__.__dict__["dns_policy"] = dns_policy
         __props__.__dict__["egress_bandwidth"] = egress_bandwidth
@@ -1784,6 +1862,22 @@ class EciScalingConfiguration(pulumi.CustomResource):
         The amount of CPU resources allocated to the container group.
         """
         return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="cpuOptionsCore")
+    def cpu_options_core(self) -> pulumi.Output[Optional[int]]:
+        """
+        The number of physical CPU cores. You can specify this parameter for only specific instance types.
+        """
+        return pulumi.get(self, "cpu_options_core")
+
+    @property
+    @pulumi.getter(name="cpuOptionsThreadsPerCore")
+    def cpu_options_threads_per_core(self) -> pulumi.Output[Optional[int]]:
+        """
+        The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+        """
+        return pulumi.get(self, "cpu_options_threads_per_core")
 
     @property
     @pulumi.getter

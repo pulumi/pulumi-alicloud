@@ -425,8 +425,8 @@ namespace Pulumi.AliCloud.Ens
         /// <summary>
         /// Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
         /// </summary>
-        [Input("internetMaxBandwidthOut", required: true)]
-        public Input<int> InternetMaxBandwidthOut { get; set; } = null!;
+        [Input("internetMaxBandwidthOut")]
+        public Input<int>? InternetMaxBandwidthOut { get; set; }
 
         /// <summary>
         /// The IP type. Value:

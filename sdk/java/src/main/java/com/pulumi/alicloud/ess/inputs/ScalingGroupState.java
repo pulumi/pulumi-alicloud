@@ -232,6 +232,21 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maximum life span of an instance in the scaling group. Unit: seconds.
+     * 
+     */
+    @Import(name="maxInstanceLifetime")
+    private @Nullable Output<Integer> maxInstanceLifetime;
+
+    /**
+     * @return The maximum life span of an instance in the scaling group. Unit: seconds.
+     * 
+     */
+    public Optional<Output<Integer>> maxInstanceLifetime() {
+        return Optional.ofNullable(this.maxInstanceLifetime);
+    }
+
+    /**
      * Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
      * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
      * 
@@ -379,6 +394,21 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+     * 
+     */
+    @Import(name="scalingPolicy")
+    private @Nullable Output<String> scalingPolicy;
+
+    /**
+     * @return The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+     * 
+     */
+    public Optional<Output<String>> scalingPolicy() {
+        return Optional.ofNullable(this.scalingPolicy);
+    }
+
+    /**
      * The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
      * 
      */
@@ -496,6 +526,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         this.launchTemplateOverrides = $.launchTemplateOverrides;
         this.launchTemplateVersion = $.launchTemplateVersion;
         this.loadbalancerIds = $.loadbalancerIds;
+        this.maxInstanceLifetime = $.maxInstanceLifetime;
         this.maxSize = $.maxSize;
         this.minSize = $.minSize;
         this.multiAzPolicy = $.multiAzPolicy;
@@ -505,6 +536,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         this.removalPolicies = $.removalPolicies;
         this.resourceGroupId = $.resourceGroupId;
         this.scalingGroupName = $.scalingGroupName;
+        this.scalingPolicy = $.scalingPolicy;
         this.spotAllocationStrategy = $.spotAllocationStrategy;
         this.spotInstancePools = $.spotInstancePools;
         this.spotInstanceRemedy = $.spotInstanceRemedy;
@@ -866,6 +898,27 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param maxInstanceLifetime The maximum life span of an instance in the scaling group. Unit: seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInstanceLifetime(@Nullable Output<Integer> maxInstanceLifetime) {
+            $.maxInstanceLifetime = maxInstanceLifetime;
+            return this;
+        }
+
+        /**
+         * @param maxInstanceLifetime The maximum life span of an instance in the scaling group. Unit: seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxInstanceLifetime(Integer maxInstanceLifetime) {
+            return maxInstanceLifetime(Output.of(maxInstanceLifetime));
+        }
+
+        /**
          * @param maxSize Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
          * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
          * 
@@ -1088,6 +1141,27 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder scalingGroupName(String scalingGroupName) {
             return scalingGroupName(Output.of(scalingGroupName));
+        }
+
+        /**
+         * @param scalingPolicy The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalingPolicy(@Nullable Output<String> scalingPolicy) {
+            $.scalingPolicy = scalingPolicy;
+            return this;
+        }
+
+        /**
+         * @param scalingPolicy The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalingPolicy(String scalingPolicy) {
+            return scalingPolicy(Output.of(scalingPolicy));
         }
 
         /**

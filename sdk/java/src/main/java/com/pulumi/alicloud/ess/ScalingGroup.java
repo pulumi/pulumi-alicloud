@@ -365,6 +365,20 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.loadbalancerIds);
     }
     /**
+     * The maximum life span of an instance in the scaling group. Unit: seconds.
+     * 
+     */
+    @Export(name="maxInstanceLifetime", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> maxInstanceLifetime;
+
+    /**
+     * @return The maximum life span of an instance in the scaling group. Unit: seconds.
+     * 
+     */
+    public Output<Optional<Integer>> maxInstanceLifetime() {
+        return Codegen.optional(this.maxInstanceLifetime);
+    }
+    /**
      * Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
      * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
      * 
@@ -501,6 +515,20 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> scalingGroupName() {
         return Codegen.optional(this.scalingGroupName);
+    }
+    /**
+     * The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+     * 
+     */
+    @Export(name="scalingPolicy", refs={String.class}, tree="[0]")
+    private Output<String> scalingPolicy;
+
+    /**
+     * @return The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+     * 
+     */
+    public Output<String> scalingPolicy() {
+        return this.scalingPolicy;
     }
     /**
      * The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.

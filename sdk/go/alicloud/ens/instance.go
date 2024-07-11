@@ -135,9 +135,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.InstanceType == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceType'")
 	}
-	if args.InternetMaxBandwidthOut == nil {
-		return nil, errors.New("invalid value for required argument 'InternetMaxBandwidthOut'")
-	}
 	if args.PaymentType == nil {
 		return nil, errors.New("invalid value for required argument 'PaymentType'")
 	}
@@ -431,7 +428,7 @@ type instanceArgs struct {
 	// - 95bandwidthbymonth: 95 peak bandwidth.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
-	InternetMaxBandwidthOut int `pulumi:"internetMaxBandwidthOut"`
+	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
 	// The IP type. Value:
 	// - ipv4 (default):IPv4
 	// - ipv6:IPv6
@@ -536,7 +533,7 @@ type InstanceArgs struct {
 	// - 95bandwidthbymonth: 95 peak bandwidth.
 	InternetChargeType pulumi.StringPtrInput
 	// Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
-	InternetMaxBandwidthOut pulumi.IntInput
+	InternetMaxBandwidthOut pulumi.IntPtrInput
 	// The IP type. Value:
 	// - ipv4 (default):IPv4
 	// - ipv6:IPv6

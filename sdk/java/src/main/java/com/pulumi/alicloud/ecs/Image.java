@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ecs.ImageArgs;
 import com.pulumi.alicloud.ecs.inputs.ImageState;
 import com.pulumi.alicloud.ecs.outputs.ImageDiskDeviceMapping;
+import com.pulumi.alicloud.ecs.outputs.ImageFeatures;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -20,7 +21,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates a custom image. You can then use a custom image to create ECS instances (RunInstances) or change the system disk for an existing instance (ReplaceSystemDisk).
+ * Provides a ECS Image resource.
  * 
  * &gt; **NOTE:**  If you want to create a template from an ECS instance, you can specify the instance ID (InstanceId) to create a custom image. You must make sure that the status of the specified instance is Running or Stopped. After a successful invocation, each disk of the specified instance has a new snapshot created.
  * 
@@ -28,9 +29,13 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
  * 
+ * For information about ECS Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-createimage).
+ * 
  * &gt; **NOTE:** Available since v1.64.0.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -83,6 +88,7 @@ import javax.annotation.Nullable;
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
  *             .owners("system")
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.ids()[0]))
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
@@ -136,94 +142,218 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- *  image can be imported using the id, e.g.
+ * ECS Image can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ecs/image:Image default m-uf66871ape***yg1q***
+ * $ pulumi import alicloud:ecs/image:Image example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ecs/image:Image")
 public class Image extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+     * The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
      * 
      */
     @Export(name="architecture", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> architecture;
 
     /**
-     * @return Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+     * @return The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
      * 
      */
     public Output<Optional<String>> architecture() {
         return Codegen.optional(this.architecture);
     }
+    /**
+     * The new boot mode of the image. Valid values:
+     * 
+     * *   BIOS: Basic Input/Output System (BIOS)
+     * 
+     * *   UEFI: Unified Extensible Firmware Interface (UEFI)
+     * 
+     * *   UEFI-Preferred: BIOS and UEFI
+     * 
+     * &gt; **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
+     * 
+     * &gt; **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
+     * 
+     */
+    @Export(name="bootMode", refs={String.class}, tree="[0]")
+    private Output<String> bootMode;
+
+    /**
+     * @return The new boot mode of the image. Valid values:
+     * 
+     * *   BIOS: Basic Input/Output System (BIOS)
+     * 
+     * *   UEFI: Unified Extensible Firmware Interface (UEFI)
+     * 
+     * *   UEFI-Preferred: BIOS and UEFI
+     * 
+     * &gt; **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
+     * 
+     * &gt; **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
+     * 
+     */
+    public Output<String> bootMode() {
+        return this.bootMode;
+    }
+    /**
+     * The create time
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The create time
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     * 
+     */
     @Export(name="deleteAutoSnapshot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteAutoSnapshot;
 
+    /**
+     * @return Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     * 
+     */
     public Output<Optional<Boolean>> deleteAutoSnapshot() {
         return Codegen.optional(this.deleteAutoSnapshot);
     }
     /**
-     * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+     * The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+     * @return The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Description of the system with disks and snapshots under the image.
+     * The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+     * 
+     * &gt; **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
+     * 
+     */
+    @Export(name="detectionStrategy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> detectionStrategy;
+
+    /**
+     * @return The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+     * 
+     * &gt; **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
+     * 
+     */
+    public Output<Optional<String>> detectionStrategy() {
+        return Codegen.optional(this.detectionStrategy);
+    }
+    /**
+     * Snapshot information for the image See `disk_device_mapping` below.
      * 
      */
     @Export(name="diskDeviceMappings", refs={List.class,ImageDiskDeviceMapping.class}, tree="[0,1]")
     private Output<List<ImageDiskDeviceMapping>> diskDeviceMappings;
 
     /**
-     * @return Description of the system with disks and snapshots under the image.
+     * @return Snapshot information for the image See `disk_device_mapping` below.
      * 
      */
     public Output<List<ImageDiskDeviceMapping>> diskDeviceMappings() {
         return this.diskDeviceMappings;
     }
     /**
-     * Indicates whether to force delete the custom image, Default is `false`.
-     * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
-     * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+     * Features See `features` below.
+     * 
+     */
+    @Export(name="features", refs={ImageFeatures.class}, tree="[0]")
+    private Output<ImageFeatures> features;
+
+    /**
+     * @return Features See `features` below.
+     * 
+     */
+    public Output<ImageFeatures> features() {
+        return this.features;
+    }
+    /**
+     * Whether to perform forced deletion. Value range:
+     * - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
+     * - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
+     * 
+     * Default value: false
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return Indicates whether to force delete the custom image, Default is `false`.
-     * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
-     * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+     * @return Whether to perform forced deletion. Value range:
+     * - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
+     * - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
+     * 
+     * Default value: false
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     * The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+     * 
+     */
+    @Export(name="imageFamily", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> imageFamily;
+
+    /**
+     * @return The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+     * 
+     */
+    public Output<Optional<String>> imageFamily() {
+        return Codegen.optional(this.imageFamily);
+    }
+    /**
+     * The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
      * 
      */
     @Export(name="imageName", refs={String.class}, tree="[0]")
     private Output<String> imageName;
 
     /**
-     * @return The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     * @return The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
      * 
      */
     public Output<String> imageName() {
         return this.imageName;
+    }
+    /**
+     * The image version.
+     * 
+     * &gt; **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
+     * 
+     */
+    @Export(name="imageVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> imageVersion;
+
+    /**
+     * @return The image version.
+     * 
+     * &gt; **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
+     * 
+     */
+    public Output<Optional<String>> imageVersion() {
+        return Codegen.optional(this.imageVersion);
     }
     /**
      * The instance ID.
@@ -240,76 +370,110 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceId);
     }
     /**
-     * @deprecated
-     * Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `image_name` instead.
+     * The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
      * 
      */
-    @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead. */
+    @Export(name="licenseType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> licenseType;
+
+    /**
+     * @return The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
+     * 
+     */
+    public Output<Optional<String>> licenseType() {
+        return Codegen.optional(this.licenseType);
+    }
+    /**
+     * . Field &#39;name&#39; has been deprecated from provider version 1.227.0. New field &#39;image_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.227.0. New field &#39;image_name&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.227.0. New field &#39;image_name&#39; instead.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The distribution of the operating system for the system disk in the custom image.
-     * If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-     * to specify the distribution of the operating system for the system disk. Default value: Others Linux.
-     * More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
-     * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
+     * The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
      * 
      */
     @Export(name="platform", refs={String.class}, tree="[0]")
     private Output<String> platform;
 
     /**
-     * @return The distribution of the operating system for the system disk in the custom image.
-     * If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-     * to specify the distribution of the operating system for the system disk. Default value: Others Linux.
-     * More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
-     * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
+     * @return The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
      * 
      */
     public Output<String> platform() {
         return this.platform;
     }
     /**
-     * The ID of the enterprise resource group to which a custom image belongs
+     * The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
+     * 
+     * &gt; **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> resourceGroupId;
+    private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the enterprise resource group to which a custom image belongs
+     * @return The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
+     * 
+     * &gt; **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
      * 
      */
-    public Output<Optional<String>> resourceGroupId() {
-        return Codegen.optional(this.resourceGroupId);
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
-     * Specifies a snapshot that is used to create a custom image.
+     * The ID of the snapshot that you want to use to create the custom image.
      * 
      */
     @Export(name="snapshotId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshotId;
 
     /**
-     * @return Specifies a snapshot that is used to create a custom image.
+     * @return The ID of the snapshot that you want to use to create the custom image.
      * 
      */
     public Output<Optional<String>> snapshotId() {
         return Codegen.optional(this.snapshotId);
     }
     /**
-     * The tag value of an image. The value of N ranges from 1 to 20.
+     * The status of the image. By default, if you do not specify this parameter, only images in the Available state are returned.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return The status of the image. By default, if you do not specify this parameter, only images in the Available state are returned.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * The tag
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return The tag value of an image. The value of N ranges from 1 to 20.
+     * @return The tag
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {

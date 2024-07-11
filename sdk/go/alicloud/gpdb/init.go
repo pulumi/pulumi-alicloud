@@ -33,8 +33,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DbResourceGroup{}
 	case "alicloud:gpdb/elasticInstance:ElasticInstance":
 		r = &ElasticInstance{}
+	case "alicloud:gpdb/externalDataService:ExternalDataService":
+		r = &ExternalDataService{}
 	case "alicloud:gpdb/instance:Instance":
 		r = &Instance{}
+	case "alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource":
+		r = &RemoteAdbDataSource{}
+	case "alicloud:gpdb/streamingDataService:StreamingDataService":
+		r = &StreamingDataService{}
+	case "alicloud:gpdb/streamingDataSource:StreamingDataSource":
+		r = &StreamingDataSource{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -80,7 +88,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"gpdb/externalDataService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"gpdb/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"gpdb/remoteAdbDataSource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"gpdb/streamingDataService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"gpdb/streamingDataSource",
 		&module{version},
 	)
 }

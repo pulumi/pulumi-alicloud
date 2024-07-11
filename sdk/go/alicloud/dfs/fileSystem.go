@@ -79,6 +79,7 @@ type FileSystem struct {
 	// - LRS (default): Local redundancy.
 	// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
 	DataRedundancyType pulumi.StringPtrOutput `pulumi:"dataRedundancyType"`
+	DedicatedClusterId pulumi.StringPtrOutput `pulumi:"dedicatedClusterId"`
 	// The description of the file system resource. No more than 32 characters in length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
@@ -98,7 +99,7 @@ type FileSystem struct {
 	// The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
 	ThroughputMode pulumi.StringOutput `pulumi:"throughputMode"`
 	// Zone Id, which is used to create file system resources to the specified zone.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewFileSystem registers a new resource with the given unique name, arguments, and options.
@@ -119,9 +120,6 @@ func NewFileSystem(ctx *pulumi.Context,
 	}
 	if args.StorageType == nil {
 		return nil, errors.New("invalid value for required argument 'StorageType'")
-	}
-	if args.ZoneId == nil {
-		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FileSystem
@@ -152,6 +150,7 @@ type fileSystemState struct {
 	// - LRS (default): Local redundancy.
 	// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
 	DataRedundancyType *string `pulumi:"dataRedundancyType"`
+	DedicatedClusterId *string `pulumi:"dedicatedClusterId"`
 	// The description of the file system resource. No more than 32 characters in length.
 	Description *string `pulumi:"description"`
 	// The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
@@ -181,6 +180,7 @@ type FileSystemState struct {
 	// - LRS (default): Local redundancy.
 	// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
 	DataRedundancyType pulumi.StringPtrInput
+	DedicatedClusterId pulumi.StringPtrInput
 	// The description of the file system resource. No more than 32 characters in length.
 	Description pulumi.StringPtrInput
 	// The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
@@ -212,6 +212,7 @@ type fileSystemArgs struct {
 	// - LRS (default): Local redundancy.
 	// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
 	DataRedundancyType *string `pulumi:"dataRedundancyType"`
+	DedicatedClusterId *string `pulumi:"dedicatedClusterId"`
 	// The description of the file system resource. No more than 32 characters in length.
 	Description *string `pulumi:"description"`
 	// The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
@@ -231,7 +232,7 @@ type fileSystemArgs struct {
 	// The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
 	ThroughputMode *string `pulumi:"throughputMode"`
 	// Zone Id, which is used to create file system resources to the specified zone.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a FileSystem resource.
@@ -240,6 +241,7 @@ type FileSystemArgs struct {
 	// - LRS (default): Local redundancy.
 	// - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
 	DataRedundancyType pulumi.StringPtrInput
+	DedicatedClusterId pulumi.StringPtrInput
 	// The description of the file system resource. No more than 32 characters in length.
 	Description pulumi.StringPtrInput
 	// The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
@@ -259,7 +261,7 @@ type FileSystemArgs struct {
 	// The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
 	ThroughputMode pulumi.StringPtrInput
 	// Zone Id, which is used to create file system resources to the specified zone.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (FileSystemArgs) ElementType() reflect.Type {
@@ -361,6 +363,10 @@ func (o FileSystemOutput) DataRedundancyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.DataRedundancyType }).(pulumi.StringPtrOutput)
 }
 
+func (o FileSystemOutput) DedicatedClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.DedicatedClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The description of the file system resource. No more than 32 characters in length.
 func (o FileSystemOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -407,8 +413,8 @@ func (o FileSystemOutput) ThroughputMode() pulumi.StringOutput {
 }
 
 // Zone Id, which is used to create file system resources to the specified zone.
-func (o FileSystemOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+func (o FileSystemOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type FileSystemArrayOutput struct{ *pulumi.OutputState }

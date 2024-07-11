@@ -17,7 +17,6 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  instance_type: pulumi.Input[str],
-                 internet_max_bandwidth_out: pulumi.Input[int],
                  payment_type: pulumi.Input[str],
                  schedule_area_level: pulumi.Input[str],
                  amount: Optional[pulumi.Input[int]] = None,
@@ -34,6 +33,7 @@ class InstanceArgs:
                  instance_charge_strategy: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
+                 internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
                  ip_type: Optional[pulumi.Input[str]] = None,
                  net_district_code: Optional[pulumi.Input[str]] = None,
                  net_work_id: Optional[pulumi.Input[str]] = None,
@@ -54,7 +54,6 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] instance_type: The specification of the instance. Example value: ens.sn1.small.
-        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
         :param pulumi.Input[str] payment_type: Instance payment method. Optional values:
                - Subscription: prepaid, annual and monthly
                - PayAsYouGo: Pay by volume.
@@ -89,6 +88,7 @@ class InstanceArgs:
         :param pulumi.Input[str] internet_charge_type: Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
                - BandwidthByDay: Daily peak bandwidth
                - 95bandwidthbymonth: 95 peak bandwidth.
+        :param pulumi.Input[int] internet_max_bandwidth_out: Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
         :param pulumi.Input[str] ip_type: The IP type. Value:
                - ipv4 (default):IPv4
                - ipv6:IPv6
@@ -121,7 +121,6 @@ class InstanceArgs:
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling.
         """
         pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "schedule_area_level", schedule_area_level)
         if amount is not None:
@@ -152,6 +151,8 @@ class InstanceArgs:
             pulumi.set(__self__, "instance_name", instance_name)
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if internet_max_bandwidth_out is not None:
+            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
         if ip_type is not None:
             pulumi.set(__self__, "ip_type", ip_type)
         if net_district_code is not None:
@@ -198,18 +199,6 @@ class InstanceArgs:
     @instance_type.setter
     def instance_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_type", value)
-
-    @property
-    @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> pulumi.Input[int]:
-        """
-        Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
-        """
-        return pulumi.get(self, "internet_max_bandwidth_out")
-
-    @internet_max_bandwidth_out.setter
-    def internet_max_bandwidth_out(self, value: pulumi.Input[int]):
-        pulumi.set(self, "internet_max_bandwidth_out", value)
 
     @property
     @pulumi.getter(name="paymentType")
@@ -420,6 +409,18 @@ class InstanceArgs:
     @internet_charge_type.setter
     def internet_charge_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "internet_charge_type", value)
+
+    @property
+    @pulumi.getter(name="internetMaxBandwidthOut")
+    def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
+        """
+        return pulumi.get(self, "internet_max_bandwidth_out")
+
+    @internet_max_bandwidth_out.setter
+    def internet_max_bandwidth_out(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "internet_max_bandwidth_out", value)
 
     @property
     @pulumi.getter(name="ipType")
@@ -1479,8 +1480,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["internet_charge_type"] = internet_charge_type
-            if internet_max_bandwidth_out is None and not opts.urn:
-                raise TypeError("Missing required property 'internet_max_bandwidth_out'")
             __props__.__dict__["internet_max_bandwidth_out"] = internet_max_bandwidth_out
             __props__.__dict__["ip_type"] = ip_type
             __props__.__dict__["net_district_code"] = net_district_code

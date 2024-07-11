@@ -112,6 +112,13 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly httpVersion!: pulumi.Output<string>;
     /**
+     * The timeout period of idle connections. Unit: seconds. Valid values:
+     * - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+     * - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+     * - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+     */
+    public readonly idleTimeout!: pulumi.Output<number>;
+    /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      * - `Standard`: intelligent routing.
      * - `CustomRouting`: custom routing.
@@ -134,6 +141,11 @@ export class Listener extends pulumi.CustomResource {
      * The proxy protocol of the listener. Default value: `false`. Valid values:
      */
     public readonly proxyProtocol!: pulumi.Output<boolean | undefined>;
+    /**
+     * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+     * > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+     */
+    public readonly requestTimeout!: pulumi.Output<number>;
     /**
      * The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
      */
@@ -162,11 +174,13 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["forwardedForConfig"] = state ? state.forwardedForConfig : undefined;
             resourceInputs["httpVersion"] = state ? state.httpVersion : undefined;
+            resourceInputs["idleTimeout"] = state ? state.idleTimeout : undefined;
             resourceInputs["listenerType"] = state ? state.listenerType : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["portRanges"] = state ? state.portRanges : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
+            resourceInputs["requestTimeout"] = state ? state.requestTimeout : undefined;
             resourceInputs["securityPolicyId"] = state ? state.securityPolicyId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
@@ -183,11 +197,13 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["forwardedForConfig"] = args ? args.forwardedForConfig : undefined;
             resourceInputs["httpVersion"] = args ? args.httpVersion : undefined;
+            resourceInputs["idleTimeout"] = args ? args.idleTimeout : undefined;
             resourceInputs["listenerType"] = args ? args.listenerType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["portRanges"] = args ? args.portRanges : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
+            resourceInputs["requestTimeout"] = args ? args.requestTimeout : undefined;
             resourceInputs["securityPolicyId"] = args ? args.securityPolicyId : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -229,6 +245,13 @@ export interface ListenerState {
      */
     httpVersion?: pulumi.Input<string>;
     /**
+     * The timeout period of idle connections. Unit: seconds. Valid values:
+     * - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+     * - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+     * - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+     */
+    idleTimeout?: pulumi.Input<number>;
+    /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      * - `Standard`: intelligent routing.
      * - `CustomRouting`: custom routing.
@@ -251,6 +274,11 @@ export interface ListenerState {
      * The proxy protocol of the listener. Default value: `false`. Valid values:
      */
     proxyProtocol?: pulumi.Input<boolean>;
+    /**
+     * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+     * > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+     */
+    requestTimeout?: pulumi.Input<number>;
     /**
      * The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
      */
@@ -294,6 +322,13 @@ export interface ListenerArgs {
      */
     httpVersion?: pulumi.Input<string>;
     /**
+     * The timeout period of idle connections. Unit: seconds. Valid values:
+     * - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+     * - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+     * - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+     */
+    idleTimeout?: pulumi.Input<number>;
+    /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      * - `Standard`: intelligent routing.
      * - `CustomRouting`: custom routing.
@@ -316,6 +351,11 @@ export interface ListenerArgs {
      * The proxy protocol of the listener. Default value: `false`. Valid values:
      */
     proxyProtocol?: pulumi.Input<boolean>;
+    /**
+     * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+     * > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+     */
+    requestTimeout?: pulumi.Input<number>;
     /**
      * The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
      */

@@ -263,6 +263,34 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.cpu);
     }
     /**
+     * The number of physical CPU cores. You can specify this parameter for only specific instance types.
+     * 
+     */
+    @Export(name="cpuOptionsCore", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> cpuOptionsCore;
+
+    /**
+     * @return The number of physical CPU cores. You can specify this parameter for only specific instance types.
+     * 
+     */
+    public Output<Optional<Integer>> cpuOptionsCore() {
+        return Codegen.optional(this.cpuOptionsCore);
+    }
+    /**
+     * The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+     * 
+     */
+    @Export(name="cpuOptionsThreadsPerCore", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> cpuOptionsThreadsPerCore;
+
+    /**
+     * @return The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+     * 
+     */
+    public Output<Optional<Integer>> cpuOptionsThreadsPerCore() {
+        return Codegen.optional(this.cpuOptionsThreadsPerCore);
+    }
+    /**
      * The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
      * 256 characters in length and cannot start with http:// or https://.
      * 

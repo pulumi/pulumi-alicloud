@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -20,6 +21,89 @@ import javax.annotation.Nullable;
  * For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaycachedisk).
  * 
  * &gt; **NOTE:** Available since v1.144.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cloudstoragegateway.CloudstoragegatewayFunctions;
+ * import com.pulumi.alicloud.cloudstoragegateway.inputs.GetStocksArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
+ * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
+ * import com.pulumi.alicloud.cloudstoragegateway.Gateway;
+ * import com.pulumi.alicloud.cloudstoragegateway.GatewayArgs;
+ * import com.pulumi.alicloud.cloudstoragegateway.GatewayCacheDisk;
+ * import com.pulumi.alicloud.cloudstoragegateway.GatewayCacheDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
+ *             .gatewayClass("Standard")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("172.16.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(default_.stocks()[0].zoneId())
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultStorageBundle = new StorageBundle("defaultStorageBundle", StorageBundleArgs.builder()
+ *             .storageBundleName(name)
+ *             .build());
+ * 
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+ *             .description(name)
+ *             .gatewayClass("Standard")
+ *             .type("File")
+ *             .paymentType("PayAsYouGo")
+ *             .vswitchId(defaultSwitch.id())
+ *             .releaseAfterExpiration(true)
+ *             .storageBundleId(defaultStorageBundle.id())
+ *             .location("Cloud")
+ *             .gatewayName(name)
+ *             .build());
+ * 
+ *         var defaultGatewayCacheDisk = new GatewayCacheDisk("defaultGatewayCacheDisk", GatewayCacheDiskArgs.builder()
+ *             .gatewayId(defaultGateway.id())
+ *             .cacheDiskSizeInGb(50)
+ *             .cacheDiskCategory("cloud_efficiency")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -33,42 +117,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk")
 public class GatewayCacheDisk extends com.pulumi.resources.CustomResource {
     /**
-     * The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
+     * The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
      * 
      */
     @Export(name="cacheDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> cacheDiskCategory;
 
     /**
-     * @return The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
+     * @return The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
      * 
      */
     public Output<String> cacheDiskCategory() {
         return this.cacheDiskCategory;
     }
     /**
-     * size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+     * The capacity of the cache disk.
      * 
      */
     @Export(name="cacheDiskSizeInGb", refs={Integer.class}, tree="[0]")
     private Output<Integer> cacheDiskSizeInGb;
 
     /**
-     * @return size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+     * @return The capacity of the cache disk.
      * 
      */
     public Output<Integer> cacheDiskSizeInGb() {
         return this.cacheDiskSizeInGb;
     }
     /**
-     * The ID of the cache.
+     * The ID of the cache disk.
      * 
      */
     @Export(name="cacheId", refs={String.class}, tree="[0]")
     private Output<String> cacheId;
 
     /**
-     * @return The ID of the cache.
+     * @return The ID of the cache disk.
      * 
      */
     public Output<String> cacheId() {
@@ -89,28 +173,42 @@ public class GatewayCacheDisk extends com.pulumi.resources.CustomResource {
         return this.gatewayId;
     }
     /**
-     * The cache disk inside the device name.
+     * The path of the cache disk.
      * 
      */
     @Export(name="localFilePath", refs={String.class}, tree="[0]")
     private Output<String> localFilePath;
 
     /**
-     * @return The cache disk inside the device name.
+     * @return The path of the cache disk.
      * 
      */
     public Output<String> localFilePath() {
         return this.localFilePath;
     }
     /**
-     * The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
+     * The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+     * 
+     */
+    @Export(name="performanceLevel", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> performanceLevel;
+
+    /**
+     * @return The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+     * 
+     */
+    public Output<Optional<String>> performanceLevel() {
+        return Codegen.optional(this.performanceLevel);
+    }
+    /**
+     * The status of the Gateway Cache Disk.
      * 
      */
     @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**
-     * @return The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
+     * @return The status of the Gateway Cache Disk.
      * 
      */
     public Output<Integer> status() {

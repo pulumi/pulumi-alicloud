@@ -8,12 +8,14 @@ import typing
 from .disk import *
 from .disk_instance_attachment import *
 from .eip import *
+from .eip_instance_attachment import *
 from .get_key_pairs import *
 from .image import *
 from .instance import *
 from .instance_security_group_attachment import *
 from .key_pair import *
 from .load_balancer import *
+from .nat_gateway import *
 from .network import *
 from .security_group import *
 from .snapshot import *

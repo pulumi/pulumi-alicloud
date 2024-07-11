@@ -974,7 +974,7 @@ public final class ClickhouseFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:clickhouse/getDbClusters:getDbClusters", TypeShape.of(GetDbClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Click House Accounts of the current Alibaba Cloud user.
+     * This data source provides the Click House Regions of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
@@ -1024,7 +1024,7 @@ public final class ClickhouseFunctions {
         return getRegions(GetRegionsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Click House Accounts of the current Alibaba Cloud user.
+     * This data source provides the Click House Regions of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
@@ -1074,7 +1074,7 @@ public final class ClickhouseFunctions {
         return getRegionsPlain(GetRegionsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Click House Accounts of the current Alibaba Cloud user.
+     * This data source provides the Click House Regions of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
@@ -1124,7 +1124,7 @@ public final class ClickhouseFunctions {
         return getRegions(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Click House Accounts of the current Alibaba Cloud user.
+     * This data source provides the Click House Regions of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
@@ -1174,7 +1174,7 @@ public final class ClickhouseFunctions {
         return getRegionsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Click House Accounts of the current Alibaba Cloud user.
+     * This data source provides the Click House Regions of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.138.0+.
      * 
@@ -1224,7 +1224,7 @@ public final class ClickhouseFunctions {
         return Deployment.getInstance().invoke("alicloud:clickhouse/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Click House Accounts of the current Alibaba Cloud user.
+     * This data source provides the Click House Regions of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.138.0+.
      * 

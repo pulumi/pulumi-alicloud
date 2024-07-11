@@ -252,9 +252,9 @@ type Cluster struct {
 	LogCollectStrategy pulumi.StringOutput `pulumi:"logCollectStrategy"`
 	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes ClusterNodeAttributeArrayOutput `pulumi:"nodeAttributes"`
-	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
+	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below. **NOTE:** Since version 1.227.0, the type of `nodeGroups` changed from Set to List.
 	NodeGroups ClusterNodeGroupArrayOutput `pulumi:"nodeGroups"`
-	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
 	ReleaseVersion pulumi.StringOutput `pulumi:"releaseVersion"`
@@ -332,9 +332,9 @@ type clusterState struct {
 	LogCollectStrategy *string `pulumi:"logCollectStrategy"`
 	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes []ClusterNodeAttribute `pulumi:"nodeAttributes"`
-	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
+	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below. **NOTE:** Since version 1.227.0, the type of `nodeGroups` changed from Set to List.
 	NodeGroups []ClusterNodeGroup `pulumi:"nodeGroups"`
-	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
 	PaymentType *string `pulumi:"paymentType"`
 	// EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
 	ReleaseVersion *string `pulumi:"releaseVersion"`
@@ -365,9 +365,9 @@ type ClusterState struct {
 	LogCollectStrategy pulumi.StringPtrInput
 	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes ClusterNodeAttributeArrayInput
-	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
+	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below. **NOTE:** Since version 1.227.0, the type of `nodeGroups` changed from Set to List.
 	NodeGroups ClusterNodeGroupArrayInput
-	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
 	PaymentType pulumi.StringPtrInput
 	// EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
 	ReleaseVersion pulumi.StringPtrInput
@@ -402,9 +402,9 @@ type clusterArgs struct {
 	LogCollectStrategy *string `pulumi:"logCollectStrategy"`
 	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes []ClusterNodeAttribute `pulumi:"nodeAttributes"`
-	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
+	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below. **NOTE:** Since version 1.227.0, the type of `nodeGroups` changed from Set to List.
 	NodeGroups []ClusterNodeGroup `pulumi:"nodeGroups"`
-	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
 	PaymentType *string `pulumi:"paymentType"`
 	// EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
 	ReleaseVersion string `pulumi:"releaseVersion"`
@@ -436,9 +436,9 @@ type ClusterArgs struct {
 	LogCollectStrategy pulumi.StringPtrInput
 	// The node attributes of ecs instances which the emr-cluster belongs. See `nodeAttributes` below.
 	NodeAttributes ClusterNodeAttributeArrayInput
-	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
+	// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below. **NOTE:** Since version 1.227.0, the type of `nodeGroups` changed from Set to List.
 	NodeGroups ClusterNodeGroupArrayInput
-	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+	// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
 	PaymentType pulumi.StringPtrInput
 	// EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
 	ReleaseVersion pulumi.StringInput
@@ -579,12 +579,12 @@ func (o ClusterOutput) NodeAttributes() ClusterNodeAttributeArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterNodeAttributeArrayOutput { return v.NodeAttributes }).(ClusterNodeAttributeArrayOutput)
 }
 
-// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below.
+// Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `nodeGroups` below. **NOTE:** Since version 1.227.0, the type of `nodeGroups` changed from Set to List.
 func (o ClusterOutput) NodeGroups() ClusterNodeGroupArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterNodeGroupArrayOutput { return v.NodeGroups }).(ClusterNodeGroupArrayOutput)
 }
 
-// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+// Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `paymentType` can be modified.
 func (o ClusterOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }

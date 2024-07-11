@@ -13,50 +13,126 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ImageDiskDeviceMapping {
     /**
-     * @return Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+     * @return The device name of disk N in the custom image. Valid values:
+     * - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+     * - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
      * 
      */
     private @Nullable String device;
     /**
-     * @return Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+     * @return The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+     * - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+     * - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
      * 
      */
     private @Nullable String diskType;
     /**
-     * @return Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+     * @return Image format.
+     * 
+     */
+    private @Nullable String format;
+    /**
+     * @return Import the bucket of the OSS to which the image belongs.
+     * 
+     */
+    private @Nullable String importOssBucket;
+    /**
+     * @return Import the object of the OSS to which the image file belongs.
+     * 
+     */
+    private @Nullable String importOssObject;
+    /**
+     * @return Copy the progress of the task.
+     * 
+     */
+    private @Nullable String progress;
+    /**
+     * @return For an image being replicated, return the remaining time of the replication task, in seconds.
+     * 
+     */
+    private @Nullable Integer remainTime;
+    /**
+     * @return The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+     * - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+     * *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+     * *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+     * - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
      * 
      */
     private @Nullable Integer size;
     /**
-     * @return Specifies a snapshot that is used to create a combined custom image.
+     * @return The ID of snapshot N to use to create the custom image. .
      * 
      */
     private @Nullable String snapshotId;
 
     private ImageDiskDeviceMapping() {}
     /**
-     * @return Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+     * @return The device name of disk N in the custom image. Valid values:
+     * - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+     * - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
      * 
      */
     public Optional<String> device() {
         return Optional.ofNullable(this.device);
     }
     /**
-     * @return Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+     * @return The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+     * - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+     * - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
      * 
      */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
     /**
-     * @return Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+     * @return Image format.
+     * 
+     */
+    public Optional<String> format() {
+        return Optional.ofNullable(this.format);
+    }
+    /**
+     * @return Import the bucket of the OSS to which the image belongs.
+     * 
+     */
+    public Optional<String> importOssBucket() {
+        return Optional.ofNullable(this.importOssBucket);
+    }
+    /**
+     * @return Import the object of the OSS to which the image file belongs.
+     * 
+     */
+    public Optional<String> importOssObject() {
+        return Optional.ofNullable(this.importOssObject);
+    }
+    /**
+     * @return Copy the progress of the task.
+     * 
+     */
+    public Optional<String> progress() {
+        return Optional.ofNullable(this.progress);
+    }
+    /**
+     * @return For an image being replicated, return the remaining time of the replication task, in seconds.
+     * 
+     */
+    public Optional<Integer> remainTime() {
+        return Optional.ofNullable(this.remainTime);
+    }
+    /**
+     * @return The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+     * - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+     * *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+     * *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+     * - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
      * 
      */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }
     /**
-     * @return Specifies a snapshot that is used to create a combined custom image.
+     * @return The ID of snapshot N to use to create the custom image. .
      * 
      */
     public Optional<String> snapshotId() {
@@ -74,6 +150,11 @@ public final class ImageDiskDeviceMapping {
     public static final class Builder {
         private @Nullable String device;
         private @Nullable String diskType;
+        private @Nullable String format;
+        private @Nullable String importOssBucket;
+        private @Nullable String importOssObject;
+        private @Nullable String progress;
+        private @Nullable Integer remainTime;
         private @Nullable Integer size;
         private @Nullable String snapshotId;
         public Builder() {}
@@ -81,6 +162,11 @@ public final class ImageDiskDeviceMapping {
     	      Objects.requireNonNull(defaults);
     	      this.device = defaults.device;
     	      this.diskType = defaults.diskType;
+    	      this.format = defaults.format;
+    	      this.importOssBucket = defaults.importOssBucket;
+    	      this.importOssObject = defaults.importOssObject;
+    	      this.progress = defaults.progress;
+    	      this.remainTime = defaults.remainTime;
     	      this.size = defaults.size;
     	      this.snapshotId = defaults.snapshotId;
         }
@@ -95,6 +181,36 @@ public final class ImageDiskDeviceMapping {
         public Builder diskType(@Nullable String diskType) {
 
             this.diskType = diskType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder format(@Nullable String format) {
+
+            this.format = format;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder importOssBucket(@Nullable String importOssBucket) {
+
+            this.importOssBucket = importOssBucket;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder importOssObject(@Nullable String importOssObject) {
+
+            this.importOssObject = importOssObject;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder progress(@Nullable String progress) {
+
+            this.progress = progress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder remainTime(@Nullable Integer remainTime) {
+
+            this.remainTime = remainTime;
             return this;
         }
         @CustomType.Setter
@@ -113,6 +229,11 @@ public final class ImageDiskDeviceMapping {
             final var _resultValue = new ImageDiskDeviceMapping();
             _resultValue.device = device;
             _resultValue.diskType = diskType;
+            _resultValue.format = format;
+            _resultValue.importOssBucket = importOssBucket;
+            _resultValue.importOssObject = importOssObject;
+            _resultValue.progress = progress;
+            _resultValue.remainTime = remainTime;
             _resultValue.size = size;
             _resultValue.snapshotId = snapshotId;
             return _resultValue;

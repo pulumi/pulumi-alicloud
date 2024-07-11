@@ -195,6 +195,8 @@ type ScalingGroup struct {
 	// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
 	// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
 	LoadbalancerIds pulumi.StringArrayOutput `pulumi:"loadbalancerIds"`
+	// The maximum life span of an instance in the scaling group. Unit: seconds.
+	MaxInstanceLifetime pulumi.IntPtrOutput `pulumi:"maxInstanceLifetime"`
 	// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
@@ -219,6 +221,8 @@ type ScalingGroup struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName pulumi.StringPtrOutput `pulumi:"scalingGroupName"`
+	// The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+	ScalingPolicy pulumi.StringOutput `pulumi:"scalingPolicy"`
 	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	SpotAllocationStrategy pulumi.StringOutput `pulumi:"spotAllocationStrategy"`
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
@@ -306,6 +310,8 @@ type scalingGroupState struct {
 	// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
 	// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
 	LoadbalancerIds []string `pulumi:"loadbalancerIds"`
+	// The maximum life span of an instance in the scaling group. Unit: seconds.
+	MaxInstanceLifetime *int `pulumi:"maxInstanceLifetime"`
 	// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
 	MaxSize *int `pulumi:"maxSize"`
@@ -330,6 +336,8 @@ type scalingGroupState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName *string `pulumi:"scalingGroupName"`
+	// The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+	ScalingPolicy *string `pulumi:"scalingPolicy"`
 	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	SpotAllocationStrategy *string `pulumi:"spotAllocationStrategy"`
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
@@ -382,6 +390,8 @@ type ScalingGroupState struct {
 	// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
 	// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
 	LoadbalancerIds pulumi.StringArrayInput
+	// The maximum life span of an instance in the scaling group. Unit: seconds.
+	MaxInstanceLifetime pulumi.IntPtrInput
 	// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
 	MaxSize pulumi.IntPtrInput
@@ -406,6 +416,8 @@ type ScalingGroupState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName pulumi.StringPtrInput
+	// The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+	ScalingPolicy pulumi.StringPtrInput
 	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	SpotAllocationStrategy pulumi.StringPtrInput
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
@@ -462,6 +474,8 @@ type scalingGroupArgs struct {
 	// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
 	// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
 	LoadbalancerIds []string `pulumi:"loadbalancerIds"`
+	// The maximum life span of an instance in the scaling group. Unit: seconds.
+	MaxInstanceLifetime *int `pulumi:"maxInstanceLifetime"`
 	// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
 	MaxSize int `pulumi:"maxSize"`
@@ -486,6 +500,8 @@ type scalingGroupArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName *string `pulumi:"scalingGroupName"`
+	// The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+	ScalingPolicy *string `pulumi:"scalingPolicy"`
 	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	SpotAllocationStrategy *string `pulumi:"spotAllocationStrategy"`
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
@@ -539,6 +555,8 @@ type ScalingGroupArgs struct {
 	// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
 	// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
 	LoadbalancerIds pulumi.StringArrayInput
+	// The maximum life span of an instance in the scaling group. Unit: seconds.
+	MaxInstanceLifetime pulumi.IntPtrInput
 	// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
 	// **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
 	MaxSize pulumi.IntInput
@@ -563,6 +581,8 @@ type ScalingGroupArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 	ScalingGroupName pulumi.StringPtrInput
+	// The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+	ScalingPolicy pulumi.StringPtrInput
 	// The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	SpotAllocationStrategy pulumi.StringPtrInput
 	// The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
@@ -740,6 +760,11 @@ func (o ScalingGroupOutput) LoadbalancerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringArrayOutput { return v.LoadbalancerIds }).(pulumi.StringArrayOutput)
 }
 
+// The maximum life span of an instance in the scaling group. Unit: seconds.
+func (o ScalingGroupOutput) MaxInstanceLifetime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.IntPtrOutput { return v.MaxInstanceLifetime }).(pulumi.IntPtrOutput)
+}
+
 // Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
 // **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
 func (o ScalingGroupOutput) MaxSize() pulumi.IntOutput {
@@ -789,6 +814,11 @@ func (o ScalingGroupOutput) ResourceGroupId() pulumi.StringOutput {
 // Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
 func (o ScalingGroupOutput) ScalingGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.ScalingGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+func (o ScalingGroupOutput) ScalingPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringOutput { return v.ScalingPolicy }).(pulumi.StringOutput)
 }
 
 // The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.

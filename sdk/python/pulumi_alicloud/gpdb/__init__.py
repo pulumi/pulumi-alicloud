@@ -11,10 +11,14 @@ from .connection import *
 from .db_instance_plan import *
 from .db_resource_group import *
 from .elastic_instance import *
+from .external_data_service import *
 from .get_accounts import *
 from .get_db_instance_plans import *
 from .get_instances import *
 from .get_zones import *
 from .instance import *
+from .remote_adb_data_source import *
+from .streaming_data_service import *
+from .streaming_data_source import *
 from ._inputs import *
 from . import outputs

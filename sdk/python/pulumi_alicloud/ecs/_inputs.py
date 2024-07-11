@@ -20,6 +20,7 @@ __all__ = [
     'EcsLaunchTemplateSystemDiskArgs',
     'EcsPrefixListEntryArgs',
     'ImageDiskDeviceMappingArgs',
+    'ImageFeaturesArgs',
     'ImageImportDiskDeviceMappingArgs',
     'InstanceDataDiskArgs',
     'InstanceMaintenanceTimeArgs',
@@ -828,18 +829,46 @@ class ImageDiskDeviceMappingArgs:
     def __init__(__self__, *,
                  device: Optional[pulumi.Input[str]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input[str]] = None,
+                 import_oss_bucket: Optional[pulumi.Input[str]] = None,
+                 import_oss_object: Optional[pulumi.Input[str]] = None,
+                 progress: Optional[pulumi.Input[str]] = None,
+                 remain_time: Optional[pulumi.Input[int]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] device: Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
-        :param pulumi.Input[str] disk_type: Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
-        :param pulumi.Input[int] size: Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
-        :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
+        :param pulumi.Input[str] device: The device name of disk N in the custom image. Valid values:
+               - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+               - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
+        :param pulumi.Input[str] disk_type: The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+               - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+               - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
+        :param pulumi.Input[str] format: Image format.
+        :param pulumi.Input[str] import_oss_bucket: Import the bucket of the OSS to which the image belongs.
+        :param pulumi.Input[str] import_oss_object: Import the object of the OSS to which the image file belongs.
+        :param pulumi.Input[str] progress: Copy the progress of the task.
+        :param pulumi.Input[int] remain_time: For an image being replicated, return the remaining time of the replication task, in seconds.
+        :param pulumi.Input[int] size: The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+               - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+               *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+               *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+               - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
+        :param pulumi.Input[str] snapshot_id: The ID of snapshot N to use to create the custom image. .
         """
         if device is not None:
             pulumi.set(__self__, "device", device)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if import_oss_bucket is not None:
+            pulumi.set(__self__, "import_oss_bucket", import_oss_bucket)
+        if import_oss_object is not None:
+            pulumi.set(__self__, "import_oss_object", import_oss_object)
+        if progress is not None:
+            pulumi.set(__self__, "progress", progress)
+        if remain_time is not None:
+            pulumi.set(__self__, "remain_time", remain_time)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
@@ -849,7 +878,9 @@ class ImageDiskDeviceMappingArgs:
     @pulumi.getter
     def device(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+        The device name of disk N in the custom image. Valid values:
+        - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+        - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
         """
         return pulumi.get(self, "device")
 
@@ -861,7 +892,9 @@ class ImageDiskDeviceMappingArgs:
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+        The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+        - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+        - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
         """
         return pulumi.get(self, "disk_type")
 
@@ -871,9 +904,73 @@ class ImageDiskDeviceMappingArgs:
 
     @property
     @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image format.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter(name="importOssBucket")
+    def import_oss_bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        Import the bucket of the OSS to which the image belongs.
+        """
+        return pulumi.get(self, "import_oss_bucket")
+
+    @import_oss_bucket.setter
+    def import_oss_bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "import_oss_bucket", value)
+
+    @property
+    @pulumi.getter(name="importOssObject")
+    def import_oss_object(self) -> Optional[pulumi.Input[str]]:
+        """
+        Import the object of the OSS to which the image file belongs.
+        """
+        return pulumi.get(self, "import_oss_object")
+
+    @import_oss_object.setter
+    def import_oss_object(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "import_oss_object", value)
+
+    @property
+    @pulumi.getter
+    def progress(self) -> Optional[pulumi.Input[str]]:
+        """
+        Copy the progress of the task.
+        """
+        return pulumi.get(self, "progress")
+
+    @progress.setter
+    def progress(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "progress", value)
+
+    @property
+    @pulumi.getter(name="remainTime")
+    def remain_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        For an image being replicated, return the remaining time of the replication task, in seconds.
+        """
+        return pulumi.get(self, "remain_time")
+
+    @remain_time.setter
+    def remain_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "remain_time", value)
+
+    @property
+    @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+        The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+        - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+        *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+        *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+        - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
         """
         return pulumi.get(self, "size")
 
@@ -885,13 +982,40 @@ class ImageDiskDeviceMappingArgs:
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies a snapshot that is used to create a combined custom image.
+        The ID of snapshot N to use to create the custom image. .
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
     def snapshot_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "snapshot_id", value)
+
+
+@pulumi.input_type
+class ImageFeaturesArgs:
+    def __init__(__self__, *,
+                 nvme_support: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] nvme_support: Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+               - supported: The image supports NVMe. Instances created from this image also support NVMe.
+               - unsupported: The image does not support NVMe. Instances created from this image do not support NVMe.
+        """
+        if nvme_support is not None:
+            pulumi.set(__self__, "nvme_support", nvme_support)
+
+    @property
+    @pulumi.getter(name="nvmeSupport")
+    def nvme_support(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+        - supported: The image supports NVMe. Instances created from this image also support NVMe.
+        - unsupported: The image does not support NVMe. Instances created from this image do not support NVMe.
+        """
+        return pulumi.get(self, "nvme_support")
+
+    @nvme_support.setter
+    def nvme_support(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nvme_support", value)
 
 
 @pulumi.input_type

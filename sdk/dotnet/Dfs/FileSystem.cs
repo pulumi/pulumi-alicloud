@@ -72,6 +72,9 @@ namespace Pulumi.AliCloud.Dfs
         [Output("dataRedundancyType")]
         public Output<string?> DataRedundancyType { get; private set; } = null!;
 
+        [Output("dedicatedClusterId")]
+        public Output<string?> DedicatedClusterId { get; private set; } = null!;
+
         /// <summary>
         /// The description of the file system resource. No more than 32 characters in length.
         /// </summary>
@@ -130,7 +133,7 @@ namespace Pulumi.AliCloud.Dfs
         /// Zone Id, which is used to create file system resources to the specified zone.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -185,6 +188,9 @@ namespace Pulumi.AliCloud.Dfs
         /// </summary>
         [Input("dataRedundancyType")]
         public Input<string>? DataRedundancyType { get; set; }
+
+        [Input("dedicatedClusterId")]
+        public Input<string>? DedicatedClusterId { get; set; }
 
         /// <summary>
         /// The description of the file system resource. No more than 32 characters in length.
@@ -243,8 +249,8 @@ namespace Pulumi.AliCloud.Dfs
         /// <summary>
         /// Zone Id, which is used to create file system resources to the specified zone.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public FileSystemArgs()
         {
@@ -267,6 +273,9 @@ namespace Pulumi.AliCloud.Dfs
         /// </summary>
         [Input("dataRedundancyType")]
         public Input<string>? DataRedundancyType { get; set; }
+
+        [Input("dedicatedClusterId")]
+        public Input<string>? DedicatedClusterId { get; set; }
 
         /// <summary>
         /// The description of the file system resource. No more than 32 characters in length.

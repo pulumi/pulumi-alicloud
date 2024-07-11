@@ -144,14 +144,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
      * 
      */
     @Import(name="nodeGroups")
     private @Nullable Output<List<ClusterNodeGroupArgs>> nodeGroups;
 
     /**
-     * @return Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+     * @return Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
      * 
      */
     public Optional<Output<List<ClusterNodeGroupArgs>>> nodeGroups() {
@@ -159,14 +159,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+     * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+     * @return Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -495,7 +495,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeGroups Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+         * @param nodeGroups Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeGroups Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+         * @param nodeGroups Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
          * 
          * @return builder
          * 
@@ -516,7 +516,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeGroups Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+         * @param nodeGroups Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+         * @param paymentType Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
          * 
          * @return builder
          * 
@@ -537,7 +537,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+         * @param paymentType Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
          * 
          * @return builder
          * 

@@ -1475,13 +1475,31 @@ func (o EcsPrefixListEntryArrayOutput) Index(i pulumi.IntInput) EcsPrefixListEnt
 }
 
 type ImageDiskDeviceMapping struct {
-	// Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+	// The device name of disk N in the custom image. Valid values:
+	// - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+	// - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
 	Device *string `pulumi:"device"`
-	// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+	// The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+	// - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+	// - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
 	DiskType *string `pulumi:"diskType"`
-	// Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+	// Image format.
+	Format *string `pulumi:"format"`
+	// Import the bucket of the OSS to which the image belongs.
+	ImportOssBucket *string `pulumi:"importOssBucket"`
+	// Import the object of the OSS to which the image file belongs.
+	ImportOssObject *string `pulumi:"importOssObject"`
+	// Copy the progress of the task.
+	Progress *string `pulumi:"progress"`
+	// For an image being replicated, return the remaining time of the replication task, in seconds.
+	RemainTime *int `pulumi:"remainTime"`
+	// The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+	// - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+	// *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+	// *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+	// - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
 	Size *int `pulumi:"size"`
-	// Specifies a snapshot that is used to create a combined custom image.
+	// The ID of snapshot N to use to create the custom image. .
 	SnapshotId *string `pulumi:"snapshotId"`
 }
 
@@ -1497,13 +1515,31 @@ type ImageDiskDeviceMappingInput interface {
 }
 
 type ImageDiskDeviceMappingArgs struct {
-	// Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+	// The device name of disk N in the custom image. Valid values:
+	// - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+	// - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
 	Device pulumi.StringPtrInput `pulumi:"device"`
-	// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+	// The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+	// - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+	// - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+	// Image format.
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// Import the bucket of the OSS to which the image belongs.
+	ImportOssBucket pulumi.StringPtrInput `pulumi:"importOssBucket"`
+	// Import the object of the OSS to which the image file belongs.
+	ImportOssObject pulumi.StringPtrInput `pulumi:"importOssObject"`
+	// Copy the progress of the task.
+	Progress pulumi.StringPtrInput `pulumi:"progress"`
+	// For an image being replicated, return the remaining time of the replication task, in seconds.
+	RemainTime pulumi.IntPtrInput `pulumi:"remainTime"`
+	// The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+	// - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+	// *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+	// *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+	// - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
 	Size pulumi.IntPtrInput `pulumi:"size"`
-	// Specifies a snapshot that is used to create a combined custom image.
+	// The ID of snapshot N to use to create the custom image. .
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
 
@@ -1558,22 +1594,55 @@ func (o ImageDiskDeviceMappingOutput) ToImageDiskDeviceMappingOutputWithContext(
 	return o
 }
 
-// Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+// The device name of disk N in the custom image. Valid values:
+// - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+// - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
 func (o ImageDiskDeviceMappingOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageDiskDeviceMapping) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+// The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+// - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+// - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
 func (o ImageDiskDeviceMappingOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageDiskDeviceMapping) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+// Image format.
+func (o ImageDiskDeviceMappingOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageDiskDeviceMapping) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// Import the bucket of the OSS to which the image belongs.
+func (o ImageDiskDeviceMappingOutput) ImportOssBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageDiskDeviceMapping) *string { return v.ImportOssBucket }).(pulumi.StringPtrOutput)
+}
+
+// Import the object of the OSS to which the image file belongs.
+func (o ImageDiskDeviceMappingOutput) ImportOssObject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageDiskDeviceMapping) *string { return v.ImportOssObject }).(pulumi.StringPtrOutput)
+}
+
+// Copy the progress of the task.
+func (o ImageDiskDeviceMappingOutput) Progress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageDiskDeviceMapping) *string { return v.Progress }).(pulumi.StringPtrOutput)
+}
+
+// For an image being replicated, return the remaining time of the replication task, in seconds.
+func (o ImageDiskDeviceMappingOutput) RemainTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ImageDiskDeviceMapping) *int { return v.RemainTime }).(pulumi.IntPtrOutput)
+}
+
+// The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+// - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+// *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+// *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+// - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
 func (o ImageDiskDeviceMappingOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ImageDiskDeviceMapping) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
-// Specifies a snapshot that is used to create a combined custom image.
+// The ID of snapshot N to use to create the custom image. .
 func (o ImageDiskDeviceMappingOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageDiskDeviceMapping) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
@@ -1596,6 +1665,151 @@ func (o ImageDiskDeviceMappingArrayOutput) Index(i pulumi.IntInput) ImageDiskDev
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageDiskDeviceMapping {
 		return vs[0].([]ImageDiskDeviceMapping)[vs[1].(int)]
 	}).(ImageDiskDeviceMappingOutput)
+}
+
+type ImageFeatures struct {
+	// Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+	// - supported: The image supports NVMe. Instances created from this image also support NVMe.
+	// - unsupported: The image does not support NVMe. Instances created from this image do not support NVMe.
+	NvmeSupport *string `pulumi:"nvmeSupport"`
+}
+
+// ImageFeaturesInput is an input type that accepts ImageFeaturesArgs and ImageFeaturesOutput values.
+// You can construct a concrete instance of `ImageFeaturesInput` via:
+//
+//	ImageFeaturesArgs{...}
+type ImageFeaturesInput interface {
+	pulumi.Input
+
+	ToImageFeaturesOutput() ImageFeaturesOutput
+	ToImageFeaturesOutputWithContext(context.Context) ImageFeaturesOutput
+}
+
+type ImageFeaturesArgs struct {
+	// Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+	// - supported: The image supports NVMe. Instances created from this image also support NVMe.
+	// - unsupported: The image does not support NVMe. Instances created from this image do not support NVMe.
+	NvmeSupport pulumi.StringPtrInput `pulumi:"nvmeSupport"`
+}
+
+func (ImageFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageFeatures)(nil)).Elem()
+}
+
+func (i ImageFeaturesArgs) ToImageFeaturesOutput() ImageFeaturesOutput {
+	return i.ToImageFeaturesOutputWithContext(context.Background())
+}
+
+func (i ImageFeaturesArgs) ToImageFeaturesOutputWithContext(ctx context.Context) ImageFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageFeaturesOutput)
+}
+
+func (i ImageFeaturesArgs) ToImageFeaturesPtrOutput() ImageFeaturesPtrOutput {
+	return i.ToImageFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i ImageFeaturesArgs) ToImageFeaturesPtrOutputWithContext(ctx context.Context) ImageFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageFeaturesOutput).ToImageFeaturesPtrOutputWithContext(ctx)
+}
+
+// ImageFeaturesPtrInput is an input type that accepts ImageFeaturesArgs, ImageFeaturesPtr and ImageFeaturesPtrOutput values.
+// You can construct a concrete instance of `ImageFeaturesPtrInput` via:
+//
+//	        ImageFeaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToImageFeaturesPtrOutput() ImageFeaturesPtrOutput
+	ToImageFeaturesPtrOutputWithContext(context.Context) ImageFeaturesPtrOutput
+}
+
+type imageFeaturesPtrType ImageFeaturesArgs
+
+func ImageFeaturesPtr(v *ImageFeaturesArgs) ImageFeaturesPtrInput {
+	return (*imageFeaturesPtrType)(v)
+}
+
+func (*imageFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageFeatures)(nil)).Elem()
+}
+
+func (i *imageFeaturesPtrType) ToImageFeaturesPtrOutput() ImageFeaturesPtrOutput {
+	return i.ToImageFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *imageFeaturesPtrType) ToImageFeaturesPtrOutputWithContext(ctx context.Context) ImageFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageFeaturesPtrOutput)
+}
+
+type ImageFeaturesOutput struct{ *pulumi.OutputState }
+
+func (ImageFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageFeatures)(nil)).Elem()
+}
+
+func (o ImageFeaturesOutput) ToImageFeaturesOutput() ImageFeaturesOutput {
+	return o
+}
+
+func (o ImageFeaturesOutput) ToImageFeaturesOutputWithContext(ctx context.Context) ImageFeaturesOutput {
+	return o
+}
+
+func (o ImageFeaturesOutput) ToImageFeaturesPtrOutput() ImageFeaturesPtrOutput {
+	return o.ToImageFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o ImageFeaturesOutput) ToImageFeaturesPtrOutputWithContext(ctx context.Context) ImageFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageFeatures) *ImageFeatures {
+		return &v
+	}).(ImageFeaturesPtrOutput)
+}
+
+// Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+// - supported: The image supports NVMe. Instances created from this image also support NVMe.
+// - unsupported: The image does not support NVMe. Instances created from this image do not support NVMe.
+func (o ImageFeaturesOutput) NvmeSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageFeatures) *string { return v.NvmeSupport }).(pulumi.StringPtrOutput)
+}
+
+type ImageFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageFeatures)(nil)).Elem()
+}
+
+func (o ImageFeaturesPtrOutput) ToImageFeaturesPtrOutput() ImageFeaturesPtrOutput {
+	return o
+}
+
+func (o ImageFeaturesPtrOutput) ToImageFeaturesPtrOutputWithContext(ctx context.Context) ImageFeaturesPtrOutput {
+	return o
+}
+
+func (o ImageFeaturesPtrOutput) Elem() ImageFeaturesOutput {
+	return o.ApplyT(func(v *ImageFeatures) ImageFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret ImageFeatures
+		return ret
+	}).(ImageFeaturesOutput)
+}
+
+// Specifies whether to support the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+// - supported: The image supports NVMe. Instances created from this image also support NVMe.
+// - unsupported: The image does not support NVMe. Instances created from this image do not support NVMe.
+func (o ImageFeaturesPtrOutput) NvmeSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageFeatures) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NvmeSupport
+	}).(pulumi.StringPtrOutput)
 }
 
 type ImageImportDiskDeviceMapping struct {
@@ -15398,6 +15612,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsPrefixListEntryArrayInput)(nil)).Elem(), EcsPrefixListEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageDiskDeviceMappingInput)(nil)).Elem(), ImageDiskDeviceMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageDiskDeviceMappingArrayInput)(nil)).Elem(), ImageDiskDeviceMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageFeaturesInput)(nil)).Elem(), ImageFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageFeaturesPtrInput)(nil)).Elem(), ImageFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportDiskDeviceMappingInput)(nil)).Elem(), ImageImportDiskDeviceMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageImportDiskDeviceMappingArrayInput)(nil)).Elem(), ImageImportDiskDeviceMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskInput)(nil)).Elem(), InstanceDataDiskArgs{})
@@ -15563,6 +15779,8 @@ func init() {
 	pulumi.RegisterOutputType(EcsPrefixListEntryArrayOutput{})
 	pulumi.RegisterOutputType(ImageDiskDeviceMappingOutput{})
 	pulumi.RegisterOutputType(ImageDiskDeviceMappingArrayOutput{})
+	pulumi.RegisterOutputType(ImageFeaturesOutput{})
+	pulumi.RegisterOutputType(ImageFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(ImageImportDiskDeviceMappingOutput{})
 	pulumi.RegisterOutputType(ImageImportDiskDeviceMappingArrayOutput{})
 	pulumi.RegisterOutputType(InstanceDataDiskOutput{})

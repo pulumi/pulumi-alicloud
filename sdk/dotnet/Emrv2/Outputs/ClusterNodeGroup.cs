@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AdditionalSecurityGroupIds;
         /// <summary>
+        /// The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+        /// </summary>
+        public readonly Outputs.ClusterNodeGroupAutoScalingPolicy? AutoScalingPolicy;
+        /// <summary>
         /// The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
         /// </summary>
         public readonly Outputs.ClusterNodeGroupCostOptimizedConfig? CostOptimizedConfig;
@@ -86,6 +90,8 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         private ClusterNodeGroup(
             ImmutableArray<string> additionalSecurityGroupIds,
 
+            Outputs.ClusterNodeGroupAutoScalingPolicy? autoScalingPolicy,
+
             Outputs.ClusterNodeGroupCostOptimizedConfig? costOptimizedConfig,
 
             ImmutableArray<Outputs.ClusterNodeGroupDataDisk> dataDisks,
@@ -119,6 +125,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
             bool? withPublicIp)
         {
             AdditionalSecurityGroupIds = additionalSecurityGroupIds;
+            AutoScalingPolicy = autoScalingPolicy;
             CostOptimizedConfig = costOptimizedConfig;
             DataDisks = dataDisks;
             DeploymentSetStrategy = deploymentSetStrategy;

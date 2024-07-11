@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Adb Resource Group resource.
+ * Provides a AnalyticDB for MySQL (ADB) Resource Group resource.
  *
- * For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
+ * For information about AnalyticDB for MySQL (ADB) Resource Group and how to use it, see [What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
  *
  * > **NOTE:** Available since v1.195.0.
  *
@@ -20,51 +20,34 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
+ * const name = config.get("name") || "terraform-example";
  * const default = alicloud.adb.getZones({});
- * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({
- *     status: "OK",
- * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
+ *     cidrBlock: "192.168.0.0/16",
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "10.4.0.0/24",
- *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.192.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
  * const defaultDBCluster = new alicloud.adb.DBCluster("default", {
- *     computeResource: "48Core192GBNEW",
+ *     computeResource: "32Core128GB",
  *     dbClusterCategory: "MixedStorage",
- *     dbClusterVersion: "3.0",
- *     dbNodeClass: "E32",
- *     dbNodeCount: 1,
- *     dbNodeStorage: 100,
  *     description: name,
  *     elasticIoResource: 1,
- *     maintainTime: "04:00Z-05:00Z",
  *     mode: "flexible",
  *     paymentType: "PayAsYouGo",
- *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.ids?.[0]),
- *     securityIps: [
- *         "10.168.1.12",
- *         "10.168.1.11",
- *     ],
  *     vpcId: defaultNetwork.id,
  *     vswitchId: defaultSwitch.id,
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
  * });
  * const defaultResourceGroup = new alicloud.adb.ResourceGroup("default", {
- *     groupName: "TF_EXAMPLE",
+ *     dbClusterId: defaultDBCluster.id,
+ *     groupName: name,
  *     groupType: "batch",
  *     nodeNum: 1,
- *     dbClusterId: defaultDBCluster.id,
  * });
  * ```
  *
@@ -105,36 +88,37 @@ export class ResourceGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Creation time.
+     * The time when the resource group was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * DB cluster id.
+     * The ID of the DBCluster.
      */
     public readonly dbClusterId!: pulumi.Output<string>;
     /**
-     * The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+     * The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      */
     public readonly groupName!: pulumi.Output<string>;
     /**
-     * Query type, value description:
-     * * **etl**: Batch query mode.
-     * * **interactive**: interactive Query mode.
-     * * **default_type**: the default query mode.
+     * The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
      */
     public readonly groupType!: pulumi.Output<string>;
     /**
-     * The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+     * The number of nodes.
      */
-    public readonly nodeNum!: pulumi.Output<number>;
+    public readonly nodeNum!: pulumi.Output<number | undefined>;
     /**
-     * Update time.
+     * The time when the resource group was updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Binding User.
+     * The database accounts that are associated with the resource group.
      */
     public /*out*/ readonly user!: pulumi.Output<string>;
+    /**
+     * The database accounts with which to associate the resource group.
+     */
+    public readonly users!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ResourceGroup resource with the given unique name, arguments, and options.
@@ -156,6 +140,7 @@ export class ResourceGroup extends pulumi.CustomResource {
             resourceInputs["nodeNum"] = state ? state.nodeNum : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["users"] = state ? state.users : undefined;
         } else {
             const args = argsOrState as ResourceGroupArgs | undefined;
             if ((!args || args.dbClusterId === undefined) && !opts.urn) {
@@ -168,6 +153,7 @@ export class ResourceGroup extends pulumi.CustomResource {
             resourceInputs["groupName"] = args ? args.groupName : undefined;
             resourceInputs["groupType"] = args ? args.groupType : undefined;
             resourceInputs["nodeNum"] = args ? args.nodeNum : undefined;
+            resourceInputs["users"] = args ? args.users : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["user"] = undefined /*out*/;
@@ -182,36 +168,37 @@ export class ResourceGroup extends pulumi.CustomResource {
  */
 export interface ResourceGroupState {
     /**
-     * Creation time.
+     * The time when the resource group was created.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * DB cluster id.
+     * The ID of the DBCluster.
      */
     dbClusterId?: pulumi.Input<string>;
     /**
-     * The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+     * The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      */
     groupName?: pulumi.Input<string>;
     /**
-     * Query type, value description:
-     * * **etl**: Batch query mode.
-     * * **interactive**: interactive Query mode.
-     * * **default_type**: the default query mode.
+     * The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
      */
     groupType?: pulumi.Input<string>;
     /**
-     * The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+     * The number of nodes.
      */
     nodeNum?: pulumi.Input<number>;
     /**
-     * Update time.
+     * The time when the resource group was updated.
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * Binding User.
+     * The database accounts that are associated with the resource group.
      */
     user?: pulumi.Input<string>;
+    /**
+     * The database accounts with which to associate the resource group.
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -219,22 +206,23 @@ export interface ResourceGroupState {
  */
 export interface ResourceGroupArgs {
     /**
-     * DB cluster id.
+     * The ID of the DBCluster.
      */
     dbClusterId: pulumi.Input<string>;
     /**
-     * The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+     * The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      */
     groupName: pulumi.Input<string>;
     /**
-     * Query type, value description:
-     * * **etl**: Batch query mode.
-     * * **interactive**: interactive Query mode.
-     * * **default_type**: the default query mode.
+     * The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
      */
     groupType?: pulumi.Input<string>;
     /**
-     * The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+     * The number of nodes.
      */
     nodeNum?: pulumi.Input<number>;
+    /**
+     * The database accounts with which to associate the resource group.
+     */
+    users?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -15,14 +15,14 @@ public final class BandwidthPackageAttachmentArgs extends com.pulumi.resources.R
     public static final BandwidthPackageAttachmentArgs Empty = new BandwidthPackageAttachmentArgs();
 
     /**
-     * The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+     * The ID of the Global Accelerator instance.
      * 
      */
     @Import(name="acceleratorId", required=true)
     private Output<String> acceleratorId;
 
     /**
-     * @return The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+     * @return The ID of the Global Accelerator instance.
      * 
      */
     public Output<String> acceleratorId() {
@@ -30,14 +30,14 @@ public final class BandwidthPackageAttachmentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+     * The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
      * 
      */
     @Import(name="bandwidthPackageId", required=true)
     private Output<String> bandwidthPackageId;
 
     /**
-     * @return The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+     * @return The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
      * 
      */
     public Output<String> bandwidthPackageId() {
@@ -70,7 +70,7 @@ public final class BandwidthPackageAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param acceleratorId The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+         * @param acceleratorId The ID of the Global Accelerator instance.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class BandwidthPackageAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param acceleratorId The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+         * @param acceleratorId The ID of the Global Accelerator instance.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class BandwidthPackageAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param bandwidthPackageId The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+         * @param bandwidthPackageId The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class BandwidthPackageAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param bandwidthPackageId The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+         * @param bandwidthPackageId The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
          * 
          * @return builder
          * 

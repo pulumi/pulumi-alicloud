@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the Click House Accounts of the current Alibaba Cloud user.
+ * This data source provides the Click House Regions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
  *
@@ -70,7 +70,7 @@ export interface GetRegionsResult {
     readonly regions: outputs.clickhouse.GetRegionsRegion[];
 }
 /**
- * This data source provides the Click House Accounts of the current Alibaba Cloud user.
+ * This data source provides the Click House Regions of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.138.0+.
  *
