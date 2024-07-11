@@ -83,7 +83,12 @@
                 }
             },
             "alicloud_adb_resource_group": {
-                "current": "alicloud:adb/resourceGroup:ResourceGroup"
+                "current": "alicloud:adb/resourceGroup:ResourceGroup",
+                "fields": {
+                    "users": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_alb_acl": {
                 "current": "alicloud:alb/acl:Acl",
@@ -3705,6 +3710,12 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "node_group_ids": {
+                                                "maxItemsOne": false
+                                            },
+                                            "node_group_names": {
+                                                "maxItemsOne": false
+                                            },
                                             "node_group_types": {
                                                 "maxItemsOne": false
                                             },
@@ -3726,6 +3737,46 @@
                             "fields": {
                                 "additional_security_group_ids": {
                                     "maxItemsOne": false
+                                },
+                                "auto_scaling_policy": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "constraints": {
+                                                "maxItemsOne": true
+                                            },
+                                            "scaling_rules": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "metrics_trigger": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "conditions": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "tags": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "time_constraints": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "time_trigger": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 },
                                 "cost_optimized_config": {
                                     "maxItemsOne": true
@@ -3765,6 +3816,9 @@
             "alicloud_ens_eip": {
                 "current": "alicloud:ens/eip:Eip"
             },
+            "alicloud_ens_eip_instance_attachment": {
+                "current": "alicloud:ens/eipInstanceAttachment:EipInstanceAttachment"
+            },
             "alicloud_ens_image": {
                 "current": "alicloud:ens/image:Image"
             },
@@ -3787,6 +3841,9 @@
             },
             "alicloud_ens_load_balancer": {
                 "current": "alicloud:ens/loadBalancer:LoadBalancer"
+            },
+            "alicloud_ens_nat_gateway": {
+                "current": "alicloud:ens/natGateway:NatGateway"
             },
             "alicloud_ens_network": {
                 "current": "alicloud:ens/network:Network"
@@ -4560,6 +4617,9 @@
                     }
                 }
             },
+            "alicloud_gpdb_external_data_service": {
+                "current": "alicloud:gpdb/externalDataService:ExternalDataService"
+            },
             "alicloud_gpdb_instance": {
                 "current": "alicloud:gpdb/instance:Instance",
                 "fields": {
@@ -4570,6 +4630,15 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_gpdb_remote_adb_data_source": {
+                "current": "alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource"
+            },
+            "alicloud_gpdb_streaming_data_service": {
+                "current": "alicloud:gpdb/streamingDataService:StreamingDataService"
+            },
+            "alicloud_gpdb_streaming_data_source": {
+                "current": "alicloud:gpdb/streamingDataSource:StreamingDataSource"
             },
             "alicloud_graph_database_db_instance": {
                 "current": "alicloud:graphdatabase/dbInstance:DbInstance",
@@ -4746,6 +4815,9 @@
                 "fields": {
                     "disk_device_mapping": {
                         "maxItemsOne": false
+                    },
+                    "features": {
+                        "maxItemsOne": true
                     }
                 }
             },
