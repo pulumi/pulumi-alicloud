@@ -80,6 +80,7 @@ export class FileSystem extends pulumi.CustomResource {
      * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
      */
     public readonly dataRedundancyType!: pulumi.Output<string | undefined>;
+    public readonly dedicatedClusterId!: pulumi.Output<string | undefined>;
     /**
      * The description of the file system resource. No more than 32 characters in length.
      */
@@ -119,7 +120,7 @@ export class FileSystem extends pulumi.CustomResource {
     /**
      * Zone Id, which is used to create file system resources to the specified zone.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a FileSystem resource with the given unique name, arguments, and options.
@@ -136,6 +137,7 @@ export class FileSystem extends pulumi.CustomResource {
             const state = argsOrState as FileSystemState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["dataRedundancyType"] = state ? state.dataRedundancyType : undefined;
+            resourceInputs["dedicatedClusterId"] = state ? state.dedicatedClusterId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["fileSystemName"] = state ? state.fileSystemName : undefined;
             resourceInputs["partitionNumber"] = state ? state.partitionNumber : undefined;
@@ -160,10 +162,8 @@ export class FileSystem extends pulumi.CustomResource {
             if ((!args || args.storageType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'storageType'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
-            }
             resourceInputs["dataRedundancyType"] = args ? args.dataRedundancyType : undefined;
+            resourceInputs["dedicatedClusterId"] = args ? args.dedicatedClusterId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["fileSystemName"] = args ? args.fileSystemName : undefined;
             resourceInputs["partitionNumber"] = args ? args.partitionNumber : undefined;
@@ -195,6 +195,7 @@ export interface FileSystemState {
      * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
      */
     dataRedundancyType?: pulumi.Input<string>;
+    dedicatedClusterId?: pulumi.Input<string>;
     /**
      * The description of the file system resource. No more than 32 characters in length.
      */
@@ -247,6 +248,7 @@ export interface FileSystemArgs {
      * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
      */
     dataRedundancyType?: pulumi.Input<string>;
+    dedicatedClusterId?: pulumi.Input<string>;
     /**
      * The description of the file system resource. No more than 32 characters in length.
      */
@@ -286,5 +288,5 @@ export interface FileSystemArgs {
     /**
      * Zone Id, which is used to create file system resources to the specified zone.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

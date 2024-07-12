@@ -15,6 +15,14 @@ __all__ = [
     'ClusterBootstrapScriptNodeSelectorArgs',
     'ClusterNodeAttributeArgs',
     'ClusterNodeGroupArgs',
+    'ClusterNodeGroupAutoScalingPolicyArgs',
+    'ClusterNodeGroupAutoScalingPolicyConstraintsArgs',
+    'ClusterNodeGroupAutoScalingPolicyScalingRuleArgs',
+    'ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs',
+    'ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs',
+    'ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs',
+    'ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs',
+    'ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs',
     'ClusterNodeGroupCostOptimizedConfigArgs',
     'ClusterNodeGroupDataDiskArgs',
     'ClusterNodeGroupSpotBidPriceArgs',
@@ -180,6 +188,9 @@ class ClusterBootstrapScriptArgs:
         pulumi.set(__self__, "script_name", script_name)
         pulumi.set(__self__, "script_path", script_path)
         if priority is not None:
+            warnings.warn("""Field 'priority' has been deprecated from provider version 1.227.0.""", DeprecationWarning)
+            pulumi.log.warn("""priority is deprecated: Field 'priority' has been deprecated from provider version 1.227.0.""")
+        if priority is not None:
             pulumi.set(__self__, "priority", priority)
 
     @property
@@ -256,6 +267,7 @@ class ClusterBootstrapScriptArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'priority' has been deprecated from provider version 1.227.0.""")
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
         The bootstrap scripts priority.
@@ -272,14 +284,26 @@ class ClusterBootstrapScriptNodeSelectorArgs:
     def __init__(__self__, *,
                  node_select_type: pulumi.Input[str],
                  node_group_id: Optional[pulumi.Input[str]] = None,
+                 node_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  node_group_name: Optional[pulumi.Input[str]] = None,
+                 node_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  node_group_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  node_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         pulumi.set(__self__, "node_select_type", node_select_type)
         if node_group_id is not None:
+            warnings.warn("""Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it.""", DeprecationWarning)
+            pulumi.log.warn("""node_group_id is deprecated: Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it.""")
+        if node_group_id is not None:
             pulumi.set(__self__, "node_group_id", node_group_id)
+        if node_group_ids is not None:
+            pulumi.set(__self__, "node_group_ids", node_group_ids)
+        if node_group_name is not None:
+            warnings.warn("""Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it.""", DeprecationWarning)
+            pulumi.log.warn("""node_group_name is deprecated: Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it.""")
         if node_group_name is not None:
             pulumi.set(__self__, "node_group_name", node_group_name)
+        if node_group_names is not None:
+            pulumi.set(__self__, "node_group_names", node_group_names)
         if node_group_types is not None:
             pulumi.set(__self__, "node_group_types", node_group_types)
         if node_names is not None:
@@ -296,6 +320,7 @@ class ClusterBootstrapScriptNodeSelectorArgs:
 
     @property
     @pulumi.getter(name="nodeGroupId")
+    @_utilities.deprecated("""Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it.""")
     def node_group_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "node_group_id")
 
@@ -304,13 +329,32 @@ class ClusterBootstrapScriptNodeSelectorArgs:
         pulumi.set(self, "node_group_id", value)
 
     @property
+    @pulumi.getter(name="nodeGroupIds")
+    def node_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "node_group_ids")
+
+    @node_group_ids.setter
+    def node_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "node_group_ids", value)
+
+    @property
     @pulumi.getter(name="nodeGroupName")
+    @_utilities.deprecated("""Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it.""")
     def node_group_name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "node_group_name")
 
     @node_group_name.setter
     def node_group_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_group_name", value)
+
+    @property
+    @pulumi.getter(name="nodeGroupNames")
+    def node_group_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "node_group_names")
+
+    @node_group_names.setter
+    def node_group_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "node_group_names", value)
 
     @property
     @pulumi.getter(name="nodeGroupTypes")
@@ -455,6 +499,7 @@ class ClusterNodeGroupArgs:
                  node_group_type: pulumi.Input[str],
                  system_disk: pulumi.Input['ClusterNodeGroupSystemDiskArgs'],
                  additional_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 auto_scaling_policy: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyArgs']] = None,
                  cost_optimized_config: Optional[pulumi.Input['ClusterNodeGroupCostOptimizedConfigArgs']] = None,
                  deployment_set_strategy: Optional[pulumi.Input[str]] = None,
                  graceful_shutdown: Optional[pulumi.Input[bool]] = None,
@@ -473,6 +518,7 @@ class ClusterNodeGroupArgs:
         :param pulumi.Input[str] node_group_type: The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
         :param pulumi.Input['ClusterNodeGroupSystemDiskArgs'] system_disk: Host Ecs system disk information in this node group. See `system_disk` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_security_group_ids: Additional security Group IDS for Cluster, you can also specify this key for each node group.
+        :param pulumi.Input['ClusterNodeGroupAutoScalingPolicyArgs'] auto_scaling_policy: The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
         :param pulumi.Input['ClusterNodeGroupCostOptimizedConfigArgs'] cost_optimized_config: The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
         :param pulumi.Input[str] deployment_set_strategy: Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP.
         :param pulumi.Input[bool] graceful_shutdown: Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
@@ -492,6 +538,8 @@ class ClusterNodeGroupArgs:
         pulumi.set(__self__, "system_disk", system_disk)
         if additional_security_group_ids is not None:
             pulumi.set(__self__, "additional_security_group_ids", additional_security_group_ids)
+        if auto_scaling_policy is not None:
+            pulumi.set(__self__, "auto_scaling_policy", auto_scaling_policy)
         if cost_optimized_config is not None:
             pulumi.set(__self__, "cost_optimized_config", cost_optimized_config)
         if deployment_set_strategy is not None:
@@ -596,6 +644,18 @@ class ClusterNodeGroupArgs:
     @additional_security_group_ids.setter
     def additional_security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "additional_security_group_ids", value)
+
+    @property
+    @pulumi.getter(name="autoScalingPolicy")
+    def auto_scaling_policy(self) -> Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyArgs']]:
+        """
+        The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+        """
+        return pulumi.get(self, "auto_scaling_policy")
+
+    @auto_scaling_policy.setter
+    def auto_scaling_policy(self, value: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyArgs']]):
+        pulumi.set(self, "auto_scaling_policy", value)
 
     @property
     @pulumi.getter(name="costOptimizedConfig")
@@ -716,6 +776,436 @@ class ClusterNodeGroupArgs:
     @with_public_ip.setter
     def with_public_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "with_public_ip", value)
+
+
+@pulumi.input_type
+class ClusterNodeGroupAutoScalingPolicyArgs:
+    def __init__(__self__, *,
+                 constraints: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyConstraintsArgs']] = None,
+                 scaling_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]]] = None):
+        if constraints is not None:
+            pulumi.set(__self__, "constraints", constraints)
+        if scaling_rules is not None:
+            pulumi.set(__self__, "scaling_rules", scaling_rules)
+
+    @property
+    @pulumi.getter
+    def constraints(self) -> Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyConstraintsArgs']]:
+        return pulumi.get(self, "constraints")
+
+    @constraints.setter
+    def constraints(self, value: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyConstraintsArgs']]):
+        pulumi.set(self, "constraints", value)
+
+    @property
+    @pulumi.getter(name="scalingRules")
+    def scaling_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]]]:
+        return pulumi.get(self, "scaling_rules")
+
+    @scaling_rules.setter
+    def scaling_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]]]):
+        pulumi.set(self, "scaling_rules", value)
+
+
+@pulumi.input_type
+class ClusterNodeGroupAutoScalingPolicyConstraintsArgs:
+    def __init__(__self__, *,
+                 max_capacity: Optional[pulumi.Input[int]] = None,
+                 min_capacity: Optional[pulumi.Input[int]] = None):
+        if max_capacity is not None:
+            pulumi.set(__self__, "max_capacity", max_capacity)
+        if min_capacity is not None:
+            pulumi.set(__self__, "min_capacity", min_capacity)
+
+    @property
+    @pulumi.getter(name="maxCapacity")
+    def max_capacity(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_capacity")
+
+    @max_capacity.setter
+    def max_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_capacity", value)
+
+    @property
+    @pulumi.getter(name="minCapacity")
+    def min_capacity(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_capacity")
+
+    @min_capacity.setter
+    def min_capacity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_capacity", value)
+
+
+@pulumi.input_type
+class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
+    def __init__(__self__, *,
+                 activity_type: pulumi.Input[str],
+                 adjustment_value: pulumi.Input[int],
+                 rule_name: pulumi.Input[str],
+                 trigger_type: pulumi.Input[str],
+                 adjustment_type: Optional[pulumi.Input[str]] = None,
+                 metrics_trigger: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs']] = None,
+                 min_adjustment_value: Optional[pulumi.Input[int]] = None,
+                 time_trigger: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs']] = None):
+        pulumi.set(__self__, "activity_type", activity_type)
+        pulumi.set(__self__, "adjustment_value", adjustment_value)
+        pulumi.set(__self__, "rule_name", rule_name)
+        pulumi.set(__self__, "trigger_type", trigger_type)
+        if adjustment_type is not None:
+            pulumi.set(__self__, "adjustment_type", adjustment_type)
+        if metrics_trigger is not None:
+            pulumi.set(__self__, "metrics_trigger", metrics_trigger)
+        if min_adjustment_value is not None:
+            pulumi.set(__self__, "min_adjustment_value", min_adjustment_value)
+        if time_trigger is not None:
+            pulumi.set(__self__, "time_trigger", time_trigger)
+
+    @property
+    @pulumi.getter(name="activityType")
+    def activity_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "activity_type")
+
+    @activity_type.setter
+    def activity_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "activity_type", value)
+
+    @property
+    @pulumi.getter(name="adjustmentValue")
+    def adjustment_value(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "adjustment_value")
+
+    @adjustment_value.setter
+    def adjustment_value(self, value: pulumi.Input[int]):
+        pulumi.set(self, "adjustment_value", value)
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "rule_name")
+
+    @rule_name.setter
+    def rule_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rule_name", value)
+
+    @property
+    @pulumi.getter(name="triggerType")
+    def trigger_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "trigger_type")
+
+    @trigger_type.setter
+    def trigger_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "trigger_type", value)
+
+    @property
+    @pulumi.getter(name="adjustmentType")
+    def adjustment_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "adjustment_type")
+
+    @adjustment_type.setter
+    def adjustment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "adjustment_type", value)
+
+    @property
+    @pulumi.getter(name="metricsTrigger")
+    def metrics_trigger(self) -> Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs']]:
+        return pulumi.get(self, "metrics_trigger")
+
+    @metrics_trigger.setter
+    def metrics_trigger(self, value: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs']]):
+        pulumi.set(self, "metrics_trigger", value)
+
+    @property
+    @pulumi.getter(name="minAdjustmentValue")
+    def min_adjustment_value(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_adjustment_value")
+
+    @min_adjustment_value.setter
+    def min_adjustment_value(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_adjustment_value", value)
+
+    @property
+    @pulumi.getter(name="timeTrigger")
+    def time_trigger(self) -> Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs']]:
+        return pulumi.get(self, "time_trigger")
+
+    @time_trigger.setter
+    def time_trigger(self, value: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs']]):
+        pulumi.set(self, "time_trigger", value)
+
+
+@pulumi.input_type
+class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs:
+    def __init__(__self__, *,
+                 evaluation_count: pulumi.Input[int],
+                 time_window: pulumi.Input[int],
+                 condition_logic_operator: Optional[pulumi.Input[str]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]]] = None,
+                 cool_down_interval: Optional[pulumi.Input[int]] = None,
+                 time_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]]] = None):
+        pulumi.set(__self__, "evaluation_count", evaluation_count)
+        pulumi.set(__self__, "time_window", time_window)
+        if condition_logic_operator is not None:
+            pulumi.set(__self__, "condition_logic_operator", condition_logic_operator)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if cool_down_interval is not None:
+            pulumi.set(__self__, "cool_down_interval", cool_down_interval)
+        if time_constraints is not None:
+            pulumi.set(__self__, "time_constraints", time_constraints)
+
+    @property
+    @pulumi.getter(name="evaluationCount")
+    def evaluation_count(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "evaluation_count")
+
+    @evaluation_count.setter
+    def evaluation_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "evaluation_count", value)
+
+    @property
+    @pulumi.getter(name="timeWindow")
+    def time_window(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "time_window")
+
+    @time_window.setter
+    def time_window(self, value: pulumi.Input[int]):
+        pulumi.set(self, "time_window", value)
+
+    @property
+    @pulumi.getter(name="conditionLogicOperator")
+    def condition_logic_operator(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "condition_logic_operator")
+
+    @condition_logic_operator.setter
+    def condition_logic_operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "condition_logic_operator", value)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]]]:
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]]]):
+        pulumi.set(self, "conditions", value)
+
+    @property
+    @pulumi.getter(name="coolDownInterval")
+    def cool_down_interval(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "cool_down_interval")
+
+    @cool_down_interval.setter
+    def cool_down_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cool_down_interval", value)
+
+    @property
+    @pulumi.getter(name="timeConstraints")
+    def time_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]]]:
+        return pulumi.get(self, "time_constraints")
+
+    @time_constraints.setter
+    def time_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]]]):
+        pulumi.set(self, "time_constraints", value)
+
+
+@pulumi.input_type
+class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[str],
+                 metric_name: pulumi.Input[str],
+                 statistics: pulumi.Input[str],
+                 threshold: pulumi.Input[float],
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]] tags: A mapping of tags to assign to the resource.
+        """
+        pulumi.set(__self__, "comparison_operator", comparison_operator)
+        pulumi.set(__self__, "metric_name", metric_name)
+        pulumi.set(__self__, "statistics", statistics)
+        pulumi.set(__self__, "threshold", threshold)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "metric_name", value)
+
+    @property
+    @pulumi.getter
+    def statistics(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: pulumi.Input[str]):
+        pulumi.set(self, "statistics", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[float]:
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[float]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
+class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs:
+    def __init__(__self__, *,
+                 launch_time: pulumi.Input[str],
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 launch_expiration_time: Optional[pulumi.Input[int]] = None,
+                 recurrence_type: Optional[pulumi.Input[str]] = None,
+                 recurrence_value: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "launch_time", launch_time)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if launch_expiration_time is not None:
+            pulumi.set(__self__, "launch_expiration_time", launch_expiration_time)
+        if recurrence_type is not None:
+            pulumi.set(__self__, "recurrence_type", recurrence_type)
+        if recurrence_value is not None:
+            pulumi.set(__self__, "recurrence_value", recurrence_value)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="launchTime")
+    def launch_time(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "launch_time")
+
+    @launch_time.setter
+    def launch_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "launch_time", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="launchExpirationTime")
+    def launch_expiration_time(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "launch_expiration_time")
+
+    @launch_expiration_time.setter
+    def launch_expiration_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "launch_expiration_time", value)
+
+    @property
+    @pulumi.getter(name="recurrenceType")
+    def recurrence_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recurrence_type")
+
+    @recurrence_type.setter
+    def recurrence_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recurrence_type", value)
+
+    @property
+    @pulumi.getter(name="recurrenceValue")
+    def recurrence_value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "recurrence_value")
+
+    @recurrence_value.setter
+    def recurrence_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "recurrence_value", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type

@@ -192,6 +192,10 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly loadbalancerIds!: pulumi.Output<string[] | undefined>;
     /**
+     * The maximum life span of an instance in the scaling group. Unit: seconds.
+     */
+    public readonly maxInstanceLifetime!: pulumi.Output<number | undefined>;
+    /**
      * Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
      * **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
      */
@@ -233,6 +237,10 @@ export class ScalingGroup extends pulumi.CustomResource {
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      */
     public readonly scalingGroupName!: pulumi.Output<string | undefined>;
+    /**
+     * The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+     */
+    public readonly scalingPolicy!: pulumi.Output<string>;
     /**
      * The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
      */
@@ -288,6 +296,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["launchTemplateOverrides"] = state ? state.launchTemplateOverrides : undefined;
             resourceInputs["launchTemplateVersion"] = state ? state.launchTemplateVersion : undefined;
             resourceInputs["loadbalancerIds"] = state ? state.loadbalancerIds : undefined;
+            resourceInputs["maxInstanceLifetime"] = state ? state.maxInstanceLifetime : undefined;
             resourceInputs["maxSize"] = state ? state.maxSize : undefined;
             resourceInputs["minSize"] = state ? state.minSize : undefined;
             resourceInputs["multiAzPolicy"] = state ? state.multiAzPolicy : undefined;
@@ -297,6 +306,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["removalPolicies"] = state ? state.removalPolicies : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["scalingGroupName"] = state ? state.scalingGroupName : undefined;
+            resourceInputs["scalingPolicy"] = state ? state.scalingPolicy : undefined;
             resourceInputs["spotAllocationStrategy"] = state ? state.spotAllocationStrategy : undefined;
             resourceInputs["spotInstancePools"] = state ? state.spotInstancePools : undefined;
             resourceInputs["spotInstanceRemedy"] = state ? state.spotInstanceRemedy : undefined;
@@ -324,6 +334,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["launchTemplateOverrides"] = args ? args.launchTemplateOverrides : undefined;
             resourceInputs["launchTemplateVersion"] = args ? args.launchTemplateVersion : undefined;
             resourceInputs["loadbalancerIds"] = args ? args.loadbalancerIds : undefined;
+            resourceInputs["maxInstanceLifetime"] = args ? args.maxInstanceLifetime : undefined;
             resourceInputs["maxSize"] = args ? args.maxSize : undefined;
             resourceInputs["minSize"] = args ? args.minSize : undefined;
             resourceInputs["multiAzPolicy"] = args ? args.multiAzPolicy : undefined;
@@ -333,6 +344,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["removalPolicies"] = args ? args.removalPolicies : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["scalingGroupName"] = args ? args.scalingGroupName : undefined;
+            resourceInputs["scalingPolicy"] = args ? args.scalingPolicy : undefined;
             resourceInputs["spotAllocationStrategy"] = args ? args.spotAllocationStrategy : undefined;
             resourceInputs["spotInstancePools"] = args ? args.spotInstancePools : undefined;
             resourceInputs["spotInstanceRemedy"] = args ? args.spotInstanceRemedy : undefined;
@@ -409,6 +421,10 @@ export interface ScalingGroupState {
      */
     loadbalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The maximum life span of an instance in the scaling group. Unit: seconds.
+     */
+    maxInstanceLifetime?: pulumi.Input<number>;
+    /**
      * Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
      * **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
      */
@@ -450,6 +466,10 @@ export interface ScalingGroupState {
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      */
     scalingGroupName?: pulumi.Input<string>;
+    /**
+     * The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+     */
+    scalingPolicy?: pulumi.Input<string>;
     /**
      * The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
      */
@@ -544,6 +564,10 @@ export interface ScalingGroupArgs {
      */
     loadbalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The maximum life span of an instance in the scaling group. Unit: seconds.
+     */
+    maxInstanceLifetime?: pulumi.Input<number>;
+    /**
      * Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
      * **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
      */
@@ -585,6 +609,10 @@ export interface ScalingGroupArgs {
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      */
     scalingGroupName?: pulumi.Input<string>;
+    /**
+     * The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+     */
+    scalingPolicy?: pulumi.Input<string>;
     /**
      * The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
      */

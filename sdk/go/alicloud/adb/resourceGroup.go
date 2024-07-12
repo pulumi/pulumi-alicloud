@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Adb Resource Group resource.
+// Provides a AnalyticDB for MySQL (ADB) Resource Group resource.
 //
-// For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
+// For information about AnalyticDB for MySQL (ADB) Resource Group and how to use it, see [What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
 //
 // > **NOTE:** Available since v1.195.0.
 //
@@ -28,7 +28,6 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -38,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf_example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -46,61 +45,41 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-//				Status: pulumi.StringRef("OK"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.4.0.0/16"),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("192.168.192.0/24"),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultDBCluster, err := adb.NewDBCluster(ctx, "default", &adb.DBClusterArgs{
-//				ComputeResource:   pulumi.String("48Core192GBNEW"),
+//				ComputeResource:   pulumi.String("32Core128GB"),
 //				DbClusterCategory: pulumi.String("MixedStorage"),
-//				DbClusterVersion:  pulumi.String("3.0"),
-//				DbNodeClass:       pulumi.String("E32"),
-//				DbNodeCount:       pulumi.Int(1),
-//				DbNodeStorage:     pulumi.Int(100),
 //				Description:       pulumi.String(name),
 //				ElasticIoResource: pulumi.Int(1),
-//				MaintainTime:      pulumi.String("04:00Z-05:00Z"),
 //				Mode:              pulumi.String("flexible"),
 //				PaymentType:       pulumi.String("PayAsYouGo"),
-//				ResourceGroupId:   pulumi.String(defaultGetResourceGroups.Ids[0]),
-//				SecurityIps: pulumi.StringArray{
-//					pulumi.String("10.168.1.12"),
-//					pulumi.String("10.168.1.11"),
-//				},
-//				VpcId:     defaultNetwork.ID(),
-//				VswitchId: defaultSwitch.ID(),
-//				ZoneId:    pulumi.String(_default.Zones[0].Id),
-//				Tags: pulumi.Map{
-//					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("example"),
-//				},
+//				VpcId:             defaultNetwork.ID(),
+//				VswitchId:         defaultSwitch.ID(),
+//				ZoneId:            pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = adb.NewResourceGroup(ctx, "default", &adb.ResourceGroupArgs{
-//				GroupName:   pulumi.String("TF_EXAMPLE"),
+//				DbClusterId: defaultDBCluster.ID(),
+//				GroupName:   pulumi.String(name),
 //				GroupType:   pulumi.String("batch"),
 //				NodeNum:     pulumi.Int(1),
-//				DbClusterId: defaultDBCluster.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -121,23 +100,22 @@ import (
 type ResourceGroup struct {
 	pulumi.CustomResourceState
 
-	// Creation time.
+	// The time when the resource group was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// DB cluster id.
+	// The ID of the DBCluster.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
-	// The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+	// The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
 	GroupName pulumi.StringOutput `pulumi:"groupName"`
-	// Query type, value description:
-	// * **etl**: Batch query mode.
-	// * **interactive**: interactive Query mode.
-	// * **default_type**: the default query mode.
+	// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
 	GroupType pulumi.StringOutput `pulumi:"groupType"`
-	// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
-	NodeNum pulumi.IntOutput `pulumi:"nodeNum"`
-	// Update time.
+	// The number of nodes.
+	NodeNum pulumi.IntPtrOutput `pulumi:"nodeNum"`
+	// The time when the resource group was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Binding User.
+	// The database accounts that are associated with the resource group.
 	User pulumi.StringOutput `pulumi:"user"`
+	// The database accounts with which to associate the resource group.
+	Users pulumi.StringArrayOutput `pulumi:"users"`
 }
 
 // NewResourceGroup registers a new resource with the given unique name, arguments, and options.
@@ -176,43 +154,41 @@ func GetResourceGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourceGroup resources.
 type resourceGroupState struct {
-	// Creation time.
+	// The time when the resource group was created.
 	CreateTime *string `pulumi:"createTime"`
-	// DB cluster id.
+	// The ID of the DBCluster.
 	DbClusterId *string `pulumi:"dbClusterId"`
-	// The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+	// The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
 	GroupName *string `pulumi:"groupName"`
-	// Query type, value description:
-	// * **etl**: Batch query mode.
-	// * **interactive**: interactive Query mode.
-	// * **default_type**: the default query mode.
+	// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
 	GroupType *string `pulumi:"groupType"`
-	// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+	// The number of nodes.
 	NodeNum *int `pulumi:"nodeNum"`
-	// Update time.
+	// The time when the resource group was updated.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Binding User.
+	// The database accounts that are associated with the resource group.
 	User *string `pulumi:"user"`
+	// The database accounts with which to associate the resource group.
+	Users []string `pulumi:"users"`
 }
 
 type ResourceGroupState struct {
-	// Creation time.
+	// The time when the resource group was created.
 	CreateTime pulumi.StringPtrInput
-	// DB cluster id.
+	// The ID of the DBCluster.
 	DbClusterId pulumi.StringPtrInput
-	// The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+	// The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
 	GroupName pulumi.StringPtrInput
-	// Query type, value description:
-	// * **etl**: Batch query mode.
-	// * **interactive**: interactive Query mode.
-	// * **default_type**: the default query mode.
+	// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
 	GroupType pulumi.StringPtrInput
-	// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+	// The number of nodes.
 	NodeNum pulumi.IntPtrInput
-	// Update time.
+	// The time when the resource group was updated.
 	UpdateTime pulumi.StringPtrInput
-	// Binding User.
+	// The database accounts that are associated with the resource group.
 	User pulumi.StringPtrInput
+	// The database accounts with which to associate the resource group.
+	Users pulumi.StringArrayInput
 }
 
 func (ResourceGroupState) ElementType() reflect.Type {
@@ -220,32 +196,30 @@ func (ResourceGroupState) ElementType() reflect.Type {
 }
 
 type resourceGroupArgs struct {
-	// DB cluster id.
+	// The ID of the DBCluster.
 	DbClusterId string `pulumi:"dbClusterId"`
-	// The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+	// The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
 	GroupName string `pulumi:"groupName"`
-	// Query type, value description:
-	// * **etl**: Batch query mode.
-	// * **interactive**: interactive Query mode.
-	// * **default_type**: the default query mode.
+	// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
 	GroupType *string `pulumi:"groupType"`
-	// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+	// The number of nodes.
 	NodeNum *int `pulumi:"nodeNum"`
+	// The database accounts with which to associate the resource group.
+	Users []string `pulumi:"users"`
 }
 
 // The set of arguments for constructing a ResourceGroup resource.
 type ResourceGroupArgs struct {
-	// DB cluster id.
+	// The ID of the DBCluster.
 	DbClusterId pulumi.StringInput
-	// The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+	// The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
 	GroupName pulumi.StringInput
-	// Query type, value description:
-	// * **etl**: Batch query mode.
-	// * **interactive**: interactive Query mode.
-	// * **default_type**: the default query mode.
+	// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
 	GroupType pulumi.StringPtrInput
-	// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+	// The number of nodes.
 	NodeNum pulumi.IntPtrInput
+	// The database accounts with which to associate the resource group.
+	Users pulumi.StringArrayInput
 }
 
 func (ResourceGroupArgs) ElementType() reflect.Type {
@@ -335,42 +309,44 @@ func (o ResourceGroupOutput) ToResourceGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Creation time.
+// The time when the resource group was created.
 func (o ResourceGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// DB cluster id.
+// The ID of the DBCluster.
 func (o ResourceGroupOutput) DbClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
 }
 
-// The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+// The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
 func (o ResourceGroupOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// Query type, value description:
-// * **etl**: Batch query mode.
-// * **interactive**: interactive Query mode.
-// * **default_type**: the default query mode.
+// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
 func (o ResourceGroupOutput) GroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.GroupType }).(pulumi.StringOutput)
 }
 
-// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
-func (o ResourceGroupOutput) NodeNum() pulumi.IntOutput {
-	return o.ApplyT(func(v *ResourceGroup) pulumi.IntOutput { return v.NodeNum }).(pulumi.IntOutput)
+// The number of nodes.
+func (o ResourceGroupOutput) NodeNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.IntPtrOutput { return v.NodeNum }).(pulumi.IntPtrOutput)
 }
 
-// Update time.
+// The time when the resource group was updated.
 func (o ResourceGroupOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Binding User.
+// The database accounts that are associated with the resource group.
 func (o ResourceGroupOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
+}
+
+// The database accounts with which to associate the resource group.
+func (o ResourceGroupOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringArrayOutput { return v.Users }).(pulumi.StringArrayOutput)
 }
 
 type ResourceGroupArrayOutput struct{ *pulumi.OutputState }

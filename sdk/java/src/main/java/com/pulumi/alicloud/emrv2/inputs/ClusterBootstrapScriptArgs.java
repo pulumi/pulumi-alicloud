@@ -66,14 +66,22 @@ public final class ClusterBootstrapScriptArgs extends com.pulumi.resources.Resou
     /**
      * The bootstrap scripts priority.
      * 
+     * @deprecated
+     * Field &#39;priority&#39; has been deprecated from provider version 1.227.0.
+     * 
      */
+    @Deprecated /* Field 'priority' has been deprecated from provider version 1.227.0. */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
      * @return The bootstrap scripts priority.
      * 
+     * @deprecated
+     * Field &#39;priority&#39; has been deprecated from provider version 1.227.0.
+     * 
      */
+    @Deprecated /* Field 'priority' has been deprecated from provider version 1.227.0. */
     public Optional<Output<Integer>> priority() {
         return Optional.ofNullable(this.priority);
     }
@@ -221,7 +229,11 @@ public final class ClusterBootstrapScriptArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;priority&#39; has been deprecated from provider version 1.227.0.
+         * 
          */
+        @Deprecated /* Field 'priority' has been deprecated from provider version 1.227.0. */
         public Builder priority(@Nullable Output<Integer> priority) {
             $.priority = priority;
             return this;
@@ -232,7 +244,11 @@ public final class ClusterBootstrapScriptArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;priority&#39; has been deprecated from provider version 1.227.0.
+         * 
          */
+        @Deprecated /* Field 'priority' has been deprecated from provider version 1.227.0. */
         public Builder priority(Integer priority) {
             return priority(Output.of(priority));
         }

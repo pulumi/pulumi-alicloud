@@ -17,14 +17,18 @@ public final class ImageDiskDeviceMappingArgs extends com.pulumi.resources.Resou
     public static final ImageDiskDeviceMappingArgs Empty = new ImageDiskDeviceMappingArgs();
 
     /**
-     * Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+     * The device name of disk N in the custom image. Valid values:
+     * - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+     * - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
      * 
      */
     @Import(name="device")
     private @Nullable Output<String> device;
 
     /**
-     * @return Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+     * @return The device name of disk N in the custom image. Valid values:
+     * - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+     * - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
      * 
      */
     public Optional<Output<String>> device() {
@@ -32,14 +36,18 @@ public final class ImageDiskDeviceMappingArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+     * The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+     * - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+     * - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+     * @return The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+     * - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+     * - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -47,14 +55,97 @@ public final class ImageDiskDeviceMappingArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+     * Image format.
+     * 
+     */
+    @Import(name="format")
+    private @Nullable Output<String> format;
+
+    /**
+     * @return Image format.
+     * 
+     */
+    public Optional<Output<String>> format() {
+        return Optional.ofNullable(this.format);
+    }
+
+    /**
+     * Import the bucket of the OSS to which the image belongs.
+     * 
+     */
+    @Import(name="importOssBucket")
+    private @Nullable Output<String> importOssBucket;
+
+    /**
+     * @return Import the bucket of the OSS to which the image belongs.
+     * 
+     */
+    public Optional<Output<String>> importOssBucket() {
+        return Optional.ofNullable(this.importOssBucket);
+    }
+
+    /**
+     * Import the object of the OSS to which the image file belongs.
+     * 
+     */
+    @Import(name="importOssObject")
+    private @Nullable Output<String> importOssObject;
+
+    /**
+     * @return Import the object of the OSS to which the image file belongs.
+     * 
+     */
+    public Optional<Output<String>> importOssObject() {
+        return Optional.ofNullable(this.importOssObject);
+    }
+
+    /**
+     * Copy the progress of the task.
+     * 
+     */
+    @Import(name="progress")
+    private @Nullable Output<String> progress;
+
+    /**
+     * @return Copy the progress of the task.
+     * 
+     */
+    public Optional<Output<String>> progress() {
+        return Optional.ofNullable(this.progress);
+    }
+
+    /**
+     * For an image being replicated, return the remaining time of the replication task, in seconds.
+     * 
+     */
+    @Import(name="remainTime")
+    private @Nullable Output<Integer> remainTime;
+
+    /**
+     * @return For an image being replicated, return the remaining time of the replication task, in seconds.
+     * 
+     */
+    public Optional<Output<Integer>> remainTime() {
+        return Optional.ofNullable(this.remainTime);
+    }
+
+    /**
+     * The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+     * - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+     * *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+     * *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+     * - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+     * @return The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+     * - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+     * *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+     * *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+     * - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -62,14 +153,14 @@ public final class ImageDiskDeviceMappingArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Specifies a snapshot that is used to create a combined custom image.
+     * The ID of snapshot N to use to create the custom image. .
      * 
      */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
 
     /**
-     * @return Specifies a snapshot that is used to create a combined custom image.
+     * @return The ID of snapshot N to use to create the custom image. .
      * 
      */
     public Optional<Output<String>> snapshotId() {
@@ -81,6 +172,11 @@ public final class ImageDiskDeviceMappingArgs extends com.pulumi.resources.Resou
     private ImageDiskDeviceMappingArgs(ImageDiskDeviceMappingArgs $) {
         this.device = $.device;
         this.diskType = $.diskType;
+        this.format = $.format;
+        this.importOssBucket = $.importOssBucket;
+        this.importOssObject = $.importOssObject;
+        this.progress = $.progress;
+        this.remainTime = $.remainTime;
         this.size = $.size;
         this.snapshotId = $.snapshotId;
     }
@@ -104,7 +200,9 @@ public final class ImageDiskDeviceMappingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param device Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+         * @param device The device name of disk N in the custom image. Valid values:
+         * - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+         * - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
          * 
          * @return builder
          * 
@@ -115,7 +213,9 @@ public final class ImageDiskDeviceMappingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param device Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+         * @param device The device name of disk N in the custom image. Valid values:
+         * - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+         * - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
          * 
          * @return builder
          * 
@@ -125,7 +225,9 @@ public final class ImageDiskDeviceMappingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param diskType Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+         * @param diskType The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+         * - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+         * - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
          * 
          * @return builder
          * 
@@ -136,7 +238,9 @@ public final class ImageDiskDeviceMappingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param diskType Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+         * @param diskType The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+         * - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+         * - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
          * 
          * @return builder
          * 
@@ -146,7 +250,116 @@ public final class ImageDiskDeviceMappingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param size Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+         * @param format Image format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder format(@Nullable Output<String> format) {
+            $.format = format;
+            return this;
+        }
+
+        /**
+         * @param format Image format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder format(String format) {
+            return format(Output.of(format));
+        }
+
+        /**
+         * @param importOssBucket Import the bucket of the OSS to which the image belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importOssBucket(@Nullable Output<String> importOssBucket) {
+            $.importOssBucket = importOssBucket;
+            return this;
+        }
+
+        /**
+         * @param importOssBucket Import the bucket of the OSS to which the image belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importOssBucket(String importOssBucket) {
+            return importOssBucket(Output.of(importOssBucket));
+        }
+
+        /**
+         * @param importOssObject Import the object of the OSS to which the image file belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importOssObject(@Nullable Output<String> importOssObject) {
+            $.importOssObject = importOssObject;
+            return this;
+        }
+
+        /**
+         * @param importOssObject Import the object of the OSS to which the image file belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importOssObject(String importOssObject) {
+            return importOssObject(Output.of(importOssObject));
+        }
+
+        /**
+         * @param progress Copy the progress of the task.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder progress(@Nullable Output<String> progress) {
+            $.progress = progress;
+            return this;
+        }
+
+        /**
+         * @param progress Copy the progress of the task.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder progress(String progress) {
+            return progress(Output.of(progress));
+        }
+
+        /**
+         * @param remainTime For an image being replicated, return the remaining time of the replication task, in seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remainTime(@Nullable Output<Integer> remainTime) {
+            $.remainTime = remainTime;
+            return this;
+        }
+
+        /**
+         * @param remainTime For an image being replicated, return the remaining time of the replication task, in seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remainTime(Integer remainTime) {
+            return remainTime(Output.of(remainTime));
+        }
+
+        /**
+         * @param size The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+         * - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+         * *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+         * *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+         * - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
          * 
          * @return builder
          * 
@@ -157,7 +370,11 @@ public final class ImageDiskDeviceMappingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param size Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+         * @param size The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+         * - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+         * *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+         * *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+         * - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
          * 
          * @return builder
          * 
@@ -167,7 +384,7 @@ public final class ImageDiskDeviceMappingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param snapshotId Specifies a snapshot that is used to create a combined custom image.
+         * @param snapshotId The ID of snapshot N to use to create the custom image. .
          * 
          * @return builder
          * 
@@ -178,7 +395,7 @@ public final class ImageDiskDeviceMappingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param snapshotId Specifies a snapshot that is used to create a combined custom image.
+         * @param snapshotId The ID of snapshot N to use to create the custom image. .
          * 
          * @return builder
          * 

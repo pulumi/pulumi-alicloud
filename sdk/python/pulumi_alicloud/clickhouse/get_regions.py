@@ -86,7 +86,7 @@ def get_regions(current: Optional[bool] = None,
                 region_id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionsResult:
     """
-    This data source provides the Click House Accounts of the current Alibaba Cloud user.
+    This data source provides the Click House Regions of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.138.0+.
 
@@ -128,7 +128,7 @@ def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
                        region_id: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionsResult]:
     """
-    This data source provides the Click House Accounts of the current Alibaba Cloud user.
+    This data source provides the Click House Regions of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.138.0+.
 

@@ -166,6 +166,18 @@ namespace Pulumi.AliCloud.Ess
         public Output<double?> Cpu { get; private set; } = null!;
 
         /// <summary>
+        /// The number of physical CPU cores. You can specify this parameter for only specific instance types.
+        /// </summary>
+        [Output("cpuOptionsCore")]
+        public Output<int?> CpuOptionsCore { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+        /// </summary>
+        [Output("cpuOptionsThreadsPerCore")]
+        public Output<int?> CpuOptionsThreadsPerCore { get; private set; } = null!;
+
+        /// <summary>
         /// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
         /// 256 characters in length and cannot start with http:// or https://.
         /// </summary>
@@ -454,6 +466,18 @@ namespace Pulumi.AliCloud.Ess
         public Input<double>? Cpu { get; set; }
 
         /// <summary>
+        /// The number of physical CPU cores. You can specify this parameter for only specific instance types.
+        /// </summary>
+        [Input("cpuOptionsCore")]
+        public Input<int>? CpuOptionsCore { get; set; }
+
+        /// <summary>
+        /// The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+        /// </summary>
+        [Input("cpuOptionsThreadsPerCore")]
+        public Input<int>? CpuOptionsThreadsPerCore { get; set; }
+
+        /// <summary>
         /// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
         /// 256 characters in length and cannot start with http:// or https://.
         /// </summary>
@@ -738,6 +762,18 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
+
+        /// <summary>
+        /// The number of physical CPU cores. You can specify this parameter for only specific instance types.
+        /// </summary>
+        [Input("cpuOptionsCore")]
+        public Input<int>? CpuOptionsCore { get; set; }
+
+        /// <summary>
+        /// The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+        /// </summary>
+        [Input("cpuOptionsThreadsPerCore")]
+        public Input<int>? CpuOptionsThreadsPerCore { get; set; }
 
         /// <summary>
         /// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to

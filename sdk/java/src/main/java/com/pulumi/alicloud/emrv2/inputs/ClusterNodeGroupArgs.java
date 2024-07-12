@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.emrv2.inputs;
 
+import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupAutoScalingPolicyArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupCostOptimizedConfigArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSpotBidPriceArgs;
@@ -37,6 +38,21 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<List<String>>> additionalSecurityGroupIds() {
         return Optional.ofNullable(this.additionalSecurityGroupIds);
+    }
+
+    /**
+     * The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+     * 
+     */
+    @Import(name="autoScalingPolicy")
+    private @Nullable Output<ClusterNodeGroupAutoScalingPolicyArgs> autoScalingPolicy;
+
+    /**
+     * @return The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+     * 
+     */
+    public Optional<Output<ClusterNodeGroupAutoScalingPolicyArgs>> autoScalingPolicy() {
+        return Optional.ofNullable(this.autoScalingPolicy);
     }
 
     /**
@@ -283,6 +299,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
 
     private ClusterNodeGroupArgs(ClusterNodeGroupArgs $) {
         this.additionalSecurityGroupIds = $.additionalSecurityGroupIds;
+        this.autoScalingPolicy = $.autoScalingPolicy;
         this.costOptimizedConfig = $.costOptimizedConfig;
         this.dataDisks = $.dataDisks;
         this.deploymentSetStrategy = $.deploymentSetStrategy;
@@ -348,6 +365,27 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder additionalSecurityGroupIds(String... additionalSecurityGroupIds) {
             return additionalSecurityGroupIds(List.of(additionalSecurityGroupIds));
+        }
+
+        /**
+         * @param autoScalingPolicy The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoScalingPolicy(@Nullable Output<ClusterNodeGroupAutoScalingPolicyArgs> autoScalingPolicy) {
+            $.autoScalingPolicy = autoScalingPolicy;
+            return this;
+        }
+
+        /**
+         * @param autoScalingPolicy The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoScalingPolicy(ClusterNodeGroupAutoScalingPolicyArgs autoScalingPolicy) {
+            return autoScalingPolicy(Output.of(autoScalingPolicy));
         }
 
         /**

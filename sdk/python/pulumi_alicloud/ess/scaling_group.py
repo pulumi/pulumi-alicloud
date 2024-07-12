@@ -31,6 +31,7 @@ class ScalingGroupArgs:
                  launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  multi_az_policy: Optional[pulumi.Input[str]] = None,
                  on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
                  on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
@@ -38,6 +39,7 @@ class ScalingGroupArgs:
                  removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_group_name: Optional[pulumi.Input[str]] = None,
+                 scaling_policy: Optional[pulumi.Input[str]] = None,
                  spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
@@ -70,6 +72,7 @@ class ScalingGroupArgs:
                targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
                - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
                - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
+        :param pulumi.Input[int] max_instance_lifetime: The maximum life span of an instance in the scaling group. Unit: seconds.
         :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
@@ -81,6 +84,7 @@ class ScalingGroupArgs:
                - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which you want to add the scaling group.
         :param pulumi.Input[str] scaling_group_name: Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
+        :param pulumi.Input[str] scaling_policy: The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
         :param pulumi.Input[str] spot_allocation_strategy: The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[int] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
@@ -118,6 +122,8 @@ class ScalingGroupArgs:
             pulumi.set(__self__, "launch_template_version", launch_template_version)
         if loadbalancer_ids is not None:
             pulumi.set(__self__, "loadbalancer_ids", loadbalancer_ids)
+        if max_instance_lifetime is not None:
+            pulumi.set(__self__, "max_instance_lifetime", max_instance_lifetime)
         if multi_az_policy is not None:
             pulumi.set(__self__, "multi_az_policy", multi_az_policy)
         if on_demand_base_capacity is not None:
@@ -132,6 +138,8 @@ class ScalingGroupArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scaling_group_name is not None:
             pulumi.set(__self__, "scaling_group_name", scaling_group_name)
+        if scaling_policy is not None:
+            pulumi.set(__self__, "scaling_policy", scaling_policy)
         if spot_allocation_strategy is not None:
             pulumi.set(__self__, "spot_allocation_strategy", spot_allocation_strategy)
         if spot_instance_pools is not None:
@@ -338,6 +346,18 @@ class ScalingGroupArgs:
         pulumi.set(self, "loadbalancer_ids", value)
 
     @property
+    @pulumi.getter(name="maxInstanceLifetime")
+    def max_instance_lifetime(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum life span of an instance in the scaling group. Unit: seconds.
+        """
+        return pulumi.get(self, "max_instance_lifetime")
+
+    @max_instance_lifetime.setter
+    def max_instance_lifetime(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_instance_lifetime", value)
+
+    @property
     @pulumi.getter(name="multiAzPolicy")
     def multi_az_policy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -424,6 +444,18 @@ class ScalingGroupArgs:
     @scaling_group_name.setter
     def scaling_group_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "scaling_group_name", value)
+
+    @property
+    @pulumi.getter(name="scalingPolicy")
+    def scaling_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+        """
+        return pulumi.get(self, "scaling_policy")
+
+    @scaling_policy.setter
+    def scaling_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaling_policy", value)
 
     @property
     @pulumi.getter(name="spotAllocationStrategy")
@@ -517,6 +549,7 @@ class _ScalingGroupState:
                  launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  multi_az_policy: Optional[pulumi.Input[str]] = None,
@@ -526,6 +559,7 @@ class _ScalingGroupState:
                  removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_group_name: Optional[pulumi.Input[str]] = None,
+                 scaling_policy: Optional[pulumi.Input[str]] = None,
                  spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
@@ -554,6 +588,7 @@ class _ScalingGroupState:
                targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
                - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
                - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
+        :param pulumi.Input[int] max_instance_lifetime: The maximum life span of an instance in the scaling group. Unit: seconds.
         :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
                **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
@@ -569,6 +604,7 @@ class _ScalingGroupState:
                - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which you want to add the scaling group.
         :param pulumi.Input[str] scaling_group_name: Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
+        :param pulumi.Input[str] scaling_policy: The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
         :param pulumi.Input[str] spot_allocation_strategy: The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[int] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
@@ -604,6 +640,8 @@ class _ScalingGroupState:
             pulumi.set(__self__, "launch_template_version", launch_template_version)
         if loadbalancer_ids is not None:
             pulumi.set(__self__, "loadbalancer_ids", loadbalancer_ids)
+        if max_instance_lifetime is not None:
+            pulumi.set(__self__, "max_instance_lifetime", max_instance_lifetime)
         if max_size is not None:
             pulumi.set(__self__, "max_size", max_size)
         if min_size is not None:
@@ -622,6 +660,8 @@ class _ScalingGroupState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if scaling_group_name is not None:
             pulumi.set(__self__, "scaling_group_name", scaling_group_name)
+        if scaling_policy is not None:
+            pulumi.set(__self__, "scaling_policy", scaling_policy)
         if spot_allocation_strategy is not None:
             pulumi.set(__self__, "spot_allocation_strategy", spot_allocation_strategy)
         if spot_instance_pools is not None:
@@ -802,6 +842,18 @@ class _ScalingGroupState:
         pulumi.set(self, "loadbalancer_ids", value)
 
     @property
+    @pulumi.getter(name="maxInstanceLifetime")
+    def max_instance_lifetime(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum life span of an instance in the scaling group. Unit: seconds.
+        """
+        return pulumi.get(self, "max_instance_lifetime")
+
+    @max_instance_lifetime.setter
+    def max_instance_lifetime(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_instance_lifetime", value)
+
+    @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[pulumi.Input[int]]:
         """
@@ -916,6 +968,18 @@ class _ScalingGroupState:
         pulumi.set(self, "scaling_group_name", value)
 
     @property
+    @pulumi.getter(name="scalingPolicy")
+    def scaling_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+        """
+        return pulumi.get(self, "scaling_policy")
+
+    @scaling_policy.setter
+    def scaling_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaling_policy", value)
+
+    @property
     @pulumi.getter(name="spotAllocationStrategy")
     def spot_allocation_strategy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1009,6 +1073,7 @@ class ScalingGroup(pulumi.CustomResource):
                  launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupLaunchTemplateOverrideArgs']]]]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  multi_az_policy: Optional[pulumi.Input[str]] = None,
@@ -1018,6 +1083,7 @@ class ScalingGroup(pulumi.CustomResource):
                  removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_group_name: Optional[pulumi.Input[str]] = None,
+                 scaling_policy: Optional[pulumi.Input[str]] = None,
                  spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
@@ -1134,6 +1200,7 @@ class ScalingGroup(pulumi.CustomResource):
                targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
                - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
                - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
+        :param pulumi.Input[int] max_instance_lifetime: The maximum life span of an instance in the scaling group. Unit: seconds.
         :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
                **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
@@ -1149,6 +1216,7 @@ class ScalingGroup(pulumi.CustomResource):
                - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which you want to add the scaling group.
         :param pulumi.Input[str] scaling_group_name: Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
+        :param pulumi.Input[str] scaling_policy: The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
         :param pulumi.Input[str] spot_allocation_strategy: The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[int] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
@@ -1279,6 +1347,7 @@ class ScalingGroup(pulumi.CustomResource):
                  launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupLaunchTemplateOverrideArgs']]]]] = None,
                  launch_template_version: Optional[pulumi.Input[str]] = None,
                  loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_instance_lifetime: Optional[pulumi.Input[int]] = None,
                  max_size: Optional[pulumi.Input[int]] = None,
                  min_size: Optional[pulumi.Input[int]] = None,
                  multi_az_policy: Optional[pulumi.Input[str]] = None,
@@ -1288,6 +1357,7 @@ class ScalingGroup(pulumi.CustomResource):
                  removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scaling_group_name: Optional[pulumi.Input[str]] = None,
+                 scaling_policy: Optional[pulumi.Input[str]] = None,
                  spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
@@ -1316,6 +1386,7 @@ class ScalingGroup(pulumi.CustomResource):
             __props__.__dict__["launch_template_overrides"] = launch_template_overrides
             __props__.__dict__["launch_template_version"] = launch_template_version
             __props__.__dict__["loadbalancer_ids"] = loadbalancer_ids
+            __props__.__dict__["max_instance_lifetime"] = max_instance_lifetime
             if max_size is None and not opts.urn:
                 raise TypeError("Missing required property 'max_size'")
             __props__.__dict__["max_size"] = max_size
@@ -1329,6 +1400,7 @@ class ScalingGroup(pulumi.CustomResource):
             __props__.__dict__["removal_policies"] = removal_policies
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["scaling_group_name"] = scaling_group_name
+            __props__.__dict__["scaling_policy"] = scaling_policy
             __props__.__dict__["spot_allocation_strategy"] = spot_allocation_strategy
             __props__.__dict__["spot_instance_pools"] = spot_instance_pools
             __props__.__dict__["spot_instance_remedy"] = spot_instance_remedy
@@ -1358,6 +1430,7 @@ class ScalingGroup(pulumi.CustomResource):
             launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupLaunchTemplateOverrideArgs']]]]] = None,
             launch_template_version: Optional[pulumi.Input[str]] = None,
             loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            max_instance_lifetime: Optional[pulumi.Input[int]] = None,
             max_size: Optional[pulumi.Input[int]] = None,
             min_size: Optional[pulumi.Input[int]] = None,
             multi_az_policy: Optional[pulumi.Input[str]] = None,
@@ -1367,6 +1440,7 @@ class ScalingGroup(pulumi.CustomResource):
             removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             scaling_group_name: Optional[pulumi.Input[str]] = None,
+            scaling_policy: Optional[pulumi.Input[str]] = None,
             spot_allocation_strategy: Optional[pulumi.Input[str]] = None,
             spot_instance_pools: Optional[pulumi.Input[int]] = None,
             spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
@@ -1400,6 +1474,7 @@ class ScalingGroup(pulumi.CustomResource):
                targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
                - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
                - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
+        :param pulumi.Input[int] max_instance_lifetime: The maximum life span of an instance in the scaling group. Unit: seconds.
         :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
                **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
@@ -1415,6 +1490,7 @@ class ScalingGroup(pulumi.CustomResource):
                - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which you want to add the scaling group.
         :param pulumi.Input[str] scaling_group_name: Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
+        :param pulumi.Input[str] scaling_policy: The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
         :param pulumi.Input[str] spot_allocation_strategy: The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[int] spot_instance_pools: The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         :param pulumi.Input[bool] spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
@@ -1441,6 +1517,7 @@ class ScalingGroup(pulumi.CustomResource):
         __props__.__dict__["launch_template_overrides"] = launch_template_overrides
         __props__.__dict__["launch_template_version"] = launch_template_version
         __props__.__dict__["loadbalancer_ids"] = loadbalancer_ids
+        __props__.__dict__["max_instance_lifetime"] = max_instance_lifetime
         __props__.__dict__["max_size"] = max_size
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["multi_az_policy"] = multi_az_policy
@@ -1450,6 +1527,7 @@ class ScalingGroup(pulumi.CustomResource):
         __props__.__dict__["removal_policies"] = removal_policies
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["scaling_group_name"] = scaling_group_name
+        __props__.__dict__["scaling_policy"] = scaling_policy
         __props__.__dict__["spot_allocation_strategy"] = spot_allocation_strategy
         __props__.__dict__["spot_instance_pools"] = spot_instance_pools
         __props__.__dict__["spot_instance_remedy"] = spot_instance_remedy
@@ -1570,6 +1648,14 @@ class ScalingGroup(pulumi.CustomResource):
         return pulumi.get(self, "loadbalancer_ids")
 
     @property
+    @pulumi.getter(name="maxInstanceLifetime")
+    def max_instance_lifetime(self) -> pulumi.Output[Optional[int]]:
+        """
+        The maximum life span of an instance in the scaling group. Unit: seconds.
+        """
+        return pulumi.get(self, "max_instance_lifetime")
+
+    @property
     @pulumi.getter(name="maxSize")
     def max_size(self) -> pulumi.Output[int]:
         """
@@ -1646,6 +1732,14 @@ class ScalingGroup(pulumi.CustomResource):
         Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
         """
         return pulumi.get(self, "scaling_group_name")
+
+    @property
+    @pulumi.getter(name="scalingPolicy")
+    def scaling_policy(self) -> pulumi.Output[str]:
+        """
+        The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
+        """
+        return pulumi.get(self, "scaling_policy")
 
     @property
     @pulumi.getter(name="spotAllocationStrategy")

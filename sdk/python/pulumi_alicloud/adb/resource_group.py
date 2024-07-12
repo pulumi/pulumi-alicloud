@@ -17,16 +17,15 @@ class ResourceGroupArgs:
                  db_cluster_id: pulumi.Input[str],
                  group_name: pulumi.Input[str],
                  group_type: Optional[pulumi.Input[str]] = None,
-                 node_num: Optional[pulumi.Input[int]] = None):
+                 node_num: Optional[pulumi.Input[int]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ResourceGroup resource.
-        :param pulumi.Input[str] db_cluster_id: DB cluster id.
-        :param pulumi.Input[str] group_name: The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
-        :param pulumi.Input[str] group_type: Query type, value description:
-               * **etl**: Batch query mode.
-               * **interactive**: interactive Query mode.
-               * **default_type**: the default query mode.
-        :param pulumi.Input[int] node_num: The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+        :param pulumi.Input[str] db_cluster_id: The ID of the DBCluster.
+        :param pulumi.Input[str] group_name: The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
+        :param pulumi.Input[str] group_type: The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
+        :param pulumi.Input[int] node_num: The number of nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The database accounts with which to associate the resource group.
         """
         pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         pulumi.set(__self__, "group_name", group_name)
@@ -34,12 +33,14 @@ class ResourceGroupArgs:
             pulumi.set(__self__, "group_type", group_type)
         if node_num is not None:
             pulumi.set(__self__, "node_num", node_num)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> pulumi.Input[str]:
         """
-        DB cluster id.
+        The ID of the DBCluster.
         """
         return pulumi.get(self, "db_cluster_id")
 
@@ -51,7 +52,7 @@ class ResourceGroupArgs:
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Input[str]:
         """
-        The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+        The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
         """
         return pulumi.get(self, "group_name")
 
@@ -63,10 +64,7 @@ class ResourceGroupArgs:
     @pulumi.getter(name="groupType")
     def group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Query type, value description:
-        * **etl**: Batch query mode.
-        * **interactive**: interactive Query mode.
-        * **default_type**: the default query mode.
+        The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
         """
         return pulumi.get(self, "group_type")
 
@@ -78,13 +76,25 @@ class ResourceGroupArgs:
     @pulumi.getter(name="nodeNum")
     def node_num(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+        The number of nodes.
         """
         return pulumi.get(self, "node_num")
 
     @node_num.setter
     def node_num(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "node_num", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The database accounts with which to associate the resource group.
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
 
 
 @pulumi.input_type
@@ -96,19 +106,18 @@ class _ResourceGroupState:
                  group_type: Optional[pulumi.Input[str]] = None,
                  node_num: Optional[pulumi.Input[int]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 user: Optional[pulumi.Input[str]] = None):
+                 user: Optional[pulumi.Input[str]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ResourceGroup resources.
-        :param pulumi.Input[str] create_time: Creation time.
-        :param pulumi.Input[str] db_cluster_id: DB cluster id.
-        :param pulumi.Input[str] group_name: The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
-        :param pulumi.Input[str] group_type: Query type, value description:
-               * **etl**: Batch query mode.
-               * **interactive**: interactive Query mode.
-               * **default_type**: the default query mode.
-        :param pulumi.Input[int] node_num: The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
-        :param pulumi.Input[str] update_time: Update time.
-        :param pulumi.Input[str] user: Binding User.
+        :param pulumi.Input[str] create_time: The time when the resource group was created.
+        :param pulumi.Input[str] db_cluster_id: The ID of the DBCluster.
+        :param pulumi.Input[str] group_name: The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
+        :param pulumi.Input[str] group_type: The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
+        :param pulumi.Input[int] node_num: The number of nodes.
+        :param pulumi.Input[str] update_time: The time when the resource group was updated.
+        :param pulumi.Input[str] user: The database accounts that are associated with the resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The database accounts with which to associate the resource group.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -124,12 +133,14 @@ class _ResourceGroupState:
             pulumi.set(__self__, "update_time", update_time)
         if user is not None:
             pulumi.set(__self__, "user", user)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Creation time.
+        The time when the resource group was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -141,7 +152,7 @@ class _ResourceGroupState:
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        DB cluster id.
+        The ID of the DBCluster.
         """
         return pulumi.get(self, "db_cluster_id")
 
@@ -153,7 +164,7 @@ class _ResourceGroupState:
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+        The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
         """
         return pulumi.get(self, "group_name")
 
@@ -165,10 +176,7 @@ class _ResourceGroupState:
     @pulumi.getter(name="groupType")
     def group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Query type, value description:
-        * **etl**: Batch query mode.
-        * **interactive**: interactive Query mode.
-        * **default_type**: the default query mode.
+        The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
         """
         return pulumi.get(self, "group_type")
 
@@ -180,7 +188,7 @@ class _ResourceGroupState:
     @pulumi.getter(name="nodeNum")
     def node_num(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+        The number of nodes.
         """
         return pulumi.get(self, "node_num")
 
@@ -192,7 +200,7 @@ class _ResourceGroupState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Update time.
+        The time when the resource group was updated.
         """
         return pulumi.get(self, "update_time")
 
@@ -204,13 +212,25 @@ class _ResourceGroupState:
     @pulumi.getter
     def user(self) -> Optional[pulumi.Input[str]]:
         """
-        Binding User.
+        The database accounts that are associated with the resource group.
         """
         return pulumi.get(self, "user")
 
     @user.setter
     def user(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The database accounts with which to associate the resource group.
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "users", value)
 
 
 class ResourceGroup(pulumi.CustomResource):
@@ -222,11 +242,12 @@ class ResourceGroup(pulumi.CustomResource):
                  group_name: Optional[pulumi.Input[str]] = None,
                  group_type: Optional[pulumi.Input[str]] = None,
                  node_num: Optional[pulumi.Input[int]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Provides a Adb Resource Group resource.
+        Provides a AnalyticDB for MySQL (ADB) Resource Group resource.
 
-        For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
+        For information about AnalyticDB for MySQL (ADB) Resource Group and how to use it, see [What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
 
         > **NOTE:** Available since v1.195.0.
 
@@ -241,46 +262,31 @@ class ResourceGroup(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf_example"
+            name = "terraform-example"
         default = alicloud.adb.get_zones()
-        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
-            cidr_block="10.4.0.0/16")
+            cidr_block="192.168.0.0/16")
         default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
             vpc_id=default_network.id,
-            cidr_block="10.4.0.0/24",
-            zone_id=default.zones[0].id,
-            vswitch_name=name)
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
         default_db_cluster = alicloud.adb.DBCluster("default",
-            compute_resource="48Core192GBNEW",
+            compute_resource="32Core128GB",
             db_cluster_category="MixedStorage",
-            db_cluster_version="3.0",
-            db_node_class="E32",
-            db_node_count=1,
-            db_node_storage=100,
             description=name,
             elastic_io_resource=1,
-            maintain_time="04:00Z-05:00Z",
             mode="flexible",
             payment_type="PayAsYouGo",
-            resource_group_id=default_get_resource_groups.ids[0],
-            security_ips=[
-                "10.168.1.12",
-                "10.168.1.11",
-            ],
             vpc_id=default_network.id,
             vswitch_id=default_switch.id,
-            zone_id=default.zones[0].id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
+            zone_id=default.zones[0].id)
         default_resource_group = alicloud.adb.ResourceGroup("default",
-            group_name="TF_EXAMPLE",
+            db_cluster_id=default_db_cluster.id,
+            group_name=name,
             group_type="batch",
-            node_num=1,
-            db_cluster_id=default_db_cluster.id)
+            node_num=1)
         ```
 
         ## Import
@@ -293,13 +299,11 @@ class ResourceGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] db_cluster_id: DB cluster id.
-        :param pulumi.Input[str] group_name: The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
-        :param pulumi.Input[str] group_type: Query type, value description:
-               * **etl**: Batch query mode.
-               * **interactive**: interactive Query mode.
-               * **default_type**: the default query mode.
-        :param pulumi.Input[int] node_num: The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+        :param pulumi.Input[str] db_cluster_id: The ID of the DBCluster.
+        :param pulumi.Input[str] group_name: The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
+        :param pulumi.Input[str] group_type: The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
+        :param pulumi.Input[int] node_num: The number of nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The database accounts with which to associate the resource group.
         """
         ...
     @overload
@@ -308,9 +312,9 @@ class ResourceGroup(pulumi.CustomResource):
                  args: ResourceGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Adb Resource Group resource.
+        Provides a AnalyticDB for MySQL (ADB) Resource Group resource.
 
-        For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
+        For information about AnalyticDB for MySQL (ADB) Resource Group and how to use it, see [What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
 
         > **NOTE:** Available since v1.195.0.
 
@@ -325,46 +329,31 @@ class ResourceGroup(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf_example"
+            name = "terraform-example"
         default = alicloud.adb.get_zones()
-        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
-            cidr_block="10.4.0.0/16")
+            cidr_block="192.168.0.0/16")
         default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
             vpc_id=default_network.id,
-            cidr_block="10.4.0.0/24",
-            zone_id=default.zones[0].id,
-            vswitch_name=name)
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
         default_db_cluster = alicloud.adb.DBCluster("default",
-            compute_resource="48Core192GBNEW",
+            compute_resource="32Core128GB",
             db_cluster_category="MixedStorage",
-            db_cluster_version="3.0",
-            db_node_class="E32",
-            db_node_count=1,
-            db_node_storage=100,
             description=name,
             elastic_io_resource=1,
-            maintain_time="04:00Z-05:00Z",
             mode="flexible",
             payment_type="PayAsYouGo",
-            resource_group_id=default_get_resource_groups.ids[0],
-            security_ips=[
-                "10.168.1.12",
-                "10.168.1.11",
-            ],
             vpc_id=default_network.id,
             vswitch_id=default_switch.id,
-            zone_id=default.zones[0].id,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
+            zone_id=default.zones[0].id)
         default_resource_group = alicloud.adb.ResourceGroup("default",
-            group_name="TF_EXAMPLE",
+            db_cluster_id=default_db_cluster.id,
+            group_name=name,
             group_type="batch",
-            node_num=1,
-            db_cluster_id=default_db_cluster.id)
+            node_num=1)
         ```
 
         ## Import
@@ -394,6 +383,7 @@ class ResourceGroup(pulumi.CustomResource):
                  group_name: Optional[pulumi.Input[str]] = None,
                  group_type: Optional[pulumi.Input[str]] = None,
                  node_num: Optional[pulumi.Input[int]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -411,6 +401,7 @@ class ResourceGroup(pulumi.CustomResource):
             __props__.__dict__["group_name"] = group_name
             __props__.__dict__["group_type"] = group_type
             __props__.__dict__["node_num"] = node_num
+            __props__.__dict__["users"] = users
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["user"] = None
@@ -430,7 +421,8 @@ class ResourceGroup(pulumi.CustomResource):
             group_type: Optional[pulumi.Input[str]] = None,
             node_num: Optional[pulumi.Input[int]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            user: Optional[pulumi.Input[str]] = None) -> 'ResourceGroup':
+            user: Optional[pulumi.Input[str]] = None,
+            users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ResourceGroup':
         """
         Get an existing ResourceGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -438,16 +430,14 @@ class ResourceGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Creation time.
-        :param pulumi.Input[str] db_cluster_id: DB cluster id.
-        :param pulumi.Input[str] group_name: The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
-        :param pulumi.Input[str] group_type: Query type, value description:
-               * **etl**: Batch query mode.
-               * **interactive**: interactive Query mode.
-               * **default_type**: the default query mode.
-        :param pulumi.Input[int] node_num: The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
-        :param pulumi.Input[str] update_time: Update time.
-        :param pulumi.Input[str] user: Binding User.
+        :param pulumi.Input[str] create_time: The time when the resource group was created.
+        :param pulumi.Input[str] db_cluster_id: The ID of the DBCluster.
+        :param pulumi.Input[str] group_name: The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
+        :param pulumi.Input[str] group_type: The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
+        :param pulumi.Input[int] node_num: The number of nodes.
+        :param pulumi.Input[str] update_time: The time when the resource group was updated.
+        :param pulumi.Input[str] user: The database accounts that are associated with the resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The database accounts with which to associate the resource group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -460,13 +450,14 @@ class ResourceGroup(pulumi.CustomResource):
         __props__.__dict__["node_num"] = node_num
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["user"] = user
+        __props__.__dict__["users"] = users
         return ResourceGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Creation time.
+        The time when the resource group was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -474,7 +465,7 @@ class ResourceGroup(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> pulumi.Output[str]:
         """
-        DB cluster id.
+        The ID of the DBCluster.
         """
         return pulumi.get(self, "db_cluster_id")
 
@@ -482,7 +473,7 @@ class ResourceGroup(pulumi.CustomResource):
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Output[str]:
         """
-        The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+        The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
         """
         return pulumi.get(self, "group_name")
 
@@ -490,18 +481,15 @@ class ResourceGroup(pulumi.CustomResource):
     @pulumi.getter(name="groupType")
     def group_type(self) -> pulumi.Output[str]:
         """
-        Query type, value description:
-        * **etl**: Batch query mode.
-        * **interactive**: interactive Query mode.
-        * **default_type**: the default query mode.
+        The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
         """
         return pulumi.get(self, "group_type")
 
     @property
     @pulumi.getter(name="nodeNum")
-    def node_num(self) -> pulumi.Output[int]:
+    def node_num(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+        The number of nodes.
         """
         return pulumi.get(self, "node_num")
 
@@ -509,7 +497,7 @@ class ResourceGroup(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Update time.
+        The time when the resource group was updated.
         """
         return pulumi.get(self, "update_time")
 
@@ -517,7 +505,15 @@ class ResourceGroup(pulumi.CustomResource):
     @pulumi.getter
     def user(self) -> pulumi.Output[str]:
         """
-        Binding User.
+        The database accounts that are associated with the resource group.
         """
         return pulumi.get(self, "user")
+
+    @property
+    @pulumi.getter
+    def users(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The database accounts with which to associate the resource group.
+        """
+        return pulumi.get(self, "users")
 

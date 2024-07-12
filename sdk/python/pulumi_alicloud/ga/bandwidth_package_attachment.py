@@ -18,8 +18,8 @@ class BandwidthPackageAttachmentArgs:
                  bandwidth_package_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a BandwidthPackageAttachment resource.
-        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
-        :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance.
+        :param pulumi.Input[str] bandwidth_package_id: The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         """
         pulumi.set(__self__, "accelerator_id", accelerator_id)
         pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
@@ -28,7 +28,7 @@ class BandwidthPackageAttachmentArgs:
     @pulumi.getter(name="acceleratorId")
     def accelerator_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+        The ID of the Global Accelerator instance.
         """
         return pulumi.get(self, "accelerator_id")
 
@@ -40,7 +40,7 @@ class BandwidthPackageAttachmentArgs:
     @pulumi.getter(name="bandwidthPackageId")
     def bandwidth_package_id(self) -> pulumi.Input[str]:
         """
-        The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+        The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         """
         return pulumi.get(self, "bandwidth_package_id")
 
@@ -58,9 +58,9 @@ class _BandwidthPackageAttachmentState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BandwidthPackageAttachment resources.
-        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] accelerators: Accelerators bound with current Bandwidth Package.
-        :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+        :param pulumi.Input[str] bandwidth_package_id: The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         :param pulumi.Input[str] status: State of Bandwidth Package.
         """
         if accelerator_id is not None:
@@ -76,7 +76,7 @@ class _BandwidthPackageAttachmentState:
     @pulumi.getter(name="acceleratorId")
     def accelerator_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+        The ID of the Global Accelerator instance.
         """
         return pulumi.get(self, "accelerator_id")
 
@@ -100,7 +100,7 @@ class _BandwidthPackageAttachmentState:
     @pulumi.getter(name="bandwidthPackageId")
     def bandwidth_package_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+        The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         """
         return pulumi.get(self, "bandwidth_package_id")
 
@@ -144,34 +144,34 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.ga.Accelerator("example",
+        default = alicloud.ga.Accelerator("default",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        example_bandwidth_package = alicloud.ga.BandwidthPackage("example",
-            bandwidth=20,
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
+            bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
-            duration="1",
-            auto_pay=True,
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
             ratio=30)
-        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("example",
-            accelerator_id=example.id,
-            bandwidth_package_id=example_bandwidth_package.id)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+            accelerator_id=default.id,
+            bandwidth_package_id=default_bandwidth_package.id)
         ```
 
         ## Import
 
-        Ga Bandwidth Package Attachment can be imported using the id. Format to `<accelerator_id>:<bandwidth_package_id>`, e.g.
+        Ga Bandwidth Package Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example your_accelerator_id:your_bandwidth_package_id
+        $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example <accelerator_id>:<bandwidth_package_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
-        :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance.
+        :param pulumi.Input[str] bandwidth_package_id: The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         """
         ...
     @overload
@@ -194,28 +194,28 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.ga.Accelerator("example",
+        default = alicloud.ga.Accelerator("default",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        example_bandwidth_package = alicloud.ga.BandwidthPackage("example",
-            bandwidth=20,
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
+            bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
-            duration="1",
-            auto_pay=True,
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
             ratio=30)
-        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("example",
-            accelerator_id=example.id,
-            bandwidth_package_id=example_bandwidth_package.id)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+            accelerator_id=default.id,
+            bandwidth_package_id=default_bandwidth_package.id)
         ```
 
         ## Import
 
-        Ga Bandwidth Package Attachment can be imported using the id. Format to `<accelerator_id>:<bandwidth_package_id>`, e.g.
+        Ga Bandwidth Package Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example your_accelerator_id:your_bandwidth_package_id
+        $ pulumi import alicloud:ga/bandwidthPackageAttachment:BandwidthPackageAttachment example <accelerator_id>:<bandwidth_package_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -273,9 +273,9 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+        :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] accelerators: Accelerators bound with current Bandwidth Package.
-        :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+        :param pulumi.Input[str] bandwidth_package_id: The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         :param pulumi.Input[str] status: State of Bandwidth Package.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -292,7 +292,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
     @pulumi.getter(name="acceleratorId")
     def accelerator_id(self) -> pulumi.Output[str]:
         """
-        The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
+        The ID of the Global Accelerator instance.
         """
         return pulumi.get(self, "accelerator_id")
 
@@ -308,7 +308,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
     @pulumi.getter(name="bandwidthPackageId")
     def bandwidth_package_id(self) -> pulumi.Output[str]:
         """
-        The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
+        The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         """
         return pulumi.get(self, "bandwidth_package_id")
 

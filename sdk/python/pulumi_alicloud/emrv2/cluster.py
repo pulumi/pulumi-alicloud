@@ -37,13 +37,13 @@ class ClusterArgs:
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
         :param pulumi.Input[str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
-        :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+        :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
         :param pulumi.Input['ClusterSubscriptionConfigArgs'] subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
@@ -126,7 +126,7 @@ class ClusterArgs:
     @pulumi.getter(name="nodeGroups")
     def node_groups(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]:
         """
-        Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+        Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
         """
         return pulumi.get(self, "node_groups")
 
@@ -198,7 +198,7 @@ class ClusterArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+        Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         """
         return pulumi.get(self, "payment_type")
 
@@ -283,8 +283,8 @@ class _ClusterState:
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
-        :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
+        :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         :param pulumi.Input[str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
@@ -422,7 +422,7 @@ class _ClusterState:
     @pulumi.getter(name="nodeGroups")
     def node_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]:
         """
-        Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+        Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
         """
         return pulumi.get(self, "node_groups")
 
@@ -434,7 +434,7 @@ class _ClusterState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+        Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         """
         return pulumi.get(self, "payment_type")
 
@@ -675,8 +675,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
-        :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
+        :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         :param pulumi.Input[str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
@@ -936,8 +936,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeAttributeArgs']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
-        :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeGroupArgs']]]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
+        :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         :param pulumi.Input[str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the emr-cluster belongs.
         :param pulumi.Input[str] security_mode: The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
@@ -1033,7 +1033,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="nodeGroups")
     def node_groups(self) -> pulumi.Output[Sequence['outputs.ClusterNodeGroup']]:
         """
-        Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+        Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
         """
         return pulumi.get(self, "node_groups")
 
@@ -1041,7 +1041,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+        Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
         """
         return pulumi.get(self, "payment_type")
 

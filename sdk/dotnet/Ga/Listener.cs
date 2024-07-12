@@ -119,6 +119,15 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> HttpVersion { get; private set; } = null!;
 
         /// <summary>
+        /// The timeout period of idle connections. Unit: seconds. Valid values:
+        /// - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+        /// - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+        /// - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+        /// </summary>
+        [Output("idleTimeout")]
+        public Output<int> IdleTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// The routing type of the listener. Default Value: `Standard`. Valid values:
         /// - `Standard`: intelligent routing.
         /// - `CustomRouting`: custom routing.
@@ -150,6 +159,13 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Output("proxyProtocol")]
         public Output<bool?> ProxyProtocol { get; private set; } = null!;
+
+        /// <summary>
+        /// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+        /// &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+        /// </summary>
+        [Output("requestTimeout")]
+        public Output<int> RequestTimeout { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
@@ -256,6 +272,15 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? HttpVersion { get; set; }
 
         /// <summary>
+        /// The timeout period of idle connections. Unit: seconds. Valid values:
+        /// - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+        /// - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+        /// - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+        /// </summary>
+        [Input("idleTimeout")]
+        public Input<int>? IdleTimeout { get; set; }
+
+        /// <summary>
         /// The routing type of the listener. Default Value: `Standard`. Valid values:
         /// - `Standard`: intelligent routing.
         /// - `CustomRouting`: custom routing.
@@ -293,6 +318,13 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("proxyProtocol")]
         public Input<bool>? ProxyProtocol { get; set; }
+
+        /// <summary>
+        /// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+        /// &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+        /// </summary>
+        [Input("requestTimeout")]
+        public Input<int>? RequestTimeout { get; set; }
 
         /// <summary>
         /// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
@@ -355,6 +387,15 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? HttpVersion { get; set; }
 
         /// <summary>
+        /// The timeout period of idle connections. Unit: seconds. Valid values:
+        /// - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+        /// - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+        /// - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+        /// </summary>
+        [Input("idleTimeout")]
+        public Input<int>? IdleTimeout { get; set; }
+
+        /// <summary>
         /// The routing type of the listener. Default Value: `Standard`. Valid values:
         /// - `Standard`: intelligent routing.
         /// - `CustomRouting`: custom routing.
@@ -392,6 +433,13 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("proxyProtocol")]
         public Input<bool>? ProxyProtocol { get; set; }
+
+        /// <summary>
+        /// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+        /// &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+        /// </summary>
+        [Input("requestTimeout")]
+        public Input<int>? RequestTimeout { get; set; }
 
         /// <summary>
         /// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:

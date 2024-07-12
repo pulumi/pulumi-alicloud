@@ -13,18 +13,50 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterBootstrapScriptNodeSelector {
+    /**
+     * @deprecated
+     * Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
+     * 
+     */
+    @Deprecated /* Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it. */
     private @Nullable String nodeGroupId;
+    private @Nullable List<String> nodeGroupIds;
+    /**
+     * @deprecated
+     * Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
+     * 
+     */
+    @Deprecated /* Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it. */
     private @Nullable String nodeGroupName;
+    private @Nullable List<String> nodeGroupNames;
     private @Nullable List<String> nodeGroupTypes;
     private @Nullable List<String> nodeNames;
     private String nodeSelectType;
 
     private ClusterBootstrapScriptNodeSelector() {}
+    /**
+     * @deprecated
+     * Field &#39;node_group_id&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_ids&#39; replaces it.
+     * 
+     */
+    @Deprecated /* Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it. */
     public Optional<String> nodeGroupId() {
         return Optional.ofNullable(this.nodeGroupId);
     }
+    public List<String> nodeGroupIds() {
+        return this.nodeGroupIds == null ? List.of() : this.nodeGroupIds;
+    }
+    /**
+     * @deprecated
+     * Field &#39;node_group_name&#39; has been deprecated from provider version 1.227.0. New field &#39;node_group_names&#39; replaces it.
+     * 
+     */
+    @Deprecated /* Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it. */
     public Optional<String> nodeGroupName() {
         return Optional.ofNullable(this.nodeGroupName);
+    }
+    public List<String> nodeGroupNames() {
+        return this.nodeGroupNames == null ? List.of() : this.nodeGroupNames;
     }
     public List<String> nodeGroupTypes() {
         return this.nodeGroupTypes == null ? List.of() : this.nodeGroupTypes;
@@ -46,7 +78,9 @@ public final class ClusterBootstrapScriptNodeSelector {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String nodeGroupId;
+        private @Nullable List<String> nodeGroupIds;
         private @Nullable String nodeGroupName;
+        private @Nullable List<String> nodeGroupNames;
         private @Nullable List<String> nodeGroupTypes;
         private @Nullable List<String> nodeNames;
         private String nodeSelectType;
@@ -54,7 +88,9 @@ public final class ClusterBootstrapScriptNodeSelector {
         public Builder(ClusterBootstrapScriptNodeSelector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nodeGroupId = defaults.nodeGroupId;
+    	      this.nodeGroupIds = defaults.nodeGroupIds;
     	      this.nodeGroupName = defaults.nodeGroupName;
+    	      this.nodeGroupNames = defaults.nodeGroupNames;
     	      this.nodeGroupTypes = defaults.nodeGroupTypes;
     	      this.nodeNames = defaults.nodeNames;
     	      this.nodeSelectType = defaults.nodeSelectType;
@@ -67,10 +103,28 @@ public final class ClusterBootstrapScriptNodeSelector {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeGroupIds(@Nullable List<String> nodeGroupIds) {
+
+            this.nodeGroupIds = nodeGroupIds;
+            return this;
+        }
+        public Builder nodeGroupIds(String... nodeGroupIds) {
+            return nodeGroupIds(List.of(nodeGroupIds));
+        }
+        @CustomType.Setter
         public Builder nodeGroupName(@Nullable String nodeGroupName) {
 
             this.nodeGroupName = nodeGroupName;
             return this;
+        }
+        @CustomType.Setter
+        public Builder nodeGroupNames(@Nullable List<String> nodeGroupNames) {
+
+            this.nodeGroupNames = nodeGroupNames;
+            return this;
+        }
+        public Builder nodeGroupNames(String... nodeGroupNames) {
+            return nodeGroupNames(List.of(nodeGroupNames));
         }
         @CustomType.Setter
         public Builder nodeGroupTypes(@Nullable List<String> nodeGroupTypes) {
@@ -101,7 +155,9 @@ public final class ClusterBootstrapScriptNodeSelector {
         public ClusterBootstrapScriptNodeSelector build() {
             final var _resultValue = new ClusterBootstrapScriptNodeSelector();
             _resultValue.nodeGroupId = nodeGroupId;
+            _resultValue.nodeGroupIds = nodeGroupIds;
             _resultValue.nodeGroupName = nodeGroupName;
+            _resultValue.nodeGroupNames = nodeGroupNames;
             _resultValue.nodeGroupTypes = nodeGroupTypes;
             _resultValue.nodeNames = nodeNames;
             _resultValue.nodeSelectType = nodeSelectType;

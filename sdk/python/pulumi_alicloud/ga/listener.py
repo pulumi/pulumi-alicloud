@@ -23,10 +23,12 @@ class ListenerArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  forwarded_for_config: Optional[pulumi.Input['ListenerForwardedForConfigArgs']] = None,
                  http_version: Optional[pulumi.Input[str]] = None,
+                 idle_timeout: Optional[pulumi.Input[int]] = None,
                  listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 request_timeout: Optional[pulumi.Input[int]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Listener resource.
@@ -42,12 +44,18 @@ class ListenerArgs:
         :param pulumi.Input['ListenerForwardedForConfigArgs'] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
         :param pulumi.Input[str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
                > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+        :param pulumi.Input[int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values:
+               - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+               - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+               - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
         :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
                - `Standard`: intelligent routing.
                - `CustomRouting`: custom routing.
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value: `false`. Valid values:
+        :param pulumi.Input[int] request_timeout: The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+               > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
         :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
         """
         pulumi.set(__self__, "accelerator_id", accelerator_id)
@@ -62,6 +70,8 @@ class ListenerArgs:
             pulumi.set(__self__, "forwarded_for_config", forwarded_for_config)
         if http_version is not None:
             pulumi.set(__self__, "http_version", http_version)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
         if listener_type is not None:
             pulumi.set(__self__, "listener_type", listener_type)
         if name is not None:
@@ -70,6 +80,8 @@ class ListenerArgs:
             pulumi.set(__self__, "protocol", protocol)
         if proxy_protocol is not None:
             pulumi.set(__self__, "proxy_protocol", proxy_protocol)
+        if request_timeout is not None:
+            pulumi.set(__self__, "request_timeout", request_timeout)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
 
@@ -163,6 +175,21 @@ class ListenerArgs:
         pulumi.set(self, "http_version", value)
 
     @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout period of idle connections. Unit: seconds. Valid values:
+        - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+        - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+        - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "idle_timeout", value)
+
+    @property
     @pulumi.getter(name="listenerType")
     def listener_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -213,6 +240,19 @@ class ListenerArgs:
         pulumi.set(self, "proxy_protocol", value)
 
     @property
+    @pulumi.getter(name="requestTimeout")
+    def request_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+        > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+        """
+        return pulumi.get(self, "request_timeout")
+
+    @request_timeout.setter
+    def request_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "request_timeout", value)
+
+    @property
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -234,11 +274,13 @@ class _ListenerState:
                  description: Optional[pulumi.Input[str]] = None,
                  forwarded_for_config: Optional[pulumi.Input['ListenerForwardedForConfigArgs']] = None,
                  http_version: Optional[pulumi.Input[str]] = None,
+                 idle_timeout: Optional[pulumi.Input[int]] = None,
                  listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 request_timeout: Optional[pulumi.Input[int]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
@@ -253,6 +295,10 @@ class _ListenerState:
         :param pulumi.Input['ListenerForwardedForConfigArgs'] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
         :param pulumi.Input[str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
                > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+        :param pulumi.Input[int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values:
+               - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+               - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+               - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
         :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
                - `Standard`: intelligent routing.
                - `CustomRouting`: custom routing.
@@ -261,6 +307,8 @@ class _ListenerState:
                > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value: `false`. Valid values:
+        :param pulumi.Input[int] request_timeout: The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+               > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
         :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
         :param pulumi.Input[str] status: The status of the listener.
         """
@@ -276,6 +324,8 @@ class _ListenerState:
             pulumi.set(__self__, "forwarded_for_config", forwarded_for_config)
         if http_version is not None:
             pulumi.set(__self__, "http_version", http_version)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
         if listener_type is not None:
             pulumi.set(__self__, "listener_type", listener_type)
         if name is not None:
@@ -286,6 +336,8 @@ class _ListenerState:
             pulumi.set(__self__, "protocol", protocol)
         if proxy_protocol is not None:
             pulumi.set(__self__, "proxy_protocol", proxy_protocol)
+        if request_timeout is not None:
+            pulumi.set(__self__, "request_timeout", request_timeout)
         if security_policy_id is not None:
             pulumi.set(__self__, "security_policy_id", security_policy_id)
         if status is not None:
@@ -368,6 +420,21 @@ class _ListenerState:
         pulumi.set(self, "http_version", value)
 
     @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout period of idle connections. Unit: seconds. Valid values:
+        - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+        - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+        - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "idle_timeout", value)
+
+    @property
     @pulumi.getter(name="listenerType")
     def listener_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -431,6 +498,19 @@ class _ListenerState:
         pulumi.set(self, "proxy_protocol", value)
 
     @property
+    @pulumi.getter(name="requestTimeout")
+    def request_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+        > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+        """
+        return pulumi.get(self, "request_timeout")
+
+    @request_timeout.setter
+    def request_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "request_timeout", value)
+
+    @property
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -466,11 +546,13 @@ class Listener(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']]] = None,
                  http_version: Optional[pulumi.Input[str]] = None,
+                 idle_timeout: Optional[pulumi.Input[int]] = None,
                  listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 request_timeout: Optional[pulumi.Input[int]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -530,6 +612,10 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
         :param pulumi.Input[str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
                > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+        :param pulumi.Input[int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values:
+               - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+               - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+               - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
         :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
                - `Standard`: intelligent routing.
                - `CustomRouting`: custom routing.
@@ -538,6 +624,8 @@ class Listener(pulumi.CustomResource):
                > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value: `false`. Valid values:
+        :param pulumi.Input[int] request_timeout: The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+               > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
         :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
         """
         ...
@@ -612,11 +700,13 @@ class Listener(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']]] = None,
                  http_version: Optional[pulumi.Input[str]] = None,
+                 idle_timeout: Optional[pulumi.Input[int]] = None,
                  listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  proxy_protocol: Optional[pulumi.Input[bool]] = None,
+                 request_timeout: Optional[pulumi.Input[int]] = None,
                  security_policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -635,6 +725,7 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["forwarded_for_config"] = forwarded_for_config
             __props__.__dict__["http_version"] = http_version
+            __props__.__dict__["idle_timeout"] = idle_timeout
             __props__.__dict__["listener_type"] = listener_type
             __props__.__dict__["name"] = name
             if port_ranges is None and not opts.urn:
@@ -642,6 +733,7 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["port_ranges"] = port_ranges
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["proxy_protocol"] = proxy_protocol
+            __props__.__dict__["request_timeout"] = request_timeout
             __props__.__dict__["security_policy_id"] = security_policy_id
             __props__.__dict__["status"] = None
         super(Listener, __self__).__init__(
@@ -660,11 +752,13 @@ class Listener(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']]] = None,
             http_version: Optional[pulumi.Input[str]] = None,
+            idle_timeout: Optional[pulumi.Input[int]] = None,
             listener_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             proxy_protocol: Optional[pulumi.Input[bool]] = None,
+            request_timeout: Optional[pulumi.Input[int]] = None,
             security_policy_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'Listener':
         """
@@ -684,6 +778,10 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
         :param pulumi.Input[str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
                > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
+        :param pulumi.Input[int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values:
+               - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+               - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+               - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
         :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
                - `Standard`: intelligent routing.
                - `CustomRouting`: custom routing.
@@ -692,6 +790,8 @@ class Listener(pulumi.CustomResource):
                > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value: `false`. Valid values:
+        :param pulumi.Input[int] request_timeout: The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+               > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
         :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
         :param pulumi.Input[str] status: The status of the listener.
         """
@@ -705,11 +805,13 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["forwarded_for_config"] = forwarded_for_config
         __props__.__dict__["http_version"] = http_version
+        __props__.__dict__["idle_timeout"] = idle_timeout
         __props__.__dict__["listener_type"] = listener_type
         __props__.__dict__["name"] = name
         __props__.__dict__["port_ranges"] = port_ranges
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["proxy_protocol"] = proxy_protocol
+        __props__.__dict__["request_timeout"] = request_timeout
         __props__.__dict__["security_policy_id"] = security_policy_id
         __props__.__dict__["status"] = status
         return Listener(resource_name, opts=opts, __props__=__props__)
@@ -767,6 +869,17 @@ class Listener(pulumi.CustomResource):
         return pulumi.get(self, "http_version")
 
     @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> pulumi.Output[int]:
+        """
+        The timeout period of idle connections. Unit: seconds. Valid values:
+        - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+        - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+        - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @property
     @pulumi.getter(name="listenerType")
     def listener_type(self) -> pulumi.Output[Optional[str]]:
         """
@@ -808,6 +921,15 @@ class Listener(pulumi.CustomResource):
         The proxy protocol of the listener. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "proxy_protocol")
+
+    @property
+    @pulumi.getter(name="requestTimeout")
+    def request_timeout(self) -> pulumi.Output[int]:
+        """
+        The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+        > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+        """
+        return pulumi.get(self, "request_timeout")
 
     @property
     @pulumi.getter(name="securityPolicyId")

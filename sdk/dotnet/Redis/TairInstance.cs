@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the backup set of the cluster.  .
+        /// The ID of the backup set of the cluster.
         /// </summary>
         [Output("clusterBackupId")]
         public Output<string?> ClusterBackupId { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> EffectiveTime { get; private set; } = null!;
 
         /// <summary>
-        /// Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+        /// Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
@@ -76,19 +76,19 @@ namespace Pulumi.AliCloud.Redis
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        /// Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
         /// </summary>
         [Output("nodeType")]
         public Output<string> NodeType { get; private set; } = null!;
 
         /// <summary>
-        /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =.
+        /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Redis
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
         /// </summary>
         [Output("readOnlyCount")]
         public Output<int?> ReadOnlyCount { get; private set; } = null!;
@@ -124,6 +124,12 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> SecondaryZoneId { get; private set; } = null!;
 
         /// <summary>
+        /// Security group ID
+        /// </summary>
+        [Output("securityGroupId")]
+        public Output<string?> SecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
         /// </summary>
         [Output("shardCount")]
@@ -136,13 +142,19 @@ namespace Pulumi.AliCloud.Redis
         public Output<int?> SlaveReadOnlyCount { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+        /// </summary>
+        [Output("sslEnabled")]
+        public Output<string> SslEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        /// The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
         /// </summary>
         [Output("storagePerformanceLevel")]
         public Output<string?> StoragePerformanceLevel { get; private set; } = null!;
@@ -154,7 +166,7 @@ namespace Pulumi.AliCloud.Redis
         public Output<int> StorageSizeGb { get; private set; } = null!;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -178,7 +190,7 @@ namespace Pulumi.AliCloud.Redis
         public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// Zone ID.
+        /// Zone ID
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -246,7 +258,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The ID of the backup set of the cluster.  .
+        /// The ID of the backup set of the cluster.
         /// </summary>
         [Input("clusterBackupId")]
         public Input<string>? ClusterBackupId { get; set; }
@@ -258,7 +270,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
-        /// Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+        /// Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -282,7 +294,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string> InstanceType { get; set; } = null!;
 
         /// <summary>
-        /// Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        /// Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
@@ -291,7 +303,7 @@ namespace Pulumi.AliCloud.Redis
         private Input<string>? _password;
 
         /// <summary>
-        /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =.
+        /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =
         /// </summary>
         public Input<string>? Password
         {
@@ -304,7 +316,7 @@ namespace Pulumi.AliCloud.Redis
         }
 
         /// <summary>
-        /// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -322,7 +334,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
         /// </summary>
         [Input("readOnlyCount")]
         public Input<int>? ReadOnlyCount { get; set; }
@@ -340,6 +352,12 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
+        /// Security group ID
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
         /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
         /// </summary>
         [Input("shardCount")]
@@ -352,7 +370,13 @@ namespace Pulumi.AliCloud.Redis
         public Input<int>? SlaveReadOnlyCount { get; set; }
 
         /// <summary>
-        /// The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        /// Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+        /// </summary>
+        [Input("sslEnabled")]
+        public Input<string>? SslEnabled { get; set; }
+
+        /// <summary>
+        /// The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
         /// </summary>
         [Input("storagePerformanceLevel")]
         public Input<string>? StoragePerformanceLevel { get; set; }
@@ -367,7 +391,7 @@ namespace Pulumi.AliCloud.Redis
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<object> Tags
         {
@@ -394,7 +418,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
-        /// Zone ID.
+        /// Zone ID
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -420,7 +444,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The ID of the backup set of the cluster.  .
+        /// The ID of the backup set of the cluster.
         /// </summary>
         [Input("clusterBackupId")]
         public Input<string>? ClusterBackupId { get; set; }
@@ -438,7 +462,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
-        /// Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+        /// Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -462,7 +486,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        /// Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
@@ -471,7 +495,7 @@ namespace Pulumi.AliCloud.Redis
         private Input<string>? _password;
 
         /// <summary>
-        /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =.
+        /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =
         /// </summary>
         public Input<string>? Password
         {
@@ -484,7 +508,7 @@ namespace Pulumi.AliCloud.Redis
         }
 
         /// <summary>
-        /// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -502,7 +526,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
         /// </summary>
         [Input("readOnlyCount")]
         public Input<int>? ReadOnlyCount { get; set; }
@@ -520,6 +544,12 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
+        /// Security group ID
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
         /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
         /// </summary>
         [Input("shardCount")]
@@ -532,13 +562,19 @@ namespace Pulumi.AliCloud.Redis
         public Input<int>? SlaveReadOnlyCount { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+        /// </summary>
+        [Input("sslEnabled")]
+        public Input<string>? SslEnabled { get; set; }
+
+        /// <summary>
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        /// The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
         /// </summary>
         [Input("storagePerformanceLevel")]
         public Input<string>? StoragePerformanceLevel { get; set; }
@@ -553,7 +589,7 @@ namespace Pulumi.AliCloud.Redis
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<object> Tags
         {
@@ -580,7 +616,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// Zone ID.
+        /// Zone ID
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

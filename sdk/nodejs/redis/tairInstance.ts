@@ -50,7 +50,7 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public readonly autoRenewPeriod!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the backup set of the cluster.  .
+     * The ID of the backup set of the cluster.
      */
     public readonly clusterBackupId!: pulumi.Output<string | undefined>;
     /**
@@ -62,7 +62,7 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public readonly effectiveTime!: pulumi.Output<string | undefined>;
     /**
-     * Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+     * Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
@@ -78,15 +78,15 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
-     * Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
      */
     public readonly nodeType!: pulumi.Output<string>;
     /**
-     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
@@ -98,7 +98,7 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number>;
     /**
-     * Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+     * Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
      */
     public readonly readOnlyCount!: pulumi.Output<number | undefined>;
     /**
@@ -110,6 +110,10 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
     /**
+     * Security group ID
+     */
+    public readonly securityGroupId!: pulumi.Output<string | undefined>;
+    /**
      * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
      */
     public readonly shardCount!: pulumi.Output<number>;
@@ -118,11 +122,15 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public readonly slaveReadOnlyCount!: pulumi.Output<number | undefined>;
     /**
-     * The status of the resource.
+     * Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+     */
+    public readonly sslEnabled!: pulumi.Output<string>;
+    /**
+     * The status of the resource
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+     * The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
      */
     public readonly storagePerformanceLevel!: pulumi.Output<string | undefined>;
     /**
@@ -130,7 +138,7 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public readonly storageSizeGb!: pulumi.Output<number>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -146,7 +154,7 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public readonly vswitchId!: pulumi.Output<string>;
     /**
-     * Zone ID.
+     * Zone ID
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -180,8 +188,10 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["readOnlyCount"] = state ? state.readOnlyCount : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["secondaryZoneId"] = state ? state.secondaryZoneId : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["shardCount"] = state ? state.shardCount : undefined;
             resourceInputs["slaveReadOnlyCount"] = state ? state.slaveReadOnlyCount : undefined;
+            resourceInputs["sslEnabled"] = state ? state.sslEnabled : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["storagePerformanceLevel"] = state ? state.storagePerformanceLevel : undefined;
             resourceInputs["storageSizeGb"] = state ? state.storageSizeGb : undefined;
@@ -223,8 +233,10 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["readOnlyCount"] = args ? args.readOnlyCount : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["secondaryZoneId"] = args ? args.secondaryZoneId : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["shardCount"] = args ? args.shardCount : undefined;
             resourceInputs["slaveReadOnlyCount"] = args ? args.slaveReadOnlyCount : undefined;
+            resourceInputs["sslEnabled"] = args ? args.sslEnabled : undefined;
             resourceInputs["storagePerformanceLevel"] = args ? args.storagePerformanceLevel : undefined;
             resourceInputs["storageSizeGb"] = args ? args.storageSizeGb : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -255,7 +267,7 @@ export interface TairInstanceState {
      */
     autoRenewPeriod?: pulumi.Input<string>;
     /**
-     * The ID of the backup set of the cluster.  .
+     * The ID of the backup set of the cluster.
      */
     clusterBackupId?: pulumi.Input<string>;
     /**
@@ -267,7 +279,7 @@ export interface TairInstanceState {
      */
     effectiveTime?: pulumi.Input<string>;
     /**
-     * Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+     * Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
      */
     engineVersion?: pulumi.Input<string>;
     /**
@@ -283,15 +295,15 @@ export interface TairInstanceState {
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
      */
     nodeType?: pulumi.Input<string>;
     /**
-     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
      */
     password?: pulumi.Input<string>;
     /**
-     * The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -303,7 +315,7 @@ export interface TairInstanceState {
      */
     port?: pulumi.Input<number>;
     /**
-     * Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+     * Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
      */
     readOnlyCount?: pulumi.Input<number>;
     /**
@@ -315,6 +327,10 @@ export interface TairInstanceState {
      */
     secondaryZoneId?: pulumi.Input<string>;
     /**
+     * Security group ID
+     */
+    securityGroupId?: pulumi.Input<string>;
+    /**
      * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
      */
     shardCount?: pulumi.Input<number>;
@@ -323,11 +339,15 @@ export interface TairInstanceState {
      */
     slaveReadOnlyCount?: pulumi.Input<number>;
     /**
-     * The status of the resource.
+     * Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+     */
+    sslEnabled?: pulumi.Input<string>;
+    /**
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
-     * The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+     * The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
      */
     storagePerformanceLevel?: pulumi.Input<string>;
     /**
@@ -335,7 +355,7 @@ export interface TairInstanceState {
      */
     storageSizeGb?: pulumi.Input<number>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -351,7 +371,7 @@ export interface TairInstanceState {
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * Zone ID.
+     * Zone ID
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -369,7 +389,7 @@ export interface TairInstanceArgs {
      */
     autoRenewPeriod?: pulumi.Input<string>;
     /**
-     * The ID of the backup set of the cluster.  .
+     * The ID of the backup set of the cluster.
      */
     clusterBackupId?: pulumi.Input<string>;
     /**
@@ -377,7 +397,7 @@ export interface TairInstanceArgs {
      */
     effectiveTime?: pulumi.Input<string>;
     /**
-     * Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+     * Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
      */
     engineVersion?: pulumi.Input<string>;
     /**
@@ -393,15 +413,15 @@ export interface TairInstanceArgs {
      */
     instanceType: pulumi.Input<string>;
     /**
-     * Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
      */
     nodeType?: pulumi.Input<string>;
     /**
-     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
+     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
      */
     password?: pulumi.Input<string>;
     /**
-     * The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -413,7 +433,7 @@ export interface TairInstanceArgs {
      */
     port?: pulumi.Input<number>;
     /**
-     * Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+     * Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
      */
     readOnlyCount?: pulumi.Input<number>;
     /**
@@ -425,6 +445,10 @@ export interface TairInstanceArgs {
      */
     secondaryZoneId?: pulumi.Input<string>;
     /**
+     * Security group ID
+     */
+    securityGroupId?: pulumi.Input<string>;
+    /**
      * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
      */
     shardCount?: pulumi.Input<number>;
@@ -433,7 +457,11 @@ export interface TairInstanceArgs {
      */
     slaveReadOnlyCount?: pulumi.Input<number>;
     /**
-     * The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+     * Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+     */
+    sslEnabled?: pulumi.Input<string>;
+    /**
+     * The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
      */
     storagePerformanceLevel?: pulumi.Input<string>;
     /**
@@ -441,7 +469,7 @@ export interface TairInstanceArgs {
      */
     storageSizeGb?: pulumi.Input<number>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -457,7 +485,7 @@ export interface TairInstanceArgs {
      */
     vswitchId: pulumi.Input<string>;
     /**
-     * Zone ID.
+     * Zone ID
      */
     zoneId: pulumi.Input<string>;
 }

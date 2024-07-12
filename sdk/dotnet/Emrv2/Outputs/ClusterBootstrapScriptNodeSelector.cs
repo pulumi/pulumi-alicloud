@@ -14,7 +14,9 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     public sealed class ClusterBootstrapScriptNodeSelector
     {
         public readonly string? NodeGroupId;
+        public readonly ImmutableArray<string> NodeGroupIds;
         public readonly string? NodeGroupName;
+        public readonly ImmutableArray<string> NodeGroupNames;
         public readonly ImmutableArray<string> NodeGroupTypes;
         public readonly ImmutableArray<string> NodeNames;
         public readonly string NodeSelectType;
@@ -23,7 +25,11 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         private ClusterBootstrapScriptNodeSelector(
             string? nodeGroupId,
 
+            ImmutableArray<string> nodeGroupIds,
+
             string? nodeGroupName,
+
+            ImmutableArray<string> nodeGroupNames,
 
             ImmutableArray<string> nodeGroupTypes,
 
@@ -32,7 +38,9 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
             string nodeSelectType)
         {
             NodeGroupId = nodeGroupId;
+            NodeGroupIds = nodeGroupIds;
             NodeGroupName = nodeGroupName;
+            NodeGroupNames = nodeGroupNames;
             NodeGroupTypes = nodeGroupTypes;
             NodeNames = nodeNames;
             NodeSelectType = nodeSelectType;

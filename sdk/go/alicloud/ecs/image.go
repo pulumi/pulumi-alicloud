@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a custom image. You can then use a custom image to create ECS instances (RunInstances) or change the system disk for an existing instance (ReplaceSystemDisk).
+// Provides a ECS Image resource.
 //
 // > **NOTE:**  If you want to create a template from an ECS instance, you can specify the instance ID (InstanceId) to create a custom image. You must make sure that the status of the specified instance is Running or Stopped. After a successful invocation, each disk of the specified instance has a new snapshot created.
 //
@@ -19,9 +19,13 @@ import (
 //
 // > **NOTE:**  If you want to combine snapshots of multiple disks into an image template, you can specify DiskDeviceMapping to create a custom image.
 //
+// For information about ECS Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-createimage).
+//
 // > **NOTE:** Available since v1.64.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -54,8 +58,9 @@ import (
 //				return err
 //			}
 //			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
-//				Owners:    pulumi.StringRef("system"),
+//				NameRegex:    pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:       pulumi.StringRef("system"),
+//				InstanceType: pulumi.StringRef(defaultGetInstanceTypes.Ids[0]),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -129,42 +134,77 @@ import (
 //
 // ## Import
 //
-//	image can be imported using the id, e.g.
+// ECS Image can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ecs/image:Image default m-uf66871ape***yg1q***
+// $ pulumi import alicloud:ecs/image:Image example <id>
 // ```
 type Image struct {
 	pulumi.CustomResourceState
 
-	// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
-	Architecture       pulumi.StringPtrOutput `pulumi:"architecture"`
-	DeleteAutoSnapshot pulumi.BoolPtrOutput   `pulumi:"deleteAutoSnapshot"`
-	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+	// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
+	Architecture pulumi.StringPtrOutput `pulumi:"architecture"`
+	// The new boot mode of the image. Valid values:
+	//
+	// *   BIOS: Basic Input/Output System (BIOS)
+	//
+	// *   UEFI: Unified Extensible Firmware Interface (UEFI)
+	//
+	// *   UEFI-Preferred: BIOS and UEFI
+	//
+	// > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
+	//
+	// > **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
+	BootMode pulumi.StringOutput `pulumi:"bootMode"`
+	// The create time
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+	DeleteAutoSnapshot pulumi.BoolPtrOutput `pulumi:"deleteAutoSnapshot"`
+	// The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Description of the system with disks and snapshots under the image.
+	// The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+	//
+	// > **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
+	DetectionStrategy pulumi.StringPtrOutput `pulumi:"detectionStrategy"`
+	// Snapshot information for the image See `diskDeviceMapping` below.
 	DiskDeviceMappings ImageDiskDeviceMappingArrayOutput `pulumi:"diskDeviceMappings"`
-	// Indicates whether to force delete the custom image, Default is `false`.
-	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
-	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+	// Features See `features` below.
+	Features ImageFeaturesOutput `pulumi:"features"`
+	// Whether to perform forced deletion. Value range:
+	// - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
+	// - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
+	//
+	// Default value: false
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	// The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+	ImageFamily pulumi.StringPtrOutput `pulumi:"imageFamily"`
+	// The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
 	ImageName pulumi.StringOutput `pulumi:"imageName"`
+	// The image version.
+	//
+	// > **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
+	ImageVersion pulumi.StringPtrOutput `pulumi:"imageVersion"`
 	// The instance ID.
 	InstanceId pulumi.StringPtrOutput `pulumi:"instanceId"`
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+	// The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
+	LicenseType pulumi.StringPtrOutput `pulumi:"licenseType"`
+	// . Field 'name' has been deprecated from provider version 1.227.0. New field 'image_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The distribution of the operating system for the system disk in the custom image.
-	// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-	// to specify the distribution of the operating system for the system disk. Default value: Others Linux.
-	// More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
-	// **NOTE**: It's default value is Ubuntu before version 1.197.0.
+	// The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
 	Platform pulumi.StringOutput `pulumi:"platform"`
-	// The ID of the enterprise resource group to which a custom image belongs
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// Specifies a snapshot that is used to create a custom image.
+	// The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
+	//
+	// > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The ID of the snapshot that you want to use to create the custom image.
 	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
-	// The tag value of an image. The value of N ranges from 1 to 20.
+	// The status of the image. By default, if you do not specify this parameter, only images in the Available state are returned.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The tag
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
@@ -198,66 +238,136 @@ func GetImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Image resources.
 type imageState struct {
-	// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
-	Architecture       *string `pulumi:"architecture"`
-	DeleteAutoSnapshot *bool   `pulumi:"deleteAutoSnapshot"`
-	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+	// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
+	Architecture *string `pulumi:"architecture"`
+	// The new boot mode of the image. Valid values:
+	//
+	// *   BIOS: Basic Input/Output System (BIOS)
+	//
+	// *   UEFI: Unified Extensible Firmware Interface (UEFI)
+	//
+	// *   UEFI-Preferred: BIOS and UEFI
+	//
+	// > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
+	//
+	// > **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
+	BootMode *string `pulumi:"bootMode"`
+	// The create time
+	CreateTime *string `pulumi:"createTime"`
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
+	// The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
 	Description *string `pulumi:"description"`
-	// Description of the system with disks and snapshots under the image.
+	// The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+	//
+	// > **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
+	DetectionStrategy *string `pulumi:"detectionStrategy"`
+	// Snapshot information for the image See `diskDeviceMapping` below.
 	DiskDeviceMappings []ImageDiskDeviceMapping `pulumi:"diskDeviceMappings"`
-	// Indicates whether to force delete the custom image, Default is `false`.
-	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
-	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+	// Features See `features` below.
+	Features *ImageFeatures `pulumi:"features"`
+	// Whether to perform forced deletion. Value range:
+	// - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
+	// - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
+	//
+	// Default value: false
 	Force *bool `pulumi:"force"`
-	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	// The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+	ImageFamily *string `pulumi:"imageFamily"`
+	// The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
 	ImageName *string `pulumi:"imageName"`
+	// The image version.
+	//
+	// > **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
+	ImageVersion *string `pulumi:"imageVersion"`
 	// The instance ID.
 	InstanceId *string `pulumi:"instanceId"`
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+	// The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
+	LicenseType *string `pulumi:"licenseType"`
+	// . Field 'name' has been deprecated from provider version 1.227.0. New field 'image_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead.
 	Name *string `pulumi:"name"`
-	// The distribution of the operating system for the system disk in the custom image.
-	// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-	// to specify the distribution of the operating system for the system disk. Default value: Others Linux.
-	// More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
-	// **NOTE**: It's default value is Ubuntu before version 1.197.0.
+	// The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
 	Platform *string `pulumi:"platform"`
-	// The ID of the enterprise resource group to which a custom image belongs
+	// The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
+	//
+	// > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Specifies a snapshot that is used to create a custom image.
+	// The ID of the snapshot that you want to use to create the custom image.
 	SnapshotId *string `pulumi:"snapshotId"`
-	// The tag value of an image. The value of N ranges from 1 to 20.
+	// The status of the image. By default, if you do not specify this parameter, only images in the Available state are returned.
+	Status *string `pulumi:"status"`
+	// The tag
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type ImageState struct {
-	// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
-	Architecture       pulumi.StringPtrInput
+	// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
+	Architecture pulumi.StringPtrInput
+	// The new boot mode of the image. Valid values:
+	//
+	// *   BIOS: Basic Input/Output System (BIOS)
+	//
+	// *   UEFI: Unified Extensible Firmware Interface (UEFI)
+	//
+	// *   UEFI-Preferred: BIOS and UEFI
+	//
+	// > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
+	//
+	// > **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
+	BootMode pulumi.StringPtrInput
+	// The create time
+	CreateTime pulumi.StringPtrInput
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
 	DeleteAutoSnapshot pulumi.BoolPtrInput
-	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+	// The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
 	Description pulumi.StringPtrInput
-	// Description of the system with disks and snapshots under the image.
+	// The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+	//
+	// > **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
+	DetectionStrategy pulumi.StringPtrInput
+	// Snapshot information for the image See `diskDeviceMapping` below.
 	DiskDeviceMappings ImageDiskDeviceMappingArrayInput
-	// Indicates whether to force delete the custom image, Default is `false`.
-	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
-	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+	// Features See `features` below.
+	Features ImageFeaturesPtrInput
+	// Whether to perform forced deletion. Value range:
+	// - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
+	// - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
+	//
+	// Default value: false
 	Force pulumi.BoolPtrInput
-	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	// The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+	ImageFamily pulumi.StringPtrInput
+	// The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
 	ImageName pulumi.StringPtrInput
+	// The image version.
+	//
+	// > **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
+	ImageVersion pulumi.StringPtrInput
 	// The instance ID.
 	InstanceId pulumi.StringPtrInput
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+	// The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
+	LicenseType pulumi.StringPtrInput
+	// . Field 'name' has been deprecated from provider version 1.227.0. New field 'image_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead.
 	Name pulumi.StringPtrInput
-	// The distribution of the operating system for the system disk in the custom image.
-	// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-	// to specify the distribution of the operating system for the system disk. Default value: Others Linux.
-	// More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
-	// **NOTE**: It's default value is Ubuntu before version 1.197.0.
+	// The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
 	Platform pulumi.StringPtrInput
-	// The ID of the enterprise resource group to which a custom image belongs
+	// The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
+	//
+	// > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
 	ResourceGroupId pulumi.StringPtrInput
-	// Specifies a snapshot that is used to create a custom image.
+	// The ID of the snapshot that you want to use to create the custom image.
 	SnapshotId pulumi.StringPtrInput
-	// The tag value of an image. The value of N ranges from 1 to 20.
+	// The status of the image. By default, if you do not specify this parameter, only images in the Available state are returned.
+	Status pulumi.StringPtrInput
+	// The tag
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.MapInput
 }
 
@@ -266,67 +376,129 @@ func (ImageState) ElementType() reflect.Type {
 }
 
 type imageArgs struct {
-	// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
-	Architecture       *string `pulumi:"architecture"`
-	DeleteAutoSnapshot *bool   `pulumi:"deleteAutoSnapshot"`
-	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+	// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
+	Architecture *string `pulumi:"architecture"`
+	// The new boot mode of the image. Valid values:
+	//
+	// *   BIOS: Basic Input/Output System (BIOS)
+	//
+	// *   UEFI: Unified Extensible Firmware Interface (UEFI)
+	//
+	// *   UEFI-Preferred: BIOS and UEFI
+	//
+	// > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
+	//
+	// > **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
+	BootMode *string `pulumi:"bootMode"`
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
+	// The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
 	Description *string `pulumi:"description"`
-	// Description of the system with disks and snapshots under the image.
+	// The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+	//
+	// > **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
+	DetectionStrategy *string `pulumi:"detectionStrategy"`
+	// Snapshot information for the image See `diskDeviceMapping` below.
 	DiskDeviceMappings []ImageDiskDeviceMapping `pulumi:"diskDeviceMappings"`
-	// Indicates whether to force delete the custom image, Default is `false`.
-	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
-	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+	// Features See `features` below.
+	Features *ImageFeatures `pulumi:"features"`
+	// Whether to perform forced deletion. Value range:
+	// - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
+	// - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
+	//
+	// Default value: false
 	Force *bool `pulumi:"force"`
-	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	// The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+	ImageFamily *string `pulumi:"imageFamily"`
+	// The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
 	ImageName *string `pulumi:"imageName"`
+	// The image version.
+	//
+	// > **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
+	ImageVersion *string `pulumi:"imageVersion"`
 	// The instance ID.
 	InstanceId *string `pulumi:"instanceId"`
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+	// The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
+	LicenseType *string `pulumi:"licenseType"`
+	// . Field 'name' has been deprecated from provider version 1.227.0. New field 'image_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead.
 	Name *string `pulumi:"name"`
-	// The distribution of the operating system for the system disk in the custom image.
-	// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-	// to specify the distribution of the operating system for the system disk. Default value: Others Linux.
-	// More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
-	// **NOTE**: It's default value is Ubuntu before version 1.197.0.
+	// The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
 	Platform *string `pulumi:"platform"`
-	// The ID of the enterprise resource group to which a custom image belongs
+	// The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
+	//
+	// > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Specifies a snapshot that is used to create a custom image.
+	// The ID of the snapshot that you want to use to create the custom image.
 	SnapshotId *string `pulumi:"snapshotId"`
-	// The tag value of an image. The value of N ranges from 1 to 20.
+	// The tag
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Image resource.
 type ImageArgs struct {
-	// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
-	Architecture       pulumi.StringPtrInput
+	// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
+	Architecture pulumi.StringPtrInput
+	// The new boot mode of the image. Valid values:
+	//
+	// *   BIOS: Basic Input/Output System (BIOS)
+	//
+	// *   UEFI: Unified Extensible Firmware Interface (UEFI)
+	//
+	// *   UEFI-Preferred: BIOS and UEFI
+	//
+	// > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
+	//
+	// > **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
+	BootMode pulumi.StringPtrInput
+	// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
 	DeleteAutoSnapshot pulumi.BoolPtrInput
-	// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+	// The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
 	Description pulumi.StringPtrInput
-	// Description of the system with disks and snapshots under the image.
+	// The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+	//
+	// > **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
+	DetectionStrategy pulumi.StringPtrInput
+	// Snapshot information for the image See `diskDeviceMapping` below.
 	DiskDeviceMappings ImageDiskDeviceMappingArrayInput
-	// Indicates whether to force delete the custom image, Default is `false`.
-	// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
-	// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+	// Features See `features` below.
+	Features ImageFeaturesPtrInput
+	// Whether to perform forced deletion. Value range:
+	// - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
+	// - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
+	//
+	// Default value: false
 	Force pulumi.BoolPtrInput
-	// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+	// The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+	ImageFamily pulumi.StringPtrInput
+	// The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
 	ImageName pulumi.StringPtrInput
+	// The image version.
+	//
+	// > **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
+	ImageVersion pulumi.StringPtrInput
 	// The instance ID.
 	InstanceId pulumi.StringPtrInput
-	// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+	// The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
+	LicenseType pulumi.StringPtrInput
+	// . Field 'name' has been deprecated from provider version 1.227.0. New field 'image_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead.
 	Name pulumi.StringPtrInput
-	// The distribution of the operating system for the system disk in the custom image.
-	// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-	// to specify the distribution of the operating system for the system disk. Default value: Others Linux.
-	// More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
-	// **NOTE**: It's default value is Ubuntu before version 1.197.0.
+	// The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
 	Platform pulumi.StringPtrInput
-	// The ID of the enterprise resource group to which a custom image belongs
+	// The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
+	//
+	// > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
 	ResourceGroupId pulumi.StringPtrInput
-	// Specifies a snapshot that is used to create a custom image.
+	// The ID of the snapshot that you want to use to create the custom image.
 	SnapshotId pulumi.StringPtrInput
-	// The tag value of an image. The value of N ranges from 1 to 20.
+	// The tag
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.MapInput
 }
 
@@ -417,35 +589,82 @@ func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return o
 }
 
-// Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x8664`.
+// The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
 func (o ImageOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.Architecture }).(pulumi.StringPtrOutput)
 }
 
+// The new boot mode of the image. Valid values:
+//
+// *   BIOS: Basic Input/Output System (BIOS)
+//
+// *   UEFI: Unified Extensible Firmware Interface (UEFI)
+//
+// *   UEFI-Preferred: BIOS and UEFI
+//
+// > **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
+//
+// > **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
+func (o ImageOutput) BootMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.BootMode }).(pulumi.StringOutput)
+}
+
+// The create time
+func (o ImageOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
 func (o ImageOutput) DeleteAutoSnapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.BoolPtrOutput { return v.DeleteAutoSnapshot }).(pulumi.BoolPtrOutput)
 }
 
-// The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+// The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
 func (o ImageOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Description of the system with disks and snapshots under the image.
+// The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+//
+// > **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
+func (o ImageOutput) DetectionStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.DetectionStrategy }).(pulumi.StringPtrOutput)
+}
+
+// Snapshot information for the image See `diskDeviceMapping` below.
 func (o ImageOutput) DiskDeviceMappings() ImageDiskDeviceMappingArrayOutput {
 	return o.ApplyT(func(v *Image) ImageDiskDeviceMappingArrayOutput { return v.DiskDeviceMappings }).(ImageDiskDeviceMappingArrayOutput)
 }
 
-// Indicates whether to force delete the custom image, Default is `false`.
-// - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
-// - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+// Features See `features` below.
+func (o ImageOutput) Features() ImageFeaturesOutput {
+	return o.ApplyT(func(v *Image) ImageFeaturesOutput { return v.Features }).(ImageFeaturesOutput)
+}
+
+// Whether to perform forced deletion. Value range:
+// - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
+// - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
+//
+// Default value: false
 func (o ImageOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+// The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+func (o ImageOutput) ImageFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.ImageFamily }).(pulumi.StringPtrOutput)
+}
+
+// The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
 func (o ImageOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// The image version.
+//
+// > **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
+func (o ImageOutput) ImageVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.ImageVersion }).(pulumi.StringPtrOutput)
 }
 
 // The instance ID.
@@ -453,31 +672,43 @@ func (o ImageOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: Attribute 'name' has been deprecated from version 1.69.0. Use `imageName` instead.
+// The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
+func (o ImageOutput) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.LicenseType }).(pulumi.StringPtrOutput)
+}
+
+// . Field 'name' has been deprecated from provider version 1.227.0. New field 'image_name' instead.
+//
+// Deprecated: Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead.
 func (o ImageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The distribution of the operating system for the system disk in the custom image.
-// If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-// to specify the distribution of the operating system for the system disk. Default value: Others Linux.
-// More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
-// **NOTE**: It's default value is Ubuntu before version 1.197.0.
+// The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
 func (o ImageOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Platform }).(pulumi.StringOutput)
 }
 
-// The ID of the enterprise resource group to which a custom image belongs
-func (o ImageOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+// The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
+//
+// > **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
+func (o ImageOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Specifies a snapshot that is used to create a custom image.
+// The ID of the snapshot that you want to use to create the custom image.
 func (o ImageOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
-// The tag value of an image. The value of N ranges from 1 to 20.
+// The status of the image. By default, if you do not specify this parameter, only images in the Available state are returned.
+func (o ImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o ImageOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Image) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

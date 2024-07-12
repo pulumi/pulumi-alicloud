@@ -9,6 +9,7 @@ import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -119,6 +120,27 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The timeout period of idle connections. Unit: seconds. Valid values:
+     * - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+     * - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+     * - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+     * 
+     */
+    @Import(name="idleTimeout")
+    private @Nullable Output<Integer> idleTimeout;
+
+    /**
+     * @return The timeout period of idle connections. Unit: seconds. Valid values:
+     * - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+     * - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+     * - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+     * 
+     */
+    public Optional<Output<Integer>> idleTimeout() {
+        return Optional.ofNullable(this.idleTimeout);
+    }
+
+    /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      * - `Standard`: intelligent routing.
      * - `CustomRouting`: custom routing.
@@ -200,6 +222,23 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+     * &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+     * 
+     */
+    @Import(name="requestTimeout")
+    private @Nullable Output<Integer> requestTimeout;
+
+    /**
+     * @return The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+     * &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+     * 
+     */
+    public Optional<Output<Integer>> requestTimeout() {
+        return Optional.ofNullable(this.requestTimeout);
+    }
+
+    /**
      * The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
      * 
      */
@@ -238,11 +277,13 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.forwardedForConfig = $.forwardedForConfig;
         this.httpVersion = $.httpVersion;
+        this.idleTimeout = $.idleTimeout;
         this.listenerType = $.listenerType;
         this.name = $.name;
         this.portRanges = $.portRanges;
         this.protocol = $.protocol;
         this.proxyProtocol = $.proxyProtocol;
+        this.requestTimeout = $.requestTimeout;
         this.securityPolicyId = $.securityPolicyId;
         this.status = $.status;
     }
@@ -411,6 +452,33 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param idleTimeout The timeout period of idle connections. Unit: seconds. Valid values:
+         * - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+         * - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+         * - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeout(@Nullable Output<Integer> idleTimeout) {
+            $.idleTimeout = idleTimeout;
+            return this;
+        }
+
+        /**
+         * @param idleTimeout The timeout period of idle connections. Unit: seconds. Valid values:
+         * - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+         * - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+         * - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeout(Integer idleTimeout) {
+            return idleTimeout(Output.of(idleTimeout));
+        }
+
+        /**
          * @param listenerType The routing type of the listener. Default Value: `Standard`. Valid values:
          * - `Standard`: intelligent routing.
          * - `CustomRouting`: custom routing.
@@ -530,6 +598,29 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder proxyProtocol(Boolean proxyProtocol) {
             return proxyProtocol(Output.of(proxyProtocol));
+        }
+
+        /**
+         * @param requestTimeout The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+         * &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestTimeout(@Nullable Output<Integer> requestTimeout) {
+            $.requestTimeout = requestTimeout;
+            return this;
+        }
+
+        /**
+         * @param requestTimeout The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+         * &gt; **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestTimeout(Integer requestTimeout) {
+            return requestTimeout(Output.of(requestTimeout));
         }
 
         /**

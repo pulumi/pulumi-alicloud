@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DiskInstanceAttachment{}
 	case "alicloud:ens/eip:Eip":
 		r = &Eip{}
+	case "alicloud:ens/eipInstanceAttachment:EipInstanceAttachment":
+		r = &EipInstanceAttachment{}
 	case "alicloud:ens/image:Image":
 		r = &Image{}
 	case "alicloud:ens/instance:Instance":
@@ -37,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KeyPair{}
 	case "alicloud:ens/loadBalancer:LoadBalancer":
 		r = &LoadBalancer{}
+	case "alicloud:ens/natGateway:NatGateway":
+		r = &NatGateway{}
 	case "alicloud:ens/network:Network":
 		r = &Network{}
 	case "alicloud:ens/securityGroup:SecurityGroup":
@@ -75,6 +79,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"ens/eipInstanceAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"ens/image",
 		&module{version},
 	)
@@ -96,6 +105,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ens/loadBalancer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ens/natGateway",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

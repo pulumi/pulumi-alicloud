@@ -153,6 +153,36 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * The number of physical CPU cores. You can specify this parameter for only specific instance types.
+     * 
+     */
+    @Import(name="cpuOptionsCore")
+    private @Nullable Output<Integer> cpuOptionsCore;
+
+    /**
+     * @return The number of physical CPU cores. You can specify this parameter for only specific instance types.
+     * 
+     */
+    public Optional<Output<Integer>> cpuOptionsCore() {
+        return Optional.ofNullable(this.cpuOptionsCore);
+    }
+
+    /**
+     * The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+     * 
+     */
+    @Import(name="cpuOptionsThreadsPerCore")
+    private @Nullable Output<Integer> cpuOptionsThreadsPerCore;
+
+    /**
+     * @return The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+     * 
+     */
+    public Optional<Output<Integer>> cpuOptionsThreadsPerCore() {
+        return Optional.ofNullable(this.cpuOptionsThreadsPerCore);
+    }
+
+    /**
      * The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
      * 256 characters in length and cannot start with http:// or https://.
      * 
@@ -607,6 +637,8 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
         this.containerGroupName = $.containerGroupName;
         this.containers = $.containers;
         this.cpu = $.cpu;
+        this.cpuOptionsCore = $.cpuOptionsCore;
+        this.cpuOptionsThreadsPerCore = $.cpuOptionsThreadsPerCore;
         this.description = $.description;
         this.dnsPolicy = $.dnsPolicy;
         this.egressBandwidth = $.egressBandwidth;
@@ -845,6 +877,48 @@ public final class EciScalingConfigurationArgs extends com.pulumi.resources.Reso
          */
         public Builder cpu(Double cpu) {
             return cpu(Output.of(cpu));
+        }
+
+        /**
+         * @param cpuOptionsCore The number of physical CPU cores. You can specify this parameter for only specific instance types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuOptionsCore(@Nullable Output<Integer> cpuOptionsCore) {
+            $.cpuOptionsCore = cpuOptionsCore;
+            return this;
+        }
+
+        /**
+         * @param cpuOptionsCore The number of physical CPU cores. You can specify this parameter for only specific instance types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuOptionsCore(Integer cpuOptionsCore) {
+            return cpuOptionsCore(Output.of(cpuOptionsCore));
+        }
+
+        /**
+         * @param cpuOptionsThreadsPerCore The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuOptionsThreadsPerCore(@Nullable Output<Integer> cpuOptionsThreadsPerCore) {
+            $.cpuOptionsThreadsPerCore = cpuOptionsThreadsPerCore;
+            return this;
+        }
+
+        /**
+         * @param cpuOptionsThreadsPerCore The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuOptionsThreadsPerCore(Integer cpuOptionsThreadsPerCore) {
+            return cpuOptionsThreadsPerCore(Output.of(cpuOptionsThreadsPerCore));
         }
 
         /**

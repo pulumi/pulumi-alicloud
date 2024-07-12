@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs;
 
 import com.pulumi.alicloud.ecs.inputs.ImageDiskDeviceMappingArgs;
+import com.pulumi.alicloud.ecs.inputs.ImageFeaturesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -21,36 +22,79 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     public static final ImageArgs Empty = new ImageArgs();
 
     /**
-     * Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+     * The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
      * 
      */
     @Import(name="architecture")
     private @Nullable Output<String> architecture;
 
     /**
-     * @return Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+     * @return The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
      * 
      */
     public Optional<Output<String>> architecture() {
         return Optional.ofNullable(this.architecture);
     }
 
+    /**
+     * The new boot mode of the image. Valid values:
+     * 
+     * *   BIOS: Basic Input/Output System (BIOS)
+     * 
+     * *   UEFI: Unified Extensible Firmware Interface (UEFI)
+     * 
+     * *   UEFI-Preferred: BIOS and UEFI
+     * 
+     * &gt; **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
+     * 
+     * &gt; **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
+     * 
+     */
+    @Import(name="bootMode")
+    private @Nullable Output<String> bootMode;
+
+    /**
+     * @return The new boot mode of the image. Valid values:
+     * 
+     * *   BIOS: Basic Input/Output System (BIOS)
+     * 
+     * *   UEFI: Unified Extensible Firmware Interface (UEFI)
+     * 
+     * *   UEFI-Preferred: BIOS and UEFI
+     * 
+     * &gt; **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
+     * 
+     * &gt; **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
+     * 
+     */
+    public Optional<Output<String>> bootMode() {
+        return Optional.ofNullable(this.bootMode);
+    }
+
+    /**
+     * Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     * 
+     */
     @Import(name="deleteAutoSnapshot")
     private @Nullable Output<Boolean> deleteAutoSnapshot;
 
+    /**
+     * @return Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+     * 
+     */
     public Optional<Output<Boolean>> deleteAutoSnapshot() {
         return Optional.ofNullable(this.deleteAutoSnapshot);
     }
 
     /**
-     * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+     * The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+     * @return The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
      * 
      */
     public Optional<Output<String>> description() {
@@ -58,14 +102,33 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the system with disks and snapshots under the image.
+     * The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+     * 
+     * &gt; **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
+     * 
+     */
+    @Import(name="detectionStrategy")
+    private @Nullable Output<String> detectionStrategy;
+
+    /**
+     * @return The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+     * 
+     * &gt; **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
+     * 
+     */
+    public Optional<Output<String>> detectionStrategy() {
+        return Optional.ofNullable(this.detectionStrategy);
+    }
+
+    /**
+     * Snapshot information for the image See `disk_device_mapping` below.
      * 
      */
     @Import(name="diskDeviceMappings")
     private @Nullable Output<List<ImageDiskDeviceMappingArgs>> diskDeviceMappings;
 
     /**
-     * @return Description of the system with disks and snapshots under the image.
+     * @return Snapshot information for the image See `disk_device_mapping` below.
      * 
      */
     public Optional<Output<List<ImageDiskDeviceMappingArgs>>> diskDeviceMappings() {
@@ -73,18 +136,37 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether to force delete the custom image, Default is `false`.
-     * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
-     * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+     * Features See `features` below.
+     * 
+     */
+    @Import(name="features")
+    private @Nullable Output<ImageFeaturesArgs> features;
+
+    /**
+     * @return Features See `features` below.
+     * 
+     */
+    public Optional<Output<ImageFeaturesArgs>> features() {
+        return Optional.ofNullable(this.features);
+    }
+
+    /**
+     * Whether to perform forced deletion. Value range:
+     * - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
+     * - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
+     * 
+     * Default value: false
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return Indicates whether to force delete the custom image, Default is `false`.
-     * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
-     * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+     * @return Whether to perform forced deletion. Value range:
+     * - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
+     * - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
+     * 
+     * Default value: false
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -92,18 +174,52 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     * The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+     * 
+     */
+    @Import(name="imageFamily")
+    private @Nullable Output<String> imageFamily;
+
+    /**
+     * @return The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+     * 
+     */
+    public Optional<Output<String>> imageFamily() {
+        return Optional.ofNullable(this.imageFamily);
+    }
+
+    /**
+     * The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
      * 
      */
     @Import(name="imageName")
     private @Nullable Output<String> imageName;
 
     /**
-     * @return The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+     * @return The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
      * 
      */
     public Optional<Output<String>> imageName() {
         return Optional.ofNullable(this.imageName);
+    }
+
+    /**
+     * The image version.
+     * 
+     * &gt; **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
+     * 
+     */
+    @Import(name="imageVersion")
+    private @Nullable Output<String> imageVersion;
+
+    /**
+     * @return The image version.
+     * 
+     * &gt; **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
+     * 
+     */
+    public Optional<Output<String>> imageVersion() {
+        return Optional.ofNullable(this.imageVersion);
     }
 
     /**
@@ -122,41 +238,52 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `image_name` instead.
+     * The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
      * 
      */
-    @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead. */
+    @Import(name="licenseType")
+    private @Nullable Output<String> licenseType;
+
+    /**
+     * @return The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
+     * 
+     */
+    public Optional<Output<String>> licenseType() {
+        return Optional.ofNullable(this.licenseType);
+    }
+
+    /**
+     * . Field &#39;name&#39; has been deprecated from provider version 1.227.0. New field &#39;image_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.227.0. New field &#39;image_name&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.227.0. New field &#39;image_name&#39; instead.
+     * 
      * @deprecated
-     * Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `image_name` instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.227.0. New field &#39;image_name&#39; instead.
      * 
      */
-    @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The distribution of the operating system for the system disk in the custom image.
-     * If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-     * to specify the distribution of the operating system for the system disk. Default value: Others Linux.
-     * More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
-     * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
+     * The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
      * 
      */
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
     /**
-     * @return The distribution of the operating system for the system disk in the custom image.
-     * If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-     * to specify the distribution of the operating system for the system disk. Default value: Others Linux.
-     * More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
-     * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
+     * @return The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
      * 
      */
     public Optional<Output<String>> platform() {
@@ -164,14 +291,18 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the enterprise resource group to which a custom image belongs
+     * The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
+     * 
+     * &gt; **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the enterprise resource group to which a custom image belongs
+     * @return The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
+     * 
+     * &gt; **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -179,14 +310,14 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies a snapshot that is used to create a custom image.
+     * The ID of the snapshot that you want to use to create the custom image.
      * 
      */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
 
     /**
-     * @return Specifies a snapshot that is used to create a custom image.
+     * @return The ID of the snapshot that you want to use to create the custom image.
      * 
      */
     public Optional<Output<String>> snapshotId() {
@@ -194,14 +325,18 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tag value of an image. The value of N ranges from 1 to 20.
+     * The tag
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tag value of an image. The value of N ranges from 1 to 20.
+     * @return The tag
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -212,12 +347,18 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     private ImageArgs(ImageArgs $) {
         this.architecture = $.architecture;
+        this.bootMode = $.bootMode;
         this.deleteAutoSnapshot = $.deleteAutoSnapshot;
         this.description = $.description;
+        this.detectionStrategy = $.detectionStrategy;
         this.diskDeviceMappings = $.diskDeviceMappings;
+        this.features = $.features;
         this.force = $.force;
+        this.imageFamily = $.imageFamily;
         this.imageName = $.imageName;
+        this.imageVersion = $.imageVersion;
         this.instanceId = $.instanceId;
+        this.licenseType = $.licenseType;
         this.name = $.name;
         this.platform = $.platform;
         this.resourceGroupId = $.resourceGroupId;
@@ -244,7 +385,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param architecture Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+         * @param architecture The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
          * 
          * @return builder
          * 
@@ -255,7 +396,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param architecture Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
+         * @param architecture The system architecture of the system disk. If you specify a data disk snapshot to create the system disk of the custom image, you must use Architecture to specify the system architecture of the system disk. Valid values: `i386`, `x86\_64`, `arm64`. Default value: `x86\_64`.
          * 
          * @return builder
          * 
@@ -264,17 +405,70 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
             return architecture(Output.of(architecture));
         }
 
+        /**
+         * @param bootMode The new boot mode of the image. Valid values:
+         * 
+         * *   BIOS: Basic Input/Output System (BIOS)
+         * 
+         * *   UEFI: Unified Extensible Firmware Interface (UEFI)
+         * 
+         * *   UEFI-Preferred: BIOS and UEFI
+         * 
+         * &gt; **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
+         * 
+         * &gt; **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootMode(@Nullable Output<String> bootMode) {
+            $.bootMode = bootMode;
+            return this;
+        }
+
+        /**
+         * @param bootMode The new boot mode of the image. Valid values:
+         * 
+         * *   BIOS: Basic Input/Output System (BIOS)
+         * 
+         * *   UEFI: Unified Extensible Firmware Interface (UEFI)
+         * 
+         * *   UEFI-Preferred: BIOS and UEFI
+         * 
+         * &gt; **NOTE:**   Before you change the boot mode, we recommend that you obtain the boot modes supported by the image. If you specify an unsupported boot mode for the image, ECS instances that use the image cannot start as expected. If you do not know which boot modes are supported by the image, we recommend that you use the image check feature to perform a check. For information about the image check feature, see [Overview](https://www.alibabacloud.com/help/en/doc-detail/439819.html).
+         * 
+         * &gt; **NOTE:**   For information about the UEFI-Preferred boot mode, see [Best practices for ECS instance boot modes](https://www.alibabacloud.com/help/en/doc-detail/2244655.html).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootMode(String bootMode) {
+            return bootMode(Output.of(bootMode));
+        }
+
+        /**
+         * @param deleteAutoSnapshot Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteAutoSnapshot(@Nullable Output<Boolean> deleteAutoSnapshot) {
             $.deleteAutoSnapshot = deleteAutoSnapshot;
             return this;
         }
 
+        /**
+         * @param deleteAutoSnapshot Not the public attribute and it used to automatically delete dependence snapshots while deleting the image.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deleteAutoSnapshot(Boolean deleteAutoSnapshot) {
             return deleteAutoSnapshot(Output.of(deleteAutoSnapshot));
         }
 
         /**
-         * @param description The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+         * @param description The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
          * 
          * @return builder
          * 
@@ -285,7 +479,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
+         * @param description The new description of the custom image. The description must be 2 to 256 characters in length It cannot start with `http://` or `https://`. This parameter is empty by default, which specifies that the original description is retained.
          * 
          * @return builder
          * 
@@ -295,7 +489,32 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskDeviceMappings Description of the system with disks and snapshots under the image.
+         * @param detectionStrategy The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+         * 
+         * &gt; **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder detectionStrategy(@Nullable Output<String> detectionStrategy) {
+            $.detectionStrategy = detectionStrategy;
+            return this;
+        }
+
+        /**
+         * @param detectionStrategy The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+         * 
+         * &gt; **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder detectionStrategy(String detectionStrategy) {
+            return detectionStrategy(Output.of(detectionStrategy));
+        }
+
+        /**
+         * @param diskDeviceMappings Snapshot information for the image See `disk_device_mapping` below.
          * 
          * @return builder
          * 
@@ -306,7 +525,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskDeviceMappings Description of the system with disks and snapshots under the image.
+         * @param diskDeviceMappings Snapshot information for the image See `disk_device_mapping` below.
          * 
          * @return builder
          * 
@@ -316,7 +535,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskDeviceMappings Description of the system with disks and snapshots under the image.
+         * @param diskDeviceMappings Snapshot information for the image See `disk_device_mapping` below.
          * 
          * @return builder
          * 
@@ -326,9 +545,32 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force Indicates whether to force delete the custom image, Default is `false`.
-         * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
-         * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+         * @param features Features See `features` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder features(@Nullable Output<ImageFeaturesArgs> features) {
+            $.features = features;
+            return this;
+        }
+
+        /**
+         * @param features Features See `features` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder features(ImageFeaturesArgs features) {
+            return features(Output.of(features));
+        }
+
+        /**
+         * @param force Whether to perform forced deletion. Value range:
+         * - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
+         * - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
+         * 
+         * Default value: false
          * 
          * @return builder
          * 
@@ -339,9 +581,11 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force Indicates whether to force delete the custom image, Default is `false`.
-         * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
-         * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
+         * @param force Whether to perform forced deletion. Value range:
+         * - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
+         * - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
+         * 
+         * Default value: false
          * 
          * @return builder
          * 
@@ -351,7 +595,28 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageName The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+         * @param imageFamily The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageFamily(@Nullable Output<String> imageFamily) {
+            $.imageFamily = imageFamily;
+            return this;
+        }
+
+        /**
+         * @param imageFamily The name of the image family. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageFamily(String imageFamily) {
+            return imageFamily(Output.of(imageFamily));
+        }
+
+        /**
+         * @param imageName The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
          * 
          * @return builder
          * 
@@ -362,13 +627,38 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageName The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
+         * @param imageName The name of the custom image. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with acs: or aliyun. It cannot contain http:// or https://. It can contain letters, digits, periods (.), colons (:), underscores (\_), and hyphens (-). By default, this parameter is empty. In this case, the original name is retained.
          * 
          * @return builder
          * 
          */
         public Builder imageName(String imageName) {
             return imageName(Output.of(imageName));
+        }
+
+        /**
+         * @param imageVersion The image version.
+         * 
+         * &gt; **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageVersion(@Nullable Output<String> imageVersion) {
+            $.imageVersion = imageVersion;
+            return this;
+        }
+
+        /**
+         * @param imageVersion The image version.
+         * 
+         * &gt; **NOTE:**  If you specify an instance by configuring `InstanceId`, and the instance uses an Alibaba Cloud Marketplace image or a custom image that is created from an Alibaba Cloud Marketplace image, you must leave this parameter empty or set this parameter to the value of ImageVersion of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageVersion(String imageVersion) {
+            return imageVersion(Output.of(imageVersion));
         }
 
         /**
@@ -393,36 +683,57 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param licenseType The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenseType(@Nullable Output<String> licenseType) {
+            $.licenseType = licenseType;
+            return this;
+        }
+
+        /**
+         * @param licenseType The type of the license that is used to activate the operating system after the image is imported. Set the value to BYOL. BYOL: The license that comes with the source operating system is used. When you use the BYOL license, make sure that your license key is supported by Alibaba Cloud.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenseType(String licenseType) {
+            return licenseType(Output.of(licenseType));
+        }
+
+        /**
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.227.0. New field &#39;image_name&#39; instead.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `image_name` instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.227.0. New field &#39;image_name&#39; instead.
          * 
          */
-        @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.227.0. New field &#39;image_name&#39; instead.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;name&#39; has been deprecated from version 1.69.0. Use `image_name` instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.227.0. New field &#39;image_name&#39; instead.
          * 
          */
-        @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.227.0. New field 'image_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param platform The distribution of the operating system for the system disk in the custom image.
-         * If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-         * to specify the distribution of the operating system for the system disk. Default value: Others Linux.
-         * More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
-         * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
+         * @param platform The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
          * 
          * @return builder
          * 
@@ -433,11 +744,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param platform The distribution of the operating system for the system disk in the custom image.
-         * If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-         * to specify the distribution of the operating system for the system disk. Default value: Others Linux.
-         * More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
-         * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
+         * @param platform The operating system distribution for the system disk in the custom image. If you specify a data disk snapshot to create the system disk of the custom image, use Platform to specify the operating system distribution for the system disk. Valid values: `Aliyun`, `Anolis`, `CentOS`, `Ubuntu`, `CoreOS`, `SUSE`, `Debian`, `OpenSUSE`, `FreeBSD`, `RedHat`, `Kylin`, `UOS`, `Fedora`, `Fedora CoreOS`, `CentOS Stream`, `AlmaLinux`, `Rocky Linux`, `Gentoo`, `Customized Linux`, `Others Linux`, `Windows Server 2022`, `Windows Server 2019`, `Windows Server 2016`, `Windows Server 2012`, `Windows Server 2008`, `Windows Server 2003`. Default value: `Others Linux`.
          * 
          * @return builder
          * 
@@ -447,7 +754,9 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the enterprise resource group to which a custom image belongs
+         * @param resourceGroupId The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
+         * 
+         * &gt; **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
          * 
          * @return builder
          * 
@@ -458,7 +767,9 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the enterprise resource group to which a custom image belongs
+         * @param resourceGroupId The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
+         * 
+         * &gt; **NOTE:**   If you call the CreateImage operation as a Resource Access Management (RAM) user who does not have the permissions to manage the default resource group and do not specify `ResourceGroupId`, the `Forbbiden: User not authorized to operate on the specified resource` error message is returned. You must specify the ID of a resource group that the RAM user has the permissions to manage or grant the RAM user the permissions to manage the default resource group before you call the CreateImage operation again.
          * 
          * @return builder
          * 
@@ -468,7 +779,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotId Specifies a snapshot that is used to create a custom image.
+         * @param snapshotId The ID of the snapshot that you want to use to create the custom image.
          * 
          * @return builder
          * 
@@ -479,7 +790,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotId Specifies a snapshot that is used to create a custom image.
+         * @param snapshotId The ID of the snapshot that you want to use to create the custom image.
          * 
          * @return builder
          * 
@@ -489,7 +800,9 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag value of an image. The value of N ranges from 1 to 20.
+         * @param tags The tag
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -500,7 +813,9 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag value of an image. The value of N ranges from 1 to 20.
+         * @param tags The tag
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

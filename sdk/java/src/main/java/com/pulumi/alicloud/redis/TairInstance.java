@@ -60,14 +60,14 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenewPeriod);
     }
     /**
-     * The ID of the backup set of the cluster.  .
+     * The ID of the backup set of the cluster.
      * 
      */
     @Export(name="clusterBackupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterBackupId;
 
     /**
-     * @return The ID of the backup set of the cluster.  .
+     * @return The ID of the backup set of the cluster.
      * 
      */
     public Output<Optional<String>> clusterBackupId() {
@@ -102,14 +102,14 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.effectiveTime);
     }
     /**
-     * Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+     * Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
      * 
      */
     @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
-     * @return Database version. Default value: 1.0.  Rules for transferring parameters of different tair product types:  tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+     * @return Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
      * 
      */
     public Output<String> engineVersion() {
@@ -158,42 +158,42 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return this.instanceType;
     }
     /**
-     * Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
      * 
      */
     @Export(name="nodeType", refs={String.class}, tree="[0]")
     private Output<String> nodeType;
 
     /**
-     * @return Node type, value:  MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * @return Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
      * 
      */
     public Output<String> nodeType() {
         return this.nodeType;
     }
     /**
-     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !{@literal @} # $ % ^ &amp; * ( ) _ + - =.
+     * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !{@literal @} # $ % ^ &amp; * ( ) _ + - =
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !{@literal @} # $ % ^ &amp; * ( ) _ + - =.
+     * @return The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !{@literal @} # $ % ^ &amp; * ( ) _ + - =
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
     /**
-     * The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
+     * @return Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
      * 
      */
     public Output<String> paymentType() {
@@ -228,14 +228,14 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return this.port;
     }
     /**
-     * Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+     * Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
      * 
      */
     @Export(name="readOnlyCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> readOnlyCount;
 
     /**
-     * @return Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:  If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+     * @return Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
      * 
      */
     public Output<Optional<Integer>> readOnlyCount() {
@@ -270,6 +270,20 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secondaryZoneId);
     }
     /**
+     * Security group ID
+     * 
+     */
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> securityGroupId;
+
+    /**
+     * @return Security group ID
+     * 
+     */
+    public Output<Optional<String>> securityGroupId() {
+        return Codegen.optional(this.securityGroupId);
+    }
+    /**
      * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
      * 
      */
@@ -298,28 +312,42 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.slaveReadOnlyCount);
     }
     /**
-     * The status of the resource.
+     * Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+     * 
+     */
+    @Export(name="sslEnabled", refs={String.class}, tree="[0]")
+    private Output<String> sslEnabled;
+
+    /**
+     * @return Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+     * 
+     */
+    public Output<String> sslEnabled() {
+        return this.sslEnabled;
+    }
+    /**
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
      * 
      */
     @Export(name="storagePerformanceLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storagePerformanceLevel;
 
     /**
-     * @return The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * @return The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
      * 
      */
     public Output<Optional<String>> storagePerformanceLevel() {
@@ -340,14 +368,14 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return this.storageSizeGb;
     }
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
@@ -396,14 +424,14 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return this.vswitchId;
     }
     /**
-     * Zone ID.
+     * Zone ID
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Zone ID.
+     * @return Zone ID
      * 
      */
     public Output<String> zoneId() {

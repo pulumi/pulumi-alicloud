@@ -17,14 +17,14 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
     public static final GatewayCacheDiskState Empty = new GatewayCacheDiskState();
 
     /**
-     * The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
+     * The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
      * 
      */
     @Import(name="cacheDiskCategory")
     private @Nullable Output<String> cacheDiskCategory;
 
     /**
-     * @return The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
+     * @return The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
      * 
      */
     public Optional<Output<String>> cacheDiskCategory() {
@@ -32,14 +32,14 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+     * The capacity of the cache disk.
      * 
      */
     @Import(name="cacheDiskSizeInGb")
     private @Nullable Output<Integer> cacheDiskSizeInGb;
 
     /**
-     * @return size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+     * @return The capacity of the cache disk.
      * 
      */
     public Optional<Output<Integer>> cacheDiskSizeInGb() {
@@ -47,14 +47,14 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the cache.
+     * The ID of the cache disk.
      * 
      */
     @Import(name="cacheId")
     private @Nullable Output<String> cacheId;
 
     /**
-     * @return The ID of the cache.
+     * @return The ID of the cache disk.
      * 
      */
     public Optional<Output<String>> cacheId() {
@@ -77,14 +77,14 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The cache disk inside the device name.
+     * The path of the cache disk.
      * 
      */
     @Import(name="localFilePath")
     private @Nullable Output<String> localFilePath;
 
     /**
-     * @return The cache disk inside the device name.
+     * @return The path of the cache disk.
      * 
      */
     public Optional<Output<String>> localFilePath() {
@@ -92,14 +92,29 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
+     * The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+     * 
+     */
+    @Import(name="performanceLevel")
+    private @Nullable Output<String> performanceLevel;
+
+    /**
+     * @return The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+     * 
+     */
+    public Optional<Output<String>> performanceLevel() {
+        return Optional.ofNullable(this.performanceLevel);
+    }
+
+    /**
+     * The status of the Gateway Cache Disk.
      * 
      */
     @Import(name="status")
     private @Nullable Output<Integer> status;
 
     /**
-     * @return The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
+     * @return The status of the Gateway Cache Disk.
      * 
      */
     public Optional<Output<Integer>> status() {
@@ -114,6 +129,7 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
         this.cacheId = $.cacheId;
         this.gatewayId = $.gatewayId;
         this.localFilePath = $.localFilePath;
+        this.performanceLevel = $.performanceLevel;
         this.status = $.status;
     }
 
@@ -136,7 +152,7 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cacheDiskCategory The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
+         * @param cacheDiskCategory The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
          * 
          * @return builder
          * 
@@ -147,7 +163,7 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cacheDiskCategory The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
+         * @param cacheDiskCategory The type of the cache disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`. **NOTE:** From version 1.227.0, `cache_disk_category` can be set to `cloud_essd`.
          * 
          * @return builder
          * 
@@ -157,7 +173,7 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cacheDiskSizeInGb size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+         * @param cacheDiskSizeInGb The capacity of the cache disk.
          * 
          * @return builder
          * 
@@ -168,7 +184,7 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cacheDiskSizeInGb size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+         * @param cacheDiskSizeInGb The capacity of the cache disk.
          * 
          * @return builder
          * 
@@ -178,7 +194,7 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cacheId The ID of the cache.
+         * @param cacheId The ID of the cache disk.
          * 
          * @return builder
          * 
@@ -189,7 +205,7 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cacheId The ID of the cache.
+         * @param cacheId The ID of the cache disk.
          * 
          * @return builder
          * 
@@ -220,7 +236,7 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param localFilePath The cache disk inside the device name.
+         * @param localFilePath The path of the cache disk.
          * 
          * @return builder
          * 
@@ -231,7 +247,7 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param localFilePath The cache disk inside the device name.
+         * @param localFilePath The path of the cache disk.
          * 
          * @return builder
          * 
@@ -241,7 +257,28 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
+         * @param performanceLevel The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceLevel(@Nullable Output<String> performanceLevel) {
+            $.performanceLevel = performanceLevel;
+            return this;
+        }
+
+        /**
+         * @param performanceLevel The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceLevel(String performanceLevel) {
+            return performanceLevel(Output.of(performanceLevel));
+        }
+
+        /**
+         * @param status The status of the Gateway Cache Disk.
          * 
          * @return builder
          * 
@@ -252,7 +289,7 @@ public final class GatewayCacheDiskState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
+         * @param status The status of the Gateway Cache Disk.
          * 
          * @return builder
          * 

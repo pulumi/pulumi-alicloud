@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,14 +18,14 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
     public static final ResourceGroupState Empty = new ResourceGroupState();
 
     /**
-     * Creation time.
+     * The time when the resource group was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Creation time.
+     * @return The time when the resource group was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -32,14 +33,14 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * DB cluster id.
+     * The ID of the DBCluster.
      * 
      */
     @Import(name="dbClusterId")
     private @Nullable Output<String> dbClusterId;
 
     /**
-     * @return DB cluster id.
+     * @return The ID of the DBCluster.
      * 
      */
     public Optional<Output<String>> dbClusterId() {
@@ -47,14 +48,14 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+     * The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      * 
      */
     @Import(name="groupName")
     private @Nullable Output<String> groupName;
 
     /**
-     * @return The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+     * @return The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      * 
      */
     public Optional<Output<String>> groupName() {
@@ -62,20 +63,14 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Query type, value description:
-     * * **etl**: Batch query mode.
-     * * **interactive**: interactive Query mode.
-     * * **default_type**: the default query mode.
+     * The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
      * 
      */
     @Import(name="groupType")
     private @Nullable Output<String> groupType;
 
     /**
-     * @return Query type, value description:
-     * * **etl**: Batch query mode.
-     * * **interactive**: interactive Query mode.
-     * * **default_type**: the default query mode.
+     * @return The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
      * 
      */
     public Optional<Output<String>> groupType() {
@@ -83,14 +78,14 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+     * The number of nodes.
      * 
      */
     @Import(name="nodeNum")
     private @Nullable Output<Integer> nodeNum;
 
     /**
-     * @return The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+     * @return The number of nodes.
      * 
      */
     public Optional<Output<Integer>> nodeNum() {
@@ -98,14 +93,14 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Update time.
+     * The time when the resource group was updated.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Update time.
+     * @return The time when the resource group was updated.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -113,18 +108,33 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Binding User.
+     * The database accounts that are associated with the resource group.
      * 
      */
     @Import(name="user")
     private @Nullable Output<String> user;
 
     /**
-     * @return Binding User.
+     * @return The database accounts that are associated with the resource group.
      * 
      */
     public Optional<Output<String>> user() {
         return Optional.ofNullable(this.user);
+    }
+
+    /**
+     * The database accounts with which to associate the resource group.
+     * 
+     */
+    @Import(name="users")
+    private @Nullable Output<List<String>> users;
+
+    /**
+     * @return The database accounts with which to associate the resource group.
+     * 
+     */
+    public Optional<Output<List<String>>> users() {
+        return Optional.ofNullable(this.users);
     }
 
     private ResourceGroupState() {}
@@ -137,6 +147,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         this.nodeNum = $.nodeNum;
         this.updateTime = $.updateTime;
         this.user = $.user;
+        this.users = $.users;
     }
 
     public static Builder builder() {
@@ -158,7 +169,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createTime Creation time.
+         * @param createTime The time when the resource group was created.
          * 
          * @return builder
          * 
@@ -169,7 +180,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createTime Creation time.
+         * @param createTime The time when the resource group was created.
          * 
          * @return builder
          * 
@@ -179,7 +190,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dbClusterId DB cluster id.
+         * @param dbClusterId The ID of the DBCluster.
          * 
          * @return builder
          * 
@@ -190,7 +201,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dbClusterId DB cluster id.
+         * @param dbClusterId The ID of the DBCluster.
          * 
          * @return builder
          * 
@@ -200,7 +211,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param groupName The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+         * @param groupName The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
          * 
          * @return builder
          * 
@@ -211,7 +222,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param groupName The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+         * @param groupName The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
          * 
          * @return builder
          * 
@@ -221,10 +232,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param groupType Query type, value description:
-         * * **etl**: Batch query mode.
-         * * **interactive**: interactive Query mode.
-         * * **default_type**: the default query mode.
+         * @param groupType The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
          * 
          * @return builder
          * 
@@ -235,10 +243,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param groupType Query type, value description:
-         * * **etl**: Batch query mode.
-         * * **interactive**: interactive Query mode.
-         * * **default_type**: the default query mode.
+         * @param groupType The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
          * 
          * @return builder
          * 
@@ -248,7 +253,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nodeNum The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+         * @param nodeNum The number of nodes.
          * 
          * @return builder
          * 
@@ -259,7 +264,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param nodeNum The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+         * @param nodeNum The number of nodes.
          * 
          * @return builder
          * 
@@ -269,7 +274,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param updateTime Update time.
+         * @param updateTime The time when the resource group was updated.
          * 
          * @return builder
          * 
@@ -280,7 +285,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param updateTime Update time.
+         * @param updateTime The time when the resource group was updated.
          * 
          * @return builder
          * 
@@ -290,7 +295,7 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param user Binding User.
+         * @param user The database accounts that are associated with the resource group.
          * 
          * @return builder
          * 
@@ -301,13 +306,44 @@ public final class ResourceGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param user Binding User.
+         * @param user The database accounts that are associated with the resource group.
          * 
          * @return builder
          * 
          */
         public Builder user(String user) {
             return user(Output.of(user));
+        }
+
+        /**
+         * @param users The database accounts with which to associate the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder users(@Nullable Output<List<String>> users) {
+            $.users = users;
+            return this;
+        }
+
+        /**
+         * @param users The database accounts with which to associate the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder users(List<String> users) {
+            return users(Output.of(users));
+        }
+
+        /**
+         * @param users The database accounts with which to associate the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder users(String... users) {
+            return users(List.of(users));
         }
 
         public ResourceGroupState build() {

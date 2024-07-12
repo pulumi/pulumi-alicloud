@@ -15,8 +15,24 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         [Input("nodeGroupId")]
         public Input<string>? NodeGroupId { get; set; }
 
+        [Input("nodeGroupIds")]
+        private InputList<string>? _nodeGroupIds;
+        public InputList<string> NodeGroupIds
+        {
+            get => _nodeGroupIds ?? (_nodeGroupIds = new InputList<string>());
+            set => _nodeGroupIds = value;
+        }
+
         [Input("nodeGroupName")]
         public Input<string>? NodeGroupName { get; set; }
+
+        [Input("nodeGroupNames")]
+        private InputList<string>? _nodeGroupNames;
+        public InputList<string> NodeGroupNames
+        {
+            get => _nodeGroupNames ?? (_nodeGroupNames = new InputList<string>());
+            set => _nodeGroupNames = value;
+        }
 
         [Input("nodeGroupTypes")]
         private InputList<string>? _nodeGroupTypes;

@@ -25,6 +25,12 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
         }
 
         /// <summary>
+        /// The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+        /// </summary>
+        [Input("autoScalingPolicy")]
+        public Input<Inputs.ClusterNodeGroupAutoScalingPolicyArgs>? AutoScalingPolicy { get; set; }
+
+        /// <summary>
         /// The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
         /// </summary>
         [Input("costOptimizedConfig")]

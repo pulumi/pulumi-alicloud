@@ -343,28 +343,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.nodeAttributes;
     }
     /**
-     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+     * Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
      * 
      */
     @Export(name="nodeGroups", refs={List.class,ClusterNodeGroup.class}, tree="[0,1]")
     private Output<List<ClusterNodeGroup>> nodeGroups;
 
     /**
-     * @return Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
+     * @return Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below. **NOTE:** Since version 1.227.0, the type of `node_groups` changed from Set to List.
      * 
      */
     public Output<List<ClusterNodeGroup>> nodeGroups() {
         return this.nodeGroups;
     }
     /**
-     * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+     * Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
+     * @return Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
      * 
      */
     public Output<String> paymentType() {

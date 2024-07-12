@@ -278,15 +278,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
      * 
      */
-    @Import(name="internetMaxBandwidthOut", required=true)
-    private Output<Integer> internetMaxBandwidthOut;
+    @Import(name="internetMaxBandwidthOut")
+    private @Nullable Output<Integer> internetMaxBandwidthOut;
 
     /**
      * @return Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991.
      * 
      */
-    public Output<Integer> internetMaxBandwidthOut() {
-        return this.internetMaxBandwidthOut;
+    public Optional<Output<Integer>> internetMaxBandwidthOut() {
+        return Optional.ofNullable(this.internetMaxBandwidthOut);
     }
 
     /**
@@ -1025,7 +1025,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder internetMaxBandwidthOut(Output<Integer> internetMaxBandwidthOut) {
+        public Builder internetMaxBandwidthOut(@Nullable Output<Integer> internetMaxBandwidthOut) {
             $.internetMaxBandwidthOut = internetMaxBandwidthOut;
             return this;
         }
@@ -1476,9 +1476,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         public InstanceArgs build() {
             if ($.instanceType == null) {
                 throw new MissingRequiredPropertyException("InstanceArgs", "instanceType");
-            }
-            if ($.internetMaxBandwidthOut == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "internetMaxBandwidthOut");
             }
             if ($.paymentType == null) {
                 throw new MissingRequiredPropertyException("InstanceArgs", "paymentType");

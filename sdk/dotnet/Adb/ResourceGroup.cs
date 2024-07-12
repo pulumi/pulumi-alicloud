@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Adb
 {
     /// <summary>
-    /// Provides a Adb Resource Group resource.
+    /// Provides a AnalyticDB for MySQL (ADB) Resource Group resource.
     /// 
-    /// For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
+    /// For information about AnalyticDB for MySQL (ADB) Resource Group and how to use it, see [What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 
@@ -29,63 +29,42 @@ namespace Pulumi.AliCloud.Adb
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.Adb.GetZones.Invoke();
-    /// 
-    ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
-    ///     {
-    ///         Status = "OK",
-    ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
+    ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
     ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         VswitchName = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "192.168.192.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
     ///     var defaultDBCluster = new AliCloud.Adb.DBCluster("default", new()
     ///     {
-    ///         ComputeResource = "48Core192GBNEW",
+    ///         ComputeResource = "32Core128GB",
     ///         DbClusterCategory = "MixedStorage",
-    ///         DbClusterVersion = "3.0",
-    ///         DbNodeClass = "E32",
-    ///         DbNodeCount = 1,
-    ///         DbNodeStorage = 100,
     ///         Description = name,
     ///         ElasticIoResource = 1,
-    ///         MaintainTime = "04:00Z-05:00Z",
     ///         Mode = "flexible",
     ///         PaymentType = "PayAsYouGo",
-    ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
-    ///         SecurityIps = new[]
-    ///         {
-    ///             "10.168.1.12",
-    ///             "10.168.1.11",
-    ///         },
     ///         VpcId = defaultNetwork.Id,
     ///         VswitchId = defaultSwitch.Id,
     ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "example" },
-    ///         },
     ///     });
     /// 
     ///     var defaultResourceGroup = new AliCloud.Adb.ResourceGroup("default", new()
     ///     {
-    ///         GroupName = "TF_EXAMPLE",
+    ///         DbClusterId = defaultDBCluster.Id,
+    ///         GroupName = name,
     ///         GroupType = "batch",
     ///         NodeNum = 1,
-    ///         DbClusterId = defaultDBCluster.Id,
     ///     });
     /// 
     /// });
@@ -103,49 +82,52 @@ namespace Pulumi.AliCloud.Adb
     public partial class ResourceGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Creation time.
+        /// The time when the resource group was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// DB cluster id.
+        /// The ID of the DBCluster.
         /// </summary>
         [Output("dbClusterId")]
         public Output<string> DbClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+        /// The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
         /// </summary>
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Query type, value description:
-        /// * **etl**: Batch query mode.
-        /// * **interactive**: interactive Query mode.
-        /// * **default_type**: the default query mode.
+        /// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
         /// </summary>
         [Output("groupType")]
         public Output<string> GroupType { get; private set; } = null!;
 
         /// <summary>
-        /// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+        /// The number of nodes.
         /// </summary>
         [Output("nodeNum")]
-        public Output<int> NodeNum { get; private set; } = null!;
+        public Output<int?> NodeNum { get; private set; } = null!;
 
         /// <summary>
-        /// Update time.
+        /// The time when the resource group was updated.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Binding User.
+        /// The database accounts that are associated with the resource group.
         /// </summary>
         [Output("user")]
         public Output<string> User { get; private set; } = null!;
+
+        /// <summary>
+        /// The database accounts with which to associate the resource group.
+        /// </summary>
+        [Output("users")]
+        public Output<ImmutableArray<string>> Users { get; private set; } = null!;
 
 
         /// <summary>
@@ -194,31 +176,40 @@ namespace Pulumi.AliCloud.Adb
     public sealed class ResourceGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// DB cluster id.
+        /// The ID of the DBCluster.
         /// </summary>
         [Input("dbClusterId", required: true)]
         public Input<string> DbClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+        /// The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
         /// </summary>
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
 
         /// <summary>
-        /// Query type, value description:
-        /// * **etl**: Batch query mode.
-        /// * **interactive**: interactive Query mode.
-        /// * **default_type**: the default query mode.
+        /// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }
 
         /// <summary>
-        /// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+        /// The number of nodes.
         /// </summary>
         [Input("nodeNum")]
         public Input<int>? NodeNum { get; set; }
+
+        [Input("users")]
+        private InputList<string>? _users;
+
+        /// <summary>
+        /// The database accounts with which to associate the resource group.
+        /// </summary>
+        public InputList<string> Users
+        {
+            get => _users ?? (_users = new InputList<string>());
+            set => _users = value;
+        }
 
         public ResourceGroupArgs()
         {
@@ -229,49 +220,58 @@ namespace Pulumi.AliCloud.Adb
     public sealed class ResourceGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Creation time.
+        /// The time when the resource group was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// DB cluster id.
+        /// The ID of the DBCluster.
         /// </summary>
         [Input("dbClusterId")]
         public Input<string>? DbClusterId { get; set; }
 
         /// <summary>
-        /// The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+        /// The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// Query type, value description:
-        /// * **etl**: Batch query mode.
-        /// * **interactive**: interactive Query mode.
-        /// * **default_type**: the default query mode.
+        /// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }
 
         /// <summary>
-        /// The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+        /// The number of nodes.
         /// </summary>
         [Input("nodeNum")]
         public Input<int>? NodeNum { get; set; }
 
         /// <summary>
-        /// Update time.
+        /// The time when the resource group was updated.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Binding User.
+        /// The database accounts that are associated with the resource group.
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
+
+        [Input("users")]
+        private InputList<string>? _users;
+
+        /// <summary>
+        /// The database accounts with which to associate the resource group.
+        /// </summary>
+        public InputList<string> Users
+        {
+            get => _users ?? (_users = new InputList<string>());
+            set => _users = value;
+        }
 
         public ResourceGroupState()
         {

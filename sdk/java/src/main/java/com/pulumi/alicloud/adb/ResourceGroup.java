@@ -12,12 +12,14 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Adb Resource Group resource.
+ * Provides a AnalyticDB for MySQL (ADB) Resource Group resource.
  * 
- * For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
+ * For information about AnalyticDB for MySQL (ADB) Resource Group and how to use it, see [What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
  * 
  * &gt; **NOTE:** Available since v1.195.0.
  * 
@@ -35,8 +37,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.adb.AdbFunctions;
  * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -59,55 +59,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf_example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AdbFunctions.getZones();
- * 
- *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .status("OK")
- *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
- *             .cidrBlock("10.4.0.0/16")
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vpcId(defaultNetwork.id())
- *             .cidrBlock("10.4.0.0/24")
- *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("192.168.192.0/24")
+ *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         var defaultDBCluster = new DBCluster("defaultDBCluster", DBClusterArgs.builder()
- *             .computeResource("48Core192GBNEW")
+ *             .computeResource("32Core128GB")
  *             .dbClusterCategory("MixedStorage")
- *             .dbClusterVersion("3.0")
- *             .dbNodeClass("E32")
- *             .dbNodeCount(1)
- *             .dbNodeStorage(100)
  *             .description(name)
  *             .elasticIoResource(1)
- *             .maintainTime("04:00Z-05:00Z")
  *             .mode("flexible")
  *             .paymentType("PayAsYouGo")
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
- *             .securityIps(            
- *                 "10.168.1.12",
- *                 "10.168.1.11")
  *             .vpcId(defaultNetwork.id())
  *             .vswitchId(defaultSwitch.id())
  *             .zoneId(default_.zones()[0].id())
- *             .tags(Map.ofEntries(
- *                 Map.entry("Created", "TF"),
- *                 Map.entry("For", "example")
- *             ))
  *             .build());
  * 
  *         var defaultResourceGroup = new ResourceGroup("defaultResourceGroup", ResourceGroupArgs.builder()
- *             .groupName("TF_EXAMPLE")
+ *             .dbClusterId(defaultDBCluster.id())
+ *             .groupName(name)
  *             .groupType("batch")
  *             .nodeNum(1)
- *             .dbClusterId(defaultDBCluster.id())
  *             .build());
  * 
  *     }
@@ -128,108 +111,116 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:adb/resourceGroup:ResourceGroup")
 public class ResourceGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Creation time.
+     * The time when the resource group was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Creation time.
+     * @return The time when the resource group was created.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * DB cluster id.
+     * The ID of the DBCluster.
      * 
      */
     @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     /**
-     * @return DB cluster id.
+     * @return The ID of the DBCluster.
      * 
      */
     public Output<String> dbClusterId() {
         return this.dbClusterId;
     }
     /**
-     * The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+     * The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      * 
      */
     @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
-     * @return The name of the resource pool. The group name must be 2 to 30 characters in length, and can contain upper case letters, digits, and underscore(_).
+     * @return The name of the resource group. The `group_name` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      * 
      */
     public Output<String> groupName() {
         return this.groupName;
     }
     /**
-     * Query type, value description:
-     * * **etl**: Batch query mode.
-     * * **interactive**: interactive Query mode.
-     * * **default_type**: the default query mode.
+     * The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
      * 
      */
     @Export(name="groupType", refs={String.class}, tree="[0]")
     private Output<String> groupType;
 
     /**
-     * @return Query type, value description:
-     * * **etl**: Batch query mode.
-     * * **interactive**: interactive Query mode.
-     * * **default_type**: the default query mode.
+     * @return The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
      * 
      */
     public Output<String> groupType() {
         return this.groupType;
     }
     /**
-     * The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+     * The number of nodes.
      * 
      */
     @Export(name="nodeNum", refs={Integer.class}, tree="[0]")
-    private Output<Integer> nodeNum;
+    private Output</* @Nullable */ Integer> nodeNum;
 
     /**
-     * @return The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
+     * @return The number of nodes.
      * 
      */
-    public Output<Integer> nodeNum() {
-        return this.nodeNum;
+    public Output<Optional<Integer>> nodeNum() {
+        return Codegen.optional(this.nodeNum);
     }
     /**
-     * Update time.
+     * The time when the resource group was updated.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Update time.
+     * @return The time when the resource group was updated.
      * 
      */
     public Output<String> updateTime() {
         return this.updateTime;
     }
     /**
-     * Binding User.
+     * The database accounts that are associated with the resource group.
      * 
      */
     @Export(name="user", refs={String.class}, tree="[0]")
     private Output<String> user;
 
     /**
-     * @return Binding User.
+     * @return The database accounts that are associated with the resource group.
      * 
      */
     public Output<String> user() {
         return this.user;
+    }
+    /**
+     * The database accounts with which to associate the resource group.
+     * 
+     */
+    @Export(name="users", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> users;
+
+    /**
+     * @return The database accounts with which to associate the resource group.
+     * 
+     */
+    public Output<Optional<List<String>>> users() {
+        return Codegen.optional(this.users);
     }
 
     /**

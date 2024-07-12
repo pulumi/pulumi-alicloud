@@ -11,6 +11,48 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.144.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const default = alicloud.cloudstoragegateway.getStocks({
+ *     gatewayClass: "Standard",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _default.then(_default => _default.stocks?.[0]?.zoneId),
+ *     vswitchName: name,
+ * });
+ * const defaultStorageBundle = new alicloud.cloudstoragegateway.StorageBundle("default", {storageBundleName: name});
+ * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("default", {
+ *     description: name,
+ *     gatewayClass: "Standard",
+ *     type: "File",
+ *     paymentType: "PayAsYouGo",
+ *     vswitchId: defaultSwitch.id,
+ *     releaseAfterExpiration: true,
+ *     storageBundleId: defaultStorageBundle.id,
+ *     location: "Cloud",
+ *     gatewayName: name,
+ * });
+ * const defaultGatewayCacheDisk = new alicloud.cloudstoragegateway.GatewayCacheDisk("default", {
+ *     gatewayId: defaultGateway.id,
+ *     cacheDiskSizeInGb: 50,
+ *     cacheDiskCategory: "cloud_efficiency",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cloud Storage Gateway Gateway Cache Disk can be imported using the id, e.g.
@@ -48,15 +90,15 @@ export class GatewayCacheDisk extends pulumi.CustomResource {
     }
 
     /**
-     * The cache disk type. Valid values: `cloudEfficiency`, `cloudSsd`.
+     * The type of the cache disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`. **NOTE:** From version 1.227.0, `cacheDiskCategory` can be set to `cloudEssd`.
      */
     public readonly cacheDiskCategory!: pulumi.Output<string>;
     /**
-     * size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+     * The capacity of the cache disk.
      */
     public readonly cacheDiskSizeInGb!: pulumi.Output<number>;
     /**
-     * The ID of the cache.
+     * The ID of the cache disk.
      */
     public /*out*/ readonly cacheId!: pulumi.Output<string>;
     /**
@@ -64,11 +106,15 @@ export class GatewayCacheDisk extends pulumi.CustomResource {
      */
     public readonly gatewayId!: pulumi.Output<string>;
     /**
-     * The cache disk inside the device name.
+     * The path of the cache disk.
      */
     public /*out*/ readonly localFilePath!: pulumi.Output<string>;
     /**
-     * The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
+     * The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cacheDiskCategory` is set to `cloudEssd`, `performanceLevel` is required.
+     */
+    public readonly performanceLevel!: pulumi.Output<string | undefined>;
+    /**
+     * The status of the Gateway Cache Disk.
      */
     public /*out*/ readonly status!: pulumi.Output<number>;
 
@@ -90,6 +136,7 @@ export class GatewayCacheDisk extends pulumi.CustomResource {
             resourceInputs["cacheId"] = state ? state.cacheId : undefined;
             resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
             resourceInputs["localFilePath"] = state ? state.localFilePath : undefined;
+            resourceInputs["performanceLevel"] = state ? state.performanceLevel : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as GatewayCacheDiskArgs | undefined;
@@ -102,6 +149,7 @@ export class GatewayCacheDisk extends pulumi.CustomResource {
             resourceInputs["cacheDiskCategory"] = args ? args.cacheDiskCategory : undefined;
             resourceInputs["cacheDiskSizeInGb"] = args ? args.cacheDiskSizeInGb : undefined;
             resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
+            resourceInputs["performanceLevel"] = args ? args.performanceLevel : undefined;
             resourceInputs["cacheId"] = undefined /*out*/;
             resourceInputs["localFilePath"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -116,15 +164,15 @@ export class GatewayCacheDisk extends pulumi.CustomResource {
  */
 export interface GatewayCacheDiskState {
     /**
-     * The cache disk type. Valid values: `cloudEfficiency`, `cloudSsd`.
+     * The type of the cache disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`. **NOTE:** From version 1.227.0, `cacheDiskCategory` can be set to `cloudEssd`.
      */
     cacheDiskCategory?: pulumi.Input<string>;
     /**
-     * size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+     * The capacity of the cache disk.
      */
     cacheDiskSizeInGb?: pulumi.Input<number>;
     /**
-     * The ID of the cache.
+     * The ID of the cache disk.
      */
     cacheId?: pulumi.Input<string>;
     /**
@@ -132,11 +180,15 @@ export interface GatewayCacheDiskState {
      */
     gatewayId?: pulumi.Input<string>;
     /**
-     * The cache disk inside the device name.
+     * The path of the cache disk.
      */
     localFilePath?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
+     * The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cacheDiskCategory` is set to `cloudEssd`, `performanceLevel` is required.
+     */
+    performanceLevel?: pulumi.Input<string>;
+    /**
+     * The status of the Gateway Cache Disk.
      */
     status?: pulumi.Input<number>;
 }
@@ -146,15 +198,19 @@ export interface GatewayCacheDiskState {
  */
 export interface GatewayCacheDiskArgs {
     /**
-     * The cache disk type. Valid values: `cloudEfficiency`, `cloudSsd`.
+     * The type of the cache disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`. **NOTE:** From version 1.227.0, `cacheDiskCategory` can be set to `cloudEssd`.
      */
     cacheDiskCategory?: pulumi.Input<string>;
     /**
-     * size of the cache disk. Unit: `GB`. The upper limit of the basic gateway cache disk is `1` TB (`1024` GB), that of the standard gateway is `2` TB (`2048` GB), and that of other gateway cache disks is `32` TB (`32768` GB). The lower limit for the file gateway cache disk capacity is `40` GB, and the lower limit for the block gateway cache disk capacity is `20` GB.
+     * The capacity of the cache disk.
      */
     cacheDiskSizeInGb: pulumi.Input<number>;
     /**
      * The ID of the gateway.
      */
     gatewayId: pulumi.Input<string>;
+    /**
+     * The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cacheDiskCategory` is set to `cloudEssd`, `performanceLevel` is required.
+     */
+    performanceLevel?: pulumi.Input<string>;
 }

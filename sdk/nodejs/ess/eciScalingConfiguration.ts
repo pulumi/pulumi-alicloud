@@ -144,6 +144,14 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly cpu!: pulumi.Output<number | undefined>;
     /**
+     * The number of physical CPU cores. You can specify this parameter for only specific instance types.
+     */
+    public readonly cpuOptionsCore!: pulumi.Output<number | undefined>;
+    /**
+     * The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+     */
+    public readonly cpuOptionsThreadsPerCore!: pulumi.Output<number | undefined>;
+    /**
      * The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
      * 256 characters in length and cannot start with http:// or https://.
      */
@@ -289,6 +297,8 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["containerGroupName"] = state ? state.containerGroupName : undefined;
             resourceInputs["containers"] = state ? state.containers : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
+            resourceInputs["cpuOptionsCore"] = state ? state.cpuOptionsCore : undefined;
+            resourceInputs["cpuOptionsThreadsPerCore"] = state ? state.cpuOptionsThreadsPerCore : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dnsPolicy"] = state ? state.dnsPolicy : undefined;
             resourceInputs["egressBandwidth"] = state ? state.egressBandwidth : undefined;
@@ -330,6 +340,8 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["containerGroupName"] = args ? args.containerGroupName : undefined;
             resourceInputs["containers"] = args ? args.containers : undefined;
             resourceInputs["cpu"] = args ? args.cpu : undefined;
+            resourceInputs["cpuOptionsCore"] = args ? args.cpuOptionsCore : undefined;
+            resourceInputs["cpuOptionsThreadsPerCore"] = args ? args.cpuOptionsThreadsPerCore : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dnsPolicy"] = args ? args.dnsPolicy : undefined;
             resourceInputs["egressBandwidth"] = args ? args.egressBandwidth : undefined;
@@ -402,6 +414,14 @@ export interface EciScalingConfigurationState {
      * The amount of CPU resources allocated to the container group.
      */
     cpu?: pulumi.Input<number>;
+    /**
+     * The number of physical CPU cores. You can specify this parameter for only specific instance types.
+     */
+    cpuOptionsCore?: pulumi.Input<number>;
+    /**
+     * The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+     */
+    cpuOptionsThreadsPerCore?: pulumi.Input<number>;
     /**
      * The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
      * 256 characters in length and cannot start with http:// or https://.
@@ -566,6 +586,14 @@ export interface EciScalingConfigurationArgs {
      * The amount of CPU resources allocated to the container group.
      */
     cpu?: pulumi.Input<number>;
+    /**
+     * The number of physical CPU cores. You can specify this parameter for only specific instance types.
+     */
+    cpuOptionsCore?: pulumi.Input<number>;
+    /**
+     * The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
+     */
+    cpuOptionsThreadsPerCore?: pulumi.Input<number>;
     /**
      * The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
      * 256 characters in length and cannot start with http:// or https://.

@@ -104,6 +104,11 @@ type Listener struct {
 	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion pulumi.StringOutput `pulumi:"httpVersion"`
+	// The timeout period of idle connections. Unit: seconds. Valid values:
+	// - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+	// - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+	// - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+	IdleTimeout pulumi.IntOutput `pulumi:"idleTimeout"`
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	// - `Standard`: intelligent routing.
 	// - `CustomRouting`: custom routing.
@@ -117,6 +122,9 @@ type Listener struct {
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol pulumi.BoolPtrOutput `pulumi:"proxyProtocol"`
+	// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+	// > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+	RequestTimeout pulumi.IntOutput `pulumi:"requestTimeout"`
 	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// The status of the listener.
@@ -175,6 +183,11 @@ type listenerState struct {
 	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion *string `pulumi:"httpVersion"`
+	// The timeout period of idle connections. Unit: seconds. Valid values:
+	// - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+	// - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+	// - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+	IdleTimeout *int `pulumi:"idleTimeout"`
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	// - `Standard`: intelligent routing.
 	// - `CustomRouting`: custom routing.
@@ -188,6 +201,9 @@ type listenerState struct {
 	Protocol *string `pulumi:"protocol"`
 	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol *bool `pulumi:"proxyProtocol"`
+	// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+	// > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+	RequestTimeout *int `pulumi:"requestTimeout"`
 	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The status of the listener.
@@ -211,6 +227,11 @@ type ListenerState struct {
 	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion pulumi.StringPtrInput
+	// The timeout period of idle connections. Unit: seconds. Valid values:
+	// - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+	// - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+	// - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+	IdleTimeout pulumi.IntPtrInput
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	// - `Standard`: intelligent routing.
 	// - `CustomRouting`: custom routing.
@@ -224,6 +245,9 @@ type ListenerState struct {
 	Protocol pulumi.StringPtrInput
 	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol pulumi.BoolPtrInput
+	// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+	// > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+	RequestTimeout pulumi.IntPtrInput
 	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
 	SecurityPolicyId pulumi.StringPtrInput
 	// The status of the listener.
@@ -251,6 +275,11 @@ type listenerArgs struct {
 	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion *string `pulumi:"httpVersion"`
+	// The timeout period of idle connections. Unit: seconds. Valid values:
+	// - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+	// - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+	// - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+	IdleTimeout *int `pulumi:"idleTimeout"`
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	// - `Standard`: intelligent routing.
 	// - `CustomRouting`: custom routing.
@@ -264,6 +293,9 @@ type listenerArgs struct {
 	Protocol *string `pulumi:"protocol"`
 	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol *bool `pulumi:"proxyProtocol"`
+	// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+	// > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+	RequestTimeout *int `pulumi:"requestTimeout"`
 	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 }
@@ -286,6 +318,11 @@ type ListenerArgs struct {
 	// The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion pulumi.StringPtrInput
+	// The timeout period of idle connections. Unit: seconds. Valid values:
+	// - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+	// - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+	// - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+	IdleTimeout pulumi.IntPtrInput
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	// - `Standard`: intelligent routing.
 	// - `CustomRouting`: custom routing.
@@ -299,6 +336,9 @@ type ListenerArgs struct {
 	Protocol pulumi.StringPtrInput
 	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol pulumi.BoolPtrInput
+	// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+	// > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+	RequestTimeout pulumi.IntPtrInput
 	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
 	SecurityPolicyId pulumi.StringPtrInput
 }
@@ -424,6 +464,14 @@ func (o ListenerOutput) HttpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.HttpVersion }).(pulumi.StringOutput)
 }
 
+// The timeout period of idle connections. Unit: seconds. Valid values:
+// - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
+// - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
+// - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
+func (o ListenerOutput) IdleTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.IdleTimeout }).(pulumi.IntOutput)
+}
+
 // The routing type of the listener. Default Value: `Standard`. Valid values:
 // - `Standard`: intelligent routing.
 // - `CustomRouting`: custom routing.
@@ -450,6 +498,12 @@ func (o ListenerOutput) Protocol() pulumi.StringPtrOutput {
 // The proxy protocol of the listener. Default value: `false`. Valid values:
 func (o ListenerOutput) ProxyProtocol() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolPtrOutput { return v.ProxyProtocol }).(pulumi.BoolPtrOutput)
+}
+
+// The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
+// > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
+func (o ListenerOutput) RequestTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.RequestTimeout }).(pulumi.IntOutput)
 }
 
 // The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:

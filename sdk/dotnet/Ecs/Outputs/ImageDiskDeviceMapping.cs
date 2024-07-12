@@ -14,19 +14,47 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class ImageDiskDeviceMapping
     {
         /// <summary>
-        /// Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
+        /// The device name of disk N in the custom image. Valid values:
+        /// - For disks other than basic disks, such as standard SSDs, ultra disks, and enhanced SSDs (ESSDs), the valid values range from /dev/vda to /dev/vdz in alphabetical order.
+        /// - For basic disks, the valid values range from /dev/xvda to /dev/xvdz in alphabetical order.
         /// </summary>
         public readonly string? Device;
         /// <summary>
-        /// Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
+        /// The type of disk N in the custom image. You can specify this parameter to create the system disk of the custom image from a data disk snapshot. If you do not specify this parameter, the disk type is determined by the corresponding snapshot. Valid values:
+        /// - system: system disk. You can specify only one snapshot to use to create the system disk in the custom image.
+        /// - data: data disk. You can specify up to 16 snapshots to use to create data disks in the custom image.
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
+        /// Image format.
+        /// </summary>
+        public readonly string? Format;
+        /// <summary>
+        /// Import the bucket of the OSS to which the image belongs.
+        /// </summary>
+        public readonly string? ImportOssBucket;
+        /// <summary>
+        /// Import the object of the OSS to which the image file belongs.
+        /// </summary>
+        public readonly string? ImportOssObject;
+        /// <summary>
+        /// Copy the progress of the task.
+        /// </summary>
+        public readonly string? Progress;
+        /// <summary>
+        /// For an image being replicated, return the remaining time of the replication task, in seconds.
+        /// </summary>
+        public readonly int? RemainTime;
+        /// <summary>
+        /// The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
+        /// - If no corresponding snapshot IDs are specified in the value of DiskDeviceMapping.N.SnapshotId, DiskDeviceMapping.N.Size has the following valid values and default values:
+        /// *   For basic disks, the valid values range from 5 to 2000, and the default value is 5.
+        /// *   For other disks, the valid values range from 20 to 32768, and the default value is 20.
+        /// - If a corresponding snapshot ID is specified in the value of DiskDeviceMapping.N.SnapshotId, the value of DiskDeviceMapping.N.Size must be greater than or equal to the size of the specified snapshot. The default value of DiskDeviceMapping.N.Size is the size of the specified snapshot.
         /// </summary>
         public readonly int? Size;
         /// <summary>
-        /// Specifies a snapshot that is used to create a combined custom image.
+        /// The ID of snapshot N to use to create the custom image. .
         /// </summary>
         public readonly string? SnapshotId;
 
@@ -36,12 +64,27 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string? diskType,
 
+            string? format,
+
+            string? importOssBucket,
+
+            string? importOssObject,
+
+            string? progress,
+
+            int? remainTime,
+
             int? size,
 
             string? snapshotId)
         {
             Device = device;
             DiskType = diskType;
+            Format = format;
+            ImportOssBucket = importOssBucket;
+            ImportOssObject = importOssObject;
+            Progress = progress;
+            RemainTime = remainTime;
             Size = size;
             SnapshotId = snapshotId;
         }

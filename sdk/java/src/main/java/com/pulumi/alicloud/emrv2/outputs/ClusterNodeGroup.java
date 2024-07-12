@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.emrv2.outputs;
 
+import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupAutoScalingPolicy;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupCostOptimizedConfig;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupDataDisk;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupSpotBidPrice;
@@ -25,6 +26,11 @@ public final class ClusterNodeGroup {
      * 
      */
     private @Nullable List<String> additionalSecurityGroupIds;
+    /**
+     * @return The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+     * 
+     */
+    private @Nullable ClusterNodeGroupAutoScalingPolicy autoScalingPolicy;
     /**
      * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
      * 
@@ -113,6 +119,13 @@ public final class ClusterNodeGroup {
      */
     public List<String> additionalSecurityGroupIds() {
         return this.additionalSecurityGroupIds == null ? List.of() : this.additionalSecurityGroupIds;
+    }
+    /**
+     * @return The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
+     * 
+     */
+    public Optional<ClusterNodeGroupAutoScalingPolicy> autoScalingPolicy() {
+        return Optional.ofNullable(this.autoScalingPolicy);
     }
     /**
      * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below.
@@ -237,6 +250,7 @@ public final class ClusterNodeGroup {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> additionalSecurityGroupIds;
+        private @Nullable ClusterNodeGroupAutoScalingPolicy autoScalingPolicy;
         private @Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig;
         private List<ClusterNodeGroupDataDisk> dataDisks;
         private @Nullable String deploymentSetStrategy;
@@ -257,6 +271,7 @@ public final class ClusterNodeGroup {
         public Builder(ClusterNodeGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalSecurityGroupIds = defaults.additionalSecurityGroupIds;
+    	      this.autoScalingPolicy = defaults.autoScalingPolicy;
     	      this.costOptimizedConfig = defaults.costOptimizedConfig;
     	      this.dataDisks = defaults.dataDisks;
     	      this.deploymentSetStrategy = defaults.deploymentSetStrategy;
@@ -283,6 +298,12 @@ public final class ClusterNodeGroup {
         }
         public Builder additionalSecurityGroupIds(String... additionalSecurityGroupIds) {
             return additionalSecurityGroupIds(List.of(additionalSecurityGroupIds));
+        }
+        @CustomType.Setter
+        public Builder autoScalingPolicy(@Nullable ClusterNodeGroupAutoScalingPolicy autoScalingPolicy) {
+
+            this.autoScalingPolicy = autoScalingPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder costOptimizedConfig(@Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig) {
@@ -407,6 +428,7 @@ public final class ClusterNodeGroup {
         public ClusterNodeGroup build() {
             final var _resultValue = new ClusterNodeGroup();
             _resultValue.additionalSecurityGroupIds = additionalSecurityGroupIds;
+            _resultValue.autoScalingPolicy = autoScalingPolicy;
             _resultValue.costOptimizedConfig = costOptimizedConfig;
             _resultValue.dataDisks = dataDisks;
             _resultValue.deploymentSetStrategy = deploymentSetStrategy;

@@ -20,6 +20,11 @@ export type Eip = import("./eip").Eip;
 export const Eip: typeof import("./eip").Eip = null as any;
 utilities.lazyLoad(exports, ["Eip"], () => require("./eip"));
 
+export { EipInstanceAttachmentArgs, EipInstanceAttachmentState } from "./eipInstanceAttachment";
+export type EipInstanceAttachment = import("./eipInstanceAttachment").EipInstanceAttachment;
+export const EipInstanceAttachment: typeof import("./eipInstanceAttachment").EipInstanceAttachment = null as any;
+utilities.lazyLoad(exports, ["EipInstanceAttachment"], () => require("./eipInstanceAttachment"));
+
 export { GetKeyPairsArgs, GetKeyPairsResult, GetKeyPairsOutputArgs } from "./getKeyPairs";
 export const getKeyPairs: typeof import("./getKeyPairs").getKeyPairs = null as any;
 export const getKeyPairsOutput: typeof import("./getKeyPairs").getKeyPairsOutput = null as any;
@@ -49,6 +54,11 @@ export { LoadBalancerArgs, LoadBalancerState } from "./loadBalancer";
 export type LoadBalancer = import("./loadBalancer").LoadBalancer;
 export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
 utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
+
+export { NatGatewayArgs, NatGatewayState } from "./natGateway";
+export type NatGateway = import("./natGateway").NatGateway;
+export const NatGateway: typeof import("./natGateway").NatGateway = null as any;
+utilities.lazyLoad(exports, ["NatGateway"], () => require("./natGateway"));
 
 export { NetworkArgs, NetworkState } from "./network";
 export type Network = import("./network").Network;
@@ -81,6 +91,8 @@ const _module = {
                 return new DiskInstanceAttachment(name, <any>undefined, { urn })
             case "alicloud:ens/eip:Eip":
                 return new Eip(name, <any>undefined, { urn })
+            case "alicloud:ens/eipInstanceAttachment:EipInstanceAttachment":
+                return new EipInstanceAttachment(name, <any>undefined, { urn })
             case "alicloud:ens/image:Image":
                 return new Image(name, <any>undefined, { urn })
             case "alicloud:ens/instance:Instance":
@@ -91,6 +103,8 @@ const _module = {
                 return new KeyPair(name, <any>undefined, { urn })
             case "alicloud:ens/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
+            case "alicloud:ens/natGateway:NatGateway":
+                return new NatGateway(name, <any>undefined, { urn })
             case "alicloud:ens/network:Network":
                 return new Network(name, <any>undefined, { urn })
             case "alicloud:ens/securityGroup:SecurityGroup":
@@ -107,11 +121,13 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "ens/disk", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/diskInstanceAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/eip", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/eipInstanceAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/image", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/instanceSecurityGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/keyPair", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/loadBalancer", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ens/natGateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/network", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/securityGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ens/snapshot", _module)

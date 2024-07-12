@@ -3590,6 +3590,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ens/eipInstanceAttachment",
+  "fqn": "pulumi_alicloud.ens",
+  "classes": {
+   "alicloud:ens/eipInstanceAttachment:EipInstanceAttachment": "EipInstanceAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ens/image",
   "fqn": "pulumi_alicloud.ens",
   "classes": {
@@ -3626,6 +3634,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ens",
   "classes": {
    "alicloud:ens/loadBalancer:LoadBalancer": "LoadBalancer"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ens/natGateway",
+  "fqn": "pulumi_alicloud.ens",
+  "classes": {
+   "alicloud:ens/natGateway:NatGateway": "NatGateway"
   }
  },
  {
@@ -4270,10 +4286,42 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "gpdb/externalDataService",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/externalDataService:ExternalDataService": "ExternalDataService"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "gpdb/instance",
   "fqn": "pulumi_alicloud.gpdb",
   "classes": {
    "alicloud:gpdb/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "gpdb/remoteAdbDataSource",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource": "RemoteAdbDataSource"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "gpdb/streamingDataService",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/streamingDataService:StreamingDataService": "StreamingDataService"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "gpdb/streamingDataSource",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/streamingDataSource:StreamingDataSource": "StreamingDataSource"
   }
  },
  {

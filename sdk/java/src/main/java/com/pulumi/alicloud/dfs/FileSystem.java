@@ -115,6 +115,12 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> dataRedundancyType() {
         return Codegen.optional(this.dataRedundancyType);
     }
+    @Export(name="dedicatedClusterId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dedicatedClusterId;
+
+    public Output<Optional<String>> dedicatedClusterId() {
+        return Codegen.optional(this.dedicatedClusterId);
+    }
     /**
      * The description of the file system resource. No more than 32 characters in length.
      * 
@@ -246,14 +252,14 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
      * @return Zone Id, which is used to create file system resources to the specified zone.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**
