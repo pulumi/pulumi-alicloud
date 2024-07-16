@@ -12,13 +12,33 @@ import java.util.Objects;
 
 @CustomType
 public final class SyntheticTaskCommonSettingCustomHost {
+    /**
+     * @return The host list. See `hosts` below.
+     * 
+     */
     private List<SyntheticTaskCommonSettingCustomHostHost> hosts;
+    /**
+     * @return Selection method:
+     * - 0: Random
+     * - 1: Polling.
+     * 
+     */
     private Integer selectType;
 
     private SyntheticTaskCommonSettingCustomHost() {}
+    /**
+     * @return The host list. See `hosts` below.
+     * 
+     */
     public List<SyntheticTaskCommonSettingCustomHostHost> hosts() {
         return this.hosts;
     }
+    /**
+     * @return Selection method:
+     * - 0: Random
+     * - 1: Polling.
+     * 
+     */
     public Integer selectType() {
         return this.selectType;
     }

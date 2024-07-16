@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Sls.Inputs
 
     public sealed class AlertConfigurationAnnotationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Field name.
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// Field value.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

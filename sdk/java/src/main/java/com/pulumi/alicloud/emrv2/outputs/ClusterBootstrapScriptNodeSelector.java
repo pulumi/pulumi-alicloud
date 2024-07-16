@@ -20,6 +20,10 @@ public final class ClusterBootstrapScriptNodeSelector {
      */
     @Deprecated /* Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it. */
     private @Nullable String nodeGroupId;
+    /**
+     * @return The bootstrap scripts execution target node group ids.
+     * 
+     */
     private @Nullable List<String> nodeGroupIds;
     /**
      * @deprecated
@@ -28,9 +32,25 @@ public final class ClusterBootstrapScriptNodeSelector {
      */
     @Deprecated /* Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it. */
     private @Nullable String nodeGroupName;
+    /**
+     * @return The bootstrap scripts execution target node group names.
+     * 
+     */
     private @Nullable List<String> nodeGroupNames;
+    /**
+     * @return The bootstrap scripts execution target node group types.
+     * 
+     */
     private @Nullable List<String> nodeGroupTypes;
+    /**
+     * @return The bootstrap scripts execution target node names.
+     * 
+     */
     private @Nullable List<String> nodeNames;
+    /**
+     * @return The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
+     * 
+     */
     private String nodeSelectType;
 
     private ClusterBootstrapScriptNodeSelector() {}
@@ -43,6 +63,10 @@ public final class ClusterBootstrapScriptNodeSelector {
     public Optional<String> nodeGroupId() {
         return Optional.ofNullable(this.nodeGroupId);
     }
+    /**
+     * @return The bootstrap scripts execution target node group ids.
+     * 
+     */
     public List<String> nodeGroupIds() {
         return this.nodeGroupIds == null ? List.of() : this.nodeGroupIds;
     }
@@ -55,15 +79,31 @@ public final class ClusterBootstrapScriptNodeSelector {
     public Optional<String> nodeGroupName() {
         return Optional.ofNullable(this.nodeGroupName);
     }
+    /**
+     * @return The bootstrap scripts execution target node group names.
+     * 
+     */
     public List<String> nodeGroupNames() {
         return this.nodeGroupNames == null ? List.of() : this.nodeGroupNames;
     }
+    /**
+     * @return The bootstrap scripts execution target node group types.
+     * 
+     */
     public List<String> nodeGroupTypes() {
         return this.nodeGroupTypes == null ? List.of() : this.nodeGroupTypes;
     }
+    /**
+     * @return The bootstrap scripts execution target node names.
+     * 
+     */
     public List<String> nodeNames() {
         return this.nodeNames == null ? List.of() : this.nodeNames;
     }
+    /**
+     * @return The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
+     * 
+     */
     public String nodeSelectType() {
         return this.nodeSelectType;
     }

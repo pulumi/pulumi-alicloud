@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SearchIndexSchemaIndexSortSorter {
+    /**
+     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * 
+     */
     private @Nullable String fieldName;
+    /**
+     * @return The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+     * 
+     */
     private @Nullable String mode;
+    /**
+     * @return The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
+     * 
+     */
     private @Nullable String order;
+    /**
+     * @return Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
+     * 
+     */
     private @Nullable String sorterType;
 
     private SearchIndexSchemaIndexSortSorter() {}
+    /**
+     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * 
+     */
     public Optional<String> fieldName() {
         return Optional.ofNullable(this.fieldName);
     }
+    /**
+     * @return The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
+    /**
+     * @return The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
+     * 
+     */
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
+    /**
+     * @return Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
+     * 
+     */
     public Optional<String> sorterType() {
         return Optional.ofNullable(this.sorterType);
     }

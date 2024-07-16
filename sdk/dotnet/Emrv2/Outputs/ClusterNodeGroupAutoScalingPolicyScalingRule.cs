@@ -13,13 +13,37 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     [OutputType]
     public sealed class ClusterNodeGroupAutoScalingPolicyScalingRule
     {
+        /// <summary>
+        /// The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
+        /// </summary>
         public readonly string ActivityType;
+        /// <summary>
+        /// The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
+        /// </summary>
         public readonly string? AdjustmentType;
+        /// <summary>
+        /// The adjustment value of auto scaling policy. The value should between 1 and 5000.
+        /// </summary>
         public readonly int AdjustmentValue;
+        /// <summary>
+        /// The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+        /// </summary>
         public readonly Outputs.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger? MetricsTrigger;
+        /// <summary>
+        /// The minimum adjustment value of auto scaling policy.
+        /// </summary>
         public readonly int? MinAdjustmentValue;
+        /// <summary>
+        /// The rule name of auto scaling policy.
+        /// </summary>
         public readonly string RuleName;
+        /// <summary>
+        /// The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+        /// </summary>
         public readonly Outputs.ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger? TimeTrigger;
+        /// <summary>
+        /// The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
+        /// </summary>
         public readonly string TriggerType;
 
         [OutputConstructor]

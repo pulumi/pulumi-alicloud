@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Emr.Outputs
     [OutputType]
     public sealed class ClusterMetaStoreConf
     {
+        /// <summary>
+        /// Custom rds database password.
+        /// </summary>
         public readonly string DbPassword;
+        /// <summary>
+        /// Custom rds database connection url.
+        /// </summary>
         public readonly string DbUrl;
+        /// <summary>
+        /// Custom rds database user name.
+        /// </summary>
         public readonly string DbUserName;
 
         [OutputConstructor]

@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
 
     public sealed class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The tag key for this scaling rule specific metrics trigger.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// The tag value for this scaling rule specific metrics trigger.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

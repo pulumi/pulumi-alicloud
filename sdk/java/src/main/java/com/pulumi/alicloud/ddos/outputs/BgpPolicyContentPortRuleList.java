@@ -13,37 +13,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BgpPolicyContentPortRuleList {
+    /**
+     * @return End of destination port 0-65535.
+     * 
+     */
     private Integer dstPortEnd;
+    /**
+     * @return Destination Port start 0-65535.
+     * 
+     */
     private Integer dstPortStart;
+    /**
+     * @return Action. Currently, only drop is supported.
+     * 
+     */
     private String matchAction;
+    /**
+     * @return Rule UUID is required to be deleted and modified, and is not required to be created.
+     * 
+     */
     private @Nullable String portRuleId;
+    /**
+     * @return Protocol, tcp or udp.
+     * 
+     */
     private String protocol;
+    /**
+     * @return Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+     * 
+     */
     private Integer seqNo;
+    /**
+     * @return Source Port end 0-65535.
+     * 
+     */
     private Integer srcPortEnd;
+    /**
+     * @return Source port start 0-65535.
+     * 
+     */
     private Integer srcPortStart;
 
     private BgpPolicyContentPortRuleList() {}
+    /**
+     * @return End of destination port 0-65535.
+     * 
+     */
     public Integer dstPortEnd() {
         return this.dstPortEnd;
     }
+    /**
+     * @return Destination Port start 0-65535.
+     * 
+     */
     public Integer dstPortStart() {
         return this.dstPortStart;
     }
+    /**
+     * @return Action. Currently, only drop is supported.
+     * 
+     */
     public String matchAction() {
         return this.matchAction;
     }
+    /**
+     * @return Rule UUID is required to be deleted and modified, and is not required to be created.
+     * 
+     */
     public Optional<String> portRuleId() {
         return Optional.ofNullable(this.portRuleId);
     }
+    /**
+     * @return Protocol, tcp or udp.
+     * 
+     */
     public String protocol() {
         return this.protocol;
     }
+    /**
+     * @return Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+     * 
+     */
     public Integer seqNo() {
         return this.seqNo;
     }
+    /**
+     * @return Source Port end 0-65535.
+     * 
+     */
     public Integer srcPortEnd() {
         return this.srcPortEnd;
     }
+    /**
+     * @return Source port start 0-65535.
+     * 
+     */
     public Integer srcPortStart() {
         return this.srcPortStart;
     }

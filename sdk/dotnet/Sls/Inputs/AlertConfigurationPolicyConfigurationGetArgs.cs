@@ -12,12 +12,21 @@ namespace Pulumi.AliCloud.Sls.Inputs
 
     public sealed class AlertConfigurationPolicyConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+        /// </summary>
         [Input("actionPolicyId")]
         public Input<string>? ActionPolicyId { get; set; }
 
+        /// <summary>
+        /// Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
+        /// </summary>
         [Input("alertPolicyId")]
         public Input<string>? AlertPolicyId { get; set; }
 
+        /// <summary>
+        /// Repeat the waiting time. For example, 5m, 1H, etc.
+        /// </summary>
         [Input("repeatInterval")]
         public Input<string>? RepeatInterval { get; set; }
 

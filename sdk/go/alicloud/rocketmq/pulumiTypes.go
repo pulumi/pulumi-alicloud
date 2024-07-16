@@ -460,10 +460,18 @@ func (o RocketMQInstanceNetworkInfoEndpointArrayOutput) Index(i pulumi.IntInput)
 }
 
 type RocketMQInstanceNetworkInfoInternetInfo struct {
-	FlowOutBandwidth *int     `pulumi:"flowOutBandwidth"`
-	FlowOutType      string   `pulumi:"flowOutType"`
-	InternetSpec     string   `pulumi:"internetSpec"`
-	IpWhitelists     []string `pulumi:"ipWhitelists"`
+	// Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+	FlowOutBandwidth *int `pulumi:"flowOutBandwidth"`
+	// Public network billing type. The parameter values are as follows:
+	// - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+	// - uninvolved: Not involved. Set this value when disabling public network access.
+	FlowOutType string `pulumi:"flowOutType"`
+	// Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+	// - enable: Enable public network access
+	// - disable: Disable public network access
+	InternetSpec string `pulumi:"internetSpec"`
+	// internet ip whitelist.
+	IpWhitelists []string `pulumi:"ipWhitelists"`
 }
 
 // RocketMQInstanceNetworkInfoInternetInfoInput is an input type that accepts RocketMQInstanceNetworkInfoInternetInfoArgs and RocketMQInstanceNetworkInfoInternetInfoOutput values.
@@ -478,10 +486,18 @@ type RocketMQInstanceNetworkInfoInternetInfoInput interface {
 }
 
 type RocketMQInstanceNetworkInfoInternetInfoArgs struct {
-	FlowOutBandwidth pulumi.IntPtrInput      `pulumi:"flowOutBandwidth"`
-	FlowOutType      pulumi.StringInput      `pulumi:"flowOutType"`
-	InternetSpec     pulumi.StringInput      `pulumi:"internetSpec"`
-	IpWhitelists     pulumi.StringArrayInput `pulumi:"ipWhitelists"`
+	// Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+	FlowOutBandwidth pulumi.IntPtrInput `pulumi:"flowOutBandwidth"`
+	// Public network billing type. The parameter values are as follows:
+	// - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+	// - uninvolved: Not involved. Set this value when disabling public network access.
+	FlowOutType pulumi.StringInput `pulumi:"flowOutType"`
+	// Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+	// - enable: Enable public network access
+	// - disable: Disable public network access
+	InternetSpec pulumi.StringInput `pulumi:"internetSpec"`
+	// internet ip whitelist.
+	IpWhitelists pulumi.StringArrayInput `pulumi:"ipWhitelists"`
 }
 
 func (RocketMQInstanceNetworkInfoInternetInfoArgs) ElementType() reflect.Type {
@@ -561,18 +577,26 @@ func (o RocketMQInstanceNetworkInfoInternetInfoOutput) ToRocketMQInstanceNetwork
 	}).(RocketMQInstanceNetworkInfoInternetInfoPtrOutput)
 }
 
+// Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
 func (o RocketMQInstanceNetworkInfoInternetInfoOutput) FlowOutBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RocketMQInstanceNetworkInfoInternetInfo) *int { return v.FlowOutBandwidth }).(pulumi.IntPtrOutput)
 }
 
+// Public network billing type. The parameter values are as follows:
+// - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+// - uninvolved: Not involved. Set this value when disabling public network access.
 func (o RocketMQInstanceNetworkInfoInternetInfoOutput) FlowOutType() pulumi.StringOutput {
 	return o.ApplyT(func(v RocketMQInstanceNetworkInfoInternetInfo) string { return v.FlowOutType }).(pulumi.StringOutput)
 }
 
+// Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+// - enable: Enable public network access
+// - disable: Disable public network access
 func (o RocketMQInstanceNetworkInfoInternetInfoOutput) InternetSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v RocketMQInstanceNetworkInfoInternetInfo) string { return v.InternetSpec }).(pulumi.StringOutput)
 }
 
+// internet ip whitelist.
 func (o RocketMQInstanceNetworkInfoInternetInfoOutput) IpWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RocketMQInstanceNetworkInfoInternetInfo) []string { return v.IpWhitelists }).(pulumi.StringArrayOutput)
 }
@@ -601,6 +625,7 @@ func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) Elem() RocketMQInstanc
 	}).(RocketMQInstanceNetworkInfoInternetInfoOutput)
 }
 
+// Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
 func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) FlowOutBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoInternetInfo) *int {
 		if v == nil {
@@ -610,6 +635,9 @@ func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) FlowOutBandwidth() pul
 	}).(pulumi.IntPtrOutput)
 }
 
+// Public network billing type. The parameter values are as follows:
+// - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+// - uninvolved: Not involved. Set this value when disabling public network access.
 func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) FlowOutType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoInternetInfo) *string {
 		if v == nil {
@@ -619,6 +647,9 @@ func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) FlowOutType() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+// - enable: Enable public network access
+// - disable: Disable public network access
 func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) InternetSpec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoInternetInfo) *string {
 		if v == nil {
@@ -628,6 +659,7 @@ func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) InternetSpec() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// internet ip whitelist.
 func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) IpWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoInternetInfo) []string {
 		if v == nil {
@@ -638,7 +670,9 @@ func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) IpWhitelists() pulumi.
 }
 
 type RocketMQInstanceNetworkInfoVpcInfo struct {
-	VpcId     string `pulumi:"vpcId"`
+	// Proprietary Network.
+	VpcId string `pulumi:"vpcId"`
+	// VPC network switch.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -654,7 +688,9 @@ type RocketMQInstanceNetworkInfoVpcInfoInput interface {
 }
 
 type RocketMQInstanceNetworkInfoVpcInfoArgs struct {
-	VpcId     pulumi.StringInput `pulumi:"vpcId"`
+	// Proprietary Network.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// VPC network switch.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -735,10 +771,12 @@ func (o RocketMQInstanceNetworkInfoVpcInfoOutput) ToRocketMQInstanceNetworkInfoV
 	}).(RocketMQInstanceNetworkInfoVpcInfoPtrOutput)
 }
 
+// Proprietary Network.
 func (o RocketMQInstanceNetworkInfoVpcInfoOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v RocketMQInstanceNetworkInfoVpcInfo) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
+// VPC network switch.
 func (o RocketMQInstanceNetworkInfoVpcInfoOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v RocketMQInstanceNetworkInfoVpcInfo) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -767,6 +805,7 @@ func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) Elem() RocketMQInstanceNetw
 	}).(RocketMQInstanceNetworkInfoVpcInfoOutput)
 }
 
+// Proprietary Network.
 func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoVpcInfo) *string {
 		if v == nil {
@@ -776,6 +815,7 @@ func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) VpcId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// VPC network switch.
 func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoVpcInfo) *string {
 		if v == nil {

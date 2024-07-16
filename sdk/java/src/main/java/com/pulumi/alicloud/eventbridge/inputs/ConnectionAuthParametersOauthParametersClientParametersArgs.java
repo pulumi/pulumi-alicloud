@@ -15,16 +15,32 @@ public final class ConnectionAuthParametersOauthParametersClientParametersArgs e
 
     public static final ConnectionAuthParametersOauthParametersClientParametersArgs Empty = new ConnectionAuthParametersOauthParametersClientParametersArgs();
 
+    /**
+     * The ID of the client.
+     * 
+     */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
+    /**
+     * @return The ID of the client.
+     * 
+     */
     public Optional<Output<String>> clientId() {
         return Optional.ofNullable(this.clientId);
     }
 
+    /**
+     * The AccessKey secret of the client.
+     * 
+     */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
+    /**
+     * @return The AccessKey secret of the client.
+     * 
+     */
     public Optional<Output<String>> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
@@ -54,20 +70,44 @@ public final class ConnectionAuthParametersOauthParametersClientParametersArgs e
             $ = new ConnectionAuthParametersOauthParametersClientParametersArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param clientId The ID of the client.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(@Nullable Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
 
+        /**
+         * @param clientId The ID of the client.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
         }
 
+        /**
+         * @param clientSecret The AccessKey secret of the client.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(@Nullable Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
 
+        /**
+         * @param clientSecret The AccessKey secret of the client.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
         }

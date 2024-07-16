@@ -17,9 +17,17 @@ public final class TemplateScratchSourceResourceGroupArgs extends com.pulumi.res
 
     public static final TemplateScratchSourceResourceGroupArgs Empty = new TemplateScratchSourceResourceGroupArgs();
 
+    /**
+     * The ID of the Source Resource Group.
+     * 
+     */
     @Import(name="resourceGroupId", required=true)
     private Output<String> resourceGroupId;
 
+    /**
+     * @return The ID of the Source Resource Group.
+     * 
+     */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
@@ -56,11 +64,23 @@ public final class TemplateScratchSourceResourceGroupArgs extends com.pulumi.res
             $ = new TemplateScratchSourceResourceGroupArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param resourceGroupId The ID of the Source Resource Group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(Output<String> resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
         }
 
+        /**
+         * @param resourceGroupId The ID of the Source Resource Group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
         }

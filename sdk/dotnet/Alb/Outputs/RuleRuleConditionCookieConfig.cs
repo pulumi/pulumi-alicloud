@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class RuleRuleConditionCookieConfig
     {
+        /// <summary>
+        /// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RuleRuleConditionCookieConfigValue> Values;
 
         [OutputConstructor]

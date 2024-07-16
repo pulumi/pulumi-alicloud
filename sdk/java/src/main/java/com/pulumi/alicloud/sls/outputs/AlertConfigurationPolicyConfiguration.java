@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertConfigurationPolicyConfiguration {
+    /**
+     * @return The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+     * 
+     */
     private @Nullable String actionPolicyId;
+    /**
+     * @return Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
+     * 
+     */
     private @Nullable String alertPolicyId;
+    /**
+     * @return Repeat the waiting time. For example, 5m, 1H, etc.
+     * 
+     */
     private @Nullable String repeatInterval;
 
     private AlertConfigurationPolicyConfiguration() {}
+    /**
+     * @return The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+     * 
+     */
     public Optional<String> actionPolicyId() {
         return Optional.ofNullable(this.actionPolicyId);
     }
+    /**
+     * @return Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
+     * 
+     */
     public Optional<String> alertPolicyId() {
         return Optional.ofNullable(this.alertPolicyId);
     }
+    /**
+     * @return Repeat the waiting time. For example, 5m, 1H, etc.
+     * 
+     */
     public Optional<String> repeatInterval() {
         return Optional.ofNullable(this.repeatInterval);
     }

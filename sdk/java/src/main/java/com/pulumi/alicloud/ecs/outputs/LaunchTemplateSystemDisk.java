@@ -13,13 +13,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LaunchTemplateSystemDisk {
+    /**
+     * @return The category of the disk:
+     * - cloud: Basic cloud disk.
+     * - cloud_efficiency: Ultra cloud disk.
+     * - cloud_ssd: SSD cloud Disks.
+     * - ephemeral_ssd: local SSD Disks
+     * - cloud_essd: ESSD cloud Disks.
+     * 
+     * Default to `cloud_efficiency`.
+     * 
+     */
     private @Nullable String category;
+    /**
+     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
+     * 
+     * Default to true
+     * 
+     */
     private @Nullable Boolean deleteWithInstance;
     /**
      * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
     private @Nullable String description;
+    /**
+     * @return Encrypted the data in this disk.
+     * 
+     * Default to false
+     * 
+     */
     private @Nullable Boolean encrypted;
     private @Nullable String iops;
     /**
@@ -28,12 +51,38 @@ public final class LaunchTemplateSystemDisk {
      */
     private @Nullable String name;
     private @Nullable String performanceLevel;
+    /**
+     * @return The size of the data disk.
+     * - cloud：[5, 2000]
+     * - cloud_efficiency：[20, 32768]
+     * - cloud_ssd：[20, 32768]
+     * - cloud_essd：[20, 32768]
+     * - ephemeral_ssd: [5, 800]
+     * 
+     */
     private @Nullable Integer size;
 
     private LaunchTemplateSystemDisk() {}
+    /**
+     * @return The category of the disk:
+     * - cloud: Basic cloud disk.
+     * - cloud_efficiency: Ultra cloud disk.
+     * - cloud_ssd: SSD cloud Disks.
+     * - ephemeral_ssd: local SSD Disks
+     * - cloud_essd: ESSD cloud Disks.
+     * 
+     * Default to `cloud_efficiency`.
+     * 
+     */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
+    /**
+     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
+     * 
+     * Default to true
+     * 
+     */
     public Optional<Boolean> deleteWithInstance() {
         return Optional.ofNullable(this.deleteWithInstance);
     }
@@ -44,6 +93,12 @@ public final class LaunchTemplateSystemDisk {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Encrypted the data in this disk.
+     * 
+     * Default to false
+     * 
+     */
     public Optional<Boolean> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
@@ -60,6 +115,15 @@ public final class LaunchTemplateSystemDisk {
     public Optional<String> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
+    /**
+     * @return The size of the data disk.
+     * - cloud：[5, 2000]
+     * - cloud_efficiency：[20, 32768]
+     * - cloud_ssd：[20, 32768]
+     * - cloud_essd：[20, 32768]
+     * - ephemeral_ssd: [5, 800]
+     * 
+     */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }

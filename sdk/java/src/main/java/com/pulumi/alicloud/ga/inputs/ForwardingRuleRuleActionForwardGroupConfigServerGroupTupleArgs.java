@@ -14,9 +14,17 @@ public final class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArg
 
     public static final ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs Empty = new ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs();
 
+    /**
+     * The ID of the endpoint group.
+     * 
+     */
     @Import(name="endpointGroupId", required=true)
     private Output<String> endpointGroupId;
 
+    /**
+     * @return The ID of the endpoint group.
+     * 
+     */
     public Output<String> endpointGroupId() {
         return this.endpointGroupId;
     }
@@ -45,11 +53,23 @@ public final class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArg
             $ = new ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param endpointGroupId The ID of the endpoint group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointGroupId(Output<String> endpointGroupId) {
             $.endpointGroupId = endpointGroupId;
             return this;
         }
 
+        /**
+         * @param endpointGroupId The ID of the endpoint group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointGroupId(String endpointGroupId) {
             return endpointGroupId(Output.of(endpointGroupId));
         }

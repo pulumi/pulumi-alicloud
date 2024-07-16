@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Sls.Outputs
     [OutputType]
     public sealed class AlertConfigurationGroupConfiguration
     {
+        /// <summary>
+        /// The field used for grouping evaluation. When type is set to custom, fields must be set.
+        /// </summary>
         public readonly ImmutableArray<string> Fields;
         public readonly string? Type;
 

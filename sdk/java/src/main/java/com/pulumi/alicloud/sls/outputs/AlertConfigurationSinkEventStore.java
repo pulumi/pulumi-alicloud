@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertConfigurationSinkEventStore {
+    /**
+     * @return Open.
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return SLS service endpoint.
+     * 
+     */
     private @Nullable String endpoint;
+    /**
+     * @return Event Library Name.
+     * 
+     */
     private @Nullable String eventStore;
+    /**
+     * @return Project Name.
+     * 
+     */
     private @Nullable String project;
+    /**
+     * @return Roles used to write alarm data to the event Library.
+     * 
+     */
     private @Nullable String roleArn;
 
     private AlertConfigurationSinkEventStore() {}
+    /**
+     * @return Open.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return SLS service endpoint.
+     * 
+     */
     public Optional<String> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
+    /**
+     * @return Event Library Name.
+     * 
+     */
     public Optional<String> eventStore() {
         return Optional.ofNullable(this.eventStore);
     }
+    /**
+     * @return Project Name.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    /**
+     * @return Roles used to write alarm data to the event Library.
+     * 
+     */
     public Optional<String> roleArn() {
         return Optional.ofNullable(this.roleArn);
     }

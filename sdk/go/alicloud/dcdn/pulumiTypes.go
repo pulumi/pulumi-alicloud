@@ -1083,9 +1083,12 @@ func (o ErEnvConfPtrOutput) Staging() ErEnvConfStagingPtrOutput {
 }
 
 type ErEnvConfPresetCanaryAnhui struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryAnhuiInput is an input type that accepts ErEnvConfPresetCanaryAnhuiArgs and ErEnvConfPresetCanaryAnhuiOutput values.
@@ -1100,9 +1103,12 @@ type ErEnvConfPresetCanaryAnhuiInput interface {
 }
 
 type ErEnvConfPresetCanaryAnhuiArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryAnhuiArgs) ElementType() reflect.Type {
@@ -1182,14 +1188,17 @@ func (o ErEnvConfPresetCanaryAnhuiOutput) ToErEnvConfPresetCanaryAnhuiPtrOutputW
 	}).(ErEnvConfPresetCanaryAnhuiPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryAnhuiOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryAnhui) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryAnhuiOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryAnhui) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryAnhuiOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryAnhui) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -1218,6 +1227,7 @@ func (o ErEnvConfPresetCanaryAnhuiPtrOutput) Elem() ErEnvConfPresetCanaryAnhuiOu
 	}).(ErEnvConfPresetCanaryAnhuiOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryAnhuiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryAnhui) []string {
 		if v == nil {
@@ -1227,6 +1237,7 @@ func (o ErEnvConfPresetCanaryAnhuiPtrOutput) AllowedHosts() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryAnhuiPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryAnhui) *string {
 		if v == nil {
@@ -1236,6 +1247,7 @@ func (o ErEnvConfPresetCanaryAnhuiPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryAnhuiPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryAnhui) *string {
 		if v == nil {
@@ -1246,9 +1258,12 @@ func (o ErEnvConfPresetCanaryAnhuiPtrOutput) SpecName() pulumi.StringPtrOutput {
 }
 
 type ErEnvConfPresetCanaryBeijing struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryBeijingInput is an input type that accepts ErEnvConfPresetCanaryBeijingArgs and ErEnvConfPresetCanaryBeijingOutput values.
@@ -1263,9 +1278,12 @@ type ErEnvConfPresetCanaryBeijingInput interface {
 }
 
 type ErEnvConfPresetCanaryBeijingArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryBeijingArgs) ElementType() reflect.Type {
@@ -1345,14 +1363,17 @@ func (o ErEnvConfPresetCanaryBeijingOutput) ToErEnvConfPresetCanaryBeijingPtrOut
 	}).(ErEnvConfPresetCanaryBeijingPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryBeijingOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryBeijing) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryBeijingOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryBeijing) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryBeijingOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryBeijing) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -1381,6 +1402,7 @@ func (o ErEnvConfPresetCanaryBeijingPtrOutput) Elem() ErEnvConfPresetCanaryBeiji
 	}).(ErEnvConfPresetCanaryBeijingOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryBeijingPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryBeijing) []string {
 		if v == nil {
@@ -1390,6 +1412,7 @@ func (o ErEnvConfPresetCanaryBeijingPtrOutput) AllowedHosts() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryBeijingPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryBeijing) *string {
 		if v == nil {
@@ -1399,6 +1422,7 @@ func (o ErEnvConfPresetCanaryBeijingPtrOutput) CodeRev() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryBeijingPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryBeijing) *string {
 		if v == nil {
@@ -1409,9 +1433,12 @@ func (o ErEnvConfPresetCanaryBeijingPtrOutput) SpecName() pulumi.StringPtrOutput
 }
 
 type ErEnvConfPresetCanaryChongqing struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryChongqingInput is an input type that accepts ErEnvConfPresetCanaryChongqingArgs and ErEnvConfPresetCanaryChongqingOutput values.
@@ -1426,9 +1453,12 @@ type ErEnvConfPresetCanaryChongqingInput interface {
 }
 
 type ErEnvConfPresetCanaryChongqingArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryChongqingArgs) ElementType() reflect.Type {
@@ -1508,14 +1538,17 @@ func (o ErEnvConfPresetCanaryChongqingOutput) ToErEnvConfPresetCanaryChongqingPt
 	}).(ErEnvConfPresetCanaryChongqingPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryChongqingOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryChongqing) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryChongqingOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryChongqing) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryChongqingOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryChongqing) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -1544,6 +1577,7 @@ func (o ErEnvConfPresetCanaryChongqingPtrOutput) Elem() ErEnvConfPresetCanaryCho
 	}).(ErEnvConfPresetCanaryChongqingOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryChongqingPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryChongqing) []string {
 		if v == nil {
@@ -1553,6 +1587,7 @@ func (o ErEnvConfPresetCanaryChongqingPtrOutput) AllowedHosts() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryChongqingPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryChongqing) *string {
 		if v == nil {
@@ -1562,6 +1597,7 @@ func (o ErEnvConfPresetCanaryChongqingPtrOutput) CodeRev() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryChongqingPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryChongqing) *string {
 		if v == nil {
@@ -1572,9 +1608,12 @@ func (o ErEnvConfPresetCanaryChongqingPtrOutput) SpecName() pulumi.StringPtrOutp
 }
 
 type ErEnvConfPresetCanaryFujian struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryFujianInput is an input type that accepts ErEnvConfPresetCanaryFujianArgs and ErEnvConfPresetCanaryFujianOutput values.
@@ -1589,9 +1628,12 @@ type ErEnvConfPresetCanaryFujianInput interface {
 }
 
 type ErEnvConfPresetCanaryFujianArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryFujianArgs) ElementType() reflect.Type {
@@ -1671,14 +1713,17 @@ func (o ErEnvConfPresetCanaryFujianOutput) ToErEnvConfPresetCanaryFujianPtrOutpu
 	}).(ErEnvConfPresetCanaryFujianPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryFujianOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryFujian) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryFujianOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryFujian) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryFujianOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryFujian) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -1707,6 +1752,7 @@ func (o ErEnvConfPresetCanaryFujianPtrOutput) Elem() ErEnvConfPresetCanaryFujian
 	}).(ErEnvConfPresetCanaryFujianOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryFujianPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryFujian) []string {
 		if v == nil {
@@ -1716,6 +1762,7 @@ func (o ErEnvConfPresetCanaryFujianPtrOutput) AllowedHosts() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryFujianPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryFujian) *string {
 		if v == nil {
@@ -1725,6 +1772,7 @@ func (o ErEnvConfPresetCanaryFujianPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryFujianPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryFujian) *string {
 		if v == nil {
@@ -1735,9 +1783,12 @@ func (o ErEnvConfPresetCanaryFujianPtrOutput) SpecName() pulumi.StringPtrOutput 
 }
 
 type ErEnvConfPresetCanaryGansu struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryGansuInput is an input type that accepts ErEnvConfPresetCanaryGansuArgs and ErEnvConfPresetCanaryGansuOutput values.
@@ -1752,9 +1803,12 @@ type ErEnvConfPresetCanaryGansuInput interface {
 }
 
 type ErEnvConfPresetCanaryGansuArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryGansuArgs) ElementType() reflect.Type {
@@ -1834,14 +1888,17 @@ func (o ErEnvConfPresetCanaryGansuOutput) ToErEnvConfPresetCanaryGansuPtrOutputW
 	}).(ErEnvConfPresetCanaryGansuPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryGansuOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryGansu) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryGansuOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryGansu) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryGansuOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryGansu) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -1870,6 +1927,7 @@ func (o ErEnvConfPresetCanaryGansuPtrOutput) Elem() ErEnvConfPresetCanaryGansuOu
 	}).(ErEnvConfPresetCanaryGansuOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryGansuPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryGansu) []string {
 		if v == nil {
@@ -1879,6 +1937,7 @@ func (o ErEnvConfPresetCanaryGansuPtrOutput) AllowedHosts() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryGansuPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryGansu) *string {
 		if v == nil {
@@ -1888,6 +1947,7 @@ func (o ErEnvConfPresetCanaryGansuPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryGansuPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryGansu) *string {
 		if v == nil {
@@ -1898,9 +1958,12 @@ func (o ErEnvConfPresetCanaryGansuPtrOutput) SpecName() pulumi.StringPtrOutput {
 }
 
 type ErEnvConfPresetCanaryGuangdong struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryGuangdongInput is an input type that accepts ErEnvConfPresetCanaryGuangdongArgs and ErEnvConfPresetCanaryGuangdongOutput values.
@@ -1915,9 +1978,12 @@ type ErEnvConfPresetCanaryGuangdongInput interface {
 }
 
 type ErEnvConfPresetCanaryGuangdongArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryGuangdongArgs) ElementType() reflect.Type {
@@ -1997,14 +2063,17 @@ func (o ErEnvConfPresetCanaryGuangdongOutput) ToErEnvConfPresetCanaryGuangdongPt
 	}).(ErEnvConfPresetCanaryGuangdongPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryGuangdongOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryGuangdong) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryGuangdongOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryGuangdong) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryGuangdongOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryGuangdong) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -2033,6 +2102,7 @@ func (o ErEnvConfPresetCanaryGuangdongPtrOutput) Elem() ErEnvConfPresetCanaryGua
 	}).(ErEnvConfPresetCanaryGuangdongOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryGuangdongPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangdong) []string {
 		if v == nil {
@@ -2042,6 +2112,7 @@ func (o ErEnvConfPresetCanaryGuangdongPtrOutput) AllowedHosts() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryGuangdongPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangdong) *string {
 		if v == nil {
@@ -2051,6 +2122,7 @@ func (o ErEnvConfPresetCanaryGuangdongPtrOutput) CodeRev() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryGuangdongPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangdong) *string {
 		if v == nil {
@@ -2061,9 +2133,12 @@ func (o ErEnvConfPresetCanaryGuangdongPtrOutput) SpecName() pulumi.StringPtrOutp
 }
 
 type ErEnvConfPresetCanaryGuangxi struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryGuangxiInput is an input type that accepts ErEnvConfPresetCanaryGuangxiArgs and ErEnvConfPresetCanaryGuangxiOutput values.
@@ -2078,9 +2153,12 @@ type ErEnvConfPresetCanaryGuangxiInput interface {
 }
 
 type ErEnvConfPresetCanaryGuangxiArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryGuangxiArgs) ElementType() reflect.Type {
@@ -2160,14 +2238,17 @@ func (o ErEnvConfPresetCanaryGuangxiOutput) ToErEnvConfPresetCanaryGuangxiPtrOut
 	}).(ErEnvConfPresetCanaryGuangxiPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryGuangxiOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryGuangxi) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryGuangxiOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryGuangxi) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryGuangxiOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryGuangxi) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -2196,6 +2277,7 @@ func (o ErEnvConfPresetCanaryGuangxiPtrOutput) Elem() ErEnvConfPresetCanaryGuang
 	}).(ErEnvConfPresetCanaryGuangxiOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryGuangxiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangxi) []string {
 		if v == nil {
@@ -2205,6 +2287,7 @@ func (o ErEnvConfPresetCanaryGuangxiPtrOutput) AllowedHosts() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryGuangxiPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangxi) *string {
 		if v == nil {
@@ -2214,6 +2297,7 @@ func (o ErEnvConfPresetCanaryGuangxiPtrOutput) CodeRev() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryGuangxiPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuangxi) *string {
 		if v == nil {
@@ -2224,9 +2308,12 @@ func (o ErEnvConfPresetCanaryGuangxiPtrOutput) SpecName() pulumi.StringPtrOutput
 }
 
 type ErEnvConfPresetCanaryGuizhou struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryGuizhouInput is an input type that accepts ErEnvConfPresetCanaryGuizhouArgs and ErEnvConfPresetCanaryGuizhouOutput values.
@@ -2241,9 +2328,12 @@ type ErEnvConfPresetCanaryGuizhouInput interface {
 }
 
 type ErEnvConfPresetCanaryGuizhouArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryGuizhouArgs) ElementType() reflect.Type {
@@ -2323,14 +2413,17 @@ func (o ErEnvConfPresetCanaryGuizhouOutput) ToErEnvConfPresetCanaryGuizhouPtrOut
 	}).(ErEnvConfPresetCanaryGuizhouPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryGuizhouOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryGuizhou) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryGuizhouOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryGuizhou) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryGuizhouOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryGuizhou) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -2359,6 +2452,7 @@ func (o ErEnvConfPresetCanaryGuizhouPtrOutput) Elem() ErEnvConfPresetCanaryGuizh
 	}).(ErEnvConfPresetCanaryGuizhouOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryGuizhouPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuizhou) []string {
 		if v == nil {
@@ -2368,6 +2462,7 @@ func (o ErEnvConfPresetCanaryGuizhouPtrOutput) AllowedHosts() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryGuizhouPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuizhou) *string {
 		if v == nil {
@@ -2377,6 +2472,7 @@ func (o ErEnvConfPresetCanaryGuizhouPtrOutput) CodeRev() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryGuizhouPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryGuizhou) *string {
 		if v == nil {
@@ -2387,9 +2483,12 @@ func (o ErEnvConfPresetCanaryGuizhouPtrOutput) SpecName() pulumi.StringPtrOutput
 }
 
 type ErEnvConfPresetCanaryHainan struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryHainanInput is an input type that accepts ErEnvConfPresetCanaryHainanArgs and ErEnvConfPresetCanaryHainanOutput values.
@@ -2404,9 +2503,12 @@ type ErEnvConfPresetCanaryHainanInput interface {
 }
 
 type ErEnvConfPresetCanaryHainanArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryHainanArgs) ElementType() reflect.Type {
@@ -2486,14 +2588,17 @@ func (o ErEnvConfPresetCanaryHainanOutput) ToErEnvConfPresetCanaryHainanPtrOutpu
 	}).(ErEnvConfPresetCanaryHainanPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHainanOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHainan) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHainanOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHainan) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHainanOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHainan) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -2522,6 +2627,7 @@ func (o ErEnvConfPresetCanaryHainanPtrOutput) Elem() ErEnvConfPresetCanaryHainan
 	}).(ErEnvConfPresetCanaryHainanOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHainanPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHainan) []string {
 		if v == nil {
@@ -2531,6 +2637,7 @@ func (o ErEnvConfPresetCanaryHainanPtrOutput) AllowedHosts() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHainanPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHainan) *string {
 		if v == nil {
@@ -2540,6 +2647,7 @@ func (o ErEnvConfPresetCanaryHainanPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHainanPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHainan) *string {
 		if v == nil {
@@ -2550,9 +2658,12 @@ func (o ErEnvConfPresetCanaryHainanPtrOutput) SpecName() pulumi.StringPtrOutput 
 }
 
 type ErEnvConfPresetCanaryHebei struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryHebeiInput is an input type that accepts ErEnvConfPresetCanaryHebeiArgs and ErEnvConfPresetCanaryHebeiOutput values.
@@ -2567,9 +2678,12 @@ type ErEnvConfPresetCanaryHebeiInput interface {
 }
 
 type ErEnvConfPresetCanaryHebeiArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryHebeiArgs) ElementType() reflect.Type {
@@ -2649,14 +2763,17 @@ func (o ErEnvConfPresetCanaryHebeiOutput) ToErEnvConfPresetCanaryHebeiPtrOutputW
 	}).(ErEnvConfPresetCanaryHebeiPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHebeiOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHebei) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHebeiOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHebei) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHebeiOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHebei) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -2685,6 +2802,7 @@ func (o ErEnvConfPresetCanaryHebeiPtrOutput) Elem() ErEnvConfPresetCanaryHebeiOu
 	}).(ErEnvConfPresetCanaryHebeiOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHebeiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHebei) []string {
 		if v == nil {
@@ -2694,6 +2812,7 @@ func (o ErEnvConfPresetCanaryHebeiPtrOutput) AllowedHosts() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHebeiPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHebei) *string {
 		if v == nil {
@@ -2703,6 +2822,7 @@ func (o ErEnvConfPresetCanaryHebeiPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHebeiPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHebei) *string {
 		if v == nil {
@@ -2713,9 +2833,12 @@ func (o ErEnvConfPresetCanaryHebeiPtrOutput) SpecName() pulumi.StringPtrOutput {
 }
 
 type ErEnvConfPresetCanaryHeilongjiang struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryHeilongjiangInput is an input type that accepts ErEnvConfPresetCanaryHeilongjiangArgs and ErEnvConfPresetCanaryHeilongjiangOutput values.
@@ -2730,9 +2853,12 @@ type ErEnvConfPresetCanaryHeilongjiangInput interface {
 }
 
 type ErEnvConfPresetCanaryHeilongjiangArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryHeilongjiangArgs) ElementType() reflect.Type {
@@ -2812,14 +2938,17 @@ func (o ErEnvConfPresetCanaryHeilongjiangOutput) ToErEnvConfPresetCanaryHeilongj
 	}).(ErEnvConfPresetCanaryHeilongjiangPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHeilongjiangOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHeilongjiang) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHeilongjiangOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHeilongjiang) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHeilongjiangOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHeilongjiang) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -2848,6 +2977,7 @@ func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) Elem() ErEnvConfPresetCanary
 	}).(ErEnvConfPresetCanaryHeilongjiangOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHeilongjiang) []string {
 		if v == nil {
@@ -2857,6 +2987,7 @@ func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) AllowedHosts() pulumi.String
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHeilongjiang) *string {
 		if v == nil {
@@ -2866,6 +2997,7 @@ func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) CodeRev() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHeilongjiang) *string {
 		if v == nil {
@@ -2876,9 +3008,12 @@ func (o ErEnvConfPresetCanaryHeilongjiangPtrOutput) SpecName() pulumi.StringPtrO
 }
 
 type ErEnvConfPresetCanaryHenan struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryHenanInput is an input type that accepts ErEnvConfPresetCanaryHenanArgs and ErEnvConfPresetCanaryHenanOutput values.
@@ -2893,9 +3028,12 @@ type ErEnvConfPresetCanaryHenanInput interface {
 }
 
 type ErEnvConfPresetCanaryHenanArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryHenanArgs) ElementType() reflect.Type {
@@ -2975,14 +3113,17 @@ func (o ErEnvConfPresetCanaryHenanOutput) ToErEnvConfPresetCanaryHenanPtrOutputW
 	}).(ErEnvConfPresetCanaryHenanPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHenanOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHenan) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHenanOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHenan) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHenanOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHenan) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -3011,6 +3152,7 @@ func (o ErEnvConfPresetCanaryHenanPtrOutput) Elem() ErEnvConfPresetCanaryHenanOu
 	}).(ErEnvConfPresetCanaryHenanOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHenanPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHenan) []string {
 		if v == nil {
@@ -3020,6 +3162,7 @@ func (o ErEnvConfPresetCanaryHenanPtrOutput) AllowedHosts() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHenanPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHenan) *string {
 		if v == nil {
@@ -3029,6 +3172,7 @@ func (o ErEnvConfPresetCanaryHenanPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHenanPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHenan) *string {
 		if v == nil {
@@ -3039,9 +3183,12 @@ func (o ErEnvConfPresetCanaryHenanPtrOutput) SpecName() pulumi.StringPtrOutput {
 }
 
 type ErEnvConfPresetCanaryHongKong struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryHongKongInput is an input type that accepts ErEnvConfPresetCanaryHongKongArgs and ErEnvConfPresetCanaryHongKongOutput values.
@@ -3056,9 +3203,12 @@ type ErEnvConfPresetCanaryHongKongInput interface {
 }
 
 type ErEnvConfPresetCanaryHongKongArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryHongKongArgs) ElementType() reflect.Type {
@@ -3138,14 +3288,17 @@ func (o ErEnvConfPresetCanaryHongKongOutput) ToErEnvConfPresetCanaryHongKongPtrO
 	}).(ErEnvConfPresetCanaryHongKongPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHongKongOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHongKong) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHongKongOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHongKong) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHongKongOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHongKong) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -3174,6 +3327,7 @@ func (o ErEnvConfPresetCanaryHongKongPtrOutput) Elem() ErEnvConfPresetCanaryHong
 	}).(ErEnvConfPresetCanaryHongKongOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHongKongPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHongKong) []string {
 		if v == nil {
@@ -3183,6 +3337,7 @@ func (o ErEnvConfPresetCanaryHongKongPtrOutput) AllowedHosts() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHongKongPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHongKong) *string {
 		if v == nil {
@@ -3192,6 +3347,7 @@ func (o ErEnvConfPresetCanaryHongKongPtrOutput) CodeRev() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHongKongPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHongKong) *string {
 		if v == nil {
@@ -3202,9 +3358,12 @@ func (o ErEnvConfPresetCanaryHongKongPtrOutput) SpecName() pulumi.StringPtrOutpu
 }
 
 type ErEnvConfPresetCanaryHubei struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryHubeiInput is an input type that accepts ErEnvConfPresetCanaryHubeiArgs and ErEnvConfPresetCanaryHubeiOutput values.
@@ -3219,9 +3378,12 @@ type ErEnvConfPresetCanaryHubeiInput interface {
 }
 
 type ErEnvConfPresetCanaryHubeiArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryHubeiArgs) ElementType() reflect.Type {
@@ -3301,14 +3463,17 @@ func (o ErEnvConfPresetCanaryHubeiOutput) ToErEnvConfPresetCanaryHubeiPtrOutputW
 	}).(ErEnvConfPresetCanaryHubeiPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHubeiOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHubei) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHubeiOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHubei) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHubeiOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHubei) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -3337,6 +3502,7 @@ func (o ErEnvConfPresetCanaryHubeiPtrOutput) Elem() ErEnvConfPresetCanaryHubeiOu
 	}).(ErEnvConfPresetCanaryHubeiOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHubeiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHubei) []string {
 		if v == nil {
@@ -3346,6 +3512,7 @@ func (o ErEnvConfPresetCanaryHubeiPtrOutput) AllowedHosts() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHubeiPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHubei) *string {
 		if v == nil {
@@ -3355,6 +3522,7 @@ func (o ErEnvConfPresetCanaryHubeiPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHubeiPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHubei) *string {
 		if v == nil {
@@ -3365,9 +3533,12 @@ func (o ErEnvConfPresetCanaryHubeiPtrOutput) SpecName() pulumi.StringPtrOutput {
 }
 
 type ErEnvConfPresetCanaryHunan struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryHunanInput is an input type that accepts ErEnvConfPresetCanaryHunanArgs and ErEnvConfPresetCanaryHunanOutput values.
@@ -3382,9 +3553,12 @@ type ErEnvConfPresetCanaryHunanInput interface {
 }
 
 type ErEnvConfPresetCanaryHunanArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryHunanArgs) ElementType() reflect.Type {
@@ -3464,14 +3638,17 @@ func (o ErEnvConfPresetCanaryHunanOutput) ToErEnvConfPresetCanaryHunanPtrOutputW
 	}).(ErEnvConfPresetCanaryHunanPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHunanOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHunan) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHunanOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHunan) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHunanOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryHunan) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -3500,6 +3677,7 @@ func (o ErEnvConfPresetCanaryHunanPtrOutput) Elem() ErEnvConfPresetCanaryHunanOu
 	}).(ErEnvConfPresetCanaryHunanOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryHunanPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHunan) []string {
 		if v == nil {
@@ -3509,6 +3687,7 @@ func (o ErEnvConfPresetCanaryHunanPtrOutput) AllowedHosts() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryHunanPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHunan) *string {
 		if v == nil {
@@ -3518,6 +3697,7 @@ func (o ErEnvConfPresetCanaryHunanPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryHunanPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryHunan) *string {
 		if v == nil {
@@ -3528,9 +3708,12 @@ func (o ErEnvConfPresetCanaryHunanPtrOutput) SpecName() pulumi.StringPtrOutput {
 }
 
 type ErEnvConfPresetCanaryJiangsu struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryJiangsuInput is an input type that accepts ErEnvConfPresetCanaryJiangsuArgs and ErEnvConfPresetCanaryJiangsuOutput values.
@@ -3545,9 +3728,12 @@ type ErEnvConfPresetCanaryJiangsuInput interface {
 }
 
 type ErEnvConfPresetCanaryJiangsuArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryJiangsuArgs) ElementType() reflect.Type {
@@ -3627,14 +3813,17 @@ func (o ErEnvConfPresetCanaryJiangsuOutput) ToErEnvConfPresetCanaryJiangsuPtrOut
 	}).(ErEnvConfPresetCanaryJiangsuPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryJiangsuOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryJiangsu) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryJiangsuOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryJiangsu) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryJiangsuOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryJiangsu) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -3663,6 +3852,7 @@ func (o ErEnvConfPresetCanaryJiangsuPtrOutput) Elem() ErEnvConfPresetCanaryJiang
 	}).(ErEnvConfPresetCanaryJiangsuOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryJiangsuPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangsu) []string {
 		if v == nil {
@@ -3672,6 +3862,7 @@ func (o ErEnvConfPresetCanaryJiangsuPtrOutput) AllowedHosts() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryJiangsuPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangsu) *string {
 		if v == nil {
@@ -3681,6 +3872,7 @@ func (o ErEnvConfPresetCanaryJiangsuPtrOutput) CodeRev() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryJiangsuPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangsu) *string {
 		if v == nil {
@@ -3691,9 +3883,12 @@ func (o ErEnvConfPresetCanaryJiangsuPtrOutput) SpecName() pulumi.StringPtrOutput
 }
 
 type ErEnvConfPresetCanaryJiangxi struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryJiangxiInput is an input type that accepts ErEnvConfPresetCanaryJiangxiArgs and ErEnvConfPresetCanaryJiangxiOutput values.
@@ -3708,9 +3903,12 @@ type ErEnvConfPresetCanaryJiangxiInput interface {
 }
 
 type ErEnvConfPresetCanaryJiangxiArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryJiangxiArgs) ElementType() reflect.Type {
@@ -3790,14 +3988,17 @@ func (o ErEnvConfPresetCanaryJiangxiOutput) ToErEnvConfPresetCanaryJiangxiPtrOut
 	}).(ErEnvConfPresetCanaryJiangxiPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryJiangxiOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryJiangxi) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryJiangxiOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryJiangxi) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryJiangxiOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryJiangxi) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -3826,6 +4027,7 @@ func (o ErEnvConfPresetCanaryJiangxiPtrOutput) Elem() ErEnvConfPresetCanaryJiang
 	}).(ErEnvConfPresetCanaryJiangxiOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryJiangxiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangxi) []string {
 		if v == nil {
@@ -3835,6 +4037,7 @@ func (o ErEnvConfPresetCanaryJiangxiPtrOutput) AllowedHosts() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryJiangxiPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangxi) *string {
 		if v == nil {
@@ -3844,6 +4047,7 @@ func (o ErEnvConfPresetCanaryJiangxiPtrOutput) CodeRev() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryJiangxiPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryJiangxi) *string {
 		if v == nil {
@@ -3854,9 +4058,12 @@ func (o ErEnvConfPresetCanaryJiangxiPtrOutput) SpecName() pulumi.StringPtrOutput
 }
 
 type ErEnvConfPresetCanaryJilin struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryJilinInput is an input type that accepts ErEnvConfPresetCanaryJilinArgs and ErEnvConfPresetCanaryJilinOutput values.
@@ -3871,9 +4078,12 @@ type ErEnvConfPresetCanaryJilinInput interface {
 }
 
 type ErEnvConfPresetCanaryJilinArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryJilinArgs) ElementType() reflect.Type {
@@ -3953,14 +4163,17 @@ func (o ErEnvConfPresetCanaryJilinOutput) ToErEnvConfPresetCanaryJilinPtrOutputW
 	}).(ErEnvConfPresetCanaryJilinPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryJilinOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryJilin) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryJilinOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryJilin) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryJilinOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryJilin) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -3989,6 +4202,7 @@ func (o ErEnvConfPresetCanaryJilinPtrOutput) Elem() ErEnvConfPresetCanaryJilinOu
 	}).(ErEnvConfPresetCanaryJilinOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryJilinPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryJilin) []string {
 		if v == nil {
@@ -3998,6 +4212,7 @@ func (o ErEnvConfPresetCanaryJilinPtrOutput) AllowedHosts() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryJilinPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryJilin) *string {
 		if v == nil {
@@ -4007,6 +4222,7 @@ func (o ErEnvConfPresetCanaryJilinPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryJilinPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryJilin) *string {
 		if v == nil {
@@ -4017,9 +4233,12 @@ func (o ErEnvConfPresetCanaryJilinPtrOutput) SpecName() pulumi.StringPtrOutput {
 }
 
 type ErEnvConfPresetCanaryLiaoning struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryLiaoningInput is an input type that accepts ErEnvConfPresetCanaryLiaoningArgs and ErEnvConfPresetCanaryLiaoningOutput values.
@@ -4034,9 +4253,12 @@ type ErEnvConfPresetCanaryLiaoningInput interface {
 }
 
 type ErEnvConfPresetCanaryLiaoningArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryLiaoningArgs) ElementType() reflect.Type {
@@ -4116,14 +4338,17 @@ func (o ErEnvConfPresetCanaryLiaoningOutput) ToErEnvConfPresetCanaryLiaoningPtrO
 	}).(ErEnvConfPresetCanaryLiaoningPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryLiaoningOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryLiaoning) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryLiaoningOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryLiaoning) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryLiaoningOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryLiaoning) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -4152,6 +4377,7 @@ func (o ErEnvConfPresetCanaryLiaoningPtrOutput) Elem() ErEnvConfPresetCanaryLiao
 	}).(ErEnvConfPresetCanaryLiaoningOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryLiaoningPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryLiaoning) []string {
 		if v == nil {
@@ -4161,6 +4387,7 @@ func (o ErEnvConfPresetCanaryLiaoningPtrOutput) AllowedHosts() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryLiaoningPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryLiaoning) *string {
 		if v == nil {
@@ -4170,6 +4397,7 @@ func (o ErEnvConfPresetCanaryLiaoningPtrOutput) CodeRev() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryLiaoningPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryLiaoning) *string {
 		if v == nil {
@@ -4180,9 +4408,12 @@ func (o ErEnvConfPresetCanaryLiaoningPtrOutput) SpecName() pulumi.StringPtrOutpu
 }
 
 type ErEnvConfPresetCanaryMacau struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryMacauInput is an input type that accepts ErEnvConfPresetCanaryMacauArgs and ErEnvConfPresetCanaryMacauOutput values.
@@ -4197,9 +4428,12 @@ type ErEnvConfPresetCanaryMacauInput interface {
 }
 
 type ErEnvConfPresetCanaryMacauArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryMacauArgs) ElementType() reflect.Type {
@@ -4279,14 +4513,17 @@ func (o ErEnvConfPresetCanaryMacauOutput) ToErEnvConfPresetCanaryMacauPtrOutputW
 	}).(ErEnvConfPresetCanaryMacauPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryMacauOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryMacau) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryMacauOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryMacau) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryMacauOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryMacau) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -4315,6 +4552,7 @@ func (o ErEnvConfPresetCanaryMacauPtrOutput) Elem() ErEnvConfPresetCanaryMacauOu
 	}).(ErEnvConfPresetCanaryMacauOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryMacauPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryMacau) []string {
 		if v == nil {
@@ -4324,6 +4562,7 @@ func (o ErEnvConfPresetCanaryMacauPtrOutput) AllowedHosts() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryMacauPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryMacau) *string {
 		if v == nil {
@@ -4333,6 +4572,7 @@ func (o ErEnvConfPresetCanaryMacauPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryMacauPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryMacau) *string {
 		if v == nil {
@@ -4343,9 +4583,12 @@ func (o ErEnvConfPresetCanaryMacauPtrOutput) SpecName() pulumi.StringPtrOutput {
 }
 
 type ErEnvConfPresetCanaryNeimenggu struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryNeimengguInput is an input type that accepts ErEnvConfPresetCanaryNeimengguArgs and ErEnvConfPresetCanaryNeimengguOutput values.
@@ -4360,9 +4603,12 @@ type ErEnvConfPresetCanaryNeimengguInput interface {
 }
 
 type ErEnvConfPresetCanaryNeimengguArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryNeimengguArgs) ElementType() reflect.Type {
@@ -4442,14 +4688,17 @@ func (o ErEnvConfPresetCanaryNeimengguOutput) ToErEnvConfPresetCanaryNeimengguPt
 	}).(ErEnvConfPresetCanaryNeimengguPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryNeimengguOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryNeimenggu) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryNeimengguOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryNeimenggu) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryNeimengguOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryNeimenggu) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -4478,6 +4727,7 @@ func (o ErEnvConfPresetCanaryNeimengguPtrOutput) Elem() ErEnvConfPresetCanaryNei
 	}).(ErEnvConfPresetCanaryNeimengguOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryNeimengguPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryNeimenggu) []string {
 		if v == nil {
@@ -4487,6 +4737,7 @@ func (o ErEnvConfPresetCanaryNeimengguPtrOutput) AllowedHosts() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryNeimengguPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryNeimenggu) *string {
 		if v == nil {
@@ -4496,6 +4747,7 @@ func (o ErEnvConfPresetCanaryNeimengguPtrOutput) CodeRev() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryNeimengguPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryNeimenggu) *string {
 		if v == nil {
@@ -4506,9 +4758,12 @@ func (o ErEnvConfPresetCanaryNeimengguPtrOutput) SpecName() pulumi.StringPtrOutp
 }
 
 type ErEnvConfPresetCanaryNingxia struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryNingxiaInput is an input type that accepts ErEnvConfPresetCanaryNingxiaArgs and ErEnvConfPresetCanaryNingxiaOutput values.
@@ -4523,9 +4778,12 @@ type ErEnvConfPresetCanaryNingxiaInput interface {
 }
 
 type ErEnvConfPresetCanaryNingxiaArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryNingxiaArgs) ElementType() reflect.Type {
@@ -4605,14 +4863,17 @@ func (o ErEnvConfPresetCanaryNingxiaOutput) ToErEnvConfPresetCanaryNingxiaPtrOut
 	}).(ErEnvConfPresetCanaryNingxiaPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryNingxiaOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryNingxia) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryNingxiaOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryNingxia) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryNingxiaOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryNingxia) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -4641,6 +4902,7 @@ func (o ErEnvConfPresetCanaryNingxiaPtrOutput) Elem() ErEnvConfPresetCanaryNingx
 	}).(ErEnvConfPresetCanaryNingxiaOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryNingxiaPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryNingxia) []string {
 		if v == nil {
@@ -4650,6 +4912,7 @@ func (o ErEnvConfPresetCanaryNingxiaPtrOutput) AllowedHosts() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryNingxiaPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryNingxia) *string {
 		if v == nil {
@@ -4659,6 +4922,7 @@ func (o ErEnvConfPresetCanaryNingxiaPtrOutput) CodeRev() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryNingxiaPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryNingxia) *string {
 		if v == nil {
@@ -4669,9 +4933,12 @@ func (o ErEnvConfPresetCanaryNingxiaPtrOutput) SpecName() pulumi.StringPtrOutput
 }
 
 type ErEnvConfPresetCanaryOverseas struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryOverseasInput is an input type that accepts ErEnvConfPresetCanaryOverseasArgs and ErEnvConfPresetCanaryOverseasOutput values.
@@ -4686,9 +4953,12 @@ type ErEnvConfPresetCanaryOverseasInput interface {
 }
 
 type ErEnvConfPresetCanaryOverseasArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryOverseasArgs) ElementType() reflect.Type {
@@ -4768,14 +5038,17 @@ func (o ErEnvConfPresetCanaryOverseasOutput) ToErEnvConfPresetCanaryOverseasPtrO
 	}).(ErEnvConfPresetCanaryOverseasPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryOverseasOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryOverseas) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryOverseasOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryOverseas) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryOverseasOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryOverseas) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -4804,6 +5077,7 @@ func (o ErEnvConfPresetCanaryOverseasPtrOutput) Elem() ErEnvConfPresetCanaryOver
 	}).(ErEnvConfPresetCanaryOverseasOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryOverseasPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryOverseas) []string {
 		if v == nil {
@@ -4813,6 +5087,7 @@ func (o ErEnvConfPresetCanaryOverseasPtrOutput) AllowedHosts() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryOverseasPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryOverseas) *string {
 		if v == nil {
@@ -4822,6 +5097,7 @@ func (o ErEnvConfPresetCanaryOverseasPtrOutput) CodeRev() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryOverseasPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryOverseas) *string {
 		if v == nil {
@@ -4832,9 +5108,12 @@ func (o ErEnvConfPresetCanaryOverseasPtrOutput) SpecName() pulumi.StringPtrOutpu
 }
 
 type ErEnvConfPresetCanaryQinghai struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryQinghaiInput is an input type that accepts ErEnvConfPresetCanaryQinghaiArgs and ErEnvConfPresetCanaryQinghaiOutput values.
@@ -4849,9 +5128,12 @@ type ErEnvConfPresetCanaryQinghaiInput interface {
 }
 
 type ErEnvConfPresetCanaryQinghaiArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryQinghaiArgs) ElementType() reflect.Type {
@@ -4931,14 +5213,17 @@ func (o ErEnvConfPresetCanaryQinghaiOutput) ToErEnvConfPresetCanaryQinghaiPtrOut
 	}).(ErEnvConfPresetCanaryQinghaiPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryQinghaiOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryQinghai) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryQinghaiOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryQinghai) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryQinghaiOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryQinghai) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -4967,6 +5252,7 @@ func (o ErEnvConfPresetCanaryQinghaiPtrOutput) Elem() ErEnvConfPresetCanaryQingh
 	}).(ErEnvConfPresetCanaryQinghaiOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryQinghaiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryQinghai) []string {
 		if v == nil {
@@ -4976,6 +5262,7 @@ func (o ErEnvConfPresetCanaryQinghaiPtrOutput) AllowedHosts() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryQinghaiPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryQinghai) *string {
 		if v == nil {
@@ -4985,6 +5272,7 @@ func (o ErEnvConfPresetCanaryQinghaiPtrOutput) CodeRev() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryQinghaiPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryQinghai) *string {
 		if v == nil {
@@ -4995,9 +5283,12 @@ func (o ErEnvConfPresetCanaryQinghaiPtrOutput) SpecName() pulumi.StringPtrOutput
 }
 
 type ErEnvConfPresetCanaryShaanxi struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryShaanxiInput is an input type that accepts ErEnvConfPresetCanaryShaanxiArgs and ErEnvConfPresetCanaryShaanxiOutput values.
@@ -5012,9 +5303,12 @@ type ErEnvConfPresetCanaryShaanxiInput interface {
 }
 
 type ErEnvConfPresetCanaryShaanxiArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryShaanxiArgs) ElementType() reflect.Type {
@@ -5094,14 +5388,17 @@ func (o ErEnvConfPresetCanaryShaanxiOutput) ToErEnvConfPresetCanaryShaanxiPtrOut
 	}).(ErEnvConfPresetCanaryShaanxiPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryShaanxiOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryShaanxi) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryShaanxiOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryShaanxi) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryShaanxiOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryShaanxi) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -5130,6 +5427,7 @@ func (o ErEnvConfPresetCanaryShaanxiPtrOutput) Elem() ErEnvConfPresetCanaryShaan
 	}).(ErEnvConfPresetCanaryShaanxiOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryShaanxiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryShaanxi) []string {
 		if v == nil {
@@ -5139,6 +5437,7 @@ func (o ErEnvConfPresetCanaryShaanxiPtrOutput) AllowedHosts() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryShaanxiPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryShaanxi) *string {
 		if v == nil {
@@ -5148,6 +5447,7 @@ func (o ErEnvConfPresetCanaryShaanxiPtrOutput) CodeRev() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryShaanxiPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryShaanxi) *string {
 		if v == nil {
@@ -5158,9 +5458,12 @@ func (o ErEnvConfPresetCanaryShaanxiPtrOutput) SpecName() pulumi.StringPtrOutput
 }
 
 type ErEnvConfPresetCanaryShandong struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryShandongInput is an input type that accepts ErEnvConfPresetCanaryShandongArgs and ErEnvConfPresetCanaryShandongOutput values.
@@ -5175,9 +5478,12 @@ type ErEnvConfPresetCanaryShandongInput interface {
 }
 
 type ErEnvConfPresetCanaryShandongArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryShandongArgs) ElementType() reflect.Type {
@@ -5257,14 +5563,17 @@ func (o ErEnvConfPresetCanaryShandongOutput) ToErEnvConfPresetCanaryShandongPtrO
 	}).(ErEnvConfPresetCanaryShandongPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryShandongOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryShandong) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryShandongOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryShandong) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryShandongOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryShandong) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -5293,6 +5602,7 @@ func (o ErEnvConfPresetCanaryShandongPtrOutput) Elem() ErEnvConfPresetCanaryShan
 	}).(ErEnvConfPresetCanaryShandongOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryShandongPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryShandong) []string {
 		if v == nil {
@@ -5302,6 +5612,7 @@ func (o ErEnvConfPresetCanaryShandongPtrOutput) AllowedHosts() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryShandongPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryShandong) *string {
 		if v == nil {
@@ -5311,6 +5622,7 @@ func (o ErEnvConfPresetCanaryShandongPtrOutput) CodeRev() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryShandongPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryShandong) *string {
 		if v == nil {
@@ -5321,9 +5633,12 @@ func (o ErEnvConfPresetCanaryShandongPtrOutput) SpecName() pulumi.StringPtrOutpu
 }
 
 type ErEnvConfPresetCanaryShanghai struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryShanghaiInput is an input type that accepts ErEnvConfPresetCanaryShanghaiArgs and ErEnvConfPresetCanaryShanghaiOutput values.
@@ -5338,9 +5653,12 @@ type ErEnvConfPresetCanaryShanghaiInput interface {
 }
 
 type ErEnvConfPresetCanaryShanghaiArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryShanghaiArgs) ElementType() reflect.Type {
@@ -5420,14 +5738,17 @@ func (o ErEnvConfPresetCanaryShanghaiOutput) ToErEnvConfPresetCanaryShanghaiPtrO
 	}).(ErEnvConfPresetCanaryShanghaiPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryShanghaiOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryShanghai) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryShanghaiOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryShanghai) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryShanghaiOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryShanghai) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -5456,6 +5777,7 @@ func (o ErEnvConfPresetCanaryShanghaiPtrOutput) Elem() ErEnvConfPresetCanaryShan
 	}).(ErEnvConfPresetCanaryShanghaiOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryShanghaiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanghai) []string {
 		if v == nil {
@@ -5465,6 +5787,7 @@ func (o ErEnvConfPresetCanaryShanghaiPtrOutput) AllowedHosts() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryShanghaiPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanghai) *string {
 		if v == nil {
@@ -5474,6 +5797,7 @@ func (o ErEnvConfPresetCanaryShanghaiPtrOutput) CodeRev() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryShanghaiPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanghai) *string {
 		if v == nil {
@@ -5484,9 +5808,12 @@ func (o ErEnvConfPresetCanaryShanghaiPtrOutput) SpecName() pulumi.StringPtrOutpu
 }
 
 type ErEnvConfPresetCanaryShanxi struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryShanxiInput is an input type that accepts ErEnvConfPresetCanaryShanxiArgs and ErEnvConfPresetCanaryShanxiOutput values.
@@ -5501,9 +5828,12 @@ type ErEnvConfPresetCanaryShanxiInput interface {
 }
 
 type ErEnvConfPresetCanaryShanxiArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryShanxiArgs) ElementType() reflect.Type {
@@ -5583,14 +5913,17 @@ func (o ErEnvConfPresetCanaryShanxiOutput) ToErEnvConfPresetCanaryShanxiPtrOutpu
 	}).(ErEnvConfPresetCanaryShanxiPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryShanxiOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryShanxi) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryShanxiOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryShanxi) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryShanxiOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryShanxi) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -5619,6 +5952,7 @@ func (o ErEnvConfPresetCanaryShanxiPtrOutput) Elem() ErEnvConfPresetCanaryShanxi
 	}).(ErEnvConfPresetCanaryShanxiOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryShanxiPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanxi) []string {
 		if v == nil {
@@ -5628,6 +5962,7 @@ func (o ErEnvConfPresetCanaryShanxiPtrOutput) AllowedHosts() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryShanxiPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanxi) *string {
 		if v == nil {
@@ -5637,6 +5972,7 @@ func (o ErEnvConfPresetCanaryShanxiPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryShanxiPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryShanxi) *string {
 		if v == nil {
@@ -5647,9 +5983,12 @@ func (o ErEnvConfPresetCanaryShanxiPtrOutput) SpecName() pulumi.StringPtrOutput 
 }
 
 type ErEnvConfPresetCanarySichuan struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanarySichuanInput is an input type that accepts ErEnvConfPresetCanarySichuanArgs and ErEnvConfPresetCanarySichuanOutput values.
@@ -5664,9 +6003,12 @@ type ErEnvConfPresetCanarySichuanInput interface {
 }
 
 type ErEnvConfPresetCanarySichuanArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanarySichuanArgs) ElementType() reflect.Type {
@@ -5746,14 +6088,17 @@ func (o ErEnvConfPresetCanarySichuanOutput) ToErEnvConfPresetCanarySichuanPtrOut
 	}).(ErEnvConfPresetCanarySichuanPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanarySichuanOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanarySichuan) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanarySichuanOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanarySichuan) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanarySichuanOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanarySichuan) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -5782,6 +6127,7 @@ func (o ErEnvConfPresetCanarySichuanPtrOutput) Elem() ErEnvConfPresetCanarySichu
 	}).(ErEnvConfPresetCanarySichuanOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanarySichuanPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanarySichuan) []string {
 		if v == nil {
@@ -5791,6 +6137,7 @@ func (o ErEnvConfPresetCanarySichuanPtrOutput) AllowedHosts() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanarySichuanPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanarySichuan) *string {
 		if v == nil {
@@ -5800,6 +6147,7 @@ func (o ErEnvConfPresetCanarySichuanPtrOutput) CodeRev() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanarySichuanPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanarySichuan) *string {
 		if v == nil {
@@ -5810,9 +6158,12 @@ func (o ErEnvConfPresetCanarySichuanPtrOutput) SpecName() pulumi.StringPtrOutput
 }
 
 type ErEnvConfPresetCanaryTaiwan struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryTaiwanInput is an input type that accepts ErEnvConfPresetCanaryTaiwanArgs and ErEnvConfPresetCanaryTaiwanOutput values.
@@ -5827,9 +6178,12 @@ type ErEnvConfPresetCanaryTaiwanInput interface {
 }
 
 type ErEnvConfPresetCanaryTaiwanArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryTaiwanArgs) ElementType() reflect.Type {
@@ -5909,14 +6263,17 @@ func (o ErEnvConfPresetCanaryTaiwanOutput) ToErEnvConfPresetCanaryTaiwanPtrOutpu
 	}).(ErEnvConfPresetCanaryTaiwanPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryTaiwanOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryTaiwan) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryTaiwanOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryTaiwan) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryTaiwanOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryTaiwan) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -5945,6 +6302,7 @@ func (o ErEnvConfPresetCanaryTaiwanPtrOutput) Elem() ErEnvConfPresetCanaryTaiwan
 	}).(ErEnvConfPresetCanaryTaiwanOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryTaiwanPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryTaiwan) []string {
 		if v == nil {
@@ -5954,6 +6312,7 @@ func (o ErEnvConfPresetCanaryTaiwanPtrOutput) AllowedHosts() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryTaiwanPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryTaiwan) *string {
 		if v == nil {
@@ -5963,6 +6322,7 @@ func (o ErEnvConfPresetCanaryTaiwanPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryTaiwanPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryTaiwan) *string {
 		if v == nil {
@@ -5973,9 +6333,12 @@ func (o ErEnvConfPresetCanaryTaiwanPtrOutput) SpecName() pulumi.StringPtrOutput 
 }
 
 type ErEnvConfPresetCanaryTianjin struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryTianjinInput is an input type that accepts ErEnvConfPresetCanaryTianjinArgs and ErEnvConfPresetCanaryTianjinOutput values.
@@ -5990,9 +6353,12 @@ type ErEnvConfPresetCanaryTianjinInput interface {
 }
 
 type ErEnvConfPresetCanaryTianjinArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryTianjinArgs) ElementType() reflect.Type {
@@ -6072,14 +6438,17 @@ func (o ErEnvConfPresetCanaryTianjinOutput) ToErEnvConfPresetCanaryTianjinPtrOut
 	}).(ErEnvConfPresetCanaryTianjinPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryTianjinOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryTianjin) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryTianjinOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryTianjin) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryTianjinOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryTianjin) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -6108,6 +6477,7 @@ func (o ErEnvConfPresetCanaryTianjinPtrOutput) Elem() ErEnvConfPresetCanaryTianj
 	}).(ErEnvConfPresetCanaryTianjinOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryTianjinPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryTianjin) []string {
 		if v == nil {
@@ -6117,6 +6487,7 @@ func (o ErEnvConfPresetCanaryTianjinPtrOutput) AllowedHosts() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryTianjinPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryTianjin) *string {
 		if v == nil {
@@ -6126,6 +6497,7 @@ func (o ErEnvConfPresetCanaryTianjinPtrOutput) CodeRev() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryTianjinPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryTianjin) *string {
 		if v == nil {
@@ -6136,9 +6508,12 @@ func (o ErEnvConfPresetCanaryTianjinPtrOutput) SpecName() pulumi.StringPtrOutput
 }
 
 type ErEnvConfPresetCanaryXinjiang struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryXinjiangInput is an input type that accepts ErEnvConfPresetCanaryXinjiangArgs and ErEnvConfPresetCanaryXinjiangOutput values.
@@ -6153,9 +6528,12 @@ type ErEnvConfPresetCanaryXinjiangInput interface {
 }
 
 type ErEnvConfPresetCanaryXinjiangArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryXinjiangArgs) ElementType() reflect.Type {
@@ -6235,14 +6613,17 @@ func (o ErEnvConfPresetCanaryXinjiangOutput) ToErEnvConfPresetCanaryXinjiangPtrO
 	}).(ErEnvConfPresetCanaryXinjiangPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryXinjiangOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryXinjiang) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryXinjiangOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryXinjiang) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryXinjiangOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryXinjiang) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -6271,6 +6652,7 @@ func (o ErEnvConfPresetCanaryXinjiangPtrOutput) Elem() ErEnvConfPresetCanaryXinj
 	}).(ErEnvConfPresetCanaryXinjiangOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryXinjiangPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryXinjiang) []string {
 		if v == nil {
@@ -6280,6 +6662,7 @@ func (o ErEnvConfPresetCanaryXinjiangPtrOutput) AllowedHosts() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryXinjiangPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryXinjiang) *string {
 		if v == nil {
@@ -6289,6 +6672,7 @@ func (o ErEnvConfPresetCanaryXinjiangPtrOutput) CodeRev() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryXinjiangPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryXinjiang) *string {
 		if v == nil {
@@ -6299,9 +6683,12 @@ func (o ErEnvConfPresetCanaryXinjiangPtrOutput) SpecName() pulumi.StringPtrOutpu
 }
 
 type ErEnvConfPresetCanaryXizang struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryXizangInput is an input type that accepts ErEnvConfPresetCanaryXizangArgs and ErEnvConfPresetCanaryXizangOutput values.
@@ -6316,9 +6703,12 @@ type ErEnvConfPresetCanaryXizangInput interface {
 }
 
 type ErEnvConfPresetCanaryXizangArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryXizangArgs) ElementType() reflect.Type {
@@ -6398,14 +6788,17 @@ func (o ErEnvConfPresetCanaryXizangOutput) ToErEnvConfPresetCanaryXizangPtrOutpu
 	}).(ErEnvConfPresetCanaryXizangPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryXizangOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryXizang) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryXizangOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryXizang) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryXizangOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryXizang) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -6434,6 +6827,7 @@ func (o ErEnvConfPresetCanaryXizangPtrOutput) Elem() ErEnvConfPresetCanaryXizang
 	}).(ErEnvConfPresetCanaryXizangOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryXizangPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryXizang) []string {
 		if v == nil {
@@ -6443,6 +6837,7 @@ func (o ErEnvConfPresetCanaryXizangPtrOutput) AllowedHosts() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryXizangPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryXizang) *string {
 		if v == nil {
@@ -6452,6 +6847,7 @@ func (o ErEnvConfPresetCanaryXizangPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryXizangPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryXizang) *string {
 		if v == nil {
@@ -6462,9 +6858,12 @@ func (o ErEnvConfPresetCanaryXizangPtrOutput) SpecName() pulumi.StringPtrOutput 
 }
 
 type ErEnvConfPresetCanaryYunnan struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryYunnanInput is an input type that accepts ErEnvConfPresetCanaryYunnanArgs and ErEnvConfPresetCanaryYunnanOutput values.
@@ -6479,9 +6878,12 @@ type ErEnvConfPresetCanaryYunnanInput interface {
 }
 
 type ErEnvConfPresetCanaryYunnanArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryYunnanArgs) ElementType() reflect.Type {
@@ -6561,14 +6963,17 @@ func (o ErEnvConfPresetCanaryYunnanOutput) ToErEnvConfPresetCanaryYunnanPtrOutpu
 	}).(ErEnvConfPresetCanaryYunnanPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryYunnanOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryYunnan) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryYunnanOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryYunnan) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryYunnanOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryYunnan) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -6597,6 +7002,7 @@ func (o ErEnvConfPresetCanaryYunnanPtrOutput) Elem() ErEnvConfPresetCanaryYunnan
 	}).(ErEnvConfPresetCanaryYunnanOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryYunnanPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryYunnan) []string {
 		if v == nil {
@@ -6606,6 +7012,7 @@ func (o ErEnvConfPresetCanaryYunnanPtrOutput) AllowedHosts() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryYunnanPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryYunnan) *string {
 		if v == nil {
@@ -6615,6 +7022,7 @@ func (o ErEnvConfPresetCanaryYunnanPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryYunnanPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryYunnan) *string {
 		if v == nil {
@@ -6625,9 +7033,12 @@ func (o ErEnvConfPresetCanaryYunnanPtrOutput) SpecName() pulumi.StringPtrOutput 
 }
 
 type ErEnvConfPresetCanaryZhejiang struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfPresetCanaryZhejiangInput is an input type that accepts ErEnvConfPresetCanaryZhejiangArgs and ErEnvConfPresetCanaryZhejiangOutput values.
@@ -6642,9 +7053,12 @@ type ErEnvConfPresetCanaryZhejiangInput interface {
 }
 
 type ErEnvConfPresetCanaryZhejiangArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfPresetCanaryZhejiangArgs) ElementType() reflect.Type {
@@ -6724,14 +7138,17 @@ func (o ErEnvConfPresetCanaryZhejiangOutput) ToErEnvConfPresetCanaryZhejiangPtrO
 	}).(ErEnvConfPresetCanaryZhejiangPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryZhejiangOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryZhejiang) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryZhejiangOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryZhejiang) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryZhejiangOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfPresetCanaryZhejiang) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -6760,6 +7177,7 @@ func (o ErEnvConfPresetCanaryZhejiangPtrOutput) Elem() ErEnvConfPresetCanaryZhej
 	}).(ErEnvConfPresetCanaryZhejiangOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfPresetCanaryZhejiangPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryZhejiang) []string {
 		if v == nil {
@@ -6769,6 +7187,7 @@ func (o ErEnvConfPresetCanaryZhejiangPtrOutput) AllowedHosts() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfPresetCanaryZhejiangPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryZhejiang) *string {
 		if v == nil {
@@ -6778,6 +7197,7 @@ func (o ErEnvConfPresetCanaryZhejiangPtrOutput) CodeRev() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfPresetCanaryZhejiangPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfPresetCanaryZhejiang) *string {
 		if v == nil {
@@ -6788,9 +7208,12 @@ func (o ErEnvConfPresetCanaryZhejiangPtrOutput) SpecName() pulumi.StringPtrOutpu
 }
 
 type ErEnvConfProduction struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfProductionInput is an input type that accepts ErEnvConfProductionArgs and ErEnvConfProductionOutput values.
@@ -6805,9 +7228,12 @@ type ErEnvConfProductionInput interface {
 }
 
 type ErEnvConfProductionArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfProductionArgs) ElementType() reflect.Type {
@@ -6887,14 +7313,17 @@ func (o ErEnvConfProductionOutput) ToErEnvConfProductionPtrOutputWithContext(ctx
 	}).(ErEnvConfProductionPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfProductionOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfProduction) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfProductionOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfProduction) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfProductionOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfProduction) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -6923,6 +7352,7 @@ func (o ErEnvConfProductionPtrOutput) Elem() ErEnvConfProductionOutput {
 	}).(ErEnvConfProductionOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfProductionPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfProduction) []string {
 		if v == nil {
@@ -6932,6 +7362,7 @@ func (o ErEnvConfProductionPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfProductionPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfProduction) *string {
 		if v == nil {
@@ -6941,6 +7372,7 @@ func (o ErEnvConfProductionPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfProductionPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfProduction) *string {
 		if v == nil {
@@ -6951,9 +7383,12 @@ func (o ErEnvConfProductionPtrOutput) SpecName() pulumi.StringPtrOutput {
 }
 
 type ErEnvConfStaging struct {
+	// Allowed DCDN domain names.
 	AllowedHosts []string `pulumi:"allowedHosts"`
-	CodeRev      *string  `pulumi:"codeRev"`
-	SpecName     *string  `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev *string `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName *string `pulumi:"specName"`
 }
 
 // ErEnvConfStagingInput is an input type that accepts ErEnvConfStagingArgs and ErEnvConfStagingOutput values.
@@ -6968,9 +7403,12 @@ type ErEnvConfStagingInput interface {
 }
 
 type ErEnvConfStagingArgs struct {
+	// Allowed DCDN domain names.
 	AllowedHosts pulumi.StringArrayInput `pulumi:"allowedHosts"`
-	CodeRev      pulumi.StringPtrInput   `pulumi:"codeRev"`
-	SpecName     pulumi.StringPtrInput   `pulumi:"specName"`
+	// The version number of the code.
+	CodeRev pulumi.StringPtrInput `pulumi:"codeRev"`
+	// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+	SpecName pulumi.StringPtrInput `pulumi:"specName"`
 }
 
 func (ErEnvConfStagingArgs) ElementType() reflect.Type {
@@ -7050,14 +7488,17 @@ func (o ErEnvConfStagingOutput) ToErEnvConfStagingPtrOutputWithContext(ctx conte
 	}).(ErEnvConfStagingPtrOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfStagingOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ErEnvConfStaging) []string { return v.AllowedHosts }).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfStagingOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfStaging) *string { return v.CodeRev }).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfStagingOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErEnvConfStaging) *string { return v.SpecName }).(pulumi.StringPtrOutput)
 }
@@ -7086,6 +7527,7 @@ func (o ErEnvConfStagingPtrOutput) Elem() ErEnvConfStagingOutput {
 	}).(ErEnvConfStagingOutput)
 }
 
+// Allowed DCDN domain names.
 func (o ErEnvConfStagingPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ErEnvConfStaging) []string {
 		if v == nil {
@@ -7095,6 +7537,7 @@ func (o ErEnvConfStagingPtrOutput) AllowedHosts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The version number of the code.
 func (o ErEnvConfStagingPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfStaging) *string {
 		if v == nil {
@@ -7104,6 +7547,7 @@ func (o ErEnvConfStagingPtrOutput) CodeRev() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
 func (o ErEnvConfStagingPtrOutput) SpecName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ErEnvConfStaging) *string {
 		if v == nil {
@@ -7603,9 +8047,12 @@ func (o WafRuleRateLimitPtrOutput) Ttl() pulumi.IntPtrOutput {
 }
 
 type WafRuleRateLimitStatus struct {
-	Code  *string `pulumi:"code"`
-	Count *int    `pulumi:"count"`
-	Ratio *int    `pulumi:"ratio"`
+	// The HTTP status code returned.
+	Code *string `pulumi:"code"`
+	// The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+	Count *int `pulumi:"count"`
+	// The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+	Ratio *int `pulumi:"ratio"`
 }
 
 // WafRuleRateLimitStatusInput is an input type that accepts WafRuleRateLimitStatusArgs and WafRuleRateLimitStatusOutput values.
@@ -7620,9 +8067,12 @@ type WafRuleRateLimitStatusInput interface {
 }
 
 type WafRuleRateLimitStatusArgs struct {
-	Code  pulumi.StringPtrInput `pulumi:"code"`
-	Count pulumi.IntPtrInput    `pulumi:"count"`
-	Ratio pulumi.IntPtrInput    `pulumi:"ratio"`
+	// The HTTP status code returned.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+	Ratio pulumi.IntPtrInput `pulumi:"ratio"`
 }
 
 func (WafRuleRateLimitStatusArgs) ElementType() reflect.Type {
@@ -7702,14 +8152,17 @@ func (o WafRuleRateLimitStatusOutput) ToWafRuleRateLimitStatusPtrOutputWithConte
 	}).(WafRuleRateLimitStatusPtrOutput)
 }
 
+// The HTTP status code returned.
 func (o WafRuleRateLimitStatusOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WafRuleRateLimitStatus) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
 
+// The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
 func (o WafRuleRateLimitStatusOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WafRuleRateLimitStatus) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
+// The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
 func (o WafRuleRateLimitStatusOutput) Ratio() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WafRuleRateLimitStatus) *int { return v.Ratio }).(pulumi.IntPtrOutput)
 }
@@ -7738,6 +8191,7 @@ func (o WafRuleRateLimitStatusPtrOutput) Elem() WafRuleRateLimitStatusOutput {
 	}).(WafRuleRateLimitStatusOutput)
 }
 
+// The HTTP status code returned.
 func (o WafRuleRateLimitStatusPtrOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WafRuleRateLimitStatus) *string {
 		if v == nil {
@@ -7747,6 +8201,7 @@ func (o WafRuleRateLimitStatusPtrOutput) Code() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
 func (o WafRuleRateLimitStatusPtrOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WafRuleRateLimitStatus) *int {
 		if v == nil {
@@ -7756,6 +8211,7 @@ func (o WafRuleRateLimitStatusPtrOutput) Count() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
 func (o WafRuleRateLimitStatusPtrOutput) Ratio() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WafRuleRateLimitStatus) *int {
 		if v == nil {

@@ -12,15 +12,27 @@ namespace Pulumi.AliCloud.CloudMonitor.Inputs
 
     public sealed class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Alibaba Cloud Resource Name (ARN) of the resource.
+        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
+        /// <summary>
+        /// The parameters of the alert callback. Specify the parameters in the JSON format.
+        /// </summary>
         [Input("jsonParams")]
         public Input<string>? JsonParams { get; set; }
 
+        /// <summary>
+        /// The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
+        /// </summary>
         [Input("level")]
         public Input<string>? Level { get; set; }
 
+        /// <summary>
+        /// The ID of the resource for which alerts are triggered.
+        /// </summary>
         [Input("targetListId")]
         public Input<string>? TargetListId { get; set; }
 

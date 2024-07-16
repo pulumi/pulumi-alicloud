@@ -12,12 +12,21 @@ namespace Pulumi.AliCloud.Ddos.Inputs
 
     public sealed class BgpPolicyContentLayer4RuleListConditionListArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Matching target character.
+        /// </summary>
         [Input("arg", required: true)]
         public Input<string> Arg { get; set; } = null!;
 
+        /// <summary>
+        /// Depth of Matching.
+        /// </summary>
         [Input("depth", required: true)]
         public Input<int> Depth { get; set; } = null!;
 
+        /// <summary>
+        /// Position to start matching, starting from 0.
+        /// </summary>
         [Input("position", required: true)]
         public Input<int> Position { get; set; } = null!;
 

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OtsBackupPlanOtsDetail {
+    /**
+     * @return The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+     * 
+     */
     private @Nullable List<String> tableNames;
 
     private OtsBackupPlanOtsDetail() {}
+    /**
+     * @return The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+     * 
+     */
     public List<String> tableNames() {
         return this.tableNames == null ? List.of() : this.tableNames;
     }

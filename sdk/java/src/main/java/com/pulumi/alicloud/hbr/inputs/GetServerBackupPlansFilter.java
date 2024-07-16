@@ -15,16 +15,32 @@ public final class GetServerBackupPlansFilter extends com.pulumi.resources.Invok
 
     public static final GetServerBackupPlansFilter Empty = new GetServerBackupPlansFilter();
 
+    /**
+     * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+     * 
+     */
     @Import(name="key")
     private @Nullable String key;
 
+    /**
+     * @return The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * Set of values that are accepted for the given field.
+     * 
+     */
     @Import(name="values")
     private @Nullable List<String> values;
 
+    /**
+     * @return Set of values that are accepted for the given field.
+     * 
+     */
     public Optional<List<String>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -54,16 +70,34 @@ public final class GetServerBackupPlansFilter extends com.pulumi.resources.Invok
             $ = new GetServerBackupPlansFilter(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable String key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param values Set of values that are accepted for the given field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(@Nullable List<String> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values Set of values that are accepted for the given field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

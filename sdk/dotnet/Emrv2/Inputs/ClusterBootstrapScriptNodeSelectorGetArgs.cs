@@ -17,6 +17,10 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
 
         [Input("nodeGroupIds")]
         private InputList<string>? _nodeGroupIds;
+
+        /// <summary>
+        /// The bootstrap scripts execution target node group ids.
+        /// </summary>
         public InputList<string> NodeGroupIds
         {
             get => _nodeGroupIds ?? (_nodeGroupIds = new InputList<string>());
@@ -28,6 +32,10 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
 
         [Input("nodeGroupNames")]
         private InputList<string>? _nodeGroupNames;
+
+        /// <summary>
+        /// The bootstrap scripts execution target node group names.
+        /// </summary>
         public InputList<string> NodeGroupNames
         {
             get => _nodeGroupNames ?? (_nodeGroupNames = new InputList<string>());
@@ -36,6 +44,10 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
 
         [Input("nodeGroupTypes")]
         private InputList<string>? _nodeGroupTypes;
+
+        /// <summary>
+        /// The bootstrap scripts execution target node group types.
+        /// </summary>
         public InputList<string> NodeGroupTypes
         {
             get => _nodeGroupTypes ?? (_nodeGroupTypes = new InputList<string>());
@@ -44,12 +56,19 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
 
         [Input("nodeNames")]
         private InputList<string>? _nodeNames;
+
+        /// <summary>
+        /// The bootstrap scripts execution target node names.
+        /// </summary>
         public InputList<string> NodeNames
         {
             get => _nodeNames ?? (_nodeNames = new InputList<string>());
             set => _nodeNames = value;
         }
 
+        /// <summary>
+        /// The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
+        /// </summary>
         [Input("nodeSelectType", required: true)]
         public Input<string> NodeSelectType { get; set; } = null!;
 

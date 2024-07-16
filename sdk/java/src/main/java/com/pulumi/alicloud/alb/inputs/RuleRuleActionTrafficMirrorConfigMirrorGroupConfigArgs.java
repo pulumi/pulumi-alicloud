@@ -16,9 +16,17 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs extend
 
     public static final RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs Empty = new RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs();
 
+    /**
+     * The destination server group to which requests are forwarded. See `server_group_tuples` below.
+     * 
+     */
     @Import(name="serverGroupTuples")
     private @Nullable Output<List<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs>> serverGroupTuples;
 
+    /**
+     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below.
+     * 
+     */
     public Optional<Output<List<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs>>> serverGroupTuples() {
         return Optional.ofNullable(this.serverGroupTuples);
     }
@@ -47,15 +55,33 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs extend
             $ = new RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverGroupTuples(@Nullable Output<List<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs>> serverGroupTuples) {
             $.serverGroupTuples = serverGroupTuples;
             return this;
         }
 
+        /**
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverGroupTuples(List<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs> serverGroupTuples) {
             return serverGroupTuples(Output.of(serverGroupTuples));
         }
 
+        /**
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverGroupTuples(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs... serverGroupTuples) {
             return serverGroupTuples(List.of(serverGroupTuples));
         }

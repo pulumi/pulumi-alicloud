@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StackParameter {
+    /**
+     * @return The parameter key.
+     * 
+     */
     private @Nullable String parameterKey;
+    /**
+     * @return The parameter value.
+     * 
+     */
     private String parameterValue;
 
     private StackParameter() {}
+    /**
+     * @return The parameter key.
+     * 
+     */
     public Optional<String> parameterKey() {
         return Optional.ofNullable(this.parameterKey);
     }
+    /**
+     * @return The parameter value.
+     * 
+     */
     public String parameterValue() {
         return this.parameterValue;
     }

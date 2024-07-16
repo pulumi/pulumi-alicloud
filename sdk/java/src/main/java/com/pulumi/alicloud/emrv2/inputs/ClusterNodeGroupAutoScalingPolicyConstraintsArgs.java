@@ -15,16 +15,32 @@ public final class ClusterNodeGroupAutoScalingPolicyConstraintsArgs extends com.
 
     public static final ClusterNodeGroupAutoScalingPolicyConstraintsArgs Empty = new ClusterNodeGroupAutoScalingPolicyConstraintsArgs();
 
+    /**
+     * The maximum capacity of constraints for emr node group auto scaling policy.
+     * 
+     */
     @Import(name="maxCapacity")
     private @Nullable Output<Integer> maxCapacity;
 
+    /**
+     * @return The maximum capacity of constraints for emr node group auto scaling policy.
+     * 
+     */
     public Optional<Output<Integer>> maxCapacity() {
         return Optional.ofNullable(this.maxCapacity);
     }
 
+    /**
+     * The minimum capacity of constraints for emr node group auto scaling policy.
+     * 
+     */
     @Import(name="minCapacity")
     private @Nullable Output<Integer> minCapacity;
 
+    /**
+     * @return The minimum capacity of constraints for emr node group auto scaling policy.
+     * 
+     */
     public Optional<Output<Integer>> minCapacity() {
         return Optional.ofNullable(this.minCapacity);
     }
@@ -54,20 +70,44 @@ public final class ClusterNodeGroupAutoScalingPolicyConstraintsArgs extends com.
             $ = new ClusterNodeGroupAutoScalingPolicyConstraintsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maxCapacity The maximum capacity of constraints for emr node group auto scaling policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxCapacity(@Nullable Output<Integer> maxCapacity) {
             $.maxCapacity = maxCapacity;
             return this;
         }
 
+        /**
+         * @param maxCapacity The maximum capacity of constraints for emr node group auto scaling policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxCapacity(Integer maxCapacity) {
             return maxCapacity(Output.of(maxCapacity));
         }
 
+        /**
+         * @param minCapacity The minimum capacity of constraints for emr node group auto scaling policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minCapacity(@Nullable Output<Integer> minCapacity) {
             $.minCapacity = minCapacity;
             return this;
         }
 
+        /**
+         * @param minCapacity The minimum capacity of constraints for emr node group auto scaling policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minCapacity(Integer minCapacity) {
             return minCapacity(Output.of(minCapacity));
         }

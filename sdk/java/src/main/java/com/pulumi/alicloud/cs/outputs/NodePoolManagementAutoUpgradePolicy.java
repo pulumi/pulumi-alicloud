@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolManagementAutoUpgradePolicy {
+    /**
+     * @return Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+     * 
+     */
     private @Nullable Boolean autoUpgradeKubelet;
 
     private NodePoolManagementAutoUpgradePolicy() {}
+    /**
+     * @return Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+     * 
+     */
     public Optional<Boolean> autoUpgradeKubelet() {
         return Optional.ofNullable(this.autoUpgradeKubelet);
     }

@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionAuthParametersOauthParametersOauthHttpParameters {
+    /**
+     * @return The parameters that are configured for the request body. See `body_parameters` below.
+     * 
+     */
     private @Nullable List<ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter> bodyParameters;
+    /**
+     * @return The parameters that are configured for the request header. See `header_parameters` below.
+     * 
+     */
     private @Nullable List<ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter> headerParameters;
+    /**
+     * @return The parameters that are configured for the request path. See `query_string_parameters` below.
+     * 
+     */
     private @Nullable List<ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter> queryStringParameters;
 
     private ConnectionAuthParametersOauthParametersOauthHttpParameters() {}
+    /**
+     * @return The parameters that are configured for the request body. See `body_parameters` below.
+     * 
+     */
     public List<ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter> bodyParameters() {
         return this.bodyParameters == null ? List.of() : this.bodyParameters;
     }
+    /**
+     * @return The parameters that are configured for the request header. See `header_parameters` below.
+     * 
+     */
     public List<ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter> headerParameters() {
         return this.headerParameters == null ? List.of() : this.headerParameters;
     }
+    /**
+     * @return The parameters that are configured for the request path. See `query_string_parameters` below.
+     * 
+     */
     public List<ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter> queryStringParameters() {
         return this.queryStringParameters == null ? List.of() : this.queryStringParameters;
     }

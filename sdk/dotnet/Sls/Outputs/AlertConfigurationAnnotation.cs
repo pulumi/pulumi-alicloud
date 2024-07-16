@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Sls.Outputs
     [OutputType]
     public sealed class AlertConfigurationAnnotation
     {
+        /// <summary>
+        /// Field name.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Field value.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

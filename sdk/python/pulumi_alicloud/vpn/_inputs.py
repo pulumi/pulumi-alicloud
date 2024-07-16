@@ -724,6 +724,10 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
                  local_id: Optional[pulumi.Input[str]] = None,
                  psk: Optional[pulumi.Input[str]] = None,
                  remote_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] local_id: The local Id.
+        :param pulumi.Input[str] remote_id: Remote ID.
+        """
         if ike_auth_alg is not None:
             pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
         if ike_enc_alg is not None:
@@ -800,6 +804,9 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
     @property
     @pulumi.getter(name="localId")
     def local_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The local Id.
+        """
         return pulumi.get(self, "local_id")
 
     @local_id.setter
@@ -818,6 +825,9 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
     @property
     @pulumi.getter(name="remoteId")
     def remote_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Remote ID.
+        """
         return pulumi.get(self, "remote_id")
 
     @remote_id.setter

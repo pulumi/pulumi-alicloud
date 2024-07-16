@@ -16,16 +16,32 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs extends co
 
     public static final FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs Empty = new FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs();
 
+    /**
+     * Peer VPC route entry list information. See `peer_route_entry_list` below.
+     * 
+     */
     @Import(name="peerRouteEntryLists", required=true)
     private Output<List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs>> peerRouteEntryLists;
 
+    /**
+     * @return Peer VPC route entry list information. See `peer_route_entry_list` below.
+     * 
+     */
     public Output<List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs>> peerRouteEntryLists() {
         return this.peerRouteEntryLists;
     }
 
+    /**
+     * The ID of the route table of the peer VPC.
+     * 
+     */
     @Import(name="peerRouteTableId", required=true)
     private Output<String> peerRouteTableId;
 
+    /**
+     * @return The ID of the route table of the peer VPC.
+     * 
+     */
     public Output<String> peerRouteTableId() {
         return this.peerRouteTableId;
     }
@@ -55,24 +71,54 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs extends co
             $ = new FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param peerRouteEntryLists Peer VPC route entry list information. See `peer_route_entry_list` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerRouteEntryLists(Output<List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs>> peerRouteEntryLists) {
             $.peerRouteEntryLists = peerRouteEntryLists;
             return this;
         }
 
+        /**
+         * @param peerRouteEntryLists Peer VPC route entry list information. See `peer_route_entry_list` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerRouteEntryLists(List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs> peerRouteEntryLists) {
             return peerRouteEntryLists(Output.of(peerRouteEntryLists));
         }
 
+        /**
+         * @param peerRouteEntryLists Peer VPC route entry list information. See `peer_route_entry_list` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerRouteEntryLists(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs... peerRouteEntryLists) {
             return peerRouteEntryLists(List.of(peerRouteEntryLists));
         }
 
+        /**
+         * @param peerRouteTableId The ID of the route table of the peer VPC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerRouteTableId(Output<String> peerRouteTableId) {
             $.peerRouteTableId = peerRouteTableId;
             return this;
         }
 
+        /**
+         * @param peerRouteTableId The ID of the route table of the peer VPC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder peerRouteTableId(String peerRouteTableId) {
             return peerRouteTableId(Output.of(peerRouteTableId));
         }

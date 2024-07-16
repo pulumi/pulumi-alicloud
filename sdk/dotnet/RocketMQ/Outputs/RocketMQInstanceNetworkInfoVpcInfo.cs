@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
     [OutputType]
     public sealed class RocketMQInstanceNetworkInfoVpcInfo
     {
+        /// <summary>
+        /// Proprietary Network.
+        /// </summary>
         public readonly string VpcId;
+        /// <summary>
+        /// VPC network switch.
+        /// </summary>
         public readonly string VswitchId;
 
         [OutputConstructor]

@@ -11,10 +11,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SyntheticTaskMonitorConfApiHttpRequestBody {
+    /**
+     * @return The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
+     * 
+     */
     private @Nullable String content;
     private @Nullable String type;
 
     private SyntheticTaskMonitorConfApiHttpRequestBody() {}
+    /**
+     * @return The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
+     * 
+     */
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
     }

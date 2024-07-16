@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Oss.Inputs
 
     public sealed class BucketLifecycleRuleNoncurrentVersionExpirationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies the number of days noncurrent object versions transition.
+        /// </summary>
         [Input("days", required: true)]
         public Input<int> Days { get; set; } = null!;
 

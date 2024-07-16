@@ -15,23 +15,47 @@ public final class LakeAccountAccountPrivilegePrivilegeObjectArgs extends com.pu
 
     public static final LakeAccountAccountPrivilegePrivilegeObjectArgs Empty = new LakeAccountAccountPrivilegePrivilegeObjectArgs();
 
+    /**
+     * The name of column.
+     * 
+     */
     @Import(name="column")
     private @Nullable Output<String> column;
 
+    /**
+     * @return The name of column.
+     * 
+     */
     public Optional<Output<String>> column() {
         return Optional.ofNullable(this.column);
     }
 
+    /**
+     * The name of database.
+     * 
+     */
     @Import(name="database")
     private @Nullable Output<String> database;
 
+    /**
+     * @return The name of database.
+     * 
+     */
     public Optional<Output<String>> database() {
         return Optional.ofNullable(this.database);
     }
 
+    /**
+     * The name of table.
+     * 
+     */
     @Import(name="table")
     private @Nullable Output<String> table;
 
+    /**
+     * @return The name of table.
+     * 
+     */
     public Optional<Output<String>> table() {
         return Optional.ofNullable(this.table);
     }
@@ -62,29 +86,65 @@ public final class LakeAccountAccountPrivilegePrivilegeObjectArgs extends com.pu
             $ = new LakeAccountAccountPrivilegePrivilegeObjectArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param column The name of column.
+         * 
+         * @return builder
+         * 
+         */
         public Builder column(@Nullable Output<String> column) {
             $.column = column;
             return this;
         }
 
+        /**
+         * @param column The name of column.
+         * 
+         * @return builder
+         * 
+         */
         public Builder column(String column) {
             return column(Output.of(column));
         }
 
+        /**
+         * @param database The name of database.
+         * 
+         * @return builder
+         * 
+         */
         public Builder database(@Nullable Output<String> database) {
             $.database = database;
             return this;
         }
 
+        /**
+         * @param database The name of database.
+         * 
+         * @return builder
+         * 
+         */
         public Builder database(String database) {
             return database(Output.of(database));
         }
 
+        /**
+         * @param table The name of table.
+         * 
+         * @return builder
+         * 
+         */
         public Builder table(@Nullable Output<String> table) {
             $.table = table;
             return this;
         }
 
+        /**
+         * @param table The name of table.
+         * 
+         * @return builder
+         * 
+         */
         public Builder table(String table) {
             return table(Output.of(table));
         }

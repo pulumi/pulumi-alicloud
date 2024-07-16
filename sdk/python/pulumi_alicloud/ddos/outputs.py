@@ -299,6 +299,21 @@ class BgpPolicyContentFingerPrintRuleList(dict):
                  offset: Optional[int] = None,
                  payload_bytes: Optional[str] = None,
                  rate_value: Optional[int] = None):
+        """
+        :param int dst_port_end: End of destination port 0-65535.
+        :param int dst_port_start: Destination Port start 0-65535.
+        :param str match_action: Action. Currently, only drop is supported.
+        :param int max_pkt_len: Maximum bag length.
+        :param int min_pkt_len: Minimum package length.
+        :param str protocol: Protocol, tcp or udp.
+        :param int seq_no: Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+        :param int src_port_end: Source Port end 0-65535.
+        :param int src_port_start: Source port start 0-65535.
+        :param str finger_print_rule_id: The UUID of the rule is required to be deleted and modified, and it is not required to be created.
+        :param int offset: Offset.
+        :param str payload_bytes: Load match, hexadecimal string; Similar to 'abcd'.
+        :param int rate_value: Speed limit value 1-100000.
+        """
         pulumi.set(__self__, "dst_port_end", dst_port_end)
         pulumi.set(__self__, "dst_port_start", dst_port_start)
         pulumi.set(__self__, "match_action", match_action)
@@ -320,66 +335,105 @@ class BgpPolicyContentFingerPrintRuleList(dict):
     @property
     @pulumi.getter(name="dstPortEnd")
     def dst_port_end(self) -> int:
+        """
+        End of destination port 0-65535.
+        """
         return pulumi.get(self, "dst_port_end")
 
     @property
     @pulumi.getter(name="dstPortStart")
     def dst_port_start(self) -> int:
+        """
+        Destination Port start 0-65535.
+        """
         return pulumi.get(self, "dst_port_start")
 
     @property
     @pulumi.getter(name="matchAction")
     def match_action(self) -> str:
+        """
+        Action. Currently, only drop is supported.
+        """
         return pulumi.get(self, "match_action")
 
     @property
     @pulumi.getter(name="maxPktLen")
     def max_pkt_len(self) -> int:
+        """
+        Maximum bag length.
+        """
         return pulumi.get(self, "max_pkt_len")
 
     @property
     @pulumi.getter(name="minPktLen")
     def min_pkt_len(self) -> int:
+        """
+        Minimum package length.
+        """
         return pulumi.get(self, "min_pkt_len")
 
     @property
     @pulumi.getter
     def protocol(self) -> str:
+        """
+        Protocol, tcp or udp.
+        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="seqNo")
     def seq_no(self) -> int:
+        """
+        Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+        """
         return pulumi.get(self, "seq_no")
 
     @property
     @pulumi.getter(name="srcPortEnd")
     def src_port_end(self) -> int:
+        """
+        Source Port end 0-65535.
+        """
         return pulumi.get(self, "src_port_end")
 
     @property
     @pulumi.getter(name="srcPortStart")
     def src_port_start(self) -> int:
+        """
+        Source port start 0-65535.
+        """
         return pulumi.get(self, "src_port_start")
 
     @property
     @pulumi.getter(name="fingerPrintRuleId")
     def finger_print_rule_id(self) -> Optional[str]:
+        """
+        The UUID of the rule is required to be deleted and modified, and it is not required to be created.
+        """
         return pulumi.get(self, "finger_print_rule_id")
 
     @property
     @pulumi.getter
     def offset(self) -> Optional[int]:
+        """
+        Offset.
+        """
         return pulumi.get(self, "offset")
 
     @property
     @pulumi.getter(name="payloadBytes")
     def payload_bytes(self) -> Optional[str]:
+        """
+        Load match, hexadecimal string; Similar to 'abcd'.
+        """
         return pulumi.get(self, "payload_bytes")
 
     @property
     @pulumi.getter(name="rateValue")
     def rate_value(self) -> Optional[int]:
+        """
+        Speed limit value 1-100000.
+        """
         return pulumi.get(self, "rate_value")
 
 
@@ -410,6 +464,15 @@ class BgpPolicyContentLayer4RuleList(dict):
                  method: str,
                  name: str,
                  priority: int):
+        """
+        :param str action: 1 for observation 2 for blocking.
+        :param Sequence['BgpPolicyContentLayer4RuleListConditionListArgs'] condition_lists: Matching Condition. See `condition_list` below.
+        :param int limited: .
+        :param str match: 0 indicates that the condition is not met 1 indicates that the condition is met.
+        :param str method: Char indicates a string match hex match.
+        :param str name: Rule Name.
+        :param int priority: 1-100, priority, the lower the number, the higher the priority.
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "condition_lists", condition_lists)
         pulumi.set(__self__, "limited", limited)
@@ -421,36 +484,57 @@ class BgpPolicyContentLayer4RuleList(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
+        """
+        1 for observation 2 for blocking.
+        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="conditionLists")
     def condition_lists(self) -> Sequence['outputs.BgpPolicyContentLayer4RuleListConditionList']:
+        """
+        Matching Condition. See `condition_list` below.
+        """
         return pulumi.get(self, "condition_lists")
 
     @property
     @pulumi.getter
     def limited(self) -> int:
+        """
+        .
+        """
         return pulumi.get(self, "limited")
 
     @property
     @pulumi.getter
     def match(self) -> str:
+        """
+        0 indicates that the condition is not met 1 indicates that the condition is met.
+        """
         return pulumi.get(self, "match")
 
     @property
     @pulumi.getter
     def method(self) -> str:
+        """
+        Char indicates a string match hex match.
+        """
         return pulumi.get(self, "method")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Rule Name.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def priority(self) -> int:
+        """
+        1-100, priority, the lower the number, the higher the priority.
+        """
         return pulumi.get(self, "priority")
 
 
@@ -460,6 +544,11 @@ class BgpPolicyContentLayer4RuleListConditionList(dict):
                  arg: str,
                  depth: int,
                  position: int):
+        """
+        :param str arg: Matching target character.
+        :param int depth: Depth of Matching.
+        :param int position: Position to start matching, starting from 0.
+        """
         pulumi.set(__self__, "arg", arg)
         pulumi.set(__self__, "depth", depth)
         pulumi.set(__self__, "position", position)
@@ -467,16 +556,25 @@ class BgpPolicyContentLayer4RuleListConditionList(dict):
     @property
     @pulumi.getter
     def arg(self) -> str:
+        """
+        Matching target character.
+        """
         return pulumi.get(self, "arg")
 
     @property
     @pulumi.getter
     def depth(self) -> int:
+        """
+        Depth of Matching.
+        """
         return pulumi.get(self, "depth")
 
     @property
     @pulumi.getter
     def position(self) -> int:
+        """
+        Position to start matching, starting from 0.
+        """
         return pulumi.get(self, "position")
 
 
@@ -520,6 +618,16 @@ class BgpPolicyContentPortRuleList(dict):
                  src_port_end: int,
                  src_port_start: int,
                  port_rule_id: Optional[str] = None):
+        """
+        :param int dst_port_end: End of destination port 0-65535.
+        :param int dst_port_start: Destination Port start 0-65535.
+        :param str match_action: Action. Currently, only drop is supported.
+        :param str protocol: Protocol, tcp or udp.
+        :param int seq_no: Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+        :param int src_port_end: Source Port end 0-65535.
+        :param int src_port_start: Source port start 0-65535.
+        :param str port_rule_id: Rule UUID is required to be deleted and modified, and is not required to be created.
+        """
         pulumi.set(__self__, "dst_port_end", dst_port_end)
         pulumi.set(__self__, "dst_port_start", dst_port_start)
         pulumi.set(__self__, "match_action", match_action)
@@ -533,41 +641,65 @@ class BgpPolicyContentPortRuleList(dict):
     @property
     @pulumi.getter(name="dstPortEnd")
     def dst_port_end(self) -> int:
+        """
+        End of destination port 0-65535.
+        """
         return pulumi.get(self, "dst_port_end")
 
     @property
     @pulumi.getter(name="dstPortStart")
     def dst_port_start(self) -> int:
+        """
+        Destination Port start 0-65535.
+        """
         return pulumi.get(self, "dst_port_start")
 
     @property
     @pulumi.getter(name="matchAction")
     def match_action(self) -> str:
+        """
+        Action. Currently, only drop is supported.
+        """
         return pulumi.get(self, "match_action")
 
     @property
     @pulumi.getter
     def protocol(self) -> str:
+        """
+        Protocol, tcp or udp.
+        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="seqNo")
     def seq_no(self) -> int:
+        """
+        Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+        """
         return pulumi.get(self, "seq_no")
 
     @property
     @pulumi.getter(name="srcPortEnd")
     def src_port_end(self) -> int:
+        """
+        Source Port end 0-65535.
+        """
         return pulumi.get(self, "src_port_end")
 
     @property
     @pulumi.getter(name="srcPortStart")
     def src_port_start(self) -> int:
+        """
+        Source port start 0-65535.
+        """
         return pulumi.get(self, "src_port_start")
 
     @property
     @pulumi.getter(name="portRuleId")
     def port_rule_id(self) -> Optional[str]:
+        """
+        Rule UUID is required to be deleted and modified, and is not required to be created.
+        """
         return pulumi.get(self, "port_rule_id")
 
 
@@ -600,6 +732,9 @@ class BgpPolicyContentSourceBlockList(dict):
                  exceed_limit_times: int,
                  type: int):
         """
+        :param int block_expire_seconds: Statistical cycle range 60-1200.
+        :param int every_seconds: The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
+        :param int exceed_limit_times: The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
         :param int type: Type
         """
         pulumi.set(__self__, "block_expire_seconds", block_expire_seconds)
@@ -610,16 +745,25 @@ class BgpPolicyContentSourceBlockList(dict):
     @property
     @pulumi.getter(name="blockExpireSeconds")
     def block_expire_seconds(self) -> int:
+        """
+        Statistical cycle range 60-1200.
+        """
         return pulumi.get(self, "block_expire_seconds")
 
     @property
     @pulumi.getter(name="everySeconds")
     def every_seconds(self) -> int:
+        """
+        The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
+        """
         return pulumi.get(self, "every_seconds")
 
     @property
     @pulumi.getter(name="exceedLimitTimes")
     def exceed_limit_times(self) -> int:
+        """
+        The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
+        """
         return pulumi.get(self, "exceed_limit_times")
 
     @property
@@ -657,6 +801,12 @@ class BgpPolicyContentSourceLimit(dict):
                  pps: Optional[int] = None,
                  syn_bps: Optional[int] = None,
                  syn_pps: Optional[int] = None):
+        """
+        :param int bps: bps range 1024~268435456.
+        :param int pps: Pps range 32~500000.
+        :param int syn_bps: SynBps range 1024~268435456.
+        :param int syn_pps: SynPps range 1~100000.
+        """
         if bps is not None:
             pulumi.set(__self__, "bps", bps)
         if pps is not None:
@@ -669,21 +819,33 @@ class BgpPolicyContentSourceLimit(dict):
     @property
     @pulumi.getter
     def bps(self) -> Optional[int]:
+        """
+        bps range 1024~268435456.
+        """
         return pulumi.get(self, "bps")
 
     @property
     @pulumi.getter
     def pps(self) -> Optional[int]:
+        """
+        Pps range 32~500000.
+        """
         return pulumi.get(self, "pps")
 
     @property
     @pulumi.getter(name="synBps")
     def syn_bps(self) -> Optional[int]:
+        """
+        SynBps range 1024~268435456.
+        """
         return pulumi.get(self, "syn_bps")
 
     @property
     @pulumi.getter(name="synPps")
     def syn_pps(self) -> Optional[int]:
+        """
+        SynPps range 1~100000.
+        """
         return pulumi.get(self, "syn_pps")
 
 

@@ -16,6 +16,10 @@ public final class ProjectPropertiesTableLifecycle {
      * 
      */
     private @Nullable String type;
+    /**
+     * @return The value of the life cycle.
+     * 
+     */
     private @Nullable String value;
 
     private ProjectPropertiesTableLifecycle() {}
@@ -26,6 +30,10 @@ public final class ProjectPropertiesTableLifecycle {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return The value of the life cycle.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

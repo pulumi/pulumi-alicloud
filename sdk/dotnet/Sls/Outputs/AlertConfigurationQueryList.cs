@@ -13,18 +13,57 @@ namespace Pulumi.AliCloud.Sls.Outputs
     [OutputType]
     public sealed class AlertConfigurationQueryList
     {
+        /// <summary>
+        /// Chart Name.
+        /// </summary>
         public readonly string? ChartTitle;
+        /// <summary>
+        /// Dashboard ID.
+        /// </summary>
         public readonly string? DashboardId;
+        /// <summary>
+        /// End time. When storeType is set to log or metric, end must be set.
+        /// </summary>
         public readonly string? End;
+        /// <summary>
+        /// Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+        /// </summary>
         public readonly string? PowerSqlMode;
+        /// <summary>
+        /// Project Name.
+        /// </summary>
         public readonly string? Project;
+        /// <summary>
+        /// Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+        /// </summary>
         public readonly string? Query;
+        /// <summary>
+        /// Region of the target Project.
+        /// </summary>
         public readonly string? Region;
+        /// <summary>
+        /// Roles used to write alarm data to the event Library.
+        /// </summary>
         public readonly string? RoleArn;
+        /// <summary>
+        /// Start time. When storeType is set to log or metric, start must be set.
+        /// </summary>
         public readonly string? Start;
+        /// <summary>
+        /// Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+        /// </summary>
         public readonly string? Store;
+        /// <summary>
+        /// Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+        /// </summary>
         public readonly string? StoreType;
+        /// <summary>
+        /// Time Type.
+        /// </summary>
         public readonly string? TimeSpanType;
+        /// <summary>
+        /// Use of specific scene alarm front end.
+        /// </summary>
         public readonly string? Ui;
 
         [OutputConstructor]

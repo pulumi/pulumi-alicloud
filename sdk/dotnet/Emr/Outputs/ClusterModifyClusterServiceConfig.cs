@@ -13,13 +13,37 @@ namespace Pulumi.AliCloud.Emr.Outputs
     [OutputType]
     public sealed class ClusterModifyClusterServiceConfig
     {
+        /// <summary>
+        /// Cluster service configuration modification comment, e.g. "Modify tez configuration".
+        /// </summary>
         public readonly string? Comment;
+        /// <summary>
+        /// Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+        /// </summary>
         public readonly string ConfigParams;
+        /// <summary>
+        /// Cluster service configuration modification type.
+        /// </summary>
         public readonly string? ConfigType;
+        /// <summary>
+        /// Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+        /// </summary>
         public readonly string? CustomConfigParams;
+        /// <summary>
+        /// Cluster service configuration modification related gateway cluster id list.
+        /// </summary>
         public readonly ImmutableArray<string> GatewayClusterIdLists;
+        /// <summary>
+        /// Cluster service configuration modification node group id, e.g. ’G-XXX’.
+        /// </summary>
         public readonly string? GroupId;
+        /// <summary>
+        /// Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+        /// </summary>
         public readonly string? HostInstanceId;
+        /// <summary>
+        /// Cluster service configuration modification refresh host config, ’true’ or ’false’.
+        /// </summary>
         public readonly bool? RefreshHostConfig;
         public readonly string ServiceName;
 

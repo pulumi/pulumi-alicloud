@@ -12,21 +12,39 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
 
     public sealed class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The end time for this scaling rule specific metrics trigger.
+        /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
+        /// <summary>
+        /// The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
+        /// </summary>
         [Input("launchExpirationTime")]
         public Input<int>? LaunchExpirationTime { get; set; }
 
+        /// <summary>
+        /// The launch time for this scaling rule specific time trigger.
+        /// </summary>
         [Input("launchTime", required: true)]
         public Input<string> LaunchTime { get; set; } = null!;
 
+        /// <summary>
+        /// The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
+        /// </summary>
         [Input("recurrenceType")]
         public Input<string>? RecurrenceType { get; set; }
 
+        /// <summary>
+        /// The recurrence value for this scaling rule specific time trigger.
+        /// </summary>
         [Input("recurrenceValue")]
         public Input<string>? RecurrenceValue { get; set; }
 
+        /// <summary>
+        /// The start time for this scaling rule specific metrics trigger.
+        /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 

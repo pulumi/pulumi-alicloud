@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ForwardingRuleRuleConditionPathConfig {
+    /**
+     * @return The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+     * 
+     */
     private @Nullable List<String> values;
 
     private ForwardingRuleRuleConditionPathConfig() {}
+    /**
+     * @return The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+     * 
+     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }

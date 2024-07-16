@@ -13,10 +13,25 @@ namespace Pulumi.AliCloud.Sls.Outputs
     [OutputType]
     public sealed class AlertConfigurationSinkEventStore
     {
+        /// <summary>
+        /// Open.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// SLS service endpoint.
+        /// </summary>
         public readonly string? Endpoint;
+        /// <summary>
+        /// Event Library Name.
+        /// </summary>
         public readonly string? EventStore;
+        /// <summary>
+        /// Project Name.
+        /// </summary>
         public readonly string? Project;
+        /// <summary>
+        /// Roles used to write alarm data to the event Library.
+        /// </summary>
         public readonly string? RoleArn;
 
         [OutputConstructor]

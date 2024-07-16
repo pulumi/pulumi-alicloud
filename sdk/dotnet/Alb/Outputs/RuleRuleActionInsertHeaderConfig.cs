@@ -15,6 +15,12 @@ namespace Pulumi.AliCloud.Alb.Outputs
     {
         public readonly string? Key;
         public readonly string? Value;
+        /// <summary>
+        /// The value type of the inserted header field. Valid values:
+        /// - `UserDefined`: a custom value
+        /// - `ReferenceHeader`: uses a field of the user request header.
+        /// - `SystemDefined`: a system value.
+        /// </summary>
         public readonly string? ValueType;
 
         [OutputConstructor]

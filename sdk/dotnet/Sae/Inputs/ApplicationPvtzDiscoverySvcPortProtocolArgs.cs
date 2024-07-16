@@ -15,6 +15,9 @@ namespace Pulumi.AliCloud.Sae.Inputs
         [Input("port")]
         public Input<int>? Port { get; set; }
 
+        /// <summary>
+        /// The protocol. Valid values: `TCP` and `UDP`.
+        /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 

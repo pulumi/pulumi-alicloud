@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertConfigurationAnnotation {
+    /**
+     * @return Field name.
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return Field value.
+     * 
+     */
     private @Nullable String value;
 
     private AlertConfigurationAnnotation() {}
+    /**
+     * @return Field name.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return Field value.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

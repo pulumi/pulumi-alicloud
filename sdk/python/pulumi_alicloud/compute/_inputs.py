@@ -132,6 +132,7 @@ class GetNestServiceInstancesFilterArgs:
                  values: Optional[Sequence[str]] = None):
         """
         :param str name: The name of the service.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -153,6 +154,9 @@ class GetNestServiceInstancesFilterArgs:
     @property
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
+        """
+        Set of values that are accepted for the given field.
+        """
         return pulumi.get(self, "values")
 
     @values.setter

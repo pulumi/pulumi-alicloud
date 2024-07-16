@@ -14,6 +14,9 @@ namespace Pulumi.AliCloud.Sae.Outputs
     public sealed class ApplicationPvtzDiscoverySvcPortProtocol
     {
         public readonly int? Port;
+        /// <summary>
+        /// The protocol. Valid values: `TCP` and `UDP`.
+        /// </summary>
         public readonly string? Protocol;
 
         [OutputConstructor]

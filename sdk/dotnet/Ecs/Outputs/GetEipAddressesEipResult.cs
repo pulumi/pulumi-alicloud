@@ -13,12 +13,30 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetEipAddressesEipResult
     {
+        /// <summary>
+        /// The maximum bandwidth of the EIP. Unit: Mbit/s.
+        /// </summary>
         public readonly string Bandwidth;
         public readonly string CreationTime;
+        /// <summary>
+        /// Indicates whether deletion protection is enabled.
+        /// </summary>
         public readonly bool DeletionProtection;
+        /// <summary>
+        /// The ID of the Address.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the instance with which the EIP is associated.
+        /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// The type of the instance with which the EIP is associated.
+        /// </summary>
         public readonly string InstanceType;
+        /// <summary>
+        /// The metering method of the EIP.
+        /// </summary>
         public readonly string InternetChargeType;
         /// <summary>
         /// The eip address.

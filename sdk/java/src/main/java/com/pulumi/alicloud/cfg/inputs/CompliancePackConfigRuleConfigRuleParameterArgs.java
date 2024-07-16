@@ -15,16 +15,32 @@ public final class CompliancePackConfigRuleConfigRuleParameterArgs extends com.p
 
     public static final CompliancePackConfigRuleConfigRuleParameterArgs Empty = new CompliancePackConfigRuleConfigRuleParameterArgs();
 
+    /**
+     * The parameter name.
+     * 
+     */
     @Import(name="parameterName")
     private @Nullable Output<String> parameterName;
 
+    /**
+     * @return The parameter name.
+     * 
+     */
     public Optional<Output<String>> parameterName() {
         return Optional.ofNullable(this.parameterName);
     }
 
+    /**
+     * The parameter value.
+     * 
+     */
     @Import(name="parameterValue")
     private @Nullable Output<String> parameterValue;
 
+    /**
+     * @return The parameter value.
+     * 
+     */
     public Optional<Output<String>> parameterValue() {
         return Optional.ofNullable(this.parameterValue);
     }
@@ -54,20 +70,44 @@ public final class CompliancePackConfigRuleConfigRuleParameterArgs extends com.p
             $ = new CompliancePackConfigRuleConfigRuleParameterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param parameterName The parameter name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterName(@Nullable Output<String> parameterName) {
             $.parameterName = parameterName;
             return this;
         }
 
+        /**
+         * @param parameterName The parameter name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterName(String parameterName) {
             return parameterName(Output.of(parameterName));
         }
 
+        /**
+         * @param parameterValue The parameter value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterValue(@Nullable Output<String> parameterValue) {
             $.parameterValue = parameterValue;
             return this;
         }
 
+        /**
+         * @param parameterValue The parameter value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterValue(String parameterValue) {
             return parameterValue(Output.of(parameterValue));
         }

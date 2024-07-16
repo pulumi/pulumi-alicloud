@@ -15,16 +15,32 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTim
 
     public static final ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs Empty = new ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs();
 
+    /**
+     * The end time for this scaling rule specific metrics trigger.
+     * 
+     */
     @Import(name="endTime")
     private @Nullable Output<String> endTime;
 
+    /**
+     * @return The end time for this scaling rule specific metrics trigger.
+     * 
+     */
     public Optional<Output<String>> endTime() {
         return Optional.ofNullable(this.endTime);
     }
 
+    /**
+     * The start time for this scaling rule specific metrics trigger.
+     * 
+     */
     @Import(name="startTime")
     private @Nullable Output<String> startTime;
 
+    /**
+     * @return The start time for this scaling rule specific metrics trigger.
+     * 
+     */
     public Optional<Output<String>> startTime() {
         return Optional.ofNullable(this.startTime);
     }
@@ -54,20 +70,44 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTim
             $ = new ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param endTime The end time for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endTime(@Nullable Output<String> endTime) {
             $.endTime = endTime;
             return this;
         }
 
+        /**
+         * @param endTime The end time for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endTime(String endTime) {
             return endTime(Output.of(endTime));
         }
 
+        /**
+         * @param startTime The start time for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder startTime(@Nullable Output<String> startTime) {
             $.startTime = startTime;
             return this;
         }
 
+        /**
+         * @param startTime The start time for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder startTime(String startTime) {
             return startTime(Output.of(startTime));
         }

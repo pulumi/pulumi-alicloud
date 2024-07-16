@@ -11,27 +11,63 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterBootstrapAction {
+    /**
+     * @return bootstrap action args, e.g. &#34;--a=b&#34;.
+     * 
+     */
     private @Nullable String arg;
+    /**
+     * @return bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: &#34;FAILED_BLOCKED
+     * 
+     */
     private @Nullable String executionFailStrategy;
+    /**
+     * @return bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: &#34;BEFORE_INSTALL&#34;.
+     * 
+     */
     private @Nullable String executionMoment;
+    /**
+     * @return bootstrap action execution target, you can specify the host group name, e.g. &#34;core_group&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
+     * 
+     */
     private @Nullable String executionTarget;
     /**
      * @return The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, &#34;-&#34;, &#34;_&#34;.
      * 
      */
     private @Nullable String name;
+    /**
+     * @return bootstrap action path, e.g. &#34;oss://bucket/path&#34;.
+     * 
+     */
     private @Nullable String path;
 
     private ClusterBootstrapAction() {}
+    /**
+     * @return bootstrap action args, e.g. &#34;--a=b&#34;.
+     * 
+     */
     public Optional<String> arg() {
         return Optional.ofNullable(this.arg);
     }
+    /**
+     * @return bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: &#34;FAILED_BLOCKED
+     * 
+     */
     public Optional<String> executionFailStrategy() {
         return Optional.ofNullable(this.executionFailStrategy);
     }
+    /**
+     * @return bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: &#34;BEFORE_INSTALL&#34;.
+     * 
+     */
     public Optional<String> executionMoment() {
         return Optional.ofNullable(this.executionMoment);
     }
+    /**
+     * @return bootstrap action execution target, you can specify the host group name, e.g. &#34;core_group&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
+     * 
+     */
     public Optional<String> executionTarget() {
         return Optional.ofNullable(this.executionTarget);
     }
@@ -42,6 +78,10 @@ public final class ClusterBootstrapAction {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return bootstrap action path, e.g. &#34;oss://bucket/path&#34;.
+     * 
+     */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }

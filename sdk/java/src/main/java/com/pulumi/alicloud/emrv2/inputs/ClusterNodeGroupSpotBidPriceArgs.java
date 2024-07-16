@@ -15,16 +15,32 @@ public final class ClusterNodeGroupSpotBidPriceArgs extends com.pulumi.resources
 
     public static final ClusterNodeGroupSpotBidPriceArgs Empty = new ClusterNodeGroupSpotBidPriceArgs();
 
+    /**
+     * The spot bid price of a PayAsYouGo instance.
+     * 
+     */
     @Import(name="bidPrice", required=true)
     private Output<Integer> bidPrice;
 
+    /**
+     * @return The spot bid price of a PayAsYouGo instance.
+     * 
+     */
     public Output<Integer> bidPrice() {
         return this.bidPrice;
     }
 
+    /**
+     * Host Ecs instance type.
+     * 
+     */
     @Import(name="instanceType", required=true)
     private Output<String> instanceType;
 
+    /**
+     * @return Host Ecs instance type.
+     * 
+     */
     public Output<String> instanceType() {
         return this.instanceType;
     }
@@ -54,20 +70,44 @@ public final class ClusterNodeGroupSpotBidPriceArgs extends com.pulumi.resources
             $ = new ClusterNodeGroupSpotBidPriceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bidPrice The spot bid price of a PayAsYouGo instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bidPrice(Output<Integer> bidPrice) {
             $.bidPrice = bidPrice;
             return this;
         }
 
+        /**
+         * @param bidPrice The spot bid price of a PayAsYouGo instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bidPrice(Integer bidPrice) {
             return bidPrice(Output.of(bidPrice));
         }
 
+        /**
+         * @param instanceType Host Ecs instance type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceType(Output<String> instanceType) {
             $.instanceType = instanceType;
             return this;
         }
 
+        /**
+         * @param instanceType Host Ecs instance type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceType(String instanceType) {
             return instanceType(Output.of(instanceType));
         }

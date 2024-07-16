@@ -13,12 +13,40 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceMeshMeshConfigSidecarInjector {
+    /**
+     * @return Whether to enable by Pod Annotations automatic injection Sidecar.
+     * 
+     */
     private @Nullable Boolean autoInjectionPolicyEnabled;
+    /**
+     * @return Whether it is the all namespaces you turn on the auto injection capabilities.
+     * 
+     */
     private @Nullable Boolean enableNamespacesByDefault;
+    /**
+     * @return CNI configuration. See `init_cni_configuration` below.
+     * 
+     */
     private @Nullable ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration initCniConfiguration;
+    /**
+     * @return Sidecar injector Pods on the throttle.
+     * 
+     */
     private @Nullable String limitCpu;
+    /**
+     * @return Sidecar injector Pods on the throttle.
+     * 
+     */
     private @Nullable String limitMemory;
+    /**
+     * @return Sidecar injector Pods on the requested resource.
+     * 
+     */
     private @Nullable String requestCpu;
+    /**
+     * @return Sidecar injector Pods on the requested resource.
+     * 
+     */
     private @Nullable String requestMemory;
     /**
      * @return Other automatic injection Sidecar configuration (in YAML format).
@@ -27,24 +55,52 @@ public final class ServiceMeshMeshConfigSidecarInjector {
     private @Nullable String sidecarInjectorWebhookAsYaml;
 
     private ServiceMeshMeshConfigSidecarInjector() {}
+    /**
+     * @return Whether to enable by Pod Annotations automatic injection Sidecar.
+     * 
+     */
     public Optional<Boolean> autoInjectionPolicyEnabled() {
         return Optional.ofNullable(this.autoInjectionPolicyEnabled);
     }
+    /**
+     * @return Whether it is the all namespaces you turn on the auto injection capabilities.
+     * 
+     */
     public Optional<Boolean> enableNamespacesByDefault() {
         return Optional.ofNullable(this.enableNamespacesByDefault);
     }
+    /**
+     * @return CNI configuration. See `init_cni_configuration` below.
+     * 
+     */
     public Optional<ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration> initCniConfiguration() {
         return Optional.ofNullable(this.initCniConfiguration);
     }
+    /**
+     * @return Sidecar injector Pods on the throttle.
+     * 
+     */
     public Optional<String> limitCpu() {
         return Optional.ofNullable(this.limitCpu);
     }
+    /**
+     * @return Sidecar injector Pods on the throttle.
+     * 
+     */
     public Optional<String> limitMemory() {
         return Optional.ofNullable(this.limitMemory);
     }
+    /**
+     * @return Sidecar injector Pods on the requested resource.
+     * 
+     */
     public Optional<String> requestCpu() {
         return Optional.ofNullable(this.requestCpu);
     }
+    /**
+     * @return Sidecar injector Pods on the requested resource.
+     * 
+     */
     public Optional<String> requestMemory() {
         return Optional.ofNullable(this.requestMemory);
     }

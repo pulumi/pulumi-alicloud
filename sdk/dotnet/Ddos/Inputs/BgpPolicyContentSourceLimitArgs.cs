@@ -12,15 +12,27 @@ namespace Pulumi.AliCloud.Ddos.Inputs
 
     public sealed class BgpPolicyContentSourceLimitArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// bps range 1024~268435456.
+        /// </summary>
         [Input("bps")]
         public Input<int>? Bps { get; set; }
 
+        /// <summary>
+        /// Pps range 32~500000.
+        /// </summary>
         [Input("pps")]
         public Input<int>? Pps { get; set; }
 
+        /// <summary>
+        /// SynBps range 1024~268435456.
+        /// </summary>
         [Input("synBps")]
         public Input<int>? SynBps { get; set; }
 
+        /// <summary>
+        /// SynPps range 1~100000.
+        /// </summary>
         [Input("synPps")]
         public Input<int>? SynPps { get; set; }
 

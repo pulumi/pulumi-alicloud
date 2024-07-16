@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Adb.Outputs
     [OutputType]
     public sealed class LakeAccountAccountPrivilegePrivilegeObject
     {
+        /// <summary>
+        /// The name of column.
+        /// </summary>
         public readonly string? Column;
+        /// <summary>
+        /// The name of database.
+        /// </summary>
         public readonly string? Database;
+        /// <summary>
+        /// The name of table.
+        /// </summary>
         public readonly string? Table;
 
         [OutputConstructor]

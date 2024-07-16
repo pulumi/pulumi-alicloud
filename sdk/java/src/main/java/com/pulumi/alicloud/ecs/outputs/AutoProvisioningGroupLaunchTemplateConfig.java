@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AutoProvisioningGroupLaunchTemplateConfig {
+    /**
+     * @return The instance type of the Nth extended configurations of the launch template.
+     * 
+     */
     private @Nullable String instanceType;
+    /**
+     * @return The maximum price of the instance type specified in the Nth extended configurations of the launch template.
+     * 
+     */
     private String maxPrice;
+    /**
+     * @return The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
+     * 
+     */
     private @Nullable String priority;
+    /**
+     * @return The ID of the VSwitch in the Nth extended configurations of the launch template.
+     * 
+     */
     private String vswitchId;
+    /**
+     * @return The weight of the instance type specified in the Nth extended configurations of the launch template.
+     * 
+     */
     private String weightedCapacity;
 
     private AutoProvisioningGroupLaunchTemplateConfig() {}
+    /**
+     * @return The instance type of the Nth extended configurations of the launch template.
+     * 
+     */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
+    /**
+     * @return The maximum price of the instance type specified in the Nth extended configurations of the launch template.
+     * 
+     */
     public String maxPrice() {
         return this.maxPrice;
     }
+    /**
+     * @return The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
+     * 
+     */
     public Optional<String> priority() {
         return Optional.ofNullable(this.priority);
     }
+    /**
+     * @return The ID of the VSwitch in the Nth extended configurations of the launch template.
+     * 
+     */
     public String vswitchId() {
         return this.vswitchId;
     }
+    /**
+     * @return The weight of the instance type specified in the Nth extended configurations of the launch template.
+     * 
+     */
     public String weightedCapacity() {
         return this.weightedCapacity;
     }

@@ -16,23 +16,47 @@ public final class SyntheticTaskCommonSettingCustomHostHostArgs extends com.pulu
 
     public static final SyntheticTaskCommonSettingCustomHostHostArgs Empty = new SyntheticTaskCommonSettingCustomHostHostArgs();
 
+    /**
+     * Domain Name.
+     * 
+     */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
+    /**
+     * @return Domain Name.
+     * 
+     */
     public Output<String> domain() {
         return this.domain;
     }
 
+    /**
+     * IpType.
+     * 
+     */
     @Import(name="ipType", required=true)
     private Output<Integer> ipType;
 
+    /**
+     * @return IpType.
+     * 
+     */
     public Output<Integer> ipType() {
         return this.ipType;
     }
 
+    /**
+     * The IP list.
+     * 
+     */
     @Import(name="ips", required=true)
     private Output<List<String>> ips;
 
+    /**
+     * @return The IP list.
+     * 
+     */
     public Output<List<String>> ips() {
         return this.ips;
     }
@@ -63,33 +87,75 @@ public final class SyntheticTaskCommonSettingCustomHostHostArgs extends com.pulu
             $ = new SyntheticTaskCommonSettingCustomHostHostArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param domain Domain Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
+        /**
+         * @param domain Domain Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }
 
+        /**
+         * @param ipType IpType.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipType(Output<Integer> ipType) {
             $.ipType = ipType;
             return this;
         }
 
+        /**
+         * @param ipType IpType.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipType(Integer ipType) {
             return ipType(Output.of(ipType));
         }
 
+        /**
+         * @param ips The IP list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ips(Output<List<String>> ips) {
             $.ips = ips;
             return this;
         }
 
+        /**
+         * @param ips The IP list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ips(List<String> ips) {
             return ips(Output.of(ips));
         }
 
+        /**
+         * @param ips The IP list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ips(String... ips) {
             return ips(List.of(ips));
         }

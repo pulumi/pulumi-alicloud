@@ -80,11 +80,17 @@ class VvpInstanceStorageArgs:
 class VvpInstanceStorageOssArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] bucket: OSS Bucket name.
+        """
         pulumi.set(__self__, "bucket", bucket)
 
     @property
     @pulumi.getter
     def bucket(self) -> pulumi.Input[str]:
+        """
+        OSS Bucket name.
+        """
         return pulumi.get(self, "bucket")
 
     @bucket.setter

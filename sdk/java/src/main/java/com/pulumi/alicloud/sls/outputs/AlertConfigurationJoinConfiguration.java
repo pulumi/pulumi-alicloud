@@ -11,10 +11,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertConfigurationJoinConfiguration {
+    /**
+     * @return Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
+     * 
+     */
     private @Nullable String condition;
     private @Nullable String type;
 
     private AlertConfigurationJoinConfiguration() {}
+    /**
+     * @return Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
+     * 
+     */
     public Optional<String> condition() {
         return Optional.ofNullable(this.condition);
     }

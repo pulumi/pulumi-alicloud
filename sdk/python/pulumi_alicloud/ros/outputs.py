@@ -61,17 +61,27 @@ class ChangeSetParameter(dict):
     def __init__(__self__, *,
                  parameter_key: str,
                  parameter_value: str):
+        """
+        :param str parameter_key: The parameter key.
+        :param str parameter_value: The parameter value.
+        """
         pulumi.set(__self__, "parameter_key", parameter_key)
         pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> str:
+        """
+        The parameter key.
+        """
         return pulumi.get(self, "parameter_key")
 
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> str:
+        """
+        The parameter value.
+        """
         return pulumi.get(self, "parameter_value")
 
 
@@ -99,6 +109,10 @@ class StackGroupParameter(dict):
     def __init__(__self__, *,
                  parameter_key: Optional[str] = None,
                  parameter_value: Optional[str] = None):
+        """
+        :param str parameter_key: The parameter key.
+        :param str parameter_value: The parameter value.
+        """
         if parameter_key is not None:
             pulumi.set(__self__, "parameter_key", parameter_key)
         if parameter_value is not None:
@@ -107,11 +121,17 @@ class StackGroupParameter(dict):
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> Optional[str]:
+        """
+        The parameter key.
+        """
         return pulumi.get(self, "parameter_key")
 
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> Optional[str]:
+        """
+        The parameter value.
+        """
         return pulumi.get(self, "parameter_value")
 
 
@@ -139,6 +159,10 @@ class StackInstanceParameterOverride(dict):
     def __init__(__self__, *,
                  parameter_key: Optional[str] = None,
                  parameter_value: Optional[str] = None):
+        """
+        :param str parameter_key: The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+        :param str parameter_value: The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+        """
         if parameter_key is not None:
             pulumi.set(__self__, "parameter_key", parameter_key)
         if parameter_value is not None:
@@ -147,11 +171,17 @@ class StackInstanceParameterOverride(dict):
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> Optional[str]:
+        """
+        The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+        """
         return pulumi.get(self, "parameter_key")
 
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> Optional[str]:
+        """
+        The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+        """
         return pulumi.get(self, "parameter_value")
 
 
@@ -179,6 +209,10 @@ class StackParameter(dict):
     def __init__(__self__, *,
                  parameter_value: str,
                  parameter_key: Optional[str] = None):
+        """
+        :param str parameter_value: The parameter value.
+        :param str parameter_key: The parameter key.
+        """
         pulumi.set(__self__, "parameter_value", parameter_value)
         if parameter_key is not None:
             pulumi.set(__self__, "parameter_key", parameter_key)
@@ -186,11 +220,17 @@ class StackParameter(dict):
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> str:
+        """
+        The parameter value.
+        """
         return pulumi.get(self, "parameter_value")
 
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> Optional[str]:
+        """
+        The parameter key.
+        """
         return pulumi.get(self, "parameter_key")
 
 
@@ -218,17 +258,27 @@ class TemplateScratchPreferenceParameter(dict):
     def __init__(__self__, *,
                  parameter_key: str,
                  parameter_value: str):
+        """
+        :param str parameter_key: Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+        :param str parameter_value: Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+        """
         pulumi.set(__self__, "parameter_key", parameter_key)
         pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> str:
+        """
+        Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+        """
         return pulumi.get(self, "parameter_key")
 
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> str:
+        """
+        Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+        """
         return pulumi.get(self, "parameter_value")
 
 
@@ -256,17 +306,27 @@ class TemplateScratchSourceResource(dict):
     def __init__(__self__, *,
                  resource_id: str,
                  resource_type: str):
+        """
+        :param str resource_id: The ID of the Source Resource.
+        :param str resource_type: The type of the Source resource.
+        """
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_type", resource_type)
 
     @property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> str:
+        """
+        The ID of the Source Resource.
+        """
         return pulumi.get(self, "resource_id")
 
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> str:
+        """
+        The type of the Source resource.
+        """
         return pulumi.get(self, "resource_type")
 
 
@@ -294,6 +354,9 @@ class TemplateScratchSourceResourceGroup(dict):
     def __init__(__self__, *,
                  resource_group_id: str,
                  resource_type_filters: Optional[Sequence[str]] = None):
+        """
+        :param str resource_group_id: The ID of the Source Resource Group.
+        """
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         if resource_type_filters is not None:
             pulumi.set(__self__, "resource_type_filters", resource_type_filters)
@@ -301,6 +364,9 @@ class TemplateScratchSourceResourceGroup(dict):
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> str:
+        """
+        The ID of the Source Resource Group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
@@ -333,6 +399,9 @@ class TemplateScratchSourceTag(dict):
     def __init__(__self__, *,
                  resource_tags: Mapping[str, Any],
                  resource_type_filters: Optional[Sequence[str]] = None):
+        """
+        :param Mapping[str, Any] resource_tags: Source label. **NOTE:** A maximum of 10 source labels can be configured.
+        """
         pulumi.set(__self__, "resource_tags", resource_tags)
         if resource_type_filters is not None:
             pulumi.set(__self__, "resource_type_filters", resource_type_filters)
@@ -340,6 +409,9 @@ class TemplateScratchSourceTag(dict):
     @property
     @pulumi.getter(name="resourceTags")
     def resource_tags(self) -> Mapping[str, Any]:
+        """
+        Source label. **NOTE:** A maximum of 10 source labels can be configured.
+        """
         return pulumi.get(self, "resource_tags")
 
     @property

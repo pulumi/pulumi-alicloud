@@ -16,9 +16,17 @@ public final class AlertConfigurationGroupConfigurationArgs extends com.pulumi.r
 
     public static final AlertConfigurationGroupConfigurationArgs Empty = new AlertConfigurationGroupConfigurationArgs();
 
+    /**
+     * The field used for grouping evaluation. When type is set to custom, fields must be set.
+     * 
+     */
     @Import(name="fields")
     private @Nullable Output<List<String>> fields;
 
+    /**
+     * @return The field used for grouping evaluation. When type is set to custom, fields must be set.
+     * 
+     */
     public Optional<Output<List<String>>> fields() {
         return Optional.ofNullable(this.fields);
     }
@@ -55,15 +63,33 @@ public final class AlertConfigurationGroupConfigurationArgs extends com.pulumi.r
             $ = new AlertConfigurationGroupConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fields The field used for grouping evaluation. When type is set to custom, fields must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fields(@Nullable Output<List<String>> fields) {
             $.fields = fields;
             return this;
         }
 
+        /**
+         * @param fields The field used for grouping evaluation. When type is set to custom, fields must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fields(List<String> fields) {
             return fields(Output.of(fields));
         }
 
+        /**
+         * @param fields The field used for grouping evaluation. When type is set to custom, fields must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fields(String... fields) {
             return fields(List.of(fields));
         }

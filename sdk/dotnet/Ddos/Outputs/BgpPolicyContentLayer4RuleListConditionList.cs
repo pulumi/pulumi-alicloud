@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Ddos.Outputs
     [OutputType]
     public sealed class BgpPolicyContentLayer4RuleListConditionList
     {
+        /// <summary>
+        /// Matching target character.
+        /// </summary>
         public readonly string Arg;
+        /// <summary>
+        /// Depth of Matching.
+        /// </summary>
         public readonly int Depth;
+        /// <summary>
+        /// Position to start matching, starting from 0.
+        /// </summary>
         public readonly int Position;
 
         [OutputConstructor]

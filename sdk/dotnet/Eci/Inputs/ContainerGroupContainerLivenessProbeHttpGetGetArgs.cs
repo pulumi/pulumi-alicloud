@@ -18,6 +18,9 @@ namespace Pulumi.AliCloud.Eci.Inputs
         [Input("port")]
         public Input<int>? Port { get; set; }
 
+        /// <summary>
+        /// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+        /// </summary>
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }
 

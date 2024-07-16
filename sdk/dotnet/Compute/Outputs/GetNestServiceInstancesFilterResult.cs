@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.Compute.Outputs
         /// The name of the service.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Set of values that are accepted for the given field.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

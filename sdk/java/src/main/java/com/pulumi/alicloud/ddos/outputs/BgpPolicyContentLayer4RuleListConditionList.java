@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class BgpPolicyContentLayer4RuleListConditionList {
+    /**
+     * @return Matching target character.
+     * 
+     */
     private String arg;
+    /**
+     * @return Depth of Matching.
+     * 
+     */
     private Integer depth;
+    /**
+     * @return Position to start matching, starting from 0.
+     * 
+     */
     private Integer position;
 
     private BgpPolicyContentLayer4RuleListConditionList() {}
+    /**
+     * @return Matching target character.
+     * 
+     */
     public String arg() {
         return this.arg;
     }
+    /**
+     * @return Depth of Matching.
+     * 
+     */
     public Integer depth() {
         return this.depth;
     }
+    /**
+     * @return Position to start matching, starting from 0.
+     * 
+     */
     public Integer position() {
         return this.position;
     }

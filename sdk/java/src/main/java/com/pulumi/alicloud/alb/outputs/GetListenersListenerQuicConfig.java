@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetListenersListenerQuicConfig {
+    /**
+     * @return The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
+     * 
+     */
     private String quicListenerId;
+    /**
+     * @return Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
+     * 
+     */
     private Boolean quicUpgradeEnabled;
 
     private GetListenersListenerQuicConfig() {}
+    /**
+     * @return The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
+     * 
+     */
     public String quicListenerId() {
         return this.quicListenerId;
     }
+    /**
+     * @return Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
+     * 
+     */
     public Boolean quicUpgradeEnabled() {
         return this.quicUpgradeEnabled;
     }

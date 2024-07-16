@@ -13,29 +13,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleRuleActionCorsConfig {
+    /**
+     * @return Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+     * 
+     */
     private @Nullable String allowCredentials;
+    /**
+     * @return The allowed headers for CORS requests.
+     * 
+     */
     private @Nullable List<String> allowHeaders;
+    /**
+     * @return The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+     * 
+     */
     private @Nullable List<String> allowMethods;
+    /**
+     * @return The allowed origins of CORS requests.
+     * 
+     */
     private @Nullable List<String> allowOrigins;
+    /**
+     * @return The headers that can be exposed.
+     * 
+     */
     private @Nullable List<String> exposeHeaders;
+    /**
+     * @return The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+     * 
+     */
     private @Nullable Integer maxAge;
 
     private RuleRuleActionCorsConfig() {}
+    /**
+     * @return Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+     * 
+     */
     public Optional<String> allowCredentials() {
         return Optional.ofNullable(this.allowCredentials);
     }
+    /**
+     * @return The allowed headers for CORS requests.
+     * 
+     */
     public List<String> allowHeaders() {
         return this.allowHeaders == null ? List.of() : this.allowHeaders;
     }
+    /**
+     * @return The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+     * 
+     */
     public List<String> allowMethods() {
         return this.allowMethods == null ? List.of() : this.allowMethods;
     }
+    /**
+     * @return The allowed origins of CORS requests.
+     * 
+     */
     public List<String> allowOrigins() {
         return this.allowOrigins == null ? List.of() : this.allowOrigins;
     }
+    /**
+     * @return The headers that can be exposed.
+     * 
+     */
     public List<String> exposeHeaders() {
         return this.exposeHeaders == null ? List.of() : this.exposeHeaders;
     }
+    /**
+     * @return The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+     * 
+     */
     public Optional<Integer> maxAge() {
         return Optional.ofNullable(this.maxAge);
     }

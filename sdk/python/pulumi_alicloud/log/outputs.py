@@ -998,6 +998,11 @@ class StoreEncryptConfUserCmkInfo(dict):
                  arn: Optional[str] = None,
                  cmk_key_id: Optional[str] = None,
                  region_id: Optional[str] = None):
+        """
+        :param str arn: Role arn.
+        :param str cmk_key_id: User master key id.
+        :param str region_id: Region id where the user master key id is located.
+        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if cmk_key_id is not None:
@@ -1008,16 +1013,25 @@ class StoreEncryptConfUserCmkInfo(dict):
     @property
     @pulumi.getter
     def arn(self) -> Optional[str]:
+        """
+        Role arn.
+        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="cmkKeyId")
     def cmk_key_id(self) -> Optional[str]:
+        """
+        User master key id.
+        """
         return pulumi.get(self, "cmk_key_id")
 
     @property
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[str]:
+        """
+        Region id where the user master key id is located.
+        """
         return pulumi.get(self, "region_id")
 
 

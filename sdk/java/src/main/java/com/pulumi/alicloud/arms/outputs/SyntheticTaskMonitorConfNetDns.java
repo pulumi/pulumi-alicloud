@@ -13,25 +13,75 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SyntheticTaskMonitorConfNetDns {
+    /**
+     * @return The IP address type of the DNS server.
+     * - 0 (default):ipv4
+     * - 1:ipv6
+     *   2: Automatic.
+     * 
+     */
     private @Nullable Integer dnsServerIpType;
+    /**
+     * @return The IP address of the NS server. The default value is 114.114.114.114.
+     * 
+     */
     private @Nullable String nsServer;
+    /**
+     * @return DNS query method.
+     * - 0 (default): Recursive
+     * - 1: Iteration.
+     * 
+     */
     private @Nullable Integer queryMethod;
+    /**
+     * @return The target URL.
+     * 
+     */
     private String targetUrl;
+    /**
+     * @return TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+     * 
+     */
     private @Nullable Integer timeout;
 
     private SyntheticTaskMonitorConfNetDns() {}
+    /**
+     * @return The IP address type of the DNS server.
+     * - 0 (default):ipv4
+     * - 1:ipv6
+     *   2: Automatic.
+     * 
+     */
     public Optional<Integer> dnsServerIpType() {
         return Optional.ofNullable(this.dnsServerIpType);
     }
+    /**
+     * @return The IP address of the NS server. The default value is 114.114.114.114.
+     * 
+     */
     public Optional<String> nsServer() {
         return Optional.ofNullable(this.nsServer);
     }
+    /**
+     * @return DNS query method.
+     * - 0 (default): Recursive
+     * - 1: Iteration.
+     * 
+     */
     public Optional<Integer> queryMethod() {
         return Optional.ofNullable(this.queryMethod);
     }
+    /**
+     * @return The target URL.
+     * 
+     */
     public String targetUrl() {
         return this.targetUrl;
     }
+    /**
+     * @return TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+     * 
+     */
     public Optional<Integer> timeout() {
         return Optional.ofNullable(this.timeout);
     }

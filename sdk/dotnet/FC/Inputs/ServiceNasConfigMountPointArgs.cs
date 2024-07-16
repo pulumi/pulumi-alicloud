@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.FC.Inputs
 
     public sealed class ServiceNasConfigMountPointArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The local address where to mount your remote NAS directory.
+        /// </summary>
         [Input("mountDir", required: true)]
         public Input<string> MountDir { get; set; } = null!;
 
+        /// <summary>
+        /// The address of the remote NAS directory.
+        /// </summary>
         [Input("serverAddr", required: true)]
         public Input<string> ServerAddr { get; set; } = null!;
 

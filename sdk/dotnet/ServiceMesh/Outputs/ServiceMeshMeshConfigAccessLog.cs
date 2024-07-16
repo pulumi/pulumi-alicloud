@@ -13,11 +13,29 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     [OutputType]
     public sealed class ServiceMeshMeshConfigAccessLog
     {
+        /// <summary>
+        /// Enable CNI.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+        /// </summary>
         public readonly bool? GatewayEnabled;
+        /// <summary>
+        /// Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+        /// </summary>
         public readonly int? GatewayLifecycle;
+        /// <summary>
+        /// The name of the SLS Project to which the control plane logs are collected.
+        /// </summary>
         public readonly string? Project;
+        /// <summary>
+        /// Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+        /// </summary>
         public readonly bool? SidecarEnabled;
+        /// <summary>
+        /// Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+        /// </summary>
         public readonly int? SidecarLifecycle;
 
         [OutputConstructor]

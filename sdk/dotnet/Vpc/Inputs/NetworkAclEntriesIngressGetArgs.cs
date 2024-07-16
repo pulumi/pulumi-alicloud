@@ -30,6 +30,9 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
+        /// <summary>
+        /// The source ip of the ingress entry.
+        /// </summary>
         [Input("sourceCidrIp")]
         public Input<string>? SourceCidrIp { get; set; }
 

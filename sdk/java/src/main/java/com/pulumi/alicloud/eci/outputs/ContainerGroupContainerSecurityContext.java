@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerGroupContainerSecurityContext {
     private @Nullable List<ContainerGroupContainerSecurityContextCapability> capabilities;
+    /**
+     * @return Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
+     * 
+     */
     private @Nullable Boolean privileged;
     private @Nullable Integer runAsUser;
 
@@ -22,6 +26,10 @@ public final class ContainerGroupContainerSecurityContext {
     public List<ContainerGroupContainerSecurityContextCapability> capabilities() {
         return this.capabilities == null ? List.of() : this.capabilities;
     }
+    /**
+     * @return Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
+     * 
+     */
     public Optional<Boolean> privileged() {
         return Optional.ofNullable(this.privileged);
     }

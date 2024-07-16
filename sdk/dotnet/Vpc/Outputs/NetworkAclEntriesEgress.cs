@@ -14,6 +14,9 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class NetworkAclEntriesEgress
     {
         public readonly string? Description;
+        /// <summary>
+        /// The destination ip of the egress entry.
+        /// </summary>
         public readonly string? DestinationCidrIp;
         public readonly string? EntryType;
         public readonly string? Name;

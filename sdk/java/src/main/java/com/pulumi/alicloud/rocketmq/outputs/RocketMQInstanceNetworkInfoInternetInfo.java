@@ -14,21 +14,61 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RocketMQInstanceNetworkInfoInternetInfo {
+    /**
+     * @return Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+     * 
+     */
     private @Nullable Integer flowOutBandwidth;
+    /**
+     * @return Public network billing type. The parameter values are as follows:
+     * - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+     * - uninvolved: Not involved. Set this value when disabling public network access.
+     * 
+     */
     private String flowOutType;
+    /**
+     * @return Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+     * - enable: Enable public network access
+     * - disable: Disable public network access
+     * 
+     */
     private String internetSpec;
+    /**
+     * @return internet ip whitelist.
+     * 
+     */
     private @Nullable List<String> ipWhitelists;
 
     private RocketMQInstanceNetworkInfoInternetInfo() {}
+    /**
+     * @return Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+     * 
+     */
     public Optional<Integer> flowOutBandwidth() {
         return Optional.ofNullable(this.flowOutBandwidth);
     }
+    /**
+     * @return Public network billing type. The parameter values are as follows:
+     * - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+     * - uninvolved: Not involved. Set this value when disabling public network access.
+     * 
+     */
     public String flowOutType() {
         return this.flowOutType;
     }
+    /**
+     * @return Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+     * - enable: Enable public network access
+     * - disable: Disable public network access
+     * 
+     */
     public String internetSpec() {
         return this.internetSpec;
     }
+    /**
+     * @return internet ip whitelist.
+     * 
+     */
     public List<String> ipWhitelists() {
         return this.ipWhitelists == null ? List.of() : this.ipWhitelists;
     }

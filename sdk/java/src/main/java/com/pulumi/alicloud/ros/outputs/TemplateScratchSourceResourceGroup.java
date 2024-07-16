@@ -12,10 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TemplateScratchSourceResourceGroup {
+    /**
+     * @return The ID of the Source Resource Group.
+     * 
+     */
     private String resourceGroupId;
     private @Nullable List<String> resourceTypeFilters;
 
     private TemplateScratchSourceResourceGroup() {}
+    /**
+     * @return The ID of the Source Resource Group.
+     * 
+     */
     public String resourceGroupId() {
         return this.resourceGroupId;
     }

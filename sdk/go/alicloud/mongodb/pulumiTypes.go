@@ -271,9 +271,12 @@ func (o InstanceReplicaSetArrayOutput) Index(i pulumi.IntInput) InstanceReplicaS
 }
 
 type ServerlessInstanceSecurityIpGroup struct {
+	// The attribute of the IP whitelist. This parameter is empty by default.
 	SecurityIpGroupAttribute *string `pulumi:"securityIpGroupAttribute"`
-	SecurityIpGroupName      *string `pulumi:"securityIpGroupName"`
-	SecurityIpList           *string `pulumi:"securityIpList"`
+	// The name of the IP whitelist.
+	SecurityIpGroupName *string `pulumi:"securityIpGroupName"`
+	// The IP addresses in the whitelist.
+	SecurityIpList *string `pulumi:"securityIpList"`
 }
 
 // ServerlessInstanceSecurityIpGroupInput is an input type that accepts ServerlessInstanceSecurityIpGroupArgs and ServerlessInstanceSecurityIpGroupOutput values.
@@ -288,9 +291,12 @@ type ServerlessInstanceSecurityIpGroupInput interface {
 }
 
 type ServerlessInstanceSecurityIpGroupArgs struct {
+	// The attribute of the IP whitelist. This parameter is empty by default.
 	SecurityIpGroupAttribute pulumi.StringPtrInput `pulumi:"securityIpGroupAttribute"`
-	SecurityIpGroupName      pulumi.StringPtrInput `pulumi:"securityIpGroupName"`
-	SecurityIpList           pulumi.StringPtrInput `pulumi:"securityIpList"`
+	// The name of the IP whitelist.
+	SecurityIpGroupName pulumi.StringPtrInput `pulumi:"securityIpGroupName"`
+	// The IP addresses in the whitelist.
+	SecurityIpList pulumi.StringPtrInput `pulumi:"securityIpList"`
 }
 
 func (ServerlessInstanceSecurityIpGroupArgs) ElementType() reflect.Type {
@@ -344,14 +350,17 @@ func (o ServerlessInstanceSecurityIpGroupOutput) ToServerlessInstanceSecurityIpG
 	return o
 }
 
+// The attribute of the IP whitelist. This parameter is empty by default.
 func (o ServerlessInstanceSecurityIpGroupOutput) SecurityIpGroupAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerlessInstanceSecurityIpGroup) *string { return v.SecurityIpGroupAttribute }).(pulumi.StringPtrOutput)
 }
 
+// The name of the IP whitelist.
 func (o ServerlessInstanceSecurityIpGroupOutput) SecurityIpGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerlessInstanceSecurityIpGroup) *string { return v.SecurityIpGroupName }).(pulumi.StringPtrOutput)
 }
 
+// The IP addresses in the whitelist.
 func (o ServerlessInstanceSecurityIpGroupOutput) SecurityIpList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerlessInstanceSecurityIpGroup) *string { return v.SecurityIpList }).(pulumi.StringPtrOutput)
 }

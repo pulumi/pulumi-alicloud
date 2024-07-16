@@ -15,9 +15,15 @@ namespace Pulumi.AliCloud.Sae.Inputs
         [Input("cond")]
         public Input<string>? Cond { get; set; }
 
+        /// <summary>
+        /// The parameter value gets the expression.
+        /// </summary>
         [Input("expr")]
         public Input<string>? Expr { get; set; }
 
+        /// <summary>
+        /// The parameter number.
+        /// </summary>
         [Input("index")]
         public Input<int>? Index { get; set; }
 

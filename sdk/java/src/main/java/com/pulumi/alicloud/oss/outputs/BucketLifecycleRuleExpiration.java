@@ -13,21 +13,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BucketLifecycleRuleExpiration {
+    /**
+     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+     * 
+     */
     private @Nullable String createdBeforeDate;
+    /**
+     * @return Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
+     * 
+     */
     private @Nullable String date;
+    /**
+     * @return Specifies the number of days noncurrent object versions transition.
+     * 
+     */
     private @Nullable Integer days;
+    /**
+     * @return On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+     * 
+     * `NOTE`: One and only one of &#34;date&#34;, &#34;days&#34;, &#34;created_before_date&#34; and &#34;expired_object_delete_marker&#34; can be specified in one expiration configuration.
+     * 
+     */
     private @Nullable Boolean expiredObjectDeleteMarker;
 
     private BucketLifecycleRuleExpiration() {}
+    /**
+     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+     * 
+     */
     public Optional<String> createdBeforeDate() {
         return Optional.ofNullable(this.createdBeforeDate);
     }
+    /**
+     * @return Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
+     * 
+     */
     public Optional<String> date() {
         return Optional.ofNullable(this.date);
     }
+    /**
+     * @return Specifies the number of days noncurrent object versions transition.
+     * 
+     */
     public Optional<Integer> days() {
         return Optional.ofNullable(this.days);
     }
+    /**
+     * @return On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+     * 
+     * `NOTE`: One and only one of &#34;date&#34;, &#34;days&#34;, &#34;created_before_date&#34; and &#34;expired_object_delete_marker&#34; can be specified in one expiration configuration.
+     * 
+     */
     public Optional<Boolean> expiredObjectDeleteMarker() {
         return Optional.ofNullable(this.expiredObjectDeleteMarker);
     }

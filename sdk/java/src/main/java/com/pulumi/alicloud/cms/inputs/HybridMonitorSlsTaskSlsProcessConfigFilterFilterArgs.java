@@ -15,16 +15,32 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs extends 
 
     public static final HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs Empty = new HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs();
 
+    /**
+     * The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `contain`, `notContain`.
+     * 
+     */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
+    /**
+     * @return The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `contain`, `notContain`.
+     * 
+     */
     public Optional<Output<String>> operator() {
         return Optional.ofNullable(this.operator);
     }
 
+    /**
+     * The name of the key that is used to filter logs imported from Log Service.
+     * 
+     */
     @Import(name="slsKeyName")
     private @Nullable Output<String> slsKeyName;
 
+    /**
+     * @return The name of the key that is used to filter logs imported from Log Service.
+     * 
+     */
     public Optional<Output<String>> slsKeyName() {
         return Optional.ofNullable(this.slsKeyName);
     }
@@ -62,20 +78,44 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs extends 
             $ = new HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param operator The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `contain`, `notContain`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(@Nullable Output<String> operator) {
             $.operator = operator;
             return this;
         }
 
+        /**
+         * @param operator The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `contain`, `notContain`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(String operator) {
             return operator(Output.of(operator));
         }
 
+        /**
+         * @param slsKeyName The name of the key that is used to filter logs imported from Log Service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder slsKeyName(@Nullable Output<String> slsKeyName) {
             $.slsKeyName = slsKeyName;
             return this;
         }
 
+        /**
+         * @param slsKeyName The name of the key that is used to filter logs imported from Log Service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder slsKeyName(String slsKeyName) {
             return slsKeyName(Output.of(slsKeyName));
         }

@@ -12,11 +12,18 @@ namespace Pulumi.AliCloud.Hbr.Inputs
 
     public sealed class PolicyBindingAdvancedOptionsUdmDetailGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Custom KMS key ID of encrypted copy.
+        /// </summary>
         [Input("destinationKmsKeyId")]
         public Input<string>? DestinationKmsKeyId { get; set; }
 
         [Input("diskIdLists")]
         private InputList<string>? _diskIdLists;
+
+        /// <summary>
+        /// The list of backup disks. If it is empty, all disks are backed up.
+        /// </summary>
         public InputList<string> DiskIdLists
         {
             get => _diskIdLists ?? (_diskIdLists = new InputList<string>());
@@ -25,6 +32,10 @@ namespace Pulumi.AliCloud.Hbr.Inputs
 
         [Input("excludeDiskIdLists")]
         private InputList<string>? _excludeDiskIdLists;
+
+        /// <summary>
+        /// List of cloud disk IDs that are not backed up.
+        /// </summary>
         public InputList<string> ExcludeDiskIdLists
         {
             get => _excludeDiskIdLists ?? (_excludeDiskIdLists = new InputList<string>());

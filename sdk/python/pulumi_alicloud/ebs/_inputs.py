@@ -64,6 +64,10 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs:
     def __init__(__self__, *,
                  region_id: Optional[pulumi.Input[str]] = None,
                  retain_days: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] region_id: Destination region ID.
+        :param pulumi.Input[int] retain_days: Number of days of snapshot retention for replication.
+        """
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
         if retain_days is not None:
@@ -72,6 +76,9 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs:
     @property
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Destination region ID.
+        """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
@@ -81,6 +88,9 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs:
     @property
     @pulumi.getter(name="retainDays")
     def retain_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of days of snapshot retention for replication.
+        """
         return pulumi.get(self, "retain_days")
 
     @retain_days.setter
@@ -214,6 +224,12 @@ class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs:
                  special_period_unit: Optional[pulumi.Input[str]] = None,
                  time_interval: Optional[pulumi.Input[int]] = None,
                  time_unit: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] special_period_unit: The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+               - WEEKS
+               - MONTHS
+               - YEARS.
+        """
         if special_period_unit is not None:
             pulumi.set(__self__, "special_period_unit", special_period_unit)
         if time_interval is not None:
@@ -224,6 +240,12 @@ class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs:
     @property
     @pulumi.getter(name="specialPeriodUnit")
     def special_period_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+        - WEEKS
+        - MONTHS
+        - YEARS.
+        """
         return pulumi.get(self, "special_period_unit")
 
     @special_period_unit.setter

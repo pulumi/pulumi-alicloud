@@ -16,23 +16,47 @@ public final class RuleRuleActionFixedResponseConfigArgs extends com.pulumi.reso
 
     public static final RuleRuleActionFixedResponseConfigArgs Empty = new RuleRuleActionFixedResponseConfigArgs();
 
+    /**
+     * The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+     * 
+     */
     @Import(name="content", required=true)
     private Output<String> content;
 
+    /**
+     * @return The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+     * 
+     */
     public Output<String> content() {
         return this.content;
     }
 
+    /**
+     * The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+     * 
+     */
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
+    /**
+     * @return The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+     * 
+     */
     public Optional<Output<String>> contentType() {
         return Optional.ofNullable(this.contentType);
     }
 
+    /**
+     * The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+     * 
+     */
     @Import(name="httpCode")
     private @Nullable Output<String> httpCode;
 
+    /**
+     * @return The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+     * 
+     */
     public Optional<Output<String>> httpCode() {
         return Optional.ofNullable(this.httpCode);
     }
@@ -63,29 +87,65 @@ public final class RuleRuleActionFixedResponseConfigArgs extends com.pulumi.reso
             $ = new RuleRuleActionFixedResponseConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param content The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(Output<String> content) {
             $.content = content;
             return this;
         }
 
+        /**
+         * @param content The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(String content) {
             return content(Output.of(content));
         }
 
+        /**
+         * @param contentType The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentType(@Nullable Output<String> contentType) {
             $.contentType = contentType;
             return this;
         }
 
+        /**
+         * @param contentType The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentType(String contentType) {
             return contentType(Output.of(contentType));
         }
 
+        /**
+         * @param httpCode The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpCode(@Nullable Output<String> httpCode) {
             $.httpCode = httpCode;
             return this;
         }
 
+        /**
+         * @param httpCode The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpCode(String httpCode) {
             return httpCode(Output.of(httpCode));
         }

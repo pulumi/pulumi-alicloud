@@ -21,6 +21,12 @@ class AppTemplateConfigList(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
+        """
+        :param str key: Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
+        :param str value: Configuration item content.
+               
+               > **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -29,11 +35,19 @@ class AppTemplateConfigList(dict):
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
+        """
+        Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        Configuration item content.
+
+        > **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
+        """
         return pulumi.get(self, "value")
 
 

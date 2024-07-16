@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class K8sSlbAttachmentSlbConfigPortMappingServicePort {
+    /**
+     * @return The port of k8s service, values should be within range [1, 65535].
+     * 
+     */
     private Integer port;
+    /**
+     * @return The protocol of k8s service, values can be &#39;TCP&#39; or &#39;UDP&#39;.
+     * 
+     */
     private String protocol;
+    /**
+     * @return The port of k8s pod, values should be within range [1, 65535].
+     * 
+     */
     private Integer targetPort;
 
     private K8sSlbAttachmentSlbConfigPortMappingServicePort() {}
+    /**
+     * @return The port of k8s service, values should be within range [1, 65535].
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return The protocol of k8s service, values can be &#39;TCP&#39; or &#39;UDP&#39;.
+     * 
+     */
     public String protocol() {
         return this.protocol;
     }
+    /**
+     * @return The port of k8s pod, values should be within range [1, 65535].
+     * 
+     */
     public Integer targetPort() {
         return this.targetPort;
     }

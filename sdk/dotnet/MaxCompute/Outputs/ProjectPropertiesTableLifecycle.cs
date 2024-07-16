@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// Project type
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// The value of the life cycle.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

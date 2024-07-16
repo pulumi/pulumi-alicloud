@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Arms.Outputs
     [OutputType]
     public sealed class SyntheticTaskMonitorConfApiHttpRequestBody
     {
+        /// <summary>
+        /// The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
+        /// </summary>
         public readonly string? Content;
         public readonly string? Type;
 

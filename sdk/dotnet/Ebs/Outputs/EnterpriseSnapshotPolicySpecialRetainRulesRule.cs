@@ -13,6 +13,12 @@ namespace Pulumi.AliCloud.Ebs.Outputs
     [OutputType]
     public sealed class EnterpriseSnapshotPolicySpecialRetainRulesRule
     {
+        /// <summary>
+        /// The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+        /// - WEEKS
+        /// - MONTHS
+        /// - YEARS.
+        /// </summary>
         public readonly string? SpecialPeriodUnit;
         public readonly int? TimeInterval;
         public readonly string? TimeUnit;

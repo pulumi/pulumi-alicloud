@@ -23,9 +23,17 @@ public final class ApplicationPvtzDiscoverySvcPortProtocolArgs extends com.pulum
         return Optional.ofNullable(this.port);
     }
 
+    /**
+     * The protocol. Valid values: `TCP` and `UDP`.
+     * 
+     */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
+    /**
+     * @return The protocol. Valid values: `TCP` and `UDP`.
+     * 
+     */
     public Optional<Output<String>> protocol() {
         return Optional.ofNullable(this.protocol);
     }
@@ -64,11 +72,23 @@ public final class ApplicationPvtzDiscoverySvcPortProtocolArgs extends com.pulum
             return port(Output.of(port));
         }
 
+        /**
+         * @param protocol The protocol. Valid values: `TCP` and `UDP`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder protocol(@Nullable Output<String> protocol) {
             $.protocol = protocol;
             return this;
         }
 
+        /**
+         * @param protocol The protocol. Valid values: `TCP` and `UDP`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder protocol(String protocol) {
             return protocol(Output.of(protocol));
         }

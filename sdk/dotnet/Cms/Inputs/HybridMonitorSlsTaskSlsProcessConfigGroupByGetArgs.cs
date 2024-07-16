@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Cms.Inputs
 
     public sealed class HybridMonitorSlsTaskSlsProcessConfigGroupByGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+        /// </summary>
         [Input("alias")]
         public Input<string>? Alias { get; set; }
 
+        /// <summary>
+        /// The name of the key that is used to filter logs imported from Log Service.
+        /// </summary>
         [Input("slsKeyName")]
         public Input<string>? SlsKeyName { get; set; }
 

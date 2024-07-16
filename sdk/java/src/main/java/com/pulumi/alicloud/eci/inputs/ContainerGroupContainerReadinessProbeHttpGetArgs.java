@@ -30,9 +30,17 @@ public final class ContainerGroupContainerReadinessProbeHttpGetArgs extends com.
         return Optional.ofNullable(this.port);
     }
 
+    /**
+     * The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+     * 
+     */
     @Import(name="scheme")
     private @Nullable Output<String> scheme;
 
+    /**
+     * @return The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+     * 
+     */
     public Optional<Output<String>> scheme() {
         return Optional.ofNullable(this.scheme);
     }
@@ -81,11 +89,23 @@ public final class ContainerGroupContainerReadinessProbeHttpGetArgs extends com.
             return port(Output.of(port));
         }
 
+        /**
+         * @param scheme The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheme(@Nullable Output<String> scheme) {
             $.scheme = scheme;
             return this;
         }
 
+        /**
+         * @param scheme The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheme(String scheme) {
             return scheme(Output.of(scheme));
         }

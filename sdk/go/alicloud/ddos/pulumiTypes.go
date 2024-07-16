@@ -398,19 +398,32 @@ func (o BgpPolicyContentPtrOutput) WhitenGfbrNets() pulumi.BoolPtrOutput {
 }
 
 type BgpPolicyContentFingerPrintRuleList struct {
-	DstPortEnd        int     `pulumi:"dstPortEnd"`
-	DstPortStart      int     `pulumi:"dstPortStart"`
+	// End of destination port 0-65535.
+	DstPortEnd int `pulumi:"dstPortEnd"`
+	// Destination Port start 0-65535.
+	DstPortStart int `pulumi:"dstPortStart"`
+	// The UUID of the rule is required to be deleted and modified, and it is not required to be created.
 	FingerPrintRuleId *string `pulumi:"fingerPrintRuleId"`
-	MatchAction       string  `pulumi:"matchAction"`
-	MaxPktLen         int     `pulumi:"maxPktLen"`
-	MinPktLen         int     `pulumi:"minPktLen"`
-	Offset            *int    `pulumi:"offset"`
-	PayloadBytes      *string `pulumi:"payloadBytes"`
-	Protocol          string  `pulumi:"protocol"`
-	RateValue         *int    `pulumi:"rateValue"`
-	SeqNo             int     `pulumi:"seqNo"`
-	SrcPortEnd        int     `pulumi:"srcPortEnd"`
-	SrcPortStart      int     `pulumi:"srcPortStart"`
+	// Action. Currently, only drop is supported.
+	MatchAction string `pulumi:"matchAction"`
+	// Maximum bag length.
+	MaxPktLen int `pulumi:"maxPktLen"`
+	// Minimum package length.
+	MinPktLen int `pulumi:"minPktLen"`
+	// Offset.
+	Offset *int `pulumi:"offset"`
+	// Load match, hexadecimal string; Similar to 'abcd'.
+	PayloadBytes *string `pulumi:"payloadBytes"`
+	// Protocol, tcp or udp.
+	Protocol string `pulumi:"protocol"`
+	// Speed limit value 1-100000.
+	RateValue *int `pulumi:"rateValue"`
+	// Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+	SeqNo int `pulumi:"seqNo"`
+	// Source Port end 0-65535.
+	SrcPortEnd int `pulumi:"srcPortEnd"`
+	// Source port start 0-65535.
+	SrcPortStart int `pulumi:"srcPortStart"`
 }
 
 // BgpPolicyContentFingerPrintRuleListInput is an input type that accepts BgpPolicyContentFingerPrintRuleListArgs and BgpPolicyContentFingerPrintRuleListOutput values.
@@ -425,19 +438,32 @@ type BgpPolicyContentFingerPrintRuleListInput interface {
 }
 
 type BgpPolicyContentFingerPrintRuleListArgs struct {
-	DstPortEnd        pulumi.IntInput       `pulumi:"dstPortEnd"`
-	DstPortStart      pulumi.IntInput       `pulumi:"dstPortStart"`
+	// End of destination port 0-65535.
+	DstPortEnd pulumi.IntInput `pulumi:"dstPortEnd"`
+	// Destination Port start 0-65535.
+	DstPortStart pulumi.IntInput `pulumi:"dstPortStart"`
+	// The UUID of the rule is required to be deleted and modified, and it is not required to be created.
 	FingerPrintRuleId pulumi.StringPtrInput `pulumi:"fingerPrintRuleId"`
-	MatchAction       pulumi.StringInput    `pulumi:"matchAction"`
-	MaxPktLen         pulumi.IntInput       `pulumi:"maxPktLen"`
-	MinPktLen         pulumi.IntInput       `pulumi:"minPktLen"`
-	Offset            pulumi.IntPtrInput    `pulumi:"offset"`
-	PayloadBytes      pulumi.StringPtrInput `pulumi:"payloadBytes"`
-	Protocol          pulumi.StringInput    `pulumi:"protocol"`
-	RateValue         pulumi.IntPtrInput    `pulumi:"rateValue"`
-	SeqNo             pulumi.IntInput       `pulumi:"seqNo"`
-	SrcPortEnd        pulumi.IntInput       `pulumi:"srcPortEnd"`
-	SrcPortStart      pulumi.IntInput       `pulumi:"srcPortStart"`
+	// Action. Currently, only drop is supported.
+	MatchAction pulumi.StringInput `pulumi:"matchAction"`
+	// Maximum bag length.
+	MaxPktLen pulumi.IntInput `pulumi:"maxPktLen"`
+	// Minimum package length.
+	MinPktLen pulumi.IntInput `pulumi:"minPktLen"`
+	// Offset.
+	Offset pulumi.IntPtrInput `pulumi:"offset"`
+	// Load match, hexadecimal string; Similar to 'abcd'.
+	PayloadBytes pulumi.StringPtrInput `pulumi:"payloadBytes"`
+	// Protocol, tcp or udp.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Speed limit value 1-100000.
+	RateValue pulumi.IntPtrInput `pulumi:"rateValue"`
+	// Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+	SeqNo pulumi.IntInput `pulumi:"seqNo"`
+	// Source Port end 0-65535.
+	SrcPortEnd pulumi.IntInput `pulumi:"srcPortEnd"`
+	// Source port start 0-65535.
+	SrcPortStart pulumi.IntInput `pulumi:"srcPortStart"`
 }
 
 func (BgpPolicyContentFingerPrintRuleListArgs) ElementType() reflect.Type {
@@ -491,54 +517,67 @@ func (o BgpPolicyContentFingerPrintRuleListOutput) ToBgpPolicyContentFingerPrint
 	return o
 }
 
+// End of destination port 0-65535.
 func (o BgpPolicyContentFingerPrintRuleListOutput) DstPortEnd() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.DstPortEnd }).(pulumi.IntOutput)
 }
 
+// Destination Port start 0-65535.
 func (o BgpPolicyContentFingerPrintRuleListOutput) DstPortStart() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.DstPortStart }).(pulumi.IntOutput)
 }
 
+// The UUID of the rule is required to be deleted and modified, and it is not required to be created.
 func (o BgpPolicyContentFingerPrintRuleListOutput) FingerPrintRuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) *string { return v.FingerPrintRuleId }).(pulumi.StringPtrOutput)
 }
 
+// Action. Currently, only drop is supported.
 func (o BgpPolicyContentFingerPrintRuleListOutput) MatchAction() pulumi.StringOutput {
 	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) string { return v.MatchAction }).(pulumi.StringOutput)
 }
 
+// Maximum bag length.
 func (o BgpPolicyContentFingerPrintRuleListOutput) MaxPktLen() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.MaxPktLen }).(pulumi.IntOutput)
 }
 
+// Minimum package length.
 func (o BgpPolicyContentFingerPrintRuleListOutput) MinPktLen() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.MinPktLen }).(pulumi.IntOutput)
 }
 
+// Offset.
 func (o BgpPolicyContentFingerPrintRuleListOutput) Offset() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) *int { return v.Offset }).(pulumi.IntPtrOutput)
 }
 
+// Load match, hexadecimal string; Similar to 'abcd'.
 func (o BgpPolicyContentFingerPrintRuleListOutput) PayloadBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) *string { return v.PayloadBytes }).(pulumi.StringPtrOutput)
 }
 
+// Protocol, tcp or udp.
 func (o BgpPolicyContentFingerPrintRuleListOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
+// Speed limit value 1-100000.
 func (o BgpPolicyContentFingerPrintRuleListOutput) RateValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) *int { return v.RateValue }).(pulumi.IntPtrOutput)
 }
 
+// Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
 func (o BgpPolicyContentFingerPrintRuleListOutput) SeqNo() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.SeqNo }).(pulumi.IntOutput)
 }
 
+// Source Port end 0-65535.
 func (o BgpPolicyContentFingerPrintRuleListOutput) SrcPortEnd() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.SrcPortEnd }).(pulumi.IntOutput)
 }
 
+// Source port start 0-65535.
 func (o BgpPolicyContentFingerPrintRuleListOutput) SrcPortStart() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentFingerPrintRuleList) int { return v.SrcPortStart }).(pulumi.IntOutput)
 }
@@ -564,13 +603,20 @@ func (o BgpPolicyContentFingerPrintRuleListArrayOutput) Index(i pulumi.IntInput)
 }
 
 type BgpPolicyContentLayer4RuleList struct {
-	Action         string                                        `pulumi:"action"`
+	// 1 for observation 2 for blocking.
+	Action string `pulumi:"action"`
+	// Matching Condition. See `conditionList` below.
 	ConditionLists []BgpPolicyContentLayer4RuleListConditionList `pulumi:"conditionLists"`
-	Limited        int                                           `pulumi:"limited"`
-	Match          string                                        `pulumi:"match"`
-	Method         string                                        `pulumi:"method"`
-	Name           string                                        `pulumi:"name"`
-	Priority       int                                           `pulumi:"priority"`
+	// .
+	Limited int `pulumi:"limited"`
+	// 0 indicates that the condition is not met 1 indicates that the condition is met.
+	Match string `pulumi:"match"`
+	// Char indicates a string match hex match.
+	Method string `pulumi:"method"`
+	// Rule Name.
+	Name string `pulumi:"name"`
+	// 1-100, priority, the lower the number, the higher the priority.
+	Priority int `pulumi:"priority"`
 }
 
 // BgpPolicyContentLayer4RuleListInput is an input type that accepts BgpPolicyContentLayer4RuleListArgs and BgpPolicyContentLayer4RuleListOutput values.
@@ -585,13 +631,20 @@ type BgpPolicyContentLayer4RuleListInput interface {
 }
 
 type BgpPolicyContentLayer4RuleListArgs struct {
-	Action         pulumi.StringInput                                    `pulumi:"action"`
+	// 1 for observation 2 for blocking.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Matching Condition. See `conditionList` below.
 	ConditionLists BgpPolicyContentLayer4RuleListConditionListArrayInput `pulumi:"conditionLists"`
-	Limited        pulumi.IntInput                                       `pulumi:"limited"`
-	Match          pulumi.StringInput                                    `pulumi:"match"`
-	Method         pulumi.StringInput                                    `pulumi:"method"`
-	Name           pulumi.StringInput                                    `pulumi:"name"`
-	Priority       pulumi.IntInput                                       `pulumi:"priority"`
+	// .
+	Limited pulumi.IntInput `pulumi:"limited"`
+	// 0 indicates that the condition is not met 1 indicates that the condition is met.
+	Match pulumi.StringInput `pulumi:"match"`
+	// Char indicates a string match hex match.
+	Method pulumi.StringInput `pulumi:"method"`
+	// Rule Name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// 1-100, priority, the lower the number, the higher the priority.
+	Priority pulumi.IntInput `pulumi:"priority"`
 }
 
 func (BgpPolicyContentLayer4RuleListArgs) ElementType() reflect.Type {
@@ -645,32 +698,39 @@ func (o BgpPolicyContentLayer4RuleListOutput) ToBgpPolicyContentLayer4RuleListOu
 	return o
 }
 
+// 1 for observation 2 for blocking.
 func (o BgpPolicyContentLayer4RuleListOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) string { return v.Action }).(pulumi.StringOutput)
 }
 
+// Matching Condition. See `conditionList` below.
 func (o BgpPolicyContentLayer4RuleListOutput) ConditionLists() BgpPolicyContentLayer4RuleListConditionListArrayOutput {
 	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) []BgpPolicyContentLayer4RuleListConditionList {
 		return v.ConditionLists
 	}).(BgpPolicyContentLayer4RuleListConditionListArrayOutput)
 }
 
+// .
 func (o BgpPolicyContentLayer4RuleListOutput) Limited() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) int { return v.Limited }).(pulumi.IntOutput)
 }
 
+// 0 indicates that the condition is not met 1 indicates that the condition is met.
 func (o BgpPolicyContentLayer4RuleListOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) string { return v.Match }).(pulumi.StringOutput)
 }
 
+// Char indicates a string match hex match.
 func (o BgpPolicyContentLayer4RuleListOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) string { return v.Method }).(pulumi.StringOutput)
 }
 
+// Rule Name.
 func (o BgpPolicyContentLayer4RuleListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// 1-100, priority, the lower the number, the higher the priority.
 func (o BgpPolicyContentLayer4RuleListOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentLayer4RuleList) int { return v.Priority }).(pulumi.IntOutput)
 }
@@ -696,9 +756,12 @@ func (o BgpPolicyContentLayer4RuleListArrayOutput) Index(i pulumi.IntInput) BgpP
 }
 
 type BgpPolicyContentLayer4RuleListConditionList struct {
-	Arg      string `pulumi:"arg"`
-	Depth    int    `pulumi:"depth"`
-	Position int    `pulumi:"position"`
+	// Matching target character.
+	Arg string `pulumi:"arg"`
+	// Depth of Matching.
+	Depth int `pulumi:"depth"`
+	// Position to start matching, starting from 0.
+	Position int `pulumi:"position"`
 }
 
 // BgpPolicyContentLayer4RuleListConditionListInput is an input type that accepts BgpPolicyContentLayer4RuleListConditionListArgs and BgpPolicyContentLayer4RuleListConditionListOutput values.
@@ -713,9 +776,12 @@ type BgpPolicyContentLayer4RuleListConditionListInput interface {
 }
 
 type BgpPolicyContentLayer4RuleListConditionListArgs struct {
-	Arg      pulumi.StringInput `pulumi:"arg"`
-	Depth    pulumi.IntInput    `pulumi:"depth"`
-	Position pulumi.IntInput    `pulumi:"position"`
+	// Matching target character.
+	Arg pulumi.StringInput `pulumi:"arg"`
+	// Depth of Matching.
+	Depth pulumi.IntInput `pulumi:"depth"`
+	// Position to start matching, starting from 0.
+	Position pulumi.IntInput `pulumi:"position"`
 }
 
 func (BgpPolicyContentLayer4RuleListConditionListArgs) ElementType() reflect.Type {
@@ -769,14 +835,17 @@ func (o BgpPolicyContentLayer4RuleListConditionListOutput) ToBgpPolicyContentLay
 	return o
 }
 
+// Matching target character.
 func (o BgpPolicyContentLayer4RuleListConditionListOutput) Arg() pulumi.StringOutput {
 	return o.ApplyT(func(v BgpPolicyContentLayer4RuleListConditionList) string { return v.Arg }).(pulumi.StringOutput)
 }
 
+// Depth of Matching.
 func (o BgpPolicyContentLayer4RuleListConditionListOutput) Depth() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentLayer4RuleListConditionList) int { return v.Depth }).(pulumi.IntOutput)
 }
 
+// Position to start matching, starting from 0.
 func (o BgpPolicyContentLayer4RuleListConditionListOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentLayer4RuleListConditionList) int { return v.Position }).(pulumi.IntOutput)
 }
@@ -802,14 +871,22 @@ func (o BgpPolicyContentLayer4RuleListConditionListArrayOutput) Index(i pulumi.I
 }
 
 type BgpPolicyContentPortRuleList struct {
-	DstPortEnd   int     `pulumi:"dstPortEnd"`
-	DstPortStart int     `pulumi:"dstPortStart"`
-	MatchAction  string  `pulumi:"matchAction"`
-	PortRuleId   *string `pulumi:"portRuleId"`
-	Protocol     string  `pulumi:"protocol"`
-	SeqNo        int     `pulumi:"seqNo"`
-	SrcPortEnd   int     `pulumi:"srcPortEnd"`
-	SrcPortStart int     `pulumi:"srcPortStart"`
+	// End of destination port 0-65535.
+	DstPortEnd int `pulumi:"dstPortEnd"`
+	// Destination Port start 0-65535.
+	DstPortStart int `pulumi:"dstPortStart"`
+	// Action. Currently, only drop is supported.
+	MatchAction string `pulumi:"matchAction"`
+	// Rule UUID is required to be deleted and modified, and is not required to be created.
+	PortRuleId *string `pulumi:"portRuleId"`
+	// Protocol, tcp or udp.
+	Protocol string `pulumi:"protocol"`
+	// Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+	SeqNo int `pulumi:"seqNo"`
+	// Source Port end 0-65535.
+	SrcPortEnd int `pulumi:"srcPortEnd"`
+	// Source port start 0-65535.
+	SrcPortStart int `pulumi:"srcPortStart"`
 }
 
 // BgpPolicyContentPortRuleListInput is an input type that accepts BgpPolicyContentPortRuleListArgs and BgpPolicyContentPortRuleListOutput values.
@@ -824,14 +901,22 @@ type BgpPolicyContentPortRuleListInput interface {
 }
 
 type BgpPolicyContentPortRuleListArgs struct {
-	DstPortEnd   pulumi.IntInput       `pulumi:"dstPortEnd"`
-	DstPortStart pulumi.IntInput       `pulumi:"dstPortStart"`
-	MatchAction  pulumi.StringInput    `pulumi:"matchAction"`
-	PortRuleId   pulumi.StringPtrInput `pulumi:"portRuleId"`
-	Protocol     pulumi.StringInput    `pulumi:"protocol"`
-	SeqNo        pulumi.IntInput       `pulumi:"seqNo"`
-	SrcPortEnd   pulumi.IntInput       `pulumi:"srcPortEnd"`
-	SrcPortStart pulumi.IntInput       `pulumi:"srcPortStart"`
+	// End of destination port 0-65535.
+	DstPortEnd pulumi.IntInput `pulumi:"dstPortEnd"`
+	// Destination Port start 0-65535.
+	DstPortStart pulumi.IntInput `pulumi:"dstPortStart"`
+	// Action. Currently, only drop is supported.
+	MatchAction pulumi.StringInput `pulumi:"matchAction"`
+	// Rule UUID is required to be deleted and modified, and is not required to be created.
+	PortRuleId pulumi.StringPtrInput `pulumi:"portRuleId"`
+	// Protocol, tcp or udp.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+	SeqNo pulumi.IntInput `pulumi:"seqNo"`
+	// Source Port end 0-65535.
+	SrcPortEnd pulumi.IntInput `pulumi:"srcPortEnd"`
+	// Source port start 0-65535.
+	SrcPortStart pulumi.IntInput `pulumi:"srcPortStart"`
 }
 
 func (BgpPolicyContentPortRuleListArgs) ElementType() reflect.Type {
@@ -885,34 +970,42 @@ func (o BgpPolicyContentPortRuleListOutput) ToBgpPolicyContentPortRuleListOutput
 	return o
 }
 
+// End of destination port 0-65535.
 func (o BgpPolicyContentPortRuleListOutput) DstPortEnd() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentPortRuleList) int { return v.DstPortEnd }).(pulumi.IntOutput)
 }
 
+// Destination Port start 0-65535.
 func (o BgpPolicyContentPortRuleListOutput) DstPortStart() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentPortRuleList) int { return v.DstPortStart }).(pulumi.IntOutput)
 }
 
+// Action. Currently, only drop is supported.
 func (o BgpPolicyContentPortRuleListOutput) MatchAction() pulumi.StringOutput {
 	return o.ApplyT(func(v BgpPolicyContentPortRuleList) string { return v.MatchAction }).(pulumi.StringOutput)
 }
 
+// Rule UUID is required to be deleted and modified, and is not required to be created.
 func (o BgpPolicyContentPortRuleListOutput) PortRuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BgpPolicyContentPortRuleList) *string { return v.PortRuleId }).(pulumi.StringPtrOutput)
 }
 
+// Protocol, tcp or udp.
 func (o BgpPolicyContentPortRuleListOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v BgpPolicyContentPortRuleList) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
+// Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
 func (o BgpPolicyContentPortRuleListOutput) SeqNo() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentPortRuleList) int { return v.SeqNo }).(pulumi.IntOutput)
 }
 
+// Source Port end 0-65535.
 func (o BgpPolicyContentPortRuleListOutput) SrcPortEnd() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentPortRuleList) int { return v.SrcPortEnd }).(pulumi.IntOutput)
 }
 
+// Source port start 0-65535.
 func (o BgpPolicyContentPortRuleListOutput) SrcPortStart() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentPortRuleList) int { return v.SrcPortStart }).(pulumi.IntOutput)
 }
@@ -938,9 +1031,12 @@ func (o BgpPolicyContentPortRuleListArrayOutput) Index(i pulumi.IntInput) BgpPol
 }
 
 type BgpPolicyContentSourceBlockList struct {
+	// Statistical cycle range 60-1200.
 	BlockExpireSeconds int `pulumi:"blockExpireSeconds"`
-	EverySeconds       int `pulumi:"everySeconds"`
-	ExceedLimitTimes   int `pulumi:"exceedLimitTimes"`
+	// The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
+	EverySeconds int `pulumi:"everySeconds"`
+	// The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
+	ExceedLimitTimes int `pulumi:"exceedLimitTimes"`
 	// Type
 	Type int `pulumi:"type"`
 }
@@ -957,9 +1053,12 @@ type BgpPolicyContentSourceBlockListInput interface {
 }
 
 type BgpPolicyContentSourceBlockListArgs struct {
+	// Statistical cycle range 60-1200.
 	BlockExpireSeconds pulumi.IntInput `pulumi:"blockExpireSeconds"`
-	EverySeconds       pulumi.IntInput `pulumi:"everySeconds"`
-	ExceedLimitTimes   pulumi.IntInput `pulumi:"exceedLimitTimes"`
+	// The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
+	EverySeconds pulumi.IntInput `pulumi:"everySeconds"`
+	// The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
+	ExceedLimitTimes pulumi.IntInput `pulumi:"exceedLimitTimes"`
 	// Type
 	Type pulumi.IntInput `pulumi:"type"`
 }
@@ -1015,14 +1114,17 @@ func (o BgpPolicyContentSourceBlockListOutput) ToBgpPolicyContentSourceBlockList
 	return o
 }
 
+// Statistical cycle range 60-1200.
 func (o BgpPolicyContentSourceBlockListOutput) BlockExpireSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentSourceBlockList) int { return v.BlockExpireSeconds }).(pulumi.IntOutput)
 }
 
+// The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
 func (o BgpPolicyContentSourceBlockListOutput) EverySeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentSourceBlockList) int { return v.EverySeconds }).(pulumi.IntOutput)
 }
 
+// The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
 func (o BgpPolicyContentSourceBlockListOutput) ExceedLimitTimes() pulumi.IntOutput {
 	return o.ApplyT(func(v BgpPolicyContentSourceBlockList) int { return v.ExceedLimitTimes }).(pulumi.IntOutput)
 }
@@ -1053,9 +1155,13 @@ func (o BgpPolicyContentSourceBlockListArrayOutput) Index(i pulumi.IntInput) Bgp
 }
 
 type BgpPolicyContentSourceLimit struct {
-	Bps    *int `pulumi:"bps"`
-	Pps    *int `pulumi:"pps"`
+	// bps range 1024~268435456.
+	Bps *int `pulumi:"bps"`
+	// Pps range 32~500000.
+	Pps *int `pulumi:"pps"`
+	// SynBps range 1024~268435456.
 	SynBps *int `pulumi:"synBps"`
+	// SynPps range 1~100000.
 	SynPps *int `pulumi:"synPps"`
 }
 
@@ -1071,9 +1177,13 @@ type BgpPolicyContentSourceLimitInput interface {
 }
 
 type BgpPolicyContentSourceLimitArgs struct {
-	Bps    pulumi.IntPtrInput `pulumi:"bps"`
-	Pps    pulumi.IntPtrInput `pulumi:"pps"`
+	// bps range 1024~268435456.
+	Bps pulumi.IntPtrInput `pulumi:"bps"`
+	// Pps range 32~500000.
+	Pps pulumi.IntPtrInput `pulumi:"pps"`
+	// SynBps range 1024~268435456.
 	SynBps pulumi.IntPtrInput `pulumi:"synBps"`
+	// SynPps range 1~100000.
 	SynPps pulumi.IntPtrInput `pulumi:"synPps"`
 }
 
@@ -1154,18 +1264,22 @@ func (o BgpPolicyContentSourceLimitOutput) ToBgpPolicyContentSourceLimitPtrOutpu
 	}).(BgpPolicyContentSourceLimitPtrOutput)
 }
 
+// bps range 1024~268435456.
 func (o BgpPolicyContentSourceLimitOutput) Bps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BgpPolicyContentSourceLimit) *int { return v.Bps }).(pulumi.IntPtrOutput)
 }
 
+// Pps range 32~500000.
 func (o BgpPolicyContentSourceLimitOutput) Pps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BgpPolicyContentSourceLimit) *int { return v.Pps }).(pulumi.IntPtrOutput)
 }
 
+// SynBps range 1024~268435456.
 func (o BgpPolicyContentSourceLimitOutput) SynBps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BgpPolicyContentSourceLimit) *int { return v.SynBps }).(pulumi.IntPtrOutput)
 }
 
+// SynPps range 1~100000.
 func (o BgpPolicyContentSourceLimitOutput) SynPps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BgpPolicyContentSourceLimit) *int { return v.SynPps }).(pulumi.IntPtrOutput)
 }
@@ -1194,6 +1308,7 @@ func (o BgpPolicyContentSourceLimitPtrOutput) Elem() BgpPolicyContentSourceLimit
 	}).(BgpPolicyContentSourceLimitOutput)
 }
 
+// bps range 1024~268435456.
 func (o BgpPolicyContentSourceLimitPtrOutput) Bps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BgpPolicyContentSourceLimit) *int {
 		if v == nil {
@@ -1203,6 +1318,7 @@ func (o BgpPolicyContentSourceLimitPtrOutput) Bps() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Pps range 32~500000.
 func (o BgpPolicyContentSourceLimitPtrOutput) Pps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BgpPolicyContentSourceLimit) *int {
 		if v == nil {
@@ -1212,6 +1328,7 @@ func (o BgpPolicyContentSourceLimitPtrOutput) Pps() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// SynBps range 1024~268435456.
 func (o BgpPolicyContentSourceLimitPtrOutput) SynBps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BgpPolicyContentSourceLimit) *int {
 		if v == nil {
@@ -1221,6 +1338,7 @@ func (o BgpPolicyContentSourceLimitPtrOutput) SynBps() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// SynPps range 1~100000.
 func (o BgpPolicyContentSourceLimitPtrOutput) SynPps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BgpPolicyContentSourceLimit) *int {
 		if v == nil {

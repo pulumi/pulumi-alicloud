@@ -14,16 +14,32 @@ public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEnt
 
     public static final FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs Empty = new FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs();
 
+    /**
+     * The target network segment of the local VPC.
+     * 
+     */
     @Import(name="localDestinationCidr", required=true)
     private Output<String> localDestinationCidr;
 
+    /**
+     * @return The target network segment of the local VPC.
+     * 
+     */
     public Output<String> localDestinationCidr() {
         return this.localDestinationCidr;
     }
 
+    /**
+     * The ID of the next-hop instance in the local VPC.
+     * 
+     */
     @Import(name="localNextHopInstanceId", required=true)
     private Output<String> localNextHopInstanceId;
 
+    /**
+     * @return The ID of the next-hop instance in the local VPC.
+     * 
+     */
     public Output<String> localNextHopInstanceId() {
         return this.localNextHopInstanceId;
     }
@@ -53,20 +69,44 @@ public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEnt
             $ = new FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param localDestinationCidr The target network segment of the local VPC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localDestinationCidr(Output<String> localDestinationCidr) {
             $.localDestinationCidr = localDestinationCidr;
             return this;
         }
 
+        /**
+         * @param localDestinationCidr The target network segment of the local VPC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localDestinationCidr(String localDestinationCidr) {
             return localDestinationCidr(Output.of(localDestinationCidr));
         }
 
+        /**
+         * @param localNextHopInstanceId The ID of the next-hop instance in the local VPC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localNextHopInstanceId(Output<String> localNextHopInstanceId) {
             $.localNextHopInstanceId = localNextHopInstanceId;
             return this;
         }
 
+        /**
+         * @param localNextHopInstanceId The ID of the next-hop instance in the local VPC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localNextHopInstanceId(String localNextHopInstanceId) {
             return localNextHopInstanceId(Output.of(localNextHopInstanceId));
         }

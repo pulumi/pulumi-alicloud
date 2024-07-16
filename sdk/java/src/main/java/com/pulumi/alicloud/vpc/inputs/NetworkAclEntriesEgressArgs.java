@@ -22,9 +22,17 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * The destination ip of the egress entry.
+     * 
+     */
     @Import(name="destinationCidrIp")
     private @Nullable Output<String> destinationCidrIp;
 
+    /**
+     * @return The destination ip of the egress entry.
+     * 
+     */
     public Optional<Output<String>> destinationCidrIp() {
         return Optional.ofNullable(this.destinationCidrIp);
     }
@@ -103,11 +111,23 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
             return description(Output.of(description));
         }
 
+        /**
+         * @param destinationCidrIp The destination ip of the egress entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationCidrIp(@Nullable Output<String> destinationCidrIp) {
             $.destinationCidrIp = destinationCidrIp;
             return this;
         }
 
+        /**
+         * @param destinationCidrIp The destination ip of the egress entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destinationCidrIp(String destinationCidrIp) {
             return destinationCidrIp(Output.of(destinationCidrIp));
         }

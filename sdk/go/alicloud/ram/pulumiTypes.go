@@ -573,9 +573,12 @@ func (o GetPolicyDocumentStatementArrayOutput) Index(i pulumi.IntInput) GetPolic
 }
 
 type GetPolicyDocumentStatementCondition struct {
-	Operator string   `pulumi:"operator"`
-	Values   []string `pulumi:"values"`
-	Variable string   `pulumi:"variable"`
+	// The operator of the condition.
+	Operator string `pulumi:"operator"`
+	// The values of the condition.
+	Values []string `pulumi:"values"`
+	// The variable of the condition.
+	Variable string `pulumi:"variable"`
 }
 
 // GetPolicyDocumentStatementConditionInput is an input type that accepts GetPolicyDocumentStatementConditionArgs and GetPolicyDocumentStatementConditionOutput values.
@@ -590,9 +593,12 @@ type GetPolicyDocumentStatementConditionInput interface {
 }
 
 type GetPolicyDocumentStatementConditionArgs struct {
-	Operator pulumi.StringInput      `pulumi:"operator"`
-	Values   pulumi.StringArrayInput `pulumi:"values"`
-	Variable pulumi.StringInput      `pulumi:"variable"`
+	// The operator of the condition.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The values of the condition.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+	// The variable of the condition.
+	Variable pulumi.StringInput `pulumi:"variable"`
 }
 
 func (GetPolicyDocumentStatementConditionArgs) ElementType() reflect.Type {
@@ -646,14 +652,17 @@ func (o GetPolicyDocumentStatementConditionOutput) ToGetPolicyDocumentStatementC
 	return o
 }
 
+// The operator of the condition.
 func (o GetPolicyDocumentStatementConditionOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyDocumentStatementCondition) string { return v.Operator }).(pulumi.StringOutput)
 }
 
+// The values of the condition.
 func (o GetPolicyDocumentStatementConditionOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPolicyDocumentStatementCondition) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
+// The variable of the condition.
 func (o GetPolicyDocumentStatementConditionOutput) Variable() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyDocumentStatementCondition) string { return v.Variable }).(pulumi.StringOutput)
 }
@@ -679,7 +688,9 @@ func (o GetPolicyDocumentStatementConditionArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetPolicyDocumentStatementPrincipal struct {
-	Entity      string   `pulumi:"entity"`
+	// The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+	Entity string `pulumi:"entity"`
+	// The identifiers of the principal.
 	Identifiers []string `pulumi:"identifiers"`
 }
 
@@ -695,7 +706,9 @@ type GetPolicyDocumentStatementPrincipalInput interface {
 }
 
 type GetPolicyDocumentStatementPrincipalArgs struct {
-	Entity      pulumi.StringInput      `pulumi:"entity"`
+	// The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+	Entity pulumi.StringInput `pulumi:"entity"`
+	// The identifiers of the principal.
 	Identifiers pulumi.StringArrayInput `pulumi:"identifiers"`
 }
 
@@ -750,10 +763,12 @@ func (o GetPolicyDocumentStatementPrincipalOutput) ToGetPolicyDocumentStatementP
 	return o
 }
 
+// The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
 func (o GetPolicyDocumentStatementPrincipalOutput) Entity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyDocumentStatementPrincipal) string { return v.Entity }).(pulumi.StringOutput)
 }
 
+// The identifiers of the principal.
 func (o GetPolicyDocumentStatementPrincipalOutput) Identifiers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPolicyDocumentStatementPrincipal) []string { return v.Identifiers }).(pulumi.StringArrayOutput)
 }

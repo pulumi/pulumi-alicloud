@@ -15,7 +15,13 @@ namespace Pulumi.AliCloud.Cms.Outputs
     {
         public readonly string Alias;
         public readonly string Function;
+        /// <summary>
+        /// The value of the function that is used to aggregate logs imported from Log Service.
+        /// </summary>
         public readonly string ParameterOne;
+        /// <summary>
+        /// The value of the function that is used to aggregate logs imported from Log Service.
+        /// </summary>
         public readonly string ParameterTwo;
         public readonly string SlsKeyName;
 

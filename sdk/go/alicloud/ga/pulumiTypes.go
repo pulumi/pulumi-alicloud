@@ -665,6 +665,7 @@ func (o ForwardingRuleRuleActionArrayOutput) Index(i pulumi.IntInput) Forwarding
 }
 
 type ForwardingRuleRuleActionForwardGroupConfig struct {
+	// The information about the endpoint group. See `serverGroupTuples` below.
 	ServerGroupTuples []ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
@@ -680,6 +681,7 @@ type ForwardingRuleRuleActionForwardGroupConfigInput interface {
 }
 
 type ForwardingRuleRuleActionForwardGroupConfigArgs struct {
+	// The information about the endpoint group. See `serverGroupTuples` below.
 	ServerGroupTuples ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
@@ -760,6 +762,7 @@ func (o ForwardingRuleRuleActionForwardGroupConfigOutput) ToForwardingRuleRuleAc
 	}).(ForwardingRuleRuleActionForwardGroupConfigPtrOutput)
 }
 
+// The information about the endpoint group. See `serverGroupTuples` below.
 func (o ForwardingRuleRuleActionForwardGroupConfigOutput) ServerGroupTuples() ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleActionForwardGroupConfig) []ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
@@ -790,6 +793,7 @@ func (o ForwardingRuleRuleActionForwardGroupConfigPtrOutput) Elem() ForwardingRu
 	}).(ForwardingRuleRuleActionForwardGroupConfigOutput)
 }
 
+// The information about the endpoint group. See `serverGroupTuples` below.
 func (o ForwardingRuleRuleActionForwardGroupConfigPtrOutput) ServerGroupTuples() ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v *ForwardingRuleRuleActionForwardGroupConfig) []ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
 		if v == nil {
@@ -800,6 +804,7 @@ func (o ForwardingRuleRuleActionForwardGroupConfigPtrOutput) ServerGroupTuples()
 }
 
 type ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple struct {
+	// The ID of the endpoint group.
 	EndpointGroupId string `pulumi:"endpointGroupId"`
 }
 
@@ -815,6 +820,7 @@ type ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput interface {
 }
 
 type ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs struct {
+	// The ID of the endpoint group.
 	EndpointGroupId pulumi.StringInput `pulumi:"endpointGroupId"`
 }
 
@@ -869,6 +875,7 @@ func (o ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToForw
 	return o
 }
 
+// The ID of the endpoint group.
 func (o ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput) EndpointGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple) string { return v.EndpointGroupId }).(pulumi.StringOutput)
 }
@@ -1009,6 +1016,7 @@ func (o ForwardingRuleRuleConditionArrayOutput) Index(i pulumi.IntInput) Forward
 }
 
 type ForwardingRuleRuleConditionHostConfig struct {
+	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 	Values []string `pulumi:"values"`
 }
 
@@ -1024,6 +1032,7 @@ type ForwardingRuleRuleConditionHostConfigInput interface {
 }
 
 type ForwardingRuleRuleConditionHostConfigArgs struct {
+	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -1078,6 +1087,7 @@ func (o ForwardingRuleRuleConditionHostConfigOutput) ToForwardingRuleRuleConditi
 	return o
 }
 
+// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 func (o ForwardingRuleRuleConditionHostConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleConditionHostConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1103,6 +1113,7 @@ func (o ForwardingRuleRuleConditionHostConfigArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ForwardingRuleRuleConditionPathConfig struct {
+	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 	Values []string `pulumi:"values"`
 }
 
@@ -1118,6 +1129,7 @@ type ForwardingRuleRuleConditionPathConfigInput interface {
 }
 
 type ForwardingRuleRuleConditionPathConfigArgs struct {
+	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -1198,6 +1210,7 @@ func (o ForwardingRuleRuleConditionPathConfigOutput) ToForwardingRuleRuleConditi
 	}).(ForwardingRuleRuleConditionPathConfigPtrOutput)
 }
 
+// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 func (o ForwardingRuleRuleConditionPathConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleConditionPathConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1226,6 +1239,7 @@ func (o ForwardingRuleRuleConditionPathConfigPtrOutput) Elem() ForwardingRuleRul
 	}).(ForwardingRuleRuleConditionPathConfigOutput)
 }
 
+// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 func (o ForwardingRuleRuleConditionPathConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ForwardingRuleRuleConditionPathConfig) []string {
 		if v == nil {

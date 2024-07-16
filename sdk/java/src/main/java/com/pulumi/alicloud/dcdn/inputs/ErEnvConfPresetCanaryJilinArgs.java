@@ -16,23 +16,47 @@ public final class ErEnvConfPresetCanaryJilinArgs extends com.pulumi.resources.R
 
     public static final ErEnvConfPresetCanaryJilinArgs Empty = new ErEnvConfPresetCanaryJilinArgs();
 
+    /**
+     * Allowed DCDN domain names.
+     * 
+     */
     @Import(name="allowedHosts")
     private @Nullable Output<List<String>> allowedHosts;
 
+    /**
+     * @return Allowed DCDN domain names.
+     * 
+     */
     public Optional<Output<List<String>>> allowedHosts() {
         return Optional.ofNullable(this.allowedHosts);
     }
 
+    /**
+     * The version number of the code.
+     * 
+     */
     @Import(name="codeRev")
     private @Nullable Output<String> codeRev;
 
+    /**
+     * @return The version number of the code.
+     * 
+     */
     public Optional<Output<String>> codeRev() {
         return Optional.ofNullable(this.codeRev);
     }
 
+    /**
+     * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+     * 
+     */
     @Import(name="specName")
     private @Nullable Output<String> specName;
 
+    /**
+     * @return The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+     * 
+     */
     public Optional<Output<String>> specName() {
         return Optional.ofNullable(this.specName);
     }
@@ -63,33 +87,75 @@ public final class ErEnvConfPresetCanaryJilinArgs extends com.pulumi.resources.R
             $ = new ErEnvConfPresetCanaryJilinArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowedHosts Allowed DCDN domain names.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedHosts(@Nullable Output<List<String>> allowedHosts) {
             $.allowedHosts = allowedHosts;
             return this;
         }
 
+        /**
+         * @param allowedHosts Allowed DCDN domain names.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedHosts(List<String> allowedHosts) {
             return allowedHosts(Output.of(allowedHosts));
         }
 
+        /**
+         * @param allowedHosts Allowed DCDN domain names.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedHosts(String... allowedHosts) {
             return allowedHosts(List.of(allowedHosts));
         }
 
+        /**
+         * @param codeRev The version number of the code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder codeRev(@Nullable Output<String> codeRev) {
             $.codeRev = codeRev;
             return this;
         }
 
+        /**
+         * @param codeRev The version number of the code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder codeRev(String codeRev) {
             return codeRev(Output.of(codeRev));
         }
 
+        /**
+         * @param specName The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder specName(@Nullable Output<String> specName) {
             $.specName = specName;
             return this;
         }
 
+        /**
+         * @param specName The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder specName(String specName) {
             return specName(Output.of(specName));
         }

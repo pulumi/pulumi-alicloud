@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ros.Outputs
     [OutputType]
     public sealed class TemplateScratchSourceTag
     {
+        /// <summary>
+        /// Source label. **NOTE:** A maximum of 10 source labels can be configured.
+        /// </summary>
         public readonly ImmutableDictionary<string, object> ResourceTags;
         public readonly ImmutableArray<string> ResourceTypeFilters;
 

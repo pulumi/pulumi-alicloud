@@ -12,13 +12,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVirtualBorderRoutersFilter {
+    /**
+     * @return The key of the field to filter by, as defined by
+     * [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return Set of values that are accepted for the given field.
+     * 
+     */
     private @Nullable List<String> values;
 
     private GetVirtualBorderRoutersFilter() {}
+    /**
+     * @return The key of the field to filter by, as defined by
+     * [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return Set of values that are accepted for the given field.
+     * 
+     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }

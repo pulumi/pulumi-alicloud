@@ -121,6 +121,11 @@ class K8sSlbAttachmentSlbConfigPortMappingArgs:
                  loadbalancer_protocol: pulumi.Input[str],
                  service_port: pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingServicePortArgs'],
                  cert_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] loadbalancer_protocol: The protocol of SLB instance configuration, values can be 'TCP', 'HTTP' or 'HTTPS'.
+        :param pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingServicePortArgs'] service_port: The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
+        :param pulumi.Input[str] cert_id: The ID of your tls certification, this is used for 'HTTPS' protocol only.
+        """
         pulumi.set(__self__, "loadbalancer_protocol", loadbalancer_protocol)
         pulumi.set(__self__, "service_port", service_port)
         if cert_id is not None:
@@ -129,6 +134,9 @@ class K8sSlbAttachmentSlbConfigPortMappingArgs:
     @property
     @pulumi.getter(name="loadbalancerProtocol")
     def loadbalancer_protocol(self) -> pulumi.Input[str]:
+        """
+        The protocol of SLB instance configuration, values can be 'TCP', 'HTTP' or 'HTTPS'.
+        """
         return pulumi.get(self, "loadbalancer_protocol")
 
     @loadbalancer_protocol.setter
@@ -138,6 +146,9 @@ class K8sSlbAttachmentSlbConfigPortMappingArgs:
     @property
     @pulumi.getter(name="servicePort")
     def service_port(self) -> pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingServicePortArgs']:
+        """
+        The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
+        """
         return pulumi.get(self, "service_port")
 
     @service_port.setter
@@ -147,6 +158,9 @@ class K8sSlbAttachmentSlbConfigPortMappingArgs:
     @property
     @pulumi.getter(name="certId")
     def cert_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of your tls certification, this is used for 'HTTPS' protocol only.
+        """
         return pulumi.get(self, "cert_id")
 
     @cert_id.setter
@@ -160,6 +174,11 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePortArgs:
                  port: pulumi.Input[int],
                  protocol: pulumi.Input[str],
                  target_port: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] port: The port of k8s service, values should be within range [1, 65535].
+        :param pulumi.Input[str] protocol: The protocol of k8s service, values can be 'TCP' or 'UDP'.
+        :param pulumi.Input[int] target_port: The port of k8s pod, values should be within range [1, 65535].
+        """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "target_port", target_port)
@@ -167,6 +186,9 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePortArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port of k8s service, values should be within range [1, 65535].
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -176,6 +198,9 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePortArgs:
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
+        """
+        The protocol of k8s service, values can be 'TCP' or 'UDP'.
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -185,6 +210,9 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePortArgs:
     @property
     @pulumi.getter(name="targetPort")
     def target_port(self) -> pulumi.Input[int]:
+        """
+        The port of k8s pod, values should be within range [1, 65535].
+        """
         return pulumi.get(self, "target_port")
 
     @target_port.setter

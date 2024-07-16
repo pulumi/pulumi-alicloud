@@ -13,33 +13,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SearchIndexSchemaFieldSchema {
+    /**
+     * @return Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+     * 
+     */
     private @Nullable String analyzer;
+    /**
+     * @return Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+     * 
+     */
     private @Nullable Boolean enableSortAndAgg;
+    /**
+     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * 
+     */
     private String fieldName;
+    /**
+     * @return Specifies the type of the field. Use FieldType.XXX to set the type.
+     * 
+     */
     private String fieldType;
+    /**
+     * @return Specifies whether to enable indexing for the column. Type: Boolean.
+     * 
+     */
     private @Nullable Boolean index;
+    /**
+     * @return Specifies whether the value is an array. Type: Boolean.
+     * 
+     */
     private @Nullable Boolean isArray;
+    /**
+     * @return Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+     * 
+     */
     private @Nullable Boolean store;
 
     private SearchIndexSchemaFieldSchema() {}
+    /**
+     * @return Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+     * 
+     */
     public Optional<String> analyzer() {
         return Optional.ofNullable(this.analyzer);
     }
+    /**
+     * @return Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+     * 
+     */
     public Optional<Boolean> enableSortAndAgg() {
         return Optional.ofNullable(this.enableSortAndAgg);
     }
+    /**
+     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * 
+     */
     public String fieldName() {
         return this.fieldName;
     }
+    /**
+     * @return Specifies the type of the field. Use FieldType.XXX to set the type.
+     * 
+     */
     public String fieldType() {
         return this.fieldType;
     }
+    /**
+     * @return Specifies whether to enable indexing for the column. Type: Boolean.
+     * 
+     */
     public Optional<Boolean> index() {
         return Optional.ofNullable(this.index);
     }
+    /**
+     * @return Specifies whether the value is an array. Type: Boolean.
+     * 
+     */
     public Optional<Boolean> isArray() {
         return Optional.ofNullable(this.isArray);
     }
+    /**
+     * @return Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+     * 
+     */
     public Optional<Boolean> store() {
         return Optional.ofNullable(this.store);
     }

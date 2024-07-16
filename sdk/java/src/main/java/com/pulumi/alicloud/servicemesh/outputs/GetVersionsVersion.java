@@ -17,6 +17,10 @@ public final class GetVersionsVersion {
      * 
      */
     private String edition;
+    /**
+     * @return The ASM version id. It formats as `&lt;edition&gt;:&lt;version&gt;`.
+     * 
+     */
     private String id;
     /**
      * @return A list of Service Mesh Service Meshes. Each element contains the following attributes:
@@ -34,6 +38,10 @@ public final class GetVersionsVersion {
     public String edition() {
         return this.edition;
     }
+    /**
+     * @return The ASM version id. It formats as `&lt;edition&gt;:&lt;version&gt;`.
+     * 
+     */
     public String id() {
         return this.id;
     }

@@ -2016,8 +2016,10 @@ func (o EciScalingConfigurationVolumeArrayOutput) Index(i pulumi.IntInput) EciSc
 }
 
 type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath struct {
+	// The content of the configuration file. Maximum size: 32 KB.
 	Content *string `pulumi:"content"`
-	Path    *string `pulumi:"path"`
+	// The relative file path.
+	Path *string `pulumi:"path"`
 }
 
 // EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput is an input type that accepts EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs and EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput values.
@@ -2032,8 +2034,10 @@ type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput interfac
 }
 
 type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs struct {
+	// The content of the configuration file. Maximum size: 32 KB.
 	Content pulumi.StringPtrInput `pulumi:"content"`
-	Path    pulumi.StringPtrInput `pulumi:"path"`
+	// The relative file path.
+	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
 func (EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs) ElementType() reflect.Type {
@@ -2087,10 +2091,12 @@ func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) ToE
 	return o
 }
 
+// The content of the configuration file. Maximum size: 32 KB.
 func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// The relative file path.
 func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -3028,9 +3034,12 @@ func (o ScalingGroupVServerGroupsVserverGroupArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ScalingGroupVServerGroupsVserverGroupVserverAttribute struct {
-	Port           int    `pulumi:"port"`
+	// The port will be used for VServer Group backend server.
+	Port int `pulumi:"port"`
+	// ID of VServer Group.
 	VserverGroupId string `pulumi:"vserverGroupId"`
-	Weight         int    `pulumi:"weight"`
+	// The weight of an ECS instance attached to the VServer Group.
+	Weight int `pulumi:"weight"`
 }
 
 // ScalingGroupVServerGroupsVserverGroupVserverAttributeInput is an input type that accepts ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs and ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput values.
@@ -3045,9 +3054,12 @@ type ScalingGroupVServerGroupsVserverGroupVserverAttributeInput interface {
 }
 
 type ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs struct {
-	Port           pulumi.IntInput    `pulumi:"port"`
+	// The port will be used for VServer Group backend server.
+	Port pulumi.IntInput `pulumi:"port"`
+	// ID of VServer Group.
 	VserverGroupId pulumi.StringInput `pulumi:"vserverGroupId"`
-	Weight         pulumi.IntInput    `pulumi:"weight"`
+	// The weight of an ECS instance attached to the VServer Group.
+	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
 func (ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs) ElementType() reflect.Type {
@@ -3101,14 +3113,17 @@ func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) ToScalingGr
 	return o
 }
 
+// The port will be used for VServer Group backend server.
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroupVserverAttribute) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// ID of VServer Group.
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) VserverGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroupVserverAttribute) string { return v.VserverGroupId }).(pulumi.StringOutput)
 }
 
+// The weight of an ECS instance attached to the VServer Group.
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroupVserverAttribute) int { return v.Weight }).(pulumi.IntOutput)
 }

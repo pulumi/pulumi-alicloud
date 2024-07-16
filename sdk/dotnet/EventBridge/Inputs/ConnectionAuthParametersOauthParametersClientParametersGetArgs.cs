@@ -12,11 +12,18 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
 
     public sealed class ConnectionAuthParametersOauthParametersClientParametersGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the client.
+        /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
         [Input("clientSecret")]
         private Input<string>? _clientSecret;
+
+        /// <summary>
+        /// The AccessKey secret of the client.
+        /// </summary>
         public Input<string>? ClientSecret
         {
             get => _clientSecret;

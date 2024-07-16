@@ -15,93 +15,197 @@ public final class AlertConfigurationQueryListArgs extends com.pulumi.resources.
 
     public static final AlertConfigurationQueryListArgs Empty = new AlertConfigurationQueryListArgs();
 
+    /**
+     * Chart Name.
+     * 
+     */
     @Import(name="chartTitle")
     private @Nullable Output<String> chartTitle;
 
+    /**
+     * @return Chart Name.
+     * 
+     */
     public Optional<Output<String>> chartTitle() {
         return Optional.ofNullable(this.chartTitle);
     }
 
+    /**
+     * Dashboard ID.
+     * 
+     */
     @Import(name="dashboardId")
     private @Nullable Output<String> dashboardId;
 
+    /**
+     * @return Dashboard ID.
+     * 
+     */
     public Optional<Output<String>> dashboardId() {
         return Optional.ofNullable(this.dashboardId);
     }
 
+    /**
+     * End time. When storeType is set to log or metric, end must be set.
+     * 
+     */
     @Import(name="end")
     private @Nullable Output<String> end;
 
+    /**
+     * @return End time. When storeType is set to log or metric, end must be set.
+     * 
+     */
     public Optional<Output<String>> end() {
         return Optional.ofNullable(this.end);
     }
 
+    /**
+     * Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+     * 
+     */
     @Import(name="powerSqlMode")
     private @Nullable Output<String> powerSqlMode;
 
+    /**
+     * @return Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+     * 
+     */
     public Optional<Output<String>> powerSqlMode() {
         return Optional.ofNullable(this.powerSqlMode);
     }
 
+    /**
+     * Project Name.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return Project Name.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+     * 
+     */
     @Import(name="query")
     private @Nullable Output<String> query;
 
+    /**
+     * @return Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+     * 
+     */
     public Optional<Output<String>> query() {
         return Optional.ofNullable(this.query);
     }
 
+    /**
+     * Region of the target Project.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return Region of the target Project.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * Roles used to write alarm data to the event Library.
+     * 
+     */
     @Import(name="roleArn")
     private @Nullable Output<String> roleArn;
 
+    /**
+     * @return Roles used to write alarm data to the event Library.
+     * 
+     */
     public Optional<Output<String>> roleArn() {
         return Optional.ofNullable(this.roleArn);
     }
 
+    /**
+     * Start time. When storeType is set to log or metric, start must be set.
+     * 
+     */
     @Import(name="start")
     private @Nullable Output<String> start;
 
+    /**
+     * @return Start time. When storeType is set to log or metric, start must be set.
+     * 
+     */
     public Optional<Output<String>> start() {
         return Optional.ofNullable(this.start);
     }
 
+    /**
+     * Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+     * 
+     */
     @Import(name="store")
     private @Nullable Output<String> store;
 
+    /**
+     * @return Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+     * 
+     */
     public Optional<Output<String>> store() {
         return Optional.ofNullable(this.store);
     }
 
+    /**
+     * Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+     * 
+     */
     @Import(name="storeType")
     private @Nullable Output<String> storeType;
 
+    /**
+     * @return Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+     * 
+     */
     public Optional<Output<String>> storeType() {
         return Optional.ofNullable(this.storeType);
     }
 
+    /**
+     * Time Type.
+     * 
+     */
     @Import(name="timeSpanType")
     private @Nullable Output<String> timeSpanType;
 
+    /**
+     * @return Time Type.
+     * 
+     */
     public Optional<Output<String>> timeSpanType() {
         return Optional.ofNullable(this.timeSpanType);
     }
 
+    /**
+     * Use of specific scene alarm front end.
+     * 
+     */
     @Import(name="ui")
     private @Nullable Output<String> ui;
 
+    /**
+     * @return Use of specific scene alarm front end.
+     * 
+     */
     public Optional<Output<String>> ui() {
         return Optional.ofNullable(this.ui);
     }
@@ -142,119 +246,275 @@ public final class AlertConfigurationQueryListArgs extends com.pulumi.resources.
             $ = new AlertConfigurationQueryListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param chartTitle Chart Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder chartTitle(@Nullable Output<String> chartTitle) {
             $.chartTitle = chartTitle;
             return this;
         }
 
+        /**
+         * @param chartTitle Chart Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder chartTitle(String chartTitle) {
             return chartTitle(Output.of(chartTitle));
         }
 
+        /**
+         * @param dashboardId Dashboard ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardId(@Nullable Output<String> dashboardId) {
             $.dashboardId = dashboardId;
             return this;
         }
 
+        /**
+         * @param dashboardId Dashboard ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardId(String dashboardId) {
             return dashboardId(Output.of(dashboardId));
         }
 
+        /**
+         * @param end End time. When storeType is set to log or metric, end must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder end(@Nullable Output<String> end) {
             $.end = end;
             return this;
         }
 
+        /**
+         * @param end End time. When storeType is set to log or metric, end must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder end(String end) {
             return end(Output.of(end));
         }
 
+        /**
+         * @param powerSqlMode Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder powerSqlMode(@Nullable Output<String> powerSqlMode) {
             $.powerSqlMode = powerSqlMode;
             return this;
         }
 
+        /**
+         * @param powerSqlMode Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder powerSqlMode(String powerSqlMode) {
             return powerSqlMode(Output.of(powerSqlMode));
         }
 
+        /**
+         * @param project Project Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project Project Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
+        /**
+         * @param query Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(@Nullable Output<String> query) {
             $.query = query;
             return this;
         }
 
+        /**
+         * @param query Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(String query) {
             return query(Output.of(query));
         }
 
+        /**
+         * @param region Region of the target Project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region Region of the target Project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
+        /**
+         * @param roleArn Roles used to write alarm data to the event Library.
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(@Nullable Output<String> roleArn) {
             $.roleArn = roleArn;
             return this;
         }
 
+        /**
+         * @param roleArn Roles used to write alarm data to the event Library.
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(String roleArn) {
             return roleArn(Output.of(roleArn));
         }
 
+        /**
+         * @param start Start time. When storeType is set to log or metric, start must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder start(@Nullable Output<String> start) {
             $.start = start;
             return this;
         }
 
+        /**
+         * @param start Start time. When storeType is set to log or metric, start must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder start(String start) {
             return start(Output.of(start));
         }
 
+        /**
+         * @param store Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder store(@Nullable Output<String> store) {
             $.store = store;
             return this;
         }
 
+        /**
+         * @param store Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder store(String store) {
             return store(Output.of(store));
         }
 
+        /**
+         * @param storeType Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storeType(@Nullable Output<String> storeType) {
             $.storeType = storeType;
             return this;
         }
 
+        /**
+         * @param storeType Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storeType(String storeType) {
             return storeType(Output.of(storeType));
         }
 
+        /**
+         * @param timeSpanType Time Type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeSpanType(@Nullable Output<String> timeSpanType) {
             $.timeSpanType = timeSpanType;
             return this;
         }
 
+        /**
+         * @param timeSpanType Time Type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeSpanType(String timeSpanType) {
             return timeSpanType(Output.of(timeSpanType));
         }
 
+        /**
+         * @param ui Use of specific scene alarm front end.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ui(@Nullable Output<String> ui) {
             $.ui = ui;
             return this;
         }
 
+        /**
+         * @param ui Use of specific scene alarm front end.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ui(String ui) {
             return ui(Output.of(ui));
         }

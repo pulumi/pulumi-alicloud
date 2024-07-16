@@ -1467,6 +1467,10 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath(dict):
     def __init__(__self__, *,
                  content: Optional[str] = None,
                  path: Optional[str] = None):
+        """
+        :param str content: The content of the configuration file. Maximum size: 32 KB.
+        :param str path: The relative file path.
+        """
         if content is not None:
             pulumi.set(__self__, "content", content)
         if path is not None:
@@ -1475,11 +1479,17 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath(dict):
     @property
     @pulumi.getter
     def content(self) -> Optional[str]:
+        """
+        The content of the configuration file. Maximum size: 32 KB.
+        """
         return pulumi.get(self, "content")
 
     @property
     @pulumi.getter
     def path(self) -> Optional[str]:
+        """
+        The relative file path.
+        """
         return pulumi.get(self, "path")
 
 
@@ -2071,6 +2081,11 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttribute(dict):
                  port: int,
                  vserver_group_id: str,
                  weight: int):
+        """
+        :param int port: The port will be used for VServer Group backend server.
+        :param str vserver_group_id: ID of VServer Group.
+        :param int weight: The weight of an ECS instance attached to the VServer Group.
+        """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "vserver_group_id", vserver_group_id)
         pulumi.set(__self__, "weight", weight)
@@ -2078,16 +2093,25 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttribute(dict):
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        The port will be used for VServer Group backend server.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="vserverGroupId")
     def vserver_group_id(self) -> str:
+        """
+        ID of VServer Group.
+        """
         return pulumi.get(self, "vserver_group_id")
 
     @property
     @pulumi.getter
     def weight(self) -> int:
+        """
+        The weight of an ECS instance attached to the VServer Group.
+        """
         return pulumi.get(self, "weight")
 
 

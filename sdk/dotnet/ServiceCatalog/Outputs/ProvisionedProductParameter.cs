@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.ServiceCatalog.Outputs
     [OutputType]
     public sealed class ProvisionedProductParameter
     {
+        /// <summary>
+        /// The name of the parameter defined in the template.
+        /// </summary>
         public readonly string? ParameterKey;
+        /// <summary>
+        /// The Template parameter value entered by the user.
+        /// </summary>
         public readonly string? ParameterValue;
 
         [OutputConstructor]

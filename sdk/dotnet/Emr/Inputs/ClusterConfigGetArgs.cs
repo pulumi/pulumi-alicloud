@@ -12,12 +12,21 @@ namespace Pulumi.AliCloud.Emr.Inputs
 
     public sealed class ClusterConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Custom configuration service config key, e.g. ’dfs.replication’.
+        /// </summary>
         [Input("configKey", required: true)]
         public Input<string> ConfigKey { get; set; } = null!;
 
+        /// <summary>
+        /// Custom configuration service config value, e.g. ’3’.
+        /// </summary>
         [Input("configValue", required: true)]
         public Input<string> ConfigValue { get; set; } = null!;
 
+        /// <summary>
+        /// Custom configuration service file name, e.g. ’hdfs-site’.
+        /// </summary>
         [Input("fileName", required: true)]
         public Input<string> FileName { get; set; } = null!;
 

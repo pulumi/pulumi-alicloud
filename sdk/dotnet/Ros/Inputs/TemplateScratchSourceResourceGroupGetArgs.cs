@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Ros.Inputs
 
     public sealed class TemplateScratchSourceResourceGroupGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the Source Resource Group.
+        /// </summary>
         [Input("resourceGroupId", required: true)]
         public Input<string> ResourceGroupId { get; set; } = null!;
 

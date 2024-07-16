@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionAuthParametersOauthParameters {
+    /**
+     * @return The IP address of the authorized endpoint.
+     * 
+     */
     private @Nullable String authorizationEndpoint;
+    /**
+     * @return The parameters that are configured for the client. See `client_parameters` below.
+     * 
+     */
     private @Nullable ConnectionAuthParametersOauthParametersClientParameters clientParameters;
+    /**
+     * @return The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
+     * 
+     */
     private @Nullable String httpMethod;
+    /**
+     * @return The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+     * 
+     */
     private @Nullable ConnectionAuthParametersOauthParametersOauthHttpParameters oauthHttpParameters;
 
     private ConnectionAuthParametersOauthParameters() {}
+    /**
+     * @return The IP address of the authorized endpoint.
+     * 
+     */
     public Optional<String> authorizationEndpoint() {
         return Optional.ofNullable(this.authorizationEndpoint);
     }
+    /**
+     * @return The parameters that are configured for the client. See `client_parameters` below.
+     * 
+     */
     public Optional<ConnectionAuthParametersOauthParametersClientParameters> clientParameters() {
         return Optional.ofNullable(this.clientParameters);
     }
+    /**
+     * @return The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
+     * 
+     */
     public Optional<String> httpMethod() {
         return Optional.ofNullable(this.httpMethod);
     }
+    /**
+     * @return The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+     * 
+     */
     public Optional<ConnectionAuthParametersOauthParametersOauthHttpParameters> oauthHttpParameters() {
         return Optional.ofNullable(this.oauthHttpParameters);
     }

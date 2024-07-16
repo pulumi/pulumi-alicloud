@@ -31,40 +31,46 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := waf.GetInstances(ctx, nil, nil);
-// if err != nil {
-// return err
-// }
-// var defaultInstance []*waf.Instance
 //
-//	for index := 0; index < %!v(PANIC=Format method: fatal: A failure has occurred: unlowered conditional expression @ example.pp:4,13-50); index++ {
-//	    key0 := index
-//	    _ := index
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := waf.GetInstances(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var tmp0 float64
+//			if len(_default.Instances) > 0 {
+//				tmp0 = 0
+//			} else {
+//				tmp0 = 1
+//			}
+//			var defaultInstance []*waf.Instance
+//			for index := 0; index < tmp0; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := waf.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &waf.InstanceArgs{
+//					BigScreen:           pulumi.String("0"),
+//					ExclusiveIpPackage:  pulumi.String("1"),
+//					ExtBandwidth:        pulumi.String("50"),
+//					ExtDomainPackage:    pulumi.String("1"),
+//					PackageCode:         pulumi.String("version_3"),
+//					PrefessionalService: pulumi.String("false"),
+//					SubscriptionType:    pulumi.String("Subscription"),
+//					Period:              pulumi.Int(1),
+//					WafLog:              pulumi.String("false"),
+//					LogStorage:          pulumi.String("3"),
+//					LogTime:             pulumi.String("180"),
+//					ResourceGroupId:     pulumi.String("rs-abc12345"),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultInstance = append(defaultInstance, __res)
+//			}
+//			return nil
+//		})
+//	}
 //
-// __res, err := waf.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &waf.InstanceArgs{
-// BigScreen: pulumi.String("0"),
-// ExclusiveIpPackage: pulumi.String("1"),
-// ExtBandwidth: pulumi.String("50"),
-// ExtDomainPackage: pulumi.String("1"),
-// PackageCode: pulumi.String("version_3"),
-// PrefessionalService: pulumi.String("false"),
-// SubscriptionType: pulumi.String("Subscription"),
-// Period: pulumi.Int(1),
-// WafLog: pulumi.String("false"),
-// LogStorage: pulumi.String("3"),
-// LogTime: pulumi.String("180"),
-// ResourceGroupId: pulumi.String("rs-abc12345"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultInstance = append(defaultInstance, __res)
-// }
-// return nil
-// })
-// }
 // ```
 //
 // ## Import

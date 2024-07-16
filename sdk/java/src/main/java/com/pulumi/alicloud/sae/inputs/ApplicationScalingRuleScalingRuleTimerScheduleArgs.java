@@ -16,9 +16,17 @@ public final class ApplicationScalingRuleScalingRuleTimerScheduleArgs extends co
 
     public static final ApplicationScalingRuleScalingRuleTimerScheduleArgs Empty = new ApplicationScalingRuleScalingRuleTimerScheduleArgs();
 
+    /**
+     * Trigger point in time. When supporting format: minutes, for example: `08:00`.
+     * 
+     */
     @Import(name="atTime")
     private @Nullable Output<String> atTime;
 
+    /**
+     * @return Trigger point in time. When supporting format: minutes, for example: `08:00`.
+     * 
+     */
     public Optional<Output<String>> atTime() {
         return Optional.ofNullable(this.atTime);
     }
@@ -37,9 +45,17 @@ public final class ApplicationScalingRuleScalingRuleTimerScheduleArgs extends co
         return Optional.ofNullable(this.minReplicas);
     }
 
+    /**
+     * This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
+     * 
+     */
     @Import(name="targetReplicas")
     private @Nullable Output<Integer> targetReplicas;
 
+    /**
+     * @return This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
+     * 
+     */
     public Optional<Output<Integer>> targetReplicas() {
         return Optional.ofNullable(this.targetReplicas);
     }
@@ -71,11 +87,23 @@ public final class ApplicationScalingRuleScalingRuleTimerScheduleArgs extends co
             $ = new ApplicationScalingRuleScalingRuleTimerScheduleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param atTime Trigger point in time. When supporting format: minutes, for example: `08:00`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder atTime(@Nullable Output<String> atTime) {
             $.atTime = atTime;
             return this;
         }
 
+        /**
+         * @param atTime Trigger point in time. When supporting format: minutes, for example: `08:00`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder atTime(String atTime) {
             return atTime(Output.of(atTime));
         }
@@ -98,11 +126,23 @@ public final class ApplicationScalingRuleScalingRuleTimerScheduleArgs extends co
             return minReplicas(Output.of(minReplicas));
         }
 
+        /**
+         * @param targetReplicas This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetReplicas(@Nullable Output<Integer> targetReplicas) {
             $.targetReplicas = targetReplicas;
             return this;
         }
 
+        /**
+         * @param targetReplicas This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetReplicas(Integer targetReplicas) {
             return targetReplicas(Output.of(targetReplicas));
         }

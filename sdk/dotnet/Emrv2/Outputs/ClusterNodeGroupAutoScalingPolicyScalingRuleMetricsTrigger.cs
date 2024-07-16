@@ -13,11 +13,29 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     [OutputType]
     public sealed class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger
     {
+        /// <summary>
+        /// The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
+        /// </summary>
         public readonly string? ConditionLogicOperator;
+        /// <summary>
+        /// The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition> Conditions;
+        /// <summary>
+        /// The time of cool down interval for this scaling rule specific metrics trigger.
+        /// </summary>
         public readonly int? CoolDownInterval;
+        /// <summary>
+        /// The evaluation count for this scaling rule specific metrics trigger.
+        /// </summary>
         public readonly int EvaluationCount;
+        /// <summary>
+        /// The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint> TimeConstraints;
+        /// <summary>
+        /// The time window for this scaling rule specific metrics trigger.
+        /// </summary>
         public readonly int TimeWindow;
 
         [OutputConstructor]

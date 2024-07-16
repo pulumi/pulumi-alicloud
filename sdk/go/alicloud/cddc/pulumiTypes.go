@@ -749,6 +749,7 @@ func (o GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeArrayOutput)
 }
 
 type GetDedicatedHostGroupsGroupZoneIdList struct {
+	// The ZoneIDList of the Dedicated Host Group.
 	ZoneIdLists []string `pulumi:"zoneIdLists"`
 }
 
@@ -764,6 +765,7 @@ type GetDedicatedHostGroupsGroupZoneIdListInput interface {
 }
 
 type GetDedicatedHostGroupsGroupZoneIdListArgs struct {
+	// The ZoneIDList of the Dedicated Host Group.
 	ZoneIdLists pulumi.StringArrayInput `pulumi:"zoneIdLists"`
 }
 
@@ -818,6 +820,7 @@ func (o GetDedicatedHostGroupsGroupZoneIdListOutput) ToGetDedicatedHostGroupsGro
 	return o
 }
 
+// The ZoneIDList of the Dedicated Host Group.
 func (o GetDedicatedHostGroupsGroupZoneIdListOutput) ZoneIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDedicatedHostGroupsGroupZoneIdList) []string { return v.ZoneIdLists }).(pulumi.StringArrayOutput)
 }

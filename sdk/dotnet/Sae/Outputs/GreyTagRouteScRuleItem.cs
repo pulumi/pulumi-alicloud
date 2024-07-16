@@ -14,8 +14,14 @@ namespace Pulumi.AliCloud.Sae.Outputs
     public sealed class GreyTagRouteScRuleItem
     {
         public readonly string? Cond;
+        /// <summary>
+        /// The name of the parameter.
+        /// </summary>
         public readonly string? Name;
         public readonly string? Operator;
+        /// <summary>
+        /// The compare types. Valid values: `param`, `cookie`, `header`.
+        /// </summary>
         public readonly string? Type;
         public readonly string? Value;
 

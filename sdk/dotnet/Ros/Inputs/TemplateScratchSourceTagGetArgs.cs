@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Ros.Inputs
     {
         [Input("resourceTags", required: true)]
         private InputMap<object>? _resourceTags;
+
+        /// <summary>
+        /// Source label. **NOTE:** A maximum of 10 source labels can be configured.
+        /// </summary>
         public InputMap<object> ResourceTags
         {
             get => _resourceTags ?? (_resourceTags = new InputMap<object>());

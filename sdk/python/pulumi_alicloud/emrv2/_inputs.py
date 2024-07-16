@@ -289,6 +289,13 @@ class ClusterBootstrapScriptNodeSelectorArgs:
                  node_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  node_group_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  node_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] node_select_type: The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] node_group_ids: The bootstrap scripts execution target node group ids.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] node_group_names: The bootstrap scripts execution target node group names.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] node_group_types: The bootstrap scripts execution target node group types.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] node_names: The bootstrap scripts execution target node names.
+        """
         pulumi.set(__self__, "node_select_type", node_select_type)
         if node_group_id is not None:
             warnings.warn("""Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it.""", DeprecationWarning)
@@ -312,6 +319,9 @@ class ClusterBootstrapScriptNodeSelectorArgs:
     @property
     @pulumi.getter(name="nodeSelectType")
     def node_select_type(self) -> pulumi.Input[str]:
+        """
+        The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
+        """
         return pulumi.get(self, "node_select_type")
 
     @node_select_type.setter
@@ -331,6 +341,9 @@ class ClusterBootstrapScriptNodeSelectorArgs:
     @property
     @pulumi.getter(name="nodeGroupIds")
     def node_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The bootstrap scripts execution target node group ids.
+        """
         return pulumi.get(self, "node_group_ids")
 
     @node_group_ids.setter
@@ -350,6 +363,9 @@ class ClusterBootstrapScriptNodeSelectorArgs:
     @property
     @pulumi.getter(name="nodeGroupNames")
     def node_group_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The bootstrap scripts execution target node group names.
+        """
         return pulumi.get(self, "node_group_names")
 
     @node_group_names.setter
@@ -359,6 +375,9 @@ class ClusterBootstrapScriptNodeSelectorArgs:
     @property
     @pulumi.getter(name="nodeGroupTypes")
     def node_group_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The bootstrap scripts execution target node group types.
+        """
         return pulumi.get(self, "node_group_types")
 
     @node_group_types.setter
@@ -368,6 +387,9 @@ class ClusterBootstrapScriptNodeSelectorArgs:
     @property
     @pulumi.getter(name="nodeNames")
     def node_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The bootstrap scripts execution target node names.
+        """
         return pulumi.get(self, "node_names")
 
     @node_names.setter
@@ -783,6 +805,10 @@ class ClusterNodeGroupAutoScalingPolicyArgs:
     def __init__(__self__, *,
                  constraints: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyConstraintsArgs']] = None,
                  scaling_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]]] = None):
+        """
+        :param pulumi.Input['ClusterNodeGroupAutoScalingPolicyConstraintsArgs'] constraints: The constraints of auto scaling policy. See `constraints` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]] scaling_rules: The scaling rules of auto scaling policy. See `scaling_rules` below.
+        """
         if constraints is not None:
             pulumi.set(__self__, "constraints", constraints)
         if scaling_rules is not None:
@@ -791,6 +817,9 @@ class ClusterNodeGroupAutoScalingPolicyArgs:
     @property
     @pulumi.getter
     def constraints(self) -> Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyConstraintsArgs']]:
+        """
+        The constraints of auto scaling policy. See `constraints` below.
+        """
         return pulumi.get(self, "constraints")
 
     @constraints.setter
@@ -800,6 +829,9 @@ class ClusterNodeGroupAutoScalingPolicyArgs:
     @property
     @pulumi.getter(name="scalingRules")
     def scaling_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]]]:
+        """
+        The scaling rules of auto scaling policy. See `scaling_rules` below.
+        """
         return pulumi.get(self, "scaling_rules")
 
     @scaling_rules.setter
@@ -812,6 +844,10 @@ class ClusterNodeGroupAutoScalingPolicyConstraintsArgs:
     def __init__(__self__, *,
                  max_capacity: Optional[pulumi.Input[int]] = None,
                  min_capacity: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_capacity: The maximum capacity of constraints for emr node group auto scaling policy.
+        :param pulumi.Input[int] min_capacity: The minimum capacity of constraints for emr node group auto scaling policy.
+        """
         if max_capacity is not None:
             pulumi.set(__self__, "max_capacity", max_capacity)
         if min_capacity is not None:
@@ -820,6 +856,9 @@ class ClusterNodeGroupAutoScalingPolicyConstraintsArgs:
     @property
     @pulumi.getter(name="maxCapacity")
     def max_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum capacity of constraints for emr node group auto scaling policy.
+        """
         return pulumi.get(self, "max_capacity")
 
     @max_capacity.setter
@@ -829,6 +868,9 @@ class ClusterNodeGroupAutoScalingPolicyConstraintsArgs:
     @property
     @pulumi.getter(name="minCapacity")
     def min_capacity(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum capacity of constraints for emr node group auto scaling policy.
+        """
         return pulumi.get(self, "min_capacity")
 
     @min_capacity.setter
@@ -847,6 +889,16 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
                  metrics_trigger: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs']] = None,
                  min_adjustment_value: Optional[pulumi.Input[int]] = None,
                  time_trigger: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs']] = None):
+        """
+        :param pulumi.Input[str] activity_type: The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
+        :param pulumi.Input[int] adjustment_value: The adjustment value of auto scaling policy. The value should between 1 and 5000.
+        :param pulumi.Input[str] rule_name: The rule name of auto scaling policy.
+        :param pulumi.Input[str] trigger_type: The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
+        :param pulumi.Input[str] adjustment_type: The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
+        :param pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs'] metrics_trigger: The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+        :param pulumi.Input[int] min_adjustment_value: The minimum adjustment value of auto scaling policy.
+        :param pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs'] time_trigger: The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+        """
         pulumi.set(__self__, "activity_type", activity_type)
         pulumi.set(__self__, "adjustment_value", adjustment_value)
         pulumi.set(__self__, "rule_name", rule_name)
@@ -863,6 +915,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
     @property
     @pulumi.getter(name="activityType")
     def activity_type(self) -> pulumi.Input[str]:
+        """
+        The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
+        """
         return pulumi.get(self, "activity_type")
 
     @activity_type.setter
@@ -872,6 +927,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
     @property
     @pulumi.getter(name="adjustmentValue")
     def adjustment_value(self) -> pulumi.Input[int]:
+        """
+        The adjustment value of auto scaling policy. The value should between 1 and 5000.
+        """
         return pulumi.get(self, "adjustment_value")
 
     @adjustment_value.setter
@@ -881,6 +939,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
     @property
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Input[str]:
+        """
+        The rule name of auto scaling policy.
+        """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
@@ -890,6 +951,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
     @property
     @pulumi.getter(name="triggerType")
     def trigger_type(self) -> pulumi.Input[str]:
+        """
+        The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
+        """
         return pulumi.get(self, "trigger_type")
 
     @trigger_type.setter
@@ -899,6 +963,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
     @property
     @pulumi.getter(name="adjustmentType")
     def adjustment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
+        """
         return pulumi.get(self, "adjustment_type")
 
     @adjustment_type.setter
@@ -908,6 +975,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
     @property
     @pulumi.getter(name="metricsTrigger")
     def metrics_trigger(self) -> Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs']]:
+        """
+        The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+        """
         return pulumi.get(self, "metrics_trigger")
 
     @metrics_trigger.setter
@@ -917,6 +987,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
     @property
     @pulumi.getter(name="minAdjustmentValue")
     def min_adjustment_value(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum adjustment value of auto scaling policy.
+        """
         return pulumi.get(self, "min_adjustment_value")
 
     @min_adjustment_value.setter
@@ -926,6 +999,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
     @property
     @pulumi.getter(name="timeTrigger")
     def time_trigger(self) -> Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs']]:
+        """
+        The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+        """
         return pulumi.get(self, "time_trigger")
 
     @time_trigger.setter
@@ -942,6 +1018,14 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs:
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]]] = None,
                  cool_down_interval: Optional[pulumi.Input[int]] = None,
                  time_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]]] = None):
+        """
+        :param pulumi.Input[int] evaluation_count: The evaluation count for this scaling rule specific metrics trigger.
+        :param pulumi.Input[int] time_window: The time window for this scaling rule specific metrics trigger.
+        :param pulumi.Input[str] condition_logic_operator: The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]] conditions: The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+        :param pulumi.Input[int] cool_down_interval: The time of cool down interval for this scaling rule specific metrics trigger.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]] time_constraints: The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+        """
         pulumi.set(__self__, "evaluation_count", evaluation_count)
         pulumi.set(__self__, "time_window", time_window)
         if condition_logic_operator is not None:
@@ -956,6 +1040,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs:
     @property
     @pulumi.getter(name="evaluationCount")
     def evaluation_count(self) -> pulumi.Input[int]:
+        """
+        The evaluation count for this scaling rule specific metrics trigger.
+        """
         return pulumi.get(self, "evaluation_count")
 
     @evaluation_count.setter
@@ -965,6 +1052,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs:
     @property
     @pulumi.getter(name="timeWindow")
     def time_window(self) -> pulumi.Input[int]:
+        """
+        The time window for this scaling rule specific metrics trigger.
+        """
         return pulumi.get(self, "time_window")
 
     @time_window.setter
@@ -974,6 +1064,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs:
     @property
     @pulumi.getter(name="conditionLogicOperator")
     def condition_logic_operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
+        """
         return pulumi.get(self, "condition_logic_operator")
 
     @condition_logic_operator.setter
@@ -983,6 +1076,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs:
     @property
     @pulumi.getter
     def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]]]:
+        """
+        The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+        """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
@@ -992,6 +1088,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs:
     @property
     @pulumi.getter(name="coolDownInterval")
     def cool_down_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time of cool down interval for this scaling rule specific metrics trigger.
+        """
         return pulumi.get(self, "cool_down_interval")
 
     @cool_down_interval.setter
@@ -1001,6 +1100,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs:
     @property
     @pulumi.getter(name="timeConstraints")
     def time_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]]]:
+        """
+        The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+        """
         return pulumi.get(self, "time_constraints")
 
     @time_constraints.setter
@@ -1017,6 +1119,10 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs:
                  threshold: pulumi.Input[float],
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]]] = None):
         """
+        :param pulumi.Input[str] comparison_operator: The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
+        :param pulumi.Input[str] metric_name: The metric name for this scaling rule specific metrics trigger.
+        :param pulumi.Input[str] statistics: The statistics for this scaling rule specific metrics trigger.
+        :param pulumi.Input[float] threshold: The threshold for this scaling rule specific metrics trigger.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "comparison_operator", comparison_operator)
@@ -1029,6 +1135,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs:
     @property
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> pulumi.Input[str]:
+        """
+        The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
+        """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
@@ -1038,6 +1147,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs:
     @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> pulumi.Input[str]:
+        """
+        The metric name for this scaling rule specific metrics trigger.
+        """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
@@ -1047,6 +1159,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs:
     @property
     @pulumi.getter
     def statistics(self) -> pulumi.Input[str]:
+        """
+        The statistics for this scaling rule specific metrics trigger.
+        """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
@@ -1056,6 +1171,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs:
     @property
     @pulumi.getter
     def threshold(self) -> pulumi.Input[float]:
+        """
+        The threshold for this scaling rule specific metrics trigger.
+        """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
@@ -1080,6 +1198,10 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] key: The tag key for this scaling rule specific metrics trigger.
+        :param pulumi.Input[str] value: The tag value for this scaling rule specific metrics trigger.
+        """
         pulumi.set(__self__, "key", key)
         if value is not None:
             pulumi.set(__self__, "value", value)
@@ -1087,6 +1209,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        The tag key for this scaling rule specific metrics trigger.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1096,6 +1221,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tag value for this scaling rule specific metrics trigger.
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1108,6 +1236,10 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintAr
     def __init__(__self__, *,
                  end_time: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] end_time: The end time for this scaling rule specific metrics trigger.
+        :param pulumi.Input[str] start_time: The start time for this scaling rule specific metrics trigger.
+        """
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
         if start_time is not None:
@@ -1116,6 +1248,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintAr
     @property
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The end time for this scaling rule specific metrics trigger.
+        """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
@@ -1125,6 +1260,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintAr
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start time for this scaling rule specific metrics trigger.
+        """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -1141,6 +1279,14 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs:
                  recurrence_type: Optional[pulumi.Input[str]] = None,
                  recurrence_value: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] launch_time: The launch time for this scaling rule specific time trigger.
+        :param pulumi.Input[str] end_time: The end time for this scaling rule specific metrics trigger.
+        :param pulumi.Input[int] launch_expiration_time: The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
+        :param pulumi.Input[str] recurrence_type: The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
+        :param pulumi.Input[str] recurrence_value: The recurrence value for this scaling rule specific time trigger.
+        :param pulumi.Input[str] start_time: The start time for this scaling rule specific metrics trigger.
+        """
         pulumi.set(__self__, "launch_time", launch_time)
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
@@ -1156,6 +1302,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs:
     @property
     @pulumi.getter(name="launchTime")
     def launch_time(self) -> pulumi.Input[str]:
+        """
+        The launch time for this scaling rule specific time trigger.
+        """
         return pulumi.get(self, "launch_time")
 
     @launch_time.setter
@@ -1165,6 +1314,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs:
     @property
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The end time for this scaling rule specific metrics trigger.
+        """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
@@ -1174,6 +1326,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs:
     @property
     @pulumi.getter(name="launchExpirationTime")
     def launch_expiration_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
+        """
         return pulumi.get(self, "launch_expiration_time")
 
     @launch_expiration_time.setter
@@ -1183,6 +1338,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs:
     @property
     @pulumi.getter(name="recurrenceType")
     def recurrence_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
+        """
         return pulumi.get(self, "recurrence_type")
 
     @recurrence_type.setter
@@ -1192,6 +1350,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs:
     @property
     @pulumi.getter(name="recurrenceValue")
     def recurrence_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The recurrence value for this scaling rule specific time trigger.
+        """
         return pulumi.get(self, "recurrence_value")
 
     @recurrence_value.setter
@@ -1201,6 +1362,9 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs:
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start time for this scaling rule specific metrics trigger.
+        """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -1214,6 +1378,11 @@ class ClusterNodeGroupCostOptimizedConfigArgs:
                  on_demand_base_capacity: pulumi.Input[int],
                  on_demand_percentage_above_base_capacity: pulumi.Input[int],
                  spot_instance_pools: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] on_demand_base_capacity: The cost optimized configuration which on demand based capacity.
+        :param pulumi.Input[int] on_demand_percentage_above_base_capacity: The cost optimized configuration which on demand percentage above based capacity.
+        :param pulumi.Input[int] spot_instance_pools: The cost optimized configuration with spot instance pools.
+        """
         pulumi.set(__self__, "on_demand_base_capacity", on_demand_base_capacity)
         pulumi.set(__self__, "on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
         pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
@@ -1221,6 +1390,9 @@ class ClusterNodeGroupCostOptimizedConfigArgs:
     @property
     @pulumi.getter(name="onDemandBaseCapacity")
     def on_demand_base_capacity(self) -> pulumi.Input[int]:
+        """
+        The cost optimized configuration which on demand based capacity.
+        """
         return pulumi.get(self, "on_demand_base_capacity")
 
     @on_demand_base_capacity.setter
@@ -1230,6 +1402,9 @@ class ClusterNodeGroupCostOptimizedConfigArgs:
     @property
     @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
     def on_demand_percentage_above_base_capacity(self) -> pulumi.Input[int]:
+        """
+        The cost optimized configuration which on demand percentage above based capacity.
+        """
         return pulumi.get(self, "on_demand_percentage_above_base_capacity")
 
     @on_demand_percentage_above_base_capacity.setter
@@ -1239,6 +1414,9 @@ class ClusterNodeGroupCostOptimizedConfigArgs:
     @property
     @pulumi.getter(name="spotInstancePools")
     def spot_instance_pools(self) -> pulumi.Input[int]:
+        """
+        The cost optimized configuration with spot instance pools.
+        """
         return pulumi.get(self, "spot_instance_pools")
 
     @spot_instance_pools.setter
@@ -1253,6 +1431,12 @@ class ClusterNodeGroupDataDiskArgs:
                  size: pulumi.Input[int],
                  count: Optional[pulumi.Input[int]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] category: The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+        :param pulumi.Input[int] size: The size of a data disk, at least 40. Unit: GiB.
+        :param pulumi.Input[int] count: The count of a data disk.
+        :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+        """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "size", size)
         if count is not None:
@@ -1263,6 +1447,9 @@ class ClusterNodeGroupDataDiskArgs:
     @property
     @pulumi.getter
     def category(self) -> pulumi.Input[str]:
+        """
+        The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -1272,6 +1459,9 @@ class ClusterNodeGroupDataDiskArgs:
     @property
     @pulumi.getter
     def size(self) -> pulumi.Input[int]:
+        """
+        The size of a data disk, at least 40. Unit: GiB.
+        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -1281,6 +1471,9 @@ class ClusterNodeGroupDataDiskArgs:
     @property
     @pulumi.getter
     def count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The count of a data disk.
+        """
         return pulumi.get(self, "count")
 
     @count.setter
@@ -1290,6 +1483,9 @@ class ClusterNodeGroupDataDiskArgs:
     @property
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+        """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
@@ -1302,12 +1498,19 @@ class ClusterNodeGroupSpotBidPriceArgs:
     def __init__(__self__, *,
                  bid_price: pulumi.Input[int],
                  instance_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[int] bid_price: The spot bid price of a PayAsYouGo instance.
+        :param pulumi.Input[str] instance_type: Host Ecs instance type.
+        """
         pulumi.set(__self__, "bid_price", bid_price)
         pulumi.set(__self__, "instance_type", instance_type)
 
     @property
     @pulumi.getter(name="bidPrice")
     def bid_price(self) -> pulumi.Input[int]:
+        """
+        The spot bid price of a PayAsYouGo instance.
+        """
         return pulumi.get(self, "bid_price")
 
     @bid_price.setter
@@ -1317,6 +1520,9 @@ class ClusterNodeGroupSpotBidPriceArgs:
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[str]:
+        """
+        Host Ecs instance type.
+        """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
@@ -1432,6 +1638,12 @@ class ClusterNodeGroupSystemDiskArgs:
                  size: pulumi.Input[int],
                  count: Optional[pulumi.Input[int]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] category: The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+        :param pulumi.Input[int] size: The size of a data disk, at least 40. Unit: GiB.
+        :param pulumi.Input[int] count: The count of a data disk.
+        :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+        """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "size", size)
         if count is not None:
@@ -1442,6 +1654,9 @@ class ClusterNodeGroupSystemDiskArgs:
     @property
     @pulumi.getter
     def category(self) -> pulumi.Input[str]:
+        """
+        The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -1451,6 +1666,9 @@ class ClusterNodeGroupSystemDiskArgs:
     @property
     @pulumi.getter
     def size(self) -> pulumi.Input[int]:
+        """
+        The size of a data disk, at least 40. Unit: GiB.
+        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -1460,6 +1678,9 @@ class ClusterNodeGroupSystemDiskArgs:
     @property
     @pulumi.getter
     def count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The count of a data disk.
+        """
         return pulumi.get(self, "count")
 
     @count.setter
@@ -1469,6 +1690,9 @@ class ClusterNodeGroupSystemDiskArgs:
     @property
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+        """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter

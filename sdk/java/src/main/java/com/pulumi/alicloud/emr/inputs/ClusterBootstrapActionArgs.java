@@ -15,30 +15,62 @@ public final class ClusterBootstrapActionArgs extends com.pulumi.resources.Resou
 
     public static final ClusterBootstrapActionArgs Empty = new ClusterBootstrapActionArgs();
 
+    /**
+     * bootstrap action args, e.g. &#34;--a=b&#34;.
+     * 
+     */
     @Import(name="arg")
     private @Nullable Output<String> arg;
 
+    /**
+     * @return bootstrap action args, e.g. &#34;--a=b&#34;.
+     * 
+     */
     public Optional<Output<String>> arg() {
         return Optional.ofNullable(this.arg);
     }
 
+    /**
+     * bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: &#34;FAILED_BLOCKED
+     * 
+     */
     @Import(name="executionFailStrategy")
     private @Nullable Output<String> executionFailStrategy;
 
+    /**
+     * @return bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: &#34;FAILED_BLOCKED
+     * 
+     */
     public Optional<Output<String>> executionFailStrategy() {
         return Optional.ofNullable(this.executionFailStrategy);
     }
 
+    /**
+     * bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: &#34;BEFORE_INSTALL&#34;.
+     * 
+     */
     @Import(name="executionMoment")
     private @Nullable Output<String> executionMoment;
 
+    /**
+     * @return bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: &#34;BEFORE_INSTALL&#34;.
+     * 
+     */
     public Optional<Output<String>> executionMoment() {
         return Optional.ofNullable(this.executionMoment);
     }
 
+    /**
+     * bootstrap action execution target, you can specify the host group name, e.g. &#34;core_group&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
+     * 
+     */
     @Import(name="executionTarget")
     private @Nullable Output<String> executionTarget;
 
+    /**
+     * @return bootstrap action execution target, you can specify the host group name, e.g. &#34;core_group&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
+     * 
+     */
     public Optional<Output<String>> executionTarget() {
         return Optional.ofNullable(this.executionTarget);
     }
@@ -58,9 +90,17 @@ public final class ClusterBootstrapActionArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * bootstrap action path, e.g. &#34;oss://bucket/path&#34;.
+     * 
+     */
     @Import(name="path")
     private @Nullable Output<String> path;
 
+    /**
+     * @return bootstrap action path, e.g. &#34;oss://bucket/path&#34;.
+     * 
+     */
     public Optional<Output<String>> path() {
         return Optional.ofNullable(this.path);
     }
@@ -94,38 +134,86 @@ public final class ClusterBootstrapActionArgs extends com.pulumi.resources.Resou
             $ = new ClusterBootstrapActionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param arg bootstrap action args, e.g. &#34;--a=b&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder arg(@Nullable Output<String> arg) {
             $.arg = arg;
             return this;
         }
 
+        /**
+         * @param arg bootstrap action args, e.g. &#34;--a=b&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder arg(String arg) {
             return arg(Output.of(arg));
         }
 
+        /**
+         * @param executionFailStrategy bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: &#34;FAILED_BLOCKED
+         * 
+         * @return builder
+         * 
+         */
         public Builder executionFailStrategy(@Nullable Output<String> executionFailStrategy) {
             $.executionFailStrategy = executionFailStrategy;
             return this;
         }
 
+        /**
+         * @param executionFailStrategy bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: &#34;FAILED_BLOCKED
+         * 
+         * @return builder
+         * 
+         */
         public Builder executionFailStrategy(String executionFailStrategy) {
             return executionFailStrategy(Output.of(executionFailStrategy));
         }
 
+        /**
+         * @param executionMoment bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: &#34;BEFORE_INSTALL&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder executionMoment(@Nullable Output<String> executionMoment) {
             $.executionMoment = executionMoment;
             return this;
         }
 
+        /**
+         * @param executionMoment bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: &#34;BEFORE_INSTALL&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder executionMoment(String executionMoment) {
             return executionMoment(Output.of(executionMoment));
         }
 
+        /**
+         * @param executionTarget bootstrap action execution target, you can specify the host group name, e.g. &#34;core_group&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder executionTarget(@Nullable Output<String> executionTarget) {
             $.executionTarget = executionTarget;
             return this;
         }
 
+        /**
+         * @param executionTarget bootstrap action execution target, you can specify the host group name, e.g. &#34;core_group&#34;. If this is not specified, the bootstrap action execution target is whole cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder executionTarget(String executionTarget) {
             return executionTarget(Output.of(executionTarget));
         }
@@ -151,11 +239,23 @@ public final class ClusterBootstrapActionArgs extends com.pulumi.resources.Resou
             return name(Output.of(name));
         }
 
+        /**
+         * @param path bootstrap action path, e.g. &#34;oss://bucket/path&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path bootstrap action path, e.g. &#34;oss://bucket/path&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }

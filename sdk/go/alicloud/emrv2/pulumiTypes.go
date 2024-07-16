@@ -332,14 +332,19 @@ func (o ClusterBootstrapScriptArrayOutput) Index(i pulumi.IntInput) ClusterBoots
 
 type ClusterBootstrapScriptNodeSelector struct {
 	// Deprecated: Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it.
-	NodeGroupId  *string  `pulumi:"nodeGroupId"`
+	NodeGroupId *string `pulumi:"nodeGroupId"`
+	// The bootstrap scripts execution target node group ids.
 	NodeGroupIds []string `pulumi:"nodeGroupIds"`
 	// Deprecated: Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it.
-	NodeGroupName  *string  `pulumi:"nodeGroupName"`
+	NodeGroupName *string `pulumi:"nodeGroupName"`
+	// The bootstrap scripts execution target node group names.
 	NodeGroupNames []string `pulumi:"nodeGroupNames"`
+	// The bootstrap scripts execution target node group types.
 	NodeGroupTypes []string `pulumi:"nodeGroupTypes"`
-	NodeNames      []string `pulumi:"nodeNames"`
-	NodeSelectType string   `pulumi:"nodeSelectType"`
+	// The bootstrap scripts execution target node names.
+	NodeNames []string `pulumi:"nodeNames"`
+	// The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
+	NodeSelectType string `pulumi:"nodeSelectType"`
 }
 
 // ClusterBootstrapScriptNodeSelectorInput is an input type that accepts ClusterBootstrapScriptNodeSelectorArgs and ClusterBootstrapScriptNodeSelectorOutput values.
@@ -355,14 +360,19 @@ type ClusterBootstrapScriptNodeSelectorInput interface {
 
 type ClusterBootstrapScriptNodeSelectorArgs struct {
 	// Deprecated: Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it.
-	NodeGroupId  pulumi.StringPtrInput   `pulumi:"nodeGroupId"`
+	NodeGroupId pulumi.StringPtrInput `pulumi:"nodeGroupId"`
+	// The bootstrap scripts execution target node group ids.
 	NodeGroupIds pulumi.StringArrayInput `pulumi:"nodeGroupIds"`
 	// Deprecated: Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it.
-	NodeGroupName  pulumi.StringPtrInput   `pulumi:"nodeGroupName"`
+	NodeGroupName pulumi.StringPtrInput `pulumi:"nodeGroupName"`
+	// The bootstrap scripts execution target node group names.
 	NodeGroupNames pulumi.StringArrayInput `pulumi:"nodeGroupNames"`
+	// The bootstrap scripts execution target node group types.
 	NodeGroupTypes pulumi.StringArrayInput `pulumi:"nodeGroupTypes"`
-	NodeNames      pulumi.StringArrayInput `pulumi:"nodeNames"`
-	NodeSelectType pulumi.StringInput      `pulumi:"nodeSelectType"`
+	// The bootstrap scripts execution target node names.
+	NodeNames pulumi.StringArrayInput `pulumi:"nodeNames"`
+	// The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
+	NodeSelectType pulumi.StringInput `pulumi:"nodeSelectType"`
 }
 
 func (ClusterBootstrapScriptNodeSelectorArgs) ElementType() reflect.Type {
@@ -396,6 +406,7 @@ func (o ClusterBootstrapScriptNodeSelectorOutput) NodeGroupId() pulumi.StringPtr
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) *string { return v.NodeGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The bootstrap scripts execution target node group ids.
 func (o ClusterBootstrapScriptNodeSelectorOutput) NodeGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) []string { return v.NodeGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -405,18 +416,22 @@ func (o ClusterBootstrapScriptNodeSelectorOutput) NodeGroupName() pulumi.StringP
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) *string { return v.NodeGroupName }).(pulumi.StringPtrOutput)
 }
 
+// The bootstrap scripts execution target node group names.
 func (o ClusterBootstrapScriptNodeSelectorOutput) NodeGroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) []string { return v.NodeGroupNames }).(pulumi.StringArrayOutput)
 }
 
+// The bootstrap scripts execution target node group types.
 func (o ClusterBootstrapScriptNodeSelectorOutput) NodeGroupTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) []string { return v.NodeGroupTypes }).(pulumi.StringArrayOutput)
 }
 
+// The bootstrap scripts execution target node names.
 func (o ClusterBootstrapScriptNodeSelectorOutput) NodeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) []string { return v.NodeNames }).(pulumi.StringArrayOutput)
 }
 
+// The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
 func (o ClusterBootstrapScriptNodeSelectorOutput) NodeSelectType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) string { return v.NodeSelectType }).(pulumi.StringOutput)
 }
@@ -823,7 +838,9 @@ func (o ClusterNodeGroupArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupOu
 }
 
 type ClusterNodeGroupAutoScalingPolicy struct {
-	Constraints  *ClusterNodeGroupAutoScalingPolicyConstraints  `pulumi:"constraints"`
+	// The constraints of auto scaling policy. See `constraints` below.
+	Constraints *ClusterNodeGroupAutoScalingPolicyConstraints `pulumi:"constraints"`
+	// The scaling rules of auto scaling policy. See `scalingRules` below.
 	ScalingRules []ClusterNodeGroupAutoScalingPolicyScalingRule `pulumi:"scalingRules"`
 }
 
@@ -839,7 +856,9 @@ type ClusterNodeGroupAutoScalingPolicyInput interface {
 }
 
 type ClusterNodeGroupAutoScalingPolicyArgs struct {
-	Constraints  ClusterNodeGroupAutoScalingPolicyConstraintsPtrInput   `pulumi:"constraints"`
+	// The constraints of auto scaling policy. See `constraints` below.
+	Constraints ClusterNodeGroupAutoScalingPolicyConstraintsPtrInput `pulumi:"constraints"`
+	// The scaling rules of auto scaling policy. See `scalingRules` below.
 	ScalingRules ClusterNodeGroupAutoScalingPolicyScalingRuleArrayInput `pulumi:"scalingRules"`
 }
 
@@ -920,12 +939,14 @@ func (o ClusterNodeGroupAutoScalingPolicyOutput) ToClusterNodeGroupAutoScalingPo
 	}).(ClusterNodeGroupAutoScalingPolicyPtrOutput)
 }
 
+// The constraints of auto scaling policy. See `constraints` below.
 func (o ClusterNodeGroupAutoScalingPolicyOutput) Constraints() ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicy) *ClusterNodeGroupAutoScalingPolicyConstraints {
 		return v.Constraints
 	}).(ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput)
 }
 
+// The scaling rules of auto scaling policy. See `scalingRules` below.
 func (o ClusterNodeGroupAutoScalingPolicyOutput) ScalingRules() ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicy) []ClusterNodeGroupAutoScalingPolicyScalingRule {
 		return v.ScalingRules
@@ -956,6 +977,7 @@ func (o ClusterNodeGroupAutoScalingPolicyPtrOutput) Elem() ClusterNodeGroupAutoS
 	}).(ClusterNodeGroupAutoScalingPolicyOutput)
 }
 
+// The constraints of auto scaling policy. See `constraints` below.
 func (o ClusterNodeGroupAutoScalingPolicyPtrOutput) Constraints() ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicy) *ClusterNodeGroupAutoScalingPolicyConstraints {
 		if v == nil {
@@ -965,6 +987,7 @@ func (o ClusterNodeGroupAutoScalingPolicyPtrOutput) Constraints() ClusterNodeGro
 	}).(ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput)
 }
 
+// The scaling rules of auto scaling policy. See `scalingRules` below.
 func (o ClusterNodeGroupAutoScalingPolicyPtrOutput) ScalingRules() ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicy) []ClusterNodeGroupAutoScalingPolicyScalingRule {
 		if v == nil {
@@ -975,7 +998,9 @@ func (o ClusterNodeGroupAutoScalingPolicyPtrOutput) ScalingRules() ClusterNodeGr
 }
 
 type ClusterNodeGroupAutoScalingPolicyConstraints struct {
+	// The maximum capacity of constraints for emr node group auto scaling policy.
 	MaxCapacity *int `pulumi:"maxCapacity"`
+	// The minimum capacity of constraints for emr node group auto scaling policy.
 	MinCapacity *int `pulumi:"minCapacity"`
 }
 
@@ -991,7 +1016,9 @@ type ClusterNodeGroupAutoScalingPolicyConstraintsInput interface {
 }
 
 type ClusterNodeGroupAutoScalingPolicyConstraintsArgs struct {
+	// The maximum capacity of constraints for emr node group auto scaling policy.
 	MaxCapacity pulumi.IntPtrInput `pulumi:"maxCapacity"`
+	// The minimum capacity of constraints for emr node group auto scaling policy.
 	MinCapacity pulumi.IntPtrInput `pulumi:"minCapacity"`
 }
 
@@ -1072,10 +1099,12 @@ func (o ClusterNodeGroupAutoScalingPolicyConstraintsOutput) ToClusterNodeGroupAu
 	}).(ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput)
 }
 
+// The maximum capacity of constraints for emr node group auto scaling policy.
 func (o ClusterNodeGroupAutoScalingPolicyConstraintsOutput) MaxCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyConstraints) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
 }
 
+// The minimum capacity of constraints for emr node group auto scaling policy.
 func (o ClusterNodeGroupAutoScalingPolicyConstraintsOutput) MinCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyConstraints) *int { return v.MinCapacity }).(pulumi.IntPtrOutput)
 }
@@ -1104,6 +1133,7 @@ func (o ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput) Elem() ClusterNod
 	}).(ClusterNodeGroupAutoScalingPolicyConstraintsOutput)
 }
 
+// The maximum capacity of constraints for emr node group auto scaling policy.
 func (o ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput) MaxCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyConstraints) *int {
 		if v == nil {
@@ -1113,6 +1143,7 @@ func (o ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput) MaxCapacity() pul
 	}).(pulumi.IntPtrOutput)
 }
 
+// The minimum capacity of constraints for emr node group auto scaling policy.
 func (o ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput) MinCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyConstraints) *int {
 		if v == nil {
@@ -1123,14 +1154,22 @@ func (o ClusterNodeGroupAutoScalingPolicyConstraintsPtrOutput) MinCapacity() pul
 }
 
 type ClusterNodeGroupAutoScalingPolicyScalingRule struct {
-	ActivityType       string                                                      `pulumi:"activityType"`
-	AdjustmentType     *string                                                     `pulumi:"adjustmentType"`
-	AdjustmentValue    int                                                         `pulumi:"adjustmentValue"`
-	MetricsTrigger     *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger `pulumi:"metricsTrigger"`
-	MinAdjustmentValue *int                                                        `pulumi:"minAdjustmentValue"`
-	RuleName           string                                                      `pulumi:"ruleName"`
-	TimeTrigger        *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger    `pulumi:"timeTrigger"`
-	TriggerType        string                                                      `pulumi:"triggerType"`
+	// The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
+	ActivityType string `pulumi:"activityType"`
+	// The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
+	AdjustmentType *string `pulumi:"adjustmentType"`
+	// The adjustment value of auto scaling policy. The value should between 1 and 5000.
+	AdjustmentValue int `pulumi:"adjustmentValue"`
+	// The trigger metrics of scaling rules for emr node group auto scaling policy. See `metricsTrigger` below.
+	MetricsTrigger *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger `pulumi:"metricsTrigger"`
+	// The minimum adjustment value of auto scaling policy.
+	MinAdjustmentValue *int `pulumi:"minAdjustmentValue"`
+	// The rule name of auto scaling policy.
+	RuleName string `pulumi:"ruleName"`
+	// The trigger time of scaling rules for emr node group auto scaling policy. See `timeTrigger` below.
+	TimeTrigger *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger `pulumi:"timeTrigger"`
+	// The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
+	TriggerType string `pulumi:"triggerType"`
 }
 
 // ClusterNodeGroupAutoScalingPolicyScalingRuleInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleArgs and ClusterNodeGroupAutoScalingPolicyScalingRuleOutput values.
@@ -1145,14 +1184,22 @@ type ClusterNodeGroupAutoScalingPolicyScalingRuleInput interface {
 }
 
 type ClusterNodeGroupAutoScalingPolicyScalingRuleArgs struct {
-	ActivityType       pulumi.StringInput                                                 `pulumi:"activityType"`
-	AdjustmentType     pulumi.StringPtrInput                                              `pulumi:"adjustmentType"`
-	AdjustmentValue    pulumi.IntInput                                                    `pulumi:"adjustmentValue"`
-	MetricsTrigger     ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrInput `pulumi:"metricsTrigger"`
-	MinAdjustmentValue pulumi.IntPtrInput                                                 `pulumi:"minAdjustmentValue"`
-	RuleName           pulumi.StringInput                                                 `pulumi:"ruleName"`
-	TimeTrigger        ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrInput    `pulumi:"timeTrigger"`
-	TriggerType        pulumi.StringInput                                                 `pulumi:"triggerType"`
+	// The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
+	ActivityType pulumi.StringInput `pulumi:"activityType"`
+	// The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
+	AdjustmentType pulumi.StringPtrInput `pulumi:"adjustmentType"`
+	// The adjustment value of auto scaling policy. The value should between 1 and 5000.
+	AdjustmentValue pulumi.IntInput `pulumi:"adjustmentValue"`
+	// The trigger metrics of scaling rules for emr node group auto scaling policy. See `metricsTrigger` below.
+	MetricsTrigger ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrInput `pulumi:"metricsTrigger"`
+	// The minimum adjustment value of auto scaling policy.
+	MinAdjustmentValue pulumi.IntPtrInput `pulumi:"minAdjustmentValue"`
+	// The rule name of auto scaling policy.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// The trigger time of scaling rules for emr node group auto scaling policy. See `timeTrigger` below.
+	TimeTrigger ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrInput `pulumi:"timeTrigger"`
+	// The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
+	TriggerType pulumi.StringInput `pulumi:"triggerType"`
 }
 
 func (ClusterNodeGroupAutoScalingPolicyScalingRuleArgs) ElementType() reflect.Type {
@@ -1206,38 +1253,46 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) ToClusterNodeGroupAu
 	return o
 }
 
+// The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) ActivityType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) string { return v.ActivityType }).(pulumi.StringOutput)
 }
 
+// The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) AdjustmentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) *string { return v.AdjustmentType }).(pulumi.StringPtrOutput)
 }
 
+// The adjustment value of auto scaling policy. The value should between 1 and 5000.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) AdjustmentValue() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) int { return v.AdjustmentValue }).(pulumi.IntOutput)
 }
 
+// The trigger metrics of scaling rules for emr node group auto scaling policy. See `metricsTrigger` below.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) MetricsTrigger() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger {
 		return v.MetricsTrigger
 	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput)
 }
 
+// The minimum adjustment value of auto scaling policy.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) MinAdjustmentValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) *int { return v.MinAdjustmentValue }).(pulumi.IntPtrOutput)
 }
 
+// The rule name of auto scaling policy.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) RuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) string { return v.RuleName }).(pulumi.StringOutput)
 }
 
+// The trigger time of scaling rules for emr node group auto scaling policy. See `timeTrigger` below.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) TimeTrigger() ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger {
 		return v.TimeTrigger
 	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput)
 }
 
+// The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleOutput) TriggerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRule) string { return v.TriggerType }).(pulumi.StringOutput)
 }
@@ -1263,12 +1318,18 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleArrayOutput) Index(i pulumi.
 }
 
 type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger struct {
-	ConditionLogicOperator *string                                                                    `pulumi:"conditionLogicOperator"`
-	Conditions             []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition      `pulumi:"conditions"`
-	CoolDownInterval       *int                                                                       `pulumi:"coolDownInterval"`
-	EvaluationCount        int                                                                        `pulumi:"evaluationCount"`
-	TimeConstraints        []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint `pulumi:"timeConstraints"`
-	TimeWindow             int                                                                        `pulumi:"timeWindow"`
+	// The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
+	ConditionLogicOperator *string `pulumi:"conditionLogicOperator"`
+	// The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+	Conditions []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition `pulumi:"conditions"`
+	// The time of cool down interval for this scaling rule specific metrics trigger.
+	CoolDownInterval *int `pulumi:"coolDownInterval"`
+	// The evaluation count for this scaling rule specific metrics trigger.
+	EvaluationCount int `pulumi:"evaluationCount"`
+	// The time constraints for this scaling rule specific metrics trigger. See `timeConstraints` below.
+	TimeConstraints []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint `pulumi:"timeConstraints"`
+	// The time window for this scaling rule specific metrics trigger.
+	TimeWindow int `pulumi:"timeWindow"`
 }
 
 // ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs and ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput values.
@@ -1283,12 +1344,18 @@ type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerInput interface {
 }
 
 type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs struct {
-	ConditionLogicOperator pulumi.StringPtrInput                                                              `pulumi:"conditionLogicOperator"`
-	Conditions             ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayInput      `pulumi:"conditions"`
-	CoolDownInterval       pulumi.IntPtrInput                                                                 `pulumi:"coolDownInterval"`
-	EvaluationCount        pulumi.IntInput                                                                    `pulumi:"evaluationCount"`
-	TimeConstraints        ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayInput `pulumi:"timeConstraints"`
-	TimeWindow             pulumi.IntInput                                                                    `pulumi:"timeWindow"`
+	// The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
+	ConditionLogicOperator pulumi.StringPtrInput `pulumi:"conditionLogicOperator"`
+	// The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+	Conditions ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayInput `pulumi:"conditions"`
+	// The time of cool down interval for this scaling rule specific metrics trigger.
+	CoolDownInterval pulumi.IntPtrInput `pulumi:"coolDownInterval"`
+	// The evaluation count for this scaling rule specific metrics trigger.
+	EvaluationCount pulumi.IntInput `pulumi:"evaluationCount"`
+	// The time constraints for this scaling rule specific metrics trigger. See `timeConstraints` below.
+	TimeConstraints ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayInput `pulumi:"timeConstraints"`
+	// The time window for this scaling rule specific metrics trigger.
+	TimeWindow pulumi.IntInput `pulumi:"timeWindow"`
 }
 
 func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs) ElementType() reflect.Type {
@@ -1368,32 +1435,38 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) ToClus
 	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput)
 }
 
+// The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) ConditionLogicOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) *string {
 		return v.ConditionLogicOperator
 	}).(pulumi.StringPtrOutput)
 }
 
+// The conditions for this scaling rule specific metrics trigger. See `conditions` below.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) Conditions() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition {
 		return v.Conditions
 	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput)
 }
 
+// The time of cool down interval for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) CoolDownInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) *int { return v.CoolDownInterval }).(pulumi.IntPtrOutput)
 }
 
+// The evaluation count for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) EvaluationCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) int { return v.EvaluationCount }).(pulumi.IntOutput)
 }
 
+// The time constraints for this scaling rule specific metrics trigger. See `timeConstraints` below.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) TimeConstraints() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint {
 		return v.TimeConstraints
 	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput)
 }
 
+// The time window for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput) TimeWindow() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) int { return v.TimeWindow }).(pulumi.IntOutput)
 }
@@ -1422,6 +1495,7 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) Ele
 	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerOutput)
 }
 
+// The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) ConditionLogicOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) *string {
 		if v == nil {
@@ -1431,6 +1505,7 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) Con
 	}).(pulumi.StringPtrOutput)
 }
 
+// The conditions for this scaling rule specific metrics trigger. See `conditions` below.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) Conditions() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition {
 		if v == nil {
@@ -1440,6 +1515,7 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) Con
 	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArrayOutput)
 }
 
+// The time of cool down interval for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) CoolDownInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) *int {
 		if v == nil {
@@ -1449,6 +1525,7 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) Coo
 	}).(pulumi.IntPtrOutput)
 }
 
+// The evaluation count for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) EvaluationCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) *int {
 		if v == nil {
@@ -1458,6 +1535,7 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) Eva
 	}).(pulumi.IntPtrOutput)
 }
 
+// The time constraints for this scaling rule specific metrics trigger. See `timeConstraints` below.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) TimeConstraints() ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint {
 		if v == nil {
@@ -1467,6 +1545,7 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) Tim
 	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArrayOutput)
 }
 
+// The time window for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) TimeWindow() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger) *int {
 		if v == nil {
@@ -1477,12 +1556,16 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerPtrOutput) Tim
 }
 
 type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition struct {
+	// The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
 	ComparisonOperator string `pulumi:"comparisonOperator"`
-	MetricName         string `pulumi:"metricName"`
-	Statistics         string `pulumi:"statistics"`
+	// The metric name for this scaling rule specific metrics trigger.
+	MetricName string `pulumi:"metricName"`
+	// The statistics for this scaling rule specific metrics trigger.
+	Statistics string `pulumi:"statistics"`
 	// A mapping of tags to assign to the resource.
-	Tags      []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag `pulumi:"tags"`
-	Threshold float64                                                                  `pulumi:"threshold"`
+	Tags []ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag `pulumi:"tags"`
+	// The threshold for this scaling rule specific metrics trigger.
+	Threshold float64 `pulumi:"threshold"`
 }
 
 // ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs and ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput values.
@@ -1497,12 +1580,16 @@ type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionInput in
 }
 
 type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs struct {
+	// The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
 	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
-	MetricName         pulumi.StringInput `pulumi:"metricName"`
-	Statistics         pulumi.StringInput `pulumi:"statistics"`
+	// The metric name for this scaling rule specific metrics trigger.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The statistics for this scaling rule specific metrics trigger.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
 	// A mapping of tags to assign to the resource.
-	Tags      ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayInput `pulumi:"tags"`
-	Threshold pulumi.Float64Input                                                              `pulumi:"threshold"`
+	Tags ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayInput `pulumi:"tags"`
+	// The threshold for this scaling rule specific metrics trigger.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
 }
 
 func (ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs) ElementType() reflect.Type {
@@ -1556,18 +1643,21 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutpu
 	return o
 }
 
+// The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput) ComparisonOperator() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition) string {
 		return v.ComparisonOperator
 	}).(pulumi.StringOutput)
 }
 
+// The metric name for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition) string {
 		return v.MetricName
 	}).(pulumi.StringOutput)
 }
 
+// The statistics for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput) Statistics() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition) string {
 		return v.Statistics
@@ -1581,6 +1671,7 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutpu
 	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArrayOutput)
 }
 
+// The threshold for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition) float64 {
 		return v.Threshold
@@ -1608,7 +1699,9 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArray
 }
 
 type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag struct {
-	Key   string  `pulumi:"key"`
+	// The tag key for this scaling rule specific metrics trigger.
+	Key string `pulumi:"key"`
+	// The tag value for this scaling rule specific metrics trigger.
 	Value *string `pulumi:"value"`
 }
 
@@ -1624,7 +1717,9 @@ type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagInput
 }
 
 type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs struct {
-	Key   pulumi.StringInput    `pulumi:"key"`
+	// The tag key for this scaling rule specific metrics trigger.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The tag value for this scaling rule specific metrics trigger.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1679,10 +1774,12 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOu
 	return o
 }
 
+// The tag key for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The tag value for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1708,7 +1805,9 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagAr
 }
 
 type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint struct {
-	EndTime   *string `pulumi:"endTime"`
+	// The end time for this scaling rule specific metrics trigger.
+	EndTime *string `pulumi:"endTime"`
+	// The start time for this scaling rule specific metrics trigger.
 	StartTime *string `pulumi:"startTime"`
 }
 
@@ -1724,7 +1823,9 @@ type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintInp
 }
 
 type ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs struct {
-	EndTime   pulumi.StringPtrInput `pulumi:"endTime"`
+	// The end time for this scaling rule specific metrics trigger.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// The start time for this scaling rule specific metrics trigger.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
 
@@ -1779,12 +1880,14 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint
 	return o
 }
 
+// The end time for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint) *string {
 		return v.EndTime
 	}).(pulumi.StringPtrOutput)
 }
 
+// The start time for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint) *string {
 		return v.StartTime
@@ -1812,12 +1915,18 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint
 }
 
 type ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger struct {
-	EndTime              *string `pulumi:"endTime"`
-	LaunchExpirationTime *int    `pulumi:"launchExpirationTime"`
-	LaunchTime           string  `pulumi:"launchTime"`
-	RecurrenceType       *string `pulumi:"recurrenceType"`
-	RecurrenceValue      *string `pulumi:"recurrenceValue"`
-	StartTime            *string `pulumi:"startTime"`
+	// The end time for this scaling rule specific metrics trigger.
+	EndTime *string `pulumi:"endTime"`
+	// The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
+	LaunchExpirationTime *int `pulumi:"launchExpirationTime"`
+	// The launch time for this scaling rule specific time trigger.
+	LaunchTime string `pulumi:"launchTime"`
+	// The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
+	RecurrenceType *string `pulumi:"recurrenceType"`
+	// The recurrence value for this scaling rule specific time trigger.
+	RecurrenceValue *string `pulumi:"recurrenceValue"`
+	// The start time for this scaling rule specific metrics trigger.
+	StartTime *string `pulumi:"startTime"`
 }
 
 // ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerInput is an input type that accepts ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs and ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput values.
@@ -1832,12 +1941,18 @@ type ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerInput interface {
 }
 
 type ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs struct {
-	EndTime              pulumi.StringPtrInput `pulumi:"endTime"`
-	LaunchExpirationTime pulumi.IntPtrInput    `pulumi:"launchExpirationTime"`
-	LaunchTime           pulumi.StringInput    `pulumi:"launchTime"`
-	RecurrenceType       pulumi.StringPtrInput `pulumi:"recurrenceType"`
-	RecurrenceValue      pulumi.StringPtrInput `pulumi:"recurrenceValue"`
-	StartTime            pulumi.StringPtrInput `pulumi:"startTime"`
+	// The end time for this scaling rule specific metrics trigger.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
+	LaunchExpirationTime pulumi.IntPtrInput `pulumi:"launchExpirationTime"`
+	// The launch time for this scaling rule specific time trigger.
+	LaunchTime pulumi.StringInput `pulumi:"launchTime"`
+	// The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
+	RecurrenceType pulumi.StringPtrInput `pulumi:"recurrenceType"`
+	// The recurrence value for this scaling rule specific time trigger.
+	RecurrenceValue pulumi.StringPtrInput `pulumi:"recurrenceValue"`
+	// The start time for this scaling rule specific metrics trigger.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
 
 func (ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs) ElementType() reflect.Type {
@@ -1917,26 +2032,32 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) ToCluster
 	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput)
 }
 
+// The end time for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) LaunchExpirationTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *int { return v.LaunchExpirationTime }).(pulumi.IntPtrOutput)
 }
 
+// The launch time for this scaling rule specific time trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) LaunchTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) string { return v.LaunchTime }).(pulumi.StringOutput)
 }
 
+// The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) RecurrenceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string { return v.RecurrenceType }).(pulumi.StringPtrOutput)
 }
 
+// The recurrence value for this scaling rule specific time trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) RecurrenceValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string { return v.RecurrenceValue }).(pulumi.StringPtrOutput)
 }
 
+// The start time for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
@@ -1965,6 +2086,7 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) Elem()
 	}).(ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerOutput)
 }
 
+// The end time for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string {
 		if v == nil {
@@ -1974,6 +2096,7 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) EndTim
 	}).(pulumi.StringPtrOutput)
 }
 
+// The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) LaunchExpirationTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *int {
 		if v == nil {
@@ -1983,6 +2106,7 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) Launch
 	}).(pulumi.IntPtrOutput)
 }
 
+// The launch time for this scaling rule specific time trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) LaunchTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string {
 		if v == nil {
@@ -1992,6 +2116,7 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) Launch
 	}).(pulumi.StringPtrOutput)
 }
 
+// The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) RecurrenceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string {
 		if v == nil {
@@ -2001,6 +2126,7 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) Recurr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The recurrence value for this scaling rule specific time trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) RecurrenceValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string {
 		if v == nil {
@@ -2010,6 +2136,7 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) Recurr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The start time for this scaling rule specific metrics trigger.
 func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger) *string {
 		if v == nil {
@@ -2020,9 +2147,12 @@ func (o ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerPtrOutput) StartT
 }
 
 type ClusterNodeGroupCostOptimizedConfig struct {
-	OnDemandBaseCapacity                int `pulumi:"onDemandBaseCapacity"`
+	// The cost optimized configuration which on demand based capacity.
+	OnDemandBaseCapacity int `pulumi:"onDemandBaseCapacity"`
+	// The cost optimized configuration which on demand percentage above based capacity.
 	OnDemandPercentageAboveBaseCapacity int `pulumi:"onDemandPercentageAboveBaseCapacity"`
-	SpotInstancePools                   int `pulumi:"spotInstancePools"`
+	// The cost optimized configuration with spot instance pools.
+	SpotInstancePools int `pulumi:"spotInstancePools"`
 }
 
 // ClusterNodeGroupCostOptimizedConfigInput is an input type that accepts ClusterNodeGroupCostOptimizedConfigArgs and ClusterNodeGroupCostOptimizedConfigOutput values.
@@ -2037,9 +2167,12 @@ type ClusterNodeGroupCostOptimizedConfigInput interface {
 }
 
 type ClusterNodeGroupCostOptimizedConfigArgs struct {
-	OnDemandBaseCapacity                pulumi.IntInput `pulumi:"onDemandBaseCapacity"`
+	// The cost optimized configuration which on demand based capacity.
+	OnDemandBaseCapacity pulumi.IntInput `pulumi:"onDemandBaseCapacity"`
+	// The cost optimized configuration which on demand percentage above based capacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntInput `pulumi:"onDemandPercentageAboveBaseCapacity"`
-	SpotInstancePools                   pulumi.IntInput `pulumi:"spotInstancePools"`
+	// The cost optimized configuration with spot instance pools.
+	SpotInstancePools pulumi.IntInput `pulumi:"spotInstancePools"`
 }
 
 func (ClusterNodeGroupCostOptimizedConfigArgs) ElementType() reflect.Type {
@@ -2119,14 +2252,17 @@ func (o ClusterNodeGroupCostOptimizedConfigOutput) ToClusterNodeGroupCostOptimiz
 	}).(ClusterNodeGroupCostOptimizedConfigPtrOutput)
 }
 
+// The cost optimized configuration which on demand based capacity.
 func (o ClusterNodeGroupCostOptimizedConfigOutput) OnDemandBaseCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupCostOptimizedConfig) int { return v.OnDemandBaseCapacity }).(pulumi.IntOutput)
 }
 
+// The cost optimized configuration which on demand percentage above based capacity.
 func (o ClusterNodeGroupCostOptimizedConfigOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupCostOptimizedConfig) int { return v.OnDemandPercentageAboveBaseCapacity }).(pulumi.IntOutput)
 }
 
+// The cost optimized configuration with spot instance pools.
 func (o ClusterNodeGroupCostOptimizedConfigOutput) SpotInstancePools() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupCostOptimizedConfig) int { return v.SpotInstancePools }).(pulumi.IntOutput)
 }
@@ -2155,6 +2291,7 @@ func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) Elem() ClusterNodeGroupCos
 	}).(ClusterNodeGroupCostOptimizedConfigOutput)
 }
 
+// The cost optimized configuration which on demand based capacity.
 func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) OnDemandBaseCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupCostOptimizedConfig) *int {
 		if v == nil {
@@ -2164,6 +2301,7 @@ func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) OnDemandBaseCapacity() pul
 	}).(pulumi.IntPtrOutput)
 }
 
+// The cost optimized configuration which on demand percentage above based capacity.
 func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupCostOptimizedConfig) *int {
 		if v == nil {
@@ -2173,6 +2311,7 @@ func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) OnDemandPercentageAboveBas
 	}).(pulumi.IntPtrOutput)
 }
 
+// The cost optimized configuration with spot instance pools.
 func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) SpotInstancePools() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupCostOptimizedConfig) *int {
 		if v == nil {
@@ -2183,10 +2322,14 @@ func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) SpotInstancePools() pulumi
 }
 
 type ClusterNodeGroupDataDisk struct {
-	Category         string  `pulumi:"category"`
-	Count            *int    `pulumi:"count"`
+	// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+	Category string `pulumi:"category"`
+	// The count of a data disk.
+	Count *int `pulumi:"count"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	Size             int     `pulumi:"size"`
+	// The size of a data disk, at least 40. Unit: GiB.
+	Size int `pulumi:"size"`
 }
 
 // ClusterNodeGroupDataDiskInput is an input type that accepts ClusterNodeGroupDataDiskArgs and ClusterNodeGroupDataDiskOutput values.
@@ -2201,10 +2344,14 @@ type ClusterNodeGroupDataDiskInput interface {
 }
 
 type ClusterNodeGroupDataDiskArgs struct {
-	Category         pulumi.StringInput    `pulumi:"category"`
-	Count            pulumi.IntPtrInput    `pulumi:"count"`
+	// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The count of a data disk.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	Size             pulumi.IntInput       `pulumi:"size"`
+	// The size of a data disk, at least 40. Unit: GiB.
+	Size pulumi.IntInput `pulumi:"size"`
 }
 
 func (ClusterNodeGroupDataDiskArgs) ElementType() reflect.Type {
@@ -2258,18 +2405,22 @@ func (o ClusterNodeGroupDataDiskOutput) ToClusterNodeGroupDataDiskOutputWithCont
 	return o
 }
 
+// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
 func (o ClusterNodeGroupDataDiskOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupDataDisk) string { return v.Category }).(pulumi.StringOutput)
 }
 
+// The count of a data disk.
 func (o ClusterNodeGroupDataDiskOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupDataDisk) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
+// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
 func (o ClusterNodeGroupDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
+// The size of a data disk, at least 40. Unit: GiB.
 func (o ClusterNodeGroupDataDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupDataDisk) int { return v.Size }).(pulumi.IntOutput)
 }
@@ -2295,7 +2446,9 @@ func (o ClusterNodeGroupDataDiskArrayOutput) Index(i pulumi.IntInput) ClusterNod
 }
 
 type ClusterNodeGroupSpotBidPrice struct {
-	BidPrice     int    `pulumi:"bidPrice"`
+	// The spot bid price of a PayAsYouGo instance.
+	BidPrice int `pulumi:"bidPrice"`
+	// Host Ecs instance type.
 	InstanceType string `pulumi:"instanceType"`
 }
 
@@ -2311,7 +2464,9 @@ type ClusterNodeGroupSpotBidPriceInput interface {
 }
 
 type ClusterNodeGroupSpotBidPriceArgs struct {
-	BidPrice     pulumi.IntInput    `pulumi:"bidPrice"`
+	// The spot bid price of a PayAsYouGo instance.
+	BidPrice pulumi.IntInput `pulumi:"bidPrice"`
+	// Host Ecs instance type.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
 }
 
@@ -2366,10 +2521,12 @@ func (o ClusterNodeGroupSpotBidPriceOutput) ToClusterNodeGroupSpotBidPriceOutput
 	return o
 }
 
+// The spot bid price of a PayAsYouGo instance.
 func (o ClusterNodeGroupSpotBidPriceOutput) BidPrice() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSpotBidPrice) int { return v.BidPrice }).(pulumi.IntOutput)
 }
 
+// Host Ecs instance type.
 func (o ClusterNodeGroupSpotBidPriceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSpotBidPrice) string { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -2627,10 +2784,14 @@ func (o ClusterNodeGroupSubscriptionConfigPtrOutput) PaymentDurationUnit() pulum
 }
 
 type ClusterNodeGroupSystemDisk struct {
-	Category         string  `pulumi:"category"`
-	Count            *int    `pulumi:"count"`
+	// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+	Category string `pulumi:"category"`
+	// The count of a data disk.
+	Count *int `pulumi:"count"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	Size             int     `pulumi:"size"`
+	// The size of a data disk, at least 40. Unit: GiB.
+	Size int `pulumi:"size"`
 }
 
 // ClusterNodeGroupSystemDiskInput is an input type that accepts ClusterNodeGroupSystemDiskArgs and ClusterNodeGroupSystemDiskOutput values.
@@ -2645,10 +2806,14 @@ type ClusterNodeGroupSystemDiskInput interface {
 }
 
 type ClusterNodeGroupSystemDiskArgs struct {
-	Category         pulumi.StringInput    `pulumi:"category"`
-	Count            pulumi.IntPtrInput    `pulumi:"count"`
+	// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The count of a data disk.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	Size             pulumi.IntInput       `pulumi:"size"`
+	// The size of a data disk, at least 40. Unit: GiB.
+	Size pulumi.IntInput `pulumi:"size"`
 }
 
 func (ClusterNodeGroupSystemDiskArgs) ElementType() reflect.Type {
@@ -2677,18 +2842,22 @@ func (o ClusterNodeGroupSystemDiskOutput) ToClusterNodeGroupSystemDiskOutputWith
 	return o
 }
 
+// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
 func (o ClusterNodeGroupSystemDiskOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSystemDisk) string { return v.Category }).(pulumi.StringOutput)
 }
 
+// The count of a data disk.
 func (o ClusterNodeGroupSystemDiskOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSystemDisk) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
+// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
 func (o ClusterNodeGroupSystemDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSystemDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
+// The size of a data disk, at least 40. Unit: GiB.
 func (o ClusterNodeGroupSystemDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSystemDisk) int { return v.Size }).(pulumi.IntOutput)
 }

@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Ess.Outputs
     [OutputType]
     public sealed class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
     {
+        /// <summary>
+        /// The content of the configuration file. Maximum size: 32 KB.
+        /// </summary>
         public readonly string? Content;
+        /// <summary>
+        /// The relative file path.
+        /// </summary>
         public readonly string? Path;
 
         [OutputConstructor]

@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     [OutputType]
     public sealed class ServiceMeshMeshConfigControlPlaneLog
     {
+        /// <summary>
+        /// Enable CNI.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Lifecycle of logs has been collected to Alibaba Cloud SLS.
+        /// </summary>
         public readonly int? LogTtlInDay;
+        /// <summary>
+        /// The name of the SLS Project to which the control plane logs are collected.
+        /// </summary>
         public readonly string? Project;
 
         [OutputConstructor]

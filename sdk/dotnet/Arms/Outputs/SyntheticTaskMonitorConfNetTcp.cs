@@ -13,12 +13,33 @@ namespace Pulumi.AliCloud.Arms.Outputs
     [OutputType]
     public sealed class SyntheticTaskMonitorConfNetTcp
     {
+        /// <summary>
+        /// The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
+        /// </summary>
         public readonly int? ConnectTimes;
+        /// <summary>
+        /// The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+        /// </summary>
         public readonly int? Interval;
+        /// <summary>
+        /// The target URL.
+        /// </summary>
         public readonly string TargetUrl;
+        /// <summary>
+        /// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+        /// </summary>
         public readonly int? Timeout;
+        /// <summary>
+        /// Whether to enable tracert. The default is true.
+        /// </summary>
         public readonly bool? TracertEnable;
+        /// <summary>
+        /// The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+        /// </summary>
         public readonly int? TracertNumMax;
+        /// <summary>
+        /// The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+        /// </summary>
         public readonly int? TracertTimeout;
 
         [OutputConstructor]

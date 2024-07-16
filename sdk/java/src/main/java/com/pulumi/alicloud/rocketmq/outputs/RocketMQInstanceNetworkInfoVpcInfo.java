@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class RocketMQInstanceNetworkInfoVpcInfo {
+    /**
+     * @return Proprietary Network.
+     * 
+     */
     private String vpcId;
+    /**
+     * @return VPC network switch.
+     * 
+     */
     private String vswitchId;
 
     private RocketMQInstanceNetworkInfoVpcInfo() {}
+    /**
+     * @return Proprietary Network.
+     * 
+     */
     public String vpcId() {
         return this.vpcId;
     }
+    /**
+     * @return VPC network switch.
+     * 
+     */
     public String vswitchId() {
         return this.vswitchId;
     }

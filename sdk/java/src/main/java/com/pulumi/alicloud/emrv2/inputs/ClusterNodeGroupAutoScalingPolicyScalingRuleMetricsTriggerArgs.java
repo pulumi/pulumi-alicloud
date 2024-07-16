@@ -20,44 +20,92 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArg
 
     public static final ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs Empty = new ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs();
 
+    /**
+     * The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
+     * 
+     */
     @Import(name="conditionLogicOperator")
     private @Nullable Output<String> conditionLogicOperator;
 
+    /**
+     * @return The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
+     * 
+     */
     public Optional<Output<String>> conditionLogicOperator() {
         return Optional.ofNullable(this.conditionLogicOperator);
     }
 
+    /**
+     * The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+     * 
+     */
     @Import(name="conditions")
     private @Nullable Output<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs>> conditions;
 
+    /**
+     * @return The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+     * 
+     */
     public Optional<Output<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs>>> conditions() {
         return Optional.ofNullable(this.conditions);
     }
 
+    /**
+     * The time of cool down interval for this scaling rule specific metrics trigger.
+     * 
+     */
     @Import(name="coolDownInterval")
     private @Nullable Output<Integer> coolDownInterval;
 
+    /**
+     * @return The time of cool down interval for this scaling rule specific metrics trigger.
+     * 
+     */
     public Optional<Output<Integer>> coolDownInterval() {
         return Optional.ofNullable(this.coolDownInterval);
     }
 
+    /**
+     * The evaluation count for this scaling rule specific metrics trigger.
+     * 
+     */
     @Import(name="evaluationCount", required=true)
     private Output<Integer> evaluationCount;
 
+    /**
+     * @return The evaluation count for this scaling rule specific metrics trigger.
+     * 
+     */
     public Output<Integer> evaluationCount() {
         return this.evaluationCount;
     }
 
+    /**
+     * The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+     * 
+     */
     @Import(name="timeConstraints")
     private @Nullable Output<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs>> timeConstraints;
 
+    /**
+     * @return The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+     * 
+     */
     public Optional<Output<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs>>> timeConstraints() {
         return Optional.ofNullable(this.timeConstraints);
     }
 
+    /**
+     * The time window for this scaling rule specific metrics trigger.
+     * 
+     */
     @Import(name="timeWindow", required=true)
     private Output<Integer> timeWindow;
 
+    /**
+     * @return The time window for this scaling rule specific metrics trigger.
+     * 
+     */
     public Output<Integer> timeWindow() {
         return this.timeWindow;
     }
@@ -91,64 +139,148 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArg
             $ = new ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param conditionLogicOperator The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditionLogicOperator(@Nullable Output<String> conditionLogicOperator) {
             $.conditionLogicOperator = conditionLogicOperator;
             return this;
         }
 
+        /**
+         * @param conditionLogicOperator The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditionLogicOperator(String conditionLogicOperator) {
             return conditionLogicOperator(Output.of(conditionLogicOperator));
         }
 
+        /**
+         * @param conditions The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(@Nullable Output<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs>> conditions) {
             $.conditions = conditions;
             return this;
         }
 
+        /**
+         * @param conditions The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs> conditions) {
             return conditions(Output.of(conditions));
         }
 
+        /**
+         * @param conditions The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs... conditions) {
             return conditions(List.of(conditions));
         }
 
+        /**
+         * @param coolDownInterval The time of cool down interval for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder coolDownInterval(@Nullable Output<Integer> coolDownInterval) {
             $.coolDownInterval = coolDownInterval;
             return this;
         }
 
+        /**
+         * @param coolDownInterval The time of cool down interval for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder coolDownInterval(Integer coolDownInterval) {
             return coolDownInterval(Output.of(coolDownInterval));
         }
 
+        /**
+         * @param evaluationCount The evaluation count for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluationCount(Output<Integer> evaluationCount) {
             $.evaluationCount = evaluationCount;
             return this;
         }
 
+        /**
+         * @param evaluationCount The evaluation count for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder evaluationCount(Integer evaluationCount) {
             return evaluationCount(Output.of(evaluationCount));
         }
 
+        /**
+         * @param timeConstraints The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeConstraints(@Nullable Output<List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs>> timeConstraints) {
             $.timeConstraints = timeConstraints;
             return this;
         }
 
+        /**
+         * @param timeConstraints The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeConstraints(List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs> timeConstraints) {
             return timeConstraints(Output.of(timeConstraints));
         }
 
+        /**
+         * @param timeConstraints The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeConstraints(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs... timeConstraints) {
             return timeConstraints(List.of(timeConstraints));
         }
 
+        /**
+         * @param timeWindow The time window for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeWindow(Output<Integer> timeWindow) {
             $.timeWindow = timeWindow;
             return this;
         }
 
+        /**
+         * @param timeWindow The time window for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeWindow(Integer timeWindow) {
             return timeWindow(Output.of(timeWindow));
         }

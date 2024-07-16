@@ -15,81 +15,247 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SyntheticTaskMonitorConfWebsite {
+    /**
+     * @return Whether to support automatic scrolling screen, loading page.
+     * - 0 (default): No
+     *   1: Yes.
+     * 
+     */
     private @Nullable Integer automaticScrolling;
+    /**
+     * @return Custom header.
+     * - 0 (default): Off
+     * - 1: Modify the first package
+     * - 2: Modify all packages.
+     * 
+     */
     private @Nullable Integer customHeader;
+    /**
+     * @return Custom header, in JSON Map format.
+     * 
+     */
     private @Nullable Map<String,Object> customHeaderContent;
+    /**
+     * @return Whether to disable caching.
+     * - 0: not disabled
+     * - 1 (default): Disabled.
+     * 
+     */
     private @Nullable Integer disableCache;
+    /**
+     * @return The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
+     * 
+     */
     private @Nullable Integer disableCompression;
+    /**
+     * @return When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+     * 
+     */
     private @Nullable String dnsHijackWhitelist;
+    /**
+     * @return If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
+     * 
+     */
     private @Nullable String elementBlacklist;
+    /**
+     * @return Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
+     * 
+     */
     private @Nullable Integer filterInvalidIp;
+    /**
+     * @return Identify elements: Set the total number of elements on the Browse page.
+     * 
+     */
     private @Nullable Integer flowHijackJumpTimes;
+    /**
+     * @return Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
+     * 
+     */
     private @Nullable String flowHijackLogo;
+    /**
+     * @return Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
+     * 
+     */
     private @Nullable Integer ignoreCertificateError;
+    /**
+     * @return Monitoring timeout, in ms. Not required, 20000 by default.
+     * 
+     */
     private @Nullable Integer monitorTimeout;
+    /**
+     * @return Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+     * 
+     */
     private @Nullable String pageTamper;
+    /**
+     * @return When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+     * 
+     */
     private @Nullable Integer redirection;
+    /**
+     * @return The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
+     * 
+     */
     private @Nullable Integer slowElementThreshold;
+    /**
+     * @return The target URL.
+     * 
+     */
     private String targetUrl;
+    /**
+     * @return The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+     * 
+     */
     private @Nullable String verifyStringBlacklist;
+    /**
+     * @return The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+     * 
+     */
     private @Nullable String verifyStringWhitelist;
+    /**
+     * @return The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
+     * 
+     */
     private @Nullable Integer waitCompletionTime;
 
     private SyntheticTaskMonitorConfWebsite() {}
+    /**
+     * @return Whether to support automatic scrolling screen, loading page.
+     * - 0 (default): No
+     *   1: Yes.
+     * 
+     */
     public Optional<Integer> automaticScrolling() {
         return Optional.ofNullable(this.automaticScrolling);
     }
+    /**
+     * @return Custom header.
+     * - 0 (default): Off
+     * - 1: Modify the first package
+     * - 2: Modify all packages.
+     * 
+     */
     public Optional<Integer> customHeader() {
         return Optional.ofNullable(this.customHeader);
     }
+    /**
+     * @return Custom header, in JSON Map format.
+     * 
+     */
     public Map<String,Object> customHeaderContent() {
         return this.customHeaderContent == null ? Map.of() : this.customHeaderContent;
     }
+    /**
+     * @return Whether to disable caching.
+     * - 0: not disabled
+     * - 1 (default): Disabled.
+     * 
+     */
     public Optional<Integer> disableCache() {
         return Optional.ofNullable(this.disableCache);
     }
+    /**
+     * @return The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
+     * 
+     */
     public Optional<Integer> disableCompression() {
         return Optional.ofNullable(this.disableCompression);
     }
+    /**
+     * @return When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+     * 
+     */
     public Optional<String> dnsHijackWhitelist() {
         return Optional.ofNullable(this.dnsHijackWhitelist);
     }
+    /**
+     * @return If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
+     * 
+     */
     public Optional<String> elementBlacklist() {
         return Optional.ofNullable(this.elementBlacklist);
     }
+    /**
+     * @return Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
+     * 
+     */
     public Optional<Integer> filterInvalidIp() {
         return Optional.ofNullable(this.filterInvalidIp);
     }
+    /**
+     * @return Identify elements: Set the total number of elements on the Browse page.
+     * 
+     */
     public Optional<Integer> flowHijackJumpTimes() {
         return Optional.ofNullable(this.flowHijackJumpTimes);
     }
+    /**
+     * @return Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
+     * 
+     */
     public Optional<String> flowHijackLogo() {
         return Optional.ofNullable(this.flowHijackLogo);
     }
+    /**
+     * @return Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
+     * 
+     */
     public Optional<Integer> ignoreCertificateError() {
         return Optional.ofNullable(this.ignoreCertificateError);
     }
+    /**
+     * @return Monitoring timeout, in ms. Not required, 20000 by default.
+     * 
+     */
     public Optional<Integer> monitorTimeout() {
         return Optional.ofNullable(this.monitorTimeout);
     }
+    /**
+     * @return Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+     * 
+     */
     public Optional<String> pageTamper() {
         return Optional.ofNullable(this.pageTamper);
     }
+    /**
+     * @return When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+     * 
+     */
     public Optional<Integer> redirection() {
         return Optional.ofNullable(this.redirection);
     }
+    /**
+     * @return The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
+     * 
+     */
     public Optional<Integer> slowElementThreshold() {
         return Optional.ofNullable(this.slowElementThreshold);
     }
+    /**
+     * @return The target URL.
+     * 
+     */
     public String targetUrl() {
         return this.targetUrl;
     }
+    /**
+     * @return The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+     * 
+     */
     public Optional<String> verifyStringBlacklist() {
         return Optional.ofNullable(this.verifyStringBlacklist);
     }
+    /**
+     * @return The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+     * 
+     */
     public Optional<String> verifyStringWhitelist() {
         return Optional.ofNullable(this.verifyStringWhitelist);
     }
+    /**
+     * @return The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
+     * 
+     */
     public Optional<Integer> waitCompletionTime() {
         return Optional.ofNullable(this.waitCompletionTime);
     }

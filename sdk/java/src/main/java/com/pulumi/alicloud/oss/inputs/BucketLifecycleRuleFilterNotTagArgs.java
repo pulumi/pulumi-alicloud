@@ -14,16 +14,32 @@ public final class BucketLifecycleRuleFilterNotTagArgs extends com.pulumi.resour
 
     public static final BucketLifecycleRuleFilterNotTagArgs Empty = new BucketLifecycleRuleFilterNotTagArgs();
 
+    /**
+     * The key of the tag that is specified for the objects.
+     * 
+     */
     @Import(name="key", required=true)
     private Output<String> key;
 
+    /**
+     * @return The key of the tag that is specified for the objects.
+     * 
+     */
     public Output<String> key() {
         return this.key;
     }
 
+    /**
+     * The value of the tag that is specified for the objects.
+     * 
+     */
     @Import(name="value", required=true)
     private Output<String> value;
 
+    /**
+     * @return The value of the tag that is specified for the objects.
+     * 
+     */
     public Output<String> value() {
         return this.value;
     }
@@ -53,20 +69,44 @@ public final class BucketLifecycleRuleFilterNotTagArgs extends com.pulumi.resour
             $ = new BucketLifecycleRuleFilterNotTagArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key The key of the tag that is specified for the objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key The key of the tag that is specified for the objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param value The value of the tag that is specified for the objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The value of the tag that is specified for the objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
+    /**
+     * @return The ID of the endpoint group.
+     * 
+     */
     private String endpointGroupId;
 
     private ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple() {}
+    /**
+     * @return The ID of the endpoint group.
+     * 
+     */
     public String endpointGroupId() {
         return this.endpointGroupId;
     }

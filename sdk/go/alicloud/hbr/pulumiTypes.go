@@ -14,6 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type OtsBackupPlanOtsDetail struct {
+	// The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
 	TableNames []string `pulumi:"tableNames"`
 }
 
@@ -29,6 +30,7 @@ type OtsBackupPlanOtsDetailInput interface {
 }
 
 type OtsBackupPlanOtsDetailArgs struct {
+	// The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
 	TableNames pulumi.StringArrayInput `pulumi:"tableNames"`
 }
 
@@ -83,6 +85,7 @@ func (o OtsBackupPlanOtsDetailOutput) ToOtsBackupPlanOtsDetailOutputWithContext(
 	return o
 }
 
+// The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
 func (o OtsBackupPlanOtsDetailOutput) TableNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OtsBackupPlanOtsDetail) []string { return v.TableNames }).(pulumi.StringArrayOutput)
 }
@@ -114,7 +117,8 @@ type OtsBackupPlanRule struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Backup retention days, the minimum is 1.
 	Retention *string `pulumi:"retention"`
-	RuleName  *string `pulumi:"ruleName"`
+	// The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
+	RuleName *string `pulumi:"ruleName"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	// - `startTime` Backup start time, UNIX time seconds.
 	Schedule *string `pulumi:"schedule"`
@@ -138,7 +142,8 @@ type OtsBackupPlanRuleArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringPtrInput `pulumi:"retention"`
-	RuleName  pulumi.StringPtrInput `pulumi:"ruleName"`
+	// The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
+	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
 	// - `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
@@ -210,6 +215,7 @@ func (o OtsBackupPlanRuleOutput) Retention() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.Retention }).(pulumi.StringPtrOutput)
 }
 
+// The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
 func (o OtsBackupPlanRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.RuleName }).(pulumi.StringPtrOutput)
 }
@@ -378,9 +384,12 @@ func (o PolicyBindingAdvancedOptionsPtrOutput) UdmDetail() PolicyBindingAdvanced
 }
 
 type PolicyBindingAdvancedOptionsUdmDetail struct {
-	DestinationKmsKeyId *string  `pulumi:"destinationKmsKeyId"`
-	DiskIdLists         []string `pulumi:"diskIdLists"`
-	ExcludeDiskIdLists  []string `pulumi:"excludeDiskIdLists"`
+	// Custom KMS key ID of encrypted copy.
+	DestinationKmsKeyId *string `pulumi:"destinationKmsKeyId"`
+	// The list of backup disks. If it is empty, all disks are backed up.
+	DiskIdLists []string `pulumi:"diskIdLists"`
+	// List of cloud disk IDs that are not backed up.
+	ExcludeDiskIdLists []string `pulumi:"excludeDiskIdLists"`
 }
 
 // PolicyBindingAdvancedOptionsUdmDetailInput is an input type that accepts PolicyBindingAdvancedOptionsUdmDetailArgs and PolicyBindingAdvancedOptionsUdmDetailOutput values.
@@ -395,9 +404,12 @@ type PolicyBindingAdvancedOptionsUdmDetailInput interface {
 }
 
 type PolicyBindingAdvancedOptionsUdmDetailArgs struct {
-	DestinationKmsKeyId pulumi.StringPtrInput   `pulumi:"destinationKmsKeyId"`
-	DiskIdLists         pulumi.StringArrayInput `pulumi:"diskIdLists"`
-	ExcludeDiskIdLists  pulumi.StringArrayInput `pulumi:"excludeDiskIdLists"`
+	// Custom KMS key ID of encrypted copy.
+	DestinationKmsKeyId pulumi.StringPtrInput `pulumi:"destinationKmsKeyId"`
+	// The list of backup disks. If it is empty, all disks are backed up.
+	DiskIdLists pulumi.StringArrayInput `pulumi:"diskIdLists"`
+	// List of cloud disk IDs that are not backed up.
+	ExcludeDiskIdLists pulumi.StringArrayInput `pulumi:"excludeDiskIdLists"`
 }
 
 func (PolicyBindingAdvancedOptionsUdmDetailArgs) ElementType() reflect.Type {
@@ -477,14 +489,17 @@ func (o PolicyBindingAdvancedOptionsUdmDetailOutput) ToPolicyBindingAdvancedOpti
 	}).(PolicyBindingAdvancedOptionsUdmDetailPtrOutput)
 }
 
+// Custom KMS key ID of encrypted copy.
 func (o PolicyBindingAdvancedOptionsUdmDetailOutput) DestinationKmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) *string { return v.DestinationKmsKeyId }).(pulumi.StringPtrOutput)
 }
 
+// The list of backup disks. If it is empty, all disks are backed up.
 func (o PolicyBindingAdvancedOptionsUdmDetailOutput) DiskIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) []string { return v.DiskIdLists }).(pulumi.StringArrayOutput)
 }
 
+// List of cloud disk IDs that are not backed up.
 func (o PolicyBindingAdvancedOptionsUdmDetailOutput) ExcludeDiskIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) []string { return v.ExcludeDiskIdLists }).(pulumi.StringArrayOutput)
 }
@@ -513,6 +528,7 @@ func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) Elem() PolicyBindingAdva
 	}).(PolicyBindingAdvancedOptionsUdmDetailOutput)
 }
 
+// Custom KMS key ID of encrypted copy.
 func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) DestinationKmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) *string {
 		if v == nil {
@@ -522,6 +538,7 @@ func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) DestinationKmsKeyId() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The list of backup disks. If it is empty, all disks are backed up.
 func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) DiskIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) []string {
 		if v == nil {
@@ -531,6 +548,7 @@ func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) DiskIdLists() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
+// List of cloud disk IDs that are not backed up.
 func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) ExcludeDiskIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) []string {
 		if v == nil {
@@ -719,8 +737,10 @@ func (o PolicyRuleArrayOutput) Index(i pulumi.IntInput) PolicyRuleOutput {
 }
 
 type PolicyRuleRetentionRule struct {
+	// Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
 	AdvancedRetentionType *string `pulumi:"advancedRetentionType"`
-	Retention             *int    `pulumi:"retention"`
+	// Retention time, in days.
+	Retention *int `pulumi:"retention"`
 }
 
 // PolicyRuleRetentionRuleInput is an input type that accepts PolicyRuleRetentionRuleArgs and PolicyRuleRetentionRuleOutput values.
@@ -735,8 +755,10 @@ type PolicyRuleRetentionRuleInput interface {
 }
 
 type PolicyRuleRetentionRuleArgs struct {
+	// Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
 	AdvancedRetentionType pulumi.StringPtrInput `pulumi:"advancedRetentionType"`
-	Retention             pulumi.IntPtrInput    `pulumi:"retention"`
+	// Retention time, in days.
+	Retention pulumi.IntPtrInput `pulumi:"retention"`
 }
 
 func (PolicyRuleRetentionRuleArgs) ElementType() reflect.Type {
@@ -790,10 +812,12 @@ func (o PolicyRuleRetentionRuleOutput) ToPolicyRuleRetentionRuleOutputWithContex
 	return o
 }
 
+// Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
 func (o PolicyRuleRetentionRuleOutput) AdvancedRetentionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyRuleRetentionRule) *string { return v.AdvancedRetentionType }).(pulumi.StringPtrOutput)
 }
 
+// Retention time, in days.
 func (o PolicyRuleRetentionRuleOutput) Retention() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PolicyRuleRetentionRule) *int { return v.Retention }).(pulumi.IntPtrOutput)
 }
@@ -819,6 +843,7 @@ func (o PolicyRuleRetentionRuleArrayOutput) Index(i pulumi.IntInput) PolicyRuleR
 }
 
 type RestoreJobOtsDetail struct {
+	// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
 	OverwriteExisting *bool `pulumi:"overwriteExisting"`
 }
 
@@ -834,6 +859,7 @@ type RestoreJobOtsDetailInput interface {
 }
 
 type RestoreJobOtsDetailArgs struct {
+	// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
 	OverwriteExisting pulumi.BoolPtrInput `pulumi:"overwriteExisting"`
 }
 
@@ -914,6 +940,7 @@ func (o RestoreJobOtsDetailOutput) ToRestoreJobOtsDetailPtrOutputWithContext(ctx
 	}).(RestoreJobOtsDetailPtrOutput)
 }
 
+// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
 func (o RestoreJobOtsDetailOutput) OverwriteExisting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RestoreJobOtsDetail) *bool { return v.OverwriteExisting }).(pulumi.BoolPtrOutput)
 }
@@ -942,6 +969,7 @@ func (o RestoreJobOtsDetailPtrOutput) Elem() RestoreJobOtsDetailOutput {
 	}).(RestoreJobOtsDetailOutput)
 }
 
+// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
 func (o RestoreJobOtsDetailPtrOutput) OverwriteExisting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RestoreJobOtsDetail) *bool {
 		if v == nil {
@@ -1130,9 +1158,14 @@ func (o ServerBackupPlanDetailArrayOutput) Index(i pulumi.IntInput) ServerBackup
 }
 
 type GetBackupJobsFilter struct {
-	Key      *string  `pulumi:"key"`
-	Operator *string  `pulumi:"operator"`
-	Values   []string `pulumi:"values"`
+	// The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+	Key *string `pulumi:"key"`
+	// The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
+	Operator *string `pulumi:"operator"`
+	// Set of values that are accepted for the given field.
+	//
+	// > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+	Values []string `pulumi:"values"`
 }
 
 // GetBackupJobsFilterInput is an input type that accepts GetBackupJobsFilterArgs and GetBackupJobsFilterOutput values.
@@ -1147,9 +1180,14 @@ type GetBackupJobsFilterInput interface {
 }
 
 type GetBackupJobsFilterArgs struct {
-	Key      pulumi.StringPtrInput   `pulumi:"key"`
-	Operator pulumi.StringPtrInput   `pulumi:"operator"`
-	Values   pulumi.StringArrayInput `pulumi:"values"`
+	// The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Set of values that are accepted for the given field.
+	//
+	// > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (GetBackupJobsFilterArgs) ElementType() reflect.Type {
@@ -1203,14 +1241,19 @@ func (o GetBackupJobsFilterOutput) ToGetBackupJobsFilterOutputWithContext(ctx co
 	return o
 }
 
+// The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
 func (o GetBackupJobsFilterOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackupJobsFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
 func (o GetBackupJobsFilterOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBackupJobsFilter) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
+// Set of values that are accepted for the given field.
+//
+// > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
 func (o GetBackupJobsFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackupJobsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -4346,7 +4389,9 @@ func (o GetRestoreJobsJobArrayOutput) Index(i pulumi.IntInput) GetRestoreJobsJob
 }
 
 type GetServerBackupPlansFilter struct {
-	Key    *string  `pulumi:"key"`
+	// The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+	Key *string `pulumi:"key"`
+	// Set of values that are accepted for the given field.
 	Values []string `pulumi:"values"`
 }
 
@@ -4362,7 +4407,9 @@ type GetServerBackupPlansFilterInput interface {
 }
 
 type GetServerBackupPlansFilterArgs struct {
-	Key    pulumi.StringPtrInput   `pulumi:"key"`
+	// The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Set of values that are accepted for the given field.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -4417,10 +4464,12 @@ func (o GetServerBackupPlansFilterOutput) ToGetServerBackupPlansFilterOutputWith
 	return o
 }
 
+// The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
 func (o GetServerBackupPlansFilterOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServerBackupPlansFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Set of values that are accepted for the given field.
 func (o GetServerBackupPlansFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerBackupPlansFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }

@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Bp.Outputs
     [OutputType]
     public sealed class StudioApplicationInstance
     {
+        /// <summary>
+        /// The id of the instance.
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The name of the instance.
+        /// </summary>
         public readonly string? NodeName;
+        /// <summary>
+        /// The type of the instance.
+        /// </summary>
         public readonly string? NodeType;
 
         [OutputConstructor]

@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionAuthParametersBasicAuthParameters {
+    /**
+     * @return The password for basic authentication.
+     * 
+     */
     private @Nullable String password;
+    /**
+     * @return The username for basic authentication.
+     * 
+     */
     private @Nullable String username;
 
     private ConnectionAuthParametersBasicAuthParameters() {}
+    /**
+     * @return The password for basic authentication.
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
+    /**
+     * @return The username for basic authentication.
+     * 
+     */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }

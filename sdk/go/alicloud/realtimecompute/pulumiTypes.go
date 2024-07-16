@@ -307,6 +307,7 @@ func (o VvpInstanceStoragePtrOutput) Oss() VvpInstanceStorageOssPtrOutput {
 }
 
 type VvpInstanceStorageOss struct {
+	// OSS Bucket name.
 	Bucket string `pulumi:"bucket"`
 }
 
@@ -322,6 +323,7 @@ type VvpInstanceStorageOssInput interface {
 }
 
 type VvpInstanceStorageOssArgs struct {
+	// OSS Bucket name.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
 }
 
@@ -402,6 +404,7 @@ func (o VvpInstanceStorageOssOutput) ToVvpInstanceStorageOssPtrOutputWithContext
 	}).(VvpInstanceStorageOssPtrOutput)
 }
 
+// OSS Bucket name.
 func (o VvpInstanceStorageOssOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v VvpInstanceStorageOss) string { return v.Bucket }).(pulumi.StringOutput)
 }
@@ -430,6 +433,7 @@ func (o VvpInstanceStorageOssPtrOutput) Elem() VvpInstanceStorageOssOutput {
 	}).(VvpInstanceStorageOssOutput)
 }
 
+// OSS Bucket name.
 func (o VvpInstanceStorageOssPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VvpInstanceStorageOss) *string {
 		if v == nil {

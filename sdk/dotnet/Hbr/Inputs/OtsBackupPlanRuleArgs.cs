@@ -30,6 +30,9 @@ namespace Pulumi.AliCloud.Hbr.Inputs
         [Input("retention")]
         public Input<string>? Retention { get; set; }
 
+        /// <summary>
+        /// The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+        /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 

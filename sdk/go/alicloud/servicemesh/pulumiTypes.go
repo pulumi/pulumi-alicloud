@@ -748,12 +748,18 @@ func (o ServiceMeshMeshConfigPtrOutput) Tracing() pulumi.BoolPtrOutput {
 }
 
 type ServiceMeshMeshConfigAccessLog struct {
-	Enabled          *bool   `pulumi:"enabled"`
-	GatewayEnabled   *bool   `pulumi:"gatewayEnabled"`
-	GatewayLifecycle *int    `pulumi:"gatewayLifecycle"`
-	Project          *string `pulumi:"project"`
-	SidecarEnabled   *bool   `pulumi:"sidecarEnabled"`
-	SidecarLifecycle *int    `pulumi:"sidecarLifecycle"`
+	// Enable CNI.
+	Enabled *bool `pulumi:"enabled"`
+	// Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+	GatewayEnabled *bool `pulumi:"gatewayEnabled"`
+	// Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+	GatewayLifecycle *int `pulumi:"gatewayLifecycle"`
+	// The name of the SLS Project to which the control plane logs are collected.
+	Project *string `pulumi:"project"`
+	// Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+	SidecarEnabled *bool `pulumi:"sidecarEnabled"`
+	// Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+	SidecarLifecycle *int `pulumi:"sidecarLifecycle"`
 }
 
 // ServiceMeshMeshConfigAccessLogInput is an input type that accepts ServiceMeshMeshConfigAccessLogArgs and ServiceMeshMeshConfigAccessLogOutput values.
@@ -768,12 +774,18 @@ type ServiceMeshMeshConfigAccessLogInput interface {
 }
 
 type ServiceMeshMeshConfigAccessLogArgs struct {
-	Enabled          pulumi.BoolPtrInput   `pulumi:"enabled"`
-	GatewayEnabled   pulumi.BoolPtrInput   `pulumi:"gatewayEnabled"`
-	GatewayLifecycle pulumi.IntPtrInput    `pulumi:"gatewayLifecycle"`
-	Project          pulumi.StringPtrInput `pulumi:"project"`
-	SidecarEnabled   pulumi.BoolPtrInput   `pulumi:"sidecarEnabled"`
-	SidecarLifecycle pulumi.IntPtrInput    `pulumi:"sidecarLifecycle"`
+	// Enable CNI.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+	GatewayEnabled pulumi.BoolPtrInput `pulumi:"gatewayEnabled"`
+	// Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+	GatewayLifecycle pulumi.IntPtrInput `pulumi:"gatewayLifecycle"`
+	// The name of the SLS Project to which the control plane logs are collected.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+	SidecarEnabled pulumi.BoolPtrInput `pulumi:"sidecarEnabled"`
+	// Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+	SidecarLifecycle pulumi.IntPtrInput `pulumi:"sidecarLifecycle"`
 }
 
 func (ServiceMeshMeshConfigAccessLogArgs) ElementType() reflect.Type {
@@ -853,26 +865,32 @@ func (o ServiceMeshMeshConfigAccessLogOutput) ToServiceMeshMeshConfigAccessLogPt
 	}).(ServiceMeshMeshConfigAccessLogPtrOutput)
 }
 
+// Enable CNI.
 func (o ServiceMeshMeshConfigAccessLogOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
 func (o ServiceMeshMeshConfigAccessLogOutput) GatewayEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *bool { return v.GatewayEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
 func (o ServiceMeshMeshConfigAccessLogOutput) GatewayLifecycle() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *int { return v.GatewayLifecycle }).(pulumi.IntPtrOutput)
 }
 
+// The name of the SLS Project to which the control plane logs are collected.
 func (o ServiceMeshMeshConfigAccessLogOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+// Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
 func (o ServiceMeshMeshConfigAccessLogOutput) SidecarEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *bool { return v.SidecarEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
 func (o ServiceMeshMeshConfigAccessLogOutput) SidecarLifecycle() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *int { return v.SidecarLifecycle }).(pulumi.IntPtrOutput)
 }
@@ -901,6 +919,7 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) Elem() ServiceMeshMeshConfigAcc
 	}).(ServiceMeshMeshConfigAccessLogOutput)
 }
 
+// Enable CNI.
 func (o ServiceMeshMeshConfigAccessLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAccessLog) *bool {
 		if v == nil {
@@ -910,6 +929,7 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) Enabled() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
 func (o ServiceMeshMeshConfigAccessLogPtrOutput) GatewayEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAccessLog) *bool {
 		if v == nil {
@@ -919,6 +939,7 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) GatewayEnabled() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
 func (o ServiceMeshMeshConfigAccessLogPtrOutput) GatewayLifecycle() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAccessLog) *int {
 		if v == nil {
@@ -928,6 +949,7 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) GatewayLifecycle() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// The name of the SLS Project to which the control plane logs are collected.
 func (o ServiceMeshMeshConfigAccessLogPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAccessLog) *string {
 		if v == nil {
@@ -937,6 +959,7 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) Project() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
 func (o ServiceMeshMeshConfigAccessLogPtrOutput) SidecarEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAccessLog) *bool {
 		if v == nil {
@@ -946,6 +969,7 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) SidecarEnabled() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
 func (o ServiceMeshMeshConfigAccessLogPtrOutput) SidecarLifecycle() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAccessLog) *int {
 		if v == nil {
@@ -956,7 +980,9 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) SidecarLifecycle() pulumi.IntPt
 }
 
 type ServiceMeshMeshConfigAudit struct {
-	Enabled *bool   `pulumi:"enabled"`
+	// Enable CNI.
+	Enabled *bool `pulumi:"enabled"`
+	// The name of the SLS Project to which the control plane logs are collected.
 	Project *string `pulumi:"project"`
 }
 
@@ -972,7 +998,9 @@ type ServiceMeshMeshConfigAuditInput interface {
 }
 
 type ServiceMeshMeshConfigAuditArgs struct {
-	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// Enable CNI.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The name of the SLS Project to which the control plane logs are collected.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
@@ -1053,10 +1081,12 @@ func (o ServiceMeshMeshConfigAuditOutput) ToServiceMeshMeshConfigAuditPtrOutputW
 	}).(ServiceMeshMeshConfigAuditPtrOutput)
 }
 
+// Enable CNI.
 func (o ServiceMeshMeshConfigAuditOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAudit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the SLS Project to which the control plane logs are collected.
 func (o ServiceMeshMeshConfigAuditOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAudit) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -1085,6 +1115,7 @@ func (o ServiceMeshMeshConfigAuditPtrOutput) Elem() ServiceMeshMeshConfigAuditOu
 	}).(ServiceMeshMeshConfigAuditOutput)
 }
 
+// Enable CNI.
 func (o ServiceMeshMeshConfigAuditPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAudit) *bool {
 		if v == nil {
@@ -1094,6 +1125,7 @@ func (o ServiceMeshMeshConfigAuditPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The name of the SLS Project to which the control plane logs are collected.
 func (o ServiceMeshMeshConfigAuditPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAudit) *string {
 		if v == nil {
@@ -1104,9 +1136,12 @@ func (o ServiceMeshMeshConfigAuditPtrOutput) Project() pulumi.StringPtrOutput {
 }
 
 type ServiceMeshMeshConfigControlPlaneLog struct {
-	Enabled     bool    `pulumi:"enabled"`
-	LogTtlInDay *int    `pulumi:"logTtlInDay"`
-	Project     *string `pulumi:"project"`
+	// Enable CNI.
+	Enabled bool `pulumi:"enabled"`
+	// Lifecycle of logs has been collected to Alibaba Cloud SLS.
+	LogTtlInDay *int `pulumi:"logTtlInDay"`
+	// The name of the SLS Project to which the control plane logs are collected.
+	Project *string `pulumi:"project"`
 }
 
 // ServiceMeshMeshConfigControlPlaneLogInput is an input type that accepts ServiceMeshMeshConfigControlPlaneLogArgs and ServiceMeshMeshConfigControlPlaneLogOutput values.
@@ -1121,9 +1156,12 @@ type ServiceMeshMeshConfigControlPlaneLogInput interface {
 }
 
 type ServiceMeshMeshConfigControlPlaneLogArgs struct {
-	Enabled     pulumi.BoolInput      `pulumi:"enabled"`
-	LogTtlInDay pulumi.IntPtrInput    `pulumi:"logTtlInDay"`
-	Project     pulumi.StringPtrInput `pulumi:"project"`
+	// Enable CNI.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Lifecycle of logs has been collected to Alibaba Cloud SLS.
+	LogTtlInDay pulumi.IntPtrInput `pulumi:"logTtlInDay"`
+	// The name of the SLS Project to which the control plane logs are collected.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (ServiceMeshMeshConfigControlPlaneLogArgs) ElementType() reflect.Type {
@@ -1203,14 +1241,17 @@ func (o ServiceMeshMeshConfigControlPlaneLogOutput) ToServiceMeshMeshConfigContr
 	}).(ServiceMeshMeshConfigControlPlaneLogPtrOutput)
 }
 
+// Enable CNI.
 func (o ServiceMeshMeshConfigControlPlaneLogOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigControlPlaneLog) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Lifecycle of logs has been collected to Alibaba Cloud SLS.
 func (o ServiceMeshMeshConfigControlPlaneLogOutput) LogTtlInDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigControlPlaneLog) *int { return v.LogTtlInDay }).(pulumi.IntPtrOutput)
 }
 
+// The name of the SLS Project to which the control plane logs are collected.
 func (o ServiceMeshMeshConfigControlPlaneLogOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigControlPlaneLog) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -1239,6 +1280,7 @@ func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Elem() ServiceMeshMeshCon
 	}).(ServiceMeshMeshConfigControlPlaneLogOutput)
 }
 
+// Enable CNI.
 func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigControlPlaneLog) *bool {
 		if v == nil {
@@ -1248,6 +1290,7 @@ func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Enabled() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Lifecycle of logs has been collected to Alibaba Cloud SLS.
 func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) LogTtlInDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigControlPlaneLog) *int {
 		if v == nil {
@@ -1257,6 +1300,7 @@ func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) LogTtlInDay() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
+// The name of the SLS Project to which the control plane logs are collected.
 func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigControlPlaneLog) *string {
 		if v == nil {
@@ -1267,6 +1311,7 @@ func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Project() pulumi.StringPt
 }
 
 type ServiceMeshMeshConfigKiali struct {
+	// Enable CNI.
 	Enabled *bool `pulumi:"enabled"`
 	// Kiali service address.
 	Url *string `pulumi:"url"`
@@ -1284,6 +1329,7 @@ type ServiceMeshMeshConfigKialiInput interface {
 }
 
 type ServiceMeshMeshConfigKialiArgs struct {
+	// Enable CNI.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Kiali service address.
 	Url pulumi.StringPtrInput `pulumi:"url"`
@@ -1366,6 +1412,7 @@ func (o ServiceMeshMeshConfigKialiOutput) ToServiceMeshMeshConfigKialiPtrOutputW
 	}).(ServiceMeshMeshConfigKialiPtrOutput)
 }
 
+// Enable CNI.
 func (o ServiceMeshMeshConfigKialiOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigKiali) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1399,6 +1446,7 @@ func (o ServiceMeshMeshConfigKialiPtrOutput) Elem() ServiceMeshMeshConfigKialiOu
 	}).(ServiceMeshMeshConfigKialiOutput)
 }
 
+// Enable CNI.
 func (o ServiceMeshMeshConfigKialiPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigKiali) *bool {
 		if v == nil {
@@ -1419,11 +1467,17 @@ func (o ServiceMeshMeshConfigKialiPtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type ServiceMeshMeshConfigOpa struct {
-	Enabled       *bool   `pulumi:"enabled"`
-	LimitCpu      *string `pulumi:"limitCpu"`
-	LimitMemory   *string `pulumi:"limitMemory"`
-	LogLevel      *string `pulumi:"logLevel"`
-	RequestCpu    *string `pulumi:"requestCpu"`
+	// Enable CNI.
+	Enabled *bool `pulumi:"enabled"`
+	// Sidecar injector Pods on the throttle.
+	LimitCpu *string `pulumi:"limitCpu"`
+	// Sidecar injector Pods on the throttle.
+	LimitMemory *string `pulumi:"limitMemory"`
+	// OPA proxy container log level.
+	LogLevel *string `pulumi:"logLevel"`
+	// Sidecar injector Pods on the requested resource.
+	RequestCpu *string `pulumi:"requestCpu"`
+	// Sidecar injector Pods on the requested resource.
 	RequestMemory *string `pulumi:"requestMemory"`
 }
 
@@ -1439,11 +1493,17 @@ type ServiceMeshMeshConfigOpaInput interface {
 }
 
 type ServiceMeshMeshConfigOpaArgs struct {
-	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
-	LimitCpu      pulumi.StringPtrInput `pulumi:"limitCpu"`
-	LimitMemory   pulumi.StringPtrInput `pulumi:"limitMemory"`
-	LogLevel      pulumi.StringPtrInput `pulumi:"logLevel"`
-	RequestCpu    pulumi.StringPtrInput `pulumi:"requestCpu"`
+	// Enable CNI.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Sidecar injector Pods on the throttle.
+	LimitCpu pulumi.StringPtrInput `pulumi:"limitCpu"`
+	// Sidecar injector Pods on the throttle.
+	LimitMemory pulumi.StringPtrInput `pulumi:"limitMemory"`
+	// OPA proxy container log level.
+	LogLevel pulumi.StringPtrInput `pulumi:"logLevel"`
+	// Sidecar injector Pods on the requested resource.
+	RequestCpu pulumi.StringPtrInput `pulumi:"requestCpu"`
+	// Sidecar injector Pods on the requested resource.
 	RequestMemory pulumi.StringPtrInput `pulumi:"requestMemory"`
 }
 
@@ -1524,26 +1584,32 @@ func (o ServiceMeshMeshConfigOpaOutput) ToServiceMeshMeshConfigOpaPtrOutputWithC
 	}).(ServiceMeshMeshConfigOpaPtrOutput)
 }
 
+// Enable CNI.
 func (o ServiceMeshMeshConfigOpaOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigOpaOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.LimitCpu }).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigOpaOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.LimitMemory }).(pulumi.StringPtrOutput)
 }
 
+// OPA proxy container log level.
 func (o ServiceMeshMeshConfigOpaOutput) LogLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.LogLevel }).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigOpaOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.RequestCpu }).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigOpaOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.RequestMemory }).(pulumi.StringPtrOutput)
 }
@@ -1572,6 +1638,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) Elem() ServiceMeshMeshConfigOpaOutput
 	}).(ServiceMeshMeshConfigOpaOutput)
 }
 
+// Enable CNI.
 func (o ServiceMeshMeshConfigOpaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *bool {
 		if v == nil {
@@ -1581,6 +1648,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigOpaPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1590,6 +1658,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigOpaPtrOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1599,6 +1668,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) LimitMemory() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// OPA proxy container log level.
 func (o ServiceMeshMeshConfigOpaPtrOutput) LogLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1608,6 +1678,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) LogLevel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigOpaPtrOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1617,6 +1688,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) RequestCpu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigOpaPtrOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1627,7 +1699,9 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) RequestMemory() pulumi.StringPtrOutpu
 }
 
 type ServiceMeshMeshConfigPilot struct {
-	Http10Enabled *bool    `pulumi:"http10Enabled"`
+	// Whether to support the HTTP1.0.
+	Http10Enabled *bool `pulumi:"http10Enabled"`
+	// Link trace sampling percentage.
 	TraceSampling *float64 `pulumi:"traceSampling"`
 }
 
@@ -1643,7 +1717,9 @@ type ServiceMeshMeshConfigPilotInput interface {
 }
 
 type ServiceMeshMeshConfigPilotArgs struct {
-	Http10Enabled pulumi.BoolPtrInput    `pulumi:"http10Enabled"`
+	// Whether to support the HTTP1.0.
+	Http10Enabled pulumi.BoolPtrInput `pulumi:"http10Enabled"`
+	// Link trace sampling percentage.
 	TraceSampling pulumi.Float64PtrInput `pulumi:"traceSampling"`
 }
 
@@ -1724,10 +1800,12 @@ func (o ServiceMeshMeshConfigPilotOutput) ToServiceMeshMeshConfigPilotPtrOutputW
 	}).(ServiceMeshMeshConfigPilotPtrOutput)
 }
 
+// Whether to support the HTTP1.0.
 func (o ServiceMeshMeshConfigPilotOutput) Http10Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigPilot) *bool { return v.Http10Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Link trace sampling percentage.
 func (o ServiceMeshMeshConfigPilotOutput) TraceSampling() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigPilot) *float64 { return v.TraceSampling }).(pulumi.Float64PtrOutput)
 }
@@ -1756,6 +1834,7 @@ func (o ServiceMeshMeshConfigPilotPtrOutput) Elem() ServiceMeshMeshConfigPilotOu
 	}).(ServiceMeshMeshConfigPilotOutput)
 }
 
+// Whether to support the HTTP1.0.
 func (o ServiceMeshMeshConfigPilotPtrOutput) Http10Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigPilot) *bool {
 		if v == nil {
@@ -1765,6 +1844,7 @@ func (o ServiceMeshMeshConfigPilotPtrOutput) Http10Enabled() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Link trace sampling percentage.
 func (o ServiceMeshMeshConfigPilotPtrOutput) TraceSampling() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigPilot) *float64 {
 		if v == nil {
@@ -1931,10 +2011,15 @@ func (o ServiceMeshMeshConfigPrometheusPtrOutput) UseExternal() pulumi.BoolPtrOu
 }
 
 type ServiceMeshMeshConfigProxy struct {
+	// Cluster domain name.
 	ClusterDomain *string `pulumi:"clusterDomain"`
-	LimitCpu      *string `pulumi:"limitCpu"`
-	LimitMemory   *string `pulumi:"limitMemory"`
-	RequestCpu    *string `pulumi:"requestCpu"`
+	// Sidecar injector Pods on the throttle.
+	LimitCpu *string `pulumi:"limitCpu"`
+	// Sidecar injector Pods on the throttle.
+	LimitMemory *string `pulumi:"limitMemory"`
+	// Sidecar injector Pods on the requested resource.
+	RequestCpu *string `pulumi:"requestCpu"`
+	// Sidecar injector Pods on the requested resource.
 	RequestMemory *string `pulumi:"requestMemory"`
 }
 
@@ -1950,10 +2035,15 @@ type ServiceMeshMeshConfigProxyInput interface {
 }
 
 type ServiceMeshMeshConfigProxyArgs struct {
+	// Cluster domain name.
 	ClusterDomain pulumi.StringPtrInput `pulumi:"clusterDomain"`
-	LimitCpu      pulumi.StringPtrInput `pulumi:"limitCpu"`
-	LimitMemory   pulumi.StringPtrInput `pulumi:"limitMemory"`
-	RequestCpu    pulumi.StringPtrInput `pulumi:"requestCpu"`
+	// Sidecar injector Pods on the throttle.
+	LimitCpu pulumi.StringPtrInput `pulumi:"limitCpu"`
+	// Sidecar injector Pods on the throttle.
+	LimitMemory pulumi.StringPtrInput `pulumi:"limitMemory"`
+	// Sidecar injector Pods on the requested resource.
+	RequestCpu pulumi.StringPtrInput `pulumi:"requestCpu"`
+	// Sidecar injector Pods on the requested resource.
 	RequestMemory pulumi.StringPtrInput `pulumi:"requestMemory"`
 }
 
@@ -2034,22 +2124,27 @@ func (o ServiceMeshMeshConfigProxyOutput) ToServiceMeshMeshConfigProxyPtrOutputW
 	}).(ServiceMeshMeshConfigProxyPtrOutput)
 }
 
+// Cluster domain name.
 func (o ServiceMeshMeshConfigProxyOutput) ClusterDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.ClusterDomain }).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigProxyOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.LimitCpu }).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigProxyOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.LimitMemory }).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigProxyOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.RequestCpu }).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigProxyOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.RequestMemory }).(pulumi.StringPtrOutput)
 }
@@ -2078,6 +2173,7 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) Elem() ServiceMeshMeshConfigProxyOu
 	}).(ServiceMeshMeshConfigProxyOutput)
 }
 
+// Cluster domain name.
 func (o ServiceMeshMeshConfigProxyPtrOutput) ClusterDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {
@@ -2087,6 +2183,7 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) ClusterDomain() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigProxyPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {
@@ -2096,6 +2193,7 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigProxyPtrOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {
@@ -2105,6 +2203,7 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) LimitMemory() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigProxyPtrOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {
@@ -2114,6 +2213,7 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) RequestCpu() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigProxyPtrOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {
@@ -2124,13 +2224,20 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) RequestMemory() pulumi.StringPtrOut
 }
 
 type ServiceMeshMeshConfigSidecarInjector struct {
-	AutoInjectionPolicyEnabled *bool                                                     `pulumi:"autoInjectionPolicyEnabled"`
-	EnableNamespacesByDefault  *bool                                                     `pulumi:"enableNamespacesByDefault"`
-	InitCniConfiguration       *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration `pulumi:"initCniConfiguration"`
-	LimitCpu                   *string                                                   `pulumi:"limitCpu"`
-	LimitMemory                *string                                                   `pulumi:"limitMemory"`
-	RequestCpu                 *string                                                   `pulumi:"requestCpu"`
-	RequestMemory              *string                                                   `pulumi:"requestMemory"`
+	// Whether to enable by Pod Annotations automatic injection Sidecar.
+	AutoInjectionPolicyEnabled *bool `pulumi:"autoInjectionPolicyEnabled"`
+	// Whether it is the all namespaces you turn on the auto injection capabilities.
+	EnableNamespacesByDefault *bool `pulumi:"enableNamespacesByDefault"`
+	// CNI configuration. See `initCniConfiguration` below.
+	InitCniConfiguration *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration `pulumi:"initCniConfiguration"`
+	// Sidecar injector Pods on the throttle.
+	LimitCpu *string `pulumi:"limitCpu"`
+	// Sidecar injector Pods on the throttle.
+	LimitMemory *string `pulumi:"limitMemory"`
+	// Sidecar injector Pods on the requested resource.
+	RequestCpu *string `pulumi:"requestCpu"`
+	// Sidecar injector Pods on the requested resource.
+	RequestMemory *string `pulumi:"requestMemory"`
 	// Other automatic injection Sidecar configuration (in YAML format).
 	SidecarInjectorWebhookAsYaml *string `pulumi:"sidecarInjectorWebhookAsYaml"`
 }
@@ -2147,13 +2254,20 @@ type ServiceMeshMeshConfigSidecarInjectorInput interface {
 }
 
 type ServiceMeshMeshConfigSidecarInjectorArgs struct {
-	AutoInjectionPolicyEnabled pulumi.BoolPtrInput                                              `pulumi:"autoInjectionPolicyEnabled"`
-	EnableNamespacesByDefault  pulumi.BoolPtrInput                                              `pulumi:"enableNamespacesByDefault"`
-	InitCniConfiguration       ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrInput `pulumi:"initCniConfiguration"`
-	LimitCpu                   pulumi.StringPtrInput                                            `pulumi:"limitCpu"`
-	LimitMemory                pulumi.StringPtrInput                                            `pulumi:"limitMemory"`
-	RequestCpu                 pulumi.StringPtrInput                                            `pulumi:"requestCpu"`
-	RequestMemory              pulumi.StringPtrInput                                            `pulumi:"requestMemory"`
+	// Whether to enable by Pod Annotations automatic injection Sidecar.
+	AutoInjectionPolicyEnabled pulumi.BoolPtrInput `pulumi:"autoInjectionPolicyEnabled"`
+	// Whether it is the all namespaces you turn on the auto injection capabilities.
+	EnableNamespacesByDefault pulumi.BoolPtrInput `pulumi:"enableNamespacesByDefault"`
+	// CNI configuration. See `initCniConfiguration` below.
+	InitCniConfiguration ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrInput `pulumi:"initCniConfiguration"`
+	// Sidecar injector Pods on the throttle.
+	LimitCpu pulumi.StringPtrInput `pulumi:"limitCpu"`
+	// Sidecar injector Pods on the throttle.
+	LimitMemory pulumi.StringPtrInput `pulumi:"limitMemory"`
+	// Sidecar injector Pods on the requested resource.
+	RequestCpu pulumi.StringPtrInput `pulumi:"requestCpu"`
+	// Sidecar injector Pods on the requested resource.
+	RequestMemory pulumi.StringPtrInput `pulumi:"requestMemory"`
 	// Other automatic injection Sidecar configuration (in YAML format).
 	SidecarInjectorWebhookAsYaml pulumi.StringPtrInput `pulumi:"sidecarInjectorWebhookAsYaml"`
 }
@@ -2235,32 +2349,39 @@ func (o ServiceMeshMeshConfigSidecarInjectorOutput) ToServiceMeshMeshConfigSidec
 	}).(ServiceMeshMeshConfigSidecarInjectorPtrOutput)
 }
 
+// Whether to enable by Pod Annotations automatic injection Sidecar.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) AutoInjectionPolicyEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *bool { return v.AutoInjectionPolicyEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether it is the all namespaces you turn on the auto injection capabilities.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) EnableNamespacesByDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *bool { return v.EnableNamespacesByDefault }).(pulumi.BoolPtrOutput)
 }
 
+// CNI configuration. See `initCniConfiguration` below.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) InitCniConfiguration() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
 		return v.InitCniConfiguration
 	}).(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput)
 }
 
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *string { return v.LimitCpu }).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *string { return v.LimitMemory }).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *string { return v.RequestCpu }).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *string { return v.RequestMemory }).(pulumi.StringPtrOutput)
 }
@@ -2294,6 +2415,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) Elem() ServiceMeshMeshCon
 	}).(ServiceMeshMeshConfigSidecarInjectorOutput)
 }
 
+// Whether to enable by Pod Annotations automatic injection Sidecar.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) AutoInjectionPolicyEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *bool {
 		if v == nil {
@@ -2303,6 +2425,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) AutoInjectionPolicyEnable
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether it is the all namespaces you turn on the auto injection capabilities.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) EnableNamespacesByDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *bool {
 		if v == nil {
@@ -2312,6 +2435,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) EnableNamespacesByDefault
 	}).(pulumi.BoolPtrOutput)
 }
 
+// CNI configuration. See `initCniConfiguration` below.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) InitCniConfiguration() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
 		if v == nil {
@@ -2321,6 +2445,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) InitCniConfiguration() Se
 	}).(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput)
 }
 
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *string {
 		if v == nil {
@@ -2330,6 +2455,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) LimitCpu() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *string {
 		if v == nil {
@@ -2339,6 +2465,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) LimitMemory() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *string {
 		if v == nil {
@@ -2348,6 +2475,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) RequestCpu() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *string {
 		if v == nil {
@@ -2368,7 +2496,9 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) SidecarInjectorWebhookAsY
 }
 
 type ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration struct {
-	Enabled           *bool   `pulumi:"enabled"`
+	// Enable CNI.
+	Enabled *bool `pulumi:"enabled"`
+	// The excluded namespace.
 	ExcludeNamespaces *string `pulumi:"excludeNamespaces"`
 }
 
@@ -2384,7 +2514,9 @@ type ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationInput interface {
 }
 
 type ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs struct {
-	Enabled           pulumi.BoolPtrInput   `pulumi:"enabled"`
+	// Enable CNI.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The excluded namespace.
 	ExcludeNamespaces pulumi.StringPtrInput `pulumi:"excludeNamespaces"`
 }
 
@@ -2465,10 +2597,12 @@ func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) ToServic
 	}).(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput)
 }
 
+// Enable CNI.
 func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The excluded namespace.
 func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) ExcludeNamespaces() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration) *string { return v.ExcludeNamespaces }).(pulumi.StringPtrOutput)
 }
@@ -2497,6 +2631,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput) Elem(
 	}).(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput)
 }
 
+// Enable CNI.
 func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration) *bool {
 		if v == nil {
@@ -2506,6 +2641,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput) Enabl
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The excluded namespace.
 func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput) ExcludeNamespaces() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration) *string {
 		if v == nil {
@@ -4975,7 +5111,8 @@ type GetVersionsVersion struct {
 	// - Default: Standard Edition
 	// - Pro: Professional Edition
 	Edition string `pulumi:"edition"`
-	Id      string `pulumi:"id"`
+	// The ASM version id. It formats as `<edition>:<version>`.
+	Id string `pulumi:"id"`
 	// A list of Service Mesh Service Meshes. Each element contains the following attributes:
 	Version string `pulumi:"version"`
 }
@@ -4996,7 +5133,8 @@ type GetVersionsVersionArgs struct {
 	// - Default: Standard Edition
 	// - Pro: Professional Edition
 	Edition pulumi.StringInput `pulumi:"edition"`
-	Id      pulumi.StringInput `pulumi:"id"`
+	// The ASM version id. It formats as `<edition>:<version>`.
+	Id pulumi.StringInput `pulumi:"id"`
 	// A list of Service Mesh Service Meshes. Each element contains the following attributes:
 	Version pulumi.StringInput `pulumi:"version"`
 }
@@ -5059,6 +5197,7 @@ func (o GetVersionsVersionOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVersionsVersion) string { return v.Edition }).(pulumi.StringOutput)
 }
 
+// The ASM version id. It formats as `<edition>:<version>`.
 func (o GetVersionsVersionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVersionsVersion) string { return v.Id }).(pulumi.StringOutput)
 }

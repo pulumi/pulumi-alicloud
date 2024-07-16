@@ -12,18 +12,33 @@ namespace Pulumi.AliCloud.Sls.Inputs
 
     public sealed class AlertConfigurationSinkEventStoreGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Open.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// SLS service endpoint.
+        /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
+        /// <summary>
+        /// Event Library Name.
+        /// </summary>
         [Input("eventStore")]
         public Input<string>? EventStore { get; set; }
 
+        /// <summary>
+        /// Project Name.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Roles used to write alarm data to the event Library.
+        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 

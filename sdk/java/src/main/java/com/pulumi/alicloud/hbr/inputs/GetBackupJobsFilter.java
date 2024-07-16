@@ -15,23 +15,51 @@ public final class GetBackupJobsFilter extends com.pulumi.resources.InvokeArgs {
 
     public static final GetBackupJobsFilter Empty = new GetBackupJobsFilter();
 
+    /**
+     * The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+     * 
+     */
     @Import(name="key")
     private @Nullable String key;
 
+    /**
+     * @return The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
+     * 
+     */
     @Import(name="operator")
     private @Nullable String operator;
 
+    /**
+     * @return The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
+     * 
+     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
 
+    /**
+     * Set of values that are accepted for the given field.
+     * 
+     * &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+     * 
+     */
     @Import(name="values")
     private @Nullable List<String> values;
 
+    /**
+     * @return Set of values that are accepted for the given field.
+     * 
+     * &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+     * 
+     */
     public Optional<List<String>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -62,21 +90,49 @@ public final class GetBackupJobsFilter extends com.pulumi.resources.InvokeArgs {
             $ = new GetBackupJobsFilter(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable String key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param operator The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(@Nullable String operator) {
             $.operator = operator;
             return this;
         }
 
+        /**
+         * @param values Set of values that are accepted for the given field.
+         * 
+         * &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(@Nullable List<String> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values Set of values that are accepted for the given field.
+         * 
+         * &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

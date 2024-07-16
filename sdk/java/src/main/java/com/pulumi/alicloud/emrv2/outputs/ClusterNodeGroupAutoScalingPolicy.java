@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeGroupAutoScalingPolicy {
+    /**
+     * @return The constraints of auto scaling policy. See `constraints` below.
+     * 
+     */
     private @Nullable ClusterNodeGroupAutoScalingPolicyConstraints constraints;
+    /**
+     * @return The scaling rules of auto scaling policy. See `scaling_rules` below.
+     * 
+     */
     private @Nullable List<ClusterNodeGroupAutoScalingPolicyScalingRule> scalingRules;
 
     private ClusterNodeGroupAutoScalingPolicy() {}
+    /**
+     * @return The constraints of auto scaling policy. See `constraints` below.
+     * 
+     */
     public Optional<ClusterNodeGroupAutoScalingPolicyConstraints> constraints() {
         return Optional.ofNullable(this.constraints);
     }
+    /**
+     * @return The scaling rules of auto scaling policy. See `scaling_rules` below.
+     * 
+     */
     public List<ClusterNodeGroupAutoScalingPolicyScalingRule> scalingRules() {
         return this.scalingRules == null ? List.of() : this.scalingRules;
     }
