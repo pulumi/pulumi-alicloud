@@ -14,16 +14,32 @@ public final class TemplateScratchSourceResourceArgs extends com.pulumi.resource
 
     public static final TemplateScratchSourceResourceArgs Empty = new TemplateScratchSourceResourceArgs();
 
+    /**
+     * The ID of the Source Resource.
+     * 
+     */
     @Import(name="resourceId", required=true)
     private Output<String> resourceId;
 
+    /**
+     * @return The ID of the Source Resource.
+     * 
+     */
     public Output<String> resourceId() {
         return this.resourceId;
     }
 
+    /**
+     * The type of the Source resource.
+     * 
+     */
     @Import(name="resourceType", required=true)
     private Output<String> resourceType;
 
+    /**
+     * @return The type of the Source resource.
+     * 
+     */
     public Output<String> resourceType() {
         return this.resourceType;
     }
@@ -53,20 +69,44 @@ public final class TemplateScratchSourceResourceArgs extends com.pulumi.resource
             $ = new TemplateScratchSourceResourceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param resourceId The ID of the Source Resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceId(Output<String> resourceId) {
             $.resourceId = resourceId;
             return this;
         }
 
+        /**
+         * @param resourceId The ID of the Source Resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceId(String resourceId) {
             return resourceId(Output.of(resourceId));
         }
 
+        /**
+         * @param resourceType The type of the Source resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceType(Output<String> resourceType) {
             $.resourceType = resourceType;
             return this;
         }
 
+        /**
+         * @param resourceType The type of the Source resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceType(String resourceType) {
             return resourceType(Output.of(resourceType));
         }

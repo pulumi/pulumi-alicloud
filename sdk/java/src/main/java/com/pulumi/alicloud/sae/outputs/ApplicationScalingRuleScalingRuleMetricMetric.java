@@ -12,29 +12,97 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationScalingRuleScalingRuleMetricMetric {
+    /**
+     * @return According to different `metric_type`, set the target value of the corresponding monitoring index.
+     * 
+     */
     private @Nullable Integer metricTargetAverageUtilization;
+    /**
+     * @return Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
+     * - CPU: CPU usage.
+     * - MEMORY: MEMORY usage.
+     * - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+     * - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+     * - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+     * - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+     * - SLB_RT: The average response time of public network SLB within 15 seconds.
+     * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+     * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+     *   **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+     * 
+     */
     private @Nullable String metricType;
+    /**
+     * @return SLB ID.
+     * 
+     */
     private @Nullable String slbId;
+    /**
+     * @return The log store of the Log Service.
+     * 
+     */
     private @Nullable String slbLogStore;
+    /**
+     * @return The project of the Log Service.
+     * 
+     */
     private @Nullable String slbProject;
+    /**
+     * @return SLB listening port.
+     * 
+     */
     private @Nullable String vport;
 
     private ApplicationScalingRuleScalingRuleMetricMetric() {}
+    /**
+     * @return According to different `metric_type`, set the target value of the corresponding monitoring index.
+     * 
+     */
     public Optional<Integer> metricTargetAverageUtilization() {
         return Optional.ofNullable(this.metricTargetAverageUtilization);
     }
+    /**
+     * @return Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
+     * - CPU: CPU usage.
+     * - MEMORY: MEMORY usage.
+     * - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+     * - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+     * - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+     * - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+     * - SLB_RT: The average response time of public network SLB within 15 seconds.
+     * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+     * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+     *   **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+     * 
+     */
     public Optional<String> metricType() {
         return Optional.ofNullable(this.metricType);
     }
+    /**
+     * @return SLB ID.
+     * 
+     */
     public Optional<String> slbId() {
         return Optional.ofNullable(this.slbId);
     }
+    /**
+     * @return The log store of the Log Service.
+     * 
+     */
     public Optional<String> slbLogStore() {
         return Optional.ofNullable(this.slbLogStore);
     }
+    /**
+     * @return The project of the Log Service.
+     * 
+     */
     public Optional<String> slbProject() {
         return Optional.ofNullable(this.slbProject);
     }
+    /**
+     * @return SLB listening port.
+     * 
+     */
     public Optional<String> vport() {
         return Optional.ofNullable(this.vport);
     }

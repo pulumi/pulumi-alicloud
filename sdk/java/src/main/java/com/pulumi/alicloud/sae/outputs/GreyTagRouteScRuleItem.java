@@ -12,8 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GreyTagRouteScRuleItem {
     private @Nullable String cond;
+    /**
+     * @return The name of the parameter.
+     * 
+     */
     private @Nullable String name;
     private @Nullable String operator;
+    /**
+     * @return The compare types. Valid values: `param`, `cookie`, `header`.
+     * 
+     */
     private @Nullable String type;
     private @Nullable String value;
 
@@ -21,12 +29,20 @@ public final class GreyTagRouteScRuleItem {
     public Optional<String> cond() {
         return Optional.ofNullable(this.cond);
     }
+    /**
+     * @return The name of the parameter.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
+    /**
+     * @return The compare types. Valid values: `param`, `cookie`, `header`.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

@@ -18,6 +18,12 @@ namespace Pulumi.AliCloud.Alb.Inputs
         [Input("value")]
         public Input<string>? Value { get; set; }
 
+        /// <summary>
+        /// The value type of the inserted header field. Valid values:
+        /// - `UserDefined`: a custom value
+        /// - `ReferenceHeader`: uses a field of the user request header.
+        /// - `SystemDefined`: a system value.
+        /// </summary>
         [Input("valueType")]
         public Input<string>? ValueType { get; set; }
 

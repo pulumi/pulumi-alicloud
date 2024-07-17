@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.RealtimeCompute.Outputs
     [OutputType]
     public sealed class VvpInstanceStorageOss
     {
+        /// <summary>
+        /// OSS Bucket name.
+        /// </summary>
         public readonly string Bucket;
 
         [OutputConstructor]

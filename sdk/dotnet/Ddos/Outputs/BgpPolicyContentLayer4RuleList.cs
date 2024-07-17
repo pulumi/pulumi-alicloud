@@ -13,12 +13,33 @@ namespace Pulumi.AliCloud.Ddos.Outputs
     [OutputType]
     public sealed class BgpPolicyContentLayer4RuleList
     {
+        /// <summary>
+        /// 1 for observation 2 for blocking.
+        /// </summary>
         public readonly string Action;
+        /// <summary>
+        /// Matching Condition. See `condition_list` below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.BgpPolicyContentLayer4RuleListConditionList> ConditionLists;
+        /// <summary>
+        /// .
+        /// </summary>
         public readonly int Limited;
+        /// <summary>
+        /// 0 indicates that the condition is not met 1 indicates that the condition is met.
+        /// </summary>
         public readonly string Match;
+        /// <summary>
+        /// Char indicates a string match hex match.
+        /// </summary>
         public readonly string Method;
+        /// <summary>
+        /// Rule Name.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// 1-100, priority, the lower the number, the higher the priority.
+        /// </summary>
         public readonly int Priority;
 
         [OutputConstructor]

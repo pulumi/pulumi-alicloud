@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolManagementAutoVulFixPolicy {
+    /**
+     * @return Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+     * 
+     */
     private @Nullable Boolean restartNode;
+    /**
+     * @return The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+     * 
+     */
     private @Nullable String vulLevel;
 
     private NodePoolManagementAutoVulFixPolicy() {}
+    /**
+     * @return Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+     * 
+     */
     public Optional<Boolean> restartNode() {
         return Optional.ofNullable(this.restartNode);
     }
+    /**
+     * @return The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+     * 
+     */
     public Optional<String> vulLevel() {
         return Optional.ofNullable(this.vulLevel);
     }

@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
 
     public sealed class ClusterNodeGroupSpotBidPriceGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The spot bid price of a PayAsYouGo instance.
+        /// </summary>
         [Input("bidPrice", required: true)]
         public Input<int> BidPrice { get; set; } = null!;
 
+        /// <summary>
+        /// Host Ecs instance type.
+        /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 

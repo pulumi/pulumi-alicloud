@@ -15,16 +15,32 @@ public final class AlertConfigurationSeverityConfigurationEvalConditionArgs exte
 
     public static final AlertConfigurationSeverityConfigurationEvalConditionArgs Empty = new AlertConfigurationSeverityConfigurationEvalConditionArgs();
 
+    /**
+     * Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
+     * 
+     */
     @Import(name="condition")
     private @Nullable Output<String> condition;
 
+    /**
+     * @return Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
+     * 
+     */
     public Optional<Output<String>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
+    /**
+     * The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__&gt; 3.
+     * 
+     */
     @Import(name="countCondition")
     private @Nullable Output<String> countCondition;
 
+    /**
+     * @return The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__&gt; 3.
+     * 
+     */
     public Optional<Output<String>> countCondition() {
         return Optional.ofNullable(this.countCondition);
     }
@@ -54,20 +70,44 @@ public final class AlertConfigurationSeverityConfigurationEvalConditionArgs exte
             $ = new AlertConfigurationSeverityConfigurationEvalConditionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param condition Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(@Nullable Output<String> condition) {
             $.condition = condition;
             return this;
         }
 
+        /**
+         * @param condition Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(String condition) {
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param countCondition The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__&gt; 3.
+         * 
+         * @return builder
+         * 
+         */
         public Builder countCondition(@Nullable Output<String> countCondition) {
             $.countCondition = countCondition;
             return this;
         }
 
+        /**
+         * @param countCondition The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__&gt; 3.
+         * 
+         * @return builder
+         * 
+         */
         public Builder countCondition(String countCondition) {
             return countCondition(Output.of(countCondition));
         }

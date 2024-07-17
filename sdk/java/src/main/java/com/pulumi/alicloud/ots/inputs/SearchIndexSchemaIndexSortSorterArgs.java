@@ -15,30 +15,62 @@ public final class SearchIndexSchemaIndexSortSorterArgs extends com.pulumi.resou
 
     public static final SearchIndexSchemaIndexSortSorterArgs Empty = new SearchIndexSchemaIndexSortSorterArgs();
 
+    /**
+     * The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * 
+     */
     @Import(name="fieldName")
     private @Nullable Output<String> fieldName;
 
+    /**
+     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * 
+     */
     public Optional<Output<String>> fieldName() {
         return Optional.ofNullable(this.fieldName);
     }
 
+    /**
+     * The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+     * 
+     */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
+    /**
+     * @return The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+     * 
+     */
     public Optional<Output<String>> mode() {
         return Optional.ofNullable(this.mode);
     }
 
+    /**
+     * The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
+     * 
+     */
     @Import(name="order")
     private @Nullable Output<String> order;
 
+    /**
+     * @return The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
+     * 
+     */
     public Optional<Output<String>> order() {
         return Optional.ofNullable(this.order);
     }
 
+    /**
+     * Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
+     * 
+     */
     @Import(name="sorterType")
     private @Nullable Output<String> sorterType;
 
+    /**
+     * @return Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
+     * 
+     */
     public Optional<Output<String>> sorterType() {
         return Optional.ofNullable(this.sorterType);
     }
@@ -70,38 +102,86 @@ public final class SearchIndexSchemaIndexSortSorterArgs extends com.pulumi.resou
             $ = new SearchIndexSchemaIndexSortSorterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fieldName The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fieldName(@Nullable Output<String> fieldName) {
             $.fieldName = fieldName;
             return this;
         }
 
+        /**
+         * @param fieldName The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fieldName(String fieldName) {
             return fieldName(Output.of(fieldName));
         }
 
+        /**
+         * @param mode The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(@Nullable Output<String> mode) {
             $.mode = mode;
             return this;
         }
 
+        /**
+         * @param mode The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
         }
 
+        /**
+         * @param order The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder order(@Nullable Output<String> order) {
             $.order = order;
             return this;
         }
 
+        /**
+         * @param order The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder order(String order) {
             return order(Output.of(order));
         }
 
+        /**
+         * @param sorterType Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sorterType(@Nullable Output<String> sorterType) {
             $.sorterType = sorterType;
             return this;
         }
 
+        /**
+         * @param sorterType Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sorterType(String sorterType) {
             return sorterType(Output.of(sorterType));
         }

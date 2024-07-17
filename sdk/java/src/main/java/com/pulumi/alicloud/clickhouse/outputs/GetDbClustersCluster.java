@@ -30,6 +30,10 @@ public final class GetDbClustersCluster {
      * 
      */
     private String category;
+    /**
+     * @return The Commodity Code of the DBCluster.
+     * 
+     */
     private String commodityCode;
     /**
      * @return Connection string.
@@ -225,6 +229,10 @@ public final class GetDbClustersCluster {
     public String category() {
         return this.category;
     }
+    /**
+     * @return The Commodity Code of the DBCluster.
+     * 
+     */
     public String commodityCode() {
         return this.commodityCode;
     }

@@ -116,6 +116,10 @@ class ProvisionedProductParameter(dict):
     def __init__(__self__, *,
                  parameter_key: Optional[str] = None,
                  parameter_value: Optional[str] = None):
+        """
+        :param str parameter_key: The name of the parameter defined in the template.
+        :param str parameter_value: The Template parameter value entered by the user.
+        """
         if parameter_key is not None:
             pulumi.set(__self__, "parameter_key", parameter_key)
         if parameter_value is not None:
@@ -124,11 +128,17 @@ class ProvisionedProductParameter(dict):
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> Optional[str]:
+        """
+        The name of the parameter defined in the template.
+        """
         return pulumi.get(self, "parameter_key")
 
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> Optional[str]:
+        """
+        The Template parameter value entered by the user.
+        """
         return pulumi.get(self, "parameter_value")
 
 

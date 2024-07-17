@@ -14,16 +14,32 @@ public final class TemplateScratchPreferenceParameterArgs extends com.pulumi.res
 
     public static final TemplateScratchPreferenceParameterArgs Empty = new TemplateScratchPreferenceParameterArgs();
 
+    /**
+     * Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+     * 
+     */
     @Import(name="parameterKey", required=true)
     private Output<String> parameterKey;
 
+    /**
+     * @return Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+     * 
+     */
     public Output<String> parameterKey() {
         return this.parameterKey;
     }
 
+    /**
+     * Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+     * 
+     */
     @Import(name="parameterValue", required=true)
     private Output<String> parameterValue;
 
+    /**
+     * @return Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+     * 
+     */
     public Output<String> parameterValue() {
         return this.parameterValue;
     }
@@ -53,20 +69,44 @@ public final class TemplateScratchPreferenceParameterArgs extends com.pulumi.res
             $ = new TemplateScratchPreferenceParameterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param parameterKey Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterKey(Output<String> parameterKey) {
             $.parameterKey = parameterKey;
             return this;
         }
 
+        /**
+         * @param parameterKey Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterKey(String parameterKey) {
             return parameterKey(Output.of(parameterKey));
         }
 
+        /**
+         * @param parameterValue Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterValue(Output<String> parameterValue) {
             $.parameterValue = parameterValue;
             return this;
         }
 
+        /**
+         * @param parameterValue Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterValue(String parameterValue) {
             return parameterValue(Output.of(parameterValue));
         }

@@ -1351,9 +1351,11 @@ type ConnectionTunnelOptionsSpecificationTunnelIkeConfig struct {
 	IkeMode     *string `pulumi:"ikeMode"`
 	IkePfs      *string `pulumi:"ikePfs"`
 	IkeVersion  *string `pulumi:"ikeVersion"`
-	LocalId     *string `pulumi:"localId"`
-	Psk         *string `pulumi:"psk"`
-	RemoteId    *string `pulumi:"remoteId"`
+	// The local Id.
+	LocalId *string `pulumi:"localId"`
+	Psk     *string `pulumi:"psk"`
+	// Remote ID.
+	RemoteId *string `pulumi:"remoteId"`
 }
 
 // ConnectionTunnelOptionsSpecificationTunnelIkeConfigInput is an input type that accepts ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs and ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput values.
@@ -1374,9 +1376,11 @@ type ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs struct {
 	IkeMode     pulumi.StringPtrInput `pulumi:"ikeMode"`
 	IkePfs      pulumi.StringPtrInput `pulumi:"ikePfs"`
 	IkeVersion  pulumi.StringPtrInput `pulumi:"ikeVersion"`
-	LocalId     pulumi.StringPtrInput `pulumi:"localId"`
-	Psk         pulumi.StringPtrInput `pulumi:"psk"`
-	RemoteId    pulumi.StringPtrInput `pulumi:"remoteId"`
+	// The local Id.
+	LocalId pulumi.StringPtrInput `pulumi:"localId"`
+	Psk     pulumi.StringPtrInput `pulumi:"psk"`
+	// Remote ID.
+	RemoteId pulumi.StringPtrInput `pulumi:"remoteId"`
 }
 
 func (ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs) ElementType() reflect.Type {
@@ -1480,6 +1484,7 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeVersion() 
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.IkeVersion }).(pulumi.StringPtrOutput)
 }
 
+// The local Id.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) LocalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.LocalId }).(pulumi.StringPtrOutput)
 }
@@ -1488,6 +1493,7 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) Psk() pulumi.
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.Psk }).(pulumi.StringPtrOutput)
 }
 
+// Remote ID.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) RemoteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.RemoteId }).(pulumi.StringPtrOutput)
 }
@@ -1570,6 +1576,7 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeVersion
 	}).(pulumi.StringPtrOutput)
 }
 
+// The local Id.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) LocalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string {
 		if v == nil {
@@ -1588,6 +1595,7 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) Psk() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Remote ID.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) RemoteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string {
 		if v == nil {
@@ -4609,7 +4617,8 @@ type GetGatewayVpnAttachmentsAttachment struct {
 	Id string `pulumi:"id"`
 	// Configuration negotiated in the second stage.
 	IkeConfigs []GetGatewayVpnAttachmentsAttachmentIkeConfig `pulumi:"ikeConfigs"`
-	InternetIp string                                        `pulumi:"internetIp"`
+	// The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+	InternetIp string `pulumi:"internetIp"`
 	// The configuration of Phase 2 negotiations.
 	IpsecConfigs []GetGatewayVpnAttachmentsAttachmentIpsecConfig `pulumi:"ipsecConfigs"`
 	// The CIDR block of the virtual private cloud (VPC).
@@ -4654,7 +4663,8 @@ type GetGatewayVpnAttachmentsAttachmentArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Configuration negotiated in the second stage.
 	IkeConfigs GetGatewayVpnAttachmentsAttachmentIkeConfigArrayInput `pulumi:"ikeConfigs"`
-	InternetIp pulumi.StringInput                                    `pulumi:"internetIp"`
+	// The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+	InternetIp pulumi.StringInput `pulumi:"internetIp"`
 	// The configuration of Phase 2 negotiations.
 	IpsecConfigs GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayInput `pulumi:"ipsecConfigs"`
 	// The CIDR block of the virtual private cloud (VPC).
@@ -4768,6 +4778,7 @@ func (o GetGatewayVpnAttachmentsAttachmentOutput) IkeConfigs() GetGatewayVpnAtta
 	}).(GetGatewayVpnAttachmentsAttachmentIkeConfigArrayOutput)
 }
 
+// The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) InternetIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.InternetIp }).(pulumi.StringOutput)
 }

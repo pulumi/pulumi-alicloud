@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class V2FunctionCustomDnsDnsOption {
+    /**
+     * @return DNS option name.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return DNS option value.
+     * 
+     */
     private @Nullable String value;
 
     private V2FunctionCustomDnsDnsOption() {}
+    /**
+     * @return DNS option name.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return DNS option value.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

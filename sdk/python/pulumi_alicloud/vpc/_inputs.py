@@ -67,12 +67,19 @@ class NetworkAclAttachmentResourceArgs:
     def __init__(__self__, *,
                  resource_id: pulumi.Input[str],
                  resource_type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] resource_id: The resource id that the network acl will associate with.
+        :param pulumi.Input[str] resource_type: The resource id that the network acl will associate with. Only support `VSwitch` now.
+        """
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_type", resource_type)
 
     @property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Input[str]:
+        """
+        The resource id that the network acl will associate with.
+        """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
@@ -82,6 +89,9 @@ class NetworkAclAttachmentResourceArgs:
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[str]:
+        """
+        The resource id that the network acl will associate with. Only support `VSwitch` now.
+        """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
@@ -248,6 +258,9 @@ class NetworkAclEntriesEgressArgs:
                  policy: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] destination_cidr_ip: The destination ip of the egress entry.
+        """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if destination_cidr_ip is not None:
@@ -275,6 +288,9 @@ class NetworkAclEntriesEgressArgs:
     @property
     @pulumi.getter(name="destinationCidrIp")
     def destination_cidr_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination ip of the egress entry.
+        """
         return pulumi.get(self, "destination_cidr_ip")
 
     @destination_cidr_ip.setter
@@ -337,6 +353,9 @@ class NetworkAclEntriesIngressArgs:
                  port: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  source_cidr_ip: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] source_cidr_ip: The source ip of the ingress entry.
+        """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if entry_type is not None:
@@ -409,6 +428,9 @@ class NetworkAclEntriesIngressArgs:
     @property
     @pulumi.getter(name="sourceCidrIp")
     def source_cidr_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source ip of the ingress entry.
+        """
         return pulumi.get(self, "source_cidr_ip")
 
     @source_cidr_ip.setter
@@ -672,6 +694,10 @@ class PrefixListEntryArgs:
     def __init__(__self__, *,
                  cidr: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cidr: The CIDR address block of the prefix list.
+        :param pulumi.Input[str] description: The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        """
         if cidr is not None:
             pulumi.set(__self__, "cidr", cidr)
         if description is not None:
@@ -680,6 +706,9 @@ class PrefixListEntryArgs:
     @property
     @pulumi.getter
     def cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CIDR address block of the prefix list.
+        """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
@@ -689,6 +718,9 @@ class PrefixListEntryArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        """
         return pulumi.get(self, "description")
 
     @description.setter

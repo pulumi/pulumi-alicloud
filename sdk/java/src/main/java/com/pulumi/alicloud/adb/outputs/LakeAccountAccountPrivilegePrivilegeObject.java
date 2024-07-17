@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LakeAccountAccountPrivilegePrivilegeObject {
+    /**
+     * @return The name of column.
+     * 
+     */
     private @Nullable String column;
+    /**
+     * @return The name of database.
+     * 
+     */
     private @Nullable String database;
+    /**
+     * @return The name of table.
+     * 
+     */
     private @Nullable String table;
 
     private LakeAccountAccountPrivilegePrivilegeObject() {}
+    /**
+     * @return The name of column.
+     * 
+     */
     public Optional<String> column() {
         return Optional.ofNullable(this.column);
     }
+    /**
+     * @return The name of database.
+     * 
+     */
     public Optional<String> database() {
         return Optional.ofNullable(this.database);
     }
+    /**
+     * @return The name of table.
+     * 
+     */
     public Optional<String> table() {
         return Optional.ofNullable(this.table);
     }

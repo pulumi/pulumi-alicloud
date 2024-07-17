@@ -12,18 +12,33 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
 
     public sealed class ServiceMeshMeshConfigProxyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cluster domain name.
+        /// </summary>
         [Input("clusterDomain")]
         public Input<string>? ClusterDomain { get; set; }
 
+        /// <summary>
+        /// Sidecar injector Pods on the throttle.
+        /// </summary>
         [Input("limitCpu")]
         public Input<string>? LimitCpu { get; set; }
 
+        /// <summary>
+        /// Sidecar injector Pods on the throttle.
+        /// </summary>
         [Input("limitMemory")]
         public Input<string>? LimitMemory { get; set; }
 
+        /// <summary>
+        /// Sidecar injector Pods on the requested resource.
+        /// </summary>
         [Input("requestCpu")]
         public Input<string>? RequestCpu { get; set; }
 
+        /// <summary>
+        /// Sidecar injector Pods on the requested resource.
+        /// </summary>
         [Input("requestMemory")]
         public Input<string>? RequestMemory { get; set; }
 

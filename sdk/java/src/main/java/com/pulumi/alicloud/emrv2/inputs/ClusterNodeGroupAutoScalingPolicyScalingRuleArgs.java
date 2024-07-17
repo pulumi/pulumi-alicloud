@@ -19,58 +19,122 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs extends com.
 
     public static final ClusterNodeGroupAutoScalingPolicyScalingRuleArgs Empty = new ClusterNodeGroupAutoScalingPolicyScalingRuleArgs();
 
+    /**
+     * The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
+     * 
+     */
     @Import(name="activityType", required=true)
     private Output<String> activityType;
 
+    /**
+     * @return The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
+     * 
+     */
     public Output<String> activityType() {
         return this.activityType;
     }
 
+    /**
+     * The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
+     * 
+     */
     @Import(name="adjustmentType")
     private @Nullable Output<String> adjustmentType;
 
+    /**
+     * @return The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
+     * 
+     */
     public Optional<Output<String>> adjustmentType() {
         return Optional.ofNullable(this.adjustmentType);
     }
 
+    /**
+     * The adjustment value of auto scaling policy. The value should between 1 and 5000.
+     * 
+     */
     @Import(name="adjustmentValue", required=true)
     private Output<Integer> adjustmentValue;
 
+    /**
+     * @return The adjustment value of auto scaling policy. The value should between 1 and 5000.
+     * 
+     */
     public Output<Integer> adjustmentValue() {
         return this.adjustmentValue;
     }
 
+    /**
+     * The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+     * 
+     */
     @Import(name="metricsTrigger")
     private @Nullable Output<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs> metricsTrigger;
 
+    /**
+     * @return The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+     * 
+     */
     public Optional<Output<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs>> metricsTrigger() {
         return Optional.ofNullable(this.metricsTrigger);
     }
 
+    /**
+     * The minimum adjustment value of auto scaling policy.
+     * 
+     */
     @Import(name="minAdjustmentValue")
     private @Nullable Output<Integer> minAdjustmentValue;
 
+    /**
+     * @return The minimum adjustment value of auto scaling policy.
+     * 
+     */
     public Optional<Output<Integer>> minAdjustmentValue() {
         return Optional.ofNullable(this.minAdjustmentValue);
     }
 
+    /**
+     * The rule name of auto scaling policy.
+     * 
+     */
     @Import(name="ruleName", required=true)
     private Output<String> ruleName;
 
+    /**
+     * @return The rule name of auto scaling policy.
+     * 
+     */
     public Output<String> ruleName() {
         return this.ruleName;
     }
 
+    /**
+     * The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+     * 
+     */
     @Import(name="timeTrigger")
     private @Nullable Output<ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs> timeTrigger;
 
+    /**
+     * @return The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+     * 
+     */
     public Optional<Output<ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs>> timeTrigger() {
         return Optional.ofNullable(this.timeTrigger);
     }
 
+    /**
+     * The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
+     * 
+     */
     @Import(name="triggerType", required=true)
     private Output<String> triggerType;
 
+    /**
+     * @return The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
+     * 
+     */
     public Output<String> triggerType() {
         return this.triggerType;
     }
@@ -106,74 +170,170 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs extends com.
             $ = new ClusterNodeGroupAutoScalingPolicyScalingRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param activityType The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activityType(Output<String> activityType) {
             $.activityType = activityType;
             return this;
         }
 
+        /**
+         * @param activityType The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activityType(String activityType) {
             return activityType(Output.of(activityType));
         }
 
+        /**
+         * @param adjustmentType The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adjustmentType(@Nullable Output<String> adjustmentType) {
             $.adjustmentType = adjustmentType;
             return this;
         }
 
+        /**
+         * @param adjustmentType The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adjustmentType(String adjustmentType) {
             return adjustmentType(Output.of(adjustmentType));
         }
 
+        /**
+         * @param adjustmentValue The adjustment value of auto scaling policy. The value should between 1 and 5000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adjustmentValue(Output<Integer> adjustmentValue) {
             $.adjustmentValue = adjustmentValue;
             return this;
         }
 
+        /**
+         * @param adjustmentValue The adjustment value of auto scaling policy. The value should between 1 and 5000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adjustmentValue(Integer adjustmentValue) {
             return adjustmentValue(Output.of(adjustmentValue));
         }
 
+        /**
+         * @param metricsTrigger The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricsTrigger(@Nullable Output<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs> metricsTrigger) {
             $.metricsTrigger = metricsTrigger;
             return this;
         }
 
+        /**
+         * @param metricsTrigger The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricsTrigger(ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs metricsTrigger) {
             return metricsTrigger(Output.of(metricsTrigger));
         }
 
+        /**
+         * @param minAdjustmentValue The minimum adjustment value of auto scaling policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minAdjustmentValue(@Nullable Output<Integer> minAdjustmentValue) {
             $.minAdjustmentValue = minAdjustmentValue;
             return this;
         }
 
+        /**
+         * @param minAdjustmentValue The minimum adjustment value of auto scaling policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minAdjustmentValue(Integer minAdjustmentValue) {
             return minAdjustmentValue(Output.of(minAdjustmentValue));
         }
 
+        /**
+         * @param ruleName The rule name of auto scaling policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ruleName(Output<String> ruleName) {
             $.ruleName = ruleName;
             return this;
         }
 
+        /**
+         * @param ruleName The rule name of auto scaling policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ruleName(String ruleName) {
             return ruleName(Output.of(ruleName));
         }
 
+        /**
+         * @param timeTrigger The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeTrigger(@Nullable Output<ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs> timeTrigger) {
             $.timeTrigger = timeTrigger;
             return this;
         }
 
+        /**
+         * @param timeTrigger The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeTrigger(ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs timeTrigger) {
             return timeTrigger(Output.of(timeTrigger));
         }
 
+        /**
+         * @param triggerType The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder triggerType(Output<String> triggerType) {
             $.triggerType = triggerType;
             return this;
         }
 
+        /**
+         * @param triggerType The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder triggerType(String triggerType) {
             return triggerType(Output.of(triggerType));
         }

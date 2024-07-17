@@ -19,6 +19,9 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         public readonly string? Policy;
         public readonly string? Port;
         public readonly string? Protocol;
+        /// <summary>
+        /// The source ip of the ingress entry.
+        /// </summary>
         public readonly string? SourceCidrIp;
 
         [OutputConstructor]

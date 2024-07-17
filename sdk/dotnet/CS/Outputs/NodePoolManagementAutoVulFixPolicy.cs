@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.CS.Outputs
     [OutputType]
     public sealed class NodePoolManagementAutoVulFixPolicy
     {
+        /// <summary>
+        /// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        /// </summary>
         public readonly bool? RestartNode;
+        /// <summary>
+        /// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+        /// </summary>
         public readonly string? VulLevel;
 
         [OutputConstructor]

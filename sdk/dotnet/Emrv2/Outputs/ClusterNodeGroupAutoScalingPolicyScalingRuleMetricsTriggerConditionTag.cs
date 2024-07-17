@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     [OutputType]
     public sealed class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag
     {
+        /// <summary>
+        /// The tag key for this scaling rule specific metrics trigger.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// The tag value for this scaling rule specific metrics trigger.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

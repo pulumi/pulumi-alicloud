@@ -11,25 +11,69 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class HybridMonitorSlsTaskSlsProcessConfigStatistic {
+    /**
+     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+     * 
+     */
     private @Nullable String alias;
+    /**
+     * @return The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
+     * 
+     */
     private @Nullable String function;
+    /**
+     * @return The value of the function that is used to aggregate logs imported from Log Service.
+     * - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
+     * - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
+     * 
+     */
     private @Nullable String parameterOne;
+    /**
+     * @return The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
+     * 
+     */
     private @Nullable String parameterTwo;
+    /**
+     * @return The name of the key that is used to filter logs imported from Log Service.
+     * 
+     */
     private @Nullable String slsKeyName;
 
     private HybridMonitorSlsTaskSlsProcessConfigStatistic() {}
+    /**
+     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+     * 
+     */
     public Optional<String> alias() {
         return Optional.ofNullable(this.alias);
     }
+    /**
+     * @return The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
+     * 
+     */
     public Optional<String> function() {
         return Optional.ofNullable(this.function);
     }
+    /**
+     * @return The value of the function that is used to aggregate logs imported from Log Service.
+     * - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
+     * - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
+     * 
+     */
     public Optional<String> parameterOne() {
         return Optional.ofNullable(this.parameterOne);
     }
+    /**
+     * @return The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
+     * 
+     */
     public Optional<String> parameterTwo() {
         return Optional.ofNullable(this.parameterTwo);
     }
+    /**
+     * @return The name of the key that is used to filter logs imported from Log Service.
+     * 
+     */
     public Optional<String> slsKeyName() {
         return Optional.ofNullable(this.slsKeyName);
     }

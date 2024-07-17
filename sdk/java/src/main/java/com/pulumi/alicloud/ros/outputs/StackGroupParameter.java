@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StackGroupParameter {
+    /**
+     * @return The parameter key.
+     * 
+     */
     private @Nullable String parameterKey;
+    /**
+     * @return The parameter value.
+     * 
+     */
     private @Nullable String parameterValue;
 
     private StackGroupParameter() {}
+    /**
+     * @return The parameter key.
+     * 
+     */
     public Optional<String> parameterKey() {
         return Optional.ofNullable(this.parameterKey);
     }
+    /**
+     * @return The parameter value.
+     * 
+     */
     public Optional<String> parameterValue() {
         return Optional.ofNullable(this.parameterValue);
     }

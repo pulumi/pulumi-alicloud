@@ -62,12 +62,18 @@ class OtsBackupPlanOtsDetail(dict):
 
     def __init__(__self__, *,
                  table_names: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] table_names: The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
         if table_names is not None:
             pulumi.set(__self__, "table_names", table_names)
 
     @property
     @pulumi.getter(name="tableNames")
     def table_names(self) -> Optional[Sequence[str]]:
+        """
+        The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+        """
         return pulumi.get(self, "table_names")
 
 
@@ -102,6 +108,7 @@ class OtsBackupPlanRule(dict):
         :param str backup_type: Backup type. Valid values: `COMPLETE`.
         :param bool disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         :param str retention: Backup retention days, the minimum is 1.
+        :param str rule_name: The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
         :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
                - `startTime` Backup start time, UNIX time seconds.
         """
@@ -143,6 +150,9 @@ class OtsBackupPlanRule(dict):
     @property
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[str]:
+        """
+        The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
+        """
         return pulumi.get(self, "rule_name")
 
     @property
@@ -218,6 +228,11 @@ class PolicyBindingAdvancedOptionsUdmDetail(dict):
                  destination_kms_key_id: Optional[str] = None,
                  disk_id_lists: Optional[Sequence[str]] = None,
                  exclude_disk_id_lists: Optional[Sequence[str]] = None):
+        """
+        :param str destination_kms_key_id: Custom KMS key ID of encrypted copy.
+        :param Sequence[str] disk_id_lists: The list of backup disks. If it is empty, all disks are backed up.
+        :param Sequence[str] exclude_disk_id_lists: List of cloud disk IDs that are not backed up.
+        """
         if destination_kms_key_id is not None:
             pulumi.set(__self__, "destination_kms_key_id", destination_kms_key_id)
         if disk_id_lists is not None:
@@ -228,16 +243,25 @@ class PolicyBindingAdvancedOptionsUdmDetail(dict):
     @property
     @pulumi.getter(name="destinationKmsKeyId")
     def destination_kms_key_id(self) -> Optional[str]:
+        """
+        Custom KMS key ID of encrypted copy.
+        """
         return pulumi.get(self, "destination_kms_key_id")
 
     @property
     @pulumi.getter(name="diskIdLists")
     def disk_id_lists(self) -> Optional[Sequence[str]]:
+        """
+        The list of backup disks. If it is empty, all disks are backed up.
+        """
         return pulumi.get(self, "disk_id_lists")
 
     @property
     @pulumi.getter(name="excludeDiskIdLists")
     def exclude_disk_id_lists(self) -> Optional[Sequence[str]]:
+        """
+        List of cloud disk IDs that are not backed up.
+        """
         return pulumi.get(self, "exclude_disk_id_lists")
 
 
@@ -420,6 +444,10 @@ class PolicyRuleRetentionRule(dict):
     def __init__(__self__, *,
                  advanced_retention_type: Optional[str] = None,
                  retention: Optional[int] = None):
+        """
+        :param str advanced_retention_type: Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+        :param int retention: Retention time, in days.
+        """
         if advanced_retention_type is not None:
             pulumi.set(__self__, "advanced_retention_type", advanced_retention_type)
         if retention is not None:
@@ -428,11 +456,17 @@ class PolicyRuleRetentionRule(dict):
     @property
     @pulumi.getter(name="advancedRetentionType")
     def advanced_retention_type(self) -> Optional[str]:
+        """
+        Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+        """
         return pulumi.get(self, "advanced_retention_type")
 
     @property
     @pulumi.getter
     def retention(self) -> Optional[int]:
+        """
+        Retention time, in days.
+        """
         return pulumi.get(self, "retention")
 
 
@@ -457,12 +491,18 @@ class RestoreJobOtsDetail(dict):
 
     def __init__(__self__, *,
                  overwrite_existing: Optional[bool] = None):
+        """
+        :param bool overwrite_existing: Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+        """
         if overwrite_existing is not None:
             pulumi.set(__self__, "overwrite_existing", overwrite_existing)
 
     @property
     @pulumi.getter(name="overwriteExisting")
     def overwrite_existing(self) -> Optional[bool]:
+        """
+        Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "overwrite_existing")
 
 
@@ -632,6 +672,13 @@ class GetBackupJobsFilterResult(dict):
                  key: Optional[str] = None,
                  operator: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
+        """
+        :param str key: The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+        :param str operator: The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
+               
+               > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if operator is not None:
@@ -642,16 +689,27 @@ class GetBackupJobsFilterResult(dict):
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
+        """
+        The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def operator(self) -> Optional[str]:
+        """
+        The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
+        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
+        """
+        Set of values that are accepted for the given field.
+
+        > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+        """
         return pulumi.get(self, "values")
 
 
@@ -3034,6 +3092,10 @@ class GetServerBackupPlansFilterResult(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
+        """
+        :param str key: The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+        :param Sequence[str] values: Set of values that are accepted for the given field.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if values is not None:
@@ -3042,11 +3104,17 @@ class GetServerBackupPlansFilterResult(dict):
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
+        """
+        The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
+        """
+        Set of values that are accepted for the given field.
+        """
         return pulumi.get(self, "values")
 
 

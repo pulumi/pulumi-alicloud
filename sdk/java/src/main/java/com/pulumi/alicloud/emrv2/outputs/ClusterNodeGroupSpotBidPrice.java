@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterNodeGroupSpotBidPrice {
+    /**
+     * @return The spot bid price of a PayAsYouGo instance.
+     * 
+     */
     private Integer bidPrice;
+    /**
+     * @return Host Ecs instance type.
+     * 
+     */
     private String instanceType;
 
     private ClusterNodeGroupSpotBidPrice() {}
+    /**
+     * @return The spot bid price of a PayAsYouGo instance.
+     * 
+     */
     public Integer bidPrice() {
         return this.bidPrice;
     }
+    /**
+     * @return Host Ecs instance type.
+     * 
+     */
     public String instanceType() {
         return this.instanceType;
     }

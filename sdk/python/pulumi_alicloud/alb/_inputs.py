@@ -269,6 +269,7 @@ class ListenerAclConfigAclRelationArgs:
                  acl_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] acl_id: Snooping Binding of the Access Policy Group ID List.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
         """
         if acl_id is not None:
@@ -279,6 +280,9 @@ class ListenerAclConfigAclRelationArgs:
     @property
     @pulumi.getter(name="aclId")
     def acl_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Snooping Binding of the Access Policy Group ID List.
+        """
         return pulumi.get(self, "acl_id")
 
     @acl_id.setter
@@ -362,11 +366,17 @@ class ListenerDefaultActionArgs:
 class ListenerDefaultActionForwardGroupConfigArgs:
     def __init__(__self__, *,
                  server_group_tuples: pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs']]] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+        """
         pulumi.set(__self__, "server_group_tuples", server_group_tuples)
 
     @property
     @pulumi.getter(name="serverGroupTuples")
     def server_group_tuples(self) -> pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs']]]:
+        """
+        The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
+        """
         return pulumi.get(self, "server_group_tuples")
 
     @server_group_tuples.setter
@@ -378,11 +388,17 @@ class ListenerDefaultActionForwardGroupConfigArgs:
 class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs:
     def __init__(__self__, *,
                  server_group_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] server_group_id: The ID of the destination server group to which requests are forwarded.
+        """
         pulumi.set(__self__, "server_group_id", server_group_id)
 
     @property
     @pulumi.getter(name="serverGroupId")
     def server_group_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the destination server group to which requests are forwarded.
+        """
         return pulumi.get(self, "server_group_id")
 
     @server_group_id.setter
@@ -1098,6 +1114,14 @@ class RuleRuleActionCorsConfigArgs:
                  allow_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  max_age: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] allow_credentials: Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The allowed headers for CORS requests.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origins: The allowed origins of CORS requests.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The headers that can be exposed.
+        :param pulumi.Input[int] max_age: The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+        """
         if allow_credentials is not None:
             pulumi.set(__self__, "allow_credentials", allow_credentials)
         if allow_headers is not None:
@@ -1114,6 +1138,9 @@ class RuleRuleActionCorsConfigArgs:
     @property
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+        """
         return pulumi.get(self, "allow_credentials")
 
     @allow_credentials.setter
@@ -1123,6 +1150,9 @@ class RuleRuleActionCorsConfigArgs:
     @property
     @pulumi.getter(name="allowHeaders")
     def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The allowed headers for CORS requests.
+        """
         return pulumi.get(self, "allow_headers")
 
     @allow_headers.setter
@@ -1132,6 +1162,9 @@ class RuleRuleActionCorsConfigArgs:
     @property
     @pulumi.getter(name="allowMethods")
     def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+        """
         return pulumi.get(self, "allow_methods")
 
     @allow_methods.setter
@@ -1141,6 +1174,9 @@ class RuleRuleActionCorsConfigArgs:
     @property
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The allowed origins of CORS requests.
+        """
         return pulumi.get(self, "allow_origins")
 
     @allow_origins.setter
@@ -1150,6 +1186,9 @@ class RuleRuleActionCorsConfigArgs:
     @property
     @pulumi.getter(name="exposeHeaders")
     def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The headers that can be exposed.
+        """
         return pulumi.get(self, "expose_headers")
 
     @expose_headers.setter
@@ -1159,6 +1198,9 @@ class RuleRuleActionCorsConfigArgs:
     @property
     @pulumi.getter(name="maxAge")
     def max_age(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+        """
         return pulumi.get(self, "max_age")
 
     @max_age.setter
@@ -1172,6 +1214,11 @@ class RuleRuleActionFixedResponseConfigArgs:
                  content: pulumi.Input[str],
                  content_type: Optional[pulumi.Input[str]] = None,
                  http_code: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] content: The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+        :param pulumi.Input[str] content_type: The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+        :param pulumi.Input[str] http_code: The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+        """
         pulumi.set(__self__, "content", content)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
@@ -1181,6 +1228,9 @@ class RuleRuleActionFixedResponseConfigArgs:
     @property
     @pulumi.getter
     def content(self) -> pulumi.Input[str]:
+        """
+        The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+        """
         return pulumi.get(self, "content")
 
     @content.setter
@@ -1190,6 +1240,9 @@ class RuleRuleActionFixedResponseConfigArgs:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -1199,6 +1252,9 @@ class RuleRuleActionFixedResponseConfigArgs:
     @property
     @pulumi.getter(name="httpCode")
     def http_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+        """
         return pulumi.get(self, "http_code")
 
     @http_code.setter
@@ -1211,6 +1267,10 @@ class RuleRuleActionForwardGroupConfigArgs:
     def __init__(__self__, *,
                  server_group_sticky_session: Optional[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs']] = None,
                  server_group_tuples: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgs']]]] = None):
+        """
+        :param pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs'] server_group_sticky_session: The configuration of session persistence for server groups. See `server_group_sticky_session` below.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgs']]] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below.
+        """
         if server_group_sticky_session is not None:
             pulumi.set(__self__, "server_group_sticky_session", server_group_sticky_session)
         if server_group_tuples is not None:
@@ -1219,6 +1279,9 @@ class RuleRuleActionForwardGroupConfigArgs:
     @property
     @pulumi.getter(name="serverGroupStickySession")
     def server_group_sticky_session(self) -> Optional[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs']]:
+        """
+        The configuration of session persistence for server groups. See `server_group_sticky_session` below.
+        """
         return pulumi.get(self, "server_group_sticky_session")
 
     @server_group_sticky_session.setter
@@ -1228,6 +1291,9 @@ class RuleRuleActionForwardGroupConfigArgs:
     @property
     @pulumi.getter(name="serverGroupTuples")
     def server_group_tuples(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgs']]]]:
+        """
+        The destination server group to which requests are forwarded. See `server_group_tuples` below.
+        """
         return pulumi.get(self, "server_group_tuples")
 
     @server_group_tuples.setter
@@ -1240,6 +1306,10 @@ class RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  timeout: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether to enable session persistence.
+        :param pulumi.Input[int] timeout: The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if timeout is not None:
@@ -1248,6 +1318,9 @@ class RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable session persistence.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -1257,6 +1330,9 @@ class RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs:
     @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -1269,6 +1345,10 @@ class RuleRuleActionForwardGroupConfigServerGroupTupleArgs:
     def __init__(__self__, *,
                  server_group_id: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] server_group_id: The ID of the destination server group to which requests are forwarded.
+        :param pulumi.Input[int] weight: The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
+        """
         if server_group_id is not None:
             pulumi.set(__self__, "server_group_id", server_group_id)
         if weight is not None:
@@ -1277,6 +1357,9 @@ class RuleRuleActionForwardGroupConfigServerGroupTupleArgs:
     @property
     @pulumi.getter(name="serverGroupId")
     def server_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the destination server group to which requests are forwarded.
+        """
         return pulumi.get(self, "server_group_id")
 
     @server_group_id.setter
@@ -1286,6 +1369,9 @@ class RuleRuleActionForwardGroupConfigServerGroupTupleArgs:
     @property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
+        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -1299,6 +1385,12 @@ class RuleRuleActionInsertHeaderConfigArgs:
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  value_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] value_type: The value type of the inserted header field. Valid values:
+               - `UserDefined`: a custom value
+               - `ReferenceHeader`: uses a field of the user request header.
+               - `SystemDefined`: a system value.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -1327,6 +1419,12 @@ class RuleRuleActionInsertHeaderConfigArgs:
     @property
     @pulumi.getter(name="valueType")
     def value_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value type of the inserted header field. Valid values:
+        - `UserDefined`: a custom value
+        - `ReferenceHeader`: uses a field of the user request header.
+        - `SystemDefined`: a system value.
+        """
         return pulumi.get(self, "value_type")
 
     @value_type.setter
@@ -1343,6 +1441,14 @@ class RuleRuleActionRedirectConfigArgs:
                  port: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        :param pulumi.Input[str] http_code: The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+        :param pulumi.Input[str] path: The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+        :param pulumi.Input[str] port: The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
+        :param pulumi.Input[str] protocol: The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+        :param pulumi.Input[str] query: The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+        """
         if host is not None:
             pulumi.set(__self__, "host", host)
         if http_code is not None:
@@ -1359,6 +1465,9 @@ class RuleRuleActionRedirectConfigArgs:
     @property
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        """
         return pulumi.get(self, "host")
 
     @host.setter
@@ -1368,6 +1477,9 @@ class RuleRuleActionRedirectConfigArgs:
     @property
     @pulumi.getter(name="httpCode")
     def http_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+        """
         return pulumi.get(self, "http_code")
 
     @http_code.setter
@@ -1377,6 +1489,9 @@ class RuleRuleActionRedirectConfigArgs:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -1386,6 +1501,9 @@ class RuleRuleActionRedirectConfigArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -1395,6 +1513,9 @@ class RuleRuleActionRedirectConfigArgs:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -1404,6 +1525,9 @@ class RuleRuleActionRedirectConfigArgs:
     @property
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+        """
         return pulumi.get(self, "query")
 
     @query.setter
@@ -1434,6 +1558,11 @@ class RuleRuleActionRewriteConfigArgs:
                  host: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        :param pulumi.Input[str] path: The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+        :param pulumi.Input[str] query: The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+        """
         if host is not None:
             pulumi.set(__self__, "host", host)
         if path is not None:
@@ -1444,6 +1573,9 @@ class RuleRuleActionRewriteConfigArgs:
     @property
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        """
         return pulumi.get(self, "host")
 
     @host.setter
@@ -1453,6 +1585,9 @@ class RuleRuleActionRewriteConfigArgs:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -1462,6 +1597,9 @@ class RuleRuleActionRewriteConfigArgs:
     @property
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input[str]]:
+        """
+        The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+        """
         return pulumi.get(self, "query")
 
     @query.setter
@@ -1474,6 +1612,10 @@ class RuleRuleActionTrafficLimitConfigArgs:
     def __init__(__self__, *,
                  per_ip_qps: Optional[pulumi.Input[int]] = None,
                  qps: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] per_ip_qps: The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+        :param pulumi.Input[int] qps: The Number of requests per second. Valid values: `1` to `100000`.
+        """
         if per_ip_qps is not None:
             pulumi.set(__self__, "per_ip_qps", per_ip_qps)
         if qps is not None:
@@ -1482,6 +1624,9 @@ class RuleRuleActionTrafficLimitConfigArgs:
     @property
     @pulumi.getter(name="perIpQps")
     def per_ip_qps(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+        """
         return pulumi.get(self, "per_ip_qps")
 
     @per_ip_qps.setter
@@ -1491,6 +1636,9 @@ class RuleRuleActionTrafficLimitConfigArgs:
     @property
     @pulumi.getter
     def qps(self) -> Optional[pulumi.Input[int]]:
+        """
+        The Number of requests per second. Valid values: `1` to `100000`.
+        """
         return pulumi.get(self, "qps")
 
     @qps.setter
@@ -1503,6 +1651,10 @@ class RuleRuleActionTrafficMirrorConfigArgs:
     def __init__(__self__, *,
                  mirror_group_config: Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs']] = None,
                  target_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs'] mirror_group_config: The Traffic is mirrored to the server group. See `mirror_group_config` below.
+        :param pulumi.Input[str] target_type: The Mirror target type.
+        """
         if mirror_group_config is not None:
             pulumi.set(__self__, "mirror_group_config", mirror_group_config)
         if target_type is not None:
@@ -1511,6 +1663,9 @@ class RuleRuleActionTrafficMirrorConfigArgs:
     @property
     @pulumi.getter(name="mirrorGroupConfig")
     def mirror_group_config(self) -> Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs']]:
+        """
+        The Traffic is mirrored to the server group. See `mirror_group_config` below.
+        """
         return pulumi.get(self, "mirror_group_config")
 
     @mirror_group_config.setter
@@ -1520,6 +1675,9 @@ class RuleRuleActionTrafficMirrorConfigArgs:
     @property
     @pulumi.getter(name="targetType")
     def target_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Mirror target type.
+        """
         return pulumi.get(self, "target_type")
 
     @target_type.setter
@@ -1531,12 +1689,18 @@ class RuleRuleActionTrafficMirrorConfigArgs:
 class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs:
     def __init__(__self__, *,
                  server_group_tuples: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below.
+        """
         if server_group_tuples is not None:
             pulumi.set(__self__, "server_group_tuples", server_group_tuples)
 
     @property
     @pulumi.getter(name="serverGroupTuples")
     def server_group_tuples(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]]]:
+        """
+        The destination server group to which requests are forwarded. See `server_group_tuples` below.
+        """
         return pulumi.get(self, "server_group_tuples")
 
     @server_group_tuples.setter
@@ -1548,12 +1712,18 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs:
 class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs:
     def __init__(__self__, *,
                  server_group_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] server_group_id: The ID of the destination server group to which requests are forwarded.
+        """
         if server_group_id is not None:
             pulumi.set(__self__, "server_group_id", server_group_id)
 
     @property
     @pulumi.getter(name="serverGroupId")
     def server_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the destination server group to which requests are forwarded.
+        """
         return pulumi.get(self, "server_group_id")
 
     @server_group_id.setter
@@ -1749,12 +1919,18 @@ class RuleRuleConditionArgs:
 class RuleRuleConditionCookieConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionCookieConfigValueArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionCookieConfigValueArgs']]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         if values is not None:
             pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionCookieConfigValueArgs']]]]:
+        """
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -1796,6 +1972,9 @@ class RuleRuleConditionHeaderConfigArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if values is not None:
@@ -1813,6 +1992,9 @@ class RuleRuleConditionHeaderConfigArgs:
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -1824,12 +2006,18 @@ class RuleRuleConditionHeaderConfigArgs:
 class RuleRuleConditionHostConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         if values is not None:
             pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -1841,12 +2029,18 @@ class RuleRuleConditionHostConfigArgs:
 class RuleRuleConditionMethodConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         if values is not None:
             pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -1858,12 +2052,18 @@ class RuleRuleConditionMethodConfigArgs:
 class RuleRuleConditionPathConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         if values is not None:
             pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -1875,12 +2075,18 @@ class RuleRuleConditionPathConfigArgs:
 class RuleRuleConditionQueryStringConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionQueryStringConfigValueArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionQueryStringConfigValueArgs']]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         if values is not None:
             pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionQueryStringConfigValueArgs']]]]:
+        """
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -1922,6 +2128,9 @@ class RuleRuleConditionResponseHeaderConfigArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if values is not None:
@@ -1939,6 +2148,9 @@ class RuleRuleConditionResponseHeaderConfigArgs:
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -1950,12 +2162,18 @@ class RuleRuleConditionResponseHeaderConfigArgs:
 class RuleRuleConditionResponseStatusCodeConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         if values is not None:
             pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -1967,12 +2185,18 @@ class RuleRuleConditionResponseStatusCodeConfigArgs:
 class RuleRuleConditionSourceIpConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         if values is not None:
             pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+        """
         return pulumi.get(self, "values")
 
     @values.setter

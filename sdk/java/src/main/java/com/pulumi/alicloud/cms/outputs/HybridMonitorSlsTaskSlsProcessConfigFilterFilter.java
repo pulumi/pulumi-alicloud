@@ -11,14 +11,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
+    /**
+     * @return The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `contain`, `notContain`.
+     * 
+     */
     private @Nullable String operator;
+    /**
+     * @return The name of the key that is used to filter logs imported from Log Service.
+     * 
+     */
     private @Nullable String slsKeyName;
     private @Nullable String value;
 
     private HybridMonitorSlsTaskSlsProcessConfigFilterFilter() {}
+    /**
+     * @return The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `contain`, `notContain`.
+     * 
+     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
+    /**
+     * @return The name of the key that is used to filter logs imported from Log Service.
+     * 
+     */
     public Optional<String> slsKeyName() {
         return Optional.ofNullable(this.slsKeyName);
     }

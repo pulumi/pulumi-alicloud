@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     [OutputType]
     public sealed class ClusterNodeGroupAutoScalingPolicy
     {
+        /// <summary>
+        /// The constraints of auto scaling policy. See `constraints` below.
+        /// </summary>
         public readonly Outputs.ClusterNodeGroupAutoScalingPolicyConstraints? Constraints;
+        /// <summary>
+        /// The scaling rules of auto scaling policy. See `scaling_rules` below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupAutoScalingPolicyScalingRule> ScalingRules;
 
         [OutputConstructor]

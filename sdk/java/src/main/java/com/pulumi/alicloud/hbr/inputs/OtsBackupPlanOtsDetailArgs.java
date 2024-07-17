@@ -16,9 +16,17 @@ public final class OtsBackupPlanOtsDetailArgs extends com.pulumi.resources.Resou
 
     public static final OtsBackupPlanOtsDetailArgs Empty = new OtsBackupPlanOtsDetailArgs();
 
+    /**
+     * The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+     * 
+     */
     @Import(name="tableNames")
     private @Nullable Output<List<String>> tableNames;
 
+    /**
+     * @return The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+     * 
+     */
     public Optional<Output<List<String>>> tableNames() {
         return Optional.ofNullable(this.tableNames);
     }
@@ -47,15 +55,33 @@ public final class OtsBackupPlanOtsDetailArgs extends com.pulumi.resources.Resou
             $ = new OtsBackupPlanOtsDetailArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param tableNames The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableNames(@Nullable Output<List<String>> tableNames) {
             $.tableNames = tableNames;
             return this;
         }
 
+        /**
+         * @param tableNames The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableNames(List<String> tableNames) {
             return tableNames(Output.of(tableNames));
         }
 
+        /**
+         * @param tableNames The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableNames(String... tableNames) {
             return tableNames(List.of(tableNames));
         }

@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
     [OutputType]
     public sealed class ParameterGroupParameter
     {
+        /// <summary>
+        /// The name of a parameter in the parameter template.
+        /// </summary>
         public readonly string ParamName;
+        /// <summary>
+        /// The value of a parameter in the parameter template.
+        /// </summary>
         public readonly string ParamValue;
 
         [OutputConstructor]

@@ -25,9 +25,17 @@ public final class ContainerGroupContainerSecurityContextArgs extends com.pulumi
         return Optional.ofNullable(this.capabilities);
     }
 
+    /**
+     * Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
+     * 
+     */
     @Import(name="privileged")
     private @Nullable Output<Boolean> privileged;
 
+    /**
+     * @return Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
+     * 
+     */
     public Optional<Output<Boolean>> privileged() {
         return Optional.ofNullable(this.privileged);
     }
@@ -78,11 +86,23 @@ public final class ContainerGroupContainerSecurityContextArgs extends com.pulumi
             return capabilities(List.of(capabilities));
         }
 
+        /**
+         * @param privileged Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privileged(@Nullable Output<Boolean> privileged) {
             $.privileged = privileged;
             return this;
         }
 
+        /**
+         * @param privileged Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privileged(Boolean privileged) {
             return privileged(Output.of(privileged));
         }

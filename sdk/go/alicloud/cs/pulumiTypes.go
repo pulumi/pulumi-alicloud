@@ -4633,6 +4633,7 @@ func (o NodePoolManagementPtrOutput) SurgePercentage() pulumi.IntPtrOutput {
 }
 
 type NodePoolManagementAutoRepairPolicy struct {
+	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
 	RestartNode *bool `pulumi:"restartNode"`
 }
 
@@ -4648,6 +4649,7 @@ type NodePoolManagementAutoRepairPolicyInput interface {
 }
 
 type NodePoolManagementAutoRepairPolicyArgs struct {
+	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
 	RestartNode pulumi.BoolPtrInput `pulumi:"restartNode"`
 }
 
@@ -4728,6 +4730,7 @@ func (o NodePoolManagementAutoRepairPolicyOutput) ToNodePoolManagementAutoRepair
 	}).(NodePoolManagementAutoRepairPolicyPtrOutput)
 }
 
+// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
 func (o NodePoolManagementAutoRepairPolicyOutput) RestartNode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagementAutoRepairPolicy) *bool { return v.RestartNode }).(pulumi.BoolPtrOutput)
 }
@@ -4756,6 +4759,7 @@ func (o NodePoolManagementAutoRepairPolicyPtrOutput) Elem() NodePoolManagementAu
 	}).(NodePoolManagementAutoRepairPolicyOutput)
 }
 
+// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
 func (o NodePoolManagementAutoRepairPolicyPtrOutput) RestartNode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagementAutoRepairPolicy) *bool {
 		if v == nil {
@@ -4766,6 +4770,7 @@ func (o NodePoolManagementAutoRepairPolicyPtrOutput) RestartNode() pulumi.BoolPt
 }
 
 type NodePoolManagementAutoUpgradePolicy struct {
+	// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
 	AutoUpgradeKubelet *bool `pulumi:"autoUpgradeKubelet"`
 }
 
@@ -4781,6 +4786,7 @@ type NodePoolManagementAutoUpgradePolicyInput interface {
 }
 
 type NodePoolManagementAutoUpgradePolicyArgs struct {
+	// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
 	AutoUpgradeKubelet pulumi.BoolPtrInput `pulumi:"autoUpgradeKubelet"`
 }
 
@@ -4861,6 +4867,7 @@ func (o NodePoolManagementAutoUpgradePolicyOutput) ToNodePoolManagementAutoUpgra
 	}).(NodePoolManagementAutoUpgradePolicyPtrOutput)
 }
 
+// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
 func (o NodePoolManagementAutoUpgradePolicyOutput) AutoUpgradeKubelet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagementAutoUpgradePolicy) *bool { return v.AutoUpgradeKubelet }).(pulumi.BoolPtrOutput)
 }
@@ -4889,6 +4896,7 @@ func (o NodePoolManagementAutoUpgradePolicyPtrOutput) Elem() NodePoolManagementA
 	}).(NodePoolManagementAutoUpgradePolicyOutput)
 }
 
+// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
 func (o NodePoolManagementAutoUpgradePolicyPtrOutput) AutoUpgradeKubelet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagementAutoUpgradePolicy) *bool {
 		if v == nil {
@@ -4899,8 +4907,10 @@ func (o NodePoolManagementAutoUpgradePolicyPtrOutput) AutoUpgradeKubelet() pulum
 }
 
 type NodePoolManagementAutoVulFixPolicy struct {
-	RestartNode *bool   `pulumi:"restartNode"`
-	VulLevel    *string `pulumi:"vulLevel"`
+	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+	RestartNode *bool `pulumi:"restartNode"`
+	// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+	VulLevel *string `pulumi:"vulLevel"`
 }
 
 // NodePoolManagementAutoVulFixPolicyInput is an input type that accepts NodePoolManagementAutoVulFixPolicyArgs and NodePoolManagementAutoVulFixPolicyOutput values.
@@ -4915,8 +4925,10 @@ type NodePoolManagementAutoVulFixPolicyInput interface {
 }
 
 type NodePoolManagementAutoVulFixPolicyArgs struct {
-	RestartNode pulumi.BoolPtrInput   `pulumi:"restartNode"`
-	VulLevel    pulumi.StringPtrInput `pulumi:"vulLevel"`
+	// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+	RestartNode pulumi.BoolPtrInput `pulumi:"restartNode"`
+	// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+	VulLevel pulumi.StringPtrInput `pulumi:"vulLevel"`
 }
 
 func (NodePoolManagementAutoVulFixPolicyArgs) ElementType() reflect.Type {
@@ -4996,10 +5008,12 @@ func (o NodePoolManagementAutoVulFixPolicyOutput) ToNodePoolManagementAutoVulFix
 	}).(NodePoolManagementAutoVulFixPolicyPtrOutput)
 }
 
+// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
 func (o NodePoolManagementAutoVulFixPolicyOutput) RestartNode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolManagementAutoVulFixPolicy) *bool { return v.RestartNode }).(pulumi.BoolPtrOutput)
 }
 
+// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
 func (o NodePoolManagementAutoVulFixPolicyOutput) VulLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolManagementAutoVulFixPolicy) *string { return v.VulLevel }).(pulumi.StringPtrOutput)
 }
@@ -5028,6 +5042,7 @@ func (o NodePoolManagementAutoVulFixPolicyPtrOutput) Elem() NodePoolManagementAu
 	}).(NodePoolManagementAutoVulFixPolicyOutput)
 }
 
+// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
 func (o NodePoolManagementAutoVulFixPolicyPtrOutput) RestartNode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagementAutoVulFixPolicy) *bool {
 		if v == nil {
@@ -5037,6 +5052,7 @@ func (o NodePoolManagementAutoVulFixPolicyPtrOutput) RestartNode() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
 func (o NodePoolManagementAutoVulFixPolicyPtrOutput) VulLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolManagementAutoVulFixPolicy) *string {
 		if v == nil {

@@ -19,6 +19,9 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// - Pro: Professional Edition
         /// </summary>
         public readonly string Edition;
+        /// <summary>
+        /// The ASM version id. It formats as `&lt;edition&gt;:&lt;version&gt;`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// A list of Service Mesh Service Meshes. Each element contains the following attributes:

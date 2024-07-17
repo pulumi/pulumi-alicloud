@@ -15,23 +15,47 @@ public final class AlertConfigurationPolicyConfigurationArgs extends com.pulumi.
 
     public static final AlertConfigurationPolicyConfigurationArgs Empty = new AlertConfigurationPolicyConfigurationArgs();
 
+    /**
+     * The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+     * 
+     */
     @Import(name="actionPolicyId")
     private @Nullable Output<String> actionPolicyId;
 
+    /**
+     * @return The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+     * 
+     */
     public Optional<Output<String>> actionPolicyId() {
         return Optional.ofNullable(this.actionPolicyId);
     }
 
+    /**
+     * Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
+     * 
+     */
     @Import(name="alertPolicyId")
     private @Nullable Output<String> alertPolicyId;
 
+    /**
+     * @return Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
+     * 
+     */
     public Optional<Output<String>> alertPolicyId() {
         return Optional.ofNullable(this.alertPolicyId);
     }
 
+    /**
+     * Repeat the waiting time. For example, 5m, 1H, etc.
+     * 
+     */
     @Import(name="repeatInterval")
     private @Nullable Output<String> repeatInterval;
 
+    /**
+     * @return Repeat the waiting time. For example, 5m, 1H, etc.
+     * 
+     */
     public Optional<Output<String>> repeatInterval() {
         return Optional.ofNullable(this.repeatInterval);
     }
@@ -62,29 +86,65 @@ public final class AlertConfigurationPolicyConfigurationArgs extends com.pulumi.
             $ = new AlertConfigurationPolicyConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param actionPolicyId The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionPolicyId(@Nullable Output<String> actionPolicyId) {
             $.actionPolicyId = actionPolicyId;
             return this;
         }
 
+        /**
+         * @param actionPolicyId The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionPolicyId(String actionPolicyId) {
             return actionPolicyId(Output.of(actionPolicyId));
         }
 
+        /**
+         * @param alertPolicyId Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertPolicyId(@Nullable Output<String> alertPolicyId) {
             $.alertPolicyId = alertPolicyId;
             return this;
         }
 
+        /**
+         * @param alertPolicyId Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alertPolicyId(String alertPolicyId) {
             return alertPolicyId(Output.of(alertPolicyId));
         }
 
+        /**
+         * @param repeatInterval Repeat the waiting time. For example, 5m, 1H, etc.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repeatInterval(@Nullable Output<String> repeatInterval) {
             $.repeatInterval = repeatInterval;
             return this;
         }
 
+        /**
+         * @param repeatInterval Repeat the waiting time. For example, 5m, 1H, etc.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repeatInterval(String repeatInterval) {
             return repeatInterval(Output.of(repeatInterval));
         }

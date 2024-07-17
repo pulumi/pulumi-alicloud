@@ -15,23 +15,47 @@ public final class StoreEncryptConfUserCmkInfoArgs extends com.pulumi.resources.
 
     public static final StoreEncryptConfUserCmkInfoArgs Empty = new StoreEncryptConfUserCmkInfoArgs();
 
+    /**
+     * Role arn.
+     * 
+     */
     @Import(name="arn")
     private @Nullable Output<String> arn;
 
+    /**
+     * @return Role arn.
+     * 
+     */
     public Optional<Output<String>> arn() {
         return Optional.ofNullable(this.arn);
     }
 
+    /**
+     * User master key id.
+     * 
+     */
     @Import(name="cmkKeyId")
     private @Nullable Output<String> cmkKeyId;
 
+    /**
+     * @return User master key id.
+     * 
+     */
     public Optional<Output<String>> cmkKeyId() {
         return Optional.ofNullable(this.cmkKeyId);
     }
 
+    /**
+     * Region id where the user master key id is located.
+     * 
+     */
     @Import(name="regionId")
     private @Nullable Output<String> regionId;
 
+    /**
+     * @return Region id where the user master key id is located.
+     * 
+     */
     public Optional<Output<String>> regionId() {
         return Optional.ofNullable(this.regionId);
     }
@@ -62,29 +86,65 @@ public final class StoreEncryptConfUserCmkInfoArgs extends com.pulumi.resources.
             $ = new StoreEncryptConfUserCmkInfoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param arn Role arn.
+         * 
+         * @return builder
+         * 
+         */
         public Builder arn(@Nullable Output<String> arn) {
             $.arn = arn;
             return this;
         }
 
+        /**
+         * @param arn Role arn.
+         * 
+         * @return builder
+         * 
+         */
         public Builder arn(String arn) {
             return arn(Output.of(arn));
         }
 
+        /**
+         * @param cmkKeyId User master key id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cmkKeyId(@Nullable Output<String> cmkKeyId) {
             $.cmkKeyId = cmkKeyId;
             return this;
         }
 
+        /**
+         * @param cmkKeyId User master key id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cmkKeyId(String cmkKeyId) {
             return cmkKeyId(Output.of(cmkKeyId));
         }
 
+        /**
+         * @param regionId Region id where the user master key id is located.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionId(@Nullable Output<String> regionId) {
             $.regionId = regionId;
             return this;
         }
 
+        /**
+         * @param regionId Region id where the user master key id is located.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionId(String regionId) {
             return regionId(Output.of(regionId));
         }

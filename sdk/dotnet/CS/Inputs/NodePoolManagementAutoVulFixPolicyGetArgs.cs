@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.CS.Inputs
 
     public sealed class NodePoolManagementAutoVulFixPolicyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        /// </summary>
         [Input("restartNode")]
         public Input<bool>? RestartNode { get; set; }
 
+        /// <summary>
+        /// The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+        /// </summary>
         [Input("vulLevel")]
         public Input<string>? VulLevel { get; set; }
 

@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.RealtimeCompute.Inputs
 
     public sealed class VvpInstanceStorageOssArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// OSS Bucket name.
+        /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 

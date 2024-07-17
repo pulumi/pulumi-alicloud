@@ -10,20 +10,52 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEcsKeyPairsKeyPairInstance {
+    /**
+     * @return The ID of the availability zone where the ECS instance is located.
+     * 
+     */
     private String availabilityZone;
     private String description;
     private String imageId;
+    /**
+     * @return The ID of the ECS instance.
+     * 
+     */
     private String instanceId;
+    /**
+     * @return The name of the ECS instance.
+     * 
+     */
     private String instanceName;
     private String instanceType;
+    /**
+     * @return The Key Pair Name.
+     * 
+     */
     private String keyName;
+    /**
+     * @return The private IP address of the ECS instance.
+     * 
+     */
     private String privateIp;
+    /**
+     * @return The public IP address or EIP of the ECS instance.
+     * 
+     */
     private String publicIp;
     private String regionId;
     private String status;
+    /**
+     * @return The ID of the VSwitch attached to the ECS instance.
+     * 
+     */
     private String vswitchId;
 
     private GetEcsKeyPairsKeyPairInstance() {}
+    /**
+     * @return The ID of the availability zone where the ECS instance is located.
+     * 
+     */
     public String availabilityZone() {
         return this.availabilityZone;
     }
@@ -33,21 +65,41 @@ public final class GetEcsKeyPairsKeyPairInstance {
     public String imageId() {
         return this.imageId;
     }
+    /**
+     * @return The ID of the ECS instance.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }
+    /**
+     * @return The name of the ECS instance.
+     * 
+     */
     public String instanceName() {
         return this.instanceName;
     }
     public String instanceType() {
         return this.instanceType;
     }
+    /**
+     * @return The Key Pair Name.
+     * 
+     */
     public String keyName() {
         return this.keyName;
     }
+    /**
+     * @return The private IP address of the ECS instance.
+     * 
+     */
     public String privateIp() {
         return this.privateIp;
     }
+    /**
+     * @return The public IP address or EIP of the ECS instance.
+     * 
+     */
     public String publicIp() {
         return this.publicIp;
     }
@@ -57,6 +109,10 @@ public final class GetEcsKeyPairsKeyPairInstance {
     public String status() {
         return this.status;
     }
+    /**
+     * @return The ID of the VSwitch attached to the ECS instance.
+     * 
+     */
     public String vswitchId() {
         return this.vswitchId;
     }

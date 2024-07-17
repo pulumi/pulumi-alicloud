@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeGroupAutoScalingPolicyConstraints {
+    /**
+     * @return The maximum capacity of constraints for emr node group auto scaling policy.
+     * 
+     */
     private @Nullable Integer maxCapacity;
+    /**
+     * @return The minimum capacity of constraints for emr node group auto scaling policy.
+     * 
+     */
     private @Nullable Integer minCapacity;
 
     private ClusterNodeGroupAutoScalingPolicyConstraints() {}
+    /**
+     * @return The maximum capacity of constraints for emr node group auto scaling policy.
+     * 
+     */
     public Optional<Integer> maxCapacity() {
         return Optional.ofNullable(this.maxCapacity);
     }
+    /**
+     * @return The minimum capacity of constraints for emr node group auto scaling policy.
+     * 
+     */
     public Optional<Integer> minCapacity() {
         return Optional.ofNullable(this.minCapacity);
     }

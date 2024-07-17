@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Cfg.Inputs
 
     public sealed class CompliancePackConfigRuleConfigRuleParameterGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The parameter name.
+        /// </summary>
         [Input("parameterName")]
         public Input<string>? ParameterName { get; set; }
 
+        /// <summary>
+        /// The parameter value.
+        /// </summary>
         [Input("parameterValue")]
         public Input<string>? ParameterValue { get; set; }
 

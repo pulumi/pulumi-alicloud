@@ -18,23 +18,47 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
 
     public static final ServiceMeshMeshConfigControlPlaneLogArgs Empty = new ServiceMeshMeshConfigControlPlaneLogArgs();
 
+    /**
+     * Enable CNI.
+     * 
+     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
+    /**
+     * @return Enable CNI.
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
 
+    /**
+     * Lifecycle of logs has been collected to Alibaba Cloud SLS.
+     * 
+     */
     @Import(name="logTtlInDay")
     private @Nullable Output<Integer> logTtlInDay;
 
+    /**
+     * @return Lifecycle of logs has been collected to Alibaba Cloud SLS.
+     * 
+     */
     public Optional<Output<Integer>> logTtlInDay() {
         return Optional.ofNullable(this.logTtlInDay);
     }
 
+    /**
+     * The name of the SLS Project to which the control plane logs are collected.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The name of the SLS Project to which the control plane logs are collected.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -65,29 +89,65 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
             $ = new ServiceMeshMeshConfigControlPlaneLogArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Enable CNI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Enable CNI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param logTtlInDay Lifecycle of logs has been collected to Alibaba Cloud SLS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logTtlInDay(@Nullable Output<Integer> logTtlInDay) {
             $.logTtlInDay = logTtlInDay;
             return this;
         }
 
+        /**
+         * @param logTtlInDay Lifecycle of logs has been collected to Alibaba Cloud SLS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logTtlInDay(Integer logTtlInDay) {
             return logTtlInDay(Output.of(logTtlInDay));
         }
 
+        /**
+         * @param project The name of the SLS Project to which the control plane logs are collected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The name of the SLS Project to which the control plane logs are collected.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

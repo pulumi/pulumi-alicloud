@@ -18,23 +18,47 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
 
     public static final BucketLifecycleRuleNoncurrentVersionTransitionArgs Empty = new BucketLifecycleRuleNoncurrentVersionTransitionArgs();
 
+    /**
+     * Specifies the number of days noncurrent object versions transition.
+     * 
+     */
     @Import(name="days", required=true)
     private Output<Integer> days;
 
+    /**
+     * @return Specifies the number of days noncurrent object versions transition.
+     * 
+     */
     public Output<Integer> days() {
         return this.days;
     }
 
+    /**
+     * Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+     * 
+     */
     @Import(name="isAccessTime")
     private @Nullable Output<Boolean> isAccessTime;
 
+    /**
+     * @return Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+     * 
+     */
     public Optional<Output<Boolean>> isAccessTime() {
         return Optional.ofNullable(this.isAccessTime);
     }
 
+    /**
+     * Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+     * 
+     */
     @Import(name="returnToStdWhenVisit")
     private @Nullable Output<Boolean> returnToStdWhenVisit;
 
+    /**
+     * @return Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+     * 
+     */
     public Optional<Output<Boolean>> returnToStdWhenVisit() {
         return Optional.ofNullable(this.returnToStdWhenVisit);
     }
@@ -81,29 +105,65 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
             $ = new BucketLifecycleRuleNoncurrentVersionTransitionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param days Specifies the number of days noncurrent object versions transition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder days(Output<Integer> days) {
             $.days = days;
             return this;
         }
 
+        /**
+         * @param days Specifies the number of days noncurrent object versions transition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder days(Integer days) {
             return days(Output.of(days));
         }
 
+        /**
+         * @param isAccessTime Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isAccessTime(@Nullable Output<Boolean> isAccessTime) {
             $.isAccessTime = isAccessTime;
             return this;
         }
 
+        /**
+         * @param isAccessTime Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isAccessTime(Boolean isAccessTime) {
             return isAccessTime(Output.of(isAccessTime));
         }
 
+        /**
+         * @param returnToStdWhenVisit Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+         * 
+         * @return builder
+         * 
+         */
         public Builder returnToStdWhenVisit(@Nullable Output<Boolean> returnToStdWhenVisit) {
             $.returnToStdWhenVisit = returnToStdWhenVisit;
             return this;
         }
 
+        /**
+         * @param returnToStdWhenVisit Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+         * 
+         * @return builder
+         * 
+         */
         public Builder returnToStdWhenVisit(Boolean returnToStdWhenVisit) {
             return returnToStdWhenVisit(Output.of(returnToStdWhenVisit));
         }

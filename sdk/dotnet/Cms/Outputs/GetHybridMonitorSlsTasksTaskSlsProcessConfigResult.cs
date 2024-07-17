@@ -14,8 +14,17 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class GetHybridMonitorSlsTasksTaskSlsProcessConfigResult
     {
         public readonly ImmutableArray<Outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressResult> Expresses;
+        /// <summary>
+        /// The conditions that are used to filter logs imported from Log Service.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterResult> Filters;
+        /// <summary>
+        /// The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByResult> GroupBies;
+        /// <summary>
+        /// The method that is used to aggregate logs imported from Log Service.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticResult> Statistics;
 
         [OutputConstructor]

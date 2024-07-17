@@ -15,6 +15,9 @@ namespace Pulumi.AliCloud.Eci.Outputs
     {
         public readonly string? Path;
         public readonly int? Port;
+        /// <summary>
+        /// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+        /// </summary>
         public readonly string? Scheme;
 
         [OutputConstructor]

@@ -599,6 +599,7 @@ func (o ListenerAclConfigPtrOutput) AclType() pulumi.StringPtrOutput {
 }
 
 type ListenerAclConfigAclRelation struct {
+	// Snooping Binding of the Access Policy Group ID List.
 	AclId *string `pulumi:"aclId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status *string `pulumi:"status"`
@@ -616,6 +617,7 @@ type ListenerAclConfigAclRelationInput interface {
 }
 
 type ListenerAclConfigAclRelationArgs struct {
+	// Snooping Binding of the Access Policy Group ID List.
 	AclId pulumi.StringPtrInput `pulumi:"aclId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -672,6 +674,7 @@ func (o ListenerAclConfigAclRelationOutput) ToListenerAclConfigAclRelationOutput
 	return o
 }
 
+// Snooping Binding of the Access Policy Group ID List.
 func (o ListenerAclConfigAclRelationOutput) AclId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerAclConfigAclRelation) *string { return v.AclId }).(pulumi.StringPtrOutput)
 }
@@ -945,6 +948,7 @@ func (o ListenerDefaultActionArrayOutput) Index(i pulumi.IntInput) ListenerDefau
 }
 
 type ListenerDefaultActionForwardGroupConfig struct {
+	// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 	ServerGroupTuples []ListenerDefaultActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
@@ -960,6 +964,7 @@ type ListenerDefaultActionForwardGroupConfigInput interface {
 }
 
 type ListenerDefaultActionForwardGroupConfigArgs struct {
+	// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 	ServerGroupTuples ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
@@ -989,6 +994,7 @@ func (o ListenerDefaultActionForwardGroupConfigOutput) ToListenerDefaultActionFo
 	return o
 }
 
+// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 func (o ListenerDefaultActionForwardGroupConfigOutput) ServerGroupTuples() ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v ListenerDefaultActionForwardGroupConfig) []ListenerDefaultActionForwardGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
@@ -996,6 +1002,7 @@ func (o ListenerDefaultActionForwardGroupConfigOutput) ServerGroupTuples() Liste
 }
 
 type ListenerDefaultActionForwardGroupConfigServerGroupTuple struct {
+	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId string `pulumi:"serverGroupId"`
 }
 
@@ -1011,6 +1018,7 @@ type ListenerDefaultActionForwardGroupConfigServerGroupTupleInput interface {
 }
 
 type ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs struct {
+	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId pulumi.StringInput `pulumi:"serverGroupId"`
 }
 
@@ -1065,6 +1073,7 @@ func (o ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ToListene
 	return o
 }
 
+// The ID of the destination server group to which requests are forwarded.
 func (o ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ListenerDefaultActionForwardGroupConfigServerGroupTuple) string { return v.ServerGroupId }).(pulumi.StringOutput)
 }
@@ -2543,12 +2552,18 @@ func (o RuleRuleActionArrayOutput) Index(i pulumi.IntInput) RuleRuleActionOutput
 }
 
 type RuleRuleActionCorsConfig struct {
-	AllowCredentials *string  `pulumi:"allowCredentials"`
-	AllowHeaders     []string `pulumi:"allowHeaders"`
-	AllowMethods     []string `pulumi:"allowMethods"`
-	AllowOrigins     []string `pulumi:"allowOrigins"`
-	ExposeHeaders    []string `pulumi:"exposeHeaders"`
-	MaxAge           *int     `pulumi:"maxAge"`
+	// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+	AllowCredentials *string `pulumi:"allowCredentials"`
+	// The allowed headers for CORS requests.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// The allowed origins of CORS requests.
+	AllowOrigins []string `pulumi:"allowOrigins"`
+	// The headers that can be exposed.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+	MaxAge *int `pulumi:"maxAge"`
 }
 
 // RuleRuleActionCorsConfigInput is an input type that accepts RuleRuleActionCorsConfigArgs and RuleRuleActionCorsConfigOutput values.
@@ -2563,12 +2578,18 @@ type RuleRuleActionCorsConfigInput interface {
 }
 
 type RuleRuleActionCorsConfigArgs struct {
-	AllowCredentials pulumi.StringPtrInput   `pulumi:"allowCredentials"`
-	AllowHeaders     pulumi.StringArrayInput `pulumi:"allowHeaders"`
-	AllowMethods     pulumi.StringArrayInput `pulumi:"allowMethods"`
-	AllowOrigins     pulumi.StringArrayInput `pulumi:"allowOrigins"`
-	ExposeHeaders    pulumi.StringArrayInput `pulumi:"exposeHeaders"`
-	MaxAge           pulumi.IntPtrInput      `pulumi:"maxAge"`
+	// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+	AllowCredentials pulumi.StringPtrInput `pulumi:"allowCredentials"`
+	// The allowed headers for CORS requests.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// The allowed origins of CORS requests.
+	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
+	// The headers that can be exposed.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
 }
 
 func (RuleRuleActionCorsConfigArgs) ElementType() reflect.Type {
@@ -2648,26 +2669,32 @@ func (o RuleRuleActionCorsConfigOutput) ToRuleRuleActionCorsConfigPtrOutputWithC
 	}).(RuleRuleActionCorsConfigPtrOutput)
 }
 
+// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
 func (o RuleRuleActionCorsConfigOutput) AllowCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionCorsConfig) *string { return v.AllowCredentials }).(pulumi.StringPtrOutput)
 }
 
+// The allowed headers for CORS requests.
 func (o RuleRuleActionCorsConfigOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionCorsConfig) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
+// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
 func (o RuleRuleActionCorsConfigOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionCorsConfig) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
+// The allowed origins of CORS requests.
 func (o RuleRuleActionCorsConfigOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionCorsConfig) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
 }
 
+// The headers that can be exposed.
 func (o RuleRuleActionCorsConfigOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionCorsConfig) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
+// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
 func (o RuleRuleActionCorsConfigOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionCorsConfig) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
 }
@@ -2696,6 +2723,7 @@ func (o RuleRuleActionCorsConfigPtrOutput) Elem() RuleRuleActionCorsConfigOutput
 	}).(RuleRuleActionCorsConfigOutput)
 }
 
+// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
 func (o RuleRuleActionCorsConfigPtrOutput) AllowCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionCorsConfig) *string {
 		if v == nil {
@@ -2705,6 +2733,7 @@ func (o RuleRuleActionCorsConfigPtrOutput) AllowCredentials() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The allowed headers for CORS requests.
 func (o RuleRuleActionCorsConfigPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionCorsConfig) []string {
 		if v == nil {
@@ -2714,6 +2743,7 @@ func (o RuleRuleActionCorsConfigPtrOutput) AllowHeaders() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
+// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
 func (o RuleRuleActionCorsConfigPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionCorsConfig) []string {
 		if v == nil {
@@ -2723,6 +2753,7 @@ func (o RuleRuleActionCorsConfigPtrOutput) AllowMethods() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
+// The allowed origins of CORS requests.
 func (o RuleRuleActionCorsConfigPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionCorsConfig) []string {
 		if v == nil {
@@ -2732,6 +2763,7 @@ func (o RuleRuleActionCorsConfigPtrOutput) AllowOrigins() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
+// The headers that can be exposed.
 func (o RuleRuleActionCorsConfigPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionCorsConfig) []string {
 		if v == nil {
@@ -2741,6 +2773,7 @@ func (o RuleRuleActionCorsConfigPtrOutput) ExposeHeaders() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
+// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
 func (o RuleRuleActionCorsConfigPtrOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionCorsConfig) *int {
 		if v == nil {
@@ -2751,9 +2784,12 @@ func (o RuleRuleActionCorsConfigPtrOutput) MaxAge() pulumi.IntPtrOutput {
 }
 
 type RuleRuleActionFixedResponseConfig struct {
-	Content     string  `pulumi:"content"`
+	// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+	Content string `pulumi:"content"`
+	// The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
 	ContentType *string `pulumi:"contentType"`
-	HttpCode    *string `pulumi:"httpCode"`
+	// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+	HttpCode *string `pulumi:"httpCode"`
 }
 
 // RuleRuleActionFixedResponseConfigInput is an input type that accepts RuleRuleActionFixedResponseConfigArgs and RuleRuleActionFixedResponseConfigOutput values.
@@ -2768,9 +2804,12 @@ type RuleRuleActionFixedResponseConfigInput interface {
 }
 
 type RuleRuleActionFixedResponseConfigArgs struct {
-	Content     pulumi.StringInput    `pulumi:"content"`
+	// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
 	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
-	HttpCode    pulumi.StringPtrInput `pulumi:"httpCode"`
+	// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+	HttpCode pulumi.StringPtrInput `pulumi:"httpCode"`
 }
 
 func (RuleRuleActionFixedResponseConfigArgs) ElementType() reflect.Type {
@@ -2850,14 +2889,17 @@ func (o RuleRuleActionFixedResponseConfigOutput) ToRuleRuleActionFixedResponseCo
 	}).(RuleRuleActionFixedResponseConfigPtrOutput)
 }
 
+// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
 func (o RuleRuleActionFixedResponseConfigOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleRuleActionFixedResponseConfig) string { return v.Content }).(pulumi.StringOutput)
 }
 
+// The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
 func (o RuleRuleActionFixedResponseConfigOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionFixedResponseConfig) *string { return v.ContentType }).(pulumi.StringPtrOutput)
 }
 
+// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 func (o RuleRuleActionFixedResponseConfigOutput) HttpCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionFixedResponseConfig) *string { return v.HttpCode }).(pulumi.StringPtrOutput)
 }
@@ -2886,6 +2928,7 @@ func (o RuleRuleActionFixedResponseConfigPtrOutput) Elem() RuleRuleActionFixedRe
 	}).(RuleRuleActionFixedResponseConfigOutput)
 }
 
+// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
 func (o RuleRuleActionFixedResponseConfigPtrOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionFixedResponseConfig) *string {
 		if v == nil {
@@ -2895,6 +2938,7 @@ func (o RuleRuleActionFixedResponseConfigPtrOutput) Content() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
 func (o RuleRuleActionFixedResponseConfigPtrOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionFixedResponseConfig) *string {
 		if v == nil {
@@ -2904,6 +2948,7 @@ func (o RuleRuleActionFixedResponseConfigPtrOutput) ContentType() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 func (o RuleRuleActionFixedResponseConfigPtrOutput) HttpCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionFixedResponseConfig) *string {
 		if v == nil {
@@ -2914,8 +2959,10 @@ func (o RuleRuleActionFixedResponseConfigPtrOutput) HttpCode() pulumi.StringPtrO
 }
 
 type RuleRuleActionForwardGroupConfig struct {
+	// The configuration of session persistence for server groups. See `serverGroupStickySession` below.
 	ServerGroupStickySession *RuleRuleActionForwardGroupConfigServerGroupStickySession `pulumi:"serverGroupStickySession"`
-	ServerGroupTuples        []RuleRuleActionForwardGroupConfigServerGroupTuple        `pulumi:"serverGroupTuples"`
+	// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
+	ServerGroupTuples []RuleRuleActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
 // RuleRuleActionForwardGroupConfigInput is an input type that accepts RuleRuleActionForwardGroupConfigArgs and RuleRuleActionForwardGroupConfigOutput values.
@@ -2930,8 +2977,10 @@ type RuleRuleActionForwardGroupConfigInput interface {
 }
 
 type RuleRuleActionForwardGroupConfigArgs struct {
+	// The configuration of session persistence for server groups. See `serverGroupStickySession` below.
 	ServerGroupStickySession RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrInput `pulumi:"serverGroupStickySession"`
-	ServerGroupTuples        RuleRuleActionForwardGroupConfigServerGroupTupleArrayInput       `pulumi:"serverGroupTuples"`
+	// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
+	ServerGroupTuples RuleRuleActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
 func (RuleRuleActionForwardGroupConfigArgs) ElementType() reflect.Type {
@@ -3011,12 +3060,14 @@ func (o RuleRuleActionForwardGroupConfigOutput) ToRuleRuleActionForwardGroupConf
 	}).(RuleRuleActionForwardGroupConfigPtrOutput)
 }
 
+// The configuration of session persistence for server groups. See `serverGroupStickySession` below.
 func (o RuleRuleActionForwardGroupConfigOutput) ServerGroupStickySession() RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfig) *RuleRuleActionForwardGroupConfigServerGroupStickySession {
 		return v.ServerGroupStickySession
 	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput)
 }
 
+// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
 func (o RuleRuleActionForwardGroupConfigOutput) ServerGroupTuples() RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfig) []RuleRuleActionForwardGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
@@ -3047,6 +3098,7 @@ func (o RuleRuleActionForwardGroupConfigPtrOutput) Elem() RuleRuleActionForwardG
 	}).(RuleRuleActionForwardGroupConfigOutput)
 }
 
+// The configuration of session persistence for server groups. See `serverGroupStickySession` below.
 func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupStickySession() RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfig) *RuleRuleActionForwardGroupConfigServerGroupStickySession {
 		if v == nil {
@@ -3056,6 +3108,7 @@ func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupStickySession() Ru
 	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput)
 }
 
+// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
 func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupTuples() RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfig) []RuleRuleActionForwardGroupConfigServerGroupTuple {
 		if v == nil {
@@ -3066,8 +3119,10 @@ func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupTuples() RuleRuleA
 }
 
 type RuleRuleActionForwardGroupConfigServerGroupStickySession struct {
+	// Whether to enable session persistence.
 	Enabled *bool `pulumi:"enabled"`
-	Timeout *int  `pulumi:"timeout"`
+	// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+	Timeout *int `pulumi:"timeout"`
 }
 
 // RuleRuleActionForwardGroupConfigServerGroupStickySessionInput is an input type that accepts RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs and RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput values.
@@ -3082,8 +3137,10 @@ type RuleRuleActionForwardGroupConfigServerGroupStickySessionInput interface {
 }
 
 type RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs struct {
+	// Whether to enable session persistence.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	Timeout pulumi.IntPtrInput  `pulumi:"timeout"`
+	// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 }
 
 func (RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs) ElementType() reflect.Type {
@@ -3163,10 +3220,12 @@ func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput) ToRuleRu
 	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput)
 }
 
+// Whether to enable session persistence.
 func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupStickySession) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
 func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupStickySession) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
@@ -3195,6 +3254,7 @@ func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) Elem(
 	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput)
 }
 
+// Whether to enable session persistence.
 func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfigServerGroupStickySession) *bool {
 		if v == nil {
@@ -3204,6 +3264,7 @@ func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) Enabl
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
 func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfigServerGroupStickySession) *int {
 		if v == nil {
@@ -3214,8 +3275,10 @@ func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) Timeo
 }
 
 type RuleRuleActionForwardGroupConfigServerGroupTuple struct {
+	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId *string `pulumi:"serverGroupId"`
-	Weight        *int    `pulumi:"weight"`
+	// The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
+	Weight *int `pulumi:"weight"`
 }
 
 // RuleRuleActionForwardGroupConfigServerGroupTupleInput is an input type that accepts RuleRuleActionForwardGroupConfigServerGroupTupleArgs and RuleRuleActionForwardGroupConfigServerGroupTupleOutput values.
@@ -3230,8 +3293,10 @@ type RuleRuleActionForwardGroupConfigServerGroupTupleInput interface {
 }
 
 type RuleRuleActionForwardGroupConfigServerGroupTupleArgs struct {
+	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
-	Weight        pulumi.IntPtrInput    `pulumi:"weight"`
+	// The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
 func (RuleRuleActionForwardGroupConfigServerGroupTupleArgs) ElementType() reflect.Type {
@@ -3285,10 +3350,12 @@ func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToRuleRuleAction
 	return o
 }
 
+// The ID of the destination server group to which requests are forwarded.
 func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupTuple) *string { return v.ServerGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
 func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupTuple) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -3314,8 +3381,12 @@ func (o RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) Index(i pul
 }
 
 type RuleRuleActionInsertHeaderConfig struct {
-	Key       *string `pulumi:"key"`
-	Value     *string `pulumi:"value"`
+	Key   *string `pulumi:"key"`
+	Value *string `pulumi:"value"`
+	// The value type of the inserted header field. Valid values:
+	// - `UserDefined`: a custom value
+	// - `ReferenceHeader`: uses a field of the user request header.
+	// - `SystemDefined`: a system value.
 	ValueType *string `pulumi:"valueType"`
 }
 
@@ -3331,8 +3402,12 @@ type RuleRuleActionInsertHeaderConfigInput interface {
 }
 
 type RuleRuleActionInsertHeaderConfigArgs struct {
-	Key       pulumi.StringPtrInput `pulumi:"key"`
-	Value     pulumi.StringPtrInput `pulumi:"value"`
+	Key   pulumi.StringPtrInput `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// The value type of the inserted header field. Valid values:
+	// - `UserDefined`: a custom value
+	// - `ReferenceHeader`: uses a field of the user request header.
+	// - `SystemDefined`: a system value.
 	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
 }
 
@@ -3421,6 +3496,10 @@ func (o RuleRuleActionInsertHeaderConfigOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
+// The value type of the inserted header field. Valid values:
+// - `UserDefined`: a custom value
+// - `ReferenceHeader`: uses a field of the user request header.
+// - `SystemDefined`: a system value.
 func (o RuleRuleActionInsertHeaderConfigOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *string { return v.ValueType }).(pulumi.StringPtrOutput)
 }
@@ -3467,6 +3546,10 @@ func (o RuleRuleActionInsertHeaderConfigPtrOutput) Value() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The value type of the inserted header field. Valid values:
+// - `UserDefined`: a custom value
+// - `ReferenceHeader`: uses a field of the user request header.
+// - `SystemDefined`: a system value.
 func (o RuleRuleActionInsertHeaderConfigPtrOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionInsertHeaderConfig) *string {
 		if v == nil {
@@ -3477,12 +3560,18 @@ func (o RuleRuleActionInsertHeaderConfigPtrOutput) ValueType() pulumi.StringPtrO
 }
 
 type RuleRuleActionRedirectConfig struct {
-	Host     *string `pulumi:"host"`
+	// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	Host *string `pulumi:"host"`
+	// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 	HttpCode *string `pulumi:"httpCode"`
-	Path     *string `pulumi:"path"`
-	Port     *string `pulumi:"port"`
+	// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+	Path *string `pulumi:"path"`
+	// The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
+	Port *string `pulumi:"port"`
+	// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
 	Protocol *string `pulumi:"protocol"`
-	Query    *string `pulumi:"query"`
+	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+	Query *string `pulumi:"query"`
 }
 
 // RuleRuleActionRedirectConfigInput is an input type that accepts RuleRuleActionRedirectConfigArgs and RuleRuleActionRedirectConfigOutput values.
@@ -3497,12 +3586,18 @@ type RuleRuleActionRedirectConfigInput interface {
 }
 
 type RuleRuleActionRedirectConfigArgs struct {
-	Host     pulumi.StringPtrInput `pulumi:"host"`
+	// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 	HttpCode pulumi.StringPtrInput `pulumi:"httpCode"`
-	Path     pulumi.StringPtrInput `pulumi:"path"`
-	Port     pulumi.StringPtrInput `pulumi:"port"`
+	// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	Query    pulumi.StringPtrInput `pulumi:"query"`
+	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+	Query pulumi.StringPtrInput `pulumi:"query"`
 }
 
 func (RuleRuleActionRedirectConfigArgs) ElementType() reflect.Type {
@@ -3582,26 +3677,32 @@ func (o RuleRuleActionRedirectConfigOutput) ToRuleRuleActionRedirectConfigPtrOut
 	}).(RuleRuleActionRedirectConfigPtrOutput)
 }
 
+// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 func (o RuleRuleActionRedirectConfigOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 func (o RuleRuleActionRedirectConfigOutput) HttpCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.HttpCode }).(pulumi.StringPtrOutput)
 }
 
+// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRedirectConfigOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
 func (o RuleRuleActionRedirectConfigOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
+// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
 func (o RuleRuleActionRedirectConfigOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
+// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRedirectConfigOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
@@ -3630,6 +3731,7 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Elem() RuleRuleActionRedirectConf
 	}).(RuleRuleActionRedirectConfigOutput)
 }
 
+// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 func (o RuleRuleActionRedirectConfigPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -3639,6 +3741,7 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 func (o RuleRuleActionRedirectConfigPtrOutput) HttpCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -3648,6 +3751,7 @@ func (o RuleRuleActionRedirectConfigPtrOutput) HttpCode() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRedirectConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -3657,6 +3761,7 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
 func (o RuleRuleActionRedirectConfigPtrOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -3666,6 +3771,7 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Port() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
 func (o RuleRuleActionRedirectConfigPtrOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -3675,6 +3781,7 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Protocol() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRedirectConfigPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -3818,8 +3925,11 @@ func (o RuleRuleActionRemoveHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput 
 }
 
 type RuleRuleActionRewriteConfig struct {
-	Host  *string `pulumi:"host"`
-	Path  *string `pulumi:"path"`
+	// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	Host *string `pulumi:"host"`
+	// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+	Path *string `pulumi:"path"`
+	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 	Query *string `pulumi:"query"`
 }
 
@@ -3835,8 +3945,11 @@ type RuleRuleActionRewriteConfigInput interface {
 }
 
 type RuleRuleActionRewriteConfigArgs struct {
-	Host  pulumi.StringPtrInput `pulumi:"host"`
-	Path  pulumi.StringPtrInput `pulumi:"path"`
+	// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 	Query pulumi.StringPtrInput `pulumi:"query"`
 }
 
@@ -3917,14 +4030,17 @@ func (o RuleRuleActionRewriteConfigOutput) ToRuleRuleActionRewriteConfigPtrOutpu
 	}).(RuleRuleActionRewriteConfigPtrOutput)
 }
 
+// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 func (o RuleRuleActionRewriteConfigOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRewriteConfigOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRewriteConfigOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
@@ -3953,6 +4069,7 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Elem() RuleRuleActionRewriteConfig
 	}).(RuleRuleActionRewriteConfigOutput)
 }
 
+// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 func (o RuleRuleActionRewriteConfigPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) *string {
 		if v == nil {
@@ -3962,6 +4079,7 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRewriteConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) *string {
 		if v == nil {
@@ -3971,6 +4089,7 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRewriteConfigPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) *string {
 		if v == nil {
@@ -3981,8 +4100,10 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Query() pulumi.StringPtrOutput {
 }
 
 type RuleRuleActionTrafficLimitConfig struct {
+	// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
 	PerIpQps *int `pulumi:"perIpQps"`
-	Qps      *int `pulumi:"qps"`
+	// The Number of requests per second. Valid values: `1` to `100000`.
+	Qps *int `pulumi:"qps"`
 }
 
 // RuleRuleActionTrafficLimitConfigInput is an input type that accepts RuleRuleActionTrafficLimitConfigArgs and RuleRuleActionTrafficLimitConfigOutput values.
@@ -3997,8 +4118,10 @@ type RuleRuleActionTrafficLimitConfigInput interface {
 }
 
 type RuleRuleActionTrafficLimitConfigArgs struct {
+	// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
 	PerIpQps pulumi.IntPtrInput `pulumi:"perIpQps"`
-	Qps      pulumi.IntPtrInput `pulumi:"qps"`
+	// The Number of requests per second. Valid values: `1` to `100000`.
+	Qps pulumi.IntPtrInput `pulumi:"qps"`
 }
 
 func (RuleRuleActionTrafficLimitConfigArgs) ElementType() reflect.Type {
@@ -4078,10 +4201,12 @@ func (o RuleRuleActionTrafficLimitConfigOutput) ToRuleRuleActionTrafficLimitConf
 	}).(RuleRuleActionTrafficLimitConfigPtrOutput)
 }
 
+// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
 func (o RuleRuleActionTrafficLimitConfigOutput) PerIpQps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficLimitConfig) *int { return v.PerIpQps }).(pulumi.IntPtrOutput)
 }
 
+// The Number of requests per second. Valid values: `1` to `100000`.
 func (o RuleRuleActionTrafficLimitConfigOutput) Qps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficLimitConfig) *int { return v.Qps }).(pulumi.IntPtrOutput)
 }
@@ -4110,6 +4235,7 @@ func (o RuleRuleActionTrafficLimitConfigPtrOutput) Elem() RuleRuleActionTrafficL
 	}).(RuleRuleActionTrafficLimitConfigOutput)
 }
 
+// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
 func (o RuleRuleActionTrafficLimitConfigPtrOutput) PerIpQps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionTrafficLimitConfig) *int {
 		if v == nil {
@@ -4119,6 +4245,7 @@ func (o RuleRuleActionTrafficLimitConfigPtrOutput) PerIpQps() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+// The Number of requests per second. Valid values: `1` to `100000`.
 func (o RuleRuleActionTrafficLimitConfigPtrOutput) Qps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionTrafficLimitConfig) *int {
 		if v == nil {
@@ -4129,8 +4256,10 @@ func (o RuleRuleActionTrafficLimitConfigPtrOutput) Qps() pulumi.IntPtrOutput {
 }
 
 type RuleRuleActionTrafficMirrorConfig struct {
+	// The Traffic is mirrored to the server group. See `mirrorGroupConfig` below.
 	MirrorGroupConfig *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig `pulumi:"mirrorGroupConfig"`
-	TargetType        *string                                             `pulumi:"targetType"`
+	// The Mirror target type.
+	TargetType *string `pulumi:"targetType"`
 }
 
 // RuleRuleActionTrafficMirrorConfigInput is an input type that accepts RuleRuleActionTrafficMirrorConfigArgs and RuleRuleActionTrafficMirrorConfigOutput values.
@@ -4145,8 +4274,10 @@ type RuleRuleActionTrafficMirrorConfigInput interface {
 }
 
 type RuleRuleActionTrafficMirrorConfigArgs struct {
+	// The Traffic is mirrored to the server group. See `mirrorGroupConfig` below.
 	MirrorGroupConfig RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrInput `pulumi:"mirrorGroupConfig"`
-	TargetType        pulumi.StringPtrInput                                      `pulumi:"targetType"`
+	// The Mirror target type.
+	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
 }
 
 func (RuleRuleActionTrafficMirrorConfigArgs) ElementType() reflect.Type {
@@ -4226,12 +4357,14 @@ func (o RuleRuleActionTrafficMirrorConfigOutput) ToRuleRuleActionTrafficMirrorCo
 	}).(RuleRuleActionTrafficMirrorConfigPtrOutput)
 }
 
+// The Traffic is mirrored to the server group. See `mirrorGroupConfig` below.
 func (o RuleRuleActionTrafficMirrorConfigOutput) MirrorGroupConfig() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfig) *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
 		return v.MirrorGroupConfig
 	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput)
 }
 
+// The Mirror target type.
 func (o RuleRuleActionTrafficMirrorConfigOutput) TargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfig) *string { return v.TargetType }).(pulumi.StringPtrOutput)
 }
@@ -4260,6 +4393,7 @@ func (o RuleRuleActionTrafficMirrorConfigPtrOutput) Elem() RuleRuleActionTraffic
 	}).(RuleRuleActionTrafficMirrorConfigOutput)
 }
 
+// The Traffic is mirrored to the server group. See `mirrorGroupConfig` below.
 func (o RuleRuleActionTrafficMirrorConfigPtrOutput) MirrorGroupConfig() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionTrafficMirrorConfig) *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
 		if v == nil {
@@ -4269,6 +4403,7 @@ func (o RuleRuleActionTrafficMirrorConfigPtrOutput) MirrorGroupConfig() RuleRule
 	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput)
 }
 
+// The Mirror target type.
 func (o RuleRuleActionTrafficMirrorConfigPtrOutput) TargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionTrafficMirrorConfig) *string {
 		if v == nil {
@@ -4279,6 +4414,7 @@ func (o RuleRuleActionTrafficMirrorConfigPtrOutput) TargetType() pulumi.StringPt
 }
 
 type RuleRuleActionTrafficMirrorConfigMirrorGroupConfig struct {
+	// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
 	ServerGroupTuples []RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
@@ -4294,6 +4430,7 @@ type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigInput interface {
 }
 
 type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs struct {
+	// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
 	ServerGroupTuples RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
@@ -4374,6 +4511,7 @@ func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ToRuleRuleActi
 	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput)
 }
 
+// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
 func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ServerGroupTuples() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfigMirrorGroupConfig) []RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
@@ -4404,6 +4542,7 @@ func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput) Elem() Rule
 	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput)
 }
 
+// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
 func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput) ServerGroupTuples() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig) []RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
 		if v == nil {
@@ -4414,6 +4553,7 @@ func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput) ServerGroup
 }
 
 type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple struct {
+	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId *string `pulumi:"serverGroupId"`
 }
 
@@ -4429,6 +4569,7 @@ type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleInput int
 }
 
 type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs struct {
+	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
 }
 
@@ -4483,6 +4624,7 @@ func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput
 	return o
 }
 
+// The ID of the destination server group to which requests are forwarded.
 func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple) *string {
 		return v.ServerGroupId
@@ -4717,6 +4859,7 @@ func (o RuleRuleConditionArrayOutput) Index(i pulumi.IntInput) RuleRuleCondition
 }
 
 type RuleRuleConditionCookieConfig struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []RuleRuleConditionCookieConfigValue `pulumi:"values"`
 }
 
@@ -4732,6 +4875,7 @@ type RuleRuleConditionCookieConfigInput interface {
 }
 
 type RuleRuleConditionCookieConfigArgs struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values RuleRuleConditionCookieConfigValueArrayInput `pulumi:"values"`
 }
 
@@ -4812,6 +4956,7 @@ func (o RuleRuleConditionCookieConfigOutput) ToRuleRuleConditionCookieConfigPtrO
 	}).(RuleRuleConditionCookieConfigPtrOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionCookieConfigOutput) Values() RuleRuleConditionCookieConfigValueArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionCookieConfig) []RuleRuleConditionCookieConfigValue { return v.Values }).(RuleRuleConditionCookieConfigValueArrayOutput)
 }
@@ -4840,6 +4985,7 @@ func (o RuleRuleConditionCookieConfigPtrOutput) Elem() RuleRuleConditionCookieCo
 	}).(RuleRuleConditionCookieConfigOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionCookieConfigPtrOutput) Values() RuleRuleConditionCookieConfigValueArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionCookieConfig) []RuleRuleConditionCookieConfigValue {
 		if v == nil {
@@ -4950,7 +5096,8 @@ func (o RuleRuleConditionCookieConfigValueArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type RuleRuleConditionHeaderConfig struct {
-	Key    *string  `pulumi:"key"`
+	Key *string `pulumi:"key"`
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -4966,7 +5113,8 @@ type RuleRuleConditionHeaderConfigInput interface {
 }
 
 type RuleRuleConditionHeaderConfigArgs struct {
-	Key    pulumi.StringPtrInput   `pulumi:"key"`
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5051,6 +5199,7 @@ func (o RuleRuleConditionHeaderConfigOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionHeaderConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionHeaderConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -5088,6 +5237,7 @@ func (o RuleRuleConditionHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionHeaderConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionHeaderConfig) []string {
 		if v == nil {
@@ -5098,6 +5248,7 @@ func (o RuleRuleConditionHeaderConfigPtrOutput) Values() pulumi.StringArrayOutpu
 }
 
 type RuleRuleConditionHostConfig struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -5113,6 +5264,7 @@ type RuleRuleConditionHostConfigInput interface {
 }
 
 type RuleRuleConditionHostConfigArgs struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5193,6 +5345,7 @@ func (o RuleRuleConditionHostConfigOutput) ToRuleRuleConditionHostConfigPtrOutpu
 	}).(RuleRuleConditionHostConfigPtrOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionHostConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionHostConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -5221,6 +5374,7 @@ func (o RuleRuleConditionHostConfigPtrOutput) Elem() RuleRuleConditionHostConfig
 	}).(RuleRuleConditionHostConfigOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionHostConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionHostConfig) []string {
 		if v == nil {
@@ -5231,6 +5385,7 @@ func (o RuleRuleConditionHostConfigPtrOutput) Values() pulumi.StringArrayOutput 
 }
 
 type RuleRuleConditionMethodConfig struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -5246,6 +5401,7 @@ type RuleRuleConditionMethodConfigInput interface {
 }
 
 type RuleRuleConditionMethodConfigArgs struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5326,6 +5482,7 @@ func (o RuleRuleConditionMethodConfigOutput) ToRuleRuleConditionMethodConfigPtrO
 	}).(RuleRuleConditionMethodConfigPtrOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionMethodConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionMethodConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -5354,6 +5511,7 @@ func (o RuleRuleConditionMethodConfigPtrOutput) Elem() RuleRuleConditionMethodCo
 	}).(RuleRuleConditionMethodConfigOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionMethodConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionMethodConfig) []string {
 		if v == nil {
@@ -5364,6 +5522,7 @@ func (o RuleRuleConditionMethodConfigPtrOutput) Values() pulumi.StringArrayOutpu
 }
 
 type RuleRuleConditionPathConfig struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -5379,6 +5538,7 @@ type RuleRuleConditionPathConfigInput interface {
 }
 
 type RuleRuleConditionPathConfigArgs struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5459,6 +5619,7 @@ func (o RuleRuleConditionPathConfigOutput) ToRuleRuleConditionPathConfigPtrOutpu
 	}).(RuleRuleConditionPathConfigPtrOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionPathConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionPathConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -5487,6 +5648,7 @@ func (o RuleRuleConditionPathConfigPtrOutput) Elem() RuleRuleConditionPathConfig
 	}).(RuleRuleConditionPathConfigOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionPathConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionPathConfig) []string {
 		if v == nil {
@@ -5497,6 +5659,7 @@ func (o RuleRuleConditionPathConfigPtrOutput) Values() pulumi.StringArrayOutput 
 }
 
 type RuleRuleConditionQueryStringConfig struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []RuleRuleConditionQueryStringConfigValue `pulumi:"values"`
 }
 
@@ -5512,6 +5675,7 @@ type RuleRuleConditionQueryStringConfigInput interface {
 }
 
 type RuleRuleConditionQueryStringConfigArgs struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values RuleRuleConditionQueryStringConfigValueArrayInput `pulumi:"values"`
 }
 
@@ -5592,6 +5756,7 @@ func (o RuleRuleConditionQueryStringConfigOutput) ToRuleRuleConditionQueryString
 	}).(RuleRuleConditionQueryStringConfigPtrOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionQueryStringConfigOutput) Values() RuleRuleConditionQueryStringConfigValueArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionQueryStringConfig) []RuleRuleConditionQueryStringConfigValue { return v.Values }).(RuleRuleConditionQueryStringConfigValueArrayOutput)
 }
@@ -5620,6 +5785,7 @@ func (o RuleRuleConditionQueryStringConfigPtrOutput) Elem() RuleRuleConditionQue
 	}).(RuleRuleConditionQueryStringConfigOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionQueryStringConfigPtrOutput) Values() RuleRuleConditionQueryStringConfigValueArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionQueryStringConfig) []RuleRuleConditionQueryStringConfigValue {
 		if v == nil {
@@ -5730,7 +5896,8 @@ func (o RuleRuleConditionQueryStringConfigValueArrayOutput) Index(i pulumi.IntIn
 }
 
 type RuleRuleConditionResponseHeaderConfig struct {
-	Key    *string  `pulumi:"key"`
+	Key *string `pulumi:"key"`
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -5746,7 +5913,8 @@ type RuleRuleConditionResponseHeaderConfigInput interface {
 }
 
 type RuleRuleConditionResponseHeaderConfigArgs struct {
-	Key    pulumi.StringPtrInput   `pulumi:"key"`
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5831,6 +5999,7 @@ func (o RuleRuleConditionResponseHeaderConfigOutput) Key() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v RuleRuleConditionResponseHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionResponseHeaderConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionResponseHeaderConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -5868,6 +6037,7 @@ func (o RuleRuleConditionResponseHeaderConfigPtrOutput) Key() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionResponseHeaderConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionResponseHeaderConfig) []string {
 		if v == nil {
@@ -5878,6 +6048,7 @@ func (o RuleRuleConditionResponseHeaderConfigPtrOutput) Values() pulumi.StringAr
 }
 
 type RuleRuleConditionResponseStatusCodeConfig struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -5893,6 +6064,7 @@ type RuleRuleConditionResponseStatusCodeConfigInput interface {
 }
 
 type RuleRuleConditionResponseStatusCodeConfigArgs struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5973,6 +6145,7 @@ func (o RuleRuleConditionResponseStatusCodeConfigOutput) ToRuleRuleConditionResp
 	}).(RuleRuleConditionResponseStatusCodeConfigPtrOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionResponseStatusCodeConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionResponseStatusCodeConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -6001,6 +6174,7 @@ func (o RuleRuleConditionResponseStatusCodeConfigPtrOutput) Elem() RuleRuleCondi
 	}).(RuleRuleConditionResponseStatusCodeConfigOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionResponseStatusCodeConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionResponseStatusCodeConfig) []string {
 		if v == nil {
@@ -6011,6 +6185,7 @@ func (o RuleRuleConditionResponseStatusCodeConfigPtrOutput) Values() pulumi.Stri
 }
 
 type RuleRuleConditionSourceIpConfig struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -6026,6 +6201,7 @@ type RuleRuleConditionSourceIpConfigInput interface {
 }
 
 type RuleRuleConditionSourceIpConfigArgs struct {
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -6106,6 +6282,7 @@ func (o RuleRuleConditionSourceIpConfigOutput) ToRuleRuleConditionSourceIpConfig
 	}).(RuleRuleConditionSourceIpConfigPtrOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionSourceIpConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionSourceIpConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -6134,6 +6311,7 @@ func (o RuleRuleConditionSourceIpConfigPtrOutput) Elem() RuleRuleConditionSource
 	}).(RuleRuleConditionSourceIpConfigOutput)
 }
 
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionSourceIpConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionSourceIpConfig) []string {
 		if v == nil {
@@ -7937,9 +8115,18 @@ func (o GetListenersListenerArrayOutput) Index(i pulumi.IntInput) GetListenersLi
 }
 
 type GetListenersListenerAccessLogTracingConfig struct {
-	TracingEnabled bool   `pulumi:"tracingEnabled"`
-	TracingSample  int    `pulumi:"tracingSample"`
-	TracingType    string `pulumi:"tracingType"`
+	// Xtrace Function. Value: True Or False. Default Value: False.
+	//
+	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+	TracingEnabled bool `pulumi:"tracingEnabled"`
+	// Xtrace Sampling Rate. Value: **1~10000**.
+	//
+	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
+	TracingSample int `pulumi:"tracingSample"`
+	// Xtrace Type Value Is **Zipkin**.
+	//
+	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
+	TracingType string `pulumi:"tracingType"`
 }
 
 // GetListenersListenerAccessLogTracingConfigInput is an input type that accepts GetListenersListenerAccessLogTracingConfigArgs and GetListenersListenerAccessLogTracingConfigOutput values.
@@ -7954,9 +8141,18 @@ type GetListenersListenerAccessLogTracingConfigInput interface {
 }
 
 type GetListenersListenerAccessLogTracingConfigArgs struct {
-	TracingEnabled pulumi.BoolInput   `pulumi:"tracingEnabled"`
-	TracingSample  pulumi.IntInput    `pulumi:"tracingSample"`
-	TracingType    pulumi.StringInput `pulumi:"tracingType"`
+	// Xtrace Function. Value: True Or False. Default Value: False.
+	//
+	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+	TracingEnabled pulumi.BoolInput `pulumi:"tracingEnabled"`
+	// Xtrace Sampling Rate. Value: **1~10000**.
+	//
+	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
+	TracingSample pulumi.IntInput `pulumi:"tracingSample"`
+	// Xtrace Type Value Is **Zipkin**.
+	//
+	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
+	TracingType pulumi.StringInput `pulumi:"tracingType"`
 }
 
 func (GetListenersListenerAccessLogTracingConfigArgs) ElementType() reflect.Type {
@@ -8010,14 +8206,23 @@ func (o GetListenersListenerAccessLogTracingConfigOutput) ToGetListenersListener
 	return o
 }
 
+// Xtrace Function. Value: True Or False. Default Value: False.
+//
+// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 func (o GetListenersListenerAccessLogTracingConfigOutput) TracingEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) bool { return v.TracingEnabled }).(pulumi.BoolOutput)
 }
 
+// Xtrace Sampling Rate. Value: **1~10000**.
+//
+// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 func (o GetListenersListenerAccessLogTracingConfigOutput) TracingSample() pulumi.IntOutput {
 	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) int { return v.TracingSample }).(pulumi.IntOutput)
 }
 
+// Xtrace Type Value Is **Zipkin**.
+//
+// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 func (o GetListenersListenerAccessLogTracingConfigOutput) TracingType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) string { return v.TracingType }).(pulumi.StringOutput)
 }
@@ -8660,8 +8865,10 @@ func (o GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArray
 }
 
 type GetListenersListenerQuicConfig struct {
-	QuicListenerId     string `pulumi:"quicListenerId"`
-	QuicUpgradeEnabled bool   `pulumi:"quicUpgradeEnabled"`
+	// The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
+	QuicListenerId string `pulumi:"quicListenerId"`
+	// Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
+	QuicUpgradeEnabled bool `pulumi:"quicUpgradeEnabled"`
 }
 
 // GetListenersListenerQuicConfigInput is an input type that accepts GetListenersListenerQuicConfigArgs and GetListenersListenerQuicConfigOutput values.
@@ -8676,8 +8883,10 @@ type GetListenersListenerQuicConfigInput interface {
 }
 
 type GetListenersListenerQuicConfigArgs struct {
-	QuicListenerId     pulumi.StringInput `pulumi:"quicListenerId"`
-	QuicUpgradeEnabled pulumi.BoolInput   `pulumi:"quicUpgradeEnabled"`
+	// The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
+	QuicListenerId pulumi.StringInput `pulumi:"quicListenerId"`
+	// Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
+	QuicUpgradeEnabled pulumi.BoolInput `pulumi:"quicUpgradeEnabled"`
 }
 
 func (GetListenersListenerQuicConfigArgs) ElementType() reflect.Type {
@@ -8731,10 +8940,12 @@ func (o GetListenersListenerQuicConfigOutput) ToGetListenersListenerQuicConfigOu
 	return o
 }
 
+// The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
 func (o GetListenersListenerQuicConfigOutput) QuicListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerQuicConfig) string { return v.QuicListenerId }).(pulumi.StringOutput)
 }
 
+// Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
 func (o GetListenersListenerQuicConfigOutput) QuicUpgradeEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerQuicConfig) bool { return v.QuicUpgradeEnabled }).(pulumi.BoolOutput)
 }

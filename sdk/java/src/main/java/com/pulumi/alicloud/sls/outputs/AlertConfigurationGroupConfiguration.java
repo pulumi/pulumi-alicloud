@@ -12,10 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertConfigurationGroupConfiguration {
+    /**
+     * @return The field used for grouping evaluation. When type is set to custom, fields must be set.
+     * 
+     */
     private @Nullable List<String> fields;
     private @Nullable String type;
 
     private AlertConfigurationGroupConfiguration() {}
+    /**
+     * @return The field used for grouping evaluation. When type is set to custom, fields must be set.
+     * 
+     */
     public List<String> fields() {
         return this.fields == null ? List.of() : this.fields;
     }

@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Alb.Inputs
 
     public sealed class RuleRuleActionForwardGroupConfigServerGroupTupleGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the destination server group to which requests are forwarded.
+        /// </summary>
         [Input("serverGroupId")]
         public Input<string>? ServerGroupId { get; set; }
 
+        /// <summary>
+        /// The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
+        /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }
 

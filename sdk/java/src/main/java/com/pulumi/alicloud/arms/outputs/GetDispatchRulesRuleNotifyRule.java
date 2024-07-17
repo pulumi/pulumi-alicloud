@@ -12,6 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDispatchRulesRuleNotifyRule {
+    /**
+     * @return The notification method.
+     * 
+     */
     private List<String> notifyChannels;
     /**
      * @return Sets the notification object.
@@ -20,6 +24,10 @@ public final class GetDispatchRulesRuleNotifyRule {
     private List<GetDispatchRulesRuleNotifyRuleNotifyObject> notifyObjects;
 
     private GetDispatchRulesRuleNotifyRule() {}
+    /**
+     * @return The notification method.
+     * 
+     */
     public List<String> notifyChannels() {
         return this.notifyChannels;
     }

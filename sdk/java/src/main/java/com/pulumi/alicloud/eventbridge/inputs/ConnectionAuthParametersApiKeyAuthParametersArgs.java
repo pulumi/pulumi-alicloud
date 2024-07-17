@@ -15,16 +15,32 @@ public final class ConnectionAuthParametersApiKeyAuthParametersArgs extends com.
 
     public static final ConnectionAuthParametersApiKeyAuthParametersArgs Empty = new ConnectionAuthParametersApiKeyAuthParametersArgs();
 
+    /**
+     * The name of the API key.
+     * 
+     */
     @Import(name="apiKeyName")
     private @Nullable Output<String> apiKeyName;
 
+    /**
+     * @return The name of the API key.
+     * 
+     */
     public Optional<Output<String>> apiKeyName() {
         return Optional.ofNullable(this.apiKeyName);
     }
 
+    /**
+     * The value of the API key.
+     * 
+     */
     @Import(name="apiKeyValue")
     private @Nullable Output<String> apiKeyValue;
 
+    /**
+     * @return The value of the API key.
+     * 
+     */
     public Optional<Output<String>> apiKeyValue() {
         return Optional.ofNullable(this.apiKeyValue);
     }
@@ -54,20 +70,44 @@ public final class ConnectionAuthParametersApiKeyAuthParametersArgs extends com.
             $ = new ConnectionAuthParametersApiKeyAuthParametersArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param apiKeyName The name of the API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiKeyName(@Nullable Output<String> apiKeyName) {
             $.apiKeyName = apiKeyName;
             return this;
         }
 
+        /**
+         * @param apiKeyName The name of the API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiKeyName(String apiKeyName) {
             return apiKeyName(Output.of(apiKeyName));
         }
 
+        /**
+         * @param apiKeyValue The value of the API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiKeyValue(@Nullable Output<String> apiKeyValue) {
             $.apiKeyValue = apiKeyValue;
             return this;
         }
 
+        /**
+         * @param apiKeyValue The value of the API key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiKeyValue(String apiKeyValue) {
             return apiKeyValue(Output.of(apiKeyValue));
         }

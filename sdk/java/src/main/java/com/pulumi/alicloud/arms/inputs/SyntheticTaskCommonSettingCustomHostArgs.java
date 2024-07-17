@@ -16,16 +16,36 @@ public final class SyntheticTaskCommonSettingCustomHostArgs extends com.pulumi.r
 
     public static final SyntheticTaskCommonSettingCustomHostArgs Empty = new SyntheticTaskCommonSettingCustomHostArgs();
 
+    /**
+     * The host list. See `hosts` below.
+     * 
+     */
     @Import(name="hosts", required=true)
     private Output<List<SyntheticTaskCommonSettingCustomHostHostArgs>> hosts;
 
+    /**
+     * @return The host list. See `hosts` below.
+     * 
+     */
     public Output<List<SyntheticTaskCommonSettingCustomHostHostArgs>> hosts() {
         return this.hosts;
     }
 
+    /**
+     * Selection method:
+     * - 0: Random
+     * - 1: Polling.
+     * 
+     */
     @Import(name="selectType", required=true)
     private Output<Integer> selectType;
 
+    /**
+     * @return Selection method:
+     * - 0: Random
+     * - 1: Polling.
+     * 
+     */
     public Output<Integer> selectType() {
         return this.selectType;
     }
@@ -55,24 +75,58 @@ public final class SyntheticTaskCommonSettingCustomHostArgs extends com.pulumi.r
             $ = new SyntheticTaskCommonSettingCustomHostArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param hosts The host list. See `hosts` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hosts(Output<List<SyntheticTaskCommonSettingCustomHostHostArgs>> hosts) {
             $.hosts = hosts;
             return this;
         }
 
+        /**
+         * @param hosts The host list. See `hosts` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hosts(List<SyntheticTaskCommonSettingCustomHostHostArgs> hosts) {
             return hosts(Output.of(hosts));
         }
 
+        /**
+         * @param hosts The host list. See `hosts` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hosts(SyntheticTaskCommonSettingCustomHostHostArgs... hosts) {
             return hosts(List.of(hosts));
         }
 
+        /**
+         * @param selectType Selection method:
+         * - 0: Random
+         * - 1: Polling.
+         * 
+         * @return builder
+         * 
+         */
         public Builder selectType(Output<Integer> selectType) {
             $.selectType = selectType;
             return this;
         }
 
+        /**
+         * @param selectType Selection method:
+         * - 0: Random
+         * - 1: Polling.
+         * 
+         * @return builder
+         * 
+         */
         public Builder selectType(Integer selectType) {
             return selectType(Output.of(selectType));
         }

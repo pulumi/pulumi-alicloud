@@ -479,6 +479,16 @@ class ContainerGroupContainerLivenessProbeArgs:
                  success_threshold: Optional[pulumi.Input[int]] = None,
                  tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgs']]] execs: Health check using command line method. See `exec` below.
+        :param pulumi.Input[int] failure_threshold: Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgs']]] http_gets: Health check using HTTP request method. See `http_get` below.
+        :param pulumi.Input[int] initial_delay_seconds: Check the time to start execution, calculated from the completion of container startup.
+        :param pulumi.Input[int] period_seconds: Buffer time for the program to handle operations before closing.
+        :param pulumi.Input[int] success_threshold: The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]] tcp_sockets: Health check using TCP socket method. See `tcp_socket` below.
+        :param pulumi.Input[int] timeout_seconds: Check the timeout, the default is 1 second, the minimum is 1 second.
+        """
         if execs is not None:
             pulumi.set(__self__, "execs", execs)
         if failure_threshold is not None:
@@ -499,6 +509,9 @@ class ContainerGroupContainerLivenessProbeArgs:
     @property
     @pulumi.getter
     def execs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgs']]]]:
+        """
+        Health check using command line method. See `exec` below.
+        """
         return pulumi.get(self, "execs")
 
     @execs.setter
@@ -508,6 +521,9 @@ class ContainerGroupContainerLivenessProbeArgs:
     @property
     @pulumi.getter(name="failureThreshold")
     def failure_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+        """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
@@ -517,6 +533,9 @@ class ContainerGroupContainerLivenessProbeArgs:
     @property
     @pulumi.getter(name="httpGets")
     def http_gets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgs']]]]:
+        """
+        Health check using HTTP request method. See `http_get` below.
+        """
         return pulumi.get(self, "http_gets")
 
     @http_gets.setter
@@ -526,6 +545,9 @@ class ContainerGroupContainerLivenessProbeArgs:
     @property
     @pulumi.getter(name="initialDelaySeconds")
     def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Check the time to start execution, calculated from the completion of container startup.
+        """
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
@@ -535,6 +557,9 @@ class ContainerGroupContainerLivenessProbeArgs:
     @property
     @pulumi.getter(name="periodSeconds")
     def period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Buffer time for the program to handle operations before closing.
+        """
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
@@ -544,6 +569,9 @@ class ContainerGroupContainerLivenessProbeArgs:
     @property
     @pulumi.getter(name="successThreshold")
     def success_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+        """
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
@@ -553,6 +581,9 @@ class ContainerGroupContainerLivenessProbeArgs:
     @property
     @pulumi.getter(name="tcpSockets")
     def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]]]:
+        """
+        Health check using TCP socket method. See `tcp_socket` below.
+        """
         return pulumi.get(self, "tcp_sockets")
 
     @tcp_sockets.setter
@@ -562,6 +593,9 @@ class ContainerGroupContainerLivenessProbeArgs:
     @property
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Check the timeout, the default is 1 second, the minimum is 1 second.
+        """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
@@ -592,6 +626,9 @@ class ContainerGroupContainerLivenessProbeHttpGetArgs:
                  path: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  scheme: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] scheme: The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+        """
         if path is not None:
             pulumi.set(__self__, "path", path)
         if port is not None:
@@ -620,6 +657,9 @@ class ContainerGroupContainerLivenessProbeHttpGetArgs:
     @property
     @pulumi.getter
     def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+        """
         return pulumi.get(self, "scheme")
 
     @scheme.setter
@@ -684,6 +724,16 @@ class ContainerGroupContainerReadinessProbeArgs:
                  success_threshold: Optional[pulumi.Input[int]] = None,
                  tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgs']]] execs: Health check using command line method. See `exec` below.
+        :param pulumi.Input[int] failure_threshold: Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgs']]] http_gets: Health check using HTTP request method. See `http_get` below.
+        :param pulumi.Input[int] initial_delay_seconds: Check the time to start execution, calculated from the completion of container startup.
+        :param pulumi.Input[int] period_seconds: Buffer time for the program to handle operations before closing.
+        :param pulumi.Input[int] success_threshold: The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]] tcp_sockets: Health check using TCP socket method. See `tcp_socket` below.
+        :param pulumi.Input[int] timeout_seconds: Check the timeout, the default is 1 second, the minimum is 1 second.
+        """
         if execs is not None:
             pulumi.set(__self__, "execs", execs)
         if failure_threshold is not None:
@@ -704,6 +754,9 @@ class ContainerGroupContainerReadinessProbeArgs:
     @property
     @pulumi.getter
     def execs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgs']]]]:
+        """
+        Health check using command line method. See `exec` below.
+        """
         return pulumi.get(self, "execs")
 
     @execs.setter
@@ -713,6 +766,9 @@ class ContainerGroupContainerReadinessProbeArgs:
     @property
     @pulumi.getter(name="failureThreshold")
     def failure_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+        """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
@@ -722,6 +778,9 @@ class ContainerGroupContainerReadinessProbeArgs:
     @property
     @pulumi.getter(name="httpGets")
     def http_gets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgs']]]]:
+        """
+        Health check using HTTP request method. See `http_get` below.
+        """
         return pulumi.get(self, "http_gets")
 
     @http_gets.setter
@@ -731,6 +790,9 @@ class ContainerGroupContainerReadinessProbeArgs:
     @property
     @pulumi.getter(name="initialDelaySeconds")
     def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Check the time to start execution, calculated from the completion of container startup.
+        """
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
@@ -740,6 +802,9 @@ class ContainerGroupContainerReadinessProbeArgs:
     @property
     @pulumi.getter(name="periodSeconds")
     def period_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Buffer time for the program to handle operations before closing.
+        """
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
@@ -749,6 +814,9 @@ class ContainerGroupContainerReadinessProbeArgs:
     @property
     @pulumi.getter(name="successThreshold")
     def success_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+        """
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
@@ -758,6 +826,9 @@ class ContainerGroupContainerReadinessProbeArgs:
     @property
     @pulumi.getter(name="tcpSockets")
     def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]]]:
+        """
+        Health check using TCP socket method. See `tcp_socket` below.
+        """
         return pulumi.get(self, "tcp_sockets")
 
     @tcp_sockets.setter
@@ -767,6 +838,9 @@ class ContainerGroupContainerReadinessProbeArgs:
     @property
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Check the timeout, the default is 1 second, the minimum is 1 second.
+        """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
@@ -797,6 +871,9 @@ class ContainerGroupContainerReadinessProbeHttpGetArgs:
                  path: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  scheme: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] scheme: The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+        """
         if path is not None:
             pulumi.set(__self__, "path", path)
         if port is not None:
@@ -825,6 +902,9 @@ class ContainerGroupContainerReadinessProbeHttpGetArgs:
     @property
     @pulumi.getter
     def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+        """
         return pulumi.get(self, "scheme")
 
     @scheme.setter
@@ -855,6 +935,9 @@ class ContainerGroupContainerSecurityContextArgs:
                  capabilities: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]] = None,
                  privileged: Optional[pulumi.Input[bool]] = None,
                  run_as_user: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] privileged: Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
+        """
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
         if privileged is not None:
@@ -874,6 +957,9 @@ class ContainerGroupContainerSecurityContextArgs:
     @property
     @pulumi.getter
     def privileged(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
+        """
         return pulumi.get(self, "privileged")
 
     @privileged.setter
@@ -1786,6 +1872,9 @@ class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] content: The content of the configuration file. Maximum size: 32 KB.
+        """
         if content is not None:
             pulumi.set(__self__, "content", content)
         if path is not None:
@@ -1794,6 +1883,9 @@ class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs:
     @property
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content of the configuration file. Maximum size: 32 KB.
+        """
         return pulumi.get(self, "content")
 
     @content.setter

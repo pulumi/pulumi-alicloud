@@ -117,6 +117,10 @@ class HoneypotProbeHoneypotBindList(dict):
     def __init__(__self__, *,
                  bind_port_lists: Optional[Sequence['outputs.HoneypotProbeHoneypotBindListBindPortList']] = None,
                  honeypot_id: Optional[str] = None):
+        """
+        :param Sequence['HoneypotProbeHoneypotBindListBindPortListArgs'] bind_port_lists: List of listening ports.See the following `Block BindPortList`.
+        :param str honeypot_id: Honeypot ID.
+        """
         if bind_port_lists is not None:
             pulumi.set(__self__, "bind_port_lists", bind_port_lists)
         if honeypot_id is not None:
@@ -125,11 +129,17 @@ class HoneypotProbeHoneypotBindList(dict):
     @property
     @pulumi.getter(name="bindPortLists")
     def bind_port_lists(self) -> Optional[Sequence['outputs.HoneypotProbeHoneypotBindListBindPortList']]:
+        """
+        List of listening ports.See the following `Block BindPortList`.
+        """
         return pulumi.get(self, "bind_port_lists")
 
     @property
     @pulumi.getter(name="honeypotId")
     def honeypot_id(self) -> Optional[str]:
+        """
+        Honeypot ID.
+        """
         return pulumi.get(self, "honeypot_id")
 
 
@@ -164,6 +174,13 @@ class HoneypotProbeHoneypotBindListBindPortList(dict):
                  fixed: Optional[bool] = None,
                  start_port: Optional[int] = None,
                  target_port: Optional[int] = None):
+        """
+        :param bool bind_port: Whether to bind the port.
+        :param int end_port: End port.
+        :param bool fixed: Whether the port is fixed.
+        :param int start_port: Start port.
+        :param int target_port: Destination port.
+        """
         if bind_port is not None:
             pulumi.set(__self__, "bind_port", bind_port)
         if end_port is not None:
@@ -178,26 +195,41 @@ class HoneypotProbeHoneypotBindListBindPortList(dict):
     @property
     @pulumi.getter(name="bindPort")
     def bind_port(self) -> Optional[bool]:
+        """
+        Whether to bind the port.
+        """
         return pulumi.get(self, "bind_port")
 
     @property
     @pulumi.getter(name="endPort")
     def end_port(self) -> Optional[int]:
+        """
+        End port.
+        """
         return pulumi.get(self, "end_port")
 
     @property
     @pulumi.getter
     def fixed(self) -> Optional[bool]:
+        """
+        Whether the port is fixed.
+        """
         return pulumi.get(self, "fixed")
 
     @property
     @pulumi.getter(name="startPort")
     def start_port(self) -> Optional[int]:
+        """
+        Start port.
+        """
         return pulumi.get(self, "start_port")
 
     @property
     @pulumi.getter(name="targetPort")
     def target_port(self) -> Optional[int]:
+        """
+        Destination port.
+        """
         return pulumi.get(self, "target_port")
 
 

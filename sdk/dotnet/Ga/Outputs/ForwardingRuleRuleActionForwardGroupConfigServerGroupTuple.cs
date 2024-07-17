@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ga.Outputs
     [OutputType]
     public sealed class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple
     {
+        /// <summary>
+        /// The ID of the endpoint group.
+        /// </summary>
         public readonly string EndpointGroupId;
 
         [OutputConstructor]

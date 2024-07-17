@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BgpPolicyContentSourceLimit {
+    /**
+     * @return bps range 1024~268435456.
+     * 
+     */
     private @Nullable Integer bps;
+    /**
+     * @return Pps range 32~500000.
+     * 
+     */
     private @Nullable Integer pps;
+    /**
+     * @return SynBps range 1024~268435456.
+     * 
+     */
     private @Nullable Integer synBps;
+    /**
+     * @return SynPps range 1~100000.
+     * 
+     */
     private @Nullable Integer synPps;
 
     private BgpPolicyContentSourceLimit() {}
+    /**
+     * @return bps range 1024~268435456.
+     * 
+     */
     public Optional<Integer> bps() {
         return Optional.ofNullable(this.bps);
     }
+    /**
+     * @return Pps range 32~500000.
+     * 
+     */
     public Optional<Integer> pps() {
         return Optional.ofNullable(this.pps);
     }
+    /**
+     * @return SynBps range 1024~268435456.
+     * 
+     */
     public Optional<Integer> synBps() {
         return Optional.ofNullable(this.synBps);
     }
+    /**
+     * @return SynPps range 1~100000.
+     * 
+     */
     public Optional<Integer> synPps() {
         return Optional.ofNullable(this.synPps);
     }

@@ -14,10 +14,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TemplateScratchSourceTag {
+    /**
+     * @return Source label. **NOTE:** A maximum of 10 source labels can be configured.
+     * 
+     */
     private Map<String,Object> resourceTags;
     private @Nullable List<String> resourceTypeFilters;
 
     private TemplateScratchSourceTag() {}
+    /**
+     * @return Source label. **NOTE:** A maximum of 10 source labels can be configured.
+     * 
+     */
     public Map<String,Object> resourceTags() {
         return this.resourceTags;
     }

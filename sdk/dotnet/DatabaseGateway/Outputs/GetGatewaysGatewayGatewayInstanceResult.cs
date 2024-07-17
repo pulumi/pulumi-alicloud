@@ -13,15 +13,45 @@ namespace Pulumi.AliCloud.DatabaseGateway.Outputs
     [OutputType]
     public sealed class GetGatewaysGatewayGatewayInstanceResult
     {
+        /// <summary>
+        /// The connection type of Gateway instance.
+        /// </summary>
         public readonly string ConnectEndpointType;
+        /// <summary>
+        /// The process of version number of Gateway instance.
+        /// </summary>
         public readonly string CurrentDaemonVersion;
+        /// <summary>
+        /// The version of Gateway instance.
+        /// </summary>
         public readonly string CurrentVersion;
+        /// <summary>
+        /// The endpoint address of Gateway instance.
+        /// </summary>
         public readonly string EndPoint;
+        /// <summary>
+        /// The id of Gateway instance.
+        /// </summary>
         public readonly string GatewayInstanceId;
+        /// <summary>
+        /// The status of Gateway instance. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+        /// </summary>
         public readonly string GatewayInstanceStatus;
+        /// <summary>
+        /// The last Updated time stamp of Gateway instance.
+        /// </summary>
         public readonly string LastUpdateTime;
+        /// <summary>
+        /// The Local IP ADDRESS of Gateway instance.
+        /// </summary>
         public readonly string LocalIp;
+        /// <summary>
+        /// The prompt information of Gateway instance.
+        /// </summary>
         public readonly string Message;
+        /// <summary>
+        /// The host of Gateway instance.
+        /// </summary>
         public readonly string OutputIp;
 
         [OutputConstructor]

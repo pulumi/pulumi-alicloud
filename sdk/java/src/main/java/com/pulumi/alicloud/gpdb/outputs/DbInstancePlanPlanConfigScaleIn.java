@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DbInstancePlanPlanConfigScaleIn {
+    /**
+     * @return The executed time of the Plan.
+     * 
+     */
     private @Nullable String executeTime;
+    /**
+     * @return The Cron Time of the plan.
+     * 
+     */
     private @Nullable String planCronTime;
+    /**
+     * @return The segment Node Num of the Plan.
+     * 
+     */
     private @Nullable String segmentNodeNum;
 
     private DbInstancePlanPlanConfigScaleIn() {}
+    /**
+     * @return The executed time of the Plan.
+     * 
+     */
     public Optional<String> executeTime() {
         return Optional.ofNullable(this.executeTime);
     }
+    /**
+     * @return The Cron Time of the plan.
+     * 
+     */
     public Optional<String> planCronTime() {
         return Optional.ofNullable(this.planCronTime);
     }
+    /**
+     * @return The segment Node Num of the Plan.
+     * 
+     */
     public Optional<String> segmentNodeNum() {
         return Optional.ofNullable(this.segmentNodeNum);
     }

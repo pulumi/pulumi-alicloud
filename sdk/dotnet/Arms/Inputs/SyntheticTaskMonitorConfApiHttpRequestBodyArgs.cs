@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Arms.Inputs
 
     public sealed class SyntheticTaskMonitorConfApiHttpRequestBodyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
+        /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 

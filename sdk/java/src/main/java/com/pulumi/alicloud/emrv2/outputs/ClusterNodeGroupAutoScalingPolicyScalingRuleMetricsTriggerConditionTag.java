@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag {
+    /**
+     * @return The tag key for this scaling rule specific metrics trigger.
+     * 
+     */
     private String key;
+    /**
+     * @return The tag value for this scaling rule specific metrics trigger.
+     * 
+     */
     private @Nullable String value;
 
     private ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag() {}
+    /**
+     * @return The tag key for this scaling rule specific metrics trigger.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return The tag value for this scaling rule specific metrics trigger.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

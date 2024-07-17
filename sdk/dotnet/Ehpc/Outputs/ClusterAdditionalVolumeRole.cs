@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
     [OutputType]
     public sealed class ClusterAdditionalVolumeRole
     {
+        /// <summary>
+        /// The type of the nodes to which the additional file system is attached.
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

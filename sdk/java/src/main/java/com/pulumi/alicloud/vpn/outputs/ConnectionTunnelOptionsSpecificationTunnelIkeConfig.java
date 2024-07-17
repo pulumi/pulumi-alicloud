@@ -18,8 +18,16 @@ public final class ConnectionTunnelOptionsSpecificationTunnelIkeConfig {
     private @Nullable String ikeMode;
     private @Nullable String ikePfs;
     private @Nullable String ikeVersion;
+    /**
+     * @return The local Id.
+     * 
+     */
     private @Nullable String localId;
     private @Nullable String psk;
+    /**
+     * @return Remote ID.
+     * 
+     */
     private @Nullable String remoteId;
 
     private ConnectionTunnelOptionsSpecificationTunnelIkeConfig() {}
@@ -41,12 +49,20 @@ public final class ConnectionTunnelOptionsSpecificationTunnelIkeConfig {
     public Optional<String> ikeVersion() {
         return Optional.ofNullable(this.ikeVersion);
     }
+    /**
+     * @return The local Id.
+     * 
+     */
     public Optional<String> localId() {
         return Optional.ofNullable(this.localId);
     }
     public Optional<String> psk() {
         return Optional.ofNullable(this.psk);
     }
+    /**
+     * @return Remote ID.
+     * 
+     */
     public Optional<String> remoteId() {
         return Optional.ofNullable(this.remoteId);
     }

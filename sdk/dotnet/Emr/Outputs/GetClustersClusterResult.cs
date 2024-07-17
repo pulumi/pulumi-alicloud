@@ -159,6 +159,9 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, object> Tags;
+        /// <summary>
+        /// Disk type.
+        /// </summary>
         public readonly string Type;
         /// <summary>
         /// The EMR permission name used.

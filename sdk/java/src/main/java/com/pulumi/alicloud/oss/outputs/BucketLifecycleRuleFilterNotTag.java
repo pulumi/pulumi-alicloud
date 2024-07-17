@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class BucketLifecycleRuleFilterNotTag {
+    /**
+     * @return The key of the tag that is specified for the objects.
+     * 
+     */
     private String key;
+    /**
+     * @return The value of the tag that is specified for the objects.
+     * 
+     */
     private String value;
 
     private BucketLifecycleRuleFilterNotTag() {}
+    /**
+     * @return The key of the tag that is specified for the objects.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return The value of the tag that is specified for the objects.
+     * 
+     */
     public String value() {
         return this.value;
     }

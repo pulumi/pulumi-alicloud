@@ -12,21 +12,39 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
 
     public sealed class ServiceMeshMeshConfigAccessLogGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable CNI.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+        /// </summary>
         [Input("gatewayEnabled")]
         public Input<bool>? GatewayEnabled { get; set; }
 
+        /// <summary>
+        /// Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+        /// </summary>
         [Input("gatewayLifecycle")]
         public Input<int>? GatewayLifecycle { get; set; }
 
+        /// <summary>
+        /// The name of the SLS Project to which the control plane logs are collected.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+        /// </summary>
         [Input("sidecarEnabled")]
         public Input<bool>? SidecarEnabled { get; set; }
 
+        /// <summary>
+        /// Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+        /// </summary>
         [Input("sidecarLifecycle")]
         public Input<int>? SidecarLifecycle { get; set; }
 

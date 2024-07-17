@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionAuthParametersOauthParametersClientParameters {
+    /**
+     * @return The ID of the client.
+     * 
+     */
     private @Nullable String clientId;
+    /**
+     * @return The AccessKey secret of the client.
+     * 
+     */
     private @Nullable String clientSecret;
 
     private ConnectionAuthParametersOauthParametersClientParameters() {}
+    /**
+     * @return The ID of the client.
+     * 
+     */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
+    /**
+     * @return The AccessKey secret of the client.
+     * 
+     */
     public Optional<String> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }

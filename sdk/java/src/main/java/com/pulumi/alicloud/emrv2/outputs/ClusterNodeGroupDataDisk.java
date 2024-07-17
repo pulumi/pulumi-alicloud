@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeGroupDataDisk {
+    /**
+     * @return The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+     * 
+     */
     private String category;
+    /**
+     * @return The count of a data disk.
+     * 
+     */
     private @Nullable Integer count;
+    /**
+     * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+     * 
+     */
     private @Nullable String performanceLevel;
+    /**
+     * @return The size of a data disk, at least 40. Unit: GiB.
+     * 
+     */
     private Integer size;
 
     private ClusterNodeGroupDataDisk() {}
+    /**
+     * @return The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
+     * 
+     */
     public String category() {
         return this.category;
     }
+    /**
+     * @return The count of a data disk.
+     * 
+     */
     public Optional<Integer> count() {
         return Optional.ofNullable(this.count);
     }
+    /**
+     * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+     * 
+     */
     public Optional<String> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
+    /**
+     * @return The size of a data disk, at least 40. Unit: GiB.
+     * 
+     */
     public Integer size() {
         return this.size;
     }

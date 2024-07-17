@@ -203,6 +203,10 @@ public final class GetClustersCluster {
      * 
      */
     private Map<String,Object> tags;
+    /**
+     * @return Disk type.
+     * 
+     */
     private String type;
     /**
      * @return The EMR permission name used.
@@ -489,6 +493,10 @@ public final class GetClustersCluster {
     public Map<String,Object> tags() {
         return this.tags;
     }
+    /**
+     * @return Disk type.
+     * 
+     */
     public String type() {
         return this.type;
     }

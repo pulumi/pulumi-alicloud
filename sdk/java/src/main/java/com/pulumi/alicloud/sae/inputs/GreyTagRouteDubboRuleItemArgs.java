@@ -23,16 +23,32 @@ public final class GreyTagRouteDubboRuleItemArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.cond);
     }
 
+    /**
+     * The parameter value gets the expression.
+     * 
+     */
     @Import(name="expr")
     private @Nullable Output<String> expr;
 
+    /**
+     * @return The parameter value gets the expression.
+     * 
+     */
     public Optional<Output<String>> expr() {
         return Optional.ofNullable(this.expr);
     }
 
+    /**
+     * The parameter number.
+     * 
+     */
     @Import(name="index")
     private @Nullable Output<Integer> index;
 
+    /**
+     * @return The parameter number.
+     * 
+     */
     public Optional<Output<Integer>> index() {
         return Optional.ofNullable(this.index);
     }
@@ -88,20 +104,44 @@ public final class GreyTagRouteDubboRuleItemArgs extends com.pulumi.resources.Re
             return cond(Output.of(cond));
         }
 
+        /**
+         * @param expr The parameter value gets the expression.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expr(@Nullable Output<String> expr) {
             $.expr = expr;
             return this;
         }
 
+        /**
+         * @param expr The parameter value gets the expression.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expr(String expr) {
             return expr(Output.of(expr));
         }
 
+        /**
+         * @param index The parameter number.
+         * 
+         * @return builder
+         * 
+         */
         public Builder index(@Nullable Output<Integer> index) {
             $.index = index;
             return this;
         }
 
+        /**
+         * @param index The parameter number.
+         * 
+         * @return builder
+         * 
+         */
         public Builder index(Integer index) {
             return index(Output.of(index));
         }

@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
     {
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// The password for basic authentication.
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -24,6 +28,9 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
             }
         }
 
+        /// <summary>
+        /// The username for basic authentication.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

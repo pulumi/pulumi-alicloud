@@ -18,6 +18,9 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// The value of the life cycle.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

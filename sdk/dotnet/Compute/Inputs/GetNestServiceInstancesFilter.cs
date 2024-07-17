@@ -20,6 +20,10 @@ namespace Pulumi.AliCloud.Compute.Inputs
 
         [Input("values")]
         private List<string>? _values;
+
+        /// <summary>
+        /// Set of values that are accepted for the given field.
+        /// </summary>
         public List<string> Values
         {
             get => _values ?? (_values = new List<string>());

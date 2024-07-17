@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Sls.Inputs
     {
         [Input("fields")]
         private InputList<string>? _fields;
+
+        /// <summary>
+        /// The field used for grouping evaluation. When type is set to custom, fields must be set.
+        /// </summary>
         public InputList<string> Fields
         {
             get => _fields ?? (_fields = new InputList<string>());

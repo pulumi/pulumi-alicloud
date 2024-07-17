@@ -19,23 +19,47 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCon
 
     public static final ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs Empty = new ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs();
 
+    /**
+     * The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
+     * 
+     */
     @Import(name="comparisonOperator", required=true)
     private Output<String> comparisonOperator;
 
+    /**
+     * @return The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
+     * 
+     */
     public Output<String> comparisonOperator() {
         return this.comparisonOperator;
     }
 
+    /**
+     * The metric name for this scaling rule specific metrics trigger.
+     * 
+     */
     @Import(name="metricName", required=true)
     private Output<String> metricName;
 
+    /**
+     * @return The metric name for this scaling rule specific metrics trigger.
+     * 
+     */
     public Output<String> metricName() {
         return this.metricName;
     }
 
+    /**
+     * The statistics for this scaling rule specific metrics trigger.
+     * 
+     */
     @Import(name="statistics", required=true)
     private Output<String> statistics;
 
+    /**
+     * @return The statistics for this scaling rule specific metrics trigger.
+     * 
+     */
     public Output<String> statistics() {
         return this.statistics;
     }
@@ -55,9 +79,17 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCon
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The threshold for this scaling rule specific metrics trigger.
+     * 
+     */
     @Import(name="threshold", required=true)
     private Output<Double> threshold;
 
+    /**
+     * @return The threshold for this scaling rule specific metrics trigger.
+     * 
+     */
     public Output<Double> threshold() {
         return this.threshold;
     }
@@ -90,29 +122,65 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCon
             $ = new ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param comparisonOperator The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comparisonOperator(Output<String> comparisonOperator) {
             $.comparisonOperator = comparisonOperator;
             return this;
         }
 
+        /**
+         * @param comparisonOperator The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder comparisonOperator(String comparisonOperator) {
             return comparisonOperator(Output.of(comparisonOperator));
         }
 
+        /**
+         * @param metricName The metric name for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricName(Output<String> metricName) {
             $.metricName = metricName;
             return this;
         }
 
+        /**
+         * @param metricName The metric name for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricName(String metricName) {
             return metricName(Output.of(metricName));
         }
 
+        /**
+         * @param statistics The statistics for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statistics(Output<String> statistics) {
             $.statistics = statistics;
             return this;
         }
 
+        /**
+         * @param statistics The statistics for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statistics(String statistics) {
             return statistics(Output.of(statistics));
         }
@@ -148,11 +216,23 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCon
             return tags(List.of(tags));
         }
 
+        /**
+         * @param threshold The threshold for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threshold(Output<Double> threshold) {
             $.threshold = threshold;
             return this;
         }
 
+        /**
+         * @param threshold The threshold for this scaling rule specific metrics trigger.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threshold(Double threshold) {
             return threshold(Output.of(threshold));
         }

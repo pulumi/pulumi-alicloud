@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Hbr.Inputs
 
     public sealed class PolicyRuleRetentionRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+        /// </summary>
         [Input("advancedRetentionType")]
         public Input<string>? AdvancedRetentionType { get; set; }
 
+        /// <summary>
+        /// Retention time, in days.
+        /// </summary>
         [Input("retention")]
         public Input<int>? Retention { get; set; }
 

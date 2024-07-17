@@ -873,6 +873,9 @@ class ApplicationPvtzDiscoverySvcPortProtocol(dict):
     def __init__(__self__, *,
                  port: Optional[int] = None,
                  protocol: Optional[str] = None):
+        """
+        :param str protocol: The protocol. Valid values: `TCP` and `UDP`.
+        """
         if port is not None:
             pulumi.set(__self__, "port", port)
         if protocol is not None:
@@ -886,6 +889,9 @@ class ApplicationPvtzDiscoverySvcPortProtocol(dict):
     @property
     @pulumi.getter
     def protocol(self) -> Optional[str]:
+        """
+        The protocol. Valid values: `TCP` and `UDP`.
+        """
         return pulumi.get(self, "protocol")
 
 
@@ -1215,6 +1221,24 @@ class ApplicationScalingRuleScalingRuleMetricMetric(dict):
                  slb_log_store: Optional[str] = None,
                  slb_project: Optional[str] = None,
                  vport: Optional[str] = None):
+        """
+        :param int metric_target_average_utilization: According to different `metric_type`, set the target value of the corresponding monitoring index.
+        :param str metric_type: Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
+               - CPU: CPU usage.
+               - MEMORY: MEMORY usage.
+               - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+               - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+               - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+               - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+               - SLB_RT: The average response time of public network SLB within 15 seconds.
+               - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+               - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+               **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+        :param str slb_id: SLB ID.
+        :param str slb_log_store: The log store of the Log Service.
+        :param str slb_project: The project of the Log Service.
+        :param str vport: SLB listening port.
+        """
         if metric_target_average_utilization is not None:
             pulumi.set(__self__, "metric_target_average_utilization", metric_target_average_utilization)
         if metric_type is not None:
@@ -1231,31 +1255,59 @@ class ApplicationScalingRuleScalingRuleMetricMetric(dict):
     @property
     @pulumi.getter(name="metricTargetAverageUtilization")
     def metric_target_average_utilization(self) -> Optional[int]:
+        """
+        According to different `metric_type`, set the target value of the corresponding monitoring index.
+        """
         return pulumi.get(self, "metric_target_average_utilization")
 
     @property
     @pulumi.getter(name="metricType")
     def metric_type(self) -> Optional[str]:
+        """
+        Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
+        - CPU: CPU usage.
+        - MEMORY: MEMORY usage.
+        - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+        - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+        - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+        - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+        - SLB_RT: The average response time of public network SLB within 15 seconds.
+        - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+        - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+        **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+        """
         return pulumi.get(self, "metric_type")
 
     @property
     @pulumi.getter(name="slbId")
     def slb_id(self) -> Optional[str]:
+        """
+        SLB ID.
+        """
         return pulumi.get(self, "slb_id")
 
     @property
     @pulumi.getter(name="slbLogStore")
     def slb_log_store(self) -> Optional[str]:
+        """
+        The log store of the Log Service.
+        """
         return pulumi.get(self, "slb_log_store")
 
     @property
     @pulumi.getter(name="slbProject")
     def slb_project(self) -> Optional[str]:
+        """
+        The project of the Log Service.
+        """
         return pulumi.get(self, "slb_project")
 
     @property
     @pulumi.getter
     def vport(self) -> Optional[str]:
+        """
+        SLB listening port.
+        """
         return pulumi.get(self, "vport")
 
 
@@ -1282,6 +1334,11 @@ class ApplicationScalingRuleScalingRuleMetricScaleDownRules(dict):
                  disabled: Optional[bool] = None,
                  stabilization_window_seconds: Optional[int] = None,
                  step: Optional[int] = None):
+        """
+        :param bool disabled: Whether shrinkage is prohibited.
+        :param int stabilization_window_seconds: Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+        :param int step: Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+        """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if stabilization_window_seconds is not None:
@@ -1292,16 +1349,25 @@ class ApplicationScalingRuleScalingRuleMetricScaleDownRules(dict):
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
+        """
+        Whether shrinkage is prohibited.
+        """
         return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="stabilizationWindowSeconds")
     def stabilization_window_seconds(self) -> Optional[int]:
+        """
+        Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+        """
         return pulumi.get(self, "stabilization_window_seconds")
 
     @property
     @pulumi.getter
     def step(self) -> Optional[int]:
+        """
+        Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+        """
         return pulumi.get(self, "step")
 
 
@@ -1328,6 +1394,11 @@ class ApplicationScalingRuleScalingRuleMetricScaleUpRules(dict):
                  disabled: Optional[bool] = None,
                  stabilization_window_seconds: Optional[int] = None,
                  step: Optional[int] = None):
+        """
+        :param bool disabled: Whether shrinkage is prohibited.
+        :param int stabilization_window_seconds: Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+        :param int step: Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+        """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if stabilization_window_seconds is not None:
@@ -1338,16 +1409,25 @@ class ApplicationScalingRuleScalingRuleMetricScaleUpRules(dict):
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
+        """
+        Whether shrinkage is prohibited.
+        """
         return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="stabilizationWindowSeconds")
     def stabilization_window_seconds(self) -> Optional[int]:
+        """
+        Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+        """
         return pulumi.get(self, "stabilization_window_seconds")
 
     @property
     @pulumi.getter
     def step(self) -> Optional[int]:
+        """
+        Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+        """
         return pulumi.get(self, "step")
 
 
@@ -1455,6 +1535,10 @@ class ApplicationScalingRuleScalingRuleTimerSchedule(dict):
                  max_replicas: Optional[int] = None,
                  min_replicas: Optional[int] = None,
                  target_replicas: Optional[int] = None):
+        """
+        :param str at_time: Trigger point in time. When supporting format: minutes, for example: `08:00`.
+        :param int target_replicas: This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
+        """
         if at_time is not None:
             pulumi.set(__self__, "at_time", at_time)
         if max_replicas is not None:
@@ -1467,6 +1551,9 @@ class ApplicationScalingRuleScalingRuleTimerSchedule(dict):
     @property
     @pulumi.getter(name="atTime")
     def at_time(self) -> Optional[str]:
+        """
+        Trigger point in time. When supporting format: minutes, for example: `08:00`.
+        """
         return pulumi.get(self, "at_time")
 
     @property
@@ -1482,6 +1569,9 @@ class ApplicationScalingRuleScalingRuleTimerSchedule(dict):
     @property
     @pulumi.getter(name="targetReplicas")
     def target_replicas(self) -> Optional[int]:
+        """
+        This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
+        """
         return pulumi.get(self, "target_replicas")
 
 
@@ -1649,7 +1739,9 @@ class ApplicationUpdateStrategyV2BatchUpdate(dict):
                  batch_wait_time: Optional[int] = None,
                  release_type: Optional[str] = None):
         """
+        :param int batch: The number of batches in which you want to release the instances.
         :param int batch_wait_time: The batch wait time.
+        :param str release_type: The processing method for the batches. Valid values: `auto` and `manual`.
         """
         if batch is not None:
             pulumi.set(__self__, "batch", batch)
@@ -1661,6 +1753,9 @@ class ApplicationUpdateStrategyV2BatchUpdate(dict):
     @property
     @pulumi.getter
     def batch(self) -> Optional[int]:
+        """
+        The number of batches in which you want to release the instances.
+        """
         return pulumi.get(self, "batch")
 
     @property
@@ -1674,6 +1769,9 @@ class ApplicationUpdateStrategyV2BatchUpdate(dict):
     @property
     @pulumi.getter(name="releaseType")
     def release_type(self) -> Optional[str]:
+        """
+        The processing method for the batches. Valid values: `auto` and `manual`.
+        """
         return pulumi.get(self, "release_type")
 
 
@@ -1783,6 +1881,10 @@ class GreyTagRouteDubboRuleItem(dict):
                  index: Optional[int] = None,
                  operator: Optional[str] = None,
                  value: Optional[str] = None):
+        """
+        :param str expr: The parameter value gets the expression.
+        :param int index: The parameter number.
+        """
         if cond is not None:
             pulumi.set(__self__, "cond", cond)
         if expr is not None:
@@ -1802,11 +1904,17 @@ class GreyTagRouteDubboRuleItem(dict):
     @property
     @pulumi.getter
     def expr(self) -> Optional[str]:
+        """
+        The parameter value gets the expression.
+        """
         return pulumi.get(self, "expr")
 
     @property
     @pulumi.getter
     def index(self) -> Optional[int]:
+        """
+        The parameter number.
+        """
         return pulumi.get(self, "index")
 
     @property
@@ -1871,6 +1979,10 @@ class GreyTagRouteScRuleItem(dict):
                  operator: Optional[str] = None,
                  type: Optional[str] = None,
                  value: Optional[str] = None):
+        """
+        :param str name: The name of the parameter.
+        :param str type: The compare types. Valid values: `param`, `cookie`, `header`.
+        """
         if cond is not None:
             pulumi.set(__self__, "cond", cond)
         if name is not None:
@@ -1890,6 +2002,9 @@ class GreyTagRouteScRuleItem(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The name of the parameter.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -1900,6 +2015,9 @@ class GreyTagRouteScRuleItem(dict):
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        The compare types. Valid values: `param`, `cookie`, `header`.
+        """
         return pulumi.get(self, "type")
 
     @property

@@ -17,51 +17,107 @@ public final class BgpPolicyContentLayer4RuleListArgs extends com.pulumi.resourc
 
     public static final BgpPolicyContentLayer4RuleListArgs Empty = new BgpPolicyContentLayer4RuleListArgs();
 
+    /**
+     * 1 for observation 2 for blocking.
+     * 
+     */
     @Import(name="action", required=true)
     private Output<String> action;
 
+    /**
+     * @return 1 for observation 2 for blocking.
+     * 
+     */
     public Output<String> action() {
         return this.action;
     }
 
+    /**
+     * Matching Condition. See `condition_list` below.
+     * 
+     */
     @Import(name="conditionLists", required=true)
     private Output<List<BgpPolicyContentLayer4RuleListConditionListArgs>> conditionLists;
 
+    /**
+     * @return Matching Condition. See `condition_list` below.
+     * 
+     */
     public Output<List<BgpPolicyContentLayer4RuleListConditionListArgs>> conditionLists() {
         return this.conditionLists;
     }
 
+    /**
+     * .
+     * 
+     */
     @Import(name="limited", required=true)
     private Output<Integer> limited;
 
+    /**
+     * @return .
+     * 
+     */
     public Output<Integer> limited() {
         return this.limited;
     }
 
+    /**
+     * 0 indicates that the condition is not met 1 indicates that the condition is met.
+     * 
+     */
     @Import(name="match", required=true)
     private Output<String> match;
 
+    /**
+     * @return 0 indicates that the condition is not met 1 indicates that the condition is met.
+     * 
+     */
     public Output<String> match() {
         return this.match;
     }
 
+    /**
+     * Char indicates a string match hex match.
+     * 
+     */
     @Import(name="method", required=true)
     private Output<String> method;
 
+    /**
+     * @return Char indicates a string match hex match.
+     * 
+     */
     public Output<String> method() {
         return this.method;
     }
 
+    /**
+     * Rule Name.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Rule Name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * 1-100, priority, the lower the number, the higher the priority.
+     * 
+     */
     @Import(name="priority", required=true)
     private Output<Integer> priority;
 
+    /**
+     * @return 1-100, priority, the lower the number, the higher the priority.
+     * 
+     */
     public Output<Integer> priority() {
         return this.priority;
     }
@@ -96,69 +152,159 @@ public final class BgpPolicyContentLayer4RuleListArgs extends com.pulumi.resourc
             $ = new BgpPolicyContentLayer4RuleListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param action 1 for observation 2 for blocking.
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(Output<String> action) {
             $.action = action;
             return this;
         }
 
+        /**
+         * @param action 1 for observation 2 for blocking.
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(String action) {
             return action(Output.of(action));
         }
 
+        /**
+         * @param conditionLists Matching Condition. See `condition_list` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditionLists(Output<List<BgpPolicyContentLayer4RuleListConditionListArgs>> conditionLists) {
             $.conditionLists = conditionLists;
             return this;
         }
 
+        /**
+         * @param conditionLists Matching Condition. See `condition_list` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditionLists(List<BgpPolicyContentLayer4RuleListConditionListArgs> conditionLists) {
             return conditionLists(Output.of(conditionLists));
         }
 
+        /**
+         * @param conditionLists Matching Condition. See `condition_list` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditionLists(BgpPolicyContentLayer4RuleListConditionListArgs... conditionLists) {
             return conditionLists(List.of(conditionLists));
         }
 
+        /**
+         * @param limited .
+         * 
+         * @return builder
+         * 
+         */
         public Builder limited(Output<Integer> limited) {
             $.limited = limited;
             return this;
         }
 
+        /**
+         * @param limited .
+         * 
+         * @return builder
+         * 
+         */
         public Builder limited(Integer limited) {
             return limited(Output.of(limited));
         }
 
+        /**
+         * @param match 0 indicates that the condition is not met 1 indicates that the condition is met.
+         * 
+         * @return builder
+         * 
+         */
         public Builder match(Output<String> match) {
             $.match = match;
             return this;
         }
 
+        /**
+         * @param match 0 indicates that the condition is not met 1 indicates that the condition is met.
+         * 
+         * @return builder
+         * 
+         */
         public Builder match(String match) {
             return match(Output.of(match));
         }
 
+        /**
+         * @param method Char indicates a string match hex match.
+         * 
+         * @return builder
+         * 
+         */
         public Builder method(Output<String> method) {
             $.method = method;
             return this;
         }
 
+        /**
+         * @param method Char indicates a string match hex match.
+         * 
+         * @return builder
+         * 
+         */
         public Builder method(String method) {
             return method(Output.of(method));
         }
 
+        /**
+         * @param name Rule Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Rule Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param priority 1-100, priority, the lower the number, the higher the priority.
+         * 
+         * @return builder
+         * 
+         */
         public Builder priority(Output<Integer> priority) {
             $.priority = priority;
             return this;
         }
 
+        /**
+         * @param priority 1-100, priority, the lower the number, the higher the priority.
+         * 
+         * @return builder
+         * 
+         */
         public Builder priority(Integer priority) {
             return priority(Output.of(priority));
         }

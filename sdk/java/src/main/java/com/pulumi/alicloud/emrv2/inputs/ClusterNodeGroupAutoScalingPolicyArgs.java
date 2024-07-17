@@ -17,16 +17,32 @@ public final class ClusterNodeGroupAutoScalingPolicyArgs extends com.pulumi.reso
 
     public static final ClusterNodeGroupAutoScalingPolicyArgs Empty = new ClusterNodeGroupAutoScalingPolicyArgs();
 
+    /**
+     * The constraints of auto scaling policy. See `constraints` below.
+     * 
+     */
     @Import(name="constraints")
     private @Nullable Output<ClusterNodeGroupAutoScalingPolicyConstraintsArgs> constraints;
 
+    /**
+     * @return The constraints of auto scaling policy. See `constraints` below.
+     * 
+     */
     public Optional<Output<ClusterNodeGroupAutoScalingPolicyConstraintsArgs>> constraints() {
         return Optional.ofNullable(this.constraints);
     }
 
+    /**
+     * The scaling rules of auto scaling policy. See `scaling_rules` below.
+     * 
+     */
     @Import(name="scalingRules")
     private @Nullable Output<List<ClusterNodeGroupAutoScalingPolicyScalingRuleArgs>> scalingRules;
 
+    /**
+     * @return The scaling rules of auto scaling policy. See `scaling_rules` below.
+     * 
+     */
     public Optional<Output<List<ClusterNodeGroupAutoScalingPolicyScalingRuleArgs>>> scalingRules() {
         return Optional.ofNullable(this.scalingRules);
     }
@@ -56,24 +72,54 @@ public final class ClusterNodeGroupAutoScalingPolicyArgs extends com.pulumi.reso
             $ = new ClusterNodeGroupAutoScalingPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param constraints The constraints of auto scaling policy. See `constraints` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder constraints(@Nullable Output<ClusterNodeGroupAutoScalingPolicyConstraintsArgs> constraints) {
             $.constraints = constraints;
             return this;
         }
 
+        /**
+         * @param constraints The constraints of auto scaling policy. See `constraints` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder constraints(ClusterNodeGroupAutoScalingPolicyConstraintsArgs constraints) {
             return constraints(Output.of(constraints));
         }
 
+        /**
+         * @param scalingRules The scaling rules of auto scaling policy. See `scaling_rules` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scalingRules(@Nullable Output<List<ClusterNodeGroupAutoScalingPolicyScalingRuleArgs>> scalingRules) {
             $.scalingRules = scalingRules;
             return this;
         }
 
+        /**
+         * @param scalingRules The scaling rules of auto scaling policy. See `scaling_rules` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scalingRules(List<ClusterNodeGroupAutoScalingPolicyScalingRuleArgs> scalingRules) {
             return scalingRules(Output.of(scalingRules));
         }
 
+        /**
+         * @param scalingRules The scaling rules of auto scaling policy. See `scaling_rules` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scalingRules(ClusterNodeGroupAutoScalingPolicyScalingRuleArgs... scalingRules) {
             return scalingRules(List.of(scalingRules));
         }

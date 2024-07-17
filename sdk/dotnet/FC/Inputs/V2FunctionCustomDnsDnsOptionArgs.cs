@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.FC.Inputs
 
     public sealed class V2FunctionCustomDnsDnsOptionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// DNS option name.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// DNS option value.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

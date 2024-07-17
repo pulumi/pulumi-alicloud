@@ -22,9 +22,17 @@ public final class GreyTagRouteScRuleItemArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.cond);
     }
 
+    /**
+     * The name of the parameter.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The name of the parameter.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -36,9 +44,17 @@ public final class GreyTagRouteScRuleItemArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.operator);
     }
 
+    /**
+     * The compare types. Valid values: `param`, `cookie`, `header`.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The compare types. Valid values: `param`, `cookie`, `header`.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -87,11 +103,23 @@ public final class GreyTagRouteScRuleItemArgs extends com.pulumi.resources.Resou
             return cond(Output.of(cond));
         }
 
+        /**
+         * @param name The name of the parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -105,11 +133,23 @@ public final class GreyTagRouteScRuleItemArgs extends com.pulumi.resources.Resou
             return operator(Output.of(operator));
         }
 
+        /**
+         * @param type The compare types. Valid values: `param`, `cookie`, `header`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The compare types. Valid values: `param`, `cookie`, `header`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

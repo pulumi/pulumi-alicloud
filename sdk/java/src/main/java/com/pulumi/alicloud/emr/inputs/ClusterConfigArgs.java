@@ -14,23 +14,47 @@ public final class ClusterConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterConfigArgs Empty = new ClusterConfigArgs();
 
+    /**
+     * Custom configuration service config key, e.g. ’dfs.replication’.
+     * 
+     */
     @Import(name="configKey", required=true)
     private Output<String> configKey;
 
+    /**
+     * @return Custom configuration service config key, e.g. ’dfs.replication’.
+     * 
+     */
     public Output<String> configKey() {
         return this.configKey;
     }
 
+    /**
+     * Custom configuration service config value, e.g. ’3’.
+     * 
+     */
     @Import(name="configValue", required=true)
     private Output<String> configValue;
 
+    /**
+     * @return Custom configuration service config value, e.g. ’3’.
+     * 
+     */
     public Output<String> configValue() {
         return this.configValue;
     }
 
+    /**
+     * Custom configuration service file name, e.g. ’hdfs-site’.
+     * 
+     */
     @Import(name="fileName", required=true)
     private Output<String> fileName;
 
+    /**
+     * @return Custom configuration service file name, e.g. ’hdfs-site’.
+     * 
+     */
     public Output<String> fileName() {
         return this.fileName;
     }
@@ -69,29 +93,65 @@ public final class ClusterConfigArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ClusterConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param configKey Custom configuration service config key, e.g. ’dfs.replication’.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configKey(Output<String> configKey) {
             $.configKey = configKey;
             return this;
         }
 
+        /**
+         * @param configKey Custom configuration service config key, e.g. ’dfs.replication’.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configKey(String configKey) {
             return configKey(Output.of(configKey));
         }
 
+        /**
+         * @param configValue Custom configuration service config value, e.g. ’3’.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configValue(Output<String> configValue) {
             $.configValue = configValue;
             return this;
         }
 
+        /**
+         * @param configValue Custom configuration service config value, e.g. ’3’.
+         * 
+         * @return builder
+         * 
+         */
         public Builder configValue(String configValue) {
             return configValue(Output.of(configValue));
         }
 
+        /**
+         * @param fileName Custom configuration service file name, e.g. ’hdfs-site’.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileName(Output<String> fileName) {
             $.fileName = fileName;
             return this;
         }
 
+        /**
+         * @param fileName Custom configuration service file name, e.g. ’hdfs-site’.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fileName(String fileName) {
             return fileName(Output.of(fileName));
         }

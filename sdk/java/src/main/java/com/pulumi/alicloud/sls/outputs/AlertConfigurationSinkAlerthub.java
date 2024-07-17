@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertConfigurationSinkAlerthub {
+    /**
+     * @return Open.
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private AlertConfigurationSinkAlerthub() {}
+    /**
+     * @return Open.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

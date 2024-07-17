@@ -13,11 +13,29 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class RuleRuleActionCorsConfig
     {
+        /// <summary>
+        /// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+        /// </summary>
         public readonly string? AllowCredentials;
+        /// <summary>
+        /// The allowed headers for CORS requests.
+        /// </summary>
         public readonly ImmutableArray<string> AllowHeaders;
+        /// <summary>
+        /// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+        /// </summary>
         public readonly ImmutableArray<string> AllowMethods;
+        /// <summary>
+        /// The allowed origins of CORS requests.
+        /// </summary>
         public readonly ImmutableArray<string> AllowOrigins;
+        /// <summary>
+        /// The headers that can be exposed.
+        /// </summary>
         public readonly ImmutableArray<string> ExposeHeaders;
+        /// <summary>
+        /// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+        /// </summary>
         public readonly int? MaxAge;
 
         [OutputConstructor]

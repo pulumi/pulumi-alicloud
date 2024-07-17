@@ -17,51 +17,107 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
 
     public static final SearchIndexSchemaFieldSchemaArgs Empty = new SearchIndexSchemaFieldSchemaArgs();
 
+    /**
+     * Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+     * 
+     */
     @Import(name="analyzer")
     private @Nullable Output<String> analyzer;
 
+    /**
+     * @return Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+     * 
+     */
     public Optional<Output<String>> analyzer() {
         return Optional.ofNullable(this.analyzer);
     }
 
+    /**
+     * Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+     * 
+     */
     @Import(name="enableSortAndAgg")
     private @Nullable Output<Boolean> enableSortAndAgg;
 
+    /**
+     * @return Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+     * 
+     */
     public Optional<Output<Boolean>> enableSortAndAgg() {
         return Optional.ofNullable(this.enableSortAndAgg);
     }
 
+    /**
+     * The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * 
+     */
     @Import(name="fieldName", required=true)
     private Output<String> fieldName;
 
+    /**
+     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+     * 
+     */
     public Output<String> fieldName() {
         return this.fieldName;
     }
 
+    /**
+     * Specifies the type of the field. Use FieldType.XXX to set the type.
+     * 
+     */
     @Import(name="fieldType", required=true)
     private Output<String> fieldType;
 
+    /**
+     * @return Specifies the type of the field. Use FieldType.XXX to set the type.
+     * 
+     */
     public Output<String> fieldType() {
         return this.fieldType;
     }
 
+    /**
+     * Specifies whether to enable indexing for the column. Type: Boolean.
+     * 
+     */
     @Import(name="index")
     private @Nullable Output<Boolean> index;
 
+    /**
+     * @return Specifies whether to enable indexing for the column. Type: Boolean.
+     * 
+     */
     public Optional<Output<Boolean>> index() {
         return Optional.ofNullable(this.index);
     }
 
+    /**
+     * Specifies whether the value is an array. Type: Boolean.
+     * 
+     */
     @Import(name="isArray")
     private @Nullable Output<Boolean> isArray;
 
+    /**
+     * @return Specifies whether the value is an array. Type: Boolean.
+     * 
+     */
     public Optional<Output<Boolean>> isArray() {
         return Optional.ofNullable(this.isArray);
     }
 
+    /**
+     * Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+     * 
+     */
     @Import(name="store")
     private @Nullable Output<Boolean> store;
 
+    /**
+     * @return Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+     * 
+     */
     public Optional<Output<Boolean>> store() {
         return Optional.ofNullable(this.store);
     }
@@ -96,65 +152,149 @@ public final class SearchIndexSchemaFieldSchemaArgs extends com.pulumi.resources
             $ = new SearchIndexSchemaFieldSchemaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param analyzer Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder analyzer(@Nullable Output<String> analyzer) {
             $.analyzer = analyzer;
             return this;
         }
 
+        /**
+         * @param analyzer Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder analyzer(String analyzer) {
             return analyzer(Output.of(analyzer));
         }
 
+        /**
+         * @param enableSortAndAgg Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableSortAndAgg(@Nullable Output<Boolean> enableSortAndAgg) {
             $.enableSortAndAgg = enableSortAndAgg;
             return this;
         }
 
+        /**
+         * @param enableSortAndAgg Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableSortAndAgg(Boolean enableSortAndAgg) {
             return enableSortAndAgg(Output.of(enableSortAndAgg));
         }
 
+        /**
+         * @param fieldName The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fieldName(Output<String> fieldName) {
             $.fieldName = fieldName;
             return this;
         }
 
+        /**
+         * @param fieldName The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fieldName(String fieldName) {
             return fieldName(Output.of(fieldName));
         }
 
+        /**
+         * @param fieldType Specifies the type of the field. Use FieldType.XXX to set the type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fieldType(Output<String> fieldType) {
             $.fieldType = fieldType;
             return this;
         }
 
+        /**
+         * @param fieldType Specifies the type of the field. Use FieldType.XXX to set the type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fieldType(String fieldType) {
             return fieldType(Output.of(fieldType));
         }
 
+        /**
+         * @param index Specifies whether to enable indexing for the column. Type: Boolean.
+         * 
+         * @return builder
+         * 
+         */
         public Builder index(@Nullable Output<Boolean> index) {
             $.index = index;
             return this;
         }
 
+        /**
+         * @param index Specifies whether to enable indexing for the column. Type: Boolean.
+         * 
+         * @return builder
+         * 
+         */
         public Builder index(Boolean index) {
             return index(Output.of(index));
         }
 
+        /**
+         * @param isArray Specifies whether the value is an array. Type: Boolean.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isArray(@Nullable Output<Boolean> isArray) {
             $.isArray = isArray;
             return this;
         }
 
+        /**
+         * @param isArray Specifies whether the value is an array. Type: Boolean.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isArray(Boolean isArray) {
             return isArray(Output.of(isArray));
         }
 
+        /**
+         * @param store Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder store(@Nullable Output<Boolean> store) {
             $.store = store;
             return this;
         }
 
+        /**
+         * @param store Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder store(Boolean store) {
             return store(Output.of(store));
         }

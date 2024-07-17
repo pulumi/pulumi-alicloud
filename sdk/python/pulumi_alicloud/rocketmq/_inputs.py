@@ -173,6 +173,16 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
                  internet_spec: pulumi.Input[str],
                  flow_out_bandwidth: Optional[pulumi.Input[int]] = None,
                  ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] flow_out_type: Public network billing type. The parameter values are as follows:
+               - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+               - uninvolved: Not involved. Set this value when disabling public network access.
+        :param pulumi.Input[str] internet_spec: Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+               - enable: Enable public network access
+               - disable: Disable public network access
+        :param pulumi.Input[int] flow_out_bandwidth: Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_whitelists: internet ip whitelist.
+        """
         pulumi.set(__self__, "flow_out_type", flow_out_type)
         pulumi.set(__self__, "internet_spec", internet_spec)
         if flow_out_bandwidth is not None:
@@ -183,6 +193,11 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
     @property
     @pulumi.getter(name="flowOutType")
     def flow_out_type(self) -> pulumi.Input[str]:
+        """
+        Public network billing type. The parameter values are as follows:
+        - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+        - uninvolved: Not involved. Set this value when disabling public network access.
+        """
         return pulumi.get(self, "flow_out_type")
 
     @flow_out_type.setter
@@ -192,6 +207,11 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
     @property
     @pulumi.getter(name="internetSpec")
     def internet_spec(self) -> pulumi.Input[str]:
+        """
+        Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+        - enable: Enable public network access
+        - disable: Disable public network access
+        """
         return pulumi.get(self, "internet_spec")
 
     @internet_spec.setter
@@ -201,6 +221,9 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
     @property
     @pulumi.getter(name="flowOutBandwidth")
     def flow_out_bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+        """
         return pulumi.get(self, "flow_out_bandwidth")
 
     @flow_out_bandwidth.setter
@@ -210,6 +233,9 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
     @property
     @pulumi.getter(name="ipWhitelists")
     def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        internet ip whitelist.
+        """
         return pulumi.get(self, "ip_whitelists")
 
     @ip_whitelists.setter
@@ -222,12 +248,19 @@ class RocketMQInstanceNetworkInfoVpcInfoArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] vpc_id: Proprietary Network.
+        :param pulumi.Input[str] vswitch_id: VPC network switch.
+        """
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[str]:
+        """
+        Proprietary Network.
+        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -237,6 +270,9 @@ class RocketMQInstanceNetworkInfoVpcInfoArgs:
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[str]:
+        """
+        VPC network switch.
+        """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter

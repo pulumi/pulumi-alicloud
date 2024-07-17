@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BucketLifecycleRuleFilterNot {
+    /**
+     * @return The prefix in the names of the objects to which the lifecycle rule does not apply.
+     * 
+     */
     private @Nullable String prefix;
+    /**
+     * @return The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+     * 
+     */
     private @Nullable BucketLifecycleRuleFilterNotTag tag;
 
     private BucketLifecycleRuleFilterNot() {}
+    /**
+     * @return The prefix in the names of the objects to which the lifecycle rule does not apply.
+     * 
+     */
     public Optional<String> prefix() {
         return Optional.ofNullable(this.prefix);
     }
+    /**
+     * @return The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+     * 
+     */
     public Optional<BucketLifecycleRuleFilterNotTag> tag() {
         return Optional.ofNullable(this.tag);
     }

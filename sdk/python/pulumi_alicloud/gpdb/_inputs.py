@@ -94,6 +94,10 @@ class DbInstancePlanPlanConfigPauseArgs:
     def __init__(__self__, *,
                  execute_time: Optional[pulumi.Input[str]] = None,
                  plan_cron_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] execute_time: The executed time of the Plan.
+        :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
+        """
         if execute_time is not None:
             pulumi.set(__self__, "execute_time", execute_time)
         if plan_cron_time is not None:
@@ -102,6 +106,9 @@ class DbInstancePlanPlanConfigPauseArgs:
     @property
     @pulumi.getter(name="executeTime")
     def execute_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The executed time of the Plan.
+        """
         return pulumi.get(self, "execute_time")
 
     @execute_time.setter
@@ -111,6 +118,9 @@ class DbInstancePlanPlanConfigPauseArgs:
     @property
     @pulumi.getter(name="planCronTime")
     def plan_cron_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cron Time of the plan.
+        """
         return pulumi.get(self, "plan_cron_time")
 
     @plan_cron_time.setter
@@ -123,6 +133,10 @@ class DbInstancePlanPlanConfigResumeArgs:
     def __init__(__self__, *,
                  execute_time: Optional[pulumi.Input[str]] = None,
                  plan_cron_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] execute_time: The executed time of the Plan.
+        :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
+        """
         if execute_time is not None:
             pulumi.set(__self__, "execute_time", execute_time)
         if plan_cron_time is not None:
@@ -131,6 +145,9 @@ class DbInstancePlanPlanConfigResumeArgs:
     @property
     @pulumi.getter(name="executeTime")
     def execute_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The executed time of the Plan.
+        """
         return pulumi.get(self, "execute_time")
 
     @execute_time.setter
@@ -140,6 +157,9 @@ class DbInstancePlanPlanConfigResumeArgs:
     @property
     @pulumi.getter(name="planCronTime")
     def plan_cron_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cron Time of the plan.
+        """
         return pulumi.get(self, "plan_cron_time")
 
     @plan_cron_time.setter
@@ -153,6 +173,11 @@ class DbInstancePlanPlanConfigScaleInArgs:
                  execute_time: Optional[pulumi.Input[str]] = None,
                  plan_cron_time: Optional[pulumi.Input[str]] = None,
                  segment_node_num: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] execute_time: The executed time of the Plan.
+        :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
+        :param pulumi.Input[str] segment_node_num: The segment Node Num of the Plan.
+        """
         if execute_time is not None:
             pulumi.set(__self__, "execute_time", execute_time)
         if plan_cron_time is not None:
@@ -163,6 +188,9 @@ class DbInstancePlanPlanConfigScaleInArgs:
     @property
     @pulumi.getter(name="executeTime")
     def execute_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The executed time of the Plan.
+        """
         return pulumi.get(self, "execute_time")
 
     @execute_time.setter
@@ -172,6 +200,9 @@ class DbInstancePlanPlanConfigScaleInArgs:
     @property
     @pulumi.getter(name="planCronTime")
     def plan_cron_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cron Time of the plan.
+        """
         return pulumi.get(self, "plan_cron_time")
 
     @plan_cron_time.setter
@@ -181,6 +212,9 @@ class DbInstancePlanPlanConfigScaleInArgs:
     @property
     @pulumi.getter(name="segmentNodeNum")
     def segment_node_num(self) -> Optional[pulumi.Input[str]]:
+        """
+        The segment Node Num of the Plan.
+        """
         return pulumi.get(self, "segment_node_num")
 
     @segment_node_num.setter
@@ -194,6 +228,11 @@ class DbInstancePlanPlanConfigScaleOutArgs:
                  execute_time: Optional[pulumi.Input[str]] = None,
                  plan_cron_time: Optional[pulumi.Input[str]] = None,
                  segment_node_num: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] execute_time: The executed time of the Plan.
+        :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
+        :param pulumi.Input[str] segment_node_num: The segment Node Num of the Plan.
+        """
         if execute_time is not None:
             pulumi.set(__self__, "execute_time", execute_time)
         if plan_cron_time is not None:
@@ -204,6 +243,9 @@ class DbInstancePlanPlanConfigScaleOutArgs:
     @property
     @pulumi.getter(name="executeTime")
     def execute_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The executed time of the Plan.
+        """
         return pulumi.get(self, "execute_time")
 
     @execute_time.setter
@@ -213,6 +255,9 @@ class DbInstancePlanPlanConfigScaleOutArgs:
     @property
     @pulumi.getter(name="planCronTime")
     def plan_cron_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cron Time of the plan.
+        """
         return pulumi.get(self, "plan_cron_time")
 
     @plan_cron_time.setter
@@ -222,6 +267,9 @@ class DbInstancePlanPlanConfigScaleOutArgs:
     @property
     @pulumi.getter(name="segmentNodeNum")
     def segment_node_num(self) -> Optional[pulumi.Input[str]]:
+        """
+        The segment Node Num of the Plan.
+        """
         return pulumi.get(self, "segment_node_num")
 
     @segment_node_num.setter

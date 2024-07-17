@@ -550,7 +550,9 @@ func (o AlertConfigurationPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type AlertConfigurationAnnotation struct {
-	Key   *string `pulumi:"key"`
+	// Field name.
+	Key *string `pulumi:"key"`
+	// Field value.
 	Value *string `pulumi:"value"`
 }
 
@@ -566,7 +568,9 @@ type AlertConfigurationAnnotationInput interface {
 }
 
 type AlertConfigurationAnnotationArgs struct {
-	Key   pulumi.StringPtrInput `pulumi:"key"`
+	// Field name.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Field value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -621,10 +625,12 @@ func (o AlertConfigurationAnnotationOutput) ToAlertConfigurationAnnotationOutput
 	return o
 }
 
+// Field name.
 func (o AlertConfigurationAnnotationOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationAnnotation) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Field value.
 func (o AlertConfigurationAnnotationOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationAnnotation) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -650,7 +656,9 @@ func (o AlertConfigurationAnnotationArrayOutput) Index(i pulumi.IntInput) AlertC
 }
 
 type AlertConfigurationConditionConfiguration struct {
-	Condition      *string `pulumi:"condition"`
+	// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+	Condition *string `pulumi:"condition"`
+	// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
 	CountCondition *string `pulumi:"countCondition"`
 }
 
@@ -666,7 +674,9 @@ type AlertConfigurationConditionConfigurationInput interface {
 }
 
 type AlertConfigurationConditionConfigurationArgs struct {
-	Condition      pulumi.StringPtrInput `pulumi:"condition"`
+	// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
 	CountCondition pulumi.StringPtrInput `pulumi:"countCondition"`
 }
 
@@ -747,10 +757,12 @@ func (o AlertConfigurationConditionConfigurationOutput) ToAlertConfigurationCond
 	}).(AlertConfigurationConditionConfigurationPtrOutput)
 }
 
+// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
 func (o AlertConfigurationConditionConfigurationOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationConditionConfiguration) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
+// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
 func (o AlertConfigurationConditionConfigurationOutput) CountCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationConditionConfiguration) *string { return v.CountCondition }).(pulumi.StringPtrOutput)
 }
@@ -779,6 +791,7 @@ func (o AlertConfigurationConditionConfigurationPtrOutput) Elem() AlertConfigura
 	}).(AlertConfigurationConditionConfigurationOutput)
 }
 
+// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
 func (o AlertConfigurationConditionConfigurationPtrOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationConditionConfiguration) *string {
 		if v == nil {
@@ -788,6 +801,7 @@ func (o AlertConfigurationConditionConfigurationPtrOutput) Condition() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
 func (o AlertConfigurationConditionConfigurationPtrOutput) CountCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationConditionConfiguration) *string {
 		if v == nil {
@@ -798,6 +812,7 @@ func (o AlertConfigurationConditionConfigurationPtrOutput) CountCondition() pulu
 }
 
 type AlertConfigurationGroupConfiguration struct {
+	// The field used for grouping evaluation. When type is set to custom, fields must be set.
 	Fields []string `pulumi:"fields"`
 	Type   *string  `pulumi:"type"`
 }
@@ -814,6 +829,7 @@ type AlertConfigurationGroupConfigurationInput interface {
 }
 
 type AlertConfigurationGroupConfigurationArgs struct {
+	// The field used for grouping evaluation. When type is set to custom, fields must be set.
 	Fields pulumi.StringArrayInput `pulumi:"fields"`
 	Type   pulumi.StringPtrInput   `pulumi:"type"`
 }
@@ -895,6 +911,7 @@ func (o AlertConfigurationGroupConfigurationOutput) ToAlertConfigurationGroupCon
 	}).(AlertConfigurationGroupConfigurationPtrOutput)
 }
 
+// The field used for grouping evaluation. When type is set to custom, fields must be set.
 func (o AlertConfigurationGroupConfigurationOutput) Fields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AlertConfigurationGroupConfiguration) []string { return v.Fields }).(pulumi.StringArrayOutput)
 }
@@ -927,6 +944,7 @@ func (o AlertConfigurationGroupConfigurationPtrOutput) Elem() AlertConfiguration
 	}).(AlertConfigurationGroupConfigurationOutput)
 }
 
+// The field used for grouping evaluation. When type is set to custom, fields must be set.
 func (o AlertConfigurationGroupConfigurationPtrOutput) Fields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AlertConfigurationGroupConfiguration) []string {
 		if v == nil {
@@ -946,6 +964,7 @@ func (o AlertConfigurationGroupConfigurationPtrOutput) Type() pulumi.StringPtrOu
 }
 
 type AlertConfigurationJoinConfiguration struct {
+	// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
 	Condition *string `pulumi:"condition"`
 	Type      *string `pulumi:"type"`
 }
@@ -962,6 +981,7 @@ type AlertConfigurationJoinConfigurationInput interface {
 }
 
 type AlertConfigurationJoinConfigurationArgs struct {
+	// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
 	Condition pulumi.StringPtrInput `pulumi:"condition"`
 	Type      pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -1017,6 +1037,7 @@ func (o AlertConfigurationJoinConfigurationOutput) ToAlertConfigurationJoinConfi
 	return o
 }
 
+// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
 func (o AlertConfigurationJoinConfigurationOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationJoinConfiguration) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
@@ -1046,7 +1067,9 @@ func (o AlertConfigurationJoinConfigurationArrayOutput) Index(i pulumi.IntInput)
 }
 
 type AlertConfigurationLabel struct {
-	Key   *string `pulumi:"key"`
+	// Field name.
+	Key *string `pulumi:"key"`
+	// Field value.
 	Value *string `pulumi:"value"`
 }
 
@@ -1062,7 +1085,9 @@ type AlertConfigurationLabelInput interface {
 }
 
 type AlertConfigurationLabelArgs struct {
-	Key   pulumi.StringPtrInput `pulumi:"key"`
+	// Field name.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Field value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1117,10 +1142,12 @@ func (o AlertConfigurationLabelOutput) ToAlertConfigurationLabelOutputWithContex
 	return o
 }
 
+// Field name.
 func (o AlertConfigurationLabelOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationLabel) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// Field value.
 func (o AlertConfigurationLabelOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1146,8 +1173,11 @@ func (o AlertConfigurationLabelArrayOutput) Index(i pulumi.IntInput) AlertConfig
 }
 
 type AlertConfigurationPolicyConfiguration struct {
+	// The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
 	ActionPolicyId *string `pulumi:"actionPolicyId"`
-	AlertPolicyId  *string `pulumi:"alertPolicyId"`
+	// Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
+	AlertPolicyId *string `pulumi:"alertPolicyId"`
+	// Repeat the waiting time. For example, 5m, 1H, etc.
 	RepeatInterval *string `pulumi:"repeatInterval"`
 }
 
@@ -1163,8 +1193,11 @@ type AlertConfigurationPolicyConfigurationInput interface {
 }
 
 type AlertConfigurationPolicyConfigurationArgs struct {
+	// The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
 	ActionPolicyId pulumi.StringPtrInput `pulumi:"actionPolicyId"`
-	AlertPolicyId  pulumi.StringPtrInput `pulumi:"alertPolicyId"`
+	// Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
+	AlertPolicyId pulumi.StringPtrInput `pulumi:"alertPolicyId"`
+	// Repeat the waiting time. For example, 5m, 1H, etc.
 	RepeatInterval pulumi.StringPtrInput `pulumi:"repeatInterval"`
 }
 
@@ -1245,14 +1278,17 @@ func (o AlertConfigurationPolicyConfigurationOutput) ToAlertConfigurationPolicyC
 	}).(AlertConfigurationPolicyConfigurationPtrOutput)
 }
 
+// The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
 func (o AlertConfigurationPolicyConfigurationOutput) ActionPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationPolicyConfiguration) *string { return v.ActionPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
 func (o AlertConfigurationPolicyConfigurationOutput) AlertPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationPolicyConfiguration) *string { return v.AlertPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// Repeat the waiting time. For example, 5m, 1H, etc.
 func (o AlertConfigurationPolicyConfigurationOutput) RepeatInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationPolicyConfiguration) *string { return v.RepeatInterval }).(pulumi.StringPtrOutput)
 }
@@ -1281,6 +1317,7 @@ func (o AlertConfigurationPolicyConfigurationPtrOutput) Elem() AlertConfiguratio
 	}).(AlertConfigurationPolicyConfigurationOutput)
 }
 
+// The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
 func (o AlertConfigurationPolicyConfigurationPtrOutput) ActionPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationPolicyConfiguration) *string {
 		if v == nil {
@@ -1290,6 +1327,7 @@ func (o AlertConfigurationPolicyConfigurationPtrOutput) ActionPolicyId() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
 func (o AlertConfigurationPolicyConfigurationPtrOutput) AlertPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationPolicyConfiguration) *string {
 		if v == nil {
@@ -1299,6 +1337,7 @@ func (o AlertConfigurationPolicyConfigurationPtrOutput) AlertPolicyId() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Repeat the waiting time. For example, 5m, 1H, etc.
 func (o AlertConfigurationPolicyConfigurationPtrOutput) RepeatInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationPolicyConfiguration) *string {
 		if v == nil {
@@ -1309,19 +1348,32 @@ func (o AlertConfigurationPolicyConfigurationPtrOutput) RepeatInterval() pulumi.
 }
 
 type AlertConfigurationQueryList struct {
-	ChartTitle   *string `pulumi:"chartTitle"`
-	DashboardId  *string `pulumi:"dashboardId"`
-	End          *string `pulumi:"end"`
+	// Chart Name.
+	ChartTitle *string `pulumi:"chartTitle"`
+	// Dashboard ID.
+	DashboardId *string `pulumi:"dashboardId"`
+	// End time. When storeType is set to log or metric, end must be set.
+	End *string `pulumi:"end"`
+	// Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
 	PowerSqlMode *string `pulumi:"powerSqlMode"`
-	Project      *string `pulumi:"project"`
-	Query        *string `pulumi:"query"`
-	Region       *string `pulumi:"region"`
-	RoleArn      *string `pulumi:"roleArn"`
-	Start        *string `pulumi:"start"`
-	Store        *string `pulumi:"store"`
-	StoreType    *string `pulumi:"storeType"`
+	// Project Name.
+	Project *string `pulumi:"project"`
+	// Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+	Query *string `pulumi:"query"`
+	// Region of the target Project.
+	Region *string `pulumi:"region"`
+	// Roles used to write alarm data to the event Library.
+	RoleArn *string `pulumi:"roleArn"`
+	// Start time. When storeType is set to log or metric, start must be set.
+	Start *string `pulumi:"start"`
+	// Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+	Store *string `pulumi:"store"`
+	// Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+	StoreType *string `pulumi:"storeType"`
+	// Time Type.
 	TimeSpanType *string `pulumi:"timeSpanType"`
-	Ui           *string `pulumi:"ui"`
+	// Use of specific scene alarm front end.
+	Ui *string `pulumi:"ui"`
 }
 
 // AlertConfigurationQueryListInput is an input type that accepts AlertConfigurationQueryListArgs and AlertConfigurationQueryListOutput values.
@@ -1336,19 +1388,32 @@ type AlertConfigurationQueryListInput interface {
 }
 
 type AlertConfigurationQueryListArgs struct {
-	ChartTitle   pulumi.StringPtrInput `pulumi:"chartTitle"`
-	DashboardId  pulumi.StringPtrInput `pulumi:"dashboardId"`
-	End          pulumi.StringPtrInput `pulumi:"end"`
+	// Chart Name.
+	ChartTitle pulumi.StringPtrInput `pulumi:"chartTitle"`
+	// Dashboard ID.
+	DashboardId pulumi.StringPtrInput `pulumi:"dashboardId"`
+	// End time. When storeType is set to log or metric, end must be set.
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
 	PowerSqlMode pulumi.StringPtrInput `pulumi:"powerSqlMode"`
-	Project      pulumi.StringPtrInput `pulumi:"project"`
-	Query        pulumi.StringPtrInput `pulumi:"query"`
-	Region       pulumi.StringPtrInput `pulumi:"region"`
-	RoleArn      pulumi.StringPtrInput `pulumi:"roleArn"`
-	Start        pulumi.StringPtrInput `pulumi:"start"`
-	Store        pulumi.StringPtrInput `pulumi:"store"`
-	StoreType    pulumi.StringPtrInput `pulumi:"storeType"`
+	// Project Name.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+	Query pulumi.StringPtrInput `pulumi:"query"`
+	// Region of the target Project.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Roles used to write alarm data to the event Library.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Start time. When storeType is set to log or metric, start must be set.
+	Start pulumi.StringPtrInput `pulumi:"start"`
+	// Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+	Store pulumi.StringPtrInput `pulumi:"store"`
+	// Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+	StoreType pulumi.StringPtrInput `pulumi:"storeType"`
+	// Time Type.
 	TimeSpanType pulumi.StringPtrInput `pulumi:"timeSpanType"`
-	Ui           pulumi.StringPtrInput `pulumi:"ui"`
+	// Use of specific scene alarm front end.
+	Ui pulumi.StringPtrInput `pulumi:"ui"`
 }
 
 func (AlertConfigurationQueryListArgs) ElementType() reflect.Type {
@@ -1402,54 +1467,67 @@ func (o AlertConfigurationQueryListOutput) ToAlertConfigurationQueryListOutputWi
 	return o
 }
 
+// Chart Name.
 func (o AlertConfigurationQueryListOutput) ChartTitle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationQueryList) *string { return v.ChartTitle }).(pulumi.StringPtrOutput)
 }
 
+// Dashboard ID.
 func (o AlertConfigurationQueryListOutput) DashboardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationQueryList) *string { return v.DashboardId }).(pulumi.StringPtrOutput)
 }
 
+// End time. When storeType is set to log or metric, end must be set.
 func (o AlertConfigurationQueryListOutput) End() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationQueryList) *string { return v.End }).(pulumi.StringPtrOutput)
 }
 
+// Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
 func (o AlertConfigurationQueryListOutput) PowerSqlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationQueryList) *string { return v.PowerSqlMode }).(pulumi.StringPtrOutput)
 }
 
+// Project Name.
 func (o AlertConfigurationQueryListOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationQueryList) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+// Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
 func (o AlertConfigurationQueryListOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationQueryList) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
 
+// Region of the target Project.
 func (o AlertConfigurationQueryListOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationQueryList) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// Roles used to write alarm data to the event Library.
 func (o AlertConfigurationQueryListOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationQueryList) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
+// Start time. When storeType is set to log or metric, start must be set.
 func (o AlertConfigurationQueryListOutput) Start() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationQueryList) *string { return v.Start }).(pulumi.StringPtrOutput)
 }
 
+// Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
 func (o AlertConfigurationQueryListOutput) Store() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationQueryList) *string { return v.Store }).(pulumi.StringPtrOutput)
 }
 
+// Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
 func (o AlertConfigurationQueryListOutput) StoreType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationQueryList) *string { return v.StoreType }).(pulumi.StringPtrOutput)
 }
 
+// Time Type.
 func (o AlertConfigurationQueryListOutput) TimeSpanType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationQueryList) *string { return v.TimeSpanType }).(pulumi.StringPtrOutput)
 }
 
+// Use of specific scene alarm front end.
 func (o AlertConfigurationQueryListOutput) Ui() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationQueryList) *string { return v.Ui }).(pulumi.StringPtrOutput)
 }
@@ -1475,8 +1553,10 @@ func (o AlertConfigurationQueryListArrayOutput) Index(i pulumi.IntInput) AlertCo
 }
 
 type AlertConfigurationSeverityConfiguration struct {
+	// Trigger condition. See `evalCondition` below.
 	EvalCondition *AlertConfigurationSeverityConfigurationEvalCondition `pulumi:"evalCondition"`
-	Severity      *int                                                  `pulumi:"severity"`
+	// Alarm severity.
+	Severity *int `pulumi:"severity"`
 }
 
 // AlertConfigurationSeverityConfigurationInput is an input type that accepts AlertConfigurationSeverityConfigurationArgs and AlertConfigurationSeverityConfigurationOutput values.
@@ -1491,8 +1571,10 @@ type AlertConfigurationSeverityConfigurationInput interface {
 }
 
 type AlertConfigurationSeverityConfigurationArgs struct {
+	// Trigger condition. See `evalCondition` below.
 	EvalCondition AlertConfigurationSeverityConfigurationEvalConditionPtrInput `pulumi:"evalCondition"`
-	Severity      pulumi.IntPtrInput                                           `pulumi:"severity"`
+	// Alarm severity.
+	Severity pulumi.IntPtrInput `pulumi:"severity"`
 }
 
 func (AlertConfigurationSeverityConfigurationArgs) ElementType() reflect.Type {
@@ -1546,12 +1628,14 @@ func (o AlertConfigurationSeverityConfigurationOutput) ToAlertConfigurationSever
 	return o
 }
 
+// Trigger condition. See `evalCondition` below.
 func (o AlertConfigurationSeverityConfigurationOutput) EvalCondition() AlertConfigurationSeverityConfigurationEvalConditionPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationSeverityConfiguration) *AlertConfigurationSeverityConfigurationEvalCondition {
 		return v.EvalCondition
 	}).(AlertConfigurationSeverityConfigurationEvalConditionPtrOutput)
 }
 
+// Alarm severity.
 func (o AlertConfigurationSeverityConfigurationOutput) Severity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationSeverityConfiguration) *int { return v.Severity }).(pulumi.IntPtrOutput)
 }
@@ -1577,7 +1661,9 @@ func (o AlertConfigurationSeverityConfigurationArrayOutput) Index(i pulumi.IntIn
 }
 
 type AlertConfigurationSeverityConfigurationEvalCondition struct {
-	Condition      *string `pulumi:"condition"`
+	// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+	Condition *string `pulumi:"condition"`
+	// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
 	CountCondition *string `pulumi:"countCondition"`
 }
 
@@ -1593,7 +1679,9 @@ type AlertConfigurationSeverityConfigurationEvalConditionInput interface {
 }
 
 type AlertConfigurationSeverityConfigurationEvalConditionArgs struct {
-	Condition      pulumi.StringPtrInput `pulumi:"condition"`
+	// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
 	CountCondition pulumi.StringPtrInput `pulumi:"countCondition"`
 }
 
@@ -1674,10 +1762,12 @@ func (o AlertConfigurationSeverityConfigurationEvalConditionOutput) ToAlertConfi
 	}).(AlertConfigurationSeverityConfigurationEvalConditionPtrOutput)
 }
 
+// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
 func (o AlertConfigurationSeverityConfigurationEvalConditionOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationSeverityConfigurationEvalCondition) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
+// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
 func (o AlertConfigurationSeverityConfigurationEvalConditionOutput) CountCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationSeverityConfigurationEvalCondition) *string { return v.CountCondition }).(pulumi.StringPtrOutput)
 }
@@ -1706,6 +1796,7 @@ func (o AlertConfigurationSeverityConfigurationEvalConditionPtrOutput) Elem() Al
 	}).(AlertConfigurationSeverityConfigurationEvalConditionOutput)
 }
 
+// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
 func (o AlertConfigurationSeverityConfigurationEvalConditionPtrOutput) Condition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationSeverityConfigurationEvalCondition) *string {
 		if v == nil {
@@ -1715,6 +1806,7 @@ func (o AlertConfigurationSeverityConfigurationEvalConditionPtrOutput) Condition
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
 func (o AlertConfigurationSeverityConfigurationEvalConditionPtrOutput) CountCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationSeverityConfigurationEvalCondition) *string {
 		if v == nil {
@@ -1725,6 +1817,7 @@ func (o AlertConfigurationSeverityConfigurationEvalConditionPtrOutput) CountCond
 }
 
 type AlertConfigurationSinkAlerthub struct {
+	// Open.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -1740,6 +1833,7 @@ type AlertConfigurationSinkAlerthubInput interface {
 }
 
 type AlertConfigurationSinkAlerthubArgs struct {
+	// Open.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -1820,6 +1914,7 @@ func (o AlertConfigurationSinkAlerthubOutput) ToAlertConfigurationSinkAlerthubPt
 	}).(AlertConfigurationSinkAlerthubPtrOutput)
 }
 
+// Open.
 func (o AlertConfigurationSinkAlerthubOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationSinkAlerthub) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1848,6 +1943,7 @@ func (o AlertConfigurationSinkAlerthubPtrOutput) Elem() AlertConfigurationSinkAl
 	}).(AlertConfigurationSinkAlerthubOutput)
 }
 
+// Open.
 func (o AlertConfigurationSinkAlerthubPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationSinkAlerthub) *bool {
 		if v == nil {
@@ -1858,6 +1954,7 @@ func (o AlertConfigurationSinkAlerthubPtrOutput) Enabled() pulumi.BoolPtrOutput 
 }
 
 type AlertConfigurationSinkCms struct {
+	// Open.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -1873,6 +1970,7 @@ type AlertConfigurationSinkCmsInput interface {
 }
 
 type AlertConfigurationSinkCmsArgs struct {
+	// Open.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -1953,6 +2051,7 @@ func (o AlertConfigurationSinkCmsOutput) ToAlertConfigurationSinkCmsPtrOutputWit
 	}).(AlertConfigurationSinkCmsPtrOutput)
 }
 
+// Open.
 func (o AlertConfigurationSinkCmsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationSinkCms) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1981,6 +2080,7 @@ func (o AlertConfigurationSinkCmsPtrOutput) Elem() AlertConfigurationSinkCmsOutp
 	}).(AlertConfigurationSinkCmsOutput)
 }
 
+// Open.
 func (o AlertConfigurationSinkCmsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationSinkCms) *bool {
 		if v == nil {
@@ -1991,11 +2091,16 @@ func (o AlertConfigurationSinkCmsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type AlertConfigurationSinkEventStore struct {
-	Enabled    *bool   `pulumi:"enabled"`
-	Endpoint   *string `pulumi:"endpoint"`
+	// Open.
+	Enabled *bool `pulumi:"enabled"`
+	// SLS service endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+	// Event Library Name.
 	EventStore *string `pulumi:"eventStore"`
-	Project    *string `pulumi:"project"`
-	RoleArn    *string `pulumi:"roleArn"`
+	// Project Name.
+	Project *string `pulumi:"project"`
+	// Roles used to write alarm data to the event Library.
+	RoleArn *string `pulumi:"roleArn"`
 }
 
 // AlertConfigurationSinkEventStoreInput is an input type that accepts AlertConfigurationSinkEventStoreArgs and AlertConfigurationSinkEventStoreOutput values.
@@ -2010,11 +2115,16 @@ type AlertConfigurationSinkEventStoreInput interface {
 }
 
 type AlertConfigurationSinkEventStoreArgs struct {
-	Enabled    pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Endpoint   pulumi.StringPtrInput `pulumi:"endpoint"`
+	// Open.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// SLS service endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// Event Library Name.
 	EventStore pulumi.StringPtrInput `pulumi:"eventStore"`
-	Project    pulumi.StringPtrInput `pulumi:"project"`
-	RoleArn    pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Project Name.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Roles used to write alarm data to the event Library.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 }
 
 func (AlertConfigurationSinkEventStoreArgs) ElementType() reflect.Type {
@@ -2094,22 +2204,27 @@ func (o AlertConfigurationSinkEventStoreOutput) ToAlertConfigurationSinkEventSto
 	}).(AlertConfigurationSinkEventStorePtrOutput)
 }
 
+// Open.
 func (o AlertConfigurationSinkEventStoreOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationSinkEventStore) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// SLS service endpoint.
 func (o AlertConfigurationSinkEventStoreOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationSinkEventStore) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
+// Event Library Name.
 func (o AlertConfigurationSinkEventStoreOutput) EventStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationSinkEventStore) *string { return v.EventStore }).(pulumi.StringPtrOutput)
 }
 
+// Project Name.
 func (o AlertConfigurationSinkEventStoreOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationSinkEventStore) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+// Roles used to write alarm data to the event Library.
 func (o AlertConfigurationSinkEventStoreOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationSinkEventStore) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
@@ -2138,6 +2253,7 @@ func (o AlertConfigurationSinkEventStorePtrOutput) Elem() AlertConfigurationSink
 	}).(AlertConfigurationSinkEventStoreOutput)
 }
 
+// Open.
 func (o AlertConfigurationSinkEventStorePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationSinkEventStore) *bool {
 		if v == nil {
@@ -2147,6 +2263,7 @@ func (o AlertConfigurationSinkEventStorePtrOutput) Enabled() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// SLS service endpoint.
 func (o AlertConfigurationSinkEventStorePtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationSinkEventStore) *string {
 		if v == nil {
@@ -2156,6 +2273,7 @@ func (o AlertConfigurationSinkEventStorePtrOutput) Endpoint() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Event Library Name.
 func (o AlertConfigurationSinkEventStorePtrOutput) EventStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationSinkEventStore) *string {
 		if v == nil {
@@ -2165,6 +2283,7 @@ func (o AlertConfigurationSinkEventStorePtrOutput) EventStore() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Project Name.
 func (o AlertConfigurationSinkEventStorePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationSinkEventStore) *string {
 		if v == nil {
@@ -2174,6 +2293,7 @@ func (o AlertConfigurationSinkEventStorePtrOutput) Project() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Roles used to write alarm data to the event Library.
 func (o AlertConfigurationSinkEventStorePtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationSinkEventStore) *string {
 		if v == nil {
@@ -2184,12 +2304,17 @@ func (o AlertConfigurationSinkEventStorePtrOutput) RoleArn() pulumi.StringPtrOut
 }
 
 type AlertConfigurationTemplateConfiguration struct {
+	// Template Annotations.
 	Annotations map[string]interface{} `pulumi:"annotations"`
-	Lang        *string                `pulumi:"lang"`
-	TemplateId  *string                `pulumi:"templateId"`
-	Tokens      map[string]interface{} `pulumi:"tokens"`
-	Type        *string                `pulumi:"type"`
-	Version     *string                `pulumi:"version"`
+	// Template Language.
+	Lang *string `pulumi:"lang"`
+	// Template ID.
+	TemplateId *string `pulumi:"templateId"`
+	// Template Variables.
+	Tokens map[string]interface{} `pulumi:"tokens"`
+	Type   *string                `pulumi:"type"`
+	// Template Version.
+	Version *string `pulumi:"version"`
 }
 
 // AlertConfigurationTemplateConfigurationInput is an input type that accepts AlertConfigurationTemplateConfigurationArgs and AlertConfigurationTemplateConfigurationOutput values.
@@ -2204,12 +2329,17 @@ type AlertConfigurationTemplateConfigurationInput interface {
 }
 
 type AlertConfigurationTemplateConfigurationArgs struct {
-	Annotations pulumi.MapInput       `pulumi:"annotations"`
-	Lang        pulumi.StringPtrInput `pulumi:"lang"`
-	TemplateId  pulumi.StringPtrInput `pulumi:"templateId"`
-	Tokens      pulumi.MapInput       `pulumi:"tokens"`
-	Type        pulumi.StringPtrInput `pulumi:"type"`
-	Version     pulumi.StringPtrInput `pulumi:"version"`
+	// Template Annotations.
+	Annotations pulumi.MapInput `pulumi:"annotations"`
+	// Template Language.
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
+	// Template ID.
+	TemplateId pulumi.StringPtrInput `pulumi:"templateId"`
+	// Template Variables.
+	Tokens pulumi.MapInput       `pulumi:"tokens"`
+	Type   pulumi.StringPtrInput `pulumi:"type"`
+	// Template Version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (AlertConfigurationTemplateConfigurationArgs) ElementType() reflect.Type {
@@ -2289,18 +2419,22 @@ func (o AlertConfigurationTemplateConfigurationOutput) ToAlertConfigurationTempl
 	}).(AlertConfigurationTemplateConfigurationPtrOutput)
 }
 
+// Template Annotations.
 func (o AlertConfigurationTemplateConfigurationOutput) Annotations() pulumi.MapOutput {
 	return o.ApplyT(func(v AlertConfigurationTemplateConfiguration) map[string]interface{} { return v.Annotations }).(pulumi.MapOutput)
 }
 
+// Template Language.
 func (o AlertConfigurationTemplateConfigurationOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationTemplateConfiguration) *string { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
+// Template ID.
 func (o AlertConfigurationTemplateConfigurationOutput) TemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationTemplateConfiguration) *string { return v.TemplateId }).(pulumi.StringPtrOutput)
 }
 
+// Template Variables.
 func (o AlertConfigurationTemplateConfigurationOutput) Tokens() pulumi.MapOutput {
 	return o.ApplyT(func(v AlertConfigurationTemplateConfiguration) map[string]interface{} { return v.Tokens }).(pulumi.MapOutput)
 }
@@ -2309,6 +2443,7 @@ func (o AlertConfigurationTemplateConfigurationOutput) Type() pulumi.StringPtrOu
 	return o.ApplyT(func(v AlertConfigurationTemplateConfiguration) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Template Version.
 func (o AlertConfigurationTemplateConfigurationOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertConfigurationTemplateConfiguration) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -2337,6 +2472,7 @@ func (o AlertConfigurationTemplateConfigurationPtrOutput) Elem() AlertConfigurat
 	}).(AlertConfigurationTemplateConfigurationOutput)
 }
 
+// Template Annotations.
 func (o AlertConfigurationTemplateConfigurationPtrOutput) Annotations() pulumi.MapOutput {
 	return o.ApplyT(func(v *AlertConfigurationTemplateConfiguration) map[string]interface{} {
 		if v == nil {
@@ -2346,6 +2482,7 @@ func (o AlertConfigurationTemplateConfigurationPtrOutput) Annotations() pulumi.M
 	}).(pulumi.MapOutput)
 }
 
+// Template Language.
 func (o AlertConfigurationTemplateConfigurationPtrOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationTemplateConfiguration) *string {
 		if v == nil {
@@ -2355,6 +2492,7 @@ func (o AlertConfigurationTemplateConfigurationPtrOutput) Lang() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Template ID.
 func (o AlertConfigurationTemplateConfigurationPtrOutput) TemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationTemplateConfiguration) *string {
 		if v == nil {
@@ -2364,6 +2502,7 @@ func (o AlertConfigurationTemplateConfigurationPtrOutput) TemplateId() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Template Variables.
 func (o AlertConfigurationTemplateConfigurationPtrOutput) Tokens() pulumi.MapOutput {
 	return o.ApplyT(func(v *AlertConfigurationTemplateConfiguration) map[string]interface{} {
 		if v == nil {
@@ -2382,6 +2521,7 @@ func (o AlertConfigurationTemplateConfigurationPtrOutput) Type() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Template Version.
 func (o AlertConfigurationTemplateConfigurationPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertConfigurationTemplateConfiguration) *string {
 		if v == nil {

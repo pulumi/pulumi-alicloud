@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     [OutputType]
     public sealed class GetServerBackupPlansFilterResult
     {
+        /// <summary>
+        /// The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Set of values that are accepted for the given field.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

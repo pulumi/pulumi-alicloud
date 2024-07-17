@@ -15,16 +15,32 @@ public final class GetPolicyDocumentStatementPrincipalArgs extends com.pulumi.re
 
     public static final GetPolicyDocumentStatementPrincipalArgs Empty = new GetPolicyDocumentStatementPrincipalArgs();
 
+    /**
+     * The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+     * 
+     */
     @Import(name="entity", required=true)
     private Output<String> entity;
 
+    /**
+     * @return The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+     * 
+     */
     public Output<String> entity() {
         return this.entity;
     }
 
+    /**
+     * The identifiers of the principal.
+     * 
+     */
     @Import(name="identifiers", required=true)
     private Output<List<String>> identifiers;
 
+    /**
+     * @return The identifiers of the principal.
+     * 
+     */
     public Output<List<String>> identifiers() {
         return this.identifiers;
     }
@@ -54,24 +70,54 @@ public final class GetPolicyDocumentStatementPrincipalArgs extends com.pulumi.re
             $ = new GetPolicyDocumentStatementPrincipalArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param entity The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entity(Output<String> entity) {
             $.entity = entity;
             return this;
         }
 
+        /**
+         * @param entity The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entity(String entity) {
             return entity(Output.of(entity));
         }
 
+        /**
+         * @param identifiers The identifiers of the principal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifiers(Output<List<String>> identifiers) {
             $.identifiers = identifiers;
             return this;
         }
 
+        /**
+         * @param identifiers The identifiers of the principal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifiers(List<String> identifiers) {
             return identifiers(Output.of(identifiers));
         }
 
+        /**
+         * @param identifiers The identifiers of the principal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifiers(String... identifiers) {
             return identifiers(List.of(identifiers));
         }

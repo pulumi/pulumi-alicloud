@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
+    /**
+     * @return The ID of the destination server group to which requests are forwarded.
+     * 
+     */
     private @Nullable String serverGroupId;
 
     private RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple() {}
+    /**
+     * @return The ID of the destination server group to which requests are forwarded.
+     * 
+     */
     public Optional<String> serverGroupId() {
         return Optional.ofNullable(this.serverGroupId);
     }

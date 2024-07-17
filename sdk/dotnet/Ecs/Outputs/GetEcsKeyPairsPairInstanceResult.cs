@@ -13,17 +13,38 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetEcsKeyPairsPairInstanceResult
     {
+        /// <summary>
+        /// The ID of the availability zone where the ECS instance is located.
+        /// </summary>
         public readonly string AvailabilityZone;
         public readonly string Description;
         public readonly string ImageId;
+        /// <summary>
+        /// The ID of the ECS instance.
+        /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// The name of the ECS instance.
+        /// </summary>
         public readonly string InstanceName;
         public readonly string InstanceType;
+        /// <summary>
+        /// The Key Pair Name.
+        /// </summary>
         public readonly string KeyName;
+        /// <summary>
+        /// The private IP address of the ECS instance.
+        /// </summary>
         public readonly string PrivateIp;
+        /// <summary>
+        /// The public IP address or EIP of the ECS instance.
+        /// </summary>
         public readonly string PublicIp;
         public readonly string RegionId;
         public readonly string Status;
+        /// <summary>
+        /// The ID of the VSwitch attached to the ECS instance.
+        /// </summary>
         public readonly string VswitchId;
 
         [OutputConstructor]

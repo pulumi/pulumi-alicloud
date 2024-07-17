@@ -13,29 +13,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger {
+    /**
+     * @return The end time for this scaling rule specific metrics trigger.
+     * 
+     */
     private @Nullable String endTime;
+    /**
+     * @return The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
+     * 
+     */
     private @Nullable Integer launchExpirationTime;
+    /**
+     * @return The launch time for this scaling rule specific time trigger.
+     * 
+     */
     private String launchTime;
+    /**
+     * @return The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
+     * 
+     */
     private @Nullable String recurrenceType;
+    /**
+     * @return The recurrence value for this scaling rule specific time trigger.
+     * 
+     */
     private @Nullable String recurrenceValue;
+    /**
+     * @return The start time for this scaling rule specific metrics trigger.
+     * 
+     */
     private @Nullable String startTime;
 
     private ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger() {}
+    /**
+     * @return The end time for this scaling rule specific metrics trigger.
+     * 
+     */
     public Optional<String> endTime() {
         return Optional.ofNullable(this.endTime);
     }
+    /**
+     * @return The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
+     * 
+     */
     public Optional<Integer> launchExpirationTime() {
         return Optional.ofNullable(this.launchExpirationTime);
     }
+    /**
+     * @return The launch time for this scaling rule specific time trigger.
+     * 
+     */
     public String launchTime() {
         return this.launchTime;
     }
+    /**
+     * @return The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
+     * 
+     */
     public Optional<String> recurrenceType() {
         return Optional.ofNullable(this.recurrenceType);
     }
+    /**
+     * @return The recurrence value for this scaling rule specific time trigger.
+     * 
+     */
     public Optional<String> recurrenceValue() {
         return Optional.ofNullable(this.recurrenceValue);
     }
+    /**
+     * @return The start time for this scaling rule specific metrics trigger.
+     * 
+     */
     public Optional<String> startTime() {
         return Optional.ofNullable(this.startTime);
     }

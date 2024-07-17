@@ -120,7 +120,9 @@ func (o DhcpOptionsSetAssociateVpcArrayOutput) Index(i pulumi.IntInput) DhcpOpti
 }
 
 type NetworkAclAttachmentResource struct {
-	ResourceId   string `pulumi:"resourceId"`
+	// The resource id that the network acl will associate with.
+	ResourceId string `pulumi:"resourceId"`
+	// The resource id that the network acl will associate with. Only support `VSwitch` now.
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -136,7 +138,9 @@ type NetworkAclAttachmentResourceInput interface {
 }
 
 type NetworkAclAttachmentResourceArgs struct {
-	ResourceId   pulumi.StringInput `pulumi:"resourceId"`
+	// The resource id that the network acl will associate with.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The resource id that the network acl will associate with. Only support `VSwitch` now.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
@@ -191,10 +195,12 @@ func (o NetworkAclAttachmentResourceOutput) ToNetworkAclAttachmentResourceOutput
 	return o
 }
 
+// The resource id that the network acl will associate with.
 func (o NetworkAclAttachmentResourceOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkAclAttachmentResource) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
+// The resource id that the network acl will associate with. Only support `VSwitch` now.
 func (o NetworkAclAttachmentResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkAclAttachmentResource) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -401,7 +407,8 @@ func (o NetworkAclEgressAclEntryArrayOutput) Index(i pulumi.IntInput) NetworkAcl
 }
 
 type NetworkAclEntriesEgress struct {
-	Description       *string `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// The destination ip of the egress entry.
 	DestinationCidrIp *string `pulumi:"destinationCidrIp"`
 	EntryType         *string `pulumi:"entryType"`
 	Name              *string `pulumi:"name"`
@@ -422,7 +429,8 @@ type NetworkAclEntriesEgressInput interface {
 }
 
 type NetworkAclEntriesEgressArgs struct {
-	Description       pulumi.StringPtrInput `pulumi:"description"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The destination ip of the egress entry.
 	DestinationCidrIp pulumi.StringPtrInput `pulumi:"destinationCidrIp"`
 	EntryType         pulumi.StringPtrInput `pulumi:"entryType"`
 	Name              pulumi.StringPtrInput `pulumi:"name"`
@@ -486,6 +494,7 @@ func (o NetworkAclEntriesEgressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The destination ip of the egress entry.
 func (o NetworkAclEntriesEgressOutput) DestinationCidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.DestinationCidrIp }).(pulumi.StringPtrOutput)
 }
@@ -531,12 +540,13 @@ func (o NetworkAclEntriesEgressArrayOutput) Index(i pulumi.IntInput) NetworkAclE
 }
 
 type NetworkAclEntriesIngress struct {
-	Description  *string `pulumi:"description"`
-	EntryType    *string `pulumi:"entryType"`
-	Name         *string `pulumi:"name"`
-	Policy       *string `pulumi:"policy"`
-	Port         *string `pulumi:"port"`
-	Protocol     *string `pulumi:"protocol"`
+	Description *string `pulumi:"description"`
+	EntryType   *string `pulumi:"entryType"`
+	Name        *string `pulumi:"name"`
+	Policy      *string `pulumi:"policy"`
+	Port        *string `pulumi:"port"`
+	Protocol    *string `pulumi:"protocol"`
+	// The source ip of the ingress entry.
 	SourceCidrIp *string `pulumi:"sourceCidrIp"`
 }
 
@@ -552,12 +562,13 @@ type NetworkAclEntriesIngressInput interface {
 }
 
 type NetworkAclEntriesIngressArgs struct {
-	Description  pulumi.StringPtrInput `pulumi:"description"`
-	EntryType    pulumi.StringPtrInput `pulumi:"entryType"`
-	Name         pulumi.StringPtrInput `pulumi:"name"`
-	Policy       pulumi.StringPtrInput `pulumi:"policy"`
-	Port         pulumi.StringPtrInput `pulumi:"port"`
-	Protocol     pulumi.StringPtrInput `pulumi:"protocol"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	EntryType   pulumi.StringPtrInput `pulumi:"entryType"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+	Policy      pulumi.StringPtrInput `pulumi:"policy"`
+	Port        pulumi.StringPtrInput `pulumi:"port"`
+	Protocol    pulumi.StringPtrInput `pulumi:"protocol"`
+	// The source ip of the ingress entry.
 	SourceCidrIp pulumi.StringPtrInput `pulumi:"sourceCidrIp"`
 }
 
@@ -636,6 +647,7 @@ func (o NetworkAclEntriesIngressOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
+// The source ip of the ingress entry.
 func (o NetworkAclEntriesIngressOutput) SourceCidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.SourceCidrIp }).(pulumi.StringPtrOutput)
 }
@@ -1078,7 +1090,9 @@ func (o NetworkIpv6CidrBlockArrayOutput) Index(i pulumi.IntInput) NetworkIpv6Cid
 }
 
 type PrefixListEntry struct {
-	Cidr        *string `pulumi:"cidr"`
+	// The CIDR address block of the prefix list.
+	Cidr *string `pulumi:"cidr"`
+	// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
 }
 
@@ -1094,7 +1108,9 @@ type PrefixListEntryInput interface {
 }
 
 type PrefixListEntryArgs struct {
-	Cidr        pulumi.StringPtrInput `pulumi:"cidr"`
+	// The CIDR address block of the prefix list.
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 }
 
@@ -1149,10 +1165,12 @@ func (o PrefixListEntryOutput) ToPrefixListEntryOutputWithContext(ctx context.Co
 	return o
 }
 
+// The CIDR address block of the prefix list.
 func (o PrefixListEntryOutput) Cidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrefixListEntry) *string { return v.Cidr }).(pulumi.StringPtrOutput)
 }
 
+// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 func (o PrefixListEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrefixListEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
 }

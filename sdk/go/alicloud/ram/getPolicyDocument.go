@@ -81,8 +81,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			multipleCondition, err := ram.GetPolicyDocument(ctx, &ram.GetPolicyDocumentArgs{
 //				Version: pulumi.StringRef("1"),
-//				Statements: pulumi.Array{
-//					ram.GetPolicyDocumentStatement{
+//				Statements: []ram.GetPolicyDocumentStatement{
+//					{
 //						Effect: pulumi.StringRef("Allow"),
 //						Actions: []string{
 //							"oss:ListBuckets",
@@ -95,7 +95,7 @@ import (
 //							"acs:oss:*:*:*",
 //						},
 //					},
-//					ram.GetPolicyDocumentStatement{
+//					{
 //						Effect: pulumi.StringRef("Allow"),
 //						Actions: []string{
 //							"oss:GetObject",
@@ -105,7 +105,7 @@ import (
 //							"acs:oss:*:*:myphotos/hangzhou/2015/*",
 //						},
 //					},
-//					ram.GetPolicyDocumentStatement{
+//					{
 //						Effect: pulumi.StringRef("Allow"),
 //						Actions: []string{
 //							"oss:ListObjects",

@@ -15,16 +15,32 @@ public final class DomainRedirectRequestHeaderArgs extends com.pulumi.resources.
 
     public static final DomainRedirectRequestHeaderArgs Empty = new DomainRedirectRequestHeaderArgs();
 
+    /**
+     * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+     * 
+     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
+    /**
+     * @return The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+     * 
+     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -54,20 +70,44 @@ public final class DomainRedirectRequestHeaderArgs extends com.pulumi.resources.
             $ = new DomainRedirectRequestHeaderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param value The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

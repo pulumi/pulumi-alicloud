@@ -13,33 +13,89 @@ import java.util.Objects;
 
 @CustomType
 public final class BgpPolicyContentLayer4RuleList {
+    /**
+     * @return 1 for observation 2 for blocking.
+     * 
+     */
     private String action;
+    /**
+     * @return Matching Condition. See `condition_list` below.
+     * 
+     */
     private List<BgpPolicyContentLayer4RuleListConditionList> conditionLists;
+    /**
+     * @return .
+     * 
+     */
     private Integer limited;
+    /**
+     * @return 0 indicates that the condition is not met 1 indicates that the condition is met.
+     * 
+     */
     private String match;
+    /**
+     * @return Char indicates a string match hex match.
+     * 
+     */
     private String method;
+    /**
+     * @return Rule Name.
+     * 
+     */
     private String name;
+    /**
+     * @return 1-100, priority, the lower the number, the higher the priority.
+     * 
+     */
     private Integer priority;
 
     private BgpPolicyContentLayer4RuleList() {}
+    /**
+     * @return 1 for observation 2 for blocking.
+     * 
+     */
     public String action() {
         return this.action;
     }
+    /**
+     * @return Matching Condition. See `condition_list` below.
+     * 
+     */
     public List<BgpPolicyContentLayer4RuleListConditionList> conditionLists() {
         return this.conditionLists;
     }
+    /**
+     * @return .
+     * 
+     */
     public Integer limited() {
         return this.limited;
     }
+    /**
+     * @return 0 indicates that the condition is not met 1 indicates that the condition is met.
+     * 
+     */
     public String match() {
         return this.match;
     }
+    /**
+     * @return Char indicates a string match hex match.
+     * 
+     */
     public String method() {
         return this.method;
     }
+    /**
+     * @return Rule Name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return 1-100, priority, the lower the number, the higher the priority.
+     * 
+     */
     public Integer priority() {
         return this.priority;
     }

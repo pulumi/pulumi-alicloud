@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ProjectPropertiesEncryption {
+    /**
+     * @return Algorithm.
+     * 
+     */
     private @Nullable String algorithm;
+    /**
+     * @return Whether to open.
+     * 
+     */
     private @Nullable Boolean enable;
+    /**
+     * @return Encryption algorithm key.
+     * 
+     */
     private @Nullable String key;
 
     private ProjectPropertiesEncryption() {}
+    /**
+     * @return Algorithm.
+     * 
+     */
     public Optional<String> algorithm() {
         return Optional.ofNullable(this.algorithm);
     }
+    /**
+     * @return Whether to open.
+     * 
+     */
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }
+    /**
+     * @return Encryption algorithm key.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }

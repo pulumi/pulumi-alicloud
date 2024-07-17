@@ -2463,12 +2463,18 @@ class NodePoolManagementArgs:
 class NodePoolManagementAutoRepairPolicyArgs:
     def __init__(__self__, *,
                  restart_node: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] restart_node: Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        """
         if restart_node is not None:
             pulumi.set(__self__, "restart_node", restart_node)
 
     @property
     @pulumi.getter(name="restartNode")
     def restart_node(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "restart_node")
 
     @restart_node.setter
@@ -2480,12 +2486,18 @@ class NodePoolManagementAutoRepairPolicyArgs:
 class NodePoolManagementAutoUpgradePolicyArgs:
     def __init__(__self__, *,
                  auto_upgrade_kubelet: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] auto_upgrade_kubelet: Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+        """
         if auto_upgrade_kubelet is not None:
             pulumi.set(__self__, "auto_upgrade_kubelet", auto_upgrade_kubelet)
 
     @property
     @pulumi.getter(name="autoUpgradeKubelet")
     def auto_upgrade_kubelet(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+        """
         return pulumi.get(self, "auto_upgrade_kubelet")
 
     @auto_upgrade_kubelet.setter
@@ -2498,6 +2510,10 @@ class NodePoolManagementAutoVulFixPolicyArgs:
     def __init__(__self__, *,
                  restart_node: Optional[pulumi.Input[bool]] = None,
                  vul_level: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] restart_node: Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        :param pulumi.Input[str] vul_level: The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+        """
         if restart_node is not None:
             pulumi.set(__self__, "restart_node", restart_node)
         if vul_level is not None:
@@ -2506,6 +2522,9 @@ class NodePoolManagementAutoVulFixPolicyArgs:
     @property
     @pulumi.getter(name="restartNode")
     def restart_node(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "restart_node")
 
     @restart_node.setter
@@ -2515,6 +2534,9 @@ class NodePoolManagementAutoVulFixPolicyArgs:
     @property
     @pulumi.getter(name="vulLevel")
     def vul_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
+        """
         return pulumi.get(self, "vul_level")
 
     @vul_level.setter

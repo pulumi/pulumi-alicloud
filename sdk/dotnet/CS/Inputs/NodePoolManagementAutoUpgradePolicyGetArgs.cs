@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.CS.Inputs
 
     public sealed class NodePoolManagementAutoUpgradePolicyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
+        /// </summary>
         [Input("autoUpgradeKubelet")]
         public Input<bool>? AutoUpgradeKubelet { get; set; }
 

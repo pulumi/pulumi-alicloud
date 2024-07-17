@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PolicyBindingAdvancedOptionsUdmDetail {
+    /**
+     * @return Custom KMS key ID of encrypted copy.
+     * 
+     */
     private @Nullable String destinationKmsKeyId;
+    /**
+     * @return The list of backup disks. If it is empty, all disks are backed up.
+     * 
+     */
     private @Nullable List<String> diskIdLists;
+    /**
+     * @return List of cloud disk IDs that are not backed up.
+     * 
+     */
     private @Nullable List<String> excludeDiskIdLists;
 
     private PolicyBindingAdvancedOptionsUdmDetail() {}
+    /**
+     * @return Custom KMS key ID of encrypted copy.
+     * 
+     */
     public Optional<String> destinationKmsKeyId() {
         return Optional.ofNullable(this.destinationKmsKeyId);
     }
+    /**
+     * @return The list of backup disks. If it is empty, all disks are backed up.
+     * 
+     */
     public List<String> diskIdLists() {
         return this.diskIdLists == null ? List.of() : this.diskIdLists;
     }
+    /**
+     * @return List of cloud disk IDs that are not backed up.
+     * 
+     */
     public List<String> excludeDiskIdLists() {
         return this.excludeDiskIdLists == null ? List.of() : this.excludeDiskIdLists;
     }

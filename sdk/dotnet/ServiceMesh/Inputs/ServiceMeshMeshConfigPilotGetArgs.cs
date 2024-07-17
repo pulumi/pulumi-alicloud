@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
 
     public sealed class ServiceMeshMeshConfigPilotGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to support the HTTP1.0.
+        /// </summary>
         [Input("http10Enabled")]
         public Input<bool>? Http10Enabled { get; set; }
 
+        /// <summary>
+        /// Link trace sampling percentage.
+        /// </summary>
         [Input("traceSampling")]
         public Input<double>? TraceSampling { get; set; }
 

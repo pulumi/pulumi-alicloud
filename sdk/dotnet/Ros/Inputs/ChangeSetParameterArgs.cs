@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Ros.Inputs
 
     public sealed class ChangeSetParameterArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The parameter key.
+        /// </summary>
         [Input("parameterKey", required: true)]
         public Input<string> ParameterKey { get; set; } = null!;
 
+        /// <summary>
+        /// The parameter value.
+        /// </summary>
         [Input("parameterValue", required: true)]
         public Input<string> ParameterValue { get; set; } = null!;
 

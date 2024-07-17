@@ -12,27 +12,51 @@ namespace Pulumi.AliCloud.Ddos.Inputs
 
     public sealed class BgpPolicyContentPortRuleListGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// End of destination port 0-65535.
+        /// </summary>
         [Input("dstPortEnd", required: true)]
         public Input<int> DstPortEnd { get; set; } = null!;
 
+        /// <summary>
+        /// Destination Port start 0-65535.
+        /// </summary>
         [Input("dstPortStart", required: true)]
         public Input<int> DstPortStart { get; set; } = null!;
 
+        /// <summary>
+        /// Action. Currently, only drop is supported.
+        /// </summary>
         [Input("matchAction", required: true)]
         public Input<string> MatchAction { get; set; } = null!;
 
+        /// <summary>
+        /// Rule UUID is required to be deleted and modified, and is not required to be created.
+        /// </summary>
         [Input("portRuleId")]
         public Input<string>? PortRuleId { get; set; }
 
+        /// <summary>
+        /// Protocol, tcp or udp.
+        /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
 
+        /// <summary>
+        /// Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+        /// </summary>
         [Input("seqNo", required: true)]
         public Input<int> SeqNo { get; set; } = null!;
 
+        /// <summary>
+        /// Source Port end 0-65535.
+        /// </summary>
         [Input("srcPortEnd", required: true)]
         public Input<int> SrcPortEnd { get; set; } = null!;
 
+        /// <summary>
+        /// Source port start 0-65535.
+        /// </summary>
         [Input("srcPortStart", required: true)]
         public Input<int> SrcPortStart { get; set; } = null!;
 

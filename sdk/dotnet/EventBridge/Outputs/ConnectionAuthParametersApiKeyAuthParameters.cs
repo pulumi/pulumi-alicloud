@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
     [OutputType]
     public sealed class ConnectionAuthParametersApiKeyAuthParameters
     {
+        /// <summary>
+        /// The name of the API key.
+        /// </summary>
         public readonly string? ApiKeyName;
+        /// <summary>
+        /// The value of the API key.
+        /// </summary>
         public readonly string? ApiKeyValue;
 
         [OutputConstructor]

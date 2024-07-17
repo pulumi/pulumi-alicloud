@@ -14,33 +14,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SyntheticTaskMonitorConfNetTcp {
+    /**
+     * @return The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
+     * 
+     */
     private @Nullable Integer connectTimes;
+    /**
+     * @return The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+     * 
+     */
     private @Nullable Integer interval;
+    /**
+     * @return The target URL.
+     * 
+     */
     private String targetUrl;
+    /**
+     * @return TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+     * 
+     */
     private @Nullable Integer timeout;
+    /**
+     * @return Whether to enable tracert. The default is true.
+     * 
+     */
     private @Nullable Boolean tracertEnable;
+    /**
+     * @return The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+     * 
+     */
     private @Nullable Integer tracertNumMax;
+    /**
+     * @return The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+     * 
+     */
     private @Nullable Integer tracertTimeout;
 
     private SyntheticTaskMonitorConfNetTcp() {}
+    /**
+     * @return The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
+     * 
+     */
     public Optional<Integer> connectTimes() {
         return Optional.ofNullable(this.connectTimes);
     }
+    /**
+     * @return The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+     * 
+     */
     public Optional<Integer> interval() {
         return Optional.ofNullable(this.interval);
     }
+    /**
+     * @return The target URL.
+     * 
+     */
     public String targetUrl() {
         return this.targetUrl;
     }
+    /**
+     * @return TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+     * 
+     */
     public Optional<Integer> timeout() {
         return Optional.ofNullable(this.timeout);
     }
+    /**
+     * @return Whether to enable tracert. The default is true.
+     * 
+     */
     public Optional<Boolean> tracertEnable() {
         return Optional.ofNullable(this.tracertEnable);
     }
+    /**
+     * @return The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+     * 
+     */
     public Optional<Integer> tracertNumMax() {
         return Optional.ofNullable(this.tracertNumMax);
     }
+    /**
+     * @return The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+     * 
+     */
     public Optional<Integer> tracertTimeout() {
         return Optional.ofNullable(this.tracertTimeout);
     }

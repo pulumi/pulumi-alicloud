@@ -14,12 +14,17 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ClusterBootstrapAction struct {
-	Arg                   *string `pulumi:"arg"`
+	// bootstrap action args, e.g. "--a=b".
+	Arg *string `pulumi:"arg"`
+	// bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
 	ExecutionFailStrategy *string `pulumi:"executionFailStrategy"`
-	ExecutionMoment       *string `pulumi:"executionMoment"`
-	ExecutionTarget       *string `pulumi:"executionTarget"`
+	// bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
+	ExecutionMoment *string `pulumi:"executionMoment"`
+	// bootstrap action execution target, you can specify the host group name, e.g. "coreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
+	ExecutionTarget *string `pulumi:"executionTarget"`
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name *string `pulumi:"name"`
+	// bootstrap action path, e.g. "oss://bucket/path".
 	Path *string `pulumi:"path"`
 }
 
@@ -35,12 +40,17 @@ type ClusterBootstrapActionInput interface {
 }
 
 type ClusterBootstrapActionArgs struct {
-	Arg                   pulumi.StringPtrInput `pulumi:"arg"`
+	// bootstrap action args, e.g. "--a=b".
+	Arg pulumi.StringPtrInput `pulumi:"arg"`
+	// bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
 	ExecutionFailStrategy pulumi.StringPtrInput `pulumi:"executionFailStrategy"`
-	ExecutionMoment       pulumi.StringPtrInput `pulumi:"executionMoment"`
-	ExecutionTarget       pulumi.StringPtrInput `pulumi:"executionTarget"`
+	// bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
+	ExecutionMoment pulumi.StringPtrInput `pulumi:"executionMoment"`
+	// bootstrap action execution target, you can specify the host group name, e.g. "coreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
+	ExecutionTarget pulumi.StringPtrInput `pulumi:"executionTarget"`
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// bootstrap action path, e.g. "oss://bucket/path".
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -95,18 +105,22 @@ func (o ClusterBootstrapActionOutput) ToClusterBootstrapActionOutputWithContext(
 	return o
 }
 
+// bootstrap action args, e.g. "--a=b".
 func (o ClusterBootstrapActionOutput) Arg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.Arg }).(pulumi.StringPtrOutput)
 }
 
+// bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
 func (o ClusterBootstrapActionOutput) ExecutionFailStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.ExecutionFailStrategy }).(pulumi.StringPtrOutput)
 }
 
+// bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
 func (o ClusterBootstrapActionOutput) ExecutionMoment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.ExecutionMoment }).(pulumi.StringPtrOutput)
 }
 
+// bootstrap action execution target, you can specify the host group name, e.g. "coreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
 func (o ClusterBootstrapActionOutput) ExecutionTarget() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.ExecutionTarget }).(pulumi.StringPtrOutput)
 }
@@ -116,6 +130,7 @@ func (o ClusterBootstrapActionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// bootstrap action path, e.g. "oss://bucket/path".
 func (o ClusterBootstrapActionOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapAction) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -141,8 +156,11 @@ func (o ClusterBootstrapActionArrayOutput) Index(i pulumi.IntInput) ClusterBoots
 }
 
 type ClusterConfig struct {
-	ConfigKey   string `pulumi:"configKey"`
+	// Custom configuration service config key, e.g. ’dfs.replication’.
+	ConfigKey string `pulumi:"configKey"`
+	// Custom configuration service config value, e.g. ’3’.
 	ConfigValue string `pulumi:"configValue"`
+	// Custom configuration service file name, e.g. ’hdfs-site’.
 	FileName    string `pulumi:"fileName"`
 	ServiceName string `pulumi:"serviceName"`
 }
@@ -159,8 +177,11 @@ type ClusterConfigInput interface {
 }
 
 type ClusterConfigArgs struct {
-	ConfigKey   pulumi.StringInput `pulumi:"configKey"`
+	// Custom configuration service config key, e.g. ’dfs.replication’.
+	ConfigKey pulumi.StringInput `pulumi:"configKey"`
+	// Custom configuration service config value, e.g. ’3’.
 	ConfigValue pulumi.StringInput `pulumi:"configValue"`
+	// Custom configuration service file name, e.g. ’hdfs-site’.
 	FileName    pulumi.StringInput `pulumi:"fileName"`
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
@@ -216,14 +237,17 @@ func (o ClusterConfigOutput) ToClusterConfigOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Custom configuration service config key, e.g. ’dfs.replication’.
 func (o ClusterConfigOutput) ConfigKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterConfig) string { return v.ConfigKey }).(pulumi.StringOutput)
 }
 
+// Custom configuration service config value, e.g. ’3’.
 func (o ClusterConfigOutput) ConfigValue() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterConfig) string { return v.ConfigValue }).(pulumi.StringOutput)
 }
 
+// Custom configuration service file name, e.g. ’hdfs-site’.
 func (o ClusterConfigOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterConfig) string { return v.FileName }).(pulumi.StringOutput)
 }
@@ -253,24 +277,37 @@ func (o ClusterConfigArrayOutput) Index(i pulumi.IntInput) ClusterConfigOutput {
 }
 
 type ClusterHostGroup struct {
+	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
-	ChargeType                 *string `pulumi:"chargeType"`
-	DecommissionTimeout        *int    `pulumi:"decommissionTimeout"`
-	DiskCapacity               *string `pulumi:"diskCapacity"`
-	DiskCount                  *string `pulumi:"diskCount"`
-	DiskType                   *string `pulumi:"diskType"`
+	ChargeType *string `pulumi:"chargeType"`
+	// Graceful decommission timeout, unit: seconds.
+	DecommissionTimeout *int `pulumi:"decommissionTimeout"`
+	// Data disk capacity.
+	DiskCapacity *string `pulumi:"diskCapacity"`
+	// Data disk count.
+	DiskCount *string `pulumi:"diskCount"`
+	// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
+	DiskType *string `pulumi:"diskType"`
+	// Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
 	EnableGracefulDecommission *bool   `pulumi:"enableGracefulDecommission"`
 	GpuDriver                  *string `pulumi:"gpuDriver"`
-	HostGroupName              *string `pulumi:"hostGroupName"`
-	HostGroupType              *string `pulumi:"hostGroupType"`
-	InstanceList               *string `pulumi:"instanceList"`
-	InstanceType               *string `pulumi:"instanceType"`
-	NodeCount                  *string `pulumi:"nodeCount"`
+	// host group name.
+	HostGroupName *string `pulumi:"hostGroupName"`
+	// host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
+	HostGroupType *string `pulumi:"hostGroupType"`
+	// Instance list for cluster scale down. This value follows the json format, e.g. ["instanceId1","instanceId2"]. escape character for " is \".
+	InstanceList *string `pulumi:"instanceList"`
+	// Host Ecs instance type.
+	InstanceType *string `pulumi:"instanceType"`
+	// Host number in this group.
+	NodeCount *string `pulumi:"nodeCount"`
 	// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
-	Period          *int    `pulumi:"period"`
+	Period *int `pulumi:"period"`
+	// System disk capacity.
 	SysDiskCapacity *string `pulumi:"sysDiskCapacity"`
-	SysDiskType     *string `pulumi:"sysDiskType"`
+	// System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
+	SysDiskType *string `pulumi:"sysDiskType"`
 }
 
 // ClusterHostGroupInput is an input type that accepts ClusterHostGroupArgs and ClusterHostGroupOutput values.
@@ -285,24 +322,37 @@ type ClusterHostGroupInput interface {
 }
 
 type ClusterHostGroupArgs struct {
+	// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 	AutoRenew pulumi.BoolPtrInput `pulumi:"autoRenew"`
 	// Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
-	ChargeType                 pulumi.StringPtrInput `pulumi:"chargeType"`
-	DecommissionTimeout        pulumi.IntPtrInput    `pulumi:"decommissionTimeout"`
-	DiskCapacity               pulumi.StringPtrInput `pulumi:"diskCapacity"`
-	DiskCount                  pulumi.StringPtrInput `pulumi:"diskCount"`
-	DiskType                   pulumi.StringPtrInput `pulumi:"diskType"`
+	ChargeType pulumi.StringPtrInput `pulumi:"chargeType"`
+	// Graceful decommission timeout, unit: seconds.
+	DecommissionTimeout pulumi.IntPtrInput `pulumi:"decommissionTimeout"`
+	// Data disk capacity.
+	DiskCapacity pulumi.StringPtrInput `pulumi:"diskCapacity"`
+	// Data disk count.
+	DiskCount pulumi.StringPtrInput `pulumi:"diskCount"`
+	// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
 	EnableGracefulDecommission pulumi.BoolPtrInput   `pulumi:"enableGracefulDecommission"`
 	GpuDriver                  pulumi.StringPtrInput `pulumi:"gpuDriver"`
-	HostGroupName              pulumi.StringPtrInput `pulumi:"hostGroupName"`
-	HostGroupType              pulumi.StringPtrInput `pulumi:"hostGroupType"`
-	InstanceList               pulumi.StringPtrInput `pulumi:"instanceList"`
-	InstanceType               pulumi.StringPtrInput `pulumi:"instanceType"`
-	NodeCount                  pulumi.StringPtrInput `pulumi:"nodeCount"`
+	// host group name.
+	HostGroupName pulumi.StringPtrInput `pulumi:"hostGroupName"`
+	// host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
+	HostGroupType pulumi.StringPtrInput `pulumi:"hostGroupType"`
+	// Instance list for cluster scale down. This value follows the json format, e.g. ["instanceId1","instanceId2"]. escape character for " is \".
+	InstanceList pulumi.StringPtrInput `pulumi:"instanceList"`
+	// Host Ecs instance type.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// Host number in this group.
+	NodeCount pulumi.StringPtrInput `pulumi:"nodeCount"`
 	// If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
-	Period          pulumi.IntPtrInput    `pulumi:"period"`
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// System disk capacity.
 	SysDiskCapacity pulumi.StringPtrInput `pulumi:"sysDiskCapacity"`
-	SysDiskType     pulumi.StringPtrInput `pulumi:"sysDiskType"`
+	// System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
+	SysDiskType pulumi.StringPtrInput `pulumi:"sysDiskType"`
 }
 
 func (ClusterHostGroupArgs) ElementType() reflect.Type {
@@ -356,6 +406,7 @@ func (o ClusterHostGroupOutput) ToClusterHostGroupOutputWithContext(ctx context.
 	return o
 }
 
+// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
 func (o ClusterHostGroupOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *bool { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
@@ -365,22 +416,27 @@ func (o ClusterHostGroupOutput) ChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.ChargeType }).(pulumi.StringPtrOutput)
 }
 
+// Graceful decommission timeout, unit: seconds.
 func (o ClusterHostGroupOutput) DecommissionTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *int { return v.DecommissionTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Data disk capacity.
 func (o ClusterHostGroupOutput) DiskCapacity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.DiskCapacity }).(pulumi.StringPtrOutput)
 }
 
+// Data disk count.
 func (o ClusterHostGroupOutput) DiskCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.DiskCount }).(pulumi.StringPtrOutput)
 }
 
+// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
 func (o ClusterHostGroupOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
 func (o ClusterHostGroupOutput) EnableGracefulDecommission() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *bool { return v.EnableGracefulDecommission }).(pulumi.BoolPtrOutput)
 }
@@ -389,22 +445,27 @@ func (o ClusterHostGroupOutput) GpuDriver() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.GpuDriver }).(pulumi.StringPtrOutput)
 }
 
+// host group name.
 func (o ClusterHostGroupOutput) HostGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.HostGroupName }).(pulumi.StringPtrOutput)
 }
 
+// host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
 func (o ClusterHostGroupOutput) HostGroupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.HostGroupType }).(pulumi.StringPtrOutput)
 }
 
+// Instance list for cluster scale down. This value follows the json format, e.g. ["instanceId1","instanceId2"]. escape character for " is \".
 func (o ClusterHostGroupOutput) InstanceList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.InstanceList }).(pulumi.StringPtrOutput)
 }
 
+// Host Ecs instance type.
 func (o ClusterHostGroupOutput) InstanceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
+// Host number in this group.
 func (o ClusterHostGroupOutput) NodeCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.NodeCount }).(pulumi.StringPtrOutput)
 }
@@ -414,10 +475,12 @@ func (o ClusterHostGroupOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
+// System disk capacity.
 func (o ClusterHostGroupOutput) SysDiskCapacity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.SysDiskCapacity }).(pulumi.StringPtrOutput)
 }
 
+// System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
 func (o ClusterHostGroupOutput) SysDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterHostGroup) *string { return v.SysDiskType }).(pulumi.StringPtrOutput)
 }
@@ -443,8 +506,11 @@ func (o ClusterHostGroupArrayOutput) Index(i pulumi.IntInput) ClusterHostGroupOu
 }
 
 type ClusterMetaStoreConf struct {
+	// Custom rds database password.
 	DbPassword string `pulumi:"dbPassword"`
-	DbUrl      string `pulumi:"dbUrl"`
+	// Custom rds database connection url.
+	DbUrl string `pulumi:"dbUrl"`
+	// Custom rds database user name.
 	DbUserName string `pulumi:"dbUserName"`
 }
 
@@ -460,8 +526,11 @@ type ClusterMetaStoreConfInput interface {
 }
 
 type ClusterMetaStoreConfArgs struct {
+	// Custom rds database password.
 	DbPassword pulumi.StringInput `pulumi:"dbPassword"`
-	DbUrl      pulumi.StringInput `pulumi:"dbUrl"`
+	// Custom rds database connection url.
+	DbUrl pulumi.StringInput `pulumi:"dbUrl"`
+	// Custom rds database user name.
 	DbUserName pulumi.StringInput `pulumi:"dbUserName"`
 }
 
@@ -542,14 +611,17 @@ func (o ClusterMetaStoreConfOutput) ToClusterMetaStoreConfPtrOutputWithContext(c
 	}).(ClusterMetaStoreConfPtrOutput)
 }
 
+// Custom rds database password.
 func (o ClusterMetaStoreConfOutput) DbPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMetaStoreConf) string { return v.DbPassword }).(pulumi.StringOutput)
 }
 
+// Custom rds database connection url.
 func (o ClusterMetaStoreConfOutput) DbUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMetaStoreConf) string { return v.DbUrl }).(pulumi.StringOutput)
 }
 
+// Custom rds database user name.
 func (o ClusterMetaStoreConfOutput) DbUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMetaStoreConf) string { return v.DbUserName }).(pulumi.StringOutput)
 }
@@ -578,6 +650,7 @@ func (o ClusterMetaStoreConfPtrOutput) Elem() ClusterMetaStoreConfOutput {
 	}).(ClusterMetaStoreConfOutput)
 }
 
+// Custom rds database password.
 func (o ClusterMetaStoreConfPtrOutput) DbPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMetaStoreConf) *string {
 		if v == nil {
@@ -587,6 +660,7 @@ func (o ClusterMetaStoreConfPtrOutput) DbPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Custom rds database connection url.
 func (o ClusterMetaStoreConfPtrOutput) DbUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMetaStoreConf) *string {
 		if v == nil {
@@ -596,6 +670,7 @@ func (o ClusterMetaStoreConfPtrOutput) DbUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Custom rds database user name.
 func (o ClusterMetaStoreConfPtrOutput) DbUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMetaStoreConf) *string {
 		if v == nil {
@@ -606,15 +681,23 @@ func (o ClusterMetaStoreConfPtrOutput) DbUserName() pulumi.StringPtrOutput {
 }
 
 type ClusterModifyClusterServiceConfig struct {
-	Comment               *string  `pulumi:"comment"`
-	ConfigParams          string   `pulumi:"configParams"`
-	ConfigType            *string  `pulumi:"configType"`
-	CustomConfigParams    *string  `pulumi:"customConfigParams"`
+	// Cluster service configuration modification comment, e.g. "Modify tez configuration".
+	Comment *string `pulumi:"comment"`
+	// Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+	ConfigParams string `pulumi:"configParams"`
+	// Cluster service configuration modification type.
+	ConfigType *string `pulumi:"configType"`
+	// Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+	CustomConfigParams *string `pulumi:"customConfigParams"`
+	// Cluster service configuration modification related gateway cluster id list.
 	GatewayClusterIdLists []string `pulumi:"gatewayClusterIdLists"`
-	GroupId               *string  `pulumi:"groupId"`
-	HostInstanceId        *string  `pulumi:"hostInstanceId"`
-	RefreshHostConfig     *bool    `pulumi:"refreshHostConfig"`
-	ServiceName           string   `pulumi:"serviceName"`
+	// Cluster service configuration modification node group id, e.g. ’G-XXX’.
+	GroupId *string `pulumi:"groupId"`
+	// Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+	HostInstanceId *string `pulumi:"hostInstanceId"`
+	// Cluster service configuration modification refresh host config, ’true’ or ’false’.
+	RefreshHostConfig *bool  `pulumi:"refreshHostConfig"`
+	ServiceName       string `pulumi:"serviceName"`
 }
 
 // ClusterModifyClusterServiceConfigInput is an input type that accepts ClusterModifyClusterServiceConfigArgs and ClusterModifyClusterServiceConfigOutput values.
@@ -629,15 +712,23 @@ type ClusterModifyClusterServiceConfigInput interface {
 }
 
 type ClusterModifyClusterServiceConfigArgs struct {
-	Comment               pulumi.StringPtrInput   `pulumi:"comment"`
-	ConfigParams          pulumi.StringInput      `pulumi:"configParams"`
-	ConfigType            pulumi.StringPtrInput   `pulumi:"configType"`
-	CustomConfigParams    pulumi.StringPtrInput   `pulumi:"customConfigParams"`
+	// Cluster service configuration modification comment, e.g. "Modify tez configuration".
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+	ConfigParams pulumi.StringInput `pulumi:"configParams"`
+	// Cluster service configuration modification type.
+	ConfigType pulumi.StringPtrInput `pulumi:"configType"`
+	// Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+	CustomConfigParams pulumi.StringPtrInput `pulumi:"customConfigParams"`
+	// Cluster service configuration modification related gateway cluster id list.
 	GatewayClusterIdLists pulumi.StringArrayInput `pulumi:"gatewayClusterIdLists"`
-	GroupId               pulumi.StringPtrInput   `pulumi:"groupId"`
-	HostInstanceId        pulumi.StringPtrInput   `pulumi:"hostInstanceId"`
-	RefreshHostConfig     pulumi.BoolPtrInput     `pulumi:"refreshHostConfig"`
-	ServiceName           pulumi.StringInput      `pulumi:"serviceName"`
+	// Cluster service configuration modification node group id, e.g. ’G-XXX’.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+	HostInstanceId pulumi.StringPtrInput `pulumi:"hostInstanceId"`
+	// Cluster service configuration modification refresh host config, ’true’ or ’false’.
+	RefreshHostConfig pulumi.BoolPtrInput `pulumi:"refreshHostConfig"`
+	ServiceName       pulumi.StringInput  `pulumi:"serviceName"`
 }
 
 func (ClusterModifyClusterServiceConfigArgs) ElementType() reflect.Type {
@@ -717,34 +808,42 @@ func (o ClusterModifyClusterServiceConfigOutput) ToClusterModifyClusterServiceCo
 	}).(ClusterModifyClusterServiceConfigPtrOutput)
 }
 
+// Cluster service configuration modification comment, e.g. "Modify tez configuration".
 func (o ClusterModifyClusterServiceConfigOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
 func (o ClusterModifyClusterServiceConfigOutput) ConfigParams() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) string { return v.ConfigParams }).(pulumi.StringOutput)
 }
 
+// Cluster service configuration modification type.
 func (o ClusterModifyClusterServiceConfigOutput) ConfigType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *string { return v.ConfigType }).(pulumi.StringPtrOutput)
 }
 
+// Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
 func (o ClusterModifyClusterServiceConfigOutput) CustomConfigParams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *string { return v.CustomConfigParams }).(pulumi.StringPtrOutput)
 }
 
+// Cluster service configuration modification related gateway cluster id list.
 func (o ClusterModifyClusterServiceConfigOutput) GatewayClusterIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) []string { return v.GatewayClusterIdLists }).(pulumi.StringArrayOutput)
 }
 
+// Cluster service configuration modification node group id, e.g. ’G-XXX’.
 func (o ClusterModifyClusterServiceConfigOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
+// Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
 func (o ClusterModifyClusterServiceConfigOutput) HostInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *string { return v.HostInstanceId }).(pulumi.StringPtrOutput)
 }
 
+// Cluster service configuration modification refresh host config, ’true’ or ’false’.
 func (o ClusterModifyClusterServiceConfigOutput) RefreshHostConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterModifyClusterServiceConfig) *bool { return v.RefreshHostConfig }).(pulumi.BoolPtrOutput)
 }
@@ -777,6 +876,7 @@ func (o ClusterModifyClusterServiceConfigPtrOutput) Elem() ClusterModifyClusterS
 	}).(ClusterModifyClusterServiceConfigOutput)
 }
 
+// Cluster service configuration modification comment, e.g. "Modify tez configuration".
 func (o ClusterModifyClusterServiceConfigPtrOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
 		if v == nil {
@@ -786,6 +886,7 @@ func (o ClusterModifyClusterServiceConfigPtrOutput) Comment() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
 func (o ClusterModifyClusterServiceConfigPtrOutput) ConfigParams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
 		if v == nil {
@@ -795,6 +896,7 @@ func (o ClusterModifyClusterServiceConfigPtrOutput) ConfigParams() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cluster service configuration modification type.
 func (o ClusterModifyClusterServiceConfigPtrOutput) ConfigType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
 		if v == nil {
@@ -804,6 +906,7 @@ func (o ClusterModifyClusterServiceConfigPtrOutput) ConfigType() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
 func (o ClusterModifyClusterServiceConfigPtrOutput) CustomConfigParams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
 		if v == nil {
@@ -813,6 +916,7 @@ func (o ClusterModifyClusterServiceConfigPtrOutput) CustomConfigParams() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cluster service configuration modification related gateway cluster id list.
 func (o ClusterModifyClusterServiceConfigPtrOutput) GatewayClusterIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) []string {
 		if v == nil {
@@ -822,6 +926,7 @@ func (o ClusterModifyClusterServiceConfigPtrOutput) GatewayClusterIdLists() pulu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Cluster service configuration modification node group id, e.g. ’G-XXX’.
 func (o ClusterModifyClusterServiceConfigPtrOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
 		if v == nil {
@@ -831,6 +936,7 @@ func (o ClusterModifyClusterServiceConfigPtrOutput) GroupId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
 func (o ClusterModifyClusterServiceConfigPtrOutput) HostInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *string {
 		if v == nil {
@@ -840,6 +946,7 @@ func (o ClusterModifyClusterServiceConfigPtrOutput) HostInstanceId() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cluster service configuration modification refresh host config, ’true’ or ’false’.
 func (o ClusterModifyClusterServiceConfigPtrOutput) RefreshHostConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterModifyClusterServiceConfig) *bool {
 		if v == nil {
@@ -933,7 +1040,8 @@ type GetClustersCluster struct {
 	StopTime string `pulumi:"stopTime"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	Type string                 `pulumi:"type"`
+	// Disk type.
+	Type string `pulumi:"type"`
 	// The EMR permission name used.
 	UserDefinedEmrEcsRole string `pulumi:"userDefinedEmrEcsRole"`
 	// The user ID.
@@ -1031,7 +1139,8 @@ type GetClustersClusterArgs struct {
 	// Cluster stop time.
 	StopTime pulumi.StringInput `pulumi:"stopTime"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput    `pulumi:"tags"`
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// Disk type.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The EMR permission name used.
 	UserDefinedEmrEcsRole pulumi.StringInput `pulumi:"userDefinedEmrEcsRole"`
@@ -1284,6 +1393,7 @@ func (o GetClustersClusterOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
+// Disk type.
 func (o GetClustersClusterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1431,7 +1541,9 @@ func (o GetClustersClusterAccessInfoArrayOutput) Index(i pulumi.IntInput) GetClu
 }
 
 type GetClustersClusterAccessInfoZkLink struct {
+	// The access link address of ZooKeeper.
 	Link string `pulumi:"link"`
+	// The port of ZooKeeper.
 	Port string `pulumi:"port"`
 }
 
@@ -1447,7 +1559,9 @@ type GetClustersClusterAccessInfoZkLinkInput interface {
 }
 
 type GetClustersClusterAccessInfoZkLinkArgs struct {
+	// The access link address of ZooKeeper.
 	Link pulumi.StringInput `pulumi:"link"`
+	// The port of ZooKeeper.
 	Port pulumi.StringInput `pulumi:"port"`
 }
 
@@ -1502,10 +1616,12 @@ func (o GetClustersClusterAccessInfoZkLinkOutput) ToGetClustersClusterAccessInfo
 	return o
 }
 
+// The access link address of ZooKeeper.
 func (o GetClustersClusterAccessInfoZkLinkOutput) Link() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterAccessInfoZkLink) string { return v.Link }).(pulumi.StringOutput)
 }
 
+// The port of ZooKeeper.
 func (o GetClustersClusterAccessInfoZkLinkOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterAccessInfoZkLink) string { return v.Port }).(pulumi.StringOutput)
 }

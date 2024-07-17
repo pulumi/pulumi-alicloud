@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Ga.Inputs
 
     public sealed class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the endpoint group.
+        /// </summary>
         [Input("endpointGroupId", required: true)]
         public Input<string> EndpointGroupId { get; set; } = null!;
 

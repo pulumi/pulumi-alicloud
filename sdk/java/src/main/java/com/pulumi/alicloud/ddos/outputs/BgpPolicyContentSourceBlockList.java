@@ -10,8 +10,20 @@ import java.util.Objects;
 
 @CustomType
 public final class BgpPolicyContentSourceBlockList {
+    /**
+     * @return Statistical cycle range 60-1200.
+     * 
+     */
     private Integer blockExpireSeconds;
+    /**
+     * @return The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
+     * 
+     */
     private Integer everySeconds;
+    /**
+     * @return The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
+     * 
+     */
     private Integer exceedLimitTimes;
     /**
      * @return Type
@@ -20,12 +32,24 @@ public final class BgpPolicyContentSourceBlockList {
     private Integer type;
 
     private BgpPolicyContentSourceBlockList() {}
+    /**
+     * @return Statistical cycle range 60-1200.
+     * 
+     */
     public Integer blockExpireSeconds() {
         return this.blockExpireSeconds;
     }
+    /**
+     * @return The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
+     * 
+     */
     public Integer everySeconds() {
         return this.everySeconds;
     }
+    /**
+     * @return The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
+     * 
+     */
     public Integer exceedLimitTimes() {
         return this.exceedLimitTimes;
     }

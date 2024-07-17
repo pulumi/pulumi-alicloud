@@ -17,6 +17,10 @@ public final class GetNestServiceInstancesFilter {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Set of values that are accepted for the given field.
+     * 
+     */
     private @Nullable List<String> values;
 
     private GetNestServiceInstancesFilter() {}
@@ -27,6 +31,10 @@ public final class GetNestServiceInstancesFilter {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Set of values that are accepted for the given field.
+     * 
+     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }

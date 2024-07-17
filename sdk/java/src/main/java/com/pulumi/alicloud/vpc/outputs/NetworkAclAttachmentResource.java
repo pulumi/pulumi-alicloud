@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class NetworkAclAttachmentResource {
+    /**
+     * @return The resource id that the network acl will associate with.
+     * 
+     */
     private String resourceId;
+    /**
+     * @return The resource id that the network acl will associate with. Only support `VSwitch` now.
+     * 
+     */
     private String resourceType;
 
     private NetworkAclAttachmentResource() {}
+    /**
+     * @return The resource id that the network acl will associate with.
+     * 
+     */
     public String resourceId() {
         return this.resourceId;
     }
+    /**
+     * @return The resource id that the network acl will associate with. Only support `VSwitch` now.
+     * 
+     */
     public String resourceType() {
         return this.resourceType;
     }

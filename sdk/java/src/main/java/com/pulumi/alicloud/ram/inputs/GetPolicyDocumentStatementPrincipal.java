@@ -14,16 +14,32 @@ public final class GetPolicyDocumentStatementPrincipal extends com.pulumi.resour
 
     public static final GetPolicyDocumentStatementPrincipal Empty = new GetPolicyDocumentStatementPrincipal();
 
+    /**
+     * The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+     * 
+     */
     @Import(name="entity", required=true)
     private String entity;
 
+    /**
+     * @return The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+     * 
+     */
     public String entity() {
         return this.entity;
     }
 
+    /**
+     * The identifiers of the principal.
+     * 
+     */
     @Import(name="identifiers", required=true)
     private List<String> identifiers;
 
+    /**
+     * @return The identifiers of the principal.
+     * 
+     */
     public List<String> identifiers() {
         return this.identifiers;
     }
@@ -53,16 +69,34 @@ public final class GetPolicyDocumentStatementPrincipal extends com.pulumi.resour
             $ = new GetPolicyDocumentStatementPrincipal(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param entity The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entity(String entity) {
             $.entity = entity;
             return this;
         }
 
+        /**
+         * @param identifiers The identifiers of the principal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifiers(List<String> identifiers) {
             $.identifiers = identifiers;
             return this;
         }
 
+        /**
+         * @param identifiers The identifiers of the principal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identifiers(String... identifiers) {
             return identifiers(List.of(identifiers));
         }

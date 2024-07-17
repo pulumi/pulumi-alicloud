@@ -15,37 +15,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeGroupAutoScalingPolicyScalingRule {
+    /**
+     * @return The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
+     * 
+     */
     private String activityType;
+    /**
+     * @return The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
+     * 
+     */
     private @Nullable String adjustmentType;
+    /**
+     * @return The adjustment value of auto scaling policy. The value should between 1 and 5000.
+     * 
+     */
     private Integer adjustmentValue;
+    /**
+     * @return The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+     * 
+     */
     private @Nullable ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger metricsTrigger;
+    /**
+     * @return The minimum adjustment value of auto scaling policy.
+     * 
+     */
     private @Nullable Integer minAdjustmentValue;
+    /**
+     * @return The rule name of auto scaling policy.
+     * 
+     */
     private String ruleName;
+    /**
+     * @return The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+     * 
+     */
     private @Nullable ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger timeTrigger;
+    /**
+     * @return The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
+     * 
+     */
     private String triggerType;
 
     private ClusterNodeGroupAutoScalingPolicyScalingRule() {}
+    /**
+     * @return The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
+     * 
+     */
     public String activityType() {
         return this.activityType;
     }
+    /**
+     * @return The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
+     * 
+     */
     public Optional<String> adjustmentType() {
         return Optional.ofNullable(this.adjustmentType);
     }
+    /**
+     * @return The adjustment value of auto scaling policy. The value should between 1 and 5000.
+     * 
+     */
     public Integer adjustmentValue() {
         return this.adjustmentValue;
     }
+    /**
+     * @return The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+     * 
+     */
     public Optional<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger> metricsTrigger() {
         return Optional.ofNullable(this.metricsTrigger);
     }
+    /**
+     * @return The minimum adjustment value of auto scaling policy.
+     * 
+     */
     public Optional<Integer> minAdjustmentValue() {
         return Optional.ofNullable(this.minAdjustmentValue);
     }
+    /**
+     * @return The rule name of auto scaling policy.
+     * 
+     */
     public String ruleName() {
         return this.ruleName;
     }
+    /**
+     * @return The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+     * 
+     */
     public Optional<ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger> timeTrigger() {
         return Optional.ofNullable(this.timeTrigger);
     }
+    /**
+     * @return The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
+     * 
+     */
     public String triggerType() {
         return this.triggerType;
     }

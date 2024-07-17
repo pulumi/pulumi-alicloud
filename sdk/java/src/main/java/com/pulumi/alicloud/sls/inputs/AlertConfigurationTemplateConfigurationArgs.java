@@ -17,30 +17,62 @@ public final class AlertConfigurationTemplateConfigurationArgs extends com.pulum
 
     public static final AlertConfigurationTemplateConfigurationArgs Empty = new AlertConfigurationTemplateConfigurationArgs();
 
+    /**
+     * Template Annotations.
+     * 
+     */
     @Import(name="annotations")
     private @Nullable Output<Map<String,Object>> annotations;
 
+    /**
+     * @return Template Annotations.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
 
+    /**
+     * Template Language.
+     * 
+     */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
+    /**
+     * @return Template Language.
+     * 
+     */
     public Optional<Output<String>> lang() {
         return Optional.ofNullable(this.lang);
     }
 
+    /**
+     * Template ID.
+     * 
+     */
     @Import(name="templateId")
     private @Nullable Output<String> templateId;
 
+    /**
+     * @return Template ID.
+     * 
+     */
     public Optional<Output<String>> templateId() {
         return Optional.ofNullable(this.templateId);
     }
 
+    /**
+     * Template Variables.
+     * 
+     */
     @Import(name="tokens")
     private @Nullable Output<Map<String,Object>> tokens;
 
+    /**
+     * @return Template Variables.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> tokens() {
         return Optional.ofNullable(this.tokens);
     }
@@ -52,9 +84,17 @@ public final class AlertConfigurationTemplateConfigurationArgs extends com.pulum
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Template Version.
+     * 
+     */
     @Import(name="version")
     private @Nullable Output<String> version;
 
+    /**
+     * @return Template Version.
+     * 
+     */
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -88,38 +128,86 @@ public final class AlertConfigurationTemplateConfigurationArgs extends com.pulum
             $ = new AlertConfigurationTemplateConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param annotations Template Annotations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder annotations(@Nullable Output<Map<String,Object>> annotations) {
             $.annotations = annotations;
             return this;
         }
 
+        /**
+         * @param annotations Template Annotations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder annotations(Map<String,Object> annotations) {
             return annotations(Output.of(annotations));
         }
 
+        /**
+         * @param lang Template Language.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lang(@Nullable Output<String> lang) {
             $.lang = lang;
             return this;
         }
 
+        /**
+         * @param lang Template Language.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lang(String lang) {
             return lang(Output.of(lang));
         }
 
+        /**
+         * @param templateId Template ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateId(@Nullable Output<String> templateId) {
             $.templateId = templateId;
             return this;
         }
 
+        /**
+         * @param templateId Template ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateId(String templateId) {
             return templateId(Output.of(templateId));
         }
 
+        /**
+         * @param tokens Template Variables.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(@Nullable Output<Map<String,Object>> tokens) {
             $.tokens = tokens;
             return this;
         }
 
+        /**
+         * @param tokens Template Variables.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(Map<String,Object> tokens) {
             return tokens(Output.of(tokens));
         }
@@ -133,11 +221,23 @@ public final class AlertConfigurationTemplateConfigurationArgs extends com.pulum
             return type(Output.of(type));
         }
 
+        /**
+         * @param version Template Version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
         }
 
+        /**
+         * @param version Template Version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(String version) {
             return version(Output.of(version));
         }

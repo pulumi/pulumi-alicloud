@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.CloudFirewall.Inputs
 
     public sealed class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The target network segment of the peer VPC.
+        /// </summary>
         [Input("peerDestinationCidr", required: true)]
         public Input<string> PeerDestinationCidr { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the next-hop instance in the peer VPC.
+        /// </summary>
         [Input("peerNextHopInstanceId", required: true)]
         public Input<string> PeerNextHopInstanceId { get; set; } = null!;
 

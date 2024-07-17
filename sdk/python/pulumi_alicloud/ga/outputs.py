@@ -405,11 +405,17 @@ class ForwardingRuleRuleActionForwardGroupConfig(dict):
 
     def __init__(__self__, *,
                  server_group_tuples: Sequence['outputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple']):
+        """
+        :param Sequence['ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs'] server_group_tuples: The information about the endpoint group. See `server_group_tuples` below.
+        """
         pulumi.set(__self__, "server_group_tuples", server_group_tuples)
 
     @property
     @pulumi.getter(name="serverGroupTuples")
     def server_group_tuples(self) -> Sequence['outputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple']:
+        """
+        The information about the endpoint group. See `server_group_tuples` below.
+        """
         return pulumi.get(self, "server_group_tuples")
 
 
@@ -434,11 +440,17 @@ class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(dict):
 
     def __init__(__self__, *,
                  endpoint_group_id: str):
+        """
+        :param str endpoint_group_id: The ID of the endpoint group.
+        """
         pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
 
     @property
     @pulumi.getter(name="endpointGroupId")
     def endpoint_group_id(self) -> str:
+        """
+        The ID of the endpoint group.
+        """
         return pulumi.get(self, "endpoint_group_id")
 
 
@@ -509,12 +521,18 @@ class ForwardingRuleRuleCondition(dict):
 class ForwardingRuleRuleConditionHostConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] values: The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        """
         if values is not None:
             pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
+        """
+        The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        """
         return pulumi.get(self, "values")
 
 
@@ -522,12 +540,18 @@ class ForwardingRuleRuleConditionHostConfig(dict):
 class ForwardingRuleRuleConditionPathConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] values: The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        """
         if values is not None:
             pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
+        """
+        The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        """
         return pulumi.get(self, "values")
 
 

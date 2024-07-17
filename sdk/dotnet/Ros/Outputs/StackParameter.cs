@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Ros.Outputs
     [OutputType]
     public sealed class StackParameter
     {
+        /// <summary>
+        /// The parameter key.
+        /// </summary>
         public readonly string? ParameterKey;
+        /// <summary>
+        /// The parameter value.
+        /// </summary>
         public readonly string ParameterValue;
 
         [OutputConstructor]

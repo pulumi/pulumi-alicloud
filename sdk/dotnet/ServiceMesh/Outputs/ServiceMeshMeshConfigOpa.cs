@@ -13,11 +13,29 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     [OutputType]
     public sealed class ServiceMeshMeshConfigOpa
     {
+        /// <summary>
+        /// Enable CNI.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Sidecar injector Pods on the throttle.
+        /// </summary>
         public readonly string? LimitCpu;
+        /// <summary>
+        /// Sidecar injector Pods on the throttle.
+        /// </summary>
         public readonly string? LimitMemory;
+        /// <summary>
+        /// OPA proxy container log level.
+        /// </summary>
         public readonly string? LogLevel;
+        /// <summary>
+        /// Sidecar injector Pods on the requested resource.
+        /// </summary>
         public readonly string? RequestCpu;
+        /// <summary>
+        /// Sidecar injector Pods on the requested resource.
+        /// </summary>
         public readonly string? RequestMemory;
 
         [OutputConstructor]

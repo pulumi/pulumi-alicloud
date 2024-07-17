@@ -33,34 +33,40 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "tf-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// _default, err := cloudsso.GetDirectories(ctx, nil, nil);
-// if err != nil {
-// return err
-// }
-// var defaultDirectory []*cloudsso.Directory
 //
-//	for index := 0; index < %!v(PANIC=Format method: fatal: A failure has occurred: unlowered conditional expression @ example.pp:8,13-44); index++ {
-//	    key0 := index
-//	    _ := index
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := cloudsso.GetDirectories(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var tmp0 float64
+//			if len(_default.Ids) > 0 {
+//				tmp0 = 0
+//			} else {
+//				tmp0 = 1
+//			}
+//			var defaultDirectory []*cloudsso.Directory
+//			for index := 0; index < tmp0; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := cloudsso.NewDirectory(ctx, fmt.Sprintf("default-%v", key0), &cloudsso.DirectoryArgs{
+//					DirectoryName: pulumi.String(name),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultDirectory = append(defaultDirectory, __res)
+//			}
+//			return nil
+//		})
+//	}
 //
-// __res, err := cloudsso.NewDirectory(ctx, fmt.Sprintf("default-%v", key0), &cloudsso.DirectoryArgs{
-// DirectoryName: pulumi.String(name),
-// })
-// if err != nil {
-// return err
-// }
-// defaultDirectory = append(defaultDirectory, __res)
-// }
-// return nil
-// })
-// }
 // ```
 //
 // ## Import

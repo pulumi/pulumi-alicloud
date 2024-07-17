@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceMeshMeshConfigPilot {
+    /**
+     * @return Whether to support the HTTP1.0.
+     * 
+     */
     private @Nullable Boolean http10Enabled;
+    /**
+     * @return Link trace sampling percentage.
+     * 
+     */
     private @Nullable Double traceSampling;
 
     private ServiceMeshMeshConfigPilot() {}
+    /**
+     * @return Whether to support the HTTP1.0.
+     * 
+     */
     public Optional<Boolean> http10Enabled() {
         return Optional.ofNullable(this.http10Enabled);
     }
+    /**
+     * @return Link trace sampling percentage.
+     * 
+     */
     public Optional<Double> traceSampling() {
         return Optional.ofNullable(this.traceSampling);
     }

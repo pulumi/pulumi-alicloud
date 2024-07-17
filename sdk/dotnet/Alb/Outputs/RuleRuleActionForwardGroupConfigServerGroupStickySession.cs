@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class RuleRuleActionForwardGroupConfigServerGroupStickySession
     {
+        /// <summary>
+        /// Whether to enable session persistence.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
+        /// </summary>
         public readonly int? Timeout;
 
         [OutputConstructor]

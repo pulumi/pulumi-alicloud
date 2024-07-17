@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Sls.Outputs
     [OutputType]
     public sealed class AlertConfigurationSinkCms
     {
+        /// <summary>
+        /// Open.
+        /// </summary>
         public readonly bool? Enabled;
 
         [OutputConstructor]

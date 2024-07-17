@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StoreEncryptConfUserCmkInfo {
+    /**
+     * @return Role arn.
+     * 
+     */
     private @Nullable String arn;
+    /**
+     * @return User master key id.
+     * 
+     */
     private @Nullable String cmkKeyId;
+    /**
+     * @return Region id where the user master key id is located.
+     * 
+     */
     private @Nullable String regionId;
 
     private StoreEncryptConfUserCmkInfo() {}
+    /**
+     * @return Role arn.
+     * 
+     */
     public Optional<String> arn() {
         return Optional.ofNullable(this.arn);
     }
+    /**
+     * @return User master key id.
+     * 
+     */
     public Optional<String> cmkKeyId() {
         return Optional.ofNullable(this.cmkKeyId);
     }
+    /**
+     * @return Region id where the user master key id is located.
+     * 
+     */
     public Optional<String> regionId() {
         return Optional.ofNullable(this.regionId);
     }

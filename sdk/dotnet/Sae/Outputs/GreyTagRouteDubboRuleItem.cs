@@ -14,7 +14,13 @@ namespace Pulumi.AliCloud.Sae.Outputs
     public sealed class GreyTagRouteDubboRuleItem
     {
         public readonly string? Cond;
+        /// <summary>
+        /// The parameter value gets the expression.
+        /// </summary>
         public readonly string? Expr;
+        /// <summary>
+        /// The parameter number.
+        /// </summary>
         public readonly int? Index;
         public readonly string? Operator;
         public readonly string? Value;

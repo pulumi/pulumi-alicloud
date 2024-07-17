@@ -277,6 +277,7 @@ class GetDbClustersClusterResult(dict):
         :param str ali_uid: Alibaba Cloud account Id.
         :param str bid: The ID of the business process flow.
         :param str category: Instance family values include: Basic: Basic edition; HighAvailability: high availability edition.
+        :param str commodity_code: The Commodity Code of the DBCluster.
         :param str connection_string: Connection string.
         :param str control_version: The control version of the DBCluster.
         :param str create_time: The creation time of the resource.
@@ -379,6 +380,9 @@ class GetDbClustersClusterResult(dict):
     @property
     @pulumi.getter(name="commodityCode")
     def commodity_code(self) -> str:
+        """
+        The Commodity Code of the DBCluster.
+        """
         return pulumi.get(self, "commodity_code")
 
     @property

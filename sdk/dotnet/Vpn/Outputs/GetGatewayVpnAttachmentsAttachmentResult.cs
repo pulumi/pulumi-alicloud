@@ -45,6 +45,9 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// Configuration negotiated in the second stage.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGatewayVpnAttachmentsAttachmentIkeConfigResult> IkeConfigs;
+        /// <summary>
+        /// The internet ip of the resource. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+        /// </summary>
         public readonly string InternetIp;
         /// <summary>
         /// The configuration of Phase 2 negotiations.

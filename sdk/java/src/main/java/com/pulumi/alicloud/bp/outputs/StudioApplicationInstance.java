@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StudioApplicationInstance {
+    /**
+     * @return The id of the instance.
+     * 
+     */
     private @Nullable String id;
+    /**
+     * @return The name of the instance.
+     * 
+     */
     private @Nullable String nodeName;
+    /**
+     * @return The type of the instance.
+     * 
+     */
     private @Nullable String nodeType;
 
     private StudioApplicationInstance() {}
+    /**
+     * @return The id of the instance.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return The name of the instance.
+     * 
+     */
     public Optional<String> nodeName() {
         return Optional.ofNullable(this.nodeName);
     }
+    /**
+     * @return The type of the instance.
+     * 
+     */
     public Optional<String> nodeType() {
         return Optional.ofNullable(this.nodeType);
     }

@@ -30,12 +30,18 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         [Input("ikeVersion")]
         public Input<string>? IkeVersion { get; set; }
 
+        /// <summary>
+        /// The local Id.
+        /// </summary>
         [Input("localId")]
         public Input<string>? LocalId { get; set; }
 
         [Input("psk")]
         public Input<string>? Psk { get; set; }
 
+        /// <summary>
+        /// Remote ID.
+        /// </summary>
         [Input("remoteId")]
         public Input<string>? RemoteId { get; set; }
 

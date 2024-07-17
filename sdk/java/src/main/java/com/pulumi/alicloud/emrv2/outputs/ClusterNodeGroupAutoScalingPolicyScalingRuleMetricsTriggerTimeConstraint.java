@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint {
+    /**
+     * @return The end time for this scaling rule specific metrics trigger.
+     * 
+     */
     private @Nullable String endTime;
+    /**
+     * @return The start time for this scaling rule specific metrics trigger.
+     * 
+     */
     private @Nullable String startTime;
 
     private ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint() {}
+    /**
+     * @return The end time for this scaling rule specific metrics trigger.
+     * 
+     */
     public Optional<String> endTime() {
         return Optional.ofNullable(this.endTime);
     }
+    /**
+     * @return The start time for this scaling rule specific metrics trigger.
+     * 
+     */
     public Optional<String> startTime() {
         return Optional.ofNullable(this.startTime);
     }

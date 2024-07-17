@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter {
+    /**
+     * @return Specifies whether to enable authentication.
+     * 
+     */
     private @Nullable String isValueSecret;
+    /**
+     * @return The key of the request path.
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return The key of the request path.
+     * 
+     */
     private @Nullable String value;
 
     private ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter() {}
+    /**
+     * @return Specifies whether to enable authentication.
+     * 
+     */
     public Optional<String> isValueSecret() {
         return Optional.ofNullable(this.isValueSecret);
     }
+    /**
+     * @return The key of the request path.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return The key of the request path.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

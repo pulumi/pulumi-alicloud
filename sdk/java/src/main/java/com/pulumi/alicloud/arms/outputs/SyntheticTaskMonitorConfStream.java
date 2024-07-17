@@ -14,33 +14,97 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SyntheticTaskMonitorConfStream {
+    /**
+     * @return Custom header, in JSON Map format.
+     * 
+     */
     private @Nullable Map<String,Object> customHeaderContent;
+    /**
+     * @return Player, do not pass the default 12.
+     * - 12:VLC
+     * - 2:FlashPlayer.
+     * 
+     */
     private @Nullable Integer playerType;
+    /**
+     * @return Resource address type:
+     * - 1: Resource address.
+     * - 0: page address, not 0 by default.
+     * 
+     */
     private @Nullable Integer streamAddressType;
+    /**
+     * @return Monitoring duration, in seconds, up to 60s, not 60 by default.
+     * 
+     */
     private @Nullable Integer streamMonitorTimeout;
+    /**
+     * @return Audio and video flags: 0-video, 1-audio.
+     * 
+     */
     private @Nullable Integer streamType;
+    /**
+     * @return The target URL.
+     * 
+     */
     private @Nullable String targetUrl;
+    /**
+     * @return DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+     * 
+     */
     private @Nullable String whiteList;
 
     private SyntheticTaskMonitorConfStream() {}
+    /**
+     * @return Custom header, in JSON Map format.
+     * 
+     */
     public Map<String,Object> customHeaderContent() {
         return this.customHeaderContent == null ? Map.of() : this.customHeaderContent;
     }
+    /**
+     * @return Player, do not pass the default 12.
+     * - 12:VLC
+     * - 2:FlashPlayer.
+     * 
+     */
     public Optional<Integer> playerType() {
         return Optional.ofNullable(this.playerType);
     }
+    /**
+     * @return Resource address type:
+     * - 1: Resource address.
+     * - 0: page address, not 0 by default.
+     * 
+     */
     public Optional<Integer> streamAddressType() {
         return Optional.ofNullable(this.streamAddressType);
     }
+    /**
+     * @return Monitoring duration, in seconds, up to 60s, not 60 by default.
+     * 
+     */
     public Optional<Integer> streamMonitorTimeout() {
         return Optional.ofNullable(this.streamMonitorTimeout);
     }
+    /**
+     * @return Audio and video flags: 0-video, 1-audio.
+     * 
+     */
     public Optional<Integer> streamType() {
         return Optional.ofNullable(this.streamType);
     }
+    /**
+     * @return The target URL.
+     * 
+     */
     public Optional<String> targetUrl() {
         return Optional.ofNullable(this.targetUrl);
     }
+    /**
+     * @return DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+     * 
+     */
     public Optional<String> whiteList() {
         return Optional.ofNullable(this.whiteList);
     }

@@ -17,16 +17,32 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterArgs extends com.pu
 
     public static final HybridMonitorSlsTaskSlsProcessConfigFilterArgs Empty = new HybridMonitorSlsTaskSlsProcessConfigFilterArgs();
 
+    /**
+     * The conditions that are used to filter logs imported from Log Service. See `filters` below.
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs>> filters;
 
+    /**
+     * @return The conditions that are used to filter logs imported from Log Service. See `filters` below.
+     * 
+     */
     public Optional<Output<List<HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
 
+    /**
+     * The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
+     * 
+     */
     @Import(name="relation")
     private @Nullable Output<String> relation;
 
+    /**
+     * @return The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
+     * 
+     */
     public Optional<Output<String>> relation() {
         return Optional.ofNullable(this.relation);
     }
@@ -56,24 +72,54 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterArgs extends com.pu
             $ = new HybridMonitorSlsTaskSlsProcessConfigFilterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters The conditions that are used to filter logs imported from Log Service. See `filters` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters The conditions that are used to filter logs imported from Log Service. See `filters` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters The conditions that are used to filter logs imported from Log Service. See `filters` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs... filters) {
             return filters(List.of(filters));
         }
 
+        /**
+         * @param relation The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder relation(@Nullable Output<String> relation) {
             $.relation = relation;
             return this;
         }
 
+        /**
+         * @param relation The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder relation(String relation) {
             return relation(Output.of(relation));
         }

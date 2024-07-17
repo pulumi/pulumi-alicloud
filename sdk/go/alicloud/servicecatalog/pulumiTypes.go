@@ -129,7 +129,9 @@ func (o ProvisionedProductOutputTypeArrayOutput) Index(i pulumi.IntInput) Provis
 }
 
 type ProvisionedProductParameter struct {
-	ParameterKey   *string `pulumi:"parameterKey"`
+	// The name of the parameter defined in the template.
+	ParameterKey *string `pulumi:"parameterKey"`
+	// The Template parameter value entered by the user.
 	ParameterValue *string `pulumi:"parameterValue"`
 }
 
@@ -145,7 +147,9 @@ type ProvisionedProductParameterInput interface {
 }
 
 type ProvisionedProductParameterArgs struct {
-	ParameterKey   pulumi.StringPtrInput `pulumi:"parameterKey"`
+	// The name of the parameter defined in the template.
+	ParameterKey pulumi.StringPtrInput `pulumi:"parameterKey"`
+	// The Template parameter value entered by the user.
 	ParameterValue pulumi.StringPtrInput `pulumi:"parameterValue"`
 }
 
@@ -200,10 +204,12 @@ func (o ProvisionedProductParameterOutput) ToProvisionedProductParameterOutputWi
 	return o
 }
 
+// The name of the parameter defined in the template.
 func (o ProvisionedProductParameterOutput) ParameterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProvisionedProductParameter) *string { return v.ParameterKey }).(pulumi.StringPtrOutput)
 }
 
+// The Template parameter value entered by the user.
 func (o ProvisionedProductParameterOutput) ParameterValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProvisionedProductParameter) *string { return v.ParameterValue }).(pulumi.StringPtrOutput)
 }

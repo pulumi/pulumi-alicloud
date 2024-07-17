@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Ram.Outputs
     [OutputType]
     public sealed class GetPolicyDocumentStatementConditionResult
     {
+        /// <summary>
+        /// The operator of the condition.
+        /// </summary>
         public readonly string Operator;
+        /// <summary>
+        /// The values of the condition.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
+        /// <summary>
+        /// The variable of the condition.
+        /// </summary>
         public readonly string Variable;
 
         [OutputConstructor]

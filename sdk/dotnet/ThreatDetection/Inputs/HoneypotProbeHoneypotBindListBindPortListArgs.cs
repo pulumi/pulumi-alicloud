@@ -12,18 +12,33 @@ namespace Pulumi.AliCloud.ThreatDetection.Inputs
 
     public sealed class HoneypotProbeHoneypotBindListBindPortListArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to bind the port.
+        /// </summary>
         [Input("bindPort")]
         public Input<bool>? BindPort { get; set; }
 
+        /// <summary>
+        /// End port.
+        /// </summary>
         [Input("endPort")]
         public Input<int>? EndPort { get; set; }
 
+        /// <summary>
+        /// Whether the port is fixed.
+        /// </summary>
         [Input("fixed")]
         public Input<bool>? Fixed { get; set; }
 
+        /// <summary>
+        /// Start port.
+        /// </summary>
         [Input("startPort")]
         public Input<int>? StartPort { get; set; }
 
+        /// <summary>
+        /// Destination port.
+        /// </summary>
         [Input("targetPort")]
         public Input<int>? TargetPort { get; set; }
 

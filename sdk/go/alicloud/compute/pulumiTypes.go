@@ -365,7 +365,8 @@ func (o NestServiceInstanceOperationMetadataPtrOutput) Resources() pulumi.String
 
 type GetNestServiceInstancesFilter struct {
 	// The name of the service.
-	Name   *string  `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Set of values that are accepted for the given field.
 	Values []string `pulumi:"values"`
 }
 
@@ -382,7 +383,8 @@ type GetNestServiceInstancesFilterInput interface {
 
 type GetNestServiceInstancesFilterArgs struct {
 	// The name of the service.
-	Name   pulumi.StringPtrInput   `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Set of values that are accepted for the given field.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -442,6 +444,7 @@ func (o GetNestServiceInstancesFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNestServiceInstancesFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Set of values that are accepted for the given field.
 func (o GetNestServiceInstancesFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNestServiceInstancesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }

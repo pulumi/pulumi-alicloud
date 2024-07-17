@@ -12,15 +12,27 @@ namespace Pulumi.AliCloud.Ots.Inputs
 
     public sealed class SearchIndexSchemaIndexSortSorterArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        /// </summary>
         [Input("fieldName")]
         public Input<string>? FieldName { get; set; }
 
+        /// <summary>
+        /// The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
+        /// <summary>
+        /// The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
+        /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
+        /// <summary>
+        /// Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
+        /// </summary>
         [Input("sorterType")]
         public Input<string>? SorterType { get; set; }
 

@@ -14,16 +14,32 @@ public final class NetworkAclAttachmentResourceArgs extends com.pulumi.resources
 
     public static final NetworkAclAttachmentResourceArgs Empty = new NetworkAclAttachmentResourceArgs();
 
+    /**
+     * The resource id that the network acl will associate with.
+     * 
+     */
     @Import(name="resourceId", required=true)
     private Output<String> resourceId;
 
+    /**
+     * @return The resource id that the network acl will associate with.
+     * 
+     */
     public Output<String> resourceId() {
         return this.resourceId;
     }
 
+    /**
+     * The resource id that the network acl will associate with. Only support `VSwitch` now.
+     * 
+     */
     @Import(name="resourceType", required=true)
     private Output<String> resourceType;
 
+    /**
+     * @return The resource id that the network acl will associate with. Only support `VSwitch` now.
+     * 
+     */
     public Output<String> resourceType() {
         return this.resourceType;
     }
@@ -53,20 +69,44 @@ public final class NetworkAclAttachmentResourceArgs extends com.pulumi.resources
             $ = new NetworkAclAttachmentResourceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param resourceId The resource id that the network acl will associate with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceId(Output<String> resourceId) {
             $.resourceId = resourceId;
             return this;
         }
 
+        /**
+         * @param resourceId The resource id that the network acl will associate with.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceId(String resourceId) {
             return resourceId(Output.of(resourceId));
         }
 
+        /**
+         * @param resourceType The resource id that the network acl will associate with. Only support `VSwitch` now.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceType(Output<String> resourceType) {
             $.resourceType = resourceType;
             return this;
         }
 
+        /**
+         * @param resourceType The resource id that the network acl will associate with. Only support `VSwitch` now.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceType(String resourceType) {
             return resourceType(Output.of(resourceType));
         }

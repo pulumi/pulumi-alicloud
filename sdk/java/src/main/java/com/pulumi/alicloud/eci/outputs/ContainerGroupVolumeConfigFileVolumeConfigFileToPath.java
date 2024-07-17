@@ -11,10 +11,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
+    /**
+     * @return The content of the configuration file. Maximum size: 32 KB.
+     * 
+     */
     private @Nullable String content;
     private @Nullable String path;
 
     private ContainerGroupVolumeConfigFileVolumeConfigFileToPath() {}
+    /**
+     * @return The content of the configuration file. Maximum size: 32 KB.
+     * 
+     */
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
     }

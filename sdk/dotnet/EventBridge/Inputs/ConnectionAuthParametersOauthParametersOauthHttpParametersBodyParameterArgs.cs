@@ -12,12 +12,21 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
 
     public sealed class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies whether to enable authentication.
+        /// </summary>
         [Input("isValueSecret")]
         public Input<string>? IsValueSecret { get; set; }
 
+        /// <summary>
+        /// The key of the request path.
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// The key of the request path.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     [OutputType]
     public sealed class ClusterNodeGroupSpotBidPrice
     {
+        /// <summary>
+        /// The spot bid price of a PayAsYouGo instance.
+        /// </summary>
         public readonly int BidPrice;
+        /// <summary>
+        /// Host Ecs instance type.
+        /// </summary>
         public readonly string InstanceType;
 
         [OutputConstructor]

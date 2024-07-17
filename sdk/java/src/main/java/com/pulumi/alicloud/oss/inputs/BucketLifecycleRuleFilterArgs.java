@@ -16,23 +16,47 @@ public final class BucketLifecycleRuleFilterArgs extends com.pulumi.resources.Re
 
     public static final BucketLifecycleRuleFilterArgs Empty = new BucketLifecycleRuleFilterArgs();
 
+    /**
+     * The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+     * 
+     */
     @Import(name="not")
     private @Nullable Output<BucketLifecycleRuleFilterNotArgs> not;
 
+    /**
+     * @return The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+     * 
+     */
     public Optional<Output<BucketLifecycleRuleFilterNotArgs>> not() {
         return Optional.ofNullable(this.not);
     }
 
+    /**
+     * Minimum object size (in bytes) to which the rule applies.
+     * 
+     */
     @Import(name="objectSizeGreaterThan")
     private @Nullable Output<Integer> objectSizeGreaterThan;
 
+    /**
+     * @return Minimum object size (in bytes) to which the rule applies.
+     * 
+     */
     public Optional<Output<Integer>> objectSizeGreaterThan() {
         return Optional.ofNullable(this.objectSizeGreaterThan);
     }
 
+    /**
+     * Maximum object size (in bytes) to which the rule applies.
+     * 
+     */
     @Import(name="objectSizeLessThan")
     private @Nullable Output<Integer> objectSizeLessThan;
 
+    /**
+     * @return Maximum object size (in bytes) to which the rule applies.
+     * 
+     */
     public Optional<Output<Integer>> objectSizeLessThan() {
         return Optional.ofNullable(this.objectSizeLessThan);
     }
@@ -63,29 +87,65 @@ public final class BucketLifecycleRuleFilterArgs extends com.pulumi.resources.Re
             $ = new BucketLifecycleRuleFilterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param not The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder not(@Nullable Output<BucketLifecycleRuleFilterNotArgs> not) {
             $.not = not;
             return this;
         }
 
+        /**
+         * @param not The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder not(BucketLifecycleRuleFilterNotArgs not) {
             return not(Output.of(not));
         }
 
+        /**
+         * @param objectSizeGreaterThan Minimum object size (in bytes) to which the rule applies.
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectSizeGreaterThan(@Nullable Output<Integer> objectSizeGreaterThan) {
             $.objectSizeGreaterThan = objectSizeGreaterThan;
             return this;
         }
 
+        /**
+         * @param objectSizeGreaterThan Minimum object size (in bytes) to which the rule applies.
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectSizeGreaterThan(Integer objectSizeGreaterThan) {
             return objectSizeGreaterThan(Output.of(objectSizeGreaterThan));
         }
 
+        /**
+         * @param objectSizeLessThan Maximum object size (in bytes) to which the rule applies.
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectSizeLessThan(@Nullable Output<Integer> objectSizeLessThan) {
             $.objectSizeLessThan = objectSizeLessThan;
             return this;
         }
 
+        /**
+         * @param objectSizeLessThan Maximum object size (in bytes) to which the rule applies.
+         * 
+         * @return builder
+         * 
+         */
         public Builder objectSizeLessThan(Integer objectSizeLessThan) {
             return objectSizeLessThan(Output.of(objectSizeLessThan));
         }

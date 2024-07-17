@@ -46,6 +46,12 @@ class DomainSource(dict):
                  source_port: str,
                  source_type: str,
                  source_priority: Optional[str] = None):
+        """
+        :param str source_content: The address of the origin server. You can specify an IP address or a domain name.
+        :param str source_port: The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+        :param str source_type: The type of the origin server. Valid values:
+        :param str source_priority: The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+        """
         pulumi.set(__self__, "source_content", source_content)
         pulumi.set(__self__, "source_port", source_port)
         pulumi.set(__self__, "source_type", source_type)
@@ -55,21 +61,33 @@ class DomainSource(dict):
     @property
     @pulumi.getter(name="sourceContent")
     def source_content(self) -> str:
+        """
+        The address of the origin server. You can specify an IP address or a domain name.
+        """
         return pulumi.get(self, "source_content")
 
     @property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> str:
+        """
+        The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
+        """
         return pulumi.get(self, "source_port")
 
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> str:
+        """
+        The type of the origin server. Valid values:
+        """
         return pulumi.get(self, "source_type")
 
     @property
     @pulumi.getter(name="sourcePriority")
     def source_priority(self) -> Optional[str]:
+        """
+        The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
+        """
         return pulumi.get(self, "source_priority")
 
 
