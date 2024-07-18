@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertConfigurationSeverityConfiguration {
+    /**
+     * @return Trigger condition. See `eval_condition` below.
+     * 
+     */
     private @Nullable AlertConfigurationSeverityConfigurationEvalCondition evalCondition;
+    /**
+     * @return Alarm severity.
+     * 
+     */
     private @Nullable Integer severity;
 
     private AlertConfigurationSeverityConfiguration() {}
+    /**
+     * @return Trigger condition. See `eval_condition` below.
+     * 
+     */
     public Optional<AlertConfigurationSeverityConfigurationEvalCondition> evalCondition() {
         return Optional.ofNullable(this.evalCondition);
     }
+    /**
+     * @return Alarm severity.
+     * 
+     */
     public Optional<Integer> severity() {
         return Optional.ofNullable(this.severity);
     }

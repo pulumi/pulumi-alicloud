@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Sls.Outputs
     [OutputType]
     public sealed class AlertConfigurationJoinConfiguration
     {
+        /// <summary>
+        /// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
+        /// </summary>
         public readonly string? Condition;
         public readonly string? Type;
 

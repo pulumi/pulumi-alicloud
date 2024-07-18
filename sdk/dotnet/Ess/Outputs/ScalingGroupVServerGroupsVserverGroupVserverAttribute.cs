@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Ess.Outputs
     [OutputType]
     public sealed class ScalingGroupVServerGroupsVserverGroupVserverAttribute
     {
+        /// <summary>
+        /// The port will be used for VServer Group backend server.
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// ID of VServer Group.
+        /// </summary>
         public readonly string VserverGroupId;
+        /// <summary>
+        /// The weight of an ECS instance attached to the VServer Group.
+        /// </summary>
         public readonly int Weight;
 
         [OutputConstructor]

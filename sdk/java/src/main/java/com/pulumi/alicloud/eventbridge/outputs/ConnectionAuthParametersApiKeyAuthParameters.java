@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionAuthParametersApiKeyAuthParameters {
+    /**
+     * @return The name of the API key.
+     * 
+     */
     private @Nullable String apiKeyName;
+    /**
+     * @return The value of the API key.
+     * 
+     */
     private @Nullable String apiKeyValue;
 
     private ConnectionAuthParametersApiKeyAuthParameters() {}
+    /**
+     * @return The name of the API key.
+     * 
+     */
     public Optional<String> apiKeyName() {
         return Optional.ofNullable(this.apiKeyName);
     }
+    /**
+     * @return The value of the API key.
+     * 
+     */
     public Optional<String> apiKeyValue() {
         return Optional.ofNullable(this.apiKeyValue);
     }

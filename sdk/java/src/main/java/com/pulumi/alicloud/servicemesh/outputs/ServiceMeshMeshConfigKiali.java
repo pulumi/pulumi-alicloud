@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceMeshMeshConfigKiali {
+    /**
+     * @return Enable CNI.
+     * 
+     */
     private @Nullable Boolean enabled;
     /**
      * @return Kiali service address.
@@ -20,6 +24,10 @@ public final class ServiceMeshMeshConfigKiali {
     private @Nullable String url;
 
     private ServiceMeshMeshConfigKiali() {}
+    /**
+     * @return Enable CNI.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

@@ -13,8 +13,19 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     [OutputType]
     public sealed class GetBackupJobsFilterResult
     {
+        /// <summary>
+        /// The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
+        /// </summary>
         public readonly string? Operator;
+        /// <summary>
+        /// Set of values that are accepted for the given field.
+        /// 
+        /// &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

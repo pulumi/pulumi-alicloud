@@ -12,27 +12,51 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
 
     public sealed class ClusterNodeGroupAutoScalingPolicyScalingRuleGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
+        /// </summary>
         [Input("activityType", required: true)]
         public Input<string> ActivityType { get; set; } = null!;
 
+        /// <summary>
+        /// The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
+        /// </summary>
         [Input("adjustmentType")]
         public Input<string>? AdjustmentType { get; set; }
 
+        /// <summary>
+        /// The adjustment value of auto scaling policy. The value should between 1 and 5000.
+        /// </summary>
         [Input("adjustmentValue", required: true)]
         public Input<int> AdjustmentValue { get; set; } = null!;
 
+        /// <summary>
+        /// The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
+        /// </summary>
         [Input("metricsTrigger")]
         public Input<Inputs.ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerGetArgs>? MetricsTrigger { get; set; }
 
+        /// <summary>
+        /// The minimum adjustment value of auto scaling policy.
+        /// </summary>
         [Input("minAdjustmentValue")]
         public Input<int>? MinAdjustmentValue { get; set; }
 
+        /// <summary>
+        /// The rule name of auto scaling policy.
+        /// </summary>
         [Input("ruleName", required: true)]
         public Input<string> RuleName { get; set; } = null!;
 
+        /// <summary>
+        /// The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
+        /// </summary>
         [Input("timeTrigger")]
         public Input<Inputs.ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerGetArgs>? TimeTrigger { get; set; }
 
+        /// <summary>
+        /// The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
+        /// </summary>
         [Input("triggerType", required: true)]
         public Input<string> TriggerType { get; set; } = null!;
 

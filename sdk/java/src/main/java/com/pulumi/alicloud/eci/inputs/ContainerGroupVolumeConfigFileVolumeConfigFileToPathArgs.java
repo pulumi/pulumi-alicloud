@@ -15,9 +15,17 @@ public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs exte
 
     public static final ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs Empty = new ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs();
 
+    /**
+     * The content of the configuration file. Maximum size: 32 KB.
+     * 
+     */
     @Import(name="content")
     private @Nullable Output<String> content;
 
+    /**
+     * @return The content of the configuration file. Maximum size: 32 KB.
+     * 
+     */
     public Optional<Output<String>> content() {
         return Optional.ofNullable(this.content);
     }
@@ -54,11 +62,23 @@ public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs exte
             $ = new ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param content The content of the configuration file. Maximum size: 32 KB.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(@Nullable Output<String> content) {
             $.content = content;
             return this;
         }
 
+        /**
+         * @param content The content of the configuration file. Maximum size: 32 KB.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(String content) {
             return content(Output.of(content));
         }

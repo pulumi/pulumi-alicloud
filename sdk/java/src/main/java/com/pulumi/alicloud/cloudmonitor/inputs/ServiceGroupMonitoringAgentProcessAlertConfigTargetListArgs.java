@@ -15,30 +15,62 @@ public final class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs e
 
     public static final ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs Empty = new ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs();
 
+    /**
+     * The Alibaba Cloud Resource Name (ARN) of the resource.
+     * 
+     */
     @Import(name="arn")
     private @Nullable Output<String> arn;
 
+    /**
+     * @return The Alibaba Cloud Resource Name (ARN) of the resource.
+     * 
+     */
     public Optional<Output<String>> arn() {
         return Optional.ofNullable(this.arn);
     }
 
+    /**
+     * The parameters of the alert callback. Specify the parameters in the JSON format.
+     * 
+     */
     @Import(name="jsonParams")
     private @Nullable Output<String> jsonParams;
 
+    /**
+     * @return The parameters of the alert callback. Specify the parameters in the JSON format.
+     * 
+     */
     public Optional<Output<String>> jsonParams() {
         return Optional.ofNullable(this.jsonParams);
     }
 
+    /**
+     * The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
+     * 
+     */
     @Import(name="level")
     private @Nullable Output<String> level;
 
+    /**
+     * @return The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
+     * 
+     */
     public Optional<Output<String>> level() {
         return Optional.ofNullable(this.level);
     }
 
+    /**
+     * The ID of the resource for which alerts are triggered.
+     * 
+     */
     @Import(name="targetListId")
     private @Nullable Output<String> targetListId;
 
+    /**
+     * @return The ID of the resource for which alerts are triggered.
+     * 
+     */
     public Optional<Output<String>> targetListId() {
         return Optional.ofNullable(this.targetListId);
     }
@@ -70,38 +102,86 @@ public final class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs e
             $ = new ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param arn The Alibaba Cloud Resource Name (ARN) of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder arn(@Nullable Output<String> arn) {
             $.arn = arn;
             return this;
         }
 
+        /**
+         * @param arn The Alibaba Cloud Resource Name (ARN) of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder arn(String arn) {
             return arn(Output.of(arn));
         }
 
+        /**
+         * @param jsonParams The parameters of the alert callback. Specify the parameters in the JSON format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jsonParams(@Nullable Output<String> jsonParams) {
             $.jsonParams = jsonParams;
             return this;
         }
 
+        /**
+         * @param jsonParams The parameters of the alert callback. Specify the parameters in the JSON format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jsonParams(String jsonParams) {
             return jsonParams(Output.of(jsonParams));
         }
 
+        /**
+         * @param level The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder level(@Nullable Output<String> level) {
             $.level = level;
             return this;
         }
 
+        /**
+         * @param level The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder level(String level) {
             return level(Output.of(level));
         }
 
+        /**
+         * @param targetListId The ID of the resource for which alerts are triggered.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetListId(@Nullable Output<String> targetListId) {
             $.targetListId = targetListId;
             return this;
         }
 
+        /**
+         * @param targetListId The ID of the resource for which alerts are triggered.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetListId(String targetListId) {
             return targetListId(Output.of(targetListId));
         }

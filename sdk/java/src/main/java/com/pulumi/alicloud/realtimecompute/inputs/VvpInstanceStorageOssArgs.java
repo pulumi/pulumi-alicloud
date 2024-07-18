@@ -14,9 +14,17 @@ public final class VvpInstanceStorageOssArgs extends com.pulumi.resources.Resour
 
     public static final VvpInstanceStorageOssArgs Empty = new VvpInstanceStorageOssArgs();
 
+    /**
+     * OSS Bucket name.
+     * 
+     */
     @Import(name="bucket", required=true)
     private Output<String> bucket;
 
+    /**
+     * @return OSS Bucket name.
+     * 
+     */
     public Output<String> bucket() {
         return this.bucket;
     }
@@ -45,11 +53,23 @@ public final class VvpInstanceStorageOssArgs extends com.pulumi.resources.Resour
             $ = new VvpInstanceStorageOssArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bucket OSS Bucket name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucket(Output<String> bucket) {
             $.bucket = bucket;
             return this;
         }
 
+        /**
+         * @param bucket OSS Bucket name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
         }

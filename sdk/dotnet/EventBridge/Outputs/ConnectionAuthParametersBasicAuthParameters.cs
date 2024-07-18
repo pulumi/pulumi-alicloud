@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
     [OutputType]
     public sealed class ConnectionAuthParametersBasicAuthParameters
     {
+        /// <summary>
+        /// The password for basic authentication.
+        /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// The username for basic authentication.
+        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]

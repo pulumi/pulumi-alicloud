@@ -16,23 +16,47 @@ public final class WafRuleRateLimitStatusArgs extends com.pulumi.resources.Resou
 
     public static final WafRuleRateLimitStatusArgs Empty = new WafRuleRateLimitStatusArgs();
 
+    /**
+     * The HTTP status code returned.
+     * 
+     */
     @Import(name="code")
     private @Nullable Output<String> code;
 
+    /**
+     * @return The HTTP status code returned.
+     * 
+     */
     public Optional<Output<String>> code() {
         return Optional.ofNullable(this.code);
     }
 
+    /**
+     * The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+     * 
+     */
     @Import(name="count")
     private @Nullable Output<Integer> count;
 
+    /**
+     * @return The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+     * 
+     */
     public Optional<Output<Integer>> count() {
         return Optional.ofNullable(this.count);
     }
 
+    /**
+     * The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+     * 
+     */
     @Import(name="ratio")
     private @Nullable Output<Integer> ratio;
 
+    /**
+     * @return The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+     * 
+     */
     public Optional<Output<Integer>> ratio() {
         return Optional.ofNullable(this.ratio);
     }
@@ -63,29 +87,65 @@ public final class WafRuleRateLimitStatusArgs extends com.pulumi.resources.Resou
             $ = new WafRuleRateLimitStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param code The HTTP status code returned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder code(@Nullable Output<String> code) {
             $.code = code;
             return this;
         }
 
+        /**
+         * @param code The HTTP status code returned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder code(String code) {
             return code(Output.of(code));
         }
 
+        /**
+         * @param count The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(@Nullable Output<Integer> count) {
             $.count = count;
             return this;
         }
 
+        /**
+         * @param count The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(Integer count) {
             return count(Output.of(count));
         }
 
+        /**
+         * @param ratio The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ratio(@Nullable Output<Integer> ratio) {
             $.ratio = ratio;
             return this;
         }
 
+        /**
+         * @param ratio The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ratio(Integer ratio) {
             return ratio(Output.of(ratio));
         }

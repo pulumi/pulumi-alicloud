@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 public final class ContainerGroupContainerReadinessProbeHttpGet {
     private @Nullable String path;
     private @Nullable Integer port;
+    /**
+     * @return The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+     * 
+     */
     private @Nullable String scheme;
 
     private ContainerGroupContainerReadinessProbeHttpGet() {}
@@ -23,6 +27,10 @@ public final class ContainerGroupContainerReadinessProbeHttpGet {
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
+    /**
+     * @return The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
+     * 
+     */
     public Optional<String> scheme() {
         return Optional.ofNullable(this.scheme);
     }

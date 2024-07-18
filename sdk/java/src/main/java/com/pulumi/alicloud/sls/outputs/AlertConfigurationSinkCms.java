@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertConfigurationSinkCms {
+    /**
+     * @return Open.
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private AlertConfigurationSinkCms() {}
+    /**
+     * @return Open.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Alb.Inputs
 
     public sealed class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the destination server group to which requests are forwarded.
+        /// </summary>
         [Input("serverGroupId", required: true)]
         public Input<string> ServerGroupId { get; set; } = null!;
 

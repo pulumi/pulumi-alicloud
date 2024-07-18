@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
     {
         [Input("bodyParameters")]
         private InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs>? _bodyParameters;
+
+        /// <summary>
+        /// The parameters that are configured for the request body. See `body_parameters` below.
+        /// </summary>
         public InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs> BodyParameters
         {
             get => _bodyParameters ?? (_bodyParameters = new InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs>());
@@ -22,6 +26,10 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
 
         [Input("headerParameters")]
         private InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs>? _headerParameters;
+
+        /// <summary>
+        /// The parameters that are configured for the request header. See `header_parameters` below.
+        /// </summary>
         public InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs> HeaderParameters
         {
             get => _headerParameters ?? (_headerParameters = new InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs>());
@@ -30,6 +38,10 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
 
         [Input("queryStringParameters")]
         private InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs>? _queryStringParameters;
+
+        /// <summary>
+        /// The parameters that are configured for the request path. See `query_string_parameters` below.
+        /// </summary>
         public InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs> QueryStringParameters
         {
             get => _queryStringParameters ?? (_queryStringParameters = new InputList<Inputs.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs>());

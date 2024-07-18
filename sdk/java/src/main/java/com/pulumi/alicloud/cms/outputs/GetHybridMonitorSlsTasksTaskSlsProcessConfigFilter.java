@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter {
+    /**
+     * @return The conditions that are used to filter logs imported from Log Service.
+     * 
+     */
     private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter> filters;
+    /**
+     * @return The relationship between multiple filter conditions.
+     * 
+     */
     private String relation;
 
     private GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter() {}
+    /**
+     * @return The conditions that are used to filter logs imported from Log Service.
+     * 
+     */
     public List<GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter> filters() {
         return this.filters;
     }
+    /**
+     * @return The relationship between multiple filter conditions.
+     * 
+     */
     public String relation() {
         return this.relation;
     }

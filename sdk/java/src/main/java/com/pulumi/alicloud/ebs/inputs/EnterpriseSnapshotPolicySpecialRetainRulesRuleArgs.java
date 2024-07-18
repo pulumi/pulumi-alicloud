@@ -16,9 +16,23 @@ public final class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs extends co
 
     public static final EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs Empty = new EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs();
 
+    /**
+     * The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+     * - WEEKS
+     * - MONTHS
+     * - YEARS.
+     * 
+     */
     @Import(name="specialPeriodUnit")
     private @Nullable Output<String> specialPeriodUnit;
 
+    /**
+     * @return The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+     * - WEEKS
+     * - MONTHS
+     * - YEARS.
+     * 
+     */
     public Optional<Output<String>> specialPeriodUnit() {
         return Optional.ofNullable(this.specialPeriodUnit);
     }
@@ -63,11 +77,29 @@ public final class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs extends co
             $ = new EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param specialPeriodUnit The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+         * - WEEKS
+         * - MONTHS
+         * - YEARS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder specialPeriodUnit(@Nullable Output<String> specialPeriodUnit) {
             $.specialPeriodUnit = specialPeriodUnit;
             return this;
         }
 
+        /**
+         * @param specialPeriodUnit The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+         * - WEEKS
+         * - MONTHS
+         * - YEARS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder specialPeriodUnit(String specialPeriodUnit) {
             return specialPeriodUnit(Output.of(specialPeriodUnit));
         }

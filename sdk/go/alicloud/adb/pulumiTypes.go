@@ -131,9 +131,12 @@ func (o LakeAccountAccountPrivilegeArrayOutput) Index(i pulumi.IntInput) LakeAcc
 }
 
 type LakeAccountAccountPrivilegePrivilegeObject struct {
-	Column   *string `pulumi:"column"`
+	// The name of column.
+	Column *string `pulumi:"column"`
+	// The name of database.
 	Database *string `pulumi:"database"`
-	Table    *string `pulumi:"table"`
+	// The name of table.
+	Table *string `pulumi:"table"`
 }
 
 // LakeAccountAccountPrivilegePrivilegeObjectInput is an input type that accepts LakeAccountAccountPrivilegePrivilegeObjectArgs and LakeAccountAccountPrivilegePrivilegeObjectOutput values.
@@ -148,9 +151,12 @@ type LakeAccountAccountPrivilegePrivilegeObjectInput interface {
 }
 
 type LakeAccountAccountPrivilegePrivilegeObjectArgs struct {
-	Column   pulumi.StringPtrInput `pulumi:"column"`
+	// The name of column.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The name of database.
 	Database pulumi.StringPtrInput `pulumi:"database"`
-	Table    pulumi.StringPtrInput `pulumi:"table"`
+	// The name of table.
+	Table pulumi.StringPtrInput `pulumi:"table"`
 }
 
 func (LakeAccountAccountPrivilegePrivilegeObjectArgs) ElementType() reflect.Type {
@@ -230,14 +236,17 @@ func (o LakeAccountAccountPrivilegePrivilegeObjectOutput) ToLakeAccountAccountPr
 	}).(LakeAccountAccountPrivilegePrivilegeObjectPtrOutput)
 }
 
+// The name of column.
 func (o LakeAccountAccountPrivilegePrivilegeObjectOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LakeAccountAccountPrivilegePrivilegeObject) *string { return v.Column }).(pulumi.StringPtrOutput)
 }
 
+// The name of database.
 func (o LakeAccountAccountPrivilegePrivilegeObjectOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LakeAccountAccountPrivilegePrivilegeObject) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
+// The name of table.
 func (o LakeAccountAccountPrivilegePrivilegeObjectOutput) Table() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LakeAccountAccountPrivilegePrivilegeObject) *string { return v.Table }).(pulumi.StringPtrOutput)
 }
@@ -266,6 +275,7 @@ func (o LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) Elem() LakeAccountA
 	}).(LakeAccountAccountPrivilegePrivilegeObjectOutput)
 }
 
+// The name of column.
 func (o LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LakeAccountAccountPrivilegePrivilegeObject) *string {
 		if v == nil {
@@ -275,6 +285,7 @@ func (o LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) Column() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of database.
 func (o LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LakeAccountAccountPrivilegePrivilegeObject) *string {
 		if v == nil {
@@ -284,6 +295,7 @@ func (o LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) Database() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of table.
 func (o LakeAccountAccountPrivilegePrivilegeObjectPtrOutput) Table() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LakeAccountAccountPrivilegePrivilegeObject) *string {
 		if v == nil {

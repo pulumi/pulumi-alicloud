@@ -13,57 +13,161 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BgpPolicyContentFingerPrintRuleList {
+    /**
+     * @return End of destination port 0-65535.
+     * 
+     */
     private Integer dstPortEnd;
+    /**
+     * @return Destination Port start 0-65535.
+     * 
+     */
     private Integer dstPortStart;
+    /**
+     * @return The UUID of the rule is required to be deleted and modified, and it is not required to be created.
+     * 
+     */
     private @Nullable String fingerPrintRuleId;
+    /**
+     * @return Action. Currently, only drop is supported.
+     * 
+     */
     private String matchAction;
+    /**
+     * @return Maximum bag length.
+     * 
+     */
     private Integer maxPktLen;
+    /**
+     * @return Minimum package length.
+     * 
+     */
     private Integer minPktLen;
+    /**
+     * @return Offset.
+     * 
+     */
     private @Nullable Integer offset;
+    /**
+     * @return Load match, hexadecimal string; Similar to &#39;abcd&#39;.
+     * 
+     */
     private @Nullable String payloadBytes;
+    /**
+     * @return Protocol, tcp or udp.
+     * 
+     */
     private String protocol;
+    /**
+     * @return Speed limit value 1-100000.
+     * 
+     */
     private @Nullable Integer rateValue;
+    /**
+     * @return Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+     * 
+     */
     private Integer seqNo;
+    /**
+     * @return Source Port end 0-65535.
+     * 
+     */
     private Integer srcPortEnd;
+    /**
+     * @return Source port start 0-65535.
+     * 
+     */
     private Integer srcPortStart;
 
     private BgpPolicyContentFingerPrintRuleList() {}
+    /**
+     * @return End of destination port 0-65535.
+     * 
+     */
     public Integer dstPortEnd() {
         return this.dstPortEnd;
     }
+    /**
+     * @return Destination Port start 0-65535.
+     * 
+     */
     public Integer dstPortStart() {
         return this.dstPortStart;
     }
+    /**
+     * @return The UUID of the rule is required to be deleted and modified, and it is not required to be created.
+     * 
+     */
     public Optional<String> fingerPrintRuleId() {
         return Optional.ofNullable(this.fingerPrintRuleId);
     }
+    /**
+     * @return Action. Currently, only drop is supported.
+     * 
+     */
     public String matchAction() {
         return this.matchAction;
     }
+    /**
+     * @return Maximum bag length.
+     * 
+     */
     public Integer maxPktLen() {
         return this.maxPktLen;
     }
+    /**
+     * @return Minimum package length.
+     * 
+     */
     public Integer minPktLen() {
         return this.minPktLen;
     }
+    /**
+     * @return Offset.
+     * 
+     */
     public Optional<Integer> offset() {
         return Optional.ofNullable(this.offset);
     }
+    /**
+     * @return Load match, hexadecimal string; Similar to &#39;abcd&#39;.
+     * 
+     */
     public Optional<String> payloadBytes() {
         return Optional.ofNullable(this.payloadBytes);
     }
+    /**
+     * @return Protocol, tcp or udp.
+     * 
+     */
     public String protocol() {
         return this.protocol;
     }
+    /**
+     * @return Speed limit value 1-100000.
+     * 
+     */
     public Optional<Integer> rateValue() {
         return Optional.ofNullable(this.rateValue);
     }
+    /**
+     * @return Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+     * 
+     */
     public Integer seqNo() {
         return this.seqNo;
     }
+    /**
+     * @return Source Port end 0-65535.
+     * 
+     */
     public Integer srcPortEnd() {
         return this.srcPortEnd;
     }
+    /**
+     * @return Source port start 0-65535.
+     * 
+     */
     public Integer srcPortStart() {
         return this.srcPortStart;
     }

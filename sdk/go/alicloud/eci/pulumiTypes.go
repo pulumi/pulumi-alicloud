@@ -590,14 +590,22 @@ func (o ContainerGroupContainerEnvironmentVarFieldRefArrayOutput) Index(i pulumi
 }
 
 type ContainerGroupContainerLivenessProbe struct {
-	Execs               []ContainerGroupContainerLivenessProbeExec      `pulumi:"execs"`
-	FailureThreshold    *int                                            `pulumi:"failureThreshold"`
-	HttpGets            []ContainerGroupContainerLivenessProbeHttpGet   `pulumi:"httpGets"`
-	InitialDelaySeconds *int                                            `pulumi:"initialDelaySeconds"`
-	PeriodSeconds       *int                                            `pulumi:"periodSeconds"`
-	SuccessThreshold    *int                                            `pulumi:"successThreshold"`
-	TcpSockets          []ContainerGroupContainerLivenessProbeTcpSocket `pulumi:"tcpSockets"`
-	TimeoutSeconds      *int                                            `pulumi:"timeoutSeconds"`
+	// Health check using command line method. See `exec` below.
+	Execs []ContainerGroupContainerLivenessProbeExec `pulumi:"execs"`
+	// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// Health check using HTTP request method. See `httpGet` below.
+	HttpGets []ContainerGroupContainerLivenessProbeHttpGet `pulumi:"httpGets"`
+	// Check the time to start execution, calculated from the completion of container startup.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// Buffer time for the program to handle operations before closing.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// Health check using TCP socket method. See `tcpSocket` below.
+	TcpSockets []ContainerGroupContainerLivenessProbeTcpSocket `pulumi:"tcpSockets"`
+	// Check the timeout, the default is 1 second, the minimum is 1 second.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
 
 // ContainerGroupContainerLivenessProbeInput is an input type that accepts ContainerGroupContainerLivenessProbeArgs and ContainerGroupContainerLivenessProbeOutput values.
@@ -612,14 +620,22 @@ type ContainerGroupContainerLivenessProbeInput interface {
 }
 
 type ContainerGroupContainerLivenessProbeArgs struct {
-	Execs               ContainerGroupContainerLivenessProbeExecArrayInput      `pulumi:"execs"`
-	FailureThreshold    pulumi.IntPtrInput                                      `pulumi:"failureThreshold"`
-	HttpGets            ContainerGroupContainerLivenessProbeHttpGetArrayInput   `pulumi:"httpGets"`
-	InitialDelaySeconds pulumi.IntPtrInput                                      `pulumi:"initialDelaySeconds"`
-	PeriodSeconds       pulumi.IntPtrInput                                      `pulumi:"periodSeconds"`
-	SuccessThreshold    pulumi.IntPtrInput                                      `pulumi:"successThreshold"`
-	TcpSockets          ContainerGroupContainerLivenessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
-	TimeoutSeconds      pulumi.IntPtrInput                                      `pulumi:"timeoutSeconds"`
+	// Health check using command line method. See `exec` below.
+	Execs ContainerGroupContainerLivenessProbeExecArrayInput `pulumi:"execs"`
+	// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// Health check using HTTP request method. See `httpGet` below.
+	HttpGets ContainerGroupContainerLivenessProbeHttpGetArrayInput `pulumi:"httpGets"`
+	// Check the time to start execution, calculated from the completion of container startup.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// Buffer time for the program to handle operations before closing.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// Health check using TCP socket method. See `tcpSocket` below.
+	TcpSockets ContainerGroupContainerLivenessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
+	// Check the timeout, the default is 1 second, the minimum is 1 second.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 }
 
 func (ContainerGroupContainerLivenessProbeArgs) ElementType() reflect.Type {
@@ -673,40 +689,48 @@ func (o ContainerGroupContainerLivenessProbeOutput) ToContainerGroupContainerLiv
 	return o
 }
 
+// Health check using command line method. See `exec` below.
 func (o ContainerGroupContainerLivenessProbeOutput) Execs() ContainerGroupContainerLivenessProbeExecArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) []ContainerGroupContainerLivenessProbeExec {
 		return v.Execs
 	}).(ContainerGroupContainerLivenessProbeExecArrayOutput)
 }
 
+// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
 func (o ContainerGroupContainerLivenessProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
 }
 
+// Health check using HTTP request method. See `httpGet` below.
 func (o ContainerGroupContainerLivenessProbeOutput) HttpGets() ContainerGroupContainerLivenessProbeHttpGetArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) []ContainerGroupContainerLivenessProbeHttpGet {
 		return v.HttpGets
 	}).(ContainerGroupContainerLivenessProbeHttpGetArrayOutput)
 }
 
+// Check the time to start execution, calculated from the completion of container startup.
 func (o ContainerGroupContainerLivenessProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
 }
 
+// Buffer time for the program to handle operations before closing.
 func (o ContainerGroupContainerLivenessProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
+// The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
 func (o ContainerGroupContainerLivenessProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
 }
 
+// Health check using TCP socket method. See `tcpSocket` below.
 func (o ContainerGroupContainerLivenessProbeOutput) TcpSockets() ContainerGroupContainerLivenessProbeTcpSocketArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) []ContainerGroupContainerLivenessProbeTcpSocket {
 		return v.TcpSockets
 	}).(ContainerGroupContainerLivenessProbeTcpSocketArrayOutput)
 }
 
+// Check the timeout, the default is 1 second, the minimum is 1 second.
 func (o ContainerGroupContainerLivenessProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
@@ -826,8 +850,9 @@ func (o ContainerGroupContainerLivenessProbeExecArrayOutput) Index(i pulumi.IntI
 }
 
 type ContainerGroupContainerLivenessProbeHttpGet struct {
-	Path   *string `pulumi:"path"`
-	Port   *int    `pulumi:"port"`
+	Path *string `pulumi:"path"`
+	Port *int    `pulumi:"port"`
+	// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
 	Scheme *string `pulumi:"scheme"`
 }
 
@@ -843,8 +868,9 @@ type ContainerGroupContainerLivenessProbeHttpGetInput interface {
 }
 
 type ContainerGroupContainerLivenessProbeHttpGetArgs struct {
-	Path   pulumi.StringPtrInput `pulumi:"path"`
-	Port   pulumi.IntPtrInput    `pulumi:"port"`
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	Port pulumi.IntPtrInput    `pulumi:"port"`
+	// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
 	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
 }
 
@@ -907,6 +933,7 @@ func (o ContainerGroupContainerLivenessProbeHttpGetOutput) Port() pulumi.IntPtrO
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
 func (o ContainerGroupContainerLivenessProbeHttpGetOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbeHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
 }
@@ -1126,14 +1153,22 @@ func (o ContainerGroupContainerPortArrayOutput) Index(i pulumi.IntInput) Contain
 }
 
 type ContainerGroupContainerReadinessProbe struct {
-	Execs               []ContainerGroupContainerReadinessProbeExec      `pulumi:"execs"`
-	FailureThreshold    *int                                             `pulumi:"failureThreshold"`
-	HttpGets            []ContainerGroupContainerReadinessProbeHttpGet   `pulumi:"httpGets"`
-	InitialDelaySeconds *int                                             `pulumi:"initialDelaySeconds"`
-	PeriodSeconds       *int                                             `pulumi:"periodSeconds"`
-	SuccessThreshold    *int                                             `pulumi:"successThreshold"`
-	TcpSockets          []ContainerGroupContainerReadinessProbeTcpSocket `pulumi:"tcpSockets"`
-	TimeoutSeconds      *int                                             `pulumi:"timeoutSeconds"`
+	// Health check using command line method. See `exec` below.
+	Execs []ContainerGroupContainerReadinessProbeExec `pulumi:"execs"`
+	// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+	FailureThreshold *int `pulumi:"failureThreshold"`
+	// Health check using HTTP request method. See `httpGet` below.
+	HttpGets []ContainerGroupContainerReadinessProbeHttpGet `pulumi:"httpGets"`
+	// Check the time to start execution, calculated from the completion of container startup.
+	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
+	// Buffer time for the program to handle operations before closing.
+	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+	SuccessThreshold *int `pulumi:"successThreshold"`
+	// Health check using TCP socket method. See `tcpSocket` below.
+	TcpSockets []ContainerGroupContainerReadinessProbeTcpSocket `pulumi:"tcpSockets"`
+	// Check the timeout, the default is 1 second, the minimum is 1 second.
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
 
 // ContainerGroupContainerReadinessProbeInput is an input type that accepts ContainerGroupContainerReadinessProbeArgs and ContainerGroupContainerReadinessProbeOutput values.
@@ -1148,14 +1183,22 @@ type ContainerGroupContainerReadinessProbeInput interface {
 }
 
 type ContainerGroupContainerReadinessProbeArgs struct {
-	Execs               ContainerGroupContainerReadinessProbeExecArrayInput      `pulumi:"execs"`
-	FailureThreshold    pulumi.IntPtrInput                                       `pulumi:"failureThreshold"`
-	HttpGets            ContainerGroupContainerReadinessProbeHttpGetArrayInput   `pulumi:"httpGets"`
-	InitialDelaySeconds pulumi.IntPtrInput                                       `pulumi:"initialDelaySeconds"`
-	PeriodSeconds       pulumi.IntPtrInput                                       `pulumi:"periodSeconds"`
-	SuccessThreshold    pulumi.IntPtrInput                                       `pulumi:"successThreshold"`
-	TcpSockets          ContainerGroupContainerReadinessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
-	TimeoutSeconds      pulumi.IntPtrInput                                       `pulumi:"timeoutSeconds"`
+	// Health check using command line method. See `exec` below.
+	Execs ContainerGroupContainerReadinessProbeExecArrayInput `pulumi:"execs"`
+	// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// Health check using HTTP request method. See `httpGet` below.
+	HttpGets ContainerGroupContainerReadinessProbeHttpGetArrayInput `pulumi:"httpGets"`
+	// Check the time to start execution, calculated from the completion of container startup.
+	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
+	// Buffer time for the program to handle operations before closing.
+	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
+	// Health check using TCP socket method. See `tcpSocket` below.
+	TcpSockets ContainerGroupContainerReadinessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
+	// Check the timeout, the default is 1 second, the minimum is 1 second.
+	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 }
 
 func (ContainerGroupContainerReadinessProbeArgs) ElementType() reflect.Type {
@@ -1209,40 +1252,48 @@ func (o ContainerGroupContainerReadinessProbeOutput) ToContainerGroupContainerRe
 	return o
 }
 
+// Health check using command line method. See `exec` below.
 func (o ContainerGroupContainerReadinessProbeOutput) Execs() ContainerGroupContainerReadinessProbeExecArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) []ContainerGroupContainerReadinessProbeExec {
 		return v.Execs
 	}).(ContainerGroupContainerReadinessProbeExecArrayOutput)
 }
 
+// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
 func (o ContainerGroupContainerReadinessProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
 }
 
+// Health check using HTTP request method. See `httpGet` below.
 func (o ContainerGroupContainerReadinessProbeOutput) HttpGets() ContainerGroupContainerReadinessProbeHttpGetArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) []ContainerGroupContainerReadinessProbeHttpGet {
 		return v.HttpGets
 	}).(ContainerGroupContainerReadinessProbeHttpGetArrayOutput)
 }
 
+// Check the time to start execution, calculated from the completion of container startup.
 func (o ContainerGroupContainerReadinessProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
 }
 
+// Buffer time for the program to handle operations before closing.
 func (o ContainerGroupContainerReadinessProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
+// The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
 func (o ContainerGroupContainerReadinessProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
 }
 
+// Health check using TCP socket method. See `tcpSocket` below.
 func (o ContainerGroupContainerReadinessProbeOutput) TcpSockets() ContainerGroupContainerReadinessProbeTcpSocketArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) []ContainerGroupContainerReadinessProbeTcpSocket {
 		return v.TcpSockets
 	}).(ContainerGroupContainerReadinessProbeTcpSocketArrayOutput)
 }
 
+// Check the timeout, the default is 1 second, the minimum is 1 second.
 func (o ContainerGroupContainerReadinessProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
@@ -1362,8 +1413,9 @@ func (o ContainerGroupContainerReadinessProbeExecArrayOutput) Index(i pulumi.Int
 }
 
 type ContainerGroupContainerReadinessProbeHttpGet struct {
-	Path   *string `pulumi:"path"`
-	Port   *int    `pulumi:"port"`
+	Path *string `pulumi:"path"`
+	Port *int    `pulumi:"port"`
+	// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
 	Scheme *string `pulumi:"scheme"`
 }
 
@@ -1379,8 +1431,9 @@ type ContainerGroupContainerReadinessProbeHttpGetInput interface {
 }
 
 type ContainerGroupContainerReadinessProbeHttpGetArgs struct {
-	Path   pulumi.StringPtrInput `pulumi:"path"`
-	Port   pulumi.IntPtrInput    `pulumi:"port"`
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	Port pulumi.IntPtrInput    `pulumi:"port"`
+	// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
 	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
 }
 
@@ -1443,6 +1496,7 @@ func (o ContainerGroupContainerReadinessProbeHttpGetOutput) Port() pulumi.IntPtr
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
 func (o ContainerGroupContainerReadinessProbeHttpGetOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbeHttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
 }
@@ -1563,8 +1617,9 @@ func (o ContainerGroupContainerReadinessProbeTcpSocketArrayOutput) Index(i pulum
 
 type ContainerGroupContainerSecurityContext struct {
 	Capabilities []ContainerGroupContainerSecurityContextCapability `pulumi:"capabilities"`
-	Privileged   *bool                                              `pulumi:"privileged"`
-	RunAsUser    *int                                               `pulumi:"runAsUser"`
+	// Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
+	Privileged *bool `pulumi:"privileged"`
+	RunAsUser  *int  `pulumi:"runAsUser"`
 }
 
 // ContainerGroupContainerSecurityContextInput is an input type that accepts ContainerGroupContainerSecurityContextArgs and ContainerGroupContainerSecurityContextOutput values.
@@ -1580,8 +1635,9 @@ type ContainerGroupContainerSecurityContextInput interface {
 
 type ContainerGroupContainerSecurityContextArgs struct {
 	Capabilities ContainerGroupContainerSecurityContextCapabilityArrayInput `pulumi:"capabilities"`
-	Privileged   pulumi.BoolPtrInput                                        `pulumi:"privileged"`
-	RunAsUser    pulumi.IntPtrInput                                         `pulumi:"runAsUser"`
+	// Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
+	Privileged pulumi.BoolPtrInput `pulumi:"privileged"`
+	RunAsUser  pulumi.IntPtrInput  `pulumi:"runAsUser"`
 }
 
 func (ContainerGroupContainerSecurityContextArgs) ElementType() reflect.Type {
@@ -1641,6 +1697,7 @@ func (o ContainerGroupContainerSecurityContextOutput) Capabilities() ContainerGr
 	}).(ContainerGroupContainerSecurityContextCapabilityArrayOutput)
 }
 
+// Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
 func (o ContainerGroupContainerSecurityContextOutput) Privileged() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerGroupContainerSecurityContext) *bool { return v.Privileged }).(pulumi.BoolPtrOutput)
 }
@@ -3626,6 +3683,7 @@ func (o ContainerGroupVolumeArrayOutput) Index(i pulumi.IntInput) ContainerGroup
 }
 
 type ContainerGroupVolumeConfigFileVolumeConfigFileToPath struct {
+	// The content of the configuration file. Maximum size: 32 KB.
 	Content *string `pulumi:"content"`
 	Path    *string `pulumi:"path"`
 }
@@ -3642,6 +3700,7 @@ type ContainerGroupVolumeConfigFileVolumeConfigFileToPathInput interface {
 }
 
 type ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs struct {
+	// The content of the configuration file. Maximum size: 32 KB.
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	Path    pulumi.StringPtrInput `pulumi:"path"`
 }
@@ -3697,6 +3756,7 @@ func (o ContainerGroupVolumeConfigFileVolumeConfigFileToPathOutput) ToContainerG
 	return o
 }
 
+// The content of the configuration file. Maximum size: 32 KB.
 func (o ContainerGroupVolumeConfigFileVolumeConfigFileToPathOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupVolumeConfigFileVolumeConfigFileToPath) *string { return v.Content }).(pulumi.StringPtrOutput)
 }

@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Sls.Outputs
     [OutputType]
     public sealed class AlertConfigurationSeverityConfiguration
     {
+        /// <summary>
+        /// Trigger condition. See `eval_condition` below.
+        /// </summary>
         public readonly Outputs.AlertConfigurationSeverityConfigurationEvalCondition? EvalCondition;
+        /// <summary>
+        /// Alarm severity.
+        /// </summary>
         public readonly int? Severity;
 
         [OutputConstructor]

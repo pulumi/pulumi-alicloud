@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class HoneypotProbeHoneypotBindListBindPortList {
+    /**
+     * @return Whether to bind the port.
+     * 
+     */
     private @Nullable Boolean bindPort;
+    /**
+     * @return End port.
+     * 
+     */
     private @Nullable Integer endPort;
+    /**
+     * @return Whether the port is fixed.
+     * 
+     */
     private @Nullable Boolean fixed;
+    /**
+     * @return Start port.
+     * 
+     */
     private @Nullable Integer startPort;
+    /**
+     * @return Destination port.
+     * 
+     */
     private @Nullable Integer targetPort;
 
     private HoneypotProbeHoneypotBindListBindPortList() {}
+    /**
+     * @return Whether to bind the port.
+     * 
+     */
     public Optional<Boolean> bindPort() {
         return Optional.ofNullable(this.bindPort);
     }
+    /**
+     * @return End port.
+     * 
+     */
     public Optional<Integer> endPort() {
         return Optional.ofNullable(this.endPort);
     }
+    /**
+     * @return Whether the port is fixed.
+     * 
+     */
     public Optional<Boolean> fixed() {
         return Optional.ofNullable(this.fixed);
     }
+    /**
+     * @return Start port.
+     * 
+     */
     public Optional<Integer> startPort() {
         return Optional.ofNullable(this.startPort);
     }
+    /**
+     * @return Destination port.
+     * 
+     */
     public Optional<Integer> targetPort() {
         return Optional.ofNullable(this.targetPort);
     }

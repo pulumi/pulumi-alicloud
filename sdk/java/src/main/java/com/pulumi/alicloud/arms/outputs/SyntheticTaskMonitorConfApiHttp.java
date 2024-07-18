@@ -16,29 +16,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SyntheticTaskMonitorConfApiHttp {
+    /**
+     * @return Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
+     * 
+     */
     private @Nullable Integer connectTimeout;
+    /**
+     * @return HTTP method, GET or POST.
+     * 
+     */
     private @Nullable String method;
+    /**
+     * @return HTTP request body. See `request_body` below.
+     * 
+     */
     private @Nullable SyntheticTaskMonitorConfApiHttpRequestBody requestBody;
+    /**
+     * @return HTTP request header.
+     * 
+     */
     private @Nullable Map<String,Object> requestHeaders;
+    /**
+     * @return The target URL.
+     * 
+     */
     private String targetUrl;
+    /**
+     * @return TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+     * 
+     */
     private @Nullable Integer timeout;
 
     private SyntheticTaskMonitorConfApiHttp() {}
+    /**
+     * @return Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
+     * 
+     */
     public Optional<Integer> connectTimeout() {
         return Optional.ofNullable(this.connectTimeout);
     }
+    /**
+     * @return HTTP method, GET or POST.
+     * 
+     */
     public Optional<String> method() {
         return Optional.ofNullable(this.method);
     }
+    /**
+     * @return HTTP request body. See `request_body` below.
+     * 
+     */
     public Optional<SyntheticTaskMonitorConfApiHttpRequestBody> requestBody() {
         return Optional.ofNullable(this.requestBody);
     }
+    /**
+     * @return HTTP request header.
+     * 
+     */
     public Map<String,Object> requestHeaders() {
         return this.requestHeaders == null ? Map.of() : this.requestHeaders;
     }
+    /**
+     * @return The target URL.
+     * 
+     */
     public String targetUrl() {
         return this.targetUrl;
     }
+    /**
+     * @return TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+     * 
+     */
     public Optional<Integer> timeout() {
         return Optional.ofNullable(this.timeout);
     }

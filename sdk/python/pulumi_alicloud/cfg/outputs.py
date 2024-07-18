@@ -110,6 +110,10 @@ class AggregateCompliancePackConfigRuleConfigRuleParameter(dict):
     def __init__(__self__, *,
                  parameter_name: Optional[str] = None,
                  parameter_value: Optional[str] = None):
+        """
+        :param str parameter_name: The Parameter Name.
+        :param str parameter_value: The Parameter Value.
+        """
         if parameter_name is not None:
             pulumi.set(__self__, "parameter_name", parameter_name)
         if parameter_value is not None:
@@ -118,11 +122,17 @@ class AggregateCompliancePackConfigRuleConfigRuleParameter(dict):
     @property
     @pulumi.getter(name="parameterName")
     def parameter_name(self) -> Optional[str]:
+        """
+        The Parameter Name.
+        """
         return pulumi.get(self, "parameter_name")
 
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> Optional[str]:
+        """
+        The Parameter Value.
+        """
         return pulumi.get(self, "parameter_value")
 
 
@@ -296,6 +306,10 @@ class CompliancePackConfigRuleConfigRuleParameter(dict):
     def __init__(__self__, *,
                  parameter_name: Optional[str] = None,
                  parameter_value: Optional[str] = None):
+        """
+        :param str parameter_name: The parameter name.
+        :param str parameter_value: The parameter value.
+        """
         if parameter_name is not None:
             pulumi.set(__self__, "parameter_name", parameter_name)
         if parameter_value is not None:
@@ -304,11 +318,17 @@ class CompliancePackConfigRuleConfigRuleParameter(dict):
     @property
     @pulumi.getter(name="parameterName")
     def parameter_name(self) -> Optional[str]:
+        """
+        The parameter name.
+        """
         return pulumi.get(self, "parameter_name")
 
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> Optional[str]:
+        """
+        The parameter value.
+        """
         return pulumi.get(self, "parameter_value")
 
 

@@ -14,16 +14,32 @@ public final class ParameterGroupParameterArgs extends com.pulumi.resources.Reso
 
     public static final ParameterGroupParameterArgs Empty = new ParameterGroupParameterArgs();
 
+    /**
+     * The name of a parameter in the parameter template.
+     * 
+     */
     @Import(name="paramName", required=true)
     private Output<String> paramName;
 
+    /**
+     * @return The name of a parameter in the parameter template.
+     * 
+     */
     public Output<String> paramName() {
         return this.paramName;
     }
 
+    /**
+     * The value of a parameter in the parameter template.
+     * 
+     */
     @Import(name="paramValue", required=true)
     private Output<String> paramValue;
 
+    /**
+     * @return The value of a parameter in the parameter template.
+     * 
+     */
     public Output<String> paramValue() {
         return this.paramValue;
     }
@@ -53,20 +69,44 @@ public final class ParameterGroupParameterArgs extends com.pulumi.resources.Reso
             $ = new ParameterGroupParameterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param paramName The name of a parameter in the parameter template.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paramName(Output<String> paramName) {
             $.paramName = paramName;
             return this;
         }
 
+        /**
+         * @param paramName The name of a parameter in the parameter template.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paramName(String paramName) {
             return paramName(Output.of(paramName));
         }
 
+        /**
+         * @param paramValue The value of a parameter in the parameter template.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paramValue(Output<String> paramValue) {
             $.paramValue = paramValue;
             return this;
         }
 
+        /**
+         * @param paramValue The value of a parameter in the parameter template.
+         * 
+         * @return builder
+         * 
+         */
         public Builder paramValue(String paramValue) {
             return paramValue(Output.of(paramValue));
         }

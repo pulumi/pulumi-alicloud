@@ -36,29 +36,35 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := resourcemanager.GetResourceDirectories(ctx, nil, nil);
-// if err != nil {
-// return err
-// }
-// var defaultResourceDirectory []*resourcemanager.ResourceDirectory
 //
-//	for index := 0; index < %!v(PANIC=Format method: fatal: A failure has occurred: unlowered conditional expression @ example.pp:5,13-52); index++ {
-//	    key0 := index
-//	    _ := index
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := resourcemanager.GetResourceDirectories(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var tmp0 float64
+//			if len(_default.Directories) > 0 {
+//				tmp0 = 0
+//			} else {
+//				tmp0 = 1
+//			}
+//			var defaultResourceDirectory []*resourcemanager.ResourceDirectory
+//			for index := 0; index < tmp0; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := resourcemanager.NewResourceDirectory(ctx, fmt.Sprintf("default-%v", key0), &resourcemanager.ResourceDirectoryArgs{
+//					Status: pulumi.String("Enabled"),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultResourceDirectory = append(defaultResourceDirectory, __res)
+//			}
+//			return nil
+//		})
+//	}
 //
-// __res, err := resourcemanager.NewResourceDirectory(ctx, fmt.Sprintf("default-%v", key0), &resourcemanager.ResourceDirectoryArgs{
-// Status: pulumi.String("Enabled"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultResourceDirectory = append(defaultResourceDirectory, __res)
-// }
-// return nil
-// })
-// }
 // ```
 //
 // ## Import

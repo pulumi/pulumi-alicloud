@@ -15,6 +15,9 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The destination ip of the egress entry.
+        /// </summary>
         [Input("destinationCidrIp")]
         public Input<string>? DestinationCidrIp { get; set; }
 

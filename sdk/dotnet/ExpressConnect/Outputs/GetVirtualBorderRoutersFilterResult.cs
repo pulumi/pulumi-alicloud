@@ -13,7 +13,14 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
     [OutputType]
     public sealed class GetVirtualBorderRoutersFilterResult
     {
+        /// <summary>
+        /// The key of the field to filter by, as defined by
+        /// [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Set of values that are accepted for the given field.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

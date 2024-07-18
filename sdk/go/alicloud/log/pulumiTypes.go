@@ -2149,8 +2149,11 @@ func (o StoreEncryptConfPtrOutput) UserCmkInfo() StoreEncryptConfUserCmkInfoPtrO
 }
 
 type StoreEncryptConfUserCmkInfo struct {
-	Arn      *string `pulumi:"arn"`
+	// Role arn.
+	Arn *string `pulumi:"arn"`
+	// User master key id.
 	CmkKeyId *string `pulumi:"cmkKeyId"`
+	// Region id where the user master key id is located.
 	RegionId *string `pulumi:"regionId"`
 }
 
@@ -2166,8 +2169,11 @@ type StoreEncryptConfUserCmkInfoInput interface {
 }
 
 type StoreEncryptConfUserCmkInfoArgs struct {
-	Arn      pulumi.StringPtrInput `pulumi:"arn"`
+	// Role arn.
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// User master key id.
 	CmkKeyId pulumi.StringPtrInput `pulumi:"cmkKeyId"`
+	// Region id where the user master key id is located.
 	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
 }
 
@@ -2248,14 +2254,17 @@ func (o StoreEncryptConfUserCmkInfoOutput) ToStoreEncryptConfUserCmkInfoPtrOutpu
 	}).(StoreEncryptConfUserCmkInfoPtrOutput)
 }
 
+// Role arn.
 func (o StoreEncryptConfUserCmkInfoOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) *string { return v.Arn }).(pulumi.StringPtrOutput)
 }
 
+// User master key id.
 func (o StoreEncryptConfUserCmkInfoOutput) CmkKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) *string { return v.CmkKeyId }).(pulumi.StringPtrOutput)
 }
 
+// Region id where the user master key id is located.
 func (o StoreEncryptConfUserCmkInfoOutput) RegionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreEncryptConfUserCmkInfo) *string { return v.RegionId }).(pulumi.StringPtrOutput)
 }
@@ -2284,6 +2293,7 @@ func (o StoreEncryptConfUserCmkInfoPtrOutput) Elem() StoreEncryptConfUserCmkInfo
 	}).(StoreEncryptConfUserCmkInfoOutput)
 }
 
+// Role arn.
 func (o StoreEncryptConfUserCmkInfoPtrOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StoreEncryptConfUserCmkInfo) *string {
 		if v == nil {
@@ -2293,6 +2303,7 @@ func (o StoreEncryptConfUserCmkInfoPtrOutput) Arn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// User master key id.
 func (o StoreEncryptConfUserCmkInfoPtrOutput) CmkKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StoreEncryptConfUserCmkInfo) *string {
 		if v == nil {
@@ -2302,6 +2313,7 @@ func (o StoreEncryptConfUserCmkInfoPtrOutput) CmkKeyId() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Region id where the user master key id is located.
 func (o StoreEncryptConfUserCmkInfoPtrOutput) RegionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StoreEncryptConfUserCmkInfo) *string {
 		if v == nil {

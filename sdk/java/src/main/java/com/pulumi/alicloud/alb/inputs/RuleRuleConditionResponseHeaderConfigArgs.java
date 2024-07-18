@@ -23,9 +23,17 @@ public final class RuleRuleConditionResponseHeaderConfigArgs extends com.pulumi.
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+     * 
+     */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
+    /**
+     * @return Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+     * 
+     */
     public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -64,15 +72,33 @@ public final class RuleRuleConditionResponseHeaderConfigArgs extends com.pulumi.
             return key(Output.of(key));
         }
 
+        /**
+         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
+        /**
+         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

@@ -14,23 +14,47 @@ public final class ClusterMetaStoreConfArgs extends com.pulumi.resources.Resourc
 
     public static final ClusterMetaStoreConfArgs Empty = new ClusterMetaStoreConfArgs();
 
+    /**
+     * Custom rds database password.
+     * 
+     */
     @Import(name="dbPassword", required=true)
     private Output<String> dbPassword;
 
+    /**
+     * @return Custom rds database password.
+     * 
+     */
     public Output<String> dbPassword() {
         return this.dbPassword;
     }
 
+    /**
+     * Custom rds database connection url.
+     * 
+     */
     @Import(name="dbUrl", required=true)
     private Output<String> dbUrl;
 
+    /**
+     * @return Custom rds database connection url.
+     * 
+     */
     public Output<String> dbUrl() {
         return this.dbUrl;
     }
 
+    /**
+     * Custom rds database user name.
+     * 
+     */
     @Import(name="dbUserName", required=true)
     private Output<String> dbUserName;
 
+    /**
+     * @return Custom rds database user name.
+     * 
+     */
     public Output<String> dbUserName() {
         return this.dbUserName;
     }
@@ -61,29 +85,65 @@ public final class ClusterMetaStoreConfArgs extends com.pulumi.resources.Resourc
             $ = new ClusterMetaStoreConfArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dbPassword Custom rds database password.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbPassword(Output<String> dbPassword) {
             $.dbPassword = dbPassword;
             return this;
         }
 
+        /**
+         * @param dbPassword Custom rds database password.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbPassword(String dbPassword) {
             return dbPassword(Output.of(dbPassword));
         }
 
+        /**
+         * @param dbUrl Custom rds database connection url.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbUrl(Output<String> dbUrl) {
             $.dbUrl = dbUrl;
             return this;
         }
 
+        /**
+         * @param dbUrl Custom rds database connection url.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbUrl(String dbUrl) {
             return dbUrl(Output.of(dbUrl));
         }
 
+        /**
+         * @param dbUserName Custom rds database user name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbUserName(Output<String> dbUserName) {
             $.dbUserName = dbUserName;
             return this;
         }
 
+        /**
+         * @param dbUserName Custom rds database user name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dbUserName(String dbUserName) {
             return dbUserName(Output.of(dbUserName));
         }

@@ -643,17 +643,27 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableList(dict):
     def __init__(__self__, *,
                  local_route_entry_lists: Sequence['outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList'],
                  local_route_table_id: str):
+        """
+        :param Sequence['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs'] local_route_entry_lists: The list of route entries of the local VPC. See `local_route_entry_list` below.
+        :param str local_route_table_id: The ID of the route table of the local VPC.
+        """
         pulumi.set(__self__, "local_route_entry_lists", local_route_entry_lists)
         pulumi.set(__self__, "local_route_table_id", local_route_table_id)
 
     @property
     @pulumi.getter(name="localRouteEntryLists")
     def local_route_entry_lists(self) -> Sequence['outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList']:
+        """
+        The list of route entries of the local VPC. See `local_route_entry_list` below.
+        """
         return pulumi.get(self, "local_route_entry_lists")
 
     @property
     @pulumi.getter(name="localRouteTableId")
     def local_route_table_id(self) -> str:
+        """
+        The ID of the route table of the local VPC.
+        """
         return pulumi.get(self, "local_route_table_id")
 
 
@@ -681,17 +691,27 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList(dict):
     def __init__(__self__, *,
                  local_destination_cidr: str,
                  local_next_hop_instance_id: str):
+        """
+        :param str local_destination_cidr: The target network segment of the local VPC.
+        :param str local_next_hop_instance_id: The ID of the next-hop instance in the local VPC.
+        """
         pulumi.set(__self__, "local_destination_cidr", local_destination_cidr)
         pulumi.set(__self__, "local_next_hop_instance_id", local_next_hop_instance_id)
 
     @property
     @pulumi.getter(name="localDestinationCidr")
     def local_destination_cidr(self) -> str:
+        """
+        The target network segment of the local VPC.
+        """
         return pulumi.get(self, "local_destination_cidr")
 
     @property
     @pulumi.getter(name="localNextHopInstanceId")
     def local_next_hop_instance_id(self) -> str:
+        """
+        The ID of the next-hop instance in the local VPC.
+        """
         return pulumi.get(self, "local_next_hop_instance_id")
 
 
@@ -836,17 +856,27 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList(dict):
     def __init__(__self__, *,
                  peer_route_entry_lists: Sequence['outputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList'],
                  peer_route_table_id: str):
+        """
+        :param Sequence['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs'] peer_route_entry_lists: Peer VPC route entry list information. See `peer_route_entry_list` below.
+        :param str peer_route_table_id: The ID of the route table of the peer VPC.
+        """
         pulumi.set(__self__, "peer_route_entry_lists", peer_route_entry_lists)
         pulumi.set(__self__, "peer_route_table_id", peer_route_table_id)
 
     @property
     @pulumi.getter(name="peerRouteEntryLists")
     def peer_route_entry_lists(self) -> Sequence['outputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList']:
+        """
+        Peer VPC route entry list information. See `peer_route_entry_list` below.
+        """
         return pulumi.get(self, "peer_route_entry_lists")
 
     @property
     @pulumi.getter(name="peerRouteTableId")
     def peer_route_table_id(self) -> str:
+        """
+        The ID of the route table of the peer VPC.
+        """
         return pulumi.get(self, "peer_route_table_id")
 
 
@@ -874,17 +904,27 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList(dict):
     def __init__(__self__, *,
                  peer_destination_cidr: str,
                  peer_next_hop_instance_id: str):
+        """
+        :param str peer_destination_cidr: The target network segment of the peer VPC.
+        :param str peer_next_hop_instance_id: The ID of the next-hop instance in the peer VPC.
+        """
         pulumi.set(__self__, "peer_destination_cidr", peer_destination_cidr)
         pulumi.set(__self__, "peer_next_hop_instance_id", peer_next_hop_instance_id)
 
     @property
     @pulumi.getter(name="peerDestinationCidr")
     def peer_destination_cidr(self) -> str:
+        """
+        The target network segment of the peer VPC.
+        """
         return pulumi.get(self, "peer_destination_cidr")
 
     @property
     @pulumi.getter(name="peerNextHopInstanceId")
     def peer_next_hop_instance_id(self) -> str:
+        """
+        The ID of the next-hop instance in the peer VPC.
+        """
         return pulumi.get(self, "peer_next_hop_instance_id")
 
 

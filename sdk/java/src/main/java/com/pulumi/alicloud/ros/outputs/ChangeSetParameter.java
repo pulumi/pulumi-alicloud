@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class ChangeSetParameter {
+    /**
+     * @return The parameter key.
+     * 
+     */
     private String parameterKey;
+    /**
+     * @return The parameter value.
+     * 
+     */
     private String parameterValue;
 
     private ChangeSetParameter() {}
+    /**
+     * @return The parameter key.
+     * 
+     */
     public String parameterKey() {
         return this.parameterKey;
     }
+    /**
+     * @return The parameter value.
+     * 
+     */
     public String parameterValue() {
         return this.parameterValue;
     }

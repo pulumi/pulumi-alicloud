@@ -14,7 +14,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ChangeSetParameter struct {
-	ParameterKey   string `pulumi:"parameterKey"`
+	// The parameter key.
+	ParameterKey string `pulumi:"parameterKey"`
+	// The parameter value.
 	ParameterValue string `pulumi:"parameterValue"`
 }
 
@@ -30,7 +32,9 @@ type ChangeSetParameterInput interface {
 }
 
 type ChangeSetParameterArgs struct {
-	ParameterKey   pulumi.StringInput `pulumi:"parameterKey"`
+	// The parameter key.
+	ParameterKey pulumi.StringInput `pulumi:"parameterKey"`
+	// The parameter value.
 	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
 }
 
@@ -85,10 +89,12 @@ func (o ChangeSetParameterOutput) ToChangeSetParameterOutputWithContext(ctx cont
 	return o
 }
 
+// The parameter key.
 func (o ChangeSetParameterOutput) ParameterKey() pulumi.StringOutput {
 	return o.ApplyT(func(v ChangeSetParameter) string { return v.ParameterKey }).(pulumi.StringOutput)
 }
 
+// The parameter value.
 func (o ChangeSetParameterOutput) ParameterValue() pulumi.StringOutput {
 	return o.ApplyT(func(v ChangeSetParameter) string { return v.ParameterValue }).(pulumi.StringOutput)
 }
@@ -114,7 +120,9 @@ func (o ChangeSetParameterArrayOutput) Index(i pulumi.IntInput) ChangeSetParamet
 }
 
 type StackGroupParameter struct {
-	ParameterKey   *string `pulumi:"parameterKey"`
+	// The parameter key.
+	ParameterKey *string `pulumi:"parameterKey"`
+	// The parameter value.
 	ParameterValue *string `pulumi:"parameterValue"`
 }
 
@@ -130,7 +138,9 @@ type StackGroupParameterInput interface {
 }
 
 type StackGroupParameterArgs struct {
-	ParameterKey   pulumi.StringPtrInput `pulumi:"parameterKey"`
+	// The parameter key.
+	ParameterKey pulumi.StringPtrInput `pulumi:"parameterKey"`
+	// The parameter value.
 	ParameterValue pulumi.StringPtrInput `pulumi:"parameterValue"`
 }
 
@@ -185,10 +195,12 @@ func (o StackGroupParameterOutput) ToStackGroupParameterOutputWithContext(ctx co
 	return o
 }
 
+// The parameter key.
 func (o StackGroupParameterOutput) ParameterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackGroupParameter) *string { return v.ParameterKey }).(pulumi.StringPtrOutput)
 }
 
+// The parameter value.
 func (o StackGroupParameterOutput) ParameterValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackGroupParameter) *string { return v.ParameterValue }).(pulumi.StringPtrOutput)
 }
@@ -214,7 +226,9 @@ func (o StackGroupParameterArrayOutput) Index(i pulumi.IntInput) StackGroupParam
 }
 
 type StackInstanceParameterOverride struct {
-	ParameterKey   *string `pulumi:"parameterKey"`
+	// The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+	ParameterKey *string `pulumi:"parameterKey"`
+	// The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
 	ParameterValue *string `pulumi:"parameterValue"`
 }
 
@@ -230,7 +244,9 @@ type StackInstanceParameterOverrideInput interface {
 }
 
 type StackInstanceParameterOverrideArgs struct {
-	ParameterKey   pulumi.StringPtrInput `pulumi:"parameterKey"`
+	// The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+	ParameterKey pulumi.StringPtrInput `pulumi:"parameterKey"`
+	// The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
 	ParameterValue pulumi.StringPtrInput `pulumi:"parameterValue"`
 }
 
@@ -285,10 +301,12 @@ func (o StackInstanceParameterOverrideOutput) ToStackInstanceParameterOverrideOu
 	return o
 }
 
+// The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
 func (o StackInstanceParameterOverrideOutput) ParameterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackInstanceParameterOverride) *string { return v.ParameterKey }).(pulumi.StringPtrOutput)
 }
 
+// The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
 func (o StackInstanceParameterOverrideOutput) ParameterValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackInstanceParameterOverride) *string { return v.ParameterValue }).(pulumi.StringPtrOutput)
 }
@@ -314,8 +332,10 @@ func (o StackInstanceParameterOverrideArrayOutput) Index(i pulumi.IntInput) Stac
 }
 
 type StackParameter struct {
-	ParameterKey   *string `pulumi:"parameterKey"`
-	ParameterValue string  `pulumi:"parameterValue"`
+	// The parameter key.
+	ParameterKey *string `pulumi:"parameterKey"`
+	// The parameter value.
+	ParameterValue string `pulumi:"parameterValue"`
 }
 
 // StackParameterInput is an input type that accepts StackParameterArgs and StackParameterOutput values.
@@ -330,8 +350,10 @@ type StackParameterInput interface {
 }
 
 type StackParameterArgs struct {
-	ParameterKey   pulumi.StringPtrInput `pulumi:"parameterKey"`
-	ParameterValue pulumi.StringInput    `pulumi:"parameterValue"`
+	// The parameter key.
+	ParameterKey pulumi.StringPtrInput `pulumi:"parameterKey"`
+	// The parameter value.
+	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
 }
 
 func (StackParameterArgs) ElementType() reflect.Type {
@@ -385,10 +407,12 @@ func (o StackParameterOutput) ToStackParameterOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The parameter key.
 func (o StackParameterOutput) ParameterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StackParameter) *string { return v.ParameterKey }).(pulumi.StringPtrOutput)
 }
 
+// The parameter value.
 func (o StackParameterOutput) ParameterValue() pulumi.StringOutput {
 	return o.ApplyT(func(v StackParameter) string { return v.ParameterValue }).(pulumi.StringOutput)
 }
@@ -414,7 +438,9 @@ func (o StackParameterArrayOutput) Index(i pulumi.IntInput) StackParameterOutput
 }
 
 type TemplateScratchPreferenceParameter struct {
-	ParameterKey   string `pulumi:"parameterKey"`
+	// Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+	ParameterKey string `pulumi:"parameterKey"`
+	// Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
 	ParameterValue string `pulumi:"parameterValue"`
 }
 
@@ -430,7 +456,9 @@ type TemplateScratchPreferenceParameterInput interface {
 }
 
 type TemplateScratchPreferenceParameterArgs struct {
-	ParameterKey   pulumi.StringInput `pulumi:"parameterKey"`
+	// Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+	ParameterKey pulumi.StringInput `pulumi:"parameterKey"`
+	// Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
 	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
 }
 
@@ -485,10 +513,12 @@ func (o TemplateScratchPreferenceParameterOutput) ToTemplateScratchPreferencePar
 	return o
 }
 
+// Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
 func (o TemplateScratchPreferenceParameterOutput) ParameterKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TemplateScratchPreferenceParameter) string { return v.ParameterKey }).(pulumi.StringOutput)
 }
 
+// Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
 func (o TemplateScratchPreferenceParameterOutput) ParameterValue() pulumi.StringOutput {
 	return o.ApplyT(func(v TemplateScratchPreferenceParameter) string { return v.ParameterValue }).(pulumi.StringOutput)
 }
@@ -514,7 +544,9 @@ func (o TemplateScratchPreferenceParameterArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type TemplateScratchSourceResource struct {
-	ResourceId   string `pulumi:"resourceId"`
+	// The ID of the Source Resource.
+	ResourceId string `pulumi:"resourceId"`
+	// The type of the Source resource.
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -530,7 +562,9 @@ type TemplateScratchSourceResourceInput interface {
 }
 
 type TemplateScratchSourceResourceArgs struct {
-	ResourceId   pulumi.StringInput `pulumi:"resourceId"`
+	// The ID of the Source Resource.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The type of the Source resource.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
@@ -585,10 +619,12 @@ func (o TemplateScratchSourceResourceOutput) ToTemplateScratchSourceResourceOutp
 	return o
 }
 
+// The ID of the Source Resource.
 func (o TemplateScratchSourceResourceOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v TemplateScratchSourceResource) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
+// The type of the Source resource.
 func (o TemplateScratchSourceResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v TemplateScratchSourceResource) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -614,6 +650,7 @@ func (o TemplateScratchSourceResourceArrayOutput) Index(i pulumi.IntInput) Templ
 }
 
 type TemplateScratchSourceResourceGroup struct {
+	// The ID of the Source Resource Group.
 	ResourceGroupId     string   `pulumi:"resourceGroupId"`
 	ResourceTypeFilters []string `pulumi:"resourceTypeFilters"`
 }
@@ -630,6 +667,7 @@ type TemplateScratchSourceResourceGroupInput interface {
 }
 
 type TemplateScratchSourceResourceGroupArgs struct {
+	// The ID of the Source Resource Group.
 	ResourceGroupId     pulumi.StringInput      `pulumi:"resourceGroupId"`
 	ResourceTypeFilters pulumi.StringArrayInput `pulumi:"resourceTypeFilters"`
 }
@@ -711,6 +749,7 @@ func (o TemplateScratchSourceResourceGroupOutput) ToTemplateScratchSourceResourc
 	}).(TemplateScratchSourceResourceGroupPtrOutput)
 }
 
+// The ID of the Source Resource Group.
 func (o TemplateScratchSourceResourceGroupOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v TemplateScratchSourceResourceGroup) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -743,6 +782,7 @@ func (o TemplateScratchSourceResourceGroupPtrOutput) Elem() TemplateScratchSourc
 	}).(TemplateScratchSourceResourceGroupOutput)
 }
 
+// The ID of the Source Resource Group.
 func (o TemplateScratchSourceResourceGroupPtrOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TemplateScratchSourceResourceGroup) *string {
 		if v == nil {
@@ -762,6 +802,7 @@ func (o TemplateScratchSourceResourceGroupPtrOutput) ResourceTypeFilters() pulum
 }
 
 type TemplateScratchSourceTag struct {
+	// Source label. **NOTE:** A maximum of 10 source labels can be configured.
 	ResourceTags        map[string]interface{} `pulumi:"resourceTags"`
 	ResourceTypeFilters []string               `pulumi:"resourceTypeFilters"`
 }
@@ -778,6 +819,7 @@ type TemplateScratchSourceTagInput interface {
 }
 
 type TemplateScratchSourceTagArgs struct {
+	// Source label. **NOTE:** A maximum of 10 source labels can be configured.
 	ResourceTags        pulumi.MapInput         `pulumi:"resourceTags"`
 	ResourceTypeFilters pulumi.StringArrayInput `pulumi:"resourceTypeFilters"`
 }
@@ -859,6 +901,7 @@ func (o TemplateScratchSourceTagOutput) ToTemplateScratchSourceTagPtrOutputWithC
 	}).(TemplateScratchSourceTagPtrOutput)
 }
 
+// Source label. **NOTE:** A maximum of 10 source labels can be configured.
 func (o TemplateScratchSourceTagOutput) ResourceTags() pulumi.MapOutput {
 	return o.ApplyT(func(v TemplateScratchSourceTag) map[string]interface{} { return v.ResourceTags }).(pulumi.MapOutput)
 }
@@ -891,6 +934,7 @@ func (o TemplateScratchSourceTagPtrOutput) Elem() TemplateScratchSourceTagOutput
 	}).(TemplateScratchSourceTagOutput)
 }
 
+// Source label. **NOTE:** A maximum of 10 source labels can be configured.
 func (o TemplateScratchSourceTagPtrOutput) ResourceTags() pulumi.MapOutput {
 	return o.ApplyT(func(v *TemplateScratchSourceTag) map[string]interface{} {
 		if v == nil {

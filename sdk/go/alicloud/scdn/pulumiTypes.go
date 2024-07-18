@@ -14,11 +14,19 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type DomainCertInfo struct {
-	CertName    *string `pulumi:"certName"`
-	CertType    *string `pulumi:"certType"`
-	SslPri      *string `pulumi:"sslPri"`
+	// If You Enable HTTPS Here Certificate Name.
+	CertName *string `pulumi:"certName"`
+	// Certificate Type. Value Range:
+	// * upload: Certificate
+	// * cas: Certificate Authority Certificate.
+	// * free: Free Certificate.
+	CertType *string `pulumi:"certType"`
+	// Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+	SslPri *string `pulumi:"sslPri"`
+	// Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
 	SslProtocol *string `pulumi:"sslProtocol"`
-	SslPub      *string `pulumi:"sslPub"`
+	// If You Enable HTTPS Here Key.
+	SslPub *string `pulumi:"sslPub"`
 }
 
 // DomainCertInfoInput is an input type that accepts DomainCertInfoArgs and DomainCertInfoOutput values.
@@ -33,11 +41,19 @@ type DomainCertInfoInput interface {
 }
 
 type DomainCertInfoArgs struct {
-	CertName    pulumi.StringPtrInput `pulumi:"certName"`
-	CertType    pulumi.StringPtrInput `pulumi:"certType"`
-	SslPri      pulumi.StringPtrInput `pulumi:"sslPri"`
+	// If You Enable HTTPS Here Certificate Name.
+	CertName pulumi.StringPtrInput `pulumi:"certName"`
+	// Certificate Type. Value Range:
+	// * upload: Certificate
+	// * cas: Certificate Authority Certificate.
+	// * free: Free Certificate.
+	CertType pulumi.StringPtrInput `pulumi:"certType"`
+	// Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+	SslPri pulumi.StringPtrInput `pulumi:"sslPri"`
+	// Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
 	SslProtocol pulumi.StringPtrInput `pulumi:"sslProtocol"`
-	SslPub      pulumi.StringPtrInput `pulumi:"sslPub"`
+	// If You Enable HTTPS Here Key.
+	SslPub pulumi.StringPtrInput `pulumi:"sslPub"`
 }
 
 func (DomainCertInfoArgs) ElementType() reflect.Type {
@@ -91,22 +107,30 @@ func (o DomainCertInfoOutput) ToDomainCertInfoOutputWithContext(ctx context.Cont
 	return o
 }
 
+// If You Enable HTTPS Here Certificate Name.
 func (o DomainCertInfoOutput) CertName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainCertInfo) *string { return v.CertName }).(pulumi.StringPtrOutput)
 }
 
+// Certificate Type. Value Range:
+// * upload: Certificate
+// * cas: Certificate Authority Certificate.
+// * free: Free Certificate.
 func (o DomainCertInfoOutput) CertType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainCertInfo) *string { return v.CertType }).(pulumi.StringPtrOutput)
 }
 
+// Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
 func (o DomainCertInfoOutput) SslPri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainCertInfo) *string { return v.SslPri }).(pulumi.StringPtrOutput)
 }
 
+// Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
 func (o DomainCertInfoOutput) SslProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainCertInfo) *string { return v.SslProtocol }).(pulumi.StringPtrOutput)
 }
 
+// If You Enable HTTPS Here Key.
 func (o DomainCertInfoOutput) SslPub() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainCertInfo) *string { return v.SslPub }).(pulumi.StringPtrOutput)
 }
@@ -238,11 +262,19 @@ func (o DomainConfigFunctionArgArrayOutput) Index(i pulumi.IntInput) DomainConfi
 }
 
 type DomainSource struct {
-	Content  string  `pulumi:"content"`
-	Enabled  *string `pulumi:"enabled"`
-	Port     int     `pulumi:"port"`
-	Priority string  `pulumi:"priority"`
-	Type     string  `pulumi:"type"`
+	// The Back-to-Source Address.
+	Content string `pulumi:"content"`
+	// The source status. Valid values: online, offline.
+	Enabled *string `pulumi:"enabled"`
+	// Port.
+	Port int `pulumi:"port"`
+	// Priority.
+	Priority string `pulumi:"priority"`
+	// The Origin Server Type. Valid Values:
+	// * ipaddr: IP Source Station
+	// * domain: the Domain Name
+	// * oss: OSS Bucket as a Source Station.
+	Type string `pulumi:"type"`
 }
 
 // DomainSourceInput is an input type that accepts DomainSourceArgs and DomainSourceOutput values.
@@ -257,11 +289,19 @@ type DomainSourceInput interface {
 }
 
 type DomainSourceArgs struct {
-	Content  pulumi.StringInput    `pulumi:"content"`
-	Enabled  pulumi.StringPtrInput `pulumi:"enabled"`
-	Port     pulumi.IntInput       `pulumi:"port"`
-	Priority pulumi.StringInput    `pulumi:"priority"`
-	Type     pulumi.StringInput    `pulumi:"type"`
+	// The Back-to-Source Address.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The source status. Valid values: online, offline.
+	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
+	// Port.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Priority.
+	Priority pulumi.StringInput `pulumi:"priority"`
+	// The Origin Server Type. Valid Values:
+	// * ipaddr: IP Source Station
+	// * domain: the Domain Name
+	// * oss: OSS Bucket as a Source Station.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (DomainSourceArgs) ElementType() reflect.Type {
@@ -315,22 +355,30 @@ func (o DomainSourceOutput) ToDomainSourceOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Back-to-Source Address.
 func (o DomainSourceOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainSource) string { return v.Content }).(pulumi.StringOutput)
 }
 
+// The source status. Valid values: online, offline.
 func (o DomainSourceOutput) Enabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainSource) *string { return v.Enabled }).(pulumi.StringPtrOutput)
 }
 
+// Port.
 func (o DomainSourceOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v DomainSource) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// Priority.
 func (o DomainSourceOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainSource) string { return v.Priority }).(pulumi.StringOutput)
 }
 
+// The Origin Server Type. Valid Values:
+// * ipaddr: IP Source Station
+// * domain: the Domain Name
+// * oss: OSS Bucket as a Source Station.
 func (o DomainSourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainSource) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -15,23 +15,47 @@ public final class BgpPolicyContentLayer4RuleListConditionListArgs extends com.p
 
     public static final BgpPolicyContentLayer4RuleListConditionListArgs Empty = new BgpPolicyContentLayer4RuleListConditionListArgs();
 
+    /**
+     * Matching target character.
+     * 
+     */
     @Import(name="arg", required=true)
     private Output<String> arg;
 
+    /**
+     * @return Matching target character.
+     * 
+     */
     public Output<String> arg() {
         return this.arg;
     }
 
+    /**
+     * Depth of Matching.
+     * 
+     */
     @Import(name="depth", required=true)
     private Output<Integer> depth;
 
+    /**
+     * @return Depth of Matching.
+     * 
+     */
     public Output<Integer> depth() {
         return this.depth;
     }
 
+    /**
+     * Position to start matching, starting from 0.
+     * 
+     */
     @Import(name="position", required=true)
     private Output<Integer> position;
 
+    /**
+     * @return Position to start matching, starting from 0.
+     * 
+     */
     public Output<Integer> position() {
         return this.position;
     }
@@ -62,29 +86,65 @@ public final class BgpPolicyContentLayer4RuleListConditionListArgs extends com.p
             $ = new BgpPolicyContentLayer4RuleListConditionListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param arg Matching target character.
+         * 
+         * @return builder
+         * 
+         */
         public Builder arg(Output<String> arg) {
             $.arg = arg;
             return this;
         }
 
+        /**
+         * @param arg Matching target character.
+         * 
+         * @return builder
+         * 
+         */
         public Builder arg(String arg) {
             return arg(Output.of(arg));
         }
 
+        /**
+         * @param depth Depth of Matching.
+         * 
+         * @return builder
+         * 
+         */
         public Builder depth(Output<Integer> depth) {
             $.depth = depth;
             return this;
         }
 
+        /**
+         * @param depth Depth of Matching.
+         * 
+         * @return builder
+         * 
+         */
         public Builder depth(Integer depth) {
             return depth(Output.of(depth));
         }
 
+        /**
+         * @param position Position to start matching, starting from 0.
+         * 
+         * @return builder
+         * 
+         */
         public Builder position(Output<Integer> position) {
             $.position = position;
             return this;
         }
 
+        /**
+         * @param position Position to start matching, starting from 0.
+         * 
+         * @return builder
+         * 
+         */
         public Builder position(Integer position) {
             return position(Output.of(position));
         }

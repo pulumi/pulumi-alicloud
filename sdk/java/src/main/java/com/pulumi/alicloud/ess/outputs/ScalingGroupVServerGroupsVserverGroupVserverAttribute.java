@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class ScalingGroupVServerGroupsVserverGroupVserverAttribute {
+    /**
+     * @return The port will be used for VServer Group backend server.
+     * 
+     */
     private Integer port;
+    /**
+     * @return ID of VServer Group.
+     * 
+     */
     private String vserverGroupId;
+    /**
+     * @return The weight of an ECS instance attached to the VServer Group.
+     * 
+     */
     private Integer weight;
 
     private ScalingGroupVServerGroupsVserverGroupVserverAttribute() {}
+    /**
+     * @return The port will be used for VServer Group backend server.
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return ID of VServer Group.
+     * 
+     */
     public String vserverGroupId() {
         return this.vserverGroupId;
     }
+    /**
+     * @return The weight of an ECS instance attached to the VServer Group.
+     * 
+     */
     public Integer weight() {
         return this.weight;
     }

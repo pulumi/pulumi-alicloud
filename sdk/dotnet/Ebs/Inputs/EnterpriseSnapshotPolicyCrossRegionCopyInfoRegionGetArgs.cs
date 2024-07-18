@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Ebs.Inputs
 
     public sealed class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Destination region ID.
+        /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
 
+        /// <summary>
+        /// Number of days of snapshot retention for replication.
+        /// </summary>
         [Input("retainDays")]
         public Input<int>? RetainDays { get; set; }
 

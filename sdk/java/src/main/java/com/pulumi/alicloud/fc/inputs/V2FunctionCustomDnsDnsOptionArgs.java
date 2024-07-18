@@ -15,16 +15,32 @@ public final class V2FunctionCustomDnsDnsOptionArgs extends com.pulumi.resources
 
     public static final V2FunctionCustomDnsDnsOptionArgs Empty = new V2FunctionCustomDnsDnsOptionArgs();
 
+    /**
+     * DNS option name.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return DNS option name.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * DNS option value.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return DNS option value.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -54,20 +70,44 @@ public final class V2FunctionCustomDnsDnsOptionArgs extends com.pulumi.resources
             $ = new V2FunctionCustomDnsDnsOptionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name DNS option name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name DNS option name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param value DNS option value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value DNS option value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

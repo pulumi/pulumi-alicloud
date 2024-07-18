@@ -15,16 +15,36 @@ public final class AppTemplateConfigListArgs extends com.pulumi.resources.Resour
 
     public static final AppTemplateConfigListArgs Empty = new AppTemplateConfigListArgs();
 
+    /**
+     * Configuration item key. Valid values: [&#34;config.appCallbackAuthKey&#34;,&#34;config.appCallbackUrl&#34;,&#34;config.callbackClass.live&#34;,&#34;config.callbackClass.user&#34;,&#34;config.livePullDomain&#34;,&#34;config.livePushDomain&#34;,&#34;config.multipleClientsLogin&#34;,&#34;config.regionId&#34;,&#34;config.streamChangeCallbackUrl&#34;].
+     * 
+     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
+    /**
+     * @return Configuration item key. Valid values: [&#34;config.appCallbackAuthKey&#34;,&#34;config.appCallbackUrl&#34;,&#34;config.callbackClass.live&#34;,&#34;config.callbackClass.user&#34;,&#34;config.livePullDomain&#34;,&#34;config.livePushDomain&#34;,&#34;config.multipleClientsLogin&#34;,&#34;config.regionId&#34;,&#34;config.streamChangeCallbackUrl&#34;].
+     * 
+     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * Configuration item content.
+     * 
+     * &gt; **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return Configuration item content.
+     * 
+     * &gt; **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -54,20 +74,48 @@ public final class AppTemplateConfigListArgs extends com.pulumi.resources.Resour
             $ = new AppTemplateConfigListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key Configuration item key. Valid values: [&#34;config.appCallbackAuthKey&#34;,&#34;config.appCallbackUrl&#34;,&#34;config.callbackClass.live&#34;,&#34;config.callbackClass.user&#34;,&#34;config.livePullDomain&#34;,&#34;config.livePushDomain&#34;,&#34;config.multipleClientsLogin&#34;,&#34;config.regionId&#34;,&#34;config.streamChangeCallbackUrl&#34;].
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key Configuration item key. Valid values: [&#34;config.appCallbackAuthKey&#34;,&#34;config.appCallbackUrl&#34;,&#34;config.callbackClass.live&#34;,&#34;config.callbackClass.user&#34;,&#34;config.livePullDomain&#34;,&#34;config.livePushDomain&#34;,&#34;config.multipleClientsLogin&#34;,&#34;config.regionId&#34;,&#34;config.streamChangeCallbackUrl&#34;].
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param value Configuration item content.
+         * 
+         * &gt; **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Configuration item content.
+         * 
+         * &gt; **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

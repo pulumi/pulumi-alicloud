@@ -12,12 +12,21 @@ namespace Pulumi.AliCloud.Oss.Inputs
 
     public sealed class BucketLifecycleRuleFilterGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+        /// </summary>
         [Input("not")]
         public Input<Inputs.BucketLifecycleRuleFilterNotGetArgs>? Not { get; set; }
 
+        /// <summary>
+        /// Minimum object size (in bytes) to which the rule applies.
+        /// </summary>
         [Input("objectSizeGreaterThan")]
         public Input<int>? ObjectSizeGreaterThan { get; set; }
 
+        /// <summary>
+        /// Maximum object size (in bytes) to which the rule applies.
+        /// </summary>
         [Input("objectSizeLessThan")]
         public Input<int>? ObjectSizeLessThan { get; set; }
 

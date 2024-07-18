@@ -13,7 +13,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GreyTagRouteDubboRuleItem {
     private @Nullable String cond;
+    /**
+     * @return The parameter value gets the expression.
+     * 
+     */
     private @Nullable String expr;
+    /**
+     * @return The parameter number.
+     * 
+     */
     private @Nullable Integer index;
     private @Nullable String operator;
     private @Nullable String value;
@@ -22,9 +30,17 @@ public final class GreyTagRouteDubboRuleItem {
     public Optional<String> cond() {
         return Optional.ofNullable(this.cond);
     }
+    /**
+     * @return The parameter value gets the expression.
+     * 
+     */
     public Optional<String> expr() {
         return Optional.ofNullable(this.expr);
     }
+    /**
+     * @return The parameter number.
+     * 
+     */
     public Optional<Integer> index() {
         return Optional.ofNullable(this.index);
     }

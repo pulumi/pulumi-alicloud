@@ -58,9 +58,17 @@ public final class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs exten
         return Optional.ofNullable(this.ikeVersion);
     }
 
+    /**
+     * The local Id.
+     * 
+     */
     @Import(name="localId")
     private @Nullable Output<String> localId;
 
+    /**
+     * @return The local Id.
+     * 
+     */
     public Optional<Output<String>> localId() {
         return Optional.ofNullable(this.localId);
     }
@@ -72,9 +80,17 @@ public final class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs exten
         return Optional.ofNullable(this.psk);
     }
 
+    /**
+     * Remote ID.
+     * 
+     */
     @Import(name="remoteId")
     private @Nullable Output<String> remoteId;
 
+    /**
+     * @return Remote ID.
+     * 
+     */
     public Optional<Output<String>> remoteId() {
         return Optional.ofNullable(this.remoteId);
     }
@@ -165,11 +181,23 @@ public final class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs exten
             return ikeVersion(Output.of(ikeVersion));
         }
 
+        /**
+         * @param localId The local Id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localId(@Nullable Output<String> localId) {
             $.localId = localId;
             return this;
         }
 
+        /**
+         * @param localId The local Id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localId(String localId) {
             return localId(Output.of(localId));
         }
@@ -183,11 +211,23 @@ public final class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs exten
             return psk(Output.of(psk));
         }
 
+        /**
+         * @param remoteId Remote ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder remoteId(@Nullable Output<String> remoteId) {
             $.remoteId = remoteId;
             return this;
         }
 
+        /**
+         * @param remoteId Remote ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder remoteId(String remoteId) {
             return remoteId(Output.of(remoteId));
         }

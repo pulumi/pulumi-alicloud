@@ -10,11 +10,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter {
+    /**
+     * @return The method that is used to filter logs imported from Log Service.
+     * 
+     */
     private String operator;
     private String slsKeyName;
     private String value;
 
     private GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter() {}
+    /**
+     * @return The method that is used to filter logs imported from Log Service.
+     * 
+     */
     public String operator() {
         return this.operator;
     }

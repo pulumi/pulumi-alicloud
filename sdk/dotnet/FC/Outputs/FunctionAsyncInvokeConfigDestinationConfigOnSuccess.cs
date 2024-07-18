@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.FC.Outputs
     [OutputType]
     public sealed class FunctionAsyncInvokeConfigDestinationConfigOnSuccess
     {
+        /// <summary>
+        /// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
+        /// </summary>
         public readonly string Destination;
 
         [OutputConstructor]

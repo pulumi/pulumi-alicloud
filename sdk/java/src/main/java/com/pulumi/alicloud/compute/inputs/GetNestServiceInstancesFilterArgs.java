@@ -31,9 +31,17 @@ public final class GetNestServiceInstancesFilterArgs extends com.pulumi.resource
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Set of values that are accepted for the given field.
+     * 
+     */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
+    /**
+     * @return Set of values that are accepted for the given field.
+     * 
+     */
     public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -84,15 +92,33 @@ public final class GetNestServiceInstancesFilterArgs extends com.pulumi.resource
             return name(Output.of(name));
         }
 
+        /**
+         * @param values Set of values that are accepted for the given field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values Set of values that are accepted for the given field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
+        /**
+         * @param values Set of values that are accepted for the given field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

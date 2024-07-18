@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServerBackupPlansFilter {
+    /**
+     * @return The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return Set of values that are accepted for the given field.
+     * 
+     */
     private @Nullable List<String> values;
 
     private GetServerBackupPlansFilter() {}
+    /**
+     * @return The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return Set of values that are accepted for the given field.
+     * 
+     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }

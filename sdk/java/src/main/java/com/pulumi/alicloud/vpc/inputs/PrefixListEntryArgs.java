@@ -15,16 +15,32 @@ public final class PrefixListEntryArgs extends com.pulumi.resources.ResourceArgs
 
     public static final PrefixListEntryArgs Empty = new PrefixListEntryArgs();
 
+    /**
+     * The CIDR address block of the prefix list.
+     * 
+     */
     @Import(name="cidr")
     private @Nullable Output<String> cidr;
 
+    /**
+     * @return The CIDR address block of the prefix list.
+     * 
+     */
     public Optional<Output<String>> cidr() {
         return Optional.ofNullable(this.cidr);
     }
 
+    /**
+     * The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -54,20 +70,44 @@ public final class PrefixListEntryArgs extends com.pulumi.resources.ResourceArgs
             $ = new PrefixListEntryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cidr The CIDR address block of the prefix list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidr(@Nullable Output<String> cidr) {
             $.cidr = cidr;
             return this;
         }
 
+        /**
+         * @param cidr The CIDR address block of the prefix list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidr(String cidr) {
             return cidr(Output.of(cidr));
         }
 
+        /**
+         * @param description The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }

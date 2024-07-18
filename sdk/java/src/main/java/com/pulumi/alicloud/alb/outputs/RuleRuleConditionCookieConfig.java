@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleRuleConditionCookieConfig {
+    /**
+     * @return Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+     * 
+     */
     private @Nullable List<RuleRuleConditionCookieConfigValue> values;
 
     private RuleRuleConditionCookieConfig() {}
+    /**
+     * @return Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+     * 
+     */
     public List<RuleRuleConditionCookieConfigValue> values() {
         return this.values == null ? List.of() : this.values;
     }

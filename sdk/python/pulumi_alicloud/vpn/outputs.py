@@ -745,6 +745,10 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfig(dict):
                  local_id: Optional[str] = None,
                  psk: Optional[str] = None,
                  remote_id: Optional[str] = None):
+        """
+        :param str local_id: The local Id.
+        :param str remote_id: Remote ID.
+        """
         if ike_auth_alg is not None:
             pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
         if ike_enc_alg is not None:
@@ -797,6 +801,9 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfig(dict):
     @property
     @pulumi.getter(name="localId")
     def local_id(self) -> Optional[str]:
+        """
+        The local Id.
+        """
         return pulumi.get(self, "local_id")
 
     @property
@@ -807,6 +814,9 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfig(dict):
     @property
     @pulumi.getter(name="remoteId")
     def remote_id(self) -> Optional[str]:
+        """
+        Remote ID.
+        """
         return pulumi.get(self, "remote_id")
 
 
@@ -2543,6 +2553,7 @@ class GetGatewayVpnAttachmentsAttachmentResult(dict):
         :param Sequence['GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArgs'] health_check_configs: The health check configurations.
         :param str id: The ID of the Vpn Attachment.
         :param Sequence['GetGatewayVpnAttachmentsAttachmentIkeConfigArgs'] ike_configs: Configuration negotiated in the second stage.
+        :param str internet_ip: The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
         :param Sequence['GetGatewayVpnAttachmentsAttachmentIpsecConfigArgs'] ipsec_configs: The configuration of Phase 2 negotiations.
         :param str local_subnet: The CIDR block of the virtual private cloud (VPC).
         :param str network_type: The network type.
@@ -2635,6 +2646,9 @@ class GetGatewayVpnAttachmentsAttachmentResult(dict):
     @property
     @pulumi.getter(name="internetIp")
     def internet_ip(self) -> str:
+        """
+        The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
+        """
         return pulumi.get(self, "internet_ip")
 
     @property

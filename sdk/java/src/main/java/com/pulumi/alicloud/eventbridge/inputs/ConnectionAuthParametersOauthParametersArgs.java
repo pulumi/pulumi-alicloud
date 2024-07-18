@@ -17,30 +17,62 @@ public final class ConnectionAuthParametersOauthParametersArgs extends com.pulum
 
     public static final ConnectionAuthParametersOauthParametersArgs Empty = new ConnectionAuthParametersOauthParametersArgs();
 
+    /**
+     * The IP address of the authorized endpoint.
+     * 
+     */
     @Import(name="authorizationEndpoint")
     private @Nullable Output<String> authorizationEndpoint;
 
+    /**
+     * @return The IP address of the authorized endpoint.
+     * 
+     */
     public Optional<Output<String>> authorizationEndpoint() {
         return Optional.ofNullable(this.authorizationEndpoint);
     }
 
+    /**
+     * The parameters that are configured for the client. See `client_parameters` below.
+     * 
+     */
     @Import(name="clientParameters")
     private @Nullable Output<ConnectionAuthParametersOauthParametersClientParametersArgs> clientParameters;
 
+    /**
+     * @return The parameters that are configured for the client. See `client_parameters` below.
+     * 
+     */
     public Optional<Output<ConnectionAuthParametersOauthParametersClientParametersArgs>> clientParameters() {
         return Optional.ofNullable(this.clientParameters);
     }
 
+    /**
+     * The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
+     * 
+     */
     @Import(name="httpMethod")
     private @Nullable Output<String> httpMethod;
 
+    /**
+     * @return The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
+     * 
+     */
     public Optional<Output<String>> httpMethod() {
         return Optional.ofNullable(this.httpMethod);
     }
 
+    /**
+     * The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+     * 
+     */
     @Import(name="oauthHttpParameters")
     private @Nullable Output<ConnectionAuthParametersOauthParametersOauthHttpParametersArgs> oauthHttpParameters;
 
+    /**
+     * @return The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+     * 
+     */
     public Optional<Output<ConnectionAuthParametersOauthParametersOauthHttpParametersArgs>> oauthHttpParameters() {
         return Optional.ofNullable(this.oauthHttpParameters);
     }
@@ -72,38 +104,86 @@ public final class ConnectionAuthParametersOauthParametersArgs extends com.pulum
             $ = new ConnectionAuthParametersOauthParametersArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param authorizationEndpoint The IP address of the authorized endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authorizationEndpoint(@Nullable Output<String> authorizationEndpoint) {
             $.authorizationEndpoint = authorizationEndpoint;
             return this;
         }
 
+        /**
+         * @param authorizationEndpoint The IP address of the authorized endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authorizationEndpoint(String authorizationEndpoint) {
             return authorizationEndpoint(Output.of(authorizationEndpoint));
         }
 
+        /**
+         * @param clientParameters The parameters that are configured for the client. See `client_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientParameters(@Nullable Output<ConnectionAuthParametersOauthParametersClientParametersArgs> clientParameters) {
             $.clientParameters = clientParameters;
             return this;
         }
 
+        /**
+         * @param clientParameters The parameters that are configured for the client. See `client_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientParameters(ConnectionAuthParametersOauthParametersClientParametersArgs clientParameters) {
             return clientParameters(Output.of(clientParameters));
         }
 
+        /**
+         * @param httpMethod The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpMethod(@Nullable Output<String> httpMethod) {
             $.httpMethod = httpMethod;
             return this;
         }
 
+        /**
+         * @param httpMethod The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpMethod(String httpMethod) {
             return httpMethod(Output.of(httpMethod));
         }
 
+        /**
+         * @param oauthHttpParameters The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oauthHttpParameters(@Nullable Output<ConnectionAuthParametersOauthParametersOauthHttpParametersArgs> oauthHttpParameters) {
             $.oauthHttpParameters = oauthHttpParameters;
             return this;
         }
 
+        /**
+         * @param oauthHttpParameters The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oauthHttpParameters(ConnectionAuthParametersOauthParametersOauthHttpParametersArgs oauthHttpParameters) {
             return oauthHttpParameters(Output.of(oauthHttpParameters));
         }

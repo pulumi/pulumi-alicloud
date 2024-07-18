@@ -14,12 +14,19 @@ namespace Pulumi.AliCloud.CloudFirewall.Inputs
     {
         [Input("localRouteEntryLists", required: true)]
         private InputList<Inputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListGetArgs>? _localRouteEntryLists;
+
+        /// <summary>
+        /// The list of route entries of the local VPC. See `local_route_entry_list` below.
+        /// </summary>
         public InputList<Inputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListGetArgs> LocalRouteEntryLists
         {
             get => _localRouteEntryLists ?? (_localRouteEntryLists = new InputList<Inputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListGetArgs>());
             set => _localRouteEntryLists = value;
         }
 
+        /// <summary>
+        /// The ID of the route table of the local VPC.
+        /// </summary>
         [Input("localRouteTableId", required: true)]
         public Input<string> LocalRouteTableId { get; set; } = null!;
 

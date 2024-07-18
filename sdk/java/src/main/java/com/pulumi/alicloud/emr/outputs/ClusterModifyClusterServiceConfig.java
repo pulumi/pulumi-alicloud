@@ -14,38 +14,102 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterModifyClusterServiceConfig {
+    /**
+     * @return Cluster service configuration modification comment, e.g. &#34;Modify tez configuration&#34;.
+     * 
+     */
     private @Nullable String comment;
+    /**
+     * @return Cluster service configuration modification params, e.g. ’{&#34;hdfs-site&#34;:{&#34;dfs.replication&#34;:&#34;3&#34;}}’.
+     * 
+     */
     private String configParams;
+    /**
+     * @return Cluster service configuration modification type.
+     * 
+     */
     private @Nullable String configType;
+    /**
+     * @return Cluster service configuration modification custom params, e.g. ’{&#34;tez-site&#34;:{&#34;key&#34;:{&#34;Value&#34;:&#34;value&#34;}}}’.
+     * 
+     */
     private @Nullable String customConfigParams;
+    /**
+     * @return Cluster service configuration modification related gateway cluster id list.
+     * 
+     */
     private @Nullable List<String> gatewayClusterIdLists;
+    /**
+     * @return Cluster service configuration modification node group id, e.g. ’G-XXX’.
+     * 
+     */
     private @Nullable String groupId;
+    /**
+     * @return Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+     * 
+     */
     private @Nullable String hostInstanceId;
+    /**
+     * @return Cluster service configuration modification refresh host config, ’true’ or ’false’.
+     * 
+     */
     private @Nullable Boolean refreshHostConfig;
     private String serviceName;
 
     private ClusterModifyClusterServiceConfig() {}
+    /**
+     * @return Cluster service configuration modification comment, e.g. &#34;Modify tez configuration&#34;.
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return Cluster service configuration modification params, e.g. ’{&#34;hdfs-site&#34;:{&#34;dfs.replication&#34;:&#34;3&#34;}}’.
+     * 
+     */
     public String configParams() {
         return this.configParams;
     }
+    /**
+     * @return Cluster service configuration modification type.
+     * 
+     */
     public Optional<String> configType() {
         return Optional.ofNullable(this.configType);
     }
+    /**
+     * @return Cluster service configuration modification custom params, e.g. ’{&#34;tez-site&#34;:{&#34;key&#34;:{&#34;Value&#34;:&#34;value&#34;}}}’.
+     * 
+     */
     public Optional<String> customConfigParams() {
         return Optional.ofNullable(this.customConfigParams);
     }
+    /**
+     * @return Cluster service configuration modification related gateway cluster id list.
+     * 
+     */
     public List<String> gatewayClusterIdLists() {
         return this.gatewayClusterIdLists == null ? List.of() : this.gatewayClusterIdLists;
     }
+    /**
+     * @return Cluster service configuration modification node group id, e.g. ’G-XXX’.
+     * 
+     */
     public Optional<String> groupId() {
         return Optional.ofNullable(this.groupId);
     }
+    /**
+     * @return Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+     * 
+     */
     public Optional<String> hostInstanceId() {
         return Optional.ofNullable(this.hostInstanceId);
     }
+    /**
+     * @return Cluster service configuration modification refresh host config, ’true’ or ’false’.
+     * 
+     */
     public Optional<Boolean> refreshHostConfig() {
         return Optional.ofNullable(this.refreshHostConfig);
     }

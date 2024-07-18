@@ -11,57 +11,161 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertConfigurationQueryList {
+    /**
+     * @return Chart Name.
+     * 
+     */
     private @Nullable String chartTitle;
+    /**
+     * @return Dashboard ID.
+     * 
+     */
     private @Nullable String dashboardId;
+    /**
+     * @return End time. When storeType is set to log or metric, end must be set.
+     * 
+     */
     private @Nullable String end;
+    /**
+     * @return Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+     * 
+     */
     private @Nullable String powerSqlMode;
+    /**
+     * @return Project Name.
+     * 
+     */
     private @Nullable String project;
+    /**
+     * @return Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+     * 
+     */
     private @Nullable String query;
+    /**
+     * @return Region of the target Project.
+     * 
+     */
     private @Nullable String region;
+    /**
+     * @return Roles used to write alarm data to the event Library.
+     * 
+     */
     private @Nullable String roleArn;
+    /**
+     * @return Start time. When storeType is set to log or metric, start must be set.
+     * 
+     */
     private @Nullable String start;
+    /**
+     * @return Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+     * 
+     */
     private @Nullable String store;
+    /**
+     * @return Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+     * 
+     */
     private @Nullable String storeType;
+    /**
+     * @return Time Type.
+     * 
+     */
     private @Nullable String timeSpanType;
+    /**
+     * @return Use of specific scene alarm front end.
+     * 
+     */
     private @Nullable String ui;
 
     private AlertConfigurationQueryList() {}
+    /**
+     * @return Chart Name.
+     * 
+     */
     public Optional<String> chartTitle() {
         return Optional.ofNullable(this.chartTitle);
     }
+    /**
+     * @return Dashboard ID.
+     * 
+     */
     public Optional<String> dashboardId() {
         return Optional.ofNullable(this.dashboardId);
     }
+    /**
+     * @return End time. When storeType is set to log or metric, end must be set.
+     * 
+     */
     public Optional<String> end() {
         return Optional.ofNullable(this.end);
     }
+    /**
+     * @return Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+     * 
+     */
     public Optional<String> powerSqlMode() {
         return Optional.ofNullable(this.powerSqlMode);
     }
+    /**
+     * @return Project Name.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    /**
+     * @return Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+     * 
+     */
     public Optional<String> query() {
         return Optional.ofNullable(this.query);
     }
+    /**
+     * @return Region of the target Project.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    /**
+     * @return Roles used to write alarm data to the event Library.
+     * 
+     */
     public Optional<String> roleArn() {
         return Optional.ofNullable(this.roleArn);
     }
+    /**
+     * @return Start time. When storeType is set to log or metric, start must be set.
+     * 
+     */
     public Optional<String> start() {
         return Optional.ofNullable(this.start);
     }
+    /**
+     * @return Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+     * 
+     */
     public Optional<String> store() {
         return Optional.ofNullable(this.store);
     }
+    /**
+     * @return Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+     * 
+     */
     public Optional<String> storeType() {
         return Optional.ofNullable(this.storeType);
     }
+    /**
+     * @return Time Type.
+     * 
+     */
     public Optional<String> timeSpanType() {
         return Optional.ofNullable(this.timeSpanType);
     }
+    /**
+     * @return Use of specific scene alarm front end.
+     * 
+     */
     public Optional<String> ui() {
         return Optional.ofNullable(this.ui);
     }

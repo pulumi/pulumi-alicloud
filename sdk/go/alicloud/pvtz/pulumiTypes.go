@@ -1133,10 +1133,14 @@ func (o GetRulesRuleArrayOutput) Index(i pulumi.IntInput) GetRulesRuleOutput {
 }
 
 type GetRulesRuleBindVpc struct {
-	RegionId   string `pulumi:"regionId"`
+	// The region ID of the vpc.
+	RegionId string `pulumi:"regionId"`
+	// The Region Name of the vpc.
 	RegionName string `pulumi:"regionName"`
-	VpcId      string `pulumi:"vpcId"`
-	VpcName    string `pulumi:"vpcName"`
+	// The ID of the VPC.
+	VpcId string `pulumi:"vpcId"`
+	// The Name of the VPC.
+	VpcName string `pulumi:"vpcName"`
 }
 
 // GetRulesRuleBindVpcInput is an input type that accepts GetRulesRuleBindVpcArgs and GetRulesRuleBindVpcOutput values.
@@ -1151,10 +1155,14 @@ type GetRulesRuleBindVpcInput interface {
 }
 
 type GetRulesRuleBindVpcArgs struct {
-	RegionId   pulumi.StringInput `pulumi:"regionId"`
+	// The region ID of the vpc.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The Region Name of the vpc.
 	RegionName pulumi.StringInput `pulumi:"regionName"`
-	VpcId      pulumi.StringInput `pulumi:"vpcId"`
-	VpcName    pulumi.StringInput `pulumi:"vpcName"`
+	// The ID of the VPC.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The Name of the VPC.
+	VpcName pulumi.StringInput `pulumi:"vpcName"`
 }
 
 func (GetRulesRuleBindVpcArgs) ElementType() reflect.Type {
@@ -1208,18 +1216,22 @@ func (o GetRulesRuleBindVpcOutput) ToGetRulesRuleBindVpcOutputWithContext(ctx co
 	return o
 }
 
+// The region ID of the vpc.
 func (o GetRulesRuleBindVpcOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleBindVpc) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
+// The Region Name of the vpc.
 func (o GetRulesRuleBindVpcOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleBindVpc) string { return v.RegionName }).(pulumi.StringOutput)
 }
 
+// The ID of the VPC.
 func (o GetRulesRuleBindVpcOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleBindVpc) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
+// The Name of the VPC.
 func (o GetRulesRuleBindVpcOutput) VpcName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleBindVpc) string { return v.VpcName }).(pulumi.StringOutput)
 }

@@ -15,9 +15,17 @@ public final class AlertConfigurationJoinConfigurationArgs extends com.pulumi.re
 
     public static final AlertConfigurationJoinConfigurationArgs Empty = new AlertConfigurationJoinConfigurationArgs();
 
+    /**
+     * Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
+     * 
+     */
     @Import(name="condition")
     private @Nullable Output<String> condition;
 
+    /**
+     * @return Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
+     * 
+     */
     public Optional<Output<String>> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -54,11 +62,23 @@ public final class AlertConfigurationJoinConfigurationArgs extends com.pulumi.re
             $ = new AlertConfigurationJoinConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param condition Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(@Nullable Output<String> condition) {
             $.condition = condition;
             return this;
         }
 
+        /**
+         * @param condition Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(String condition) {
             return condition(Output.of(condition));
         }

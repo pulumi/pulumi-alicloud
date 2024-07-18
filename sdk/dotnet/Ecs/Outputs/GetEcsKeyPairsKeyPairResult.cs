@@ -17,14 +17,26 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// The finger print of the key pair.
         /// </summary>
         public readonly string FingerPrint;
+        /// <summary>
+        /// The ID of the Key Pair.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of ECS instances that has been bound this key pair.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsKeyPairsKeyPairInstanceResult> Instances;
+        /// <summary>
+        /// The Key Pair Name.
+        /// </summary>
         public readonly string KeyName;
         public readonly string KeyPairName;
         /// <summary>
         /// The resource group Id.
         /// </summary>
         public readonly string ResourceGroupId;
+        /// <summary>
+        /// The tags.
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Tags;
 
         [OutputConstructor]

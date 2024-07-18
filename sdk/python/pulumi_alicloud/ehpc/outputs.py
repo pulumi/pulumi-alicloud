@@ -183,12 +183,18 @@ class ClusterAdditionalVolume(dict):
 class ClusterAdditionalVolumeRole(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
+        """
+        :param str name: The type of the nodes to which the additional file system is attached.
+        """
         if name is not None:
             pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The type of the nodes to which the additional file system is attached.
+        """
         return pulumi.get(self, "name")
 
 

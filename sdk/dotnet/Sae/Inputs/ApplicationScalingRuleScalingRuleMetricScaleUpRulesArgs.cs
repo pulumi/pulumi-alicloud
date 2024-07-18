@@ -12,12 +12,21 @@ namespace Pulumi.AliCloud.Sae.Inputs
 
     public sealed class ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether shrinkage is prohibited.
+        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
+        /// <summary>
+        /// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
+        /// </summary>
         [Input("stabilizationWindowSeconds")]
         public Input<int>? StabilizationWindowSeconds { get; set; }
 
+        /// <summary>
+        /// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
+        /// </summary>
         [Input("step")]
         public Input<int>? Step { get; set; }
 

@@ -246,6 +246,7 @@ func (o DispatchRuleLabelMatchExpressionGridArrayOutput) Index(i pulumi.IntInput
 }
 
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup struct {
+	// Sets the dispatch rule. See `labelMatchExpressions` below.
 	LabelMatchExpressions []DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression `pulumi:"labelMatchExpressions"`
 }
 
@@ -261,6 +262,7 @@ type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupInput interfac
 }
 
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs struct {
+	// Sets the dispatch rule. See `labelMatchExpressions` below.
 	LabelMatchExpressions DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayInput `pulumi:"labelMatchExpressions"`
 }
 
@@ -315,6 +317,7 @@ func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) ToD
 	return o
 }
 
+// Sets the dispatch rule. See `labelMatchExpressions` below.
 func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupOutput) LabelMatchExpressions() DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArrayOutput {
 	return o.ApplyT(func(v DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup) []DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
 		return v.LabelMatchExpressions
@@ -342,9 +345,22 @@ func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArrayOutput
 }
 
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression struct {
-	Key      string `pulumi:"key"`
+	// The key of the tag of the dispatch rule. Valid values:
+	// * _aliyun_arms_userid: user ID
+	// * _aliyun_arms_involvedObject_kind: type of the associated object
+	// * _aliyun_arms_involvedObject_id: ID of the associated object
+	// * _aliyun_arms_involvedObject_name: name of the associated object
+	// * _aliyun_arms_alert_name: alert name
+	// * _aliyun_arms_alert_rule_id: alert rule ID
+	// * _aliyun_arms_alert_type: alert type
+	// * _aliyun_arms_alert_level: alert severity
+	Key string `pulumi:"key"`
+	// The operator used in the dispatch rule. Valid values:
+	// * eq: equals to.
+	// * re: matches a regular expression.
 	Operator string `pulumi:"operator"`
-	Value    string `pulumi:"value"`
+	// The value of the tag.
+	Value string `pulumi:"value"`
 }
 
 // DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionInput is an input type that accepts DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs and DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput values.
@@ -359,9 +375,22 @@ type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpr
 }
 
 type DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs struct {
-	Key      pulumi.StringInput `pulumi:"key"`
+	// The key of the tag of the dispatch rule. Valid values:
+	// * _aliyun_arms_userid: user ID
+	// * _aliyun_arms_involvedObject_kind: type of the associated object
+	// * _aliyun_arms_involvedObject_id: ID of the associated object
+	// * _aliyun_arms_involvedObject_name: name of the associated object
+	// * _aliyun_arms_alert_name: alert name
+	// * _aliyun_arms_alert_rule_id: alert rule ID
+	// * _aliyun_arms_alert_type: alert type
+	// * _aliyun_arms_alert_level: alert severity
+	Key pulumi.StringInput `pulumi:"key"`
+	// The operator used in the dispatch rule. Valid values:
+	// * eq: equals to.
+	// * re: matches a regular expression.
 	Operator pulumi.StringInput `pulumi:"operator"`
-	Value    pulumi.StringInput `pulumi:"value"`
+	// The value of the tag.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs) ElementType() reflect.Type {
@@ -415,18 +444,31 @@ func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchE
 	return o
 }
 
+// The key of the tag of the dispatch rule. Valid values:
+// * _aliyun_arms_userid: user ID
+// * _aliyun_arms_involvedObject_kind: type of the associated object
+// * _aliyun_arms_involvedObject_id: ID of the associated object
+// * _aliyun_arms_involvedObject_name: name of the associated object
+// * _aliyun_arms_alert_name: alert name
+// * _aliyun_arms_alert_rule_id: alert rule ID
+// * _aliyun_arms_alert_type: alert type
+// * _aliyun_arms_alert_level: alert severity
 func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression) string {
 		return v.Key
 	}).(pulumi.StringOutput)
 }
 
+// The operator used in the dispatch rule. Valid values:
+// * eq: equals to.
+// * re: matches a regular expression.
 func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression) string {
 		return v.Operator
 	}).(pulumi.StringOutput)
 }
 
+// The value of the tag.
 func (o DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression) string {
 		return v.Value
@@ -560,9 +602,12 @@ func (o DispatchRuleNotifyRuleArrayOutput) Index(i pulumi.IntInput) DispatchRule
 }
 
 type DispatchRuleNotifyRuleNotifyObject struct {
-	Name           string `pulumi:"name"`
+	// The name of the contact or contact group.
+	Name string `pulumi:"name"`
+	// The ID of the contact or contact group.
 	NotifyObjectId string `pulumi:"notifyObjectId"`
-	NotifyType     string `pulumi:"notifyType"`
+	// The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+	NotifyType string `pulumi:"notifyType"`
 }
 
 // DispatchRuleNotifyRuleNotifyObjectInput is an input type that accepts DispatchRuleNotifyRuleNotifyObjectArgs and DispatchRuleNotifyRuleNotifyObjectOutput values.
@@ -577,9 +622,12 @@ type DispatchRuleNotifyRuleNotifyObjectInput interface {
 }
 
 type DispatchRuleNotifyRuleNotifyObjectArgs struct {
-	Name           pulumi.StringInput `pulumi:"name"`
+	// The name of the contact or contact group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the contact or contact group.
 	NotifyObjectId pulumi.StringInput `pulumi:"notifyObjectId"`
-	NotifyType     pulumi.StringInput `pulumi:"notifyType"`
+	// The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+	NotifyType pulumi.StringInput `pulumi:"notifyType"`
 }
 
 func (DispatchRuleNotifyRuleNotifyObjectArgs) ElementType() reflect.Type {
@@ -633,14 +681,17 @@ func (o DispatchRuleNotifyRuleNotifyObjectOutput) ToDispatchRuleNotifyRuleNotify
 	return o
 }
 
+// The name of the contact or contact group.
 func (o DispatchRuleNotifyRuleNotifyObjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DispatchRuleNotifyRuleNotifyObject) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The ID of the contact or contact group.
 func (o DispatchRuleNotifyRuleNotifyObjectOutput) NotifyObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v DispatchRuleNotifyRuleNotifyObject) string { return v.NotifyObjectId }).(pulumi.StringOutput)
 }
 
+// The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
 func (o DispatchRuleNotifyRuleNotifyObjectOutput) NotifyType() pulumi.StringOutput {
 	return o.ApplyT(func(v DispatchRuleNotifyRuleNotifyObject) string { return v.NotifyType }).(pulumi.StringOutput)
 }
@@ -1254,8 +1305,12 @@ func (o SyntheticTaskCommonSettingPtrOutput) XtraceRegion() pulumi.StringPtrOutp
 }
 
 type SyntheticTaskCommonSettingCustomHost struct {
-	Hosts      []SyntheticTaskCommonSettingCustomHostHost `pulumi:"hosts"`
-	SelectType int                                        `pulumi:"selectType"`
+	// The host list. See `hosts` below.
+	Hosts []SyntheticTaskCommonSettingCustomHostHost `pulumi:"hosts"`
+	// Selection method:
+	// - 0: Random
+	// - 1: Polling.
+	SelectType int `pulumi:"selectType"`
 }
 
 // SyntheticTaskCommonSettingCustomHostInput is an input type that accepts SyntheticTaskCommonSettingCustomHostArgs and SyntheticTaskCommonSettingCustomHostOutput values.
@@ -1270,8 +1325,12 @@ type SyntheticTaskCommonSettingCustomHostInput interface {
 }
 
 type SyntheticTaskCommonSettingCustomHostArgs struct {
-	Hosts      SyntheticTaskCommonSettingCustomHostHostArrayInput `pulumi:"hosts"`
-	SelectType pulumi.IntInput                                    `pulumi:"selectType"`
+	// The host list. See `hosts` below.
+	Hosts SyntheticTaskCommonSettingCustomHostHostArrayInput `pulumi:"hosts"`
+	// Selection method:
+	// - 0: Random
+	// - 1: Polling.
+	SelectType pulumi.IntInput `pulumi:"selectType"`
 }
 
 func (SyntheticTaskCommonSettingCustomHostArgs) ElementType() reflect.Type {
@@ -1351,12 +1410,16 @@ func (o SyntheticTaskCommonSettingCustomHostOutput) ToSyntheticTaskCommonSetting
 	}).(SyntheticTaskCommonSettingCustomHostPtrOutput)
 }
 
+// The host list. See `hosts` below.
 func (o SyntheticTaskCommonSettingCustomHostOutput) Hosts() SyntheticTaskCommonSettingCustomHostHostArrayOutput {
 	return o.ApplyT(func(v SyntheticTaskCommonSettingCustomHost) []SyntheticTaskCommonSettingCustomHostHost {
 		return v.Hosts
 	}).(SyntheticTaskCommonSettingCustomHostHostArrayOutput)
 }
 
+// Selection method:
+// - 0: Random
+// - 1: Polling.
 func (o SyntheticTaskCommonSettingCustomHostOutput) SelectType() pulumi.IntOutput {
 	return o.ApplyT(func(v SyntheticTaskCommonSettingCustomHost) int { return v.SelectType }).(pulumi.IntOutput)
 }
@@ -1385,6 +1448,7 @@ func (o SyntheticTaskCommonSettingCustomHostPtrOutput) Elem() SyntheticTaskCommo
 	}).(SyntheticTaskCommonSettingCustomHostOutput)
 }
 
+// The host list. See `hosts` below.
 func (o SyntheticTaskCommonSettingCustomHostPtrOutput) Hosts() SyntheticTaskCommonSettingCustomHostHostArrayOutput {
 	return o.ApplyT(func(v *SyntheticTaskCommonSettingCustomHost) []SyntheticTaskCommonSettingCustomHostHost {
 		if v == nil {
@@ -1394,6 +1458,9 @@ func (o SyntheticTaskCommonSettingCustomHostPtrOutput) Hosts() SyntheticTaskComm
 	}).(SyntheticTaskCommonSettingCustomHostHostArrayOutput)
 }
 
+// Selection method:
+// - 0: Random
+// - 1: Polling.
 func (o SyntheticTaskCommonSettingCustomHostPtrOutput) SelectType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskCommonSettingCustomHost) *int {
 		if v == nil {
@@ -1404,9 +1471,12 @@ func (o SyntheticTaskCommonSettingCustomHostPtrOutput) SelectType() pulumi.IntPt
 }
 
 type SyntheticTaskCommonSettingCustomHostHost struct {
-	Domain string   `pulumi:"domain"`
-	IpType int      `pulumi:"ipType"`
-	Ips    []string `pulumi:"ips"`
+	// Domain Name.
+	Domain string `pulumi:"domain"`
+	// IpType.
+	IpType int `pulumi:"ipType"`
+	// The IP list.
+	Ips []string `pulumi:"ips"`
 }
 
 // SyntheticTaskCommonSettingCustomHostHostInput is an input type that accepts SyntheticTaskCommonSettingCustomHostHostArgs and SyntheticTaskCommonSettingCustomHostHostOutput values.
@@ -1421,9 +1491,12 @@ type SyntheticTaskCommonSettingCustomHostHostInput interface {
 }
 
 type SyntheticTaskCommonSettingCustomHostHostArgs struct {
-	Domain pulumi.StringInput      `pulumi:"domain"`
-	IpType pulumi.IntInput         `pulumi:"ipType"`
-	Ips    pulumi.StringArrayInput `pulumi:"ips"`
+	// Domain Name.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// IpType.
+	IpType pulumi.IntInput `pulumi:"ipType"`
+	// The IP list.
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
 }
 
 func (SyntheticTaskCommonSettingCustomHostHostArgs) ElementType() reflect.Type {
@@ -1477,14 +1550,17 @@ func (o SyntheticTaskCommonSettingCustomHostHostOutput) ToSyntheticTaskCommonSet
 	return o
 }
 
+// Domain Name.
 func (o SyntheticTaskCommonSettingCustomHostHostOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v SyntheticTaskCommonSettingCustomHostHost) string { return v.Domain }).(pulumi.StringOutput)
 }
 
+// IpType.
 func (o SyntheticTaskCommonSettingCustomHostHostOutput) IpType() pulumi.IntOutput {
 	return o.ApplyT(func(v SyntheticTaskCommonSettingCustomHostHost) int { return v.IpType }).(pulumi.IntOutput)
 }
 
+// The IP list.
 func (o SyntheticTaskCommonSettingCustomHostHostOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SyntheticTaskCommonSettingCustomHostHost) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
@@ -2032,12 +2108,18 @@ func (o SyntheticTaskMonitorConfPtrOutput) Website() SyntheticTaskMonitorConfWeb
 }
 
 type SyntheticTaskMonitorConfApiHttp struct {
-	ConnectTimeout *int                                        `pulumi:"connectTimeout"`
-	Method         *string                                     `pulumi:"method"`
-	RequestBody    *SyntheticTaskMonitorConfApiHttpRequestBody `pulumi:"requestBody"`
-	RequestHeaders map[string]interface{}                      `pulumi:"requestHeaders"`
-	TargetUrl      string                                      `pulumi:"targetUrl"`
-	Timeout        *int                                        `pulumi:"timeout"`
+	// Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
+	ConnectTimeout *int `pulumi:"connectTimeout"`
+	// HTTP method, GET or POST.
+	Method *string `pulumi:"method"`
+	// HTTP request body. See `requestBody` below.
+	RequestBody *SyntheticTaskMonitorConfApiHttpRequestBody `pulumi:"requestBody"`
+	// HTTP request header.
+	RequestHeaders map[string]interface{} `pulumi:"requestHeaders"`
+	// The target URL.
+	TargetUrl string `pulumi:"targetUrl"`
+	// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+	Timeout *int `pulumi:"timeout"`
 }
 
 // SyntheticTaskMonitorConfApiHttpInput is an input type that accepts SyntheticTaskMonitorConfApiHttpArgs and SyntheticTaskMonitorConfApiHttpOutput values.
@@ -2052,12 +2134,18 @@ type SyntheticTaskMonitorConfApiHttpInput interface {
 }
 
 type SyntheticTaskMonitorConfApiHttpArgs struct {
-	ConnectTimeout pulumi.IntPtrInput                                 `pulumi:"connectTimeout"`
-	Method         pulumi.StringPtrInput                              `pulumi:"method"`
-	RequestBody    SyntheticTaskMonitorConfApiHttpRequestBodyPtrInput `pulumi:"requestBody"`
-	RequestHeaders pulumi.MapInput                                    `pulumi:"requestHeaders"`
-	TargetUrl      pulumi.StringInput                                 `pulumi:"targetUrl"`
-	Timeout        pulumi.IntPtrInput                                 `pulumi:"timeout"`
+	// Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
+	ConnectTimeout pulumi.IntPtrInput `pulumi:"connectTimeout"`
+	// HTTP method, GET or POST.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// HTTP request body. See `requestBody` below.
+	RequestBody SyntheticTaskMonitorConfApiHttpRequestBodyPtrInput `pulumi:"requestBody"`
+	// HTTP request header.
+	RequestHeaders pulumi.MapInput `pulumi:"requestHeaders"`
+	// The target URL.
+	TargetUrl pulumi.StringInput `pulumi:"targetUrl"`
+	// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 }
 
 func (SyntheticTaskMonitorConfApiHttpArgs) ElementType() reflect.Type {
@@ -2137,28 +2225,34 @@ func (o SyntheticTaskMonitorConfApiHttpOutput) ToSyntheticTaskMonitorConfApiHttp
 	}).(SyntheticTaskMonitorConfApiHttpPtrOutput)
 }
 
+// Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
 func (o SyntheticTaskMonitorConfApiHttpOutput) ConnectTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfApiHttp) *int { return v.ConnectTimeout }).(pulumi.IntPtrOutput)
 }
 
+// HTTP method, GET or POST.
 func (o SyntheticTaskMonitorConfApiHttpOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfApiHttp) *string { return v.Method }).(pulumi.StringPtrOutput)
 }
 
+// HTTP request body. See `requestBody` below.
 func (o SyntheticTaskMonitorConfApiHttpOutput) RequestBody() SyntheticTaskMonitorConfApiHttpRequestBodyPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfApiHttp) *SyntheticTaskMonitorConfApiHttpRequestBody {
 		return v.RequestBody
 	}).(SyntheticTaskMonitorConfApiHttpRequestBodyPtrOutput)
 }
 
+// HTTP request header.
 func (o SyntheticTaskMonitorConfApiHttpOutput) RequestHeaders() pulumi.MapOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfApiHttp) map[string]interface{} { return v.RequestHeaders }).(pulumi.MapOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfApiHttpOutput) TargetUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfApiHttp) string { return v.TargetUrl }).(pulumi.StringOutput)
 }
 
+// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
 func (o SyntheticTaskMonitorConfApiHttpOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfApiHttp) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
@@ -2187,6 +2281,7 @@ func (o SyntheticTaskMonitorConfApiHttpPtrOutput) Elem() SyntheticTaskMonitorCon
 	}).(SyntheticTaskMonitorConfApiHttpOutput)
 }
 
+// Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
 func (o SyntheticTaskMonitorConfApiHttpPtrOutput) ConnectTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfApiHttp) *int {
 		if v == nil {
@@ -2196,6 +2291,7 @@ func (o SyntheticTaskMonitorConfApiHttpPtrOutput) ConnectTimeout() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+// HTTP method, GET or POST.
 func (o SyntheticTaskMonitorConfApiHttpPtrOutput) Method() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfApiHttp) *string {
 		if v == nil {
@@ -2205,6 +2301,7 @@ func (o SyntheticTaskMonitorConfApiHttpPtrOutput) Method() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// HTTP request body. See `requestBody` below.
 func (o SyntheticTaskMonitorConfApiHttpPtrOutput) RequestBody() SyntheticTaskMonitorConfApiHttpRequestBodyPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfApiHttp) *SyntheticTaskMonitorConfApiHttpRequestBody {
 		if v == nil {
@@ -2214,6 +2311,7 @@ func (o SyntheticTaskMonitorConfApiHttpPtrOutput) RequestBody() SyntheticTaskMon
 	}).(SyntheticTaskMonitorConfApiHttpRequestBodyPtrOutput)
 }
 
+// HTTP request header.
 func (o SyntheticTaskMonitorConfApiHttpPtrOutput) RequestHeaders() pulumi.MapOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfApiHttp) map[string]interface{} {
 		if v == nil {
@@ -2223,6 +2321,7 @@ func (o SyntheticTaskMonitorConfApiHttpPtrOutput) RequestHeaders() pulumi.MapOut
 	}).(pulumi.MapOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfApiHttpPtrOutput) TargetUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfApiHttp) *string {
 		if v == nil {
@@ -2232,6 +2331,7 @@ func (o SyntheticTaskMonitorConfApiHttpPtrOutput) TargetUrl() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
 func (o SyntheticTaskMonitorConfApiHttpPtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfApiHttp) *int {
 		if v == nil {
@@ -2242,6 +2342,7 @@ func (o SyntheticTaskMonitorConfApiHttpPtrOutput) Timeout() pulumi.IntPtrOutput 
 }
 
 type SyntheticTaskMonitorConfApiHttpRequestBody struct {
+	// The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
 	Content *string `pulumi:"content"`
 	Type    *string `pulumi:"type"`
 }
@@ -2258,6 +2359,7 @@ type SyntheticTaskMonitorConfApiHttpRequestBodyInput interface {
 }
 
 type SyntheticTaskMonitorConfApiHttpRequestBodyArgs struct {
+	// The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	Type    pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -2339,6 +2441,7 @@ func (o SyntheticTaskMonitorConfApiHttpRequestBodyOutput) ToSyntheticTaskMonitor
 	}).(SyntheticTaskMonitorConfApiHttpRequestBodyPtrOutput)
 }
 
+// The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
 func (o SyntheticTaskMonitorConfApiHttpRequestBodyOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfApiHttpRequestBody) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
@@ -2371,6 +2474,7 @@ func (o SyntheticTaskMonitorConfApiHttpRequestBodyPtrOutput) Elem() SyntheticTas
 	}).(SyntheticTaskMonitorConfApiHttpRequestBodyOutput)
 }
 
+// The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
 func (o SyntheticTaskMonitorConfApiHttpRequestBodyPtrOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfApiHttpRequestBody) *string {
 		if v == nil {
@@ -2390,24 +2494,52 @@ func (o SyntheticTaskMonitorConfApiHttpRequestBodyPtrOutput) Type() pulumi.Strin
 }
 
 type SyntheticTaskMonitorConfFileDownload struct {
-	ConnectionTimeout                   *int                   `pulumi:"connectionTimeout"`
-	CustomHeaderContent                 map[string]interface{} `pulumi:"customHeaderContent"`
-	DownloadKernel                      *int                   `pulumi:"downloadKernel"`
-	IgnoreCertificateAuthError          *int                   `pulumi:"ignoreCertificateAuthError"`
-	IgnoreCertificateCanceledError      *int                   `pulumi:"ignoreCertificateCanceledError"`
-	IgnoreCertificateOutOfDateError     *int                   `pulumi:"ignoreCertificateOutOfDateError"`
-	IgnoreCertificateStatusError        *int                   `pulumi:"ignoreCertificateStatusError"`
-	IgnoreCertificateUntrustworthyError *int                   `pulumi:"ignoreCertificateUntrustworthyError"`
-	IgnoreCertificateUsingError         *int                   `pulumi:"ignoreCertificateUsingError"`
-	IgnoreInvalidHostError              *int                   `pulumi:"ignoreInvalidHostError"`
-	MonitorTimeout                      *int                   `pulumi:"monitorTimeout"`
-	QuickProtocol                       *int                   `pulumi:"quickProtocol"`
-	Redirection                         *int                   `pulumi:"redirection"`
-	TargetUrl                           string                 `pulumi:"targetUrl"`
-	TransmissionSize                    *int                   `pulumi:"transmissionSize"`
-	ValidateKeywords                    *string                `pulumi:"validateKeywords"`
-	VerifyWay                           *int                   `pulumi:"verifyWay"`
-	WhiteList                           *string                `pulumi:"whiteList"`
+	// Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
+	ConnectionTimeout *int `pulumi:"connectionTimeout"`
+	// Custom header, in JSON Map format.
+	CustomHeaderContent map[string]interface{} `pulumi:"customHeaderContent"`
+	// Download the kernel.
+	// - 1:curl
+	// - 0:WinInet
+	//   Default 1.
+	DownloadKernel *int `pulumi:"downloadKernel"`
+	// Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
+	IgnoreCertificateAuthError *int `pulumi:"ignoreCertificateAuthError"`
+	// Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
+	IgnoreCertificateCanceledError *int `pulumi:"ignoreCertificateCanceledError"`
+	// Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
+	IgnoreCertificateOutOfDateError *int `pulumi:"ignoreCertificateOutOfDateError"`
+	// The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
+	IgnoreCertificateStatusError *int `pulumi:"ignoreCertificateStatusError"`
+	// The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
+	IgnoreCertificateUntrustworthyError *int `pulumi:"ignoreCertificateUntrustworthyError"`
+	// Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
+	IgnoreCertificateUsingError *int `pulumi:"ignoreCertificateUsingError"`
+	// Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
+	IgnoreInvalidHostError *int `pulumi:"ignoreInvalidHostError"`
+	// Monitoring timeout, in ms. Not required, 20000 by default.
+	MonitorTimeout *int `pulumi:"monitorTimeout"`
+	// Quick agreement
+	// - 1:http1
+	// - 2:http2
+	// - 3:http3
+	//   Default 1.
+	QuickProtocol *int `pulumi:"quickProtocol"`
+	// When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+	Redirection *int `pulumi:"redirection"`
+	// The target URL.
+	TargetUrl string `pulumi:"targetUrl"`
+	// The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
+	TransmissionSize *int `pulumi:"transmissionSize"`
+	// Verify keywords.
+	ValidateKeywords *string `pulumi:"validateKeywords"`
+	// The verification method.
+	// - 0: Do not validate
+	// - 1: Validation string
+	// - 2:MD5 validation.
+	VerifyWay *int `pulumi:"verifyWay"`
+	// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+	WhiteList *string `pulumi:"whiteList"`
 }
 
 // SyntheticTaskMonitorConfFileDownloadInput is an input type that accepts SyntheticTaskMonitorConfFileDownloadArgs and SyntheticTaskMonitorConfFileDownloadOutput values.
@@ -2422,24 +2554,52 @@ type SyntheticTaskMonitorConfFileDownloadInput interface {
 }
 
 type SyntheticTaskMonitorConfFileDownloadArgs struct {
-	ConnectionTimeout                   pulumi.IntPtrInput    `pulumi:"connectionTimeout"`
-	CustomHeaderContent                 pulumi.MapInput       `pulumi:"customHeaderContent"`
-	DownloadKernel                      pulumi.IntPtrInput    `pulumi:"downloadKernel"`
-	IgnoreCertificateAuthError          pulumi.IntPtrInput    `pulumi:"ignoreCertificateAuthError"`
-	IgnoreCertificateCanceledError      pulumi.IntPtrInput    `pulumi:"ignoreCertificateCanceledError"`
-	IgnoreCertificateOutOfDateError     pulumi.IntPtrInput    `pulumi:"ignoreCertificateOutOfDateError"`
-	IgnoreCertificateStatusError        pulumi.IntPtrInput    `pulumi:"ignoreCertificateStatusError"`
-	IgnoreCertificateUntrustworthyError pulumi.IntPtrInput    `pulumi:"ignoreCertificateUntrustworthyError"`
-	IgnoreCertificateUsingError         pulumi.IntPtrInput    `pulumi:"ignoreCertificateUsingError"`
-	IgnoreInvalidHostError              pulumi.IntPtrInput    `pulumi:"ignoreInvalidHostError"`
-	MonitorTimeout                      pulumi.IntPtrInput    `pulumi:"monitorTimeout"`
-	QuickProtocol                       pulumi.IntPtrInput    `pulumi:"quickProtocol"`
-	Redirection                         pulumi.IntPtrInput    `pulumi:"redirection"`
-	TargetUrl                           pulumi.StringInput    `pulumi:"targetUrl"`
-	TransmissionSize                    pulumi.IntPtrInput    `pulumi:"transmissionSize"`
-	ValidateKeywords                    pulumi.StringPtrInput `pulumi:"validateKeywords"`
-	VerifyWay                           pulumi.IntPtrInput    `pulumi:"verifyWay"`
-	WhiteList                           pulumi.StringPtrInput `pulumi:"whiteList"`
+	// Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
+	ConnectionTimeout pulumi.IntPtrInput `pulumi:"connectionTimeout"`
+	// Custom header, in JSON Map format.
+	CustomHeaderContent pulumi.MapInput `pulumi:"customHeaderContent"`
+	// Download the kernel.
+	// - 1:curl
+	// - 0:WinInet
+	//   Default 1.
+	DownloadKernel pulumi.IntPtrInput `pulumi:"downloadKernel"`
+	// Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
+	IgnoreCertificateAuthError pulumi.IntPtrInput `pulumi:"ignoreCertificateAuthError"`
+	// Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
+	IgnoreCertificateCanceledError pulumi.IntPtrInput `pulumi:"ignoreCertificateCanceledError"`
+	// Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
+	IgnoreCertificateOutOfDateError pulumi.IntPtrInput `pulumi:"ignoreCertificateOutOfDateError"`
+	// The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
+	IgnoreCertificateStatusError pulumi.IntPtrInput `pulumi:"ignoreCertificateStatusError"`
+	// The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
+	IgnoreCertificateUntrustworthyError pulumi.IntPtrInput `pulumi:"ignoreCertificateUntrustworthyError"`
+	// Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
+	IgnoreCertificateUsingError pulumi.IntPtrInput `pulumi:"ignoreCertificateUsingError"`
+	// Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
+	IgnoreInvalidHostError pulumi.IntPtrInput `pulumi:"ignoreInvalidHostError"`
+	// Monitoring timeout, in ms. Not required, 20000 by default.
+	MonitorTimeout pulumi.IntPtrInput `pulumi:"monitorTimeout"`
+	// Quick agreement
+	// - 1:http1
+	// - 2:http2
+	// - 3:http3
+	//   Default 1.
+	QuickProtocol pulumi.IntPtrInput `pulumi:"quickProtocol"`
+	// When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+	Redirection pulumi.IntPtrInput `pulumi:"redirection"`
+	// The target URL.
+	TargetUrl pulumi.StringInput `pulumi:"targetUrl"`
+	// The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
+	TransmissionSize pulumi.IntPtrInput `pulumi:"transmissionSize"`
+	// Verify keywords.
+	ValidateKeywords pulumi.StringPtrInput `pulumi:"validateKeywords"`
+	// The verification method.
+	// - 0: Do not validate
+	// - 1: Validation string
+	// - 2:MD5 validation.
+	VerifyWay pulumi.IntPtrInput `pulumi:"verifyWay"`
+	// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+	WhiteList pulumi.StringPtrInput `pulumi:"whiteList"`
 }
 
 func (SyntheticTaskMonitorConfFileDownloadArgs) ElementType() reflect.Type {
@@ -2519,74 +2679,102 @@ func (o SyntheticTaskMonitorConfFileDownloadOutput) ToSyntheticTaskMonitorConfFi
 	}).(SyntheticTaskMonitorConfFileDownloadPtrOutput)
 }
 
+// Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) ConnectionTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.ConnectionTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Custom header, in JSON Map format.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) CustomHeaderContent() pulumi.MapOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) map[string]interface{} { return v.CustomHeaderContent }).(pulumi.MapOutput)
 }
 
+// Download the kernel.
+//   - 1:curl
+//   - 0:WinInet
+//     Default 1.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) DownloadKernel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.DownloadKernel }).(pulumi.IntPtrOutput)
 }
 
+// Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) IgnoreCertificateAuthError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.IgnoreCertificateAuthError }).(pulumi.IntPtrOutput)
 }
 
+// Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) IgnoreCertificateCanceledError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.IgnoreCertificateCanceledError }).(pulumi.IntPtrOutput)
 }
 
+// Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) IgnoreCertificateOutOfDateError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.IgnoreCertificateOutOfDateError }).(pulumi.IntPtrOutput)
 }
 
+// The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) IgnoreCertificateStatusError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.IgnoreCertificateStatusError }).(pulumi.IntPtrOutput)
 }
 
+// The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) IgnoreCertificateUntrustworthyError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.IgnoreCertificateUntrustworthyError }).(pulumi.IntPtrOutput)
 }
 
+// Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) IgnoreCertificateUsingError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.IgnoreCertificateUsingError }).(pulumi.IntPtrOutput)
 }
 
+// Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) IgnoreInvalidHostError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.IgnoreInvalidHostError }).(pulumi.IntPtrOutput)
 }
 
+// Monitoring timeout, in ms. Not required, 20000 by default.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) MonitorTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.MonitorTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Quick agreement
+//   - 1:http1
+//   - 2:http2
+//   - 3:http3
+//     Default 1.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) QuickProtocol() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.QuickProtocol }).(pulumi.IntPtrOutput)
 }
 
+// When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) Redirection() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.Redirection }).(pulumi.IntPtrOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) TargetUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) string { return v.TargetUrl }).(pulumi.StringOutput)
 }
 
+// The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) TransmissionSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.TransmissionSize }).(pulumi.IntPtrOutput)
 }
 
+// Verify keywords.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) ValidateKeywords() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *string { return v.ValidateKeywords }).(pulumi.StringPtrOutput)
 }
 
+// The verification method.
+// - 0: Do not validate
+// - 1: Validation string
+// - 2:MD5 validation.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) VerifyWay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *int { return v.VerifyWay }).(pulumi.IntPtrOutput)
 }
 
+// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 func (o SyntheticTaskMonitorConfFileDownloadOutput) WhiteList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfFileDownload) *string { return v.WhiteList }).(pulumi.StringPtrOutput)
 }
@@ -2615,6 +2803,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) Elem() SyntheticTaskMonit
 	}).(SyntheticTaskMonitorConfFileDownloadOutput)
 }
 
+// Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) ConnectionTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2624,6 +2813,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) ConnectionTimeout() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
+// Custom header, in JSON Map format.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) CustomHeaderContent() pulumi.MapOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) map[string]interface{} {
 		if v == nil {
@@ -2633,6 +2823,10 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) CustomHeaderContent() pul
 	}).(pulumi.MapOutput)
 }
 
+// Download the kernel.
+//   - 1:curl
+//   - 0:WinInet
+//     Default 1.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) DownloadKernel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2642,6 +2836,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) DownloadKernel() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
+// Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreCertificateAuthError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2651,6 +2846,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreCertificateAuthErro
 	}).(pulumi.IntPtrOutput)
 }
 
+// Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreCertificateCanceledError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2660,6 +2856,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreCertificateCanceled
 	}).(pulumi.IntPtrOutput)
 }
 
+// Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreCertificateOutOfDateError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2669,6 +2866,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreCertificateOutOfDat
 	}).(pulumi.IntPtrOutput)
 }
 
+// The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreCertificateStatusError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2678,6 +2876,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreCertificateStatusEr
 	}).(pulumi.IntPtrOutput)
 }
 
+// The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreCertificateUntrustworthyError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2687,6 +2886,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreCertificateUntrustw
 	}).(pulumi.IntPtrOutput)
 }
 
+// Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreCertificateUsingError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2696,6 +2896,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreCertificateUsingErr
 	}).(pulumi.IntPtrOutput)
 }
 
+// Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreInvalidHostError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2705,6 +2906,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) IgnoreInvalidHostError() 
 	}).(pulumi.IntPtrOutput)
 }
 
+// Monitoring timeout, in ms. Not required, 20000 by default.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) MonitorTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2714,6 +2916,11 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) MonitorTimeout() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
+// Quick agreement
+//   - 1:http1
+//   - 2:http2
+//   - 3:http3
+//     Default 1.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) QuickProtocol() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2723,6 +2930,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) QuickProtocol() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
+// When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) Redirection() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2732,6 +2940,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) Redirection() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) TargetUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *string {
 		if v == nil {
@@ -2741,6 +2950,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) TargetUrl() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) TransmissionSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2750,6 +2960,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) TransmissionSize() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
+// Verify keywords.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) ValidateKeywords() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *string {
 		if v == nil {
@@ -2759,6 +2970,10 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) ValidateKeywords() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The verification method.
+// - 0: Do not validate
+// - 1: Validation string
+// - 2:MD5 validation.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) VerifyWay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *int {
 		if v == nil {
@@ -2768,6 +2983,7 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) VerifyWay() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) WhiteList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfFileDownload) *string {
 		if v == nil {
@@ -2778,11 +2994,21 @@ func (o SyntheticTaskMonitorConfFileDownloadPtrOutput) WhiteList() pulumi.String
 }
 
 type SyntheticTaskMonitorConfNetDns struct {
-	DnsServerIpType *int    `pulumi:"dnsServerIpType"`
-	NsServer        *string `pulumi:"nsServer"`
-	QueryMethod     *int    `pulumi:"queryMethod"`
-	TargetUrl       string  `pulumi:"targetUrl"`
-	Timeout         *int    `pulumi:"timeout"`
+	// The IP address type of the DNS server.
+	// - 0 (default):ipv4
+	// - 1:ipv6
+	//   2: Automatic.
+	DnsServerIpType *int `pulumi:"dnsServerIpType"`
+	// The IP address of the NS server. The default value is 114.114.114.114.
+	NsServer *string `pulumi:"nsServer"`
+	// DNS query method.
+	// - 0 (default): Recursive
+	// - 1: Iteration.
+	QueryMethod *int `pulumi:"queryMethod"`
+	// The target URL.
+	TargetUrl string `pulumi:"targetUrl"`
+	// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+	Timeout *int `pulumi:"timeout"`
 }
 
 // SyntheticTaskMonitorConfNetDnsInput is an input type that accepts SyntheticTaskMonitorConfNetDnsArgs and SyntheticTaskMonitorConfNetDnsOutput values.
@@ -2797,11 +3023,21 @@ type SyntheticTaskMonitorConfNetDnsInput interface {
 }
 
 type SyntheticTaskMonitorConfNetDnsArgs struct {
-	DnsServerIpType pulumi.IntPtrInput    `pulumi:"dnsServerIpType"`
-	NsServer        pulumi.StringPtrInput `pulumi:"nsServer"`
-	QueryMethod     pulumi.IntPtrInput    `pulumi:"queryMethod"`
-	TargetUrl       pulumi.StringInput    `pulumi:"targetUrl"`
-	Timeout         pulumi.IntPtrInput    `pulumi:"timeout"`
+	// The IP address type of the DNS server.
+	// - 0 (default):ipv4
+	// - 1:ipv6
+	//   2: Automatic.
+	DnsServerIpType pulumi.IntPtrInput `pulumi:"dnsServerIpType"`
+	// The IP address of the NS server. The default value is 114.114.114.114.
+	NsServer pulumi.StringPtrInput `pulumi:"nsServer"`
+	// DNS query method.
+	// - 0 (default): Recursive
+	// - 1: Iteration.
+	QueryMethod pulumi.IntPtrInput `pulumi:"queryMethod"`
+	// The target URL.
+	TargetUrl pulumi.StringInput `pulumi:"targetUrl"`
+	// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
 }
 
 func (SyntheticTaskMonitorConfNetDnsArgs) ElementType() reflect.Type {
@@ -2881,22 +3117,32 @@ func (o SyntheticTaskMonitorConfNetDnsOutput) ToSyntheticTaskMonitorConfNetDnsPt
 	}).(SyntheticTaskMonitorConfNetDnsPtrOutput)
 }
 
+// The IP address type of the DNS server.
+//   - 0 (default):ipv4
+//   - 1:ipv6
+//     2: Automatic.
 func (o SyntheticTaskMonitorConfNetDnsOutput) DnsServerIpType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetDns) *int { return v.DnsServerIpType }).(pulumi.IntPtrOutput)
 }
 
+// The IP address of the NS server. The default value is 114.114.114.114.
 func (o SyntheticTaskMonitorConfNetDnsOutput) NsServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetDns) *string { return v.NsServer }).(pulumi.StringPtrOutput)
 }
 
+// DNS query method.
+// - 0 (default): Recursive
+// - 1: Iteration.
 func (o SyntheticTaskMonitorConfNetDnsOutput) QueryMethod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetDns) *int { return v.QueryMethod }).(pulumi.IntPtrOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfNetDnsOutput) TargetUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetDns) string { return v.TargetUrl }).(pulumi.StringOutput)
 }
 
+// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
 func (o SyntheticTaskMonitorConfNetDnsOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetDns) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
@@ -2925,6 +3171,10 @@ func (o SyntheticTaskMonitorConfNetDnsPtrOutput) Elem() SyntheticTaskMonitorConf
 	}).(SyntheticTaskMonitorConfNetDnsOutput)
 }
 
+// The IP address type of the DNS server.
+//   - 0 (default):ipv4
+//   - 1:ipv6
+//     2: Automatic.
 func (o SyntheticTaskMonitorConfNetDnsPtrOutput) DnsServerIpType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetDns) *int {
 		if v == nil {
@@ -2934,6 +3184,7 @@ func (o SyntheticTaskMonitorConfNetDnsPtrOutput) DnsServerIpType() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+// The IP address of the NS server. The default value is 114.114.114.114.
 func (o SyntheticTaskMonitorConfNetDnsPtrOutput) NsServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetDns) *string {
 		if v == nil {
@@ -2943,6 +3194,9 @@ func (o SyntheticTaskMonitorConfNetDnsPtrOutput) NsServer() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// DNS query method.
+// - 0 (default): Recursive
+// - 1: Iteration.
 func (o SyntheticTaskMonitorConfNetDnsPtrOutput) QueryMethod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetDns) *int {
 		if v == nil {
@@ -2952,6 +3206,7 @@ func (o SyntheticTaskMonitorConfNetDnsPtrOutput) QueryMethod() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfNetDnsPtrOutput) TargetUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetDns) *string {
 		if v == nil {
@@ -2961,6 +3216,7 @@ func (o SyntheticTaskMonitorConfNetDnsPtrOutput) TargetUrl() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
 func (o SyntheticTaskMonitorConfNetDnsPtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetDns) *int {
 		if v == nil {
@@ -2971,15 +3227,24 @@ func (o SyntheticTaskMonitorConfNetDnsPtrOutput) Timeout() pulumi.IntPtrOutput {
 }
 
 type SyntheticTaskMonitorConfNetIcmp struct {
-	Interval       *int   `pulumi:"interval"`
-	PackageNum     *int   `pulumi:"packageNum"`
-	PackageSize    *int   `pulumi:"packageSize"`
-	SplitPackage   *bool  `pulumi:"splitPackage"`
-	TargetUrl      string `pulumi:"targetUrl"`
-	Timeout        *int   `pulumi:"timeout"`
-	TracertEnable  *bool  `pulumi:"tracertEnable"`
-	TracertNumMax  *int   `pulumi:"tracertNumMax"`
-	TracertTimeout *int   `pulumi:"tracertTimeout"`
+	// The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+	Interval *int `pulumi:"interval"`
+	// Number of ICMP(Ping) packets sent. The minimum value is 1, the maximum value is 50, and the default is 4.
+	PackageNum *int `pulumi:"packageNum"`
+	// The size of the sent ICMP(Ping) packet. The unit is byte. The ICMP(PING) packet size is limited to 32, 64, 128, 256, 512, 1024, 1080, and 1450.
+	PackageSize *int `pulumi:"packageSize"`
+	// Whether to split ICMP(Ping) packets. The default is true.
+	SplitPackage *bool `pulumi:"splitPackage"`
+	// The target URL.
+	TargetUrl string `pulumi:"targetUrl"`
+	// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+	Timeout *int `pulumi:"timeout"`
+	// Whether to enable tracert. The default is true.
+	TracertEnable *bool `pulumi:"tracertEnable"`
+	// The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+	TracertNumMax *int `pulumi:"tracertNumMax"`
+	// The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+	TracertTimeout *int `pulumi:"tracertTimeout"`
 }
 
 // SyntheticTaskMonitorConfNetIcmpInput is an input type that accepts SyntheticTaskMonitorConfNetIcmpArgs and SyntheticTaskMonitorConfNetIcmpOutput values.
@@ -2994,15 +3259,24 @@ type SyntheticTaskMonitorConfNetIcmpInput interface {
 }
 
 type SyntheticTaskMonitorConfNetIcmpArgs struct {
-	Interval       pulumi.IntPtrInput  `pulumi:"interval"`
-	PackageNum     pulumi.IntPtrInput  `pulumi:"packageNum"`
-	PackageSize    pulumi.IntPtrInput  `pulumi:"packageSize"`
-	SplitPackage   pulumi.BoolPtrInput `pulumi:"splitPackage"`
-	TargetUrl      pulumi.StringInput  `pulumi:"targetUrl"`
-	Timeout        pulumi.IntPtrInput  `pulumi:"timeout"`
-	TracertEnable  pulumi.BoolPtrInput `pulumi:"tracertEnable"`
-	TracertNumMax  pulumi.IntPtrInput  `pulumi:"tracertNumMax"`
-	TracertTimeout pulumi.IntPtrInput  `pulumi:"tracertTimeout"`
+	// The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// Number of ICMP(Ping) packets sent. The minimum value is 1, the maximum value is 50, and the default is 4.
+	PackageNum pulumi.IntPtrInput `pulumi:"packageNum"`
+	// The size of the sent ICMP(Ping) packet. The unit is byte. The ICMP(PING) packet size is limited to 32, 64, 128, 256, 512, 1024, 1080, and 1450.
+	PackageSize pulumi.IntPtrInput `pulumi:"packageSize"`
+	// Whether to split ICMP(Ping) packets. The default is true.
+	SplitPackage pulumi.BoolPtrInput `pulumi:"splitPackage"`
+	// The target URL.
+	TargetUrl pulumi.StringInput `pulumi:"targetUrl"`
+	// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// Whether to enable tracert. The default is true.
+	TracertEnable pulumi.BoolPtrInput `pulumi:"tracertEnable"`
+	// The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+	TracertNumMax pulumi.IntPtrInput `pulumi:"tracertNumMax"`
+	// The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+	TracertTimeout pulumi.IntPtrInput `pulumi:"tracertTimeout"`
 }
 
 func (SyntheticTaskMonitorConfNetIcmpArgs) ElementType() reflect.Type {
@@ -3082,38 +3356,47 @@ func (o SyntheticTaskMonitorConfNetIcmpOutput) ToSyntheticTaskMonitorConfNetIcmp
 	}).(SyntheticTaskMonitorConfNetIcmpPtrOutput)
 }
 
+// The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
 func (o SyntheticTaskMonitorConfNetIcmpOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetIcmp) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
+// Number of ICMP(Ping) packets sent. The minimum value is 1, the maximum value is 50, and the default is 4.
 func (o SyntheticTaskMonitorConfNetIcmpOutput) PackageNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetIcmp) *int { return v.PackageNum }).(pulumi.IntPtrOutput)
 }
 
+// The size of the sent ICMP(Ping) packet. The unit is byte. The ICMP(PING) packet size is limited to 32, 64, 128, 256, 512, 1024, 1080, and 1450.
 func (o SyntheticTaskMonitorConfNetIcmpOutput) PackageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetIcmp) *int { return v.PackageSize }).(pulumi.IntPtrOutput)
 }
 
+// Whether to split ICMP(Ping) packets. The default is true.
 func (o SyntheticTaskMonitorConfNetIcmpOutput) SplitPackage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetIcmp) *bool { return v.SplitPackage }).(pulumi.BoolPtrOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfNetIcmpOutput) TargetUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetIcmp) string { return v.TargetUrl }).(pulumi.StringOutput)
 }
 
+// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
 func (o SyntheticTaskMonitorConfNetIcmpOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetIcmp) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
+// Whether to enable tracert. The default is true.
 func (o SyntheticTaskMonitorConfNetIcmpOutput) TracertEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetIcmp) *bool { return v.TracertEnable }).(pulumi.BoolPtrOutput)
 }
 
+// The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
 func (o SyntheticTaskMonitorConfNetIcmpOutput) TracertNumMax() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetIcmp) *int { return v.TracertNumMax }).(pulumi.IntPtrOutput)
 }
 
+// The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
 func (o SyntheticTaskMonitorConfNetIcmpOutput) TracertTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetIcmp) *int { return v.TracertTimeout }).(pulumi.IntPtrOutput)
 }
@@ -3142,6 +3425,7 @@ func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) Elem() SyntheticTaskMonitorCon
 	}).(SyntheticTaskMonitorConfNetIcmpOutput)
 }
 
+// The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
 func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetIcmp) *int {
 		if v == nil {
@@ -3151,6 +3435,7 @@ func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) Interval() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+// Number of ICMP(Ping) packets sent. The minimum value is 1, the maximum value is 50, and the default is 4.
 func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) PackageNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetIcmp) *int {
 		if v == nil {
@@ -3160,6 +3445,7 @@ func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) PackageNum() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// The size of the sent ICMP(Ping) packet. The unit is byte. The ICMP(PING) packet size is limited to 32, 64, 128, 256, 512, 1024, 1080, and 1450.
 func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) PackageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetIcmp) *int {
 		if v == nil {
@@ -3169,6 +3455,7 @@ func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) PackageSize() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether to split ICMP(Ping) packets. The default is true.
 func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) SplitPackage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetIcmp) *bool {
 		if v == nil {
@@ -3178,6 +3465,7 @@ func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) SplitPackage() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) TargetUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetIcmp) *string {
 		if v == nil {
@@ -3187,6 +3475,7 @@ func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) TargetUrl() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
 func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetIcmp) *int {
 		if v == nil {
@@ -3196,6 +3485,7 @@ func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) Timeout() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether to enable tracert. The default is true.
 func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) TracertEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetIcmp) *bool {
 		if v == nil {
@@ -3205,6 +3495,7 @@ func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) TracertEnable() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
 func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) TracertNumMax() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetIcmp) *int {
 		if v == nil {
@@ -3214,6 +3505,7 @@ func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) TracertNumMax() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
+// The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
 func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) TracertTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetIcmp) *int {
 		if v == nil {
@@ -3224,13 +3516,20 @@ func (o SyntheticTaskMonitorConfNetIcmpPtrOutput) TracertTimeout() pulumi.IntPtr
 }
 
 type SyntheticTaskMonitorConfNetTcp struct {
-	ConnectTimes   *int   `pulumi:"connectTimes"`
-	Interval       *int   `pulumi:"interval"`
-	TargetUrl      string `pulumi:"targetUrl"`
-	Timeout        *int   `pulumi:"timeout"`
-	TracertEnable  *bool  `pulumi:"tracertEnable"`
-	TracertNumMax  *int   `pulumi:"tracertNumMax"`
-	TracertTimeout *int   `pulumi:"tracertTimeout"`
+	// The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
+	ConnectTimes *int `pulumi:"connectTimes"`
+	// The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+	Interval *int `pulumi:"interval"`
+	// The target URL.
+	TargetUrl string `pulumi:"targetUrl"`
+	// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+	Timeout *int `pulumi:"timeout"`
+	// Whether to enable tracert. The default is true.
+	TracertEnable *bool `pulumi:"tracertEnable"`
+	// The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+	TracertNumMax *int `pulumi:"tracertNumMax"`
+	// The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+	TracertTimeout *int `pulumi:"tracertTimeout"`
 }
 
 // SyntheticTaskMonitorConfNetTcpInput is an input type that accepts SyntheticTaskMonitorConfNetTcpArgs and SyntheticTaskMonitorConfNetTcpOutput values.
@@ -3245,13 +3544,20 @@ type SyntheticTaskMonitorConfNetTcpInput interface {
 }
 
 type SyntheticTaskMonitorConfNetTcpArgs struct {
-	ConnectTimes   pulumi.IntPtrInput  `pulumi:"connectTimes"`
-	Interval       pulumi.IntPtrInput  `pulumi:"interval"`
-	TargetUrl      pulumi.StringInput  `pulumi:"targetUrl"`
-	Timeout        pulumi.IntPtrInput  `pulumi:"timeout"`
-	TracertEnable  pulumi.BoolPtrInput `pulumi:"tracertEnable"`
-	TracertNumMax  pulumi.IntPtrInput  `pulumi:"tracertNumMax"`
-	TracertTimeout pulumi.IntPtrInput  `pulumi:"tracertTimeout"`
+	// The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
+	ConnectTimes pulumi.IntPtrInput `pulumi:"connectTimes"`
+	// The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// The target URL.
+	TargetUrl pulumi.StringInput `pulumi:"targetUrl"`
+	// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// Whether to enable tracert. The default is true.
+	TracertEnable pulumi.BoolPtrInput `pulumi:"tracertEnable"`
+	// The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
+	TracertNumMax pulumi.IntPtrInput `pulumi:"tracertNumMax"`
+	// The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
+	TracertTimeout pulumi.IntPtrInput `pulumi:"tracertTimeout"`
 }
 
 func (SyntheticTaskMonitorConfNetTcpArgs) ElementType() reflect.Type {
@@ -3331,30 +3637,37 @@ func (o SyntheticTaskMonitorConfNetTcpOutput) ToSyntheticTaskMonitorConfNetTcpPt
 	}).(SyntheticTaskMonitorConfNetTcpPtrOutput)
 }
 
+// The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
 func (o SyntheticTaskMonitorConfNetTcpOutput) ConnectTimes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetTcp) *int { return v.ConnectTimes }).(pulumi.IntPtrOutput)
 }
 
+// The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
 func (o SyntheticTaskMonitorConfNetTcpOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetTcp) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfNetTcpOutput) TargetUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetTcp) string { return v.TargetUrl }).(pulumi.StringOutput)
 }
 
+// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
 func (o SyntheticTaskMonitorConfNetTcpOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetTcp) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
+// Whether to enable tracert. The default is true.
 func (o SyntheticTaskMonitorConfNetTcpOutput) TracertEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetTcp) *bool { return v.TracertEnable }).(pulumi.BoolPtrOutput)
 }
 
+// The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
 func (o SyntheticTaskMonitorConfNetTcpOutput) TracertNumMax() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetTcp) *int { return v.TracertNumMax }).(pulumi.IntPtrOutput)
 }
 
+// The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
 func (o SyntheticTaskMonitorConfNetTcpOutput) TracertTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfNetTcp) *int { return v.TracertTimeout }).(pulumi.IntPtrOutput)
 }
@@ -3383,6 +3696,7 @@ func (o SyntheticTaskMonitorConfNetTcpPtrOutput) Elem() SyntheticTaskMonitorConf
 	}).(SyntheticTaskMonitorConfNetTcpOutput)
 }
 
+// The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
 func (o SyntheticTaskMonitorConfNetTcpPtrOutput) ConnectTimes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetTcp) *int {
 		if v == nil {
@@ -3392,6 +3706,7 @@ func (o SyntheticTaskMonitorConfNetTcpPtrOutput) ConnectTimes() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+// The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
 func (o SyntheticTaskMonitorConfNetTcpPtrOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetTcp) *int {
 		if v == nil {
@@ -3401,6 +3716,7 @@ func (o SyntheticTaskMonitorConfNetTcpPtrOutput) Interval() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfNetTcpPtrOutput) TargetUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetTcp) *string {
 		if v == nil {
@@ -3410,6 +3726,7 @@ func (o SyntheticTaskMonitorConfNetTcpPtrOutput) TargetUrl() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
 func (o SyntheticTaskMonitorConfNetTcpPtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetTcp) *int {
 		if v == nil {
@@ -3419,6 +3736,7 @@ func (o SyntheticTaskMonitorConfNetTcpPtrOutput) Timeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether to enable tracert. The default is true.
 func (o SyntheticTaskMonitorConfNetTcpPtrOutput) TracertEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetTcp) *bool {
 		if v == nil {
@@ -3428,6 +3746,7 @@ func (o SyntheticTaskMonitorConfNetTcpPtrOutput) TracertEnable() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
 func (o SyntheticTaskMonitorConfNetTcpPtrOutput) TracertNumMax() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetTcp) *int {
 		if v == nil {
@@ -3437,6 +3756,7 @@ func (o SyntheticTaskMonitorConfNetTcpPtrOutput) TracertNumMax() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
+// The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
 func (o SyntheticTaskMonitorConfNetTcpPtrOutput) TracertTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfNetTcp) *int {
 		if v == nil {
@@ -3447,13 +3767,24 @@ func (o SyntheticTaskMonitorConfNetTcpPtrOutput) TracertTimeout() pulumi.IntPtrO
 }
 
 type SyntheticTaskMonitorConfStream struct {
-	CustomHeaderContent  map[string]interface{} `pulumi:"customHeaderContent"`
-	PlayerType           *int                   `pulumi:"playerType"`
-	StreamAddressType    *int                   `pulumi:"streamAddressType"`
-	StreamMonitorTimeout *int                   `pulumi:"streamMonitorTimeout"`
-	StreamType           *int                   `pulumi:"streamType"`
-	TargetUrl            *string                `pulumi:"targetUrl"`
-	WhiteList            *string                `pulumi:"whiteList"`
+	// Custom header, in JSON Map format.
+	CustomHeaderContent map[string]interface{} `pulumi:"customHeaderContent"`
+	// Player, do not pass the default 12.
+	// - 12:VLC
+	// - 2:FlashPlayer.
+	PlayerType *int `pulumi:"playerType"`
+	// Resource address type:
+	// - 1: Resource address.
+	// - 0: page address, not 0 by default.
+	StreamAddressType *int `pulumi:"streamAddressType"`
+	// Monitoring duration, in seconds, up to 60s, not 60 by default.
+	StreamMonitorTimeout *int `pulumi:"streamMonitorTimeout"`
+	// Audio and video flags: 0-video, 1-audio.
+	StreamType *int `pulumi:"streamType"`
+	// The target URL.
+	TargetUrl *string `pulumi:"targetUrl"`
+	// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+	WhiteList *string `pulumi:"whiteList"`
 }
 
 // SyntheticTaskMonitorConfStreamInput is an input type that accepts SyntheticTaskMonitorConfStreamArgs and SyntheticTaskMonitorConfStreamOutput values.
@@ -3468,13 +3799,24 @@ type SyntheticTaskMonitorConfStreamInput interface {
 }
 
 type SyntheticTaskMonitorConfStreamArgs struct {
-	CustomHeaderContent  pulumi.MapInput       `pulumi:"customHeaderContent"`
-	PlayerType           pulumi.IntPtrInput    `pulumi:"playerType"`
-	StreamAddressType    pulumi.IntPtrInput    `pulumi:"streamAddressType"`
-	StreamMonitorTimeout pulumi.IntPtrInput    `pulumi:"streamMonitorTimeout"`
-	StreamType           pulumi.IntPtrInput    `pulumi:"streamType"`
-	TargetUrl            pulumi.StringPtrInput `pulumi:"targetUrl"`
-	WhiteList            pulumi.StringPtrInput `pulumi:"whiteList"`
+	// Custom header, in JSON Map format.
+	CustomHeaderContent pulumi.MapInput `pulumi:"customHeaderContent"`
+	// Player, do not pass the default 12.
+	// - 12:VLC
+	// - 2:FlashPlayer.
+	PlayerType pulumi.IntPtrInput `pulumi:"playerType"`
+	// Resource address type:
+	// - 1: Resource address.
+	// - 0: page address, not 0 by default.
+	StreamAddressType pulumi.IntPtrInput `pulumi:"streamAddressType"`
+	// Monitoring duration, in seconds, up to 60s, not 60 by default.
+	StreamMonitorTimeout pulumi.IntPtrInput `pulumi:"streamMonitorTimeout"`
+	// Audio and video flags: 0-video, 1-audio.
+	StreamType pulumi.IntPtrInput `pulumi:"streamType"`
+	// The target URL.
+	TargetUrl pulumi.StringPtrInput `pulumi:"targetUrl"`
+	// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+	WhiteList pulumi.StringPtrInput `pulumi:"whiteList"`
 }
 
 func (SyntheticTaskMonitorConfStreamArgs) ElementType() reflect.Type {
@@ -3554,30 +3896,41 @@ func (o SyntheticTaskMonitorConfStreamOutput) ToSyntheticTaskMonitorConfStreamPt
 	}).(SyntheticTaskMonitorConfStreamPtrOutput)
 }
 
+// Custom header, in JSON Map format.
 func (o SyntheticTaskMonitorConfStreamOutput) CustomHeaderContent() pulumi.MapOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfStream) map[string]interface{} { return v.CustomHeaderContent }).(pulumi.MapOutput)
 }
 
+// Player, do not pass the default 12.
+// - 12:VLC
+// - 2:FlashPlayer.
 func (o SyntheticTaskMonitorConfStreamOutput) PlayerType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfStream) *int { return v.PlayerType }).(pulumi.IntPtrOutput)
 }
 
+// Resource address type:
+// - 1: Resource address.
+// - 0: page address, not 0 by default.
 func (o SyntheticTaskMonitorConfStreamOutput) StreamAddressType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfStream) *int { return v.StreamAddressType }).(pulumi.IntPtrOutput)
 }
 
+// Monitoring duration, in seconds, up to 60s, not 60 by default.
 func (o SyntheticTaskMonitorConfStreamOutput) StreamMonitorTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfStream) *int { return v.StreamMonitorTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Audio and video flags: 0-video, 1-audio.
 func (o SyntheticTaskMonitorConfStreamOutput) StreamType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfStream) *int { return v.StreamType }).(pulumi.IntPtrOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfStreamOutput) TargetUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfStream) *string { return v.TargetUrl }).(pulumi.StringPtrOutput)
 }
 
+// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 func (o SyntheticTaskMonitorConfStreamOutput) WhiteList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfStream) *string { return v.WhiteList }).(pulumi.StringPtrOutput)
 }
@@ -3606,6 +3959,7 @@ func (o SyntheticTaskMonitorConfStreamPtrOutput) Elem() SyntheticTaskMonitorConf
 	}).(SyntheticTaskMonitorConfStreamOutput)
 }
 
+// Custom header, in JSON Map format.
 func (o SyntheticTaskMonitorConfStreamPtrOutput) CustomHeaderContent() pulumi.MapOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfStream) map[string]interface{} {
 		if v == nil {
@@ -3615,6 +3969,9 @@ func (o SyntheticTaskMonitorConfStreamPtrOutput) CustomHeaderContent() pulumi.Ma
 	}).(pulumi.MapOutput)
 }
 
+// Player, do not pass the default 12.
+// - 12:VLC
+// - 2:FlashPlayer.
 func (o SyntheticTaskMonitorConfStreamPtrOutput) PlayerType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfStream) *int {
 		if v == nil {
@@ -3624,6 +3981,9 @@ func (o SyntheticTaskMonitorConfStreamPtrOutput) PlayerType() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+// Resource address type:
+// - 1: Resource address.
+// - 0: page address, not 0 by default.
 func (o SyntheticTaskMonitorConfStreamPtrOutput) StreamAddressType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfStream) *int {
 		if v == nil {
@@ -3633,6 +3993,7 @@ func (o SyntheticTaskMonitorConfStreamPtrOutput) StreamAddressType() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
+// Monitoring duration, in seconds, up to 60s, not 60 by default.
 func (o SyntheticTaskMonitorConfStreamPtrOutput) StreamMonitorTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfStream) *int {
 		if v == nil {
@@ -3642,6 +4003,7 @@ func (o SyntheticTaskMonitorConfStreamPtrOutput) StreamMonitorTimeout() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
+// Audio and video flags: 0-video, 1-audio.
 func (o SyntheticTaskMonitorConfStreamPtrOutput) StreamType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfStream) *int {
 		if v == nil {
@@ -3651,6 +4013,7 @@ func (o SyntheticTaskMonitorConfStreamPtrOutput) StreamType() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfStreamPtrOutput) TargetUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfStream) *string {
 		if v == nil {
@@ -3660,6 +4023,7 @@ func (o SyntheticTaskMonitorConfStreamPtrOutput) TargetUrl() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 func (o SyntheticTaskMonitorConfStreamPtrOutput) WhiteList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfStream) *string {
 		if v == nil {
@@ -3670,25 +4034,51 @@ func (o SyntheticTaskMonitorConfStreamPtrOutput) WhiteList() pulumi.StringPtrOut
 }
 
 type SyntheticTaskMonitorConfWebsite struct {
-	AutomaticScrolling     *int                   `pulumi:"automaticScrolling"`
-	CustomHeader           *int                   `pulumi:"customHeader"`
-	CustomHeaderContent    map[string]interface{} `pulumi:"customHeaderContent"`
-	DisableCache           *int                   `pulumi:"disableCache"`
-	DisableCompression     *int                   `pulumi:"disableCompression"`
-	DnsHijackWhitelist     *string                `pulumi:"dnsHijackWhitelist"`
-	ElementBlacklist       *string                `pulumi:"elementBlacklist"`
-	FilterInvalidIp        *int                   `pulumi:"filterInvalidIp"`
-	FlowHijackJumpTimes    *int                   `pulumi:"flowHijackJumpTimes"`
-	FlowHijackLogo         *string                `pulumi:"flowHijackLogo"`
-	IgnoreCertificateError *int                   `pulumi:"ignoreCertificateError"`
-	MonitorTimeout         *int                   `pulumi:"monitorTimeout"`
-	PageTamper             *string                `pulumi:"pageTamper"`
-	Redirection            *int                   `pulumi:"redirection"`
-	SlowElementThreshold   *int                   `pulumi:"slowElementThreshold"`
-	TargetUrl              string                 `pulumi:"targetUrl"`
-	VerifyStringBlacklist  *string                `pulumi:"verifyStringBlacklist"`
-	VerifyStringWhitelist  *string                `pulumi:"verifyStringWhitelist"`
-	WaitCompletionTime     *int                   `pulumi:"waitCompletionTime"`
+	// Whether to support automatic scrolling screen, loading page.
+	// - 0 (default): No
+	//   1: Yes.
+	AutomaticScrolling *int `pulumi:"automaticScrolling"`
+	// Custom header.
+	// - 0 (default): Off
+	// - 1: Modify the first package
+	// - 2: Modify all packages.
+	CustomHeader *int `pulumi:"customHeader"`
+	// Custom header, in JSON Map format.
+	CustomHeaderContent map[string]interface{} `pulumi:"customHeaderContent"`
+	// Whether to disable caching.
+	// - 0: not disabled
+	// - 1 (default): Disabled.
+	DisableCache *int `pulumi:"disableCache"`
+	// The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
+	DisableCompression *int `pulumi:"disableCompression"`
+	// When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+	DnsHijackWhitelist *string `pulumi:"dnsHijackWhitelist"`
+	// If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
+	ElementBlacklist *string `pulumi:"elementBlacklist"`
+	// Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
+	FilterInvalidIp *int `pulumi:"filterInvalidIp"`
+	// Identify elements: Set the total number of elements on the Browse page.
+	FlowHijackJumpTimes *int `pulumi:"flowHijackJumpTimes"`
+	// Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
+	FlowHijackLogo *string `pulumi:"flowHijackLogo"`
+	// Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
+	IgnoreCertificateError *int `pulumi:"ignoreCertificateError"`
+	// Monitoring timeout, in ms. Not required, 20000 by default.
+	MonitorTimeout *int `pulumi:"monitorTimeout"`
+	// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+	PageTamper *string `pulumi:"pageTamper"`
+	// When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+	Redirection *int `pulumi:"redirection"`
+	// The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
+	SlowElementThreshold *int `pulumi:"slowElementThreshold"`
+	// The target URL.
+	TargetUrl string `pulumi:"targetUrl"`
+	// The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+	VerifyStringBlacklist *string `pulumi:"verifyStringBlacklist"`
+	// The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+	VerifyStringWhitelist *string `pulumi:"verifyStringWhitelist"`
+	// The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
+	WaitCompletionTime *int `pulumi:"waitCompletionTime"`
 }
 
 // SyntheticTaskMonitorConfWebsiteInput is an input type that accepts SyntheticTaskMonitorConfWebsiteArgs and SyntheticTaskMonitorConfWebsiteOutput values.
@@ -3703,25 +4093,51 @@ type SyntheticTaskMonitorConfWebsiteInput interface {
 }
 
 type SyntheticTaskMonitorConfWebsiteArgs struct {
-	AutomaticScrolling     pulumi.IntPtrInput    `pulumi:"automaticScrolling"`
-	CustomHeader           pulumi.IntPtrInput    `pulumi:"customHeader"`
-	CustomHeaderContent    pulumi.MapInput       `pulumi:"customHeaderContent"`
-	DisableCache           pulumi.IntPtrInput    `pulumi:"disableCache"`
-	DisableCompression     pulumi.IntPtrInput    `pulumi:"disableCompression"`
-	DnsHijackWhitelist     pulumi.StringPtrInput `pulumi:"dnsHijackWhitelist"`
-	ElementBlacklist       pulumi.StringPtrInput `pulumi:"elementBlacklist"`
-	FilterInvalidIp        pulumi.IntPtrInput    `pulumi:"filterInvalidIp"`
-	FlowHijackJumpTimes    pulumi.IntPtrInput    `pulumi:"flowHijackJumpTimes"`
-	FlowHijackLogo         pulumi.StringPtrInput `pulumi:"flowHijackLogo"`
-	IgnoreCertificateError pulumi.IntPtrInput    `pulumi:"ignoreCertificateError"`
-	MonitorTimeout         pulumi.IntPtrInput    `pulumi:"monitorTimeout"`
-	PageTamper             pulumi.StringPtrInput `pulumi:"pageTamper"`
-	Redirection            pulumi.IntPtrInput    `pulumi:"redirection"`
-	SlowElementThreshold   pulumi.IntPtrInput    `pulumi:"slowElementThreshold"`
-	TargetUrl              pulumi.StringInput    `pulumi:"targetUrl"`
-	VerifyStringBlacklist  pulumi.StringPtrInput `pulumi:"verifyStringBlacklist"`
-	VerifyStringWhitelist  pulumi.StringPtrInput `pulumi:"verifyStringWhitelist"`
-	WaitCompletionTime     pulumi.IntPtrInput    `pulumi:"waitCompletionTime"`
+	// Whether to support automatic scrolling screen, loading page.
+	// - 0 (default): No
+	//   1: Yes.
+	AutomaticScrolling pulumi.IntPtrInput `pulumi:"automaticScrolling"`
+	// Custom header.
+	// - 0 (default): Off
+	// - 1: Modify the first package
+	// - 2: Modify all packages.
+	CustomHeader pulumi.IntPtrInput `pulumi:"customHeader"`
+	// Custom header, in JSON Map format.
+	CustomHeaderContent pulumi.MapInput `pulumi:"customHeaderContent"`
+	// Whether to disable caching.
+	// - 0: not disabled
+	// - 1 (default): Disabled.
+	DisableCache pulumi.IntPtrInput `pulumi:"disableCache"`
+	// The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
+	DisableCompression pulumi.IntPtrInput `pulumi:"disableCompression"`
+	// When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
+	DnsHijackWhitelist pulumi.StringPtrInput `pulumi:"dnsHijackWhitelist"`
+	// If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
+	ElementBlacklist pulumi.StringPtrInput `pulumi:"elementBlacklist"`
+	// Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
+	FilterInvalidIp pulumi.IntPtrInput `pulumi:"filterInvalidIp"`
+	// Identify elements: Set the total number of elements on the Browse page.
+	FlowHijackJumpTimes pulumi.IntPtrInput `pulumi:"flowHijackJumpTimes"`
+	// Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
+	FlowHijackLogo pulumi.StringPtrInput `pulumi:"flowHijackLogo"`
+	// Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
+	IgnoreCertificateError pulumi.IntPtrInput `pulumi:"ignoreCertificateError"`
+	// Monitoring timeout, in ms. Not required, 20000 by default.
+	MonitorTimeout pulumi.IntPtrInput `pulumi:"monitorTimeout"`
+	// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
+	PageTamper pulumi.StringPtrInput `pulumi:"pageTamper"`
+	// When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
+	Redirection pulumi.IntPtrInput `pulumi:"redirection"`
+	// The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
+	SlowElementThreshold pulumi.IntPtrInput `pulumi:"slowElementThreshold"`
+	// The target URL.
+	TargetUrl pulumi.StringInput `pulumi:"targetUrl"`
+	// The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+	VerifyStringBlacklist pulumi.StringPtrInput `pulumi:"verifyStringBlacklist"`
+	// The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
+	VerifyStringWhitelist pulumi.StringPtrInput `pulumi:"verifyStringWhitelist"`
+	// The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
+	WaitCompletionTime pulumi.IntPtrInput `pulumi:"waitCompletionTime"`
 }
 
 func (SyntheticTaskMonitorConfWebsiteArgs) ElementType() reflect.Type {
@@ -3801,78 +4217,104 @@ func (o SyntheticTaskMonitorConfWebsiteOutput) ToSyntheticTaskMonitorConfWebsite
 	}).(SyntheticTaskMonitorConfWebsitePtrOutput)
 }
 
+// Whether to support automatic scrolling screen, loading page.
+//   - 0 (default): No
+//     1: Yes.
 func (o SyntheticTaskMonitorConfWebsiteOutput) AutomaticScrolling() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *int { return v.AutomaticScrolling }).(pulumi.IntPtrOutput)
 }
 
+// Custom header.
+// - 0 (default): Off
+// - 1: Modify the first package
+// - 2: Modify all packages.
 func (o SyntheticTaskMonitorConfWebsiteOutput) CustomHeader() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *int { return v.CustomHeader }).(pulumi.IntPtrOutput)
 }
 
+// Custom header, in JSON Map format.
 func (o SyntheticTaskMonitorConfWebsiteOutput) CustomHeaderContent() pulumi.MapOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) map[string]interface{} { return v.CustomHeaderContent }).(pulumi.MapOutput)
 }
 
+// Whether to disable caching.
+// - 0: not disabled
+// - 1 (default): Disabled.
 func (o SyntheticTaskMonitorConfWebsiteOutput) DisableCache() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *int { return v.DisableCache }).(pulumi.IntPtrOutput)
 }
 
+// The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
 func (o SyntheticTaskMonitorConfWebsiteOutput) DisableCompression() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *int { return v.DisableCompression }).(pulumi.IntPtrOutput)
 }
 
+// When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 func (o SyntheticTaskMonitorConfWebsiteOutput) DnsHijackWhitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *string { return v.DnsHijackWhitelist }).(pulumi.StringPtrOutput)
 }
 
+// If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
 func (o SyntheticTaskMonitorConfWebsiteOutput) ElementBlacklist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *string { return v.ElementBlacklist }).(pulumi.StringPtrOutput)
 }
 
+// Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
 func (o SyntheticTaskMonitorConfWebsiteOutput) FilterInvalidIp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *int { return v.FilterInvalidIp }).(pulumi.IntPtrOutput)
 }
 
+// Identify elements: Set the total number of elements on the Browse page.
 func (o SyntheticTaskMonitorConfWebsiteOutput) FlowHijackJumpTimes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *int { return v.FlowHijackJumpTimes }).(pulumi.IntPtrOutput)
 }
 
+// Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
 func (o SyntheticTaskMonitorConfWebsiteOutput) FlowHijackLogo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *string { return v.FlowHijackLogo }).(pulumi.StringPtrOutput)
 }
 
+// Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
 func (o SyntheticTaskMonitorConfWebsiteOutput) IgnoreCertificateError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *int { return v.IgnoreCertificateError }).(pulumi.IntPtrOutput)
 }
 
+// Monitoring timeout, in ms. Not required, 20000 by default.
 func (o SyntheticTaskMonitorConfWebsiteOutput) MonitorTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *int { return v.MonitorTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
 func (o SyntheticTaskMonitorConfWebsiteOutput) PageTamper() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *string { return v.PageTamper }).(pulumi.StringPtrOutput)
 }
 
+// When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
 func (o SyntheticTaskMonitorConfWebsiteOutput) Redirection() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *int { return v.Redirection }).(pulumi.IntPtrOutput)
 }
 
+// The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
 func (o SyntheticTaskMonitorConfWebsiteOutput) SlowElementThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *int { return v.SlowElementThreshold }).(pulumi.IntPtrOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfWebsiteOutput) TargetUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) string { return v.TargetUrl }).(pulumi.StringOutput)
 }
 
+// The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
 func (o SyntheticTaskMonitorConfWebsiteOutput) VerifyStringBlacklist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *string { return v.VerifyStringBlacklist }).(pulumi.StringPtrOutput)
 }
 
+// The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
 func (o SyntheticTaskMonitorConfWebsiteOutput) VerifyStringWhitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *string { return v.VerifyStringWhitelist }).(pulumi.StringPtrOutput)
 }
 
+// The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
 func (o SyntheticTaskMonitorConfWebsiteOutput) WaitCompletionTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SyntheticTaskMonitorConfWebsite) *int { return v.WaitCompletionTime }).(pulumi.IntPtrOutput)
 }
@@ -3901,6 +4343,9 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) Elem() SyntheticTaskMonitorCon
 	}).(SyntheticTaskMonitorConfWebsiteOutput)
 }
 
+// Whether to support automatic scrolling screen, loading page.
+//   - 0 (default): No
+//     1: Yes.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) AutomaticScrolling() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *int {
 		if v == nil {
@@ -3910,6 +4355,10 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) AutomaticScrolling() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
+// Custom header.
+// - 0 (default): Off
+// - 1: Modify the first package
+// - 2: Modify all packages.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) CustomHeader() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *int {
 		if v == nil {
@@ -3919,6 +4368,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) CustomHeader() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
+// Custom header, in JSON Map format.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) CustomHeaderContent() pulumi.MapOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) map[string]interface{} {
 		if v == nil {
@@ -3928,6 +4378,9 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) CustomHeaderContent() pulumi.M
 	}).(pulumi.MapOutput)
 }
 
+// Whether to disable caching.
+// - 0: not disabled
+// - 1 (default): Disabled.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) DisableCache() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *int {
 		if v == nil {
@@ -3937,6 +4390,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) DisableCache() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
+// The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) DisableCompression() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *int {
 		if v == nil {
@@ -3946,6 +4400,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) DisableCompression() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
+// When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) DnsHijackWhitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *string {
 		if v == nil {
@@ -3955,6 +4410,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) DnsHijackWhitelist() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) ElementBlacklist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *string {
 		if v == nil {
@@ -3964,6 +4420,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) ElementBlacklist() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) FilterInvalidIp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *int {
 		if v == nil {
@@ -3973,6 +4430,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) FilterInvalidIp() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// Identify elements: Set the total number of elements on the Browse page.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) FlowHijackJumpTimes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *int {
 		if v == nil {
@@ -3982,6 +4440,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) FlowHijackJumpTimes() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
+// Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) FlowHijackLogo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *string {
 		if v == nil {
@@ -3991,6 +4450,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) FlowHijackLogo() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) IgnoreCertificateError() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *int {
 		if v == nil {
@@ -4000,6 +4460,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) IgnoreCertificateError() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
+// Monitoring timeout, in ms. Not required, 20000 by default.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) MonitorTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *int {
 		if v == nil {
@@ -4009,6 +4470,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) MonitorTimeout() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+// Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) PageTamper() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *string {
 		if v == nil {
@@ -4018,6 +4480,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) PageTamper() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) Redirection() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *int {
 		if v == nil {
@@ -4027,6 +4490,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) Redirection() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+// The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) SlowElementThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *int {
 		if v == nil {
@@ -4036,6 +4500,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) SlowElementThreshold() pulumi.
 	}).(pulumi.IntPtrOutput)
 }
 
+// The target URL.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) TargetUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *string {
 		if v == nil {
@@ -4045,6 +4510,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) TargetUrl() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) VerifyStringBlacklist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *string {
 		if v == nil {
@@ -4054,6 +4520,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) VerifyStringBlacklist() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) VerifyStringWhitelist() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *string {
 		if v == nil {
@@ -4063,6 +4530,7 @@ func (o SyntheticTaskMonitorConfWebsitePtrOutput) VerifyStringWhitelist() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
 func (o SyntheticTaskMonitorConfWebsitePtrOutput) WaitCompletionTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SyntheticTaskMonitorConfWebsite) *int {
 		if v == nil {
@@ -4983,6 +5451,7 @@ func (o GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLab
 }
 
 type GetDispatchRulesRuleNotifyRule struct {
+	// The notification method.
 	NotifyChannels []string `pulumi:"notifyChannels"`
 	// Sets the notification object.
 	NotifyObjects []GetDispatchRulesRuleNotifyRuleNotifyObject `pulumi:"notifyObjects"`
@@ -5000,6 +5469,7 @@ type GetDispatchRulesRuleNotifyRuleInput interface {
 }
 
 type GetDispatchRulesRuleNotifyRuleArgs struct {
+	// The notification method.
 	NotifyChannels pulumi.StringArrayInput `pulumi:"notifyChannels"`
 	// Sets the notification object.
 	NotifyObjects GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput `pulumi:"notifyObjects"`
@@ -5056,6 +5526,7 @@ func (o GetDispatchRulesRuleNotifyRuleOutput) ToGetDispatchRulesRuleNotifyRuleOu
 	return o
 }
 
+// The notification method.
 func (o GetDispatchRulesRuleNotifyRuleOutput) NotifyChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDispatchRulesRuleNotifyRule) []string { return v.NotifyChannels }).(pulumi.StringArrayOutput)
 }

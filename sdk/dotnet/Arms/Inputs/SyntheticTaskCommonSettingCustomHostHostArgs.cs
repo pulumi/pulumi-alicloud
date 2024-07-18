@@ -12,14 +12,24 @@ namespace Pulumi.AliCloud.Arms.Inputs
 
     public sealed class SyntheticTaskCommonSettingCustomHostHostArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Domain Name.
+        /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
+        /// <summary>
+        /// IpType.
+        /// </summary>
         [Input("ipType", required: true)]
         public Input<int> IpType { get; set; } = null!;
 
         [Input("ips", required: true)]
         private InputList<string>? _ips;
+
+        /// <summary>
+        /// The IP list.
+        /// </summary>
         public InputList<string> Ips
         {
             get => _ips ?? (_ips = new InputList<string>());

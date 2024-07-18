@@ -13,29 +13,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceMeshMeshConfigAccessLog {
+    /**
+     * @return Enable CNI.
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+     * 
+     */
     private @Nullable Boolean gatewayEnabled;
+    /**
+     * @return Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+     * 
+     */
     private @Nullable Integer gatewayLifecycle;
+    /**
+     * @return The name of the SLS Project to which the control plane logs are collected.
+     * 
+     */
     private @Nullable String project;
+    /**
+     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+     * 
+     */
     private @Nullable Boolean sidecarEnabled;
+    /**
+     * @return Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+     * 
+     */
     private @Nullable Integer sidecarLifecycle;
 
     private ServiceMeshMeshConfigAccessLog() {}
+    /**
+     * @return Enable CNI.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+     * 
+     */
     public Optional<Boolean> gatewayEnabled() {
         return Optional.ofNullable(this.gatewayEnabled);
     }
+    /**
+     * @return Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+     * 
+     */
     public Optional<Integer> gatewayLifecycle() {
         return Optional.ofNullable(this.gatewayLifecycle);
     }
+    /**
+     * @return The name of the SLS Project to which the control plane logs are collected.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    /**
+     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+     * 
+     */
     public Optional<Boolean> sidecarEnabled() {
         return Optional.ofNullable(this.sidecarEnabled);
     }
+    /**
+     * @return Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+     * 
+     */
     public Optional<Integer> sidecarLifecycle() {
         return Optional.ofNullable(this.sidecarLifecycle);
     }

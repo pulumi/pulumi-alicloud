@@ -13,11 +13,26 @@ namespace Pulumi.AliCloud.Sls.Outputs
     [OutputType]
     public sealed class AlertConfigurationTemplateConfiguration
     {
+        /// <summary>
+        /// Template Annotations.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Annotations;
+        /// <summary>
+        /// Template Language.
+        /// </summary>
         public readonly string? Lang;
+        /// <summary>
+        /// Template ID.
+        /// </summary>
         public readonly string? TemplateId;
+        /// <summary>
+        /// Template Variables.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Tokens;
         public readonly string? Type;
+        /// <summary>
+        /// Template Version.
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

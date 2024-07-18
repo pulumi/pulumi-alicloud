@@ -14,6 +14,9 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupContainerSecurityContext
     {
         public readonly ImmutableArray<Outputs.ContainerGroupContainerSecurityContextCapability> Capabilities;
+        /// <summary>
+        /// Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
+        /// </summary>
         public readonly bool? Privileged;
         public readonly int? RunAsUser;
 

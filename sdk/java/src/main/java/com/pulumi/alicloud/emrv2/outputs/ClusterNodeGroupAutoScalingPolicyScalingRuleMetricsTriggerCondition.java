@@ -14,23 +14,51 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition {
+    /**
+     * @return The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
+     * 
+     */
     private String comparisonOperator;
+    /**
+     * @return The metric name for this scaling rule specific metrics trigger.
+     * 
+     */
     private String metricName;
+    /**
+     * @return The statistics for this scaling rule specific metrics trigger.
+     * 
+     */
     private String statistics;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
     private @Nullable List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag> tags;
+    /**
+     * @return The threshold for this scaling rule specific metrics trigger.
+     * 
+     */
     private Double threshold;
 
     private ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition() {}
+    /**
+     * @return The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
+     * 
+     */
     public String comparisonOperator() {
         return this.comparisonOperator;
     }
+    /**
+     * @return The metric name for this scaling rule specific metrics trigger.
+     * 
+     */
     public String metricName() {
         return this.metricName;
     }
+    /**
+     * @return The statistics for this scaling rule specific metrics trigger.
+     * 
+     */
     public String statistics() {
         return this.statistics;
     }
@@ -41,6 +69,10 @@ public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCon
     public List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
+    /**
+     * @return The threshold for this scaling rule specific metrics trigger.
+     * 
+     */
     public Double threshold() {
         return this.threshold;
     }

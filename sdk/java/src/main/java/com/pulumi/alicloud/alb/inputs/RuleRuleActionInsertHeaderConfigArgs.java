@@ -29,9 +29,23 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
         return Optional.ofNullable(this.value);
     }
 
+    /**
+     * The value type of the inserted header field. Valid values:
+     * - `UserDefined`: a custom value
+     * - `ReferenceHeader`: uses a field of the user request header.
+     * - `SystemDefined`: a system value.
+     * 
+     */
     @Import(name="valueType")
     private @Nullable Output<String> valueType;
 
+    /**
+     * @return The value type of the inserted header field. Valid values:
+     * - `UserDefined`: a custom value
+     * - `ReferenceHeader`: uses a field of the user request header.
+     * - `SystemDefined`: a system value.
+     * 
+     */
     public Optional<Output<String>> valueType() {
         return Optional.ofNullable(this.valueType);
     }
@@ -80,11 +94,29 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
             return value(Output.of(value));
         }
 
+        /**
+         * @param valueType The value type of the inserted header field. Valid values:
+         * - `UserDefined`: a custom value
+         * - `ReferenceHeader`: uses a field of the user request header.
+         * - `SystemDefined`: a system value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder valueType(@Nullable Output<String> valueType) {
             $.valueType = valueType;
             return this;
         }
 
+        /**
+         * @param valueType The value type of the inserted header field. Valid values:
+         * - `UserDefined`: a custom value
+         * - `ReferenceHeader`: uses a field of the user request header.
+         * - `SystemDefined`: a system value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder valueType(String valueType) {
             return valueType(Output.of(valueType));
         }

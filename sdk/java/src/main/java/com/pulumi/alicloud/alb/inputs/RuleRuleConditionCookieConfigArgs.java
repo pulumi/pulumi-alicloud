@@ -16,9 +16,17 @@ public final class RuleRuleConditionCookieConfigArgs extends com.pulumi.resource
 
     public static final RuleRuleConditionCookieConfigArgs Empty = new RuleRuleConditionCookieConfigArgs();
 
+    /**
+     * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+     * 
+     */
     @Import(name="values")
     private @Nullable Output<List<RuleRuleConditionCookieConfigValueArgs>> values;
 
+    /**
+     * @return Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+     * 
+     */
     public Optional<Output<List<RuleRuleConditionCookieConfigValueArgs>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -47,15 +55,33 @@ public final class RuleRuleConditionCookieConfigArgs extends com.pulumi.resource
             $ = new RuleRuleConditionCookieConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(@Nullable Output<List<RuleRuleConditionCookieConfigValueArgs>> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<RuleRuleConditionCookieConfigValueArgs> values) {
             return values(Output.of(values));
         }
 
+        /**
+         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(RuleRuleConditionCookieConfigValueArgs... values) {
             return values(List.of(values));
         }

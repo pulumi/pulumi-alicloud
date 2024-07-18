@@ -14,8 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type StudioApplicationInstance struct {
-	Id       *string `pulumi:"id"`
+	// The id of the instance.
+	Id *string `pulumi:"id"`
+	// The name of the instance.
 	NodeName *string `pulumi:"nodeName"`
+	// The type of the instance.
 	NodeType *string `pulumi:"nodeType"`
 }
 
@@ -31,8 +34,11 @@ type StudioApplicationInstanceInput interface {
 }
 
 type StudioApplicationInstanceArgs struct {
-	Id       pulumi.StringPtrInput `pulumi:"id"`
+	// The id of the instance.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of the instance.
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+	// The type of the instance.
 	NodeType pulumi.StringPtrInput `pulumi:"nodeType"`
 }
 
@@ -87,14 +93,17 @@ func (o StudioApplicationInstanceOutput) ToStudioApplicationInstanceOutputWithCo
 	return o
 }
 
+// The id of the instance.
 func (o StudioApplicationInstanceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StudioApplicationInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The name of the instance.
 func (o StudioApplicationInstanceOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StudioApplicationInstance) *string { return v.NodeName }).(pulumi.StringPtrOutput)
 }
 
+// The type of the instance.
 func (o StudioApplicationInstanceOutput) NodeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StudioApplicationInstance) *string { return v.NodeType }).(pulumi.StringPtrOutput)
 }

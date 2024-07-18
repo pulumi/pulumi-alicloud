@@ -172,8 +172,10 @@ func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoPtrOutput) Regions() Enterpri
 }
 
 type EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion struct {
-	RegionId   *string `pulumi:"regionId"`
-	RetainDays *int    `pulumi:"retainDays"`
+	// Destination region ID.
+	RegionId *string `pulumi:"regionId"`
+	// Number of days of snapshot retention for replication.
+	RetainDays *int `pulumi:"retainDays"`
 }
 
 // EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionInput is an input type that accepts EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs and EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput values.
@@ -188,8 +190,10 @@ type EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionInput interface {
 }
 
 type EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs struct {
-	RegionId   pulumi.StringPtrInput `pulumi:"regionId"`
-	RetainDays pulumi.IntPtrInput    `pulumi:"retainDays"`
+	// Destination region ID.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// Number of days of snapshot retention for replication.
+	RetainDays pulumi.IntPtrInput `pulumi:"retainDays"`
 }
 
 func (EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs) ElementType() reflect.Type {
@@ -243,10 +247,12 @@ func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput) ToEnterpriseSna
 	return o
 }
 
+// Destination region ID.
 func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput) RegionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion) *string { return v.RegionId }).(pulumi.StringPtrOutput)
 }
 
+// Number of days of snapshot retention for replication.
 func (o EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionOutput) RetainDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion) *int { return v.RetainDays }).(pulumi.IntPtrOutput)
 }
@@ -750,6 +756,10 @@ func (o EnterpriseSnapshotPolicySpecialRetainRulesPtrOutput) Rules() EnterpriseS
 }
 
 type EnterpriseSnapshotPolicySpecialRetainRulesRule struct {
+	// The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+	// - WEEKS
+	// - MONTHS
+	// - YEARS.
 	SpecialPeriodUnit *string `pulumi:"specialPeriodUnit"`
 	TimeInterval      *int    `pulumi:"timeInterval"`
 	TimeUnit          *string `pulumi:"timeUnit"`
@@ -767,6 +777,10 @@ type EnterpriseSnapshotPolicySpecialRetainRulesRuleInput interface {
 }
 
 type EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs struct {
+	// The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+	// - WEEKS
+	// - MONTHS
+	// - YEARS.
 	SpecialPeriodUnit pulumi.StringPtrInput `pulumi:"specialPeriodUnit"`
 	TimeInterval      pulumi.IntPtrInput    `pulumi:"timeInterval"`
 	TimeUnit          pulumi.StringPtrInput `pulumi:"timeUnit"`
@@ -823,6 +837,10 @@ func (o EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput) ToEnterpriseSnapsh
 	return o
 }
 
+// The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+// - WEEKS
+// - MONTHS
+// - YEARS.
 func (o EnterpriseSnapshotPolicySpecialRetainRulesRuleOutput) SpecialPeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnterpriseSnapshotPolicySpecialRetainRulesRule) *string { return v.SpecialPeriodUnit }).(pulumi.StringPtrOutput)
 }

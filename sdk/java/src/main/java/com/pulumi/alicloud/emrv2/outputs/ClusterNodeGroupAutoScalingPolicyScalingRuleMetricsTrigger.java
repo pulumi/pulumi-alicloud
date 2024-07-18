@@ -16,29 +16,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger {
+    /**
+     * @return The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
+     * 
+     */
     private @Nullable String conditionLogicOperator;
+    /**
+     * @return The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+     * 
+     */
     private @Nullable List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition> conditions;
+    /**
+     * @return The time of cool down interval for this scaling rule specific metrics trigger.
+     * 
+     */
     private @Nullable Integer coolDownInterval;
+    /**
+     * @return The evaluation count for this scaling rule specific metrics trigger.
+     * 
+     */
     private Integer evaluationCount;
+    /**
+     * @return The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+     * 
+     */
     private @Nullable List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint> timeConstraints;
+    /**
+     * @return The time window for this scaling rule specific metrics trigger.
+     * 
+     */
     private Integer timeWindow;
 
     private ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger() {}
+    /**
+     * @return The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
+     * 
+     */
     public Optional<String> conditionLogicOperator() {
         return Optional.ofNullable(this.conditionLogicOperator);
     }
+    /**
+     * @return The conditions for this scaling rule specific metrics trigger. See `conditions` below.
+     * 
+     */
     public List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition> conditions() {
         return this.conditions == null ? List.of() : this.conditions;
     }
+    /**
+     * @return The time of cool down interval for this scaling rule specific metrics trigger.
+     * 
+     */
     public Optional<Integer> coolDownInterval() {
         return Optional.ofNullable(this.coolDownInterval);
     }
+    /**
+     * @return The evaluation count for this scaling rule specific metrics trigger.
+     * 
+     */
     public Integer evaluationCount() {
         return this.evaluationCount;
     }
+    /**
+     * @return The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
+     * 
+     */
     public List<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint> timeConstraints() {
         return this.timeConstraints == null ? List.of() : this.timeConstraints;
     }
+    /**
+     * @return The time window for this scaling rule specific metrics trigger.
+     * 
+     */
     public Integer timeWindow() {
         return this.timeWindow;
     }

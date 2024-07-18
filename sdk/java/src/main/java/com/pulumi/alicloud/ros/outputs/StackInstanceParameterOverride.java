@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StackInstanceParameterOverride {
+    /**
+     * @return The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+     * 
+     */
     private @Nullable String parameterKey;
+    /**
+     * @return The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+     * 
+     */
     private @Nullable String parameterValue;
 
     private StackInstanceParameterOverride() {}
+    /**
+     * @return The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+     * 
+     */
     public Optional<String> parameterKey() {
         return Optional.ofNullable(this.parameterKey);
     }
+    /**
+     * @return The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+     * 
+     */
     public Optional<String> parameterValue() {
         return Optional.ofNullable(this.parameterValue);
     }

@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
 
     public sealed class RuleTargetDeadLetterQueueGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
+        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 

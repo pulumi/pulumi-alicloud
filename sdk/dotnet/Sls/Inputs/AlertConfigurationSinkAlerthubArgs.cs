@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Sls.Inputs
 
     public sealed class AlertConfigurationSinkAlerthubArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Open.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

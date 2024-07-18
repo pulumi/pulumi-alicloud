@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     [OutputType]
     public sealed class ClusterNodeGroupAutoScalingPolicyConstraints
     {
+        /// <summary>
+        /// The maximum capacity of constraints for emr node group auto scaling policy.
+        /// </summary>
         public readonly int? MaxCapacity;
+        /// <summary>
+        /// The minimum capacity of constraints for emr node group auto scaling policy.
+        /// </summary>
         public readonly int? MinCapacity;
 
         [OutputConstructor]

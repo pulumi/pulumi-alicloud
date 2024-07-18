@@ -789,6 +789,11 @@ class ErEnvConfPresetCanaryAnhuiArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -799,6 +804,9 @@ class ErEnvConfPresetCanaryAnhuiArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -808,6 +816,9 @@ class ErEnvConfPresetCanaryAnhuiArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -817,6 +828,9 @@ class ErEnvConfPresetCanaryAnhuiArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -830,6 +844,11 @@ class ErEnvConfPresetCanaryBeijingArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -840,6 +859,9 @@ class ErEnvConfPresetCanaryBeijingArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -849,6 +871,9 @@ class ErEnvConfPresetCanaryBeijingArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -858,6 +883,9 @@ class ErEnvConfPresetCanaryBeijingArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -871,6 +899,11 @@ class ErEnvConfPresetCanaryChongqingArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -881,6 +914,9 @@ class ErEnvConfPresetCanaryChongqingArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -890,6 +926,9 @@ class ErEnvConfPresetCanaryChongqingArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -899,6 +938,9 @@ class ErEnvConfPresetCanaryChongqingArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -912,6 +954,11 @@ class ErEnvConfPresetCanaryFujianArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -922,6 +969,9 @@ class ErEnvConfPresetCanaryFujianArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -931,6 +981,9 @@ class ErEnvConfPresetCanaryFujianArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -940,6 +993,9 @@ class ErEnvConfPresetCanaryFujianArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -953,6 +1009,11 @@ class ErEnvConfPresetCanaryGansuArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -963,6 +1024,9 @@ class ErEnvConfPresetCanaryGansuArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -972,6 +1036,9 @@ class ErEnvConfPresetCanaryGansuArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -981,6 +1048,9 @@ class ErEnvConfPresetCanaryGansuArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -994,6 +1064,11 @@ class ErEnvConfPresetCanaryGuangdongArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1004,6 +1079,9 @@ class ErEnvConfPresetCanaryGuangdongArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1013,6 +1091,9 @@ class ErEnvConfPresetCanaryGuangdongArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1022,6 +1103,9 @@ class ErEnvConfPresetCanaryGuangdongArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1035,6 +1119,11 @@ class ErEnvConfPresetCanaryGuangxiArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1045,6 +1134,9 @@ class ErEnvConfPresetCanaryGuangxiArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1054,6 +1146,9 @@ class ErEnvConfPresetCanaryGuangxiArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1063,6 +1158,9 @@ class ErEnvConfPresetCanaryGuangxiArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1076,6 +1174,11 @@ class ErEnvConfPresetCanaryGuizhouArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1086,6 +1189,9 @@ class ErEnvConfPresetCanaryGuizhouArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1095,6 +1201,9 @@ class ErEnvConfPresetCanaryGuizhouArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1104,6 +1213,9 @@ class ErEnvConfPresetCanaryGuizhouArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1117,6 +1229,11 @@ class ErEnvConfPresetCanaryHainanArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1127,6 +1244,9 @@ class ErEnvConfPresetCanaryHainanArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1136,6 +1256,9 @@ class ErEnvConfPresetCanaryHainanArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1145,6 +1268,9 @@ class ErEnvConfPresetCanaryHainanArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1158,6 +1284,11 @@ class ErEnvConfPresetCanaryHebeiArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1168,6 +1299,9 @@ class ErEnvConfPresetCanaryHebeiArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1177,6 +1311,9 @@ class ErEnvConfPresetCanaryHebeiArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1186,6 +1323,9 @@ class ErEnvConfPresetCanaryHebeiArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1199,6 +1339,11 @@ class ErEnvConfPresetCanaryHeilongjiangArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1209,6 +1354,9 @@ class ErEnvConfPresetCanaryHeilongjiangArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1218,6 +1366,9 @@ class ErEnvConfPresetCanaryHeilongjiangArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1227,6 +1378,9 @@ class ErEnvConfPresetCanaryHeilongjiangArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1240,6 +1394,11 @@ class ErEnvConfPresetCanaryHenanArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1250,6 +1409,9 @@ class ErEnvConfPresetCanaryHenanArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1259,6 +1421,9 @@ class ErEnvConfPresetCanaryHenanArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1268,6 +1433,9 @@ class ErEnvConfPresetCanaryHenanArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1281,6 +1449,11 @@ class ErEnvConfPresetCanaryHongKongArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1291,6 +1464,9 @@ class ErEnvConfPresetCanaryHongKongArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1300,6 +1476,9 @@ class ErEnvConfPresetCanaryHongKongArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1309,6 +1488,9 @@ class ErEnvConfPresetCanaryHongKongArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1322,6 +1504,11 @@ class ErEnvConfPresetCanaryHubeiArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1332,6 +1519,9 @@ class ErEnvConfPresetCanaryHubeiArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1341,6 +1531,9 @@ class ErEnvConfPresetCanaryHubeiArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1350,6 +1543,9 @@ class ErEnvConfPresetCanaryHubeiArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1363,6 +1559,11 @@ class ErEnvConfPresetCanaryHunanArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1373,6 +1574,9 @@ class ErEnvConfPresetCanaryHunanArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1382,6 +1586,9 @@ class ErEnvConfPresetCanaryHunanArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1391,6 +1598,9 @@ class ErEnvConfPresetCanaryHunanArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1404,6 +1614,11 @@ class ErEnvConfPresetCanaryJiangsuArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1414,6 +1629,9 @@ class ErEnvConfPresetCanaryJiangsuArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1423,6 +1641,9 @@ class ErEnvConfPresetCanaryJiangsuArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1432,6 +1653,9 @@ class ErEnvConfPresetCanaryJiangsuArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1445,6 +1669,11 @@ class ErEnvConfPresetCanaryJiangxiArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1455,6 +1684,9 @@ class ErEnvConfPresetCanaryJiangxiArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1464,6 +1696,9 @@ class ErEnvConfPresetCanaryJiangxiArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1473,6 +1708,9 @@ class ErEnvConfPresetCanaryJiangxiArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1486,6 +1724,11 @@ class ErEnvConfPresetCanaryJilinArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1496,6 +1739,9 @@ class ErEnvConfPresetCanaryJilinArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1505,6 +1751,9 @@ class ErEnvConfPresetCanaryJilinArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1514,6 +1763,9 @@ class ErEnvConfPresetCanaryJilinArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1527,6 +1779,11 @@ class ErEnvConfPresetCanaryLiaoningArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1537,6 +1794,9 @@ class ErEnvConfPresetCanaryLiaoningArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1546,6 +1806,9 @@ class ErEnvConfPresetCanaryLiaoningArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1555,6 +1818,9 @@ class ErEnvConfPresetCanaryLiaoningArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1568,6 +1834,11 @@ class ErEnvConfPresetCanaryMacauArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1578,6 +1849,9 @@ class ErEnvConfPresetCanaryMacauArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1587,6 +1861,9 @@ class ErEnvConfPresetCanaryMacauArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1596,6 +1873,9 @@ class ErEnvConfPresetCanaryMacauArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1609,6 +1889,11 @@ class ErEnvConfPresetCanaryNeimengguArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1619,6 +1904,9 @@ class ErEnvConfPresetCanaryNeimengguArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1628,6 +1916,9 @@ class ErEnvConfPresetCanaryNeimengguArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1637,6 +1928,9 @@ class ErEnvConfPresetCanaryNeimengguArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1650,6 +1944,11 @@ class ErEnvConfPresetCanaryNingxiaArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1660,6 +1959,9 @@ class ErEnvConfPresetCanaryNingxiaArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1669,6 +1971,9 @@ class ErEnvConfPresetCanaryNingxiaArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1678,6 +1983,9 @@ class ErEnvConfPresetCanaryNingxiaArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1691,6 +1999,11 @@ class ErEnvConfPresetCanaryOverseasArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1701,6 +2014,9 @@ class ErEnvConfPresetCanaryOverseasArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1710,6 +2026,9 @@ class ErEnvConfPresetCanaryOverseasArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1719,6 +2038,9 @@ class ErEnvConfPresetCanaryOverseasArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1732,6 +2054,11 @@ class ErEnvConfPresetCanaryQinghaiArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1742,6 +2069,9 @@ class ErEnvConfPresetCanaryQinghaiArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1751,6 +2081,9 @@ class ErEnvConfPresetCanaryQinghaiArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1760,6 +2093,9 @@ class ErEnvConfPresetCanaryQinghaiArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1773,6 +2109,11 @@ class ErEnvConfPresetCanaryShaanxiArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1783,6 +2124,9 @@ class ErEnvConfPresetCanaryShaanxiArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1792,6 +2136,9 @@ class ErEnvConfPresetCanaryShaanxiArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1801,6 +2148,9 @@ class ErEnvConfPresetCanaryShaanxiArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1814,6 +2164,11 @@ class ErEnvConfPresetCanaryShandongArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1824,6 +2179,9 @@ class ErEnvConfPresetCanaryShandongArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1833,6 +2191,9 @@ class ErEnvConfPresetCanaryShandongArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1842,6 +2203,9 @@ class ErEnvConfPresetCanaryShandongArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1855,6 +2219,11 @@ class ErEnvConfPresetCanaryShanghaiArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1865,6 +2234,9 @@ class ErEnvConfPresetCanaryShanghaiArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1874,6 +2246,9 @@ class ErEnvConfPresetCanaryShanghaiArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1883,6 +2258,9 @@ class ErEnvConfPresetCanaryShanghaiArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1896,6 +2274,11 @@ class ErEnvConfPresetCanaryShanxiArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1906,6 +2289,9 @@ class ErEnvConfPresetCanaryShanxiArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1915,6 +2301,9 @@ class ErEnvConfPresetCanaryShanxiArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1924,6 +2313,9 @@ class ErEnvConfPresetCanaryShanxiArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1937,6 +2329,11 @@ class ErEnvConfPresetCanarySichuanArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1947,6 +2344,9 @@ class ErEnvConfPresetCanarySichuanArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1956,6 +2356,9 @@ class ErEnvConfPresetCanarySichuanArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -1965,6 +2368,9 @@ class ErEnvConfPresetCanarySichuanArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -1978,6 +2384,11 @@ class ErEnvConfPresetCanaryTaiwanArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -1988,6 +2399,9 @@ class ErEnvConfPresetCanaryTaiwanArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -1997,6 +2411,9 @@ class ErEnvConfPresetCanaryTaiwanArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -2006,6 +2423,9 @@ class ErEnvConfPresetCanaryTaiwanArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -2019,6 +2439,11 @@ class ErEnvConfPresetCanaryTianjinArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2029,6 +2454,9 @@ class ErEnvConfPresetCanaryTianjinArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -2038,6 +2466,9 @@ class ErEnvConfPresetCanaryTianjinArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -2047,6 +2478,9 @@ class ErEnvConfPresetCanaryTianjinArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -2060,6 +2494,11 @@ class ErEnvConfPresetCanaryXinjiangArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2070,6 +2509,9 @@ class ErEnvConfPresetCanaryXinjiangArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -2079,6 +2521,9 @@ class ErEnvConfPresetCanaryXinjiangArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -2088,6 +2533,9 @@ class ErEnvConfPresetCanaryXinjiangArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -2101,6 +2549,11 @@ class ErEnvConfPresetCanaryXizangArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2111,6 +2564,9 @@ class ErEnvConfPresetCanaryXizangArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -2120,6 +2576,9 @@ class ErEnvConfPresetCanaryXizangArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -2129,6 +2588,9 @@ class ErEnvConfPresetCanaryXizangArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -2142,6 +2604,11 @@ class ErEnvConfPresetCanaryYunnanArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2152,6 +2619,9 @@ class ErEnvConfPresetCanaryYunnanArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -2161,6 +2631,9 @@ class ErEnvConfPresetCanaryYunnanArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -2170,6 +2643,9 @@ class ErEnvConfPresetCanaryYunnanArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -2183,6 +2659,11 @@ class ErEnvConfPresetCanaryZhejiangArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2193,6 +2674,9 @@ class ErEnvConfPresetCanaryZhejiangArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -2202,6 +2686,9 @@ class ErEnvConfPresetCanaryZhejiangArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -2211,6 +2698,9 @@ class ErEnvConfPresetCanaryZhejiangArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -2224,6 +2714,11 @@ class ErEnvConfProductionArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2234,6 +2729,9 @@ class ErEnvConfProductionArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -2243,6 +2741,9 @@ class ErEnvConfProductionArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -2252,6 +2753,9 @@ class ErEnvConfProductionArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -2265,6 +2769,11 @@ class ErEnvConfStagingArgs:
                  allowed_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  code_rev: Optional[pulumi.Input[str]] = None,
                  spec_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hosts: Allowed DCDN domain names.
+        :param pulumi.Input[str] code_rev: The version number of the code.
+        :param pulumi.Input[str] spec_name: The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         if allowed_hosts is not None:
             pulumi.set(__self__, "allowed_hosts", allowed_hosts)
         if code_rev is not None:
@@ -2275,6 +2784,9 @@ class ErEnvConfStagingArgs:
     @property
     @pulumi.getter(name="allowedHosts")
     def allowed_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Allowed DCDN domain names.
+        """
         return pulumi.get(self, "allowed_hosts")
 
     @allowed_hosts.setter
@@ -2284,6 +2796,9 @@ class ErEnvConfStagingArgs:
     @property
     @pulumi.getter(name="codeRev")
     def code_rev(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number of the code.
+        """
         return pulumi.get(self, "code_rev")
 
     @code_rev.setter
@@ -2293,6 +2808,9 @@ class ErEnvConfStagingArgs:
     @property
     @pulumi.getter(name="specName")
     def spec_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
         return pulumi.get(self, "spec_name")
 
     @spec_name.setter
@@ -2560,6 +3078,11 @@ class WafRuleRateLimitStatusArgs:
                  code: Optional[pulumi.Input[str]] = None,
                  count: Optional[pulumi.Input[int]] = None,
                  ratio: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] code: The HTTP status code returned.
+        :param pulumi.Input[int] count: The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+        :param pulumi.Input[int] ratio: The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+        """
         if code is not None:
             pulumi.set(__self__, "code", code)
         if count is not None:
@@ -2570,6 +3093,9 @@ class WafRuleRateLimitStatusArgs:
     @property
     @pulumi.getter
     def code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP status code returned.
+        """
         return pulumi.get(self, "code")
 
     @code.setter
@@ -2579,6 +3105,9 @@ class WafRuleRateLimitStatusArgs:
     @property
     @pulumi.getter
     def count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+        """
         return pulumi.get(self, "count")
 
     @count.setter
@@ -2588,6 +3117,9 @@ class WafRuleRateLimitStatusArgs:
     @property
     @pulumi.getter
     def ratio(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+        """
         return pulumi.get(self, "ratio")
 
     @ratio.setter

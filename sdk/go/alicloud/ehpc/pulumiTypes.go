@@ -192,6 +192,7 @@ func (o ClusterAdditionalVolumeArrayOutput) Index(i pulumi.IntInput) ClusterAddi
 }
 
 type ClusterAdditionalVolumeRole struct {
+	// The type of the nodes to which the additional file system is attached.
 	Name *string `pulumi:"name"`
 }
 
@@ -207,6 +208,7 @@ type ClusterAdditionalVolumeRoleInput interface {
 }
 
 type ClusterAdditionalVolumeRoleArgs struct {
+	// The type of the nodes to which the additional file system is attached.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -261,6 +263,7 @@ func (o ClusterAdditionalVolumeRoleOutput) ToClusterAdditionalVolumeRoleOutputWi
 	return o
 }
 
+// The type of the nodes to which the additional file system is attached.
 func (o ClusterAdditionalVolumeRoleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolumeRole) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

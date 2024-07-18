@@ -15,9 +15,17 @@ public final class RestoreJobOtsDetailArgs extends com.pulumi.resources.Resource
 
     public static final RestoreJobOtsDetailArgs Empty = new RestoreJobOtsDetailArgs();
 
+    /**
+     * Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+     * 
+     */
     @Import(name="overwriteExisting")
     private @Nullable Output<Boolean> overwriteExisting;
 
+    /**
+     * @return Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+     * 
+     */
     public Optional<Output<Boolean>> overwriteExisting() {
         return Optional.ofNullable(this.overwriteExisting);
     }
@@ -46,11 +54,23 @@ public final class RestoreJobOtsDetailArgs extends com.pulumi.resources.Resource
             $ = new RestoreJobOtsDetailArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param overwriteExisting Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder overwriteExisting(@Nullable Output<Boolean> overwriteExisting) {
             $.overwriteExisting = overwriteExisting;
             return this;
         }
 
+        /**
+         * @param overwriteExisting Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder overwriteExisting(Boolean overwriteExisting) {
             return overwriteExisting(Output.of(overwriteExisting));
         }

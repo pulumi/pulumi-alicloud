@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
 
     public sealed class ServiceMeshMeshConfigAuditGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable CNI.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// The name of the SLS Project to which the control plane logs are collected.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

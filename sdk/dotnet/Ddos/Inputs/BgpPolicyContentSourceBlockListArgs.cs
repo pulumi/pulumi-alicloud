@@ -12,12 +12,21 @@ namespace Pulumi.AliCloud.Ddos.Inputs
 
     public sealed class BgpPolicyContentSourceBlockListArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Statistical cycle range 60-1200.
+        /// </summary>
         [Input("blockExpireSeconds", required: true)]
         public Input<int> BlockExpireSeconds { get; set; } = null!;
 
+        /// <summary>
+        /// The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
+        /// </summary>
         [Input("everySeconds", required: true)]
         public Input<int> EverySeconds { get; set; } = null!;
 
+        /// <summary>
+        /// The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
+        /// </summary>
         [Input("exceedLimitTimes", required: true)]
         public Input<int> ExceedLimitTimes { get; set; } = null!;
 

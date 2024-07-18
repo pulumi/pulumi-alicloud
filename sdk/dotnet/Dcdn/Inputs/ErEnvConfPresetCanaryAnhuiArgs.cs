@@ -14,15 +14,25 @@ namespace Pulumi.AliCloud.Dcdn.Inputs
     {
         [Input("allowedHosts")]
         private InputList<string>? _allowedHosts;
+
+        /// <summary>
+        /// Allowed DCDN domain names.
+        /// </summary>
         public InputList<string> AllowedHosts
         {
             get => _allowedHosts ?? (_allowedHosts = new InputList<string>());
             set => _allowedHosts = value;
         }
 
+        /// <summary>
+        /// The version number of the code.
+        /// </summary>
         [Input("codeRev")]
         public Input<string>? CodeRev { get; set; }
 
+        /// <summary>
+        /// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        /// </summary>
         [Input("specName")]
         public Input<string>? SpecName { get; set; }
 

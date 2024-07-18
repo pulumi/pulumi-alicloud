@@ -16,16 +16,32 @@ public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs extends 
 
     public static final FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs Empty = new FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs();
 
+    /**
+     * The list of route entries of the local VPC. See `local_route_entry_list` below.
+     * 
+     */
     @Import(name="localRouteEntryLists", required=true)
     private Output<List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs>> localRouteEntryLists;
 
+    /**
+     * @return The list of route entries of the local VPC. See `local_route_entry_list` below.
+     * 
+     */
     public Output<List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs>> localRouteEntryLists() {
         return this.localRouteEntryLists;
     }
 
+    /**
+     * The ID of the route table of the local VPC.
+     * 
+     */
     @Import(name="localRouteTableId", required=true)
     private Output<String> localRouteTableId;
 
+    /**
+     * @return The ID of the route table of the local VPC.
+     * 
+     */
     public Output<String> localRouteTableId() {
         return this.localRouteTableId;
     }
@@ -55,24 +71,54 @@ public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs extends 
             $ = new FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param localRouteEntryLists The list of route entries of the local VPC. See `local_route_entry_list` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localRouteEntryLists(Output<List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs>> localRouteEntryLists) {
             $.localRouteEntryLists = localRouteEntryLists;
             return this;
         }
 
+        /**
+         * @param localRouteEntryLists The list of route entries of the local VPC. See `local_route_entry_list` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localRouteEntryLists(List<FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs> localRouteEntryLists) {
             return localRouteEntryLists(Output.of(localRouteEntryLists));
         }
 
+        /**
+         * @param localRouteEntryLists The list of route entries of the local VPC. See `local_route_entry_list` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localRouteEntryLists(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs... localRouteEntryLists) {
             return localRouteEntryLists(List.of(localRouteEntryLists));
         }
 
+        /**
+         * @param localRouteTableId The ID of the route table of the local VPC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localRouteTableId(Output<String> localRouteTableId) {
             $.localRouteTableId = localRouteTableId;
             return this;
         }
 
+        /**
+         * @param localRouteTableId The ID of the route table of the local VPC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localRouteTableId(String localRouteTableId) {
             return localRouteTableId(Output.of(localRouteTableId));
         }

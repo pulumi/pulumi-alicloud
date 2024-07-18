@@ -10,45 +10,125 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGatewaysGatewayGatewayInstance {
+    /**
+     * @return The connection type of Gateway instance.
+     * 
+     */
     private String connectEndpointType;
+    /**
+     * @return The process of version number of Gateway instance.
+     * 
+     */
     private String currentDaemonVersion;
+    /**
+     * @return The version of Gateway instance.
+     * 
+     */
     private String currentVersion;
+    /**
+     * @return The endpoint address of Gateway instance.
+     * 
+     */
     private String endPoint;
+    /**
+     * @return The id of Gateway instance.
+     * 
+     */
     private String gatewayInstanceId;
+    /**
+     * @return The status of Gateway instance. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+     * 
+     */
     private String gatewayInstanceStatus;
+    /**
+     * @return The last Updated time stamp of Gateway instance.
+     * 
+     */
     private String lastUpdateTime;
+    /**
+     * @return The Local IP ADDRESS of Gateway instance.
+     * 
+     */
     private String localIp;
+    /**
+     * @return The prompt information of Gateway instance.
+     * 
+     */
     private String message;
+    /**
+     * @return The host of Gateway instance.
+     * 
+     */
     private String outputIp;
 
     private GetGatewaysGatewayGatewayInstance() {}
+    /**
+     * @return The connection type of Gateway instance.
+     * 
+     */
     public String connectEndpointType() {
         return this.connectEndpointType;
     }
+    /**
+     * @return The process of version number of Gateway instance.
+     * 
+     */
     public String currentDaemonVersion() {
         return this.currentDaemonVersion;
     }
+    /**
+     * @return The version of Gateway instance.
+     * 
+     */
     public String currentVersion() {
         return this.currentVersion;
     }
+    /**
+     * @return The endpoint address of Gateway instance.
+     * 
+     */
     public String endPoint() {
         return this.endPoint;
     }
+    /**
+     * @return The id of Gateway instance.
+     * 
+     */
     public String gatewayInstanceId() {
         return this.gatewayInstanceId;
     }
+    /**
+     * @return The status of Gateway instance. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+     * 
+     */
     public String gatewayInstanceStatus() {
         return this.gatewayInstanceStatus;
     }
+    /**
+     * @return The last Updated time stamp of Gateway instance.
+     * 
+     */
     public String lastUpdateTime() {
         return this.lastUpdateTime;
     }
+    /**
+     * @return The Local IP ADDRESS of Gateway instance.
+     * 
+     */
     public String localIp() {
         return this.localIp;
     }
+    /**
+     * @return The prompt information of Gateway instance.
+     * 
+     */
     public String message() {
         return this.message;
     }
+    /**
+     * @return The host of Gateway instance.
+     * 
+     */
     public String outputIp() {
         return this.outputIp;
     }

@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     [OutputType]
     public sealed class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint
     {
+        /// <summary>
+        /// The end time for this scaling rule specific metrics trigger.
+        /// </summary>
         public readonly string? EndTime;
+        /// <summary>
+        /// The start time for this scaling rule specific metrics trigger.
+        /// </summary>
         public readonly string? StartTime;
 
         [OutputConstructor]

@@ -351,6 +351,10 @@ class AlertConfigurationAnnotation(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
+        """
+        :param str key: Field name.
+        :param str value: Field value.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -359,11 +363,17 @@ class AlertConfigurationAnnotation(dict):
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
+        """
+        Field name.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        Field value.
+        """
         return pulumi.get(self, "value")
 
 
@@ -389,6 +399,10 @@ class AlertConfigurationConditionConfiguration(dict):
     def __init__(__self__, *,
                  condition: Optional[str] = None,
                  count_condition: Optional[str] = None):
+        """
+        :param str condition: Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+        :param str count_condition: The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
+        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
         if count_condition is not None:
@@ -397,11 +411,17 @@ class AlertConfigurationConditionConfiguration(dict):
     @property
     @pulumi.getter
     def condition(self) -> Optional[str]:
+        """
+        Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+        """
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="countCondition")
     def count_condition(self) -> Optional[str]:
+        """
+        The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
+        """
         return pulumi.get(self, "count_condition")
 
 
@@ -410,6 +430,9 @@ class AlertConfigurationGroupConfiguration(dict):
     def __init__(__self__, *,
                  fields: Optional[Sequence[str]] = None,
                  type: Optional[str] = None):
+        """
+        :param Sequence[str] fields: The field used for grouping evaluation. When type is set to custom, fields must be set.
+        """
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
         if type is not None:
@@ -418,6 +441,9 @@ class AlertConfigurationGroupConfiguration(dict):
     @property
     @pulumi.getter
     def fields(self) -> Optional[Sequence[str]]:
+        """
+        The field used for grouping evaluation. When type is set to custom, fields must be set.
+        """
         return pulumi.get(self, "fields")
 
     @property
@@ -431,6 +457,9 @@ class AlertConfigurationJoinConfiguration(dict):
     def __init__(__self__, *,
                  condition: Optional[str] = None,
                  type: Optional[str] = None):
+        """
+        :param str condition: Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
         if type is not None:
@@ -439,6 +468,9 @@ class AlertConfigurationJoinConfiguration(dict):
     @property
     @pulumi.getter
     def condition(self) -> Optional[str]:
+        """
+        Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+        """
         return pulumi.get(self, "condition")
 
     @property
@@ -452,6 +484,10 @@ class AlertConfigurationLabel(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
+        """
+        :param str key: Field name.
+        :param str value: Field value.
+        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if value is not None:
@@ -460,11 +496,17 @@ class AlertConfigurationLabel(dict):
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
+        """
+        Field name.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        Field value.
+        """
         return pulumi.get(self, "value")
 
 
@@ -495,6 +537,11 @@ class AlertConfigurationPolicyConfiguration(dict):
                  action_policy_id: Optional[str] = None,
                  alert_policy_id: Optional[str] = None,
                  repeat_interval: Optional[str] = None):
+        """
+        :param str action_policy_id: The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+        :param str alert_policy_id: Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
+        :param str repeat_interval: Repeat the waiting time. For example, 5m, 1H, etc.
+        """
         if action_policy_id is not None:
             pulumi.set(__self__, "action_policy_id", action_policy_id)
         if alert_policy_id is not None:
@@ -505,16 +552,25 @@ class AlertConfigurationPolicyConfiguration(dict):
     @property
     @pulumi.getter(name="actionPolicyId")
     def action_policy_id(self) -> Optional[str]:
+        """
+        The ID of the action policy used. If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
+        """
         return pulumi.get(self, "action_policy_id")
 
     @property
     @pulumi.getter(name="alertPolicyId")
     def alert_policy_id(self) -> Optional[str]:
+        """
+        Alarm policy ID. If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system). For advanced mode, set it to the specified alarm policy ID.
+        """
         return pulumi.get(self, "alert_policy_id")
 
     @property
     @pulumi.getter(name="repeatInterval")
     def repeat_interval(self) -> Optional[str]:
+        """
+        Repeat the waiting time. For example, 5m, 1H, etc.
+        """
         return pulumi.get(self, "repeat_interval")
 
 
@@ -561,6 +617,21 @@ class AlertConfigurationQueryList(dict):
                  store_type: Optional[str] = None,
                  time_span_type: Optional[str] = None,
                  ui: Optional[str] = None):
+        """
+        :param str chart_title: Chart Name.
+        :param str dashboard_id: Dashboard ID.
+        :param str end: End time. When storeType is set to log or metric, end must be set.
+        :param str power_sql_mode: Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+        :param str project: Project Name.
+        :param str query: Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+        :param str region: Region of the target Project.
+        :param str role_arn: Roles used to write alarm data to the event Library.
+        :param str start: Start time. When storeType is set to log or metric, start must be set.
+        :param str store: Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+        :param str store_type: Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+        :param str time_span_type: Time Type.
+        :param str ui: Use of specific scene alarm front end.
+        """
         if chart_title is not None:
             pulumi.set(__self__, "chart_title", chart_title)
         if dashboard_id is not None:
@@ -591,66 +662,105 @@ class AlertConfigurationQueryList(dict):
     @property
     @pulumi.getter(name="chartTitle")
     def chart_title(self) -> Optional[str]:
+        """
+        Chart Name.
+        """
         return pulumi.get(self, "chart_title")
 
     @property
     @pulumi.getter(name="dashboardId")
     def dashboard_id(self) -> Optional[str]:
+        """
+        Dashboard ID.
+        """
         return pulumi.get(self, "dashboard_id")
 
     @property
     @pulumi.getter
     def end(self) -> Optional[str]:
+        """
+        End time. When storeType is set to log or metric, end must be set.
+        """
         return pulumi.get(self, "end")
 
     @property
     @pulumi.getter(name="powerSqlMode")
     def power_sql_mode(self) -> Optional[str]:
+        """
+        Whether to use exclusive SQL. The value is as follows: auto: automatic switching. enable: Starts. disable: disable.
+        """
         return pulumi.get(self, "power_sql_mode")
 
     @property
     @pulumi.getter
     def project(self) -> Optional[str]:
+        """
+        Project Name.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def query(self) -> Optional[str]:
+        """
+        Query and analysis statements. When storeType is set to log or metric, query is set to the query analysis statement. When storeType is set to meta, set query to an empty string.
+        """
         return pulumi.get(self, "query")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        Region of the target Project.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        Roles used to write alarm data to the event Library.
+        """
         return pulumi.get(self, "role_arn")
 
     @property
     @pulumi.getter
     def start(self) -> Optional[str]:
+        """
+        Start time. When storeType is set to log or metric, start must be set.
+        """
         return pulumi.get(self, "start")
 
     @property
     @pulumi.getter
     def store(self) -> Optional[str]:
+        """
+        Query the Logstore, Metricstore, or resource data associated with the statistics. When storeType is set to log, store is set to the target Logstore. When storeType is set to metric, store is set to the target Metricstore. When storeType is set to meta, store is set to the target resource data name.
+        """
         return pulumi.get(self, "store")
 
     @property
     @pulumi.getter(name="storeType")
     def store_type(self) -> Optional[str]:
+        """
+        Query the data source type. The value is as follows: log: Logstore. metric: Time series Library. meta: resource data.
+        """
         return pulumi.get(self, "store_type")
 
     @property
     @pulumi.getter(name="timeSpanType")
     def time_span_type(self) -> Optional[str]:
+        """
+        Time Type.
+        """
         return pulumi.get(self, "time_span_type")
 
     @property
     @pulumi.getter
     def ui(self) -> Optional[str]:
+        """
+        Use of specific scene alarm front end.
+        """
         return pulumi.get(self, "ui")
 
 
@@ -676,6 +786,10 @@ class AlertConfigurationSeverityConfiguration(dict):
     def __init__(__self__, *,
                  eval_condition: Optional['outputs.AlertConfigurationSeverityConfigurationEvalCondition'] = None,
                  severity: Optional[int] = None):
+        """
+        :param 'AlertConfigurationSeverityConfigurationEvalConditionArgs' eval_condition: Trigger condition. See `eval_condition` below.
+        :param int severity: Alarm severity.
+        """
         if eval_condition is not None:
             pulumi.set(__self__, "eval_condition", eval_condition)
         if severity is not None:
@@ -684,11 +798,17 @@ class AlertConfigurationSeverityConfiguration(dict):
     @property
     @pulumi.getter(name="evalCondition")
     def eval_condition(self) -> Optional['outputs.AlertConfigurationSeverityConfigurationEvalCondition']:
+        """
+        Trigger condition. See `eval_condition` below.
+        """
         return pulumi.get(self, "eval_condition")
 
     @property
     @pulumi.getter
     def severity(self) -> Optional[int]:
+        """
+        Alarm severity.
+        """
         return pulumi.get(self, "severity")
 
 
@@ -714,6 +834,10 @@ class AlertConfigurationSeverityConfigurationEvalCondition(dict):
     def __init__(__self__, *,
                  condition: Optional[str] = None,
                  count_condition: Optional[str] = None):
+        """
+        :param str condition: Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+        :param str count_condition: The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
+        """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
         if count_condition is not None:
@@ -722,11 +846,17 @@ class AlertConfigurationSeverityConfigurationEvalCondition(dict):
     @property
     @pulumi.getter
     def condition(self) -> Optional[str]:
+        """
+        Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt> 10.
+        """
         return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="countCondition")
     def count_condition(self) -> Optional[str]:
+        """
+        The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__> 3.
+        """
         return pulumi.get(self, "count_condition")
 
 
@@ -734,12 +864,18 @@ class AlertConfigurationSeverityConfigurationEvalCondition(dict):
 class AlertConfigurationSinkAlerthub(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Open.
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Open.
+        """
         return pulumi.get(self, "enabled")
 
 
@@ -747,12 +883,18 @@ class AlertConfigurationSinkAlerthub(dict):
 class AlertConfigurationSinkCms(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Open.
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Open.
+        """
         return pulumi.get(self, "enabled")
 
 
@@ -783,6 +925,13 @@ class AlertConfigurationSinkEventStore(dict):
                  event_store: Optional[str] = None,
                  project: Optional[str] = None,
                  role_arn: Optional[str] = None):
+        """
+        :param bool enabled: Open.
+        :param str endpoint: SLS service endpoint.
+        :param str event_store: Event Library Name.
+        :param str project: Project Name.
+        :param str role_arn: Roles used to write alarm data to the event Library.
+        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if endpoint is not None:
@@ -797,26 +946,41 @@ class AlertConfigurationSinkEventStore(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        Open.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
+        """
+        SLS service endpoint.
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter(name="eventStore")
     def event_store(self) -> Optional[str]:
+        """
+        Event Library Name.
+        """
         return pulumi.get(self, "event_store")
 
     @property
     @pulumi.getter
     def project(self) -> Optional[str]:
+        """
+        Project Name.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
+        """
+        Roles used to write alarm data to the event Library.
+        """
         return pulumi.get(self, "role_arn")
 
 
@@ -846,6 +1010,13 @@ class AlertConfigurationTemplateConfiguration(dict):
                  tokens: Optional[Mapping[str, Any]] = None,
                  type: Optional[str] = None,
                  version: Optional[str] = None):
+        """
+        :param Mapping[str, Any] annotations: Template Annotations.
+        :param str lang: Template Language.
+        :param str template_id: Template ID.
+        :param Mapping[str, Any] tokens: Template Variables.
+        :param str version: Template Version.
+        """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if lang is not None:
@@ -862,21 +1033,33 @@ class AlertConfigurationTemplateConfiguration(dict):
     @property
     @pulumi.getter
     def annotations(self) -> Optional[Mapping[str, Any]]:
+        """
+        Template Annotations.
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def lang(self) -> Optional[str]:
+        """
+        Template Language.
+        """
         return pulumi.get(self, "lang")
 
     @property
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[str]:
+        """
+        Template ID.
+        """
         return pulumi.get(self, "template_id")
 
     @property
     @pulumi.getter
     def tokens(self) -> Optional[Mapping[str, Any]]:
+        """
+        Template Variables.
+        """
         return pulumi.get(self, "tokens")
 
     @property
@@ -887,6 +1070,9 @@ class AlertConfigurationTemplateConfiguration(dict):
     @property
     @pulumi.getter
     def version(self) -> Optional[str]:
+        """
+        Template Version.
+        """
         return pulumi.get(self, "version")
 
 

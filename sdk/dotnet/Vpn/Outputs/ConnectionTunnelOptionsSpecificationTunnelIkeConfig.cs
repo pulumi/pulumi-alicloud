@@ -19,8 +19,14 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         public readonly string? IkeMode;
         public readonly string? IkePfs;
         public readonly string? IkeVersion;
+        /// <summary>
+        /// The local Id.
+        /// </summary>
         public readonly string? LocalId;
         public readonly string? Psk;
+        /// <summary>
+        /// Remote ID.
+        /// </summary>
         public readonly string? RemoteId;
 
         [OutputConstructor]

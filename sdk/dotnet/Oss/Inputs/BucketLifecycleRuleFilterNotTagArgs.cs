@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Oss.Inputs
 
     public sealed class BucketLifecycleRuleFilterNotTagArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The key of the tag that is specified for the objects.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// The value of the tag that is specified for the objects.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

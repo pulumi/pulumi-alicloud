@@ -14,20 +14,34 @@ namespace Pulumi.AliCloud.Sls.Inputs
     {
         [Input("annotations")]
         private InputMap<object>? _annotations;
+
+        /// <summary>
+        /// Template Annotations.
+        /// </summary>
         public InputMap<object> Annotations
         {
             get => _annotations ?? (_annotations = new InputMap<object>());
             set => _annotations = value;
         }
 
+        /// <summary>
+        /// Template Language.
+        /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
+        /// <summary>
+        /// Template ID.
+        /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
 
         [Input("tokens")]
         private InputMap<object>? _tokens;
+
+        /// <summary>
+        /// Template Variables.
+        /// </summary>
         public InputMap<object> Tokens
         {
             get => _tokens ?? (_tokens = new InputMap<object>());
@@ -37,6 +51,9 @@ namespace Pulumi.AliCloud.Sls.Inputs
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Template Version.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

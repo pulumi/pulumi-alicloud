@@ -19,9 +19,17 @@ public final class TemplateScratchSourceTagArgs extends com.pulumi.resources.Res
 
     public static final TemplateScratchSourceTagArgs Empty = new TemplateScratchSourceTagArgs();
 
+    /**
+     * Source label. **NOTE:** A maximum of 10 source labels can be configured.
+     * 
+     */
     @Import(name="resourceTags", required=true)
     private Output<Map<String,Object>> resourceTags;
 
+    /**
+     * @return Source label. **NOTE:** A maximum of 10 source labels can be configured.
+     * 
+     */
     public Output<Map<String,Object>> resourceTags() {
         return this.resourceTags;
     }
@@ -58,11 +66,23 @@ public final class TemplateScratchSourceTagArgs extends com.pulumi.resources.Res
             $ = new TemplateScratchSourceTagArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param resourceTags Source label. **NOTE:** A maximum of 10 source labels can be configured.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceTags(Output<Map<String,Object>> resourceTags) {
             $.resourceTags = resourceTags;
             return this;
         }
 
+        /**
+         * @param resourceTags Source label. **NOTE:** A maximum of 10 source labels can be configured.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceTags(Map<String,Object> resourceTags) {
             return resourceTags(Output.of(resourceTags));
         }

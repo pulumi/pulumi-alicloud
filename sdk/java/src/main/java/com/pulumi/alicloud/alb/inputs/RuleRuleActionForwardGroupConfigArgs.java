@@ -17,16 +17,32 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
 
     public static final RuleRuleActionForwardGroupConfigArgs Empty = new RuleRuleActionForwardGroupConfigArgs();
 
+    /**
+     * The configuration of session persistence for server groups. See `server_group_sticky_session` below.
+     * 
+     */
     @Import(name="serverGroupStickySession")
     private @Nullable Output<RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs> serverGroupStickySession;
 
+    /**
+     * @return The configuration of session persistence for server groups. See `server_group_sticky_session` below.
+     * 
+     */
     public Optional<Output<RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs>> serverGroupStickySession() {
         return Optional.ofNullable(this.serverGroupStickySession);
     }
 
+    /**
+     * The destination server group to which requests are forwarded. See `server_group_tuples` below.
+     * 
+     */
     @Import(name="serverGroupTuples")
     private @Nullable Output<List<RuleRuleActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples;
 
+    /**
+     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below.
+     * 
+     */
     public Optional<Output<List<RuleRuleActionForwardGroupConfigServerGroupTupleArgs>>> serverGroupTuples() {
         return Optional.ofNullable(this.serverGroupTuples);
     }
@@ -56,24 +72,54 @@ public final class RuleRuleActionForwardGroupConfigArgs extends com.pulumi.resou
             $ = new RuleRuleActionForwardGroupConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param serverGroupStickySession The configuration of session persistence for server groups. See `server_group_sticky_session` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverGroupStickySession(@Nullable Output<RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs> serverGroupStickySession) {
             $.serverGroupStickySession = serverGroupStickySession;
             return this;
         }
 
+        /**
+         * @param serverGroupStickySession The configuration of session persistence for server groups. See `server_group_sticky_session` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverGroupStickySession(RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs serverGroupStickySession) {
             return serverGroupStickySession(Output.of(serverGroupStickySession));
         }
 
+        /**
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverGroupTuples(@Nullable Output<List<RuleRuleActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples) {
             $.serverGroupTuples = serverGroupTuples;
             return this;
         }
 
+        /**
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverGroupTuples(List<RuleRuleActionForwardGroupConfigServerGroupTupleArgs> serverGroupTuples) {
             return serverGroupTuples(Output.of(serverGroupTuples));
         }
 
+        /**
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverGroupTuples(RuleRuleActionForwardGroupConfigServerGroupTupleArgs... serverGroupTuples) {
             return serverGroupTuples(List.of(serverGroupTuples));
         }

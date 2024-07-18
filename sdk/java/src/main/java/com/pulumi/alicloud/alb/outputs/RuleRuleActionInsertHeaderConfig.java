@@ -13,6 +13,13 @@ import javax.annotation.Nullable;
 public final class RuleRuleActionInsertHeaderConfig {
     private @Nullable String key;
     private @Nullable String value;
+    /**
+     * @return The value type of the inserted header field. Valid values:
+     * - `UserDefined`: a custom value
+     * - `ReferenceHeader`: uses a field of the user request header.
+     * - `SystemDefined`: a system value.
+     * 
+     */
     private @Nullable String valueType;
 
     private RuleRuleActionInsertHeaderConfig() {}
@@ -22,6 +29,13 @@ public final class RuleRuleActionInsertHeaderConfig {
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }
+    /**
+     * @return The value type of the inserted header field. Valid values:
+     * - `UserDefined`: a custom value
+     * - `ReferenceHeader`: uses a field of the user request header.
+     * - `SystemDefined`: a system value.
+     * 
+     */
     public Optional<String> valueType() {
         return Optional.ofNullable(this.valueType);
     }

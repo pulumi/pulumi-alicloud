@@ -418,7 +418,8 @@ type GetDbClustersCluster struct {
 	// The ID of the business process flow.
 	Bid string `pulumi:"bid"`
 	// Instance family values include: Basic: Basic edition; HighAvailability: high availability edition.
-	Category      string `pulumi:"category"`
+	Category string `pulumi:"category"`
+	// The Commodity Code of the DBCluster.
 	CommodityCode string `pulumi:"commodityCode"`
 	// Connection string.
 	ConnectionString string `pulumi:"connectionString"`
@@ -508,7 +509,8 @@ type GetDbClustersClusterArgs struct {
 	// The ID of the business process flow.
 	Bid pulumi.StringInput `pulumi:"bid"`
 	// Instance family values include: Basic: Basic edition; HighAvailability: high availability edition.
-	Category      pulumi.StringInput `pulumi:"category"`
+	Category pulumi.StringInput `pulumi:"category"`
+	// The Commodity Code of the DBCluster.
 	CommodityCode pulumi.StringInput `pulumi:"commodityCode"`
 	// Connection string.
 	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
@@ -647,6 +649,7 @@ func (o GetDbClustersClusterOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) string { return v.Category }).(pulumi.StringOutput)
 }
 
+// The Commodity Code of the DBCluster.
 func (o GetDbClustersClusterOutput) CommodityCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) string { return v.CommodityCode }).(pulumi.StringOutput)
 }

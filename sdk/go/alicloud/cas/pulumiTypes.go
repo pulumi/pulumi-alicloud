@@ -279,7 +279,8 @@ type GetServiceCertificatesCertificate struct {
 	Id string `pulumi:"id"`
 	// The cert's Issuer.
 	Issuer string `pulumi:"issuer"`
-	Key    string `pulumi:"key"`
+	// The cert's Keye.
+	Key string `pulumi:"key"`
 	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
 	Name string `pulumi:"name"`
 	// The cert's organization.
@@ -328,7 +329,8 @@ type GetServiceCertificatesCertificateArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The cert's Issuer.
 	Issuer pulumi.StringInput `pulumi:"issuer"`
-	Key    pulumi.StringInput `pulumi:"key"`
+	// The cert's Keye.
+	Key pulumi.StringInput `pulumi:"key"`
 	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The cert's organization.
@@ -452,6 +454,7 @@ func (o GetServiceCertificatesCertificateOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
+// The cert's Keye.
 func (o GetServiceCertificatesCertificateOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Key }).(pulumi.StringOutput)
 }

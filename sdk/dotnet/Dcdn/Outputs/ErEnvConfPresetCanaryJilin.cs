@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
     [OutputType]
     public sealed class ErEnvConfPresetCanaryJilin
     {
+        /// <summary>
+        /// Allowed DCDN domain names.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedHosts;
+        /// <summary>
+        /// The version number of the code.
+        /// </summary>
         public readonly string? CodeRev;
+        /// <summary>
+        /// The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        /// </summary>
         public readonly string? SpecName;
 
         [OutputConstructor]

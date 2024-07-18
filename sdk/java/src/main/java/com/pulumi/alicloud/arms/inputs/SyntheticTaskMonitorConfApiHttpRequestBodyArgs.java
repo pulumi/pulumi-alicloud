@@ -15,9 +15,17 @@ public final class SyntheticTaskMonitorConfApiHttpRequestBodyArgs extends com.pu
 
     public static final SyntheticTaskMonitorConfApiHttpRequestBodyArgs Empty = new SyntheticTaskMonitorConfApiHttpRequestBodyArgs();
 
+    /**
+     * The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
+     * 
+     */
     @Import(name="content")
     private @Nullable Output<String> content;
 
+    /**
+     * @return The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
+     * 
+     */
     public Optional<Output<String>> content() {
         return Optional.ofNullable(this.content);
     }
@@ -54,11 +62,23 @@ public final class SyntheticTaskMonitorConfApiHttpRequestBodyArgs extends com.pu
             $ = new SyntheticTaskMonitorConfApiHttpRequestBodyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param content The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(@Nullable Output<String> content) {
             $.content = content;
             return this;
         }
 
+        /**
+         * @param content The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(String content) {
             return content(Output.of(content));
         }

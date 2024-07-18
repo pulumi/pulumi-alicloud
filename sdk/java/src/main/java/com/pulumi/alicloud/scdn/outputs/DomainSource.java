@@ -13,25 +13,71 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainSource {
+    /**
+     * @return The Back-to-Source Address.
+     * 
+     */
     private String content;
+    /**
+     * @return The source status. Valid values: online, offline.
+     * 
+     */
     private @Nullable String enabled;
+    /**
+     * @return Port.
+     * 
+     */
     private Integer port;
+    /**
+     * @return Priority.
+     * 
+     */
     private String priority;
+    /**
+     * @return The Origin Server Type. Valid Values:
+     * * ipaddr: IP Source Station
+     * * domain: the Domain Name
+     * * oss: OSS Bucket as a Source Station.
+     * 
+     */
     private String type;
 
     private DomainSource() {}
+    /**
+     * @return The Back-to-Source Address.
+     * 
+     */
     public String content() {
         return this.content;
     }
+    /**
+     * @return The source status. Valid values: online, offline.
+     * 
+     */
     public Optional<String> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Port.
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return Priority.
+     * 
+     */
     public String priority() {
         return this.priority;
     }
+    /**
+     * @return The Origin Server Type. Valid Values:
+     * * ipaddr: IP Source Station
+     * * domain: the Domain Name
+     * * oss: OSS Bucket as a Source Station.
+     * 
+     */
     public String type() {
         return this.type;
     }

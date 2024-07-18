@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
 
     public sealed class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The end time for this scaling rule specific metrics trigger.
+        /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
+        /// <summary>
+        /// The start time for this scaling rule specific metrics trigger.
+        /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 

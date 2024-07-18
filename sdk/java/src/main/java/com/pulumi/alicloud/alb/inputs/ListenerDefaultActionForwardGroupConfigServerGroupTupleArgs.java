@@ -14,9 +14,17 @@ public final class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs e
 
     public static final ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs Empty = new ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs();
 
+    /**
+     * The ID of the destination server group to which requests are forwarded.
+     * 
+     */
     @Import(name="serverGroupId", required=true)
     private Output<String> serverGroupId;
 
+    /**
+     * @return The ID of the destination server group to which requests are forwarded.
+     * 
+     */
     public Output<String> serverGroupId() {
         return this.serverGroupId;
     }
@@ -45,11 +53,23 @@ public final class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs e
             $ = new ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param serverGroupId The ID of the destination server group to which requests are forwarded.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverGroupId(Output<String> serverGroupId) {
             $.serverGroupId = serverGroupId;
             return this;
         }
 
+        /**
+         * @param serverGroupId The ID of the destination server group to which requests are forwarded.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverGroupId(String serverGroupId) {
             return serverGroupId(Output.of(serverGroupId));
         }

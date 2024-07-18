@@ -13,10 +13,28 @@ namespace Pulumi.AliCloud.Scdn.Outputs
     [OutputType]
     public sealed class DomainCertInfo
     {
+        /// <summary>
+        /// If You Enable HTTPS Here Certificate Name.
+        /// </summary>
         public readonly string? CertName;
+        /// <summary>
+        /// Certificate Type. Value Range: 
+        /// * upload: Certificate
+        /// * cas: Certificate Authority Certificate.
+        /// * free: Free Certificate.
+        /// </summary>
         public readonly string? CertType;
+        /// <summary>
+        /// Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+        /// </summary>
         public readonly string? SslPri;
+        /// <summary>
+        /// Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
+        /// </summary>
         public readonly string? SslProtocol;
+        /// <summary>
+        /// If You Enable HTTPS Here Key.
+        /// </summary>
         public readonly string? SslPub;
 
         [OutputConstructor]

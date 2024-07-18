@@ -16,16 +16,32 @@ public final class AlertConfigurationSeverityConfigurationArgs extends com.pulum
 
     public static final AlertConfigurationSeverityConfigurationArgs Empty = new AlertConfigurationSeverityConfigurationArgs();
 
+    /**
+     * Trigger condition. See `eval_condition` below.
+     * 
+     */
     @Import(name="evalCondition")
     private @Nullable Output<AlertConfigurationSeverityConfigurationEvalConditionArgs> evalCondition;
 
+    /**
+     * @return Trigger condition. See `eval_condition` below.
+     * 
+     */
     public Optional<Output<AlertConfigurationSeverityConfigurationEvalConditionArgs>> evalCondition() {
         return Optional.ofNullable(this.evalCondition);
     }
 
+    /**
+     * Alarm severity.
+     * 
+     */
     @Import(name="severity")
     private @Nullable Output<Integer> severity;
 
+    /**
+     * @return Alarm severity.
+     * 
+     */
     public Optional<Output<Integer>> severity() {
         return Optional.ofNullable(this.severity);
     }
@@ -55,20 +71,44 @@ public final class AlertConfigurationSeverityConfigurationArgs extends com.pulum
             $ = new AlertConfigurationSeverityConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param evalCondition Trigger condition. See `eval_condition` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder evalCondition(@Nullable Output<AlertConfigurationSeverityConfigurationEvalConditionArgs> evalCondition) {
             $.evalCondition = evalCondition;
             return this;
         }
 
+        /**
+         * @param evalCondition Trigger condition. See `eval_condition` below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder evalCondition(AlertConfigurationSeverityConfigurationEvalConditionArgs evalCondition) {
             return evalCondition(Output.of(evalCondition));
         }
 
+        /**
+         * @param severity Alarm severity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder severity(@Nullable Output<Integer> severity) {
             $.severity = severity;
             return this;
         }
 
+        /**
+         * @param severity Alarm severity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder severity(Integer severity) {
             return severity(Output.of(severity));
         }

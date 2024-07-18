@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Ros.Inputs
 
     public sealed class TemplateScratchPreferenceParameterGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+        /// </summary>
         [Input("parameterKey", required: true)]
         public Input<string> ParameterKey { get; set; } = null!;
 
+        /// <summary>
+        /// Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+        /// </summary>
         [Input("parameterValue", required: true)]
         public Input<string> ParameterValue { get; set; } = null!;
 

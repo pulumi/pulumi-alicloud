@@ -61,6 +61,9 @@ namespace Pulumi.AliCloud.Cas.Outputs
         /// The cert's Issuer.
         /// </summary>
         public readonly string Issuer;
+        /// <summary>
+        /// The cert's Keye.
+        /// </summary>
         public readonly string Key;
         public readonly string Name;
         /// <summary>

@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Ros.Inputs
 
     public sealed class StackGroupParameterArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The parameter key.
+        /// </summary>
         [Input("parameterKey")]
         public Input<string>? ParameterKey { get; set; }
 
+        /// <summary>
+        /// The parameter value.
+        /// </summary>
         [Input("parameterValue")]
         public Input<string>? ParameterValue { get; set; }
 

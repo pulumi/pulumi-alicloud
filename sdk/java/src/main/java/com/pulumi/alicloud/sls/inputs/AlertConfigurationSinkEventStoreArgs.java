@@ -16,37 +16,77 @@ public final class AlertConfigurationSinkEventStoreArgs extends com.pulumi.resou
 
     public static final AlertConfigurationSinkEventStoreArgs Empty = new AlertConfigurationSinkEventStoreArgs();
 
+    /**
+     * Open.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Open.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * SLS service endpoint.
+     * 
+     */
     @Import(name="endpoint")
     private @Nullable Output<String> endpoint;
 
+    /**
+     * @return SLS service endpoint.
+     * 
+     */
     public Optional<Output<String>> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
 
+    /**
+     * Event Library Name.
+     * 
+     */
     @Import(name="eventStore")
     private @Nullable Output<String> eventStore;
 
+    /**
+     * @return Event Library Name.
+     * 
+     */
     public Optional<Output<String>> eventStore() {
         return Optional.ofNullable(this.eventStore);
     }
 
+    /**
+     * Project Name.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return Project Name.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Roles used to write alarm data to the event Library.
+     * 
+     */
     @Import(name="roleArn")
     private @Nullable Output<String> roleArn;
 
+    /**
+     * @return Roles used to write alarm data to the event Library.
+     * 
+     */
     public Optional<Output<String>> roleArn() {
         return Optional.ofNullable(this.roleArn);
     }
@@ -79,47 +119,107 @@ public final class AlertConfigurationSinkEventStoreArgs extends com.pulumi.resou
             $ = new AlertConfigurationSinkEventStoreArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Open.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Open.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param endpoint SLS service endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpoint(@Nullable Output<String> endpoint) {
             $.endpoint = endpoint;
             return this;
         }
 
+        /**
+         * @param endpoint SLS service endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
         }
 
+        /**
+         * @param eventStore Event Library Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder eventStore(@Nullable Output<String> eventStore) {
             $.eventStore = eventStore;
             return this;
         }
 
+        /**
+         * @param eventStore Event Library Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder eventStore(String eventStore) {
             return eventStore(Output.of(eventStore));
         }
 
+        /**
+         * @param project Project Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project Project Name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
+        /**
+         * @param roleArn Roles used to write alarm data to the event Library.
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(@Nullable Output<String> roleArn) {
             $.roleArn = roleArn;
             return this;
         }
 
+        /**
+         * @param roleArn Roles used to write alarm data to the event Library.
+         * 
+         * @return builder
+         * 
+         */
         public Builder roleArn(String roleArn) {
             return roleArn(Output.of(roleArn));
         }

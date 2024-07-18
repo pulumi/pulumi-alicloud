@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     [OutputType]
     public sealed class OtsBackupPlanOtsDetail
     {
+        /// <summary>
+        /// The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
+        /// </summary>
         public readonly ImmutableArray<string> TableNames;
 
         [OutputConstructor]

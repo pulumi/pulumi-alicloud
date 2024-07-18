@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Sls.Inputs
 
     public sealed class AlertConfigurationConditionConfigurationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
+        /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }
 
+        /// <summary>
+        /// The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__&gt; 3.
+        /// </summary>
         [Input("countCondition")]
         public Input<string>? CountCondition { get; set; }
 

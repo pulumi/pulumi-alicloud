@@ -16,16 +16,32 @@ public final class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs 
 
     public static final ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs Empty = new ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs();
 
+    /**
+     * Enable CNI.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Enable CNI.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * The excluded namespace.
+     * 
+     */
     @Import(name="excludeNamespaces")
     private @Nullable Output<String> excludeNamespaces;
 
+    /**
+     * @return The excluded namespace.
+     * 
+     */
     public Optional<Output<String>> excludeNamespaces() {
         return Optional.ofNullable(this.excludeNamespaces);
     }
@@ -55,20 +71,44 @@ public final class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs 
             $ = new ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Enable CNI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Enable CNI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param excludeNamespaces The excluded namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder excludeNamespaces(@Nullable Output<String> excludeNamespaces) {
             $.excludeNamespaces = excludeNamespaces;
             return this;
         }
 
+        /**
+         * @param excludeNamespaces The excluded namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder excludeNamespaces(String excludeNamespaces) {
             return excludeNamespaces(Output.of(excludeNamespaces));
         }

@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
 
     public sealed class ClusterNodeGroupAutoScalingPolicyConstraintsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The maximum capacity of constraints for emr node group auto scaling policy.
+        /// </summary>
         [Input("maxCapacity")]
         public Input<int>? MaxCapacity { get; set; }
 
+        /// <summary>
+        /// The minimum capacity of constraints for emr node group auto scaling policy.
+        /// </summary>
         [Input("minCapacity")]
         public Input<int>? MinCapacity { get; set; }
 

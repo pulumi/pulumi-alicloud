@@ -16,16 +16,32 @@ public final class StackParameterArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final StackParameterArgs Empty = new StackParameterArgs();
 
+    /**
+     * The parameter key.
+     * 
+     */
     @Import(name="parameterKey")
     private @Nullable Output<String> parameterKey;
 
+    /**
+     * @return The parameter key.
+     * 
+     */
     public Optional<Output<String>> parameterKey() {
         return Optional.ofNullable(this.parameterKey);
     }
 
+    /**
+     * The parameter value.
+     * 
+     */
     @Import(name="parameterValue", required=true)
     private Output<String> parameterValue;
 
+    /**
+     * @return The parameter value.
+     * 
+     */
     public Output<String> parameterValue() {
         return this.parameterValue;
     }
@@ -55,20 +71,44 @@ public final class StackParameterArgs extends com.pulumi.resources.ResourceArgs 
             $ = new StackParameterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param parameterKey The parameter key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterKey(@Nullable Output<String> parameterKey) {
             $.parameterKey = parameterKey;
             return this;
         }
 
+        /**
+         * @param parameterKey The parameter key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterKey(String parameterKey) {
             return parameterKey(Output.of(parameterKey));
         }
 
+        /**
+         * @param parameterValue The parameter value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterValue(Output<String> parameterValue) {
             $.parameterValue = parameterValue;
             return this;
         }
 
+        /**
+         * @param parameterValue The parameter value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterValue(String parameterValue) {
             return parameterValue(Output.of(parameterValue));
         }

@@ -13,18 +13,57 @@ namespace Pulumi.AliCloud.Ddos.Outputs
     [OutputType]
     public sealed class BgpPolicyContentFingerPrintRuleList
     {
+        /// <summary>
+        /// End of destination port 0-65535.
+        /// </summary>
         public readonly int DstPortEnd;
+        /// <summary>
+        /// Destination Port start 0-65535.
+        /// </summary>
         public readonly int DstPortStart;
+        /// <summary>
+        /// The UUID of the rule is required to be deleted and modified, and it is not required to be created.
+        /// </summary>
         public readonly string? FingerPrintRuleId;
+        /// <summary>
+        /// Action. Currently, only drop is supported.
+        /// </summary>
         public readonly string MatchAction;
+        /// <summary>
+        /// Maximum bag length.
+        /// </summary>
         public readonly int MaxPktLen;
+        /// <summary>
+        /// Minimum package length.
+        /// </summary>
         public readonly int MinPktLen;
+        /// <summary>
+        /// Offset.
+        /// </summary>
         public readonly int? Offset;
+        /// <summary>
+        /// Load match, hexadecimal string; Similar to 'abcd'.
+        /// </summary>
         public readonly string? PayloadBytes;
+        /// <summary>
+        /// Protocol, tcp or udp.
+        /// </summary>
         public readonly string Protocol;
+        /// <summary>
+        /// Speed limit value 1-100000.
+        /// </summary>
         public readonly int? RateValue;
+        /// <summary>
+        /// Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+        /// </summary>
         public readonly int SeqNo;
+        /// <summary>
+        /// Source Port end 0-65535.
+        /// </summary>
         public readonly int SrcPortEnd;
+        /// <summary>
+        /// Source port start 0-65535.
+        /// </summary>
         public readonly int SrcPortStart;
 
         [OutputConstructor]

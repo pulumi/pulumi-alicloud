@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Emr.Outputs
     [OutputType]
     public sealed class ClusterConfig
     {
+        /// <summary>
+        /// Custom configuration service config key, e.g. ’dfs.replication’.
+        /// </summary>
         public readonly string ConfigKey;
+        /// <summary>
+        /// Custom configuration service config value, e.g. ’3’.
+        /// </summary>
         public readonly string ConfigValue;
+        /// <summary>
+        /// Custom configuration service file name, e.g. ’hdfs-site’.
+        /// </summary>
         public readonly string FileName;
         public readonly string ServiceName;
 

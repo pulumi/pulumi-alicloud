@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Arms.Outputs
     [OutputType]
     public sealed class SyntheticTaskCommonSettingCustomHostHost
     {
+        /// <summary>
+        /// Domain Name.
+        /// </summary>
         public readonly string Domain;
+        /// <summary>
+        /// IpType.
+        /// </summary>
         public readonly int IpType;
+        /// <summary>
+        /// The IP list.
+        /// </summary>
         public readonly ImmutableArray<string> Ips;
 
         [OutputConstructor]

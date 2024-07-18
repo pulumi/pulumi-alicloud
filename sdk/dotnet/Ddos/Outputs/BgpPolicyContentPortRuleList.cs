@@ -13,13 +13,37 @@ namespace Pulumi.AliCloud.Ddos.Outputs
     [OutputType]
     public sealed class BgpPolicyContentPortRuleList
     {
+        /// <summary>
+        /// End of destination port 0-65535.
+        /// </summary>
         public readonly int DstPortEnd;
+        /// <summary>
+        /// Destination Port start 0-65535.
+        /// </summary>
         public readonly int DstPortStart;
+        /// <summary>
+        /// Action. Currently, only drop is supported.
+        /// </summary>
         public readonly string MatchAction;
+        /// <summary>
+        /// Rule UUID is required to be deleted and modified, and is not required to be created.
+        /// </summary>
         public readonly string? PortRuleId;
+        /// <summary>
+        /// Protocol, tcp or udp.
+        /// </summary>
         public readonly string Protocol;
+        /// <summary>
+        /// Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+        /// </summary>
         public readonly int SeqNo;
+        /// <summary>
+        /// Source Port end 0-65535.
+        /// </summary>
         public readonly int SrcPortEnd;
+        /// <summary>
+        /// Source port start 0-65535.
+        /// </summary>
         public readonly int SrcPortStart;
 
         [OutputConstructor]

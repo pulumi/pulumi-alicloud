@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterResult
     {
+        /// <summary>
+        /// The conditions that are used to filter logs imported from Log Service.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterResult> Filters;
+        /// <summary>
+        /// The relationship between multiple filter conditions.
+        /// </summary>
         public readonly string Relation;
 
         [OutputConstructor]

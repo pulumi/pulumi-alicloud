@@ -17,6 +17,10 @@ public final class NetworkAclEntriesIngress {
     private @Nullable String policy;
     private @Nullable String port;
     private @Nullable String protocol;
+    /**
+     * @return The source ip of the ingress entry.
+     * 
+     */
     private @Nullable String sourceCidrIp;
 
     private NetworkAclEntriesIngress() {}
@@ -38,6 +42,10 @@ public final class NetworkAclEntriesIngress {
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }
+    /**
+     * @return The source ip of the ingress entry.
+     * 
+     */
     public Optional<String> sourceCidrIp() {
         return Optional.ofNullable(this.sourceCidrIp);
     }

@@ -440,9 +440,12 @@ func (o ProjectPropertiesPtrOutput) TypeSystem() pulumi.StringPtrOutput {
 }
 
 type ProjectPropertiesEncryption struct {
+	// Algorithm.
 	Algorithm *string `pulumi:"algorithm"`
-	Enable    *bool   `pulumi:"enable"`
-	Key       *string `pulumi:"key"`
+	// Whether to open.
+	Enable *bool `pulumi:"enable"`
+	// Encryption algorithm key.
+	Key *string `pulumi:"key"`
 }
 
 // ProjectPropertiesEncryptionInput is an input type that accepts ProjectPropertiesEncryptionArgs and ProjectPropertiesEncryptionOutput values.
@@ -457,9 +460,12 @@ type ProjectPropertiesEncryptionInput interface {
 }
 
 type ProjectPropertiesEncryptionArgs struct {
+	// Algorithm.
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
-	Enable    pulumi.BoolPtrInput   `pulumi:"enable"`
-	Key       pulumi.StringPtrInput `pulumi:"key"`
+	// Whether to open.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Encryption algorithm key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
 }
 
 func (ProjectPropertiesEncryptionArgs) ElementType() reflect.Type {
@@ -539,14 +545,17 @@ func (o ProjectPropertiesEncryptionOutput) ToProjectPropertiesEncryptionPtrOutpu
 	}).(ProjectPropertiesEncryptionPtrOutput)
 }
 
+// Algorithm.
 func (o ProjectPropertiesEncryptionOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectPropertiesEncryption) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
 
+// Whether to open.
 func (o ProjectPropertiesEncryptionOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectPropertiesEncryption) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
+// Encryption algorithm key.
 func (o ProjectPropertiesEncryptionOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectPropertiesEncryption) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -575,6 +584,7 @@ func (o ProjectPropertiesEncryptionPtrOutput) Elem() ProjectPropertiesEncryption
 	}).(ProjectPropertiesEncryptionOutput)
 }
 
+// Algorithm.
 func (o ProjectPropertiesEncryptionPtrOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectPropertiesEncryption) *string {
 		if v == nil {
@@ -584,6 +594,7 @@ func (o ProjectPropertiesEncryptionPtrOutput) Algorithm() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether to open.
 func (o ProjectPropertiesEncryptionPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectPropertiesEncryption) *bool {
 		if v == nil {
@@ -593,6 +604,7 @@ func (o ProjectPropertiesEncryptionPtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Encryption algorithm key.
 func (o ProjectPropertiesEncryptionPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectPropertiesEncryption) *string {
 		if v == nil {
@@ -604,7 +616,8 @@ func (o ProjectPropertiesEncryptionPtrOutput) Key() pulumi.StringPtrOutput {
 
 type ProjectPropertiesTableLifecycle struct {
 	// Project type
-	Type  *string `pulumi:"type"`
+	Type *string `pulumi:"type"`
+	// The value of the life cycle.
 	Value *string `pulumi:"value"`
 }
 
@@ -621,7 +634,8 @@ type ProjectPropertiesTableLifecycleInput interface {
 
 type ProjectPropertiesTableLifecycleArgs struct {
 	// Project type
-	Type  pulumi.StringPtrInput `pulumi:"type"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The value of the life cycle.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -707,6 +721,7 @@ func (o ProjectPropertiesTableLifecycleOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectPropertiesTableLifecycle) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// The value of the life cycle.
 func (o ProjectPropertiesTableLifecycleOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectPropertiesTableLifecycle) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -745,6 +760,7 @@ func (o ProjectPropertiesTableLifecyclePtrOutput) Type() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The value of the life cycle.
 func (o ProjectPropertiesTableLifecyclePtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectPropertiesTableLifecycle) *string {
 		if v == nil {

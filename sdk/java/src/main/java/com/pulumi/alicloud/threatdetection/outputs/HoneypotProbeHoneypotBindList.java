@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class HoneypotProbeHoneypotBindList {
+    /**
+     * @return List of listening ports.See the following `Block BindPortList`.
+     * 
+     */
     private @Nullable List<HoneypotProbeHoneypotBindListBindPortList> bindPortLists;
+    /**
+     * @return Honeypot ID.
+     * 
+     */
     private @Nullable String honeypotId;
 
     private HoneypotProbeHoneypotBindList() {}
+    /**
+     * @return List of listening ports.See the following `Block BindPortList`.
+     * 
+     */
     public List<HoneypotProbeHoneypotBindListBindPortList> bindPortLists() {
         return this.bindPortLists == null ? List.of() : this.bindPortLists;
     }
+    /**
+     * @return Honeypot ID.
+     * 
+     */
     public Optional<String> honeypotId() {
         return Optional.ofNullable(this.honeypotId);
     }

@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class RuleRuleActionTrafficMirrorConfigMirrorGroupConfig
     {
+        /// <summary>
+        /// The destination server group to which requests are forwarded. See `server_group_tuples` below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple> ServerGroupTuples;
 
         [OutputConstructor]

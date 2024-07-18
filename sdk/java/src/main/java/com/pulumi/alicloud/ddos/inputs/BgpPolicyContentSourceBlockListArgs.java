@@ -14,23 +14,47 @@ public final class BgpPolicyContentSourceBlockListArgs extends com.pulumi.resour
 
     public static final BgpPolicyContentSourceBlockListArgs Empty = new BgpPolicyContentSourceBlockListArgs();
 
+    /**
+     * Statistical cycle range 60-1200.
+     * 
+     */
     @Import(name="blockExpireSeconds", required=true)
     private Output<Integer> blockExpireSeconds;
 
+    /**
+     * @return Statistical cycle range 60-1200.
+     * 
+     */
     public Output<Integer> blockExpireSeconds() {
         return this.blockExpireSeconds;
     }
 
+    /**
+     * The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
+     * 
+     */
     @Import(name="everySeconds", required=true)
     private Output<Integer> everySeconds;
 
+    /**
+     * @return The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
+     * 
+     */
     public Output<Integer> everySeconds() {
         return this.everySeconds;
     }
 
+    /**
+     * The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
+     * 
+     */
     @Import(name="exceedLimitTimes", required=true)
     private Output<Integer> exceedLimitTimes;
 
+    /**
+     * @return The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
+     * 
+     */
     public Output<Integer> exceedLimitTimes() {
         return this.exceedLimitTimes;
     }
@@ -77,29 +101,65 @@ public final class BgpPolicyContentSourceBlockListArgs extends com.pulumi.resour
             $ = new BgpPolicyContentSourceBlockListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param blockExpireSeconds Statistical cycle range 60-1200.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockExpireSeconds(Output<Integer> blockExpireSeconds) {
             $.blockExpireSeconds = blockExpireSeconds;
             return this;
         }
 
+        /**
+         * @param blockExpireSeconds Statistical cycle range 60-1200.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockExpireSeconds(Integer blockExpireSeconds) {
             return blockExpireSeconds(Output.of(blockExpireSeconds));
         }
 
+        /**
+         * @param everySeconds The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder everySeconds(Output<Integer> everySeconds) {
             $.everySeconds = everySeconds;
             return this;
         }
 
+        /**
+         * @param everySeconds The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder everySeconds(Integer everySeconds) {
             return everySeconds(Output.of(everySeconds));
         }
 
+        /**
+         * @param exceedLimitTimes The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exceedLimitTimes(Output<Integer> exceedLimitTimes) {
             $.exceedLimitTimes = exceedLimitTimes;
             return this;
         }
 
+        /**
+         * @param exceedLimitTimes The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
+         * 
+         * @return builder
+         * 
+         */
         public Builder exceedLimitTimes(Integer exceedLimitTimes) {
             return exceedLimitTimes(Output.of(exceedLimitTimes));
         }

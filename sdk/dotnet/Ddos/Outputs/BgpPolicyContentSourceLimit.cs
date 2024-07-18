@@ -13,9 +13,21 @@ namespace Pulumi.AliCloud.Ddos.Outputs
     [OutputType]
     public sealed class BgpPolicyContentSourceLimit
     {
+        /// <summary>
+        /// bps range 1024~268435456.
+        /// </summary>
         public readonly int? Bps;
+        /// <summary>
+        /// Pps range 32~500000.
+        /// </summary>
         public readonly int? Pps;
+        /// <summary>
+        /// SynBps range 1024~268435456.
+        /// </summary>
         public readonly int? SynBps;
+        /// <summary>
+        /// SynPps range 1~100000.
+        /// </summary>
         public readonly int? SynPps;
 
         [OutputConstructor]

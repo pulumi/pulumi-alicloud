@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworkAclEntriesEgress {
     private @Nullable String description;
+    /**
+     * @return The destination ip of the egress entry.
+     * 
+     */
     private @Nullable String destinationCidrIp;
     private @Nullable String entryType;
     private @Nullable String name;
@@ -23,6 +27,10 @@ public final class NetworkAclEntriesEgress {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return The destination ip of the egress entry.
+     * 
+     */
     public Optional<String> destinationCidrIp() {
         return Optional.ofNullable(this.destinationCidrIp);
     }

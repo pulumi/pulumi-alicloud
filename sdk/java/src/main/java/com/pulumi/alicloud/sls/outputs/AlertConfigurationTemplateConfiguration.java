@@ -13,29 +13,69 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertConfigurationTemplateConfiguration {
+    /**
+     * @return Template Annotations.
+     * 
+     */
     private @Nullable Map<String,Object> annotations;
+    /**
+     * @return Template Language.
+     * 
+     */
     private @Nullable String lang;
+    /**
+     * @return Template ID.
+     * 
+     */
     private @Nullable String templateId;
+    /**
+     * @return Template Variables.
+     * 
+     */
     private @Nullable Map<String,Object> tokens;
     private @Nullable String type;
+    /**
+     * @return Template Version.
+     * 
+     */
     private @Nullable String version;
 
     private AlertConfigurationTemplateConfiguration() {}
+    /**
+     * @return Template Annotations.
+     * 
+     */
     public Map<String,Object> annotations() {
         return this.annotations == null ? Map.of() : this.annotations;
     }
+    /**
+     * @return Template Language.
+     * 
+     */
     public Optional<String> lang() {
         return Optional.ofNullable(this.lang);
     }
+    /**
+     * @return Template ID.
+     * 
+     */
     public Optional<String> templateId() {
         return Optional.ofNullable(this.templateId);
     }
+    /**
+     * @return Template Variables.
+     * 
+     */
     public Map<String,Object> tokens() {
         return this.tokens == null ? Map.of() : this.tokens;
     }
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Template Version.
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

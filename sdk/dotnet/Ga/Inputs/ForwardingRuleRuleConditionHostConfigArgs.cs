@@ -14,6 +14,10 @@ namespace Pulumi.AliCloud.Ga.Inputs
     {
         [Input("values")]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

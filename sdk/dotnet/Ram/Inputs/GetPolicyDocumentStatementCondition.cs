@@ -12,17 +12,27 @@ namespace Pulumi.AliCloud.Ram.Inputs
 
     public sealed class GetPolicyDocumentStatementConditionArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The operator of the condition.
+        /// </summary>
         [Input("operator", required: true)]
         public string Operator { get; set; } = null!;
 
         [Input("values", required: true)]
         private List<string>? _values;
+
+        /// <summary>
+        /// The values of the condition.
+        /// </summary>
         public List<string> Values
         {
             get => _values ?? (_values = new List<string>());
             set => _values = value;
         }
 
+        /// <summary>
+        /// The variable of the condition.
+        /// </summary>
         [Input("variable", required: true)]
         public string Variable { get; set; } = null!;
 

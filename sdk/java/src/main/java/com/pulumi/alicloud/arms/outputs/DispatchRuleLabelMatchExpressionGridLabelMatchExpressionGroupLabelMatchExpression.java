@@ -10,17 +10,61 @@ import java.util.Objects;
 
 @CustomType
 public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
+    /**
+     * @return The key of the tag of the dispatch rule. Valid values:
+     * * _aliyun_arms_userid: user ID
+     * * _aliyun_arms_involvedObject_kind: type of the associated object
+     * * _aliyun_arms_involvedObject_id: ID of the associated object
+     * * _aliyun_arms_involvedObject_name: name of the associated object
+     * * _aliyun_arms_alert_name: alert name
+     * * _aliyun_arms_alert_rule_id: alert rule ID
+     * * _aliyun_arms_alert_type: alert type
+     * * _aliyun_arms_alert_level: alert severity
+     * 
+     */
     private String key;
+    /**
+     * @return The operator used in the dispatch rule. Valid values:
+     * * eq: equals to.
+     * * re: matches a regular expression.
+     * 
+     */
     private String operator;
+    /**
+     * @return The value of the tag.
+     * 
+     */
     private String value;
 
     private DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression() {}
+    /**
+     * @return The key of the tag of the dispatch rule. Valid values:
+     * * _aliyun_arms_userid: user ID
+     * * _aliyun_arms_involvedObject_kind: type of the associated object
+     * * _aliyun_arms_involvedObject_id: ID of the associated object
+     * * _aliyun_arms_involvedObject_name: name of the associated object
+     * * _aliyun_arms_alert_name: alert name
+     * * _aliyun_arms_alert_rule_id: alert rule ID
+     * * _aliyun_arms_alert_type: alert type
+     * * _aliyun_arms_alert_level: alert severity
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return The operator used in the dispatch rule. Valid values:
+     * * eq: equals to.
+     * * re: matches a regular expression.
+     * 
+     */
     public String operator() {
         return this.operator;
     }
+    /**
+     * @return The value of the tag.
+     * 
+     */
     public String value() {
         return this.value;
     }

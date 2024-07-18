@@ -57,9 +57,17 @@ public final class NetworkAclEntriesIngressArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.protocol);
     }
 
+    /**
+     * The source ip of the ingress entry.
+     * 
+     */
     @Import(name="sourceCidrIp")
     private @Nullable Output<String> sourceCidrIp;
 
+    /**
+     * @return The source ip of the ingress entry.
+     * 
+     */
     public Optional<Output<String>> sourceCidrIp() {
         return Optional.ofNullable(this.sourceCidrIp);
     }
@@ -148,11 +156,23 @@ public final class NetworkAclEntriesIngressArgs extends com.pulumi.resources.Res
             return protocol(Output.of(protocol));
         }
 
+        /**
+         * @param sourceCidrIp The source ip of the ingress entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceCidrIp(@Nullable Output<String> sourceCidrIp) {
             $.sourceCidrIp = sourceCidrIp;
             return this;
         }
 
+        /**
+         * @param sourceCidrIp The source ip of the ingress entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceCidrIp(String sourceCidrIp) {
             return sourceCidrIp(Output.of(sourceCidrIp));
         }

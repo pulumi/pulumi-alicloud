@@ -20,6 +20,9 @@ namespace Pulumi.AliCloud.Eci.Inputs
             set => _capabilities = value;
         }
 
+        /// <summary>
+        /// Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
+        /// </summary>
         [Input("privileged")]
         public Input<bool>? Privileged { get; set; }
 

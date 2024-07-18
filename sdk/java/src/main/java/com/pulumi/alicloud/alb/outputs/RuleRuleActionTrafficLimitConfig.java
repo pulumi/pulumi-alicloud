@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleRuleActionTrafficLimitConfig {
+    /**
+     * @return The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+     * 
+     */
     private @Nullable Integer perIpQps;
+    /**
+     * @return The Number of requests per second. Valid values: `1` to `100000`.
+     * 
+     */
     private @Nullable Integer qps;
 
     private RuleRuleActionTrafficLimitConfig() {}
+    /**
+     * @return The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+     * 
+     */
     public Optional<Integer> perIpQps() {
         return Optional.ofNullable(this.perIpQps);
     }
+    /**
+     * @return The Number of requests per second. Valid values: `1` to `100000`.
+     * 
+     */
     public Optional<Integer> qps() {
         return Optional.ofNullable(this.qps);
     }

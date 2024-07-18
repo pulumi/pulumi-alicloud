@@ -15,23 +15,47 @@ public final class K8sSlbAttachmentSlbConfigPortMappingServicePortArgs extends c
 
     public static final K8sSlbAttachmentSlbConfigPortMappingServicePortArgs Empty = new K8sSlbAttachmentSlbConfigPortMappingServicePortArgs();
 
+    /**
+     * The port of k8s service, values should be within range [1, 65535].
+     * 
+     */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
+    /**
+     * @return The port of k8s service, values should be within range [1, 65535].
+     * 
+     */
     public Output<Integer> port() {
         return this.port;
     }
 
+    /**
+     * The protocol of k8s service, values can be &#39;TCP&#39; or &#39;UDP&#39;.
+     * 
+     */
     @Import(name="protocol", required=true)
     private Output<String> protocol;
 
+    /**
+     * @return The protocol of k8s service, values can be &#39;TCP&#39; or &#39;UDP&#39;.
+     * 
+     */
     public Output<String> protocol() {
         return this.protocol;
     }
 
+    /**
+     * The port of k8s pod, values should be within range [1, 65535].
+     * 
+     */
     @Import(name="targetPort", required=true)
     private Output<Integer> targetPort;
 
+    /**
+     * @return The port of k8s pod, values should be within range [1, 65535].
+     * 
+     */
     public Output<Integer> targetPort() {
         return this.targetPort;
     }
@@ -62,29 +86,65 @@ public final class K8sSlbAttachmentSlbConfigPortMappingServicePortArgs extends c
             $ = new K8sSlbAttachmentSlbConfigPortMappingServicePortArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param port The port of k8s service, values should be within range [1, 65535].
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port The port of k8s service, values should be within range [1, 65535].
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param protocol The protocol of k8s service, values can be &#39;TCP&#39; or &#39;UDP&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder protocol(Output<String> protocol) {
             $.protocol = protocol;
             return this;
         }
 
+        /**
+         * @param protocol The protocol of k8s service, values can be &#39;TCP&#39; or &#39;UDP&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder protocol(String protocol) {
             return protocol(Output.of(protocol));
         }
 
+        /**
+         * @param targetPort The port of k8s pod, values should be within range [1, 65535].
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetPort(Output<Integer> targetPort) {
             $.targetPort = targetPort;
             return this;
         }
 
+        /**
+         * @param targetPort The port of k8s pod, values should be within range [1, 65535].
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetPort(Integer targetPort) {
             return targetPort(Output.of(targetPort));
         }
