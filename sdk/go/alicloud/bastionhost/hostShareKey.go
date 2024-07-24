@@ -69,7 +69,7 @@ import (
 //				return err
 //			}
 //			var tmp0 float64
-//			if len(_default.Ids) > 0 {
+//			if pulumi.Float64(len(_default.Ids)) > 0 {
 //				tmp0 = 0
 //			} else {
 //				tmp0 = 1
@@ -87,7 +87,7 @@ import (
 //				defaultSecurityGroup = append(defaultSecurityGroup, __res)
 //			}
 //			var tmp1 float64
-//			if len(_default.Ids) > 0 {
+//			if pulumi.Float64(len(_default.Ids)) > 0 {
 //				tmp1 = 0
 //			} else {
 //				tmp1 = 1
@@ -114,7 +114,7 @@ import (
 //				defaultInstance = append(defaultInstance, __res)
 //			}
 //			var tmp2 *string
-//			if len(_default.Ids) > 0 {
+//			if pulumi.Float64(len(_default.Ids)) > 0 {
 //				tmp2 = _default.Ids[0]
 //			} else {
 //				tmp2 = defaultInstance[0].ID()

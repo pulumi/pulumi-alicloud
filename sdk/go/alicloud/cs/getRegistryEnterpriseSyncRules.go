@@ -26,29 +26,23 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Declare the data source
-//			mySyncRules, err := cs.GetRegistryEnterpriseSyncRules(ctx, &cs.GetRegistryEnterpriseSyncRulesArgs{
-//				InstanceId:       "cri-xxx",
-//				NamespaceName:    pulumi.StringRef("test-namespace"),
-//				RepoName:         pulumi.StringRef("test-repo"),
-//				TargetInstanceId: pulumi.StringRef("cri-yyy"),
-//				NameRegex:        pulumi.StringRef("test-rule"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*string
-//			for _, val0 := range mySyncRules.Rules {
-//				splat0 = append(splat0, val0.Id)
-//			}
-//			ctx.Export("output", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// // Declare the data source
+// mySyncRules, err := cs.GetRegistryEnterpriseSyncRules(ctx, &cs.GetRegistryEnterpriseSyncRulesArgs{
+// InstanceId: "cri-xxx",
+// NamespaceName: pulumi.StringRef("test-namespace"),
+// RepoName: pulumi.StringRef("test-repo"),
+// TargetInstanceId: pulumi.StringRef("cri-yyy"),
+// NameRegex: pulumi.StringRef("test-rule"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("output", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:10,11-34)))
+// return nil
+// })
+// }
 // ```
 func GetRegistryEnterpriseSyncRules(ctx *pulumi.Context, args *GetRegistryEnterpriseSyncRulesArgs, opts ...pulumi.InvokeOption) (*GetRegistryEnterpriseSyncRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

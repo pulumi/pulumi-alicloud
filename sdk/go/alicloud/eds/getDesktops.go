@@ -100,9 +100,9 @@ import (
 //				return &ids.Desktops[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			nameRegex := defaultDesktop.DesktopName.ApplyT(func(desktopName *string) (eds.GetDesktopsResult, error) {
-//				return eds.GetDesktopsOutput(ctx, eds.GetDesktopsOutputArgs{
+//				return eds.GetDesktopsResult(interface{}(eds.GetDesktopsOutput(ctx, eds.GetDesktopsOutputArgs{
 //					NameRegex: desktopName,
-//				}, nil), nil
+//				}, nil))), nil
 //			}).(eds.GetDesktopsResultOutput)
 //			ctx.Export("ecdDesktopId2", nameRegex.ApplyT(func(nameRegex eds.GetDesktopsResult) (*string, error) {
 //				return &nameRegex.Desktops[0].Id, nil

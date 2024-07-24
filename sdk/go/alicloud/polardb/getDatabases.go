@@ -73,9 +73,9 @@ import (
 // Status: pulumi.String("Running"),
 // }, nil);
 // defaultDatabase, err := polardb.NewDatabase(ctx, "default", &polardb.DatabaseArgs{
-// DbClusterId: polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (*string, error) {
+// DbClusterId: pulumi.String(polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (*string, error) {
 // return &polardbClustersDs.Clusters[0].Id, nil
-// }).(pulumi.StringPtrOutput),
+// }).(pulumi.StringPtrOutput)),
 // DbName: polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (string, error) {
 // return fmt.Sprintf("tfaccountpri_%v", polardbClustersDs.Clusters[0].Id), nil
 // }).(pulumi.StringOutput),
@@ -87,10 +87,10 @@ import (
 // _default := pulumi.All(polardbClustersDs,defaultDatabase.DbName).ApplyT(func(_args []interface{}) (polardb.GetDatabasesResult, error) {
 // polardbClustersDs := _args[0].(polardb.GetClustersResult)
 // dbName := _args[1].(string)
-// return polardb.GetDatabasesOutput(ctx, polardb.GetDatabasesOutputArgs{
+// return polardb.GetDatabasesResult(interface{}(polardb.GetDatabasesOutput(ctx, polardb.GetDatabasesOutputArgs{
 // DbClusterId: polardbClustersDs.Clusters[0].Id,
 // NameRegex: dbName,
-// }, nil), nil
+// }, nil))), nil
 // }).(polardb.GetDatabasesResultOutput)
 // ctx.Export("database", _default.ApplyT(func(_default polardb.GetDatabasesResult) (*string, error) {
 // return &default.Databases[0].DbName, nil

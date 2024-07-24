@@ -41,7 +41,7 @@ import (
 //					pulumi.String("2"),
 //					pulumi.String("3"),
 //				},
-//				RetentionDays: -1,
+//				RetentionDays: int(-1),
 //				TimePoints: pulumi.StringArray{
 //					pulumi.String("1"),
 //					pulumi.String("22"),

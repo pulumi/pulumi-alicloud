@@ -71,9 +71,9 @@ import (
 // Status: pulumi.String("Running"),
 // }, nil);
 // account, err := polardb.NewAccount(ctx, "account", &polardb.AccountArgs{
-// DbClusterId: polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (*string, error) {
+// DbClusterId: pulumi.String(polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (*string, error) {
 // return &polardbClustersDs.Clusters[0].Id, nil
-// }).(pulumi.StringPtrOutput),
+// }).(pulumi.StringPtrOutput)),
 // AccountName: pulumi.String("tfnormal_01"),
 // AccountPassword: pulumi.String("Test12345"),
 // AccountDescription: pulumi.String("tf_account_description"),
@@ -85,10 +85,10 @@ import (
 // _default := pulumi.All(polardbClustersDs,account.AccountName).ApplyT(func(_args []interface{}) (polardb.GetAccountsResult, error) {
 // polardbClustersDs := _args[0].(polardb.GetClustersResult)
 // accountName := _args[1].(string)
-// return polardb.GetAccountsOutput(ctx, polardb.GetAccountsOutputArgs{
+// return polardb.GetAccountsResult(interface{}(polardb.GetAccountsOutput(ctx, polardb.GetAccountsOutputArgs{
 // DbClusterId: polardbClustersDs.Clusters[0].Id,
 // NameRegex: accountName,
-// }, nil), nil
+// }, nil))), nil
 // }).(polardb.GetAccountsResultOutput)
 // ctx.Export("account", _default.ApplyT(func(_default polardb.GetAccountsResult) (*string, error) {
 // return &default.Accounts[0].AccountName, nil

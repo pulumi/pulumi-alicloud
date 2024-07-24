@@ -75,7 +75,7 @@ import (
 //						Type: pulumi.String("Integer"),
 //					},
 //				},
-//				TimeToLive:                -1,
+//				TimeToLive:                int(-1),
 //				MaxVersion:                pulumi.Int(1),
 //				DeviationCellVersionInSec: pulumi.String("1"),
 //			})

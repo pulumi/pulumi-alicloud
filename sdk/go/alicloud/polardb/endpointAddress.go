@@ -74,9 +74,9 @@ import (
 //			}, nil)
 //			_, err = polardb.NewEndpointAddress(ctx, "default", &polardb.EndpointAddressArgs{
 //				DbClusterId: defaultCluster.ID(),
-//				DbEndpointId: defaultGetEndpoints.ApplyT(func(defaultGetEndpoints polardb.GetEndpointsResult) (*string, error) {
+//				DbEndpointId: pulumi.String(defaultGetEndpoints.ApplyT(func(defaultGetEndpoints polardb.GetEndpointsResult) (*string, error) {
 //					return &defaultGetEndpoints.Endpoints[0].DbEndpointId, nil
-//				}).(pulumi.StringPtrOutput),
+//				}).(pulumi.StringPtrOutput)),
 //				ConnectionPrefix: pulumi.String("polardbexample"),
 //				NetType:          pulumi.String("Public"),
 //			})

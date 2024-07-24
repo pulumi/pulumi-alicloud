@@ -28,24 +28,18 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := ddos.GetDdosCooInstances(ctx, &ddos.GetDdosCooInstancesArgs{
-//				NameRegex: pulumi.StringRef("tf"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*string
-//			for _, val0 := range _default.Instances {
-//				splat0 = append(splat0, val0.Id)
-//			}
-//			ctx.Export("instance", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := ddos.GetDdosCooInstances(ctx, &ddos.GetDdosCooInstancesArgs{
+// NameRegex: pulumi.StringRef("tf"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("instance", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:6,11-34)))
+// return nil
+// })
+// }
 // ```
 func GetDdosCooInstances(ctx *pulumi.Context, args *GetDdosCooInstancesArgs, opts ...pulumi.InvokeOption) (*GetDdosCooInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
