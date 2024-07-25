@@ -79,7 +79,7 @@ import (
 //				KeyPairName:  defaultKeyPair.KeyPairName,
 //				VswitchId:    pulumi.String(defaultGetSwitches.Ids[0]),
 //				ImageId:      pulumi.String("android_9_0_0_release_2851157_20211201.vhd"),
-//				InstanceType: defaultGetInstanceTypes.InstanceTypes[instanceTypeCountSize-1].InstanceType,
+//				InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[instanceTypeCountSize-1].InstanceType),
 //				PaymentType:  pulumi.String("PayAsYouGo"),
 //			})
 //			if err != nil {

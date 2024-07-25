@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			index := len(_default.Zones) - 1
+//			index := pulumi.Float64(len(_default.Zones)) - 1
 //			zoneId := _default.Zones[index].Id
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
@@ -95,9 +95,9 @@ import (
 //			}
 //			_, err = mongodb.NewShardingNetworkPublicAddress(ctx, "example", &mongodb.ShardingNetworkPublicAddressArgs{
 //				DbInstanceId: defaultShardingInstance.ID(),
-//				NodeId: defaultShardingInstance.MongoLists.ApplyT(func(mongoLists []mongodb.ShardingInstanceMongoList) (*string, error) {
+//				NodeId: pulumi.String(defaultShardingInstance.MongoLists.ApplyT(func(mongoLists []mongodb.ShardingInstanceMongoList) (*string, error) {
 //					return &mongoLists[0].NodeId, nil
-//				}).(pulumi.StringPtrOutput),
+//				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
 //				return err

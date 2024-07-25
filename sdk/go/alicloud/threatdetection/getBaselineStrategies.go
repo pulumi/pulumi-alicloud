@@ -42,13 +42,13 @@ import (
 //				return err
 //			}
 //			_ = defaultBaselineStrategy.ID().ApplyT(func(id string) (threatdetection.GetBaselineStrategiesResult, error) {
-//				return threatdetection.GetBaselineStrategiesOutput(ctx, threatdetection.GetBaselineStrategiesOutputArgs{
+//				return threatdetection.GetBaselineStrategiesResult(interface{}(threatdetection.GetBaselineStrategiesOutput(ctx, threatdetection.GetBaselineStrategiesOutputArgs{
 //					Ids: []string{
 //						id,
 //					},
 //					NameRegex:  defaultBaselineStrategy.Name,
 //					CustomType: "custom",
-//				}, nil), nil
+//				}, nil))), nil
 //			}).(threatdetection.GetBaselineStrategiesResultOutput)
 //			ctx.Export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.Strategys[0].Id)
 //			return nil

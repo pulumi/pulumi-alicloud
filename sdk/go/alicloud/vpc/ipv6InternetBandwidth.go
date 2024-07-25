@@ -118,9 +118,9 @@ import (
 // Status: pulumi.String("Available"),
 // }, nil);
 // _, err = vpc.NewIpv6InternetBandwidth(ctx, "example", &vpc.Ipv6InternetBandwidthArgs{
-// Ipv6AddressId: defaultGetIpv6Addresses.ApplyT(func(defaultGetIpv6Addresses vpc.GetIpv6AddressesResult) (*string, error) {
+// Ipv6AddressId: pulumi.String(defaultGetIpv6Addresses.ApplyT(func(defaultGetIpv6Addresses vpc.GetIpv6AddressesResult) (*string, error) {
 // return &defaultGetIpv6Addresses.Addresses[0].Id, nil
-// }).(pulumi.StringPtrOutput),
+// }).(pulumi.StringPtrOutput)),
 // Ipv6GatewayId: example.Ipv6GatewayId,
 // InternetChargeType: pulumi.String("PayByBandwidth"),
 // Bandwidth: pulumi.Int(20),

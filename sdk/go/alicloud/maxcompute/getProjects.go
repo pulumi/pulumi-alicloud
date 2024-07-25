@@ -44,12 +44,12 @@ import (
 // return err
 // }
 // _default := defaultProject.ID().ApplyT(func(id string) (maxcompute.GetProjectsResult, error) {
-// return maxcompute.GetProjectsOutput(ctx, maxcompute.GetProjectsOutputArgs{
+// return maxcompute.GetProjectsResult(interface{}(maxcompute.GetProjectsOutput(ctx, maxcompute.GetProjectsOutputArgs{
 // Ids: []string{
 // id,
 // },
 // NameRegex: defaultProject.Name,
-// }, nil), nil
+// }, nil))), nil
 // }).(maxcompute.GetProjectsResultOutput)
 // ctx.Export("alicloudMaxcomputeProjectExampleId", _default.ApplyT(func(_default maxcompute.GetProjectsResult) (*string, error) {
 // return &default.Projects[0].Id, nil

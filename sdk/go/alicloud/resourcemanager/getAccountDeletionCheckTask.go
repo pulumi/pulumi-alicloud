@@ -32,24 +32,18 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			task, err := resourcemanager.GetAccountDeletionCheckTask(ctx, &resourcemanager.GetAccountDeletionCheckTaskArgs{
-//				AccountId: "your_account_id",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*string
-//			for _, val0 := range task.AbandonAbleChecks {
-//				splat0 = append(splat0, val0.CheckId)
-//			}
-//			ctx.Export("abandonAbleChecksIds", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// task, err := resourcemanager.GetAccountDeletionCheckTask(ctx, &resourcemanager.GetAccountDeletionCheckTaskArgs{
+// AccountId: "your_account_id",
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("abandonAbleChecksIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:5,11-44)))
+// return nil
+// })
+// }
 // ```
 func GetAccountDeletionCheckTask(ctx *pulumi.Context, args *GetAccountDeletionCheckTaskArgs, opts ...pulumi.InvokeOption) (*GetAccountDeletionCheckTaskResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

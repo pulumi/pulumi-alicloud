@@ -96,9 +96,9 @@ import (
 //				return &ids.Images[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			nameRegex := defaultImage.ImageName.ApplyT(func(imageName *string) (eds.GetImagesResult, error) {
-//				return eds.GetImagesOutput(ctx, eds.GetImagesOutputArgs{
+//				return eds.GetImagesResult(interface{}(eds.GetImagesOutput(ctx, eds.GetImagesOutputArgs{
 //					NameRegex: imageName,
-//				}, nil), nil
+//				}, nil))), nil
 //			}).(eds.GetImagesResultOutput)
 //			ctx.Export("ecdImageId2", nameRegex.ApplyT(func(nameRegex eds.GetImagesResult) (*string, error) {
 //				return &nameRegex.Images[0].Id, nil

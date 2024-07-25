@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			var tmp0 float64
-//			if len(_default.Accelerators) > 0 {
+//			if pulumi.Float64(len(_default.Accelerators)) > 0 {
 //				tmp0 = 0
 //			} else {
 //				tmp0 = 1
@@ -56,7 +56,7 @@ import (
 //				defaultAccelerator = append(defaultAccelerator, __res)
 //			}
 //			var tmp1 *string
-//			if len(_default.Accelerators) > 0 {
+//			if pulumi.Float64(len(_default.Accelerators)) > 0 {
 //				tmp1 = _default.Accelerators[0].Id
 //			} else {
 //				tmp1 = defaultAccelerator[0].ID()
