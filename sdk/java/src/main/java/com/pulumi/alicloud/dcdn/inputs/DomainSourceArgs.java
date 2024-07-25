@@ -5,7 +5,6 @@ package com.pulumi.alicloud.dcdn.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -18,18 +17,18 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
     public static final DomainSourceArgs Empty = new DomainSourceArgs();
 
     /**
-     * The origin address.
+     * The address of the source station.
      * 
      */
-    @Import(name="content", required=true)
-    private Output<String> content;
+    @Import(name="content")
+    private @Nullable Output<String> content;
 
     /**
-     * @return The origin address.
+     * @return The address of the source station.
      * 
      */
-    public Output<String> content() {
-        return this.content;
+    public Optional<Output<String>> content() {
+        return Optional.ofNullable(this.content);
     }
 
     /**
@@ -64,23 +63,17 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the origin. Valid values:
-     * `ipaddr`: The origin is configured using an IP address.
-     * `domain`: The origin is configured using a domain name.
-     * `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
      * @return The type of the origin. Valid values:
-     * `ipaddr`: The origin is configured using an IP address.
-     * `domain`: The origin is configured using a domain name.
-     * `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     /**
@@ -127,18 +120,18 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content The origin address.
+         * @param content The address of the source station.
          * 
          * @return builder
          * 
          */
-        public Builder content(Output<String> content) {
+        public Builder content(@Nullable Output<String> content) {
             $.content = content;
             return this;
         }
 
         /**
-         * @param content The origin address.
+         * @param content The address of the source station.
          * 
          * @return builder
          * 
@@ -191,23 +184,17 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of the origin. Valid values:
-         * `ipaddr`: The origin is configured using an IP address.
-         * `domain`: The origin is configured using a domain name.
-         * `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
          * 
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
         /**
          * @param type The type of the origin. Valid values:
-         * `ipaddr`: The origin is configured using an IP address.
-         * `domain`: The origin is configured using a domain name.
-         * `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
          * 
          * @return builder
          * 
@@ -238,12 +225,6 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DomainSourceArgs build() {
-            if ($.content == null) {
-                throw new MissingRequiredPropertyException("DomainSourceArgs", "content");
-            }
-            if ($.type == null) {
-                throw new MissingRequiredPropertyException("DomainSourceArgs", "type");
-            }
             return $;
         }
     }

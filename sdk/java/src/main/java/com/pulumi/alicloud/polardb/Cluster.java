@@ -602,32 +602,32 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.port;
     }
     /**
-     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     * &gt; **NOTE:** This parameter is valid only for standard edition clusters.
      * 
      */
     @Export(name="proxyClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxyClass;
 
     /**
-     * @return The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * @return The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     * &gt; **NOTE:** This parameter is valid only for standard edition clusters.
      * 
      */
     public Output<Optional<String>> proxyClass() {
         return Codegen.optional(this.proxyClass);
     }
     /**
-     * The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+     * &gt; **NOTE:** This parameter is valid for both standard and enterprise clusters.
      * 
      */
     @Export(name="proxyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxyType;
 
     /**
-     * @return The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * @return The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+     * &gt; **NOTE:** This parameter is valid for both standard and enterprise clusters.
      * 
      */
     public Output<Optional<String>> proxyType() {

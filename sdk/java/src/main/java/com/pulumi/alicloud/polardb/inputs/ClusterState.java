@@ -629,16 +629,16 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     * &gt; **NOTE:** This parameter is valid only for standard edition clusters.
      * 
      */
     @Import(name="proxyClass")
     private @Nullable Output<String> proxyClass;
 
     /**
-     * @return The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * @return The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     * &gt; **NOTE:** This parameter is valid only for standard edition clusters.
      * 
      */
     public Optional<Output<String>> proxyClass() {
@@ -646,16 +646,16 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+     * &gt; **NOTE:** This parameter is valid for both standard and enterprise clusters.
      * 
      */
     @Import(name="proxyType")
     private @Nullable Output<String> proxyType;
 
     /**
-     * @return The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-     * &gt; **NOTE:** This parameter is valid only for standard clusters.
+     * @return The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+     * &gt; **NOTE:** This parameter is valid for both standard and enterprise clusters.
      * 
      */
     public Optional<Output<String>> proxyType() {
@@ -2062,8 +2062,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyClass The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-         * &gt; **NOTE:** This parameter is valid only for standard clusters.
+         * @param proxyClass The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+         * &gt; **NOTE:** This parameter is valid only for standard edition clusters.
          * 
          * @return builder
          * 
@@ -2074,8 +2074,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyClass The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-         * &gt; **NOTE:** This parameter is valid only for standard clusters.
+         * @param proxyClass The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+         * &gt; **NOTE:** This parameter is valid only for standard edition clusters.
          * 
          * @return builder
          * 
@@ -2085,8 +2085,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyType The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-         * &gt; **NOTE:** This parameter is valid only for standard clusters.
+         * @param proxyType The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+         * &gt; **NOTE:** This parameter is valid for both standard and enterprise clusters.
          * 
          * @return builder
          * 
@@ -2097,8 +2097,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyType The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-         * &gt; **NOTE:** This parameter is valid only for standard clusters.
+         * @param proxyType The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+         * &gt; **NOTE:** This parameter is valid for both standard and enterprise clusters.
          * 
          * @return builder
          * 

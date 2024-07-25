@@ -19,13 +19,16 @@ class ServerGroupArgs:
                  load_balancer_id: pulumi.Input[str],
                  delete_protection_validation: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None):
+                 servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
-        :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new virtual server group.
-        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
-        :param pulumi.Input[str] name: Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
-        :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+        :param pulumi.Input[str] load_balancer_id: The ID of the Server Load Balancer (SLB) instance.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
+        :param pulumi.Input[str] name: The name of the vServer group. Default value: `tf-server-group`.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: The list of backend servers to be added. See `servers` below.
+               > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
         if delete_protection_validation is not None:
@@ -33,16 +36,18 @@ class ServerGroupArgs:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if servers is not None:
-            warnings.warn("""Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""", DeprecationWarning)
-            pulumi.log.warn("""servers is deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""")
+            warnings.warn("""Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.""", DeprecationWarning)
+            pulumi.log.warn("""servers is deprecated: Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.""")
         if servers is not None:
             pulumi.set(__self__, "servers", servers)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> pulumi.Input[str]:
         """
-        The Load Balancer ID which is used to launch a new virtual server group.
+        The ID of the Server Load Balancer (SLB) instance.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -54,7 +59,7 @@ class ServerGroupArgs:
     @pulumi.getter(name="deleteProtectionValidation")
     def delete_protection_validation(self) -> Optional[pulumi.Input[bool]]:
         """
-        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
         """
         return pulumi.get(self, "delete_protection_validation")
 
@@ -66,7 +71,7 @@ class ServerGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
+        The name of the vServer group. Default value: `tf-server-group`.
         """
         return pulumi.get(self, "name")
 
@@ -76,16 +81,29 @@ class ServerGroupArgs:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""")
+    @_utilities.deprecated("""Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.""")
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
         """
-        A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+        The list of backend servers to be added. See `servers` below.
+        > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
         """
         return pulumi.get(self, "servers")
 
     @servers.setter
     def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]):
         pulumi.set(self, "servers", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -94,13 +112,16 @@ class _ServerGroupState:
                  delete_protection_validation: Optional[pulumi.Input[bool]] = None,
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None):
+                 servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering ServerGroup resources.
-        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
-        :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new virtual server group.
-        :param pulumi.Input[str] name: Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
-        :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
+        :param pulumi.Input[str] load_balancer_id: The ID of the Server Load Balancer (SLB) instance.
+        :param pulumi.Input[str] name: The name of the vServer group. Default value: `tf-server-group`.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: The list of backend servers to be added. See `servers` below.
+               > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if delete_protection_validation is not None:
             pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
@@ -109,16 +130,18 @@ class _ServerGroupState:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if servers is not None:
-            warnings.warn("""Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""", DeprecationWarning)
-            pulumi.log.warn("""servers is deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""")
+            warnings.warn("""Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.""", DeprecationWarning)
+            pulumi.log.warn("""servers is deprecated: Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.""")
         if servers is not None:
             pulumi.set(__self__, "servers", servers)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="deleteProtectionValidation")
     def delete_protection_validation(self) -> Optional[pulumi.Input[bool]]:
         """
-        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
         """
         return pulumi.get(self, "delete_protection_validation")
 
@@ -130,7 +153,7 @@ class _ServerGroupState:
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Load Balancer ID which is used to launch a new virtual server group.
+        The ID of the Server Load Balancer (SLB) instance.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -142,7 +165,7 @@ class _ServerGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
+        The name of the vServer group. Default value: `tf-server-group`.
         """
         return pulumi.get(self, "name")
 
@@ -152,16 +175,29 @@ class _ServerGroupState:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""")
+    @_utilities.deprecated("""Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.""")
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
         """
-        A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+        The list of backend servers to be added. See `servers` below.
+        > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
         """
         return pulumi.get(self, "servers")
 
     @servers.setter
     def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]):
         pulumi.set(self, "servers", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class ServerGroup(pulumi.CustomResource):
@@ -173,10 +209,12 @@ class ServerGroup(pulumi.CustomResource):
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
-        A virtual server group contains several ECS instances. The virtual server group can help you to define multiple listening dimension,
-        and to meet the personalized requirements of domain name and URL forwarding.
+        Provides a Load Balancer Virtual Backend Server Group resource.
+
+        For information about Load Balancer Virtual Backend Server Group and how to use it, see [What is Virtual Backend Server Group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
 
         > **NOTE:** Available since v1.6.0.
 
@@ -190,50 +228,52 @@ class ServerGroup(pulumi.CustomResource):
 
         > **NOTE:** One VPC load balancer, its virtual server group can only add the same VPC ECS instances.
 
-        For information about server group and how to use it, see [Configure a server group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
-
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        slb_server_group_name = config.get("slbServerGroupName")
-        if slb_server_group_name is None:
-            slb_server_group_name = "forSlbServerGroup"
-        server_group = alicloud.get_zones(available_resource_creation="VSwitch")
-        server_group_network = alicloud.vpc.Network("server_group",
-            vpc_name=slb_server_group_name,
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
             cidr_block="172.16.0.0/16")
-        server_group_switch = alicloud.vpc.Switch("server_group",
-            vpc_id=server_group_network.id,
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/16",
-            zone_id=server_group.zones[0].id,
-            vswitch_name=slb_server_group_name)
-        server_group_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("server_group",
-            load_balancer_name=slb_server_group_name,
-            vswitch_id=server_group_switch.id,
-            instance_charge_type="PayByCLCU")
-        server_group_server_group = alicloud.slb.ServerGroup("server_group",
-            load_balancer_id=server_group_application_load_balancer.id,
-            name=slb_server_group_name)
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id,
+            load_balancer_spec="slb.s2.small")
+        default_server_group = alicloud.slb.ServerGroup("default",
+            load_balancer_id=default_application_load_balancer.id,
+            name=name)
         ```
 
         ## Import
 
-        Load balancer backend server group can be imported using the id, e.g.
+        Load Balancer Virtual Backend Server Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:slb/serverGroup:ServerGroup example abc123456
+        $ pulumi import alicloud:slb/serverGroup:ServerGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
-        :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new virtual server group.
-        :param pulumi.Input[str] name: Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
+        :param pulumi.Input[str] load_balancer_id: The ID of the Server Load Balancer (SLB) instance.
+        :param pulumi.Input[str] name: The name of the vServer group. Default value: `tf-server-group`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: The list of backend servers to be added. See `servers` below.
+               > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -242,8 +282,9 @@ class ServerGroup(pulumi.CustomResource):
                  args: ServerGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A virtual server group contains several ECS instances. The virtual server group can help you to define multiple listening dimension,
-        and to meet the personalized requirements of domain name and URL forwarding.
+        Provides a Load Balancer Virtual Backend Server Group resource.
+
+        For information about Load Balancer Virtual Backend Server Group and how to use it, see [What is Virtual Backend Server Group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
 
         > **NOTE:** Available since v1.6.0.
 
@@ -257,42 +298,42 @@ class ServerGroup(pulumi.CustomResource):
 
         > **NOTE:** One VPC load balancer, its virtual server group can only add the same VPC ECS instances.
 
-        For information about server group and how to use it, see [Configure a server group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
-
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        slb_server_group_name = config.get("slbServerGroupName")
-        if slb_server_group_name is None:
-            slb_server_group_name = "forSlbServerGroup"
-        server_group = alicloud.get_zones(available_resource_creation="VSwitch")
-        server_group_network = alicloud.vpc.Network("server_group",
-            vpc_name=slb_server_group_name,
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
             cidr_block="172.16.0.0/16")
-        server_group_switch = alicloud.vpc.Switch("server_group",
-            vpc_id=server_group_network.id,
+        default_switch = alicloud.vpc.Switch("default",
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/16",
-            zone_id=server_group.zones[0].id,
-            vswitch_name=slb_server_group_name)
-        server_group_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("server_group",
-            load_balancer_name=slb_server_group_name,
-            vswitch_id=server_group_switch.id,
-            instance_charge_type="PayByCLCU")
-        server_group_server_group = alicloud.slb.ServerGroup("server_group",
-            load_balancer_id=server_group_application_load_balancer.id,
-            name=slb_server_group_name)
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
+            load_balancer_name=name,
+            vswitch_id=default_switch.id,
+            load_balancer_spec="slb.s2.small")
+        default_server_group = alicloud.slb.ServerGroup("default",
+            load_balancer_id=default_application_load_balancer.id,
+            name=name)
         ```
 
         ## Import
 
-        Load balancer backend server group can be imported using the id, e.g.
+        Load Balancer Virtual Backend Server Group can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:slb/serverGroup:ServerGroup example abc123456
+        $ pulumi import alicloud:slb/serverGroup:ServerGroup example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -314,6 +355,7 @@ class ServerGroup(pulumi.CustomResource):
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -329,6 +371,7 @@ class ServerGroup(pulumi.CustomResource):
             __props__.__dict__["load_balancer_id"] = load_balancer_id
             __props__.__dict__["name"] = name
             __props__.__dict__["servers"] = servers
+            __props__.__dict__["tags"] = tags
         super(ServerGroup, __self__).__init__(
             'alicloud:slb/serverGroup:ServerGroup',
             resource_name,
@@ -342,7 +385,8 @@ class ServerGroup(pulumi.CustomResource):
             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
             load_balancer_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]]] = None) -> 'ServerGroup':
+            servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'ServerGroup':
         """
         Get an existing ServerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -350,10 +394,12 @@ class ServerGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
-        :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new virtual server group.
-        :param pulumi.Input[str] name: Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+        :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
+        :param pulumi.Input[str] load_balancer_id: The ID of the Server Load Balancer (SLB) instance.
+        :param pulumi.Input[str] name: The name of the vServer group. Default value: `tf-server-group`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: The list of backend servers to be added. See `servers` below.
+               > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -363,13 +409,14 @@ class ServerGroup(pulumi.CustomResource):
         __props__.__dict__["load_balancer_id"] = load_balancer_id
         __props__.__dict__["name"] = name
         __props__.__dict__["servers"] = servers
+        __props__.__dict__["tags"] = tags
         return ServerGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="deleteProtectionValidation")
     def delete_protection_validation(self) -> pulumi.Output[Optional[bool]]:
         """
-        Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+        Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
         """
         return pulumi.get(self, "delete_protection_validation")
 
@@ -377,7 +424,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> pulumi.Output[str]:
         """
-        The Load Balancer ID which is used to launch a new virtual server group.
+        The ID of the Server Load Balancer (SLB) instance.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -385,16 +432,25 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
+        The name of the vServer group. Default value: `tf-server-group`.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""")
+    @_utilities.deprecated("""Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.""")
     def servers(self) -> pulumi.Output[Sequence['outputs.ServerGroupServer']]:
         """
-        A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+        The list of backend servers to be added. See `servers` below.
+        > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `slb.ServerGroupServerAttachment`.
         """
         return pulumi.get(self, "servers")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 

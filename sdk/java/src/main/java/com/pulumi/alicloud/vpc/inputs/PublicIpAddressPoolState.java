@@ -9,6 +9,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,14 +21,29 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
     public static final PublicIpAddressPoolState Empty = new PublicIpAddressPoolState();
 
     /**
-     * The creation time of the resource.
+     * The name of the VPC Public IP address pool.
+     * 
+     */
+    @Import(name="bizType")
+    private @Nullable Output<String> bizType;
+
+    /**
+     * @return The name of the VPC Public IP address pool.
+     * 
+     */
+    public Optional<Output<String>> bizType() {
+        return Optional.ofNullable(this.bizType);
+    }
+
+    /**
+     * The creation time of the resource
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -117,6 +133,25 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Security protection level.
+     * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+     * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+     * 
+     */
+    @Import(name="securityProtectionTypes")
+    private @Nullable Output<List<String>> securityProtectionTypes;
+
+    /**
+     * @return Security protection level.
+     * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+     * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+     * 
+     */
+    public Optional<Output<List<String>>> securityProtectionTypes() {
+        return Optional.ofNullable(this.securityProtectionTypes);
+    }
+
+    /**
      * The status of the VPC Public IP address pool.
      * 
      */
@@ -179,6 +214,7 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
     private PublicIpAddressPoolState() {}
 
     private PublicIpAddressPoolState(PublicIpAddressPoolState $) {
+        this.bizType = $.bizType;
         this.createTime = $.createTime;
         this.description = $.description;
         this.ipAddressRemaining = $.ipAddressRemaining;
@@ -186,6 +222,7 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
         this.publicIpAddressPoolId = $.publicIpAddressPoolId;
         this.publicIpAddressPoolName = $.publicIpAddressPoolName;
         this.resourceGroupId = $.resourceGroupId;
+        this.securityProtectionTypes = $.securityProtectionTypes;
         this.status = $.status;
         this.tags = $.tags;
         this.totalIpNum = $.totalIpNum;
@@ -211,7 +248,28 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createTime The creation time of the resource.
+         * @param bizType The name of the VPC Public IP address pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bizType(@Nullable Output<String> bizType) {
+            $.bizType = bizType;
+            return this;
+        }
+
+        /**
+         * @param bizType The name of the VPC Public IP address pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bizType(String bizType) {
+            return bizType(Output.of(bizType));
+        }
+
+        /**
+         * @param createTime The creation time of the resource
          * 
          * @return builder
          * 
@@ -222,7 +280,7 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createTime The creation time of the resource.
+         * @param createTime The creation time of the resource
          * 
          * @return builder
          * 
@@ -343,6 +401,43 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param securityProtectionTypes Security protection level.
+         * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+         * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(@Nullable Output<List<String>> securityProtectionTypes) {
+            $.securityProtectionTypes = securityProtectionTypes;
+            return this;
+        }
+
+        /**
+         * @param securityProtectionTypes Security protection level.
+         * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+         * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(List<String> securityProtectionTypes) {
+            return securityProtectionTypes(Output.of(securityProtectionTypes));
+        }
+
+        /**
+         * @param securityProtectionTypes Security protection level.
+         * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+         * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(String... securityProtectionTypes) {
+            return securityProtectionTypes(List.of(securityProtectionTypes));
         }
 
         /**

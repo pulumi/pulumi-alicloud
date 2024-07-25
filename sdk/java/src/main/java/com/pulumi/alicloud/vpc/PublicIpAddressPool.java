@@ -14,14 +14,15 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Vpc Public Ip Address Pool resource.
+ * Provides a VPC Public Ip Address Pool resource.
  * 
- * For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
+ * For information about VPC Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
  * 
  * &gt; **NOTE:** Available since v1.186.0.
  * 
@@ -75,7 +76,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Vpc Public Ip Address Pool can be imported using the id, e.g.
+ * VPC Public Ip Address Pool can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example &lt;id&gt;
@@ -85,14 +86,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/publicIpAddressPool:PublicIpAddressPool")
 public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
     /**
-     * The creation time of the resource.
+     * The name of the VPC Public IP address pool.
+     * 
+     */
+    @Export(name="bizType", refs={String.class}, tree="[0]")
+    private Output<String> bizType;
+
+    /**
+     * @return The name of the VPC Public IP address pool.
+     * 
+     */
+    public Output<String> bizType() {
+        return this.bizType;
+    }
+    /**
+     * The creation time of the resource
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Output<String> createTime() {
@@ -173,6 +188,24 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
+    }
+    /**
+     * Security protection level.
+     * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+     * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+     * 
+     */
+    @Export(name="securityProtectionTypes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> securityProtectionTypes;
+
+    /**
+     * @return Security protection level.
+     * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+     * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+     * 
+     */
+    public Output<Optional<List<String>>> securityProtectionTypes() {
+        return Codegen.optional(this.securityProtectionTypes);
     }
     /**
      * The status of the VPC Public IP address pool.

@@ -114,7 +114,7 @@ class NodePoolArgs:
                - `ContainerOS` : container-optimized image.
         :param pulumi.Input[bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
         :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
         :param pulumi.Input[int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\].
         :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
@@ -552,7 +552,7 @@ class NodePoolArgs:
     @pulumi.getter
     def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
         """
         return pulumi.get(self, "instances")
 
@@ -1314,7 +1314,7 @@ class _NodePoolState:
         :param pulumi.Input[bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
         :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
         :param pulumi.Input[int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\].
         :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
@@ -1750,7 +1750,7 @@ class _NodePoolState:
     @pulumi.getter
     def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
         """
         return pulumi.get(self, "instances")
 
@@ -2562,7 +2562,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
         :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
         :param pulumi.Input[int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\].
         :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
@@ -2938,7 +2938,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
         :param pulumi.Input[str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one. .
         :param pulumi.Input[int] internet_max_bandwidth_out: The maximum bandwidth of the public IP address of the node. The unit is Mbps(Mega bit per second). The value range is:\\[1,100\\].
         :param pulumi.Input[bool] keep_instance_name: Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
@@ -3227,7 +3227,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def instances(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
         """
         return pulumi.get(self, "instances")
 

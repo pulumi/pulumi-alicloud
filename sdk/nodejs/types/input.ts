@@ -4593,9 +4593,9 @@ export namespace dcdn {
 
     export interface DomainSource {
         /**
-         * The origin address.
+         * The address of the source station.
          */
-        content: pulumi.Input<string>;
+        content?: pulumi.Input<string>;
         /**
          * The port number. Valid values: `443` and `80`. Default to `80`.
          */
@@ -4606,11 +4606,8 @@ export namespace dcdn {
         priority?: pulumi.Input<string>;
         /**
          * The type of the origin. Valid values:
-         * `ipaddr`: The origin is configured using an IP address.
-         * `domain`: The origin is configured using a domain name.
-         * `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
          */
-        type: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
         /**
          * The weight of the origin if multiple origins are specified. Default to `10`.
          */
@@ -6045,6 +6042,8 @@ export namespace eci {
         failureThreshold?: pulumi.Input<number>;
         /**
          * Health check using HTTP request method. See `httpGet` below.
+         *
+         * > **NOTE:** When you configure `readinessProbe`, you can select only one of the `exec`, `tcpSocket`, `httpGet`.
          */
         httpGets?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainerLivenessProbeHttpGet>[]>;
         /**
@@ -6102,6 +6101,8 @@ export namespace eci {
         failureThreshold?: pulumi.Input<number>;
         /**
          * Health check using HTTP request method. See `httpGet` below.
+         *
+         * > **NOTE:** When you configure `readinessProbe`, you can select only one of the `exec`, `tcpSocket`, `httpGet`.
          */
         httpGets?: pulumi.Input<pulumi.Input<inputs.eci.ContainerGroupContainerReadinessProbeHttpGet>[]>;
         /**
@@ -6810,21 +6811,29 @@ export namespace ecs {
 
     export interface InstanceNetworkInterfaces {
         /**
-         * The ID of the secondary ENI.
+         * The index of the network card for Secondary ENI.
+         */
+        networkCardIndex?: pulumi.Input<number>;
+        /**
+         * The ID of the Secondary ENI.
          */
         networkInterfaceId?: pulumi.Input<string>;
         /**
-         * The communication mode of the ENI. Default value: `Standard`. Valid values:
+         * The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
          * - `Standard`: Uses the TCP communication mode.
          * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
          */
         networkInterfaceTrafficMode?: pulumi.Input<string>;
         /**
-         * The ID of security group N to which to assign ENI N.
+         * The number of queues supported by the ERI.
+         */
+        queuePairNumber?: pulumi.Input<number>;
+        /**
+         * The ID of security group N to which to assign Secondary ENI N.
          */
         securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The ID of the vSwitch to which to connect ENI N.
+         * The ID of the vSwitch to which to connect Secondary ENI N.
          */
         vswitchId?: pulumi.Input<string>;
     }
@@ -10014,18 +10023,18 @@ export namespace marketplace {
 export namespace maxcompute {
     export interface ProjectIpWhiteList {
         /**
-         * Classic network IP white list.
+         * Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
          */
         ipList?: pulumi.Input<string>;
         /**
-         * VPC network whitelist.
+         * Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
          */
         vpcIpList?: pulumi.Input<string>;
     }
 
     export interface ProjectProperties {
         /**
-         * Whether to allow full table scan.
+         * Whether to allow full table scan. Default: false.
          */
         allowFullScan?: pulumi.Input<boolean>;
         /**
@@ -10033,42 +10042,43 @@ export namespace maxcompute {
          */
         enableDecimal2?: pulumi.Input<boolean>;
         /**
-         * Whether encryption is turned on. See `encryption` below.
+         * Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+         * > **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
          */
         encryption?: pulumi.Input<inputs.maxcompute.ProjectPropertiesEncryption>;
         /**
-         * Job default retention time.
+         * Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
          */
         retentionDays?: pulumi.Input<number>;
         /**
-         * SQL charge limit.
+         * Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
          */
         sqlMeteringMax?: pulumi.Input<string>;
         /**
-         * Life cycle of tables. See `tableLifecycle` below.
+         * Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `tableLifecycle` below.
          */
         tableLifecycle?: pulumi.Input<inputs.maxcompute.ProjectPropertiesTableLifecycle>;
         /**
-         * Project time zone.
+         * Project time zone, example value: Asia/Shanghai.
          */
         timezone?: pulumi.Input<string>;
         /**
-         * Type system.
+         * Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
          */
         typeSystem?: pulumi.Input<string>;
     }
 
     export interface ProjectPropertiesEncryption {
         /**
-         * Algorithm.
+         * The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
          */
         algorithm?: pulumi.Input<string>;
         /**
-         * Whether to open.
+         * Only enable function is supported. Value: (true).
          */
         enable?: pulumi.Input<boolean>;
         /**
-         * Encryption algorithm key.
+         * The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
          */
         key?: pulumi.Input<string>;
     }
@@ -10079,26 +10089,26 @@ export namespace maxcompute {
          */
         type?: pulumi.Input<string>;
         /**
-         * The value of the life cycle.
+         * The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
          */
         value?: pulumi.Input<string>;
     }
 
     export interface ProjectSecurityProperties {
         /**
-         * Whether to enable download permission check.
+         * Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
          */
         enableDownloadPrivilege?: pulumi.Input<boolean>;
         /**
-         * Label authorization.
+         * Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
          */
         labelSecurity?: pulumi.Input<boolean>;
         /**
-         * Project creator permissions.
+         * Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
          */
         objectCreatorHasAccessPermission?: pulumi.Input<boolean>;
         /**
-         * Does the project creator have authorization rights.
+         * The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
          */
         objectCreatorHasGrantPermission?: pulumi.Input<boolean>;
         /**
@@ -10106,22 +10116,22 @@ export namespace maxcompute {
          */
         projectProtection?: pulumi.Input<inputs.maxcompute.ProjectSecurityPropertiesProjectProtection>;
         /**
-         * Whether to turn on ACL.
+         * Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          */
         usingAcl?: pulumi.Input<boolean>;
         /**
-         * Whether to enable Policy.
+         * Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          */
         usingPolicy?: pulumi.Input<boolean>;
     }
 
     export interface ProjectSecurityPropertiesProjectProtection {
         /**
-         * Exclusion policy.
+         * Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
          */
         exceptionPolicy?: pulumi.Input<string>;
         /**
-         * Is it turned on.
+         * Whether enabled, value:(true/false).
          */
         protected?: pulumi.Input<boolean>;
     }
@@ -13205,19 +13215,19 @@ export namespace slb {
 
     export interface ServerGroupServer {
         /**
-         * The port used by the backend server. Valid value range: [1-65535].
+         * The port used by the backend server. Valid values: `1` to `65535`.
          */
         port: pulumi.Input<number>;
         /**
-         * A list backend server ID (ECS instance ID).
+         * The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
          */
         serverIds: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Type of the backend server. Valid value ecs, eni. Default to eni.
+         * Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
          */
         type?: pulumi.Input<string>;
         /**
-         * Weight of the backend server. Valid value range: [0-100]. Default to 100.
+         * Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
          */
         weight?: pulumi.Input<number>;
     }
@@ -13888,16 +13898,19 @@ export namespace vpc {
 
     export interface NetworkIpv6CidrBlock {
         /**
-         * The IPv6 CIDR block of the VPC.
+         * The IPv6 CIDR block of the default VPC.
+         *
+         * > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
          */
         ipv6CidrBlock?: pulumi.Input<string>;
         /**
          * The IPv6 address segment type of the VPC. Value:
-         * - **BGP** (default): Alibaba Cloud BGP IPv6.
-         * - **ChinaMobile**: China Mobile (single line).
-         * - **ChinaUnicom**: China Unicom (single line).
-         * - **ChinaTelecom**: China Telecom (single line).
-         * > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+         * - `BGP` (default): Alibaba Cloud BGP IPv6.
+         * - `ChinaMobile`: China Mobile (single line).
+         * - `ChinaUnicom`: China Unicom (single line).
+         * - `ChinaTelecom`: China Telecom (single line).
+         *
+         * > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
          */
         ipv6Isp?: pulumi.Input<string>;
     }

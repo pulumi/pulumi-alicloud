@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class PublicIpAddressPoolArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PublicIpAddressPoolArgs Empty = new PublicIpAddressPoolArgs();
+
+    /**
+     * The name of the VPC Public IP address pool.
+     * 
+     */
+    @Import(name="bizType")
+    private @Nullable Output<String> bizType;
+
+    /**
+     * @return The name of the VPC Public IP address pool.
+     * 
+     */
+    public Optional<Output<String>> bizType() {
+        return Optional.ofNullable(this.bizType);
+    }
 
     /**
      * Description.
@@ -78,6 +94,25 @@ public final class PublicIpAddressPoolArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Security protection level.
+     * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+     * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+     * 
+     */
+    @Import(name="securityProtectionTypes")
+    private @Nullable Output<List<String>> securityProtectionTypes;
+
+    /**
+     * @return Security protection level.
+     * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+     * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+     * 
+     */
+    public Optional<Output<List<String>>> securityProtectionTypes() {
+        return Optional.ofNullable(this.securityProtectionTypes);
+    }
+
+    /**
      * The tags of PrefixList.
      * 
      */
@@ -95,10 +130,12 @@ public final class PublicIpAddressPoolArgs extends com.pulumi.resources.Resource
     private PublicIpAddressPoolArgs() {}
 
     private PublicIpAddressPoolArgs(PublicIpAddressPoolArgs $) {
+        this.bizType = $.bizType;
         this.description = $.description;
         this.isp = $.isp;
         this.publicIpAddressPoolName = $.publicIpAddressPoolName;
         this.resourceGroupId = $.resourceGroupId;
+        this.securityProtectionTypes = $.securityProtectionTypes;
         this.tags = $.tags;
     }
 
@@ -118,6 +155,27 @@ public final class PublicIpAddressPoolArgs extends com.pulumi.resources.Resource
 
         public Builder(PublicIpAddressPoolArgs defaults) {
             $ = new PublicIpAddressPoolArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bizType The name of the VPC Public IP address pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bizType(@Nullable Output<String> bizType) {
+            $.bizType = bizType;
+            return this;
+        }
+
+        /**
+         * @param bizType The name of the VPC Public IP address pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bizType(String bizType) {
+            return bizType(Output.of(bizType));
         }
 
         /**
@@ -202,6 +260,43 @@ public final class PublicIpAddressPoolArgs extends com.pulumi.resources.Resource
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param securityProtectionTypes Security protection level.
+         * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+         * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(@Nullable Output<List<String>> securityProtectionTypes) {
+            $.securityProtectionTypes = securityProtectionTypes;
+            return this;
+        }
+
+        /**
+         * @param securityProtectionTypes Security protection level.
+         * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+         * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(List<String> securityProtectionTypes) {
+            return securityProtectionTypes(Output.of(securityProtectionTypes));
+        }
+
+        /**
+         * @param securityProtectionTypes Security protection level.
+         * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+         * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityProtectionTypes(String... securityProtectionTypes) {
+            return securityProtectionTypes(List.of(securityProtectionTypes));
         }
 
         /**

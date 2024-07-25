@@ -17,14 +17,14 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
     public static final ProjectSecurityPropertiesArgs Empty = new ProjectSecurityPropertiesArgs();
 
     /**
-     * Whether to enable download permission check.
+     * Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
      * 
      */
     @Import(name="enableDownloadPrivilege")
     private @Nullable Output<Boolean> enableDownloadPrivilege;
 
     /**
-     * @return Whether to enable download permission check.
+     * @return Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
      * 
      */
     public Optional<Output<Boolean>> enableDownloadPrivilege() {
@@ -32,14 +32,14 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Label authorization.
+     * Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
      * 
      */
     @Import(name="labelSecurity")
     private @Nullable Output<Boolean> labelSecurity;
 
     /**
-     * @return Label authorization.
+     * @return Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
      * 
      */
     public Optional<Output<Boolean>> labelSecurity() {
@@ -47,14 +47,14 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Project creator permissions.
+     * Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
      * 
      */
     @Import(name="objectCreatorHasAccessPermission")
     private @Nullable Output<Boolean> objectCreatorHasAccessPermission;
 
     /**
-     * @return Project creator permissions.
+     * @return Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
      * 
      */
     public Optional<Output<Boolean>> objectCreatorHasAccessPermission() {
@@ -62,14 +62,14 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Does the project creator have authorization rights.
+     * The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
      * 
      */
     @Import(name="objectCreatorHasGrantPermission")
     private @Nullable Output<Boolean> objectCreatorHasGrantPermission;
 
     /**
-     * @return Does the project creator have authorization rights.
+     * @return The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
      * 
      */
     public Optional<Output<Boolean>> objectCreatorHasGrantPermission() {
@@ -92,14 +92,14 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Whether to turn on ACL.
+     * Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
      * 
      */
     @Import(name="usingAcl")
     private @Nullable Output<Boolean> usingAcl;
 
     /**
-     * @return Whether to turn on ACL.
+     * @return Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
      * 
      */
     public Optional<Output<Boolean>> usingAcl() {
@@ -107,14 +107,14 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Whether to enable Policy.
+     * Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
      * 
      */
     @Import(name="usingPolicy")
     private @Nullable Output<Boolean> usingPolicy;
 
     /**
-     * @return Whether to enable Policy.
+     * @return Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
      * 
      */
     public Optional<Output<Boolean>> usingPolicy() {
@@ -152,7 +152,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enableDownloadPrivilege Whether to enable download permission check.
+         * @param enableDownloadPrivilege Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enableDownloadPrivilege Whether to enable download permission check.
+         * @param enableDownloadPrivilege Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param labelSecurity Label authorization.
+         * @param labelSecurity Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param labelSecurity Label authorization.
+         * @param labelSecurity Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param objectCreatorHasAccessPermission Project creator permissions.
+         * @param objectCreatorHasAccessPermission Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param objectCreatorHasAccessPermission Project creator permissions.
+         * @param objectCreatorHasAccessPermission Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param objectCreatorHasGrantPermission Does the project creator have authorization rights.
+         * @param objectCreatorHasGrantPermission The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param objectCreatorHasGrantPermission Does the project creator have authorization rights.
+         * @param objectCreatorHasGrantPermission The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param usingAcl Whether to turn on ACL.
+         * @param usingAcl Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param usingAcl Whether to turn on ACL.
+         * @param usingAcl Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param usingPolicy Whether to enable Policy.
+         * @param usingPolicy Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class ProjectSecurityPropertiesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param usingPolicy Whether to enable Policy.
+         * @param usingPolicy Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          * 
          * @return builder
          * 

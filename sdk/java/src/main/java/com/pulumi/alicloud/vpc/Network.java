@@ -20,18 +20,20 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Vpc Vpc resource. A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
+ * Provides a VPC Vpc resource.
  * 
- * &gt; **NOTE:** Available since v1.0.0.
+ * A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
  * 
  * &gt; **NOTE:** This resource will auto build a router and a route table while it uses `alicloud.vpc.Network` to build a vpc resource.
+ * 
+ * &gt; **NOTE:** Available since v1.0.0.
  * 
  * ## Module Support
  * 
  * You can use the existing vpc module
  * to create a VPC and several VSwitches one-click.
  * 
- * For information about Vpc Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
+ * For information about VPC Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
  * 
  * ## Example Usage
  * 
@@ -78,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Vpc Vpc can be imported using the id, e.g.
+ * VPC Vpc can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/network:Network example &lt;id&gt;
@@ -88,14 +90,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/network:Network")
 public class Network extends com.pulumi.resources.CustomResource {
     /**
-     * The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
+     * The CIDR block of the VPC.
+     * - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
+     * - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
      * 
      */
     @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
     /**
-     * @return The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
+     * @return The CIDR block of the VPC.
+     * - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
+     * - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
      * 
      */
     public Output<String> cidrBlock() {
@@ -130,70 +136,74 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The VPC description. Defaults to null.
+     * The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The VPC description. Defaults to null.
+     * @return The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether to PreCheck only this request. Value:
-     * - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
+     * Specifies whether to perform a dry run. Valid values:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck only this request. Value:
-     * - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
+     * @return Specifies whether to perform a dry run. Valid values:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * Whether to enable the IPv6 network segment. Value:
-     * - **false** (default): not enabled.
-     * - **true**: on.
+     * The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableIpv6;
 
     /**
-     * @return Whether to enable the IPv6 network segment. Value:
-     * - **false** (default): not enabled.
-     * - **true**: on.
+     * @return The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<Boolean>> enableIpv6() {
         return Codegen.optional(this.enableIpv6);
     }
+    /**
+     * The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+     * 
+     */
     @Export(name="ipv4IpamPoolId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipv4IpamPoolId;
 
+    /**
+     * @return The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+     * 
+     */
     public Output<Optional<String>> ipv4IpamPoolId() {
         return Codegen.optional(this.ipv4IpamPoolId);
     }
     /**
-     * The IPv6 CIDR block of the VPC.
+     * The IPv6 CIDR block of the default VPC.
+     * 
+     * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      * 
      */
     @Export(name="ipv6CidrBlock", refs={String.class}, tree="[0]")
     private Output<String> ipv6CidrBlock;
 
     /**
-     * @return The IPv6 CIDR block of the VPC.
+     * @return The IPv6 CIDR block of the default VPC.
+     * 
+     * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      * 
      */
     public Output<String> ipv6CidrBlock() {
@@ -215,11 +225,12 @@ public class Network extends com.pulumi.resources.CustomResource {
     }
     /**
      * The IPv6 address segment type of the VPC. Value:
-     * - **BGP** (default): Alibaba Cloud BGP IPv6.
-     * - **ChinaMobile**: China Mobile (single line).
-     * - **ChinaUnicom**: China Unicom (single line).
-     * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     * - `BGP` (default): Alibaba Cloud BGP IPv6.
+     * - `ChinaMobile`: China Mobile (single line).
+     * - `ChinaUnicom`: China Unicom (single line).
+     * - `ChinaTelecom`: China Telecom (single line).
+     * 
+     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
      * 
      */
     @Export(name="ipv6Isp", refs={String.class}, tree="[0]")
@@ -227,15 +238,30 @@ public class Network extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The IPv6 address segment type of the VPC. Value:
-     * - **BGP** (default): Alibaba Cloud BGP IPv6.
-     * - **ChinaMobile**: China Mobile (single line).
-     * - **ChinaUnicom**: China Unicom (single line).
-     * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     * - `BGP` (default): Alibaba Cloud BGP IPv6.
+     * - `ChinaMobile`: China Mobile (single line).
+     * - `ChinaUnicom`: China Unicom (single line).
+     * - `ChinaTelecom`: China Telecom (single line).
+     * 
+     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
      * 
      */
     public Output<Optional<String>> ipv6Isp() {
         return Codegen.optional(this.ipv6Isp);
+    }
+    /**
+     * Specifies whether to create the default VPC in the specified region. Valid values:
+     * 
+     */
+    @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isDefault;
+
+    /**
+     * @return Specifies whether to create the default VPC in the specified region. Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> isDefault() {
+        return Codegen.optional(this.isDefault);
     }
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
@@ -256,49 +282,53 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The ID of the resource group to which the VPC belongs.
+     * The ID of the resource group to which you want to move the resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group to which the VPC belongs.
+     * @return The ID of the resource group to which you want to move the resource.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * The route table ID of the router created by default on VPC creation.
+     * The ID of the route table that you want to query.
      * 
      */
     @Export(name="routeTableId", refs={String.class}, tree="[0]")
     private Output<String> routeTableId;
 
     /**
-     * @return The route table ID of the router created by default on VPC creation.
+     * @return The ID of the route table that you want to query.
      * 
      */
     public Output<String> routeTableId() {
         return this.routeTableId;
     }
     /**
-     * The ID of the router created by default on VPC creation.
+     * The region ID of the VPC to which the route table belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/36063.html) operation to query the most recent region list.
      * 
      */
     @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**
-     * @return The ID of the router created by default on VPC creation.
+     * @return The region ID of the VPC to which the route table belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/36063.html) operation to query the most recent region list.
      * 
      */
     public Output<String> routerId() {
         return this.routerId;
     }
     /**
-     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+     * . Field &#39;router_table_id&#39; has been deprecated from provider version 1.227.1. New field &#39;route_table_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;router_table_id&#39; has been deprecated since provider version 1.221.0. New field &#39;route_table_id&#39; instead.
@@ -309,7 +339,7 @@ public class Network extends com.pulumi.resources.CustomResource {
     private Output<String> routerTableId;
 
     /**
-     * @return Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+     * @return . Field &#39;router_table_id&#39; has been deprecated from provider version 1.227.1. New field &#39;route_table_id&#39; instead.
      * 
      */
     public Output<String> routerTableId() {
@@ -334,18 +364,46 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.secondaryCidrBlocks;
     }
     /**
-     * The status of the VPC.   **Pending**: The VPC is being configured. **Available**: The VPC is available.
+     * The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the VPC.   **Pending**: The VPC is being configured. **Available**: The VPC is available.
+     * @return The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
+    @Export(name="systemRouteTableDescription", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> systemRouteTableDescription;
+
+    /**
+     * @return The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
+    public Output<Optional<String>> systemRouteTableDescription() {
+        return Codegen.optional(this.systemRouteTableDescription);
+    }
+    /**
+     * The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * 
+     */
+    @Export(name="systemRouteTableName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> systemRouteTableName;
+
+    /**
+     * @return The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * 
+     */
+    public Output<Optional<String>> systemRouteTableName() {
+        return Codegen.optional(this.systemRouteTableName);
     }
     /**
      * The tags of Vpc.
@@ -376,7 +434,7 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.userCidrs;
     }
     /**
-     * The name of the VPC. Defaults to null.
+     * The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
@@ -385,7 +443,7 @@ public class Network extends com.pulumi.resources.CustomResource {
     private Output<String> vpcName;
 
     /**
-     * @return The name of the VPC. Defaults to null.
+     * @return The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
      * 
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 

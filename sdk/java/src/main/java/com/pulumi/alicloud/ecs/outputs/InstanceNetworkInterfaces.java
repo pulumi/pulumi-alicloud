@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,38 +14,55 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceNetworkInterfaces {
     /**
-     * @return The ID of the secondary ENI.
+     * @return The index of the network card for Secondary ENI.
+     * 
+     */
+    private @Nullable Integer networkCardIndex;
+    /**
+     * @return The ID of the Secondary ENI.
      * 
      */
     private @Nullable String networkInterfaceId;
     /**
-     * @return The communication mode of the ENI. Default value: `Standard`. Valid values:
+     * @return The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
      * - `Standard`: Uses the TCP communication mode.
      * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
      * 
      */
     private @Nullable String networkInterfaceTrafficMode;
     /**
-     * @return The ID of security group N to which to assign ENI N.
+     * @return The number of queues supported by the ERI.
+     * 
+     */
+    private @Nullable Integer queuePairNumber;
+    /**
+     * @return The ID of security group N to which to assign Secondary ENI N.
      * 
      */
     private @Nullable List<String> securityGroupIds;
     /**
-     * @return The ID of the vSwitch to which to connect ENI N.
+     * @return The ID of the vSwitch to which to connect Secondary ENI N.
      * 
      */
     private @Nullable String vswitchId;
 
     private InstanceNetworkInterfaces() {}
     /**
-     * @return The ID of the secondary ENI.
+     * @return The index of the network card for Secondary ENI.
+     * 
+     */
+    public Optional<Integer> networkCardIndex() {
+        return Optional.ofNullable(this.networkCardIndex);
+    }
+    /**
+     * @return The ID of the Secondary ENI.
      * 
      */
     public Optional<String> networkInterfaceId() {
         return Optional.ofNullable(this.networkInterfaceId);
     }
     /**
-     * @return The communication mode of the ENI. Default value: `Standard`. Valid values:
+     * @return The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
      * - `Standard`: Uses the TCP communication mode.
      * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
      * 
@@ -53,14 +71,21 @@ public final class InstanceNetworkInterfaces {
         return Optional.ofNullable(this.networkInterfaceTrafficMode);
     }
     /**
-     * @return The ID of security group N to which to assign ENI N.
+     * @return The number of queues supported by the ERI.
+     * 
+     */
+    public Optional<Integer> queuePairNumber() {
+        return Optional.ofNullable(this.queuePairNumber);
+    }
+    /**
+     * @return The ID of security group N to which to assign Secondary ENI N.
      * 
      */
     public List<String> securityGroupIds() {
         return this.securityGroupIds == null ? List.of() : this.securityGroupIds;
     }
     /**
-     * @return The ID of the vSwitch to which to connect ENI N.
+     * @return The ID of the vSwitch to which to connect Secondary ENI N.
      * 
      */
     public Optional<String> vswitchId() {
@@ -76,19 +101,29 @@ public final class InstanceNetworkInterfaces {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer networkCardIndex;
         private @Nullable String networkInterfaceId;
         private @Nullable String networkInterfaceTrafficMode;
+        private @Nullable Integer queuePairNumber;
         private @Nullable List<String> securityGroupIds;
         private @Nullable String vswitchId;
         public Builder() {}
         public Builder(InstanceNetworkInterfaces defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.networkCardIndex = defaults.networkCardIndex;
     	      this.networkInterfaceId = defaults.networkInterfaceId;
     	      this.networkInterfaceTrafficMode = defaults.networkInterfaceTrafficMode;
+    	      this.queuePairNumber = defaults.queuePairNumber;
     	      this.securityGroupIds = defaults.securityGroupIds;
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
+        public Builder networkCardIndex(@Nullable Integer networkCardIndex) {
+
+            this.networkCardIndex = networkCardIndex;
+            return this;
+        }
         @CustomType.Setter
         public Builder networkInterfaceId(@Nullable String networkInterfaceId) {
 
@@ -99,6 +134,12 @@ public final class InstanceNetworkInterfaces {
         public Builder networkInterfaceTrafficMode(@Nullable String networkInterfaceTrafficMode) {
 
             this.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder queuePairNumber(@Nullable Integer queuePairNumber) {
+
+            this.queuePairNumber = queuePairNumber;
             return this;
         }
         @CustomType.Setter
@@ -118,8 +159,10 @@ public final class InstanceNetworkInterfaces {
         }
         public InstanceNetworkInterfaces build() {
             final var _resultValue = new InstanceNetworkInterfaces();
+            _resultValue.networkCardIndex = networkCardIndex;
             _resultValue.networkInterfaceId = networkInterfaceId;
             _resultValue.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            _resultValue.queuePairNumber = queuePairNumber;
             _resultValue.securityGroupIds = securityGroupIds;
             _resultValue.vswitchId = vswitchId;
             return _resultValue;

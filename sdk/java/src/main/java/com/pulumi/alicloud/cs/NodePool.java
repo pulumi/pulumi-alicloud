@@ -290,14 +290,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.instanceTypes;
     }
     /**
-     * The instance list. Add existing nodes under the same cluster VPC to the node pool.
+     * The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
      * 
      */
     @Export(name="instances", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> instances;
 
     /**
-     * @return The instance list. Add existing nodes under the same cluster VPC to the node pool.
+     * @return The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
      * 
      */
     public Output<Optional<List<String>>> instances() {

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
     public sealed class ProjectPropertiesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to allow full table scan.
+        /// Whether to allow full table scan. Default: false.
         /// </summary>
         [Input("allowFullScan")]
         public Input<bool>? AllowFullScan { get; set; }
@@ -25,37 +25,38 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
         public Input<bool>? EnableDecimal2 { get; set; }
 
         /// <summary>
-        /// Whether encryption is turned on. See `encryption` below.
+        /// Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+        /// &gt; **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
         /// </summary>
         [Input("encryption")]
         public Input<Inputs.ProjectPropertiesEncryptionGetArgs>? Encryption { get; set; }
 
         /// <summary>
-        /// Job default retention time.
+        /// Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }
 
         /// <summary>
-        /// SQL charge limit.
+        /// Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
         /// </summary>
         [Input("sqlMeteringMax")]
         public Input<string>? SqlMeteringMax { get; set; }
 
         /// <summary>
-        /// Life cycle of tables. See `table_lifecycle` below.
+        /// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `table_lifecycle` below.
         /// </summary>
         [Input("tableLifecycle")]
         public Input<Inputs.ProjectPropertiesTableLifecycleGetArgs>? TableLifecycle { get; set; }
 
         /// <summary>
-        /// Project time zone.
+        /// Project time zone, example value: Asia/Shanghai.
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 
         /// <summary>
-        /// Type system.
+        /// Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
         /// </summary>
         [Input("typeSystem")]
         public Input<string>? TypeSystem { get; set; }

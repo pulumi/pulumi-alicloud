@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Vpc Public Ip Address Pool resource.
+// Provides a VPC Public Ip Address Pool resource.
 //
-// For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
+// For information about VPC Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
 //
 // > **NOTE:** Available since v1.186.0.
 //
@@ -63,7 +63,7 @@ import (
 //
 // ## Import
 //
-// Vpc Public Ip Address Pool can be imported using the id, e.g.
+// VPC Public Ip Address Pool can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example <id>
@@ -71,7 +71,9 @@ import (
 type PublicIpAddressPool struct {
 	pulumi.CustomResourceState
 
-	// The creation time of the resource.
+	// The name of the VPC Public IP address pool.
+	BizType pulumi.StringOutput `pulumi:"bizType"`
+	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -84,6 +86,10 @@ type PublicIpAddressPool struct {
 	PublicIpAddressPoolName pulumi.StringPtrOutput `pulumi:"publicIpAddressPoolName"`
 	// The resource group ID of the VPC Public IP address pool.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Security protection level.
+	// - If the configuration is empty, the default value is DDoS protection (Basic edition).
+	// - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+	SecurityProtectionTypes pulumi.StringArrayOutput `pulumi:"securityProtectionTypes"`
 	// The status of the VPC Public IP address pool.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of PrefixList.
@@ -124,7 +130,9 @@ func GetPublicIpAddressPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PublicIpAddressPool resources.
 type publicIpAddressPoolState struct {
-	// The creation time of the resource.
+	// The name of the VPC Public IP address pool.
+	BizType *string `pulumi:"bizType"`
+	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`
 	// Description.
 	Description *string `pulumi:"description"`
@@ -137,6 +145,10 @@ type publicIpAddressPoolState struct {
 	PublicIpAddressPoolName *string `pulumi:"publicIpAddressPoolName"`
 	// The resource group ID of the VPC Public IP address pool.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Security protection level.
+	// - If the configuration is empty, the default value is DDoS protection (Basic edition).
+	// - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// The status of the VPC Public IP address pool.
 	Status *string `pulumi:"status"`
 	// The tags of PrefixList.
@@ -148,7 +160,9 @@ type publicIpAddressPoolState struct {
 }
 
 type PublicIpAddressPoolState struct {
-	// The creation time of the resource.
+	// The name of the VPC Public IP address pool.
+	BizType pulumi.StringPtrInput
+	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
 	// Description.
 	Description pulumi.StringPtrInput
@@ -161,6 +175,10 @@ type PublicIpAddressPoolState struct {
 	PublicIpAddressPoolName pulumi.StringPtrInput
 	// The resource group ID of the VPC Public IP address pool.
 	ResourceGroupId pulumi.StringPtrInput
+	// Security protection level.
+	// - If the configuration is empty, the default value is DDoS protection (Basic edition).
+	// - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+	SecurityProtectionTypes pulumi.StringArrayInput
 	// The status of the VPC Public IP address pool.
 	Status pulumi.StringPtrInput
 	// The tags of PrefixList.
@@ -176,6 +194,8 @@ func (PublicIpAddressPoolState) ElementType() reflect.Type {
 }
 
 type publicIpAddressPoolArgs struct {
+	// The name of the VPC Public IP address pool.
+	BizType *string `pulumi:"bizType"`
 	// Description.
 	Description *string `pulumi:"description"`
 	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
@@ -184,12 +204,18 @@ type publicIpAddressPoolArgs struct {
 	PublicIpAddressPoolName *string `pulumi:"publicIpAddressPoolName"`
 	// The resource group ID of the VPC Public IP address pool.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Security protection level.
+	// - If the configuration is empty, the default value is DDoS protection (Basic edition).
+	// - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// The tags of PrefixList.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a PublicIpAddressPool resource.
 type PublicIpAddressPoolArgs struct {
+	// The name of the VPC Public IP address pool.
+	BizType pulumi.StringPtrInput
 	// Description.
 	Description pulumi.StringPtrInput
 	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
@@ -198,6 +224,10 @@ type PublicIpAddressPoolArgs struct {
 	PublicIpAddressPoolName pulumi.StringPtrInput
 	// The resource group ID of the VPC Public IP address pool.
 	ResourceGroupId pulumi.StringPtrInput
+	// Security protection level.
+	// - If the configuration is empty, the default value is DDoS protection (Basic edition).
+	// - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+	SecurityProtectionTypes pulumi.StringArrayInput
 	// The tags of PrefixList.
 	Tags pulumi.MapInput
 }
@@ -289,7 +319,12 @@ func (o PublicIpAddressPoolOutput) ToPublicIpAddressPoolOutputWithContext(ctx co
 	return o
 }
 
-// The creation time of the resource.
+// The name of the VPC Public IP address pool.
+func (o PublicIpAddressPoolOutput) BizType() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicIpAddressPool) pulumi.StringOutput { return v.BizType }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource
 func (o PublicIpAddressPoolOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicIpAddressPool) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -321,6 +356,13 @@ func (o PublicIpAddressPoolOutput) PublicIpAddressPoolName() pulumi.StringPtrOut
 // The resource group ID of the VPC Public IP address pool.
 func (o PublicIpAddressPoolOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicIpAddressPool) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Security protection level.
+// - If the configuration is empty, the default value is DDoS protection (Basic edition).
+// - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+func (o PublicIpAddressPoolOutput) SecurityProtectionTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PublicIpAddressPool) pulumi.StringArrayOutput { return v.SecurityProtectionTypes }).(pulumi.StringArrayOutput)
 }
 
 // The status of the VPC Public IP address pool.

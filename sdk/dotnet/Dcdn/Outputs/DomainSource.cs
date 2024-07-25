@@ -14,9 +14,9 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
     public sealed class DomainSource
     {
         /// <summary>
-        /// The origin address.
+        /// The address of the source station.
         /// </summary>
-        public readonly string Content;
+        public readonly string? Content;
         /// <summary>
         /// The port number. Valid values: `443` and `80`. Default to `80`.
         /// </summary>
@@ -27,11 +27,8 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
         public readonly string? Priority;
         /// <summary>
         /// The type of the origin. Valid values:
-        /// `ipaddr`: The origin is configured using an IP address.
-        /// `domain`: The origin is configured using a domain name.
-        /// `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
         /// </summary>
-        public readonly string Type;
+        public readonly string? Type;
         /// <summary>
         /// The weight of the origin if multiple origins are specified. Default to `10`.
         /// </summary>
@@ -39,13 +36,13 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
 
         [OutputConstructor]
         private DomainSource(
-            string content,
+            string? content,
 
             int? port,
 
             string? priority,
 
-            string type,
+            string? type,
 
             string? weight)
         {

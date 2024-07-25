@@ -116,11 +116,11 @@ type Cluster struct {
 	PlannedStartTime pulumi.StringPtrOutput `pulumi:"plannedStartTime"`
 	// (Available since 1.196.0) PolarDB cluster connection port.
 	Port pulumi.StringOutput `pulumi:"port"`
-	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-	// > **NOTE:** This parameter is valid only for standard clusters.
+	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+	// > **NOTE:** This parameter is valid only for standard edition clusters.
 	ProxyClass pulumi.StringPtrOutput `pulumi:"proxyClass"`
-	// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-	// > **NOTE:** This parameter is valid only for standard clusters.
+	// The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+	// > **NOTE:** This parameter is valid for both standard and enterprise clusters.
 	ProxyType pulumi.StringPtrOutput `pulumi:"proxyType"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
@@ -325,11 +325,11 @@ type clusterState struct {
 	PlannedStartTime *string `pulumi:"plannedStartTime"`
 	// (Available since 1.196.0) PolarDB cluster connection port.
 	Port *string `pulumi:"port"`
-	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-	// > **NOTE:** This parameter is valid only for standard clusters.
+	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+	// > **NOTE:** This parameter is valid only for standard edition clusters.
 	ProxyClass *string `pulumi:"proxyClass"`
-	// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-	// > **NOTE:** This parameter is valid only for standard clusters.
+	// The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+	// > **NOTE:** This parameter is valid for both standard and enterprise clusters.
 	ProxyType *string `pulumi:"proxyType"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
@@ -496,11 +496,11 @@ type ClusterState struct {
 	PlannedStartTime pulumi.StringPtrInput
 	// (Available since 1.196.0) PolarDB cluster connection port.
 	Port pulumi.StringPtrInput
-	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-	// > **NOTE:** This parameter is valid only for standard clusters.
+	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+	// > **NOTE:** This parameter is valid only for standard edition clusters.
 	ProxyClass pulumi.StringPtrInput
-	// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-	// > **NOTE:** This parameter is valid only for standard clusters.
+	// The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+	// > **NOTE:** This parameter is valid for both standard and enterprise clusters.
 	ProxyType pulumi.StringPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
@@ -663,11 +663,11 @@ type clusterArgs struct {
 	// The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
 	// > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
 	PlannedStartTime *string `pulumi:"plannedStartTime"`
-	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-	// > **NOTE:** This parameter is valid only for standard clusters.
+	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+	// > **NOTE:** This parameter is valid only for standard edition clusters.
 	ProxyClass *string `pulumi:"proxyClass"`
-	// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-	// > **NOTE:** This parameter is valid only for standard clusters.
+	// The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+	// > **NOTE:** This parameter is valid for both standard and enterprise clusters.
 	ProxyType *string `pulumi:"proxyType"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
@@ -821,11 +821,11 @@ type ClusterArgs struct {
 	// The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
 	// > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
 	PlannedStartTime pulumi.StringPtrInput
-	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-	// > **NOTE:** This parameter is valid only for standard clusters.
+	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+	// > **NOTE:** This parameter is valid only for standard edition clusters.
 	ProxyClass pulumi.StringPtrInput
-	// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-	// > **NOTE:** This parameter is valid only for standard clusters.
+	// The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+	// > **NOTE:** This parameter is valid for both standard and enterprise clusters.
 	ProxyType pulumi.StringPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
@@ -1186,14 +1186,14 @@ func (o ClusterOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
 
-// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-// > **NOTE:** This parameter is valid only for standard clusters.
+// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+// > **NOTE:** This parameter is valid only for standard edition clusters.
 func (o ClusterOutput) ProxyClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ProxyClass }).(pulumi.StringPtrOutput)
 }
 
-// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-// > **NOTE:** This parameter is valid only for standard clusters.
+// The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+// > **NOTE:** This parameter is valid for both standard and enterprise clusters.
 func (o ClusterOutput) ProxyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ProxyType }).(pulumi.StringPtrOutput)
 }

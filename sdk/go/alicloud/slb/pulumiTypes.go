@@ -544,13 +544,13 @@ func (o MasterSlaveServerGroupServerArrayOutput) Index(i pulumi.IntInput) Master
 }
 
 type ServerGroupServer struct {
-	// The port used by the backend server. Valid value range: [1-65535].
+	// The port used by the backend server. Valid values: `1` to `65535`.
 	Port int `pulumi:"port"`
-	// A list backend server ID (ECS instance ID).
+	// The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
 	ServerIds []string `pulumi:"serverIds"`
-	// Type of the backend server. Valid value ecs, eni. Default to eni.
+	// Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
 	Type *string `pulumi:"type"`
-	// Weight of the backend server. Valid value range: [0-100]. Default to 100.
+	// Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -566,13 +566,13 @@ type ServerGroupServerInput interface {
 }
 
 type ServerGroupServerArgs struct {
-	// The port used by the backend server. Valid value range: [1-65535].
+	// The port used by the backend server. Valid values: `1` to `65535`.
 	Port pulumi.IntInput `pulumi:"port"`
-	// A list backend server ID (ECS instance ID).
+	// The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
 	ServerIds pulumi.StringArrayInput `pulumi:"serverIds"`
-	// Type of the backend server. Valid value ecs, eni. Default to eni.
+	// Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Weight of the backend server. Valid value range: [0-100]. Default to 100.
+	// Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -627,22 +627,22 @@ func (o ServerGroupServerOutput) ToServerGroupServerOutputWithContext(ctx contex
 	return o
 }
 
-// The port used by the backend server. Valid value range: [1-65535].
+// The port used by the backend server. Valid values: `1` to `65535`.
 func (o ServerGroupServerOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ServerGroupServer) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// A list backend server ID (ECS instance ID).
+// The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
 func (o ServerGroupServerOutput) ServerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerGroupServer) []string { return v.ServerIds }).(pulumi.StringArrayOutput)
 }
 
-// Type of the backend server. Valid value ecs, eni. Default to eni.
+// Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
 func (o ServerGroupServerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Weight of the backend server. Valid value range: [0-100]. Default to 100.
+// Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
 func (o ServerGroupServerOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }

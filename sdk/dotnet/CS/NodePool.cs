@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        /// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
         /// </summary>
         [Output("instances")]
         public Output<ImmutableArray<string>> Instances { get; private set; } = null!;
@@ -653,7 +653,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _instances;
 
         /// <summary>
-        /// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        /// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
         /// </summary>
         public InputList<string> Instances
         {
@@ -1198,7 +1198,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<string>? _instances;
 
         /// <summary>
-        /// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+        /// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
         /// </summary>
         public InputList<string> Instances
         {

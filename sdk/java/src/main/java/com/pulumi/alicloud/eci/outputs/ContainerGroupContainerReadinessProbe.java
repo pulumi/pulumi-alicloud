@@ -28,6 +28,8 @@ public final class ContainerGroupContainerReadinessProbe {
     /**
      * @return Health check using HTTP request method. See `http_get` below.
      * 
+     * &gt; **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
+     * 
      */
     private @Nullable List<ContainerGroupContainerReadinessProbeHttpGet> httpGets;
     /**
@@ -73,6 +75,8 @@ public final class ContainerGroupContainerReadinessProbe {
     }
     /**
      * @return Health check using HTTP request method. See `http_get` below.
+     * 
+     * &gt; **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
      * 
      */
     public List<ContainerGroupContainerReadinessProbeHttpGet> httpGets() {

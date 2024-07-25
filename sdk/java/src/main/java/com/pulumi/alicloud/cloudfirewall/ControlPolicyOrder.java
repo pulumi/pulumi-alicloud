@@ -12,15 +12,14 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloud Firewall Control Policy resource.
+ * Provides a Cloud Firewall Control Policy Order resource.
  * 
  * For information about Cloud Firewall Control Policy Order and how to use it, see [What is Control Policy Order](https://www.alibabacloud.com/help/doc-detail/138867.htm).
  * 
- * &gt; **NOTE:** Available in v1.130.0+.
+ * &gt; **NOTE:** Available since v1.130.0.
  * 
  * ## Example Usage
  * 
@@ -51,21 +50,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example1 = new ControlPolicy("example1", ControlPolicyArgs.builder()
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new ControlPolicy("default", ControlPolicyArgs.builder()
+ *             .direction("in")
  *             .applicationName("ANY")
+ *             .description(name)
  *             .aclAction("accept")
- *             .description("example")
- *             .destinationType("net")
- *             .destination("100.1.1.0/24")
- *             .direction("out")
- *             .proto("ANY")
- *             .source("1.2.3.0/24")
+ *             .source("127.0.0.1/32")
  *             .sourceType("net")
+ *             .destination("127.0.0.2/32")
+ *             .destinationType("net")
+ *             .proto("ANY")
  *             .build());
  * 
- *         var example2 = new ControlPolicyOrder("example2", ControlPolicyOrderArgs.builder()
- *             .aclUuid(example1.aclUuid())
- *             .direction(example1.direction())
+ *         var defaultControlPolicyOrder = new ControlPolicyOrder("defaultControlPolicyOrder", ControlPolicyOrderArgs.builder()
+ *             .aclUuid(default_.aclUuid())
+ *             .direction(default_.direction())
  *             .order(1)
  *             .build());
  * 
@@ -101,32 +102,34 @@ public class ControlPolicyOrder extends com.pulumi.resources.CustomResource {
         return this.aclUuid;
     }
     /**
-     * Direction. Valid values: `in`, `out`.
+     * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     @Export(name="direction", refs={String.class}, tree="[0]")
     private Output<String> direction;
 
     /**
-     * @return Direction. Valid values: `in`, `out`.
+     * @return The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     public Output<String> direction() {
         return this.direction;
     }
     /**
-     * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+     * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+     * &gt; **NOTE:** From version 1.227.1, `order` must be set.
      * 
      */
     @Export(name="order", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> order;
+    private Output<Integer> order;
 
     /**
-     * @return The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+     * @return The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+     * &gt; **NOTE:** From version 1.227.1, `order` must be set.
      * 
      */
-    public Output<Optional<Integer>> order() {
-        return Codegen.optional(this.order);
+    public Output<Integer> order() {
+        return this.order;
     }
 
     /**

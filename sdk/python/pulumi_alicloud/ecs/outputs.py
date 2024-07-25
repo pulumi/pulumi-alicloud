@@ -1405,10 +1405,14 @@ class InstanceNetworkInterfaces(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "networkInterfaceId":
+        if key == "networkCardIndex":
+            suggest = "network_card_index"
+        elif key == "networkInterfaceId":
             suggest = "network_interface_id"
         elif key == "networkInterfaceTrafficMode":
             suggest = "network_interface_traffic_mode"
+        elif key == "queuePairNumber":
+            suggest = "queue_pair_number"
         elif key == "securityGroupIds":
             suggest = "security_group_ids"
         elif key == "vswitchId":
@@ -1426,32 +1430,48 @@ class InstanceNetworkInterfaces(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 network_card_index: Optional[int] = None,
                  network_interface_id: Optional[str] = None,
                  network_interface_traffic_mode: Optional[str] = None,
+                 queue_pair_number: Optional[int] = None,
                  security_group_ids: Optional[Sequence[str]] = None,
                  vswitch_id: Optional[str] = None):
         """
-        :param str network_interface_id: The ID of the secondary ENI.
-        :param str network_interface_traffic_mode: The communication mode of the ENI. Default value: `Standard`. Valid values:
+        :param int network_card_index: The index of the network card for Secondary ENI.
+        :param str network_interface_id: The ID of the Secondary ENI.
+        :param str network_interface_traffic_mode: The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
                - `Standard`: Uses the TCP communication mode.
                - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
-        :param Sequence[str] security_group_ids: The ID of security group N to which to assign ENI N.
-        :param str vswitch_id: The ID of the vSwitch to which to connect ENI N.
+        :param int queue_pair_number: The number of queues supported by the ERI.
+        :param Sequence[str] security_group_ids: The ID of security group N to which to assign Secondary ENI N.
+        :param str vswitch_id: The ID of the vSwitch to which to connect Secondary ENI N.
         """
+        if network_card_index is not None:
+            pulumi.set(__self__, "network_card_index", network_card_index)
         if network_interface_id is not None:
             pulumi.set(__self__, "network_interface_id", network_interface_id)
         if network_interface_traffic_mode is not None:
             pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
+        if queue_pair_number is not None:
+            pulumi.set(__self__, "queue_pair_number", queue_pair_number)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
+    @pulumi.getter(name="networkCardIndex")
+    def network_card_index(self) -> Optional[int]:
+        """
+        The index of the network card for Secondary ENI.
+        """
+        return pulumi.get(self, "network_card_index")
+
+    @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> Optional[str]:
         """
-        The ID of the secondary ENI.
+        The ID of the Secondary ENI.
         """
         return pulumi.get(self, "network_interface_id")
 
@@ -1459,17 +1479,25 @@ class InstanceNetworkInterfaces(dict):
     @pulumi.getter(name="networkInterfaceTrafficMode")
     def network_interface_traffic_mode(self) -> Optional[str]:
         """
-        The communication mode of the ENI. Default value: `Standard`. Valid values:
+        The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
         - `Standard`: Uses the TCP communication mode.
         - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
         """
         return pulumi.get(self, "network_interface_traffic_mode")
 
     @property
+    @pulumi.getter(name="queuePairNumber")
+    def queue_pair_number(self) -> Optional[int]:
+        """
+        The number of queues supported by the ERI.
+        """
+        return pulumi.get(self, "queue_pair_number")
+
+    @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[Sequence[str]]:
         """
-        The ID of security group N to which to assign ENI N.
+        The ID of security group N to which to assign Secondary ENI N.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -1477,7 +1505,7 @@ class InstanceNetworkInterfaces(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[str]:
         """
-        The ID of the vSwitch to which to connect ENI N.
+        The ID of the vSwitch to which to connect Secondary ENI N.
         """
         return pulumi.get(self, "vswitch_id")
 

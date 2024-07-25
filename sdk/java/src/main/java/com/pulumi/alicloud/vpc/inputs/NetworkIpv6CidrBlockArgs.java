@@ -16,14 +16,18 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
     public static final NetworkIpv6CidrBlockArgs Empty = new NetworkIpv6CidrBlockArgs();
 
     /**
-     * The IPv6 CIDR block of the VPC.
+     * The IPv6 CIDR block of the default VPC.
+     * 
+     * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      * 
      */
     @Import(name="ipv6CidrBlock")
     private @Nullable Output<String> ipv6CidrBlock;
 
     /**
-     * @return The IPv6 CIDR block of the VPC.
+     * @return The IPv6 CIDR block of the default VPC.
+     * 
+     * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      * 
      */
     public Optional<Output<String>> ipv6CidrBlock() {
@@ -32,11 +36,12 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
 
     /**
      * The IPv6 address segment type of the VPC. Value:
-     * - **BGP** (default): Alibaba Cloud BGP IPv6.
-     * - **ChinaMobile**: China Mobile (single line).
-     * - **ChinaUnicom**: China Unicom (single line).
-     * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     * - `BGP` (default): Alibaba Cloud BGP IPv6.
+     * - `ChinaMobile`: China Mobile (single line).
+     * - `ChinaUnicom`: China Unicom (single line).
+     * - `ChinaTelecom`: China Telecom (single line).
+     * 
+     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
      * 
      */
     @Import(name="ipv6Isp")
@@ -44,11 +49,12 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The IPv6 address segment type of the VPC. Value:
-     * - **BGP** (default): Alibaba Cloud BGP IPv6.
-     * - **ChinaMobile**: China Mobile (single line).
-     * - **ChinaUnicom**: China Unicom (single line).
-     * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     * - `BGP` (default): Alibaba Cloud BGP IPv6.
+     * - `ChinaMobile`: China Mobile (single line).
+     * - `ChinaUnicom`: China Unicom (single line).
+     * - `ChinaTelecom`: China Telecom (single line).
+     * 
+     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
      * 
      */
     public Optional<Output<String>> ipv6Isp() {
@@ -81,7 +87,9 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipv6CidrBlock The IPv6 CIDR block of the VPC.
+         * @param ipv6CidrBlock The IPv6 CIDR block of the default VPC.
+         * 
+         * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
          * 
          * @return builder
          * 
@@ -92,7 +100,9 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipv6CidrBlock The IPv6 CIDR block of the VPC.
+         * @param ipv6CidrBlock The IPv6 CIDR block of the default VPC.
+         * 
+         * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
          * 
          * @return builder
          * 
@@ -103,11 +113,12 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param ipv6Isp The IPv6 address segment type of the VPC. Value:
-         * - **BGP** (default): Alibaba Cloud BGP IPv6.
-         * - **ChinaMobile**: China Mobile (single line).
-         * - **ChinaUnicom**: China Unicom (single line).
-         * - **ChinaTelecom**: China Telecom (single line).
-         * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+         * - `BGP` (default): Alibaba Cloud BGP IPv6.
+         * - `ChinaMobile`: China Mobile (single line).
+         * - `ChinaUnicom`: China Unicom (single line).
+         * - `ChinaTelecom`: China Telecom (single line).
+         * 
+         * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
          * 
          * @return builder
          * 
@@ -119,11 +130,12 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param ipv6Isp The IPv6 address segment type of the VPC. Value:
-         * - **BGP** (default): Alibaba Cloud BGP IPv6.
-         * - **ChinaMobile**: China Mobile (single line).
-         * - **ChinaUnicom**: China Unicom (single line).
-         * - **ChinaTelecom**: China Telecom (single line).
-         * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+         * - `BGP` (default): Alibaba Cloud BGP IPv6.
+         * - `ChinaMobile`: China Mobile (single line).
+         * - `ChinaUnicom`: China Unicom (single line).
+         * - `ChinaTelecom`: China Telecom (single line).
+         * 
+         * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
          * 
          * @return builder
          * 

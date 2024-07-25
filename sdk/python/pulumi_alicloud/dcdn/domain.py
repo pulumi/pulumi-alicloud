@@ -17,14 +17,17 @@ __all__ = ['DomainArgs', 'Domain']
 class DomainArgs:
     def __init__(__self__, *,
                  domain_name: pulumi.Input[str],
-                 sources: pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]],
+                 cert_id: Optional[pulumi.Input[str]] = None,
                  cert_name: Optional[pulumi.Input[str]] = None,
+                 cert_region: Optional[pulumi.Input[str]] = None,
                  cert_type: Optional[pulumi.Input[str]] = None,
                  check_url: Optional[pulumi.Input[str]] = None,
-                 force_set: Optional[pulumi.Input[str]] = None,
+                 env: Optional[pulumi.Input[str]] = None,
+                 function_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 scene: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 security_token: Optional[pulumi.Input[str]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
                  ssl_pri: Optional[pulumi.Input[str]] = None,
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None,
@@ -33,41 +36,48 @@ class DomainArgs:
                  top_level_domain: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Domain resource.
-        :param pulumi.Input[str] domain_name: The name of the accelerated domain.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The origin information. See `sources` below.
-        :param pulumi.Input[str] cert_name: Indicates the name of the certificate if the HTTPS protocol is enabled.
-        :param pulumi.Input[str] cert_type: The type of the certificate. Valid values:
-               `free`: a free certificate.
-               `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-               `upload`: a user uploaded certificate.
-        :param pulumi.Input[str] check_url: The URL that is used to test the accessibility of the origin.
-        :param pulumi.Input[str] force_set: Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] scope: The acceleration region.
-        :param pulumi.Input[str] security_token: The top-level domain name.
-        :param pulumi.Input[str] ssl_pri: The private key. Specify this parameter only if you enable the SSL certificate.
-        :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
-        :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
-        :param pulumi.Input[str] status: The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] top_level_domain: The top-level domain name.
+        :param pulumi.Input[str] domain_name: The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
+        :param pulumi.Input[str] cert_id: The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+        :param pulumi.Input[str] cert_name: The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
+        :param pulumi.Input[str] cert_region: The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+        :param pulumi.Input[str] cert_type: The certificate type.
+        :param pulumi.Input[str] check_url: The URL that is used for health checks.
+        :param pulumi.Input[str] env: Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+        :param pulumi.Input[str] function_type: Computing service type. Valid values:
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
+        :param pulumi.Input[str] scene: The Acceleration scen. Supported:
+        :param pulumi.Input[str] scope: The region where the acceleration service is deployed. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: Source  See `sources` below.
+        :param pulumi.Input[str] ssl_pri: The private key. Specify the private key only if you want to enable the SSL certificate.
+        :param pulumi.Input[str] ssl_protocol: Specifies whether to enable the SSL certificate. Valid values:
+        :param pulumi.Input[str] ssl_pub: The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
+        :param pulumi.Input[str] status: The status of the domain name. Valid values:
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[str] top_level_domain: The top-level domain.
         """
         pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "sources", sources)
+        if cert_id is not None:
+            pulumi.set(__self__, "cert_id", cert_id)
         if cert_name is not None:
             pulumi.set(__self__, "cert_name", cert_name)
+        if cert_region is not None:
+            pulumi.set(__self__, "cert_region", cert_region)
         if cert_type is not None:
             pulumi.set(__self__, "cert_type", cert_type)
         if check_url is not None:
             pulumi.set(__self__, "check_url", check_url)
-        if force_set is not None:
-            pulumi.set(__self__, "force_set", force_set)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+        if function_type is not None:
+            pulumi.set(__self__, "function_type", function_type)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if scene is not None:
+            pulumi.set(__self__, "scene", scene)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
-        if security_token is not None:
-            pulumi.set(__self__, "security_token", security_token)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
         if ssl_pri is not None:
             pulumi.set(__self__, "ssl_pri", ssl_pri)
         if ssl_protocol is not None:
@@ -85,7 +95,7 @@ class DomainArgs:
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Input[str]:
         """
-        The name of the accelerated domain.
+        The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
         """
         return pulumi.get(self, "domain_name")
 
@@ -94,22 +104,22 @@ class DomainArgs:
         pulumi.set(self, "domain_name", value)
 
     @property
-    @pulumi.getter
-    def sources(self) -> pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]:
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The origin information. See `sources` below.
+        The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
         """
-        return pulumi.get(self, "sources")
+        return pulumi.get(self, "cert_id")
 
-    @sources.setter
-    def sources(self, value: pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]):
-        pulumi.set(self, "sources", value)
+    @cert_id.setter
+    def cert_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_id", value)
 
     @property
     @pulumi.getter(name="certName")
     def cert_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates the name of the certificate if the HTTPS protocol is enabled.
+        The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
         """
         return pulumi.get(self, "cert_name")
 
@@ -118,13 +128,22 @@ class DomainArgs:
         pulumi.set(self, "cert_name", value)
 
     @property
+    @pulumi.getter(name="certRegion")
+    def cert_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+        """
+        return pulumi.get(self, "cert_region")
+
+    @cert_region.setter
+    def cert_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_region", value)
+
+    @property
     @pulumi.getter(name="certType")
     def cert_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the certificate. Valid values:
-        `free`: a free certificate.
-        `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-        `upload`: a user uploaded certificate.
+        The certificate type.
         """
         return pulumi.get(self, "cert_type")
 
@@ -136,7 +155,7 @@ class DomainArgs:
     @pulumi.getter(name="checkUrl")
     def check_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL that is used to test the accessibility of the origin.
+        The URL that is used for health checks.
         """
         return pulumi.get(self, "check_url")
 
@@ -145,22 +164,34 @@ class DomainArgs:
         pulumi.set(self, "check_url", value)
 
     @property
-    @pulumi.getter(name="forceSet")
-    def force_set(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
+        Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
         """
-        return pulumi.get(self, "force_set")
+        return pulumi.get(self, "env")
 
-    @force_set.setter
-    def force_set(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "force_set", value)
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "env", value)
+
+    @property
+    @pulumi.getter(name="functionType")
+    def function_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Computing service type. Valid values:
+        """
+        return pulumi.get(self, "function_type")
+
+    @function_type.setter
+    def function_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_type", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -170,9 +201,21 @@ class DomainArgs:
 
     @property
     @pulumi.getter
+    def scene(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Acceleration scen. Supported:
+        """
+        return pulumi.get(self, "scene")
+
+    @scene.setter
+    def scene(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scene", value)
+
+    @property
+    @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The acceleration region.
+        The region where the acceleration service is deployed. Valid values:
         """
         return pulumi.get(self, "scope")
 
@@ -181,22 +224,22 @@ class DomainArgs:
         pulumi.set(self, "scope", value)
 
     @property
-    @pulumi.getter(name="securityToken")
-    def security_token(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]]:
         """
-        The top-level domain name.
+        Source  See `sources` below.
         """
-        return pulumi.get(self, "security_token")
+        return pulumi.get(self, "sources")
 
-    @security_token.setter
-    def security_token(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "security_token", value)
+    @sources.setter
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]]):
+        pulumi.set(self, "sources", value)
 
     @property
     @pulumi.getter(name="sslPri")
     def ssl_pri(self) -> Optional[pulumi.Input[str]]:
         """
-        The private key. Specify this parameter only if you enable the SSL certificate.
+        The private key. Specify the private key only if you want to enable the SSL certificate.
         """
         return pulumi.get(self, "ssl_pri")
 
@@ -208,7 +251,7 @@ class DomainArgs:
     @pulumi.getter(name="sslProtocol")
     def ssl_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+        Specifies whether to enable the SSL certificate. Valid values:
         """
         return pulumi.get(self, "ssl_protocol")
 
@@ -220,7 +263,7 @@ class DomainArgs:
     @pulumi.getter(name="sslPub")
     def ssl_pub(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates the public key of the certificate if the HTTPS protocol is enabled.
+        The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
         """
         return pulumi.get(self, "ssl_pub")
 
@@ -232,7 +275,7 @@ class DomainArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+        The status of the domain name. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -244,7 +287,7 @@ class DomainArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -256,7 +299,7 @@ class DomainArgs:
     @pulumi.getter(name="topLevelDomain")
     def top_level_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The top-level domain name.
+        The top-level domain.
         """
         return pulumi.get(self, "top_level_domain")
 
@@ -268,15 +311,19 @@ class DomainArgs:
 @pulumi.input_type
 class _DomainState:
     def __init__(__self__, *,
+                 cert_id: Optional[pulumi.Input[str]] = None,
                  cert_name: Optional[pulumi.Input[str]] = None,
+                 cert_region: Optional[pulumi.Input[str]] = None,
                  cert_type: Optional[pulumi.Input[str]] = None,
                  check_url: Optional[pulumi.Input[str]] = None,
                  cname: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 force_set: Optional[pulumi.Input[str]] = None,
+                 env: Optional[pulumi.Input[str]] = None,
+                 function_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 scene: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 security_token: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
                  ssl_pri: Optional[pulumi.Input[str]] = None,
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
@@ -286,44 +333,53 @@ class _DomainState:
                  top_level_domain: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
-        :param pulumi.Input[str] cert_name: Indicates the name of the certificate if the HTTPS protocol is enabled.
-        :param pulumi.Input[str] cert_type: The type of the certificate. Valid values:
-               `free`: a free certificate.
-               `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-               `upload`: a user uploaded certificate.
-        :param pulumi.Input[str] check_url: The URL that is used to test the accessibility of the origin.
-        :param pulumi.Input[str] cname: (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
-        :param pulumi.Input[str] domain_name: The name of the accelerated domain.
-        :param pulumi.Input[str] force_set: Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] scope: The acceleration region.
-        :param pulumi.Input[str] security_token: The top-level domain name.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: The origin information. See `sources` below.
-        :param pulumi.Input[str] ssl_pri: The private key. Specify this parameter only if you enable the SSL certificate.
-        :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
-        :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
-        :param pulumi.Input[str] status: The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] top_level_domain: The top-level domain name.
+        :param pulumi.Input[str] cert_id: The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+        :param pulumi.Input[str] cert_name: The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
+        :param pulumi.Input[str] cert_region: The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+        :param pulumi.Input[str] cert_type: The certificate type.
+        :param pulumi.Input[str] check_url: The URL that is used for health checks.
+        :param pulumi.Input[str] cname: The CNAME domain name corresponding to the accelerated domain name.
+        :param pulumi.Input[str] create_time: The time when the accelerated domain name was created.
+        :param pulumi.Input[str] domain_name: The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
+        :param pulumi.Input[str] env: Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+        :param pulumi.Input[str] function_type: Computing service type. Valid values:
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
+        :param pulumi.Input[str] scene: The Acceleration scen. Supported:
+        :param pulumi.Input[str] scope: The region where the acceleration service is deployed. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]] sources: Source  See `sources` below.
+        :param pulumi.Input[str] ssl_pri: The private key. Specify the private key only if you want to enable the SSL certificate.
+        :param pulumi.Input[str] ssl_protocol: Specifies whether to enable the SSL certificate. Valid values:
+        :param pulumi.Input[str] ssl_pub: The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
+        :param pulumi.Input[str] status: The status of the domain name. Valid values:
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[str] top_level_domain: The top-level domain.
         """
+        if cert_id is not None:
+            pulumi.set(__self__, "cert_id", cert_id)
         if cert_name is not None:
             pulumi.set(__self__, "cert_name", cert_name)
+        if cert_region is not None:
+            pulumi.set(__self__, "cert_region", cert_region)
         if cert_type is not None:
             pulumi.set(__self__, "cert_type", cert_type)
         if check_url is not None:
             pulumi.set(__self__, "check_url", check_url)
         if cname is not None:
             pulumi.set(__self__, "cname", cname)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if domain_name is not None:
             pulumi.set(__self__, "domain_name", domain_name)
-        if force_set is not None:
-            pulumi.set(__self__, "force_set", force_set)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
+        if function_type is not None:
+            pulumi.set(__self__, "function_type", function_type)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if scene is not None:
+            pulumi.set(__self__, "scene", scene)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
-        if security_token is not None:
-            pulumi.set(__self__, "security_token", security_token)
         if sources is not None:
             pulumi.set(__self__, "sources", sources)
         if ssl_pri is not None:
@@ -340,10 +396,22 @@ class _DomainState:
             pulumi.set(__self__, "top_level_domain", top_level_domain)
 
     @property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+        """
+        return pulumi.get(self, "cert_id")
+
+    @cert_id.setter
+    def cert_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_id", value)
+
+    @property
     @pulumi.getter(name="certName")
     def cert_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates the name of the certificate if the HTTPS protocol is enabled.
+        The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
         """
         return pulumi.get(self, "cert_name")
 
@@ -352,13 +420,22 @@ class _DomainState:
         pulumi.set(self, "cert_name", value)
 
     @property
+    @pulumi.getter(name="certRegion")
+    def cert_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+        """
+        return pulumi.get(self, "cert_region")
+
+    @cert_region.setter
+    def cert_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_region", value)
+
+    @property
     @pulumi.getter(name="certType")
     def cert_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the certificate. Valid values:
-        `free`: a free certificate.
-        `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-        `upload`: a user uploaded certificate.
+        The certificate type.
         """
         return pulumi.get(self, "cert_type")
 
@@ -370,7 +447,7 @@ class _DomainState:
     @pulumi.getter(name="checkUrl")
     def check_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL that is used to test the accessibility of the origin.
+        The URL that is used for health checks.
         """
         return pulumi.get(self, "check_url")
 
@@ -382,7 +459,7 @@ class _DomainState:
     @pulumi.getter
     def cname(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+        The CNAME domain name corresponding to the accelerated domain name.
         """
         return pulumi.get(self, "cname")
 
@@ -391,10 +468,22 @@ class _DomainState:
         pulumi.set(self, "cname", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the accelerated domain name was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the accelerated domain.
+        The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
         """
         return pulumi.get(self, "domain_name")
 
@@ -403,22 +492,34 @@ class _DomainState:
         pulumi.set(self, "domain_name", value)
 
     @property
-    @pulumi.getter(name="forceSet")
-    def force_set(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
+        Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
         """
-        return pulumi.get(self, "force_set")
+        return pulumi.get(self, "env")
 
-    @force_set.setter
-    def force_set(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "force_set", value)
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "env", value)
+
+    @property
+    @pulumi.getter(name="functionType")
+    def function_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Computing service type. Valid values:
+        """
+        return pulumi.get(self, "function_type")
+
+    @function_type.setter
+    def function_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_type", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -428,9 +529,21 @@ class _DomainState:
 
     @property
     @pulumi.getter
+    def scene(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Acceleration scen. Supported:
+        """
+        return pulumi.get(self, "scene")
+
+    @scene.setter
+    def scene(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scene", value)
+
+    @property
+    @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
         """
-        The acceleration region.
+        The region where the acceleration service is deployed. Valid values:
         """
         return pulumi.get(self, "scope")
 
@@ -439,22 +552,10 @@ class _DomainState:
         pulumi.set(self, "scope", value)
 
     @property
-    @pulumi.getter(name="securityToken")
-    def security_token(self) -> Optional[pulumi.Input[str]]:
-        """
-        The top-level domain name.
-        """
-        return pulumi.get(self, "security_token")
-
-    @security_token.setter
-    def security_token(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "security_token", value)
-
-    @property
     @pulumi.getter
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]]:
         """
-        The origin information. See `sources` below.
+        Source  See `sources` below.
         """
         return pulumi.get(self, "sources")
 
@@ -466,7 +567,7 @@ class _DomainState:
     @pulumi.getter(name="sslPri")
     def ssl_pri(self) -> Optional[pulumi.Input[str]]:
         """
-        The private key. Specify this parameter only if you enable the SSL certificate.
+        The private key. Specify the private key only if you want to enable the SSL certificate.
         """
         return pulumi.get(self, "ssl_pri")
 
@@ -478,7 +579,7 @@ class _DomainState:
     @pulumi.getter(name="sslProtocol")
     def ssl_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+        Specifies whether to enable the SSL certificate. Valid values:
         """
         return pulumi.get(self, "ssl_protocol")
 
@@ -490,7 +591,7 @@ class _DomainState:
     @pulumi.getter(name="sslPub")
     def ssl_pub(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates the public key of the certificate if the HTTPS protocol is enabled.
+        The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
         """
         return pulumi.get(self, "ssl_pub")
 
@@ -502,7 +603,7 @@ class _DomainState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+        The status of the domain name. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -514,7 +615,7 @@ class _DomainState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -526,7 +627,7 @@ class _DomainState:
     @pulumi.getter(name="topLevelDomain")
     def top_level_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The top-level domain name.
+        The top-level domain.
         """
         return pulumi.get(self, "top_level_domain")
 
@@ -540,14 +641,17 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cert_id: Optional[pulumi.Input[str]] = None,
                  cert_name: Optional[pulumi.Input[str]] = None,
+                 cert_region: Optional[pulumi.Input[str]] = None,
                  cert_type: Optional[pulumi.Input[str]] = None,
                  check_url: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 force_set: Optional[pulumi.Input[str]] = None,
+                 env: Optional[pulumi.Input[str]] = None,
+                 function_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 scene: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 security_token: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]]] = None,
                  ssl_pri: Optional[pulumi.Input[str]] = None,
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
@@ -557,15 +661,15 @@ class Domain(pulumi.CustomResource):
                  top_level_domain: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        You can use DCDN to improve the overall performance of your website and accelerate content delivery to improve user experience. For information about Alicloud DCDN Domain and how to use it, see [What is Resource Alicloud DCDN Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
+        Provides a DCDN Domain resource.
+
+        Full station accelerated domain name.
+
+        For information about DCDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
 
         > **NOTE:** Available since v1.94.0.
 
-        > **NOTE:** You must activate the Dynamic Route for CDN (DCDN) service before you create an accelerated domain.
-
-        > **NOTE:** Make sure that you have obtained an Internet content provider (ICP) filling for the accelerated domain.
-
-        > **NOTE:** If the origin content is not saved on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be completed by the next working day after you submit the application.
+        > **NOTE:** Field `force_set`, `security_token` has been removed from provider version 1.227.1.
 
         ## Example Usage
 
@@ -597,7 +701,7 @@ class Domain(pulumi.CustomResource):
 
         ## Import
 
-        DCDN Domain can be imported using the id or DCDN Domain name, e.g.
+        DCDN Domain can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:dcdn/domain:Domain example <id>
@@ -605,24 +709,24 @@ class Domain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cert_name: Indicates the name of the certificate if the HTTPS protocol is enabled.
-        :param pulumi.Input[str] cert_type: The type of the certificate. Valid values:
-               `free`: a free certificate.
-               `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-               `upload`: a user uploaded certificate.
-        :param pulumi.Input[str] check_url: The URL that is used to test the accessibility of the origin.
-        :param pulumi.Input[str] domain_name: The name of the accelerated domain.
-        :param pulumi.Input[str] force_set: Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] scope: The acceleration region.
-        :param pulumi.Input[str] security_token: The top-level domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The origin information. See `sources` below.
-        :param pulumi.Input[str] ssl_pri: The private key. Specify this parameter only if you enable the SSL certificate.
-        :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
-        :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
-        :param pulumi.Input[str] status: The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] top_level_domain: The top-level domain name.
+        :param pulumi.Input[str] cert_id: The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+        :param pulumi.Input[str] cert_name: The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
+        :param pulumi.Input[str] cert_region: The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+        :param pulumi.Input[str] cert_type: The certificate type.
+        :param pulumi.Input[str] check_url: The URL that is used for health checks.
+        :param pulumi.Input[str] domain_name: The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
+        :param pulumi.Input[str] env: Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+        :param pulumi.Input[str] function_type: Computing service type. Valid values:
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
+        :param pulumi.Input[str] scene: The Acceleration scen. Supported:
+        :param pulumi.Input[str] scope: The region where the acceleration service is deployed. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: Source  See `sources` below.
+        :param pulumi.Input[str] ssl_pri: The private key. Specify the private key only if you want to enable the SSL certificate.
+        :param pulumi.Input[str] ssl_protocol: Specifies whether to enable the SSL certificate. Valid values:
+        :param pulumi.Input[str] ssl_pub: The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
+        :param pulumi.Input[str] status: The status of the domain name. Valid values:
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[str] top_level_domain: The top-level domain.
         """
         ...
     @overload
@@ -631,15 +735,15 @@ class Domain(pulumi.CustomResource):
                  args: DomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        You can use DCDN to improve the overall performance of your website and accelerate content delivery to improve user experience. For information about Alicloud DCDN Domain and how to use it, see [What is Resource Alicloud DCDN Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
+        Provides a DCDN Domain resource.
+
+        Full station accelerated domain name.
+
+        For information about DCDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
 
         > **NOTE:** Available since v1.94.0.
 
-        > **NOTE:** You must activate the Dynamic Route for CDN (DCDN) service before you create an accelerated domain.
-
-        > **NOTE:** Make sure that you have obtained an Internet content provider (ICP) filling for the accelerated domain.
-
-        > **NOTE:** If the origin content is not saved on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be completed by the next working day after you submit the application.
+        > **NOTE:** Field `force_set`, `security_token` has been removed from provider version 1.227.1.
 
         ## Example Usage
 
@@ -671,7 +775,7 @@ class Domain(pulumi.CustomResource):
 
         ## Import
 
-        DCDN Domain can be imported using the id or DCDN Domain name, e.g.
+        DCDN Domain can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:dcdn/domain:Domain example <id>
@@ -692,14 +796,17 @@ class Domain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cert_id: Optional[pulumi.Input[str]] = None,
                  cert_name: Optional[pulumi.Input[str]] = None,
+                 cert_region: Optional[pulumi.Input[str]] = None,
                  cert_type: Optional[pulumi.Input[str]] = None,
                  check_url: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 force_set: Optional[pulumi.Input[str]] = None,
+                 env: Optional[pulumi.Input[str]] = None,
+                 function_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 scene: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 security_token: Optional[pulumi.Input[str]] = None,
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]]] = None,
                  ssl_pri: Optional[pulumi.Input[str]] = None,
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
@@ -716,26 +823,30 @@ class Domain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DomainArgs.__new__(DomainArgs)
 
+            __props__.__dict__["cert_id"] = cert_id
             __props__.__dict__["cert_name"] = cert_name
+            __props__.__dict__["cert_region"] = cert_region
             __props__.__dict__["cert_type"] = cert_type
             __props__.__dict__["check_url"] = check_url
             if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
             __props__.__dict__["domain_name"] = domain_name
-            __props__.__dict__["force_set"] = force_set
+            __props__.__dict__["env"] = env
+            __props__.__dict__["function_type"] = function_type
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["scene"] = scene
             __props__.__dict__["scope"] = scope
-            __props__.__dict__["security_token"] = security_token
-            if sources is None and not opts.urn:
-                raise TypeError("Missing required property 'sources'")
             __props__.__dict__["sources"] = sources
-            __props__.__dict__["ssl_pri"] = ssl_pri
+            __props__.__dict__["ssl_pri"] = None if ssl_pri is None else pulumi.Output.secret(ssl_pri)
             __props__.__dict__["ssl_protocol"] = ssl_protocol
             __props__.__dict__["ssl_pub"] = ssl_pub
             __props__.__dict__["status"] = status
             __props__.__dict__["tags"] = tags
             __props__.__dict__["top_level_domain"] = top_level_domain
             __props__.__dict__["cname"] = None
+            __props__.__dict__["create_time"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["sslPri"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Domain, __self__).__init__(
             'alicloud:dcdn/domain:Domain',
             resource_name,
@@ -746,15 +857,19 @@ class Domain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cert_id: Optional[pulumi.Input[str]] = None,
             cert_name: Optional[pulumi.Input[str]] = None,
+            cert_region: Optional[pulumi.Input[str]] = None,
             cert_type: Optional[pulumi.Input[str]] = None,
             check_url: Optional[pulumi.Input[str]] = None,
             cname: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             domain_name: Optional[pulumi.Input[str]] = None,
-            force_set: Optional[pulumi.Input[str]] = None,
+            env: Optional[pulumi.Input[str]] = None,
+            function_type: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            scene: Optional[pulumi.Input[str]] = None,
             scope: Optional[pulumi.Input[str]] = None,
-            security_token: Optional[pulumi.Input[str]] = None,
             sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]]] = None,
             ssl_pri: Optional[pulumi.Input[str]] = None,
             ssl_protocol: Optional[pulumi.Input[str]] = None,
@@ -769,39 +884,44 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cert_name: Indicates the name of the certificate if the HTTPS protocol is enabled.
-        :param pulumi.Input[str] cert_type: The type of the certificate. Valid values:
-               `free`: a free certificate.
-               `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-               `upload`: a user uploaded certificate.
-        :param pulumi.Input[str] check_url: The URL that is used to test the accessibility of the origin.
-        :param pulumi.Input[str] cname: (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
-        :param pulumi.Input[str] domain_name: The name of the accelerated domain.
-        :param pulumi.Input[str] force_set: Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] scope: The acceleration region.
-        :param pulumi.Input[str] security_token: The top-level domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The origin information. See `sources` below.
-        :param pulumi.Input[str] ssl_pri: The private key. Specify this parameter only if you enable the SSL certificate.
-        :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
-        :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
-        :param pulumi.Input[str] status: The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] top_level_domain: The top-level domain name.
+        :param pulumi.Input[str] cert_id: The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+        :param pulumi.Input[str] cert_name: The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
+        :param pulumi.Input[str] cert_region: The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+        :param pulumi.Input[str] cert_type: The certificate type.
+        :param pulumi.Input[str] check_url: The URL that is used for health checks.
+        :param pulumi.Input[str] cname: The CNAME domain name corresponding to the accelerated domain name.
+        :param pulumi.Input[str] create_time: The time when the accelerated domain name was created.
+        :param pulumi.Input[str] domain_name: The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
+        :param pulumi.Input[str] env: Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+        :param pulumi.Input[str] function_type: Computing service type. Valid values:
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
+        :param pulumi.Input[str] scene: The Acceleration scen. Supported:
+        :param pulumi.Input[str] scope: The region where the acceleration service is deployed. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: Source  See `sources` below.
+        :param pulumi.Input[str] ssl_pri: The private key. Specify the private key only if you want to enable the SSL certificate.
+        :param pulumi.Input[str] ssl_protocol: Specifies whether to enable the SSL certificate. Valid values:
+        :param pulumi.Input[str] ssl_pub: The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
+        :param pulumi.Input[str] status: The status of the domain name. Valid values:
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
+        :param pulumi.Input[str] top_level_domain: The top-level domain.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _DomainState.__new__(_DomainState)
 
+        __props__.__dict__["cert_id"] = cert_id
         __props__.__dict__["cert_name"] = cert_name
+        __props__.__dict__["cert_region"] = cert_region
         __props__.__dict__["cert_type"] = cert_type
         __props__.__dict__["check_url"] = check_url
         __props__.__dict__["cname"] = cname
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["domain_name"] = domain_name
-        __props__.__dict__["force_set"] = force_set
+        __props__.__dict__["env"] = env
+        __props__.__dict__["function_type"] = function_type
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["scene"] = scene
         __props__.__dict__["scope"] = scope
-        __props__.__dict__["security_token"] = security_token
         __props__.__dict__["sources"] = sources
         __props__.__dict__["ssl_pri"] = ssl_pri
         __props__.__dict__["ssl_protocol"] = ssl_protocol
@@ -812,21 +932,34 @@ class Domain(pulumi.CustomResource):
         return Domain(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> pulumi.Output[str]:
+        """
+        The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+        """
+        return pulumi.get(self, "cert_id")
+
+    @property
     @pulumi.getter(name="certName")
     def cert_name(self) -> pulumi.Output[str]:
         """
-        Indicates the name of the certificate if the HTTPS protocol is enabled.
+        The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
         """
         return pulumi.get(self, "cert_name")
 
     @property
-    @pulumi.getter(name="certType")
-    def cert_type(self) -> pulumi.Output[Optional[str]]:
+    @pulumi.getter(name="certRegion")
+    def cert_region(self) -> pulumi.Output[str]:
         """
-        The type of the certificate. Valid values:
-        `free`: a free certificate.
-        `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-        `upload`: a user uploaded certificate.
+        The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+        """
+        return pulumi.get(self, "cert_region")
+
+    @property
+    @pulumi.getter(name="certType")
+    def cert_type(self) -> pulumi.Output[str]:
+        """
+        The certificate type.
         """
         return pulumi.get(self, "cert_type")
 
@@ -834,7 +967,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="checkUrl")
     def check_url(self) -> pulumi.Output[Optional[str]]:
         """
-        The URL that is used to test the accessibility of the origin.
+        The URL that is used for health checks.
         """
         return pulumi.get(self, "check_url")
 
@@ -842,55 +975,71 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def cname(self) -> pulumi.Output[str]:
         """
-        (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+        The CNAME domain name corresponding to the accelerated domain name.
         """
         return pulumi.get(self, "cname")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the accelerated domain name was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Output[str]:
         """
-        The name of the accelerated domain.
+        The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
         """
         return pulumi.get(self, "domain_name")
 
     @property
-    @pulumi.getter(name="forceSet")
-    def force_set(self) -> pulumi.Output[Optional[str]]:
+    @pulumi.getter
+    def env(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
+        Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
         """
-        return pulumi.get(self, "force_set")
+        return pulumi.get(self, "env")
+
+    @property
+    @pulumi.getter(name="functionType")
+    def function_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Computing service type. Valid values:
+        """
+        return pulumi.get(self, "function_type")
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of the resource group.
+        The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter
+    def scene(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Acceleration scen. Supported:
+        """
+        return pulumi.get(self, "scene")
+
+    @property
+    @pulumi.getter
     def scope(self) -> pulumi.Output[Optional[str]]:
         """
-        The acceleration region.
+        The region where the acceleration service is deployed. Valid values:
         """
         return pulumi.get(self, "scope")
 
     @property
-    @pulumi.getter(name="securityToken")
-    def security_token(self) -> pulumi.Output[Optional[str]]:
-        """
-        The top-level domain name.
-        """
-        return pulumi.get(self, "security_token")
-
-    @property
     @pulumi.getter
-    def sources(self) -> pulumi.Output[Sequence['outputs.DomainSource']]:
+    def sources(self) -> pulumi.Output[Optional[Sequence['outputs.DomainSource']]]:
         """
-        The origin information. See `sources` below.
+        Source  See `sources` below.
         """
         return pulumi.get(self, "sources")
 
@@ -898,7 +1047,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="sslPri")
     def ssl_pri(self) -> pulumi.Output[Optional[str]]:
         """
-        The private key. Specify this parameter only if you enable the SSL certificate.
+        The private key. Specify the private key only if you want to enable the SSL certificate.
         """
         return pulumi.get(self, "ssl_pri")
 
@@ -906,23 +1055,23 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="sslProtocol")
     def ssl_protocol(self) -> pulumi.Output[Optional[str]]:
         """
-        Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+        Specifies whether to enable the SSL certificate. Valid values:
         """
         return pulumi.get(self, "ssl_protocol")
 
     @property
     @pulumi.getter(name="sslPub")
-    def ssl_pub(self) -> pulumi.Output[Optional[str]]:
+    def ssl_pub(self) -> pulumi.Output[str]:
         """
-        Indicates the public key of the certificate if the HTTPS protocol is enabled.
+        The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
         """
         return pulumi.get(self, "ssl_pub")
 
     @property
     @pulumi.getter
-    def status(self) -> pulumi.Output[Optional[str]]:
+    def status(self) -> pulumi.Output[str]:
         """
-        The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+        The status of the domain name. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -930,7 +1079,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -938,7 +1087,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="topLevelDomain")
     def top_level_domain(self) -> pulumi.Output[Optional[str]]:
         """
-        The top-level domain name.
+        The top-level domain.
         """
         return pulumi.get(self, "top_level_domain")
 

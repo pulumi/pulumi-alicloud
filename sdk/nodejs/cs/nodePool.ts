@@ -122,7 +122,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly instanceTypes!: pulumi.Output<string[]>;
     /**
-     * The instance list. Add existing nodes under the same cluster VPC to the node pool.
+     * The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
      */
     public readonly instances!: pulumi.Output<string[] | undefined>;
     /**
@@ -626,7 +626,7 @@ export interface NodePoolState {
      */
     instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The instance list. Add existing nodes under the same cluster VPC to the node pool.
+     * The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
      */
     instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -953,7 +953,7 @@ export interface NodePoolArgs {
      */
     instanceTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The instance list. Add existing nodes under the same cluster VPC to the node pool.
+     * The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
      */
     instances?: pulumi.Input<pulumi.Input<string>[]>;
     /**

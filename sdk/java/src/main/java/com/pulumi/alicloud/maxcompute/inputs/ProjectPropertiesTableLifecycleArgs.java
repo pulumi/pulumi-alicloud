@@ -31,14 +31,14 @@ public final class ProjectPropertiesTableLifecycleArgs extends com.pulumi.resour
     }
 
     /**
-     * The value of the life cycle.
+     * The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the life cycle.
+     * @return The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
      * 
      */
     public Optional<Output<String>> value() {
@@ -92,7 +92,7 @@ public final class ProjectPropertiesTableLifecycleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param value The value of the life cycle.
+         * @param value The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ProjectPropertiesTableLifecycleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param value The value of the life cycle.
+         * @param value The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
          * 
          * @return builder
          * 

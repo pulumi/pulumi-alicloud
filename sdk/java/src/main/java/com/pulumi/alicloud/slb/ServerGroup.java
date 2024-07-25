@@ -12,14 +12,17 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A virtual server group contains several ECS instances. The virtual server group can help you to define multiple listening dimension,
- * and to meet the personalized requirements of domain name and URL forwarding.
+ * Provides a Load Balancer Virtual Backend Server Group resource.
+ * 
+ * For information about Load Balancer Virtual Backend Server Group and how to use it, see [What is Virtual Backend Server Group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
  * 
  * &gt; **NOTE:** Available since v1.6.0.
  * 
@@ -33,9 +36,9 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** One VPC load balancer, its virtual server group can only add the same VPC ECS instances.
  * 
- * For information about server group and how to use it, see [Configure a server group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
- * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -69,32 +72,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var slbServerGroupName = config.get("slbServerGroupName").orElse("forSlbServerGroup");
- *         final var serverGroup = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var serverGroupNetwork = new Network("serverGroupNetwork", NetworkArgs.builder()
- *             .vpcName(slbServerGroupName)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var serverGroupSwitch = new Switch("serverGroupSwitch", SwitchArgs.builder()
- *             .vpcId(serverGroupNetwork.id())
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/16")
- *             .zoneId(serverGroup.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
- *             .vswitchName(slbServerGroupName)
+ *             .zoneId(default_.zones()[0].id())
+ *             .vswitchName(name)
  *             .build());
  * 
- *         var serverGroupApplicationLoadBalancer = new ApplicationLoadBalancer("serverGroupApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
- *             .loadBalancerName(slbServerGroupName)
- *             .vswitchId(serverGroupSwitch.id())
- *             .instanceChargeType("PayByCLCU")
+ *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
+ *             .loadBalancerName(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .loadBalancerSpec("slb.s2.small")
  *             .build());
  * 
- *         var serverGroupServerGroup = new ServerGroup("serverGroupServerGroup", ServerGroupArgs.builder()
- *             .loadBalancerId(serverGroupApplicationLoadBalancer.id())
- *             .name(slbServerGroupName)
+ *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
+ *             .loadBalancerId(defaultApplicationLoadBalancer.id())
+ *             .name(name)
  *             .build());
  * 
  *     }
@@ -105,74 +108,90 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Load balancer backend server group can be imported using the id, e.g.
+ * Load Balancer Virtual Backend Server Group can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:slb/serverGroup:ServerGroup example abc123456
+ * $ pulumi import alicloud:slb/serverGroup:ServerGroup example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:slb/serverGroup:ServerGroup")
 public class ServerGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     * Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
      * 
      */
     @Export(name="deleteProtectionValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteProtectionValidation;
 
     /**
-     * @return Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     * @return Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
      * 
      */
     public Output<Optional<Boolean>> deleteProtectionValidation() {
         return Codegen.optional(this.deleteProtectionValidation);
     }
     /**
-     * The Load Balancer ID which is used to launch a new virtual server group.
+     * The ID of the Server Load Balancer (SLB) instance.
      * 
      */
     @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
-     * @return The Load Balancer ID which is used to launch a new virtual server group.
+     * @return The ID of the Server Load Balancer (SLB) instance.
      * 
      */
     public Output<String> loadBalancerId() {
         return this.loadBalancerId;
     }
     /**
-     * Name of the virtual server group. Our plugin provides a default name: &#34;tf-server-group&#34;.
+     * The name of the vServer group. Default value: `tf-server-group`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the virtual server group. Our plugin provides a default name: &#34;tf-server-group&#34;.
+     * @return The name of the vServer group. Default value: `tf-server-group`.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * A list of ECS instances to be added. **NOTE:** Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+     * The list of backend servers to be added. See `servers` below.
+     * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
      * @deprecated
-     * Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;.
+     * Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
      */
-    @Deprecated /* Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. */
+    @Deprecated /* Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`. */
     @Export(name="servers", refs={List.class,ServerGroupServer.class}, tree="[0,1]")
     private Output<List<ServerGroupServer>> servers;
 
     /**
-     * @return A list of ECS instances to be added. **NOTE:** Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+     * @return The list of backend servers to be added. See `servers` below.
+     * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
      */
     public Output<List<ServerGroupServer>> servers() {
         return this.servers;
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

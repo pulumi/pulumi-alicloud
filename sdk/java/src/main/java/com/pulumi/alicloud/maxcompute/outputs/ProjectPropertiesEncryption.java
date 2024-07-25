@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectPropertiesEncryption {
     /**
-     * @return Algorithm.
+     * @return The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
      * 
      */
     private @Nullable String algorithm;
     /**
-     * @return Whether to open.
+     * @return Only enable function is supported. Value: (true).
      * 
      */
     private @Nullable Boolean enable;
     /**
-     * @return Encryption algorithm key.
+     * @return The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
      * 
      */
     private @Nullable String key;
 
     private ProjectPropertiesEncryption() {}
     /**
-     * @return Algorithm.
+     * @return The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
      * 
      */
     public Optional<String> algorithm() {
         return Optional.ofNullable(this.algorithm);
     }
     /**
-     * @return Whether to open.
+     * @return Only enable function is supported. Value: (true).
      * 
      */
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }
     /**
-     * @return Encryption algorithm key.
+     * @return The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
      * 
      */
     public Optional<String> key() {

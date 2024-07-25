@@ -295,14 +295,14 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The instance list. Add existing nodes under the same cluster VPC to the node pool.
+     * The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
      * 
      */
     @Import(name="instances")
     private @Nullable Output<List<String>> instances;
 
     /**
-     * @return The instance list. Add existing nodes under the same cluster VPC to the node pool.
+     * @return The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
      * 
      */
     public Optional<Output<List<String>>> instances() {
@@ -1680,7 +1680,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instances The instance list. Add existing nodes under the same cluster VPC to the node pool.
+         * @param instances The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
          * 
          * @return builder
          * 
@@ -1691,7 +1691,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instances The instance list. Add existing nodes under the same cluster VPC to the node pool.
+         * @param instances The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
          * 
          * @return builder
          * 
@@ -1701,7 +1701,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instances The instance list. Add existing nodes under the same cluster VPC to the node pool.
+         * @param instances The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
          * 
          * @return builder
          * 

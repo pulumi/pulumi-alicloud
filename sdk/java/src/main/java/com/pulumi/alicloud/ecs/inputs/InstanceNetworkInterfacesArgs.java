@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,14 +18,29 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
     public static final InstanceNetworkInterfacesArgs Empty = new InstanceNetworkInterfacesArgs();
 
     /**
-     * The ID of the secondary ENI.
+     * The index of the network card for Secondary ENI.
+     * 
+     */
+    @Import(name="networkCardIndex")
+    private @Nullable Output<Integer> networkCardIndex;
+
+    /**
+     * @return The index of the network card for Secondary ENI.
+     * 
+     */
+    public Optional<Output<Integer>> networkCardIndex() {
+        return Optional.ofNullable(this.networkCardIndex);
+    }
+
+    /**
+     * The ID of the Secondary ENI.
      * 
      */
     @Import(name="networkInterfaceId")
     private @Nullable Output<String> networkInterfaceId;
 
     /**
-     * @return The ID of the secondary ENI.
+     * @return The ID of the Secondary ENI.
      * 
      */
     public Optional<Output<String>> networkInterfaceId() {
@@ -32,7 +48,7 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The communication mode of the ENI. Default value: `Standard`. Valid values:
+     * The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
      * - `Standard`: Uses the TCP communication mode.
      * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
      * 
@@ -41,7 +57,7 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> networkInterfaceTrafficMode;
 
     /**
-     * @return The communication mode of the ENI. Default value: `Standard`. Valid values:
+     * @return The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
      * - `Standard`: Uses the TCP communication mode.
      * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
      * 
@@ -51,14 +67,29 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The ID of security group N to which to assign ENI N.
+     * The number of queues supported by the ERI.
+     * 
+     */
+    @Import(name="queuePairNumber")
+    private @Nullable Output<Integer> queuePairNumber;
+
+    /**
+     * @return The number of queues supported by the ERI.
+     * 
+     */
+    public Optional<Output<Integer>> queuePairNumber() {
+        return Optional.ofNullable(this.queuePairNumber);
+    }
+
+    /**
+     * The ID of security group N to which to assign Secondary ENI N.
      * 
      */
     @Import(name="securityGroupIds")
     private @Nullable Output<List<String>> securityGroupIds;
 
     /**
-     * @return The ID of security group N to which to assign ENI N.
+     * @return The ID of security group N to which to assign Secondary ENI N.
      * 
      */
     public Optional<Output<List<String>>> securityGroupIds() {
@@ -66,14 +97,14 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The ID of the vSwitch to which to connect ENI N.
+     * The ID of the vSwitch to which to connect Secondary ENI N.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The ID of the vSwitch to which to connect ENI N.
+     * @return The ID of the vSwitch to which to connect Secondary ENI N.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -83,8 +114,10 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
     private InstanceNetworkInterfacesArgs() {}
 
     private InstanceNetworkInterfacesArgs(InstanceNetworkInterfacesArgs $) {
+        this.networkCardIndex = $.networkCardIndex;
         this.networkInterfaceId = $.networkInterfaceId;
         this.networkInterfaceTrafficMode = $.networkInterfaceTrafficMode;
+        this.queuePairNumber = $.queuePairNumber;
         this.securityGroupIds = $.securityGroupIds;
         this.vswitchId = $.vswitchId;
     }
@@ -108,7 +141,28 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networkInterfaceId The ID of the secondary ENI.
+         * @param networkCardIndex The index of the network card for Secondary ENI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkCardIndex(@Nullable Output<Integer> networkCardIndex) {
+            $.networkCardIndex = networkCardIndex;
+            return this;
+        }
+
+        /**
+         * @param networkCardIndex The index of the network card for Secondary ENI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkCardIndex(Integer networkCardIndex) {
+            return networkCardIndex(Output.of(networkCardIndex));
+        }
+
+        /**
+         * @param networkInterfaceId The ID of the Secondary ENI.
          * 
          * @return builder
          * 
@@ -119,7 +173,7 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networkInterfaceId The ID of the secondary ENI.
+         * @param networkInterfaceId The ID of the Secondary ENI.
          * 
          * @return builder
          * 
@@ -129,7 +183,7 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networkInterfaceTrafficMode The communication mode of the ENI. Default value: `Standard`. Valid values:
+         * @param networkInterfaceTrafficMode The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
          * - `Standard`: Uses the TCP communication mode.
          * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
          * 
@@ -142,7 +196,7 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networkInterfaceTrafficMode The communication mode of the ENI. Default value: `Standard`. Valid values:
+         * @param networkInterfaceTrafficMode The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
          * - `Standard`: Uses the TCP communication mode.
          * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
          * 
@@ -154,7 +208,28 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param securityGroupIds The ID of security group N to which to assign ENI N.
+         * @param queuePairNumber The number of queues supported by the ERI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queuePairNumber(@Nullable Output<Integer> queuePairNumber) {
+            $.queuePairNumber = queuePairNumber;
+            return this;
+        }
+
+        /**
+         * @param queuePairNumber The number of queues supported by the ERI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queuePairNumber(Integer queuePairNumber) {
+            return queuePairNumber(Output.of(queuePairNumber));
+        }
+
+        /**
+         * @param securityGroupIds The ID of security group N to which to assign Secondary ENI N.
          * 
          * @return builder
          * 
@@ -165,7 +240,7 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param securityGroupIds The ID of security group N to which to assign ENI N.
+         * @param securityGroupIds The ID of security group N to which to assign Secondary ENI N.
          * 
          * @return builder
          * 
@@ -175,7 +250,7 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param securityGroupIds The ID of security group N to which to assign ENI N.
+         * @param securityGroupIds The ID of security group N to which to assign Secondary ENI N.
          * 
          * @return builder
          * 
@@ -185,7 +260,7 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vswitchId The ID of the vSwitch to which to connect ENI N.
+         * @param vswitchId The ID of the vSwitch to which to connect Secondary ENI N.
          * 
          * @return builder
          * 
@@ -196,7 +271,7 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vswitchId The ID of the vSwitch to which to connect ENI N.
+         * @param vswitchId The ID of the vSwitch to which to connect Secondary ENI N.
          * 
          * @return builder
          * 

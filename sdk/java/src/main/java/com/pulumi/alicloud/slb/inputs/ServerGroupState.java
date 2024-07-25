@@ -7,8 +7,10 @@ import com.pulumi.alicloud.slb.inputs.ServerGroupServerArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,14 +21,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     public static final ServerGroupState Empty = new ServerGroupState();
 
     /**
-     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     * Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
      * 
      */
     @Import(name="deleteProtectionValidation")
     private @Nullable Output<Boolean> deleteProtectionValidation;
 
     /**
-     * @return Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     * @return Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
      * 
      */
     public Optional<Output<Boolean>> deleteProtectionValidation() {
@@ -34,14 +36,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Load Balancer ID which is used to launch a new virtual server group.
+     * The ID of the Server Load Balancer (SLB) instance.
      * 
      */
     @Import(name="loadBalancerId")
     private @Nullable Output<String> loadBalancerId;
 
     /**
-     * @return The Load Balancer ID which is used to launch a new virtual server group.
+     * @return The ID of the Server Load Balancer (SLB) instance.
      * 
      */
     public Optional<Output<String>> loadBalancerId() {
@@ -49,14 +51,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the virtual server group. Our plugin provides a default name: &#34;tf-server-group&#34;.
+     * The name of the vServer group. Default value: `tf-server-group`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the virtual server group. Our plugin provides a default name: &#34;tf-server-group&#34;.
+     * @return The name of the vServer group. Default value: `tf-server-group`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -64,26 +66,43 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of ECS instances to be added. **NOTE:** Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+     * The list of backend servers to be added. See `servers` below.
+     * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
      * @deprecated
-     * Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;.
+     * Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
      */
-    @Deprecated /* Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. */
+    @Deprecated /* Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`. */
     @Import(name="servers")
     private @Nullable Output<List<ServerGroupServerArgs>> servers;
 
     /**
-     * @return A list of ECS instances to be added. **NOTE:** Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+     * @return The list of backend servers to be added. See `servers` below.
+     * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
      * @deprecated
-     * Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;.
+     * Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      * 
      */
-    @Deprecated /* Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. */
+    @Deprecated /* Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`. */
     public Optional<Output<List<ServerGroupServerArgs>>> servers() {
         return Optional.ofNullable(this.servers);
+    }
+
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private ServerGroupState() {}
@@ -93,6 +112,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         this.loadBalancerId = $.loadBalancerId;
         this.name = $.name;
         this.servers = $.servers;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -114,7 +134,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
          * 
          * @return builder
          * 
@@ -125,7 +145,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `delete_protection_validation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
          * 
          * @return builder
          * 
@@ -135,7 +155,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerId The Load Balancer ID which is used to launch a new virtual server group.
+         * @param loadBalancerId The ID of the Server Load Balancer (SLB) instance.
          * 
          * @return builder
          * 
@@ -146,7 +166,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerId The Load Balancer ID which is used to launch a new virtual server group.
+         * @param loadBalancerId The ID of the Server Load Balancer (SLB) instance.
          * 
          * @return builder
          * 
@@ -156,7 +176,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the virtual server group. Our plugin provides a default name: &#34;tf-server-group&#34;.
+         * @param name The name of the vServer group. Default value: `tf-server-group`.
          * 
          * @return builder
          * 
@@ -167,7 +187,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the virtual server group. Our plugin provides a default name: &#34;tf-server-group&#34;.
+         * @param name The name of the vServer group. Default value: `tf-server-group`.
          * 
          * @return builder
          * 
@@ -177,46 +197,70 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers A list of ECS instances to be added. **NOTE:** Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+         * @param servers The list of backend servers to be added. See `servers` below.
+         * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;.
+         * Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
          * 
          */
-        @Deprecated /* Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. */
+        @Deprecated /* Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`. */
         public Builder servers(@Nullable Output<List<ServerGroupServerArgs>> servers) {
             $.servers = servers;
             return this;
         }
 
         /**
-         * @param servers A list of ECS instances to be added. **NOTE:** Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+         * @param servers The list of backend servers to be added. See `servers` below.
+         * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;.
+         * Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
          * 
          */
-        @Deprecated /* Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. */
+        @Deprecated /* Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`. */
         public Builder servers(List<ServerGroupServerArgs> servers) {
             return servers(Output.of(servers));
         }
 
         /**
-         * @param servers A list of ECS instances to be added. **NOTE:** Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+         * @param servers The list of backend servers to be added. See `servers` below.
+         * &gt; **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;servers&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_server_group_server_attachment&#39;.
+         * Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
          * 
          */
-        @Deprecated /* Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. */
+        @Deprecated /* Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`. */
         public Builder servers(ServerGroupServerArgs... servers) {
             return servers(List.of(servers));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         public ServerGroupState build() {

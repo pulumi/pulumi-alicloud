@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
     public sealed class GetDomainsDomainResult
     {
         /// <summary>
-        /// Track verification.
+        /// Indicates whether your ownership of the domain is verified.
         /// </summary>
         public readonly string CnameAuthStatus;
         /// <summary>
-        /// Indicates whether the CNAME record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+        /// Indicates whether the CNAME record is successfully verified. **Note:** `cname_confirm_status` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string CnameConfirmStatus;
         /// <summary>
-        /// The value of the CNAME record.
+        /// The value of the CNAME record. **Note:** `cname_record` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string CnameRecord;
         /// <summary>
@@ -30,19 +30,47 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The default domain name.
+        /// The default domain name. **Note:** `default_domain` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string DefaultDomain;
         /// <summary>
-        /// The value of the MX record.
+        /// (Available since v1.227.1) The DKIM validation flag. **Note:** `dkim_auth_status` takes effect only if `enable_details` is set to `true`.
+        /// </summary>
+        public readonly string DkimAuthStatus;
+        /// <summary>
+        /// (Available since v1.227.1) The DKIM public key. **Note:** `dkim_public_key` takes effect only if `enable_details` is set to `true`.
+        /// </summary>
+        public readonly string DkimPublicKey;
+        /// <summary>
+        /// (Available since v1.227.1) The DKIM Host Record. **Note:** `dkim_rr` takes effect only if `enable_details` is set to `true`.
+        /// </summary>
+        public readonly string DkimRr;
+        /// <summary>
+        /// (Available since v1.227.1) The DMARC validation flag. **Note:** `dmarc_auth_status` takes effect only if `enable_details` is set to `true`.
+        /// </summary>
+        public readonly string DmarcAuthStatus;
+        /// <summary>
+        /// (Available since v1.227.1) The DMARC Host Record. **Note:** `dmarc_host_record` takes effect only if `enable_details` is set to `true`.
+        /// </summary>
+        public readonly string DmarcHostRecord;
+        /// <summary>
+        /// (Available since v1.227.1) The DMARC record. **Note:** `dmarc_record` takes effect only if `enable_details` is set to `true`.
+        /// </summary>
+        public readonly string DmarcRecord;
+        /// <summary>
+        /// (Available since v1.227.1) The DMARC record value resolved through public DNS. **Note:** `dns_dmarc` takes effect only if `enable_details` is set to `true`.
+        /// </summary>
+        public readonly string DnsDmarc;
+        /// <summary>
+        /// The MX record value resolved through public DNS. **Note:** `dns_mx` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string DnsMx;
         /// <summary>
-        /// The value of the SPF record.
+        /// The SPF record value resolved through public DNS. **Note:** `dns_spf` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string DnsSpf;
         /// <summary>
-        /// The value of the TXT ownership record.
+        /// The TXT record value resolved through public DNS. **Note:** `dns_txt` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string DnsTxt;
         /// <summary>
@@ -54,11 +82,19 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
         /// </summary>
         public readonly string DomainName;
         /// <summary>
-        /// The type of the domain.
+        /// (Available since v1.227.1) The value of the Domain record.
+        /// </summary>
+        public readonly string DomainRecord;
+        /// <summary>
+        /// The type of the domain. **Note:** `domain_type` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string DomainType;
         /// <summary>
-        /// The status of ICP filing. Valid values: `0` and `1`. `0`: indicates that the domain name is not filed. `1`: indicates that the domain name is filed.
+        /// (Available since v1.227.1) The value of the host record. **Note:** `host_record` takes effect only if `enable_details` is set to `true`.
+        /// </summary>
+        public readonly string HostRecord;
+        /// <summary>
+        /// The status of ICP filing.
         /// </summary>
         public readonly string IcpStatus;
         /// <summary>
@@ -66,31 +102,31 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Indicates whether the MX record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+        /// Indicates whether the MX record is successfully verified.
         /// </summary>
         public readonly string MxAuthStatus;
         /// <summary>
-        /// The MX verification record provided by Alibaba Cloud DNS.
+        /// The MX verification record provided by the Direct Mail console. **Note:** `mx_record` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string MxRecord;
         /// <summary>
-        /// Indicates whether the SPF record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+        /// Indicates whether the SPF record is successfully verified.
         /// </summary>
         public readonly string SpfAuthStatus;
         /// <summary>
-        /// The SPF verification record provided by Alibaba Cloud DNS.
+        /// The SPF verification record provided by the Direct Mail console. **Note:** `spf_record` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string SpfRecord;
         /// <summary>
-        /// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+        /// The status of the domain name. Valid values:
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The primary domain name.
+        /// The primary domain name. **Note:** `tl_domain_name` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string TlDomainName;
         /// <summary>
-        /// The CNAME verification record provided by Alibaba Cloud DNS.
+        /// The CNAME verification record provided by the Direct Mail console. **Note:** `tracef_record` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string TracefRecord;
 
@@ -106,6 +142,20 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
 
             string defaultDomain,
 
+            string dkimAuthStatus,
+
+            string dkimPublicKey,
+
+            string dkimRr,
+
+            string dmarcAuthStatus,
+
+            string dmarcHostRecord,
+
+            string dmarcRecord,
+
+            string dnsDmarc,
+
             string dnsMx,
 
             string dnsSpf,
@@ -116,7 +166,11 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
 
             string domainName,
 
+            string domainRecord,
+
             string domainType,
+
+            string hostRecord,
 
             string icpStatus,
 
@@ -141,12 +195,21 @@ namespace Pulumi.AliCloud.DirectMail.Outputs
             CnameRecord = cnameRecord;
             CreateTime = createTime;
             DefaultDomain = defaultDomain;
+            DkimAuthStatus = dkimAuthStatus;
+            DkimPublicKey = dkimPublicKey;
+            DkimRr = dkimRr;
+            DmarcAuthStatus = dmarcAuthStatus;
+            DmarcHostRecord = dmarcHostRecord;
+            DmarcRecord = dmarcRecord;
+            DnsDmarc = dnsDmarc;
             DnsMx = dnsMx;
             DnsSpf = dnsSpf;
             DnsTxt = dnsTxt;
             DomainId = domainId;
             DomainName = domainName;
+            DomainRecord = domainRecord;
             DomainType = domainType;
+            HostRecord = hostRecord;
             IcpStatus = icpStatus;
             Id = id;
             MxAuthStatus = mxAuthStatus;

@@ -13,10 +13,10 @@ namespace Pulumi.AliCloud.Dcdn.Inputs
     public sealed class DomainSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The origin address.
+        /// The address of the source station.
         /// </summary>
-        [Input("content", required: true)]
-        public Input<string> Content { get; set; } = null!;
+        [Input("content")]
+        public Input<string>? Content { get; set; }
 
         /// <summary>
         /// The port number. Valid values: `443` and `80`. Default to `80`.
@@ -32,12 +32,9 @@ namespace Pulumi.AliCloud.Dcdn.Inputs
 
         /// <summary>
         /// The type of the origin. Valid values:
-        /// `ipaddr`: The origin is configured using an IP address.
-        /// `domain`: The origin is configured using a domain name.
-        /// `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// The weight of the origin if multiple origins are specified. Default to `10`.

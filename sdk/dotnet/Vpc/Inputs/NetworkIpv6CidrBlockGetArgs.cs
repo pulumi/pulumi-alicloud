@@ -13,18 +13,21 @@ namespace Pulumi.AliCloud.Vpc.Inputs
     public sealed class NetworkIpv6CidrBlockGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IPv6 CIDR block of the VPC.
+        /// The IPv6 CIDR block of the default VPC.
+        /// 
+        /// &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
         /// </summary>
         [Input("ipv6CidrBlock")]
         public Input<string>? Ipv6CidrBlock { get; set; }
 
         /// <summary>
         /// The IPv6 address segment type of the VPC. Value:
-        /// - **BGP** (default): Alibaba Cloud BGP IPv6.
-        /// - **ChinaMobile**: China Mobile (single line).
-        /// - **ChinaUnicom**: China Unicom (single line).
-        /// - **ChinaTelecom**: China Telecom (single line).
-        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        /// - `BGP` (default): Alibaba Cloud BGP IPv6.
+        /// - `ChinaMobile`: China Mobile (single line).
+        /// - `ChinaUnicom`: China Unicom (single line).
+        /// - `ChinaTelecom`: China Telecom (single line).
+        /// 
+        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
         /// </summary>
         [Input("ipv6Isp")]
         public Input<string>? Ipv6Isp { get; set; }

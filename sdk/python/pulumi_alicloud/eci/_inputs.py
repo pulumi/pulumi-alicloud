@@ -483,6 +483,8 @@ class ContainerGroupContainerLivenessProbeArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgs']]] execs: Health check using command line method. See `exec` below.
         :param pulumi.Input[int] failure_threshold: Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgs']]] http_gets: Health check using HTTP request method. See `http_get` below.
+               
+               > **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
         :param pulumi.Input[int] initial_delay_seconds: Check the time to start execution, calculated from the completion of container startup.
         :param pulumi.Input[int] period_seconds: Buffer time for the program to handle operations before closing.
         :param pulumi.Input[int] success_threshold: The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
@@ -535,6 +537,8 @@ class ContainerGroupContainerLivenessProbeArgs:
     def http_gets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgs']]]]:
         """
         Health check using HTTP request method. See `http_get` below.
+
+        > **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
         """
         return pulumi.get(self, "http_gets")
 
@@ -728,6 +732,8 @@ class ContainerGroupContainerReadinessProbeArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgs']]] execs: Health check using command line method. See `exec` below.
         :param pulumi.Input[int] failure_threshold: Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgs']]] http_gets: Health check using HTTP request method. See `http_get` below.
+               
+               > **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
         :param pulumi.Input[int] initial_delay_seconds: Check the time to start execution, calculated from the completion of container startup.
         :param pulumi.Input[int] period_seconds: Buffer time for the program to handle operations before closing.
         :param pulumi.Input[int] success_threshold: The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
@@ -780,6 +786,8 @@ class ContainerGroupContainerReadinessProbeArgs:
     def http_gets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgs']]]]:
         """
         Health check using HTTP request method. See `http_get` below.
+
+        > **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
         """
         return pulumi.get(self, "http_gets")
 

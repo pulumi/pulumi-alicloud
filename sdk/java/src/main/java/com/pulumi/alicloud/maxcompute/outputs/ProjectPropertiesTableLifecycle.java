@@ -17,7 +17,7 @@ public final class ProjectPropertiesTableLifecycle {
      */
     private @Nullable String type;
     /**
-     * @return The value of the life cycle.
+     * @return The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
      * 
      */
     private @Nullable String value;
@@ -31,7 +31,7 @@ public final class ProjectPropertiesTableLifecycle {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return The value of the life cycle.
+     * @return The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
      * 
      */
     public Optional<String> value() {

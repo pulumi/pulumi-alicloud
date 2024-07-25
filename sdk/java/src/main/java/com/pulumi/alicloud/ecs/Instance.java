@@ -350,40 +350,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
      * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
-     * 
      */
     @Export(name="enableJumboFrame", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableJumboFrame;
 
     /**
      * @return Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
-     * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Output<Boolean> enableJumboFrame() {
@@ -784,18 +756,50 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.memory;
     }
     /**
-     * The ID of the ENI.
+     * The index of the network card for Primary ENI.
+     * 
+     */
+    @Export(name="networkCardIndex", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> networkCardIndex;
+
+    /**
+     * @return The index of the network card for Primary ENI.
+     * 
+     */
+    public Output<Optional<Integer>> networkCardIndex() {
+        return Codegen.optional(this.networkCardIndex);
+    }
+    /**
+     * The ID of the Primary ENI.
      * 
      */
     @Export(name="networkInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> networkInterfaceId;
 
     /**
-     * @return The ID of the ENI.
+     * @return The ID of the Primary ENI.
      * 
      */
     public Output<String> networkInterfaceId() {
         return this.networkInterfaceId;
+    }
+    /**
+     * The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
+     * - `Standard`: Uses the TCP communication mode.
+     * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
+     * 
+     */
+    @Export(name="networkInterfaceTrafficMode", refs={String.class}, tree="[0]")
+    private Output<String> networkInterfaceTrafficMode;
+
+    /**
+     * @return The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
+     * - `Standard`: Uses the TCP communication mode.
+     * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
+     * 
+     */
+    public Output<String> networkInterfaceTrafficMode() {
+        return this.networkInterfaceTrafficMode;
     }
     /**
      * The list of network interfaces created with instance. See `network_interfaces` below.
@@ -944,6 +948,48 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> publicIp() {
         return this.publicIp;
+    }
+    /**
+     * The number of queues supported by the ERI.
+     * 
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
+     * 
+     */
+    @Export(name="queuePairNumber", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> queuePairNumber;
+
+    /**
+     * @return The number of queues supported by the ERI.
+     * 
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
+     * 
+     */
+    public Output<Optional<Integer>> queuePairNumber() {
+        return Codegen.optional(this.queuePairNumber);
     }
     /**
      * Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
@@ -1346,6 +1392,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,Object>> volumeTags() {
         return this.volumeTags;
+    }
+    /**
+     * The ID of the VPC.
+     * 
+     */
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
+    private Output<String> vpcId;
+
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
+    public Output<String> vpcId() {
+        return this.vpcId;
     }
     /**
      * The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.

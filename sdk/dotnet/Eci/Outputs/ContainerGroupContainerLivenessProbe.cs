@@ -23,6 +23,8 @@ namespace Pulumi.AliCloud.Eci.Outputs
         public readonly int? FailureThreshold;
         /// <summary>
         /// Health check using HTTP request method. See `http_get` below.
+        /// 
+        /// &gt; **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerLivenessProbeHttpGet> HttpGets;
         /// <summary>

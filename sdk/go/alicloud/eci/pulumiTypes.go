@@ -595,6 +595,8 @@ type ContainerGroupContainerLivenessProbe struct {
 	// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
 	FailureThreshold *int `pulumi:"failureThreshold"`
 	// Health check using HTTP request method. See `httpGet` below.
+	//
+	// > **NOTE:** When you configure `readinessProbe`, you can select only one of the `exec`, `tcpSocket`, `httpGet`.
 	HttpGets []ContainerGroupContainerLivenessProbeHttpGet `pulumi:"httpGets"`
 	// Check the time to start execution, calculated from the completion of container startup.
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
@@ -625,6 +627,8 @@ type ContainerGroupContainerLivenessProbeArgs struct {
 	// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
 	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
 	// Health check using HTTP request method. See `httpGet` below.
+	//
+	// > **NOTE:** When you configure `readinessProbe`, you can select only one of the `exec`, `tcpSocket`, `httpGet`.
 	HttpGets ContainerGroupContainerLivenessProbeHttpGetArrayInput `pulumi:"httpGets"`
 	// Check the time to start execution, calculated from the completion of container startup.
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
@@ -702,6 +706,8 @@ func (o ContainerGroupContainerLivenessProbeOutput) FailureThreshold() pulumi.In
 }
 
 // Health check using HTTP request method. See `httpGet` below.
+//
+// > **NOTE:** When you configure `readinessProbe`, you can select only one of the `exec`, `tcpSocket`, `httpGet`.
 func (o ContainerGroupContainerLivenessProbeOutput) HttpGets() ContainerGroupContainerLivenessProbeHttpGetArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerLivenessProbe) []ContainerGroupContainerLivenessProbeHttpGet {
 		return v.HttpGets
@@ -1158,6 +1164,8 @@ type ContainerGroupContainerReadinessProbe struct {
 	// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
 	FailureThreshold *int `pulumi:"failureThreshold"`
 	// Health check using HTTP request method. See `httpGet` below.
+	//
+	// > **NOTE:** When you configure `readinessProbe`, you can select only one of the `exec`, `tcpSocket`, `httpGet`.
 	HttpGets []ContainerGroupContainerReadinessProbeHttpGet `pulumi:"httpGets"`
 	// Check the time to start execution, calculated from the completion of container startup.
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
@@ -1188,6 +1196,8 @@ type ContainerGroupContainerReadinessProbeArgs struct {
 	// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
 	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
 	// Health check using HTTP request method. See `httpGet` below.
+	//
+	// > **NOTE:** When you configure `readinessProbe`, you can select only one of the `exec`, `tcpSocket`, `httpGet`.
 	HttpGets ContainerGroupContainerReadinessProbeHttpGetArrayInput `pulumi:"httpGets"`
 	// Check the time to start execution, calculated from the completion of container startup.
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
@@ -1265,6 +1275,8 @@ func (o ContainerGroupContainerReadinessProbeOutput) FailureThreshold() pulumi.I
 }
 
 // Health check using HTTP request method. See `httpGet` below.
+//
+// > **NOTE:** When you configure `readinessProbe`, you can select only one of the `exec`, `tcpSocket`, `httpGet`.
 func (o ContainerGroupContainerReadinessProbeOutput) HttpGets() ContainerGroupContainerReadinessProbeHttpGetArrayOutput {
 	return o.ApplyT(func(v ContainerGroupContainerReadinessProbe) []ContainerGroupContainerReadinessProbeHttpGet {
 		return v.HttpGets

@@ -14,19 +14,27 @@ __all__ = ['PublicIpAddressPoolArgs', 'PublicIpAddressPool']
 @pulumi.input_type
 class PublicIpAddressPoolArgs:
     def __init__(__self__, *,
+                 biz_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
                  public_ip_address_pool_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a PublicIpAddressPool resource.
+        :param pulumi.Input[str] biz_type: The name of the VPC Public IP address pool.
         :param pulumi.Input[str] description: Description.
         :param pulumi.Input[str] isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         :param pulumi.Input[str] public_ip_address_pool_name: The name of the VPC Public IP address pool.
         :param pulumi.Input[str] resource_group_id: The resource group ID of the VPC Public IP address pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: Security protection level.
+               - If the configuration is empty, the default value is DDoS protection (Basic edition).
+               - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
         """
+        if biz_type is not None:
+            pulumi.set(__self__, "biz_type", biz_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if isp is not None:
@@ -35,8 +43,22 @@ class PublicIpAddressPoolArgs:
             pulumi.set(__self__, "public_ip_address_pool_name", public_ip_address_pool_name)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_protection_types is not None:
+            pulumi.set(__self__, "security_protection_types", security_protection_types)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="bizType")
+    def biz_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the VPC Public IP address pool.
+        """
+        return pulumi.get(self, "biz_type")
+
+    @biz_type.setter
+    def biz_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "biz_type", value)
 
     @property
     @pulumi.getter
@@ -87,6 +109,20 @@ class PublicIpAddressPoolArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="securityProtectionTypes")
+    def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Security protection level.
+        - If the configuration is empty, the default value is DDoS protection (Basic edition).
+        - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+        """
+        return pulumi.get(self, "security_protection_types")
+
+    @security_protection_types.setter
+    def security_protection_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_protection_types", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -102,6 +138,7 @@ class PublicIpAddressPoolArgs:
 @pulumi.input_type
 class _PublicIpAddressPoolState:
     def __init__(__self__, *,
+                 biz_type: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address_remaining: Optional[pulumi.Input[bool]] = None,
@@ -109,23 +146,30 @@ class _PublicIpAddressPoolState:
                  public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  public_ip_address_pool_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  total_ip_num: Optional[pulumi.Input[int]] = None,
                  used_ip_num: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering PublicIpAddressPool resources.
-        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] biz_type: The name of the VPC Public IP address pool.
+        :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[str] description: Description.
         :param pulumi.Input[bool] ip_address_remaining: Whether there is a free IP address.
         :param pulumi.Input[str] isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         :param pulumi.Input[str] public_ip_address_pool_name: The name of the VPC Public IP address pool.
         :param pulumi.Input[str] resource_group_id: The resource group ID of the VPC Public IP address pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: Security protection level.
+               - If the configuration is empty, the default value is DDoS protection (Basic edition).
+               - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
         :param pulumi.Input[str] status: The status of the VPC Public IP address pool.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
         :param pulumi.Input[int] total_ip_num: The total number of public IP address pools.
         :param pulumi.Input[int] used_ip_num: The number of used IP addresses in the public IP address pool.
         """
+        if biz_type is not None:
+            pulumi.set(__self__, "biz_type", biz_type)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
@@ -140,6 +184,8 @@ class _PublicIpAddressPoolState:
             pulumi.set(__self__, "public_ip_address_pool_name", public_ip_address_pool_name)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_protection_types is not None:
+            pulumi.set(__self__, "security_protection_types", security_protection_types)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -150,10 +196,22 @@ class _PublicIpAddressPoolState:
             pulumi.set(__self__, "used_ip_num", used_ip_num)
 
     @property
+    @pulumi.getter(name="bizType")
+    def biz_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the VPC Public IP address pool.
+        """
+        return pulumi.get(self, "biz_type")
+
+    @biz_type.setter
+    def biz_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "biz_type", value)
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
@@ -231,6 +289,20 @@ class _PublicIpAddressPoolState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="securityProtectionTypes")
+    def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Security protection level.
+        - If the configuration is empty, the default value is DDoS protection (Basic edition).
+        - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+        """
+        return pulumi.get(self, "security_protection_types")
+
+    @security_protection_types.setter
+    def security_protection_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_protection_types", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -284,16 +356,18 @@ class PublicIpAddressPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 biz_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
                  public_ip_address_pool_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
-        Provides a Vpc Public Ip Address Pool resource.
+        Provides a VPC Public Ip Address Pool resource.
 
-        For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
+        For information about VPC Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
 
         > **NOTE:** Available since v1.186.0.
 
@@ -319,7 +393,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
 
         ## Import
 
-        Vpc Public Ip Address Pool can be imported using the id, e.g.
+        VPC Public Ip Address Pool can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example <id>
@@ -327,10 +401,14 @@ class PublicIpAddressPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] biz_type: The name of the VPC Public IP address pool.
         :param pulumi.Input[str] description: Description.
         :param pulumi.Input[str] isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         :param pulumi.Input[str] public_ip_address_pool_name: The name of the VPC Public IP address pool.
         :param pulumi.Input[str] resource_group_id: The resource group ID of the VPC Public IP address pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: Security protection level.
+               - If the configuration is empty, the default value is DDoS protection (Basic edition).
+               - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
         """
         ...
@@ -340,9 +418,9 @@ class PublicIpAddressPool(pulumi.CustomResource):
                  args: Optional[PublicIpAddressPoolArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Vpc Public Ip Address Pool resource.
+        Provides a VPC Public Ip Address Pool resource.
 
-        For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
+        For information about VPC Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
 
         > **NOTE:** Available since v1.186.0.
 
@@ -368,7 +446,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
 
         ## Import
 
-        Vpc Public Ip Address Pool can be imported using the id, e.g.
+        VPC Public Ip Address Pool can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example <id>
@@ -389,10 +467,12 @@ class PublicIpAddressPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 biz_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  isp: Optional[pulumi.Input[str]] = None,
                  public_ip_address_pool_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -403,10 +483,12 @@ class PublicIpAddressPool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PublicIpAddressPoolArgs.__new__(PublicIpAddressPoolArgs)
 
+            __props__.__dict__["biz_type"] = biz_type
             __props__.__dict__["description"] = description
             __props__.__dict__["isp"] = isp
             __props__.__dict__["public_ip_address_pool_name"] = public_ip_address_pool_name
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["security_protection_types"] = security_protection_types
             __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
             __props__.__dict__["ip_address_remaining"] = None
@@ -424,6 +506,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            biz_type: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             ip_address_remaining: Optional[pulumi.Input[bool]] = None,
@@ -431,6 +514,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
             public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
             public_ip_address_pool_name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             total_ip_num: Optional[pulumi.Input[int]] = None,
@@ -442,12 +526,16 @@ class PublicIpAddressPool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] biz_type: The name of the VPC Public IP address pool.
+        :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[str] description: Description.
         :param pulumi.Input[bool] ip_address_remaining: Whether there is a free IP address.
         :param pulumi.Input[str] isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         :param pulumi.Input[str] public_ip_address_pool_name: The name of the VPC Public IP address pool.
         :param pulumi.Input[str] resource_group_id: The resource group ID of the VPC Public IP address pool.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: Security protection level.
+               - If the configuration is empty, the default value is DDoS protection (Basic edition).
+               - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
         :param pulumi.Input[str] status: The status of the VPC Public IP address pool.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
         :param pulumi.Input[int] total_ip_num: The total number of public IP address pools.
@@ -457,6 +545,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
 
         __props__ = _PublicIpAddressPoolState.__new__(_PublicIpAddressPoolState)
 
+        __props__.__dict__["biz_type"] = biz_type
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["ip_address_remaining"] = ip_address_remaining
@@ -464,6 +553,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
         __props__.__dict__["public_ip_address_pool_id"] = public_ip_address_pool_id
         __props__.__dict__["public_ip_address_pool_name"] = public_ip_address_pool_name
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["security_protection_types"] = security_protection_types
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["total_ip_num"] = total_ip_num
@@ -471,10 +561,18 @@ class PublicIpAddressPool(pulumi.CustomResource):
         return PublicIpAddressPool(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="bizType")
+    def biz_type(self) -> pulumi.Output[str]:
+        """
+        The name of the VPC Public IP address pool.
+        """
+        return pulumi.get(self, "biz_type")
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
@@ -522,6 +620,16 @@ class PublicIpAddressPool(pulumi.CustomResource):
         The resource group ID of the VPC Public IP address pool.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityProtectionTypes")
+    def security_protection_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Security protection level.
+        - If the configuration is empty, the default value is DDoS protection (Basic edition).
+        - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+        """
+        return pulumi.get(self, "security_protection_types")
 
     @property
     @pulumi.getter

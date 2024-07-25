@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// For information about CEN and how to use it, see [What is CEN](https://www.alibabacloud.com/help/en/doc-detail/59870.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+
+        /// &gt; **NOTE:** Available since v1.139.0+
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// For information about CEN and how to use it, see [What is CEN](https://www.alibabacloud.com/help/en/doc-detail/59870.htm).
         /// 
-        /// &gt; **NOTE:** Available in v1.139.0+
+        /// &gt; **NOTE:** Available since v1.139.0+
         /// 
         /// ## Example Usage
         /// 

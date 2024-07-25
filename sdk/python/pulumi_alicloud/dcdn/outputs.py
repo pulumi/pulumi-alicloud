@@ -119,48 +119,36 @@ class DomainConfigFunctionArg(dict):
 @pulumi.output_type
 class DomainSource(dict):
     def __init__(__self__, *,
-                 content: str,
-                 type: str,
+                 content: Optional[str] = None,
                  port: Optional[int] = None,
                  priority: Optional[str] = None,
+                 type: Optional[str] = None,
                  weight: Optional[str] = None):
         """
-        :param str content: The origin address.
-        :param str type: The type of the origin. Valid values:
-               `ipaddr`: The origin is configured using an IP address.
-               `domain`: The origin is configured using a domain name.
-               `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
+        :param str content: The address of the source station.
         :param int port: The port number. Valid values: `443` and `80`. Default to `80`.
         :param str priority: The priority of the origin if multiple origins are specified. Default to `20`.
+        :param str type: The type of the origin. Valid values:
         :param str weight: The weight of the origin if multiple origins are specified. Default to `10`.
         """
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "type", type)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
-    def content(self) -> str:
+    def content(self) -> Optional[str]:
         """
-        The origin address.
+        The address of the source station.
         """
         return pulumi.get(self, "content")
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        """
-        The type of the origin. Valid values:
-        `ipaddr`: The origin is configured using an IP address.
-        `domain`: The origin is configured using a domain name.
-        `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
-        """
-        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
@@ -177,6 +165,14 @@ class DomainSource(dict):
         The priority of the origin if multiple origins are specified. Default to `20`.
         """
         return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of the origin. Valid values:
+        """
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter

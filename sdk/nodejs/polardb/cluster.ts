@@ -214,13 +214,13 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
-     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-     * > **NOTE:** This parameter is valid only for standard clusters.
+     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     * > **NOTE:** This parameter is valid only for standard edition clusters.
      */
     public readonly proxyClass!: pulumi.Output<string | undefined>;
     /**
-     * The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-     * > **NOTE:** This parameter is valid only for standard clusters.
+     * The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+     * > **NOTE:** This parameter is valid for both standard and enterprise clusters.
      */
     public readonly proxyType!: pulumi.Output<string | undefined>;
     /**
@@ -689,13 +689,13 @@ export interface ClusterState {
      */
     port?: pulumi.Input<string>;
     /**
-     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-     * > **NOTE:** This parameter is valid only for standard clusters.
+     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     * > **NOTE:** This parameter is valid only for standard edition clusters.
      */
     proxyClass?: pulumi.Input<string>;
     /**
-     * The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-     * > **NOTE:** This parameter is valid only for standard clusters.
+     * The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+     * > **NOTE:** This parameter is valid for both standard and enterprise clusters.
      */
     proxyType?: pulumi.Input<string>;
     /**
@@ -983,13 +983,13 @@ export interface ClusterArgs {
      */
     plannedStartTime?: pulumi.Input<string>;
     /**
-     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-     * > **NOTE:** This parameter is valid only for standard clusters.
+     * The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+     * > **NOTE:** This parameter is valid only for standard edition clusters.
      */
     proxyClass?: pulumi.Input<string>;
     /**
-     * The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-     * > **NOTE:** This parameter is valid only for standard clusters.
+     * The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+     * > **NOTE:** This parameter is valid for both standard and enterprise clusters.
      */
     proxyType?: pulumi.Input<string>;
     /**

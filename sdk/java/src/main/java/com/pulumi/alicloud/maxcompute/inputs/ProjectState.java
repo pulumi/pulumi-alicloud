@@ -8,7 +8,9 @@ import com.pulumi.alicloud.maxcompute.inputs.ProjectPropertiesArgs;
 import com.pulumi.alicloud.maxcompute.inputs.ProjectSecurityPropertiesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,14 +21,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     public static final ProjectState Empty = new ProjectState();
 
     /**
-     * Comments of project
+     * Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Comments of project
+     * @return Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -34,14 +36,29 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Default Computing Resource Group
+     * Represents the creation time of the project
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Represents the creation time of the project
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      * 
      */
     @Import(name="defaultQuota")
     private @Nullable Output<String> defaultQuota;
 
     /**
-     * @return Default Computing Resource Group
+     * @return Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      * 
      */
     public Optional<Output<String>> defaultQuota() {
@@ -49,18 +66,33 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IP whitelist. See `ip_white_list` below.
+     * IP whitelist See `ip_white_list` below.
      * 
      */
     @Import(name="ipWhiteList")
     private @Nullable Output<ProjectIpWhiteListArgs> ipWhiteList;
 
     /**
-     * @return IP whitelist. See `ip_white_list` below.
+     * @return IP whitelist See `ip_white_list` below.
      * 
      */
     public Optional<Output<ProjectIpWhiteListArgs>> ipWhiteList() {
         return Optional.ofNullable(this.ipWhiteList);
+    }
+
+    /**
+     * Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * 
+     */
+    @Import(name="isLogical")
+    private @Nullable Output<String> isLogical;
+
+    /**
+     * @return Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * 
+     */
+    public Optional<Output<String>> isLogical() {
+        return Optional.ofNullable(this.isLogical);
     }
 
     /**
@@ -94,14 +126,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project
+     * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
      * 
      */
     @Import(name="projectName")
     private @Nullable Output<String> projectName;
 
     /**
-     * @return The name of the project
+     * @return The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
      * 
      */
     public Optional<Output<String>> projectName() {
@@ -109,14 +141,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Project base attributes. See `properties` below.
+     * Project base attributes See `properties` below.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<ProjectPropertiesArgs> properties;
 
     /**
-     * @return Project base attributes. See `properties` below.
+     * @return Project base attributes See `properties` below.
      * 
      */
     public Optional<Output<ProjectPropertiesArgs>> properties() {
@@ -124,14 +156,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Security-related attributes. See `security_properties` below.
+     * Security-related attributes See `security_properties` below.
      * 
      */
     @Import(name="securityProperties")
     private @Nullable Output<ProjectSecurityPropertiesArgs> securityProperties;
 
     /**
-     * @return Security-related attributes. See `security_properties` below.
+     * @return Security-related attributes See `security_properties` below.
      * 
      */
     public Optional<Output<ProjectSecurityPropertiesArgs>> securityProperties() {
@@ -139,18 +171,33 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource
+     * The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tag of the resource
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -172,14 +219,17 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
     private ProjectState(ProjectState $) {
         this.comment = $.comment;
+        this.createTime = $.createTime;
         this.defaultQuota = $.defaultQuota;
         this.ipWhiteList = $.ipWhiteList;
+        this.isLogical = $.isLogical;
         this.owner = $.owner;
         this.productType = $.productType;
         this.projectName = $.projectName;
         this.properties = $.properties;
         this.securityProperties = $.securityProperties;
         this.status = $.status;
+        this.tags = $.tags;
         this.type = $.type;
     }
 
@@ -202,7 +252,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment Comments of project
+         * @param comment Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
          * 
          * @return builder
          * 
@@ -213,7 +263,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment Comments of project
+         * @param comment Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
          * 
          * @return builder
          * 
@@ -223,7 +273,28 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultQuota Default Computing Resource Group
+         * @param createTime Represents the creation time of the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Represents the creation time of the project
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param defaultQuota Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
          * 
          * @return builder
          * 
@@ -234,7 +305,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultQuota Default Computing Resource Group
+         * @param defaultQuota Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
          * 
          * @return builder
          * 
@@ -244,7 +315,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhiteList IP whitelist. See `ip_white_list` below.
+         * @param ipWhiteList IP whitelist See `ip_white_list` below.
          * 
          * @return builder
          * 
@@ -255,13 +326,34 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhiteList IP whitelist. See `ip_white_list` below.
+         * @param ipWhiteList IP whitelist See `ip_white_list` below.
          * 
          * @return builder
          * 
          */
         public Builder ipWhiteList(ProjectIpWhiteListArgs ipWhiteList) {
             return ipWhiteList(Output.of(ipWhiteList));
+        }
+
+        /**
+         * @param isLogical Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isLogical(@Nullable Output<String> isLogical) {
+            $.isLogical = isLogical;
+            return this;
+        }
+
+        /**
+         * @param isLogical Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isLogical(String isLogical) {
+            return isLogical(Output.of(isLogical));
         }
 
         /**
@@ -307,7 +399,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName The name of the project
+         * @param projectName The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
          * 
          * @return builder
          * 
@@ -318,7 +410,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName The name of the project
+         * @param projectName The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
          * 
          * @return builder
          * 
@@ -328,7 +420,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties Project base attributes. See `properties` below.
+         * @param properties Project base attributes See `properties` below.
          * 
          * @return builder
          * 
@@ -339,7 +431,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties Project base attributes. See `properties` below.
+         * @param properties Project base attributes See `properties` below.
          * 
          * @return builder
          * 
@@ -349,7 +441,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityProperties Security-related attributes. See `security_properties` below.
+         * @param securityProperties Security-related attributes See `security_properties` below.
          * 
          * @return builder
          * 
@@ -360,7 +452,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityProperties Security-related attributes. See `security_properties` below.
+         * @param securityProperties Security-related attributes See `security_properties` below.
          * 
          * @return builder
          * 
@@ -370,7 +462,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
          * 
          * @return builder
          * 
@@ -381,13 +473,34 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**
