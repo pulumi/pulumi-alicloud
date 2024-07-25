@@ -10,18 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a Vpc Vpc resource. A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
+    /// Provides a VPC Vpc resource.
     /// 
-    /// &gt; **NOTE:** Available since v1.0.0.
+    /// A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
     /// 
     /// &gt; **NOTE:** This resource will auto build a router and a route table while it uses `alicloud.vpc.Network` to build a vpc resource.
+    /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
     /// 
     /// ## Module Support
     /// 
     /// You can use the existing vpc module
     /// to create a VPC and several VSwitches one-click.
     /// 
-    /// For information about Vpc Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
+    /// For information about VPC Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
     /// 
     /// ## Example Usage
     /// 
@@ -51,7 +53,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// Vpc Vpc can be imported using the id, e.g.
+    /// VPC Vpc can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/network:Network example &lt;id&gt;
@@ -61,7 +63,9 @@ namespace Pulumi.AliCloud.Vpc
     public partial class Network : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
+        /// The CIDR block of the VPC.
+        /// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
+        /// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
         /// </summary>
         [Output("cidrBlock")]
         public Output<string> CidrBlock { get; private set; } = null!;
@@ -79,32 +83,33 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC description. Defaults to null.
+        /// The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to PreCheck only this request. Value:
-        /// - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-        /// - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
+        /// Specifies whether to perform a dry run. Valid values:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable the IPv6 network segment. Value:
-        /// - **false** (default): not enabled.
-        /// - **true**: on.
+        /// The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("enableIpv6")]
         public Output<bool?> EnableIpv6 { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+        /// </summary>
         [Output("ipv4IpamPoolId")]
         public Output<string?> Ipv4IpamPoolId { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv6 CIDR block of the VPC.
+        /// The IPv6 CIDR block of the default VPC.
+        /// 
+        /// &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
         /// </summary>
         [Output("ipv6CidrBlock")]
         public Output<string> Ipv6CidrBlock { get; private set; } = null!;
@@ -117,14 +122,21 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The IPv6 address segment type of the VPC. Value:
-        /// - **BGP** (default): Alibaba Cloud BGP IPv6.
-        /// - **ChinaMobile**: China Mobile (single line).
-        /// - **ChinaUnicom**: China Unicom (single line).
-        /// - **ChinaTelecom**: China Telecom (single line).
-        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        /// - `BGP` (default): Alibaba Cloud BGP IPv6.
+        /// - `ChinaMobile`: China Mobile (single line).
+        /// - `ChinaUnicom`: China Unicom (single line).
+        /// - `ChinaTelecom`: China Telecom (single line).
+        /// 
+        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
         /// </summary>
         [Output("ipv6Isp")]
         public Output<string?> Ipv6Isp { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to create the default VPC in the specified region. Valid values:
+        /// </summary>
+        [Output("isDefault")]
+        public Output<bool?> IsDefault { get; private set; } = null!;
 
         /// <summary>
         /// . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
@@ -133,25 +145,27 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group to which the VPC belongs.
+        /// The ID of the resource group to which you want to move the resource.
+        /// 
+        /// &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The route table ID of the router created by default on VPC creation.
+        /// The ID of the route table that you want to query.
         /// </summary>
         [Output("routeTableId")]
         public Output<string> RouteTableId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the router created by default on VPC creation.
+        /// The region ID of the VPC to which the route table belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/36063.html) operation to query the most recent region list.
         /// </summary>
         [Output("routerId")]
         public Output<string> RouterId { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        /// . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
         /// </summary>
         [Output("routerTableId")]
         public Output<string> RouterTableId { get; private set; } = null!;
@@ -163,10 +177,22 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableArray<string>> SecondaryCidrBlocks { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the VPC.   **Pending**: The VPC is being configured. **Available**: The VPC is available.
+        /// The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        /// </summary>
+        [Output("systemRouteTableDescription")]
+        public Output<string?> SystemRouteTableDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// </summary>
+        [Output("systemRouteTableName")]
+        public Output<string?> SystemRouteTableName { get; private set; } = null!;
 
         /// <summary>
         /// The tags of Vpc.
@@ -181,7 +207,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableArray<string>> UserCidrs { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the VPC. Defaults to null.
+        /// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -235,7 +261,9 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
+        /// The CIDR block of the VPC.
+        /// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
+        /// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
         /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
@@ -247,40 +275,54 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? ClassicLinkEnabled { get; set; }
 
         /// <summary>
-        /// The VPC description. Defaults to null.
+        /// The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to PreCheck only this request. Value:
-        /// - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-        /// - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
+        /// Specifies whether to perform a dry run. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether to enable the IPv6 network segment. Value:
-        /// - **false** (default): not enabled.
-        /// - **true**: on.
+        /// The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 
+        /// <summary>
+        /// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+        /// </summary>
         [Input("ipv4IpamPoolId")]
         public Input<string>? Ipv4IpamPoolId { get; set; }
 
         /// <summary>
+        /// The IPv6 CIDR block of the default VPC.
+        /// 
+        /// &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+        /// </summary>
+        [Input("ipv6CidrBlock")]
+        public Input<string>? Ipv6CidrBlock { get; set; }
+
+        /// <summary>
         /// The IPv6 address segment type of the VPC. Value:
-        /// - **BGP** (default): Alibaba Cloud BGP IPv6.
-        /// - **ChinaMobile**: China Mobile (single line).
-        /// - **ChinaUnicom**: China Unicom (single line).
-        /// - **ChinaTelecom**: China Telecom (single line).
-        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        /// - `BGP` (default): Alibaba Cloud BGP IPv6.
+        /// - `ChinaMobile`: China Mobile (single line).
+        /// - `ChinaUnicom`: China Unicom (single line).
+        /// - `ChinaTelecom`: China Telecom (single line).
+        /// 
+        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
         /// </summary>
         [Input("ipv6Isp")]
         public Input<string>? Ipv6Isp { get; set; }
+
+        /// <summary>
+        /// Specifies whether to create the default VPC in the specified region. Valid values:
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
 
         /// <summary>
         /// . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
@@ -289,7 +331,9 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which the VPC belongs.
+        /// The ID of the resource group to which you want to move the resource.
+        /// 
+        /// &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -306,6 +350,18 @@ namespace Pulumi.AliCloud.Vpc
             get => _secondaryCidrBlocks ?? (_secondaryCidrBlocks = new InputList<string>());
             set => _secondaryCidrBlocks = value;
         }
+
+        /// <summary>
+        /// The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        /// </summary>
+        [Input("systemRouteTableDescription")]
+        public Input<string>? SystemRouteTableDescription { get; set; }
+
+        /// <summary>
+        /// The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// </summary>
+        [Input("systemRouteTableName")]
+        public Input<string>? SystemRouteTableName { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -332,7 +388,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The name of the VPC. Defaults to null.
+        /// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
@@ -348,7 +404,9 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
+        /// The CIDR block of the VPC.
+        /// - You can specify one of the following CIDR blocks or their subsets as the primary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8. These CIDR blocks are standard private CIDR blocks as defined by Request for Comments (RFC) documents. The subnet mask must be 8 to 28 bits in length.
+        /// - You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, and their subnets as the primary IPv4 CIDR block of the VPC.
         /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
@@ -366,32 +424,33 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The VPC description. Defaults to null.
+        /// The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to PreCheck only this request. Value:
-        /// - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-        /// - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
+        /// Specifies whether to perform a dry run. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether to enable the IPv6 network segment. Value:
-        /// - **false** (default): not enabled.
-        /// - **true**: on.
+        /// The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 
+        /// <summary>
+        /// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
+        /// </summary>
         [Input("ipv4IpamPoolId")]
         public Input<string>? Ipv4IpamPoolId { get; set; }
 
         /// <summary>
-        /// The IPv6 CIDR block of the VPC.
+        /// The IPv6 CIDR block of the default VPC.
+        /// 
+        /// &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
         /// </summary>
         [Input("ipv6CidrBlock")]
         public Input<string>? Ipv6CidrBlock { get; set; }
@@ -410,14 +469,21 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The IPv6 address segment type of the VPC. Value:
-        /// - **BGP** (default): Alibaba Cloud BGP IPv6.
-        /// - **ChinaMobile**: China Mobile (single line).
-        /// - **ChinaUnicom**: China Unicom (single line).
-        /// - **ChinaTelecom**: China Telecom (single line).
-        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        /// - `BGP` (default): Alibaba Cloud BGP IPv6.
+        /// - `ChinaMobile`: China Mobile (single line).
+        /// - `ChinaUnicom`: China Unicom (single line).
+        /// - `ChinaTelecom`: China Telecom (single line).
+        /// 
+        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
         /// </summary>
         [Input("ipv6Isp")]
         public Input<string>? Ipv6Isp { get; set; }
+
+        /// <summary>
+        /// Specifies whether to create the default VPC in the specified region. Valid values:
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
 
         /// <summary>
         /// . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
@@ -426,25 +492,27 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which the VPC belongs.
+        /// The ID of the resource group to which you want to move the resource.
+        /// 
+        /// &gt; **NOTE:**   You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The route table ID of the router created by default on VPC creation.
+        /// The ID of the route table that you want to query.
         /// </summary>
         [Input("routeTableId")]
         public Input<string>? RouteTableId { get; set; }
 
         /// <summary>
-        /// The ID of the router created by default on VPC creation.
+        /// The region ID of the VPC to which the route table belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/36063.html) operation to query the most recent region list.
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
 
         /// <summary>
-        /// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        /// . Field 'router_table_id' has been deprecated from provider version 1.227.1. New field 'route_table_id' instead.
         /// </summary>
         [Input("routerTableId")]
         public Input<string>? RouterTableId { get; set; }
@@ -463,10 +531,22 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The status of the VPC.   **Pending**: The VPC is being configured. **Available**: The VPC is available.
+        /// The status of the VPC.   `Pending`: The VPC is being configured. `Available`: The VPC is available.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The description of the route table. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        /// </summary>
+        [Input("systemRouteTableDescription")]
+        public Input<string>? SystemRouteTableDescription { get; set; }
+
+        /// <summary>
+        /// The name of the route table. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// </summary>
+        [Input("systemRouteTableName")]
+        public Input<string>? SystemRouteTableName { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -493,7 +573,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The name of the VPC. Defaults to null.
+        /// The new name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`. 
         /// 
         /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>

@@ -19,14 +19,14 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     public static final ServerGroupServerArgs Empty = new ServerGroupServerArgs();
 
     /**
-     * The port used by the backend server. Valid value range: [1-65535].
+     * The port used by the backend server. Valid values: `1` to `65535`.
      * 
      */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
     /**
-     * @return The port used by the backend server. Valid value range: [1-65535].
+     * @return The port used by the backend server. Valid values: `1` to `65535`.
      * 
      */
     public Output<Integer> port() {
@@ -34,14 +34,14 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A list backend server ID (ECS instance ID).
+     * The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
      * 
      */
     @Import(name="serverIds", required=true)
     private Output<List<String>> serverIds;
 
     /**
-     * @return A list backend server ID (ECS instance ID).
+     * @return The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
      * 
      */
     public Output<List<String>> serverIds() {
@@ -49,14 +49,14 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Type of the backend server. Valid value ecs, eni. Default to eni.
+     * Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the backend server. Valid value ecs, eni. Default to eni.
+     * @return Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -64,14 +64,14 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Weight of the backend server. Valid value range: [0-100]. Default to 100.
+     * Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
      * 
      */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
     /**
-     * @return Weight of the backend server. Valid value range: [0-100]. Default to 100.
+     * @return Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
      * 
      */
     public Optional<Output<Integer>> weight() {
@@ -106,7 +106,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param port The port used by the backend server. Valid value range: [1-65535].
+         * @param port The port used by the backend server. Valid values: `1` to `65535`.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param port The port used by the backend server. Valid value range: [1-65535].
+         * @param port The port used by the backend server. Valid values: `1` to `65535`.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverIds A list backend server ID (ECS instance ID).
+         * @param serverIds The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverIds A list backend server ID (ECS instance ID).
+         * @param serverIds The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverIds A list backend server ID (ECS instance ID).
+         * @param serverIds The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Type of the backend server. Valid value ecs, eni. Default to eni.
+         * @param type Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Type of the backend server. Valid value ecs, eni. Default to eni.
+         * @param type Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param weight Weight of the backend server. Valid value range: [0-100]. Default to 100.
+         * @param weight Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param weight Weight of the backend server. Valid value range: [0-100]. Default to 100.
+         * @param weight Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
          * 
          * @return builder
          * 

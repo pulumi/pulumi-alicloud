@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Cloud Firewall Control Policy resource.
+ * Provides a Cloud Firewall Control Policy Order resource.
  *
  * For information about Cloud Firewall Control Policy Order and how to use it, see [What is Control Policy Order](https://www.alibabacloud.com/help/doc-detail/138867.htm).
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *
@@ -19,20 +19,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example1 = new alicloud.cloudfirewall.ControlPolicy("example1", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.cloudfirewall.ControlPolicy("default", {
+ *     direction: "in",
  *     applicationName: "ANY",
+ *     description: name,
  *     aclAction: "accept",
- *     description: "example",
- *     destinationType: "net",
- *     destination: "100.1.1.0/24",
- *     direction: "out",
- *     proto: "ANY",
- *     source: "1.2.3.0/24",
+ *     source: "127.0.0.1/32",
  *     sourceType: "net",
+ *     destination: "127.0.0.2/32",
+ *     destinationType: "net",
+ *     proto: "ANY",
  * });
- * const example2 = new alicloud.cloudfirewall.ControlPolicyOrder("example2", {
- *     aclUuid: example1.aclUuid,
- *     direction: example1.direction,
+ * const defaultControlPolicyOrder = new alicloud.cloudfirewall.ControlPolicyOrder("default", {
+ *     aclUuid: _default.aclUuid,
+ *     direction: _default.direction,
  *     order: 1,
  * });
  * ```
@@ -78,13 +80,14 @@ export class ControlPolicyOrder extends pulumi.CustomResource {
      */
     public readonly aclUuid!: pulumi.Output<string>;
     /**
-     * Direction. Valid values: `in`, `out`.
+     * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      */
     public readonly direction!: pulumi.Output<string>;
     /**
-     * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+     * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+     * > **NOTE:** From version 1.227.1, `order` must be set.
      */
-    public readonly order!: pulumi.Output<number | undefined>;
+    public readonly order!: pulumi.Output<number>;
 
     /**
      * Create a ControlPolicyOrder resource with the given unique name, arguments, and options.
@@ -110,6 +113,9 @@ export class ControlPolicyOrder extends pulumi.CustomResource {
             if ((!args || args.direction === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'direction'");
             }
+            if ((!args || args.order === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'order'");
+            }
             resourceInputs["aclUuid"] = args ? args.aclUuid : undefined;
             resourceInputs["direction"] = args ? args.direction : undefined;
             resourceInputs["order"] = args ? args.order : undefined;
@@ -128,11 +134,12 @@ export interface ControlPolicyOrderState {
      */
     aclUuid?: pulumi.Input<string>;
     /**
-     * Direction. Valid values: `in`, `out`.
+     * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      */
     direction?: pulumi.Input<string>;
     /**
-     * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+     * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+     * > **NOTE:** From version 1.227.1, `order` must be set.
      */
     order?: pulumi.Input<number>;
 }
@@ -146,11 +153,12 @@ export interface ControlPolicyOrderArgs {
      */
     aclUuid: pulumi.Input<string>;
     /**
-     * Direction. Valid values: `in`, `out`.
+     * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      */
     direction: pulumi.Input<string>;
     /**
-     * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+     * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+     * > **NOTE:** From version 1.227.1, `order` must be set.
      */
-    order?: pulumi.Input<number>;
+    order: pulumi.Input<number>;
 }

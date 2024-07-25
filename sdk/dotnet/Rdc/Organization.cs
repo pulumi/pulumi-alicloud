@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Rdc
     /// <summary>
     /// Provides a RDC Organization resource.
     /// 
-    /// For information about RDC Organization and how to use it, see [What is Organization](https://help.aliyun.com/product/51588.html).
+    /// For information about RDC Organization and how to use it, see [What is Organization](https://help.aliyun.com/document_detail/51678.html).
     /// 
     /// &gt; **NOTE:** Available in v1.137.0+.
     /// 

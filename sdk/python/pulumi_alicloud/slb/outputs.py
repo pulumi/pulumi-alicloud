@@ -296,10 +296,10 @@ class ServerGroupServer(dict):
                  type: Optional[str] = None,
                  weight: Optional[int] = None):
         """
-        :param int port: The port used by the backend server. Valid value range: [1-65535].
-        :param Sequence[str] server_ids: A list backend server ID (ECS instance ID).
-        :param str type: Type of the backend server. Valid value ecs, eni. Default to eni.
-        :param int weight: Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        :param int port: The port used by the backend server. Valid values: `1` to `65535`.
+        :param Sequence[str] server_ids: The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
+        :param str type: Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
+        :param int weight: Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_ids", server_ids)
@@ -312,7 +312,7 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        The port used by the backend server. Valid value range: [1-65535].
+        The port used by the backend server. Valid values: `1` to `65535`.
         """
         return pulumi.get(self, "port")
 
@@ -320,7 +320,7 @@ class ServerGroupServer(dict):
     @pulumi.getter(name="serverIds")
     def server_ids(self) -> Sequence[str]:
         """
-        A list backend server ID (ECS instance ID).
+        The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
         """
         return pulumi.get(self, "server_ids")
 
@@ -328,7 +328,7 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Type of the backend server. Valid value ecs, eni. Default to eni.
+        Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
         """
         return pulumi.get(self, "type")
 
@@ -336,7 +336,7 @@ class ServerGroupServer(dict):
     @pulumi.getter
     def weight(self) -> Optional[int]:
         """
-        Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
         """
         return pulumi.get(self, "weight")
 

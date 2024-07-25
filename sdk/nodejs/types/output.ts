@@ -14962,28 +14962,25 @@ export namespace dcdn {
 
     export interface DomainSource {
         /**
-         * The origin address.
+         * The address of the source station.
          */
-        content: string;
+        content?: string;
         /**
          * The port number. Valid values: `443` and `80`. Default to `80`.
          */
-        port?: number;
+        port: number;
         /**
          * The priority of the origin if multiple origins are specified. Default to `20`.
          */
-        priority?: string;
+        priority: string;
         /**
          * The type of the origin. Valid values:
-         * `ipaddr`: The origin is configured using an IP address.
-         * `domain`: The origin is configured using a domain name.
-         * `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
          */
-        type: string;
+        type?: string;
         /**
          * The weight of the origin if multiple origins are specified. Default to `10`.
          */
-        weight?: string;
+        weight: string;
     }
 
     export interface ErEnvConf {
@@ -16941,15 +16938,15 @@ export namespace dfs {
 export namespace directmail {
     export interface GetDomainsDomain {
         /**
-         * Track verification.
+         * Indicates whether your ownership of the domain is verified.
          */
         cnameAuthStatus: string;
         /**
-         * Indicates whether the CNAME record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+         * Indicates whether the CNAME record is successfully verified. **Note:** `cnameConfirmStatus` takes effect only if `enableDetails` is set to `true`.
          */
         cnameConfirmStatus: string;
         /**
-         * The value of the CNAME record.
+         * The value of the CNAME record. **Note:** `cnameRecord` takes effect only if `enableDetails` is set to `true`.
          */
         cnameRecord: string;
         /**
@@ -16957,19 +16954,47 @@ export namespace directmail {
          */
         createTime: string;
         /**
-         * The default domain name.
+         * The default domain name. **Note:** `defaultDomain` takes effect only if `enableDetails` is set to `true`.
          */
         defaultDomain: string;
         /**
-         * The value of the MX record.
+         * (Available since v1.227.1) The DKIM validation flag. **Note:** `dkimAuthStatus` takes effect only if `enableDetails` is set to `true`.
+         */
+        dkimAuthStatus: string;
+        /**
+         * (Available since v1.227.1) The DKIM public key. **Note:** `dkimPublicKey` takes effect only if `enableDetails` is set to `true`.
+         */
+        dkimPublicKey: string;
+        /**
+         * (Available since v1.227.1) The DKIM Host Record. **Note:** `dkimRr` takes effect only if `enableDetails` is set to `true`.
+         */
+        dkimRr: string;
+        /**
+         * (Available since v1.227.1) The DMARC validation flag. **Note:** `dmarcAuthStatus` takes effect only if `enableDetails` is set to `true`.
+         */
+        dmarcAuthStatus: string;
+        /**
+         * (Available since v1.227.1) The DMARC Host Record. **Note:** `dmarcHostRecord` takes effect only if `enableDetails` is set to `true`.
+         */
+        dmarcHostRecord: string;
+        /**
+         * (Available since v1.227.1) The DMARC record. **Note:** `dmarcRecord` takes effect only if `enableDetails` is set to `true`.
+         */
+        dmarcRecord: string;
+        /**
+         * (Available since v1.227.1) The DMARC record value resolved through public DNS. **Note:** `dnsDmarc` takes effect only if `enableDetails` is set to `true`.
+         */
+        dnsDmarc: string;
+        /**
+         * The MX record value resolved through public DNS. **Note:** `dnsMx` takes effect only if `enableDetails` is set to `true`.
          */
         dnsMx: string;
         /**
-         * The value of the SPF record.
+         * The SPF record value resolved through public DNS. **Note:** `dnsSpf` takes effect only if `enableDetails` is set to `true`.
          */
         dnsSpf: string;
         /**
-         * The value of the TXT ownership record.
+         * The TXT record value resolved through public DNS. **Note:** `dnsTxt` takes effect only if `enableDetails` is set to `true`.
          */
         dnsTxt: string;
         /**
@@ -16981,11 +17006,19 @@ export namespace directmail {
          */
         domainName: string;
         /**
-         * The type of the domain.
+         * (Available since v1.227.1) The value of the Domain record.
+         */
+        domainRecord: string;
+        /**
+         * The type of the domain. **Note:** `domainType` takes effect only if `enableDetails` is set to `true`.
          */
         domainType: string;
         /**
-         * The status of ICP filing. Valid values: `0` and `1`. `0`: indicates that the domain name is not filed. `1`: indicates that the domain name is filed.
+         * (Available since v1.227.1) The value of the host record. **Note:** `hostRecord` takes effect only if `enableDetails` is set to `true`.
+         */
+        hostRecord: string;
+        /**
+         * The status of ICP filing.
          */
         icpStatus: string;
         /**
@@ -16993,31 +17026,31 @@ export namespace directmail {
          */
         id: string;
         /**
-         * Indicates whether the MX record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+         * Indicates whether the MX record is successfully verified.
          */
         mxAuthStatus: string;
         /**
-         * The MX verification record provided by Alibaba Cloud DNS.
+         * The MX verification record provided by the Direct Mail console. **Note:** `mxRecord` takes effect only if `enableDetails` is set to `true`.
          */
         mxRecord: string;
         /**
-         * Indicates whether the SPF record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+         * Indicates whether the SPF record is successfully verified.
          */
         spfAuthStatus: string;
         /**
-         * The SPF verification record provided by Alibaba Cloud DNS.
+         * The SPF verification record provided by the Direct Mail console. **Note:** `spfRecord` takes effect only if `enableDetails` is set to `true`.
          */
         spfRecord: string;
         /**
-         * The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+         * The status of the domain name. Valid values:
          */
         status: string;
         /**
-         * The primary domain name.
+         * The primary domain name. **Note:** `tlDomainName` takes effect only if `enableDetails` is set to `true`.
          */
         tlDomainName: string;
         /**
-         * The CNAME verification record provided by Alibaba Cloud DNS.
+         * The CNAME verification record provided by the Direct Mail console. **Note:** `tracefRecord` takes effect only if `enableDetails` is set to `true`.
          */
         tracefRecord: string;
     }
@@ -19345,6 +19378,8 @@ export namespace eci {
         failureThreshold?: number;
         /**
          * Health check using HTTP request method. See `httpGet` below.
+         *
+         * > **NOTE:** When you configure `readinessProbe`, you can select only one of the `exec`, `tcpSocket`, `httpGet`.
          */
         httpGets?: outputs.eci.ContainerGroupContainerLivenessProbeHttpGet[];
         /**
@@ -19402,6 +19437,8 @@ export namespace eci {
         failureThreshold?: number;
         /**
          * Health check using HTTP request method. See `httpGet` below.
+         *
+         * > **NOTE:** When you configure `readinessProbe`, you can select only one of the `exec`, `tcpSocket`, `httpGet`.
          */
         httpGets?: outputs.eci.ContainerGroupContainerReadinessProbeHttpGet[];
         /**
@@ -23719,21 +23756,29 @@ export namespace ecs {
 
     export interface InstanceNetworkInterfaces {
         /**
-         * The ID of the secondary ENI.
+         * The index of the network card for Secondary ENI.
+         */
+        networkCardIndex: number;
+        /**
+         * The ID of the Secondary ENI.
          */
         networkInterfaceId: string;
         /**
-         * The communication mode of the ENI. Default value: `Standard`. Valid values:
+         * The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
          * - `Standard`: Uses the TCP communication mode.
          * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
          */
         networkInterfaceTrafficMode: string;
         /**
-         * The ID of security group N to which to assign ENI N.
+         * The number of queues supported by the ERI.
+         */
+        queuePairNumber: number;
+        /**
+         * The ID of security group N to which to assign Secondary ENI N.
          */
         securityGroupIds: string[];
         /**
-         * The ID of the vSwitch to which to connect ENI N.
+         * The ID of the vSwitch to which to connect Secondary ENI N.
          */
         vswitchId: string;
     }
@@ -34569,63 +34614,64 @@ export namespace maxcompute {
 
     export interface ProjectIpWhiteList {
         /**
-         * Classic network IP white list.
+         * Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
          */
         ipList?: string;
         /**
-         * VPC network whitelist.
+         * Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
          */
         vpcIpList?: string;
     }
 
     export interface ProjectProperties {
         /**
-         * Whether to allow full table scan.
+         * Whether to allow full table scan. Default: false.
          */
-        allowFullScan: boolean;
+        allowFullScan?: boolean;
         /**
          * Whether to turn on Decimal2.0.
          */
-        enableDecimal2: boolean;
+        enableDecimal2?: boolean;
         /**
-         * Whether encryption is turned on. See `encryption` below.
+         * Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+         * > **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
          */
-        encryption: outputs.maxcompute.ProjectPropertiesEncryption;
+        encryption?: outputs.maxcompute.ProjectPropertiesEncryption;
         /**
-         * Job default retention time.
+         * Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
          */
-        retentionDays: number;
+        retentionDays?: number;
         /**
-         * SQL charge limit.
+         * Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
          */
-        sqlMeteringMax: string;
+        sqlMeteringMax?: string;
         /**
-         * Life cycle of tables. See `tableLifecycle` below.
+         * Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `tableLifecycle` below.
          */
         tableLifecycle: outputs.maxcompute.ProjectPropertiesTableLifecycle;
         /**
-         * Project time zone.
+         * Project time zone, example value: Asia/Shanghai.
          */
         timezone: string;
         /**
-         * Type system.
+         * Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
          */
-        typeSystem: string;
+        typeSystem?: string;
     }
 
     export interface ProjectPropertiesEncryption {
         /**
-         * Algorithm.
+         * The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
          */
-        algorithm: string;
+        algorithm?: string;
         /**
-         * Whether to open.
+         * Only enable function is supported. Value: (true).
          */
-        enable: boolean;
+        enable?: boolean;
         /**
-         * Encryption algorithm key.
+         * The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
          */
-        key: string;
+        key?: string;
     }
 
     export interface ProjectPropertiesTableLifecycle {
@@ -34634,51 +34680,51 @@ export namespace maxcompute {
          */
         type: string;
         /**
-         * The value of the life cycle.
+         * The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
          */
         value: string;
     }
 
     export interface ProjectSecurityProperties {
         /**
-         * Whether to enable download permission check.
+         * Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
          */
-        enableDownloadPrivilege: boolean;
+        enableDownloadPrivilege?: boolean;
         /**
-         * Label authorization.
+         * Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
          */
-        labelSecurity: boolean;
+        labelSecurity?: boolean;
         /**
-         * Project creator permissions.
+         * Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
          */
-        objectCreatorHasAccessPermission: boolean;
+        objectCreatorHasAccessPermission?: boolean;
         /**
-         * Does the project creator have authorization rights.
+         * The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
          */
-        objectCreatorHasGrantPermission: boolean;
+        objectCreatorHasGrantPermission?: boolean;
         /**
          * Project protection. See `projectProtection` below.
          */
-        projectProtection: outputs.maxcompute.ProjectSecurityPropertiesProjectProtection;
+        projectProtection?: outputs.maxcompute.ProjectSecurityPropertiesProjectProtection;
         /**
-         * Whether to turn on ACL.
+         * Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          */
-        usingAcl: boolean;
+        usingAcl?: boolean;
         /**
-         * Whether to enable Policy.
+         * Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          */
-        usingPolicy: boolean;
+        usingPolicy?: boolean;
     }
 
     export interface ProjectSecurityPropertiesProjectProtection {
         /**
-         * Exclusion policy.
+         * Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
          */
-        exceptionPolicy: string;
+        exceptionPolicy?: string;
         /**
-         * Is it turned on.
+         * Whether enabled, value:(true/false).
          */
-        protected: boolean;
+        protected?: boolean;
     }
 
 }
@@ -46871,19 +46917,19 @@ export namespace slb {
 
     export interface ServerGroupServer {
         /**
-         * The port used by the backend server. Valid value range: [1-65535].
+         * The port used by the backend server. Valid values: `1` to `65535`.
          */
         port: number;
         /**
-         * A list backend server ID (ECS instance ID).
+         * The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
          */
         serverIds: string[];
         /**
-         * Type of the backend server. Valid value ecs, eni. Default to eni.
+         * Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
          */
         type?: string;
         /**
-         * Weight of the backend server. Valid value range: [0-100]. Default to 100.
+         * Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
          */
         weight?: number;
     }
@@ -50084,16 +50130,19 @@ export namespace vpc {
 
     export interface NetworkIpv6CidrBlock {
         /**
-         * The IPv6 CIDR block of the VPC.
+         * The IPv6 CIDR block of the default VPC.
+         *
+         * > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
          */
         ipv6CidrBlock: string;
         /**
          * The IPv6 address segment type of the VPC. Value:
-         * - **BGP** (default): Alibaba Cloud BGP IPv6.
-         * - **ChinaMobile**: China Mobile (single line).
-         * - **ChinaUnicom**: China Unicom (single line).
-         * - **ChinaTelecom**: China Telecom (single line).
-         * > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+         * - `BGP` (default): Alibaba Cloud BGP IPv6.
+         * - `ChinaMobile`: China Mobile (single line).
+         * - `ChinaUnicom`: China Unicom (single line).
+         * - `ChinaTelecom`: China Telecom (single line).
+         *
+         * > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
          */
         ipv6Isp: string;
     }

@@ -20,14 +20,14 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
     public static final ProjectPropertiesArgs Empty = new ProjectPropertiesArgs();
 
     /**
-     * Whether to allow full table scan.
+     * Whether to allow full table scan. Default: false.
      * 
      */
     @Import(name="allowFullScan")
     private @Nullable Output<Boolean> allowFullScan;
 
     /**
-     * @return Whether to allow full table scan.
+     * @return Whether to allow full table scan. Default: false.
      * 
      */
     public Optional<Output<Boolean>> allowFullScan() {
@@ -50,14 +50,16 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether encryption is turned on. See `encryption` below.
+     * Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+     * &gt; **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
      * 
      */
     @Import(name="encryption")
     private @Nullable Output<ProjectPropertiesEncryptionArgs> encryption;
 
     /**
-     * @return Whether encryption is turned on. See `encryption` below.
+     * @return Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+     * &gt; **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
      * 
      */
     public Optional<Output<ProjectPropertiesEncryptionArgs>> encryption() {
@@ -65,14 +67,14 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Job default retention time.
+     * Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
      * 
      */
     @Import(name="retentionDays")
     private @Nullable Output<Integer> retentionDays;
 
     /**
-     * @return Job default retention time.
+     * @return Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
      * 
      */
     public Optional<Output<Integer>> retentionDays() {
@@ -80,14 +82,14 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * SQL charge limit.
+     * Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
      * 
      */
     @Import(name="sqlMeteringMax")
     private @Nullable Output<String> sqlMeteringMax;
 
     /**
-     * @return SQL charge limit.
+     * @return Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
      * 
      */
     public Optional<Output<String>> sqlMeteringMax() {
@@ -95,14 +97,14 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Life cycle of tables. See `table_lifecycle` below.
+     * Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `table_lifecycle` below.
      * 
      */
     @Import(name="tableLifecycle")
     private @Nullable Output<ProjectPropertiesTableLifecycleArgs> tableLifecycle;
 
     /**
-     * @return Life cycle of tables. See `table_lifecycle` below.
+     * @return Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `table_lifecycle` below.
      * 
      */
     public Optional<Output<ProjectPropertiesTableLifecycleArgs>> tableLifecycle() {
@@ -110,14 +112,14 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Project time zone.
+     * Project time zone, example value: Asia/Shanghai.
      * 
      */
     @Import(name="timezone")
     private @Nullable Output<String> timezone;
 
     /**
-     * @return Project time zone.
+     * @return Project time zone, example value: Asia/Shanghai.
      * 
      */
     public Optional<Output<String>> timezone() {
@@ -125,14 +127,14 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Type system.
+     * Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
      * 
      */
     @Import(name="typeSystem")
     private @Nullable Output<String> typeSystem;
 
     /**
-     * @return Type system.
+     * @return Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
      * 
      */
     public Optional<Output<String>> typeSystem() {
@@ -171,7 +173,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowFullScan Whether to allow full table scan.
+         * @param allowFullScan Whether to allow full table scan. Default: false.
          * 
          * @return builder
          * 
@@ -182,7 +184,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowFullScan Whether to allow full table scan.
+         * @param allowFullScan Whether to allow full table scan. Default: false.
          * 
          * @return builder
          * 
@@ -213,7 +215,8 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param encryption Whether encryption is turned on. See `encryption` below.
+         * @param encryption Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+         * &gt; **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
          * 
          * @return builder
          * 
@@ -224,7 +227,8 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param encryption Whether encryption is turned on. See `encryption` below.
+         * @param encryption Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+         * &gt; **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
          * 
          * @return builder
          * 
@@ -234,7 +238,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param retentionDays Job default retention time.
+         * @param retentionDays Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
          * 
          * @return builder
          * 
@@ -245,7 +249,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param retentionDays Job default retention time.
+         * @param retentionDays Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
          * 
          * @return builder
          * 
@@ -255,7 +259,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sqlMeteringMax SQL charge limit.
+         * @param sqlMeteringMax Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
          * 
          * @return builder
          * 
@@ -266,7 +270,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sqlMeteringMax SQL charge limit.
+         * @param sqlMeteringMax Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
          * 
          * @return builder
          * 
@@ -276,7 +280,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tableLifecycle Life cycle of tables. See `table_lifecycle` below.
+         * @param tableLifecycle Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `table_lifecycle` below.
          * 
          * @return builder
          * 
@@ -287,7 +291,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tableLifecycle Life cycle of tables. See `table_lifecycle` below.
+         * @param tableLifecycle Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `table_lifecycle` below.
          * 
          * @return builder
          * 
@@ -297,7 +301,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param timezone Project time zone.
+         * @param timezone Project time zone, example value: Asia/Shanghai.
          * 
          * @return builder
          * 
@@ -308,7 +312,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param timezone Project time zone.
+         * @param timezone Project time zone, example value: Asia/Shanghai.
          * 
          * @return builder
          * 
@@ -318,7 +322,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param typeSystem Type system.
+         * @param typeSystem Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
          * 
          * @return builder
          * 
@@ -329,7 +333,7 @@ public final class ProjectPropertiesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param typeSystem Type system.
+         * @param typeSystem Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
          * 
          * @return builder
          * 

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -19,20 +19,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.directmail.getDomains({
- *     ids: ["example_id"],
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example.pop.com";
+ * const _default = new alicloud.directmail.Domain("default", {domainName: name});
+ * const ids = alicloud.directmail.getDomainsOutput({
+ *     ids: [_default.id],
  * });
- * export const directMailDomainId1 = ids.then(ids => ids.domains?.[0]?.id);
- * const nameRegex = alicloud.directmail.getDomains({
- *     nameRegex: "^my-Domain",
- * });
- * export const directMailDomainId2 = nameRegex.then(nameRegex => nameRegex.domains?.[0]?.id);
- * const example = alicloud.directmail.getDomains({
- *     status: "1",
- *     keyWord: "^my-Domain",
- *     ids: ["example_id"],
- * });
- * export const directMailDomainId3 = example.then(example => example.domains?.[0]?.id);
+ * export const directMailDomainsId0 = ids.apply(ids => ids.domains?.[0]?.id);
  * ```
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
@@ -54,7 +47,7 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetDomainsArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
@@ -62,7 +55,7 @@ export interface GetDomainsArgs {
      */
     ids?: string[];
     /**
-     * domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+     * The domain name. It must be 1 to 50 characters in length and can contain digits, letters, periods (.), and hyphens (-).
      */
     keyWord?: string;
     /**
@@ -74,7 +67,7 @@ export interface GetDomainsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+     * The status of the domain name. Valid values:
      */
     status?: string;
 }
@@ -83,6 +76,9 @@ export interface GetDomainsArgs {
  * A collection of values returned by getDomains.
  */
 export interface GetDomainsResult {
+    /**
+     * A list of Domains. Each element contains the following attributes:
+     */
     readonly domains: outputs.directmail.GetDomainsDomain[];
     readonly enableDetails?: boolean;
     /**
@@ -92,14 +88,20 @@ export interface GetDomainsResult {
     readonly ids: string[];
     readonly keyWord?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Domain names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the domain name.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -109,20 +111,13 @@ export interface GetDomainsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const ids = alicloud.directmail.getDomains({
- *     ids: ["example_id"],
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example.pop.com";
+ * const _default = new alicloud.directmail.Domain("default", {domainName: name});
+ * const ids = alicloud.directmail.getDomainsOutput({
+ *     ids: [_default.id],
  * });
- * export const directMailDomainId1 = ids.then(ids => ids.domains?.[0]?.id);
- * const nameRegex = alicloud.directmail.getDomains({
- *     nameRegex: "^my-Domain",
- * });
- * export const directMailDomainId2 = nameRegex.then(nameRegex => nameRegex.domains?.[0]?.id);
- * const example = alicloud.directmail.getDomains({
- *     status: "1",
- *     keyWord: "^my-Domain",
- *     ids: ["example_id"],
- * });
- * export const directMailDomainId3 = example.then(example => example.domains?.[0]?.id);
+ * export const directMailDomainsId0 = ids.apply(ids => ids.domains?.[0]?.id);
  * ```
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
@@ -134,7 +129,7 @@ export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.Invo
  */
 export interface GetDomainsOutputArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
@@ -142,7 +137,7 @@ export interface GetDomainsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+     * The domain name. It must be 1 to 50 characters in length and can contain digits, letters, periods (.), and hyphens (-).
      */
     keyWord?: pulumi.Input<string>;
     /**
@@ -154,7 +149,7 @@ export interface GetDomainsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+     * The status of the domain name. Valid values:
      */
     status?: pulumi.Input<string>;
 }

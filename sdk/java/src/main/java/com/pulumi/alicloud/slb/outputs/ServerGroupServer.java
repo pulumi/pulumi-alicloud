@@ -15,50 +15,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerGroupServer {
     /**
-     * @return The port used by the backend server. Valid value range: [1-65535].
+     * @return The port used by the backend server. Valid values: `1` to `65535`.
      * 
      */
     private Integer port;
     /**
-     * @return A list backend server ID (ECS instance ID).
+     * @return The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
      * 
      */
     private List<String> serverIds;
     /**
-     * @return Type of the backend server. Valid value ecs, eni. Default to eni.
+     * @return Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
      * 
      */
     private @Nullable String type;
     /**
-     * @return Weight of the backend server. Valid value range: [0-100]. Default to 100.
+     * @return Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
      * 
      */
     private @Nullable Integer weight;
 
     private ServerGroupServer() {}
     /**
-     * @return The port used by the backend server. Valid value range: [1-65535].
+     * @return The port used by the backend server. Valid values: `1` to `65535`.
      * 
      */
     public Integer port() {
         return this.port;
     }
     /**
-     * @return A list backend server ID (ECS instance ID).
+     * @return The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
      * 
      */
     public List<String> serverIds() {
         return this.serverIds;
     }
     /**
-     * @return Type of the backend server. Valid value ecs, eni. Default to eni.
+     * @return Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Weight of the backend server. Valid value range: [0-100]. Default to 100.
+     * @return Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
      * 
      */
     public Optional<Integer> weight() {

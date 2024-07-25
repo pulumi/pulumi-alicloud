@@ -12,9 +12,13 @@ namespace Pulumi.AliCloud.MaxCompute
     /// <summary>
     /// Provides a Max Compute Project resource.
     /// 
-    /// For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
+    /// MaxCompute project .
+    /// 
+    /// For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute/).
     /// 
     /// &gt; **NOTE:** Available since v1.77.0.
+    /// 
+    /// &gt; **NOTE:** Field `name`, `specification_type`, `order_type` has been removed from provider version 1.227.1.
     /// 
     /// ## Example Usage
     /// 
@@ -40,27 +44,47 @@ namespace Pulumi.AliCloud.MaxCompute
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Max Compute Project can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import alicloud:maxcompute/project:Project example &lt;id&gt;
+    /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:maxcompute/project:Project")]
     public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Comments of project
+        /// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Default Computing Resource Group
+        /// Represents the creation time of the project
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         /// </summary>
         [Output("defaultQuota")]
         public Output<string?> DefaultQuota { get; private set; } = null!;
 
         /// <summary>
-        /// IP whitelist. See `ip_white_list` below.
+        /// IP whitelist See `ip_white_list` below.
         /// </summary>
         [Output("ipWhiteList")]
         public Output<Outputs.ProjectIpWhiteList?> IpWhiteList { get; private set; } = null!;
+
+        /// <summary>
+        /// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        /// </summary>
+        [Output("isLogical")]
+        public Output<string?> IsLogical { get; private set; } = null!;
 
         /// <summary>
         /// Project owner
@@ -75,28 +99,34 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<string?> ProductType { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project
+        /// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// Project base attributes. See `properties` below.
+        /// Project base attributes See `properties` below.
         /// </summary>
         [Output("properties")]
         public Output<Outputs.ProjectProperties> Properties { get; private set; } = null!;
 
         /// <summary>
-        /// Security-related attributes. See `security_properties` below.
+        /// Security-related attributes See `security_properties` below.
         /// </summary>
         [Output("securityProperties")]
         public Output<Outputs.ProjectSecurityProperties> SecurityProperties { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Project type
@@ -112,7 +142,7 @@ namespace Pulumi.AliCloud.MaxCompute
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Project(string name, ProjectArgs args, CustomResourceOptions? options = null)
+        public Project(string name, ProjectArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:maxcompute/project:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -151,22 +181,28 @@ namespace Pulumi.AliCloud.MaxCompute
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Comments of project
+        /// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Default Computing Resource Group
+        /// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         /// </summary>
         [Input("defaultQuota")]
         public Input<string>? DefaultQuota { get; set; }
 
         /// <summary>
-        /// IP whitelist. See `ip_white_list` below.
+        /// IP whitelist See `ip_white_list` below.
         /// </summary>
         [Input("ipWhiteList")]
         public Input<Inputs.ProjectIpWhiteListArgs>? IpWhiteList { get; set; }
+
+        /// <summary>
+        /// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        /// </summary>
+        [Input("isLogical")]
+        public Input<string>? IsLogical { get; set; }
 
         /// <summary>
         /// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
@@ -175,22 +211,40 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? ProductType { get; set; }
 
         /// <summary>
-        /// The name of the project
+        /// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         /// </summary>
-        [Input("projectName", required: true)]
-        public Input<string> ProjectName { get; set; } = null!;
+        [Input("projectName")]
+        public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// Project base attributes. See `properties` below.
+        /// Project base attributes See `properties` below.
         /// </summary>
         [Input("properties")]
         public Input<Inputs.ProjectPropertiesArgs>? Properties { get; set; }
 
         /// <summary>
-        /// Security-related attributes. See `security_properties` below.
+        /// Security-related attributes See `security_properties` below.
         /// </summary>
         [Input("securityProperties")]
         public Input<Inputs.ProjectSecurityPropertiesArgs>? SecurityProperties { get; set; }
+
+        /// <summary>
+        /// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public ProjectArgs()
         {
@@ -201,22 +255,34 @@ namespace Pulumi.AliCloud.MaxCompute
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Comments of project
+        /// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Default Computing Resource Group
+        /// Represents the creation time of the project
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
         /// </summary>
         [Input("defaultQuota")]
         public Input<string>? DefaultQuota { get; set; }
 
         /// <summary>
-        /// IP whitelist. See `ip_white_list` below.
+        /// IP whitelist See `ip_white_list` below.
         /// </summary>
         [Input("ipWhiteList")]
         public Input<Inputs.ProjectIpWhiteListGetArgs>? IpWhiteList { get; set; }
+
+        /// <summary>
+        /// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+        /// </summary>
+        [Input("isLogical")]
+        public Input<string>? IsLogical { get; set; }
 
         /// <summary>
         /// Project owner
@@ -231,28 +297,40 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? ProductType { get; set; }
 
         /// <summary>
-        /// The name of the project
+        /// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// Project base attributes. See `properties` below.
+        /// Project base attributes See `properties` below.
         /// </summary>
         [Input("properties")]
         public Input<Inputs.ProjectPropertiesGetArgs>? Properties { get; set; }
 
         /// <summary>
-        /// Security-related attributes. See `security_properties` below.
+        /// Security-related attributes See `security_properties` below.
         /// </summary>
         [Input("securityProperties")]
         public Input<Inputs.ProjectSecurityPropertiesGetArgs>? SecurityProperties { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Project type

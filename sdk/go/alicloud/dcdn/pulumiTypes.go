@@ -120,17 +120,14 @@ func (o DomainConfigFunctionArgArrayOutput) Index(i pulumi.IntInput) DomainConfi
 }
 
 type DomainSource struct {
-	// The origin address.
-	Content string `pulumi:"content"`
+	// The address of the source station.
+	Content *string `pulumi:"content"`
 	// The port number. Valid values: `443` and `80`. Default to `80`.
 	Port *int `pulumi:"port"`
 	// The priority of the origin if multiple origins are specified. Default to `20`.
 	Priority *string `pulumi:"priority"`
 	// The type of the origin. Valid values:
-	// `ipaddr`: The origin is configured using an IP address.
-	// `domain`: The origin is configured using a domain name.
-	// `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
-	Type string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 	// The weight of the origin if multiple origins are specified. Default to `10`.
 	Weight *string `pulumi:"weight"`
 }
@@ -147,17 +144,14 @@ type DomainSourceInput interface {
 }
 
 type DomainSourceArgs struct {
-	// The origin address.
-	Content pulumi.StringInput `pulumi:"content"`
+	// The address of the source station.
+	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The port number. Valid values: `443` and `80`. Default to `80`.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The priority of the origin if multiple origins are specified. Default to `20`.
 	Priority pulumi.StringPtrInput `pulumi:"priority"`
 	// The type of the origin. Valid values:
-	// `ipaddr`: The origin is configured using an IP address.
-	// `domain`: The origin is configured using a domain name.
-	// `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The weight of the origin if multiple origins are specified. Default to `10`.
 	Weight pulumi.StringPtrInput `pulumi:"weight"`
 }
@@ -213,9 +207,9 @@ func (o DomainSourceOutput) ToDomainSourceOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The origin address.
-func (o DomainSourceOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func(v DomainSource) string { return v.Content }).(pulumi.StringOutput)
+// The address of the source station.
+func (o DomainSourceOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainSource) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
 // The port number. Valid values: `443` and `80`. Default to `80`.
@@ -229,11 +223,8 @@ func (o DomainSourceOutput) Priority() pulumi.StringPtrOutput {
 }
 
 // The type of the origin. Valid values:
-// `ipaddr`: The origin is configured using an IP address.
-// `domain`: The origin is configured using a domain name.
-// `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
-func (o DomainSourceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v DomainSource) string { return v.Type }).(pulumi.StringOutput)
+func (o DomainSourceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainSource) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // The weight of the origin if multiple origins are specified. Default to `10`.

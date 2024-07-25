@@ -9,9 +9,13 @@ import * as utilities from "../utilities";
 /**
  * Provides a Max Compute Project resource.
  *
- * For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
+ * MaxCompute project .
+ *
+ * For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute/).
  *
  * > **NOTE:** Available since v1.77.0.
+ *
+ * > **NOTE:** Field `name`, `specificationType`, `orderType` has been removed from provider version 1.227.1.
  *
  * ## Example Usage
  *
@@ -29,6 +33,14 @@ import * as utilities from "../utilities";
  *     comment: name,
  *     productType: "PayAsYouGo",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Max Compute Project can be imported using the id, e.g.
+ *
+ * ```sh
+ * $ pulumi import alicloud:maxcompute/project:Project example <id>
  * ```
  */
 export class Project extends pulumi.CustomResource {
@@ -60,17 +72,25 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * Comments of project
+     * Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * Default Computing Resource Group
+     * Represents the creation time of the project
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      */
     public readonly defaultQuota!: pulumi.Output<string | undefined>;
     /**
-     * IP whitelist. See `ipWhiteList` below.
+     * IP whitelist See `ipWhiteList` below.
      */
     public readonly ipWhiteList!: pulumi.Output<outputs.maxcompute.ProjectIpWhiteList | undefined>;
+    /**
+     * Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     */
+    public readonly isLogical!: pulumi.Output<string | undefined>;
     /**
      * Project owner
      */
@@ -80,21 +100,25 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly productType!: pulumi.Output<string | undefined>;
     /**
-     * The name of the project
+     * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
      */
     public readonly projectName!: pulumi.Output<string>;
     /**
-     * Project base attributes. See `properties` below.
+     * Project base attributes See `properties` below.
      */
     public readonly properties!: pulumi.Output<outputs.maxcompute.ProjectProperties>;
     /**
-     * Security-related attributes. See `securityProperties` below.
+     * Security-related attributes See `securityProperties` below.
      */
     public readonly securityProperties!: pulumi.Output<outputs.maxcompute.ProjectSecurityProperties>;
     /**
-     * The status of the resource
+     * The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * The tag of the resource
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * Project type
      */
@@ -107,36 +131,39 @@ export class Project extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProjectArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["defaultQuota"] = state ? state.defaultQuota : undefined;
             resourceInputs["ipWhiteList"] = state ? state.ipWhiteList : undefined;
+            resourceInputs["isLogical"] = state ? state.isLogical : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["productType"] = state ? state.productType : undefined;
             resourceInputs["projectName"] = state ? state.projectName : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["securityProperties"] = state ? state.securityProperties : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if ((!args || args.projectName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectName'");
-            }
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["defaultQuota"] = args ? args.defaultQuota : undefined;
             resourceInputs["ipWhiteList"] = args ? args.ipWhiteList : undefined;
+            resourceInputs["isLogical"] = args ? args.isLogical : undefined;
             resourceInputs["productType"] = args ? args.productType : undefined;
             resourceInputs["projectName"] = args ? args.projectName : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["securityProperties"] = args ? args.securityProperties : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;
-            resourceInputs["status"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -149,17 +176,25 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * Comments of project
+     * Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
      */
     comment?: pulumi.Input<string>;
     /**
-     * Default Computing Resource Group
+     * Represents the creation time of the project
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      */
     defaultQuota?: pulumi.Input<string>;
     /**
-     * IP whitelist. See `ipWhiteList` below.
+     * IP whitelist See `ipWhiteList` below.
      */
     ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList>;
+    /**
+     * Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     */
+    isLogical?: pulumi.Input<string>;
     /**
      * Project owner
      */
@@ -169,21 +204,25 @@ export interface ProjectState {
      */
     productType?: pulumi.Input<string>;
     /**
-     * The name of the project
+     * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
      */
     projectName?: pulumi.Input<string>;
     /**
-     * Project base attributes. See `properties` below.
+     * Project base attributes See `properties` below.
      */
     properties?: pulumi.Input<inputs.maxcompute.ProjectProperties>;
     /**
-     * Security-related attributes. See `securityProperties` below.
+     * Security-related attributes See `securityProperties` below.
      */
     securityProperties?: pulumi.Input<inputs.maxcompute.ProjectSecurityProperties>;
     /**
-     * The status of the resource
+     * The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Project type
      */
@@ -195,31 +234,43 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * Comments of project
+     * Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
      */
     comment?: pulumi.Input<string>;
     /**
-     * Default Computing Resource Group
+     * Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      */
     defaultQuota?: pulumi.Input<string>;
     /**
-     * IP whitelist. See `ipWhiteList` below.
+     * IP whitelist See `ipWhiteList` below.
      */
     ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList>;
+    /**
+     * Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     */
+    isLogical?: pulumi.Input<string>;
     /**
      * Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
      */
     productType?: pulumi.Input<string>;
     /**
-     * The name of the project
+     * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
      */
-    projectName: pulumi.Input<string>;
+    projectName?: pulumi.Input<string>;
     /**
-     * Project base attributes. See `properties` below.
+     * Project base attributes See `properties` below.
      */
     properties?: pulumi.Input<inputs.maxcompute.ProjectProperties>;
     /**
-     * Security-related attributes. See `securityProperties` below.
+     * Security-related attributes See `securityProperties` below.
      */
     securityProperties?: pulumi.Input<inputs.maxcompute.ProjectSecurityProperties>;
+    /**
+     * The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

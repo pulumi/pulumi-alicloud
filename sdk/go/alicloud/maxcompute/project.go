@@ -7,16 +7,19 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a Max Compute Project resource.
 //
-// For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
+// MaxCompute project .
+//
+// For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute/).
 //
 // > **NOTE:** Available since v1.77.0.
+//
+// > **NOTE:** Field `name`, `specificationType`, `orderType` has been removed from provider version 1.227.1.
 //
 // ## Example Usage
 //
@@ -54,27 +57,41 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// Max Compute Project can be imported using the id, e.g.
+//
+// ```sh
+// $ pulumi import alicloud:maxcompute/project:Project example <id>
+// ```
 type Project struct {
 	pulumi.CustomResourceState
 
-	// Comments of project
+	// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// Default Computing Resource Group
+	// Represents the creation time of the project
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 	DefaultQuota pulumi.StringPtrOutput `pulumi:"defaultQuota"`
-	// IP whitelist. See `ipWhiteList` below.
+	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList ProjectIpWhiteListPtrOutput `pulumi:"ipWhiteList"`
+	// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+	IsLogical pulumi.StringPtrOutput `pulumi:"isLogical"`
 	// Project owner
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
 	ProductType pulumi.StringPtrOutput `pulumi:"productType"`
-	// The name of the project
+	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
-	// Project base attributes. See `properties` below.
+	// Project base attributes See `properties` below.
 	Properties ProjectPropertiesOutput `pulumi:"properties"`
-	// Security-related attributes. See `securityProperties` below.
+	// Security-related attributes See `securityProperties` below.
 	SecurityProperties ProjectSecurityPropertiesOutput `pulumi:"securityProperties"`
-	// The status of the resource
+	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The tag of the resource
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Project type
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -83,12 +100,9 @@ type Project struct {
 func NewProject(ctx *pulumi.Context,
 	name string, args *ProjectArgs, opts ...pulumi.ResourceOption) (*Project, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProjectArgs{}
 	}
 
-	if args.ProjectName == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectName'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Project
 	err := ctx.RegisterResource("alicloud:maxcompute/project:Project", name, args, &resource, opts...)
@@ -112,47 +126,59 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// Comments of project
+	// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
 	Comment *string `pulumi:"comment"`
-	// Default Computing Resource Group
+	// Represents the creation time of the project
+	CreateTime *string `pulumi:"createTime"`
+	// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 	DefaultQuota *string `pulumi:"defaultQuota"`
-	// IP whitelist. See `ipWhiteList` below.
+	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList *ProjectIpWhiteList `pulumi:"ipWhiteList"`
+	// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+	IsLogical *string `pulumi:"isLogical"`
 	// Project owner
 	Owner *string `pulumi:"owner"`
 	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
 	ProductType *string `pulumi:"productType"`
-	// The name of the project
+	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName *string `pulumi:"projectName"`
-	// Project base attributes. See `properties` below.
+	// Project base attributes See `properties` below.
 	Properties *ProjectProperties `pulumi:"properties"`
-	// Security-related attributes. See `securityProperties` below.
+	// Security-related attributes See `securityProperties` below.
 	SecurityProperties *ProjectSecurityProperties `pulumi:"securityProperties"`
-	// The status of the resource
+	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 	Status *string `pulumi:"status"`
+	// The tag of the resource
+	Tags map[string]interface{} `pulumi:"tags"`
 	// Project type
 	Type *string `pulumi:"type"`
 }
 
 type ProjectState struct {
-	// Comments of project
+	// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
 	Comment pulumi.StringPtrInput
-	// Default Computing Resource Group
+	// Represents the creation time of the project
+	CreateTime pulumi.StringPtrInput
+	// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 	DefaultQuota pulumi.StringPtrInput
-	// IP whitelist. See `ipWhiteList` below.
+	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList ProjectIpWhiteListPtrInput
+	// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+	IsLogical pulumi.StringPtrInput
 	// Project owner
 	Owner pulumi.StringPtrInput
 	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
 	ProductType pulumi.StringPtrInput
-	// The name of the project
+	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName pulumi.StringPtrInput
-	// Project base attributes. See `properties` below.
+	// Project base attributes See `properties` below.
 	Properties ProjectPropertiesPtrInput
-	// Security-related attributes. See `securityProperties` below.
+	// Security-related attributes See `securityProperties` below.
 	SecurityProperties ProjectSecurityPropertiesPtrInput
-	// The status of the resource
+	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 	Status pulumi.StringPtrInput
+	// The tag of the resource
+	Tags pulumi.MapInput
 	// Project type
 	Type pulumi.StringPtrInput
 }
@@ -162,38 +188,50 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// Comments of project
+	// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
 	Comment *string `pulumi:"comment"`
-	// Default Computing Resource Group
+	// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 	DefaultQuota *string `pulumi:"defaultQuota"`
-	// IP whitelist. See `ipWhiteList` below.
+	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList *ProjectIpWhiteList `pulumi:"ipWhiteList"`
+	// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+	IsLogical *string `pulumi:"isLogical"`
 	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
 	ProductType *string `pulumi:"productType"`
-	// The name of the project
-	ProjectName string `pulumi:"projectName"`
-	// Project base attributes. See `properties` below.
+	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
+	ProjectName *string `pulumi:"projectName"`
+	// Project base attributes See `properties` below.
 	Properties *ProjectProperties `pulumi:"properties"`
-	// Security-related attributes. See `securityProperties` below.
+	// Security-related attributes See `securityProperties` below.
 	SecurityProperties *ProjectSecurityProperties `pulumi:"securityProperties"`
+	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
+	Status *string `pulumi:"status"`
+	// The tag of the resource
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// Comments of project
+	// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
 	Comment pulumi.StringPtrInput
-	// Default Computing Resource Group
+	// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 	DefaultQuota pulumi.StringPtrInput
-	// IP whitelist. See `ipWhiteList` below.
+	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList ProjectIpWhiteListPtrInput
+	// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+	IsLogical pulumi.StringPtrInput
 	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
 	ProductType pulumi.StringPtrInput
-	// The name of the project
-	ProjectName pulumi.StringInput
-	// Project base attributes. See `properties` below.
+	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
+	ProjectName pulumi.StringPtrInput
+	// Project base attributes See `properties` below.
 	Properties ProjectPropertiesPtrInput
-	// Security-related attributes. See `securityProperties` below.
+	// Security-related attributes See `securityProperties` below.
 	SecurityProperties ProjectSecurityPropertiesPtrInput
+	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
+	Status pulumi.StringPtrInput
+	// The tag of the resource
+	Tags pulumi.MapInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {
@@ -283,19 +321,29 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
-// Comments of project
+// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
 func (o ProjectOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Default Computing Resource Group
+// Represents the creation time of the project
+func (o ProjectOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 func (o ProjectOutput) DefaultQuota() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.DefaultQuota }).(pulumi.StringPtrOutput)
 }
 
-// IP whitelist. See `ipWhiteList` below.
+// IP whitelist See `ipWhiteList` below.
 func (o ProjectOutput) IpWhiteList() ProjectIpWhiteListPtrOutput {
 	return o.ApplyT(func(v *Project) ProjectIpWhiteListPtrOutput { return v.IpWhiteList }).(ProjectIpWhiteListPtrOutput)
+}
+
+// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+func (o ProjectOutput) IsLogical() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.IsLogical }).(pulumi.StringPtrOutput)
 }
 
 // Project owner
@@ -308,24 +356,29 @@ func (o ProjectOutput) ProductType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.ProductType }).(pulumi.StringPtrOutput)
 }
 
-// The name of the project
+// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 func (o ProjectOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
 }
 
-// Project base attributes. See `properties` below.
+// Project base attributes See `properties` below.
 func (o ProjectOutput) Properties() ProjectPropertiesOutput {
 	return o.ApplyT(func(v *Project) ProjectPropertiesOutput { return v.Properties }).(ProjectPropertiesOutput)
 }
 
-// Security-related attributes. See `securityProperties` below.
+// Security-related attributes See `securityProperties` below.
 func (o ProjectOutput) SecurityProperties() ProjectSecurityPropertiesOutput {
 	return o.ApplyT(func(v *Project) ProjectSecurityPropertiesOutput { return v.SecurityProperties }).(ProjectSecurityPropertiesOutput)
 }
 
-// The status of the resource
+// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 func (o ProjectOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource
+func (o ProjectOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Project) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 // Project type

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.134.0+.
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Example Usage
 //
@@ -26,38 +26,31 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/directmail"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := directmail.GetDomains(ctx, &directmail.GetDomainsArgs{
-//				Ids: []string{
-//					"example_id",
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example.pop.com"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := directmail.NewDomain(ctx, "default", &directmail.DomainArgs{
+//				DomainName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := directmail.GetDomainsOutput(ctx, directmail.GetDomainsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					_default.ID(),
 //				},
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("directMailDomainId1", ids.Domains[0].Id)
-//			nameRegex, err := directmail.GetDomains(ctx, &directmail.GetDomainsArgs{
-//				NameRegex: pulumi.StringRef("^my-Domain"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("directMailDomainId2", nameRegex.Domains[0].Id)
-//			example, err := directmail.GetDomains(ctx, &directmail.GetDomainsArgs{
-//				Status:  pulumi.StringRef("1"),
-//				KeyWord: pulumi.StringRef("^my-Domain"),
-//				Ids: []string{
-//					"example_id",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("directMailDomainId3", example.Domains[0].Id)
+//			ctx.Export("directMailDomainsId0", ids.ApplyT(func(ids directmail.GetDomainsResult) (*string, error) {
+//				return &ids.Domains[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -75,32 +68,35 @@ func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getDomains.
 type GetDomainsArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Domain IDs.
 	Ids []string `pulumi:"ids"`
-	// domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+	// The domain name. It must be 1 to 50 characters in length and can contain digits, letters, periods (.), and hyphens (-).
 	KeyWord *string `pulumi:"keyWord"`
 	// A regex string to filter results by Domain name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+	// The status of the domain name. Valid values:
 	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getDomains.
 type GetDomainsResult struct {
+	// A list of Domains. Each element contains the following attributes:
 	Domains       []GetDomainsDomain `pulumi:"domains"`
 	EnableDetails *bool              `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string   `pulumi:"id"`
-	Ids        []string `pulumi:"ids"`
-	KeyWord    *string  `pulumi:"keyWord"`
-	NameRegex  *string  `pulumi:"nameRegex"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	KeyWord   *string  `pulumi:"keyWord"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Domain names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	// The status of the domain name.
+	Status *string `pulumi:"status"`
 }
 
 func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pulumi.InvokeOption) GetDomainsResultOutput {
@@ -118,17 +114,17 @@ func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getDomains.
 type GetDomainsOutputArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Domain IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+	// The domain name. It must be 1 to 50 characters in length and can contain digits, letters, periods (.), and hyphens (-).
 	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
 	// A regex string to filter results by Domain name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+	// The status of the domain name. Valid values:
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -151,6 +147,7 @@ func (o GetDomainsResultOutput) ToGetDomainsResultOutputWithContext(ctx context.
 	return o
 }
 
+// A list of Domains. Each element contains the following attributes:
 func (o GetDomainsResultOutput) Domains() GetDomainsDomainArrayOutput {
 	return o.ApplyT(func(v GetDomainsResult) []GetDomainsDomain { return v.Domains }).(GetDomainsDomainArrayOutput)
 }
@@ -176,6 +173,7 @@ func (o GetDomainsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Domain names.
 func (o GetDomainsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDomainsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -184,6 +182,7 @@ func (o GetDomainsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The status of the domain name.
 func (o GetDomainsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

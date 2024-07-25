@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CloudFirewall
 {
     /// <summary>
-    /// Provides a Cloud Firewall Control Policy resource.
+    /// Provides a Cloud Firewall Control Policy Order resource.
     /// 
     /// For information about Cloud Firewall Control Policy Order and how to use it, see [What is Control Policy Order](https://www.alibabacloud.com/help/doc-detail/138867.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.130.0+.
+    /// &gt; **NOTE:** Available since v1.130.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,23 +28,25 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example1 = new AliCloud.CloudFirewall.ControlPolicy("example1", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.CloudFirewall.ControlPolicy("default", new()
     ///     {
+    ///         Direction = "in",
     ///         ApplicationName = "ANY",
+    ///         Description = name,
     ///         AclAction = "accept",
-    ///         Description = "example",
-    ///         DestinationType = "net",
-    ///         Destination = "100.1.1.0/24",
-    ///         Direction = "out",
-    ///         Proto = "ANY",
-    ///         Source = "1.2.3.0/24",
+    ///         Source = "127.0.0.1/32",
     ///         SourceType = "net",
+    ///         Destination = "127.0.0.2/32",
+    ///         DestinationType = "net",
+    ///         Proto = "ANY",
     ///     });
     /// 
-    ///     var example2 = new AliCloud.CloudFirewall.ControlPolicyOrder("example2", new()
+    ///     var defaultControlPolicyOrder = new AliCloud.CloudFirewall.ControlPolicyOrder("default", new()
     ///     {
-    ///         AclUuid = example1.AclUuid,
-    ///         Direction = example1.Direction,
+    ///         AclUuid = @default.AclUuid,
+    ///         Direction = @default.Direction,
     ///         Order = 1,
     ///     });
     /// 
@@ -69,16 +71,17 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> AclUuid { get; private set; } = null!;
 
         /// <summary>
-        /// Direction. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         /// </summary>
         [Output("direction")]
         public Output<string> Direction { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+        /// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+        /// &gt; **NOTE:** From version 1.227.1, `order` must be set.
         /// </summary>
         [Output("order")]
-        public Output<int?> Order { get; private set; } = null!;
+        public Output<int> Order { get; private set; } = null!;
 
 
         /// <summary>
@@ -133,16 +136,17 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> AclUuid { get; set; } = null!;
 
         /// <summary>
-        /// Direction. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
 
         /// <summary>
-        /// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+        /// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+        /// &gt; **NOTE:** From version 1.227.1, `order` must be set.
         /// </summary>
-        [Input("order")]
-        public Input<int>? Order { get; set; }
+        [Input("order", required: true)]
+        public Input<int> Order { get; set; } = null!;
 
         public ControlPolicyOrderArgs()
         {
@@ -159,13 +163,14 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? AclUuid { get; set; }
 
         /// <summary>
-        /// Direction. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+        /// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+        /// &gt; **NOTE:** From version 1.227.1, `order` must be set.
         /// </summary>
         [Input("order")]
         public Input<int>? Order { get; set; }

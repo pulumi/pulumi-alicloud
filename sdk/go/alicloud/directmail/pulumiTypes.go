@@ -14,45 +14,63 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type GetDomainsDomain struct {
-	// Track verification.
+	// Indicates whether your ownership of the domain is verified.
 	CnameAuthStatus string `pulumi:"cnameAuthStatus"`
-	// Indicates whether the CNAME record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+	// Indicates whether the CNAME record is successfully verified. **Note:** `cnameConfirmStatus` takes effect only if `enableDetails` is set to `true`.
 	CnameConfirmStatus string `pulumi:"cnameConfirmStatus"`
-	// The value of the CNAME record.
+	// The value of the CNAME record. **Note:** `cnameRecord` takes effect only if `enableDetails` is set to `true`.
 	CnameRecord string `pulumi:"cnameRecord"`
 	// The time when the DNS record was created.
 	CreateTime string `pulumi:"createTime"`
-	// The default domain name.
+	// The default domain name. **Note:** `defaultDomain` takes effect only if `enableDetails` is set to `true`.
 	DefaultDomain string `pulumi:"defaultDomain"`
-	// The value of the MX record.
+	// (Available since v1.227.1) The DKIM validation flag. **Note:** `dkimAuthStatus` takes effect only if `enableDetails` is set to `true`.
+	DkimAuthStatus string `pulumi:"dkimAuthStatus"`
+	// (Available since v1.227.1) The DKIM public key. **Note:** `dkimPublicKey` takes effect only if `enableDetails` is set to `true`.
+	DkimPublicKey string `pulumi:"dkimPublicKey"`
+	// (Available since v1.227.1) The DKIM Host Record. **Note:** `dkimRr` takes effect only if `enableDetails` is set to `true`.
+	DkimRr string `pulumi:"dkimRr"`
+	// (Available since v1.227.1) The DMARC validation flag. **Note:** `dmarcAuthStatus` takes effect only if `enableDetails` is set to `true`.
+	DmarcAuthStatus string `pulumi:"dmarcAuthStatus"`
+	// (Available since v1.227.1) The DMARC Host Record. **Note:** `dmarcHostRecord` takes effect only if `enableDetails` is set to `true`.
+	DmarcHostRecord string `pulumi:"dmarcHostRecord"`
+	// (Available since v1.227.1) The DMARC record. **Note:** `dmarcRecord` takes effect only if `enableDetails` is set to `true`.
+	DmarcRecord string `pulumi:"dmarcRecord"`
+	// (Available since v1.227.1) The DMARC record value resolved through public DNS. **Note:** `dnsDmarc` takes effect only if `enableDetails` is set to `true`.
+	DnsDmarc string `pulumi:"dnsDmarc"`
+	// The MX record value resolved through public DNS. **Note:** `dnsMx` takes effect only if `enableDetails` is set to `true`.
 	DnsMx string `pulumi:"dnsMx"`
-	// The value of the SPF record.
+	// The SPF record value resolved through public DNS. **Note:** `dnsSpf` takes effect only if `enableDetails` is set to `true`.
 	DnsSpf string `pulumi:"dnsSpf"`
-	// The value of the TXT ownership record.
+	// The TXT record value resolved through public DNS. **Note:** `dnsTxt` takes effect only if `enableDetails` is set to `true`.
 	DnsTxt string `pulumi:"dnsTxt"`
 	// The ID of the domain name.
 	DomainId string `pulumi:"domainId"`
 	// The domain name.
 	DomainName string `pulumi:"domainName"`
-	// The type of the domain.
+	// (Available since v1.227.1) The value of the Domain record.
+	DomainRecord string `pulumi:"domainRecord"`
+	// The type of the domain. **Note:** `domainType` takes effect only if `enableDetails` is set to `true`.
 	DomainType string `pulumi:"domainType"`
-	// The status of ICP filing. Valid values: `0` and `1`. `0`: indicates that the domain name is not filed. `1`: indicates that the domain name is filed.
+	// (Available since v1.227.1) The value of the host record. **Note:** `hostRecord` takes effect only if `enableDetails` is set to `true`.
+	HostRecord string `pulumi:"hostRecord"`
+	// The status of ICP filing.
 	IcpStatus string `pulumi:"icpStatus"`
 	// The ID of the Domain.
 	Id string `pulumi:"id"`
-	// Indicates whether the MX record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+	// Indicates whether the MX record is successfully verified.
 	MxAuthStatus string `pulumi:"mxAuthStatus"`
-	// The MX verification record provided by Alibaba Cloud DNS.
+	// The MX verification record provided by the Direct Mail console. **Note:** `mxRecord` takes effect only if `enableDetails` is set to `true`.
 	MxRecord string `pulumi:"mxRecord"`
-	// Indicates whether the SPF record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+	// Indicates whether the SPF record is successfully verified.
 	SpfAuthStatus string `pulumi:"spfAuthStatus"`
-	// The SPF verification record provided by Alibaba Cloud DNS.
+	// The SPF verification record provided by the Direct Mail console. **Note:** `spfRecord` takes effect only if `enableDetails` is set to `true`.
 	SpfRecord string `pulumi:"spfRecord"`
-	// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+	// The status of the domain name. Valid values:
 	Status string `pulumi:"status"`
-	// The primary domain name.
+	// The primary domain name. **Note:** `tlDomainName` takes effect only if `enableDetails` is set to `true`.
 	TlDomainName string `pulumi:"tlDomainName"`
-	// The CNAME verification record provided by Alibaba Cloud DNS.
+	// The CNAME verification record provided by the Direct Mail console. **Note:** `tracefRecord` takes effect only if `enableDetails` is set to `true`.
 	TracefRecord string `pulumi:"tracefRecord"`
 }
 
@@ -68,45 +86,63 @@ type GetDomainsDomainInput interface {
 }
 
 type GetDomainsDomainArgs struct {
-	// Track verification.
+	// Indicates whether your ownership of the domain is verified.
 	CnameAuthStatus pulumi.StringInput `pulumi:"cnameAuthStatus"`
-	// Indicates whether the CNAME record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+	// Indicates whether the CNAME record is successfully verified. **Note:** `cnameConfirmStatus` takes effect only if `enableDetails` is set to `true`.
 	CnameConfirmStatus pulumi.StringInput `pulumi:"cnameConfirmStatus"`
-	// The value of the CNAME record.
+	// The value of the CNAME record. **Note:** `cnameRecord` takes effect only if `enableDetails` is set to `true`.
 	CnameRecord pulumi.StringInput `pulumi:"cnameRecord"`
 	// The time when the DNS record was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The default domain name.
+	// The default domain name. **Note:** `defaultDomain` takes effect only if `enableDetails` is set to `true`.
 	DefaultDomain pulumi.StringInput `pulumi:"defaultDomain"`
-	// The value of the MX record.
+	// (Available since v1.227.1) The DKIM validation flag. **Note:** `dkimAuthStatus` takes effect only if `enableDetails` is set to `true`.
+	DkimAuthStatus pulumi.StringInput `pulumi:"dkimAuthStatus"`
+	// (Available since v1.227.1) The DKIM public key. **Note:** `dkimPublicKey` takes effect only if `enableDetails` is set to `true`.
+	DkimPublicKey pulumi.StringInput `pulumi:"dkimPublicKey"`
+	// (Available since v1.227.1) The DKIM Host Record. **Note:** `dkimRr` takes effect only if `enableDetails` is set to `true`.
+	DkimRr pulumi.StringInput `pulumi:"dkimRr"`
+	// (Available since v1.227.1) The DMARC validation flag. **Note:** `dmarcAuthStatus` takes effect only if `enableDetails` is set to `true`.
+	DmarcAuthStatus pulumi.StringInput `pulumi:"dmarcAuthStatus"`
+	// (Available since v1.227.1) The DMARC Host Record. **Note:** `dmarcHostRecord` takes effect only if `enableDetails` is set to `true`.
+	DmarcHostRecord pulumi.StringInput `pulumi:"dmarcHostRecord"`
+	// (Available since v1.227.1) The DMARC record. **Note:** `dmarcRecord` takes effect only if `enableDetails` is set to `true`.
+	DmarcRecord pulumi.StringInput `pulumi:"dmarcRecord"`
+	// (Available since v1.227.1) The DMARC record value resolved through public DNS. **Note:** `dnsDmarc` takes effect only if `enableDetails` is set to `true`.
+	DnsDmarc pulumi.StringInput `pulumi:"dnsDmarc"`
+	// The MX record value resolved through public DNS. **Note:** `dnsMx` takes effect only if `enableDetails` is set to `true`.
 	DnsMx pulumi.StringInput `pulumi:"dnsMx"`
-	// The value of the SPF record.
+	// The SPF record value resolved through public DNS. **Note:** `dnsSpf` takes effect only if `enableDetails` is set to `true`.
 	DnsSpf pulumi.StringInput `pulumi:"dnsSpf"`
-	// The value of the TXT ownership record.
+	// The TXT record value resolved through public DNS. **Note:** `dnsTxt` takes effect only if `enableDetails` is set to `true`.
 	DnsTxt pulumi.StringInput `pulumi:"dnsTxt"`
 	// The ID of the domain name.
 	DomainId pulumi.StringInput `pulumi:"domainId"`
 	// The domain name.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
-	// The type of the domain.
+	// (Available since v1.227.1) The value of the Domain record.
+	DomainRecord pulumi.StringInput `pulumi:"domainRecord"`
+	// The type of the domain. **Note:** `domainType` takes effect only if `enableDetails` is set to `true`.
 	DomainType pulumi.StringInput `pulumi:"domainType"`
-	// The status of ICP filing. Valid values: `0` and `1`. `0`: indicates that the domain name is not filed. `1`: indicates that the domain name is filed.
+	// (Available since v1.227.1) The value of the host record. **Note:** `hostRecord` takes effect only if `enableDetails` is set to `true`.
+	HostRecord pulumi.StringInput `pulumi:"hostRecord"`
+	// The status of ICP filing.
 	IcpStatus pulumi.StringInput `pulumi:"icpStatus"`
 	// The ID of the Domain.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Indicates whether the MX record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+	// Indicates whether the MX record is successfully verified.
 	MxAuthStatus pulumi.StringInput `pulumi:"mxAuthStatus"`
-	// The MX verification record provided by Alibaba Cloud DNS.
+	// The MX verification record provided by the Direct Mail console. **Note:** `mxRecord` takes effect only if `enableDetails` is set to `true`.
 	MxRecord pulumi.StringInput `pulumi:"mxRecord"`
-	// Indicates whether the SPF record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+	// Indicates whether the SPF record is successfully verified.
 	SpfAuthStatus pulumi.StringInput `pulumi:"spfAuthStatus"`
-	// The SPF verification record provided by Alibaba Cloud DNS.
+	// The SPF verification record provided by the Direct Mail console. **Note:** `spfRecord` takes effect only if `enableDetails` is set to `true`.
 	SpfRecord pulumi.StringInput `pulumi:"spfRecord"`
-	// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+	// The status of the domain name. Valid values:
 	Status pulumi.StringInput `pulumi:"status"`
-	// The primary domain name.
+	// The primary domain name. **Note:** `tlDomainName` takes effect only if `enableDetails` is set to `true`.
 	TlDomainName pulumi.StringInput `pulumi:"tlDomainName"`
-	// The CNAME verification record provided by Alibaba Cloud DNS.
+	// The CNAME verification record provided by the Direct Mail console. **Note:** `tracefRecord` takes effect only if `enableDetails` is set to `true`.
 	TracefRecord pulumi.StringInput `pulumi:"tracefRecord"`
 }
 
@@ -161,17 +197,17 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.
 	return o
 }
 
-// Track verification.
+// Indicates whether your ownership of the domain is verified.
 func (o GetDomainsDomainOutput) CnameAuthStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.CnameAuthStatus }).(pulumi.StringOutput)
 }
 
-// Indicates whether the CNAME record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+// Indicates whether the CNAME record is successfully verified. **Note:** `cnameConfirmStatus` takes effect only if `enableDetails` is set to `true`.
 func (o GetDomainsDomainOutput) CnameConfirmStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.CnameConfirmStatus }).(pulumi.StringOutput)
 }
 
-// The value of the CNAME record.
+// The value of the CNAME record. **Note:** `cnameRecord` takes effect only if `enableDetails` is set to `true`.
 func (o GetDomainsDomainOutput) CnameRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.CnameRecord }).(pulumi.StringOutput)
 }
@@ -181,22 +217,57 @@ func (o GetDomainsDomainOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The default domain name.
+// The default domain name. **Note:** `defaultDomain` takes effect only if `enableDetails` is set to `true`.
 func (o GetDomainsDomainOutput) DefaultDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.DefaultDomain }).(pulumi.StringOutput)
 }
 
-// The value of the MX record.
+// (Available since v1.227.1) The DKIM validation flag. **Note:** `dkimAuthStatus` takes effect only if `enableDetails` is set to `true`.
+func (o GetDomainsDomainOutput) DkimAuthStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DkimAuthStatus }).(pulumi.StringOutput)
+}
+
+// (Available since v1.227.1) The DKIM public key. **Note:** `dkimPublicKey` takes effect only if `enableDetails` is set to `true`.
+func (o GetDomainsDomainOutput) DkimPublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DkimPublicKey }).(pulumi.StringOutput)
+}
+
+// (Available since v1.227.1) The DKIM Host Record. **Note:** `dkimRr` takes effect only if `enableDetails` is set to `true`.
+func (o GetDomainsDomainOutput) DkimRr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DkimRr }).(pulumi.StringOutput)
+}
+
+// (Available since v1.227.1) The DMARC validation flag. **Note:** `dmarcAuthStatus` takes effect only if `enableDetails` is set to `true`.
+func (o GetDomainsDomainOutput) DmarcAuthStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DmarcAuthStatus }).(pulumi.StringOutput)
+}
+
+// (Available since v1.227.1) The DMARC Host Record. **Note:** `dmarcHostRecord` takes effect only if `enableDetails` is set to `true`.
+func (o GetDomainsDomainOutput) DmarcHostRecord() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DmarcHostRecord }).(pulumi.StringOutput)
+}
+
+// (Available since v1.227.1) The DMARC record. **Note:** `dmarcRecord` takes effect only if `enableDetails` is set to `true`.
+func (o GetDomainsDomainOutput) DmarcRecord() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DmarcRecord }).(pulumi.StringOutput)
+}
+
+// (Available since v1.227.1) The DMARC record value resolved through public DNS. **Note:** `dnsDmarc` takes effect only if `enableDetails` is set to `true`.
+func (o GetDomainsDomainOutput) DnsDmarc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DnsDmarc }).(pulumi.StringOutput)
+}
+
+// The MX record value resolved through public DNS. **Note:** `dnsMx` takes effect only if `enableDetails` is set to `true`.
 func (o GetDomainsDomainOutput) DnsMx() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.DnsMx }).(pulumi.StringOutput)
 }
 
-// The value of the SPF record.
+// The SPF record value resolved through public DNS. **Note:** `dnsSpf` takes effect only if `enableDetails` is set to `true`.
 func (o GetDomainsDomainOutput) DnsSpf() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.DnsSpf }).(pulumi.StringOutput)
 }
 
-// The value of the TXT ownership record.
+// The TXT record value resolved through public DNS. **Note:** `dnsTxt` takes effect only if `enableDetails` is set to `true`.
 func (o GetDomainsDomainOutput) DnsTxt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.DnsTxt }).(pulumi.StringOutput)
 }
@@ -211,12 +282,22 @@ func (o GetDomainsDomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// The type of the domain.
+// (Available since v1.227.1) The value of the Domain record.
+func (o GetDomainsDomainOutput) DomainRecord() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DomainRecord }).(pulumi.StringOutput)
+}
+
+// The type of the domain. **Note:** `domainType` takes effect only if `enableDetails` is set to `true`.
 func (o GetDomainsDomainOutput) DomainType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.DomainType }).(pulumi.StringOutput)
 }
 
-// The status of ICP filing. Valid values: `0` and `1`. `0`: indicates that the domain name is not filed. `1`: indicates that the domain name is filed.
+// (Available since v1.227.1) The value of the host record. **Note:** `hostRecord` takes effect only if `enableDetails` is set to `true`.
+func (o GetDomainsDomainOutput) HostRecord() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.HostRecord }).(pulumi.StringOutput)
+}
+
+// The status of ICP filing.
 func (o GetDomainsDomainOutput) IcpStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.IcpStatus }).(pulumi.StringOutput)
 }
@@ -226,37 +307,37 @@ func (o GetDomainsDomainOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates whether the MX record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+// Indicates whether the MX record is successfully verified.
 func (o GetDomainsDomainOutput) MxAuthStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.MxAuthStatus }).(pulumi.StringOutput)
 }
 
-// The MX verification record provided by Alibaba Cloud DNS.
+// The MX verification record provided by the Direct Mail console. **Note:** `mxRecord` takes effect only if `enableDetails` is set to `true`.
 func (o GetDomainsDomainOutput) MxRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.MxRecord }).(pulumi.StringOutput)
 }
 
-// Indicates whether the SPF record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+// Indicates whether the SPF record is successfully verified.
 func (o GetDomainsDomainOutput) SpfAuthStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.SpfAuthStatus }).(pulumi.StringOutput)
 }
 
-// The SPF verification record provided by Alibaba Cloud DNS.
+// The SPF verification record provided by the Direct Mail console. **Note:** `spfRecord` takes effect only if `enableDetails` is set to `true`.
 func (o GetDomainsDomainOutput) SpfRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.SpfRecord }).(pulumi.StringOutput)
 }
 
-// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+// The status of the domain name. Valid values:
 func (o GetDomainsDomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The primary domain name.
+// The primary domain name. **Note:** `tlDomainName` takes effect only if `enableDetails` is set to `true`.
 func (o GetDomainsDomainOutput) TlDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.TlDomainName }).(pulumi.StringOutput)
 }
 
-// The CNAME verification record provided by Alibaba Cloud DNS.
+// The CNAME verification record provided by the Direct Mail console. **Note:** `tracefRecord` takes effect only if `enableDetails` is set to `true`.
 func (o GetDomainsDomainOutput) TracefRecord() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.TracefRecord }).(pulumi.StringOutput)
 }

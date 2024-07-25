@@ -13,22 +13,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectSecurityProperties {
     /**
-     * @return Whether to enable download permission check.
+     * @return Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
      * 
      */
     private @Nullable Boolean enableDownloadPrivilege;
     /**
-     * @return Label authorization.
+     * @return Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
      * 
      */
     private @Nullable Boolean labelSecurity;
     /**
-     * @return Project creator permissions.
+     * @return Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
      * 
      */
     private @Nullable Boolean objectCreatorHasAccessPermission;
     /**
-     * @return Does the project creator have authorization rights.
+     * @return The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
      * 
      */
     private @Nullable Boolean objectCreatorHasGrantPermission;
@@ -38,40 +38,40 @@ public final class ProjectSecurityProperties {
      */
     private @Nullable ProjectSecurityPropertiesProjectProtection projectProtection;
     /**
-     * @return Whether to turn on ACL.
+     * @return Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
      * 
      */
     private @Nullable Boolean usingAcl;
     /**
-     * @return Whether to enable Policy.
+     * @return Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
      * 
      */
     private @Nullable Boolean usingPolicy;
 
     private ProjectSecurityProperties() {}
     /**
-     * @return Whether to enable download permission check.
+     * @return Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
      * 
      */
     public Optional<Boolean> enableDownloadPrivilege() {
         return Optional.ofNullable(this.enableDownloadPrivilege);
     }
     /**
-     * @return Label authorization.
+     * @return Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
      * 
      */
     public Optional<Boolean> labelSecurity() {
         return Optional.ofNullable(this.labelSecurity);
     }
     /**
-     * @return Project creator permissions.
+     * @return Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
      * 
      */
     public Optional<Boolean> objectCreatorHasAccessPermission() {
         return Optional.ofNullable(this.objectCreatorHasAccessPermission);
     }
     /**
-     * @return Does the project creator have authorization rights.
+     * @return The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
      * 
      */
     public Optional<Boolean> objectCreatorHasGrantPermission() {
@@ -85,14 +85,14 @@ public final class ProjectSecurityProperties {
         return Optional.ofNullable(this.projectProtection);
     }
     /**
-     * @return Whether to turn on ACL.
+     * @return Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
      * 
      */
     public Optional<Boolean> usingAcl() {
         return Optional.ofNullable(this.usingAcl);
     }
     /**
-     * @return Whether to enable Policy.
+     * @return Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
      * 
      */
     public Optional<Boolean> usingPolicy() {

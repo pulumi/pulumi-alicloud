@@ -7,8 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A virtual server group contains several ECS instances. The virtual server group can help you to define multiple listening dimension,
- * and to meet the personalized requirements of domain name and URL forwarding.
+ * Provides a Load Balancer Virtual Backend Server Group resource.
+ *
+ * For information about Load Balancer Virtual Backend Server Group and how to use it, see [What is Virtual Backend Server Group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
  *
  * > **NOTE:** Available since v1.6.0.
  *
@@ -22,46 +23,46 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** One VPC load balancer, its virtual server group can only add the same VPC ECS instances.
  *
- * For information about server group and how to use it, see [Configure a server group](https://www.alibabacloud.com/help/en/doc-detail/35215.html).
- *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const slbServerGroupName = config.get("slbServerGroupName") || "forSlbServerGroup";
- * const serverGroup = alicloud.getZones({
+ * const name = config.get("name") || "tf-example";
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const serverGroupNetwork = new alicloud.vpc.Network("server_group", {
- *     vpcName: slbServerGroupName,
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const serverGroupSwitch = new alicloud.vpc.Switch("server_group", {
- *     vpcId: serverGroupNetwork.id,
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: serverGroup.then(serverGroup => serverGroup.zones?.[0]?.id),
- *     vswitchName: slbServerGroupName,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: name,
  * });
- * const serverGroupApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("server_group", {
- *     loadBalancerName: slbServerGroupName,
- *     vswitchId: serverGroupSwitch.id,
- *     instanceChargeType: "PayByCLCU",
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("default", {
+ *     loadBalancerName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     loadBalancerSpec: "slb.s2.small",
  * });
- * const serverGroupServerGroup = new alicloud.slb.ServerGroup("server_group", {
- *     loadBalancerId: serverGroupApplicationLoadBalancer.id,
- *     name: slbServerGroupName,
+ * const defaultServerGroup = new alicloud.slb.ServerGroup("default", {
+ *     loadBalancerId: defaultApplicationLoadBalancer.id,
+ *     name: name,
  * });
  * ```
  *
  * ## Import
  *
- * Load balancer backend server group can be imported using the id, e.g.
+ * Load Balancer Virtual Backend Server Group can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:slb/serverGroup:ServerGroup example abc123456
+ * $ pulumi import alicloud:slb/serverGroup:ServerGroup example <id>
  * ```
  */
 export class ServerGroup extends pulumi.CustomResource {
@@ -93,23 +94,28 @@ export class ServerGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     * Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `deleteProtectionValidation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
      */
     public readonly deleteProtectionValidation!: pulumi.Output<boolean | undefined>;
     /**
-     * The Load Balancer ID which is used to launch a new virtual server group.
+     * The ID of the Server Load Balancer (SLB) instance.
      */
     public readonly loadBalancerId!: pulumi.Output<string>;
     /**
-     * Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
+     * The name of the vServer group. Default value: `tf-server-group`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+     * The list of backend servers to be added. See `servers` below.
+     * > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      *
-     * @deprecated Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.
+     * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      */
     public readonly servers!: pulumi.Output<outputs.slb.ServerGroupServer[]>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a ServerGroup resource with the given unique name, arguments, and options.
@@ -128,6 +134,7 @@ export class ServerGroup extends pulumi.CustomResource {
             resourceInputs["loadBalancerId"] = state ? state.loadBalancerId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["servers"] = state ? state.servers : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ServerGroupArgs | undefined;
             if ((!args || args.loadBalancerId === undefined) && !opts.urn) {
@@ -137,6 +144,7 @@ export class ServerGroup extends pulumi.CustomResource {
             resourceInputs["loadBalancerId"] = args ? args.loadBalancerId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["servers"] = args ? args.servers : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServerGroup.__pulumiType, name, resourceInputs, opts);
@@ -148,23 +156,28 @@ export class ServerGroup extends pulumi.CustomResource {
  */
 export interface ServerGroupState {
     /**
-     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     * Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `deleteProtectionValidation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
      */
     deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
-     * The Load Balancer ID which is used to launch a new virtual server group.
+     * The ID of the Server Load Balancer (SLB) instance.
      */
     loadBalancerId?: pulumi.Input<string>;
     /**
-     * Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
+     * The name of the vServer group. Default value: `tf-server-group`.
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+     * The list of backend servers to be added. See `servers` below.
+     * > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      *
-     * @deprecated Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.
+     * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.slb.ServerGroupServer>[]>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -172,21 +185,26 @@ export interface ServerGroupState {
  */
 export interface ServerGroupArgs {
     /**
-     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
+     * Checking DeleteProtection of SLB instance before deleting. Default value: `false`. If `deleteProtectionValidation` is set to `true`, this resource will not be deleted when its SLB instance enabled DeleteProtection.
      */
     deleteProtectionValidation?: pulumi.Input<boolean>;
     /**
-     * The Load Balancer ID which is used to launch a new virtual server group.
+     * The ID of the Server Load Balancer (SLB) instance.
      */
     loadBalancerId: pulumi.Input<string>;
     /**
-     * Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
+     * The name of the vServer group. Default value: `tf-server-group`.
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows. See `servers` below for details.
+     * The list of backend servers to be added. See `servers` below.
+     * > **NOTE:** Field `servers` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      *
-     * @deprecated Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.
+     * @deprecated Field `servers` has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource `alicloud.slb.ServerGroupServerAttachment`.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.slb.ServerGroupServer>[]>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

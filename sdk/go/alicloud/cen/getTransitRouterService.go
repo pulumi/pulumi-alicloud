@@ -15,7 +15,7 @@ import (
 //
 // For information about CEN and how to use it, see [What is CEN](https://www.alibabacloud.com/help/en/doc-detail/59870.htm).
 //
-// > **NOTE:** Available in v1.139.0+
+// > **NOTE:** Available since v1.139.0+
 //
 // ## Example Usage
 //

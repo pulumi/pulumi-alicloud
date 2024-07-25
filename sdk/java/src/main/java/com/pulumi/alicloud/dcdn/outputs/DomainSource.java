@@ -4,7 +4,6 @@
 package com.pulumi.alicloud.dcdn.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -14,10 +13,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DomainSource {
     /**
-     * @return The origin address.
+     * @return The address of the source station.
      * 
      */
-    private String content;
+    private @Nullable String content;
     /**
      * @return The port number. Valid values: `443` and `80`. Default to `80`.
      * 
@@ -30,12 +29,9 @@ public final class DomainSource {
     private @Nullable String priority;
     /**
      * @return The type of the origin. Valid values:
-     * `ipaddr`: The origin is configured using an IP address.
-     * `domain`: The origin is configured using a domain name.
-     * `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
      * 
      */
-    private String type;
+    private @Nullable String type;
     /**
      * @return The weight of the origin if multiple origins are specified. Default to `10`.
      * 
@@ -44,11 +40,11 @@ public final class DomainSource {
 
     private DomainSource() {}
     /**
-     * @return The origin address.
+     * @return The address of the source station.
      * 
      */
-    public String content() {
-        return this.content;
+    public Optional<String> content() {
+        return Optional.ofNullable(this.content);
     }
     /**
      * @return The port number. Valid values: `443` and `80`. Default to `80`.
@@ -66,13 +62,10 @@ public final class DomainSource {
     }
     /**
      * @return The type of the origin. Valid values:
-     * `ipaddr`: The origin is configured using an IP address.
-     * `domain`: The origin is configured using a domain name.
-     * `oss`: The origin is configured using the Internet domain name of an Alibaba Cloud Object Storage Service (OSS) bucket.
      * 
      */
-    public String type() {
-        return this.type;
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
     /**
      * @return The weight of the origin if multiple origins are specified. Default to `10`.
@@ -91,10 +84,10 @@ public final class DomainSource {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String content;
+        private @Nullable String content;
         private @Nullable Integer port;
         private @Nullable String priority;
-        private String type;
+        private @Nullable String type;
         private @Nullable String weight;
         public Builder() {}
         public Builder(DomainSource defaults) {
@@ -107,10 +100,8 @@ public final class DomainSource {
         }
 
         @CustomType.Setter
-        public Builder content(String content) {
-            if (content == null) {
-              throw new MissingRequiredPropertyException("DomainSource", "content");
-            }
+        public Builder content(@Nullable String content) {
+
             this.content = content;
             return this;
         }
@@ -127,10 +118,8 @@ public final class DomainSource {
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            if (type == null) {
-              throw new MissingRequiredPropertyException("DomainSource", "type");
-            }
+        public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

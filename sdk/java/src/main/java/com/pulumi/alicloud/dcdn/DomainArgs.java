@@ -21,14 +21,29 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     public static final DomainArgs Empty = new DomainArgs();
 
     /**
-     * Indicates the name of the certificate if the HTTPS protocol is enabled.
+     * The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+     * 
+     */
+    @Import(name="certId")
+    private @Nullable Output<String> certId;
+
+    /**
+     * @return The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+     * 
+     */
+    public Optional<Output<String>> certId() {
+        return Optional.ofNullable(this.certId);
+    }
+
+    /**
+     * The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
      * 
      */
     @Import(name="certName")
     private @Nullable Output<String> certName;
 
     /**
-     * @return Indicates the name of the certificate if the HTTPS protocol is enabled.
+     * @return The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
      * 
      */
     public Optional<Output<String>> certName() {
@@ -36,20 +51,29 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the certificate. Valid values:
-     * `free`: a free certificate.
-     * `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-     * `upload`: a user uploaded certificate.
+     * The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+     * 
+     */
+    @Import(name="certRegion")
+    private @Nullable Output<String> certRegion;
+
+    /**
+     * @return The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+     * 
+     */
+    public Optional<Output<String>> certRegion() {
+        return Optional.ofNullable(this.certRegion);
+    }
+
+    /**
+     * The certificate type.
      * 
      */
     @Import(name="certType")
     private @Nullable Output<String> certType;
 
     /**
-     * @return The type of the certificate. Valid values:
-     * `free`: a free certificate.
-     * `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-     * `upload`: a user uploaded certificate.
+     * @return The certificate type.
      * 
      */
     public Optional<Output<String>> certType() {
@@ -57,14 +81,14 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The URL that is used to test the accessibility of the origin.
+     * The URL that is used for health checks.
      * 
      */
     @Import(name="checkUrl")
     private @Nullable Output<String> checkUrl;
 
     /**
-     * @return The URL that is used to test the accessibility of the origin.
+     * @return The URL that is used for health checks.
      * 
      */
     public Optional<Output<String>> checkUrl() {
@@ -72,14 +96,14 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the accelerated domain.
+     * The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
      * 
      */
     @Import(name="domainName", required=true)
     private Output<String> domainName;
 
     /**
-     * @return The name of the accelerated domain.
+     * @return The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
      * 
      */
     public Output<String> domainName() {
@@ -87,29 +111,44 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
+     * Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
      * 
      */
-    @Import(name="forceSet")
-    private @Nullable Output<String> forceSet;
+    @Import(name="env")
+    private @Nullable Output<String> env;
 
     /**
-     * @return Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
+     * @return Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
      * 
      */
-    public Optional<Output<String>> forceSet() {
-        return Optional.ofNullable(this.forceSet);
+    public Optional<Output<String>> env() {
+        return Optional.ofNullable(this.env);
     }
 
     /**
-     * The ID of the resource group.
+     * Computing service type. Valid values:
+     * 
+     */
+    @Import(name="functionType")
+    private @Nullable Output<String> functionType;
+
+    /**
+     * @return Computing service type. Valid values:
+     * 
+     */
+    public Optional<Output<String>> functionType() {
+        return Optional.ofNullable(this.functionType);
+    }
+
+    /**
+     * The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -117,14 +156,29 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The acceleration region.
+     * The Acceleration scen. Supported:
+     * 
+     */
+    @Import(name="scene")
+    private @Nullable Output<String> scene;
+
+    /**
+     * @return The Acceleration scen. Supported:
+     * 
+     */
+    public Optional<Output<String>> scene() {
+        return Optional.ofNullable(this.scene);
+    }
+
+    /**
+     * The region where the acceleration service is deployed. Valid values:
      * 
      */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
     /**
-     * @return The acceleration region.
+     * @return The region where the acceleration service is deployed. Valid values:
      * 
      */
     public Optional<Output<String>> scope() {
@@ -132,44 +186,29 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The top-level domain name.
+     * Source  See `sources` below.
      * 
      */
-    @Import(name="securityToken")
-    private @Nullable Output<String> securityToken;
+    @Import(name="sources")
+    private @Nullable Output<List<DomainSourceArgs>> sources;
 
     /**
-     * @return The top-level domain name.
+     * @return Source  See `sources` below.
      * 
      */
-    public Optional<Output<String>> securityToken() {
-        return Optional.ofNullable(this.securityToken);
+    public Optional<Output<List<DomainSourceArgs>>> sources() {
+        return Optional.ofNullable(this.sources);
     }
 
     /**
-     * The origin information. See `sources` below.
-     * 
-     */
-    @Import(name="sources", required=true)
-    private Output<List<DomainSourceArgs>> sources;
-
-    /**
-     * @return The origin information. See `sources` below.
-     * 
-     */
-    public Output<List<DomainSourceArgs>> sources() {
-        return this.sources;
-    }
-
-    /**
-     * The private key. Specify this parameter only if you enable the SSL certificate.
+     * The private key. Specify the private key only if you want to enable the SSL certificate.
      * 
      */
     @Import(name="sslPri")
     private @Nullable Output<String> sslPri;
 
     /**
-     * @return The private key. Specify this parameter only if you enable the SSL certificate.
+     * @return The private key. Specify the private key only if you want to enable the SSL certificate.
      * 
      */
     public Optional<Output<String>> sslPri() {
@@ -177,14 +216,14 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+     * Specifies whether to enable the SSL certificate. Valid values:
      * 
      */
     @Import(name="sslProtocol")
     private @Nullable Output<String> sslProtocol;
 
     /**
-     * @return Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+     * @return Specifies whether to enable the SSL certificate. Valid values:
      * 
      */
     public Optional<Output<String>> sslProtocol() {
@@ -192,14 +231,14 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates the public key of the certificate if the HTTPS protocol is enabled.
+     * The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
      * 
      */
     @Import(name="sslPub")
     private @Nullable Output<String> sslPub;
 
     /**
-     * @return Indicates the public key of the certificate if the HTTPS protocol is enabled.
+     * @return The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
      * 
      */
     public Optional<Output<String>> sslPub() {
@@ -207,14 +246,14 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+     * The status of the domain name. Valid values:
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+     * @return The status of the domain name. Valid values:
      * 
      */
     public Optional<Output<String>> status() {
@@ -222,14 +261,14 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -237,14 +276,14 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The top-level domain name.
+     * The top-level domain.
      * 
      */
     @Import(name="topLevelDomain")
     private @Nullable Output<String> topLevelDomain;
 
     /**
-     * @return The top-level domain name.
+     * @return The top-level domain.
      * 
      */
     public Optional<Output<String>> topLevelDomain() {
@@ -254,14 +293,17 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     private DomainArgs() {}
 
     private DomainArgs(DomainArgs $) {
+        this.certId = $.certId;
         this.certName = $.certName;
+        this.certRegion = $.certRegion;
         this.certType = $.certType;
         this.checkUrl = $.checkUrl;
         this.domainName = $.domainName;
-        this.forceSet = $.forceSet;
+        this.env = $.env;
+        this.functionType = $.functionType;
         this.resourceGroupId = $.resourceGroupId;
+        this.scene = $.scene;
         this.scope = $.scope;
-        this.securityToken = $.securityToken;
         this.sources = $.sources;
         this.sslPri = $.sslPri;
         this.sslProtocol = $.sslProtocol;
@@ -290,7 +332,28 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certName Indicates the name of the certificate if the HTTPS protocol is enabled.
+         * @param certId The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certId(@Nullable Output<String> certId) {
+            $.certId = certId;
+            return this;
+        }
+
+        /**
+         * @param certId The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certId(String certId) {
+            return certId(Output.of(certId));
+        }
+
+        /**
+         * @param certName The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
          * 
          * @return builder
          * 
@@ -301,7 +364,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certName Indicates the name of the certificate if the HTTPS protocol is enabled.
+         * @param certName The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
          * 
          * @return builder
          * 
@@ -311,10 +374,28 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certType The type of the certificate. Valid values:
-         * `free`: a free certificate.
-         * `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-         * `upload`: a user uploaded certificate.
+         * @param certRegion The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certRegion(@Nullable Output<String> certRegion) {
+            $.certRegion = certRegion;
+            return this;
+        }
+
+        /**
+         * @param certRegion The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certRegion(String certRegion) {
+            return certRegion(Output.of(certRegion));
+        }
+
+        /**
+         * @param certType The certificate type.
          * 
          * @return builder
          * 
@@ -325,10 +406,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certType The type of the certificate. Valid values:
-         * `free`: a free certificate.
-         * `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-         * `upload`: a user uploaded certificate.
+         * @param certType The certificate type.
          * 
          * @return builder
          * 
@@ -338,7 +416,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkUrl The URL that is used to test the accessibility of the origin.
+         * @param checkUrl The URL that is used for health checks.
          * 
          * @return builder
          * 
@@ -349,7 +427,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkUrl The URL that is used to test the accessibility of the origin.
+         * @param checkUrl The URL that is used for health checks.
          * 
          * @return builder
          * 
@@ -359,7 +437,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainName The name of the accelerated domain.
+         * @param domainName The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
          * 
          * @return builder
          * 
@@ -370,7 +448,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainName The name of the accelerated domain.
+         * @param domainName The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
          * 
          * @return builder
          * 
@@ -380,28 +458,49 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceSet Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
+         * @param env Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
          * 
          * @return builder
          * 
          */
-        public Builder forceSet(@Nullable Output<String> forceSet) {
-            $.forceSet = forceSet;
+        public Builder env(@Nullable Output<String> env) {
+            $.env = env;
             return this;
         }
 
         /**
-         * @param forceSet Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
+         * @param env Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
          * 
          * @return builder
          * 
          */
-        public Builder forceSet(String forceSet) {
-            return forceSet(Output.of(forceSet));
+        public Builder env(String env) {
+            return env(Output.of(env));
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param functionType Computing service type. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionType(@Nullable Output<String> functionType) {
+            $.functionType = functionType;
+            return this;
+        }
+
+        /**
+         * @param functionType Computing service type. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionType(String functionType) {
+            return functionType(Output.of(functionType));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
          * 
          * @return builder
          * 
@@ -412,7 +511,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
          * 
          * @return builder
          * 
@@ -422,7 +521,28 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scope The acceleration region.
+         * @param scene The Acceleration scen. Supported:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scene(@Nullable Output<String> scene) {
+            $.scene = scene;
+            return this;
+        }
+
+        /**
+         * @param scene The Acceleration scen. Supported:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scene(String scene) {
+            return scene(Output.of(scene));
+        }
+
+        /**
+         * @param scope The region where the acceleration service is deployed. Valid values:
          * 
          * @return builder
          * 
@@ -433,7 +553,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scope The acceleration region.
+         * @param scope The region where the acceleration service is deployed. Valid values:
          * 
          * @return builder
          * 
@@ -443,39 +563,18 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityToken The top-level domain name.
+         * @param sources Source  See `sources` below.
          * 
          * @return builder
          * 
          */
-        public Builder securityToken(@Nullable Output<String> securityToken) {
-            $.securityToken = securityToken;
-            return this;
-        }
-
-        /**
-         * @param securityToken The top-level domain name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder securityToken(String securityToken) {
-            return securityToken(Output.of(securityToken));
-        }
-
-        /**
-         * @param sources The origin information. See `sources` below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sources(Output<List<DomainSourceArgs>> sources) {
+        public Builder sources(@Nullable Output<List<DomainSourceArgs>> sources) {
             $.sources = sources;
             return this;
         }
 
         /**
-         * @param sources The origin information. See `sources` below.
+         * @param sources Source  See `sources` below.
          * 
          * @return builder
          * 
@@ -485,7 +584,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The origin information. See `sources` below.
+         * @param sources Source  See `sources` below.
          * 
          * @return builder
          * 
@@ -495,7 +594,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslPri The private key. Specify this parameter only if you enable the SSL certificate.
+         * @param sslPri The private key. Specify the private key only if you want to enable the SSL certificate.
          * 
          * @return builder
          * 
@@ -506,7 +605,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslPri The private key. Specify this parameter only if you enable the SSL certificate.
+         * @param sslPri The private key. Specify the private key only if you want to enable the SSL certificate.
          * 
          * @return builder
          * 
@@ -516,7 +615,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslProtocol Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+         * @param sslProtocol Specifies whether to enable the SSL certificate. Valid values:
          * 
          * @return builder
          * 
@@ -527,7 +626,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslProtocol Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+         * @param sslProtocol Specifies whether to enable the SSL certificate. Valid values:
          * 
          * @return builder
          * 
@@ -537,7 +636,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslPub Indicates the public key of the certificate if the HTTPS protocol is enabled.
+         * @param sslPub The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
          * 
          * @return builder
          * 
@@ -548,7 +647,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslPub Indicates the public key of the certificate if the HTTPS protocol is enabled.
+         * @param sslPub The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
          * 
          * @return builder
          * 
@@ -558,7 +657,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+         * @param status The status of the domain name. Valid values:
          * 
          * @return builder
          * 
@@ -569,7 +668,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+         * @param status The status of the domain name. Valid values:
          * 
          * @return builder
          * 
@@ -579,7 +678,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -590,7 +689,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -600,7 +699,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topLevelDomain The top-level domain name.
+         * @param topLevelDomain The top-level domain.
          * 
          * @return builder
          * 
@@ -611,7 +710,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topLevelDomain The top-level domain name.
+         * @param topLevelDomain The top-level domain.
          * 
          * @return builder
          * 
@@ -623,9 +722,6 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         public DomainArgs build() {
             if ($.domainName == null) {
                 throw new MissingRequiredPropertyException("DomainArgs", "domainName");
-            }
-            if ($.sources == null) {
-                throw new MissingRequiredPropertyException("DomainArgs", "sources");
             }
             return $;
         }

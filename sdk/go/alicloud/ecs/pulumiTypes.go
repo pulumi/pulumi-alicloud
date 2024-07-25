@@ -2334,15 +2334,19 @@ func (o InstanceMaintenanceTimePtrOutput) StartTime() pulumi.StringPtrOutput {
 }
 
 type InstanceNetworkInterfaces struct {
-	// The ID of the secondary ENI.
+	// The index of the network card for Secondary ENI.
+	NetworkCardIndex *int `pulumi:"networkCardIndex"`
+	// The ID of the Secondary ENI.
 	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
-	// The communication mode of the ENI. Default value: `Standard`. Valid values:
+	// The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
 	// - `Standard`: Uses the TCP communication mode.
 	// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
 	NetworkInterfaceTrafficMode *string `pulumi:"networkInterfaceTrafficMode"`
-	// The ID of security group N to which to assign ENI N.
+	// The number of queues supported by the ERI.
+	QueuePairNumber *int `pulumi:"queuePairNumber"`
+	// The ID of security group N to which to assign Secondary ENI N.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The ID of the vSwitch to which to connect ENI N.
+	// The ID of the vSwitch to which to connect Secondary ENI N.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -2358,15 +2362,19 @@ type InstanceNetworkInterfacesInput interface {
 }
 
 type InstanceNetworkInterfacesArgs struct {
-	// The ID of the secondary ENI.
+	// The index of the network card for Secondary ENI.
+	NetworkCardIndex pulumi.IntPtrInput `pulumi:"networkCardIndex"`
+	// The ID of the Secondary ENI.
 	NetworkInterfaceId pulumi.StringPtrInput `pulumi:"networkInterfaceId"`
-	// The communication mode of the ENI. Default value: `Standard`. Valid values:
+	// The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
 	// - `Standard`: Uses the TCP communication mode.
 	// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
 	NetworkInterfaceTrafficMode pulumi.StringPtrInput `pulumi:"networkInterfaceTrafficMode"`
-	// The ID of security group N to which to assign ENI N.
+	// The number of queues supported by the ERI.
+	QueuePairNumber pulumi.IntPtrInput `pulumi:"queuePairNumber"`
+	// The ID of security group N to which to assign Secondary ENI N.
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// The ID of the vSwitch to which to connect ENI N.
+	// The ID of the vSwitch to which to connect Secondary ENI N.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 
@@ -2447,24 +2455,34 @@ func (o InstanceNetworkInterfacesOutput) ToInstanceNetworkInterfacesPtrOutputWit
 	}).(InstanceNetworkInterfacesPtrOutput)
 }
 
-// The ID of the secondary ENI.
+// The index of the network card for Secondary ENI.
+func (o InstanceNetworkInterfacesOutput) NetworkCardIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkInterfaces) *int { return v.NetworkCardIndex }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the Secondary ENI.
 func (o InstanceNetworkInterfacesOutput) NetworkInterfaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetworkInterfaces) *string { return v.NetworkInterfaceId }).(pulumi.StringPtrOutput)
 }
 
-// The communication mode of the ENI. Default value: `Standard`. Valid values:
+// The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
 // - `Standard`: Uses the TCP communication mode.
 // - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
 func (o InstanceNetworkInterfacesOutput) NetworkInterfaceTrafficMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetworkInterfaces) *string { return v.NetworkInterfaceTrafficMode }).(pulumi.StringPtrOutput)
 }
 
-// The ID of security group N to which to assign ENI N.
+// The number of queues supported by the ERI.
+func (o InstanceNetworkInterfacesOutput) QueuePairNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkInterfaces) *int { return v.QueuePairNumber }).(pulumi.IntPtrOutput)
+}
+
+// The ID of security group N to which to assign Secondary ENI N.
 func (o InstanceNetworkInterfacesOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceNetworkInterfaces) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The ID of the vSwitch to which to connect ENI N.
+// The ID of the vSwitch to which to connect Secondary ENI N.
 func (o InstanceNetworkInterfacesOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetworkInterfaces) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }
@@ -2493,7 +2511,17 @@ func (o InstanceNetworkInterfacesPtrOutput) Elem() InstanceNetworkInterfacesOutp
 	}).(InstanceNetworkInterfacesOutput)
 }
 
-// The ID of the secondary ENI.
+// The index of the network card for Secondary ENI.
+func (o InstanceNetworkInterfacesPtrOutput) NetworkCardIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkInterfaces) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkCardIndex
+	}).(pulumi.IntPtrOutput)
+}
+
+// The ID of the Secondary ENI.
 func (o InstanceNetworkInterfacesPtrOutput) NetworkInterfaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceNetworkInterfaces) *string {
 		if v == nil {
@@ -2503,7 +2531,7 @@ func (o InstanceNetworkInterfacesPtrOutput) NetworkInterfaceId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The communication mode of the ENI. Default value: `Standard`. Valid values:
+// The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
 // - `Standard`: Uses the TCP communication mode.
 // - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
 func (o InstanceNetworkInterfacesPtrOutput) NetworkInterfaceTrafficMode() pulumi.StringPtrOutput {
@@ -2515,7 +2543,17 @@ func (o InstanceNetworkInterfacesPtrOutput) NetworkInterfaceTrafficMode() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of security group N to which to assign ENI N.
+// The number of queues supported by the ERI.
+func (o InstanceNetworkInterfacesPtrOutput) QueuePairNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkInterfaces) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueuePairNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+// The ID of security group N to which to assign Secondary ENI N.
 func (o InstanceNetworkInterfacesPtrOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceNetworkInterfaces) []string {
 		if v == nil {
@@ -2525,7 +2563,7 @@ func (o InstanceNetworkInterfacesPtrOutput) SecurityGroupIds() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// The ID of the vSwitch to which to connect ENI N.
+// The ID of the vSwitch to which to connect Secondary ENI N.
 func (o InstanceNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceNetworkInterfaces) *string {
 		if v == nil {

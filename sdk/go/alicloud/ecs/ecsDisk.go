@@ -56,6 +56,7 @@ type EcsDisk struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+	// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
 	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
 	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
 	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -145,6 +146,7 @@ type ecsDiskState struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType *string `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+	// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
 	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
 	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
 	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -205,6 +207,7 @@ type EcsDiskState struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringPtrInput
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+	// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
 	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
 	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
 	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -269,6 +272,7 @@ type ecsDiskArgs struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType *string `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+	// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
 	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
 	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
 	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -328,6 +332,7 @@ type EcsDiskArgs struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringPtrInput
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+	// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
 	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
 	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
 	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -517,6 +522,7 @@ func (o EcsDiskOutput) PaymentType() pulumi.StringOutput {
 }
 
 // Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
 // * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
 // * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
 // * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.

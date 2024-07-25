@@ -16,17 +16,17 @@ class ControlPolicyOrderArgs:
     def __init__(__self__, *,
                  acl_uuid: pulumi.Input[str],
                  direction: pulumi.Input[str],
-                 order: Optional[pulumi.Input[int]] = None):
+                 order: pulumi.Input[int]):
         """
         The set of arguments for constructing a ControlPolicyOrder resource.
         :param pulumi.Input[str] acl_uuid: The unique ID of the access control policy.
-        :param pulumi.Input[str] direction: Direction. Valid values: `in`, `out`.
-        :param pulumi.Input[int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+        :param pulumi.Input[str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        :param pulumi.Input[int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+               > **NOTE:** From version 1.227.1, `order` must be set.
         """
         pulumi.set(__self__, "acl_uuid", acl_uuid)
         pulumi.set(__self__, "direction", direction)
-        if order is not None:
-            pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "order", order)
 
     @property
     @pulumi.getter(name="aclUuid")
@@ -44,7 +44,7 @@ class ControlPolicyOrderArgs:
     @pulumi.getter
     def direction(self) -> pulumi.Input[str]:
         """
-        Direction. Valid values: `in`, `out`.
+        The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         """
         return pulumi.get(self, "direction")
 
@@ -54,14 +54,15 @@ class ControlPolicyOrderArgs:
 
     @property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[int]]:
+    def order(self) -> pulumi.Input[int]:
         """
-        The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+        The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+        > **NOTE:** From version 1.227.1, `order` must be set.
         """
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[int]]):
+    def order(self, value: pulumi.Input[int]):
         pulumi.set(self, "order", value)
 
 
@@ -74,8 +75,9 @@ class _ControlPolicyOrderState:
         """
         Input properties used for looking up and filtering ControlPolicyOrder resources.
         :param pulumi.Input[str] acl_uuid: The unique ID of the access control policy.
-        :param pulumi.Input[str] direction: Direction. Valid values: `in`, `out`.
-        :param pulumi.Input[int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+        :param pulumi.Input[str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        :param pulumi.Input[int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+               > **NOTE:** From version 1.227.1, `order` must be set.
         """
         if acl_uuid is not None:
             pulumi.set(__self__, "acl_uuid", acl_uuid)
@@ -100,7 +102,7 @@ class _ControlPolicyOrderState:
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[str]]:
         """
-        Direction. Valid values: `in`, `out`.
+        The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         """
         return pulumi.get(self, "direction")
 
@@ -112,7 +114,8 @@ class _ControlPolicyOrderState:
     @pulumi.getter
     def order(self) -> Optional[pulumi.Input[int]]:
         """
-        The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+        The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+        > **NOTE:** From version 1.227.1, `order` must be set.
         """
         return pulumi.get(self, "order")
 
@@ -131,11 +134,11 @@ class ControlPolicyOrder(pulumi.CustomResource):
                  order: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Provides a Cloud Firewall Control Policy resource.
+        Provides a Cloud Firewall Control Policy Order resource.
 
         For information about Cloud Firewall Control Policy Order and how to use it, see [What is Control Policy Order](https://www.alibabacloud.com/help/doc-detail/138867.htm).
 
-        > **NOTE:** Available in v1.130.0+.
+        > **NOTE:** Available since v1.130.0.
 
         ## Example Usage
 
@@ -145,19 +148,23 @@ class ControlPolicyOrder(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example1 = alicloud.cloudfirewall.ControlPolicy("example1",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudfirewall.ControlPolicy("default",
+            direction="in",
             application_name="ANY",
+            description=name,
             acl_action="accept",
-            description="example",
+            source="127.0.0.1/32",
+            source_type="net",
+            destination="127.0.0.2/32",
             destination_type="net",
-            destination="100.1.1.0/24",
-            direction="out",
-            proto="ANY",
-            source="1.2.3.0/24",
-            source_type="net")
-        example2 = alicloud.cloudfirewall.ControlPolicyOrder("example2",
-            acl_uuid=example1.acl_uuid,
-            direction=example1.direction,
+            proto="ANY")
+        default_control_policy_order = alicloud.cloudfirewall.ControlPolicyOrder("default",
+            acl_uuid=default.acl_uuid,
+            direction=default.direction,
             order=1)
         ```
 
@@ -172,8 +179,9 @@ class ControlPolicyOrder(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_uuid: The unique ID of the access control policy.
-        :param pulumi.Input[str] direction: Direction. Valid values: `in`, `out`.
-        :param pulumi.Input[int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+        :param pulumi.Input[str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        :param pulumi.Input[int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+               > **NOTE:** From version 1.227.1, `order` must be set.
         """
         ...
     @overload
@@ -182,11 +190,11 @@ class ControlPolicyOrder(pulumi.CustomResource):
                  args: ControlPolicyOrderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloud Firewall Control Policy resource.
+        Provides a Cloud Firewall Control Policy Order resource.
 
         For information about Cloud Firewall Control Policy Order and how to use it, see [What is Control Policy Order](https://www.alibabacloud.com/help/doc-detail/138867.htm).
 
-        > **NOTE:** Available in v1.130.0+.
+        > **NOTE:** Available since v1.130.0.
 
         ## Example Usage
 
@@ -196,19 +204,23 @@ class ControlPolicyOrder(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example1 = alicloud.cloudfirewall.ControlPolicy("example1",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudfirewall.ControlPolicy("default",
+            direction="in",
             application_name="ANY",
+            description=name,
             acl_action="accept",
-            description="example",
+            source="127.0.0.1/32",
+            source_type="net",
+            destination="127.0.0.2/32",
             destination_type="net",
-            destination="100.1.1.0/24",
-            direction="out",
-            proto="ANY",
-            source="1.2.3.0/24",
-            source_type="net")
-        example2 = alicloud.cloudfirewall.ControlPolicyOrder("example2",
-            acl_uuid=example1.acl_uuid,
-            direction=example1.direction,
+            proto="ANY")
+        default_control_policy_order = alicloud.cloudfirewall.ControlPolicyOrder("default",
+            acl_uuid=default.acl_uuid,
+            direction=default.direction,
             order=1)
         ```
 
@@ -253,6 +265,8 @@ class ControlPolicyOrder(pulumi.CustomResource):
             if direction is None and not opts.urn:
                 raise TypeError("Missing required property 'direction'")
             __props__.__dict__["direction"] = direction
+            if order is None and not opts.urn:
+                raise TypeError("Missing required property 'order'")
             __props__.__dict__["order"] = order
         super(ControlPolicyOrder, __self__).__init__(
             'alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder',
@@ -275,8 +289,9 @@ class ControlPolicyOrder(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_uuid: The unique ID of the access control policy.
-        :param pulumi.Input[str] direction: Direction. Valid values: `in`, `out`.
-        :param pulumi.Input[int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+        :param pulumi.Input[str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        :param pulumi.Input[int] order: The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+               > **NOTE:** From version 1.227.1, `order` must be set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -299,15 +314,16 @@ class ControlPolicyOrder(pulumi.CustomResource):
     @pulumi.getter
     def direction(self) -> pulumi.Output[str]:
         """
-        Direction. Valid values: `in`, `out`.
+        The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         """
         return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
-    def order(self) -> pulumi.Output[Optional[int]]:
+    def order(self) -> pulumi.Output[int]:
         """
-        The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+        The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+        > **NOTE:** From version 1.227.1, `order` must be set.
         """
         return pulumi.get(self, "order")
 

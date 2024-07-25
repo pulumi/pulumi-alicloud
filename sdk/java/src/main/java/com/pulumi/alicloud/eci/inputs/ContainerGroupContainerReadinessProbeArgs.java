@@ -52,12 +52,16 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
     /**
      * Health check using HTTP request method. See `http_get` below.
      * 
+     * &gt; **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
+     * 
      */
     @Import(name="httpGets")
     private @Nullable Output<List<ContainerGroupContainerReadinessProbeHttpGetArgs>> httpGets;
 
     /**
      * @return Health check using HTTP request method. See `http_get` below.
+     * 
+     * &gt; **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
      * 
      */
     public Optional<Output<List<ContainerGroupContainerReadinessProbeHttpGetArgs>>> httpGets() {
@@ -225,6 +229,8 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
         /**
          * @param httpGets Health check using HTTP request method. See `http_get` below.
          * 
+         * &gt; **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
+         * 
          * @return builder
          * 
          */
@@ -236,6 +242,8 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
         /**
          * @param httpGets Health check using HTTP request method. See `http_get` below.
          * 
+         * &gt; **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
+         * 
          * @return builder
          * 
          */
@@ -245,6 +253,8 @@ public final class ContainerGroupContainerReadinessProbeArgs extends com.pulumi.
 
         /**
          * @param httpGets Health check using HTTP request method. See `http_get` below.
+         * 
+         * &gt; **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
          * 
          * @return builder
          * 

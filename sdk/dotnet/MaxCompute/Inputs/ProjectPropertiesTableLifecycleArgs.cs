@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The value of the life cycle.
+        /// The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
     public sealed class ProjectSecurityPropertiesProjectProtectionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Exclusion policy.
+        /// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
         /// </summary>
         [Input("exceptionPolicy")]
         public Input<string>? ExceptionPolicy { get; set; }
 
         /// <summary>
-        /// Is it turned on.
+        /// Whether enabled, value:(true/false).
         /// </summary>
         [Input("protected")]
         public Input<bool>? Protected { get; set; }

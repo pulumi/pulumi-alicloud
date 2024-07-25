@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a Vpc Public Ip Address Pool resource.
+    /// Provides a VPC Public Ip Address Pool resource.
     /// 
-    /// For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
+    /// For information about VPC Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
     /// 
     /// &gt; **NOTE:** Available since v1.186.0.
     /// 
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// Vpc Public Ip Address Pool can be imported using the id, e.g.
+    /// VPC Public Ip Address Pool can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example &lt;id&gt;
@@ -58,7 +58,13 @@ namespace Pulumi.AliCloud.Vpc
     public partial class PublicIpAddressPool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The creation time of the resource.
+        /// The name of the VPC Public IP address pool.
+        /// </summary>
+        [Output("bizType")]
+        public Output<string> BizType { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time of the resource
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -95,6 +101,14 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Security protection level.
+        /// - If the configuration is empty, the default value is DDoS protection (Basic edition).
+        /// - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+        /// </summary>
+        [Output("securityProtectionTypes")]
+        public Output<ImmutableArray<string>> SecurityProtectionTypes { get; private set; } = null!;
 
         /// <summary>
         /// The status of the VPC Public IP address pool.
@@ -167,6 +181,12 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class PublicIpAddressPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The name of the VPC Public IP address pool.
+        /// </summary>
+        [Input("bizType")]
+        public Input<string>? BizType { get; set; }
+
+        /// <summary>
         /// Description.
         /// </summary>
         [Input("description")]
@@ -190,6 +210,20 @@ namespace Pulumi.AliCloud.Vpc
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("securityProtectionTypes")]
+        private InputList<string>? _securityProtectionTypes;
+
+        /// <summary>
+        /// Security protection level.
+        /// - If the configuration is empty, the default value is DDoS protection (Basic edition).
+        /// - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+        /// </summary>
+        public InputList<string> SecurityProtectionTypes
+        {
+            get => _securityProtectionTypes ?? (_securityProtectionTypes = new InputList<string>());
+            set => _securityProtectionTypes = value;
+        }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -211,7 +245,13 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class PublicIpAddressPoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The creation time of the resource.
+        /// The name of the VPC Public IP address pool.
+        /// </summary>
+        [Input("bizType")]
+        public Input<string>? BizType { get; set; }
+
+        /// <summary>
+        /// The creation time of the resource
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -248,6 +288,20 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("securityProtectionTypes")]
+        private InputList<string>? _securityProtectionTypes;
+
+        /// <summary>
+        /// Security protection level.
+        /// - If the configuration is empty, the default value is DDoS protection (Basic edition).
+        /// - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+        /// </summary>
+        public InputList<string> SecurityProtectionTypes
+        {
+            get => _securityProtectionTypes ?? (_securityProtectionTypes = new InputList<string>());
+            set => _securityProtectionTypes = value;
+        }
 
         /// <summary>
         /// The status of the VPC Public IP address pool.

@@ -54,6 +54,9 @@ class GetDomainsResult:
     @property
     @pulumi.getter
     def domains(self) -> Sequence['outputs.GetDomainsDomainResult']:
+        """
+        A list of Domains. Each element contains the following attributes:
+        """
         return pulumi.get(self, "domains")
 
     @property
@@ -87,6 +90,9 @@ class GetDomainsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Domain names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -97,6 +103,9 @@ class GetDomainsResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the domain name.
+        """
         return pulumi.get(self, "status")
 
 
@@ -127,7 +136,7 @@ def get_domains(enable_details: Optional[bool] = None,
     """
     This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -137,23 +146,22 @@ def get_domains(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.directmail.get_domains(ids=["example_id"])
-    pulumi.export("directMailDomainId1", ids.domains[0].id)
-    name_regex = alicloud.directmail.get_domains(name_regex="^my-Domain")
-    pulumi.export("directMailDomainId2", name_regex.domains[0].id)
-    example = alicloud.directmail.get_domains(status="1",
-        key_word="^my-Domain",
-        ids=["example_id"])
-    pulumi.export("directMailDomainId3", example.domains[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example.pop.com"
+    default = alicloud.directmail.Domain("default", domain_name=name)
+    ids = alicloud.directmail.get_domains_output(ids=[default.id])
+    pulumi.export("directMailDomainsId0", ids.domains[0].id)
     ```
 
 
-    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[str] ids: A list of Domain IDs.
-    :param str key_word: domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+    :param str key_word: The domain name. It must be 1 to 50 characters in length and can contain digits, letters, periods (.), and hyphens (-).
     :param str name_regex: A regex string to filter results by Domain name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+    :param str status: The status of the domain name. Valid values:
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -188,7 +196,7 @@ def get_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     """
     This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -198,22 +206,21 @@ def get_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.directmail.get_domains(ids=["example_id"])
-    pulumi.export("directMailDomainId1", ids.domains[0].id)
-    name_regex = alicloud.directmail.get_domains(name_regex="^my-Domain")
-    pulumi.export("directMailDomainId2", name_regex.domains[0].id)
-    example = alicloud.directmail.get_domains(status="1",
-        key_word="^my-Domain",
-        ids=["example_id"])
-    pulumi.export("directMailDomainId3", example.domains[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example.pop.com"
+    default = alicloud.directmail.Domain("default", domain_name=name)
+    ids = alicloud.directmail.get_domains_output(ids=[default.id])
+    pulumi.export("directMailDomainsId0", ids.domains[0].id)
     ```
 
 
-    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[str] ids: A list of Domain IDs.
-    :param str key_word: domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+    :param str key_word: The domain name. It must be 1 to 50 characters in length and can contain digits, letters, periods (.), and hyphens (-).
     :param str name_regex: A regex string to filter results by Domain name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+    :param str status: The status of the domain name. Valid values:
     """
     ...

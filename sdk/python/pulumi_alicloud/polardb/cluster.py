@@ -132,10 +132,10 @@ class ClusterArgs:
                > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
         :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
                > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
-        :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-               > **NOTE:** This parameter is valid only for standard clusters.
-        :param pulumi.Input[str] proxy_type: The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-               > **NOTE:** This parameter is valid only for standard clusters.
+        :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+               > **NOTE:** This parameter is valid only for standard edition clusters.
+        :param pulumi.Input[str] proxy_type: The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+               > **NOTE:** This parameter is valid for both standard and enterprise clusters.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
@@ -725,8 +725,8 @@ class ClusterArgs:
     @pulumi.getter(name="proxyClass")
     def proxy_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-        > **NOTE:** This parameter is valid only for standard clusters.
+        The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+        > **NOTE:** This parameter is valid only for standard edition clusters.
         """
         return pulumi.get(self, "proxy_class")
 
@@ -738,8 +738,8 @@ class ClusterArgs:
     @pulumi.getter(name="proxyType")
     def proxy_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-        > **NOTE:** This parameter is valid only for standard clusters.
+        The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+        > **NOTE:** This parameter is valid for both standard and enterprise clusters.
         """
         return pulumi.get(self, "proxy_type")
 
@@ -1199,10 +1199,10 @@ class _ClusterState:
         :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
                > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
         :param pulumi.Input[str] port: (Available since 1.196.0) PolarDB cluster connection port.
-        :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-               > **NOTE:** This parameter is valid only for standard clusters.
-        :param pulumi.Input[str] proxy_type: The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-               > **NOTE:** This parameter is valid only for standard clusters.
+        :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+               > **NOTE:** This parameter is valid only for standard edition clusters.
+        :param pulumi.Input[str] proxy_type: The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+               > **NOTE:** This parameter is valid for both standard and enterprise clusters.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
@@ -1859,8 +1859,8 @@ class _ClusterState:
     @pulumi.getter(name="proxyClass")
     def proxy_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-        > **NOTE:** This parameter is valid only for standard clusters.
+        The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+        > **NOTE:** This parameter is valid only for standard edition clusters.
         """
         return pulumi.get(self, "proxy_class")
 
@@ -1872,8 +1872,8 @@ class _ClusterState:
     @pulumi.getter(name="proxyType")
     def proxy_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-        > **NOTE:** This parameter is valid only for standard clusters.
+        The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+        > **NOTE:** This parameter is valid for both standard and enterprise clusters.
         """
         return pulumi.get(self, "proxy_type")
 
@@ -2361,10 +2361,10 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
         :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
                > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
-        :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-               > **NOTE:** This parameter is valid only for standard clusters.
-        :param pulumi.Input[str] proxy_type: The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-               > **NOTE:** This parameter is valid only for standard clusters.
+        :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+               > **NOTE:** This parameter is valid only for standard edition clusters.
+        :param pulumi.Input[str] proxy_type: The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+               > **NOTE:** This parameter is valid for both standard and enterprise clusters.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
@@ -2718,10 +2718,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] planned_start_time: The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
                > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
         :param pulumi.Input[str] port: (Available since 1.196.0) PolarDB cluster connection port.
-        :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-               > **NOTE:** This parameter is valid only for standard clusters.
-        :param pulumi.Input[str] proxy_type: The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-               > **NOTE:** This parameter is valid only for standard clusters.
+        :param pulumi.Input[str] proxy_class: The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+               > **NOTE:** This parameter is valid only for standard edition clusters.
+        :param pulumi.Input[str] proxy_type: The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+               > **NOTE:** This parameter is valid for both standard and enterprise clusters.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
@@ -3163,8 +3163,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="proxyClass")
     def proxy_class(self) -> pulumi.Output[Optional[str]]:
         """
-        The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
-        > **NOTE:** This parameter is valid only for standard clusters.
+        The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
+        > **NOTE:** This parameter is valid only for standard edition clusters.
         """
         return pulumi.get(self, "proxy_class")
 
@@ -3172,8 +3172,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="proxyType")
     def proxy_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
-        > **NOTE:** This parameter is valid only for standard clusters.
+        The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
+        > **NOTE:** This parameter is valid for both standard and enterprise clusters.
         """
         return pulumi.get(self, "proxy_type")
 

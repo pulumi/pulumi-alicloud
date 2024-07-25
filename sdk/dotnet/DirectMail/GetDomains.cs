@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.DirectMail
         /// <summary>
         /// This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -28,34 +28,24 @@ namespace Pulumi.AliCloud.DirectMail
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example.pop.com";
+        ///     var @default = new AliCloud.DirectMail.Domain("default", new()
+        ///     {
+        ///         DomainName = name,
+        ///     });
+        /// 
         ///     var ids = AliCloud.DirectMail.GetDomains.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.DirectMail.GetDomains.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Domain",
-        ///     });
-        /// 
-        ///     var example = AliCloud.DirectMail.GetDomains.Invoke(new()
-        ///     {
-        ///         Status = "1",
-        ///         KeyWord = "^my-Domain",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
+        ///             @default.Id,
         ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["directMailDomainId1"] = ids.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///         ["directMailDomainId2"] = nameRegex.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///         ["directMailDomainId3"] = example.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
+        ///         ["directMailDomainsId0"] = ids.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -66,7 +56,7 @@ namespace Pulumi.AliCloud.DirectMail
         /// <summary>
         /// This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -80,34 +70,24 @@ namespace Pulumi.AliCloud.DirectMail
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example.pop.com";
+        ///     var @default = new AliCloud.DirectMail.Domain("default", new()
+        ///     {
+        ///         DomainName = name,
+        ///     });
+        /// 
         ///     var ids = AliCloud.DirectMail.GetDomains.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.DirectMail.GetDomains.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-Domain",
-        ///     });
-        /// 
-        ///     var example = AliCloud.DirectMail.GetDomains.Invoke(new()
-        ///     {
-        ///         Status = "1",
-        ///         KeyWord = "^my-Domain",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
+        ///             @default.Id,
         ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["directMailDomainId1"] = ids.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///         ["directMailDomainId2"] = nameRegex.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
-        ///         ["directMailDomainId3"] = example.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
+        ///         ["directMailDomainsId0"] = ids.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -120,7 +100,7 @@ namespace Pulumi.AliCloud.DirectMail
     public sealed class GetDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -138,7 +118,7 @@ namespace Pulumi.AliCloud.DirectMail
         }
 
         /// <summary>
-        /// domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+        /// The domain name. It must be 1 to 50 characters in length and can contain digits, letters, periods (.), and hyphens (-).
         /// </summary>
         [Input("keyWord")]
         public string? KeyWord { get; set; }
@@ -156,7 +136,7 @@ namespace Pulumi.AliCloud.DirectMail
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+        /// The status of the domain name. Valid values:
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -170,7 +150,7 @@ namespace Pulumi.AliCloud.DirectMail
     public sealed class GetDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -188,7 +168,7 @@ namespace Pulumi.AliCloud.DirectMail
         }
 
         /// <summary>
-        /// domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+        /// The domain name. It must be 1 to 50 characters in length and can contain digits, letters, periods (.), and hyphens (-).
         /// </summary>
         [Input("keyWord")]
         public Input<string>? KeyWord { get; set; }
@@ -206,7 +186,7 @@ namespace Pulumi.AliCloud.DirectMail
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+        /// The status of the domain name. Valid values:
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -221,6 +201,9 @@ namespace Pulumi.AliCloud.DirectMail
     [OutputType]
     public sealed class GetDomainsResult
     {
+        /// <summary>
+        /// A list of Domains. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainResult> Domains;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -230,8 +213,14 @@ namespace Pulumi.AliCloud.DirectMail
         public readonly ImmutableArray<string> Ids;
         public readonly string? KeyWord;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Domain names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the domain name.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

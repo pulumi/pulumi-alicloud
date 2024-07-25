@@ -12,24 +12,29 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworkIpv6CidrBlock {
     /**
-     * @return The IPv6 CIDR block of the VPC.
+     * @return The IPv6 CIDR block of the default VPC.
+     * 
+     * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      * 
      */
     private @Nullable String ipv6CidrBlock;
     /**
      * @return The IPv6 address segment type of the VPC. Value:
-     * - **BGP** (default): Alibaba Cloud BGP IPv6.
-     * - **ChinaMobile**: China Mobile (single line).
-     * - **ChinaUnicom**: China Unicom (single line).
-     * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     * - `BGP` (default): Alibaba Cloud BGP IPv6.
+     * - `ChinaMobile`: China Mobile (single line).
+     * - `ChinaUnicom`: China Unicom (single line).
+     * - `ChinaTelecom`: China Telecom (single line).
+     * 
+     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
      * 
      */
     private @Nullable String ipv6Isp;
 
     private NetworkIpv6CidrBlock() {}
     /**
-     * @return The IPv6 CIDR block of the VPC.
+     * @return The IPv6 CIDR block of the default VPC.
+     * 
+     * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      * 
      */
     public Optional<String> ipv6CidrBlock() {
@@ -37,11 +42,12 @@ public final class NetworkIpv6CidrBlock {
     }
     /**
      * @return The IPv6 address segment type of the VPC. Value:
-     * - **BGP** (default): Alibaba Cloud BGP IPv6.
-     * - **ChinaMobile**: China Mobile (single line).
-     * - **ChinaUnicom**: China Unicom (single line).
-     * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     * - `BGP` (default): Alibaba Cloud BGP IPv6.
+     * - `ChinaMobile`: China Mobile (single line).
+     * - `ChinaUnicom`: China Unicom (single line).
+     * - `ChinaTelecom`: China Telecom (single line).
+     * 
+     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
      * 
      */
     public Optional<String> ipv6Isp() {

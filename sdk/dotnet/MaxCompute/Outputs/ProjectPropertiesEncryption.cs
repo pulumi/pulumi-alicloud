@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
     public sealed class ProjectPropertiesEncryption
     {
         /// <summary>
-        /// Algorithm.
+        /// The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
         /// </summary>
         public readonly string? Algorithm;
         /// <summary>
-        /// Whether to open.
+        /// Only enable function is supported. Value: (true).
         /// </summary>
         public readonly bool? Enable;
         /// <summary>
-        /// Encryption algorithm key.
+        /// The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
         /// </summary>
         public readonly string? Key;
 

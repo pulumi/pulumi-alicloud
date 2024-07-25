@@ -17,14 +17,14 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDomainsPlainArgs Empty = new GetDomainsPlainArgs();
 
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -47,14 +47,14 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+     * The domain name. It must be 1 to 50 characters in length and can contain digits, letters, periods (.), and hyphens (-).
      * 
      */
     @Import(name="keyWord")
     private @Nullable String keyWord;
 
     /**
-     * @return domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+     * @return The domain name. It must be 1 to 50 characters in length and can contain digits, letters, periods (.), and hyphens (-).
      * 
      */
     public Optional<String> keyWord() {
@@ -92,14 +92,14 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+     * The status of the domain name. Valid values:
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+     * @return The status of the domain name. Valid values:
      * 
      */
     public Optional<String> status() {
@@ -136,7 +136,7 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param keyWord domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
+         * @param keyWord The domain name. It must be 1 to 50 characters in length and can contain digits, letters, periods (.), and hyphens (-).
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+         * @param status The status of the domain name. Valid values:
          * 
          * @return builder
          * 

@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Vpc Public Ip Address Pool resource.
+ * Provides a VPC Public Ip Address Pool resource.
  *
- * For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
+ * For information about VPC Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
  *
  * > **NOTE:** Available since v1.186.0.
  *
@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Vpc Public Ip Address Pool can be imported using the id, e.g.
+ * VPC Public Ip Address Pool can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example <id>
@@ -69,7 +69,11 @@ export class PublicIpAddressPool extends pulumi.CustomResource {
     }
 
     /**
-     * The creation time of the resource.
+     * The name of the VPC Public IP address pool.
+     */
+    public readonly bizType!: pulumi.Output<string>;
+    /**
+     * The creation time of the resource
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -93,6 +97,12 @@ export class PublicIpAddressPool extends pulumi.CustomResource {
      * The resource group ID of the VPC Public IP address pool.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * Security protection level.
+     * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+     * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+     */
+    public readonly securityProtectionTypes!: pulumi.Output<string[] | undefined>;
     /**
      * The status of the VPC Public IP address pool.
      */
@@ -123,6 +133,7 @@ export class PublicIpAddressPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicIpAddressPoolState | undefined;
+            resourceInputs["bizType"] = state ? state.bizType : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["ipAddressRemaining"] = state ? state.ipAddressRemaining : undefined;
@@ -130,16 +141,19 @@ export class PublicIpAddressPool extends pulumi.CustomResource {
             resourceInputs["publicIpAddressPoolId"] = state ? state.publicIpAddressPoolId : undefined;
             resourceInputs["publicIpAddressPoolName"] = state ? state.publicIpAddressPoolName : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["securityProtectionTypes"] = state ? state.securityProtectionTypes : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["totalIpNum"] = state ? state.totalIpNum : undefined;
             resourceInputs["usedIpNum"] = state ? state.usedIpNum : undefined;
         } else {
             const args = argsOrState as PublicIpAddressPoolArgs | undefined;
+            resourceInputs["bizType"] = args ? args.bizType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["isp"] = args ? args.isp : undefined;
             resourceInputs["publicIpAddressPoolName"] = args ? args.publicIpAddressPoolName : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["securityProtectionTypes"] = args ? args.securityProtectionTypes : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["ipAddressRemaining"] = undefined /*out*/;
@@ -158,7 +172,11 @@ export class PublicIpAddressPool extends pulumi.CustomResource {
  */
 export interface PublicIpAddressPoolState {
     /**
-     * The creation time of the resource.
+     * The name of the VPC Public IP address pool.
+     */
+    bizType?: pulumi.Input<string>;
+    /**
+     * The creation time of the resource
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -183,6 +201,12 @@ export interface PublicIpAddressPoolState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
+     * Security protection level.
+     * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+     * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+     */
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The status of the VPC Public IP address pool.
      */
     status?: pulumi.Input<string>;
@@ -205,6 +229,10 @@ export interface PublicIpAddressPoolState {
  */
 export interface PublicIpAddressPoolArgs {
     /**
+     * The name of the VPC Public IP address pool.
+     */
+    bizType?: pulumi.Input<string>;
+    /**
      * Description.
      */
     description?: pulumi.Input<string>;
@@ -220,6 +248,12 @@ export interface PublicIpAddressPoolArgs {
      * The resource group ID of the VPC Public IP address pool.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Security protection level.
+     * - If the configuration is empty, the default value is DDoS protection (Basic edition).
+     * - `AntiDDoS_Enhanced` indicates DDoS protection (enhanced version).
+     */
+    securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The tags of PrefixList.
      */

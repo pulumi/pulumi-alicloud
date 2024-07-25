@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Slb.Inputs
     public sealed class ServerGroupServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The port used by the backend server. Valid value range: [1-65535].
+        /// The port used by the backend server. Valid values: `1` to `65535`.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Slb.Inputs
         private InputList<string>? _serverIds;
 
         /// <summary>
-        /// A list backend server ID (ECS instance ID).
+        /// The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
         /// </summary>
         public InputList<string> ServerIds
         {
@@ -31,13 +31,13 @@ namespace Pulumi.AliCloud.Slb.Inputs
         }
 
         /// <summary>
-        /// Type of the backend server. Valid value ecs, eni. Default to eni.
+        /// Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        /// Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }

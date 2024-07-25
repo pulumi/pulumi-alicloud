@@ -17,14 +17,14 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
     public static final ProjectPropertiesEncryptionArgs Empty = new ProjectPropertiesEncryptionArgs();
 
     /**
-     * Algorithm.
+     * The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
      * 
      */
     @Import(name="algorithm")
     private @Nullable Output<String> algorithm;
 
     /**
-     * @return Algorithm.
+     * @return The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
      * 
      */
     public Optional<Output<String>> algorithm() {
@@ -32,14 +32,14 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
     }
 
     /**
-     * Whether to open.
+     * Only enable function is supported. Value: (true).
      * 
      */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
     /**
-     * @return Whether to open.
+     * @return Only enable function is supported. Value: (true).
      * 
      */
     public Optional<Output<Boolean>> enable() {
@@ -47,14 +47,14 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
     }
 
     /**
-     * Encryption algorithm key.
+     * The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return Encryption algorithm key.
+     * @return The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
      * 
      */
     public Optional<Output<String>> key() {
@@ -88,7 +88,7 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param algorithm Algorithm.
+         * @param algorithm The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param algorithm Algorithm.
+         * @param algorithm The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enable Whether to open.
+         * @param enable Only enable function is supported. Value: (true).
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enable Whether to open.
+         * @param enable Only enable function is supported. Value: (true).
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param key Encryption algorithm key.
+         * @param key The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param key Encryption algorithm key.
+         * @param key The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
          * 
          * @return builder
          * 

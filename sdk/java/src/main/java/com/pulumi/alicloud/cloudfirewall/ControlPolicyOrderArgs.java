@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ControlPolicyOrderArgs extends com.pulumi.resources.ResourceArgs {
@@ -33,14 +31,14 @@ public final class ControlPolicyOrderArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Direction. Valid values: `in`, `out`.
+     * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     @Import(name="direction", required=true)
     private Output<String> direction;
 
     /**
-     * @return Direction. Valid values: `in`, `out`.
+     * @return The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     public Output<String> direction() {
@@ -48,18 +46,20 @@ public final class ControlPolicyOrderArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+     * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+     * &gt; **NOTE:** From version 1.227.1, `order` must be set.
      * 
      */
-    @Import(name="order")
-    private @Nullable Output<Integer> order;
+    @Import(name="order", required=true)
+    private Output<Integer> order;
 
     /**
-     * @return The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+     * @return The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+     * &gt; **NOTE:** From version 1.227.1, `order` must be set.
      * 
      */
-    public Optional<Output<Integer>> order() {
-        return Optional.ofNullable(this.order);
+    public Output<Integer> order() {
+        return this.order;
     }
 
     private ControlPolicyOrderArgs() {}
@@ -110,7 +110,7 @@ public final class ControlPolicyOrderArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param direction Direction. Valid values: `in`, `out`.
+         * @param direction The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ControlPolicyOrderArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param direction Direction. Valid values: `in`, `out`.
+         * @param direction The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
          * 
          * @return builder
          * 
@@ -131,18 +131,20 @@ public final class ControlPolicyOrderArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param order The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+         * @param order The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+         * &gt; **NOTE:** From version 1.227.1, `order` must be set.
          * 
          * @return builder
          * 
          */
-        public Builder order(@Nullable Output<Integer> order) {
+        public Builder order(Output<Integer> order) {
             $.order = order;
             return this;
         }
 
         /**
-         * @param order The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+         * @param order The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+         * &gt; **NOTE:** From version 1.227.1, `order` must be set.
          * 
          * @return builder
          * 
@@ -157,6 +159,9 @@ public final class ControlPolicyOrderArgs extends com.pulumi.resources.ResourceA
             }
             if ($.direction == null) {
                 throw new MissingRequiredPropertyException("ControlPolicyOrderArgs", "direction");
+            }
+            if ($.order == null) {
+                throw new MissingRequiredPropertyException("ControlPolicyOrderArgs", "order");
             }
             return $;
         }

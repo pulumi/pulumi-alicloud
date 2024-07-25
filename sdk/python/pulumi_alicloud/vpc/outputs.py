@@ -702,13 +702,16 @@ class NetworkIpv6CidrBlock(dict):
                  ipv6_cidr_block: Optional[str] = None,
                  ipv6_isp: Optional[str] = None):
         """
-        :param str ipv6_cidr_block: The IPv6 CIDR block of the VPC.
+        :param str ipv6_cidr_block: The IPv6 CIDR block of the default VPC.
+               
+               > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
         :param str ipv6_isp: The IPv6 address segment type of the VPC. Value:
-               - **BGP** (default): Alibaba Cloud BGP IPv6.
-               - **ChinaMobile**: China Mobile (single line).
-               - **ChinaUnicom**: China Unicom (single line).
-               - **ChinaTelecom**: China Telecom (single line).
-               > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+               - `BGP` (default): Alibaba Cloud BGP IPv6.
+               - `ChinaMobile`: China Mobile (single line).
+               - `ChinaUnicom`: China Unicom (single line).
+               - `ChinaTelecom`: China Telecom (single line).
+               
+               > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
         """
         if ipv6_cidr_block is not None:
             pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
@@ -719,7 +722,9 @@ class NetworkIpv6CidrBlock(dict):
     @pulumi.getter(name="ipv6CidrBlock")
     def ipv6_cidr_block(self) -> Optional[str]:
         """
-        The IPv6 CIDR block of the VPC.
+        The IPv6 CIDR block of the default VPC.
+
+        > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
         """
         return pulumi.get(self, "ipv6_cidr_block")
 
@@ -728,11 +733,12 @@ class NetworkIpv6CidrBlock(dict):
     def ipv6_isp(self) -> Optional[str]:
         """
         The IPv6 address segment type of the VPC. Value:
-        - **BGP** (default): Alibaba Cloud BGP IPv6.
-        - **ChinaMobile**: China Mobile (single line).
-        - **ChinaUnicom**: China Unicom (single line).
-        - **ChinaTelecom**: China Telecom (single line).
-        > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        - `BGP` (default): Alibaba Cloud BGP IPv6.
+        - `ChinaMobile`: China Mobile (single line).
+        - `ChinaUnicom`: China Unicom (single line).
+        - `ChinaTelecom`: China Telecom (single line).
+
+        > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
         """
         return pulumi.get(self, "ipv6_isp")
 

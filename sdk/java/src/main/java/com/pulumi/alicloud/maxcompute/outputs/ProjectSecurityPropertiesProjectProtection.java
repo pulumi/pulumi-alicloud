@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectSecurityPropertiesProjectProtection {
     /**
-     * @return Exclusion policy.
+     * @return Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
      * 
      */
     private @Nullable String exceptionPolicy;
     /**
-     * @return Is it turned on.
+     * @return Whether enabled, value:(true/false).
      * 
      */
     private @Nullable Boolean protected_;
 
     private ProjectSecurityPropertiesProjectProtection() {}
     /**
-     * @return Exclusion policy.
+     * @return Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
      * 
      */
     public Optional<String> exceptionPolicy() {
         return Optional.ofNullable(this.exceptionPolicy);
     }
     /**
-     * @return Is it turned on.
+     * @return Whether enabled, value:(true/false).
      * 
      */
     public Optional<Boolean> protected_() {

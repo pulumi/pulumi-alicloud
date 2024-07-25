@@ -13,24 +13,36 @@ namespace Pulumi.AliCloud.Ecs.Inputs
     public sealed class InstanceNetworkInterfacesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the secondary ENI.
+        /// The index of the network card for Secondary ENI.
+        /// </summary>
+        [Input("networkCardIndex")]
+        public Input<int>? NetworkCardIndex { get; set; }
+
+        /// <summary>
+        /// The ID of the Secondary ENI.
         /// </summary>
         [Input("networkInterfaceId")]
         public Input<string>? NetworkInterfaceId { get; set; }
 
         /// <summary>
-        /// The communication mode of the ENI. Default value: `Standard`. Valid values:
+        /// The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
         /// - `Standard`: Uses the TCP communication mode.
         /// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
         /// </summary>
         [Input("networkInterfaceTrafficMode")]
         public Input<string>? NetworkInterfaceTrafficMode { get; set; }
 
+        /// <summary>
+        /// The number of queues supported by the ERI.
+        /// </summary>
+        [Input("queuePairNumber")]
+        public Input<int>? QueuePairNumber { get; set; }
+
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// The ID of security group N to which to assign ENI N.
+        /// The ID of security group N to which to assign Secondary ENI N.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -39,7 +51,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         }
 
         /// <summary>
-        /// The ID of the vSwitch to which to connect ENI N.
+        /// The ID of the vSwitch to which to connect Secondary ENI N.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

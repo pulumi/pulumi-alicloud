@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloud Firewall Control Policy resource.
+// Provides a Cloud Firewall Control Policy Order resource.
 //
 // For information about Cloud Firewall Control Policy Order and how to use it, see [What is Control Policy Order](https://www.alibabacloud.com/help/doc-detail/138867.htm).
 //
-// > **NOTE:** Available in v1.130.0+.
+// > **NOTE:** Available since v1.130.0.
 //
 // ## Example Usage
 //
@@ -29,28 +29,34 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example1, err := cloudfirewall.NewControlPolicy(ctx, "example1", &cloudfirewall.ControlPolicyArgs{
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := cloudfirewall.NewControlPolicy(ctx, "default", &cloudfirewall.ControlPolicyArgs{
+//				Direction:       pulumi.String("in"),
 //				ApplicationName: pulumi.String("ANY"),
+//				Description:     pulumi.String(name),
 //				AclAction:       pulumi.String("accept"),
-//				Description:     pulumi.String("example"),
-//				DestinationType: pulumi.String("net"),
-//				Destination:     pulumi.String("100.1.1.0/24"),
-//				Direction:       pulumi.String("out"),
-//				Proto:           pulumi.String("ANY"),
-//				Source:          pulumi.String("1.2.3.0/24"),
+//				Source:          pulumi.String("127.0.0.1/32"),
 //				SourceType:      pulumi.String("net"),
+//				Destination:     pulumi.String("127.0.0.2/32"),
+//				DestinationType: pulumi.String("net"),
+//				Proto:           pulumi.String("ANY"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudfirewall.NewControlPolicyOrder(ctx, "example2", &cloudfirewall.ControlPolicyOrderArgs{
-//				AclUuid:   example1.AclUuid,
-//				Direction: example1.Direction,
+//			_, err = cloudfirewall.NewControlPolicyOrder(ctx, "default", &cloudfirewall.ControlPolicyOrderArgs{
+//				AclUuid:   _default.AclUuid,
+//				Direction: _default.Direction,
 //				Order:     pulumi.Int(1),
 //			})
 //			if err != nil {
@@ -74,10 +80,11 @@ type ControlPolicyOrder struct {
 
 	// The unique ID of the access control policy.
 	AclUuid pulumi.StringOutput `pulumi:"aclUuid"`
-	// Direction. Valid values: `in`, `out`.
+	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction pulumi.StringOutput `pulumi:"direction"`
-	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
-	Order pulumi.IntPtrOutput `pulumi:"order"`
+	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+	// > **NOTE:** From version 1.227.1, `order` must be set.
+	Order pulumi.IntOutput `pulumi:"order"`
 }
 
 // NewControlPolicyOrder registers a new resource with the given unique name, arguments, and options.
@@ -92,6 +99,9 @@ func NewControlPolicyOrder(ctx *pulumi.Context,
 	}
 	if args.Direction == nil {
 		return nil, errors.New("invalid value for required argument 'Direction'")
+	}
+	if args.Order == nil {
+		return nil, errors.New("invalid value for required argument 'Order'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ControlPolicyOrder
@@ -118,18 +128,20 @@ func GetControlPolicyOrder(ctx *pulumi.Context,
 type controlPolicyOrderState struct {
 	// The unique ID of the access control policy.
 	AclUuid *string `pulumi:"aclUuid"`
-	// Direction. Valid values: `in`, `out`.
+	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction *string `pulumi:"direction"`
-	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+	// > **NOTE:** From version 1.227.1, `order` must be set.
 	Order *int `pulumi:"order"`
 }
 
 type ControlPolicyOrderState struct {
 	// The unique ID of the access control policy.
 	AclUuid pulumi.StringPtrInput
-	// Direction. Valid values: `in`, `out`.
+	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction pulumi.StringPtrInput
-	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+	// > **NOTE:** From version 1.227.1, `order` must be set.
 	Order pulumi.IntPtrInput
 }
 
@@ -140,20 +152,22 @@ func (ControlPolicyOrderState) ElementType() reflect.Type {
 type controlPolicyOrderArgs struct {
 	// The unique ID of the access control policy.
 	AclUuid string `pulumi:"aclUuid"`
-	// Direction. Valid values: `in`, `out`.
+	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction string `pulumi:"direction"`
-	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
-	Order *int `pulumi:"order"`
+	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+	// > **NOTE:** From version 1.227.1, `order` must be set.
+	Order int `pulumi:"order"`
 }
 
 // The set of arguments for constructing a ControlPolicyOrder resource.
 type ControlPolicyOrderArgs struct {
 	// The unique ID of the access control policy.
 	AclUuid pulumi.StringInput
-	// Direction. Valid values: `in`, `out`.
+	// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 	Direction pulumi.StringInput
-	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
-	Order pulumi.IntPtrInput
+	// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+	// > **NOTE:** From version 1.227.1, `order` must be set.
+	Order pulumi.IntInput
 }
 
 func (ControlPolicyOrderArgs) ElementType() reflect.Type {
@@ -248,14 +262,15 @@ func (o ControlPolicyOrderOutput) AclUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicyOrder) pulumi.StringOutput { return v.AclUuid }).(pulumi.StringOutput)
 }
 
-// Direction. Valid values: `in`, `out`.
+// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
 func (o ControlPolicyOrderOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *ControlPolicyOrder) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
 }
 
-// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
-func (o ControlPolicyOrderOutput) Order() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ControlPolicyOrder) pulumi.IntPtrOutput { return v.Order }).(pulumi.IntPtrOutput)
+// The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+// > **NOTE:** From version 1.227.1, `order` must be set.
+func (o ControlPolicyOrderOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v *ControlPolicyOrder) pulumi.IntOutput { return v.Order }).(pulumi.IntOutput)
 }
 
 type ControlPolicyOrderArrayOutput struct{ *pulumi.OutputState }

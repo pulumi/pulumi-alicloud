@@ -14,36 +14,50 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class InstanceNetworkInterfaces
     {
         /// <summary>
-        /// The ID of the secondary ENI.
+        /// The index of the network card for Secondary ENI.
+        /// </summary>
+        public readonly int? NetworkCardIndex;
+        /// <summary>
+        /// The ID of the Secondary ENI.
         /// </summary>
         public readonly string? NetworkInterfaceId;
         /// <summary>
-        /// The communication mode of the ENI. Default value: `Standard`. Valid values:
+        /// The communication mode of the Secondary ENI. Default value: `Standard`. Valid values:
         /// - `Standard`: Uses the TCP communication mode.
         /// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
         /// </summary>
         public readonly string? NetworkInterfaceTrafficMode;
         /// <summary>
-        /// The ID of security group N to which to assign ENI N.
+        /// The number of queues supported by the ERI.
+        /// </summary>
+        public readonly int? QueuePairNumber;
+        /// <summary>
+        /// The ID of security group N to which to assign Secondary ENI N.
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
-        /// The ID of the vSwitch to which to connect ENI N.
+        /// The ID of the vSwitch to which to connect Secondary ENI N.
         /// </summary>
         public readonly string? VswitchId;
 
         [OutputConstructor]
         private InstanceNetworkInterfaces(
+            int? networkCardIndex,
+
             string? networkInterfaceId,
 
             string? networkInterfaceTrafficMode,
+
+            int? queuePairNumber,
 
             ImmutableArray<string> securityGroupIds,
 
             string? vswitchId)
         {
+            NetworkCardIndex = networkCardIndex;
             NetworkInterfaceId = networkInterfaceId;
             NetworkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            QueuePairNumber = queuePairNumber;
             SecurityGroupIds = securityGroupIds;
             VswitchId = vswitchId;
         }

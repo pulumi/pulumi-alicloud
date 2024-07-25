@@ -13,16 +13,22 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a Max Compute Project resource.
  * 
- * For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute).
+ * MaxCompute project .
+ * 
+ * For information about Max Compute Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/maxcompute/).
  * 
  * &gt; **NOTE:** Available since v1.77.0.
+ * 
+ * &gt; **NOTE:** Field `name`, `specification_type`, `order_type` has been removed from provider version 1.227.1.
  * 
  * ## Example Usage
  * 
@@ -66,50 +72,86 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * Max Compute Project can be imported using the id, e.g.
+ * 
+ * ```sh
+ * $ pulumi import alicloud:maxcompute/project:Project example &lt;id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="alicloud:maxcompute/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
     /**
-     * Comments of project
+     * Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return Comments of project
+     * @return Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
      * 
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
     /**
-     * Default Computing Resource Group
+     * Represents the creation time of the project
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Represents the creation time of the project
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      * 
      */
     @Export(name="defaultQuota", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultQuota;
 
     /**
-     * @return Default Computing Resource Group
+     * @return Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      * 
      */
     public Output<Optional<String>> defaultQuota() {
         return Codegen.optional(this.defaultQuota);
     }
     /**
-     * IP whitelist. See `ip_white_list` below.
+     * IP whitelist See `ip_white_list` below.
      * 
      */
     @Export(name="ipWhiteList", refs={ProjectIpWhiteList.class}, tree="[0]")
     private Output</* @Nullable */ ProjectIpWhiteList> ipWhiteList;
 
     /**
-     * @return IP whitelist. See `ip_white_list` below.
+     * @return IP whitelist See `ip_white_list` below.
      * 
      */
     public Output<Optional<ProjectIpWhiteList>> ipWhiteList() {
         return Codegen.optional(this.ipWhiteList);
+    }
+    /**
+     * Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * 
+     */
+    @Export(name="isLogical", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> isLogical;
+
+    /**
+     * @return Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * 
+     */
+    public Output<Optional<String>> isLogical() {
+        return Codegen.optional(this.isLogical);
     }
     /**
      * Project owner
@@ -140,60 +182,74 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.productType);
     }
     /**
-     * The name of the project
+     * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
      * 
      */
     @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
-     * @return The name of the project
+     * @return The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
      * 
      */
     public Output<String> projectName() {
         return this.projectName;
     }
     /**
-     * Project base attributes. See `properties` below.
+     * Project base attributes See `properties` below.
      * 
      */
     @Export(name="properties", refs={ProjectProperties.class}, tree="[0]")
     private Output<ProjectProperties> properties;
 
     /**
-     * @return Project base attributes. See `properties` below.
+     * @return Project base attributes See `properties` below.
      * 
      */
     public Output<ProjectProperties> properties() {
         return this.properties;
     }
     /**
-     * Security-related attributes. See `security_properties` below.
+     * Security-related attributes See `security_properties` below.
      * 
      */
     @Export(name="securityProperties", refs={ProjectSecurityProperties.class}, tree="[0]")
     private Output<ProjectSecurityProperties> securityProperties;
 
     /**
-     * @return Security-related attributes. See `security_properties` below.
+     * @return Security-related attributes See `security_properties` below.
      * 
      */
     public Output<ProjectSecurityProperties> securityProperties() {
         return this.securityProperties;
     }
     /**
-     * The status of the resource
+     * The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tag of the resource
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * Project type
@@ -222,7 +278,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Project(String name, ProjectArgs args) {
+    public Project(String name, @Nullable ProjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -231,7 +287,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Project(String name, ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Project(String name, @Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:maxcompute/project:Project", name, args == null ? ProjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

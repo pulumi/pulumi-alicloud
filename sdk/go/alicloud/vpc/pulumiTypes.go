@@ -969,14 +969,17 @@ func (o NetworkAclResourceArrayOutput) Index(i pulumi.IntInput) NetworkAclResour
 }
 
 type NetworkIpv6CidrBlock struct {
-	// The IPv6 CIDR block of the VPC.
+	// The IPv6 CIDR block of the default VPC.
+	//
+	// > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
 	Ipv6CidrBlock *string `pulumi:"ipv6CidrBlock"`
 	// The IPv6 address segment type of the VPC. Value:
-	// - **BGP** (default): Alibaba Cloud BGP IPv6.
-	// - **ChinaMobile**: China Mobile (single line).
-	// - **ChinaUnicom**: China Unicom (single line).
-	// - **ChinaTelecom**: China Telecom (single line).
-	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	// - `BGP` (default): Alibaba Cloud BGP IPv6.
+	// - `ChinaMobile`: China Mobile (single line).
+	// - `ChinaUnicom`: China Unicom (single line).
+	// - `ChinaTelecom`: China Telecom (single line).
+	//
+	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
 	Ipv6Isp *string `pulumi:"ipv6Isp"`
 }
 
@@ -992,14 +995,17 @@ type NetworkIpv6CidrBlockInput interface {
 }
 
 type NetworkIpv6CidrBlockArgs struct {
-	// The IPv6 CIDR block of the VPC.
+	// The IPv6 CIDR block of the default VPC.
+	//
+	// > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
 	Ipv6CidrBlock pulumi.StringPtrInput `pulumi:"ipv6CidrBlock"`
 	// The IPv6 address segment type of the VPC. Value:
-	// - **BGP** (default): Alibaba Cloud BGP IPv6.
-	// - **ChinaMobile**: China Mobile (single line).
-	// - **ChinaUnicom**: China Unicom (single line).
-	// - **ChinaTelecom**: China Telecom (single line).
-	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	// - `BGP` (default): Alibaba Cloud BGP IPv6.
+	// - `ChinaMobile`: China Mobile (single line).
+	// - `ChinaUnicom`: China Unicom (single line).
+	// - `ChinaTelecom`: China Telecom (single line).
+	//
+	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
 	Ipv6Isp pulumi.StringPtrInput `pulumi:"ipv6Isp"`
 }
 
@@ -1054,17 +1060,20 @@ func (o NetworkIpv6CidrBlockOutput) ToNetworkIpv6CidrBlockOutputWithContext(ctx 
 	return o
 }
 
-// The IPv6 CIDR block of the VPC.
+// The IPv6 CIDR block of the default VPC.
+//
+// > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
 func (o NetworkIpv6CidrBlockOutput) Ipv6CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkIpv6CidrBlock) *string { return v.Ipv6CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 // The IPv6 address segment type of the VPC. Value:
-// - **BGP** (default): Alibaba Cloud BGP IPv6.
-// - **ChinaMobile**: China Mobile (single line).
-// - **ChinaUnicom**: China Unicom (single line).
-// - **ChinaTelecom**: China Telecom (single line).
-// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+// - `BGP` (default): Alibaba Cloud BGP IPv6.
+// - `ChinaMobile`: China Mobile (single line).
+// - `ChinaUnicom`: China Unicom (single line).
+// - `ChinaTelecom`: China Telecom (single line).
+//
+// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
 func (o NetworkIpv6CidrBlockOutput) Ipv6Isp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkIpv6CidrBlock) *string { return v.Ipv6Isp }).(pulumi.StringPtrOutput)
 }

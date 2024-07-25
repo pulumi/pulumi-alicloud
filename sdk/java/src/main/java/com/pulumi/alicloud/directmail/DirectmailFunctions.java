@@ -26,7 +26,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -40,6 +40,8 @@ public final class DirectmailFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.Domain;
+     * import com.pulumi.alicloud.directmail.DomainArgs;
      * import com.pulumi.alicloud.directmail.DirectmailFunctions;
      * import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
      * import java.util.List;
@@ -55,23 +57,17 @@ public final class DirectmailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.pop.com");
+     *         var default_ = new Domain("default", DomainArgs.builder()
+     *             .domainName(name)
+     *             .build());
+     * 
      *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids("example_id")
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
-     *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .nameRegex("^my-Domain")
-     *             .build());
-     * 
-     *         ctx.export("directMailDomainId2", nameRegex.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
-     *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .status("1")
-     *             .keyWord("^my-Domain")
-     *             .ids("example_id")
-     *             .build());
-     * 
-     *         ctx.export("directMailDomainId3", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
      *     }
      * }
      * }
@@ -85,7 +81,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -99,6 +95,8 @@ public final class DirectmailFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.Domain;
+     * import com.pulumi.alicloud.directmail.DomainArgs;
      * import com.pulumi.alicloud.directmail.DirectmailFunctions;
      * import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
      * import java.util.List;
@@ -114,23 +112,17 @@ public final class DirectmailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.pop.com");
+     *         var default_ = new Domain("default", DomainArgs.builder()
+     *             .domainName(name)
+     *             .build());
+     * 
      *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids("example_id")
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
-     *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .nameRegex("^my-Domain")
-     *             .build());
-     * 
-     *         ctx.export("directMailDomainId2", nameRegex.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
-     *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .status("1")
-     *             .keyWord("^my-Domain")
-     *             .ids("example_id")
-     *             .build());
-     * 
-     *         ctx.export("directMailDomainId3", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
      *     }
      * }
      * }
@@ -144,7 +136,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -158,6 +150,8 @@ public final class DirectmailFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.Domain;
+     * import com.pulumi.alicloud.directmail.DomainArgs;
      * import com.pulumi.alicloud.directmail.DirectmailFunctions;
      * import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
      * import java.util.List;
@@ -173,23 +167,17 @@ public final class DirectmailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.pop.com");
+     *         var default_ = new Domain("default", DomainArgs.builder()
+     *             .domainName(name)
+     *             .build());
+     * 
      *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids("example_id")
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
-     *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .nameRegex("^my-Domain")
-     *             .build());
-     * 
-     *         ctx.export("directMailDomainId2", nameRegex.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
-     *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .status("1")
-     *             .keyWord("^my-Domain")
-     *             .ids("example_id")
-     *             .build());
-     * 
-     *         ctx.export("directMailDomainId3", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
      *     }
      * }
      * }
@@ -203,7 +191,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -217,6 +205,8 @@ public final class DirectmailFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.Domain;
+     * import com.pulumi.alicloud.directmail.DomainArgs;
      * import com.pulumi.alicloud.directmail.DirectmailFunctions;
      * import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
      * import java.util.List;
@@ -232,23 +222,17 @@ public final class DirectmailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.pop.com");
+     *         var default_ = new Domain("default", DomainArgs.builder()
+     *             .domainName(name)
+     *             .build());
+     * 
      *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids("example_id")
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
-     *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .nameRegex("^my-Domain")
-     *             .build());
-     * 
-     *         ctx.export("directMailDomainId2", nameRegex.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
-     *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .status("1")
-     *             .keyWord("^my-Domain")
-     *             .ids("example_id")
-     *             .build());
-     * 
-     *         ctx.export("directMailDomainId3", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
      *     }
      * }
      * }
@@ -262,7 +246,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -276,6 +260,8 @@ public final class DirectmailFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.Domain;
+     * import com.pulumi.alicloud.directmail.DomainArgs;
      * import com.pulumi.alicloud.directmail.DirectmailFunctions;
      * import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
      * import java.util.List;
@@ -291,23 +277,17 @@ public final class DirectmailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.pop.com");
+     *         var default_ = new Domain("default", DomainArgs.builder()
+     *             .domainName(name)
+     *             .build());
+     * 
      *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids("example_id")
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
-     *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .nameRegex("^my-Domain")
-     *             .build());
-     * 
-     *         ctx.export("directMailDomainId2", nameRegex.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
-     *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .status("1")
-     *             .keyWord("^my-Domain")
-     *             .ids("example_id")
-     *             .build());
-     * 
-     *         ctx.export("directMailDomainId3", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
      *     }
      * }
      * }
@@ -321,7 +301,7 @@ public final class DirectmailFunctions {
     /**
      * This data source provides the Direct Mail Domains of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -335,6 +315,8 @@ public final class DirectmailFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.directmail.Domain;
+     * import com.pulumi.alicloud.directmail.DomainArgs;
      * import com.pulumi.alicloud.directmail.DirectmailFunctions;
      * import com.pulumi.alicloud.directmail.inputs.GetDomainsArgs;
      * import java.util.List;
@@ -350,23 +332,17 @@ public final class DirectmailFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example.pop.com");
+     *         var default_ = new Domain("default", DomainArgs.builder()
+     *             .domainName(name)
+     *             .build());
+     * 
      *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids("example_id")
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("directMailDomainId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
-     *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .nameRegex("^my-Domain")
-     *             .build());
-     * 
-     *         ctx.export("directMailDomainId2", nameRegex.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
-     *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .status("1")
-     *             .keyWord("^my-Domain")
-     *             .ids("example_id")
-     *             .build());
-     * 
-     *         ctx.export("directMailDomainId3", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainsId0", ids.applyValue(getDomainsResult -> getDomainsResult).applyValue(ids -> ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id())));
      *     }
      * }
      * }

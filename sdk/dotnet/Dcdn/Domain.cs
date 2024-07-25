@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dcdn
 {
     /// <summary>
-    /// You can use DCDN to improve the overall performance of your website and accelerate content delivery to improve user experience. For information about Alicloud DCDN Domain and how to use it, see [What is Resource Alicloud DCDN Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
+    /// Provides a DCDN Domain resource.
+    /// 
+    /// Full station accelerated domain name.
+    /// 
+    /// For information about DCDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.94.0.
     /// 
-    /// &gt; **NOTE:** You must activate the Dynamic Route for CDN (DCDN) service before you create an accelerated domain.
-    /// 
-    /// &gt; **NOTE:** Make sure that you have obtained an Internet content provider (ICP) filling for the accelerated domain.
-    /// 
-    /// &gt; **NOTE:** If the origin content is not saved on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be completed by the next working day after you submit the application.
+    /// &gt; **NOTE:** Field `force_set`, `security_token` has been removed from provider version 1.227.1.
     /// 
     /// ## Example Usage
     /// 
@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// ## Import
     /// 
-    /// DCDN Domain can be imported using the id or DCDN Domain name, e.g.
+    /// DCDN Domain can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:dcdn/domain:Domain example &lt;id&gt;
@@ -73,100 +73,121 @@ namespace Pulumi.AliCloud.Dcdn
     public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Indicates the name of the certificate if the HTTPS protocol is enabled.
+        /// The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+        /// </summary>
+        [Output("certId")]
+        public Output<string> CertId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
         /// </summary>
         [Output("certName")]
         public Output<string> CertName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the certificate. Valid values:
-        /// `free`: a free certificate.
-        /// `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-        /// `upload`: a user uploaded certificate.
+        /// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
         /// </summary>
-        [Output("certType")]
-        public Output<string?> CertType { get; private set; } = null!;
+        [Output("certRegion")]
+        public Output<string> CertRegion { get; private set; } = null!;
 
         /// <summary>
-        /// The URL that is used to test the accessibility of the origin.
+        /// The certificate type.
+        /// </summary>
+        [Output("certType")]
+        public Output<string> CertType { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL that is used for health checks.
         /// </summary>
         [Output("checkUrl")]
         public Output<string?> CheckUrl { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+        /// The CNAME domain name corresponding to the accelerated domain name.
         /// </summary>
         [Output("cname")]
         public Output<string> Cname { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the accelerated domain.
+        /// The time when the accelerated domain name was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
         /// </summary>
         [Output("domainName")]
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
+        /// Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
         /// </summary>
-        [Output("forceSet")]
-        public Output<string?> ForceSet { get; private set; } = null!;
+        [Output("env")]
+        public Output<string?> Env { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// Computing service type. Valid values:
+        /// </summary>
+        [Output("functionType")]
+        public Output<string?> FunctionType { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The acceleration region.
+        /// The Acceleration scen. Supported:
+        /// </summary>
+        [Output("scene")]
+        public Output<string?> Scene { get; private set; } = null!;
+
+        /// <summary>
+        /// The region where the acceleration service is deployed. Valid values:
         /// </summary>
         [Output("scope")]
         public Output<string?> Scope { get; private set; } = null!;
 
         /// <summary>
-        /// The top-level domain name.
-        /// </summary>
-        [Output("securityToken")]
-        public Output<string?> SecurityToken { get; private set; } = null!;
-
-        /// <summary>
-        /// The origin information. See `sources` below.
+        /// Source  See `sources` below.
         /// </summary>
         [Output("sources")]
         public Output<ImmutableArray<Outputs.DomainSource>> Sources { get; private set; } = null!;
 
         /// <summary>
-        /// The private key. Specify this parameter only if you enable the SSL certificate.
+        /// The private key. Specify the private key only if you want to enable the SSL certificate.
         /// </summary>
         [Output("sslPri")]
         public Output<string?> SslPri { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+        /// Specifies whether to enable the SSL certificate. Valid values:
         /// </summary>
         [Output("sslProtocol")]
         public Output<string?> SslProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the public key of the certificate if the HTTPS protocol is enabled.
+        /// The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
         /// </summary>
         [Output("sslPub")]
-        public Output<string?> SslPub { get; private set; } = null!;
+        public Output<string> SslPub { get; private set; } = null!;
 
         /// <summary>
-        /// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+        /// The status of the domain name. Valid values:
         /// </summary>
         [Output("status")]
-        public Output<string?> Status { get; private set; } = null!;
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The top-level domain name.
+        /// The top-level domain.
         /// </summary>
         [Output("topLevelDomain")]
         public Output<string?> TopLevelDomain { get; private set; } = null!;
@@ -194,6 +215,10 @@ namespace Pulumi.AliCloud.Dcdn
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "sslPri",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -218,61 +243,76 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates the name of the certificate if the HTTPS protocol is enabled.
+        /// The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+        /// </summary>
+        [Input("certId")]
+        public Input<string>? CertId { get; set; }
+
+        /// <summary>
+        /// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
         /// </summary>
         [Input("certName")]
         public Input<string>? CertName { get; set; }
 
         /// <summary>
-        /// The type of the certificate. Valid values:
-        /// `free`: a free certificate.
-        /// `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-        /// `upload`: a user uploaded certificate.
+        /// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+        /// </summary>
+        [Input("certRegion")]
+        public Input<string>? CertRegion { get; set; }
+
+        /// <summary>
+        /// The certificate type.
         /// </summary>
         [Input("certType")]
         public Input<string>? CertType { get; set; }
 
         /// <summary>
-        /// The URL that is used to test the accessibility of the origin.
+        /// The URL that is used for health checks.
         /// </summary>
         [Input("checkUrl")]
         public Input<string>? CheckUrl { get; set; }
 
         /// <summary>
-        /// The name of the accelerated domain.
+        /// The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
         /// </summary>
         [Input("domainName", required: true)]
         public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
+        /// Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
         /// </summary>
-        [Input("forceSet")]
-        public Input<string>? ForceSet { get; set; }
+        [Input("env")]
+        public Input<string>? Env { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// Computing service type. Valid values:
+        /// </summary>
+        [Input("functionType")]
+        public Input<string>? FunctionType { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The acceleration region.
+        /// The Acceleration scen. Supported:
+        /// </summary>
+        [Input("scene")]
+        public Input<string>? Scene { get; set; }
+
+        /// <summary>
+        /// The region where the acceleration service is deployed. Valid values:
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
-        /// <summary>
-        /// The top-level domain name.
-        /// </summary>
-        [Input("securityToken")]
-        public Input<string>? SecurityToken { get; set; }
-
-        [Input("sources", required: true)]
+        [Input("sources")]
         private InputList<Inputs.DomainSourceArgs>? _sources;
 
         /// <summary>
-        /// The origin information. See `sources` below.
+        /// Source  See `sources` below.
         /// </summary>
         public InputList<Inputs.DomainSourceArgs> Sources
         {
@@ -280,26 +320,36 @@ namespace Pulumi.AliCloud.Dcdn
             set => _sources = value;
         }
 
-        /// <summary>
-        /// The private key. Specify this parameter only if you enable the SSL certificate.
-        /// </summary>
         [Input("sslPri")]
-        public Input<string>? SslPri { get; set; }
+        private Input<string>? _sslPri;
 
         /// <summary>
-        /// Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+        /// The private key. Specify the private key only if you want to enable the SSL certificate.
+        /// </summary>
+        public Input<string>? SslPri
+        {
+            get => _sslPri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslPri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Specifies whether to enable the SSL certificate. Valid values:
         /// </summary>
         [Input("sslProtocol")]
         public Input<string>? SslProtocol { get; set; }
 
         /// <summary>
-        /// Indicates the public key of the certificate if the HTTPS protocol is enabled.
+        /// The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
         /// </summary>
         [Input("sslPub")]
         public Input<string>? SslPub { get; set; }
 
         /// <summary>
-        /// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+        /// The status of the domain name. Valid values:
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -308,7 +358,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<object> Tags
         {
@@ -317,7 +367,7 @@ namespace Pulumi.AliCloud.Dcdn
         }
 
         /// <summary>
-        /// The top-level domain name.
+        /// The top-level domain.
         /// </summary>
         [Input("topLevelDomain")]
         public Input<string>? TopLevelDomain { get; set; }
@@ -331,67 +381,88 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates the name of the certificate if the HTTPS protocol is enabled.
+        /// The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+        /// </summary>
+        [Input("certId")]
+        public Input<string>? CertId { get; set; }
+
+        /// <summary>
+        /// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
         /// </summary>
         [Input("certName")]
         public Input<string>? CertName { get; set; }
 
         /// <summary>
-        /// The type of the certificate. Valid values:
-        /// `free`: a free certificate.
-        /// `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-        /// `upload`: a user uploaded certificate.
+        /// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+        /// </summary>
+        [Input("certRegion")]
+        public Input<string>? CertRegion { get; set; }
+
+        /// <summary>
+        /// The certificate type.
         /// </summary>
         [Input("certType")]
         public Input<string>? CertType { get; set; }
 
         /// <summary>
-        /// The URL that is used to test the accessibility of the origin.
+        /// The URL that is used for health checks.
         /// </summary>
         [Input("checkUrl")]
         public Input<string>? CheckUrl { get; set; }
 
         /// <summary>
-        /// (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+        /// The CNAME domain name corresponding to the accelerated domain name.
         /// </summary>
         [Input("cname")]
         public Input<string>? Cname { get; set; }
 
         /// <summary>
-        /// The name of the accelerated domain.
+        /// The time when the accelerated domain name was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
         /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
 
         /// <summary>
-        /// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
+        /// Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
         /// </summary>
-        [Input("forceSet")]
-        public Input<string>? ForceSet { get; set; }
+        [Input("env")]
+        public Input<string>? Env { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// Computing service type. Valid values:
+        /// </summary>
+        [Input("functionType")]
+        public Input<string>? FunctionType { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The acceleration region.
+        /// The Acceleration scen. Supported:
+        /// </summary>
+        [Input("scene")]
+        public Input<string>? Scene { get; set; }
+
+        /// <summary>
+        /// The region where the acceleration service is deployed. Valid values:
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
-
-        /// <summary>
-        /// The top-level domain name.
-        /// </summary>
-        [Input("securityToken")]
-        public Input<string>? SecurityToken { get; set; }
 
         [Input("sources")]
         private InputList<Inputs.DomainSourceGetArgs>? _sources;
 
         /// <summary>
-        /// The origin information. See `sources` below.
+        /// Source  See `sources` below.
         /// </summary>
         public InputList<Inputs.DomainSourceGetArgs> Sources
         {
@@ -399,26 +470,36 @@ namespace Pulumi.AliCloud.Dcdn
             set => _sources = value;
         }
 
-        /// <summary>
-        /// The private key. Specify this parameter only if you enable the SSL certificate.
-        /// </summary>
         [Input("sslPri")]
-        public Input<string>? SslPri { get; set; }
+        private Input<string>? _sslPri;
 
         /// <summary>
-        /// Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+        /// The private key. Specify the private key only if you want to enable the SSL certificate.
+        /// </summary>
+        public Input<string>? SslPri
+        {
+            get => _sslPri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sslPri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Specifies whether to enable the SSL certificate. Valid values:
         /// </summary>
         [Input("sslProtocol")]
         public Input<string>? SslProtocol { get; set; }
 
         /// <summary>
-        /// Indicates the public key of the certificate if the HTTPS protocol is enabled.
+        /// The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
         /// </summary>
         [Input("sslPub")]
         public Input<string>? SslPub { get; set; }
 
         /// <summary>
-        /// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+        /// The status of the domain name. Valid values:
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -427,7 +508,7 @@ namespace Pulumi.AliCloud.Dcdn
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<object> Tags
         {
@@ -436,7 +517,7 @@ namespace Pulumi.AliCloud.Dcdn
         }
 
         /// <summary>
-        /// The top-level domain name.
+        /// The top-level domain.
         /// </summary>
         [Input("topLevelDomain")]
         public Input<string>? TopLevelDomain { get; set; }

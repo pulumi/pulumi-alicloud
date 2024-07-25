@@ -16,14 +16,14 @@ public final class ProjectIpWhiteListArgs extends com.pulumi.resources.ResourceA
     public static final ProjectIpWhiteListArgs Empty = new ProjectIpWhiteListArgs();
 
     /**
-     * Classic network IP white list.
+     * Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.&gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
      * 
      */
     @Import(name="ipList")
     private @Nullable Output<String> ipList;
 
     /**
-     * @return Classic network IP white list.
+     * @return Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.&gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
      * 
      */
     public Optional<Output<String>> ipList() {
@@ -31,14 +31,14 @@ public final class ProjectIpWhiteListArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * VPC network whitelist.
+     * Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.&gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
      * 
      */
     @Import(name="vpcIpList")
     private @Nullable Output<String> vpcIpList;
 
     /**
-     * @return VPC network whitelist.
+     * @return Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.&gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
      * 
      */
     public Optional<Output<String>> vpcIpList() {
@@ -71,7 +71,7 @@ public final class ProjectIpWhiteListArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ipList Classic network IP white list.
+         * @param ipList Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.&gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ProjectIpWhiteListArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ipList Classic network IP white list.
+         * @param ipList Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.&gt; **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ProjectIpWhiteListArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcIpList VPC network whitelist.
+         * @param vpcIpList Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.&gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ProjectIpWhiteListArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcIpList VPC network whitelist.
+         * @param vpcIpList Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.&gt; **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
          * 
          * @return builder
          * 

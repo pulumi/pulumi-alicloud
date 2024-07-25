@@ -56,6 +56,7 @@ class EcsDiskArgs:
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+               * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
                * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
                * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
                * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -306,6 +307,7 @@ class EcsDiskArgs:
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+        * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
         * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
         * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
         * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -459,6 +461,7 @@ class _EcsDiskState:
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+               * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
                * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
                * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
                * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -712,6 +715,7 @@ class _EcsDiskState:
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+        * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
         * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
         * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
         * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -888,6 +892,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+               * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
                * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
                * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
                * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -1046,6 +1051,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+               * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
                * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
                * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
                * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
@@ -1213,6 +1219,7 @@ class EcsDisk(pulumi.CustomResource):
     def performance_level(self) -> pulumi.Output[str]:
         """
         Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+        * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
         * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
         * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
         * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.

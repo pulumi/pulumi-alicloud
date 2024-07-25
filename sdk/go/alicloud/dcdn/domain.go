@@ -12,15 +12,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// You can use DCDN to improve the overall performance of your website and accelerate content delivery to improve user experience. For information about Alicloud DCDN Domain and how to use it, see [What is Resource Alicloud DCDN Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
+// Provides a DCDN Domain resource.
+//
+// Full station accelerated domain name.
+//
+// For information about DCDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/doc-detail/130628.htm).
 //
 // > **NOTE:** Available since v1.94.0.
 //
-// > **NOTE:** You must activate the Dynamic Route for CDN (DCDN) service before you create an accelerated domain.
-//
-// > **NOTE:** Make sure that you have obtained an Internet content provider (ICP) filling for the accelerated domain.
-//
-// > **NOTE:** If the origin content is not saved on Alibaba Cloud, the content must be reviewed by Alibaba Cloud. The review will be completed by the next working day after you submit the application.
+// > **NOTE:** Field `forceSet`, `securityToken` has been removed from provider version 1.227.1.
 //
 // ## Example Usage
 //
@@ -78,7 +78,7 @@ import (
 //
 // ## Import
 //
-// DCDN Domain can be imported using the id or DCDN Domain name, e.g.
+// DCDN Domain can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:dcdn/domain:Domain example <id>
@@ -86,40 +86,45 @@ import (
 type Domain struct {
 	pulumi.CustomResourceState
 
-	// Indicates the name of the certificate if the HTTPS protocol is enabled.
+	// The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+	CertId pulumi.StringOutput `pulumi:"certId"`
+	// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
 	CertName pulumi.StringOutput `pulumi:"certName"`
-	// The type of the certificate. Valid values:
-	// `free`: a free certificate.
-	// `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-	// `upload`: a user uploaded certificate.
-	CertType pulumi.StringPtrOutput `pulumi:"certType"`
-	// The URL that is used to test the accessibility of the origin.
+	// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+	CertRegion pulumi.StringOutput `pulumi:"certRegion"`
+	// The certificate type.
+	CertType pulumi.StringOutput `pulumi:"certType"`
+	// The URL that is used for health checks.
 	CheckUrl pulumi.StringPtrOutput `pulumi:"checkUrl"`
-	// (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+	// The CNAME domain name corresponding to the accelerated domain name.
 	Cname pulumi.StringOutput `pulumi:"cname"`
-	// The name of the accelerated domain.
+	// The time when the accelerated domain name was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
-	ForceSet pulumi.StringPtrOutput `pulumi:"forceSet"`
-	// The ID of the resource group.
+	// Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+	Env pulumi.StringPtrOutput `pulumi:"env"`
+	// Computing service type. Valid values:
+	FunctionType pulumi.StringPtrOutput `pulumi:"functionType"`
+	// The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The acceleration region.
+	// The Acceleration scen. Supported:
+	Scene pulumi.StringPtrOutput `pulumi:"scene"`
+	// The region where the acceleration service is deployed. Valid values:
 	Scope pulumi.StringPtrOutput `pulumi:"scope"`
-	// The top-level domain name.
-	SecurityToken pulumi.StringPtrOutput `pulumi:"securityToken"`
-	// The origin information. See `sources` below.
+	// Source  See `sources` below.
 	Sources DomainSourceArrayOutput `pulumi:"sources"`
-	// The private key. Specify this parameter only if you enable the SSL certificate.
+	// The private key. Specify the private key only if you want to enable the SSL certificate.
 	SslPri pulumi.StringPtrOutput `pulumi:"sslPri"`
-	// Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+	// Specifies whether to enable the SSL certificate. Valid values:
 	SslProtocol pulumi.StringPtrOutput `pulumi:"sslProtocol"`
-	// Indicates the public key of the certificate if the HTTPS protocol is enabled.
-	SslPub pulumi.StringPtrOutput `pulumi:"sslPub"`
-	// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
-	Status pulumi.StringPtrOutput `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
+	// The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
+	SslPub pulumi.StringOutput `pulumi:"sslPub"`
+	// The status of the domain name. Valid values:
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The tag of the resource
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The top-level domain name.
+	// The top-level domain.
 	TopLevelDomain pulumi.StringPtrOutput `pulumi:"topLevelDomain"`
 }
 
@@ -133,9 +138,13 @@ func NewDomain(ctx *pulumi.Context,
 	if args.DomainName == nil {
 		return nil, errors.New("invalid value for required argument 'DomainName'")
 	}
-	if args.Sources == nil {
-		return nil, errors.New("invalid value for required argument 'Sources'")
+	if args.SslPri != nil {
+		args.SslPri = pulumi.ToSecret(args.SslPri).(pulumi.StringPtrInput)
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"sslPri",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Domain
 	err := ctx.RegisterResource("alicloud:dcdn/domain:Domain", name, args, &resource, opts...)
@@ -159,78 +168,88 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// Indicates the name of the certificate if the HTTPS protocol is enabled.
+	// The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+	CertId *string `pulumi:"certId"`
+	// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
 	CertName *string `pulumi:"certName"`
-	// The type of the certificate. Valid values:
-	// `free`: a free certificate.
-	// `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-	// `upload`: a user uploaded certificate.
+	// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+	CertRegion *string `pulumi:"certRegion"`
+	// The certificate type.
 	CertType *string `pulumi:"certType"`
-	// The URL that is used to test the accessibility of the origin.
+	// The URL that is used for health checks.
 	CheckUrl *string `pulumi:"checkUrl"`
-	// (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+	// The CNAME domain name corresponding to the accelerated domain name.
 	Cname *string `pulumi:"cname"`
-	// The name of the accelerated domain.
+	// The time when the accelerated domain name was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
 	DomainName *string `pulumi:"domainName"`
-	// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
-	ForceSet *string `pulumi:"forceSet"`
-	// The ID of the resource group.
+	// Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+	Env *string `pulumi:"env"`
+	// Computing service type. Valid values:
+	FunctionType *string `pulumi:"functionType"`
+	// The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The acceleration region.
+	// The Acceleration scen. Supported:
+	Scene *string `pulumi:"scene"`
+	// The region where the acceleration service is deployed. Valid values:
 	Scope *string `pulumi:"scope"`
-	// The top-level domain name.
-	SecurityToken *string `pulumi:"securityToken"`
-	// The origin information. See `sources` below.
+	// Source  See `sources` below.
 	Sources []DomainSource `pulumi:"sources"`
-	// The private key. Specify this parameter only if you enable the SSL certificate.
+	// The private key. Specify the private key only if you want to enable the SSL certificate.
 	SslPri *string `pulumi:"sslPri"`
-	// Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+	// Specifies whether to enable the SSL certificate. Valid values:
 	SslProtocol *string `pulumi:"sslProtocol"`
-	// Indicates the public key of the certificate if the HTTPS protocol is enabled.
+	// The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
 	SslPub *string `pulumi:"sslPub"`
-	// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+	// The status of the domain name. Valid values:
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The top-level domain name.
+	// The top-level domain.
 	TopLevelDomain *string `pulumi:"topLevelDomain"`
 }
 
 type DomainState struct {
-	// Indicates the name of the certificate if the HTTPS protocol is enabled.
+	// The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+	CertId pulumi.StringPtrInput
+	// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
 	CertName pulumi.StringPtrInput
-	// The type of the certificate. Valid values:
-	// `free`: a free certificate.
-	// `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-	// `upload`: a user uploaded certificate.
+	// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+	CertRegion pulumi.StringPtrInput
+	// The certificate type.
 	CertType pulumi.StringPtrInput
-	// The URL that is used to test the accessibility of the origin.
+	// The URL that is used for health checks.
 	CheckUrl pulumi.StringPtrInput
-	// (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+	// The CNAME domain name corresponding to the accelerated domain name.
 	Cname pulumi.StringPtrInput
-	// The name of the accelerated domain.
+	// The time when the accelerated domain name was created.
+	CreateTime pulumi.StringPtrInput
+	// The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
 	DomainName pulumi.StringPtrInput
-	// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
-	ForceSet pulumi.StringPtrInput
-	// The ID of the resource group.
+	// Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+	Env pulumi.StringPtrInput
+	// Computing service type. Valid values:
+	FunctionType pulumi.StringPtrInput
+	// The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The acceleration region.
+	// The Acceleration scen. Supported:
+	Scene pulumi.StringPtrInput
+	// The region where the acceleration service is deployed. Valid values:
 	Scope pulumi.StringPtrInput
-	// The top-level domain name.
-	SecurityToken pulumi.StringPtrInput
-	// The origin information. See `sources` below.
+	// Source  See `sources` below.
 	Sources DomainSourceArrayInput
-	// The private key. Specify this parameter only if you enable the SSL certificate.
+	// The private key. Specify the private key only if you want to enable the SSL certificate.
 	SslPri pulumi.StringPtrInput
-	// Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+	// Specifies whether to enable the SSL certificate. Valid values:
 	SslProtocol pulumi.StringPtrInput
-	// Indicates the public key of the certificate if the HTTPS protocol is enabled.
+	// The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
 	SslPub pulumi.StringPtrInput
-	// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+	// The status of the domain name. Valid values:
 	Status pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource
 	Tags pulumi.MapInput
-	// The top-level domain name.
+	// The top-level domain.
 	TopLevelDomain pulumi.StringPtrInput
 }
 
@@ -239,75 +258,81 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
-	// Indicates the name of the certificate if the HTTPS protocol is enabled.
+	// The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+	CertId *string `pulumi:"certId"`
+	// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
 	CertName *string `pulumi:"certName"`
-	// The type of the certificate. Valid values:
-	// `free`: a free certificate.
-	// `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-	// `upload`: a user uploaded certificate.
+	// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+	CertRegion *string `pulumi:"certRegion"`
+	// The certificate type.
 	CertType *string `pulumi:"certType"`
-	// The URL that is used to test the accessibility of the origin.
+	// The URL that is used for health checks.
 	CheckUrl *string `pulumi:"checkUrl"`
-	// The name of the accelerated domain.
+	// The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
 	DomainName string `pulumi:"domainName"`
-	// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
-	ForceSet *string `pulumi:"forceSet"`
-	// The ID of the resource group.
+	// Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+	Env *string `pulumi:"env"`
+	// Computing service type. Valid values:
+	FunctionType *string `pulumi:"functionType"`
+	// The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The acceleration region.
+	// The Acceleration scen. Supported:
+	Scene *string `pulumi:"scene"`
+	// The region where the acceleration service is deployed. Valid values:
 	Scope *string `pulumi:"scope"`
-	// The top-level domain name.
-	SecurityToken *string `pulumi:"securityToken"`
-	// The origin information. See `sources` below.
+	// Source  See `sources` below.
 	Sources []DomainSource `pulumi:"sources"`
-	// The private key. Specify this parameter only if you enable the SSL certificate.
+	// The private key. Specify the private key only if you want to enable the SSL certificate.
 	SslPri *string `pulumi:"sslPri"`
-	// Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+	// Specifies whether to enable the SSL certificate. Valid values:
 	SslProtocol *string `pulumi:"sslProtocol"`
-	// Indicates the public key of the certificate if the HTTPS protocol is enabled.
+	// The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
 	SslPub *string `pulumi:"sslPub"`
-	// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+	// The status of the domain name. Valid values:
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The top-level domain name.
+	// The top-level domain.
 	TopLevelDomain *string `pulumi:"topLevelDomain"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// Indicates the name of the certificate if the HTTPS protocol is enabled.
+	// The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+	CertId pulumi.StringPtrInput
+	// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
 	CertName pulumi.StringPtrInput
-	// The type of the certificate. Valid values:
-	// `free`: a free certificate.
-	// `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-	// `upload`: a user uploaded certificate.
+	// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+	CertRegion pulumi.StringPtrInput
+	// The certificate type.
 	CertType pulumi.StringPtrInput
-	// The URL that is used to test the accessibility of the origin.
+	// The URL that is used for health checks.
 	CheckUrl pulumi.StringPtrInput
-	// The name of the accelerated domain.
+	// The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
 	DomainName pulumi.StringInput
-	// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
-	ForceSet pulumi.StringPtrInput
-	// The ID of the resource group.
+	// Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+	Env pulumi.StringPtrInput
+	// Computing service type. Valid values:
+	FunctionType pulumi.StringPtrInput
+	// The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The acceleration region.
+	// The Acceleration scen. Supported:
+	Scene pulumi.StringPtrInput
+	// The region where the acceleration service is deployed. Valid values:
 	Scope pulumi.StringPtrInput
-	// The top-level domain name.
-	SecurityToken pulumi.StringPtrInput
-	// The origin information. See `sources` below.
+	// Source  See `sources` below.
 	Sources DomainSourceArrayInput
-	// The private key. Specify this parameter only if you enable the SSL certificate.
+	// The private key. Specify the private key only if you want to enable the SSL certificate.
 	SslPri pulumi.StringPtrInput
-	// Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+	// Specifies whether to enable the SSL certificate. Valid values:
 	SslProtocol pulumi.StringPtrInput
-	// Indicates the public key of the certificate if the HTTPS protocol is enabled.
+	// The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
 	SslPub pulumi.StringPtrInput
-	// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+	// The status of the domain name. Valid values:
 	Status pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource
 	Tags pulumi.MapInput
-	// The top-level domain name.
+	// The top-level domain.
 	TopLevelDomain pulumi.StringPtrInput
 }
 
@@ -398,85 +423,102 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
-// Indicates the name of the certificate if the HTTPS protocol is enabled.
+// The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
+func (o DomainOutput) CertId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CertId }).(pulumi.StringOutput)
+}
+
+// The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
 func (o DomainOutput) CertName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CertName }).(pulumi.StringOutput)
 }
 
-// The type of the certificate. Valid values:
-// `free`: a free certificate.
-// `cas`: a certificate purchased from Alibaba Cloud SSL Certificates Service.
-// `upload`: a user uploaded certificate.
-func (o DomainOutput) CertType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.CertType }).(pulumi.StringPtrOutput)
+// The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
+func (o DomainOutput) CertRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CertRegion }).(pulumi.StringOutput)
 }
 
-// The URL that is used to test the accessibility of the origin.
+// The certificate type.
+func (o DomainOutput) CertType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CertType }).(pulumi.StringOutput)
+}
+
+// The URL that is used for health checks.
 func (o DomainOutput) CheckUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.CheckUrl }).(pulumi.StringPtrOutput)
 }
 
-// (Available in 1.198.0+)- The canonical name (CNAME) of the accelerated domain.
+// The CNAME domain name corresponding to the accelerated domain name.
 func (o DomainOutput) Cname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Cname }).(pulumi.StringOutput)
 }
 
-// The name of the accelerated domain.
+// The time when the accelerated domain name was created.
+func (o DomainOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
 func (o DomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// Specifies whether to check the certificate name for duplicates. If you set the value to 1, the system does not perform the check and overwrites the information of the existing certificate with the same name.
-func (o DomainOutput) ForceSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.ForceSet }).(pulumi.StringPtrOutput)
+// Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
+func (o DomainOutput) Env() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Env }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the resource group.
+// Computing service type. Valid values:
+func (o DomainOutput) FunctionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.FunctionType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
 func (o DomainOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The acceleration region.
+// The Acceleration scen. Supported:
+func (o DomainOutput) Scene() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Scene }).(pulumi.StringPtrOutput)
+}
+
+// The region where the acceleration service is deployed. Valid values:
 func (o DomainOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
-// The top-level domain name.
-func (o DomainOutput) SecurityToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SecurityToken }).(pulumi.StringPtrOutput)
-}
-
-// The origin information. See `sources` below.
+// Source  See `sources` below.
 func (o DomainOutput) Sources() DomainSourceArrayOutput {
 	return o.ApplyT(func(v *Domain) DomainSourceArrayOutput { return v.Sources }).(DomainSourceArrayOutput)
 }
 
-// The private key. Specify this parameter only if you enable the SSL certificate.
+// The private key. Specify the private key only if you want to enable the SSL certificate.
 func (o DomainOutput) SslPri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SslPri }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
+// Specifies whether to enable the SSL certificate. Valid values:
 func (o DomainOutput) SslProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SslProtocol }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the public key of the certificate if the HTTPS protocol is enabled.
-func (o DomainOutput) SslPub() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SslPub }).(pulumi.StringPtrOutput)
+// The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
+func (o DomainOutput) SslPub() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.SslPub }).(pulumi.StringOutput)
 }
 
-// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
-func (o DomainOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+// The status of the domain name. Valid values:
+func (o DomainOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// The tag of the resource
 func (o DomainOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Domain) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The top-level domain name.
+// The top-level domain.
 func (o DomainOutput) TopLevelDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.TopLevelDomain }).(pulumi.StringPtrOutput)
 }

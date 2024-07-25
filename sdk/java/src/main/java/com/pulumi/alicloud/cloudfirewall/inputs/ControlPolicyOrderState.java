@@ -32,14 +32,14 @@ public final class ControlPolicyOrderState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Direction. Valid values: `in`, `out`.
+     * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     @Import(name="direction")
     private @Nullable Output<String> direction;
 
     /**
-     * @return Direction. Valid values: `in`, `out`.
+     * @return The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -47,14 +47,16 @@ public final class ControlPolicyOrderState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+     * The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+     * &gt; **NOTE:** From version 1.227.1, `order` must be set.
      * 
      */
     @Import(name="order")
     private @Nullable Output<Integer> order;
 
     /**
-     * @return The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+     * @return The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+     * &gt; **NOTE:** From version 1.227.1, `order` must be set.
      * 
      */
     public Optional<Output<Integer>> order() {
@@ -109,7 +111,7 @@ public final class ControlPolicyOrderState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param direction Direction. Valid values: `in`, `out`.
+         * @param direction The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
          * 
          * @return builder
          * 
@@ -120,7 +122,7 @@ public final class ControlPolicyOrderState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param direction Direction. Valid values: `in`, `out`.
+         * @param direction The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
          * 
          * @return builder
          * 
@@ -130,7 +132,8 @@ public final class ControlPolicyOrderState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param order The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+         * @param order The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+         * &gt; **NOTE:** From version 1.227.1, `order` must be set.
          * 
          * @return builder
          * 
@@ -141,7 +144,8 @@ public final class ControlPolicyOrderState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param order The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of -1 indicates the lowest priority.
+         * @param order The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
+         * &gt; **NOTE:** From version 1.227.1, `order` must be set.
          * 
          * @return builder
          * 

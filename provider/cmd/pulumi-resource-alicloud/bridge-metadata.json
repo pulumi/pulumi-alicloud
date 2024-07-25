@@ -7404,7 +7404,12 @@
                 }
             },
             "alicloud_vpc_public_ip_address_pool": {
-                "current": "alicloud:vpc/publicIpAddressPool:PublicIpAddressPool"
+                "current": "alicloud:vpc/publicIpAddressPool:PublicIpAddressPool",
+                "fields": {
+                    "security_protection_types": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_vpc_public_ip_address_pool_cidr_block": {
                 "current": "alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock"

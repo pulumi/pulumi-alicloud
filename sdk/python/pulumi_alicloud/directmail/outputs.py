@@ -24,12 +24,21 @@ class GetDomainsDomainResult(dict):
                  cname_record: str,
                  create_time: str,
                  default_domain: str,
+                 dkim_auth_status: str,
+                 dkim_public_key: str,
+                 dkim_rr: str,
+                 dmarc_auth_status: str,
+                 dmarc_host_record: str,
+                 dmarc_record: str,
+                 dns_dmarc: str,
                  dns_mx: str,
                  dns_spf: str,
                  dns_txt: str,
                  domain_id: str,
                  domain_name: str,
+                 domain_record: str,
                  domain_type: str,
+                 host_record: str,
                  icp_status: str,
                  id: str,
                  mx_auth_status: str,
@@ -40,38 +49,56 @@ class GetDomainsDomainResult(dict):
                  tl_domain_name: str,
                  tracef_record: str):
         """
-        :param str cname_auth_status: Track verification.
-        :param str cname_confirm_status: Indicates whether the CNAME record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
-        :param str cname_record: The value of the CNAME record.
+        :param str cname_auth_status: Indicates whether your ownership of the domain is verified.
+        :param str cname_confirm_status: Indicates whether the CNAME record is successfully verified. **Note:** `cname_confirm_status` takes effect only if `enable_details` is set to `true`.
+        :param str cname_record: The value of the CNAME record. **Note:** `cname_record` takes effect only if `enable_details` is set to `true`.
         :param str create_time: The time when the DNS record was created.
-        :param str default_domain: The default domain name.
-        :param str dns_mx: The value of the MX record.
-        :param str dns_spf: The value of the SPF record.
-        :param str dns_txt: The value of the TXT ownership record.
+        :param str default_domain: The default domain name. **Note:** `default_domain` takes effect only if `enable_details` is set to `true`.
+        :param str dkim_auth_status: (Available since v1.227.1) The DKIM validation flag. **Note:** `dkim_auth_status` takes effect only if `enable_details` is set to `true`.
+        :param str dkim_public_key: (Available since v1.227.1) The DKIM public key. **Note:** `dkim_public_key` takes effect only if `enable_details` is set to `true`.
+        :param str dkim_rr: (Available since v1.227.1) The DKIM Host Record. **Note:** `dkim_rr` takes effect only if `enable_details` is set to `true`.
+        :param str dmarc_auth_status: (Available since v1.227.1) The DMARC validation flag. **Note:** `dmarc_auth_status` takes effect only if `enable_details` is set to `true`.
+        :param str dmarc_host_record: (Available since v1.227.1) The DMARC Host Record. **Note:** `dmarc_host_record` takes effect only if `enable_details` is set to `true`.
+        :param str dmarc_record: (Available since v1.227.1) The DMARC record. **Note:** `dmarc_record` takes effect only if `enable_details` is set to `true`.
+        :param str dns_dmarc: (Available since v1.227.1) The DMARC record value resolved through public DNS. **Note:** `dns_dmarc` takes effect only if `enable_details` is set to `true`.
+        :param str dns_mx: The MX record value resolved through public DNS. **Note:** `dns_mx` takes effect only if `enable_details` is set to `true`.
+        :param str dns_spf: The SPF record value resolved through public DNS. **Note:** `dns_spf` takes effect only if `enable_details` is set to `true`.
+        :param str dns_txt: The TXT record value resolved through public DNS. **Note:** `dns_txt` takes effect only if `enable_details` is set to `true`.
         :param str domain_id: The ID of the domain name.
         :param str domain_name: The domain name.
-        :param str domain_type: The type of the domain.
-        :param str icp_status: The status of ICP filing. Valid values: `0` and `1`. `0`: indicates that the domain name is not filed. `1`: indicates that the domain name is filed.
+        :param str domain_record: (Available since v1.227.1) The value of the Domain record.
+        :param str domain_type: The type of the domain. **Note:** `domain_type` takes effect only if `enable_details` is set to `true`.
+        :param str host_record: (Available since v1.227.1) The value of the host record. **Note:** `host_record` takes effect only if `enable_details` is set to `true`.
+        :param str icp_status: The status of ICP filing.
         :param str id: The ID of the Domain.
-        :param str mx_auth_status: Indicates whether the MX record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
-        :param str mx_record: The MX verification record provided by Alibaba Cloud DNS.
-        :param str spf_auth_status: Indicates whether the SPF record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
-        :param str spf_record: The SPF verification record provided by Alibaba Cloud DNS.
-        :param str status: The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
-        :param str tl_domain_name: The primary domain name.
-        :param str tracef_record: The CNAME verification record provided by Alibaba Cloud DNS.
+        :param str mx_auth_status: Indicates whether the MX record is successfully verified.
+        :param str mx_record: The MX verification record provided by the Direct Mail console. **Note:** `mx_record` takes effect only if `enable_details` is set to `true`.
+        :param str spf_auth_status: Indicates whether the SPF record is successfully verified.
+        :param str spf_record: The SPF verification record provided by the Direct Mail console. **Note:** `spf_record` takes effect only if `enable_details` is set to `true`.
+        :param str status: The status of the domain name. Valid values:
+        :param str tl_domain_name: The primary domain name. **Note:** `tl_domain_name` takes effect only if `enable_details` is set to `true`.
+        :param str tracef_record: The CNAME verification record provided by the Direct Mail console. **Note:** `tracef_record` takes effect only if `enable_details` is set to `true`.
         """
         pulumi.set(__self__, "cname_auth_status", cname_auth_status)
         pulumi.set(__self__, "cname_confirm_status", cname_confirm_status)
         pulumi.set(__self__, "cname_record", cname_record)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "default_domain", default_domain)
+        pulumi.set(__self__, "dkim_auth_status", dkim_auth_status)
+        pulumi.set(__self__, "dkim_public_key", dkim_public_key)
+        pulumi.set(__self__, "dkim_rr", dkim_rr)
+        pulumi.set(__self__, "dmarc_auth_status", dmarc_auth_status)
+        pulumi.set(__self__, "dmarc_host_record", dmarc_host_record)
+        pulumi.set(__self__, "dmarc_record", dmarc_record)
+        pulumi.set(__self__, "dns_dmarc", dns_dmarc)
         pulumi.set(__self__, "dns_mx", dns_mx)
         pulumi.set(__self__, "dns_spf", dns_spf)
         pulumi.set(__self__, "dns_txt", dns_txt)
         pulumi.set(__self__, "domain_id", domain_id)
         pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "domain_record", domain_record)
         pulumi.set(__self__, "domain_type", domain_type)
+        pulumi.set(__self__, "host_record", host_record)
         pulumi.set(__self__, "icp_status", icp_status)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "mx_auth_status", mx_auth_status)
@@ -86,7 +113,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="cnameAuthStatus")
     def cname_auth_status(self) -> str:
         """
-        Track verification.
+        Indicates whether your ownership of the domain is verified.
         """
         return pulumi.get(self, "cname_auth_status")
 
@@ -94,7 +121,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="cnameConfirmStatus")
     def cname_confirm_status(self) -> str:
         """
-        Indicates whether the CNAME record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+        Indicates whether the CNAME record is successfully verified. **Note:** `cname_confirm_status` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "cname_confirm_status")
 
@@ -102,7 +129,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="cnameRecord")
     def cname_record(self) -> str:
         """
-        The value of the CNAME record.
+        The value of the CNAME record. **Note:** `cname_record` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "cname_record")
 
@@ -118,15 +145,71 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="defaultDomain")
     def default_domain(self) -> str:
         """
-        The default domain name.
+        The default domain name. **Note:** `default_domain` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "default_domain")
+
+    @property
+    @pulumi.getter(name="dkimAuthStatus")
+    def dkim_auth_status(self) -> str:
+        """
+        (Available since v1.227.1) The DKIM validation flag. **Note:** `dkim_auth_status` takes effect only if `enable_details` is set to `true`.
+        """
+        return pulumi.get(self, "dkim_auth_status")
+
+    @property
+    @pulumi.getter(name="dkimPublicKey")
+    def dkim_public_key(self) -> str:
+        """
+        (Available since v1.227.1) The DKIM public key. **Note:** `dkim_public_key` takes effect only if `enable_details` is set to `true`.
+        """
+        return pulumi.get(self, "dkim_public_key")
+
+    @property
+    @pulumi.getter(name="dkimRr")
+    def dkim_rr(self) -> str:
+        """
+        (Available since v1.227.1) The DKIM Host Record. **Note:** `dkim_rr` takes effect only if `enable_details` is set to `true`.
+        """
+        return pulumi.get(self, "dkim_rr")
+
+    @property
+    @pulumi.getter(name="dmarcAuthStatus")
+    def dmarc_auth_status(self) -> str:
+        """
+        (Available since v1.227.1) The DMARC validation flag. **Note:** `dmarc_auth_status` takes effect only if `enable_details` is set to `true`.
+        """
+        return pulumi.get(self, "dmarc_auth_status")
+
+    @property
+    @pulumi.getter(name="dmarcHostRecord")
+    def dmarc_host_record(self) -> str:
+        """
+        (Available since v1.227.1) The DMARC Host Record. **Note:** `dmarc_host_record` takes effect only if `enable_details` is set to `true`.
+        """
+        return pulumi.get(self, "dmarc_host_record")
+
+    @property
+    @pulumi.getter(name="dmarcRecord")
+    def dmarc_record(self) -> str:
+        """
+        (Available since v1.227.1) The DMARC record. **Note:** `dmarc_record` takes effect only if `enable_details` is set to `true`.
+        """
+        return pulumi.get(self, "dmarc_record")
+
+    @property
+    @pulumi.getter(name="dnsDmarc")
+    def dns_dmarc(self) -> str:
+        """
+        (Available since v1.227.1) The DMARC record value resolved through public DNS. **Note:** `dns_dmarc` takes effect only if `enable_details` is set to `true`.
+        """
+        return pulumi.get(self, "dns_dmarc")
 
     @property
     @pulumi.getter(name="dnsMx")
     def dns_mx(self) -> str:
         """
-        The value of the MX record.
+        The MX record value resolved through public DNS. **Note:** `dns_mx` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "dns_mx")
 
@@ -134,7 +217,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="dnsSpf")
     def dns_spf(self) -> str:
         """
-        The value of the SPF record.
+        The SPF record value resolved through public DNS. **Note:** `dns_spf` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "dns_spf")
 
@@ -142,7 +225,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="dnsTxt")
     def dns_txt(self) -> str:
         """
-        The value of the TXT ownership record.
+        The TXT record value resolved through public DNS. **Note:** `dns_txt` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "dns_txt")
 
@@ -163,18 +246,34 @@ class GetDomainsDomainResult(dict):
         return pulumi.get(self, "domain_name")
 
     @property
+    @pulumi.getter(name="domainRecord")
+    def domain_record(self) -> str:
+        """
+        (Available since v1.227.1) The value of the Domain record.
+        """
+        return pulumi.get(self, "domain_record")
+
+    @property
     @pulumi.getter(name="domainType")
     def domain_type(self) -> str:
         """
-        The type of the domain.
+        The type of the domain. **Note:** `domain_type` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "domain_type")
+
+    @property
+    @pulumi.getter(name="hostRecord")
+    def host_record(self) -> str:
+        """
+        (Available since v1.227.1) The value of the host record. **Note:** `host_record` takes effect only if `enable_details` is set to `true`.
+        """
+        return pulumi.get(self, "host_record")
 
     @property
     @pulumi.getter(name="icpStatus")
     def icp_status(self) -> str:
         """
-        The status of ICP filing. Valid values: `0` and `1`. `0`: indicates that the domain name is not filed. `1`: indicates that the domain name is filed.
+        The status of ICP filing.
         """
         return pulumi.get(self, "icp_status")
 
@@ -190,7 +289,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="mxAuthStatus")
     def mx_auth_status(self) -> str:
         """
-        Indicates whether the MX record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+        Indicates whether the MX record is successfully verified.
         """
         return pulumi.get(self, "mx_auth_status")
 
@@ -198,7 +297,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="mxRecord")
     def mx_record(self) -> str:
         """
-        The MX verification record provided by Alibaba Cloud DNS.
+        The MX verification record provided by the Direct Mail console. **Note:** `mx_record` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "mx_record")
 
@@ -206,7 +305,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="spfAuthStatus")
     def spf_auth_status(self) -> str:
         """
-        Indicates whether the SPF record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
+        Indicates whether the SPF record is successfully verified.
         """
         return pulumi.get(self, "spf_auth_status")
 
@@ -214,7 +313,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="spfRecord")
     def spf_record(self) -> str:
         """
-        The SPF verification record provided by Alibaba Cloud DNS.
+        The SPF verification record provided by the Direct Mail console. **Note:** `spf_record` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "spf_record")
 
@@ -222,7 +321,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
+        The status of the domain name. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -230,7 +329,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="tlDomainName")
     def tl_domain_name(self) -> str:
         """
-        The primary domain name.
+        The primary domain name. **Note:** `tl_domain_name` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "tl_domain_name")
 
@@ -238,7 +337,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="tracefRecord")
     def tracef_record(self) -> str:
         """
-        The CNAME verification record provided by Alibaba Cloud DNS.
+        The CNAME verification record provided by the Direct Mail console. **Note:** `tracef_record` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "tracef_record")
 

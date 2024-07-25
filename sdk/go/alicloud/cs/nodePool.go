@@ -68,7 +68,7 @@ type NodePool struct {
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
-	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+	// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
 	Instances pulumi.StringArrayOutput `pulumi:"instances"`
 	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
@@ -295,7 +295,7 @@ type nodePoolState struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes []string `pulumi:"instanceTypes"`
-	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+	// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
 	Instances []string `pulumi:"instances"`
 	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
 	InternetChargeType *string `pulumi:"internetChargeType"`
@@ -473,7 +473,7 @@ type NodePoolState struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes pulumi.StringArrayInput
-	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+	// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
 	Instances pulumi.StringArrayInput
 	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
 	InternetChargeType pulumi.StringPtrInput
@@ -655,7 +655,7 @@ type nodePoolArgs struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes []string `pulumi:"instanceTypes"`
-	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+	// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
 	Instances []string `pulumi:"instances"`
 	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
 	InternetChargeType *string `pulumi:"internetChargeType"`
@@ -830,7 +830,7 @@ type NodePoolArgs struct {
 	InstanceChargeType pulumi.StringPtrInput
 	// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
 	InstanceTypes pulumi.StringArrayInput
-	// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+	// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
 	Instances pulumi.StringArrayInput
 	// The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eipInternetChargeType`, EIP and public network IP can only choose one. .
 	InternetChargeType pulumi.StringPtrInput
@@ -1138,7 +1138,7 @@ func (o NodePoolOutput) InstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.InstanceTypes }).(pulumi.StringArrayOutput)
 }
 
-// The instance list. Add existing nodes under the same cluster VPC to the node pool.
+// The list of ECS instance ids. Add existing nodes with same type of security group under the same cluster VPC to the node pool. **Note** that removing instance ids from the list will remove the nodes from cluster and release the ECS instances.
 func (o NodePoolOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.Instances }).(pulumi.StringArrayOutput)
 }
