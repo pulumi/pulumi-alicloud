@@ -56,7 +56,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("appGroups", _default.ApplyT(func(_default opensearch.GetAppGroupsResult) ([]opensearch.GetAppGroupsGroup, error) {
-//				return _default.Groups, nil
+//				return []opensearch.GetAppGroupsGroup(_default.Groups), nil
 //			}).([]opensearch.GetAppGroupsGroupOutput))
 //			return nil
 //		})

@@ -54,9 +54,9 @@ import (
 //			}
 //			ctx.Export("ecdNasFileSystemId1", ids.Systems[0].Id)
 //			nameRegex := defaultNasFileSystem.NasFileSystemName.ApplyT(func(nasFileSystemName *string) (eds.GetNasFileSystemsResult, error) {
-//				return eds.GetNasFileSystemsOutput(ctx, eds.GetNasFileSystemsOutputArgs{
+//				return eds.GetNasFileSystemsResult(interface{}(eds.GetNasFileSystemsOutput(ctx, eds.GetNasFileSystemsOutputArgs{
 //					NameRegex: nasFileSystemName,
-//				}, nil), nil
+//				}, nil))), nil
 //			}).(eds.GetNasFileSystemsResultOutput)
 //			ctx.Export("ecdNasFileSystemId2", nameRegex.ApplyT(func(nameRegex eds.GetNasFileSystemsResult) (*string, error) {
 //				return &nameRegex.Systems[0].Id, nil

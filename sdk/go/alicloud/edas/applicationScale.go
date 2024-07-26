@@ -146,9 +146,9 @@ import (
 //			}, nil)
 //			_, err = edas.NewApplicationScale(ctx, "default", &edas.ApplicationScaleArgs{
 //				AppId: defaultApplication.ID(),
-//				DeployGroup: defaultGetDeployGroups.ApplyT(func(defaultGetDeployGroups edas.GetDeployGroupsResult) (*string, error) {
+//				DeployGroup: pulumi.String(defaultGetDeployGroups.ApplyT(func(defaultGetDeployGroups edas.GetDeployGroupsResult) (*string, error) {
 //					return &defaultGetDeployGroups.Groups[0].GroupId, nil
-//				}).(pulumi.StringPtrOutput),
+//				}).(pulumi.StringPtrOutput)),
 //				EcuInfos: pulumi.StringArray{
 //					pulumi.All(defaultInstanceClusterAttachment.EcuMap, defaultInstance.ID()).ApplyT(func(_args []interface{}) (string, error) {
 //						ecuMap := _args[0].(map[string]string)

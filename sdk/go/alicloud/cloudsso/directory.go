@@ -46,7 +46,7 @@ import (
 //				return err
 //			}
 //			var tmp0 float64
-//			if len(_default.Ids) > 0 {
+//			if pulumi.Float64(len(_default.Ids)) > 0 {
 //				tmp0 = 0
 //			} else {
 //				tmp0 = 1

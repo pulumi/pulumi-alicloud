@@ -39,10 +39,10 @@ import (
 //				return err
 //			}
 //			_ = defaultMscSubContract.ID().ApplyT(func(id string) (alicloud.GetMscSubContactVerificationMessageResult, error) {
-//				return alicloud.GetMscSubContactVerificationMessageOutput(ctx, alicloud.GetMscSubContactVerificationMessageOutputArgs{
+//				return alicloud.GetMscSubContactVerificationMessageResult(interface{}(alicloud.GetMscSubContactVerificationMessageOutput(ctx, alicloud.GetMscSubContactVerificationMessageOutputArgs{
 //					ContactId: id,
 //					Type:      1,
-//				}, nil), nil
+//				}, nil))), nil
 //			}).(alicloud.GetMscSubContactVerificationMessageResultOutput)
 //			return nil
 //		})

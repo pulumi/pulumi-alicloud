@@ -63,9 +63,9 @@ import (
 //				InstanceId: defaultInstance.ID(),
 //			}, nil)
 //			defaultSnapshot, err := simpleapplicationserver.NewSnapshot(ctx, "default", &simpleapplicationserver.SnapshotArgs{
-//				DiskId: defaultGetServerDisks.ApplyT(func(defaultGetServerDisks simpleapplicationserver.GetServerDisksResult) (*string, error) {
+//				DiskId: pulumi.String(defaultGetServerDisks.ApplyT(func(defaultGetServerDisks simpleapplicationserver.GetServerDisksResult) (*string, error) {
 //					return &defaultGetServerDisks.Ids[0], nil
-//				}).(pulumi.StringPtrOutput),
+//				}).(pulumi.StringPtrOutput)),
 //				SnapshotName: pulumi.String(name),
 //			})
 //			if err != nil {

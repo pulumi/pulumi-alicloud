@@ -27,43 +27,35 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
-//				Name:            pulumi.String(name),
-//				BaseBandwidth:   pulumi.Int(20),
-//				Bandwidth:       -1,
-//				IpCount:         pulumi.Int(100),
-//				IpType:          pulumi.String("IPv4"),
-//				NormalBandwidth: pulumi.Int(100),
-//				Type:            pulumi.String("Enterprise"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			instance, err := ddos.GetDdosBgpInstances(ctx, &ddos.GetDdosBgpInstancesArgs{
-//				NameRegex: pulumi.StringRef("ddosbgp"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*string
-//			for _, val0 := range []ddos.GetDdosBgpInstancesResult{
-//				instance,
-//			} {
-//				splat0 = append(splat0, val0.Id)
-//			}
-//			ctx.Export("instance", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tf-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
+// Name: pulumi.String(name),
+// BaseBandwidth: pulumi.Int(20),
+// Bandwidth: int(-1),
+// IpCount: pulumi.Int(100),
+// IpType: pulumi.String("IPv4"),
+// NormalBandwidth: pulumi.Int(100),
+// Type: pulumi.String("Enterprise"),
+// })
+// if err != nil {
+// return err
+// }
+// instance, err := ddos.GetDdosBgpInstances(ctx, &ddos.GetDdosBgpInstancesArgs{
+// NameRegex: pulumi.StringRef("ddosbgp"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("instance", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:21,11-25)))
+// return nil
+// })
+// }
 // ```
 func GetDdosBgpInstances(ctx *pulumi.Context, args *GetDdosBgpInstancesArgs, opts ...pulumi.InvokeOption) (*GetDdosBgpInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

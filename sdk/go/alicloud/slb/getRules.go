@@ -94,10 +94,10 @@ import (
 //				return err
 //			}
 //			sampleDs := defaultApplicationLoadBalancer.ID().ApplyT(func(id string) (slb.GetRulesResult, error) {
-//				return slb.GetRulesOutput(ctx, slb.GetRulesOutputArgs{
+//				return slb.GetRulesResult(interface{}(slb.GetRulesOutput(ctx, slb.GetRulesOutputArgs{
 //					LoadBalancerId: id,
 //					FrontendPort:   22,
-//				}, nil), nil
+//				}, nil))), nil
 //			}).(slb.GetRulesResultOutput)
 //			ctx.Export("firstSlbRuleId", sampleDs.ApplyT(func(sampleDs slb.GetRulesResult) (*string, error) {
 //				return &sampleDs.SlbRules[0].Id, nil

@@ -63,7 +63,7 @@ import (
 //			defaultTable, err := ots.NewTable(ctx, "default", &ots.TableArgs{
 //				InstanceName: defaultInstance.Name,
 //				TableName:    pulumi.String("tf_example"),
-//				TimeToLive:   -1,
+//				TimeToLive:   int(-1),
 //				MaxVersion:   pulumi.Int(1),
 //				EnableSse:    pulumi.Bool(true),
 //				SseKeyType:   pulumi.String("SSE_KMS_SERVICE"),
