@@ -52,8 +52,8 @@ import (
 //				return err
 //			}
 //			defaultKIe4KV, err := log.NewProject(ctx, "defaultKIe4KV", &log.ProjectArgs{
-//				Description: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
-//				Name:        pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				Description: pulumi.Sprintf("%v-%v", name, _default.Result),
+//				Name:        pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -63,7 +63,7 @@ import (
 //				RetentionPeriod: pulumi.Int(30),
 //				ShardCount:      pulumi.Int(2),
 //				Project:         defaultKIe4KV.Name,
-//				Name:            pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				Name:            pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err

@@ -164,7 +164,7 @@ public class TransitRouterGrantAttachment extends com.pulumi.resources.CustomRes
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TransitRouterGrantAttachment(String name) {
+    public TransitRouterGrantAttachment(java.lang.String name) {
         this(name, TransitRouterGrantAttachmentArgs.Empty);
     }
     /**
@@ -172,7 +172,7 @@ public class TransitRouterGrantAttachment extends com.pulumi.resources.CustomRes
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TransitRouterGrantAttachment(String name, TransitRouterGrantAttachmentArgs args) {
+    public TransitRouterGrantAttachment(java.lang.String name, TransitRouterGrantAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -181,15 +181,22 @@ public class TransitRouterGrantAttachment extends com.pulumi.resources.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TransitRouterGrantAttachment(String name, TransitRouterGrantAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment", name, args == null ? TransitRouterGrantAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TransitRouterGrantAttachment(java.lang.String name, TransitRouterGrantAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TransitRouterGrantAttachment(String name, Output<String> id, @Nullable TransitRouterGrantAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment", name, state, makeResourceOptions(options, id));
+    private TransitRouterGrantAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterGrantAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterGrantAttachment:TransitRouterGrantAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TransitRouterGrantAttachmentArgs makeArgs(TransitRouterGrantAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TransitRouterGrantAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -205,7 +212,7 @@ public class TransitRouterGrantAttachment extends com.pulumi.resources.CustomRes
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TransitRouterGrantAttachment get(String name, Output<String> id, @Nullable TransitRouterGrantAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TransitRouterGrantAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterGrantAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TransitRouterGrantAttachment(name, id, state, options);
     }
 }

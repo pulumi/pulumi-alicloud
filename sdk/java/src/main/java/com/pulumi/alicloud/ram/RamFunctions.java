@@ -3087,12 +3087,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var default_ = new Group("default", GroupArgs.builder()
      *             .name("group1")
      *             .comments("group comments")
@@ -3103,7 +3103,7 @@ public final class RamFunctions {
      *             .name("user-example")
      *             .displayName("displayname")
      *             .mobile("86-18888888888")
-     *             .email("hello.uuu{@literal @}aaa.com")
+     *             .email("hello.uuu}{@literal @}{@code aaa.com")
      *             .comments("yoyoyo")
      *             .build());
      * 
@@ -3115,9 +3115,9 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * 			{
+     * 			}{{@code
      * 				"Statement": [
-     * 				 {
+     * 				 }{{@code
      * 					"Action": [
      * 					"oss:ListObjects",
      * 					"oss:ListObjects"
@@ -3127,10 +3127,10 @@ public final class RamFunctions {
      * 						"acs:oss:*:*:mybucket",
      * 						"acs:oss:*:*:mybucket/*"
      * 			  		]
-     * 				 }
+     * 				 }}{@code
      * 		  		],
      * 				"Version": "1"
-     * 			}
+     * 			}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -3151,8 +3151,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -3195,12 +3195,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var default_ = new Group("default", GroupArgs.builder()
      *             .name("group1")
      *             .comments("group comments")
@@ -3211,7 +3211,7 @@ public final class RamFunctions {
      *             .name("user-example")
      *             .displayName("displayname")
      *             .mobile("86-18888888888")
-     *             .email("hello.uuu{@literal @}aaa.com")
+     *             .email("hello.uuu}{@literal @}{@code aaa.com")
      *             .comments("yoyoyo")
      *             .build());
      * 
@@ -3223,9 +3223,9 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * 			{
+     * 			}{{@code
      * 				"Statement": [
-     * 				 {
+     * 				 }{{@code
      * 					"Action": [
      * 					"oss:ListObjects",
      * 					"oss:ListObjects"
@@ -3235,10 +3235,10 @@ public final class RamFunctions {
      * 						"acs:oss:*:*:mybucket",
      * 						"acs:oss:*:*:mybucket/*"
      * 			  		]
-     * 				 }
+     * 				 }}{@code
      * 		  		],
      * 				"Version": "1"
-     * 			}
+     * 			}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -3259,8 +3259,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -3303,12 +3303,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var default_ = new Group("default", GroupArgs.builder()
      *             .name("group1")
      *             .comments("group comments")
@@ -3319,7 +3319,7 @@ public final class RamFunctions {
      *             .name("user-example")
      *             .displayName("displayname")
      *             .mobile("86-18888888888")
-     *             .email("hello.uuu{@literal @}aaa.com")
+     *             .email("hello.uuu}{@literal @}{@code aaa.com")
      *             .comments("yoyoyo")
      *             .build());
      * 
@@ -3331,9 +3331,9 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * 			{
+     * 			}{{@code
      * 				"Statement": [
-     * 				 {
+     * 				 }{{@code
      * 					"Action": [
      * 					"oss:ListObjects",
      * 					"oss:ListObjects"
@@ -3343,10 +3343,10 @@ public final class RamFunctions {
      * 						"acs:oss:*:*:mybucket",
      * 						"acs:oss:*:*:mybucket/*"
      * 			  		]
-     * 				 }
+     * 				 }}{@code
      * 		  		],
      * 				"Version": "1"
-     * 			}
+     * 			}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -3367,8 +3367,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -3411,12 +3411,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var default_ = new Group("default", GroupArgs.builder()
      *             .name("group1")
      *             .comments("group comments")
@@ -3427,7 +3427,7 @@ public final class RamFunctions {
      *             .name("user-example")
      *             .displayName("displayname")
      *             .mobile("86-18888888888")
-     *             .email("hello.uuu{@literal @}aaa.com")
+     *             .email("hello.uuu}{@literal @}{@code aaa.com")
      *             .comments("yoyoyo")
      *             .build());
      * 
@@ -3439,9 +3439,9 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * 			{
+     * 			}{{@code
      * 				"Statement": [
-     * 				 {
+     * 				 }{{@code
      * 					"Action": [
      * 					"oss:ListObjects",
      * 					"oss:ListObjects"
@@ -3451,10 +3451,10 @@ public final class RamFunctions {
      * 						"acs:oss:*:*:mybucket",
      * 						"acs:oss:*:*:mybucket/*"
      * 			  		]
-     * 				 }
+     * 				 }}{@code
      * 		  		],
      * 				"Version": "1"
-     * 			}
+     * 			}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -3475,8 +3475,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -3519,12 +3519,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var default_ = new Group("default", GroupArgs.builder()
      *             .name("group1")
      *             .comments("group comments")
@@ -3535,7 +3535,7 @@ public final class RamFunctions {
      *             .name("user-example")
      *             .displayName("displayname")
      *             .mobile("86-18888888888")
-     *             .email("hello.uuu{@literal @}aaa.com")
+     *             .email("hello.uuu}{@literal @}{@code aaa.com")
      *             .comments("yoyoyo")
      *             .build());
      * 
@@ -3547,9 +3547,9 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * 			{
+     * 			}{{@code
      * 				"Statement": [
-     * 				 {
+     * 				 }{{@code
      * 					"Action": [
      * 					"oss:ListObjects",
      * 					"oss:ListObjects"
@@ -3559,10 +3559,10 @@ public final class RamFunctions {
      * 						"acs:oss:*:*:mybucket",
      * 						"acs:oss:*:*:mybucket/*"
      * 			  		]
-     * 				 }
+     * 				 }}{@code
      * 		  		],
      * 				"Version": "1"
-     * 			}
+     * 			}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -3583,8 +3583,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -3627,12 +3627,12 @@ public final class RamFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         var default_ = new Group("default", GroupArgs.builder()
      *             .name("group1")
      *             .comments("group comments")
@@ -3643,7 +3643,7 @@ public final class RamFunctions {
      *             .name("user-example")
      *             .displayName("displayname")
      *             .mobile("86-18888888888")
-     *             .email("hello.uuu{@literal @}aaa.com")
+     *             .email("hello.uuu}{@literal @}{@code aaa.com")
      *             .comments("yoyoyo")
      *             .build());
      * 
@@ -3655,9 +3655,9 @@ public final class RamFunctions {
      *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
-     * 			{
+     * 			}{{@code
      * 				"Statement": [
-     * 				 {
+     * 				 }{{@code
      * 					"Action": [
      * 					"oss:ListObjects",
      * 					"oss:ListObjects"
@@ -3667,10 +3667,10 @@ public final class RamFunctions {
      * 						"acs:oss:*:*:mybucket",
      * 						"acs:oss:*:*:mybucket/*"
      * 			  		]
-     * 				 }
+     * 				 }}{@code
      * 		  		],
      * 				"Version": "1"
-     * 			}
+     * 			}}{@code
      *             """)
      *             .description("this is a policy example")
      *             .force(true)
@@ -3691,8 +3691,8 @@ public final class RamFunctions {
      *             .build());
      * 
      *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;

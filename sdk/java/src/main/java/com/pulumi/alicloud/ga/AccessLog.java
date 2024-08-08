@@ -260,7 +260,7 @@ public class AccessLog extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessLog(String name) {
+    public AccessLog(java.lang.String name) {
         this(name, AccessLogArgs.Empty);
     }
     /**
@@ -268,7 +268,7 @@ public class AccessLog extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessLog(String name, AccessLogArgs args) {
+    public AccessLog(java.lang.String name, AccessLogArgs args) {
         this(name, args, null);
     }
     /**
@@ -277,15 +277,22 @@ public class AccessLog extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessLog(String name, AccessLogArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ga/accessLog:AccessLog", name, args == null ? AccessLogArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AccessLog(java.lang.String name, AccessLogArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ga/accessLog:AccessLog", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessLog(String name, Output<String> id, @Nullable AccessLogState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ga/accessLog:AccessLog", name, state, makeResourceOptions(options, id));
+    private AccessLog(java.lang.String name, Output<java.lang.String> id, @Nullable AccessLogState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ga/accessLog:AccessLog", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AccessLogArgs makeArgs(AccessLogArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessLogArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -301,7 +308,7 @@ public class AccessLog extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessLog get(String name, Output<String> id, @Nullable AccessLogState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessLog get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessLogState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessLog(name, id, state, options);
     }
 }

@@ -81,7 +81,7 @@ public class GlobalEventsStorageRegion extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GlobalEventsStorageRegion(String name) {
+    public GlobalEventsStorageRegion(java.lang.String name) {
         this(name, GlobalEventsStorageRegionArgs.Empty);
     }
     /**
@@ -89,7 +89,7 @@ public class GlobalEventsStorageRegion extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GlobalEventsStorageRegion(String name, @Nullable GlobalEventsStorageRegionArgs args) {
+    public GlobalEventsStorageRegion(java.lang.String name, @Nullable GlobalEventsStorageRegionArgs args) {
         this(name, args, null);
     }
     /**
@@ -98,15 +98,22 @@ public class GlobalEventsStorageRegion extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GlobalEventsStorageRegion(String name, @Nullable GlobalEventsStorageRegionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion", name, args == null ? GlobalEventsStorageRegionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GlobalEventsStorageRegion(java.lang.String name, @Nullable GlobalEventsStorageRegionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GlobalEventsStorageRegion(String name, Output<String> id, @Nullable GlobalEventsStorageRegionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion", name, state, makeResourceOptions(options, id));
+    private GlobalEventsStorageRegion(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalEventsStorageRegionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:actiontrail/globalEventsStorageRegion:GlobalEventsStorageRegion", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GlobalEventsStorageRegionArgs makeArgs(@Nullable GlobalEventsStorageRegionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GlobalEventsStorageRegionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -122,7 +129,7 @@ public class GlobalEventsStorageRegion extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GlobalEventsStorageRegion get(String name, Output<String> id, @Nullable GlobalEventsStorageRegionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GlobalEventsStorageRegion get(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalEventsStorageRegionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GlobalEventsStorageRegion(name, id, state, options);
     }
 }

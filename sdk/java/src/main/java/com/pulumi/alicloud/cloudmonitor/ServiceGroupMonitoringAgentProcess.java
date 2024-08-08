@@ -204,7 +204,7 @@ public class ServiceGroupMonitoringAgentProcess extends com.pulumi.resources.Cus
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceGroupMonitoringAgentProcess(String name) {
+    public ServiceGroupMonitoringAgentProcess(java.lang.String name) {
         this(name, ServiceGroupMonitoringAgentProcessArgs.Empty);
     }
     /**
@@ -212,7 +212,7 @@ public class ServiceGroupMonitoringAgentProcess extends com.pulumi.resources.Cus
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceGroupMonitoringAgentProcess(String name, ServiceGroupMonitoringAgentProcessArgs args) {
+    public ServiceGroupMonitoringAgentProcess(java.lang.String name, ServiceGroupMonitoringAgentProcessArgs args) {
         this(name, args, null);
     }
     /**
@@ -221,15 +221,22 @@ public class ServiceGroupMonitoringAgentProcess extends com.pulumi.resources.Cus
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceGroupMonitoringAgentProcess(String name, ServiceGroupMonitoringAgentProcessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess", name, args == null ? ServiceGroupMonitoringAgentProcessArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServiceGroupMonitoringAgentProcess(java.lang.String name, ServiceGroupMonitoringAgentProcessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceGroupMonitoringAgentProcess(String name, Output<String> id, @Nullable ServiceGroupMonitoringAgentProcessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess", name, state, makeResourceOptions(options, id));
+    private ServiceGroupMonitoringAgentProcess(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceGroupMonitoringAgentProcessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServiceGroupMonitoringAgentProcessArgs makeArgs(ServiceGroupMonitoringAgentProcessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceGroupMonitoringAgentProcessArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -245,7 +252,7 @@ public class ServiceGroupMonitoringAgentProcess extends com.pulumi.resources.Cus
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceGroupMonitoringAgentProcess get(String name, Output<String> id, @Nullable ServiceGroupMonitoringAgentProcessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceGroupMonitoringAgentProcess get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceGroupMonitoringAgentProcessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceGroupMonitoringAgentProcess(name, id, state, options);
     }
 }

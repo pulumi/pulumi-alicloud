@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Integer("default", IntegerArgs.builder()
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *                         )),
  *                         jsonProperty("Effect", "Deny"),
  *                         jsonProperty("Principal", jsonArray("1234567890")),
- *                         jsonProperty("Resource", jsonArray("acs:oss:*:1234567890:*{@literal /}*"))
+ *                         jsonProperty("Resource", jsonArray("acs:oss:*:1234567890:*}&#47;{@code *"))
  *                     )))
  *                 )))
  *             .bucket(createBucket.bucket())
@@ -84,8 +84,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(createBucket)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -134,7 +134,7 @@ public class BucketPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BucketPolicy(String name) {
+    public BucketPolicy(java.lang.String name) {
         this(name, BucketPolicyArgs.Empty);
     }
     /**
@@ -142,7 +142,7 @@ public class BucketPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BucketPolicy(String name, BucketPolicyArgs args) {
+    public BucketPolicy(java.lang.String name, BucketPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -151,15 +151,22 @@ public class BucketPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BucketPolicy(String name, BucketPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketPolicy:BucketPolicy", name, args == null ? BucketPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BucketPolicy(java.lang.String name, BucketPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketPolicy:BucketPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BucketPolicy(String name, Output<String> id, @Nullable BucketPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketPolicy:BucketPolicy", name, state, makeResourceOptions(options, id));
+    private BucketPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable BucketPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketPolicy:BucketPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BucketPolicyArgs makeArgs(BucketPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BucketPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -175,7 +182,7 @@ public class BucketPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BucketPolicy get(String name, Output<String> id, @Nullable BucketPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BucketPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable BucketPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BucketPolicy(name, id, state, options);
     }
 }

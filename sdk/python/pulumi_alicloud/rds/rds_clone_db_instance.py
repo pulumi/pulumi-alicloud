@@ -2304,11 +2304,11 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  ha_mode: Optional[pulumi.Input[str]] = None,
                  instance_network_type: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstanceParameterArgs', 'RdsCloneDbInstanceParameterArgsDict']]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
-                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstancePgHbaConfArgs', 'RdsCloneDbInstancePgHbaConfArgsDict']]]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -2321,7 +2321,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
-                 serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]]] = None,
+                 serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstanceServerlessConfigArgs', 'RdsCloneDbInstanceServerlessConfigArgsDict']]]]] = None,
                  source_biz: Optional[pulumi.Input[str]] = None,
                  source_db_instance_id: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
@@ -2468,7 +2468,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **Classic**: Classic Network
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstanceParameterArgs', 'RdsCloneDbInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
         :param pulumi.Input[str] password: The password of the certificate. 
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
@@ -2476,7 +2476,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
                
                > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]] pg_hba_confs: The details of the AD domain.See `pg_hba_conf` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstancePgHbaConfArgs', 'RdsCloneDbInstancePgHbaConfArgsDict']]]] pg_hba_confs: The details of the AD domain.See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -2495,7 +2495,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstanceServerlessConfigArgs', 'RdsCloneDbInstanceServerlessConfigArgsDict']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
         :param pulumi.Input[str] source_biz: The source biz.
         :param pulumi.Input[str] source_db_instance_id: The source db instance id.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
@@ -2642,11 +2642,11 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  ha_mode: Optional[pulumi.Input[str]] = None,
                  instance_network_type: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstanceParameterArgs', 'RdsCloneDbInstanceParameterArgsDict']]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
-                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstancePgHbaConfArgs', 'RdsCloneDbInstancePgHbaConfArgsDict']]]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -2659,7 +2659,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
-                 serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]]] = None,
+                 serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstanceServerlessConfigArgs', 'RdsCloneDbInstanceServerlessConfigArgsDict']]]]] = None,
                  source_biz: Optional[pulumi.Input[str]] = None,
                  source_db_instance_id: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
@@ -2791,11 +2791,11 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             ha_mode: Optional[pulumi.Input[str]] = None,
             instance_network_type: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceParameterArgs']]]]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstanceParameterArgs', 'RdsCloneDbInstanceParameterArgsDict']]]]] = None,
             password: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[str]] = None,
-            pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]]] = None,
+            pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstancePgHbaConfArgs', 'RdsCloneDbInstancePgHbaConfArgsDict']]]]] = None,
             port: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             private_key: Optional[pulumi.Input[str]] = None,
@@ -2808,7 +2808,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             server_cert: Optional[pulumi.Input[str]] = None,
             server_key: Optional[pulumi.Input[str]] = None,
-            serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]]] = None,
+            serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstanceServerlessConfigArgs', 'RdsCloneDbInstanceServerlessConfigArgsDict']]]]] = None,
             source_biz: Optional[pulumi.Input[str]] = None,
             source_db_instance_id: Optional[pulumi.Input[str]] = None,
             ssl_enabled: Optional[pulumi.Input[int]] = None,
@@ -2899,7 +2899,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **Classic**: Classic Network
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstanceParameterArgs', 'RdsCloneDbInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
         :param pulumi.Input[str] password: The password of the certificate. 
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
@@ -2907,7 +2907,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
                
                > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]] pg_hba_confs: The details of the AD domain.See `pg_hba_conf` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstancePgHbaConfArgs', 'RdsCloneDbInstancePgHbaConfArgsDict']]]] pg_hba_confs: The details of the AD domain.See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -2926,7 +2926,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstanceServerlessConfigArgs', 'RdsCloneDbInstanceServerlessConfigArgsDict']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
         :param pulumi.Input[str] source_biz: The source biz.
         :param pulumi.Input[str] source_db_instance_id: The source db instance id.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.

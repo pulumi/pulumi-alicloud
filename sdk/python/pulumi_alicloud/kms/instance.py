@@ -607,7 +607,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBindVpcArgs']]]]] = None,
+                 bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
                  force_delete_without_backup: Optional[pulumi.Input[str]] = None,
                  key_num: Optional[pulumi.Input[int]] = None,
                  log: Optional[pulumi.Input[str]] = None,
@@ -671,7 +671,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBindVpcArgs']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
         :param pulumi.Input[str] force_delete_without_backup: Whether to force deletion even without backup.
         :param pulumi.Input[int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[str] log: Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
@@ -754,7 +754,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBindVpcArgs']]]]] = None,
+                 bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
                  force_delete_without_backup: Optional[pulumi.Input[str]] = None,
                  key_num: Optional[pulumi.Input[int]] = None,
                  log: Optional[pulumi.Input[str]] = None,
@@ -815,7 +815,7 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBindVpcArgs']]]]] = None,
+            bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
             ca_certificate_chain_pem: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             force_delete_without_backup: Optional[pulumi.Input[str]] = None,
@@ -842,7 +842,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBindVpcArgs']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
         :param pulumi.Input[str] ca_certificate_chain_pem: KMS instance certificate chain in PEM format.
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] force_delete_without_backup: Whether to force deletion even without backup.

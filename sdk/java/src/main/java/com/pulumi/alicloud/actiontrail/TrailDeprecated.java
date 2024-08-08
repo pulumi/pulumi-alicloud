@@ -234,7 +234,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TrailDeprecated(String name) {
+    public TrailDeprecated(java.lang.String name) {
         this(name, TrailDeprecatedArgs.Empty);
     }
     /**
@@ -242,7 +242,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TrailDeprecated(String name, @Nullable TrailDeprecatedArgs args) {
+    public TrailDeprecated(java.lang.String name, @Nullable TrailDeprecatedArgs args) {
         this(name, args, null);
     }
     /**
@@ -251,15 +251,22 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TrailDeprecated(String name, @Nullable TrailDeprecatedArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:actiontrail/trailDeprecated:TrailDeprecated", name, args == null ? TrailDeprecatedArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TrailDeprecated(java.lang.String name, @Nullable TrailDeprecatedArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:actiontrail/trailDeprecated:TrailDeprecated", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TrailDeprecated(String name, Output<String> id, @Nullable TrailDeprecatedState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:actiontrail/trailDeprecated:TrailDeprecated", name, state, makeResourceOptions(options, id));
+    private TrailDeprecated(java.lang.String name, Output<java.lang.String> id, @Nullable TrailDeprecatedState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:actiontrail/trailDeprecated:TrailDeprecated", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TrailDeprecatedArgs makeArgs(@Nullable TrailDeprecatedArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TrailDeprecatedArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -275,7 +282,7 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TrailDeprecated get(String name, Output<String> id, @Nullable TrailDeprecatedState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TrailDeprecated get(java.lang.String name, Output<java.lang.String> id, @Nullable TrailDeprecatedState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TrailDeprecated(name, id, state, options);
     }
 }

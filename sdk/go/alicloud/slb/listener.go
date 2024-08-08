@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			listener, err := slb.NewApplicationLoadBalancer(ctx, "listener", &slb.ApplicationLoadBalancerArgs{
-//				LoadBalancerName:   pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				LoadBalancerName:   pulumi.Sprintf("%v-%v", name, _default.Result),
 //				InternetChargeType: pulumi.String("PayByTraffic"),
 //				AddressType:        pulumi.String("internet"),
 //				InstanceChargeType: pulumi.String("PayByCLCU"),
@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			listenerAcl, err := slb.NewAcl(ctx, "listener", &slb.AclArgs{
-//				Name:      pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				Name:      pulumi.Sprintf("%v-%v", name, _default.Result),
 //				IpVersion: pulumi.String("ipv4"),
 //			})
 //			if err != nil {

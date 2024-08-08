@@ -189,7 +189,7 @@ public class InterRegionTrafficQosPolicy extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InterRegionTrafficQosPolicy(String name) {
+    public InterRegionTrafficQosPolicy(java.lang.String name) {
         this(name, InterRegionTrafficQosPolicyArgs.Empty);
     }
     /**
@@ -197,7 +197,7 @@ public class InterRegionTrafficQosPolicy extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InterRegionTrafficQosPolicy(String name, InterRegionTrafficQosPolicyArgs args) {
+    public InterRegionTrafficQosPolicy(java.lang.String name, InterRegionTrafficQosPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -206,15 +206,22 @@ public class InterRegionTrafficQosPolicy extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InterRegionTrafficQosPolicy(String name, InterRegionTrafficQosPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy", name, args == null ? InterRegionTrafficQosPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InterRegionTrafficQosPolicy(java.lang.String name, InterRegionTrafficQosPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InterRegionTrafficQosPolicy(String name, Output<String> id, @Nullable InterRegionTrafficQosPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy", name, state, makeResourceOptions(options, id));
+    private InterRegionTrafficQosPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable InterRegionTrafficQosPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/interRegionTrafficQosPolicy:InterRegionTrafficQosPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InterRegionTrafficQosPolicyArgs makeArgs(InterRegionTrafficQosPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InterRegionTrafficQosPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -230,7 +237,7 @@ public class InterRegionTrafficQosPolicy extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InterRegionTrafficQosPolicy get(String name, Output<String> id, @Nullable InterRegionTrafficQosPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InterRegionTrafficQosPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable InterRegionTrafficQosPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InterRegionTrafficQosPolicy(name, id, state, options);
     }
 }

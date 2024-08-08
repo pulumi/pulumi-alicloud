@@ -129,8 +129,8 @@ class NetworkAclEntries(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 egresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEntriesEgressArgs']]]]] = None,
-                 ingresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEntriesIngressArgs']]]]] = None,
+                 egresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]]] = None,
+                 ingresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]]] = None,
                  network_acl_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -170,36 +170,36 @@ class NetworkAclEntries(pulumi.CustomResource):
             name=name)
         default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("default",
             network_acl_id=default_network_acl.id,
-            resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(
-                resource_id=default_switch.id,
-                resource_type="VSwitch",
-            )])
+            resources=[{
+                "resource_id": default_switch.id,
+                "resource_type": "VSwitch",
+            }])
         default_network_acl_entries = alicloud.vpc.NetworkAclEntries("default",
             network_acl_id=default_network_acl.id,
-            ingresses=[alicloud.vpc.NetworkAclEntriesIngressArgs(
-                protocol="all",
-                port="-1/-1",
-                source_cidr_ip="0.0.0.0/32",
-                name=name,
-                entry_type="custom",
-                policy="accept",
-                description=name,
-            )],
-            egresses=[alicloud.vpc.NetworkAclEntriesEgressArgs(
-                protocol="all",
-                port="-1/-1",
-                destination_cidr_ip="0.0.0.0/32",
-                name=name,
-                entry_type="custom",
-                policy="accept",
-                description=name,
-            )])
+            ingresses=[{
+                "protocol": "all",
+                "port": "-1/-1",
+                "source_cidr_ip": "0.0.0.0/32",
+                "name": name,
+                "entry_type": "custom",
+                "policy": "accept",
+                "description": name,
+            }],
+            egresses=[{
+                "protocol": "all",
+                "port": "-1/-1",
+                "destination_cidr_ip": "0.0.0.0/32",
+                "name": name,
+                "entry_type": "custom",
+                "policy": "accept",
+                "description": name,
+            }])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEntriesEgressArgs']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEntriesIngressArgs']]]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
         :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
         """
         ...
@@ -245,30 +245,30 @@ class NetworkAclEntries(pulumi.CustomResource):
             name=name)
         default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("default",
             network_acl_id=default_network_acl.id,
-            resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(
-                resource_id=default_switch.id,
-                resource_type="VSwitch",
-            )])
+            resources=[{
+                "resource_id": default_switch.id,
+                "resource_type": "VSwitch",
+            }])
         default_network_acl_entries = alicloud.vpc.NetworkAclEntries("default",
             network_acl_id=default_network_acl.id,
-            ingresses=[alicloud.vpc.NetworkAclEntriesIngressArgs(
-                protocol="all",
-                port="-1/-1",
-                source_cidr_ip="0.0.0.0/32",
-                name=name,
-                entry_type="custom",
-                policy="accept",
-                description=name,
-            )],
-            egresses=[alicloud.vpc.NetworkAclEntriesEgressArgs(
-                protocol="all",
-                port="-1/-1",
-                destination_cidr_ip="0.0.0.0/32",
-                name=name,
-                entry_type="custom",
-                policy="accept",
-                description=name,
-            )])
+            ingresses=[{
+                "protocol": "all",
+                "port": "-1/-1",
+                "source_cidr_ip": "0.0.0.0/32",
+                "name": name,
+                "entry_type": "custom",
+                "policy": "accept",
+                "description": name,
+            }],
+            egresses=[{
+                "protocol": "all",
+                "port": "-1/-1",
+                "destination_cidr_ip": "0.0.0.0/32",
+                "name": name,
+                "entry_type": "custom",
+                "policy": "accept",
+                "description": name,
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -286,8 +286,8 @@ class NetworkAclEntries(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 egresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEntriesEgressArgs']]]]] = None,
-                 ingresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEntriesIngressArgs']]]]] = None,
+                 egresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]]] = None,
+                 ingresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]]] = None,
                  network_acl_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -313,8 +313,8 @@ class NetworkAclEntries(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            egresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEntriesEgressArgs']]]]] = None,
-            ingresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEntriesIngressArgs']]]]] = None,
+            egresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]]] = None,
+            ingresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]]] = None,
             network_acl_id: Optional[pulumi.Input[str]] = None) -> 'NetworkAclEntries':
         """
         Get an existing NetworkAclEntries resource's state with the given name, id, and optional extra
@@ -323,8 +323,8 @@ class NetworkAclEntries(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEntriesEgressArgs']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEntriesIngressArgs']]]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
         :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

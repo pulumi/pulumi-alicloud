@@ -89,7 +89,7 @@ import (
 //				EngineVersion:      defaultInstance.EngineVersion,
 //				InstanceStorage:    defaultInstance.InstanceStorage,
 //				InstanceType:       defaultInstance.InstanceType,
-//				InstanceName:       pulumi.String(fmt.Sprintf("%vreadonly", name)),
+//				InstanceName:       pulumi.Sprintf("%vreadonly", name),
 //				VswitchId:          defaultSwitch.ID(),
 //			})
 //			if err != nil {

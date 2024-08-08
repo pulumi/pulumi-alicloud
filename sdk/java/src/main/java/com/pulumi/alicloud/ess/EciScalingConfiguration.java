@@ -711,7 +711,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EciScalingConfiguration(String name) {
+    public EciScalingConfiguration(java.lang.String name) {
         this(name, EciScalingConfigurationArgs.Empty);
     }
     /**
@@ -719,7 +719,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EciScalingConfiguration(String name, EciScalingConfigurationArgs args) {
+    public EciScalingConfiguration(java.lang.String name, EciScalingConfigurationArgs args) {
         this(name, args, null);
     }
     /**
@@ -728,15 +728,22 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EciScalingConfiguration(String name, EciScalingConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ess/eciScalingConfiguration:EciScalingConfiguration", name, args == null ? EciScalingConfigurationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EciScalingConfiguration(java.lang.String name, EciScalingConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ess/eciScalingConfiguration:EciScalingConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EciScalingConfiguration(String name, Output<String> id, @Nullable EciScalingConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ess/eciScalingConfiguration:EciScalingConfiguration", name, state, makeResourceOptions(options, id));
+    private EciScalingConfiguration(java.lang.String name, Output<java.lang.String> id, @Nullable EciScalingConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ess/eciScalingConfiguration:EciScalingConfiguration", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EciScalingConfigurationArgs makeArgs(EciScalingConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EciScalingConfigurationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -752,7 +759,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EciScalingConfiguration get(String name, Output<String> id, @Nullable EciScalingConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EciScalingConfiguration get(java.lang.String name, Output<java.lang.String> id, @Nullable EciScalingConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EciScalingConfiguration(name, id, state, options);
     }
 }

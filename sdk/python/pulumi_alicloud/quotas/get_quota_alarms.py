@@ -143,7 +143,7 @@ def get_quota_alarms(enable_details: Optional[bool] = None,
                      product_code: Optional[str] = None,
                      quota_action_code: Optional[str] = None,
                      quota_alarm_name: Optional[str] = None,
-                     quota_dimensions: Optional[Sequence[pulumi.InputType['GetQuotaAlarmsQuotaDimensionArgs']]] = None,
+                     quota_dimensions: Optional[Sequence[Union['GetQuotaAlarmsQuotaDimensionArgs', 'GetQuotaAlarmsQuotaDimensionArgsDict']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQuotaAlarmsResult:
     """
     This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
@@ -171,7 +171,7 @@ def get_quota_alarms(enable_details: Optional[bool] = None,
     :param str product_code: The Product Code.
     :param str quota_action_code: The Quota Action Code.
     :param str quota_alarm_name: The name of Quota Alarm.
-    :param Sequence[pulumi.InputType['GetQuotaAlarmsQuotaDimensionArgs']] quota_dimensions: The Quota Dimensions.
+    :param Sequence[Union['GetQuotaAlarmsQuotaDimensionArgs', 'GetQuotaAlarmsQuotaDimensionArgsDict']] quota_dimensions: The Quota Dimensions.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -207,7 +207,7 @@ def get_quota_alarms_output(enable_details: Optional[pulumi.Input[Optional[bool]
                             product_code: Optional[pulumi.Input[Optional[str]]] = None,
                             quota_action_code: Optional[pulumi.Input[Optional[str]]] = None,
                             quota_alarm_name: Optional[pulumi.Input[Optional[str]]] = None,
-                            quota_dimensions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetQuotaAlarmsQuotaDimensionArgs']]]]] = None,
+                            quota_dimensions: Optional[pulumi.Input[Optional[Sequence[Union['GetQuotaAlarmsQuotaDimensionArgs', 'GetQuotaAlarmsQuotaDimensionArgsDict']]]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotaAlarmsResult]:
     """
     This data source provides the Quotas Quota Alarms of the current Alibaba Cloud user.
@@ -235,6 +235,6 @@ def get_quota_alarms_output(enable_details: Optional[pulumi.Input[Optional[bool]
     :param str product_code: The Product Code.
     :param str quota_action_code: The Quota Action Code.
     :param str quota_alarm_name: The name of Quota Alarm.
-    :param Sequence[pulumi.InputType['GetQuotaAlarmsQuotaDimensionArgs']] quota_dimensions: The Quota Dimensions.
+    :param Sequence[Union['GetQuotaAlarmsQuotaDimensionArgs', 'GetQuotaAlarmsQuotaDimensionArgsDict']] quota_dimensions: The Quota Dimensions.
     """
     ...

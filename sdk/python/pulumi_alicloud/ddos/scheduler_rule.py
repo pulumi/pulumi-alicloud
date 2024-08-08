@@ -223,7 +223,7 @@ class SchedulerRule(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  rule_type: Optional[pulumi.Input[int]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SchedulerRuleRuleArgs', 'SchedulerRuleRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a DdosCoo Scheduler Rule resource. For information about DdosCoo Scheduler Rule and how to use it, see[What is DdosCoo Scheduler Rule](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createschedulerrule).
@@ -246,20 +246,20 @@ class SchedulerRule(pulumi.CustomResource):
             rule_name=name,
             rule_type=3,
             rules=[
-                alicloud.ddos.SchedulerRuleRuleArgs(
-                    priority=100,
-                    region_id="cn-hangzhou",
-                    type="A",
-                    value="127.0.0.1",
-                    value_type=3,
-                ),
-                alicloud.ddos.SchedulerRuleRuleArgs(
-                    priority=50,
-                    region_id="cn-hangzhou",
-                    type="A",
-                    value="127.0.0.0",
-                    value_type=1,
-                ),
+                {
+                    "priority": 100,
+                    "region_id": "cn-hangzhou",
+                    "type": "A",
+                    "value": "127.0.0.1",
+                    "value_type": 3,
+                },
+                {
+                    "priority": 50,
+                    "region_id": "cn-hangzhou",
+                    "type": "A",
+                    "value": "127.0.0.0",
+                    "value_type": 1,
+                },
             ])
         ```
 
@@ -280,7 +280,7 @@ class SchedulerRule(pulumi.CustomResource):
                `2`: tiered protection.
                `3`: globalization acceleration.
                `6`: Cloud product interaction.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]] rules: The information about the scheduling rules. See `rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SchedulerRuleRuleArgs', 'SchedulerRuleRuleArgsDict']]]] rules: The information about the scheduling rules. See `rules` below.
         """
         ...
     @overload
@@ -309,20 +309,20 @@ class SchedulerRule(pulumi.CustomResource):
             rule_name=name,
             rule_type=3,
             rules=[
-                alicloud.ddos.SchedulerRuleRuleArgs(
-                    priority=100,
-                    region_id="cn-hangzhou",
-                    type="A",
-                    value="127.0.0.1",
-                    value_type=3,
-                ),
-                alicloud.ddos.SchedulerRuleRuleArgs(
-                    priority=50,
-                    region_id="cn-hangzhou",
-                    type="A",
-                    value="127.0.0.0",
-                    value_type=1,
-                ),
+                {
+                    "priority": 100,
+                    "region_id": "cn-hangzhou",
+                    "type": "A",
+                    "value": "127.0.0.1",
+                    "value_type": 3,
+                },
+                {
+                    "priority": 50,
+                    "region_id": "cn-hangzhou",
+                    "type": "A",
+                    "value": "127.0.0.0",
+                    "value_type": 1,
+                },
             ])
         ```
 
@@ -353,7 +353,7 @@ class SchedulerRule(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  rule_type: Optional[pulumi.Input[int]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SchedulerRuleRuleArgs', 'SchedulerRuleRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,7 +390,7 @@ class SchedulerRule(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             rule_name: Optional[pulumi.Input[str]] = None,
             rule_type: Optional[pulumi.Input[int]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]]] = None) -> 'SchedulerRule':
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SchedulerRuleRuleArgs', 'SchedulerRuleRuleArgsDict']]]]] = None) -> 'SchedulerRule':
         """
         Get an existing SchedulerRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -406,7 +406,7 @@ class SchedulerRule(pulumi.CustomResource):
                `2`: tiered protection.
                `3`: globalization acceleration.
                `6`: Cloud product interaction.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchedulerRuleRuleArgs']]]] rules: The information about the scheduling rules. See `rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SchedulerRuleRuleArgs', 'SchedulerRuleRuleArgsDict']]]] rules: The information about the scheduling rules. See `rules` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

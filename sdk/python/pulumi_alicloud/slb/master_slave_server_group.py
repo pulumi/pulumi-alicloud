@@ -164,7 +164,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
                  delete_protection_validation: Optional[pulumi.Input[bool]] = None,
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MasterSlaveServerGroupServerArgs']]]]] = None,
+                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]]] = None,
                  __props__=None):
         """
         A master slave server group contains two ECS instances. The master slave server group can help you to define multiple listening dimension.
@@ -239,18 +239,18 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
             load_balancer_id=ms_server_group_application_load_balancer.id,
             name=slb_master_slave_server_group,
             servers=[
-                alicloud.slb.MasterSlaveServerGroupServerArgs(
-                    server_id=ms_server_group_instance[0].id,
-                    port=100,
-                    weight=100,
-                    server_type="Master",
-                ),
-                alicloud.slb.MasterSlaveServerGroupServerArgs(
-                    server_id=ms_server_group_instance[1].id,
-                    port=100,
-                    weight=100,
-                    server_type="Slave",
-                ),
+                {
+                    "server_id": ms_server_group_instance[0].id,
+                    "port": 100,
+                    "weight": 100,
+                    "server_type": "Master",
+                },
+                {
+                    "server_id": ms_server_group_instance[1].id,
+                    "port": 100,
+                    "weight": 100,
+                    "server_type": "Slave",
+                },
             ])
         tcp = alicloud.slb.Listener("tcp",
             load_balancer_id=ms_server_group_application_load_balancer.id,
@@ -294,7 +294,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new master slave server group.
         :param pulumi.Input[str] name: Name of the master slave server group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MasterSlaveServerGroupServerArgs']]]] servers: A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]] servers: A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
         """
         ...
     @overload
@@ -375,18 +375,18 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
             load_balancer_id=ms_server_group_application_load_balancer.id,
             name=slb_master_slave_server_group,
             servers=[
-                alicloud.slb.MasterSlaveServerGroupServerArgs(
-                    server_id=ms_server_group_instance[0].id,
-                    port=100,
-                    weight=100,
-                    server_type="Master",
-                ),
-                alicloud.slb.MasterSlaveServerGroupServerArgs(
-                    server_id=ms_server_group_instance[1].id,
-                    port=100,
-                    weight=100,
-                    server_type="Slave",
-                ),
+                {
+                    "server_id": ms_server_group_instance[0].id,
+                    "port": 100,
+                    "weight": 100,
+                    "server_type": "Master",
+                },
+                {
+                    "server_id": ms_server_group_instance[1].id,
+                    "port": 100,
+                    "weight": 100,
+                    "server_type": "Slave",
+                },
             ])
         tcp = alicloud.slb.Listener("tcp",
             load_balancer_id=ms_server_group_application_load_balancer.id,
@@ -443,7 +443,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
                  delete_protection_validation: Optional[pulumi.Input[bool]] = None,
                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MasterSlaveServerGroupServerArgs']]]]] = None,
+                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -472,7 +472,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
             load_balancer_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MasterSlaveServerGroupServerArgs']]]]] = None) -> 'MasterSlaveServerGroup':
+            servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]]] = None) -> 'MasterSlaveServerGroup':
         """
         Get an existing MasterSlaveServerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -483,7 +483,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[str] load_balancer_id: The Load Balancer ID which is used to launch a new master slave server group.
         :param pulumi.Input[str] name: Name of the master slave server group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MasterSlaveServerGroupServerArgs']]]] servers: A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]] servers: A list of ECS instances to be added. Only two ECS instances can be supported in one resource. It contains six sub-fields as `Block server` follows.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

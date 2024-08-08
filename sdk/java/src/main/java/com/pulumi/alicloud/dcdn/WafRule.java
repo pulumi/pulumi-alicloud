@@ -361,7 +361,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WafRule(String name) {
+    public WafRule(java.lang.String name) {
         this(name, WafRuleArgs.Empty);
     }
     /**
@@ -369,7 +369,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WafRule(String name, WafRuleArgs args) {
+    public WafRule(java.lang.String name, WafRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -378,15 +378,22 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WafRule(String name, WafRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dcdn/wafRule:WafRule", name, args == null ? WafRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WafRule(java.lang.String name, WafRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dcdn/wafRule:WafRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WafRule(String name, Output<String> id, @Nullable WafRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dcdn/wafRule:WafRule", name, state, makeResourceOptions(options, id));
+    private WafRule(java.lang.String name, Output<java.lang.String> id, @Nullable WafRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dcdn/wafRule:WafRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WafRuleArgs makeArgs(WafRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WafRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -402,7 +409,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WafRule get(String name, Output<String> id, @Nullable WafRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WafRule get(java.lang.String name, Output<java.lang.String> id, @Nullable WafRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WafRule(name, id, state, options);
     }
 }

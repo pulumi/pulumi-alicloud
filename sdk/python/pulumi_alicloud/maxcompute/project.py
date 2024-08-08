@@ -404,12 +404,12 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  default_quota: Optional[pulumi.Input[str]] = None,
-                 ip_white_list: Optional[pulumi.Input[pulumi.InputType['ProjectIpWhiteListArgs']]] = None,
+                 ip_white_list: Optional[pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']]] = None,
                  is_logical: Optional[pulumi.Input[str]] = None,
                  product_type: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[pulumi.InputType['ProjectPropertiesArgs']]] = None,
-                 security_properties: Optional[pulumi.Input[pulumi.InputType['ProjectSecurityPropertiesArgs']]] = None,
+                 properties: Optional[pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
+                 security_properties: Optional[pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
@@ -455,12 +455,12 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
-        :param pulumi.Input[pulumi.InputType['ProjectIpWhiteListArgs']] ip_white_list: IP whitelist See `ip_white_list` below.
+        :param pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']] ip_white_list: IP whitelist See `ip_white_list` below.
         :param pulumi.Input[str] is_logical: Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
         :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
         :param pulumi.Input[str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
-        :param pulumi.Input[pulumi.InputType['ProjectPropertiesArgs']] properties: Project base attributes See `properties` below.
-        :param pulumi.Input[pulumi.InputType['ProjectSecurityPropertiesArgs']] security_properties: Security-related attributes See `security_properties` below.
+        :param pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']] properties: Project base attributes See `properties` below.
+        :param pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
         """
@@ -525,12 +525,12 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: Optional[pulumi.Input[str]] = None,
                  default_quota: Optional[pulumi.Input[str]] = None,
-                 ip_white_list: Optional[pulumi.Input[pulumi.InputType['ProjectIpWhiteListArgs']]] = None,
+                 ip_white_list: Optional[pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']]] = None,
                  is_logical: Optional[pulumi.Input[str]] = None,
                  product_type: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[pulumi.InputType['ProjectPropertiesArgs']]] = None,
-                 security_properties: Optional[pulumi.Input[pulumi.InputType['ProjectSecurityPropertiesArgs']]] = None,
+                 properties: Optional[pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
+                 security_properties: Optional[pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
@@ -568,13 +568,13 @@ class Project(pulumi.CustomResource):
             comment: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             default_quota: Optional[pulumi.Input[str]] = None,
-            ip_white_list: Optional[pulumi.Input[pulumi.InputType['ProjectIpWhiteListArgs']]] = None,
+            ip_white_list: Optional[pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']]] = None,
             is_logical: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
             product_type: Optional[pulumi.Input[str]] = None,
             project_name: Optional[pulumi.Input[str]] = None,
-            properties: Optional[pulumi.Input[pulumi.InputType['ProjectPropertiesArgs']]] = None,
-            security_properties: Optional[pulumi.Input[pulumi.InputType['ProjectSecurityPropertiesArgs']]] = None,
+            properties: Optional[pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']]] = None,
+            security_properties: Optional[pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Project':
@@ -588,13 +588,13 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] comment: Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
         :param pulumi.Input[str] create_time: Represents the creation time of the project
         :param pulumi.Input[str] default_quota: Used to implement computing resource allocation. If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
-        :param pulumi.Input[pulumi.InputType['ProjectIpWhiteListArgs']] ip_white_list: IP whitelist See `ip_white_list` below.
+        :param pulumi.Input[Union['ProjectIpWhiteListArgs', 'ProjectIpWhiteListArgsDict']] ip_white_list: IP whitelist See `ip_white_list` below.
         :param pulumi.Input[str] is_logical: Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
         :param pulumi.Input[str] owner: Project owner
         :param pulumi.Input[str] product_type: Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
         :param pulumi.Input[str] project_name: The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
-        :param pulumi.Input[pulumi.InputType['ProjectPropertiesArgs']] properties: Project base attributes See `properties` below.
-        :param pulumi.Input[pulumi.InputType['ProjectSecurityPropertiesArgs']] security_properties: Security-related attributes See `security_properties` below.
+        :param pulumi.Input[Union['ProjectPropertiesArgs', 'ProjectPropertiesArgsDict']] properties: Project base attributes See `properties` below.
+        :param pulumi.Input[Union['ProjectSecurityPropertiesArgs', 'ProjectSecurityPropertiesArgsDict']] security_properties: Security-related attributes See `security_properties` below.
         :param pulumi.Input[str] status: The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource
         :param pulumi.Input[str] type: Project type

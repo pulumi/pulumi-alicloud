@@ -288,7 +288,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_config: Optional[pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']]] = None,
+                 destination_config: Optional[pulumi.Input[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  maximum_event_age_in_seconds: Optional[pulumi.Input[int]] = None,
                  maximum_retry_attempts: Optional[pulumi.Input[int]] = None,
@@ -383,14 +383,14 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         default_function_async_invoke_config = alicloud.fc.FunctionAsyncInvokeConfig("default",
             service_name=default_service.name,
             function_name=default_function.name,
-            destination_config=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigArgs(
-                on_failure=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs(
-                    destination=default_queue.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/queues/{name}/messages"),
-                ),
-                on_success=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs(
-                    destination=default_topic.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/topics/{name}/messages"),
-                ),
-            ),
+            destination_config={
+                "on_failure": {
+                    "destination": default_queue.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/queues/{name}/messages"),
+                },
+                "on_success": {
+                    "destination": default_topic.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/topics/{name}/messages"),
+                },
+            },
             maximum_event_age_in_seconds=60,
             maximum_retry_attempts=0,
             stateful_invocation=True,
@@ -407,7 +407,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']] destination_config: Configuration block with destination configuration. See `destination_config` below.
+        :param pulumi.Input[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']] destination_config: Configuration block with destination configuration. See `destination_config` below.
         :param pulumi.Input[str] function_name: Name of the Function Compute Function.
         :param pulumi.Input[int] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
         :param pulumi.Input[int] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
@@ -508,14 +508,14 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         default_function_async_invoke_config = alicloud.fc.FunctionAsyncInvokeConfig("default",
             service_name=default_service.name,
             function_name=default_function.name,
-            destination_config=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigArgs(
-                on_failure=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs(
-                    destination=default_queue.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/queues/{name}/messages"),
-                ),
-                on_success=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs(
-                    destination=default_topic.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/topics/{name}/messages"),
-                ),
-            ),
+            destination_config={
+                "on_failure": {
+                    "destination": default_queue.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/queues/{name}/messages"),
+                },
+                "on_success": {
+                    "destination": default_topic.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/topics/{name}/messages"),
+                },
+            },
             maximum_event_age_in_seconds=60,
             maximum_retry_attempts=0,
             stateful_invocation=True,
@@ -545,7 +545,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_config: Optional[pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']]] = None,
+                 destination_config: Optional[pulumi.Input[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  maximum_event_age_in_seconds: Optional[pulumi.Input[int]] = None,
                  maximum_retry_attempts: Optional[pulumi.Input[int]] = None,
@@ -585,7 +585,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_time: Optional[pulumi.Input[str]] = None,
-            destination_config: Optional[pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']]] = None,
+            destination_config: Optional[pulumi.Input[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']]] = None,
             function_name: Optional[pulumi.Input[str]] = None,
             last_modified_time: Optional[pulumi.Input[str]] = None,
             maximum_event_age_in_seconds: Optional[pulumi.Input[int]] = None,
@@ -601,7 +601,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_time: The date this resource was created.
-        :param pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']] destination_config: Configuration block with destination configuration. See `destination_config` below.
+        :param pulumi.Input[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']] destination_config: Configuration block with destination configuration. See `destination_config` below.
         :param pulumi.Input[str] function_name: Name of the Function Compute Function.
         :param pulumi.Input[str] last_modified_time: The date this resource was last modified.
         :param pulumi.Input[int] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).

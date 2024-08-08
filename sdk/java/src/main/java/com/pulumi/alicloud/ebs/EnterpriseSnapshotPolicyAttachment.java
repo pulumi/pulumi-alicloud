@@ -133,7 +133,7 @@ public class EnterpriseSnapshotPolicyAttachment extends com.pulumi.resources.Cus
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EnterpriseSnapshotPolicyAttachment(String name) {
+    public EnterpriseSnapshotPolicyAttachment(java.lang.String name) {
         this(name, EnterpriseSnapshotPolicyAttachmentArgs.Empty);
     }
     /**
@@ -141,7 +141,7 @@ public class EnterpriseSnapshotPolicyAttachment extends com.pulumi.resources.Cus
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EnterpriseSnapshotPolicyAttachment(String name, EnterpriseSnapshotPolicyAttachmentArgs args) {
+    public EnterpriseSnapshotPolicyAttachment(java.lang.String name, EnterpriseSnapshotPolicyAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -150,15 +150,22 @@ public class EnterpriseSnapshotPolicyAttachment extends com.pulumi.resources.Cus
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EnterpriseSnapshotPolicyAttachment(String name, EnterpriseSnapshotPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment", name, args == null ? EnterpriseSnapshotPolicyAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EnterpriseSnapshotPolicyAttachment(java.lang.String name, EnterpriseSnapshotPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EnterpriseSnapshotPolicyAttachment(String name, Output<String> id, @Nullable EnterpriseSnapshotPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment", name, state, makeResourceOptions(options, id));
+    private EnterpriseSnapshotPolicyAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable EnterpriseSnapshotPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ebs/enterpriseSnapshotPolicyAttachment:EnterpriseSnapshotPolicyAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EnterpriseSnapshotPolicyAttachmentArgs makeArgs(EnterpriseSnapshotPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EnterpriseSnapshotPolicyAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -174,7 +181,7 @@ public class EnterpriseSnapshotPolicyAttachment extends com.pulumi.resources.Cus
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EnterpriseSnapshotPolicyAttachment get(String name, Output<String> id, @Nullable EnterpriseSnapshotPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EnterpriseSnapshotPolicyAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable EnterpriseSnapshotPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EnterpriseSnapshotPolicyAttachment(name, id, state, options);
     }
 }

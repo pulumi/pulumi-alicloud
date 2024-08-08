@@ -61,7 +61,7 @@ import (
 //				return err
 //			}
 //			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
-//				ProjectName: pulumi.String(fmt.Sprintf("example-value-%v", defaultInteger.Result)),
+//				ProjectName: pulumi.Sprintf("example-value-%v", defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -81,7 +81,7 @@ import (
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
-//				Name: pulumi.String(fmt.Sprintf("fcservicerole-%v", defaultInteger.Result)),
+//				Name: pulumi.Sprintf("fcservicerole-%v", defaultInteger.Result),
 //				Document: pulumi.String(`  {
 //	      "Statement": [
 //	        {
@@ -114,7 +114,7 @@ import (
 //				return err
 //			}
 //			defaultService, err := fc.NewService(ctx, "default", &fc.ServiceArgs{
-//				Name:        pulumi.String(fmt.Sprintf("example-value-%v", defaultInteger.Result)),
+//				Name:        pulumi.Sprintf("example-value-%v", defaultInteger.Result),
 //				Description: pulumi.String("example-value"),
 //				Role:        defaultRole.Arn,
 //				LogConfig: &fc.ServiceLogConfigArgs{
@@ -128,7 +128,7 @@ import (
 //				return err
 //			}
 //			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				Bucket: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -241,13 +241,13 @@ import (
 //				return err
 //			}
 //			defaultTopic, err := mns.NewTopic(ctx, "default", &mns.TopicArgs{
-//				Name: pulumi.String(fmt.Sprintf("example-value-%v", defaultInteger.Result)),
+//				Name: pulumi.Sprintf("example-value-%v", defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
-//				Name: pulumi.String(fmt.Sprintf("fcservicerole-%v", defaultInteger.Result)),
+//				Name: pulumi.Sprintf("fcservicerole-%v", defaultInteger.Result),
 //				Document: pulumi.String(`  {
 //	      "Statement": [
 //	        {
@@ -280,7 +280,7 @@ import (
 //				return err
 //			}
 //			defaultService, err := fc.NewService(ctx, "default", &fc.ServiceArgs{
-//				Name:           pulumi.String(fmt.Sprintf("example-value-%v", defaultInteger.Result)),
+//				Name:           pulumi.Sprintf("example-value-%v", defaultInteger.Result),
 //				Description:    pulumi.String("example-value"),
 //				InternetAccess: pulumi.Bool(false),
 //			})
@@ -288,7 +288,7 @@ import (
 //				return err
 //			}
 //			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				Bucket: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -304,7 +304,7 @@ import (
 //			}
 //			defaultFunction, err := fc.NewFunction(ctx, "default", &fc.FunctionArgs{
 //				Service:     defaultService.Name,
-//				Name:        pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				Name:        pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Description: pulumi.String("example"),
 //				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
@@ -375,7 +375,7 @@ import (
 //				return err
 //			}
 //			defaultDomainNew, err := cdn.NewDomainNew(ctx, "default", &cdn.DomainNewArgs{
-//				DomainName: pulumi.String(fmt.Sprintf("example%v.tf.com", defaultInteger.Result)),
+//				DomainName: pulumi.Sprintf("example%v.tf.com", defaultInteger.Result),
 //				CdnType:    pulumi.String("web"),
 //				Scope:      pulumi.String("overseas"),
 //				Sources: cdn.DomainNewSourceArray{
@@ -392,7 +392,7 @@ import (
 //				return err
 //			}
 //			defaultService, err := fc.NewService(ctx, "default", &fc.ServiceArgs{
-//				Name:           pulumi.String(fmt.Sprintf("example-value-%v", defaultInteger.Result)),
+//				Name:           pulumi.Sprintf("example-value-%v", defaultInteger.Result),
 //				Description:    pulumi.String("example-value"),
 //				InternetAccess: pulumi.Bool(false),
 //			})
@@ -400,7 +400,7 @@ import (
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
-//				Name: pulumi.String(fmt.Sprintf("fcservicerole-%v", defaultInteger.Result)),
+//				Name: pulumi.Sprintf("fcservicerole-%v", defaultInteger.Result),
 //				Document: pulumi.String(`    {
 //	      "Statement": [
 //	        {
@@ -425,7 +425,7 @@ import (
 //				return err
 //			}
 //			defaultPolicy, err := ram.NewPolicy(ctx, "default", &ram.PolicyArgs{
-//				PolicyName: pulumi.String(fmt.Sprintf("fcservicepolicy-%v", defaultInteger.Result)),
+//				PolicyName: pulumi.Sprintf("fcservicepolicy-%v", defaultInteger.Result),
 //				PolicyDocument: pulumi.All(defaultService.Name, defaultService.Name).ApplyT(func(_args []interface{}) (string, error) {
 //					defaultServiceName := _args[0].(string)
 //					defaultServiceName1 := _args[1].(string)
@@ -463,7 +463,7 @@ import (
 //				return err
 //			}
 //			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				Bucket: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -479,7 +479,7 @@ import (
 //			}
 //			defaultFunction, err := fc.NewFunction(ctx, "default", &fc.FunctionArgs{
 //				Service:     defaultService.Name,
-//				Name:        pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				Name:        pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Description: pulumi.String("example"),
 //				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
@@ -495,7 +495,7 @@ import (
 //				Function:  defaultFunction.Name,
 //				Name:      pulumi.String("terraform-example"),
 //				Role:      defaultRole.Arn,
-//				SourceArn: pulumi.String(fmt.Sprintf("acs:cdn:*:%v", _default.Id)),
+//				SourceArn: pulumi.Sprintf("acs:cdn:*:%v", _default.Id),
 //				Type:      pulumi.String("cdn_events"),
 //				Config: defaultDomainNew.DomainName.ApplyT(func(domainName string) (string, error) {
 //					return fmt.Sprintf(`      {"eventName":"LogFileCreated",
@@ -565,7 +565,7 @@ import (
 //				return err
 //			}
 //			defaultService, err := fc.NewService(ctx, "default", &fc.ServiceArgs{
-//				Name:           pulumi.String(fmt.Sprintf("example-value-%v", defaultInteger.Result)),
+//				Name:           pulumi.Sprintf("example-value-%v", defaultInteger.Result),
 //				Description:    pulumi.String("example-value"),
 //				InternetAccess: pulumi.Bool(false),
 //			})
@@ -573,7 +573,7 @@ import (
 //				return err
 //			}
 //			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				Bucket: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -655,7 +655,7 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := rocketmq.NewInstance(ctx, "default", &rocketmq.InstanceArgs{
-//				InstanceName: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				InstanceName: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Remark:       pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -715,7 +715,7 @@ import (
 //				return err
 //			}
 //			defaultInstance2, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
-//				InstanceName:  pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				InstanceName:  pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				InstanceType:  pulumi.String("professional"),
 //				MaxTps:        pulumi.String("1000"),
 //				QueueCapacity: pulumi.String("50"),

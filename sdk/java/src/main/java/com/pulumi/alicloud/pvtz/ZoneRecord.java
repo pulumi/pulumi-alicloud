@@ -247,7 +247,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ZoneRecord(String name) {
+    public ZoneRecord(java.lang.String name) {
         this(name, ZoneRecordArgs.Empty);
     }
     /**
@@ -255,7 +255,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ZoneRecord(String name, ZoneRecordArgs args) {
+    public ZoneRecord(java.lang.String name, ZoneRecordArgs args) {
         this(name, args, null);
     }
     /**
@@ -264,15 +264,22 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ZoneRecord(String name, ZoneRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:pvtz/zoneRecord:ZoneRecord", name, args == null ? ZoneRecordArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ZoneRecord(java.lang.String name, ZoneRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:pvtz/zoneRecord:ZoneRecord", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ZoneRecord(String name, Output<String> id, @Nullable ZoneRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:pvtz/zoneRecord:ZoneRecord", name, state, makeResourceOptions(options, id));
+    private ZoneRecord(java.lang.String name, Output<java.lang.String> id, @Nullable ZoneRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:pvtz/zoneRecord:ZoneRecord", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ZoneRecordArgs makeArgs(ZoneRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ZoneRecordArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -288,7 +295,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ZoneRecord get(String name, Output<String> id, @Nullable ZoneRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ZoneRecord get(java.lang.String name, Output<java.lang.String> id, @Nullable ZoneRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ZoneRecord(name, id, state, options);
     }
 }

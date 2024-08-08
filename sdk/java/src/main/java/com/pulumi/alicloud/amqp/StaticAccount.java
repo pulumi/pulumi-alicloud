@@ -191,7 +191,7 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public StaticAccount(String name) {
+    public StaticAccount(java.lang.String name) {
         this(name, StaticAccountArgs.Empty);
     }
     /**
@@ -199,7 +199,7 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StaticAccount(String name, StaticAccountArgs args) {
+    public StaticAccount(java.lang.String name, StaticAccountArgs args) {
         this(name, args, null);
     }
     /**
@@ -208,15 +208,22 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StaticAccount(String name, StaticAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:amqp/staticAccount:StaticAccount", name, args == null ? StaticAccountArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public StaticAccount(java.lang.String name, StaticAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:amqp/staticAccount:StaticAccount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private StaticAccount(String name, Output<String> id, @Nullable StaticAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:amqp/staticAccount:StaticAccount", name, state, makeResourceOptions(options, id));
+    private StaticAccount(java.lang.String name, Output<java.lang.String> id, @Nullable StaticAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:amqp/staticAccount:StaticAccount", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static StaticAccountArgs makeArgs(StaticAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? StaticAccountArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -235,7 +242,7 @@ public class StaticAccount extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static StaticAccount get(String name, Output<String> id, @Nullable StaticAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static StaticAccount get(java.lang.String name, Output<java.lang.String> id, @Nullable StaticAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new StaticAccount(name, id, state, options);
     }
 }

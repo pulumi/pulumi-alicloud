@@ -321,7 +321,7 @@ public class NatFirewall extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NatFirewall(String name) {
+    public NatFirewall(java.lang.String name) {
         this(name, NatFirewallArgs.Empty);
     }
     /**
@@ -329,7 +329,7 @@ public class NatFirewall extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NatFirewall(String name, NatFirewallArgs args) {
+    public NatFirewall(java.lang.String name, NatFirewallArgs args) {
         this(name, args, null);
     }
     /**
@@ -338,15 +338,22 @@ public class NatFirewall extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NatFirewall(String name, NatFirewallArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudfirewall/natFirewall:NatFirewall", name, args == null ? NatFirewallArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NatFirewall(java.lang.String name, NatFirewallArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudfirewall/natFirewall:NatFirewall", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NatFirewall(String name, Output<String> id, @Nullable NatFirewallState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudfirewall/natFirewall:NatFirewall", name, state, makeResourceOptions(options, id));
+    private NatFirewall(java.lang.String name, Output<java.lang.String> id, @Nullable NatFirewallState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudfirewall/natFirewall:NatFirewall", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NatFirewallArgs makeArgs(NatFirewallArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NatFirewallArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -362,7 +369,7 @@ public class NatFirewall extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NatFirewall get(String name, Output<String> id, @Nullable NatFirewallState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NatFirewall get(java.lang.String name, Output<java.lang.String> id, @Nullable NatFirewallState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NatFirewall(name, id, state, options);
     }
 }

@@ -1222,7 +1222,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DdrInstance(String name) {
+    public DdrInstance(java.lang.String name) {
         this(name, DdrInstanceArgs.Empty);
     }
     /**
@@ -1230,7 +1230,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DdrInstance(String name, DdrInstanceArgs args) {
+    public DdrInstance(java.lang.String name, DdrInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -1239,15 +1239,22 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DdrInstance(String name, DdrInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/ddrInstance:DdrInstance", name, args == null ? DdrInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DdrInstance(java.lang.String name, DdrInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/ddrInstance:DdrInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DdrInstance(String name, Output<String> id, @Nullable DdrInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/ddrInstance:DdrInstance", name, state, makeResourceOptions(options, id));
+    private DdrInstance(java.lang.String name, Output<java.lang.String> id, @Nullable DdrInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/ddrInstance:DdrInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DdrInstanceArgs makeArgs(DdrInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DdrInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1263,7 +1270,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DdrInstance get(String name, Output<String> id, @Nullable DdrInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DdrInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable DdrInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DdrInstance(name, id, state, options);
     }
 }

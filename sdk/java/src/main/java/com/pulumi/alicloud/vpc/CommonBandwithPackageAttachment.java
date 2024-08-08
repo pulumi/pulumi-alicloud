@@ -180,7 +180,7 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CommonBandwithPackageAttachment(String name) {
+    public CommonBandwithPackageAttachment(java.lang.String name) {
         this(name, CommonBandwithPackageAttachmentArgs.Empty);
     }
     /**
@@ -188,7 +188,7 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CommonBandwithPackageAttachment(String name, CommonBandwithPackageAttachmentArgs args) {
+    public CommonBandwithPackageAttachment(java.lang.String name, CommonBandwithPackageAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -197,15 +197,22 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CommonBandwithPackageAttachment(String name, CommonBandwithPackageAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment", name, args == null ? CommonBandwithPackageAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CommonBandwithPackageAttachment(java.lang.String name, CommonBandwithPackageAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CommonBandwithPackageAttachment(String name, Output<String> id, @Nullable CommonBandwithPackageAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment", name, state, makeResourceOptions(options, id));
+    private CommonBandwithPackageAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable CommonBandwithPackageAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/commonBandwithPackageAttachment:CommonBandwithPackageAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CommonBandwithPackageAttachmentArgs makeArgs(CommonBandwithPackageAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CommonBandwithPackageAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -221,7 +228,7 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CommonBandwithPackageAttachment get(String name, Output<String> id, @Nullable CommonBandwithPackageAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CommonBandwithPackageAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable CommonBandwithPackageAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CommonBandwithPackageAttachment(name, id, state, options);
     }
 }

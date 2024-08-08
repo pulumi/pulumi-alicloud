@@ -101,7 +101,7 @@ import (
 //				EngineVersion:      exampleInstance.EngineVersion,
 //				InstanceStorage:    exampleInstance.InstanceStorage,
 //				InstanceType:       exampleInstance.InstanceType,
-//				InstanceName:       pulumi.String(fmt.Sprintf("%vreadonly", name)),
+//				InstanceName:       pulumi.Sprintf("%vreadonly", name),
 //				VswitchId:          exampleSwitch.ID(),
 //			})
 //			if err != nil {

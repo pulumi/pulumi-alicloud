@@ -3094,7 +3094,7 @@ class Instance(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
-                 babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]]] = None,
+                 babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBabelfishConfigArgs', 'InstanceBabelfishConfigArgsDict']]]]] = None,
                  babelfish_port: Optional[pulumi.Input[str]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
@@ -3128,9 +3128,9 @@ class Instance(pulumi.CustomResource):
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
-                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePgHbaConfArgs', 'InstancePgHbaConfArgsDict']]]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  released_keep_policy: Optional[pulumi.Input[str]] = None,
@@ -3144,7 +3144,7 @@ class Instance(pulumi.CustomResource):
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
-                 serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerlessConfigArgs']]]]] = None,
+                 serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]]]] = None,
                  sql_collector_config_value: Optional[pulumi.Input[int]] = None,
                  sql_collector_status: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
@@ -3188,7 +3188,7 @@ class Instance(pulumi.CustomResource):
                - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
                
                See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBabelfishConfigArgs', 'InstanceBabelfishConfigArgsDict']]]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
                
                > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
@@ -3304,10 +3304,10 @@ class Instance(pulumi.CustomResource):
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
         :param pulumi.Input[str] node_id: The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstancePgHbaConfArgs', 'InstancePgHbaConfArgsDict']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
@@ -3333,7 +3333,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values: 
@@ -3434,7 +3434,7 @@ class Instance(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
-                 babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]]] = None,
+                 babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBabelfishConfigArgs', 'InstanceBabelfishConfigArgsDict']]]]] = None,
                  babelfish_port: Optional[pulumi.Input[str]] = None,
                  ca_type: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
@@ -3468,9 +3468,9 @@ class Instance(pulumi.CustomResource):
                  modify_mode: Optional[pulumi.Input[str]] = None,
                  monitoring_period: Optional[pulumi.Input[int]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
-                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]]] = None,
+                 pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePgHbaConfArgs', 'InstancePgHbaConfArgsDict']]]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  released_keep_policy: Optional[pulumi.Input[str]] = None,
@@ -3484,7 +3484,7 @@ class Instance(pulumi.CustomResource):
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  server_cert: Optional[pulumi.Input[str]] = None,
                  server_key: Optional[pulumi.Input[str]] = None,
-                 serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerlessConfigArgs']]]]] = None,
+                 serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]]]] = None,
                  sql_collector_config_value: Optional[pulumi.Input[int]] = None,
                  sql_collector_status: Optional[pulumi.Input[str]] = None,
                  ssl_action: Optional[pulumi.Input[str]] = None,
@@ -3614,7 +3614,7 @@ class Instance(pulumi.CustomResource):
             auto_renew: Optional[pulumi.Input[bool]] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
             auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
-            babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]]] = None,
+            babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBabelfishConfigArgs', 'InstanceBabelfishConfigArgsDict']]]]] = None,
             babelfish_port: Optional[pulumi.Input[str]] = None,
             ca_type: Optional[pulumi.Input[str]] = None,
             category: Optional[pulumi.Input[str]] = None,
@@ -3651,9 +3651,9 @@ class Instance(pulumi.CustomResource):
             modify_mode: Optional[pulumi.Input[str]] = None,
             monitoring_period: Optional[pulumi.Input[int]] = None,
             node_id: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
             period: Optional[pulumi.Input[int]] = None,
-            pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]]] = None,
+            pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePgHbaConfArgs', 'InstancePgHbaConfArgsDict']]]]] = None,
             port: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             released_keep_policy: Optional[pulumi.Input[str]] = None,
@@ -3667,7 +3667,7 @@ class Instance(pulumi.CustomResource):
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             server_cert: Optional[pulumi.Input[str]] = None,
             server_key: Optional[pulumi.Input[str]] = None,
-            serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerlessConfigArgs']]]]] = None,
+            serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]]]] = None,
             sql_collector_config_value: Optional[pulumi.Input[int]] = None,
             sql_collector_status: Optional[pulumi.Input[str]] = None,
             ssl_action: Optional[pulumi.Input[str]] = None,
@@ -3708,7 +3708,7 @@ class Instance(pulumi.CustomResource):
                - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
                
                See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBabelfishConfigArgs', 'InstanceBabelfishConfigArgsDict']]]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
                
                > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
@@ -3827,10 +3827,10 @@ class Instance(pulumi.CustomResource):
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
         :param pulumi.Input[str] node_id: The globally unique identifier (GUID) of the secondary instance. You can call the DescribeDBInstanceHAConfig operation to query the GUID of the secondary instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstancePgHbaConfArgs', 'InstancePgHbaConfArgsDict']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
@@ -3856,7 +3856,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values: 

@@ -318,7 +318,7 @@ public class RemoteAdbDataSource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RemoteAdbDataSource(String name) {
+    public RemoteAdbDataSource(java.lang.String name) {
         this(name, RemoteAdbDataSourceArgs.Empty);
     }
     /**
@@ -326,7 +326,7 @@ public class RemoteAdbDataSource extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RemoteAdbDataSource(String name, RemoteAdbDataSourceArgs args) {
+    public RemoteAdbDataSource(java.lang.String name, RemoteAdbDataSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -335,15 +335,22 @@ public class RemoteAdbDataSource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RemoteAdbDataSource(String name, RemoteAdbDataSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource", name, args == null ? RemoteAdbDataSourceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RemoteAdbDataSource(java.lang.String name, RemoteAdbDataSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RemoteAdbDataSource(String name, Output<String> id, @Nullable RemoteAdbDataSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource", name, state, makeResourceOptions(options, id));
+    private RemoteAdbDataSource(java.lang.String name, Output<java.lang.String> id, @Nullable RemoteAdbDataSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:gpdb/remoteAdbDataSource:RemoteAdbDataSource", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RemoteAdbDataSourceArgs makeArgs(RemoteAdbDataSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RemoteAdbDataSourceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -363,7 +370,7 @@ public class RemoteAdbDataSource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RemoteAdbDataSource get(String name, Output<String> id, @Nullable RemoteAdbDataSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RemoteAdbDataSource get(java.lang.String name, Output<java.lang.String> id, @Nullable RemoteAdbDataSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RemoteAdbDataSource(name, id, state, options);
     }
 }

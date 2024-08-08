@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = resourcemanager.NewAccount(ctx, "example", &resourcemanager.AccountArgs{
-//				DisplayName: pulumi.String(fmt.Sprintf("%v-%v", displayName, _default.Result)),
+//				DisplayName: pulumi.Sprintf("%v-%v", displayName, _default.Result),
 //				FolderId:    pulumi.String(example.Ids[0]),
 //			})
 //			if err != nil {

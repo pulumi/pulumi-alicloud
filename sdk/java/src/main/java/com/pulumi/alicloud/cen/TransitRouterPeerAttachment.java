@@ -374,7 +374,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TransitRouterPeerAttachment(String name) {
+    public TransitRouterPeerAttachment(java.lang.String name) {
         this(name, TransitRouterPeerAttachmentArgs.Empty);
     }
     /**
@@ -382,7 +382,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TransitRouterPeerAttachment(String name, TransitRouterPeerAttachmentArgs args) {
+    public TransitRouterPeerAttachment(java.lang.String name, TransitRouterPeerAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -391,15 +391,22 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TransitRouterPeerAttachment(String name, TransitRouterPeerAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment", name, args == null ? TransitRouterPeerAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TransitRouterPeerAttachment(java.lang.String name, TransitRouterPeerAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TransitRouterPeerAttachment(String name, Output<String> id, @Nullable TransitRouterPeerAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment", name, state, makeResourceOptions(options, id));
+    private TransitRouterPeerAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterPeerAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TransitRouterPeerAttachmentArgs makeArgs(TransitRouterPeerAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TransitRouterPeerAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -415,7 +422,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TransitRouterPeerAttachment get(String name, Output<String> id, @Nullable TransitRouterPeerAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TransitRouterPeerAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterPeerAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TransitRouterPeerAttachment(name, id, state, options);
     }
 }

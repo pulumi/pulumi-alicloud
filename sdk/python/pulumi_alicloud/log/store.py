@@ -573,7 +573,7 @@ class Store(pulumi.CustomResource):
                  append_meta: Optional[pulumi.Input[bool]] = None,
                  auto_split: Optional[pulumi.Input[bool]] = None,
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
-                 encrypt_conf: Optional[pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']]] = None,
+                 encrypt_conf: Optional[pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
                  hot_ttl: Optional[pulumi.Input[int]] = None,
                  logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
@@ -646,15 +646,15 @@ class Store(pulumi.CustomResource):
             shard_count=1,
             auto_split=True,
             max_split_shard_count=60,
-            encrypt_conf=alicloud.log.StoreEncryptConfArgs(
-                enable=True,
-                encrypt_type="default",
-                user_cmk_info=alicloud.log.StoreEncryptConfUserCmkInfoArgs(
-                    cmk_key_id=example_key.id,
-                    arn=f"acs:ram::{example.id}:role/aliyunlogdefaultrole",
-                    region_id=region,
-                ),
-            ))
+            encrypt_conf={
+                "enable": True,
+                "encrypt_type": "default",
+                "user_cmk_info": {
+                    "cmk_key_id": example_key.id,
+                    "arn": f"acs:ram::{example.id}:role/aliyunlogdefaultrole",
+                    "region_id": region,
+                },
+            })
         ```
 
         ## Module Support
@@ -675,7 +675,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[bool] append_meta: Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[bool] enable_web_tracking: Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
-        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+        :param pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
@@ -756,15 +756,15 @@ class Store(pulumi.CustomResource):
             shard_count=1,
             auto_split=True,
             max_split_shard_count=60,
-            encrypt_conf=alicloud.log.StoreEncryptConfArgs(
-                enable=True,
-                encrypt_type="default",
-                user_cmk_info=alicloud.log.StoreEncryptConfUserCmkInfoArgs(
-                    cmk_key_id=example_key.id,
-                    arn=f"acs:ram::{example.id}:role/aliyunlogdefaultrole",
-                    region_id=region,
-                ),
-            ))
+            encrypt_conf={
+                "enable": True,
+                "encrypt_type": "default",
+                "user_cmk_info": {
+                    "cmk_key_id": example_key.id,
+                    "arn": f"acs:ram::{example.id}:role/aliyunlogdefaultrole",
+                    "region_id": region,
+                },
+            })
         ```
 
         ## Module Support
@@ -798,7 +798,7 @@ class Store(pulumi.CustomResource):
                  append_meta: Optional[pulumi.Input[bool]] = None,
                  auto_split: Optional[pulumi.Input[bool]] = None,
                  enable_web_tracking: Optional[pulumi.Input[bool]] = None,
-                 encrypt_conf: Optional[pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']]] = None,
+                 encrypt_conf: Optional[pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
                  hot_ttl: Optional[pulumi.Input[int]] = None,
                  logstore_name: Optional[pulumi.Input[str]] = None,
                  max_split_shard_count: Optional[pulumi.Input[int]] = None,
@@ -850,7 +850,7 @@ class Store(pulumi.CustomResource):
             auto_split: Optional[pulumi.Input[bool]] = None,
             create_time: Optional[pulumi.Input[int]] = None,
             enable_web_tracking: Optional[pulumi.Input[bool]] = None,
-            encrypt_conf: Optional[pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']]] = None,
+            encrypt_conf: Optional[pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
             hot_ttl: Optional[pulumi.Input[int]] = None,
             logstore_name: Optional[pulumi.Input[str]] = None,
             max_split_shard_count: Optional[pulumi.Input[int]] = None,
@@ -861,7 +861,7 @@ class Store(pulumi.CustomResource):
             project_name: Optional[pulumi.Input[str]] = None,
             retention_period: Optional[pulumi.Input[int]] = None,
             shard_count: Optional[pulumi.Input[int]] = None,
-            shards: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreShardArgs']]]]] = None,
+            shards: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StoreShardArgs', 'StoreShardArgsDict']]]]] = None,
             telemetry_type: Optional[pulumi.Input[str]] = None) -> 'Store':
         """
         Get an existing Store resource's state with the given name, id, and optional extra
@@ -874,7 +874,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_split: Determines whether to automatically split a shard. Default to `false`.
         :param pulumi.Input[int] create_time: Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
         :param pulumi.Input[bool] enable_web_tracking: Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
-        :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
+        :param pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']] encrypt_conf: Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         :param pulumi.Input[str] logstore_name: The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
@@ -885,7 +885,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[str] project_name: The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
         :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
         :param pulumi.Input[int] shard_count: The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StoreShardArgs']]]] shards: The shard attribute.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StoreShardArgs', 'StoreShardArgsDict']]]] shards: The shard attribute.
         :param pulumi.Input[str] telemetry_type: Determines whether store type is metric. `Metrics` means metric store, empty means log store.
                
                The following arguments will be discarded. Please use new fields as soon as possible:

@@ -181,7 +181,7 @@ public class ReplicationVault extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ReplicationVault(String name) {
+    public ReplicationVault(java.lang.String name) {
         this(name, ReplicationVaultArgs.Empty);
     }
     /**
@@ -189,7 +189,7 @@ public class ReplicationVault extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ReplicationVault(String name, ReplicationVaultArgs args) {
+    public ReplicationVault(java.lang.String name, ReplicationVaultArgs args) {
         this(name, args, null);
     }
     /**
@@ -198,15 +198,22 @@ public class ReplicationVault extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ReplicationVault(String name, ReplicationVaultArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/replicationVault:ReplicationVault", name, args == null ? ReplicationVaultArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ReplicationVault(java.lang.String name, ReplicationVaultArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/replicationVault:ReplicationVault", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ReplicationVault(String name, Output<String> id, @Nullable ReplicationVaultState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/replicationVault:ReplicationVault", name, state, makeResourceOptions(options, id));
+    private ReplicationVault(java.lang.String name, Output<java.lang.String> id, @Nullable ReplicationVaultState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/replicationVault:ReplicationVault", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ReplicationVaultArgs makeArgs(ReplicationVaultArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ReplicationVaultArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -222,7 +229,7 @@ public class ReplicationVault extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ReplicationVault get(String name, Output<String> id, @Nullable ReplicationVaultState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ReplicationVault get(java.lang.String name, Output<java.lang.String> id, @Nullable ReplicationVaultState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ReplicationVault(name, id, state, options);
     }
 }

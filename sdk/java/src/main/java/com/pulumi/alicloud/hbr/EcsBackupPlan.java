@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  * 
  * **About Backup path rules:**
  * 1. If there is no wildcard `*`, you can enter 8 items of path.
- * 2. When using wildcard `*`, only one item of path can be input, and wildcards like `/*{@literal /}*` are supported.
+ * 2. When using wildcard `*`, only one item of path can be input, and wildcards like `/*&#47;*` are supported.
  * 3. Each item of path only supports absolute paths, for example starting with `/`, `\`, `C:\`, `D:\`.
  * 
  * **About Restrictions:**
@@ -158,7 +158,7 @@ import javax.annotation.Nullable;
  * **About include/exclude path rules:**
  * 1. Supports up to 8 paths, including paths using wildcards `*`.
  * 2. If the path does not contain `/`, then `*` matches multiple path names or file names, for example `*abc*` will match `/abc/`, `/d/eabcd/`, `/a/abc`; `*.txt` will match all files with an extension `.txt`.
- * 3. If the path contains `/`, each `*` only matches a single-level path or file name. For example, `/a/*{@literal /}*{@literal /}` share will match `/a/b/c/share`, but not `/a/d/share`.
+ * 3. If the path contains `/`, each `*` only matches a single-level path or file name. For example, `/a/*&#47;*&#47;` share will match `/a/b/c/share`, but not `/a/d/share`.
  * 4. If the path ends with `/`, it means the folder matches. For example, `*tmp/` will match `/a/b/aaatmp/`, `/tmp/` and so on.
  * 5. The path separator takes Linux system `/` as an example, if it is Windows system, please replace it with `\`.
  * 
@@ -422,7 +422,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EcsBackupPlan(String name) {
+    public EcsBackupPlan(java.lang.String name) {
         this(name, EcsBackupPlanArgs.Empty);
     }
     /**
@@ -430,7 +430,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EcsBackupPlan(String name, EcsBackupPlanArgs args) {
+    public EcsBackupPlan(java.lang.String name, EcsBackupPlanArgs args) {
         this(name, args, null);
     }
     /**
@@ -439,15 +439,22 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EcsBackupPlan(String name, EcsBackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/ecsBackupPlan:EcsBackupPlan", name, args == null ? EcsBackupPlanArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EcsBackupPlan(java.lang.String name, EcsBackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/ecsBackupPlan:EcsBackupPlan", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EcsBackupPlan(String name, Output<String> id, @Nullable EcsBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/ecsBackupPlan:EcsBackupPlan", name, state, makeResourceOptions(options, id));
+    private EcsBackupPlan(java.lang.String name, Output<java.lang.String> id, @Nullable EcsBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/ecsBackupPlan:EcsBackupPlan", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EcsBackupPlanArgs makeArgs(EcsBackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EcsBackupPlanArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -463,7 +470,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EcsBackupPlan get(String name, Output<String> id, @Nullable EcsBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EcsBackupPlan get(java.lang.String name, Output<java.lang.String> id, @Nullable EcsBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EcsBackupPlan(name, id, state, options);
     }
 }

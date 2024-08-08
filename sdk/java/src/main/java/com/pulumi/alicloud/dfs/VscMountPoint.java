@@ -170,7 +170,7 @@ public class VscMountPoint extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VscMountPoint(String name) {
+    public VscMountPoint(java.lang.String name) {
         this(name, VscMountPointArgs.Empty);
     }
     /**
@@ -178,7 +178,7 @@ public class VscMountPoint extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VscMountPoint(String name, VscMountPointArgs args) {
+    public VscMountPoint(java.lang.String name, VscMountPointArgs args) {
         this(name, args, null);
     }
     /**
@@ -187,15 +187,22 @@ public class VscMountPoint extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VscMountPoint(String name, VscMountPointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dfs/vscMountPoint:VscMountPoint", name, args == null ? VscMountPointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VscMountPoint(java.lang.String name, VscMountPointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dfs/vscMountPoint:VscMountPoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VscMountPoint(String name, Output<String> id, @Nullable VscMountPointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dfs/vscMountPoint:VscMountPoint", name, state, makeResourceOptions(options, id));
+    private VscMountPoint(java.lang.String name, Output<java.lang.String> id, @Nullable VscMountPointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dfs/vscMountPoint:VscMountPoint", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VscMountPointArgs makeArgs(VscMountPointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VscMountPointArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -211,7 +218,7 @@ public class VscMountPoint extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VscMountPoint get(String name, Output<String> id, @Nullable VscMountPointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VscMountPoint get(java.lang.String name, Output<java.lang.String> id, @Nullable VscMountPointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VscMountPoint(name, id, state, options);
     }
 }

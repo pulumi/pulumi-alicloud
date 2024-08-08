@@ -894,7 +894,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EcsLaunchTemplate(String name) {
+    public EcsLaunchTemplate(java.lang.String name) {
         this(name, EcsLaunchTemplateArgs.Empty);
     }
     /**
@@ -902,7 +902,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EcsLaunchTemplate(String name, @Nullable EcsLaunchTemplateArgs args) {
+    public EcsLaunchTemplate(java.lang.String name, @Nullable EcsLaunchTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -911,15 +911,22 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EcsLaunchTemplate(String name, @Nullable EcsLaunchTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate", name, args == null ? EcsLaunchTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EcsLaunchTemplate(java.lang.String name, @Nullable EcsLaunchTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EcsLaunchTemplate(String name, Output<String> id, @Nullable EcsLaunchTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate", name, state, makeResourceOptions(options, id));
+    private EcsLaunchTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable EcsLaunchTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/ecsLaunchTemplate:EcsLaunchTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EcsLaunchTemplateArgs makeArgs(@Nullable EcsLaunchTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EcsLaunchTemplateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -935,7 +942,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EcsLaunchTemplate get(String name, Output<String> id, @Nullable EcsLaunchTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EcsLaunchTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable EcsLaunchTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EcsLaunchTemplate(name, id, state, options);
     }
 }

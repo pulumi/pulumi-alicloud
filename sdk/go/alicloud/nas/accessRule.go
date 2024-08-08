@@ -53,7 +53,7 @@ import (
 //			defaultAccessGroup, err := nas.NewAccessGroup(ctx, "default", &nas.AccessGroupArgs{
 //				AccessGroupType: pulumi.String("Vpc"),
 //				Description:     pulumi.String("ExtremeAccessGroup"),
-//				AccessGroupName: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				AccessGroupName: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				FileSystemType:  pulumi.String("extreme"),
 //			})
 //			if err != nil {

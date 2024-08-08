@@ -688,21 +688,21 @@ class Connection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_config_route: Optional[pulumi.Input[bool]] = None,
-                 bgp_config: Optional[pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']]] = None,
+                 bgp_config: Optional[pulumi.Input[Union['ConnectionBgpConfigArgs', 'ConnectionBgpConfigArgsDict']]] = None,
                  customer_gateway_id: Optional[pulumi.Input[str]] = None,
                  effect_immediately: Optional[pulumi.Input[bool]] = None,
                  enable_dpd: Optional[pulumi.Input[bool]] = None,
                  enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
                  enable_tunnels_bgp: Optional[pulumi.Input[bool]] = None,
-                 health_check_config: Optional[pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']]] = None,
-                 ike_config: Optional[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]] = None,
-                 ipsec_config: Optional[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]] = None,
+                 health_check_config: Optional[pulumi.Input[Union['ConnectionHealthCheckConfigArgs', 'ConnectionHealthCheckConfigArgsDict']]] = None,
+                 ike_config: Optional[pulumi.Input[Union['ConnectionIkeConfigArgs', 'ConnectionIkeConfigArgsDict']]] = None,
+                 ipsec_config: Optional[pulumi.Input[Union['ConnectionIpsecConfigArgs', 'ConnectionIpsecConfigArgsDict']]] = None,
                  local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionTunnelOptionsSpecificationArgs']]]]] = None,
+                 tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]]] = None,
                  vpn_connection_name: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -766,58 +766,58 @@ class Connection(pulumi.CustomResource):
             },
             enable_tunnels_bgp=True,
             tunnel_options_specifications=[
-                alicloud.vpn.ConnectionTunnelOptionsSpecificationArgs(
-                    tunnel_ipsec_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs(
-                        ipsec_auth_alg="md5",
-                        ipsec_enc_alg="aes256",
-                        ipsec_lifetime=16400,
-                        ipsec_pfs="group5",
-                    ),
-                    customer_gateway_id=default_customer_gateway.id,
-                    role="master",
-                    tunnel_bgp_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs(
-                        local_asn="1219002",
-                        tunnel_cidr="169.254.30.0/30",
-                        local_bgp_ip="169.254.30.1",
-                    ),
-                    tunnel_ike_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs(
-                        ike_mode="aggressive",
-                        ike_version="ikev2",
-                        local_id="localid_tunnel2",
-                        psk="12345678",
-                        remote_id="remote2",
-                        ike_auth_alg="md5",
-                        ike_enc_alg="aes256",
-                        ike_lifetime=3600,
-                        ike_pfs="group14",
-                    ),
-                ),
-                alicloud.vpn.ConnectionTunnelOptionsSpecificationArgs(
-                    tunnel_ike_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs(
-                        remote_id="remote24",
-                        ike_enc_alg="aes256",
-                        ike_lifetime=27000,
-                        ike_mode="aggressive",
-                        ike_pfs="group5",
-                        ike_auth_alg="md5",
-                        ike_version="ikev2",
-                        local_id="localid_tunnel2",
-                        psk="12345678",
-                    ),
-                    tunnel_ipsec_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs(
-                        ipsec_lifetime=2700,
-                        ipsec_pfs="group14",
-                        ipsec_auth_alg="md5",
-                        ipsec_enc_alg="aes256",
-                    ),
-                    customer_gateway_id=default_customer_gateway.id,
-                    role="slave",
-                    tunnel_bgp_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs(
-                        local_asn="1219002",
-                        local_bgp_ip="169.254.40.1",
-                        tunnel_cidr="169.254.40.0/30",
-                    ),
-                ),
+                {
+                    "tunnel_ipsec_config": {
+                        "ipsec_auth_alg": "md5",
+                        "ipsec_enc_alg": "aes256",
+                        "ipsec_lifetime": 16400,
+                        "ipsec_pfs": "group5",
+                    },
+                    "customer_gateway_id": default_customer_gateway.id,
+                    "role": "master",
+                    "tunnel_bgp_config": {
+                        "local_asn": "1219002",
+                        "tunnel_cidr": "169.254.30.0/30",
+                        "local_bgp_ip": "169.254.30.1",
+                    },
+                    "tunnel_ike_config": {
+                        "ike_mode": "aggressive",
+                        "ike_version": "ikev2",
+                        "local_id": "localid_tunnel2",
+                        "psk": "12345678",
+                        "remote_id": "remote2",
+                        "ike_auth_alg": "md5",
+                        "ike_enc_alg": "aes256",
+                        "ike_lifetime": 3600,
+                        "ike_pfs": "group14",
+                    },
+                },
+                {
+                    "tunnel_ike_config": {
+                        "remote_id": "remote24",
+                        "ike_enc_alg": "aes256",
+                        "ike_lifetime": 27000,
+                        "ike_mode": "aggressive",
+                        "ike_pfs": "group5",
+                        "ike_auth_alg": "md5",
+                        "ike_version": "ikev2",
+                        "local_id": "localid_tunnel2",
+                        "psk": "12345678",
+                    },
+                    "tunnel_ipsec_config": {
+                        "ipsec_lifetime": 2700,
+                        "ipsec_pfs": "group14",
+                        "ipsec_auth_alg": "md5",
+                        "ipsec_enc_alg": "aes256",
+                    },
+                    "customer_gateway_id": default_customer_gateway.id,
+                    "role": "slave",
+                    "tunnel_bgp_config": {
+                        "local_asn": "1219002",
+                        "local_bgp_ip": "169.254.40.1",
+                        "tunnel_cidr": "169.254.40.0/30",
+                    },
+                },
             ])
         ```
 
@@ -834,15 +834,15 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_config_route: Whether to configure routing automatically. Value:
                - **true**: Automatically configure routes.
                - **false**: does not automatically configure routes.
-        :param pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']] bgp_config: vpnBgp configuration. See `bgp_config` below.
+        :param pulumi.Input[Union['ConnectionBgpConfigArgs', 'ConnectionBgpConfigArgsDict']] bgp_config: vpnBgp configuration. See `bgp_config` below.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
         :param pulumi.Input[bool] effect_immediately: Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
         :param pulumi.Input[bool] enable_dpd: Wether enable Dpd detection.
         :param pulumi.Input[bool] enable_nat_traversal: enable nat traversal.
         :param pulumi.Input[bool] enable_tunnels_bgp: Enable tunnel bgp.
-        :param pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']] health_check_config: Health Check information. See `health_check_config` below.
-        :param pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']] ike_config: The configuration of Phase 1 negotiations. See `ike_config` below.
-        :param pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']] ipsec_config: IPsec configuration. See `ipsec_config` below.
+        :param pulumi.Input[Union['ConnectionHealthCheckConfigArgs', 'ConnectionHealthCheckConfigArgsDict']] health_check_config: Health Check information. See `health_check_config` below.
+        :param pulumi.Input[Union['ConnectionIkeConfigArgs', 'ConnectionIkeConfigArgsDict']] ike_config: The configuration of Phase 1 negotiations. See `ike_config` below.
+        :param pulumi.Input[Union['ConnectionIpsecConfigArgs', 'ConnectionIpsecConfigArgsDict']] ipsec_config: IPsec configuration. See `ipsec_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
         :param pulumi.Input[str] network_type: The network type of the IPsec connection. Value:
@@ -850,7 +850,7 @@ class Connection(pulumi.CustomResource):
                - **private**: private network, indicating that the IPsec connection establishes an encrypted communication channel through the private network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_subnets: The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[Mapping[str, Any]] tags: Tags.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionTunnelOptionsSpecificationArgs']]]] tunnel_options_specifications: The tunnel options of IPsec. See `tunnel_options_specification` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]] tunnel_options_specifications: The tunnel options of IPsec. See `tunnel_options_specification` below.
         :param pulumi.Input[str] vpn_connection_name: The name of the IPsec-VPN connection.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
                
@@ -922,58 +922,58 @@ class Connection(pulumi.CustomResource):
             },
             enable_tunnels_bgp=True,
             tunnel_options_specifications=[
-                alicloud.vpn.ConnectionTunnelOptionsSpecificationArgs(
-                    tunnel_ipsec_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs(
-                        ipsec_auth_alg="md5",
-                        ipsec_enc_alg="aes256",
-                        ipsec_lifetime=16400,
-                        ipsec_pfs="group5",
-                    ),
-                    customer_gateway_id=default_customer_gateway.id,
-                    role="master",
-                    tunnel_bgp_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs(
-                        local_asn="1219002",
-                        tunnel_cidr="169.254.30.0/30",
-                        local_bgp_ip="169.254.30.1",
-                    ),
-                    tunnel_ike_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs(
-                        ike_mode="aggressive",
-                        ike_version="ikev2",
-                        local_id="localid_tunnel2",
-                        psk="12345678",
-                        remote_id="remote2",
-                        ike_auth_alg="md5",
-                        ike_enc_alg="aes256",
-                        ike_lifetime=3600,
-                        ike_pfs="group14",
-                    ),
-                ),
-                alicloud.vpn.ConnectionTunnelOptionsSpecificationArgs(
-                    tunnel_ike_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs(
-                        remote_id="remote24",
-                        ike_enc_alg="aes256",
-                        ike_lifetime=27000,
-                        ike_mode="aggressive",
-                        ike_pfs="group5",
-                        ike_auth_alg="md5",
-                        ike_version="ikev2",
-                        local_id="localid_tunnel2",
-                        psk="12345678",
-                    ),
-                    tunnel_ipsec_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs(
-                        ipsec_lifetime=2700,
-                        ipsec_pfs="group14",
-                        ipsec_auth_alg="md5",
-                        ipsec_enc_alg="aes256",
-                    ),
-                    customer_gateway_id=default_customer_gateway.id,
-                    role="slave",
-                    tunnel_bgp_config=alicloud.vpn.ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs(
-                        local_asn="1219002",
-                        local_bgp_ip="169.254.40.1",
-                        tunnel_cidr="169.254.40.0/30",
-                    ),
-                ),
+                {
+                    "tunnel_ipsec_config": {
+                        "ipsec_auth_alg": "md5",
+                        "ipsec_enc_alg": "aes256",
+                        "ipsec_lifetime": 16400,
+                        "ipsec_pfs": "group5",
+                    },
+                    "customer_gateway_id": default_customer_gateway.id,
+                    "role": "master",
+                    "tunnel_bgp_config": {
+                        "local_asn": "1219002",
+                        "tunnel_cidr": "169.254.30.0/30",
+                        "local_bgp_ip": "169.254.30.1",
+                    },
+                    "tunnel_ike_config": {
+                        "ike_mode": "aggressive",
+                        "ike_version": "ikev2",
+                        "local_id": "localid_tunnel2",
+                        "psk": "12345678",
+                        "remote_id": "remote2",
+                        "ike_auth_alg": "md5",
+                        "ike_enc_alg": "aes256",
+                        "ike_lifetime": 3600,
+                        "ike_pfs": "group14",
+                    },
+                },
+                {
+                    "tunnel_ike_config": {
+                        "remote_id": "remote24",
+                        "ike_enc_alg": "aes256",
+                        "ike_lifetime": 27000,
+                        "ike_mode": "aggressive",
+                        "ike_pfs": "group5",
+                        "ike_auth_alg": "md5",
+                        "ike_version": "ikev2",
+                        "local_id": "localid_tunnel2",
+                        "psk": "12345678",
+                    },
+                    "tunnel_ipsec_config": {
+                        "ipsec_lifetime": 2700,
+                        "ipsec_pfs": "group14",
+                        "ipsec_auth_alg": "md5",
+                        "ipsec_enc_alg": "aes256",
+                    },
+                    "customer_gateway_id": default_customer_gateway.id,
+                    "role": "slave",
+                    "tunnel_bgp_config": {
+                        "local_asn": "1219002",
+                        "local_bgp_ip": "169.254.40.1",
+                        "tunnel_cidr": "169.254.40.0/30",
+                    },
+                },
             ])
         ```
 
@@ -1001,21 +1001,21 @@ class Connection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_config_route: Optional[pulumi.Input[bool]] = None,
-                 bgp_config: Optional[pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']]] = None,
+                 bgp_config: Optional[pulumi.Input[Union['ConnectionBgpConfigArgs', 'ConnectionBgpConfigArgsDict']]] = None,
                  customer_gateway_id: Optional[pulumi.Input[str]] = None,
                  effect_immediately: Optional[pulumi.Input[bool]] = None,
                  enable_dpd: Optional[pulumi.Input[bool]] = None,
                  enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
                  enable_tunnels_bgp: Optional[pulumi.Input[bool]] = None,
-                 health_check_config: Optional[pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']]] = None,
-                 ike_config: Optional[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]] = None,
-                 ipsec_config: Optional[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]] = None,
+                 health_check_config: Optional[pulumi.Input[Union['ConnectionHealthCheckConfigArgs', 'ConnectionHealthCheckConfigArgsDict']]] = None,
+                 ike_config: Optional[pulumi.Input[Union['ConnectionIkeConfigArgs', 'ConnectionIkeConfigArgsDict']]] = None,
+                 ipsec_config: Optional[pulumi.Input[Union['ConnectionIpsecConfigArgs', 'ConnectionIpsecConfigArgsDict']]] = None,
                  local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionTunnelOptionsSpecificationArgs']]]]] = None,
+                 tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]]] = None,
                  vpn_connection_name: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1065,16 +1065,16 @@ class Connection(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_config_route: Optional[pulumi.Input[bool]] = None,
-            bgp_config: Optional[pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']]] = None,
+            bgp_config: Optional[pulumi.Input[Union['ConnectionBgpConfigArgs', 'ConnectionBgpConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[int]] = None,
             customer_gateway_id: Optional[pulumi.Input[str]] = None,
             effect_immediately: Optional[pulumi.Input[bool]] = None,
             enable_dpd: Optional[pulumi.Input[bool]] = None,
             enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
             enable_tunnels_bgp: Optional[pulumi.Input[bool]] = None,
-            health_check_config: Optional[pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']]] = None,
-            ike_config: Optional[pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']]] = None,
-            ipsec_config: Optional[pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']]] = None,
+            health_check_config: Optional[pulumi.Input[Union['ConnectionHealthCheckConfigArgs', 'ConnectionHealthCheckConfigArgsDict']]] = None,
+            ike_config: Optional[pulumi.Input[Union['ConnectionIkeConfigArgs', 'ConnectionIkeConfigArgsDict']]] = None,
+            ipsec_config: Optional[pulumi.Input[Union['ConnectionIpsecConfigArgs', 'ConnectionIpsecConfigArgsDict']]] = None,
             local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
@@ -1082,7 +1082,7 @@ class Connection(pulumi.CustomResource):
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionTunnelOptionsSpecificationArgs']]]]] = None,
+            tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]]] = None,
             vpn_connection_name: Optional[pulumi.Input[str]] = None,
             vpn_gateway_id: Optional[pulumi.Input[str]] = None) -> 'Connection':
         """
@@ -1095,16 +1095,16 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_config_route: Whether to configure routing automatically. Value:
                - **true**: Automatically configure routes.
                - **false**: does not automatically configure routes.
-        :param pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']] bgp_config: vpnBgp configuration. See `bgp_config` below.
+        :param pulumi.Input[Union['ConnectionBgpConfigArgs', 'ConnectionBgpConfigArgsDict']] bgp_config: vpnBgp configuration. See `bgp_config` below.
         :param pulumi.Input[int] create_time: The time when the IPsec-VPN connection was created.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
         :param pulumi.Input[bool] effect_immediately: Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
         :param pulumi.Input[bool] enable_dpd: Wether enable Dpd detection.
         :param pulumi.Input[bool] enable_nat_traversal: enable nat traversal.
         :param pulumi.Input[bool] enable_tunnels_bgp: Enable tunnel bgp.
-        :param pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']] health_check_config: Health Check information. See `health_check_config` below.
-        :param pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']] ike_config: The configuration of Phase 1 negotiations. See `ike_config` below.
-        :param pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']] ipsec_config: IPsec configuration. See `ipsec_config` below.
+        :param pulumi.Input[Union['ConnectionHealthCheckConfigArgs', 'ConnectionHealthCheckConfigArgsDict']] health_check_config: Health Check information. See `health_check_config` below.
+        :param pulumi.Input[Union['ConnectionIkeConfigArgs', 'ConnectionIkeConfigArgsDict']] ike_config: The configuration of Phase 1 negotiations. See `ike_config` below.
+        :param pulumi.Input[Union['ConnectionIpsecConfigArgs', 'ConnectionIpsecConfigArgsDict']] ipsec_config: IPsec configuration. See `ipsec_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_subnets: The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
         :param pulumi.Input[str] network_type: The network type of the IPsec connection. Value:
@@ -1114,7 +1114,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The negotiation status of Tunnel.
         :param pulumi.Input[Mapping[str, Any]] tags: Tags.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionTunnelOptionsSpecificationArgs']]]] tunnel_options_specifications: The tunnel options of IPsec. See `tunnel_options_specification` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]] tunnel_options_specifications: The tunnel options of IPsec. See `tunnel_options_specification` below.
         :param pulumi.Input[str] vpn_connection_name: The name of the IPsec-VPN connection.
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
                

@@ -178,7 +178,7 @@ public class RemoteWrite extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RemoteWrite(String name) {
+    public RemoteWrite(java.lang.String name) {
         this(name, RemoteWriteArgs.Empty);
     }
     /**
@@ -186,7 +186,7 @@ public class RemoteWrite extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RemoteWrite(String name, RemoteWriteArgs args) {
+    public RemoteWrite(java.lang.String name, RemoteWriteArgs args) {
         this(name, args, null);
     }
     /**
@@ -195,15 +195,22 @@ public class RemoteWrite extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RemoteWrite(String name, RemoteWriteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:arms/remoteWrite:RemoteWrite", name, args == null ? RemoteWriteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RemoteWrite(java.lang.String name, RemoteWriteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:arms/remoteWrite:RemoteWrite", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RemoteWrite(String name, Output<String> id, @Nullable RemoteWriteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:arms/remoteWrite:RemoteWrite", name, state, makeResourceOptions(options, id));
+    private RemoteWrite(java.lang.String name, Output<java.lang.String> id, @Nullable RemoteWriteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:arms/remoteWrite:RemoteWrite", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RemoteWriteArgs makeArgs(RemoteWriteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RemoteWriteArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -219,7 +226,7 @@ public class RemoteWrite extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RemoteWrite get(String name, Output<String> id, @Nullable RemoteWriteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RemoteWrite get(java.lang.String name, Output<java.lang.String> id, @Nullable RemoteWriteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RemoteWrite(name, id, state, options);
     }
 }

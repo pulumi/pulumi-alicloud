@@ -770,7 +770,7 @@ class Etl(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etl_name: Optional[pulumi.Input[str]] = None,
-                 etl_sinks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EtlEtlSinkArgs']]]]] = None,
+                 etl_sinks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]]] = None,
                  etl_type: Optional[pulumi.Input[str]] = None,
                  from_time: Optional[pulumi.Input[int]] = None,
                  kms_encrypted_access_key_id: Optional[pulumi.Input[str]] = None,
@@ -844,22 +844,22 @@ class Etl(pulumi.CustomResource):
             script="e_set('new','key')",
             logstore=example_store.name,
             etl_sinks=[
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name",
-                    access_key_id="example2_access_key_id",
-                    access_key_secret="example2_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=example.name,
-                    logstore=example2.name,
-                ),
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name2",
-                    access_key_id="example3_access_key_id",
-                    access_key_secret="example3_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=example.name,
-                    logstore=example3.name,
-                ),
+                {
+                    "name": "target_name",
+                    "access_key_id": "example2_access_key_id",
+                    "access_key_secret": "example2_access_key_secret",
+                    "endpoint": "cn-hangzhou.log.aliyuncs.com",
+                    "project": example.name,
+                    "logstore": example2.name,
+                },
+                {
+                    "name": "target_name2",
+                    "access_key_id": "example3_access_key_id",
+                    "access_key_secret": "example3_access_key_secret",
+                    "endpoint": "cn-hangzhou.log.aliyuncs.com",
+                    "project": example.name,
+                    "logstore": example3.name,
+                },
             ])
         ```
 
@@ -879,7 +879,7 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the log etl job.
         :param pulumi.Input[str] display_name: Log service etl job alias.
         :param pulumi.Input[str] etl_name: The name of the log etl job.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EtlEtlSinkArgs']]]] etl_sinks: Target logstore configuration for delivery after data processing.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]] etl_sinks: Target logstore configuration for delivery after data processing.
         :param pulumi.Input[str] etl_type: Log service etl type, the default value is `ETL`.
         :param pulumi.Input[int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
@@ -959,22 +959,22 @@ class Etl(pulumi.CustomResource):
             script="e_set('new','key')",
             logstore=example_store.name,
             etl_sinks=[
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name",
-                    access_key_id="example2_access_key_id",
-                    access_key_secret="example2_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=example.name,
-                    logstore=example2.name,
-                ),
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name2",
-                    access_key_id="example3_access_key_id",
-                    access_key_secret="example3_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=example.name,
-                    logstore=example3.name,
-                ),
+                {
+                    "name": "target_name",
+                    "access_key_id": "example2_access_key_id",
+                    "access_key_secret": "example2_access_key_secret",
+                    "endpoint": "cn-hangzhou.log.aliyuncs.com",
+                    "project": example.name,
+                    "logstore": example2.name,
+                },
+                {
+                    "name": "target_name2",
+                    "access_key_id": "example3_access_key_id",
+                    "access_key_secret": "example3_access_key_secret",
+                    "endpoint": "cn-hangzhou.log.aliyuncs.com",
+                    "project": example.name,
+                    "logstore": example3.name,
+                },
             ])
         ```
 
@@ -1007,7 +1007,7 @@ class Etl(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etl_name: Optional[pulumi.Input[str]] = None,
-                 etl_sinks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EtlEtlSinkArgs']]]]] = None,
+                 etl_sinks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]]] = None,
                  etl_type: Optional[pulumi.Input[str]] = None,
                  from_time: Optional[pulumi.Input[int]] = None,
                  kms_encrypted_access_key_id: Optional[pulumi.Input[str]] = None,
@@ -1086,7 +1086,7 @@ class Etl(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             etl_name: Optional[pulumi.Input[str]] = None,
-            etl_sinks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EtlEtlSinkArgs']]]]] = None,
+            etl_sinks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]]] = None,
             etl_type: Optional[pulumi.Input[str]] = None,
             from_time: Optional[pulumi.Input[int]] = None,
             kms_encrypted_access_key_id: Optional[pulumi.Input[str]] = None,
@@ -1116,7 +1116,7 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the log etl job.
         :param pulumi.Input[str] display_name: Log service etl job alias.
         :param pulumi.Input[str] etl_name: The name of the log etl job.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EtlEtlSinkArgs']]]] etl_sinks: Target logstore configuration for delivery after data processing.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]] etl_sinks: Target logstore configuration for delivery after data processing.
         :param pulumi.Input[str] etl_type: Log service etl type, the default value is `ETL`.
         :param pulumi.Input[int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.

@@ -200,7 +200,7 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AddressBook(String name) {
+    public AddressBook(java.lang.String name) {
         this(name, AddressBookArgs.Empty);
     }
     /**
@@ -208,7 +208,7 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AddressBook(String name, AddressBookArgs args) {
+    public AddressBook(java.lang.String name, AddressBookArgs args) {
         this(name, args, null);
     }
     /**
@@ -217,15 +217,22 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AddressBook(String name, AddressBookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudfirewall/addressBook:AddressBook", name, args == null ? AddressBookArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AddressBook(java.lang.String name, AddressBookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudfirewall/addressBook:AddressBook", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AddressBook(String name, Output<String> id, @Nullable AddressBookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudfirewall/addressBook:AddressBook", name, state, makeResourceOptions(options, id));
+    private AddressBook(java.lang.String name, Output<java.lang.String> id, @Nullable AddressBookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudfirewall/addressBook:AddressBook", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AddressBookArgs makeArgs(AddressBookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AddressBookArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -241,7 +248,7 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AddressBook get(String name, Output<String> id, @Nullable AddressBookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AddressBook get(java.lang.String name, Output<java.lang.String> id, @Nullable AddressBookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AddressBook(name, id, state, options);
     }
 }

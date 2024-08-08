@@ -66,7 +66,7 @@ public class RuleAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RuleAttachment(String name) {
+    public RuleAttachment(java.lang.String name) {
         this(name, RuleAttachmentArgs.Empty);
     }
     /**
@@ -74,7 +74,7 @@ public class RuleAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RuleAttachment(String name, RuleAttachmentArgs args) {
+    public RuleAttachment(java.lang.String name, RuleAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -83,15 +83,22 @@ public class RuleAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RuleAttachment(String name, RuleAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:pvtz/ruleAttachment:RuleAttachment", name, args == null ? RuleAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RuleAttachment(java.lang.String name, RuleAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:pvtz/ruleAttachment:RuleAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RuleAttachment(String name, Output<String> id, @Nullable RuleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:pvtz/ruleAttachment:RuleAttachment", name, state, makeResourceOptions(options, id));
+    private RuleAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable RuleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:pvtz/ruleAttachment:RuleAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RuleAttachmentArgs makeArgs(RuleAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RuleAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -107,7 +114,7 @@ public class RuleAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RuleAttachment get(String name, Output<String> id, @Nullable RuleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RuleAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable RuleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RuleAttachment(name, id, state, options);
     }
 }

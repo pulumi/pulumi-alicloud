@@ -297,8 +297,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
                  aggregate_compliance_pack_name: Optional[pulumi.Input[str]] = None,
                  aggregator_id: Optional[pulumi.Input[str]] = None,
                  compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
-                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]]] = None,
-                 config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleArgs']]]]] = None,
+                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]]] = None,
+                 config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  risk_level: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -323,11 +323,11 @@ class AggregateCompliancePack(pulumi.CustomResource):
             name = "terraform_example"
         default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
         default_aggregator = alicloud.cfg.Aggregator("default",
-            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default.accounts[0].account_id,
-                account_name=default.accounts[0].display_name,
-                account_type="ResourceDirectory",
-            )],
+            aggregator_accounts=[{
+                "account_id": default.accounts[0].account_id,
+                "account_name": default.accounts[0].display_name,
+                "account_type": "ResourceDirectory",
+            }],
             aggregator_name=name,
             description=name,
             aggregator_type="CUSTOM")
@@ -349,9 +349,9 @@ class AggregateCompliancePack(pulumi.CustomResource):
             aggregator_id=default_aggregator.id,
             description=name,
             risk_level=1,
-            config_rule_ids=[alicloud.cfg.AggregateCompliancePackConfigRuleIdArgs(
-                config_rule_id=default_aggregate_config_rule.config_rule_id,
-            )])
+            config_rule_ids=[{
+                "config_rule_id": default_aggregate_config_rule.config_rule_id,
+            }])
         ```
 
         ## Import
@@ -367,8 +367,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
         :param pulumi.Input[str] aggregate_compliance_pack_name: The name of compliance package name. **NOTE:** From version 1.145.0, `aggregate_compliance_pack_name` can be modified.
         :param pulumi.Input[str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         :param pulumi.Input[str] description: The description of compliance package.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:
         """
@@ -399,11 +399,11 @@ class AggregateCompliancePack(pulumi.CustomResource):
             name = "terraform_example"
         default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
         default_aggregator = alicloud.cfg.Aggregator("default",
-            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default.accounts[0].account_id,
-                account_name=default.accounts[0].display_name,
-                account_type="ResourceDirectory",
-            )],
+            aggregator_accounts=[{
+                "account_id": default.accounts[0].account_id,
+                "account_name": default.accounts[0].display_name,
+                "account_type": "ResourceDirectory",
+            }],
             aggregator_name=name,
             description=name,
             aggregator_type="CUSTOM")
@@ -425,9 +425,9 @@ class AggregateCompliancePack(pulumi.CustomResource):
             aggregator_id=default_aggregator.id,
             description=name,
             risk_level=1,
-            config_rule_ids=[alicloud.cfg.AggregateCompliancePackConfigRuleIdArgs(
-                config_rule_id=default_aggregate_config_rule.config_rule_id,
-            )])
+            config_rule_ids=[{
+                "config_rule_id": default_aggregate_config_rule.config_rule_id,
+            }])
         ```
 
         ## Import
@@ -456,8 +456,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
                  aggregate_compliance_pack_name: Optional[pulumi.Input[str]] = None,
                  aggregator_id: Optional[pulumi.Input[str]] = None,
                  compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
-                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]]] = None,
-                 config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleArgs']]]]] = None,
+                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]]] = None,
+                 config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  risk_level: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -500,8 +500,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
             aggregator_compliance_pack_id: Optional[pulumi.Input[str]] = None,
             aggregator_id: Optional[pulumi.Input[str]] = None,
             compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
-            config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]]] = None,
-            config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleArgs']]]]] = None,
+            config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]]] = None,
+            config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             risk_level: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'AggregateCompliancePack':
@@ -516,8 +516,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
         :param pulumi.Input[str] aggregator_compliance_pack_id: The ID of the compliance package.
         :param pulumi.Input[str] aggregator_id: The ID of aggregator.
         :param pulumi.Input[str] compliance_pack_template_id: The Template ID of compliance package.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleIdArgs']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregateCompliancePackConfigRuleArgs']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleIdArgs', 'AggregateCompliancePackConfigRuleIdArgsDict']]]] config_rule_ids: A list of Config Rule IDs. See `config_rule_ids` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateCompliancePackConfigRuleArgs', 'AggregateCompliancePackConfigRuleArgsDict']]]] config_rules: A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         :param pulumi.Input[str] description: The description of compliance package.
         :param pulumi.Input[int] risk_level: The Risk Level. Valid values:
         :param pulumi.Input[str] status: The status of the Aggregate Compliance Pack.

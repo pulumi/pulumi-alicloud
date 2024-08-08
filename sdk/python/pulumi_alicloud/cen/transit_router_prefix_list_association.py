@@ -275,9 +275,9 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.get_account()
-        example = alicloud.vpc.PrefixList("example", entrys=[alicloud.vpc.PrefixListEntryArgs(
-            cidr="192.168.0.0/16",
-        )])
+        example = alicloud.vpc.PrefixList("example", entrys=[{
+            "cidr": "192.168.0.0/16",
+        }])
         example_instance = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
@@ -337,9 +337,9 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.get_account()
-        example = alicloud.vpc.PrefixList("example", entrys=[alicloud.vpc.PrefixListEntryArgs(
-            cidr="192.168.0.0/16",
-        )])
+        example = alicloud.vpc.PrefixList("example", entrys=[{
+            "cidr": "192.168.0.0/16",
+        }])
         example_instance = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")

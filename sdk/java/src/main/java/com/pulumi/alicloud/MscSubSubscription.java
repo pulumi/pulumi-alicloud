@@ -225,7 +225,7 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MscSubSubscription(String name) {
+    public MscSubSubscription(java.lang.String name) {
         this(name, MscSubSubscriptionArgs.Empty);
     }
     /**
@@ -233,7 +233,7 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MscSubSubscription(String name, MscSubSubscriptionArgs args) {
+    public MscSubSubscription(java.lang.String name, MscSubSubscriptionArgs args) {
         this(name, args, null);
     }
     /**
@@ -242,15 +242,22 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MscSubSubscription(String name, MscSubSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:index/mscSubSubscription:MscSubSubscription", name, args == null ? MscSubSubscriptionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MscSubSubscription(java.lang.String name, MscSubSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:index/mscSubSubscription:MscSubSubscription", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MscSubSubscription(String name, Output<String> id, @Nullable MscSubSubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:index/mscSubSubscription:MscSubSubscription", name, state, makeResourceOptions(options, id));
+    private MscSubSubscription(java.lang.String name, Output<java.lang.String> id, @Nullable MscSubSubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:index/mscSubSubscription:MscSubSubscription", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MscSubSubscriptionArgs makeArgs(MscSubSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MscSubSubscriptionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -266,7 +273,7 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MscSubSubscription get(String name, Output<String> id, @Nullable MscSubSubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MscSubSubscription get(java.lang.String name, Output<java.lang.String> id, @Nullable MscSubSubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MscSubSubscription(name, id, state, options);
     }
 }

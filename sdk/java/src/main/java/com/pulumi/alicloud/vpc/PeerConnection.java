@@ -278,7 +278,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PeerConnection(String name) {
+    public PeerConnection(java.lang.String name) {
         this(name, PeerConnectionArgs.Empty);
     }
     /**
@@ -286,7 +286,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PeerConnection(String name, PeerConnectionArgs args) {
+    public PeerConnection(java.lang.String name, PeerConnectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -295,15 +295,22 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PeerConnection(String name, PeerConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/peerConnection:PeerConnection", name, args == null ? PeerConnectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PeerConnection(java.lang.String name, PeerConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/peerConnection:PeerConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PeerConnection(String name, Output<String> id, @Nullable PeerConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/peerConnection:PeerConnection", name, state, makeResourceOptions(options, id));
+    private PeerConnection(java.lang.String name, Output<java.lang.String> id, @Nullable PeerConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/peerConnection:PeerConnection", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PeerConnectionArgs makeArgs(PeerConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PeerConnectionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -319,7 +326,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PeerConnection get(String name, Output<String> id, @Nullable PeerConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PeerConnection get(java.lang.String name, Output<java.lang.String> id, @Nullable PeerConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PeerConnection(name, id, state, options);
     }
 }

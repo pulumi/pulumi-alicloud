@@ -347,7 +347,7 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RdsAccount(String name) {
+    public RdsAccount(java.lang.String name) {
         this(name, RdsAccountArgs.Empty);
     }
     /**
@@ -355,7 +355,7 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RdsAccount(String name, @Nullable RdsAccountArgs args) {
+    public RdsAccount(java.lang.String name, @Nullable RdsAccountArgs args) {
         this(name, args, null);
     }
     /**
@@ -364,15 +364,22 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RdsAccount(String name, @Nullable RdsAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/rdsAccount:RdsAccount", name, args == null ? RdsAccountArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RdsAccount(java.lang.String name, @Nullable RdsAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/rdsAccount:RdsAccount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RdsAccount(String name, Output<String> id, @Nullable RdsAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/rdsAccount:RdsAccount", name, state, makeResourceOptions(options, id));
+    private RdsAccount(java.lang.String name, Output<java.lang.String> id, @Nullable RdsAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/rdsAccount:RdsAccount", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RdsAccountArgs makeArgs(@Nullable RdsAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RdsAccountArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -392,7 +399,7 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RdsAccount get(String name, Output<String> id, @Nullable RdsAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RdsAccount get(java.lang.String name, Output<java.lang.String> id, @Nullable RdsAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RdsAccount(name, id, state, options);
     }
 }

@@ -48,7 +48,7 @@ import (
 //			}
 //			defaultDomainNew, err := cdn.NewDomainNew(ctx, "default", &cdn.DomainNewArgs{
 //				Scope:      pulumi.String("overseas"),
-//				DomainName: pulumi.String(fmt.Sprintf("mycdndomain-%v.alicloud-provider.cn", defaultInteger.Result)),
+//				DomainName: pulumi.Sprintf("mycdndomain-%v.alicloud-provider.cn", defaultInteger.Result),
 //				CdnType:    pulumi.String("web"),
 //				Sources: cdn.DomainNewSourceArray{
 //					&cdn.DomainNewSourceArgs{
@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
-//				ProjectName: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				ProjectName: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {

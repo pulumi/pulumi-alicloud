@@ -216,7 +216,7 @@ public class ServiceCertificate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceCertificate(String name) {
+    public ServiceCertificate(java.lang.String name) {
         this(name, ServiceCertificateArgs.Empty);
     }
     /**
@@ -224,7 +224,7 @@ public class ServiceCertificate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceCertificate(String name, ServiceCertificateArgs args) {
+    public ServiceCertificate(java.lang.String name, ServiceCertificateArgs args) {
         this(name, args, null);
     }
     /**
@@ -233,15 +233,22 @@ public class ServiceCertificate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceCertificate(String name, ServiceCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cas/serviceCertificate:ServiceCertificate", name, args == null ? ServiceCertificateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServiceCertificate(java.lang.String name, ServiceCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cas/serviceCertificate:ServiceCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceCertificate(String name, Output<String> id, @Nullable ServiceCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cas/serviceCertificate:ServiceCertificate", name, state, makeResourceOptions(options, id));
+    private ServiceCertificate(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cas/serviceCertificate:ServiceCertificate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServiceCertificateArgs makeArgs(ServiceCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceCertificateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -257,7 +264,7 @@ public class ServiceCertificate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceCertificate get(String name, Output<String> id, @Nullable ServiceCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceCertificate get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceCertificate(name, id, state, options);
     }
 }

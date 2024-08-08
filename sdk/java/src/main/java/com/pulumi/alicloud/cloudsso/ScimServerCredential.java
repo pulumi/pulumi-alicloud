@@ -80,7 +80,7 @@ public class ScimServerCredential extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ScimServerCredential(String name) {
+    public ScimServerCredential(java.lang.String name) {
         this(name, ScimServerCredentialArgs.Empty);
     }
     /**
@@ -88,7 +88,7 @@ public class ScimServerCredential extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ScimServerCredential(String name, ScimServerCredentialArgs args) {
+    public ScimServerCredential(java.lang.String name, ScimServerCredentialArgs args) {
         this(name, args, null);
     }
     /**
@@ -97,15 +97,22 @@ public class ScimServerCredential extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ScimServerCredential(String name, ScimServerCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudsso/scimServerCredential:ScimServerCredential", name, args == null ? ScimServerCredentialArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ScimServerCredential(java.lang.String name, ScimServerCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudsso/scimServerCredential:ScimServerCredential", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ScimServerCredential(String name, Output<String> id, @Nullable ScimServerCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudsso/scimServerCredential:ScimServerCredential", name, state, makeResourceOptions(options, id));
+    private ScimServerCredential(java.lang.String name, Output<java.lang.String> id, @Nullable ScimServerCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudsso/scimServerCredential:ScimServerCredential", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ScimServerCredentialArgs makeArgs(ScimServerCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ScimServerCredentialArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -121,7 +128,7 @@ public class ScimServerCredential extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ScimServerCredential get(String name, Output<String> id, @Nullable ScimServerCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ScimServerCredential get(java.lang.String name, Output<java.lang.String> id, @Nullable ScimServerCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ScimServerCredential(name, id, state, options);
     }
 }

@@ -219,7 +219,7 @@ public class VvpInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VvpInstance(String name) {
+    public VvpInstance(java.lang.String name) {
         this(name, VvpInstanceArgs.Empty);
     }
     /**
@@ -227,7 +227,7 @@ public class VvpInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VvpInstance(String name, VvpInstanceArgs args) {
+    public VvpInstance(java.lang.String name, VvpInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -236,15 +236,22 @@ public class VvpInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VvpInstance(String name, VvpInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:realtimecompute/vvpInstance:VvpInstance", name, args == null ? VvpInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VvpInstance(java.lang.String name, VvpInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:realtimecompute/vvpInstance:VvpInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VvpInstance(String name, Output<String> id, @Nullable VvpInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:realtimecompute/vvpInstance:VvpInstance", name, state, makeResourceOptions(options, id));
+    private VvpInstance(java.lang.String name, Output<java.lang.String> id, @Nullable VvpInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:realtimecompute/vvpInstance:VvpInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VvpInstanceArgs makeArgs(VvpInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VvpInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -260,7 +267,7 @@ public class VvpInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VvpInstance get(String name, Output<String> id, @Nullable VvpInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VvpInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable VvpInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VvpInstance(name, id, state, options);
     }
 }

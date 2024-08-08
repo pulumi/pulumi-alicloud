@@ -70,7 +70,7 @@ import (
 // return err
 // }
 // interface, err := vpc.NewNetworkInterface(ctx, "interface", &vpc.NetworkInterfaceArgs{
-// Name: pulumi.String(fmt.Sprintf("%v%v", name, "%d")),
+// Name: pulumi.Sprintf("%v%v", name, "%d"),
 // VswitchId: vswitch.ID(),
 // SecurityGroups: pulumi.StringArray{
 // group.ID(),

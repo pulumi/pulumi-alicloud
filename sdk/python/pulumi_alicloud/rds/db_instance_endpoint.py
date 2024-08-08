@@ -335,7 +335,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
                  connection_string_prefix: Optional[pulumi.Input[str]] = None,
                  db_instance_endpoint_description: Optional[pulumi.Input[str]] = None,
                  db_instance_id: Optional[pulumi.Input[str]] = None,
-                 node_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceEndpointNodeItemArgs']]]]] = None,
+                 node_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceEndpointNodeItemArgs', 'DbInstanceEndpointNodeItemArgsDict']]]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -401,10 +401,10 @@ class DbInstanceEndpoint(pulumi.CustomResource):
             connection_string_prefix="example",
             port="3306",
             db_instance_endpoint_description=name,
-            node_items=[alicloud.rds.DbInstanceEndpointNodeItemArgs(
-                node_id=default_db_node.node_id,
-                weight=25,
-            )])
+            node_items=[{
+                "node_id": default_db_node.node_id,
+                "weight": 25,
+            }])
         ```
 
         ## Import
@@ -420,7 +420,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] connection_string_prefix: The IP address of the internal endpoint.
         :param pulumi.Input[str] db_instance_endpoint_description: The user-defined description of the endpoint.
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceEndpointNodeItemArgs']]]] node_items: The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceEndpointNodeItemArgs', 'DbInstanceEndpointNodeItemArgsDict']]]] node_items: The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
         :param pulumi.Input[str] port: The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the internal endpoint.
         :param pulumi.Input[str] vswitch_id: The vSwitch ID of the internal endpoint.
@@ -492,10 +492,10 @@ class DbInstanceEndpoint(pulumi.CustomResource):
             connection_string_prefix="example",
             port="3306",
             db_instance_endpoint_description=name,
-            node_items=[alicloud.rds.DbInstanceEndpointNodeItemArgs(
-                node_id=default_db_node.node_id,
-                weight=25,
-            )])
+            node_items=[{
+                "node_id": default_db_node.node_id,
+                "weight": 25,
+            }])
         ```
 
         ## Import
@@ -524,7 +524,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
                  connection_string_prefix: Optional[pulumi.Input[str]] = None,
                  db_instance_endpoint_description: Optional[pulumi.Input[str]] = None,
                  db_instance_id: Optional[pulumi.Input[str]] = None,
-                 node_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceEndpointNodeItemArgs']]]]] = None,
+                 node_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceEndpointNodeItemArgs', 'DbInstanceEndpointNodeItemArgsDict']]]]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
@@ -578,7 +578,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
             db_instance_endpoint_type: Optional[pulumi.Input[str]] = None,
             db_instance_id: Optional[pulumi.Input[str]] = None,
             ip_type: Optional[pulumi.Input[str]] = None,
-            node_items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceEndpointNodeItemArgs']]]]] = None,
+            node_items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceEndpointNodeItemArgs', 'DbInstanceEndpointNodeItemArgsDict']]]]] = None,
             port: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
@@ -597,7 +597,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] db_instance_endpoint_type: The type of the endpoint.
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[str] ip_type: The type of the IP address.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceEndpointNodeItemArgs']]]] node_items: The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstanceEndpointNodeItemArgs', 'DbInstanceEndpointNodeItemArgsDict']]]] node_items: The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
         :param pulumi.Input[str] port: The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
         :param pulumi.Input[str] private_ip_address: The IP address of the internal endpoint.
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the internal endpoint.

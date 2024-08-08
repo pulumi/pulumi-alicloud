@@ -211,7 +211,7 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WebLockConfig(String name) {
+    public WebLockConfig(java.lang.String name) {
         this(name, WebLockConfigArgs.Empty);
     }
     /**
@@ -219,7 +219,7 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WebLockConfig(String name, WebLockConfigArgs args) {
+    public WebLockConfig(java.lang.String name, WebLockConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -228,15 +228,22 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WebLockConfig(String name, WebLockConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/webLockConfig:WebLockConfig", name, args == null ? WebLockConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WebLockConfig(java.lang.String name, WebLockConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/webLockConfig:WebLockConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WebLockConfig(String name, Output<String> id, @Nullable WebLockConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/webLockConfig:WebLockConfig", name, state, makeResourceOptions(options, id));
+    private WebLockConfig(java.lang.String name, Output<java.lang.String> id, @Nullable WebLockConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/webLockConfig:WebLockConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WebLockConfigArgs makeArgs(WebLockConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WebLockConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -252,7 +259,7 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WebLockConfig get(String name, Output<String> id, @Nullable WebLockConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WebLockConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable WebLockConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WebLockConfig(name, id, state, options);
     }
 }

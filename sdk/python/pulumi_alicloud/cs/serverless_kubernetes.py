@@ -1057,7 +1057,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessKubernetesAddonArgs']]]]] = None,
+                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]]] = None,
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
@@ -1076,7 +1076,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 rrsa_metadata: Optional[pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']]] = None,
+                 rrsa_metadata: Optional[pulumi.Input[Union['ServerlessKubernetesRrsaMetadataArgs', 'ServerlessKubernetesRrsaMetadataArgsDict']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1149,15 +1149,15 @@ class ServerlessKubernetes(pulumi.CustomResource):
                 "k-bb": "v-aa",
             },
             addons=[
-                alicloud.cs.ServerlessKubernetesAddonArgs(
-                    name="alb-ingress-controller",
-                ),
-                alicloud.cs.ServerlessKubernetesAddonArgs(
-                    name="metrics-server",
-                ),
-                alicloud.cs.ServerlessKubernetesAddonArgs(
-                    name="knative",
-                ),
+                {
+                    "name": "alb-ingress-controller",
+                },
+                {
+                    "name": "metrics-server",
+                },
+                {
+                    "name": "knative",
+                },
             ])
         ```
 
@@ -1171,7 +1171,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessKubernetesAddonArgs']]]] addons: You can specific network plugin,log component,ingress component and so on. See `addons` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin,log component,ingress component and so on. See `addons` below.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
@@ -1194,7 +1194,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         :param pulumi.Input[bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']] rrsa_metadata: Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
+        :param pulumi.Input[Union['ServerlessKubernetesRrsaMetadataArgs', 'ServerlessKubernetesRrsaMetadataArgsDict']] rrsa_metadata: Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
@@ -1273,15 +1273,15 @@ class ServerlessKubernetes(pulumi.CustomResource):
                 "k-bb": "v-aa",
             },
             addons=[
-                alicloud.cs.ServerlessKubernetesAddonArgs(
-                    name="alb-ingress-controller",
-                ),
-                alicloud.cs.ServerlessKubernetesAddonArgs(
-                    name="metrics-server",
-                ),
-                alicloud.cs.ServerlessKubernetesAddonArgs(
-                    name="knative",
-                ),
+                {
+                    "name": "alb-ingress-controller",
+                },
+                {
+                    "name": "metrics-server",
+                },
+                {
+                    "name": "knative",
+                },
             ])
         ```
 
@@ -1308,7 +1308,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessKubernetesAddonArgs']]]]] = None,
+                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]]] = None,
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
@@ -1327,7 +1327,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 rrsa_metadata: Optional[pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']]] = None,
+                 rrsa_metadata: Optional[pulumi.Input[Union['ServerlessKubernetesRrsaMetadataArgs', 'ServerlessKubernetesRrsaMetadataArgsDict']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1391,7 +1391,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessKubernetesAddonArgs']]]]] = None,
+            addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]]] = None,
             client_cert: Optional[pulumi.Input[str]] = None,
             client_key: Optional[pulumi.Input[str]] = None,
             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
@@ -1410,7 +1410,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
             private_zone: Optional[pulumi.Input[bool]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            rrsa_metadata: Optional[pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']]] = None,
+            rrsa_metadata: Optional[pulumi.Input[Union['ServerlessKubernetesRrsaMetadataArgs', 'ServerlessKubernetesRrsaMetadataArgsDict']]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             service_cidr: Optional[pulumi.Input[str]] = None,
             service_discovery_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1429,7 +1429,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerlessKubernetesAddonArgs']]]] addons: You can specific network plugin,log component,ingress component and so on. See `addons` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin,log component,ingress component and so on. See `addons` below.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
@@ -1452,7 +1452,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         :param pulumi.Input[bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['ServerlessKubernetesRrsaMetadataArgs']] rrsa_metadata: Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
+        :param pulumi.Input[Union['ServerlessKubernetesRrsaMetadataArgs', 'ServerlessKubernetesRrsaMetadataArgsDict']] rrsa_metadata: Nested attribute containing RRSA related data for your cluster. See `rrsa_metadata` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.

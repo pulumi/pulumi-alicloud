@@ -277,7 +277,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GatewayBlockVolume(String name) {
+    public GatewayBlockVolume(java.lang.String name) {
         this(name, GatewayBlockVolumeArgs.Empty);
     }
     /**
@@ -285,7 +285,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GatewayBlockVolume(String name, GatewayBlockVolumeArgs args) {
+    public GatewayBlockVolume(java.lang.String name, GatewayBlockVolumeArgs args) {
         this(name, args, null);
     }
     /**
@@ -294,15 +294,22 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GatewayBlockVolume(String name, GatewayBlockVolumeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume", name, args == null ? GatewayBlockVolumeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GatewayBlockVolume(java.lang.String name, GatewayBlockVolumeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GatewayBlockVolume(String name, Output<String> id, @Nullable GatewayBlockVolumeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume", name, state, makeResourceOptions(options, id));
+    private GatewayBlockVolume(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayBlockVolumeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudstoragegateway/gatewayBlockVolume:GatewayBlockVolume", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GatewayBlockVolumeArgs makeArgs(GatewayBlockVolumeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GatewayBlockVolumeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -318,7 +325,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GatewayBlockVolume get(String name, Output<String> id, @Nullable GatewayBlockVolumeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GatewayBlockVolume get(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayBlockVolumeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GatewayBlockVolume(name, id, state, options);
     }
 }

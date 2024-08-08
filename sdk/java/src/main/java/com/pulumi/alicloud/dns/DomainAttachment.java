@@ -103,7 +103,7 @@ public class DomainAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DomainAttachment(String name) {
+    public DomainAttachment(java.lang.String name) {
         this(name, DomainAttachmentArgs.Empty);
     }
     /**
@@ -111,7 +111,7 @@ public class DomainAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DomainAttachment(String name, DomainAttachmentArgs args) {
+    public DomainAttachment(java.lang.String name, DomainAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -120,15 +120,22 @@ public class DomainAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DomainAttachment(String name, DomainAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/domainAttachment:DomainAttachment", name, args == null ? DomainAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DomainAttachment(java.lang.String name, DomainAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/domainAttachment:DomainAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DomainAttachment(String name, Output<String> id, @Nullable DomainAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/domainAttachment:DomainAttachment", name, state, makeResourceOptions(options, id));
+    private DomainAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable DomainAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/domainAttachment:DomainAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DomainAttachmentArgs makeArgs(DomainAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DomainAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -144,7 +151,7 @@ public class DomainAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DomainAttachment get(String name, Output<String> id, @Nullable DomainAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DomainAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable DomainAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DomainAttachment(name, id, state, options);
     }
 }

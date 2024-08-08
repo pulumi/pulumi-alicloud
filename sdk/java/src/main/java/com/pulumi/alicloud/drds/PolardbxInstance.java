@@ -293,7 +293,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PolardbxInstance(String name) {
+    public PolardbxInstance(java.lang.String name) {
         this(name, PolardbxInstanceArgs.Empty);
     }
     /**
@@ -301,7 +301,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PolardbxInstance(String name, PolardbxInstanceArgs args) {
+    public PolardbxInstance(java.lang.String name, PolardbxInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -310,15 +310,22 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PolardbxInstance(String name, PolardbxInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:drds/polardbxInstance:PolardbxInstance", name, args == null ? PolardbxInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PolardbxInstance(java.lang.String name, PolardbxInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:drds/polardbxInstance:PolardbxInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PolardbxInstance(String name, Output<String> id, @Nullable PolardbxInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:drds/polardbxInstance:PolardbxInstance", name, state, makeResourceOptions(options, id));
+    private PolardbxInstance(java.lang.String name, Output<java.lang.String> id, @Nullable PolardbxInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:drds/polardbxInstance:PolardbxInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PolardbxInstanceArgs makeArgs(PolardbxInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PolardbxInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -334,7 +341,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PolardbxInstance get(String name, Output<String> id, @Nullable PolardbxInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PolardbxInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable PolardbxInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PolardbxInstance(name, id, state, options);
     }
 }

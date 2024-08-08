@@ -209,10 +209,10 @@ class AclAttachment(pulumi.CustomResource):
             bandwidth_package_id=default_bandwidth_package.id)
         default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=80,
-                to_port=80,
-            )])
+            port_ranges=[{
+                "from_port": 80,
+                "to_port": 80,
+            }])
         default_acl = alicloud.ga.Acl("default",
             acl_name="terraform-example",
             address_ip_version="IPv4")
@@ -278,10 +278,10 @@ class AclAttachment(pulumi.CustomResource):
             bandwidth_package_id=default_bandwidth_package.id)
         default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=80,
-                to_port=80,
-            )])
+            port_ranges=[{
+                "from_port": 80,
+                "to_port": 80,
+            }])
         default_acl = alicloud.ga.Acl("default",
             acl_name="terraform-example",
             address_ip_version="IPv4")

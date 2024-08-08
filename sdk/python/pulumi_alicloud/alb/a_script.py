@@ -288,7 +288,7 @@ class AScript(pulumi.CustomResource):
                  ascript_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  ext_attribute_enabled: Optional[pulumi.Input[bool]] = None,
-                 ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AScriptExtAttributeArgs']]]]] = None,
+                 ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]]] = None,
                  listener_id: Optional[pulumi.Input[str]] = None,
                  position: Optional[pulumi.Input[str]] = None,
                  script_content: Optional[pulumi.Input[str]] = None,
@@ -313,7 +313,7 @@ class AScript(pulumi.CustomResource):
         :param pulumi.Input[str] ascript_name: The name of AScript.
         :param pulumi.Input[bool] enabled: Whether scripts are enabled.
         :param pulumi.Input[bool] ext_attribute_enabled: Whether extension parameters are enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AScriptExtAttributeArgs']]]] ext_attributes: Extended attribute list. See `ext_attributes` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]] ext_attributes: Extended attribute list. See `ext_attributes` below for details.
         :param pulumi.Input[str] listener_id: Listener ID of script attribution
         :param pulumi.Input[str] position: Execution location of AScript.
         :param pulumi.Input[str] script_content: The content of AScript.
@@ -357,7 +357,7 @@ class AScript(pulumi.CustomResource):
                  ascript_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  ext_attribute_enabled: Optional[pulumi.Input[bool]] = None,
-                 ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AScriptExtAttributeArgs']]]]] = None,
+                 ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]]] = None,
                  listener_id: Optional[pulumi.Input[str]] = None,
                  position: Optional[pulumi.Input[str]] = None,
                  script_content: Optional[pulumi.Input[str]] = None,
@@ -402,7 +402,7 @@ class AScript(pulumi.CustomResource):
             ascript_name: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             ext_attribute_enabled: Optional[pulumi.Input[bool]] = None,
-            ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AScriptExtAttributeArgs']]]]] = None,
+            ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]]] = None,
             listener_id: Optional[pulumi.Input[str]] = None,
             load_balancer_id: Optional[pulumi.Input[str]] = None,
             position: Optional[pulumi.Input[str]] = None,
@@ -418,7 +418,7 @@ class AScript(pulumi.CustomResource):
         :param pulumi.Input[str] ascript_name: The name of AScript.
         :param pulumi.Input[bool] enabled: Whether scripts are enabled.
         :param pulumi.Input[bool] ext_attribute_enabled: Whether extension parameters are enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AScriptExtAttributeArgs']]]] ext_attributes: Extended attribute list. See `ext_attributes` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AScriptExtAttributeArgs', 'AScriptExtAttributeArgsDict']]]] ext_attributes: Extended attribute list. See `ext_attributes` below for details.
         :param pulumi.Input[str] listener_id: Listener ID of script attribution
         :param pulumi.Input[str] load_balancer_id: The ID of load balancer instance.
         :param pulumi.Input[str] position: Execution location of AScript.

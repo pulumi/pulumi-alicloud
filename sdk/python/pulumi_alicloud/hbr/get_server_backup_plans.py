@@ -82,7 +82,7 @@ class AwaitableGetServerBackupPlansResult(GetServerBackupPlansResult):
             plans=self.plans)
 
 
-def get_server_backup_plans(filters: Optional[Sequence[pulumi.InputType['GetServerBackupPlansFilterArgs']]] = None,
+def get_server_backup_plans(filters: Optional[Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict']]] = None,
                             ids: Optional[Sequence[str]] = None,
                             output_file: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerBackupPlansResult:
@@ -101,15 +101,15 @@ def get_server_backup_plans(filters: Optional[Sequence[pulumi.InputType['GetServ
 
     default = alicloud.ecs.get_instances(name_regex="no-deleteing-hbr-ecs-server-backup-plan",
         status="Running")
-    ids = alicloud.hbr.get_server_backup_plans(filters=[alicloud.hbr.GetServerBackupPlansFilterArgs(
-        key="instanceId",
-        values=[default.instances[0].id],
-    )])
+    ids = alicloud.hbr.get_server_backup_plans(filters=[{
+        "key": "instanceId",
+        "values": [default.instances[0].id],
+    }])
     pulumi.export("hbrServerBackupPlanId1", ids.plans[0].id)
     ```
 
 
-    :param Sequence[pulumi.InputType['GetServerBackupPlansFilterArgs']] filters: The filters.
+    :param Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict']] filters: The filters.
     :param Sequence[str] ids: A list of Server Backup Plan IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -129,7 +129,7 @@ def get_server_backup_plans(filters: Optional[Sequence[pulumi.InputType['GetServ
 
 
 @_utilities.lift_output_func(get_server_backup_plans)
-def get_server_backup_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServerBackupPlansFilterArgs']]]]] = None,
+def get_server_backup_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict']]]]] = None,
                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerBackupPlansResult]:
@@ -148,15 +148,15 @@ def get_server_backup_plans_output(filters: Optional[pulumi.Input[Optional[Seque
 
     default = alicloud.ecs.get_instances(name_regex="no-deleteing-hbr-ecs-server-backup-plan",
         status="Running")
-    ids = alicloud.hbr.get_server_backup_plans(filters=[alicloud.hbr.GetServerBackupPlansFilterArgs(
-        key="instanceId",
-        values=[default.instances[0].id],
-    )])
+    ids = alicloud.hbr.get_server_backup_plans(filters=[{
+        "key": "instanceId",
+        "values": [default.instances[0].id],
+    }])
     pulumi.export("hbrServerBackupPlanId1", ids.plans[0].id)
     ```
 
 
-    :param Sequence[pulumi.InputType['GetServerBackupPlansFilterArgs']] filters: The filters.
+    :param Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict']] filters: The filters.
     :param Sequence[str] ids: A list of Server Backup Plan IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """

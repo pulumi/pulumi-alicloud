@@ -241,7 +241,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AppGroup(String name) {
+    public AppGroup(java.lang.String name) {
         this(name, AppGroupArgs.Empty);
     }
     /**
@@ -249,7 +249,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AppGroup(String name, AppGroupArgs args) {
+    public AppGroup(java.lang.String name, AppGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -258,15 +258,22 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AppGroup(String name, AppGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:opensearch/appGroup:AppGroup", name, args == null ? AppGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AppGroup(java.lang.String name, AppGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:opensearch/appGroup:AppGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AppGroup(String name, Output<String> id, @Nullable AppGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:opensearch/appGroup:AppGroup", name, state, makeResourceOptions(options, id));
+    private AppGroup(java.lang.String name, Output<java.lang.String> id, @Nullable AppGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:opensearch/appGroup:AppGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AppGroupArgs makeArgs(AppGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AppGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -282,7 +289,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AppGroup get(String name, Output<String> id, @Nullable AppGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AppGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable AppGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AppGroup(name, id, state, options);
     }
 }

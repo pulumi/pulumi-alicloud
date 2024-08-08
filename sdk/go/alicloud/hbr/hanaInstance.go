@@ -54,14 +54,14 @@ import (
 //				return err
 //			}
 //			exampleVault, err := hbr.NewVault(ctx, "example", &hbr.VaultArgs{
-//				VaultName: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				VaultName: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = hbr.NewHanaInstance(ctx, "example", &hbr.HanaInstanceArgs{
 //				AlertSetting:        pulumi.String("INHERITED"),
-//				HanaName:            pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				HanaName:            pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Host:                pulumi.String("1.1.1.1"),
 //				InstanceNumber:      pulumi.Int(1),
 //				Password:            pulumi.String("YouPassword123"),

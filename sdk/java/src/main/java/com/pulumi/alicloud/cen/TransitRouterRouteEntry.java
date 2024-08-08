@@ -270,7 +270,7 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TransitRouterRouteEntry(String name) {
+    public TransitRouterRouteEntry(java.lang.String name) {
         this(name, TransitRouterRouteEntryArgs.Empty);
     }
     /**
@@ -278,7 +278,7 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TransitRouterRouteEntry(String name, TransitRouterRouteEntryArgs args) {
+    public TransitRouterRouteEntry(java.lang.String name, TransitRouterRouteEntryArgs args) {
         this(name, args, null);
     }
     /**
@@ -287,15 +287,22 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TransitRouterRouteEntry(String name, TransitRouterRouteEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry", name, args == null ? TransitRouterRouteEntryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TransitRouterRouteEntry(java.lang.String name, TransitRouterRouteEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TransitRouterRouteEntry(String name, Output<String> id, @Nullable TransitRouterRouteEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry", name, state, makeResourceOptions(options, id));
+    private TransitRouterRouteEntry(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterRouteEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterRouteEntry:TransitRouterRouteEntry", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TransitRouterRouteEntryArgs makeArgs(TransitRouterRouteEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TransitRouterRouteEntryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -311,7 +318,7 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TransitRouterRouteEntry get(String name, Output<String> id, @Nullable TransitRouterRouteEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TransitRouterRouteEntry get(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterRouteEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TransitRouterRouteEntry(name, id, state, options);
     }
 }

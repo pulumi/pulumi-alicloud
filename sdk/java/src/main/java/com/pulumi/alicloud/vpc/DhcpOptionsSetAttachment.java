@@ -150,7 +150,7 @@ public class DhcpOptionsSetAttachment extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DhcpOptionsSetAttachment(String name) {
+    public DhcpOptionsSetAttachment(java.lang.String name) {
         this(name, DhcpOptionsSetAttachmentArgs.Empty);
     }
     /**
@@ -158,7 +158,7 @@ public class DhcpOptionsSetAttachment extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DhcpOptionsSetAttachment(String name, DhcpOptionsSetAttachmentArgs args) {
+    public DhcpOptionsSetAttachment(java.lang.String name, DhcpOptionsSetAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -167,15 +167,22 @@ public class DhcpOptionsSetAttachment extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DhcpOptionsSetAttachment(String name, DhcpOptionsSetAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment", name, args == null ? DhcpOptionsSetAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DhcpOptionsSetAttachment(java.lang.String name, DhcpOptionsSetAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DhcpOptionsSetAttachment(String name, Output<String> id, @Nullable DhcpOptionsSetAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment", name, state, makeResourceOptions(options, id));
+    private DhcpOptionsSetAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable DhcpOptionsSetAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DhcpOptionsSetAttachmentArgs makeArgs(DhcpOptionsSetAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DhcpOptionsSetAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -191,7 +198,7 @@ public class DhcpOptionsSetAttachment extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DhcpOptionsSetAttachment get(String name, Output<String> id, @Nullable DhcpOptionsSetAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DhcpOptionsSetAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable DhcpOptionsSetAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DhcpOptionsSetAttachment(name, id, state, options);
     }
 }

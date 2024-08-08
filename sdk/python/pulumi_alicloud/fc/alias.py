@@ -193,7 +193,7 @@ class Alias(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 routing_config: Optional[pulumi.Input[pulumi.InputType['AliasRoutingConfigArgs']]] = None,
+                 routing_config: Optional[pulumi.Input[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict']]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  service_version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -238,7 +238,7 @@ class Alias(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alias_name: Name for the alias you are creating.
         :param pulumi.Input[str] description: Description of the alias.
-        :param pulumi.Input[pulumi.InputType['AliasRoutingConfigArgs']] routing_config: The Function Compute alias' route configuration settings. See `routing_config` below.
+        :param pulumi.Input[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict']] routing_config: The Function Compute alias' route configuration settings. See `routing_config` below.
         :param pulumi.Input[str] service_name: The Function Compute service name.
         :param pulumi.Input[str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
         """
@@ -302,7 +302,7 @@ class Alias(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 routing_config: Optional[pulumi.Input[pulumi.InputType['AliasRoutingConfigArgs']]] = None,
+                 routing_config: Optional[pulumi.Input[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict']]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  service_version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -337,7 +337,7 @@ class Alias(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             alias_name: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            routing_config: Optional[pulumi.Input[pulumi.InputType['AliasRoutingConfigArgs']]] = None,
+            routing_config: Optional[pulumi.Input[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict']]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             service_version: Optional[pulumi.Input[str]] = None) -> 'Alias':
         """
@@ -349,7 +349,7 @@ class Alias(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alias_name: Name for the alias you are creating.
         :param pulumi.Input[str] description: Description of the alias.
-        :param pulumi.Input[pulumi.InputType['AliasRoutingConfigArgs']] routing_config: The Function Compute alias' route configuration settings. See `routing_config` below.
+        :param pulumi.Input[Union['AliasRoutingConfigArgs', 'AliasRoutingConfigArgsDict']] routing_config: The Function Compute alias' route configuration settings. See `routing_config` below.
         :param pulumi.Input[str] service_name: The Function Compute service name.
         :param pulumi.Input[str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
         """

@@ -358,7 +358,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BandwidthPackage(String name) {
+    public BandwidthPackage(java.lang.String name) {
         this(name, BandwidthPackageArgs.Empty);
     }
     /**
@@ -366,7 +366,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BandwidthPackage(String name, BandwidthPackageArgs args) {
+    public BandwidthPackage(java.lang.String name, BandwidthPackageArgs args) {
         this(name, args, null);
     }
     /**
@@ -375,15 +375,22 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BandwidthPackage(String name, BandwidthPackageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ga/bandwidthPackage:BandwidthPackage", name, args == null ? BandwidthPackageArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BandwidthPackage(java.lang.String name, BandwidthPackageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ga/bandwidthPackage:BandwidthPackage", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BandwidthPackage(String name, Output<String> id, @Nullable BandwidthPackageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ga/bandwidthPackage:BandwidthPackage", name, state, makeResourceOptions(options, id));
+    private BandwidthPackage(java.lang.String name, Output<java.lang.String> id, @Nullable BandwidthPackageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ga/bandwidthPackage:BandwidthPackage", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BandwidthPackageArgs makeArgs(BandwidthPackageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BandwidthPackageArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -399,7 +406,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BandwidthPackage get(String name, Output<String> id, @Nullable BandwidthPackageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BandwidthPackage get(java.lang.String name, Output<java.lang.String> id, @Nullable BandwidthPackageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BandwidthPackage(name, id, state, options);
     }
 }

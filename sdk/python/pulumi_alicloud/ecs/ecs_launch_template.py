@@ -1645,7 +1645,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -1662,7 +1662,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  key_pair_name: Optional[pulumi.Input[str]] = None,
                  launch_template_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[pulumi.InputType['EcsLaunchTemplateNetworkInterfacesArgs']]] = None,
+                 network_interfaces: Optional[pulumi.Input[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict']]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -1676,7 +1676,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  spot_duration: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
-                 system_disk: Optional[pulumi.Input[pulumi.InputType['EcsLaunchTemplateSystemDiskArgs']]] = None,
+                 system_disk: Optional[pulumi.Input[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict']]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
@@ -1741,13 +1741,13 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             spot_price_limit=5,
             spot_strategy="SpotWithPriceLimit",
             security_group_ids=[default_security_group.id],
-            system_disk=alicloud.ecs.EcsLaunchTemplateSystemDiskArgs(
-                category="cloud_ssd",
-                description="Test For Terraform",
-                name="terraform-example",
-                size=40,
-                delete_with_instance=False,
-            ),
+            system_disk={
+                "category": "cloud_ssd",
+                "description": "Test For Terraform",
+                "name": "terraform-example",
+                "size": 40,
+                "delete_with_instance": False,
+            },
             user_data="xxxxxxx",
             vswitch_id=default_switch.id,
             vpc_id=default_network.id,
@@ -1756,32 +1756,32 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                 "Create": "Terraform",
                 "For": "example",
             },
-            network_interfaces=alicloud.ecs.EcsLaunchTemplateNetworkInterfacesArgs(
-                name="eth0",
-                description="hello1",
-                primary_ip="10.0.0.2",
-                security_group_id=default_security_group.id,
-                vswitch_id=default_switch.id,
-            ),
+            network_interfaces={
+                "name": "eth0",
+                "description": "hello1",
+                "primary_ip": "10.0.0.2",
+                "security_group_id": default_security_group.id,
+                "vswitch_id": default_switch.id,
+            },
             data_disks=[
-                alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
-                    name="disk1",
-                    description="description",
-                    delete_with_instance=True,
-                    category="cloud",
-                    encrypted=False,
-                    performance_level="PL0",
-                    size=20,
-                ),
-                alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
-                    name="disk2",
-                    description="description2",
-                    delete_with_instance=True,
-                    category="cloud",
-                    encrypted=False,
-                    performance_level="PL0",
-                    size=20,
-                ),
+                {
+                    "name": "disk1",
+                    "description": "description",
+                    "delete_with_instance": True,
+                    "category": "cloud",
+                    "encrypted": False,
+                    "performance_level": "PL0",
+                    "size": 20,
+                },
+                {
+                    "name": "disk2",
+                    "description": "description2",
+                    "delete_with_instance": True,
+                    "category": "cloud",
+                    "encrypted": False,
+                    "performance_level": "PL0",
+                    "size": 20,
+                },
             ])
         ```
 
@@ -1798,7 +1798,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
@@ -1817,7 +1817,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
         :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
-        :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
+        :param pulumi.Input[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
@@ -1833,7 +1833,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] spot_duration: The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
-        :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateSystemDiskArgs']] system_disk: The System Disk. See `system_disk` below.
+        :param pulumi.Input[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict']] system_disk: The System Disk. See `system_disk` below.
         :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
@@ -1906,13 +1906,13 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             spot_price_limit=5,
             spot_strategy="SpotWithPriceLimit",
             security_group_ids=[default_security_group.id],
-            system_disk=alicloud.ecs.EcsLaunchTemplateSystemDiskArgs(
-                category="cloud_ssd",
-                description="Test For Terraform",
-                name="terraform-example",
-                size=40,
-                delete_with_instance=False,
-            ),
+            system_disk={
+                "category": "cloud_ssd",
+                "description": "Test For Terraform",
+                "name": "terraform-example",
+                "size": 40,
+                "delete_with_instance": False,
+            },
             user_data="xxxxxxx",
             vswitch_id=default_switch.id,
             vpc_id=default_network.id,
@@ -1921,32 +1921,32 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                 "Create": "Terraform",
                 "For": "example",
             },
-            network_interfaces=alicloud.ecs.EcsLaunchTemplateNetworkInterfacesArgs(
-                name="eth0",
-                description="hello1",
-                primary_ip="10.0.0.2",
-                security_group_id=default_security_group.id,
-                vswitch_id=default_switch.id,
-            ),
+            network_interfaces={
+                "name": "eth0",
+                "description": "hello1",
+                "primary_ip": "10.0.0.2",
+                "security_group_id": default_security_group.id,
+                "vswitch_id": default_switch.id,
+            },
             data_disks=[
-                alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
-                    name="disk1",
-                    description="description",
-                    delete_with_instance=True,
-                    category="cloud",
-                    encrypted=False,
-                    performance_level="PL0",
-                    size=20,
-                ),
-                alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
-                    name="disk2",
-                    description="description2",
-                    delete_with_instance=True,
-                    category="cloud",
-                    encrypted=False,
-                    performance_level="PL0",
-                    size=20,
-                ),
+                {
+                    "name": "disk1",
+                    "description": "description",
+                    "delete_with_instance": True,
+                    "category": "cloud",
+                    "encrypted": False,
+                    "performance_level": "PL0",
+                    "size": 20,
+                },
+                {
+                    "name": "disk2",
+                    "description": "description2",
+                    "delete_with_instance": True,
+                    "category": "cloud",
+                    "encrypted": False,
+                    "performance_level": "PL0",
+                    "size": 20,
+                },
             ])
         ```
 
@@ -1976,7 +1976,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -1993,7 +1993,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  key_pair_name: Optional[pulumi.Input[str]] = None,
                  launch_template_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[pulumi.InputType['EcsLaunchTemplateNetworkInterfacesArgs']]] = None,
+                 network_interfaces: Optional[pulumi.Input[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict']]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -2007,7 +2007,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  spot_duration: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
-                 system_disk: Optional[pulumi.Input[pulumi.InputType['EcsLaunchTemplateSystemDiskArgs']]] = None,
+                 system_disk: Optional[pulumi.Input[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict']]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
@@ -2091,7 +2091,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             auto_release_time: Optional[pulumi.Input[str]] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
-            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]]] = None,
+            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]]] = None,
             deployment_set_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -2108,7 +2108,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             key_pair_name: Optional[pulumi.Input[str]] = None,
             launch_template_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_interfaces: Optional[pulumi.Input[pulumi.InputType['EcsLaunchTemplateNetworkInterfacesArgs']]] = None,
+            network_interfaces: Optional[pulumi.Input[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict']]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
             password_inherit: Optional[pulumi.Input[bool]] = None,
             period: Optional[pulumi.Input[int]] = None,
@@ -2122,7 +2122,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             spot_duration: Optional[pulumi.Input[str]] = None,
             spot_price_limit: Optional[pulumi.Input[float]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
-            system_disk: Optional[pulumi.Input[pulumi.InputType['EcsLaunchTemplateSystemDiskArgs']]] = None,
+            system_disk: Optional[pulumi.Input[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict']]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
             system_disk_description: Optional[pulumi.Input[str]] = None,
             system_disk_name: Optional[pulumi.Input[str]] = None,
@@ -2146,7 +2146,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internet_charge_type` is set to `PrePaid`.
         :param pulumi.Input[int] auto_renew_period: The auto-renewal period of the instance. Valid values when `period_unit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsLaunchTemplateDataDiskArgs', 'EcsLaunchTemplateDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
@@ -2165,7 +2165,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
         :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
-        :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
+        :param pulumi.Input[Union['EcsLaunchTemplateNetworkInterfacesArgs', 'EcsLaunchTemplateNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
@@ -2181,7 +2181,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] spot_duration: The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
-        :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateSystemDiskArgs']] system_disk: The System Disk. See `system_disk` below.
+        :param pulumi.Input[Union['EcsLaunchTemplateSystemDiskArgs', 'EcsLaunchTemplateSystemDiskArgsDict']] system_disk: The System Disk. See `system_disk` below.
         :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.

@@ -314,7 +314,7 @@ class VscMountPoint(pulumi.CustomResource):
             alias_prefix: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             file_system_id: Optional[pulumi.Input[str]] = None,
-            instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VscMountPointInstanceArgs']]]]] = None,
+            instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VscMountPointInstanceArgs', 'VscMountPointInstanceArgsDict']]]]] = None,
             mount_point_id: Optional[pulumi.Input[str]] = None) -> 'VscMountPoint':
         """
         Get an existing VscMountPoint resource's state with the given name, id, and optional extra
@@ -326,7 +326,7 @@ class VscMountPoint(pulumi.CustomResource):
         :param pulumi.Input[str] alias_prefix: Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
         :param pulumi.Input[str] description: The description of the Mount point.  The length is 0 to 100 characters.
         :param pulumi.Input[str] file_system_id: The ID of the HDFS file system resource associated with the VSC mount point.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VscMountPointInstanceArgs']]]] instances: The collection of ECS instances on which the HDFS file system is mounted.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VscMountPointInstanceArgs', 'VscMountPointInstanceArgsDict']]]] instances: The collection of ECS instances on which the HDFS file system is mounted.
         :param pulumi.Input[str] mount_point_id: VSC mount point ID, which is the unique identifier of the vsc mount point and is used to access the associated HDFS file system.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

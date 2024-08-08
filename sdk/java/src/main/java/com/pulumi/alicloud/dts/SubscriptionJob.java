@@ -738,7 +738,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SubscriptionJob(String name) {
+    public SubscriptionJob(java.lang.String name) {
         this(name, SubscriptionJobArgs.Empty);
     }
     /**
@@ -746,7 +746,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SubscriptionJob(String name, SubscriptionJobArgs args) {
+    public SubscriptionJob(java.lang.String name, SubscriptionJobArgs args) {
         this(name, args, null);
     }
     /**
@@ -755,15 +755,22 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SubscriptionJob(String name, SubscriptionJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dts/subscriptionJob:SubscriptionJob", name, args == null ? SubscriptionJobArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SubscriptionJob(java.lang.String name, SubscriptionJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dts/subscriptionJob:SubscriptionJob", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SubscriptionJob(String name, Output<String> id, @Nullable SubscriptionJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dts/subscriptionJob:SubscriptionJob", name, state, makeResourceOptions(options, id));
+    private SubscriptionJob(java.lang.String name, Output<java.lang.String> id, @Nullable SubscriptionJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dts/subscriptionJob:SubscriptionJob", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SubscriptionJobArgs makeArgs(SubscriptionJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SubscriptionJobArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -779,7 +786,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SubscriptionJob get(String name, Output<String> id, @Nullable SubscriptionJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SubscriptionJob get(java.lang.String name, Output<java.lang.String> id, @Nullable SubscriptionJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SubscriptionJob(name, id, state, options);
     }
 }

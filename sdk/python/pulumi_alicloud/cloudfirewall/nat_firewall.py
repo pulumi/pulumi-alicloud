@@ -416,7 +416,7 @@ class NatFirewall(pulumi.CustomResource):
                  firewall_switch: Optional[pulumi.Input[str]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  nat_gateway_id: Optional[pulumi.Input[str]] = None,
-                 nat_route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatFirewallNatRouteEntryListArgs']]]]] = None,
+                 nat_route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]]] = None,
                  proxy_name: Optional[pulumi.Input[str]] = None,
                  region_no: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -474,12 +474,12 @@ class NatFirewall(pulumi.CustomResource):
             source_vswitch_id=defaultp4_o7qi.id)
         default_nat_firewall = alicloud.cloudfirewall.NatFirewall("default",
             nat_gateway_id=default2i_r_zp_c.id,
-            nat_route_entry_lists=[alicloud.cloudfirewall.NatFirewallNatRouteEntryListArgs(
-                nexthop_type="NatGateway",
-                route_table_id=defaultik_z0g_d.route_table_id,
-                nexthop_id=default2i_r_zp_c.id,
-                destination_cidr="0.0.0.0/0",
-            )],
+            nat_route_entry_lists=[{
+                "nexthop_type": "NatGateway",
+                "route_table_id": defaultik_z0g_d.route_table_id,
+                "nexthop_id": default2i_r_zp_c.id,
+                "destination_cidr": "0.0.0.0/0",
+            }],
             firewall_switch="close",
             vswitch_auto="true",
             status="closed",
@@ -505,7 +505,7 @@ class NatFirewall(pulumi.CustomResource):
         :param pulumi.Input[str] firewall_switch: Safety protection switch. Value:-**open**: open-**close**: close.
         :param pulumi.Input[str] lang: Lang.
         :param pulumi.Input[str] nat_gateway_id: NAT gateway ID.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatFirewallNatRouteEntryListArgs']]]] nat_route_entry_lists: The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]] nat_route_entry_lists: The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
         :param pulumi.Input[str] proxy_name: NAT firewall name.
         :param pulumi.Input[str] region_no: Region.
         :param pulumi.Input[str] status: The status of the resource.
@@ -569,12 +569,12 @@ class NatFirewall(pulumi.CustomResource):
             source_vswitch_id=defaultp4_o7qi.id)
         default_nat_firewall = alicloud.cloudfirewall.NatFirewall("default",
             nat_gateway_id=default2i_r_zp_c.id,
-            nat_route_entry_lists=[alicloud.cloudfirewall.NatFirewallNatRouteEntryListArgs(
-                nexthop_type="NatGateway",
-                route_table_id=defaultik_z0g_d.route_table_id,
-                nexthop_id=default2i_r_zp_c.id,
-                destination_cidr="0.0.0.0/0",
-            )],
+            nat_route_entry_lists=[{
+                "nexthop_type": "NatGateway",
+                "route_table_id": defaultik_z0g_d.route_table_id,
+                "nexthop_id": default2i_r_zp_c.id,
+                "destination_cidr": "0.0.0.0/0",
+            }],
             firewall_switch="close",
             vswitch_auto="true",
             status="closed",
@@ -613,7 +613,7 @@ class NatFirewall(pulumi.CustomResource):
                  firewall_switch: Optional[pulumi.Input[str]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  nat_gateway_id: Optional[pulumi.Input[str]] = None,
-                 nat_route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatFirewallNatRouteEntryListArgs']]]]] = None,
+                 nat_route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]]] = None,
                  proxy_name: Optional[pulumi.Input[str]] = None,
                  region_no: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -666,7 +666,7 @@ class NatFirewall(pulumi.CustomResource):
             firewall_switch: Optional[pulumi.Input[str]] = None,
             lang: Optional[pulumi.Input[str]] = None,
             nat_gateway_id: Optional[pulumi.Input[str]] = None,
-            nat_route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatFirewallNatRouteEntryListArgs']]]]] = None,
+            nat_route_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]]] = None,
             proxy_name: Optional[pulumi.Input[str]] = None,
             region_no: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -685,7 +685,7 @@ class NatFirewall(pulumi.CustomResource):
         :param pulumi.Input[str] firewall_switch: Safety protection switch. Value:-**open**: open-**close**: close.
         :param pulumi.Input[str] lang: Lang.
         :param pulumi.Input[str] nat_gateway_id: NAT gateway ID.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NatFirewallNatRouteEntryListArgs']]]] nat_route_entry_lists: The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NatFirewallNatRouteEntryListArgs', 'NatFirewallNatRouteEntryListArgsDict']]]] nat_route_entry_lists: The list of routes to be switched by the NAT gateway. See `nat_route_entry_list` below.
         :param pulumi.Input[str] proxy_name: NAT firewall name.
         :param pulumi.Input[str] region_no: Region.
         :param pulumi.Input[str] status: The status of the resource.

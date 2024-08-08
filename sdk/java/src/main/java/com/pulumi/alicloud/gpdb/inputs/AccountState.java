@@ -62,14 +62,14 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!{@literal @} # $ % ^ &amp; * ( ) _ + - =`.
+     * The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! {@literal @} # $ % ^ &amp; * ( ) _ + - =`.
      * 
      */
     @Import(name="accountPassword")
     private @Nullable Output<String> accountPassword;
 
     /**
-     * @return The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!{@literal @} # $ % ^ &amp; * ( ) _ + - =`.
+     * @return The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! {@literal @} # $ % ^ &amp; * ( ) _ + - =`.
      * 
      */
     public Optional<Output<String>> accountPassword() {
@@ -193,7 +193,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!{@literal @} # $ % ^ &amp; * ( ) _ + - =`.
+         * @param accountPassword The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! {@literal @} # $ % ^ &amp; * ( ) _ + - =`.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountPassword The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!{@literal @} # $ % ^ &amp; * ( ) _ + - =`.
+         * @param accountPassword The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! {@literal @} # $ % ^ &amp; * ( ) _ + - =`.
          * 
          * @return builder
          * 

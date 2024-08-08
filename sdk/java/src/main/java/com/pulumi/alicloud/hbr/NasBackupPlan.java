@@ -297,7 +297,7 @@ public class NasBackupPlan extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NasBackupPlan(String name) {
+    public NasBackupPlan(java.lang.String name) {
         this(name, NasBackupPlanArgs.Empty);
     }
     /**
@@ -305,7 +305,7 @@ public class NasBackupPlan extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NasBackupPlan(String name, NasBackupPlanArgs args) {
+    public NasBackupPlan(java.lang.String name, NasBackupPlanArgs args) {
         this(name, args, null);
     }
     /**
@@ -314,15 +314,22 @@ public class NasBackupPlan extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NasBackupPlan(String name, NasBackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/nasBackupPlan:NasBackupPlan", name, args == null ? NasBackupPlanArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NasBackupPlan(java.lang.String name, NasBackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/nasBackupPlan:NasBackupPlan", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NasBackupPlan(String name, Output<String> id, @Nullable NasBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/nasBackupPlan:NasBackupPlan", name, state, makeResourceOptions(options, id));
+    private NasBackupPlan(java.lang.String name, Output<java.lang.String> id, @Nullable NasBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/nasBackupPlan:NasBackupPlan", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NasBackupPlanArgs makeArgs(NasBackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NasBackupPlanArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -338,7 +345,7 @@ public class NasBackupPlan extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NasBackupPlan get(String name, Output<String> id, @Nullable NasBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NasBackupPlan get(java.lang.String name, Output<java.lang.String> id, @Nullable NasBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NasBackupPlan(name, id, state, options);
     }
 }

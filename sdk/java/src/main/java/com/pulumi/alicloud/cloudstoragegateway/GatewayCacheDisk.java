@@ -219,7 +219,7 @@ public class GatewayCacheDisk extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GatewayCacheDisk(String name) {
+    public GatewayCacheDisk(java.lang.String name) {
         this(name, GatewayCacheDiskArgs.Empty);
     }
     /**
@@ -227,7 +227,7 @@ public class GatewayCacheDisk extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GatewayCacheDisk(String name, GatewayCacheDiskArgs args) {
+    public GatewayCacheDisk(java.lang.String name, GatewayCacheDiskArgs args) {
         this(name, args, null);
     }
     /**
@@ -236,15 +236,22 @@ public class GatewayCacheDisk extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GatewayCacheDisk(String name, GatewayCacheDiskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk", name, args == null ? GatewayCacheDiskArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GatewayCacheDisk(java.lang.String name, GatewayCacheDiskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GatewayCacheDisk(String name, Output<String> id, @Nullable GatewayCacheDiskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk", name, state, makeResourceOptions(options, id));
+    private GatewayCacheDisk(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayCacheDiskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudstoragegateway/gatewayCacheDisk:GatewayCacheDisk", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GatewayCacheDiskArgs makeArgs(GatewayCacheDiskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GatewayCacheDiskArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -260,7 +267,7 @@ public class GatewayCacheDisk extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GatewayCacheDisk get(String name, Output<String> id, @Nullable GatewayCacheDiskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GatewayCacheDisk get(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayCacheDiskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GatewayCacheDisk(name, id, state, options);
     }
 }

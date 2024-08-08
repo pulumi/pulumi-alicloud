@@ -281,8 +281,8 @@ class Rule(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  listener_id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleActionArgs']]]]] = None,
-                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleConditionArgs']]]]] = None,
+                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict']]]]] = None,
+                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict']]]]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -310,8 +310,8 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[str] listener_id: The ID of the listener to which the forwarding rule belongs.
         :param pulumi.Input[int] priority: The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleActionArgs']]]] rule_actions: The actions of the forwarding rules. See `rule_actions` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleConditionArgs']]]] rule_conditions: The conditions of the forwarding rule. See `rule_conditions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict']]]] rule_actions: The actions of the forwarding rules. See `rule_actions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict']]]] rule_conditions: The conditions of the forwarding rule. See `rule_conditions` below.
         :param pulumi.Input[str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         """
         ...
@@ -356,8 +356,8 @@ class Rule(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  listener_id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleActionArgs']]]]] = None,
-                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleConditionArgs']]]]] = None,
+                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict']]]]] = None,
+                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict']]]]] = None,
                  rule_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -400,8 +400,8 @@ class Rule(pulumi.CustomResource):
             dry_run: Optional[pulumi.Input[bool]] = None,
             listener_id: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
-            rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleActionArgs']]]]] = None,
-            rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleConditionArgs']]]]] = None,
+            rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict']]]]] = None,
+            rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict']]]]] = None,
             rule_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'Rule':
         """
@@ -417,8 +417,8 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[str] listener_id: The ID of the listener to which the forwarding rule belongs.
         :param pulumi.Input[int] priority: The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleActionArgs']]]] rule_actions: The actions of the forwarding rules. See `rule_actions` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuleRuleConditionArgs']]]] rule_conditions: The conditions of the forwarding rule. See `rule_conditions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleActionArgs', 'RuleRuleActionArgsDict']]]] rule_actions: The actions of the forwarding rules. See `rule_actions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleRuleConditionArgs', 'RuleRuleConditionArgsDict']]]] rule_conditions: The conditions of the forwarding rule. See `rule_conditions` below.
         :param pulumi.Input[str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] status: The status of the resource.
         """

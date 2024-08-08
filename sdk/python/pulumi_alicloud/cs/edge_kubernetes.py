@@ -1491,7 +1491,7 @@ class EdgeKubernetes(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesAddonArgs']]]]] = None,
+                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesAddonArgs', 'EdgeKubernetesAddonArgsDict']]]]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
@@ -1504,7 +1504,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                  key_name: Optional[pulumi.Input[str]] = None,
                  kube_config: Optional[pulumi.Input[str]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['EdgeKubernetesLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['EdgeKubernetesLogConfigArgs', 'EdgeKubernetesLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
@@ -1515,14 +1515,14 @@ class EdgeKubernetes(pulumi.CustomResource):
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 runtime: Optional[pulumi.Input[pulumi.InputType['EdgeKubernetesRuntimeArgs']]] = None,
+                 runtime: Optional[pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  slb_internet_enabled: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
-                 worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]]] = None,
+                 worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesWorkerDataDiskArgs', 'EdgeKubernetesWorkerDataDiskArgsDict']]]]] = None,
                  worker_disk_category: Optional[pulumi.Input[str]] = None,
                  worker_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  worker_disk_size: Optional[pulumi.Input[int]] = None,
@@ -1592,11 +1592,11 @@ class EdgeKubernetes(pulumi.CustomResource):
             install_cloud_monitor=True,
             slb_internet_enabled=True,
             is_enterprise_security_group=True,
-            worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
-                category="cloud_ssd",
-                size="200",
-                encrypted="false",
-            )])
+            worker_data_disks=[{
+                "category": "cloud_ssd",
+                "size": "200",
+                "encrypted": "false",
+            }])
         ```
 
         You could create a professional kubernetes edge cluster now.
@@ -1638,11 +1638,11 @@ class EdgeKubernetes(pulumi.CustomResource):
             install_cloud_monitor=True,
             slb_internet_enabled=True,
             is_enterprise_security_group=True,
-            worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
-                category="cloud_ssd",
-                size="200",
-                encrypted="false",
-            )])
+            worker_data_disks=[{
+                "category": "cloud_ssd",
+                "size": "200",
+                "encrypted": "false",
+            }])
         ```
 
         ## Import
@@ -1655,7 +1655,7 @@ class EdgeKubernetes(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesAddonArgs']]]] addons: The addon you want to install in cluster. See `addons` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesAddonArgs', 'EdgeKubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` below.
         :param pulumi.Input[str] availability_zone: The ID of availability zone.
                
                *Network params*
@@ -1677,7 +1677,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
                
                *Worker params*
-        :param pulumi.Input[pulumi.InputType['EdgeKubernetesLogConfigArgs']] log_config: A list of one element containing information about the associated log store. See `log_config` below.
+        :param pulumi.Input[Union['EdgeKubernetesLogConfigArgs', 'EdgeKubernetesLogConfigArgsDict']] log_config: A list of one element containing information about the associated log store. See `log_config` below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
         :param pulumi.Input[int] node_cidr_mask: The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
@@ -1686,14 +1686,14 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['EdgeKubernetesRuntimeArgs']] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+        :param pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict']] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
         :param pulumi.Input[Mapping[str, Any]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work node.
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesWorkerDataDiskArgs', 'EdgeKubernetesWorkerDataDiskArgsDict']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
         :param pulumi.Input[str] worker_disk_performance_level: Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
@@ -1773,11 +1773,11 @@ class EdgeKubernetes(pulumi.CustomResource):
             install_cloud_monitor=True,
             slb_internet_enabled=True,
             is_enterprise_security_group=True,
-            worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
-                category="cloud_ssd",
-                size="200",
-                encrypted="false",
-            )])
+            worker_data_disks=[{
+                "category": "cloud_ssd",
+                "size": "200",
+                "encrypted": "false",
+            }])
         ```
 
         You could create a professional kubernetes edge cluster now.
@@ -1819,11 +1819,11 @@ class EdgeKubernetes(pulumi.CustomResource):
             install_cloud_monitor=True,
             slb_internet_enabled=True,
             is_enterprise_security_group=True,
-            worker_data_disks=[alicloud.cs.EdgeKubernetesWorkerDataDiskArgs(
-                category="cloud_ssd",
-                size="200",
-                encrypted="false",
-            )])
+            worker_data_disks=[{
+                "category": "cloud_ssd",
+                "size": "200",
+                "encrypted": "false",
+            }])
         ```
 
         ## Import
@@ -1849,7 +1849,7 @@ class EdgeKubernetes(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesAddonArgs']]]]] = None,
+                 addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesAddonArgs', 'EdgeKubernetesAddonArgsDict']]]]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
@@ -1862,7 +1862,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                  key_name: Optional[pulumi.Input[str]] = None,
                  kube_config: Optional[pulumi.Input[str]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['EdgeKubernetesLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['EdgeKubernetesLogConfigArgs', 'EdgeKubernetesLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
@@ -1873,14 +1873,14 @@ class EdgeKubernetes(pulumi.CustomResource):
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 runtime: Optional[pulumi.Input[pulumi.InputType['EdgeKubernetesRuntimeArgs']]] = None,
+                 runtime: Optional[pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict']]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  service_cidr: Optional[pulumi.Input[str]] = None,
                  slb_internet_enabled: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
-                 worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]]] = None,
+                 worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesWorkerDataDiskArgs', 'EdgeKubernetesWorkerDataDiskArgsDict']]]]] = None,
                  worker_disk_category: Optional[pulumi.Input[str]] = None,
                  worker_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  worker_disk_size: Optional[pulumi.Input[int]] = None,
@@ -1964,14 +1964,14 @@ class EdgeKubernetes(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesAddonArgs']]]]] = None,
+            addons: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesAddonArgs', 'EdgeKubernetesAddonArgsDict']]]]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
-            certificate_authority: Optional[pulumi.Input[pulumi.InputType['EdgeKubernetesCertificateAuthorityArgs']]] = None,
+            certificate_authority: Optional[pulumi.Input[Union['EdgeKubernetesCertificateAuthorityArgs', 'EdgeKubernetesCertificateAuthorityArgsDict']]] = None,
             client_cert: Optional[pulumi.Input[str]] = None,
             client_key: Optional[pulumi.Input[str]] = None,
             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
             cluster_spec: Optional[pulumi.Input[str]] = None,
-            connections: Optional[pulumi.Input[pulumi.InputType['EdgeKubernetesConnectionsArgs']]] = None,
+            connections: Optional[pulumi.Input[Union['EdgeKubernetesConnectionsArgs', 'EdgeKubernetesConnectionsArgsDict']]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             force_update: Optional[pulumi.Input[bool]] = None,
             install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
@@ -1979,7 +1979,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             key_name: Optional[pulumi.Input[str]] = None,
             kube_config: Optional[pulumi.Input[str]] = None,
             load_balancer_spec: Optional[pulumi.Input[str]] = None,
-            log_config: Optional[pulumi.Input[pulumi.InputType['EdgeKubernetesLogConfigArgs']]] = None,
+            log_config: Optional[pulumi.Input[Union['EdgeKubernetesLogConfigArgs', 'EdgeKubernetesLogConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
             nat_gateway_id: Optional[pulumi.Input[str]] = None,
@@ -1991,7 +1991,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            runtime: Optional[pulumi.Input[pulumi.InputType['EdgeKubernetesRuntimeArgs']]] = None,
+            runtime: Optional[pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict']]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             service_cidr: Optional[pulumi.Input[str]] = None,
             slb_internet: Optional[pulumi.Input[str]] = None,
@@ -2001,14 +2001,14 @@ class EdgeKubernetes(pulumi.CustomResource):
             user_data: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
-            worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]]] = None,
+            worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesWorkerDataDiskArgs', 'EdgeKubernetesWorkerDataDiskArgsDict']]]]] = None,
             worker_disk_category: Optional[pulumi.Input[str]] = None,
             worker_disk_performance_level: Optional[pulumi.Input[str]] = None,
             worker_disk_size: Optional[pulumi.Input[int]] = None,
             worker_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
             worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
             worker_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            worker_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerNodeArgs']]]]] = None,
+            worker_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesWorkerNodeArgs', 'EdgeKubernetesWorkerNodeArgsDict']]]]] = None,
             worker_number: Optional[pulumi.Input[int]] = None,
             worker_ram_role_name: Optional[pulumi.Input[str]] = None,
             worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'EdgeKubernetes':
@@ -2019,11 +2019,11 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesAddonArgs']]]] addons: The addon you want to install in cluster. See `addons` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesAddonArgs', 'EdgeKubernetesAddonArgsDict']]]] addons: The addon you want to install in cluster. See `addons` below.
         :param pulumi.Input[str] availability_zone: The ID of availability zone.
                
                *Network params*
-        :param pulumi.Input[pulumi.InputType['EdgeKubernetesCertificateAuthorityArgs']] certificate_authority: (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
+        :param pulumi.Input[Union['EdgeKubernetesCertificateAuthorityArgs', 'EdgeKubernetesCertificateAuthorityArgsDict']] certificate_authority: (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
@@ -2032,7 +2032,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
                * ack.standard : Standard edge clusters.
                * ack.pro.small : Professional edge clusters.
-        :param pulumi.Input[pulumi.InputType['EdgeKubernetesConnectionsArgs']] connections: (Map) Map of kubernetes cluster connection information.
+        :param pulumi.Input[Union['EdgeKubernetesConnectionsArgs', 'EdgeKubernetesConnectionsArgsDict']] connections: (Map) Map of kubernetes cluster connection information.
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`.
@@ -2043,7 +2043,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
                
                *Worker params*
-        :param pulumi.Input[pulumi.InputType['EdgeKubernetesLogConfigArgs']] log_config: A list of one element containing information about the associated log store. See `log_config` below.
+        :param pulumi.Input[Union['EdgeKubernetesLogConfigArgs', 'EdgeKubernetesLogConfigArgsDict']] log_config: A list of one element containing information about the associated log store. See `log_config` below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
@@ -2053,7 +2053,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['EdgeKubernetesRuntimeArgs']] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
+        :param pulumi.Input[Union['EdgeKubernetesRuntimeArgs', 'EdgeKubernetesRuntimeArgsDict']] runtime: The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
         :param pulumi.Input[str] slb_internet: The public ip of load balancer.
@@ -2063,7 +2063,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesWorkerDataDiskArgs', 'EdgeKubernetesWorkerDataDiskArgsDict']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
         :param pulumi.Input[str] worker_disk_performance_level: Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         :param pulumi.Input[int] worker_disk_size: The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
@@ -2074,7 +2074,7 @@ class EdgeKubernetes(pulumi.CustomResource):
                You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kube_config.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EdgeKubernetesWorkerNodeArgs', 'EdgeKubernetesWorkerNodeArgsDict']]]] worker_nodes: List of cluster worker nodes.
         :param pulumi.Input[int] worker_number: The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         :param pulumi.Input[str] worker_ram_role_name: The RamRole Name attached to worker node.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by workers.

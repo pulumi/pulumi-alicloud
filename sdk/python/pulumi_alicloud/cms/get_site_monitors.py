@@ -131,10 +131,10 @@ def get_site_monitors(ids: Optional[Sequence[str]] = None,
         task_name=f"terraform-example-{default_integer['result']}",
         task_type="HTTP",
         interval=5,
-        isp_cities=[alicloud.cms.SiteMonitorIspCityArgs(
-            city="546",
-            isp="465",
-        )],
+        isp_cities=[{
+            "city": "546",
+            "isp": "465",
+        }],
         options_json=\"\"\"{
         "http_method": "get",
         "waitTime_after_completion": null,
@@ -209,10 +209,10 @@ def get_site_monitors_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
         task_name=f"terraform-example-{default_integer['result']}",
         task_type="HTTP",
         interval=5,
-        isp_cities=[alicloud.cms.SiteMonitorIspCityArgs(
-            city="546",
-            isp="465",
-        )],
+        isp_cities=[{
+            "city": "546",
+            "isp": "465",
+        }],
         options_json=\"\"\"{
         "http_method": "get",
         "waitTime_after_completion": null,

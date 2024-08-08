@@ -169,7 +169,7 @@ public class EndpointAclPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EndpointAclPolicy(String name) {
+    public EndpointAclPolicy(java.lang.String name) {
         this(name, EndpointAclPolicyArgs.Empty);
     }
     /**
@@ -177,7 +177,7 @@ public class EndpointAclPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EndpointAclPolicy(String name, EndpointAclPolicyArgs args) {
+    public EndpointAclPolicy(java.lang.String name, EndpointAclPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -186,15 +186,22 @@ public class EndpointAclPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EndpointAclPolicy(String name, EndpointAclPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cr/endpointAclPolicy:EndpointAclPolicy", name, args == null ? EndpointAclPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EndpointAclPolicy(java.lang.String name, EndpointAclPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cr/endpointAclPolicy:EndpointAclPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EndpointAclPolicy(String name, Output<String> id, @Nullable EndpointAclPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cr/endpointAclPolicy:EndpointAclPolicy", name, state, makeResourceOptions(options, id));
+    private EndpointAclPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable EndpointAclPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cr/endpointAclPolicy:EndpointAclPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EndpointAclPolicyArgs makeArgs(EndpointAclPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EndpointAclPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -210,7 +217,7 @@ public class EndpointAclPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EndpointAclPolicy get(String name, Output<String> id, @Nullable EndpointAclPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EndpointAclPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable EndpointAclPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EndpointAclPolicy(name, id, state, options);
     }
 }

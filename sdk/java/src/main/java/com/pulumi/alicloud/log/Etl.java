@@ -472,7 +472,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Etl(String name) {
+    public Etl(java.lang.String name) {
         this(name, EtlArgs.Empty);
     }
     /**
@@ -480,7 +480,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Etl(String name, EtlArgs args) {
+    public Etl(java.lang.String name, EtlArgs args) {
         this(name, args, null);
     }
     /**
@@ -489,15 +489,22 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Etl(String name, EtlArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/etl:Etl", name, args == null ? EtlArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Etl(java.lang.String name, EtlArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/etl:Etl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Etl(String name, Output<String> id, @Nullable EtlState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/etl:Etl", name, state, makeResourceOptions(options, id));
+    private Etl(java.lang.String name, Output<java.lang.String> id, @Nullable EtlState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/etl:Etl", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EtlArgs makeArgs(EtlArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EtlArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -517,7 +524,7 @@ public class Etl extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Etl get(String name, Output<String> id, @Nullable EtlState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Etl get(java.lang.String name, Output<java.lang.String> id, @Nullable EtlState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Etl(name, id, state, options);
     }
 }

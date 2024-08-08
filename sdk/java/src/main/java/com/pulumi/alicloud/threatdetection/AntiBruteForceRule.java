@@ -178,7 +178,7 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AntiBruteForceRule(String name) {
+    public AntiBruteForceRule(java.lang.String name) {
         this(name, AntiBruteForceRuleArgs.Empty);
     }
     /**
@@ -186,7 +186,7 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AntiBruteForceRule(String name, AntiBruteForceRuleArgs args) {
+    public AntiBruteForceRule(java.lang.String name, AntiBruteForceRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -195,15 +195,22 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AntiBruteForceRule(String name, AntiBruteForceRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule", name, args == null ? AntiBruteForceRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AntiBruteForceRule(java.lang.String name, AntiBruteForceRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AntiBruteForceRule(String name, Output<String> id, @Nullable AntiBruteForceRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule", name, state, makeResourceOptions(options, id));
+    private AntiBruteForceRule(java.lang.String name, Output<java.lang.String> id, @Nullable AntiBruteForceRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/antiBruteForceRule:AntiBruteForceRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AntiBruteForceRuleArgs makeArgs(AntiBruteForceRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AntiBruteForceRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -219,7 +226,7 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AntiBruteForceRule get(String name, Output<String> id, @Nullable AntiBruteForceRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AntiBruteForceRule get(java.lang.String name, Output<java.lang.String> id, @Nullable AntiBruteForceRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AntiBruteForceRule(name, id, state, options);
     }
 }

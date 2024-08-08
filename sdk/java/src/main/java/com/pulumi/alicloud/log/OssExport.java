@@ -474,7 +474,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OssExport(String name) {
+    public OssExport(java.lang.String name) {
         this(name, OssExportArgs.Empty);
     }
     /**
@@ -482,7 +482,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OssExport(String name, OssExportArgs args) {
+    public OssExport(java.lang.String name, OssExportArgs args) {
         this(name, args, null);
     }
     /**
@@ -491,15 +491,22 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OssExport(String name, OssExportArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/ossExport:OssExport", name, args == null ? OssExportArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public OssExport(java.lang.String name, OssExportArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/ossExport:OssExport", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OssExport(String name, Output<String> id, @Nullable OssExportState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/ossExport:OssExport", name, state, makeResourceOptions(options, id));
+    private OssExport(java.lang.String name, Output<java.lang.String> id, @Nullable OssExportState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/ossExport:OssExport", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static OssExportArgs makeArgs(OssExportArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OssExportArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -515,7 +522,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OssExport get(String name, Output<String> id, @Nullable OssExportState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OssExport get(java.lang.String name, Output<java.lang.String> id, @Nullable OssExportState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OssExport(name, id, state, options);
     }
 }

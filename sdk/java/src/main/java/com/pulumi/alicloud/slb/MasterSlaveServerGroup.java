@@ -275,7 +275,7 @@ public class MasterSlaveServerGroup extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MasterSlaveServerGroup(String name) {
+    public MasterSlaveServerGroup(java.lang.String name) {
         this(name, MasterSlaveServerGroupArgs.Empty);
     }
     /**
@@ -283,7 +283,7 @@ public class MasterSlaveServerGroup extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MasterSlaveServerGroup(String name, MasterSlaveServerGroupArgs args) {
+    public MasterSlaveServerGroup(java.lang.String name, MasterSlaveServerGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -292,15 +292,22 @@ public class MasterSlaveServerGroup extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MasterSlaveServerGroup(String name, MasterSlaveServerGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup", name, args == null ? MasterSlaveServerGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MasterSlaveServerGroup(java.lang.String name, MasterSlaveServerGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MasterSlaveServerGroup(String name, Output<String> id, @Nullable MasterSlaveServerGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup", name, state, makeResourceOptions(options, id));
+    private MasterSlaveServerGroup(java.lang.String name, Output<java.lang.String> id, @Nullable MasterSlaveServerGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:slb/masterSlaveServerGroup:MasterSlaveServerGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MasterSlaveServerGroupArgs makeArgs(MasterSlaveServerGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MasterSlaveServerGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -316,7 +323,7 @@ public class MasterSlaveServerGroup extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MasterSlaveServerGroup get(String name, Output<String> id, @Nullable MasterSlaveServerGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MasterSlaveServerGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable MasterSlaveServerGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MasterSlaveServerGroup(name, id, state, options);
     }
 }

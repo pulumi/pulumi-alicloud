@@ -336,12 +336,12 @@ class DomainNew(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cdn_type: Optional[pulumi.Input[str]] = None,
-                 certificate_config: Optional[pulumi.Input[pulumi.InputType['DomainNewCertificateConfigArgs']]] = None,
+                 certificate_config: Optional[pulumi.Input[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']]] = None,
                  check_url: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
@@ -367,13 +367,13 @@ class DomainNew(pulumi.CustomResource):
             scope="overseas",
             domain_name=f"mycdndomain-{default['result']}.alicloud-provider.cn",
             cdn_type="web",
-            sources=[alicloud.cdn.DomainNewSourceArgs(
-                type="ipaddr",
-                content="1.1.1.1",
-                priority=20,
-                port=80,
-                weight=15,
-            )])
+            sources=[{
+                "type": "ipaddr",
+                "content": "1.1.1.1",
+                "priority": 20,
+                "port": 80,
+                "weight": 15,
+            }])
         ```
 
         ## Import
@@ -387,7 +387,7 @@ class DomainNew(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
-        :param pulumi.Input[pulumi.InputType['DomainNewCertificateConfigArgs']] certificate_config: Certificate configuration. See `certificate_config` below.
+        :param pulumi.Input[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']] certificate_config: Certificate configuration. See `certificate_config` below.
         :param pulumi.Input[str] check_url: Health test URL.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
@@ -396,7 +396,7 @@ class DomainNew(pulumi.CustomResource):
                - **overseas**: Global (excluding Mainland China).
                - **global**: global.
                The default value is **domestic**.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         ...
@@ -428,13 +428,13 @@ class DomainNew(pulumi.CustomResource):
             scope="overseas",
             domain_name=f"mycdndomain-{default['result']}.alicloud-provider.cn",
             cdn_type="web",
-            sources=[alicloud.cdn.DomainNewSourceArgs(
-                type="ipaddr",
-                content="1.1.1.1",
-                priority=20,
-                port=80,
-                weight=15,
-            )])
+            sources=[{
+                "type": "ipaddr",
+                "content": "1.1.1.1",
+                "priority": 20,
+                "port": 80,
+                "weight": 15,
+            }])
         ```
 
         ## Import
@@ -461,12 +461,12 @@ class DomainNew(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cdn_type: Optional[pulumi.Input[str]] = None,
-                 certificate_config: Optional[pulumi.Input[pulumi.InputType['DomainNewCertificateConfigArgs']]] = None,
+                 certificate_config: Optional[pulumi.Input[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']]] = None,
                  check_url: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -504,13 +504,13 @@ class DomainNew(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cdn_type: Optional[pulumi.Input[str]] = None,
-            certificate_config: Optional[pulumi.Input[pulumi.InputType['DomainNewCertificateConfigArgs']]] = None,
+            certificate_config: Optional[pulumi.Input[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']]] = None,
             check_url: Optional[pulumi.Input[str]] = None,
             cname: Optional[pulumi.Input[str]] = None,
             domain_name: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             scope: Optional[pulumi.Input[str]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]]] = None,
+            sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'DomainNew':
         """
@@ -521,7 +521,7 @@ class DomainNew(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cdn_type: Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
-        :param pulumi.Input[pulumi.InputType['DomainNewCertificateConfigArgs']] certificate_config: Certificate configuration. See `certificate_config` below.
+        :param pulumi.Input[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']] certificate_config: Certificate configuration. See `certificate_config` below.
         :param pulumi.Input[str] check_url: Health test URL.
         :param pulumi.Input[str] cname: The CNAME domain name corresponding to the accelerated domain name.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -531,7 +531,7 @@ class DomainNew(pulumi.CustomResource):
                - **overseas**: Global (excluding Mainland China).
                - **global**: global.
                The default value is **domestic**.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """

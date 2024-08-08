@@ -291,9 +291,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
                  min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
                  scaling_rule_enable: Optional[pulumi.Input[bool]] = None,
-                 scaling_rule_metric: Optional[pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleMetricArgs']]] = None,
+                 scaling_rule_metric: Optional[pulumi.Input[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']]] = None,
                  scaling_rule_name: Optional[pulumi.Input[str]] = None,
-                 scaling_rule_timer: Optional[pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleTimerArgs']]] = None,
+                 scaling_rule_timer: Optional[pulumi.Input[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']]] = None,
                  scaling_rule_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -355,49 +355,49 @@ class ApplicationScalingRule(pulumi.CustomResource):
             scaling_rule_type="mix",
             min_ready_instances=3,
             min_ready_instance_ratio=-1,
-            scaling_rule_timer=alicloud.sae.ApplicationScalingRuleScalingRuleTimerArgs(
-                period="* * *",
-                schedules=[
-                    alicloud.sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs(
-                        at_time="08:00",
-                        max_replicas=10,
-                        min_replicas=3,
-                    ),
-                    alicloud.sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs(
-                        at_time="20:00",
-                        max_replicas=50,
-                        min_replicas=3,
-                    ),
+            scaling_rule_timer={
+                "period": "* * *",
+                "schedules": [
+                    {
+                        "at_time": "08:00",
+                        "max_replicas": 10,
+                        "min_replicas": 3,
+                    },
+                    {
+                        "at_time": "20:00",
+                        "max_replicas": 50,
+                        "min_replicas": 3,
+                    },
                 ],
-            ),
-            scaling_rule_metric=alicloud.sae.ApplicationScalingRuleScalingRuleMetricArgs(
-                max_replicas=50,
-                min_replicas=3,
-                metrics=[
-                    alicloud.sae.ApplicationScalingRuleScalingRuleMetricMetricArgs(
-                        metric_type="CPU",
-                        metric_target_average_utilization=20,
-                    ),
-                    alicloud.sae.ApplicationScalingRuleScalingRuleMetricMetricArgs(
-                        metric_type="MEMORY",
-                        metric_target_average_utilization=30,
-                    ),
-                    alicloud.sae.ApplicationScalingRuleScalingRuleMetricMetricArgs(
-                        metric_type="tcpActiveConn",
-                        metric_target_average_utilization=20,
-                    ),
+            },
+            scaling_rule_metric={
+                "max_replicas": 50,
+                "min_replicas": 3,
+                "metrics": [
+                    {
+                        "metric_type": "CPU",
+                        "metric_target_average_utilization": 20,
+                    },
+                    {
+                        "metric_type": "MEMORY",
+                        "metric_target_average_utilization": 30,
+                    },
+                    {
+                        "metric_type": "tcpActiveConn",
+                        "metric_target_average_utilization": 20,
+                    },
                 ],
-                scale_up_rules=alicloud.sae.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs(
-                    step=10,
-                    disabled=False,
-                    stabilization_window_seconds=0,
-                ),
-                scale_down_rules=alicloud.sae.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs(
-                    step=10,
-                    disabled=False,
-                    stabilization_window_seconds=10,
-                ),
-            ))
+                "scale_up_rules": {
+                    "step": 10,
+                    "disabled": False,
+                    "stabilization_window_seconds": 0,
+                },
+                "scale_down_rules": {
+                    "step": 10,
+                    "disabled": False,
+                    "stabilization_window_seconds": 10,
+                },
+            })
         ```
 
         ## Import
@@ -414,9 +414,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
         :param pulumi.Input[int] min_ready_instance_ratio: The min ready instance ratio.
         :param pulumi.Input[int] min_ready_instances: The min ready instances.
         :param pulumi.Input[bool] scaling_rule_enable: True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
-        :param pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleMetricArgs']] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
+        :param pulumi.Input[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         :param pulumi.Input[str] scaling_rule_name: The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
-        :param pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleTimerArgs']] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
+        :param pulumi.Input[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         :param pulumi.Input[str] scaling_rule_type: Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
         """
         ...
@@ -484,49 +484,49 @@ class ApplicationScalingRule(pulumi.CustomResource):
             scaling_rule_type="mix",
             min_ready_instances=3,
             min_ready_instance_ratio=-1,
-            scaling_rule_timer=alicloud.sae.ApplicationScalingRuleScalingRuleTimerArgs(
-                period="* * *",
-                schedules=[
-                    alicloud.sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs(
-                        at_time="08:00",
-                        max_replicas=10,
-                        min_replicas=3,
-                    ),
-                    alicloud.sae.ApplicationScalingRuleScalingRuleTimerScheduleArgs(
-                        at_time="20:00",
-                        max_replicas=50,
-                        min_replicas=3,
-                    ),
+            scaling_rule_timer={
+                "period": "* * *",
+                "schedules": [
+                    {
+                        "at_time": "08:00",
+                        "max_replicas": 10,
+                        "min_replicas": 3,
+                    },
+                    {
+                        "at_time": "20:00",
+                        "max_replicas": 50,
+                        "min_replicas": 3,
+                    },
                 ],
-            ),
-            scaling_rule_metric=alicloud.sae.ApplicationScalingRuleScalingRuleMetricArgs(
-                max_replicas=50,
-                min_replicas=3,
-                metrics=[
-                    alicloud.sae.ApplicationScalingRuleScalingRuleMetricMetricArgs(
-                        metric_type="CPU",
-                        metric_target_average_utilization=20,
-                    ),
-                    alicloud.sae.ApplicationScalingRuleScalingRuleMetricMetricArgs(
-                        metric_type="MEMORY",
-                        metric_target_average_utilization=30,
-                    ),
-                    alicloud.sae.ApplicationScalingRuleScalingRuleMetricMetricArgs(
-                        metric_type="tcpActiveConn",
-                        metric_target_average_utilization=20,
-                    ),
+            },
+            scaling_rule_metric={
+                "max_replicas": 50,
+                "min_replicas": 3,
+                "metrics": [
+                    {
+                        "metric_type": "CPU",
+                        "metric_target_average_utilization": 20,
+                    },
+                    {
+                        "metric_type": "MEMORY",
+                        "metric_target_average_utilization": 30,
+                    },
+                    {
+                        "metric_type": "tcpActiveConn",
+                        "metric_target_average_utilization": 20,
+                    },
                 ],
-                scale_up_rules=alicloud.sae.ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs(
-                    step=10,
-                    disabled=False,
-                    stabilization_window_seconds=0,
-                ),
-                scale_down_rules=alicloud.sae.ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs(
-                    step=10,
-                    disabled=False,
-                    stabilization_window_seconds=10,
-                ),
-            ))
+                "scale_up_rules": {
+                    "step": 10,
+                    "disabled": False,
+                    "stabilization_window_seconds": 0,
+                },
+                "scale_down_rules": {
+                    "step": 10,
+                    "disabled": False,
+                    "stabilization_window_seconds": 10,
+                },
+            })
         ```
 
         ## Import
@@ -556,9 +556,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
                  min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
                  min_ready_instances: Optional[pulumi.Input[int]] = None,
                  scaling_rule_enable: Optional[pulumi.Input[bool]] = None,
-                 scaling_rule_metric: Optional[pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleMetricArgs']]] = None,
+                 scaling_rule_metric: Optional[pulumi.Input[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']]] = None,
                  scaling_rule_name: Optional[pulumi.Input[str]] = None,
-                 scaling_rule_timer: Optional[pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleTimerArgs']]] = None,
+                 scaling_rule_timer: Optional[pulumi.Input[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']]] = None,
                  scaling_rule_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -597,9 +597,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
             min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
             min_ready_instances: Optional[pulumi.Input[int]] = None,
             scaling_rule_enable: Optional[pulumi.Input[bool]] = None,
-            scaling_rule_metric: Optional[pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleMetricArgs']]] = None,
+            scaling_rule_metric: Optional[pulumi.Input[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']]] = None,
             scaling_rule_name: Optional[pulumi.Input[str]] = None,
-            scaling_rule_timer: Optional[pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleTimerArgs']]] = None,
+            scaling_rule_timer: Optional[pulumi.Input[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']]] = None,
             scaling_rule_type: Optional[pulumi.Input[str]] = None) -> 'ApplicationScalingRule':
         """
         Get an existing ApplicationScalingRule resource's state with the given name, id, and optional extra
@@ -612,9 +612,9 @@ class ApplicationScalingRule(pulumi.CustomResource):
         :param pulumi.Input[int] min_ready_instance_ratio: The min ready instance ratio.
         :param pulumi.Input[int] min_ready_instances: The min ready instances.
         :param pulumi.Input[bool] scaling_rule_enable: True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
-        :param pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleMetricArgs']] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
+        :param pulumi.Input[Union['ApplicationScalingRuleScalingRuleMetricArgs', 'ApplicationScalingRuleScalingRuleMetricArgsDict']] scaling_rule_metric: Monitor the configuration of the indicator elasticity strategy. See `scaling_rule_metric` below.
         :param pulumi.Input[str] scaling_rule_name: The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
-        :param pulumi.Input[pulumi.InputType['ApplicationScalingRuleScalingRuleTimerArgs']] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
+        :param pulumi.Input[Union['ApplicationScalingRuleScalingRuleTimerArgs', 'ApplicationScalingRuleScalingRuleTimerArgsDict']] scaling_rule_timer: Configuration of Timing Resilient Policies. See `scaling_rule_timer` below.
         :param pulumi.Input[str] scaling_rule_type: Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
