@@ -142,7 +142,7 @@ public class ControlPolicyAttachment extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ControlPolicyAttachment(String name) {
+    public ControlPolicyAttachment(java.lang.String name) {
         this(name, ControlPolicyAttachmentArgs.Empty);
     }
     /**
@@ -150,7 +150,7 @@ public class ControlPolicyAttachment extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ControlPolicyAttachment(String name, ControlPolicyAttachmentArgs args) {
+    public ControlPolicyAttachment(java.lang.String name, ControlPolicyAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -159,15 +159,22 @@ public class ControlPolicyAttachment extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ControlPolicyAttachment(String name, ControlPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment", name, args == null ? ControlPolicyAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ControlPolicyAttachment(java.lang.String name, ControlPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ControlPolicyAttachment(String name, Output<String> id, @Nullable ControlPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment", name, state, makeResourceOptions(options, id));
+    private ControlPolicyAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable ControlPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:resourcemanager/controlPolicyAttachment:ControlPolicyAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ControlPolicyAttachmentArgs makeArgs(ControlPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ControlPolicyAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -183,7 +190,7 @@ public class ControlPolicyAttachment extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ControlPolicyAttachment get(String name, Output<String> id, @Nullable ControlPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ControlPolicyAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable ControlPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ControlPolicyAttachment(name, id, state, options);
     }
 }

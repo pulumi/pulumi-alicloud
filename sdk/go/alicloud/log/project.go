@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = log.NewProject(ctx, "example", &log.ProjectArgs{
-//				Name:        pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Description: pulumi.String("terraform-example"),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
@@ -85,7 +85,7 @@ import (
 //				return err
 //			}
 //			_, err = log.NewProject(ctx, "example_policy", &log.ProjectArgs{
-//				Name:        pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Description: pulumi.String("terraform-example"),
 //				Policy: pulumi.String(`{
 //	  "Statement": [

@@ -94,7 +94,7 @@ import (
 //			_, err = eci.NewImageCache(ctx, "default", &eci.ImageCacheArgs{
 //				ImageCacheName: pulumi.String(name),
 //				Images: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("registry-vpc.%v.aliyuncs.com/eci_open/nginx:alpine", defaultGetRegions.Regions[0].Id)),
+//					pulumi.Sprintf("registry-vpc.%v.aliyuncs.com/eci_open/nginx:alpine", defaultGetRegions.Regions[0].Id),
 //				},
 //				SecurityGroupId: defaultSecurityGroup.ID(),
 //				VswitchId:       defaultSwitch.ID(),

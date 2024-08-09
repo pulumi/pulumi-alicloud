@@ -338,7 +338,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MetricRuleBlackList(String name) {
+    public MetricRuleBlackList(java.lang.String name) {
         this(name, MetricRuleBlackListArgs.Empty);
     }
     /**
@@ -346,7 +346,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MetricRuleBlackList(String name, MetricRuleBlackListArgs args) {
+    public MetricRuleBlackList(java.lang.String name, MetricRuleBlackListArgs args) {
         this(name, args, null);
     }
     /**
@@ -355,15 +355,22 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MetricRuleBlackList(String name, MetricRuleBlackListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cms/metricRuleBlackList:MetricRuleBlackList", name, args == null ? MetricRuleBlackListArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MetricRuleBlackList(java.lang.String name, MetricRuleBlackListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cms/metricRuleBlackList:MetricRuleBlackList", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MetricRuleBlackList(String name, Output<String> id, @Nullable MetricRuleBlackListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cms/metricRuleBlackList:MetricRuleBlackList", name, state, makeResourceOptions(options, id));
+    private MetricRuleBlackList(java.lang.String name, Output<java.lang.String> id, @Nullable MetricRuleBlackListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cms/metricRuleBlackList:MetricRuleBlackList", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MetricRuleBlackListArgs makeArgs(MetricRuleBlackListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MetricRuleBlackListArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -379,7 +386,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MetricRuleBlackList get(String name, Output<String> id, @Nullable MetricRuleBlackListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MetricRuleBlackList get(java.lang.String name, Output<java.lang.String> id, @Nullable MetricRuleBlackListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MetricRuleBlackList(name, id, state, options);
     }
 }

@@ -166,7 +166,7 @@ public class LoadBalancerSecurityGroupAttachment extends com.pulumi.resources.Cu
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LoadBalancerSecurityGroupAttachment(String name) {
+    public LoadBalancerSecurityGroupAttachment(java.lang.String name) {
         this(name, LoadBalancerSecurityGroupAttachmentArgs.Empty);
     }
     /**
@@ -174,7 +174,7 @@ public class LoadBalancerSecurityGroupAttachment extends com.pulumi.resources.Cu
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LoadBalancerSecurityGroupAttachment(String name, LoadBalancerSecurityGroupAttachmentArgs args) {
+    public LoadBalancerSecurityGroupAttachment(java.lang.String name, LoadBalancerSecurityGroupAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -183,15 +183,22 @@ public class LoadBalancerSecurityGroupAttachment extends com.pulumi.resources.Cu
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LoadBalancerSecurityGroupAttachment(String name, LoadBalancerSecurityGroupAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment", name, args == null ? LoadBalancerSecurityGroupAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public LoadBalancerSecurityGroupAttachment(java.lang.String name, LoadBalancerSecurityGroupAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LoadBalancerSecurityGroupAttachment(String name, Output<String> id, @Nullable LoadBalancerSecurityGroupAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment", name, state, makeResourceOptions(options, id));
+    private LoadBalancerSecurityGroupAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable LoadBalancerSecurityGroupAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:alb/loadBalancerSecurityGroupAttachment:LoadBalancerSecurityGroupAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static LoadBalancerSecurityGroupAttachmentArgs makeArgs(LoadBalancerSecurityGroupAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LoadBalancerSecurityGroupAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -207,7 +214,7 @@ public class LoadBalancerSecurityGroupAttachment extends com.pulumi.resources.Cu
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LoadBalancerSecurityGroupAttachment get(String name, Output<String> id, @Nullable LoadBalancerSecurityGroupAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LoadBalancerSecurityGroupAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable LoadBalancerSecurityGroupAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LoadBalancerSecurityGroupAttachment(name, id, state, options);
     }
 }

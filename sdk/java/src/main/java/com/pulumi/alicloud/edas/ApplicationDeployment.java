@@ -228,7 +228,7 @@ public class ApplicationDeployment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApplicationDeployment(String name) {
+    public ApplicationDeployment(java.lang.String name) {
         this(name, ApplicationDeploymentArgs.Empty);
     }
     /**
@@ -236,7 +236,7 @@ public class ApplicationDeployment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationDeployment(String name, ApplicationDeploymentArgs args) {
+    public ApplicationDeployment(java.lang.String name, ApplicationDeploymentArgs args) {
         this(name, args, null);
     }
     /**
@@ -245,15 +245,22 @@ public class ApplicationDeployment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationDeployment(String name, ApplicationDeploymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:edas/applicationDeployment:ApplicationDeployment", name, args == null ? ApplicationDeploymentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ApplicationDeployment(java.lang.String name, ApplicationDeploymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:edas/applicationDeployment:ApplicationDeployment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ApplicationDeployment(String name, Output<String> id, @Nullable ApplicationDeploymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:edas/applicationDeployment:ApplicationDeployment", name, state, makeResourceOptions(options, id));
+    private ApplicationDeployment(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationDeploymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:edas/applicationDeployment:ApplicationDeployment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApplicationDeploymentArgs makeArgs(ApplicationDeploymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationDeploymentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -269,7 +276,7 @@ public class ApplicationDeployment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApplicationDeployment get(String name, Output<String> id, @Nullable ApplicationDeploymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApplicationDeployment get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationDeploymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApplicationDeployment(name, id, state, options);
     }
 }

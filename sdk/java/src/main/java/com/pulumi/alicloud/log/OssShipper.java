@@ -348,7 +348,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OssShipper(String name) {
+    public OssShipper(java.lang.String name) {
         this(name, OssShipperArgs.Empty);
     }
     /**
@@ -356,7 +356,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OssShipper(String name, OssShipperArgs args) {
+    public OssShipper(java.lang.String name, OssShipperArgs args) {
         this(name, args, null);
     }
     /**
@@ -365,15 +365,22 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OssShipper(String name, OssShipperArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/ossShipper:OssShipper", name, args == null ? OssShipperArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public OssShipper(java.lang.String name, OssShipperArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/ossShipper:OssShipper", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OssShipper(String name, Output<String> id, @Nullable OssShipperState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/ossShipper:OssShipper", name, state, makeResourceOptions(options, id));
+    private OssShipper(java.lang.String name, Output<java.lang.String> id, @Nullable OssShipperState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/ossShipper:OssShipper", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static OssShipperArgs makeArgs(OssShipperArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OssShipperArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -389,7 +396,7 @@ public class OssShipper extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OssShipper get(String name, Output<String> id, @Nullable OssShipperState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OssShipper get(java.lang.String name, Output<java.lang.String> id, @Nullable OssShipperState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OssShipper(name, id, state, options);
     }
 }

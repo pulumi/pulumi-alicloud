@@ -261,7 +261,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DiskReplicaPair(String name) {
+    public DiskReplicaPair(java.lang.String name) {
         this(name, DiskReplicaPairArgs.Empty);
     }
     /**
@@ -269,7 +269,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DiskReplicaPair(String name, DiskReplicaPairArgs args) {
+    public DiskReplicaPair(java.lang.String name, DiskReplicaPairArgs args) {
         this(name, args, null);
     }
     /**
@@ -278,15 +278,22 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DiskReplicaPair(String name, DiskReplicaPairArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ebs/diskReplicaPair:DiskReplicaPair", name, args == null ? DiskReplicaPairArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DiskReplicaPair(java.lang.String name, DiskReplicaPairArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ebs/diskReplicaPair:DiskReplicaPair", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DiskReplicaPair(String name, Output<String> id, @Nullable DiskReplicaPairState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ebs/diskReplicaPair:DiskReplicaPair", name, state, makeResourceOptions(options, id));
+    private DiskReplicaPair(java.lang.String name, Output<java.lang.String> id, @Nullable DiskReplicaPairState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ebs/diskReplicaPair:DiskReplicaPair", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DiskReplicaPairArgs makeArgs(DiskReplicaPairArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DiskReplicaPairArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -302,7 +309,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DiskReplicaPair get(String name, Output<String> id, @Nullable DiskReplicaPairState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DiskReplicaPair get(java.lang.String name, Output<java.lang.String> id, @Nullable DiskReplicaPairState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DiskReplicaPair(name, id, state, options);
     }
 }

@@ -688,19 +688,19 @@ class Alarm(pulumi.CustomResource):
                  effective_interval: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
-                 escalations_critical: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']]] = None,
-                 escalations_info: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']]] = None,
-                 escalations_warn: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']]] = None,
+                 escalations_critical: Optional[pulumi.Input[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict']]] = None,
+                 escalations_info: Optional[pulumi.Input[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict']]] = None,
+                 escalations_warn: Optional[pulumi.Input[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict']]] = None,
                  metric: Optional[pulumi.Input[str]] = None,
                  metric_dimensions: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]]] = None,
+                 prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]]] = None,
                  silence_time: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmTargetArgs']]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]]] = None,
                  webhook: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -761,12 +761,12 @@ class Alarm(pulumi.CustomResource):
             }}
           ]
         \"\"\"),
-            escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
-                statistics="Average",
-                comparison_operator="<=",
-                threshold="35",
-                times=2,
-            ))
+            escalations_critical={
+                "statistics": "Average",
+                "comparison_operator": "<=",
+                "threshold": "35",
+                "times": 2,
+            })
         ```
 
         ## Import
@@ -784,20 +784,20 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
-        :param pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
-        :param pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']] escalations_info: A configuration of critical info. See `escalations_info` below.
-        :param pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
+        :param pulumi.Input[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict']] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
+        :param pulumi.Input[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict']] escalations_info: A configuration of critical info. See `escalations_info` below.
+        :param pulumi.Input[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict']] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
         :param pulumi.Input[str] metric: The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The name of the alert rule.
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
         :param pulumi.Input[str] project: The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmTargetArgs']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         ...
@@ -864,12 +864,12 @@ class Alarm(pulumi.CustomResource):
             }}
           ]
         \"\"\"),
-            escalations_critical=alicloud.cms.AlarmEscalationsCriticalArgs(
-                statistics="Average",
-                comparison_operator="<=",
-                threshold="35",
-                times=2,
-            ))
+            escalations_critical={
+                "statistics": "Average",
+                "comparison_operator": "<=",
+                "threshold": "35",
+                "times": 2,
+            })
         ```
 
         ## Import
@@ -900,19 +900,19 @@ class Alarm(pulumi.CustomResource):
                  effective_interval: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
-                 escalations_critical: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']]] = None,
-                 escalations_info: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']]] = None,
-                 escalations_warn: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']]] = None,
+                 escalations_critical: Optional[pulumi.Input[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict']]] = None,
+                 escalations_info: Optional[pulumi.Input[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict']]] = None,
+                 escalations_warn: Optional[pulumi.Input[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict']]] = None,
                  metric: Optional[pulumi.Input[str]] = None,
                  metric_dimensions: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]]] = None,
+                 prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]]] = None,
                  silence_time: Optional[pulumi.Input[int]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmTargetArgs']]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]]] = None,
                  webhook: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -964,20 +964,20 @@ class Alarm(pulumi.CustomResource):
             effective_interval: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             end_time: Optional[pulumi.Input[int]] = None,
-            escalations_critical: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']]] = None,
-            escalations_info: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']]] = None,
-            escalations_warn: Optional[pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']]] = None,
+            escalations_critical: Optional[pulumi.Input[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict']]] = None,
+            escalations_info: Optional[pulumi.Input[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict']]] = None,
+            escalations_warn: Optional[pulumi.Input[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict']]] = None,
             metric: Optional[pulumi.Input[str]] = None,
             metric_dimensions: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]]] = None,
+            prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]]] = None,
             silence_time: Optional[pulumi.Input[int]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            targets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmTargetArgs']]]]] = None,
+            targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]]] = None,
             webhook: Optional[pulumi.Input[str]] = None) -> 'Alarm':
         """
         Get an existing Alarm resource's state with the given name, id, and optional extra
@@ -991,21 +991,21 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] effective_interval: The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default to "00:00-23:59".
         :param pulumi.Input[bool] enabled: Whether to enable alarm rule. Default value: `true`.
         :param pulumi.Input[int] end_time: Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
-        :param pulumi.Input[pulumi.InputType['AlarmEscalationsCriticalArgs']] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
-        :param pulumi.Input[pulumi.InputType['AlarmEscalationsInfoArgs']] escalations_info: A configuration of critical info. See `escalations_info` below.
-        :param pulumi.Input[pulumi.InputType['AlarmEscalationsWarnArgs']] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
+        :param pulumi.Input[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict']] escalations_critical: A configuration of critical alarm. See `escalations_critical` below.
+        :param pulumi.Input[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict']] escalations_info: A configuration of critical info. See `escalations_info` below.
+        :param pulumi.Input[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict']] escalations_warn: A configuration of critical warn. See `escalations_warn` below.
         :param pulumi.Input[str] metric: The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] metric_dimensions: Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param pulumi.Input[str] name: The name of the alert rule.
         :param pulumi.Input[int] period: Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
         :param pulumi.Input[str] project: The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
                **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmPrometheusArgs']]]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]] prometheuses: The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         :param pulumi.Input[int] silence_time: Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         :param pulumi.Input[int] start_time: Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         :param pulumi.Input[str] status: The status of the Alarm.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlarmTargetArgs']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

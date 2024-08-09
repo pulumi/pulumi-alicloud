@@ -335,7 +335,7 @@ class DbInstancePlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_instance_id: Optional[pulumi.Input[str]] = None,
                  db_instance_plan_name: Optional[pulumi.Input[str]] = None,
-                 plan_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstancePlanPlanConfigArgs']]]]] = None,
+                 plan_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]]] = None,
                  plan_desc: Optional[pulumi.Input[str]] = None,
                  plan_end_date: Optional[pulumi.Input[str]] = None,
                  plan_schedule_type: Optional[pulumi.Input[str]] = None,
@@ -362,7 +362,7 @@ class DbInstancePlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_instance_id: The ID of the GPDB instance.
         :param pulumi.Input[str] db_instance_plan_name: The name of the Plan.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstancePlanPlanConfigArgs']]]] plan_configs: The execution information of the plan. See `plan_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]] plan_configs: The execution information of the plan. See `plan_config` below.
         :param pulumi.Input[str] plan_desc: The description of the Plan.
         :param pulumi.Input[str] plan_end_date: The end time of the Plan.
         :param pulumi.Input[str] plan_schedule_type: The execution mode of the plan. Valid values: `Postpone`, `Regular`.
@@ -408,7 +408,7 @@ class DbInstancePlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  db_instance_id: Optional[pulumi.Input[str]] = None,
                  db_instance_plan_name: Optional[pulumi.Input[str]] = None,
-                 plan_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstancePlanPlanConfigArgs']]]]] = None,
+                 plan_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]]] = None,
                  plan_desc: Optional[pulumi.Input[str]] = None,
                  plan_end_date: Optional[pulumi.Input[str]] = None,
                  plan_schedule_type: Optional[pulumi.Input[str]] = None,
@@ -456,7 +456,7 @@ class DbInstancePlan(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             db_instance_id: Optional[pulumi.Input[str]] = None,
             db_instance_plan_name: Optional[pulumi.Input[str]] = None,
-            plan_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstancePlanPlanConfigArgs']]]]] = None,
+            plan_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]]] = None,
             plan_desc: Optional[pulumi.Input[str]] = None,
             plan_end_date: Optional[pulumi.Input[str]] = None,
             plan_id: Optional[pulumi.Input[str]] = None,
@@ -473,7 +473,7 @@ class DbInstancePlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_instance_id: The ID of the GPDB instance.
         :param pulumi.Input[str] db_instance_plan_name: The name of the Plan.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstancePlanPlanConfigArgs']]]] plan_configs: The execution information of the plan. See `plan_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]] plan_configs: The execution information of the plan. See `plan_config` below.
         :param pulumi.Input[str] plan_desc: The description of the Plan.
         :param pulumi.Input[str] plan_end_date: The end time of the Plan.
         :param pulumi.Input[str] plan_id: The ID of the plan.

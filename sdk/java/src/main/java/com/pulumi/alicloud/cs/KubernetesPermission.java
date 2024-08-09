@@ -64,7 +64,7 @@ public class KubernetesPermission extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KubernetesPermission(String name) {
+    public KubernetesPermission(java.lang.String name) {
         this(name, KubernetesPermissionArgs.Empty);
     }
     /**
@@ -72,7 +72,7 @@ public class KubernetesPermission extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KubernetesPermission(String name, KubernetesPermissionArgs args) {
+    public KubernetesPermission(java.lang.String name, KubernetesPermissionArgs args) {
         this(name, args, null);
     }
     /**
@@ -81,15 +81,22 @@ public class KubernetesPermission extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KubernetesPermission(String name, KubernetesPermissionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cs/kubernetesPermission:KubernetesPermission", name, args == null ? KubernetesPermissionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public KubernetesPermission(java.lang.String name, KubernetesPermissionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cs/kubernetesPermission:KubernetesPermission", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KubernetesPermission(String name, Output<String> id, @Nullable KubernetesPermissionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cs/kubernetesPermission:KubernetesPermission", name, state, makeResourceOptions(options, id));
+    private KubernetesPermission(java.lang.String name, Output<java.lang.String> id, @Nullable KubernetesPermissionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cs/kubernetesPermission:KubernetesPermission", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static KubernetesPermissionArgs makeArgs(KubernetesPermissionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KubernetesPermissionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -105,7 +112,7 @@ public class KubernetesPermission extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KubernetesPermission get(String name, Output<String> id, @Nullable KubernetesPermissionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KubernetesPermission get(java.lang.String name, Output<java.lang.String> id, @Nullable KubernetesPermissionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KubernetesPermission(name, id, state, options);
     }
 }

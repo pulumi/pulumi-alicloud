@@ -73,7 +73,7 @@ class AwaitableGetCollationTimeZonesResult(GetCollationTimeZonesResult):
             output_file=self.output_file)
 
 
-def get_collation_time_zones(collation_time_zones: Optional[Sequence[pulumi.InputType['GetCollationTimeZonesCollationTimeZoneArgs']]] = None,
+def get_collation_time_zones(collation_time_zones: Optional[Sequence[Union['GetCollationTimeZonesCollationTimeZoneArgs', 'GetCollationTimeZonesCollationTimeZoneArgsDict']]] = None,
                              output_file: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCollationTimeZonesResult:
     """
@@ -94,7 +94,7 @@ def get_collation_time_zones(collation_time_zones: Optional[Sequence[pulumi.Inpu
     ```
 
 
-    :param Sequence[pulumi.InputType['GetCollationTimeZonesCollationTimeZoneArgs']] collation_time_zones: An array that consists of the character set collations and time zones that are available for
+    :param Sequence[Union['GetCollationTimeZonesCollationTimeZoneArgs', 'GetCollationTimeZonesCollationTimeZoneArgsDict']] collation_time_zones: An array that consists of the character set collations and time zones that are available for
            use in ApsaraDB RDS.
     :param str output_file: File name where to save data source results (after running `pulumi up`).
     """
@@ -112,7 +112,7 @@ def get_collation_time_zones(collation_time_zones: Optional[Sequence[pulumi.Inpu
 
 
 @_utilities.lift_output_func(get_collation_time_zones)
-def get_collation_time_zones_output(collation_time_zones: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetCollationTimeZonesCollationTimeZoneArgs']]]]] = None,
+def get_collation_time_zones_output(collation_time_zones: Optional[pulumi.Input[Optional[Sequence[Union['GetCollationTimeZonesCollationTimeZoneArgs', 'GetCollationTimeZonesCollationTimeZoneArgsDict']]]]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCollationTimeZonesResult]:
     """
@@ -133,7 +133,7 @@ def get_collation_time_zones_output(collation_time_zones: Optional[pulumi.Input[
     ```
 
 
-    :param Sequence[pulumi.InputType['GetCollationTimeZonesCollationTimeZoneArgs']] collation_time_zones: An array that consists of the character set collations and time zones that are available for
+    :param Sequence[Union['GetCollationTimeZonesCollationTimeZoneArgs', 'GetCollationTimeZonesCollationTimeZoneArgsDict']] collation_time_zones: An array that consists of the character set collations and time zones that are available for
            use in ApsaraDB RDS.
     :param str output_file: File name where to save data source results (after running `pulumi up`).
     """

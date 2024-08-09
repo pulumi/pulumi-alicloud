@@ -47,26 +47,26 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var sagId = config.get("sagId").orElse("sag-9bifkfaz4fg***");
  *         var default_ = new ClientUser("default", ClientUserArgs.builder()
  *             .sagId(sagId)
  *             .bandwidth("20")
- *             .userMail("tf-example{@literal @}abc.com")
+ *             .userMail("tf-example}{@literal @}{@code abc.com")
  *             .userName(name)
  *             .password("example1234")
  *             .clientIp("192.1.10.0")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -199,7 +199,7 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ClientUser(String name) {
+    public ClientUser(java.lang.String name) {
         this(name, ClientUserArgs.Empty);
     }
     /**
@@ -207,7 +207,7 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClientUser(String name, ClientUserArgs args) {
+    public ClientUser(java.lang.String name, ClientUserArgs args) {
         this(name, args, null);
     }
     /**
@@ -216,15 +216,22 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClientUser(String name, ClientUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rocketmq/clientUser:ClientUser", name, args == null ? ClientUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ClientUser(java.lang.String name, ClientUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rocketmq/clientUser:ClientUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ClientUser(String name, Output<String> id, @Nullable ClientUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rocketmq/clientUser:ClientUser", name, state, makeResourceOptions(options, id));
+    private ClientUser(java.lang.String name, Output<java.lang.String> id, @Nullable ClientUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rocketmq/clientUser:ClientUser", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ClientUserArgs makeArgs(ClientUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClientUserArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -240,7 +247,7 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ClientUser get(String name, Output<String> id, @Nullable ClientUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ClientUser get(java.lang.String name, Output<java.lang.String> id, @Nullable ClientUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ClientUser(name, id, state, options);
     }
 }

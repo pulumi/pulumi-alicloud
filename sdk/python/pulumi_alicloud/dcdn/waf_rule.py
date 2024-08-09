@@ -547,11 +547,11 @@ class WafRule(pulumi.CustomResource):
                  action: Optional[pulumi.Input[str]] = None,
                  cc_status: Optional[pulumi.Input[str]] = None,
                  cn_region_list: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WafRuleConditionArgs']]]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict']]]]] = None,
                  effect: Optional[pulumi.Input[str]] = None,
                  other_region_list: Optional[pulumi.Input[str]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
-                 rate_limit: Optional[pulumi.Input[pulumi.InputType['WafRuleRateLimitArgs']]] = None,
+                 rate_limit: Optional[pulumi.Input[Union['WafRuleRateLimitArgs', 'WafRuleRateLimitArgsDict']]] = None,
                  regular_rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  regular_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  remote_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -592,30 +592,30 @@ class WafRule(pulumi.CustomResource):
             policy_id=example.id,
             rule_name=name,
             conditions=[
-                alicloud.dcdn.WafRuleConditionArgs(
-                    key="URI",
-                    op_value="ne",
-                    values="/login.php",
-                ),
-                alicloud.dcdn.WafRuleConditionArgs(
-                    key="Header",
-                    sub_key="a",
-                    op_value="eq",
-                    values="b",
-                ),
+                {
+                    "key": "URI",
+                    "op_value": "ne",
+                    "values": "/login.php",
+                },
+                {
+                    "key": "Header",
+                    "sub_key": "a",
+                    "op_value": "eq",
+                    "values": "b",
+                },
             ],
             status="on",
             action="monitor",
-            rate_limit=alicloud.dcdn.WafRuleRateLimitArgs(
-                target="IP",
-                interval=5,
-                threshold=5,
-                ttl=1800,
-                status=alicloud.dcdn.WafRuleRateLimitStatusArgs(
-                    code="200",
-                    ratio=60,
-                ),
-            ))
+            rate_limit={
+                "target": "IP",
+                "interval": 5,
+                "threshold": 5,
+                "ttl": 1800,
+                "status": {
+                    "code": "200",
+                    "ratio": 60,
+                },
+            })
         ```
 
         ## Import
@@ -631,11 +631,11 @@ class WafRule(pulumi.CustomResource):
         :param pulumi.Input[str] action: Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
         :param pulumi.Input[str] cc_status: Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
         :param pulumi.Input[str] cn_region_list: The blocked regions in the Chinese mainland, separated by commas (,).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WafRuleConditionArgs']]]] conditions: Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict']]]] conditions: Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
         :param pulumi.Input[str] effect: The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
         :param pulumi.Input[str] other_region_list: Blocked regions outside the Chinese mainland, separated by commas (,).
         :param pulumi.Input[str] policy_id: The protection policy ID.
-        :param pulumi.Input[pulumi.InputType['WafRuleRateLimitArgs']] rate_limit: The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
+        :param pulumi.Input[Union['WafRuleRateLimitArgs', 'WafRuleRateLimitArgsDict']] rate_limit: The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regular_rules: The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regular_types: Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:["sqli", "xss", "code_exec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_addrs: Filter by IP address.
@@ -682,30 +682,30 @@ class WafRule(pulumi.CustomResource):
             policy_id=example.id,
             rule_name=name,
             conditions=[
-                alicloud.dcdn.WafRuleConditionArgs(
-                    key="URI",
-                    op_value="ne",
-                    values="/login.php",
-                ),
-                alicloud.dcdn.WafRuleConditionArgs(
-                    key="Header",
-                    sub_key="a",
-                    op_value="eq",
-                    values="b",
-                ),
+                {
+                    "key": "URI",
+                    "op_value": "ne",
+                    "values": "/login.php",
+                },
+                {
+                    "key": "Header",
+                    "sub_key": "a",
+                    "op_value": "eq",
+                    "values": "b",
+                },
             ],
             status="on",
             action="monitor",
-            rate_limit=alicloud.dcdn.WafRuleRateLimitArgs(
-                target="IP",
-                interval=5,
-                threshold=5,
-                ttl=1800,
-                status=alicloud.dcdn.WafRuleRateLimitStatusArgs(
-                    code="200",
-                    ratio=60,
-                ),
-            ))
+            rate_limit={
+                "target": "IP",
+                "interval": 5,
+                "threshold": 5,
+                "ttl": 1800,
+                "status": {
+                    "code": "200",
+                    "ratio": 60,
+                },
+            })
         ```
 
         ## Import
@@ -734,11 +734,11 @@ class WafRule(pulumi.CustomResource):
                  action: Optional[pulumi.Input[str]] = None,
                  cc_status: Optional[pulumi.Input[str]] = None,
                  cn_region_list: Optional[pulumi.Input[str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WafRuleConditionArgs']]]]] = None,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict']]]]] = None,
                  effect: Optional[pulumi.Input[str]] = None,
                  other_region_list: Optional[pulumi.Input[str]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
-                 rate_limit: Optional[pulumi.Input[pulumi.InputType['WafRuleRateLimitArgs']]] = None,
+                 rate_limit: Optional[pulumi.Input[Union['WafRuleRateLimitArgs', 'WafRuleRateLimitArgsDict']]] = None,
                  regular_rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  regular_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  remote_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -789,13 +789,13 @@ class WafRule(pulumi.CustomResource):
             action: Optional[pulumi.Input[str]] = None,
             cc_status: Optional[pulumi.Input[str]] = None,
             cn_region_list: Optional[pulumi.Input[str]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WafRuleConditionArgs']]]]] = None,
+            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict']]]]] = None,
             defense_scene: Optional[pulumi.Input[str]] = None,
             effect: Optional[pulumi.Input[str]] = None,
             gmt_modified: Optional[pulumi.Input[str]] = None,
             other_region_list: Optional[pulumi.Input[str]] = None,
             policy_id: Optional[pulumi.Input[str]] = None,
-            rate_limit: Optional[pulumi.Input[pulumi.InputType['WafRuleRateLimitArgs']]] = None,
+            rate_limit: Optional[pulumi.Input[Union['WafRuleRateLimitArgs', 'WafRuleRateLimitArgsDict']]] = None,
             regular_rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             regular_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             remote_addrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -813,13 +813,13 @@ class WafRule(pulumi.CustomResource):
         :param pulumi.Input[str] action: Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
         :param pulumi.Input[str] cc_status: Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
         :param pulumi.Input[str] cn_region_list: The blocked regions in the Chinese mainland, separated by commas (,).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WafRuleConditionArgs']]]] conditions: Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WafRuleConditionArgs', 'WafRuleConditionArgsDict']]]] conditions: Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
         :param pulumi.Input[str] defense_scene: The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
         :param pulumi.Input[str] effect: The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
         :param pulumi.Input[str] gmt_modified: Revised the time. The date format is based on ISO8601 notation and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
         :param pulumi.Input[str] other_region_list: Blocked regions outside the Chinese mainland, separated by commas (,).
         :param pulumi.Input[str] policy_id: The protection policy ID.
-        :param pulumi.Input[pulumi.InputType['WafRuleRateLimitArgs']] rate_limit: The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
+        :param pulumi.Input[Union['WafRuleRateLimitArgs', 'WafRuleRateLimitArgsDict']] rate_limit: The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regular_rules: The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regular_types: Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:["sqli", "xss", "code_exec", "crlf", "lfileii", "rfileii", "webshell", "vvip", "other"]
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_addrs: Filter by IP address.

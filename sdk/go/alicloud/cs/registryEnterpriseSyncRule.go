@@ -52,7 +52,7 @@ import (
 //				RenewPeriod:   pulumi.Int(0),
 //				RenewalStatus: pulumi.String("ManualRenewal"),
 //				InstanceType:  pulumi.String("Advanced"),
-//				InstanceName:  pulumi.String(fmt.Sprintf("%v-source", name)),
+//				InstanceName:  pulumi.Sprintf("%v-source", name),
 //			})
 //			if err != nil {
 //				return err
@@ -63,7 +63,7 @@ import (
 //				RenewPeriod:   pulumi.Int(0),
 //				RenewalStatus: pulumi.String("ManualRenewal"),
 //				InstanceType:  pulumi.String("Advanced"),
-//				InstanceName:  pulumi.String(fmt.Sprintf("%v-target", name)),
+//				InstanceName:  pulumi.Sprintf("%v-target", name),
 //			})
 //			if err != nil {
 //				return err

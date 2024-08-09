@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-//				PolicyName: pulumi.String(fmt.Sprintf("tf-example-%v", _default.Result)),
+//				PolicyName: pulumi.Sprintf("tf-example-%v", _default.Result),
 //				PolicyDocument: pulumi.String(`    {
 //	      "Statement": [
 //	        {

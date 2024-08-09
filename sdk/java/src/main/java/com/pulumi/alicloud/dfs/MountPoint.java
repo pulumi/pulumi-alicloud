@@ -262,7 +262,7 @@ public class MountPoint extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MountPoint(String name) {
+    public MountPoint(java.lang.String name) {
         this(name, MountPointArgs.Empty);
     }
     /**
@@ -270,7 +270,7 @@ public class MountPoint extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MountPoint(String name, MountPointArgs args) {
+    public MountPoint(java.lang.String name, MountPointArgs args) {
         this(name, args, null);
     }
     /**
@@ -279,15 +279,22 @@ public class MountPoint extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MountPoint(String name, MountPointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dfs/mountPoint:MountPoint", name, args == null ? MountPointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MountPoint(java.lang.String name, MountPointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dfs/mountPoint:MountPoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MountPoint(String name, Output<String> id, @Nullable MountPointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dfs/mountPoint:MountPoint", name, state, makeResourceOptions(options, id));
+    private MountPoint(java.lang.String name, Output<java.lang.String> id, @Nullable MountPointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dfs/mountPoint:MountPoint", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MountPointArgs makeArgs(MountPointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MountPointArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -303,7 +310,7 @@ public class MountPoint extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MountPoint get(String name, Output<String> id, @Nullable MountPointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MountPoint get(java.lang.String name, Output<java.lang.String> id, @Nullable MountPointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MountPoint(name, id, state, options);
     }
 }

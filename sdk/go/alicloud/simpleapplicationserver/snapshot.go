@@ -80,7 +80,7 @@ import (
 //				DiskId: pulumi.String(defaultGetServerDisks.ApplyT(func(defaultGetServerDisks simpleapplicationserver.GetServerDisksResult) (*string, error) {
 //					return &defaultGetServerDisks.Ids[0], nil
 //				}).(pulumi.StringPtrOutput)),
-//				SnapshotName: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				SnapshotName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err

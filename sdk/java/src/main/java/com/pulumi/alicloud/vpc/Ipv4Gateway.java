@@ -255,7 +255,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Ipv4Gateway(String name) {
+    public Ipv4Gateway(java.lang.String name) {
         this(name, Ipv4GatewayArgs.Empty);
     }
     /**
@@ -263,7 +263,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Ipv4Gateway(String name, Ipv4GatewayArgs args) {
+    public Ipv4Gateway(java.lang.String name, Ipv4GatewayArgs args) {
         this(name, args, null);
     }
     /**
@@ -272,15 +272,22 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Ipv4Gateway(String name, Ipv4GatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/ipv4Gateway:Ipv4Gateway", name, args == null ? Ipv4GatewayArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Ipv4Gateway(java.lang.String name, Ipv4GatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/ipv4Gateway:Ipv4Gateway", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Ipv4Gateway(String name, Output<String> id, @Nullable Ipv4GatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/ipv4Gateway:Ipv4Gateway", name, state, makeResourceOptions(options, id));
+    private Ipv4Gateway(java.lang.String name, Output<java.lang.String> id, @Nullable Ipv4GatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/ipv4Gateway:Ipv4Gateway", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static Ipv4GatewayArgs makeArgs(Ipv4GatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? Ipv4GatewayArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -296,7 +303,7 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Ipv4Gateway get(String name, Output<String> id, @Nullable Ipv4GatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Ipv4Gateway get(java.lang.String name, Output<java.lang.String> id, @Nullable Ipv4GatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Ipv4Gateway(name, id, state, options);
     }
 }

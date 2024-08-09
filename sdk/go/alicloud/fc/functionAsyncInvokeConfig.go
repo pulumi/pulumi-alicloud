@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
-//				Name: pulumi.String(fmt.Sprintf("examplerole%v", defaultInteger.Result)),
+//				Name: pulumi.Sprintf("examplerole%v", defaultInteger.Result),
 //				Document: pulumi.String(`	{
 //			"Statement": [
 //			  {
@@ -85,7 +85,7 @@ import (
 //			return err
 //		}
 //		defaultPolicy, err := ram.NewPolicy(ctx, "default", &ram.PolicyArgs{
-//			PolicyName: pulumi.String(fmt.Sprintf("examplepolicy%v", defaultInteger.Result)),
+//			PolicyName: pulumi.Sprintf("examplepolicy%v", defaultInteger.Result),
 //			PolicyDocument: pulumi.String(`	{
 //		"Version": "1",
 //		"Statement": [
@@ -112,7 +112,7 @@ import (
 //				return err
 //			}
 //			defaultService, err := fc.NewService(ctx, "default", &fc.ServiceArgs{
-//				Name:           pulumi.String(fmt.Sprintf("example-value-%v", defaultInteger.Result)),
+//				Name:           pulumi.Sprintf("example-value-%v", defaultInteger.Result),
 //				Description:    pulumi.String("example-value"),
 //				Role:           defaultRole.Arn,
 //				InternetAccess: pulumi.Bool(false),
@@ -121,7 +121,7 @@ import (
 //				return err
 //			}
 //			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				Bucket: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -137,7 +137,7 @@ import (
 //			}
 //			defaultFunction, err := fc.NewFunction(ctx, "default", &fc.FunctionArgs{
 //				Service:     defaultService.Name,
-//				Name:        pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				Name:        pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Description: pulumi.String("example"),
 //				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
@@ -149,13 +149,13 @@ import (
 //				return err
 //			}
 //			defaultQueue, err := mns.NewQueue(ctx, "default", &mns.QueueArgs{
-//				Name: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				Name: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultTopic, err := mns.NewTopic(ctx, "default", &mns.TopicArgs{
-//				Name: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				Name: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err

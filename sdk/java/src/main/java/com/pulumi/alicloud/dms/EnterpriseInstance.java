@@ -591,7 +591,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EnterpriseInstance(String name) {
+    public EnterpriseInstance(java.lang.String name) {
         this(name, EnterpriseInstanceArgs.Empty);
     }
     /**
@@ -599,7 +599,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EnterpriseInstance(String name, EnterpriseInstanceArgs args) {
+    public EnterpriseInstance(java.lang.String name, EnterpriseInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -608,15 +608,22 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EnterpriseInstance(String name, EnterpriseInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dms/enterpriseInstance:EnterpriseInstance", name, args == null ? EnterpriseInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EnterpriseInstance(java.lang.String name, EnterpriseInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dms/enterpriseInstance:EnterpriseInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EnterpriseInstance(String name, Output<String> id, @Nullable EnterpriseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dms/enterpriseInstance:EnterpriseInstance", name, state, makeResourceOptions(options, id));
+    private EnterpriseInstance(java.lang.String name, Output<java.lang.String> id, @Nullable EnterpriseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dms/enterpriseInstance:EnterpriseInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EnterpriseInstanceArgs makeArgs(EnterpriseInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EnterpriseInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -635,7 +642,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EnterpriseInstance get(String name, Output<String> id, @Nullable EnterpriseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EnterpriseInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable EnterpriseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EnterpriseInstance(name, id, state, options);
     }
 }

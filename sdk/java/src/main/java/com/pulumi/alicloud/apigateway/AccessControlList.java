@@ -136,7 +136,7 @@ public class AccessControlList extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessControlList(String name) {
+    public AccessControlList(java.lang.String name) {
         this(name, AccessControlListArgs.Empty);
     }
     /**
@@ -144,7 +144,7 @@ public class AccessControlList extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessControlList(String name, AccessControlListArgs args) {
+    public AccessControlList(java.lang.String name, AccessControlListArgs args) {
         this(name, args, null);
     }
     /**
@@ -153,15 +153,22 @@ public class AccessControlList extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessControlList(String name, AccessControlListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:apigateway/accessControlList:AccessControlList", name, args == null ? AccessControlListArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AccessControlList(java.lang.String name, AccessControlListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:apigateway/accessControlList:AccessControlList", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessControlList(String name, Output<String> id, @Nullable AccessControlListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:apigateway/accessControlList:AccessControlList", name, state, makeResourceOptions(options, id));
+    private AccessControlList(java.lang.String name, Output<java.lang.String> id, @Nullable AccessControlListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:apigateway/accessControlList:AccessControlList", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AccessControlListArgs makeArgs(AccessControlListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessControlListArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -180,7 +187,7 @@ public class AccessControlList extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessControlList get(String name, Output<String> id, @Nullable AccessControlListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessControlList get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessControlListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessControlList(name, id, state, options);
     }
 }

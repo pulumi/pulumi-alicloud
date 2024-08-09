@@ -120,7 +120,7 @@ public class DBAuditInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DBAuditInstance(String name) {
+    public DBAuditInstance(java.lang.String name) {
         this(name, DBAuditInstanceArgs.Empty);
     }
     /**
@@ -128,7 +128,7 @@ public class DBAuditInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DBAuditInstance(String name, DBAuditInstanceArgs args) {
+    public DBAuditInstance(java.lang.String name, DBAuditInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -137,15 +137,22 @@ public class DBAuditInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DBAuditInstance(String name, DBAuditInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:yundun/dBAuditInstance:DBAuditInstance", name, args == null ? DBAuditInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DBAuditInstance(java.lang.String name, DBAuditInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:yundun/dBAuditInstance:DBAuditInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DBAuditInstance(String name, Output<String> id, @Nullable DBAuditInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:yundun/dBAuditInstance:DBAuditInstance", name, state, makeResourceOptions(options, id));
+    private DBAuditInstance(java.lang.String name, Output<java.lang.String> id, @Nullable DBAuditInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:yundun/dBAuditInstance:DBAuditInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DBAuditInstanceArgs makeArgs(DBAuditInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DBAuditInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -161,7 +168,7 @@ public class DBAuditInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DBAuditInstance get(String name, Output<String> id, @Nullable DBAuditInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DBAuditInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable DBAuditInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DBAuditInstance(name, id, state, options);
     }
 }

@@ -379,7 +379,7 @@ class Domain(pulumi.CustomResource):
                  check_url: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -405,11 +405,11 @@ class Domain(pulumi.CustomResource):
         default_domain = alicloud.vod.Domain("default",
             domain_name=f"example-{default['result']}.com",
             scope="domestic",
-            sources=[alicloud.vod.DomainSourceArgs(
-                source_type="domain",
-                source_content="outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com",
-                source_port="443",
-            )],
+            sources=[{
+                "source_type": "domain",
+                "source_content": "outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com",
+                "source_port": "443",
+            }],
             tags={
                 "Created": "terraform",
                 "For": "example",
@@ -429,7 +429,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] check_url: The URL that is used for health checks.
         :param pulumi.Input[str] domain_name: The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
         :param pulumi.Input[str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                * `Key`: It can be up to 64 characters in length. It cannot be a null string.
                * `Value`: It can be up to 128 characters in length. It can be a null string.
@@ -463,11 +463,11 @@ class Domain(pulumi.CustomResource):
         default_domain = alicloud.vod.Domain("default",
             domain_name=f"example-{default['result']}.com",
             scope="domestic",
-            sources=[alicloud.vod.DomainSourceArgs(
-                source_type="domain",
-                source_content="outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com",
-                source_port="443",
-            )],
+            sources=[{
+                "source_type": "domain",
+                "source_content": "outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com",
+                "source_port": "443",
+            }],
             tags={
                 "Created": "terraform",
                 "For": "example",
@@ -500,7 +500,7 @@ class Domain(pulumi.CustomResource):
                  check_url: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -549,7 +549,7 @@ class Domain(pulumi.CustomResource):
             gmt_created: Optional[pulumi.Input[str]] = None,
             gmt_modified: Optional[pulumi.Input[str]] = None,
             scope: Optional[pulumi.Input[str]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]]] = None,
+            sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
             ssl_protocol: Optional[pulumi.Input[str]] = None,
             ssl_pub: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -571,7 +571,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] gmt_created: The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[str] gmt_modified: The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[str] scope: This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSourceArgs']]]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]] sources: The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
         :param pulumi.Input[str] ssl_protocol: Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
         :param pulumi.Input[str] ssl_pub: The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
         :param pulumi.Input[str] status: The status of the domain name for CDN. Valid values:

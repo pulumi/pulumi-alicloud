@@ -148,7 +148,7 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  policy_description: Optional[pulumi.Input[str]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a HBR Policy resource.
@@ -178,14 +178,14 @@ class Policy(pulumi.CustomResource):
             vault_name=f"example-value-{default['result']}")
         defaultoq_wv_hq = alicloud.hbr.Policy("defaultoqWvHQ",
             policy_name=f"example-value-{default['result']}",
-            rules=[alicloud.hbr.PolicyRuleArgs(
-                rule_type="BACKUP",
-                backup_type="COMPLETE",
-                schedule="I|1631685600|P1D",
-                retention=7,
-                archive_days=0,
-                vault_id=defaultyk84_hc.id,
-            )],
+            rules=[{
+                "rule_type": "BACKUP",
+                "backup_type": "COMPLETE",
+                "schedule": "I|1631685600|P1D",
+                "retention": 7,
+                "archive_days": 0,
+                "vault_id": defaultyk84_hc.id,
+            }],
             policy_description="policy example")
         ```
 
@@ -201,7 +201,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] policy_description: The policy description.
         :param pulumi.Input[str] policy_name: Policy Name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyRuleArgs']]]] rules: A list of policy rules. See `rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]] rules: A list of policy rules. See `rules` below.
         """
         ...
     @overload
@@ -237,14 +237,14 @@ class Policy(pulumi.CustomResource):
             vault_name=f"example-value-{default['result']}")
         defaultoq_wv_hq = alicloud.hbr.Policy("defaultoqWvHQ",
             policy_name=f"example-value-{default['result']}",
-            rules=[alicloud.hbr.PolicyRuleArgs(
-                rule_type="BACKUP",
-                backup_type="COMPLETE",
-                schedule="I|1631685600|P1D",
-                retention=7,
-                archive_days=0,
-                vault_id=defaultyk84_hc.id,
-            )],
+            rules=[{
+                "rule_type": "BACKUP",
+                "backup_type": "COMPLETE",
+                "schedule": "I|1631685600|P1D",
+                "retention": 7,
+                "archive_days": 0,
+                "vault_id": defaultyk84_hc.id,
+            }],
             policy_description="policy example")
         ```
 
@@ -273,7 +273,7 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  policy_description: Optional[pulumi.Input[str]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -300,7 +300,7 @@ class Policy(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             policy_description: Optional[pulumi.Input[str]] = None,
             policy_name: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyRuleArgs']]]]] = None) -> 'Policy':
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -311,7 +311,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Policy creation time.
         :param pulumi.Input[str] policy_description: The policy description.
         :param pulumi.Input[str] policy_name: Policy Name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyRuleArgs']]]] rules: A list of policy rules. See `rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyRuleArgs', 'PolicyRuleArgsDict']]]] rules: A list of policy rules. See `rules` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

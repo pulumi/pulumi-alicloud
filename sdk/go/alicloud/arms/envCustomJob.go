@@ -61,7 +61,7 @@ import (
 //			}
 //			_, err = arms.NewEnvironment(ctx, "env-ecs", &arms.EnvironmentArgs{
 //				EnvironmentType:    pulumi.String("ECS"),
-//				EnvironmentName:    pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				EnvironmentName:    pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				BindResourceId:     vpc.ID(),
 //				EnvironmentSubType: pulumi.String("ECS"),
 //			})

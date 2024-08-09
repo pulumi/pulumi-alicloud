@@ -46,7 +46,7 @@ import (
 //			}
 //			_, err = ros.NewChangeSet(ctx, "example", &ros.ChangeSetArgs{
 //				ChangeSetName: pulumi.String("example_value"),
-//				StackName:     pulumi.String(fmt.Sprintf("tf-example-%v", _default.Result)),
+//				StackName:     pulumi.Sprintf("tf-example-%v", _default.Result),
 //				ChangeSetType: pulumi.String("CREATE"),
 //				Description:   pulumi.String("Test From Terraform"),
 //				TemplateBody:  pulumi.String("{\"ROSTemplateFormatVersion\":\"2015-09-01\"}"),

@@ -224,8 +224,8 @@ class ScheduledSql(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['ScheduledSqlScheduleArgs']]] = None,
-                 scheduled_sql_configuration: Optional[pulumi.Input[pulumi.InputType['ScheduledSqlScheduledSqlConfigurationArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']]] = None,
+                 scheduled_sql_configuration: Optional[pulumi.Input[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']]] = None,
                  scheduled_sql_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -262,31 +262,31 @@ class ScheduledSql(pulumi.CustomResource):
             name=f"{name}-{default['result']}")
         default_scheduled_sql = alicloud.sls.ScheduledSql("default",
             description="example-tf-scheduled-sql-0006",
-            schedule=alicloud.sls.ScheduledSqlScheduleArgs(
-                type="Cron",
-                time_zone="+0700",
-                delay=20,
-                cron_expression="0 0/1 * * *",
-            ),
+            schedule={
+                "type": "Cron",
+                "time_zone": "+0700",
+                "delay": 20,
+                "cron_expression": "0 0/1 * * *",
+            },
             display_name="example-tf-scheduled-sql-0006",
-            scheduled_sql_configuration=alicloud.sls.ScheduledSqlScheduledSqlConfigurationArgs(
-                script="* | select * from log",
-                sql_type="searchQuery",
-                dest_endpoint="ap-northeast-1.log.aliyuncs.com",
-                dest_project="job-e2e-project-jj78kur-ap-southeast-1",
-                source_logstore=default1_li9we.name,
-                dest_logstore="example-open-api02",
-                role_arn="acs:ram::1395894005868720:role/aliyunlogetlrole",
-                dest_role_arn="acs:ram::1395894005868720:role/aliyunlogetlrole",
-                from_time_expr="@m-1m",
-                to_time_expr="@m",
-                max_run_time_in_seconds=1800,
-                resource_pool="enhanced",
-                max_retries=5,
-                from_time=1713196800,
-                to_time=0,
-                data_format="log2log",
-            ),
+            scheduled_sql_configuration={
+                "script": "* | select * from log",
+                "sql_type": "searchQuery",
+                "dest_endpoint": "ap-northeast-1.log.aliyuncs.com",
+                "dest_project": "job-e2e-project-jj78kur-ap-southeast-1",
+                "source_logstore": default1_li9we.name,
+                "dest_logstore": "example-open-api02",
+                "role_arn": "acs:ram::1395894005868720:role/aliyunlogetlrole",
+                "dest_role_arn": "acs:ram::1395894005868720:role/aliyunlogetlrole",
+                "from_time_expr": "@m-1m",
+                "to_time_expr": "@m",
+                "max_run_time_in_seconds": 1800,
+                "resource_pool": "enhanced",
+                "max_retries": 5,
+                "from_time": 1713196800,
+                "to_time": 0,
+                "data_format": "log2log",
+            },
             scheduled_sql_name=name,
             project=default_k_ie4_kv.name)
         ```
@@ -304,8 +304,8 @@ class ScheduledSql(pulumi.CustomResource):
         :param pulumi.Input[str] description: Task Description.
         :param pulumi.Input[str] display_name: Task Display Name.
         :param pulumi.Input[str] project: Log project.
-        :param pulumi.Input[pulumi.InputType['ScheduledSqlScheduleArgs']] schedule: The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
-        :param pulumi.Input[pulumi.InputType['ScheduledSqlScheduledSqlConfigurationArgs']] scheduled_sql_configuration: Task Configuration. See `scheduled_sql_configuration` below.
+        :param pulumi.Input[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']] schedule: The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+        :param pulumi.Input[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']] scheduled_sql_configuration: Task Configuration. See `scheduled_sql_configuration` below.
         :param pulumi.Input[str] scheduled_sql_name: Timed SQL name.
         """
         ...
@@ -348,31 +348,31 @@ class ScheduledSql(pulumi.CustomResource):
             name=f"{name}-{default['result']}")
         default_scheduled_sql = alicloud.sls.ScheduledSql("default",
             description="example-tf-scheduled-sql-0006",
-            schedule=alicloud.sls.ScheduledSqlScheduleArgs(
-                type="Cron",
-                time_zone="+0700",
-                delay=20,
-                cron_expression="0 0/1 * * *",
-            ),
+            schedule={
+                "type": "Cron",
+                "time_zone": "+0700",
+                "delay": 20,
+                "cron_expression": "0 0/1 * * *",
+            },
             display_name="example-tf-scheduled-sql-0006",
-            scheduled_sql_configuration=alicloud.sls.ScheduledSqlScheduledSqlConfigurationArgs(
-                script="* | select * from log",
-                sql_type="searchQuery",
-                dest_endpoint="ap-northeast-1.log.aliyuncs.com",
-                dest_project="job-e2e-project-jj78kur-ap-southeast-1",
-                source_logstore=default1_li9we.name,
-                dest_logstore="example-open-api02",
-                role_arn="acs:ram::1395894005868720:role/aliyunlogetlrole",
-                dest_role_arn="acs:ram::1395894005868720:role/aliyunlogetlrole",
-                from_time_expr="@m-1m",
-                to_time_expr="@m",
-                max_run_time_in_seconds=1800,
-                resource_pool="enhanced",
-                max_retries=5,
-                from_time=1713196800,
-                to_time=0,
-                data_format="log2log",
-            ),
+            scheduled_sql_configuration={
+                "script": "* | select * from log",
+                "sql_type": "searchQuery",
+                "dest_endpoint": "ap-northeast-1.log.aliyuncs.com",
+                "dest_project": "job-e2e-project-jj78kur-ap-southeast-1",
+                "source_logstore": default1_li9we.name,
+                "dest_logstore": "example-open-api02",
+                "role_arn": "acs:ram::1395894005868720:role/aliyunlogetlrole",
+                "dest_role_arn": "acs:ram::1395894005868720:role/aliyunlogetlrole",
+                "from_time_expr": "@m-1m",
+                "to_time_expr": "@m",
+                "max_run_time_in_seconds": 1800,
+                "resource_pool": "enhanced",
+                "max_retries": 5,
+                "from_time": 1713196800,
+                "to_time": 0,
+                "data_format": "log2log",
+            },
             scheduled_sql_name=name,
             project=default_k_ie4_kv.name)
         ```
@@ -403,8 +403,8 @@ class ScheduledSql(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['ScheduledSqlScheduleArgs']]] = None,
-                 scheduled_sql_configuration: Optional[pulumi.Input[pulumi.InputType['ScheduledSqlScheduledSqlConfigurationArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']]] = None,
+                 scheduled_sql_configuration: Optional[pulumi.Input[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']]] = None,
                  scheduled_sql_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -444,8 +444,8 @@ class ScheduledSql(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['ScheduledSqlScheduleArgs']]] = None,
-            scheduled_sql_configuration: Optional[pulumi.Input[pulumi.InputType['ScheduledSqlScheduledSqlConfigurationArgs']]] = None,
+            schedule: Optional[pulumi.Input[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']]] = None,
+            scheduled_sql_configuration: Optional[pulumi.Input[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']]] = None,
             scheduled_sql_name: Optional[pulumi.Input[str]] = None) -> 'ScheduledSql':
         """
         Get an existing ScheduledSql resource's state with the given name, id, and optional extra
@@ -457,8 +457,8 @@ class ScheduledSql(pulumi.CustomResource):
         :param pulumi.Input[str] description: Task Description.
         :param pulumi.Input[str] display_name: Task Display Name.
         :param pulumi.Input[str] project: Log project.
-        :param pulumi.Input[pulumi.InputType['ScheduledSqlScheduleArgs']] schedule: The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
-        :param pulumi.Input[pulumi.InputType['ScheduledSqlScheduledSqlConfigurationArgs']] scheduled_sql_configuration: Task Configuration. See `scheduled_sql_configuration` below.
+        :param pulumi.Input[Union['ScheduledSqlScheduleArgs', 'ScheduledSqlScheduleArgsDict']] schedule: The scheduling type is generally not required by default. If there is a strong timing requirement, if it must be imported every Monday at 8 o'clock, cron can be used. See `schedule` below.
+        :param pulumi.Input[Union['ScheduledSqlScheduledSqlConfigurationArgs', 'ScheduledSqlScheduledSqlConfigurationArgsDict']] scheduled_sql_configuration: Task Configuration. See `scheduled_sql_configuration` below.
         :param pulumi.Input[str] scheduled_sql_name: Timed SQL name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

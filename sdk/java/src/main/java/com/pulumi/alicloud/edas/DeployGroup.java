@@ -155,7 +155,7 @@ public class DeployGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DeployGroup(String name) {
+    public DeployGroup(java.lang.String name) {
         this(name, DeployGroupArgs.Empty);
     }
     /**
@@ -163,7 +163,7 @@ public class DeployGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DeployGroup(String name, DeployGroupArgs args) {
+    public DeployGroup(java.lang.String name, DeployGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -172,15 +172,22 @@ public class DeployGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DeployGroup(String name, DeployGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:edas/deployGroup:DeployGroup", name, args == null ? DeployGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DeployGroup(java.lang.String name, DeployGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:edas/deployGroup:DeployGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DeployGroup(String name, Output<String> id, @Nullable DeployGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:edas/deployGroup:DeployGroup", name, state, makeResourceOptions(options, id));
+    private DeployGroup(java.lang.String name, Output<java.lang.String> id, @Nullable DeployGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:edas/deployGroup:DeployGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DeployGroupArgs makeArgs(DeployGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DeployGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -196,7 +203,7 @@ public class DeployGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DeployGroup get(String name, Output<String> id, @Nullable DeployGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DeployGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable DeployGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DeployGroup(name, id, state, options);
     }
 }

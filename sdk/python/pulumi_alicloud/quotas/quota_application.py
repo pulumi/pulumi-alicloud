@@ -536,7 +536,7 @@ class QuotaApplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audit_mode: Optional[pulumi.Input[str]] = None,
                  desire_value: Optional[pulumi.Input[float]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict']]]]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  env_language: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
@@ -562,7 +562,7 @@ class QuotaApplication(pulumi.CustomResource):
                - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
                > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]] dimensions: QuotaDimensions. See `dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict']]]] dimensions: QuotaDimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The effective time of the quota application.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
                - zh (default): Chinese.
@@ -609,7 +609,7 @@ class QuotaApplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audit_mode: Optional[pulumi.Input[str]] = None,
                  desire_value: Optional[pulumi.Input[float]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict']]]]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  env_language: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
@@ -668,7 +668,7 @@ class QuotaApplication(pulumi.CustomResource):
             audit_reason: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             desire_value: Optional[pulumi.Input[float]] = None,
-            dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]]] = None,
+            dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict']]]]] = None,
             effective_time: Optional[pulumi.Input[str]] = None,
             env_language: Optional[pulumi.Input[str]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
@@ -696,7 +696,7 @@ class QuotaApplication(pulumi.CustomResource):
         :param pulumi.Input[str] audit_reason: The audit reason.
         :param pulumi.Input[str] create_time: Resource attribute field representing creation time.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]] dimensions: QuotaDimensions. See `dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict']]]] dimensions: QuotaDimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The effective time of the quota application.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
                - zh (default): Chinese.

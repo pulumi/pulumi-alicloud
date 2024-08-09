@@ -269,7 +269,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TrafficMirrorFilterIngressRule(String name) {
+    public TrafficMirrorFilterIngressRule(java.lang.String name) {
         this(name, TrafficMirrorFilterIngressRuleArgs.Empty);
     }
     /**
@@ -277,7 +277,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TrafficMirrorFilterIngressRule(String name, TrafficMirrorFilterIngressRuleArgs args) {
+    public TrafficMirrorFilterIngressRule(java.lang.String name, TrafficMirrorFilterIngressRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -286,15 +286,22 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TrafficMirrorFilterIngressRule(String name, TrafficMirrorFilterIngressRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule", name, args == null ? TrafficMirrorFilterIngressRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TrafficMirrorFilterIngressRule(java.lang.String name, TrafficMirrorFilterIngressRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TrafficMirrorFilterIngressRule(String name, Output<String> id, @Nullable TrafficMirrorFilterIngressRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule", name, state, makeResourceOptions(options, id));
+    private TrafficMirrorFilterIngressRule(java.lang.String name, Output<java.lang.String> id, @Nullable TrafficMirrorFilterIngressRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/trafficMirrorFilterIngressRule:TrafficMirrorFilterIngressRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TrafficMirrorFilterIngressRuleArgs makeArgs(TrafficMirrorFilterIngressRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TrafficMirrorFilterIngressRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -310,7 +317,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TrafficMirrorFilterIngressRule get(String name, Output<String> id, @Nullable TrafficMirrorFilterIngressRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TrafficMirrorFilterIngressRule get(java.lang.String name, Output<java.lang.String> id, @Nullable TrafficMirrorFilterIngressRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TrafficMirrorFilterIngressRule(name, id, state, options);
     }
 }

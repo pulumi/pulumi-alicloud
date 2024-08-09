@@ -130,7 +130,7 @@ class AccessControlList(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_control_list_name: Optional[pulumi.Input[str]] = None,
-                 acl_entrys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessControlListAclEntryArgs']]]]] = None,
+                 acl_entrys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict']]]]] = None,
                  address_ip_version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -160,10 +160,10 @@ class AccessControlList(pulumi.CustomResource):
             payment_type="PayAsYouGo")
         default = alicloud.apigateway.AccessControlList("default",
             access_control_list_name=name,
-            acl_entrys=[alicloud.apigateway.AccessControlListAclEntryArgs(
-                acl_entry_ip="128.0.0.1/32",
-                acl_entry_comment="example comment",
-            )],
+            acl_entrys=[{
+                "acl_entry_ip": "128.0.0.1/32",
+                "acl_entry_comment": "example comment",
+            }],
             address_ip_version="ipv4")
         ```
 
@@ -178,7 +178,7 @@ class AccessControlList(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_control_list_name: Access control list name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessControlListAclEntryArgs']]]] acl_entrys: Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict']]]] acl_entrys: Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: ipv4 and ipv6.
         """
         ...
@@ -214,10 +214,10 @@ class AccessControlList(pulumi.CustomResource):
             payment_type="PayAsYouGo")
         default = alicloud.apigateway.AccessControlList("default",
             access_control_list_name=name,
-            acl_entrys=[alicloud.apigateway.AccessControlListAclEntryArgs(
-                acl_entry_ip="128.0.0.1/32",
-                acl_entry_comment="example comment",
-            )],
+            acl_entrys=[{
+                "acl_entry_ip": "128.0.0.1/32",
+                "acl_entry_comment": "example comment",
+            }],
             address_ip_version="ipv4")
         ```
 
@@ -245,7 +245,7 @@ class AccessControlList(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_control_list_name: Optional[pulumi.Input[str]] = None,
-                 acl_entrys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessControlListAclEntryArgs']]]]] = None,
+                 acl_entrys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict']]]]] = None,
                  address_ip_version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -274,7 +274,7 @@ class AccessControlList(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_control_list_name: Optional[pulumi.Input[str]] = None,
-            acl_entrys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessControlListAclEntryArgs']]]]] = None,
+            acl_entrys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict']]]]] = None,
             address_ip_version: Optional[pulumi.Input[str]] = None) -> 'AccessControlList':
         """
         Get an existing AccessControlList resource's state with the given name, id, and optional extra
@@ -284,7 +284,7 @@ class AccessControlList(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_control_list_name: Access control list name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessControlListAclEntryArgs']]]] acl_entrys: Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessControlListAclEntryArgs', 'AccessControlListAclEntryArgsDict']]]] acl_entrys: Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: ipv4 and ipv6.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -668,7 +668,7 @@ class GtmInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GtmInstanceAlertConfigArgs']]]]] = None,
+                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GtmInstanceAlertConfigArgs', 'GtmInstanceAlertConfigArgsDict']]]]] = None,
                  alert_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cname_type: Optional[pulumi.Input[str]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
@@ -724,12 +724,12 @@ class GtmInstance(pulumi.CustomResource):
             resource_group_id=default.groups[0].id,
             alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
             public_user_domain_name=domain_name,
-            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
-                sms_notice=True,
-                notice_type="ADDR_ALERT",
-                email_notice=True,
-                dingtalk_notice=True,
-            )])
+            alert_configs=[{
+                "sms_notice": True,
+                "notice_type": "ADDR_ALERT",
+                "email_notice": True,
+                "dingtalk_notice": True,
+            }])
         ```
 
         ## Import
@@ -742,7 +742,7 @@ class GtmInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GtmInstanceAlertConfigArgs']]]] alert_configs: The alert notification methods. See `alert_config` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GtmInstanceAlertConfigArgs', 'GtmInstanceAlertConfigArgsDict']]]] alert_configs: The alert notification methods. See `alert_config` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alert_groups: The alert group.
         :param pulumi.Input[str] cname_type: The access type of the CNAME domain name. Valid value: `PUBLIC`.
         :param pulumi.Input[bool] force_update: The force update.
@@ -804,12 +804,12 @@ class GtmInstance(pulumi.CustomResource):
             resource_group_id=default.groups[0].id,
             alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
             public_user_domain_name=domain_name,
-            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
-                sms_notice=True,
-                notice_type="ADDR_ALERT",
-                email_notice=True,
-                dingtalk_notice=True,
-            )])
+            alert_configs=[{
+                "sms_notice": True,
+                "notice_type": "ADDR_ALERT",
+                "email_notice": True,
+                "dingtalk_notice": True,
+            }])
         ```
 
         ## Import
@@ -835,7 +835,7 @@ class GtmInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GtmInstanceAlertConfigArgs']]]]] = None,
+                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GtmInstanceAlertConfigArgs', 'GtmInstanceAlertConfigArgsDict']]]]] = None,
                  alert_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cname_type: Optional[pulumi.Input[str]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
@@ -906,7 +906,7 @@ class GtmInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GtmInstanceAlertConfigArgs']]]]] = None,
+            alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GtmInstanceAlertConfigArgs', 'GtmInstanceAlertConfigArgsDict']]]]] = None,
             alert_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             cname_type: Optional[pulumi.Input[str]] = None,
             force_update: Optional[pulumi.Input[bool]] = None,
@@ -933,7 +933,7 @@ class GtmInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GtmInstanceAlertConfigArgs']]]] alert_configs: The alert notification methods. See `alert_config` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GtmInstanceAlertConfigArgs', 'GtmInstanceAlertConfigArgsDict']]]] alert_configs: The alert notification methods. See `alert_config` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alert_groups: The alert group.
         :param pulumi.Input[str] cname_type: The access type of the CNAME domain name. Valid value: `PUBLIC`.
         :param pulumi.Input[bool] force_update: The force update.

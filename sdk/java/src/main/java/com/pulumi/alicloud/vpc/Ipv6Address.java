@@ -222,7 +222,7 @@ public class Ipv6Address extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Ipv6Address(String name) {
+    public Ipv6Address(java.lang.String name) {
         this(name, Ipv6AddressArgs.Empty);
     }
     /**
@@ -230,7 +230,7 @@ public class Ipv6Address extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Ipv6Address(String name, Ipv6AddressArgs args) {
+    public Ipv6Address(java.lang.String name, Ipv6AddressArgs args) {
         this(name, args, null);
     }
     /**
@@ -239,15 +239,22 @@ public class Ipv6Address extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Ipv6Address(String name, Ipv6AddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/ipv6Address:Ipv6Address", name, args == null ? Ipv6AddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Ipv6Address(java.lang.String name, Ipv6AddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/ipv6Address:Ipv6Address", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Ipv6Address(String name, Output<String> id, @Nullable Ipv6AddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/ipv6Address:Ipv6Address", name, state, makeResourceOptions(options, id));
+    private Ipv6Address(java.lang.String name, Output<java.lang.String> id, @Nullable Ipv6AddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/ipv6Address:Ipv6Address", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static Ipv6AddressArgs makeArgs(Ipv6AddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? Ipv6AddressArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -263,7 +270,7 @@ public class Ipv6Address extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Ipv6Address get(String name, Output<String> id, @Nullable Ipv6AddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Ipv6Address get(java.lang.String name, Output<java.lang.String> id, @Nullable Ipv6AddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Ipv6Address(name, id, state, options);
     }
 }

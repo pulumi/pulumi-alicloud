@@ -331,9 +331,9 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
             vpc_id=default_network.id,
             scheduler="Wrr",
             protocol="TCP",
-            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
-                health_check_enabled=False,
-            ),
+            health_check={
+                "health_check_enabled": False,
+            },
             address_ip_version="Ipv4")
         default_server_group_server_attachment = alicloud.nlb.ServerGroupServerAttachment("default",
             server_type="Ip",
@@ -401,9 +401,9 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
             vpc_id=default_network.id,
             scheduler="Wrr",
             protocol="TCP",
-            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
-                health_check_enabled=False,
-            ),
+            health_check={
+                "health_check_enabled": False,
+            },
             address_ip_version="Ipv4")
         default_server_group_server_attachment = alicloud.nlb.ServerGroupServerAttachment("default",
             server_type="Ip",

@@ -133,7 +133,7 @@ public class RecycleBin extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RecycleBin(String name) {
+    public RecycleBin(java.lang.String name) {
         this(name, RecycleBinArgs.Empty);
     }
     /**
@@ -141,7 +141,7 @@ public class RecycleBin extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RecycleBin(String name, RecycleBinArgs args) {
+    public RecycleBin(java.lang.String name, RecycleBinArgs args) {
         this(name, args, null);
     }
     /**
@@ -150,15 +150,22 @@ public class RecycleBin extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RecycleBin(String name, RecycleBinArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:nas/recycleBin:RecycleBin", name, args == null ? RecycleBinArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RecycleBin(java.lang.String name, RecycleBinArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:nas/recycleBin:RecycleBin", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RecycleBin(String name, Output<String> id, @Nullable RecycleBinState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:nas/recycleBin:RecycleBin", name, state, makeResourceOptions(options, id));
+    private RecycleBin(java.lang.String name, Output<java.lang.String> id, @Nullable RecycleBinState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:nas/recycleBin:RecycleBin", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RecycleBinArgs makeArgs(RecycleBinArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RecycleBinArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -174,7 +181,7 @@ public class RecycleBin extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RecycleBin get(String name, Output<String> id, @Nullable RecycleBinState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RecycleBin get(java.lang.String name, Output<java.lang.String> id, @Nullable RecycleBinState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RecycleBin(name, id, state, options);
     }
 }

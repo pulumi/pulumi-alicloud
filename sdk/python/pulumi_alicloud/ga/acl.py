@@ -249,7 +249,7 @@ class Acl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]]] = None,
+                 acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict']]]]] = None,
                  acl_name: Optional[pulumi.Input[str]] = None,
                  address_ip_version: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -290,7 +290,7 @@ class Acl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict']]]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `IPv4` and `IPv6`.
         :param pulumi.Input[bool] dry_run: The dry run.
@@ -350,7 +350,7 @@ class Acl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]]] = None,
+                 acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict']]]]] = None,
                  acl_name: Optional[pulumi.Input[str]] = None,
                  address_ip_version: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
@@ -384,7 +384,7 @@ class Acl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]]] = None,
+            acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict']]]]] = None,
             acl_name: Optional[pulumi.Input[str]] = None,
             address_ip_version: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
@@ -398,7 +398,7 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AclAclEntryArgs', 'AclAclEntryArgsDict']]]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `IPv4` and `IPv6`.
         :param pulumi.Input[bool] dry_run: The dry run.

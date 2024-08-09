@@ -133,7 +133,7 @@ public class SslVpnClientCert extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SslVpnClientCert(String name) {
+    public SslVpnClientCert(java.lang.String name) {
         this(name, SslVpnClientCertArgs.Empty);
     }
     /**
@@ -141,7 +141,7 @@ public class SslVpnClientCert extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SslVpnClientCert(String name, SslVpnClientCertArgs args) {
+    public SslVpnClientCert(java.lang.String name, SslVpnClientCertArgs args) {
         this(name, args, null);
     }
     /**
@@ -150,15 +150,22 @@ public class SslVpnClientCert extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SslVpnClientCert(String name, SslVpnClientCertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpn/sslVpnClientCert:SslVpnClientCert", name, args == null ? SslVpnClientCertArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SslVpnClientCert(java.lang.String name, SslVpnClientCertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpn/sslVpnClientCert:SslVpnClientCert", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SslVpnClientCert(String name, Output<String> id, @Nullable SslVpnClientCertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpn/sslVpnClientCert:SslVpnClientCert", name, state, makeResourceOptions(options, id));
+    private SslVpnClientCert(java.lang.String name, Output<java.lang.String> id, @Nullable SslVpnClientCertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpn/sslVpnClientCert:SslVpnClientCert", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SslVpnClientCertArgs makeArgs(SslVpnClientCertArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SslVpnClientCertArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -180,7 +187,7 @@ public class SslVpnClientCert extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SslVpnClientCert get(String name, Output<String> id, @Nullable SslVpnClientCertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SslVpnClientCert get(java.lang.String name, Output<java.lang.String> id, @Nullable SslVpnClientCertState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SslVpnClientCert(name, id, state, options);
     }
 }

@@ -261,7 +261,7 @@ public final class GetApplicationsApplication {
      */
     private String vswitchId;
     /**
-     * @return WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}&#34; start.
+     * @return WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}" start.
      * 
      */
     private String warStartOptions;
@@ -621,7 +621,7 @@ public final class GetApplicationsApplication {
         return this.vswitchId;
     }
     /**
-     * @return WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}&#34; start.
+     * @return WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}" start.
      * 
      */
     public String warStartOptions() {

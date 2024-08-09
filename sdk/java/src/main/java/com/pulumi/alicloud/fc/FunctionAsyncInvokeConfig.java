@@ -339,7 +339,7 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FunctionAsyncInvokeConfig(String name) {
+    public FunctionAsyncInvokeConfig(java.lang.String name) {
         this(name, FunctionAsyncInvokeConfigArgs.Empty);
     }
     /**
@@ -347,7 +347,7 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FunctionAsyncInvokeConfig(String name, FunctionAsyncInvokeConfigArgs args) {
+    public FunctionAsyncInvokeConfig(java.lang.String name, FunctionAsyncInvokeConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -356,15 +356,22 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FunctionAsyncInvokeConfig(String name, FunctionAsyncInvokeConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig", name, args == null ? FunctionAsyncInvokeConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public FunctionAsyncInvokeConfig(java.lang.String name, FunctionAsyncInvokeConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FunctionAsyncInvokeConfig(String name, Output<String> id, @Nullable FunctionAsyncInvokeConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig", name, state, makeResourceOptions(options, id));
+    private FunctionAsyncInvokeConfig(java.lang.String name, Output<java.lang.String> id, @Nullable FunctionAsyncInvokeConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:fc/functionAsyncInvokeConfig:FunctionAsyncInvokeConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FunctionAsyncInvokeConfigArgs makeArgs(FunctionAsyncInvokeConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FunctionAsyncInvokeConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -380,7 +387,7 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FunctionAsyncInvokeConfig get(String name, Output<String> id, @Nullable FunctionAsyncInvokeConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FunctionAsyncInvokeConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable FunctionAsyncInvokeConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FunctionAsyncInvokeConfig(name, id, state, options);
     }
 }

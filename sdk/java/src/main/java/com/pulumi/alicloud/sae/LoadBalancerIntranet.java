@@ -218,7 +218,7 @@ public class LoadBalancerIntranet extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LoadBalancerIntranet(String name) {
+    public LoadBalancerIntranet(java.lang.String name) {
         this(name, LoadBalancerIntranetArgs.Empty);
     }
     /**
@@ -226,7 +226,7 @@ public class LoadBalancerIntranet extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LoadBalancerIntranet(String name, LoadBalancerIntranetArgs args) {
+    public LoadBalancerIntranet(java.lang.String name, LoadBalancerIntranetArgs args) {
         this(name, args, null);
     }
     /**
@@ -235,15 +235,22 @@ public class LoadBalancerIntranet extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LoadBalancerIntranet(String name, LoadBalancerIntranetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet", name, args == null ? LoadBalancerIntranetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public LoadBalancerIntranet(java.lang.String name, LoadBalancerIntranetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LoadBalancerIntranet(String name, Output<String> id, @Nullable LoadBalancerIntranetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet", name, state, makeResourceOptions(options, id));
+    private LoadBalancerIntranet(java.lang.String name, Output<java.lang.String> id, @Nullable LoadBalancerIntranetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:sae/loadBalancerIntranet:LoadBalancerIntranet", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static LoadBalancerIntranetArgs makeArgs(LoadBalancerIntranetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LoadBalancerIntranetArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -259,7 +266,7 @@ public class LoadBalancerIntranet extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LoadBalancerIntranet get(String name, Output<String> id, @Nullable LoadBalancerIntranetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LoadBalancerIntranet get(java.lang.String name, Output<java.lang.String> id, @Nullable LoadBalancerIntranetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LoadBalancerIntranet(name, id, state, options);
     }
 }

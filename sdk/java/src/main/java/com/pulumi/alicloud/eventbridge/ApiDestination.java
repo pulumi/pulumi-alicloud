@@ -166,7 +166,7 @@ public class ApiDestination extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApiDestination(String name) {
+    public ApiDestination(java.lang.String name) {
         this(name, ApiDestinationArgs.Empty);
     }
     /**
@@ -174,7 +174,7 @@ public class ApiDestination extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApiDestination(String name, ApiDestinationArgs args) {
+    public ApiDestination(java.lang.String name, ApiDestinationArgs args) {
         this(name, args, null);
     }
     /**
@@ -183,15 +183,22 @@ public class ApiDestination extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApiDestination(String name, ApiDestinationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eventbridge/apiDestination:ApiDestination", name, args == null ? ApiDestinationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ApiDestination(java.lang.String name, ApiDestinationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eventbridge/apiDestination:ApiDestination", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ApiDestination(String name, Output<String> id, @Nullable ApiDestinationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eventbridge/apiDestination:ApiDestination", name, state, makeResourceOptions(options, id));
+    private ApiDestination(java.lang.String name, Output<java.lang.String> id, @Nullable ApiDestinationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eventbridge/apiDestination:ApiDestination", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApiDestinationArgs makeArgs(ApiDestinationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApiDestinationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -207,7 +214,7 @@ public class ApiDestination extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApiDestination get(String name, Output<String> id, @Nullable ApiDestinationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApiDestination get(java.lang.String name, Output<java.lang.String> id, @Nullable ApiDestinationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApiDestination(name, id, state, options);
     }
 }

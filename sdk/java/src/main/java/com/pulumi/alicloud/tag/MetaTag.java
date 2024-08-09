@@ -106,7 +106,7 @@ public class MetaTag extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MetaTag(String name) {
+    public MetaTag(java.lang.String name) {
         this(name, MetaTagArgs.Empty);
     }
     /**
@@ -114,7 +114,7 @@ public class MetaTag extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MetaTag(String name, MetaTagArgs args) {
+    public MetaTag(java.lang.String name, MetaTagArgs args) {
         this(name, args, null);
     }
     /**
@@ -123,15 +123,22 @@ public class MetaTag extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MetaTag(String name, MetaTagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:tag/metaTag:MetaTag", name, args == null ? MetaTagArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MetaTag(java.lang.String name, MetaTagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:tag/metaTag:MetaTag", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MetaTag(String name, Output<String> id, @Nullable MetaTagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:tag/metaTag:MetaTag", name, state, makeResourceOptions(options, id));
+    private MetaTag(java.lang.String name, Output<java.lang.String> id, @Nullable MetaTagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:tag/metaTag:MetaTag", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MetaTagArgs makeArgs(MetaTagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MetaTagArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -147,7 +154,7 @@ public class MetaTag extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MetaTag get(String name, Output<String> id, @Nullable MetaTagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MetaTag get(java.lang.String name, Output<java.lang.String> id, @Nullable MetaTagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MetaTag(name, id, state, options);
     }
 }

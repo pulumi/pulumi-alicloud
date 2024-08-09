@@ -355,9 +355,9 @@ class AppGroup(pulumi.CustomResource):
                  current_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGroupOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
-                 quota: Optional[pulumi.Input[pulumi.InputType['AppGroupQuotaArgs']]] = None,
+                 quota: Optional[pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -383,11 +383,11 @@ class AppGroup(pulumi.CustomResource):
             app_group_name=name,
             payment_type="PayAsYouGo",
             type="standard",
-            quota=alicloud.opensearch.AppGroupQuotaArgs(
-                doc_size=1,
-                compute_resource=20,
-                spec="opensearch.share.common",
-            ))
+            quota={
+                "doc_size": 1,
+                "compute_resource": 20,
+                "spec": "opensearch.share.common",
+            })
         ```
 
         ## Import
@@ -405,9 +405,9 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.Input[str] current_version: The version of Application Group Name.
         :param pulumi.Input[str] description: The description of the resource.
         :param pulumi.Input[str] order_type: Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGroupOrderArgs']]]] orders: Order cycle information. The details see Block order.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]] orders: Order cycle information. The details see Block order.
         :param pulumi.Input[str] payment_type: The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
-        :param pulumi.Input[pulumi.InputType['AppGroupQuotaArgs']] quota: Quota information.  The details see Block quota.
+        :param pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']] quota: Quota information.  The details see Block quota.
         :param pulumi.Input[str] type: Application type. Valid Values: `standard`, `enhanced`.
         """
         ...
@@ -439,11 +439,11 @@ class AppGroup(pulumi.CustomResource):
             app_group_name=name,
             payment_type="PayAsYouGo",
             type="standard",
-            quota=alicloud.opensearch.AppGroupQuotaArgs(
-                doc_size=1,
-                compute_resource=20,
-                spec="opensearch.share.common",
-            ))
+            quota={
+                "doc_size": 1,
+                "compute_resource": 20,
+                "spec": "opensearch.share.common",
+            })
         ```
 
         ## Import
@@ -474,9 +474,9 @@ class AppGroup(pulumi.CustomResource):
                  current_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGroupOrderArgs']]]]] = None,
+                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
-                 quota: Optional[pulumi.Input[pulumi.InputType['AppGroupQuotaArgs']]] = None,
+                 quota: Optional[pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -522,9 +522,9 @@ class AppGroup(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             order_type: Optional[pulumi.Input[str]] = None,
-            orders: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGroupOrderArgs']]]]] = None,
+            orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
-            quota: Optional[pulumi.Input[pulumi.InputType['AppGroupQuotaArgs']]] = None,
+            quota: Optional[pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'AppGroup':
         """
@@ -540,9 +540,9 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the resource.
         :param pulumi.Input[str] instance_id: The instance id.
         :param pulumi.Input[str] order_type: Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGroupOrderArgs']]]] orders: Order cycle information. The details see Block order.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]] orders: Order cycle information. The details see Block order.
         :param pulumi.Input[str] payment_type: The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
-        :param pulumi.Input[pulumi.InputType['AppGroupQuotaArgs']] quota: Quota information.  The details see Block quota.
+        :param pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']] quota: Quota information.  The details see Block quota.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
         :param pulumi.Input[str] type: Application type. Valid Values: `standard`, `enhanced`.
         """

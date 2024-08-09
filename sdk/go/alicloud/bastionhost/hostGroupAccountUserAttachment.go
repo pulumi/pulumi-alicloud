@@ -91,7 +91,7 @@ import (
 //				Mobile:            pulumi.String("13312345678"),
 //				Password:          pulumi.String("YourPassword-123"),
 //				Source:            pulumi.String("Local"),
-//				UserName:          pulumi.String(fmt.Sprintf("%v_local_user", name)),
+//				UserName:          pulumi.Sprintf("%v_local_user", name),
 //			})
 //			if err != nil {
 //				return err

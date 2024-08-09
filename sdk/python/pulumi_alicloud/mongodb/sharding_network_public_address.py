@@ -153,23 +153,23 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
             engine_version="4.2",
             name=name,
             shard_lists=[
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.mid",
-                    node_storage=10,
-                ),
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.standard",
-                    node_storage=20,
-                    readonly_replicas=1,
-                ),
+                {
+                    "node_class": "dds.shard.mid",
+                    "node_storage": 10,
+                },
+                {
+                    "node_class": "dds.shard.standard",
+                    "node_storage": 20,
+                    "readonly_replicas": 1,
+                },
             ],
             mongo_lists=[
-                alicloud.mongodb.ShardingInstanceMongoListArgs(
-                    node_class="dds.mongos.mid",
-                ),
-                alicloud.mongodb.ShardingInstanceMongoListArgs(
-                    node_class="dds.mongos.mid",
-                ),
+                {
+                    "node_class": "dds.mongos.mid",
+                },
+                {
+                    "node_class": "dds.mongos.mid",
+                },
             ])
         example = alicloud.mongodb.ShardingNetworkPublicAddress("example",
             db_instance_id=default_sharding_instance.id,
@@ -233,23 +233,23 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
             engine_version="4.2",
             name=name,
             shard_lists=[
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.mid",
-                    node_storage=10,
-                ),
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.standard",
-                    node_storage=20,
-                    readonly_replicas=1,
-                ),
+                {
+                    "node_class": "dds.shard.mid",
+                    "node_storage": 10,
+                },
+                {
+                    "node_class": "dds.shard.standard",
+                    "node_storage": 20,
+                    "readonly_replicas": 1,
+                },
             ],
             mongo_lists=[
-                alicloud.mongodb.ShardingInstanceMongoListArgs(
-                    node_class="dds.mongos.mid",
-                ),
-                alicloud.mongodb.ShardingInstanceMongoListArgs(
-                    node_class="dds.mongos.mid",
-                ),
+                {
+                    "node_class": "dds.mongos.mid",
+                },
+                {
+                    "node_class": "dds.mongos.mid",
+                },
             ])
         example = alicloud.mongodb.ShardingNetworkPublicAddress("example",
             db_instance_id=default_sharding_instance.id,
@@ -308,7 +308,7 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             db_instance_id: Optional[pulumi.Input[str]] = None,
-            network_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingNetworkPublicAddressNetworkAddressArgs']]]]] = None,
+            network_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingNetworkPublicAddressNetworkAddressArgs', 'ShardingNetworkPublicAddressNetworkAddressArgsDict']]]]] = None,
             node_id: Optional[pulumi.Input[str]] = None) -> 'ShardingNetworkPublicAddress':
         """
         Get an existing ShardingNetworkPublicAddress resource's state with the given name, id, and optional extra
@@ -318,7 +318,7 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingNetworkPublicAddressNetworkAddressArgs']]]] network_addresses: The endpoint of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingNetworkPublicAddressNetworkAddressArgs', 'ShardingNetworkPublicAddressNetworkAddressArgsDict']]]] network_addresses: The endpoint of the instance.
         :param pulumi.Input[str] node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

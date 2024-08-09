@@ -213,7 +213,7 @@ public class EventSource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EventSource(String name) {
+    public EventSource(java.lang.String name) {
         this(name, EventSourceArgs.Empty);
     }
     /**
@@ -221,7 +221,7 @@ public class EventSource extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EventSource(String name, EventSourceArgs args) {
+    public EventSource(java.lang.String name, EventSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -230,15 +230,22 @@ public class EventSource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EventSource(String name, EventSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eventbridge/eventSource:EventSource", name, args == null ? EventSourceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EventSource(java.lang.String name, EventSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eventbridge/eventSource:EventSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EventSource(String name, Output<String> id, @Nullable EventSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eventbridge/eventSource:EventSource", name, state, makeResourceOptions(options, id));
+    private EventSource(java.lang.String name, Output<java.lang.String> id, @Nullable EventSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eventbridge/eventSource:EventSource", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EventSourceArgs makeArgs(EventSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EventSourceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -254,7 +261,7 @@ public class EventSource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EventSource get(String name, Output<String> id, @Nullable EventSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EventSource get(java.lang.String name, Output<java.lang.String> id, @Nullable EventSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EventSource(name, id, state, options);
     }
 }

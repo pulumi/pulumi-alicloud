@@ -714,7 +714,7 @@ class Instance(pulumi.CustomResource):
                  cold_storage_size: Optional[pulumi.Input[int]] = None,
                  cpu: Optional[pulumi.Input[int]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEndpointArgs']]]]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
                  gateway_count: Optional[pulumi.Input[int]] = None,
                  initial_databases: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -755,7 +755,7 @@ class Instance(pulumi.CustomResource):
                - 128 core 512 GB (number of compute nodes: 8)
                > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         :param pulumi.Input[int] duration: The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEndpointArgs']]]] endpoints: List of domain names. See `endpoints` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]] endpoints: List of domain names. See `endpoints` below.
         :param pulumi.Input[int] gateway_count: Number of gateway nodes.
         :param pulumi.Input[str] initial_databases: Initialize the database and split multiple database names ",".
         :param pulumi.Input[str] instance_name: The name of the resource.
@@ -815,7 +815,7 @@ class Instance(pulumi.CustomResource):
                  cold_storage_size: Optional[pulumi.Input[int]] = None,
                  cpu: Optional[pulumi.Input[int]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEndpointArgs']]]]] = None,
+                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
                  gateway_count: Optional[pulumi.Input[int]] = None,
                  initial_databases: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -880,7 +880,7 @@ class Instance(pulumi.CustomResource):
             cpu: Optional[pulumi.Input[int]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             duration: Optional[pulumi.Input[int]] = None,
-            endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEndpointArgs']]]]] = None,
+            endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
             gateway_count: Optional[pulumi.Input[int]] = None,
             initial_databases: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
@@ -917,7 +917,7 @@ class Instance(pulumi.CustomResource):
                > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[int] duration: The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEndpointArgs']]]] endpoints: List of domain names. See `endpoints` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]] endpoints: List of domain names. See `endpoints` below.
         :param pulumi.Input[int] gateway_count: Number of gateway nodes.
         :param pulumi.Input[str] initial_databases: Initialize the database and split multiple database names ",".
         :param pulumi.Input[str] instance_name: The name of the resource.

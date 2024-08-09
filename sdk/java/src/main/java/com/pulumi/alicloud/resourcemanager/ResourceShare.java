@@ -117,7 +117,7 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ResourceShare(String name) {
+    public ResourceShare(java.lang.String name) {
         this(name, ResourceShareArgs.Empty);
     }
     /**
@@ -125,7 +125,7 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ResourceShare(String name, ResourceShareArgs args) {
+    public ResourceShare(java.lang.String name, ResourceShareArgs args) {
         this(name, args, null);
     }
     /**
@@ -134,15 +134,22 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ResourceShare(String name, ResourceShareArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:resourcemanager/resourceShare:ResourceShare", name, args == null ? ResourceShareArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ResourceShare(java.lang.String name, ResourceShareArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:resourcemanager/resourceShare:ResourceShare", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ResourceShare(String name, Output<String> id, @Nullable ResourceShareState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:resourcemanager/resourceShare:ResourceShare", name, state, makeResourceOptions(options, id));
+    private ResourceShare(java.lang.String name, Output<java.lang.String> id, @Nullable ResourceShareState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:resourcemanager/resourceShare:ResourceShare", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ResourceShareArgs makeArgs(ResourceShareArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ResourceShareArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -158,7 +165,7 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ResourceShare get(String name, Output<String> id, @Nullable ResourceShareState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ResourceShare get(java.lang.String name, Output<java.lang.String> id, @Nullable ResourceShareState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ResourceShare(name, id, state, options);
     }
 }

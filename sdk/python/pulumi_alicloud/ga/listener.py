@@ -541,15 +541,15 @@ class Listener(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerator_id: Optional[pulumi.Input[str]] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]]] = None,
+                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict']]]]] = None,
                  client_affinity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']]] = None,
+                 forwarded_for_config: Optional[pulumi.Input[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict']]] = None,
                  http_version: Optional[pulumi.Input[str]] = None,
                  idle_timeout: Optional[pulumi.Input[int]] = None,
                  listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]]] = None,
+                 port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict']]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  proxy_protocol: Optional[pulumi.Input[bool]] = None,
                  request_timeout: Optional[pulumi.Input[int]] = None,
@@ -586,10 +586,10 @@ class Listener(pulumi.CustomResource):
             bandwidth_package_id=default_bandwidth_package.id)
         default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=80,
-                to_port=80,
-            )])
+            port_ranges=[{
+                "from_port": 80,
+                "to_port": 80,
+            }])
         ```
 
         ## Import
@@ -603,13 +603,13 @@ class Listener(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_id: The accelerator id.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]] certificates: The certificates of the listener. See `certificates` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict']]]] certificates: The certificates of the listener. See `certificates` below.
                > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         :param pulumi.Input[str] client_affinity: The clientAffinity of the listener. Default value: `NONE`. Valid values:
                - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
                - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
         :param pulumi.Input[str] description: The description of the listener.
-        :param pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
+        :param pulumi.Input[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict']] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
         :param pulumi.Input[str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
                > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
         :param pulumi.Input[int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values:
@@ -620,7 +620,7 @@ class Listener(pulumi.CustomResource):
                - `Standard`: intelligent routing.
                - `CustomRouting`: custom routing.
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]] port_ranges: The portRanges of the listener. See `port_ranges` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict']]]] port_ranges: The portRanges of the listener. See `port_ranges` below.
                > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value: `false`. Valid values:
@@ -665,10 +665,10 @@ class Listener(pulumi.CustomResource):
             bandwidth_package_id=default_bandwidth_package.id)
         default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=80,
-                to_port=80,
-            )])
+            port_ranges=[{
+                "from_port": 80,
+                "to_port": 80,
+            }])
         ```
 
         ## Import
@@ -695,15 +695,15 @@ class Listener(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerator_id: Optional[pulumi.Input[str]] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]]] = None,
+                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict']]]]] = None,
                  client_affinity: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']]] = None,
+                 forwarded_for_config: Optional[pulumi.Input[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict']]] = None,
                  http_version: Optional[pulumi.Input[str]] = None,
                  idle_timeout: Optional[pulumi.Input[int]] = None,
                  listener_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]]] = None,
+                 port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict']]]]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  proxy_protocol: Optional[pulumi.Input[bool]] = None,
                  request_timeout: Optional[pulumi.Input[int]] = None,
@@ -747,15 +747,15 @@ class Listener(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             accelerator_id: Optional[pulumi.Input[str]] = None,
-            certificates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]]] = None,
+            certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict']]]]] = None,
             client_affinity: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            forwarded_for_config: Optional[pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']]] = None,
+            forwarded_for_config: Optional[pulumi.Input[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict']]] = None,
             http_version: Optional[pulumi.Input[str]] = None,
             idle_timeout: Optional[pulumi.Input[int]] = None,
             listener_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]]] = None,
+            port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict']]]]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             proxy_protocol: Optional[pulumi.Input[bool]] = None,
             request_timeout: Optional[pulumi.Input[int]] = None,
@@ -769,13 +769,13 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_id: The accelerator id.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]] certificates: The certificates of the listener. See `certificates` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict']]]] certificates: The certificates of the listener. See `certificates` below.
                > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
         :param pulumi.Input[str] client_affinity: The clientAffinity of the listener. Default value: `NONE`. Valid values:
                - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
                - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
         :param pulumi.Input[str] description: The description of the listener.
-        :param pulumi.Input[pulumi.InputType['ListenerForwardedForConfigArgs']] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
+        :param pulumi.Input[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict']] forwarded_for_config: The XForward headers. See `forwarded_for_config` below.
         :param pulumi.Input[str] http_version: The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
                > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
         :param pulumi.Input[int] idle_timeout: The timeout period of idle connections. Unit: seconds. Valid values:
@@ -786,7 +786,7 @@ class Listener(pulumi.CustomResource):
                - `Standard`: intelligent routing.
                - `CustomRouting`: custom routing.
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]] port_ranges: The portRanges of the listener. See `port_ranges` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict']]]] port_ranges: The portRanges of the listener. See `port_ranges` below.
                > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value: `false`. Valid values:

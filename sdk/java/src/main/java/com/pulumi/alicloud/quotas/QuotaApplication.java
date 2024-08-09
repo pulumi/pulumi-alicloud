@@ -311,7 +311,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public QuotaApplication(String name) {
+    public QuotaApplication(java.lang.String name) {
         this(name, QuotaApplicationArgs.Empty);
     }
     /**
@@ -319,7 +319,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public QuotaApplication(String name, QuotaApplicationArgs args) {
+    public QuotaApplication(java.lang.String name, QuotaApplicationArgs args) {
         this(name, args, null);
     }
     /**
@@ -328,15 +328,22 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public QuotaApplication(String name, QuotaApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:quotas/quotaApplication:QuotaApplication", name, args == null ? QuotaApplicationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public QuotaApplication(java.lang.String name, QuotaApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:quotas/quotaApplication:QuotaApplication", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private QuotaApplication(String name, Output<String> id, @Nullable QuotaApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:quotas/quotaApplication:QuotaApplication", name, state, makeResourceOptions(options, id));
+    private QuotaApplication(java.lang.String name, Output<java.lang.String> id, @Nullable QuotaApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:quotas/quotaApplication:QuotaApplication", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static QuotaApplicationArgs makeArgs(QuotaApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? QuotaApplicationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -352,7 +359,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static QuotaApplication get(String name, Output<String> id, @Nullable QuotaApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static QuotaApplication get(java.lang.String name, Output<java.lang.String> id, @Nullable QuotaApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new QuotaApplication(name, id, state, options);
     }
 }

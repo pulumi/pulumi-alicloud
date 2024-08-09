@@ -434,9 +434,9 @@ class OtsBackupPlan(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  ots_backup_plan_name: Optional[pulumi.Input[str]] = None,
-                 ots_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanOtsDetailArgs']]]]] = None,
+                 ots_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanOtsDetailArgs', 'OtsBackupPlanOtsDetailArgsDict']]]]] = None,
                  retention: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanRuleArgs', 'OtsBackupPlanRuleArgsDict']]]]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  vault_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -473,10 +473,10 @@ class OtsBackupPlan(pulumi.CustomResource):
         default_table = alicloud.ots.Table("default",
             instance_name=default_instance.name,
             table_name="terraform_example",
-            primary_keys=[alicloud.ots.TablePrimaryKeyArgs(
-                name="pk1",
-                type="Integer",
-            )],
+            primary_keys=[{
+                "name": "pk1",
+                "type": "Integer",
+            }],
             time_to_live=-1,
             max_version=1,
             deviation_cell_version_in_sec="1")
@@ -508,16 +508,16 @@ class OtsBackupPlan(pulumi.CustomResource):
             cross_account_type="SELF_ACCOUNT",
             cross_account_user_id=default.id,
             cross_account_role_name=default_role.id,
-            ots_details=[alicloud.hbr.OtsBackupPlanOtsDetailArgs(
-                table_names=[default_table.table_name],
-            )],
-            rules=[alicloud.hbr.OtsBackupPlanRuleArgs(
-                schedule="I|1602673264|PT2H",
-                retention="1",
-                disabled=False,
-                rule_name="terraform-example",
-                backup_type="COMPLETE",
-            )])
+            ots_details=[{
+                "table_names": [default_table.table_name],
+            }],
+            rules=[{
+                "schedule": "I|1602673264|PT2H",
+                "retention": "1",
+                "disabled": False,
+                "rule_name": "terraform-example",
+                "backup_type": "COMPLETE",
+            }])
         ```
 
         ## Import
@@ -537,9 +537,9 @@ class OtsBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         :param pulumi.Input[str] instance_name: The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] ots_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanOtsDetailArgs']]]] ots_details: The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanOtsDetailArgs', 'OtsBackupPlanOtsDetailArgsDict']]]] ots_details: The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanRuleArgs']]]] rules: The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanRuleArgs', 'OtsBackupPlanRuleArgsDict']]]] rules: The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
                - `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
@@ -583,10 +583,10 @@ class OtsBackupPlan(pulumi.CustomResource):
         default_table = alicloud.ots.Table("default",
             instance_name=default_instance.name,
             table_name="terraform_example",
-            primary_keys=[alicloud.ots.TablePrimaryKeyArgs(
-                name="pk1",
-                type="Integer",
-            )],
+            primary_keys=[{
+                "name": "pk1",
+                "type": "Integer",
+            }],
             time_to_live=-1,
             max_version=1,
             deviation_cell_version_in_sec="1")
@@ -618,16 +618,16 @@ class OtsBackupPlan(pulumi.CustomResource):
             cross_account_type="SELF_ACCOUNT",
             cross_account_user_id=default.id,
             cross_account_role_name=default_role.id,
-            ots_details=[alicloud.hbr.OtsBackupPlanOtsDetailArgs(
-                table_names=[default_table.table_name],
-            )],
-            rules=[alicloud.hbr.OtsBackupPlanRuleArgs(
-                schedule="I|1602673264|PT2H",
-                retention="1",
-                disabled=False,
-                rule_name="terraform-example",
-                backup_type="COMPLETE",
-            )])
+            ots_details=[{
+                "table_names": [default_table.table_name],
+            }],
+            rules=[{
+                "schedule": "I|1602673264|PT2H",
+                "retention": "1",
+                "disabled": False,
+                "rule_name": "terraform-example",
+                "backup_type": "COMPLETE",
+            }])
         ```
 
         ## Import
@@ -660,9 +660,9 @@ class OtsBackupPlan(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  ots_backup_plan_name: Optional[pulumi.Input[str]] = None,
-                 ots_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanOtsDetailArgs']]]]] = None,
+                 ots_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanOtsDetailArgs', 'OtsBackupPlanOtsDetailArgsDict']]]]] = None,
                  retention: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanRuleArgs', 'OtsBackupPlanRuleArgsDict']]]]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
                  vault_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -709,9 +709,9 @@ class OtsBackupPlan(pulumi.CustomResource):
             disabled: Optional[pulumi.Input[bool]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             ots_backup_plan_name: Optional[pulumi.Input[str]] = None,
-            ots_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanOtsDetailArgs']]]]] = None,
+            ots_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanOtsDetailArgs', 'OtsBackupPlanOtsDetailArgsDict']]]]] = None,
             retention: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanRuleArgs', 'OtsBackupPlanRuleArgsDict']]]]] = None,
             schedule: Optional[pulumi.Input[str]] = None,
             vault_id: Optional[pulumi.Input[str]] = None) -> 'OtsBackupPlan':
         """
@@ -728,9 +728,9 @@ class OtsBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         :param pulumi.Input[str] instance_name: The name of the Table store instance. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] ots_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanOtsDetailArgs']]]] ots_details: The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanOtsDetailArgs', 'OtsBackupPlanOtsDetailArgsDict']]]] ots_details: The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanRuleArgs']]]] rules: The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OtsBackupPlanRuleArgs', 'OtsBackupPlanRuleArgsDict']]]] rules: The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
                - `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of backup vault.

@@ -139,7 +139,7 @@ public class AccessManagement extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessManagement(String name) {
+    public AccessManagement(java.lang.String name) {
         this(name, AccessManagementArgs.Empty);
     }
     /**
@@ -147,7 +147,7 @@ public class AccessManagement extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessManagement(String name, AccessManagementArgs args) {
+    public AccessManagement(java.lang.String name, AccessManagementArgs args) {
         this(name, args, null);
     }
     /**
@@ -156,15 +156,22 @@ public class AccessManagement extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessManagement(String name, AccessManagementArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudsso/accessManagement:AccessManagement", name, args == null ? AccessManagementArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AccessManagement(java.lang.String name, AccessManagementArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudsso/accessManagement:AccessManagement", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessManagement(String name, Output<String> id, @Nullable AccessManagementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudsso/accessManagement:AccessManagement", name, state, makeResourceOptions(options, id));
+    private AccessManagement(java.lang.String name, Output<java.lang.String> id, @Nullable AccessManagementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudsso/accessManagement:AccessManagement", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AccessManagementArgs makeArgs(AccessManagementArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessManagementArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -180,7 +187,7 @@ public class AccessManagement extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessManagement get(String name, Output<String> id, @Nullable AccessManagementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessManagement get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessManagementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessManagement(name, id, state, options);
     }
 }

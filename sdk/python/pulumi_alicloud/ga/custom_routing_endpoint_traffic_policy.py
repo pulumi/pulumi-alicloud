@@ -210,7 +210,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
-                 port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]]] = None,
+                 port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Custom Routing Endpoint Traffic Policy resource.
@@ -257,10 +257,10 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             listener_type="CustomRouting",
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=10000,
-                to_port=16000,
-            )])
+            port_ranges=[{
+                "from_port": 10000,
+                "to_port": 16000,
+            }])
         default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("default",
             accelerator_id=default_listener.accelerator_id,
             listener_id=default_listener.id,
@@ -280,10 +280,10 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         default_custom_routing_endpoint_traffic_policy = alicloud.ga.CustomRoutingEndpointTrafficPolicy("default",
             endpoint_id=default_custom_routing_endpoint.custom_routing_endpoint_id,
             address="172.17.3.0",
-            port_ranges=[alicloud.ga.CustomRoutingEndpointTrafficPolicyPortRangeArgs(
-                from_port=1,
-                to_port=10,
-            )])
+            port_ranges=[{
+                "from_port": 1,
+                "to_port": 10,
+            }])
         ```
 
         ## Import
@@ -298,7 +298,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The IP address of the destination to which traffic is allowed.
         :param pulumi.Input[str] endpoint_id: The ID of the Custom Routing Endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]] port_ranges: Port rangeSee the following. See `port_ranges` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict']]]] port_ranges: Port rangeSee the following. See `port_ranges` below.
         """
         ...
     @overload
@@ -351,10 +351,10 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             listener_type="CustomRouting",
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=10000,
-                to_port=16000,
-            )])
+            port_ranges=[{
+                "from_port": 10000,
+                "to_port": 16000,
+            }])
         default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("default",
             accelerator_id=default_listener.accelerator_id,
             listener_id=default_listener.id,
@@ -374,10 +374,10 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         default_custom_routing_endpoint_traffic_policy = alicloud.ga.CustomRoutingEndpointTrafficPolicy("default",
             endpoint_id=default_custom_routing_endpoint.custom_routing_endpoint_id,
             address="172.17.3.0",
-            port_ranges=[alicloud.ga.CustomRoutingEndpointTrafficPolicyPortRangeArgs(
-                from_port=1,
-                to_port=10,
-            )])
+            port_ranges=[{
+                "from_port": 1,
+                "to_port": 10,
+            }])
         ```
 
         ## Import
@@ -405,7 +405,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
-                 port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]]] = None,
+                 port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -443,7 +443,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
             endpoint_group_id: Optional[pulumi.Input[str]] = None,
             endpoint_id: Optional[pulumi.Input[str]] = None,
             listener_id: Optional[pulumi.Input[str]] = None,
-            port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]]] = None,
+            port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict']]]]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'CustomRoutingEndpointTrafficPolicy':
         """
         Get an existing CustomRoutingEndpointTrafficPolicy resource's state with the given name, id, and optional extra
@@ -458,7 +458,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint_group_id: The ID of the endpoint group.
         :param pulumi.Input[str] endpoint_id: The ID of the Custom Routing Endpoint.
         :param pulumi.Input[str] listener_id: The ID of the listener.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]] port_ranges: Port rangeSee the following. See `port_ranges` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomRoutingEndpointTrafficPolicyPortRangeArgs', 'CustomRoutingEndpointTrafficPolicyPortRangeArgsDict']]]] port_ranges: Port rangeSee the following. See `port_ranges` below.
         :param pulumi.Input[str] status: The status of the Custom Routing Endpoint Traffic Policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

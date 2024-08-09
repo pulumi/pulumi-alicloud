@@ -132,7 +132,7 @@ public class NetworkAclAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NetworkAclAttachment(String name) {
+    public NetworkAclAttachment(java.lang.String name) {
         this(name, NetworkAclAttachmentArgs.Empty);
     }
     /**
@@ -140,7 +140,7 @@ public class NetworkAclAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NetworkAclAttachment(String name, NetworkAclAttachmentArgs args) {
+    public NetworkAclAttachment(java.lang.String name, NetworkAclAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -149,15 +149,22 @@ public class NetworkAclAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NetworkAclAttachment(String name, NetworkAclAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/networkAclAttachment:NetworkAclAttachment", name, args == null ? NetworkAclAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NetworkAclAttachment(java.lang.String name, NetworkAclAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/networkAclAttachment:NetworkAclAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NetworkAclAttachment(String name, Output<String> id, @Nullable NetworkAclAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/networkAclAttachment:NetworkAclAttachment", name, state, makeResourceOptions(options, id));
+    private NetworkAclAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkAclAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/networkAclAttachment:NetworkAclAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NetworkAclAttachmentArgs makeArgs(NetworkAclAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkAclAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -173,7 +180,7 @@ public class NetworkAclAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NetworkAclAttachment get(String name, Output<String> id, @Nullable NetworkAclAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NetworkAclAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkAclAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NetworkAclAttachment(name, id, state, options);
     }
 }

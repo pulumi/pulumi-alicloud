@@ -152,27 +152,27 @@ def get_apis(api_id: Optional[str] = None,
         description=name,
         auth_type="APP",
         service_type="HTTP",
-        request_config=alicloud.apigateway.ApiRequestConfigArgs(
-            protocol="HTTP",
-            method="GET",
-            path="/test/path",
-            mode="MAPPING",
-        ),
-        http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
-            address="http://apigateway-backend.alicloudapi.com:8080",
-            method="GET",
-            path="/web/cloudapi",
-            timeout=20,
-            aone_name="cloudapi-openapi",
-        ),
-        request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
-            name=name,
-            type="STRING",
-            required="OPTIONAL",
-            in_="QUERY",
-            in_service="QUERY",
-            name_service=name,
-        )])
+        request_config={
+            "protocol": "HTTP",
+            "method": "GET",
+            "path": "/test/path",
+            "mode": "MAPPING",
+        },
+        http_service_config={
+            "address": "http://apigateway-backend.alicloudapi.com:8080",
+            "method": "GET",
+            "path": "/web/cloudapi",
+            "timeout": 20,
+            "aone_name": "cloudapi-openapi",
+        },
+        request_parameters=[{
+            "name": name,
+            "type": "STRING",
+            "required": "OPTIONAL",
+            "in_": "QUERY",
+            "in_service": "QUERY",
+            "name_service": name,
+        }])
     ids = alicloud.apigateway.get_apis_output(ids=[default_api.id])
     pulumi.export("apiGatewayApisId0", ids.apis[0].id)
     ```
@@ -237,27 +237,27 @@ def get_apis_output(api_id: Optional[pulumi.Input[Optional[str]]] = None,
         description=name,
         auth_type="APP",
         service_type="HTTP",
-        request_config=alicloud.apigateway.ApiRequestConfigArgs(
-            protocol="HTTP",
-            method="GET",
-            path="/test/path",
-            mode="MAPPING",
-        ),
-        http_service_config=alicloud.apigateway.ApiHttpServiceConfigArgs(
-            address="http://apigateway-backend.alicloudapi.com:8080",
-            method="GET",
-            path="/web/cloudapi",
-            timeout=20,
-            aone_name="cloudapi-openapi",
-        ),
-        request_parameters=[alicloud.apigateway.ApiRequestParameterArgs(
-            name=name,
-            type="STRING",
-            required="OPTIONAL",
-            in_="QUERY",
-            in_service="QUERY",
-            name_service=name,
-        )])
+        request_config={
+            "protocol": "HTTP",
+            "method": "GET",
+            "path": "/test/path",
+            "mode": "MAPPING",
+        },
+        http_service_config={
+            "address": "http://apigateway-backend.alicloudapi.com:8080",
+            "method": "GET",
+            "path": "/web/cloudapi",
+            "timeout": 20,
+            "aone_name": "cloudapi-openapi",
+        },
+        request_parameters=[{
+            "name": name,
+            "type": "STRING",
+            "required": "OPTIONAL",
+            "in_": "QUERY",
+            "in_service": "QUERY",
+            "name_service": name,
+        }])
     ids = alicloud.apigateway.get_apis_output(ids=[default_api.id])
     pulumi.export("apiGatewayApisId0", ids.apis[0].id)
     ```

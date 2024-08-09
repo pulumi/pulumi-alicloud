@@ -251,7 +251,7 @@ public class ChildInstanceRouteEntryToAttachment extends com.pulumi.resources.Cu
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ChildInstanceRouteEntryToAttachment(String name) {
+    public ChildInstanceRouteEntryToAttachment(java.lang.String name) {
         this(name, ChildInstanceRouteEntryToAttachmentArgs.Empty);
     }
     /**
@@ -259,7 +259,7 @@ public class ChildInstanceRouteEntryToAttachment extends com.pulumi.resources.Cu
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ChildInstanceRouteEntryToAttachment(String name, ChildInstanceRouteEntryToAttachmentArgs args) {
+    public ChildInstanceRouteEntryToAttachment(java.lang.String name, ChildInstanceRouteEntryToAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -268,15 +268,22 @@ public class ChildInstanceRouteEntryToAttachment extends com.pulumi.resources.Cu
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ChildInstanceRouteEntryToAttachment(String name, ChildInstanceRouteEntryToAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment", name, args == null ? ChildInstanceRouteEntryToAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ChildInstanceRouteEntryToAttachment(java.lang.String name, ChildInstanceRouteEntryToAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ChildInstanceRouteEntryToAttachment(String name, Output<String> id, @Nullable ChildInstanceRouteEntryToAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment", name, state, makeResourceOptions(options, id));
+    private ChildInstanceRouteEntryToAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable ChildInstanceRouteEntryToAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/childInstanceRouteEntryToAttachment:ChildInstanceRouteEntryToAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ChildInstanceRouteEntryToAttachmentArgs makeArgs(ChildInstanceRouteEntryToAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ChildInstanceRouteEntryToAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -292,7 +299,7 @@ public class ChildInstanceRouteEntryToAttachment extends com.pulumi.resources.Cu
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ChildInstanceRouteEntryToAttachment get(String name, Output<String> id, @Nullable ChildInstanceRouteEntryToAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ChildInstanceRouteEntryToAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable ChildInstanceRouteEntryToAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ChildInstanceRouteEntryToAttachment(name, id, state, options);
     }
 }

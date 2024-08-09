@@ -184,7 +184,7 @@ class Aggregator(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregatorAggregatorAccountArgs']]]]] = None,
+                 aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]]] = None,
                  aggregator_name: Optional[pulumi.Input[str]] = None,
                  aggregator_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -210,11 +210,11 @@ class Aggregator(pulumi.CustomResource):
             name = "tf_example"
         default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
         default_aggregator = alicloud.cfg.Aggregator("default",
-            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default.accounts[0].account_id,
-                account_name=default.accounts[0].display_name,
-                account_type="ResourceDirectory",
-            )],
+            aggregator_accounts=[{
+                "account_id": default.accounts[0].account_id,
+                "account_name": default.accounts[0].display_name,
+                "account_type": "ResourceDirectory",
+            }],
             aggregator_name=name,
             description=name,
             aggregator_type="CUSTOM")
@@ -230,7 +230,7 @@ class Aggregator(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregatorAggregatorAccountArgs']]]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         :param pulumi.Input[str] aggregator_name: The name of aggregator.
         :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
                * `CUSTOM` - The custom account group.
@@ -264,11 +264,11 @@ class Aggregator(pulumi.CustomResource):
             name = "tf_example"
         default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
         default_aggregator = alicloud.cfg.Aggregator("default",
-            aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default.accounts[0].account_id,
-                account_name=default.accounts[0].display_name,
-                account_type="ResourceDirectory",
-            )],
+            aggregator_accounts=[{
+                "account_id": default.accounts[0].account_id,
+                "account_name": default.accounts[0].display_name,
+                "account_type": "ResourceDirectory",
+            }],
             aggregator_name=name,
             description=name,
             aggregator_type="CUSTOM")
@@ -297,7 +297,7 @@ class Aggregator(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregatorAggregatorAccountArgs']]]]] = None,
+                 aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]]] = None,
                  aggregator_name: Optional[pulumi.Input[str]] = None,
                  aggregator_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -329,7 +329,7 @@ class Aggregator(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregatorAggregatorAccountArgs']]]]] = None,
+            aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]]] = None,
             aggregator_name: Optional[pulumi.Input[str]] = None,
             aggregator_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -341,7 +341,7 @@ class Aggregator(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregatorAggregatorAccountArgs']]]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         :param pulumi.Input[str] aggregator_name: The name of aggregator.
         :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
                * `CUSTOM` - The custom account group.

@@ -218,7 +218,7 @@ public class StreamingDataService extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public StreamingDataService(String name) {
+    public StreamingDataService(java.lang.String name) {
         this(name, StreamingDataServiceArgs.Empty);
     }
     /**
@@ -226,7 +226,7 @@ public class StreamingDataService extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StreamingDataService(String name, StreamingDataServiceArgs args) {
+    public StreamingDataService(java.lang.String name, StreamingDataServiceArgs args) {
         this(name, args, null);
     }
     /**
@@ -235,15 +235,22 @@ public class StreamingDataService extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StreamingDataService(String name, StreamingDataServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:gpdb/streamingDataService:StreamingDataService", name, args == null ? StreamingDataServiceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public StreamingDataService(java.lang.String name, StreamingDataServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:gpdb/streamingDataService:StreamingDataService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private StreamingDataService(String name, Output<String> id, @Nullable StreamingDataServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:gpdb/streamingDataService:StreamingDataService", name, state, makeResourceOptions(options, id));
+    private StreamingDataService(java.lang.String name, Output<java.lang.String> id, @Nullable StreamingDataServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:gpdb/streamingDataService:StreamingDataService", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static StreamingDataServiceArgs makeArgs(StreamingDataServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? StreamingDataServiceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -259,7 +266,7 @@ public class StreamingDataService extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static StreamingDataService get(String name, Output<String> id, @Nullable StreamingDataServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static StreamingDataService get(java.lang.String name, Output<java.lang.String> id, @Nullable StreamingDataServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new StreamingDataService(name, id, state, options);
     }
 }

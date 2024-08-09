@@ -182,7 +182,7 @@ public class GatewayRouteTableAttachment extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GatewayRouteTableAttachment(String name) {
+    public GatewayRouteTableAttachment(java.lang.String name) {
         this(name, GatewayRouteTableAttachmentArgs.Empty);
     }
     /**
@@ -190,7 +190,7 @@ public class GatewayRouteTableAttachment extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GatewayRouteTableAttachment(String name, GatewayRouteTableAttachmentArgs args) {
+    public GatewayRouteTableAttachment(java.lang.String name, GatewayRouteTableAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -199,15 +199,22 @@ public class GatewayRouteTableAttachment extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GatewayRouteTableAttachment(String name, GatewayRouteTableAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment", name, args == null ? GatewayRouteTableAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GatewayRouteTableAttachment(java.lang.String name, GatewayRouteTableAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GatewayRouteTableAttachment(String name, Output<String> id, @Nullable GatewayRouteTableAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment", name, state, makeResourceOptions(options, id));
+    private GatewayRouteTableAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayRouteTableAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GatewayRouteTableAttachmentArgs makeArgs(GatewayRouteTableAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GatewayRouteTableAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -223,7 +230,7 @@ public class GatewayRouteTableAttachment extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GatewayRouteTableAttachment get(String name, Output<String> id, @Nullable GatewayRouteTableAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GatewayRouteTableAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayRouteTableAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GatewayRouteTableAttachment(name, id, state, options);
     }
 }

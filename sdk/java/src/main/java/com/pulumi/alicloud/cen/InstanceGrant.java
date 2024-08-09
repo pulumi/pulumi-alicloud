@@ -143,7 +143,7 @@ public class InstanceGrant extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceGrant(String name) {
+    public InstanceGrant(java.lang.String name) {
         this(name, InstanceGrantArgs.Empty);
     }
     /**
@@ -151,7 +151,7 @@ public class InstanceGrant extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceGrant(String name, InstanceGrantArgs args) {
+    public InstanceGrant(java.lang.String name, InstanceGrantArgs args) {
         this(name, args, null);
     }
     /**
@@ -160,15 +160,22 @@ public class InstanceGrant extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceGrant(String name, InstanceGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/instanceGrant:InstanceGrant", name, args == null ? InstanceGrantArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InstanceGrant(java.lang.String name, InstanceGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/instanceGrant:InstanceGrant", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstanceGrant(String name, Output<String> id, @Nullable InstanceGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/instanceGrant:InstanceGrant", name, state, makeResourceOptions(options, id));
+    private InstanceGrant(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/instanceGrant:InstanceGrant", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InstanceGrantArgs makeArgs(InstanceGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceGrantArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -184,7 +191,7 @@ public class InstanceGrant extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceGrant get(String name, Output<String> id, @Nullable InstanceGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceGrant get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceGrant(name, id, state, options);
     }
 }

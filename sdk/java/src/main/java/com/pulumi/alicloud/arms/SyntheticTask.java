@@ -426,7 +426,7 @@ public class SyntheticTask extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SyntheticTask(String name) {
+    public SyntheticTask(java.lang.String name) {
         this(name, SyntheticTaskArgs.Empty);
     }
     /**
@@ -434,7 +434,7 @@ public class SyntheticTask extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SyntheticTask(String name, SyntheticTaskArgs args) {
+    public SyntheticTask(java.lang.String name, SyntheticTaskArgs args) {
         this(name, args, null);
     }
     /**
@@ -443,15 +443,22 @@ public class SyntheticTask extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SyntheticTask(String name, SyntheticTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:arms/syntheticTask:SyntheticTask", name, args == null ? SyntheticTaskArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SyntheticTask(java.lang.String name, SyntheticTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:arms/syntheticTask:SyntheticTask", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SyntheticTask(String name, Output<String> id, @Nullable SyntheticTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:arms/syntheticTask:SyntheticTask", name, state, makeResourceOptions(options, id));
+    private SyntheticTask(java.lang.String name, Output<java.lang.String> id, @Nullable SyntheticTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:arms/syntheticTask:SyntheticTask", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SyntheticTaskArgs makeArgs(SyntheticTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SyntheticTaskArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -467,7 +474,7 @@ public class SyntheticTask extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SyntheticTask get(String name, Output<String> id, @Nullable SyntheticTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SyntheticTask get(java.lang.String name, Output<java.lang.String> id, @Nullable SyntheticTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SyntheticTask(name, id, state, options);
     }
 }

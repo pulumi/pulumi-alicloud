@@ -245,7 +245,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ScheduledTask(String name) {
+    public ScheduledTask(java.lang.String name) {
         this(name, ScheduledTaskArgs.Empty);
     }
     /**
@@ -253,7 +253,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ScheduledTask(String name, @Nullable ScheduledTaskArgs args) {
+    public ScheduledTask(java.lang.String name, @Nullable ScheduledTaskArgs args) {
         this(name, args, null);
     }
     /**
@@ -262,15 +262,22 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ScheduledTask(String name, @Nullable ScheduledTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ess/scheduledTask:ScheduledTask", name, args == null ? ScheduledTaskArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ScheduledTask(java.lang.String name, @Nullable ScheduledTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ess/scheduledTask:ScheduledTask", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ScheduledTask(String name, Output<String> id, @Nullable ScheduledTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ess/scheduledTask:ScheduledTask", name, state, makeResourceOptions(options, id));
+    private ScheduledTask(java.lang.String name, Output<java.lang.String> id, @Nullable ScheduledTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ess/scheduledTask:ScheduledTask", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ScheduledTaskArgs makeArgs(@Nullable ScheduledTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ScheduledTaskArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -286,7 +293,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ScheduledTask get(String name, Output<String> id, @Nullable ScheduledTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ScheduledTask get(java.lang.String name, Output<java.lang.String> id, @Nullable ScheduledTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ScheduledTask(name, id, state, options);
     }
 }

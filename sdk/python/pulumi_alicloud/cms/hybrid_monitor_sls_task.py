@@ -254,12 +254,12 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attach_labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskAttachLabelArgs']]]]] = None,
+                 attach_labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HybridMonitorSlsTaskAttachLabelArgs', 'HybridMonitorSlsTaskAttachLabelArgsDict']]]]] = None,
                  collect_interval: Optional[pulumi.Input[int]] = None,
                  collect_target_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
-                 sls_process_config: Optional[pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskSlsProcessConfigArgs']]] = None,
+                 sls_process_config: Optional[pulumi.Input[Union['HybridMonitorSlsTaskSlsProcessConfigArgs', 'HybridMonitorSlsTaskSlsProcessConfigArgsDict']]] = None,
                  task_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -279,12 +279,12 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskAttachLabelArgs']]]] attach_labels: The label of the monitoring task. See `attach_labels` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HybridMonitorSlsTaskAttachLabelArgs', 'HybridMonitorSlsTaskAttachLabelArgsDict']]]] attach_labels: The label of the monitoring task. See `attach_labels` below.
         :param pulumi.Input[int] collect_interval: The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
         :param pulumi.Input[str] collect_target_type: The type of the collection target, enter the name of the Logstore group.
         :param pulumi.Input[str] description: The description of the metric import task.
         :param pulumi.Input[str] namespace: The name of the namespace.
-        :param pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskSlsProcessConfigArgs']] sls_process_config: The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
+        :param pulumi.Input[Union['HybridMonitorSlsTaskSlsProcessConfigArgs', 'HybridMonitorSlsTaskSlsProcessConfigArgsDict']] sls_process_config: The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
         :param pulumi.Input[str] task_name: The name of the metric import task, enter the name of the metric for logs imported from Log Service.
         """
         ...
@@ -323,12 +323,12 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attach_labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskAttachLabelArgs']]]]] = None,
+                 attach_labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HybridMonitorSlsTaskAttachLabelArgs', 'HybridMonitorSlsTaskAttachLabelArgsDict']]]]] = None,
                  collect_interval: Optional[pulumi.Input[int]] = None,
                  collect_target_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  namespace: Optional[pulumi.Input[str]] = None,
-                 sls_process_config: Optional[pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskSlsProcessConfigArgs']]] = None,
+                 sls_process_config: Optional[pulumi.Input[Union['HybridMonitorSlsTaskSlsProcessConfigArgs', 'HybridMonitorSlsTaskSlsProcessConfigArgsDict']]] = None,
                  task_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -364,12 +364,12 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attach_labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskAttachLabelArgs']]]]] = None,
+            attach_labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HybridMonitorSlsTaskAttachLabelArgs', 'HybridMonitorSlsTaskAttachLabelArgsDict']]]]] = None,
             collect_interval: Optional[pulumi.Input[int]] = None,
             collect_target_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             namespace: Optional[pulumi.Input[str]] = None,
-            sls_process_config: Optional[pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskSlsProcessConfigArgs']]] = None,
+            sls_process_config: Optional[pulumi.Input[Union['HybridMonitorSlsTaskSlsProcessConfigArgs', 'HybridMonitorSlsTaskSlsProcessConfigArgsDict']]] = None,
             task_name: Optional[pulumi.Input[str]] = None) -> 'HybridMonitorSlsTask':
         """
         Get an existing HybridMonitorSlsTask resource's state with the given name, id, and optional extra
@@ -378,12 +378,12 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskAttachLabelArgs']]]] attach_labels: The label of the monitoring task. See `attach_labels` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HybridMonitorSlsTaskAttachLabelArgs', 'HybridMonitorSlsTaskAttachLabelArgsDict']]]] attach_labels: The label of the monitoring task. See `attach_labels` below.
         :param pulumi.Input[int] collect_interval: The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
         :param pulumi.Input[str] collect_target_type: The type of the collection target, enter the name of the Logstore group.
         :param pulumi.Input[str] description: The description of the metric import task.
         :param pulumi.Input[str] namespace: The name of the namespace.
-        :param pulumi.Input[pulumi.InputType['HybridMonitorSlsTaskSlsProcessConfigArgs']] sls_process_config: The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
+        :param pulumi.Input[Union['HybridMonitorSlsTaskSlsProcessConfigArgs', 'HybridMonitorSlsTaskSlsProcessConfigArgsDict']] sls_process_config: The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
         :param pulumi.Input[str] task_name: The name of the metric import task, enter the name of the metric for logs imported from Log Service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

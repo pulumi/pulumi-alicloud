@@ -198,7 +198,7 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceSubscription(String name) {
+    public ServiceSubscription(java.lang.String name) {
         this(name, ServiceSubscriptionArgs.Empty);
     }
     /**
@@ -206,7 +206,7 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceSubscription(String name, ServiceSubscriptionArgs args) {
+    public ServiceSubscription(java.lang.String name, ServiceSubscriptionArgs args) {
         this(name, args, null);
     }
     /**
@@ -215,15 +215,22 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceSubscription(String name, ServiceSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:message/serviceSubscription:ServiceSubscription", name, args == null ? ServiceSubscriptionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServiceSubscription(java.lang.String name, ServiceSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:message/serviceSubscription:ServiceSubscription", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceSubscription(String name, Output<String> id, @Nullable ServiceSubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:message/serviceSubscription:ServiceSubscription", name, state, makeResourceOptions(options, id));
+    private ServiceSubscription(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceSubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:message/serviceSubscription:ServiceSubscription", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServiceSubscriptionArgs makeArgs(ServiceSubscriptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceSubscriptionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -239,7 +246,7 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceSubscription get(String name, Output<String> id, @Nullable ServiceSubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceSubscription get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceSubscriptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceSubscription(name, id, state, options);
     }
 }

@@ -425,7 +425,7 @@ class Policy(pulumi.CustomResource):
                  policy_document: Optional[pulumi.Input[str]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None,
                  rotate_strategy: Optional[pulumi.Input[str]] = None,
-                 statements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]]] = None,
+                 statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict']]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -489,7 +489,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_document: Document of the RAM policy. It is required when the `statement` is not specified.
         :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         :param pulumi.Input[str] rotate_strategy: The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]] statements: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict']]]] statements: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         :param pulumi.Input[str] version: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         """
         ...
@@ -572,7 +572,7 @@ class Policy(pulumi.CustomResource):
                  policy_document: Optional[pulumi.Input[str]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None,
                  rotate_strategy: Optional[pulumi.Input[str]] = None,
-                 statements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]]] = None,
+                 statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict']]]]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -615,7 +615,7 @@ class Policy(pulumi.CustomResource):
             policy_document: Optional[pulumi.Input[str]] = None,
             policy_name: Optional[pulumi.Input[str]] = None,
             rotate_strategy: Optional[pulumi.Input[str]] = None,
-            statements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]]] = None,
+            statements: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None,
             version_id: Optional[pulumi.Input[str]] = None) -> 'Policy':
@@ -635,7 +635,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_document: Document of the RAM policy. It is required when the `statement` is not specified.
         :param pulumi.Input[str] policy_name: Name of the RAM policy. This name can have a string of 1 to 128 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         :param pulumi.Input[str] rotate_strategy: The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyStatementArgs']]]] statements: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicyStatementArgs', 'PolicyStatementArgsDict']]]] statements: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         :param pulumi.Input[str] type: The policy type.
         :param pulumi.Input[str] version: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         :param pulumi.Input[str] version_id: The ID of default version policy.

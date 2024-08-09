@@ -52,13 +52,13 @@ import (
 //				return err
 //			}
 //			defaultAccount, err := resourcemanager.NewAccount(ctx, "default", &resourcemanager.AccountArgs{
-//				DisplayName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				DisplayName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudfirewall.NewInstanceMember(ctx, "default", &cloudfirewall.InstanceMemberArgs{
-//				MemberDesc: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				MemberDesc: pulumi.Sprintf("%v-%v", name, _default.Result),
 //				MemberUid:  defaultAccount.ID(),
 //			})
 //			if err != nil {

@@ -314,7 +314,7 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DdosCooInstance(String name) {
+    public DdosCooInstance(java.lang.String name) {
         this(name, DdosCooInstanceArgs.Empty);
     }
     /**
@@ -322,7 +322,7 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DdosCooInstance(String name, DdosCooInstanceArgs args) {
+    public DdosCooInstance(java.lang.String name, DdosCooInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -331,15 +331,22 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DdosCooInstance(String name, DdosCooInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ddos/ddosCooInstance:DdosCooInstance", name, args == null ? DdosCooInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DdosCooInstance(java.lang.String name, DdosCooInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ddos/ddosCooInstance:DdosCooInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DdosCooInstance(String name, Output<String> id, @Nullable DdosCooInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ddos/ddosCooInstance:DdosCooInstance", name, state, makeResourceOptions(options, id));
+    private DdosCooInstance(java.lang.String name, Output<java.lang.String> id, @Nullable DdosCooInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ddos/ddosCooInstance:DdosCooInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DdosCooInstanceArgs makeArgs(DdosCooInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DdosCooInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .aliases(List.of(
@@ -358,7 +365,7 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DdosCooInstance get(String name, Output<String> id, @Nullable DdosCooInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DdosCooInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable DdosCooInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DdosCooInstance(name, id, state, options);
     }
 }

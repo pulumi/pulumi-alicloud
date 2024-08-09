@@ -117,7 +117,7 @@ public class ReplicaGroupDrill extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ReplicaGroupDrill(String name) {
+    public ReplicaGroupDrill(java.lang.String name) {
         this(name, ReplicaGroupDrillArgs.Empty);
     }
     /**
@@ -125,7 +125,7 @@ public class ReplicaGroupDrill extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ReplicaGroupDrill(String name, ReplicaGroupDrillArgs args) {
+    public ReplicaGroupDrill(java.lang.String name, ReplicaGroupDrillArgs args) {
         this(name, args, null);
     }
     /**
@@ -134,15 +134,22 @@ public class ReplicaGroupDrill extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ReplicaGroupDrill(String name, ReplicaGroupDrillArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill", name, args == null ? ReplicaGroupDrillArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ReplicaGroupDrill(java.lang.String name, ReplicaGroupDrillArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ReplicaGroupDrill(String name, Output<String> id, @Nullable ReplicaGroupDrillState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill", name, state, makeResourceOptions(options, id));
+    private ReplicaGroupDrill(java.lang.String name, Output<java.lang.String> id, @Nullable ReplicaGroupDrillState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ebs/replicaGroupDrill:ReplicaGroupDrill", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ReplicaGroupDrillArgs makeArgs(ReplicaGroupDrillArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ReplicaGroupDrillArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -158,7 +165,7 @@ public class ReplicaGroupDrill extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ReplicaGroupDrill get(String name, Output<String> id, @Nullable ReplicaGroupDrillState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ReplicaGroupDrill get(java.lang.String name, Output<java.lang.String> id, @Nullable ReplicaGroupDrillState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ReplicaGroupDrill(name, id, state, options);
     }
 }

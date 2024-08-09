@@ -287,21 +287,21 @@ class AccessLog(pulumi.CustomResource):
             client_affinity="SOURCE_IP",
             protocol="HTTP",
             name="terraform-example",
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=70,
-                to_port=70,
-            )])
+            port_ranges=[{
+                "from_port": 70,
+                "to_port": 70,
+            }])
         default_eip_address = alicloud.ecs.EipAddress("default",
             bandwidth="10",
             internet_charge_type="PayByBandwidth",
             address_name="terraform-example")
         default_endpoint_group = alicloud.ga.EndpointGroup("default",
             accelerator_id=default_listener.accelerator_id,
-            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=default_eip_address.ip_address,
-                type="PublicIp",
-                weight=20,
-            )],
+            endpoint_configurations=[{
+                "endpoint": default_eip_address.ip_address,
+                "type": "PublicIp",
+                "weight": 20,
+            }],
             endpoint_group_region=region,
             listener_id=default_listener.id)
         default_access_log = alicloud.ga.AccessLog("default",
@@ -382,21 +382,21 @@ class AccessLog(pulumi.CustomResource):
             client_affinity="SOURCE_IP",
             protocol="HTTP",
             name="terraform-example",
-            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=70,
-                to_port=70,
-            )])
+            port_ranges=[{
+                "from_port": 70,
+                "to_port": 70,
+            }])
         default_eip_address = alicloud.ecs.EipAddress("default",
             bandwidth="10",
             internet_charge_type="PayByBandwidth",
             address_name="terraform-example")
         default_endpoint_group = alicloud.ga.EndpointGroup("default",
             accelerator_id=default_listener.accelerator_id,
-            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=default_eip_address.ip_address,
-                type="PublicIp",
-                weight=20,
-            )],
+            endpoint_configurations=[{
+                "endpoint": default_eip_address.ip_address,
+                "type": "PublicIp",
+                "weight": 20,
+            }],
             endpoint_group_region=region,
             listener_id=default_listener.id)
         default_access_log = alicloud.ga.AccessLog("default",

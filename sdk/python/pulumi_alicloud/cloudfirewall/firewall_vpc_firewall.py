@@ -287,9 +287,9 @@ class FirewallVpcFirewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lang: Optional[pulumi.Input[str]] = None,
-                 local_vpc: Optional[pulumi.Input[pulumi.InputType['FirewallVpcFirewallLocalVpcArgs']]] = None,
+                 local_vpc: Optional[pulumi.Input[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']]] = None,
                  member_uid: Optional[pulumi.Input[str]] = None,
-                 peer_vpc: Optional[pulumi.Input[pulumi.InputType['FirewallVpcFirewallPeerVpcArgs']]] = None,
+                 peer_vpc: Optional[pulumi.Input[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  vpc_firewall_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -312,28 +312,28 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         default = alicloud.cloudfirewall.FirewallVpcFirewall("default",
             vpc_firewall_name="tf-example",
             member_uid=current.id,
-            local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcArgs(
-                vpc_id="vpc-bp1d065m6hzn1xbw8ibfd",
-                region_no="cn-hangzhou",
-                local_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs(
-                    local_route_table_id="vtb-bp1lj0ddg846856chpzrv",
-                    local_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs(
-                        local_next_hop_instance_id="ri-bp1uobww3aputjlwwkyrh",
-                        local_destination_cidr="10.1.0.0/16",
-                    )],
-                )],
-            ),
-            peer_vpc=alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcArgs(
-                vpc_id="vpc-bp1gcmm64o3caox84v0nz",
-                region_no="cn-hangzhou",
-                peer_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs(
-                    peer_route_table_id="vtb-bp1f516f2hh4sok1ig9b5",
-                    peer_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs(
-                        peer_destination_cidr="10.0.0.0/16",
-                        peer_next_hop_instance_id="ri-bp1thhtgf6ydr2or52l3n",
-                    )],
-                )],
-            ),
+            local_vpc={
+                "vpc_id": "vpc-bp1d065m6hzn1xbw8ibfd",
+                "region_no": "cn-hangzhou",
+                "local_vpc_cidr_table_lists": [{
+                    "local_route_table_id": "vtb-bp1lj0ddg846856chpzrv",
+                    "local_route_entry_lists": [{
+                        "local_next_hop_instance_id": "ri-bp1uobww3aputjlwwkyrh",
+                        "local_destination_cidr": "10.1.0.0/16",
+                    }],
+                }],
+            },
+            peer_vpc={
+                "vpc_id": "vpc-bp1gcmm64o3caox84v0nz",
+                "region_no": "cn-hangzhou",
+                "peer_vpc_cidr_table_lists": [{
+                    "peer_route_table_id": "vtb-bp1f516f2hh4sok1ig9b5",
+                    "peer_route_entry_lists": [{
+                        "peer_destination_cidr": "10.0.0.0/16",
+                        "peer_next_hop_instance_id": "ri-bp1thhtgf6ydr2or52l3n",
+                    }],
+                }],
+            },
             status="open")
         ```
 
@@ -348,9 +348,9 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] lang: The language type of the requested and received messages. Valid values:
-        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallLocalVpcArgs']] local_vpc: The details of the local VPC. See `local_vpc` below.
+        :param pulumi.Input[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']] local_vpc: The details of the local VPC. See `local_vpc` below.
         :param pulumi.Input[str] member_uid: The UID of the Alibaba Cloud member account.
-        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallPeerVpcArgs']] peer_vpc: The details of the peer VPC. See `peer_vpc` below.
+        :param pulumi.Input[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']] peer_vpc: The details of the peer VPC. See `peer_vpc` below.
         :param pulumi.Input[str] status: The status of the resource. Valid values:
         :param pulumi.Input[str] vpc_firewall_name: The name of the VPC firewall instance.
         """
@@ -379,28 +379,28 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         default = alicloud.cloudfirewall.FirewallVpcFirewall("default",
             vpc_firewall_name="tf-example",
             member_uid=current.id,
-            local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcArgs(
-                vpc_id="vpc-bp1d065m6hzn1xbw8ibfd",
-                region_no="cn-hangzhou",
-                local_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs(
-                    local_route_table_id="vtb-bp1lj0ddg846856chpzrv",
-                    local_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs(
-                        local_next_hop_instance_id="ri-bp1uobww3aputjlwwkyrh",
-                        local_destination_cidr="10.1.0.0/16",
-                    )],
-                )],
-            ),
-            peer_vpc=alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcArgs(
-                vpc_id="vpc-bp1gcmm64o3caox84v0nz",
-                region_no="cn-hangzhou",
-                peer_vpc_cidr_table_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs(
-                    peer_route_table_id="vtb-bp1f516f2hh4sok1ig9b5",
-                    peer_route_entry_lists=[alicloud.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs(
-                        peer_destination_cidr="10.0.0.0/16",
-                        peer_next_hop_instance_id="ri-bp1thhtgf6ydr2or52l3n",
-                    )],
-                )],
-            ),
+            local_vpc={
+                "vpc_id": "vpc-bp1d065m6hzn1xbw8ibfd",
+                "region_no": "cn-hangzhou",
+                "local_vpc_cidr_table_lists": [{
+                    "local_route_table_id": "vtb-bp1lj0ddg846856chpzrv",
+                    "local_route_entry_lists": [{
+                        "local_next_hop_instance_id": "ri-bp1uobww3aputjlwwkyrh",
+                        "local_destination_cidr": "10.1.0.0/16",
+                    }],
+                }],
+            },
+            peer_vpc={
+                "vpc_id": "vpc-bp1gcmm64o3caox84v0nz",
+                "region_no": "cn-hangzhou",
+                "peer_vpc_cidr_table_lists": [{
+                    "peer_route_table_id": "vtb-bp1f516f2hh4sok1ig9b5",
+                    "peer_route_entry_lists": [{
+                        "peer_destination_cidr": "10.0.0.0/16",
+                        "peer_next_hop_instance_id": "ri-bp1thhtgf6ydr2or52l3n",
+                    }],
+                }],
+            },
             status="open")
         ```
 
@@ -428,9 +428,9 @@ class FirewallVpcFirewall(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lang: Optional[pulumi.Input[str]] = None,
-                 local_vpc: Optional[pulumi.Input[pulumi.InputType['FirewallVpcFirewallLocalVpcArgs']]] = None,
+                 local_vpc: Optional[pulumi.Input[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']]] = None,
                  member_uid: Optional[pulumi.Input[str]] = None,
-                 peer_vpc: Optional[pulumi.Input[pulumi.InputType['FirewallVpcFirewallPeerVpcArgs']]] = None,
+                 peer_vpc: Optional[pulumi.Input[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  vpc_firewall_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -473,9 +473,9 @@ class FirewallVpcFirewall(pulumi.CustomResource):
             bandwidth: Optional[pulumi.Input[int]] = None,
             connect_type: Optional[pulumi.Input[str]] = None,
             lang: Optional[pulumi.Input[str]] = None,
-            local_vpc: Optional[pulumi.Input[pulumi.InputType['FirewallVpcFirewallLocalVpcArgs']]] = None,
+            local_vpc: Optional[pulumi.Input[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']]] = None,
             member_uid: Optional[pulumi.Input[str]] = None,
-            peer_vpc: Optional[pulumi.Input[pulumi.InputType['FirewallVpcFirewallPeerVpcArgs']]] = None,
+            peer_vpc: Optional[pulumi.Input[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']]] = None,
             region_status: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vpc_firewall_id: Optional[pulumi.Input[str]] = None,
@@ -490,9 +490,9 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         :param pulumi.Input[int] bandwidth: Bandwidth specifications for high-speed channels. Unit: Mbps.
         :param pulumi.Input[str] connect_type: The communication type of the VPC firewall.
         :param pulumi.Input[str] lang: The language type of the requested and received messages. Valid values:
-        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallLocalVpcArgs']] local_vpc: The details of the local VPC. See `local_vpc` below.
+        :param pulumi.Input[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']] local_vpc: The details of the local VPC. See `local_vpc` below.
         :param pulumi.Input[str] member_uid: The UID of the Alibaba Cloud member account.
-        :param pulumi.Input[pulumi.InputType['FirewallVpcFirewallPeerVpcArgs']] peer_vpc: The details of the peer VPC. See `peer_vpc` below.
+        :param pulumi.Input[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']] peer_vpc: The details of the peer VPC. See `peer_vpc` below.
         :param pulumi.Input[str] region_status: The region is open.
         :param pulumi.Input[str] status: The status of the resource. Valid values:
         :param pulumi.Input[str] vpc_firewall_id: The ID of the VPC firewall instance.

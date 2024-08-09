@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = directmail.NewDomain(ctx, "example", &directmail.DomainArgs{
-//				DomainName: pulumi.String(fmt.Sprintf("alicloud-provider-%v.online", _default.Result)),
+//				DomainName: pulumi.Sprintf("alicloud-provider-%v.online", _default.Result),
 //			})
 //			if err != nil {
 //				return err

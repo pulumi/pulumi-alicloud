@@ -127,15 +127,15 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
         default_pe3jj_r = alicloud.ebs.EnterpriseSnapshotPolicy("defaultPE3jjR",
             status="DISABLED",
             desc="DESC",
-            schedule=alicloud.ebs.EnterpriseSnapshotPolicyScheduleArgs(
-                cron_expression="0 0 0 1 * ?",
-            ),
+            schedule={
+                "cron_expression": "0 0 0 1 * ?",
+            },
             enterprise_snapshot_policy_name=name,
             target_type="DISK",
-            retain_rule=alicloud.ebs.EnterpriseSnapshotPolicyRetainRuleArgs(
-                time_interval=120,
-                time_unit="DAYS",
-            ))
+            retain_rule={
+                "time_interval": 120,
+                "time_unit": "DAYS",
+            })
         default = alicloud.ebs.EnterpriseSnapshotPolicyAttachment("default",
             policy_id=default_pe3jj_r.id,
             disk_id=default_jk_w46o.id)
@@ -189,15 +189,15 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
         default_pe3jj_r = alicloud.ebs.EnterpriseSnapshotPolicy("defaultPE3jjR",
             status="DISABLED",
             desc="DESC",
-            schedule=alicloud.ebs.EnterpriseSnapshotPolicyScheduleArgs(
-                cron_expression="0 0 0 1 * ?",
-            ),
+            schedule={
+                "cron_expression": "0 0 0 1 * ?",
+            },
             enterprise_snapshot_policy_name=name,
             target_type="DISK",
-            retain_rule=alicloud.ebs.EnterpriseSnapshotPolicyRetainRuleArgs(
-                time_interval=120,
-                time_unit="DAYS",
-            ))
+            retain_rule={
+                "time_interval": 120,
+                "time_unit": "DAYS",
+            })
         default = alicloud.ebs.EnterpriseSnapshotPolicyAttachment("default",
             policy_id=default_pe3jj_r.id,
             disk_id=default_jk_w46o.id)

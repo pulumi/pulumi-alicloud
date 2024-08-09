@@ -833,7 +833,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ReadOnlyInstance(String name) {
+    public ReadOnlyInstance(java.lang.String name) {
         this(name, ReadOnlyInstanceArgs.Empty);
     }
     /**
@@ -841,7 +841,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ReadOnlyInstance(String name, ReadOnlyInstanceArgs args) {
+    public ReadOnlyInstance(java.lang.String name, ReadOnlyInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -850,15 +850,22 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ReadOnlyInstance(String name, ReadOnlyInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/readOnlyInstance:ReadOnlyInstance", name, args == null ? ReadOnlyInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ReadOnlyInstance(java.lang.String name, ReadOnlyInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/readOnlyInstance:ReadOnlyInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ReadOnlyInstance(String name, Output<String> id, @Nullable ReadOnlyInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/readOnlyInstance:ReadOnlyInstance", name, state, makeResourceOptions(options, id));
+    private ReadOnlyInstance(java.lang.String name, Output<java.lang.String> id, @Nullable ReadOnlyInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/readOnlyInstance:ReadOnlyInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ReadOnlyInstanceArgs makeArgs(ReadOnlyInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ReadOnlyInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -874,7 +881,7 @@ public class ReadOnlyInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ReadOnlyInstance get(String name, Output<String> id, @Nullable ReadOnlyInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ReadOnlyInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable ReadOnlyInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ReadOnlyInstance(name, id, state, options);
     }
 }

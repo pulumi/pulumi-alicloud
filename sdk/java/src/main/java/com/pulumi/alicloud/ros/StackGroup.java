@@ -277,7 +277,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public StackGroup(String name) {
+    public StackGroup(java.lang.String name) {
         this(name, StackGroupArgs.Empty);
     }
     /**
@@ -285,7 +285,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StackGroup(String name, StackGroupArgs args) {
+    public StackGroup(java.lang.String name, StackGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -294,15 +294,22 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StackGroup(String name, StackGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ros/stackGroup:StackGroup", name, args == null ? StackGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public StackGroup(java.lang.String name, StackGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ros/stackGroup:StackGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private StackGroup(String name, Output<String> id, @Nullable StackGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ros/stackGroup:StackGroup", name, state, makeResourceOptions(options, id));
+    private StackGroup(java.lang.String name, Output<java.lang.String> id, @Nullable StackGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ros/stackGroup:StackGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static StackGroupArgs makeArgs(StackGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? StackGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -318,7 +325,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static StackGroup get(String name, Output<String> id, @Nullable StackGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static StackGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable StackGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new StackGroup(name, id, state, options);
     }
 }

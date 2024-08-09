@@ -348,7 +348,7 @@ class TemplateQuota(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  desire_value: Optional[pulumi.Input[float]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateQuotaDimensionArgs']]]]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  env_language: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
@@ -380,10 +380,10 @@ class TemplateQuota(pulumi.CustomResource):
             quota_action_code="q_desktop-count",
             product_code="gws",
             notice_type=3,
-            dimensions=[alicloud.quotas.TemplateQuotaDimensionArgs(
-                key="regionId",
-                value="cn-hangzhou",
-            )],
+            dimensions=[{
+                "key": "regionId",
+                "value": "cn-hangzhou",
+            }],
             desire_value=1001,
             env_language="zh",
             quota_category="CommonQuota")
@@ -400,7 +400,7 @@ class TemplateQuota(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] desire_value: Quota application value.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateQuotaDimensionArgs']]]] dimensions: The Quota Dimensions. See `dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]] dimensions: The Quota Dimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The UTC time when the quota takes effect.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
                - zh: Chinese.
@@ -445,10 +445,10 @@ class TemplateQuota(pulumi.CustomResource):
             quota_action_code="q_desktop-count",
             product_code="gws",
             notice_type=3,
-            dimensions=[alicloud.quotas.TemplateQuotaDimensionArgs(
-                key="regionId",
-                value="cn-hangzhou",
-            )],
+            dimensions=[{
+                "key": "regionId",
+                "value": "cn-hangzhou",
+            }],
             desire_value=1001,
             env_language="zh",
             quota_category="CommonQuota")
@@ -478,7 +478,7 @@ class TemplateQuota(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  desire_value: Optional[pulumi.Input[float]] = None,
-                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateQuotaDimensionArgs']]]]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  env_language: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
@@ -521,7 +521,7 @@ class TemplateQuota(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             desire_value: Optional[pulumi.Input[float]] = None,
-            dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateQuotaDimensionArgs']]]]] = None,
+            dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]]] = None,
             effective_time: Optional[pulumi.Input[str]] = None,
             env_language: Optional[pulumi.Input[str]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
@@ -537,7 +537,7 @@ class TemplateQuota(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] desire_value: Quota application value.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateQuotaDimensionArgs']]]] dimensions: The Quota Dimensions. See `dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateQuotaDimensionArgs', 'TemplateQuotaDimensionArgsDict']]]] dimensions: The Quota Dimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The UTC time when the quota takes effect.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
                - zh: Chinese.

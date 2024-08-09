@@ -707,7 +707,7 @@ class DbCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  category: Optional[pulumi.Input[str]] = None,
-                 db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]]] = None,
+                 db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]]] = None,
                  db_cluster_class: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
                  db_cluster_network_type: Optional[pulumi.Input[str]] = None,
@@ -779,7 +779,7 @@ class DbCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
         :param pulumi.Input[str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.
@@ -872,7 +872,7 @@ class DbCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  category: Optional[pulumi.Input[str]] = None,
-                 db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]]] = None,
+                 db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]]] = None,
                  db_cluster_class: Optional[pulumi.Input[str]] = None,
                  db_cluster_description: Optional[pulumi.Input[str]] = None,
                  db_cluster_network_type: Optional[pulumi.Input[str]] = None,
@@ -950,7 +950,7 @@ class DbCluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             category: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
-            db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]]] = None,
+            db_cluster_access_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]]] = None,
             db_cluster_class: Optional[pulumi.Input[str]] = None,
             db_cluster_description: Optional[pulumi.Input[str]] = None,
             db_cluster_network_type: Optional[pulumi.Input[str]] = None,
@@ -979,7 +979,7 @@ class DbCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The Category of DBCluster. Valid values: `Basic`,`HighAvailability`.
         :param pulumi.Input[str] connection_string: (Available since v1.196.0) - The connection string of the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbClusterDbClusterAccessWhiteListArgs']]]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DbClusterDbClusterAccessWhiteListArgs', 'DbClusterDbClusterAccessWhiteListArgsDict']]]] db_cluster_access_white_lists: The db cluster access white list. See `db_cluster_access_white_list` below.
         :param pulumi.Input[str] db_cluster_class: The DBCluster class. According to the category, db_cluster_class has two value ranges:
                * Under the condition that the category is the `Basic`, Valid values: `LS20`, `LS40`, `LS80`,`S8`, `S16`, `S32`, `S64`,`S80`, `S104`.
                * Under the condition that the category is the `HighAvailability`, Valid values: `LC20`, `LC40`, `LC80`,`C8`, `C16`, `C32`, `C64`, `C80`, `C104`.

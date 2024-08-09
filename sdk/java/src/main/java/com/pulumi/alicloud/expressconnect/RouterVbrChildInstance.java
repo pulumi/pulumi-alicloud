@@ -203,7 +203,7 @@ public class RouterVbrChildInstance extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RouterVbrChildInstance(String name) {
+    public RouterVbrChildInstance(java.lang.String name) {
         this(name, RouterVbrChildInstanceArgs.Empty);
     }
     /**
@@ -211,7 +211,7 @@ public class RouterVbrChildInstance extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RouterVbrChildInstance(String name, RouterVbrChildInstanceArgs args) {
+    public RouterVbrChildInstance(java.lang.String name, RouterVbrChildInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -220,15 +220,22 @@ public class RouterVbrChildInstance extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RouterVbrChildInstance(String name, RouterVbrChildInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance", name, args == null ? RouterVbrChildInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RouterVbrChildInstance(java.lang.String name, RouterVbrChildInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RouterVbrChildInstance(String name, Output<String> id, @Nullable RouterVbrChildInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance", name, state, makeResourceOptions(options, id));
+    private RouterVbrChildInstance(java.lang.String name, Output<java.lang.String> id, @Nullable RouterVbrChildInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/routerVbrChildInstance:RouterVbrChildInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RouterVbrChildInstanceArgs makeArgs(RouterVbrChildInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RouterVbrChildInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -244,7 +251,7 @@ public class RouterVbrChildInstance extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RouterVbrChildInstance get(String name, Output<String> id, @Nullable RouterVbrChildInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RouterVbrChildInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable RouterVbrChildInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RouterVbrChildInstance(name, id, state, options);
     }
 }

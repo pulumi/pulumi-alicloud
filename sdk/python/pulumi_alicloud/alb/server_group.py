@@ -413,14 +413,14 @@ class ServerGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
-                 health_check_config: Optional[pulumi.Input[pulumi.InputType['ServerGroupHealthCheckConfigArgs']]] = None,
+                 health_check_config: Optional[pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scheduler: Optional[pulumi.Input[str]] = None,
                  server_group_name: Optional[pulumi.Input[str]] = None,
                  server_group_type: Optional[pulumi.Input[str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]]] = None,
-                 sticky_session_config: Optional[pulumi.Input[pulumi.InputType['ServerGroupStickySessionConfigArgs']]] = None,
+                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
+                 sticky_session_config: Optional[pulumi.Input[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -474,37 +474,37 @@ class ServerGroup(pulumi.CustomResource):
             vpc_id=example_network.id,
             server_group_name=name,
             resource_group_id=example.groups[0].id,
-            sticky_session_config=alicloud.alb.ServerGroupStickySessionConfigArgs(
-                sticky_session_enabled=True,
-                cookie="tf-example",
-                sticky_session_type="Server",
-            ),
-            health_check_config=alicloud.alb.ServerGroupHealthCheckConfigArgs(
-                health_check_connect_port=46325,
-                health_check_enabled=True,
-                health_check_host="tf-example.com",
-                health_check_codes=[
+            sticky_session_config={
+                "sticky_session_enabled": True,
+                "cookie": "tf-example",
+                "sticky_session_type": "Server",
+            },
+            health_check_config={
+                "health_check_connect_port": 46325,
+                "health_check_enabled": True,
+                "health_check_host": "tf-example.com",
+                "health_check_codes": [
                     "http_2xx",
                     "http_3xx",
                     "http_4xx",
                 ],
-                health_check_http_version="HTTP1.1",
-                health_check_interval=2,
-                health_check_method="HEAD",
-                health_check_path="/tf-example",
-                health_check_protocol="HTTP",
-                health_check_timeout=5,
-                healthy_threshold=3,
-                unhealthy_threshold=3,
-            ),
-            servers=[alicloud.alb.ServerGroupServerArgs(
-                description=name,
-                port=80,
-                server_id=example_instance.id,
-                server_ip=example_instance.private_ip,
-                server_type="Ecs",
-                weight=10,
-            )],
+                "health_check_http_version": "HTTP1.1",
+                "health_check_interval": 2,
+                "health_check_method": "HEAD",
+                "health_check_path": "/tf-example",
+                "health_check_protocol": "HTTP",
+                "health_check_timeout": 5,
+                "healthy_threshold": 3,
+                "unhealthy_threshold": 3,
+            },
+            servers=[{
+                "description": name,
+                "port": 80,
+                "server_id": example_instance.id,
+                "server_ip": example_instance.private_ip,
+                "server_type": "Ecs",
+                "weight": 10,
+            }],
             tags={
                 "Created": "TF",
             })
@@ -521,7 +521,7 @@ class ServerGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[pulumi.InputType['ServerGroupHealthCheckConfigArgs']] health_check_config: The configuration of health checks. See `health_check_config` below.
+        :param pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']] health_check_config: The configuration of health checks. See `health_check_config` below.
         :param pulumi.Input[str] protocol: The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
@@ -530,8 +530,8 @@ class ServerGroup(pulumi.CustomResource):
                - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
                - `Ip`: allows you to add servers by specifying IP addresses.
                - `Fc`: allows you to add servers by specifying functions of Function Compute.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: The backend servers. See `servers` below.
-        :param pulumi.Input[pulumi.InputType['ServerGroupStickySessionConfigArgs']] sticky_session_config: The configuration of session persistence. See `sticky_session_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]] servers: The backend servers. See `servers` below.
+        :param pulumi.Input[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']] sticky_session_config: The configuration of session persistence. See `sticky_session_config` below.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         """
@@ -591,37 +591,37 @@ class ServerGroup(pulumi.CustomResource):
             vpc_id=example_network.id,
             server_group_name=name,
             resource_group_id=example.groups[0].id,
-            sticky_session_config=alicloud.alb.ServerGroupStickySessionConfigArgs(
-                sticky_session_enabled=True,
-                cookie="tf-example",
-                sticky_session_type="Server",
-            ),
-            health_check_config=alicloud.alb.ServerGroupHealthCheckConfigArgs(
-                health_check_connect_port=46325,
-                health_check_enabled=True,
-                health_check_host="tf-example.com",
-                health_check_codes=[
+            sticky_session_config={
+                "sticky_session_enabled": True,
+                "cookie": "tf-example",
+                "sticky_session_type": "Server",
+            },
+            health_check_config={
+                "health_check_connect_port": 46325,
+                "health_check_enabled": True,
+                "health_check_host": "tf-example.com",
+                "health_check_codes": [
                     "http_2xx",
                     "http_3xx",
                     "http_4xx",
                 ],
-                health_check_http_version="HTTP1.1",
-                health_check_interval=2,
-                health_check_method="HEAD",
-                health_check_path="/tf-example",
-                health_check_protocol="HTTP",
-                health_check_timeout=5,
-                healthy_threshold=3,
-                unhealthy_threshold=3,
-            ),
-            servers=[alicloud.alb.ServerGroupServerArgs(
-                description=name,
-                port=80,
-                server_id=example_instance.id,
-                server_ip=example_instance.private_ip,
-                server_type="Ecs",
-                weight=10,
-            )],
+                "health_check_http_version": "HTTP1.1",
+                "health_check_interval": 2,
+                "health_check_method": "HEAD",
+                "health_check_path": "/tf-example",
+                "health_check_protocol": "HTTP",
+                "health_check_timeout": 5,
+                "healthy_threshold": 3,
+                "unhealthy_threshold": 3,
+            },
+            servers=[{
+                "description": name,
+                "port": 80,
+                "server_id": example_instance.id,
+                "server_ip": example_instance.private_ip,
+                "server_type": "Ecs",
+                "weight": 10,
+            }],
             tags={
                 "Created": "TF",
             })
@@ -651,14 +651,14 @@ class ServerGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
-                 health_check_config: Optional[pulumi.Input[pulumi.InputType['ServerGroupHealthCheckConfigArgs']]] = None,
+                 health_check_config: Optional[pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  scheduler: Optional[pulumi.Input[str]] = None,
                  server_group_name: Optional[pulumi.Input[str]] = None,
                  server_group_type: Optional[pulumi.Input[str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]]] = None,
-                 sticky_session_config: Optional[pulumi.Input[pulumi.InputType['ServerGroupStickySessionConfigArgs']]] = None,
+                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
+                 sticky_session_config: Optional[pulumi.Input[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -697,15 +697,15 @@ class ServerGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
-            health_check_config: Optional[pulumi.Input[pulumi.InputType['ServerGroupHealthCheckConfigArgs']]] = None,
+            health_check_config: Optional[pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             scheduler: Optional[pulumi.Input[str]] = None,
             server_group_name: Optional[pulumi.Input[str]] = None,
             server_group_type: Optional[pulumi.Input[str]] = None,
-            servers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]]] = None,
+            servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            sticky_session_config: Optional[pulumi.Input[pulumi.InputType['ServerGroupStickySessionConfigArgs']]] = None,
+            sticky_session_config: Optional[pulumi.Input[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'ServerGroup':
         """
@@ -716,7 +716,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[pulumi.InputType['ServerGroupHealthCheckConfigArgs']] health_check_config: The configuration of health checks. See `health_check_config` below.
+        :param pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']] health_check_config: The configuration of health checks. See `health_check_config` below.
         :param pulumi.Input[str] protocol: The server protocol. Valid values: ` HTTP`, `HTTPS`, `gRPC`. While `server_group_type` is `Fc` this parameter will not take effect. From version 1.215.0, `protocol` can be set to `gRPC`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
@@ -725,9 +725,9 @@ class ServerGroup(pulumi.CustomResource):
                - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
                - `Ip`: allows you to add servers by specifying IP addresses.
                - `Fc`: allows you to add servers by specifying functions of Function Compute.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: The backend servers. See `servers` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]] servers: The backend servers. See `servers` below.
         :param pulumi.Input[str] status: The status of the backend server.
-        :param pulumi.Input[pulumi.InputType['ServerGroupStickySessionConfigArgs']] sticky_session_config: The configuration of session persistence. See `sticky_session_config` below.
+        :param pulumi.Input[Union['ServerGroupStickySessionConfigArgs', 'ServerGroupStickySessionConfigArgsDict']] sticky_session_config: The configuration of session persistence. See `sticky_session_config` below.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC that you want to access. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         """

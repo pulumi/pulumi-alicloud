@@ -207,10 +207,10 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]]]] = None,
+                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  match_express_filter_relation: Optional[pulumi.Input[str]] = None,
-                 match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]]] = None,
+                 match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]]] = None,
                  process_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -246,27 +246,27 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
             group_id=default_monitor_group.id,
             process_name=name,
             match_express_filter_relation="or",
-            match_expresses=[alicloud.cloudmonitor.ServiceGroupMonitoringAgentProcessMatchExpressArgs(
-                name=name,
-                value="*",
-                function="all",
-            )],
-            alert_configs=[alicloud.cloudmonitor.ServiceGroupMonitoringAgentProcessAlertConfigArgs(
-                escalations_level="critical",
-                comparison_operator="GreaterThanOrEqualToThreshold",
-                statistics="Average",
-                threshold="20",
-                times="100",
-                effective_interval="00:00-22:59",
-                silence_time=85800,
-                webhook="https://www.aliyun.com",
-                target_lists=[alicloud.cloudmonitor.ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs(
-                    target_list_id="1",
-                    json_params="{}",
-                    level="WARN",
-                    arn="acs:mns:cn-hangzhou:120886317861****:/queues/test123/message",
-                )],
-            )])
+            match_expresses=[{
+                "name": name,
+                "value": "*",
+                "function": "all",
+            }],
+            alert_configs=[{
+                "escalations_level": "critical",
+                "comparison_operator": "GreaterThanOrEqualToThreshold",
+                "statistics": "Average",
+                "threshold": "20",
+                "times": "100",
+                "effective_interval": "00:00-22:59",
+                "silence_time": 85800,
+                "webhook": "https://www.aliyun.com",
+                "target_lists": [{
+                    "target_list_id": "1",
+                    "json_params": "{}",
+                    "level": "WARN",
+                    "arn": "acs:mns:cn-hangzhou:120886317861****:/queues/test123/message",
+                }],
+            }])
         ```
 
         ## Import
@@ -279,10 +279,10 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]]] alert_configs: The alert rule configurations. See `alert_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]] alert_configs: The alert rule configurations. See `alert_config` below.
         :param pulumi.Input[str] group_id: The ID of the application group.
         :param pulumi.Input[str] match_express_filter_relation: The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]] match_expresses: The expressions used to match instances. See `match_express` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]] match_expresses: The expressions used to match instances. See `match_express` below.
         :param pulumi.Input[str] process_name: The name of the process.
         """
         ...
@@ -324,27 +324,27 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
             group_id=default_monitor_group.id,
             process_name=name,
             match_express_filter_relation="or",
-            match_expresses=[alicloud.cloudmonitor.ServiceGroupMonitoringAgentProcessMatchExpressArgs(
-                name=name,
-                value="*",
-                function="all",
-            )],
-            alert_configs=[alicloud.cloudmonitor.ServiceGroupMonitoringAgentProcessAlertConfigArgs(
-                escalations_level="critical",
-                comparison_operator="GreaterThanOrEqualToThreshold",
-                statistics="Average",
-                threshold="20",
-                times="100",
-                effective_interval="00:00-22:59",
-                silence_time=85800,
-                webhook="https://www.aliyun.com",
-                target_lists=[alicloud.cloudmonitor.ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs(
-                    target_list_id="1",
-                    json_params="{}",
-                    level="WARN",
-                    arn="acs:mns:cn-hangzhou:120886317861****:/queues/test123/message",
-                )],
-            )])
+            match_expresses=[{
+                "name": name,
+                "value": "*",
+                "function": "all",
+            }],
+            alert_configs=[{
+                "escalations_level": "critical",
+                "comparison_operator": "GreaterThanOrEqualToThreshold",
+                "statistics": "Average",
+                "threshold": "20",
+                "times": "100",
+                "effective_interval": "00:00-22:59",
+                "silence_time": 85800,
+                "webhook": "https://www.aliyun.com",
+                "target_lists": [{
+                    "target_list_id": "1",
+                    "json_params": "{}",
+                    "level": "WARN",
+                    "arn": "acs:mns:cn-hangzhou:120886317861****:/queues/test123/message",
+                }],
+            }])
         ```
 
         ## Import
@@ -370,10 +370,10 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]]]] = None,
+                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  match_express_filter_relation: Optional[pulumi.Input[str]] = None,
-                 match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]]] = None,
+                 match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]]] = None,
                  process_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -406,11 +406,11 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]]]] = None,
+            alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             group_monitoring_agent_process_id: Optional[pulumi.Input[str]] = None,
             match_express_filter_relation: Optional[pulumi.Input[str]] = None,
-            match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]]] = None,
+            match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]]] = None,
             process_name: Optional[pulumi.Input[str]] = None) -> 'ServiceGroupMonitoringAgentProcess':
         """
         Get an existing ServiceGroupMonitoringAgentProcess resource's state with the given name, id, and optional extra
@@ -419,11 +419,11 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]]] alert_configs: The alert rule configurations. See `alert_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]] alert_configs: The alert rule configurations. See `alert_config` below.
         :param pulumi.Input[str] group_id: The ID of the application group.
         :param pulumi.Input[str] group_monitoring_agent_process_id: The ID of the Group Monitoring Agent Process.
         :param pulumi.Input[str] match_express_filter_relation: The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]] match_expresses: The expressions used to match instances. See `match_express` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]] match_expresses: The expressions used to match instances. See `match_express` below.
         :param pulumi.Input[str] process_name: The name of the process.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

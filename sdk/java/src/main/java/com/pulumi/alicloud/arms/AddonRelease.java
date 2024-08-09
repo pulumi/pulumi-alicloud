@@ -135,7 +135,7 @@ public class AddonRelease extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AddonRelease(String name) {
+    public AddonRelease(java.lang.String name) {
         this(name, AddonReleaseArgs.Empty);
     }
     /**
@@ -143,7 +143,7 @@ public class AddonRelease extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AddonRelease(String name, AddonReleaseArgs args) {
+    public AddonRelease(java.lang.String name, AddonReleaseArgs args) {
         this(name, args, null);
     }
     /**
@@ -152,15 +152,22 @@ public class AddonRelease extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AddonRelease(String name, AddonReleaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:arms/addonRelease:AddonRelease", name, args == null ? AddonReleaseArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AddonRelease(java.lang.String name, AddonReleaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:arms/addonRelease:AddonRelease", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AddonRelease(String name, Output<String> id, @Nullable AddonReleaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:arms/addonRelease:AddonRelease", name, state, makeResourceOptions(options, id));
+    private AddonRelease(java.lang.String name, Output<java.lang.String> id, @Nullable AddonReleaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:arms/addonRelease:AddonRelease", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AddonReleaseArgs makeArgs(AddonReleaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AddonReleaseArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -176,7 +183,7 @@ public class AddonRelease extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AddonRelease get(String name, Output<String> id, @Nullable AddonReleaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AddonRelease get(java.lang.String name, Output<java.lang.String> id, @Nullable AddonReleaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AddonRelease(name, id, state, options);
     }
 }

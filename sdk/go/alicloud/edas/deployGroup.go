@@ -57,14 +57,14 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				VpcName:   pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultCluster, err := edas.NewCluster(ctx, "default", &edas.ClusterArgs{
-//				ClusterName:     pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				ClusterName:     pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				ClusterType:     pulumi.Int(2),
 //				NetworkMode:     pulumi.Int(2),
 //				LogicalRegionId: pulumi.String(_default.Regions[0].Id),
@@ -74,7 +74,7 @@ import (
 //				return err
 //			}
 //			defaultApplication, err := edas.NewApplication(ctx, "default", &edas.ApplicationArgs{
-//				ApplicationName: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				ApplicationName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				ClusterId:       defaultCluster.ID(),
 //				PackageType:     pulumi.String("JAR"),
 //			})
@@ -83,7 +83,7 @@ import (
 //			}
 //			_, err = edas.NewDeployGroup(ctx, "default", &edas.DeployGroupArgs{
 //				AppId:     defaultApplication.ID(),
-//				GroupName: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				GroupName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err

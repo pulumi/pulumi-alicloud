@@ -545,7 +545,7 @@ class ServerGroup(pulumi.CustomResource):
                  connection_drain: Optional[pulumi.Input[bool]] = None,
                  connection_drain_enabled: Optional[pulumi.Input[bool]] = None,
                  connection_drain_timeout: Optional[pulumi.Input[int]] = None,
-                 health_check: Optional[pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']]] = None,
+                 health_check: Optional[pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']]] = None,
                  preserve_client_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -588,21 +588,21 @@ class ServerGroup(pulumi.CustomResource):
             connection_drain=True,
             connection_drain_timeout=60,
             address_ip_version="Ipv4",
-            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
-                health_check_enabled=True,
-                health_check_type="TCP",
-                health_check_connect_port=0,
-                healthy_threshold=2,
-                unhealthy_threshold=2,
-                health_check_connect_timeout=5,
-                health_check_interval=10,
-                http_check_method="GET",
-                health_check_http_codes=[
+            health_check={
+                "health_check_enabled": True,
+                "health_check_type": "TCP",
+                "health_check_connect_port": 0,
+                "healthy_threshold": 2,
+                "unhealthy_threshold": 2,
+                "health_check_connect_timeout": 5,
+                "health_check_interval": 10,
+                "http_check_method": "GET",
+                "health_check_http_codes": [
                     "http_2xx",
                     "http_3xx",
                     "http_4xx",
                 ],
-            ),
+            },
             tags={
                 "Created": "TF",
                 "For": "example",
@@ -624,7 +624,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] connection_drain: . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
         :param pulumi.Input[bool] connection_drain_enabled: Specifies whether to enable connection draining.
         :param pulumi.Input[int] connection_drain_timeout: Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
-        :param pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']] health_check: Health check configuration information. See `health_check` below.
+        :param pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']] health_check: Health check configuration information. See `health_check` below.
         :param pulumi.Input[bool] preserve_client_ip_enabled: Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
         :param pulumi.Input[str] protocol: The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs.
@@ -682,21 +682,21 @@ class ServerGroup(pulumi.CustomResource):
             connection_drain=True,
             connection_drain_timeout=60,
             address_ip_version="Ipv4",
-            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
-                health_check_enabled=True,
-                health_check_type="TCP",
-                health_check_connect_port=0,
-                healthy_threshold=2,
-                unhealthy_threshold=2,
-                health_check_connect_timeout=5,
-                health_check_interval=10,
-                http_check_method="GET",
-                health_check_http_codes=[
+            health_check={
+                "health_check_enabled": True,
+                "health_check_type": "TCP",
+                "health_check_connect_port": 0,
+                "healthy_threshold": 2,
+                "unhealthy_threshold": 2,
+                "health_check_connect_timeout": 5,
+                "health_check_interval": 10,
+                "http_check_method": "GET",
+                "health_check_http_codes": [
                     "http_2xx",
                     "http_3xx",
                     "http_4xx",
                 ],
-            ),
+            },
             tags={
                 "Created": "TF",
                 "For": "example",
@@ -731,7 +731,7 @@ class ServerGroup(pulumi.CustomResource):
                  connection_drain: Optional[pulumi.Input[bool]] = None,
                  connection_drain_enabled: Optional[pulumi.Input[bool]] = None,
                  connection_drain_timeout: Optional[pulumi.Input[int]] = None,
-                 health_check: Optional[pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']]] = None,
+                 health_check: Optional[pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']]] = None,
                  preserve_client_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -783,7 +783,7 @@ class ServerGroup(pulumi.CustomResource):
             connection_drain: Optional[pulumi.Input[bool]] = None,
             connection_drain_enabled: Optional[pulumi.Input[bool]] = None,
             connection_drain_timeout: Optional[pulumi.Input[int]] = None,
-            health_check: Optional[pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']]] = None,
+            health_check: Optional[pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']]] = None,
             preserve_client_ip_enabled: Optional[pulumi.Input[bool]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -805,7 +805,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] connection_drain: . Field 'connection_drain' has been deprecated from provider version 1.214.0. New field 'connection_drain_enabled' instead.
         :param pulumi.Input[bool] connection_drain_enabled: Specifies whether to enable connection draining.
         :param pulumi.Input[int] connection_drain_timeout: Set the connection elegant interrupt timeout. Unit: seconds. Valid values: **10** ~ **900**.
-        :param pulumi.Input[pulumi.InputType['ServerGroupHealthCheckArgs']] health_check: Health check configuration information. See `health_check` below.
+        :param pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']] health_check: Health check configuration information. See `health_check` below.
         :param pulumi.Input[bool] preserve_client_ip_enabled: Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
         :param pulumi.Input[str] protocol: The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs.

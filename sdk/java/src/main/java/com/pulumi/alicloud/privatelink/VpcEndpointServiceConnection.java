@@ -217,7 +217,7 @@ public class VpcEndpointServiceConnection extends com.pulumi.resources.CustomRes
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VpcEndpointServiceConnection(String name) {
+    public VpcEndpointServiceConnection(java.lang.String name) {
         this(name, VpcEndpointServiceConnectionArgs.Empty);
     }
     /**
@@ -225,7 +225,7 @@ public class VpcEndpointServiceConnection extends com.pulumi.resources.CustomRes
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VpcEndpointServiceConnection(String name, VpcEndpointServiceConnectionArgs args) {
+    public VpcEndpointServiceConnection(java.lang.String name, VpcEndpointServiceConnectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -234,15 +234,22 @@ public class VpcEndpointServiceConnection extends com.pulumi.resources.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VpcEndpointServiceConnection(String name, VpcEndpointServiceConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection", name, args == null ? VpcEndpointServiceConnectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VpcEndpointServiceConnection(java.lang.String name, VpcEndpointServiceConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VpcEndpointServiceConnection(String name, Output<String> id, @Nullable VpcEndpointServiceConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection", name, state, makeResourceOptions(options, id));
+    private VpcEndpointServiceConnection(java.lang.String name, Output<java.lang.String> id, @Nullable VpcEndpointServiceConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:privatelink/vpcEndpointServiceConnection:VpcEndpointServiceConnection", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VpcEndpointServiceConnectionArgs makeArgs(VpcEndpointServiceConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VpcEndpointServiceConnectionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -258,7 +265,7 @@ public class VpcEndpointServiceConnection extends com.pulumi.resources.CustomRes
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VpcEndpointServiceConnection get(String name, Output<String> id, @Nullable VpcEndpointServiceConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VpcEndpointServiceConnection get(java.lang.String name, Output<java.lang.String> id, @Nullable VpcEndpointServiceConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VpcEndpointServiceConnection(name, id, state, options);
     }
 }

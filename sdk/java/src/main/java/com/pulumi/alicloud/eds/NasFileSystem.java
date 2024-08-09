@@ -193,7 +193,7 @@ public class NasFileSystem extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NasFileSystem(String name) {
+    public NasFileSystem(java.lang.String name) {
         this(name, NasFileSystemArgs.Empty);
     }
     /**
@@ -201,7 +201,7 @@ public class NasFileSystem extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NasFileSystem(String name, NasFileSystemArgs args) {
+    public NasFileSystem(java.lang.String name, NasFileSystemArgs args) {
         this(name, args, null);
     }
     /**
@@ -210,15 +210,22 @@ public class NasFileSystem extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NasFileSystem(String name, NasFileSystemArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eds/nasFileSystem:NasFileSystem", name, args == null ? NasFileSystemArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NasFileSystem(java.lang.String name, NasFileSystemArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eds/nasFileSystem:NasFileSystem", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NasFileSystem(String name, Output<String> id, @Nullable NasFileSystemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eds/nasFileSystem:NasFileSystem", name, state, makeResourceOptions(options, id));
+    private NasFileSystem(java.lang.String name, Output<java.lang.String> id, @Nullable NasFileSystemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eds/nasFileSystem:NasFileSystem", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NasFileSystemArgs makeArgs(NasFileSystemArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NasFileSystemArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -234,7 +241,7 @@ public class NasFileSystem extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NasFileSystem get(String name, Output<String> id, @Nullable NasFileSystemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NasFileSystem get(java.lang.String name, Output<java.lang.String> id, @Nullable NasFileSystemState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NasFileSystem(name, id, state, options);
     }
 }

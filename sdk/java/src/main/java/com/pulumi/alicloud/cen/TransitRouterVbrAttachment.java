@@ -314,7 +314,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TransitRouterVbrAttachment(String name) {
+    public TransitRouterVbrAttachment(java.lang.String name) {
         this(name, TransitRouterVbrAttachmentArgs.Empty);
     }
     /**
@@ -322,7 +322,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TransitRouterVbrAttachment(String name, TransitRouterVbrAttachmentArgs args) {
+    public TransitRouterVbrAttachment(java.lang.String name, TransitRouterVbrAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -331,15 +331,22 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TransitRouterVbrAttachment(String name, TransitRouterVbrAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment", name, args == null ? TransitRouterVbrAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TransitRouterVbrAttachment(java.lang.String name, TransitRouterVbrAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TransitRouterVbrAttachment(String name, Output<String> id, @Nullable TransitRouterVbrAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment", name, state, makeResourceOptions(options, id));
+    private TransitRouterVbrAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterVbrAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TransitRouterVbrAttachmentArgs makeArgs(TransitRouterVbrAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TransitRouterVbrAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -355,7 +362,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TransitRouterVbrAttachment get(String name, Output<String> id, @Nullable TransitRouterVbrAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TransitRouterVbrAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterVbrAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TransitRouterVbrAttachment(name, id, state, options);
     }
 }

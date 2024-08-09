@@ -134,7 +134,7 @@ public class BucketLogging extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BucketLogging(String name) {
+    public BucketLogging(java.lang.String name) {
         this(name, BucketLoggingArgs.Empty);
     }
     /**
@@ -142,7 +142,7 @@ public class BucketLogging extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BucketLogging(String name, BucketLoggingArgs args) {
+    public BucketLogging(java.lang.String name, BucketLoggingArgs args) {
         this(name, args, null);
     }
     /**
@@ -151,15 +151,22 @@ public class BucketLogging extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BucketLogging(String name, BucketLoggingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketLogging:BucketLogging", name, args == null ? BucketLoggingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BucketLogging(java.lang.String name, BucketLoggingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketLogging:BucketLogging", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BucketLogging(String name, Output<String> id, @Nullable BucketLoggingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketLogging:BucketLogging", name, state, makeResourceOptions(options, id));
+    private BucketLogging(java.lang.String name, Output<java.lang.String> id, @Nullable BucketLoggingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketLogging:BucketLogging", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BucketLoggingArgs makeArgs(BucketLoggingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BucketLoggingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -175,7 +182,7 @@ public class BucketLogging extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BucketLogging get(String name, Output<String> id, @Nullable BucketLoggingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BucketLogging get(java.lang.String name, Output<java.lang.String> id, @Nullable BucketLoggingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BucketLogging(name, id, state, options);
     }
 }

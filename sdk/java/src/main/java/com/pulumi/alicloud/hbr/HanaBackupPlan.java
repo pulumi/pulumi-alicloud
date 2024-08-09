@@ -262,7 +262,7 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HanaBackupPlan(String name) {
+    public HanaBackupPlan(java.lang.String name) {
         this(name, HanaBackupPlanArgs.Empty);
     }
     /**
@@ -270,7 +270,7 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HanaBackupPlan(String name, HanaBackupPlanArgs args) {
+    public HanaBackupPlan(java.lang.String name, HanaBackupPlanArgs args) {
         this(name, args, null);
     }
     /**
@@ -279,15 +279,22 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HanaBackupPlan(String name, HanaBackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/hanaBackupPlan:HanaBackupPlan", name, args == null ? HanaBackupPlanArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HanaBackupPlan(java.lang.String name, HanaBackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/hanaBackupPlan:HanaBackupPlan", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HanaBackupPlan(String name, Output<String> id, @Nullable HanaBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/hanaBackupPlan:HanaBackupPlan", name, state, makeResourceOptions(options, id));
+    private HanaBackupPlan(java.lang.String name, Output<java.lang.String> id, @Nullable HanaBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/hanaBackupPlan:HanaBackupPlan", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HanaBackupPlanArgs makeArgs(HanaBackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HanaBackupPlanArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -303,7 +310,7 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HanaBackupPlan get(String name, Output<String> id, @Nullable HanaBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HanaBackupPlan get(java.lang.String name, Output<java.lang.String> id, @Nullable HanaBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HanaBackupPlan(name, id, state, options);
     }
 }

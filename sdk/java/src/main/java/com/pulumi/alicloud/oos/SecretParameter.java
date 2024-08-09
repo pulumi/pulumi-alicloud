@@ -218,7 +218,7 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SecretParameter(String name) {
+    public SecretParameter(java.lang.String name) {
         this(name, SecretParameterArgs.Empty);
     }
     /**
@@ -226,7 +226,7 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SecretParameter(String name, SecretParameterArgs args) {
+    public SecretParameter(java.lang.String name, SecretParameterArgs args) {
         this(name, args, null);
     }
     /**
@@ -235,15 +235,22 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SecretParameter(String name, SecretParameterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oos/secretParameter:SecretParameter", name, args == null ? SecretParameterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SecretParameter(java.lang.String name, SecretParameterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oos/secretParameter:SecretParameter", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SecretParameter(String name, Output<String> id, @Nullable SecretParameterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oos/secretParameter:SecretParameter", name, state, makeResourceOptions(options, id));
+    private SecretParameter(java.lang.String name, Output<java.lang.String> id, @Nullable SecretParameterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oos/secretParameter:SecretParameter", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SecretParameterArgs makeArgs(SecretParameterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SecretParameterArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -262,7 +269,7 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SecretParameter get(String name, Output<String> id, @Nullable SecretParameterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SecretParameter get(java.lang.String name, Output<java.lang.String> id, @Nullable SecretParameterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SecretParameter(name, id, state, options);
     }
 }

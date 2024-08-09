@@ -86,7 +86,7 @@ class AwaitableGetPolicyDocumentResult(GetPolicyDocumentResult):
 
 
 def get_policy_document(output_file: Optional[str] = None,
-                        statements: Optional[Sequence[pulumi.InputType['GetPolicyDocumentStatementArgs']]] = None,
+                        statements: Optional[Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict']]] = None,
                         version: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyDocumentResult:
     """
@@ -103,14 +103,14 @@ def get_policy_document(output_file: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     basic_example = alicloud.ram.get_policy_document(version="1",
-        statements=[alicloud.ram.GetPolicyDocumentStatementArgs(
-            effect="Allow",
-            actions=["oss:*"],
-            resources=[
+        statements=[{
+            "effect": "Allow",
+            "actions": ["oss:*"],
+            "resources": [
                 "acs:oss:*:*:myphotos",
                 "acs:oss:*:*:myphotos/*",
             ],
-        )])
+        }])
     default = alicloud.ram.Policy("default",
         policy_name="tf-example",
         policy_document=basic_example.document,
@@ -127,46 +127,46 @@ def get_policy_document(output_file: Optional[str] = None,
 
     multiple_condition = alicloud.ram.get_policy_document(version="1",
         statements=[
-            alicloud.ram.GetPolicyDocumentStatementArgs(
-                effect="Allow",
-                actions=[
+            {
+                "effect": "Allow",
+                "actions": [
                     "oss:ListBuckets",
                     "oss:GetBucketStat",
                     "oss:GetBucketInfo",
                     "oss:GetBucketTagging",
                     "oss:GetBucketAcl",
                 ],
-                resources=["acs:oss:*:*:*"],
-            ),
-            alicloud.ram.GetPolicyDocumentStatementArgs(
-                effect="Allow",
-                actions=[
+                "resources": ["acs:oss:*:*:*"],
+            },
+            {
+                "effect": "Allow",
+                "actions": [
                     "oss:GetObject",
                     "oss:GetObjectAcl",
                 ],
-                resources=["acs:oss:*:*:myphotos/hangzhou/2015/*"],
-            ),
-            alicloud.ram.GetPolicyDocumentStatementArgs(
-                effect="Allow",
-                actions=["oss:ListObjects"],
-                resources=["acs:oss:*:*:myphotos"],
-                conditions=[
-                    alicloud.ram.GetPolicyDocumentStatementConditionArgs(
-                        operator="StringLike",
-                        variable="oss:Delimiter",
-                        values=["/"],
-                    ),
-                    alicloud.ram.GetPolicyDocumentStatementConditionArgs(
-                        operator="StringLike",
-                        variable="oss:Prefix",
-                        values=[
+                "resources": ["acs:oss:*:*:myphotos/hangzhou/2015/*"],
+            },
+            {
+                "effect": "Allow",
+                "actions": ["oss:ListObjects"],
+                "resources": ["acs:oss:*:*:myphotos"],
+                "conditions": [
+                    {
+                        "operator": "StringLike",
+                        "variable": "oss:Delimiter",
+                        "values": ["/"],
+                    },
+                    {
+                        "operator": "StringLike",
+                        "variable": "oss:Prefix",
+                        "values": [
                             "",
                             "hangzhou/",
                             "hangzhou/2015/*",
                         ],
-                    ),
+                    },
                 ],
-            ),
+            },
         ])
     policy = alicloud.ram.Policy("policy",
         policy_name="tf-example-condition",
@@ -182,14 +182,14 @@ def get_policy_document(output_file: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ram_example = alicloud.ram.get_policy_document(statements=[alicloud.ram.GetPolicyDocumentStatementArgs(
-        effect="Allow",
-        actions=["sts:AssumeRole"],
-        principals=[alicloud.ram.GetPolicyDocumentStatementPrincipalArgs(
-            entity="RAM",
-            identifiers=["acs:ram::123456789012****:root"],
-        )],
-    )])
+    ram_example = alicloud.ram.get_policy_document(statements=[{
+        "effect": "Allow",
+        "actions": ["sts:AssumeRole"],
+        "principals": [{
+            "entity": "RAM",
+            "identifiers": ["acs:ram::123456789012****:root"],
+        }],
+    }])
     role = alicloud.ram.Role("role",
         name="tf-example-role-ram",
         document=ram_example.document,
@@ -204,14 +204,14 @@ def get_policy_document(output_file: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    service_example = alicloud.ram.get_policy_document(statements=[alicloud.ram.GetPolicyDocumentStatementArgs(
-        effect="Allow",
-        actions=["sts:AssumeRole"],
-        principals=[alicloud.ram.GetPolicyDocumentStatementPrincipalArgs(
-            entity="Service",
-            identifiers=["ecs.aliyuncs.com"],
-        )],
-    )])
+    service_example = alicloud.ram.get_policy_document(statements=[{
+        "effect": "Allow",
+        "actions": ["sts:AssumeRole"],
+        "principals": [{
+            "entity": "Service",
+            "identifiers": ["ecs.aliyuncs.com"],
+        }],
+    }])
     role = alicloud.ram.Role("role",
         name="tf-example-role-service",
         document=service_example.document,
@@ -226,19 +226,19 @@ def get_policy_document(output_file: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    federated_example = alicloud.ram.get_policy_document(statements=[alicloud.ram.GetPolicyDocumentStatementArgs(
-        effect="Allow",
-        actions=["sts:AssumeRole"],
-        principals=[alicloud.ram.GetPolicyDocumentStatementPrincipalArgs(
-            entity="Federated",
-            identifiers=["acs:ram::123456789012****:saml-provider/testprovider"],
-        )],
-        conditions=[alicloud.ram.GetPolicyDocumentStatementConditionArgs(
-            operator="StringEquals",
-            variable="saml:recipient",
-            values=["https://signin.aliyun.com/saml-role/sso"],
-        )],
-    )])
+    federated_example = alicloud.ram.get_policy_document(statements=[{
+        "effect": "Allow",
+        "actions": ["sts:AssumeRole"],
+        "principals": [{
+            "entity": "Federated",
+            "identifiers": ["acs:ram::123456789012****:saml-provider/testprovider"],
+        }],
+        "conditions": [{
+            "operator": "StringEquals",
+            "variable": "saml:recipient",
+            "values": ["https://signin.aliyun.com/saml-role/sso"],
+        }],
+    }])
     role = alicloud.ram.Role("role",
         name="tf-example-role-federated",
         document=federated_example.document,
@@ -249,7 +249,7 @@ def get_policy_document(output_file: Optional[str] = None,
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Sequence[pulumi.InputType['GetPolicyDocumentStatementArgs']] statements: Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
+    :param Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict']] statements: Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
     :param str version: Version of the RAM policy document. Valid value is `1`. Default value is `1`.
     """
     __args__ = dict()
@@ -269,7 +269,7 @@ def get_policy_document(output_file: Optional[str] = None,
 
 @_utilities.lift_output_func(get_policy_document)
 def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                               statements: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetPolicyDocumentStatementArgs']]]]] = None,
+                               statements: Optional[pulumi.Input[Optional[Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict']]]]] = None,
                                version: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyDocumentResult]:
     """
@@ -286,14 +286,14 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
     import pulumi_alicloud as alicloud
 
     basic_example = alicloud.ram.get_policy_document(version="1",
-        statements=[alicloud.ram.GetPolicyDocumentStatementArgs(
-            effect="Allow",
-            actions=["oss:*"],
-            resources=[
+        statements=[{
+            "effect": "Allow",
+            "actions": ["oss:*"],
+            "resources": [
                 "acs:oss:*:*:myphotos",
                 "acs:oss:*:*:myphotos/*",
             ],
-        )])
+        }])
     default = alicloud.ram.Policy("default",
         policy_name="tf-example",
         policy_document=basic_example.document,
@@ -310,46 +310,46 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
 
     multiple_condition = alicloud.ram.get_policy_document(version="1",
         statements=[
-            alicloud.ram.GetPolicyDocumentStatementArgs(
-                effect="Allow",
-                actions=[
+            {
+                "effect": "Allow",
+                "actions": [
                     "oss:ListBuckets",
                     "oss:GetBucketStat",
                     "oss:GetBucketInfo",
                     "oss:GetBucketTagging",
                     "oss:GetBucketAcl",
                 ],
-                resources=["acs:oss:*:*:*"],
-            ),
-            alicloud.ram.GetPolicyDocumentStatementArgs(
-                effect="Allow",
-                actions=[
+                "resources": ["acs:oss:*:*:*"],
+            },
+            {
+                "effect": "Allow",
+                "actions": [
                     "oss:GetObject",
                     "oss:GetObjectAcl",
                 ],
-                resources=["acs:oss:*:*:myphotos/hangzhou/2015/*"],
-            ),
-            alicloud.ram.GetPolicyDocumentStatementArgs(
-                effect="Allow",
-                actions=["oss:ListObjects"],
-                resources=["acs:oss:*:*:myphotos"],
-                conditions=[
-                    alicloud.ram.GetPolicyDocumentStatementConditionArgs(
-                        operator="StringLike",
-                        variable="oss:Delimiter",
-                        values=["/"],
-                    ),
-                    alicloud.ram.GetPolicyDocumentStatementConditionArgs(
-                        operator="StringLike",
-                        variable="oss:Prefix",
-                        values=[
+                "resources": ["acs:oss:*:*:myphotos/hangzhou/2015/*"],
+            },
+            {
+                "effect": "Allow",
+                "actions": ["oss:ListObjects"],
+                "resources": ["acs:oss:*:*:myphotos"],
+                "conditions": [
+                    {
+                        "operator": "StringLike",
+                        "variable": "oss:Delimiter",
+                        "values": ["/"],
+                    },
+                    {
+                        "operator": "StringLike",
+                        "variable": "oss:Prefix",
+                        "values": [
                             "",
                             "hangzhou/",
                             "hangzhou/2015/*",
                         ],
-                    ),
+                    },
                 ],
-            ),
+            },
         ])
     policy = alicloud.ram.Policy("policy",
         policy_name="tf-example-condition",
@@ -365,14 +365,14 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ram_example = alicloud.ram.get_policy_document(statements=[alicloud.ram.GetPolicyDocumentStatementArgs(
-        effect="Allow",
-        actions=["sts:AssumeRole"],
-        principals=[alicloud.ram.GetPolicyDocumentStatementPrincipalArgs(
-            entity="RAM",
-            identifiers=["acs:ram::123456789012****:root"],
-        )],
-    )])
+    ram_example = alicloud.ram.get_policy_document(statements=[{
+        "effect": "Allow",
+        "actions": ["sts:AssumeRole"],
+        "principals": [{
+            "entity": "RAM",
+            "identifiers": ["acs:ram::123456789012****:root"],
+        }],
+    }])
     role = alicloud.ram.Role("role",
         name="tf-example-role-ram",
         document=ram_example.document,
@@ -387,14 +387,14 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    service_example = alicloud.ram.get_policy_document(statements=[alicloud.ram.GetPolicyDocumentStatementArgs(
-        effect="Allow",
-        actions=["sts:AssumeRole"],
-        principals=[alicloud.ram.GetPolicyDocumentStatementPrincipalArgs(
-            entity="Service",
-            identifiers=["ecs.aliyuncs.com"],
-        )],
-    )])
+    service_example = alicloud.ram.get_policy_document(statements=[{
+        "effect": "Allow",
+        "actions": ["sts:AssumeRole"],
+        "principals": [{
+            "entity": "Service",
+            "identifiers": ["ecs.aliyuncs.com"],
+        }],
+    }])
     role = alicloud.ram.Role("role",
         name="tf-example-role-service",
         document=service_example.document,
@@ -409,19 +409,19 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    federated_example = alicloud.ram.get_policy_document(statements=[alicloud.ram.GetPolicyDocumentStatementArgs(
-        effect="Allow",
-        actions=["sts:AssumeRole"],
-        principals=[alicloud.ram.GetPolicyDocumentStatementPrincipalArgs(
-            entity="Federated",
-            identifiers=["acs:ram::123456789012****:saml-provider/testprovider"],
-        )],
-        conditions=[alicloud.ram.GetPolicyDocumentStatementConditionArgs(
-            operator="StringEquals",
-            variable="saml:recipient",
-            values=["https://signin.aliyun.com/saml-role/sso"],
-        )],
-    )])
+    federated_example = alicloud.ram.get_policy_document(statements=[{
+        "effect": "Allow",
+        "actions": ["sts:AssumeRole"],
+        "principals": [{
+            "entity": "Federated",
+            "identifiers": ["acs:ram::123456789012****:saml-provider/testprovider"],
+        }],
+        "conditions": [{
+            "operator": "StringEquals",
+            "variable": "saml:recipient",
+            "values": ["https://signin.aliyun.com/saml-role/sso"],
+        }],
+    }])
     role = alicloud.ram.Role("role",
         name="tf-example-role-federated",
         document=federated_example.document,
@@ -432,7 +432,7 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Sequence[pulumi.InputType['GetPolicyDocumentStatementArgs']] statements: Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
+    :param Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict']] statements: Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
     :param str version: Version of the RAM policy document. Valid value is `1`. Default value is `1`.
     """
     ...

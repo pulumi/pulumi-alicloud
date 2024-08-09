@@ -174,7 +174,7 @@ public class ShardingNetworkPublicAddress extends com.pulumi.resources.CustomRes
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ShardingNetworkPublicAddress(String name) {
+    public ShardingNetworkPublicAddress(java.lang.String name) {
         this(name, ShardingNetworkPublicAddressArgs.Empty);
     }
     /**
@@ -182,7 +182,7 @@ public class ShardingNetworkPublicAddress extends com.pulumi.resources.CustomRes
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ShardingNetworkPublicAddress(String name, ShardingNetworkPublicAddressArgs args) {
+    public ShardingNetworkPublicAddress(java.lang.String name, ShardingNetworkPublicAddressArgs args) {
         this(name, args, null);
     }
     /**
@@ -191,15 +191,22 @@ public class ShardingNetworkPublicAddress extends com.pulumi.resources.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ShardingNetworkPublicAddress(String name, ShardingNetworkPublicAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress", name, args == null ? ShardingNetworkPublicAddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ShardingNetworkPublicAddress(java.lang.String name, ShardingNetworkPublicAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ShardingNetworkPublicAddress(String name, Output<String> id, @Nullable ShardingNetworkPublicAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress", name, state, makeResourceOptions(options, id));
+    private ShardingNetworkPublicAddress(java.lang.String name, Output<java.lang.String> id, @Nullable ShardingNetworkPublicAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:mongodb/shardingNetworkPublicAddress:ShardingNetworkPublicAddress", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ShardingNetworkPublicAddressArgs makeArgs(ShardingNetworkPublicAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ShardingNetworkPublicAddressArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -215,7 +222,7 @@ public class ShardingNetworkPublicAddress extends com.pulumi.resources.CustomRes
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ShardingNetworkPublicAddress get(String name, Output<String> id, @Nullable ShardingNetworkPublicAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ShardingNetworkPublicAddress get(java.lang.String name, Output<java.lang.String> id, @Nullable ShardingNetworkPublicAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ShardingNetworkPublicAddress(name, id, state, options);
     }
 }

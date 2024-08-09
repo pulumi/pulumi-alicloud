@@ -161,7 +161,7 @@ class CustomLine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_line_name: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomLineIpSegmentListArgs']]]]] = None,
+                 ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -182,10 +182,10 @@ class CustomLine(pulumi.CustomResource):
         default = alicloud.dns.CustomLine("default",
             custom_line_name="tf-example",
             domain_name="alicloud-provider.com",
-            ip_segment_lists=[alicloud.dns.CustomLineIpSegmentListArgs(
-                start_ip="192.0.2.123",
-                end_ip="192.0.2.125",
-            )])
+            ip_segment_lists=[{
+                "start_ip": "192.0.2.123",
+                "end_ip": "192.0.2.125",
+            }])
         ```
 
         ## Import
@@ -200,7 +200,7 @@ class CustomLine(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_line_name: The name of the Custom Line.
         :param pulumi.Input[str] domain_name: The Domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomLineIpSegmentListArgs']]]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
         :param pulumi.Input[str] lang: The lang.
         """
         ...
@@ -227,10 +227,10 @@ class CustomLine(pulumi.CustomResource):
         default = alicloud.dns.CustomLine("default",
             custom_line_name="tf-example",
             domain_name="alicloud-provider.com",
-            ip_segment_lists=[alicloud.dns.CustomLineIpSegmentListArgs(
-                start_ip="192.0.2.123",
-                end_ip="192.0.2.125",
-            )])
+            ip_segment_lists=[{
+                "start_ip": "192.0.2.123",
+                "end_ip": "192.0.2.125",
+            }])
         ```
 
         ## Import
@@ -258,7 +258,7 @@ class CustomLine(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_line_name: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomLineIpSegmentListArgs']]]]] = None,
+                 ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -291,7 +291,7 @@ class CustomLine(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_line_name: Optional[pulumi.Input[str]] = None,
             domain_name: Optional[pulumi.Input[str]] = None,
-            ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomLineIpSegmentListArgs']]]]] = None,
+            ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]]] = None,
             lang: Optional[pulumi.Input[str]] = None) -> 'CustomLine':
         """
         Get an existing CustomLine resource's state with the given name, id, and optional extra
@@ -302,7 +302,7 @@ class CustomLine(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_line_name: The name of the Custom Line.
         :param pulumi.Input[str] domain_name: The Domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomLineIpSegmentListArgs']]]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomLineIpSegmentListArgs', 'CustomLineIpSegmentListArgsDict']]]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
         :param pulumi.Input[str] lang: The lang.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

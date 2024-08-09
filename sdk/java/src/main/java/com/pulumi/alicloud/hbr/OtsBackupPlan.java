@@ -223,7 +223,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OtsBackupPlan(String name) {
+    public OtsBackupPlan(java.lang.String name) {
         this(name, OtsBackupPlanArgs.Empty);
     }
     /**
@@ -231,7 +231,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OtsBackupPlan(String name, OtsBackupPlanArgs args) {
+    public OtsBackupPlan(java.lang.String name, OtsBackupPlanArgs args) {
         this(name, args, null);
     }
     /**
@@ -240,15 +240,22 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OtsBackupPlan(String name, OtsBackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/otsBackupPlan:OtsBackupPlan", name, args == null ? OtsBackupPlanArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public OtsBackupPlan(java.lang.String name, OtsBackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/otsBackupPlan:OtsBackupPlan", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OtsBackupPlan(String name, Output<String> id, @Nullable OtsBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/otsBackupPlan:OtsBackupPlan", name, state, makeResourceOptions(options, id));
+    private OtsBackupPlan(java.lang.String name, Output<java.lang.String> id, @Nullable OtsBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/otsBackupPlan:OtsBackupPlan", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static OtsBackupPlanArgs makeArgs(OtsBackupPlanArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OtsBackupPlanArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -264,7 +271,7 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OtsBackupPlan get(String name, Output<String> id, @Nullable OtsBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OtsBackupPlan get(java.lang.String name, Output<java.lang.String> id, @Nullable OtsBackupPlanState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OtsBackupPlan(name, id, state, options);
     }
 }

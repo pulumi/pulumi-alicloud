@@ -176,10 +176,10 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_parameters: Optional[pulumi.Input[pulumi.InputType['ConnectionAuthParametersArgs']]] = None,
+                 auth_parameters: Optional[pulumi.Input[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']]] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 network_parameters: Optional[pulumi.Input[pulumi.InputType['ConnectionNetworkParametersArgs']]] = None,
+                 network_parameters: Optional[pulumi.Input[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Event Bridge Connection resource.
@@ -218,48 +218,48 @@ class Connection(pulumi.CustomResource):
         default_connection = alicloud.eventbridge.Connection("default",
             connection_name=name,
             description="test-connection-basic-pre",
-            network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
-                network_type="PublicNetwork",
-                vpc_id=default_network.id,
-                vswitche_id=default_switch.id,
-                security_group_id=default_security_group.id,
-            ),
-            auth_parameters=alicloud.eventbridge.ConnectionAuthParametersArgs(
-                authorization_type="BASIC_AUTH",
-                api_key_auth_parameters=alicloud.eventbridge.ConnectionAuthParametersApiKeyAuthParametersArgs(
-                    api_key_name="Token",
-                    api_key_value="Token-value",
-                ),
-                basic_auth_parameters=alicloud.eventbridge.ConnectionAuthParametersBasicAuthParametersArgs(
-                    username="admin",
-                    password="admin",
-                ),
-                oauth_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersArgs(
-                    authorization_endpoint="http://127.0.0.1:8080",
-                    http_method="POST",
-                    client_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersClientParametersArgs(
-                        client_id="ClientId",
-                        client_secret="ClientSecret",
-                    ),
-                    oauth_http_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersArgs(
-                        header_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs(
-                            key="name",
-                            value="name",
-                            is_value_secret="true",
-                        )],
-                        body_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs(
-                            key="name",
-                            value="name",
-                            is_value_secret="true",
-                        )],
-                        query_string_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs(
-                            key="name",
-                            value="name",
-                            is_value_secret="true",
-                        )],
-                    ),
-                ),
-            ))
+            network_parameters={
+                "network_type": "PublicNetwork",
+                "vpc_id": default_network.id,
+                "vswitche_id": default_switch.id,
+                "security_group_id": default_security_group.id,
+            },
+            auth_parameters={
+                "authorization_type": "BASIC_AUTH",
+                "api_key_auth_parameters": {
+                    "api_key_name": "Token",
+                    "api_key_value": "Token-value",
+                },
+                "basic_auth_parameters": {
+                    "username": "admin",
+                    "password": "admin",
+                },
+                "oauth_parameters": {
+                    "authorization_endpoint": "http://127.0.0.1:8080",
+                    "http_method": "POST",
+                    "client_parameters": {
+                        "client_id": "ClientId",
+                        "client_secret": "ClientSecret",
+                    },
+                    "oauth_http_parameters": {
+                        "header_parameters": [{
+                            "key": "name",
+                            "value": "name",
+                            "is_value_secret": "true",
+                        }],
+                        "body_parameters": [{
+                            "key": "name",
+                            "value": "name",
+                            "is_value_secret": "true",
+                        }],
+                        "query_string_parameters": [{
+                            "key": "name",
+                            "value": "name",
+                            "is_value_secret": "true",
+                        }],
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -272,10 +272,10 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionAuthParametersArgs']] auth_parameters: The parameters that are configured for authentication. See `auth_parameters` below.
+        :param pulumi.Input[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']] auth_parameters: The parameters that are configured for authentication. See `auth_parameters` below.
         :param pulumi.Input[str] connection_name: The name of the connection.
         :param pulumi.Input[str] description: The description of the connection.
-        :param pulumi.Input[pulumi.InputType['ConnectionNetworkParametersArgs']] network_parameters: The parameters that are configured for the network. See `network_parameters` below.
+        :param pulumi.Input[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']] network_parameters: The parameters that are configured for the network. See `network_parameters` below.
         """
         ...
     @overload
@@ -320,48 +320,48 @@ class Connection(pulumi.CustomResource):
         default_connection = alicloud.eventbridge.Connection("default",
             connection_name=name,
             description="test-connection-basic-pre",
-            network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
-                network_type="PublicNetwork",
-                vpc_id=default_network.id,
-                vswitche_id=default_switch.id,
-                security_group_id=default_security_group.id,
-            ),
-            auth_parameters=alicloud.eventbridge.ConnectionAuthParametersArgs(
-                authorization_type="BASIC_AUTH",
-                api_key_auth_parameters=alicloud.eventbridge.ConnectionAuthParametersApiKeyAuthParametersArgs(
-                    api_key_name="Token",
-                    api_key_value="Token-value",
-                ),
-                basic_auth_parameters=alicloud.eventbridge.ConnectionAuthParametersBasicAuthParametersArgs(
-                    username="admin",
-                    password="admin",
-                ),
-                oauth_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersArgs(
-                    authorization_endpoint="http://127.0.0.1:8080",
-                    http_method="POST",
-                    client_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersClientParametersArgs(
-                        client_id="ClientId",
-                        client_secret="ClientSecret",
-                    ),
-                    oauth_http_parameters=alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersArgs(
-                        header_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs(
-                            key="name",
-                            value="name",
-                            is_value_secret="true",
-                        )],
-                        body_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs(
-                            key="name",
-                            value="name",
-                            is_value_secret="true",
-                        )],
-                        query_string_parameters=[alicloud.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs(
-                            key="name",
-                            value="name",
-                            is_value_secret="true",
-                        )],
-                    ),
-                ),
-            ))
+            network_parameters={
+                "network_type": "PublicNetwork",
+                "vpc_id": default_network.id,
+                "vswitche_id": default_switch.id,
+                "security_group_id": default_security_group.id,
+            },
+            auth_parameters={
+                "authorization_type": "BASIC_AUTH",
+                "api_key_auth_parameters": {
+                    "api_key_name": "Token",
+                    "api_key_value": "Token-value",
+                },
+                "basic_auth_parameters": {
+                    "username": "admin",
+                    "password": "admin",
+                },
+                "oauth_parameters": {
+                    "authorization_endpoint": "http://127.0.0.1:8080",
+                    "http_method": "POST",
+                    "client_parameters": {
+                        "client_id": "ClientId",
+                        "client_secret": "ClientSecret",
+                    },
+                    "oauth_http_parameters": {
+                        "header_parameters": [{
+                            "key": "name",
+                            "value": "name",
+                            "is_value_secret": "true",
+                        }],
+                        "body_parameters": [{
+                            "key": "name",
+                            "value": "name",
+                            "is_value_secret": "true",
+                        }],
+                        "query_string_parameters": [{
+                            "key": "name",
+                            "value": "name",
+                            "is_value_secret": "true",
+                        }],
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -387,10 +387,10 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_parameters: Optional[pulumi.Input[pulumi.InputType['ConnectionAuthParametersArgs']]] = None,
+                 auth_parameters: Optional[pulumi.Input[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']]] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 network_parameters: Optional[pulumi.Input[pulumi.InputType['ConnectionNetworkParametersArgs']]] = None,
+                 network_parameters: Optional[pulumi.Input[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -419,11 +419,11 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_parameters: Optional[pulumi.Input[pulumi.InputType['ConnectionAuthParametersArgs']]] = None,
+            auth_parameters: Optional[pulumi.Input[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']]] = None,
             connection_name: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            network_parameters: Optional[pulumi.Input[pulumi.InputType['ConnectionNetworkParametersArgs']]] = None) -> 'Connection':
+            network_parameters: Optional[pulumi.Input[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -431,11 +431,11 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConnectionAuthParametersArgs']] auth_parameters: The parameters that are configured for authentication. See `auth_parameters` below.
+        :param pulumi.Input[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']] auth_parameters: The parameters that are configured for authentication. See `auth_parameters` below.
         :param pulumi.Input[str] connection_name: The name of the connection.
         :param pulumi.Input[str] create_time: The creation time of the Connection.
         :param pulumi.Input[str] description: The description of the connection.
-        :param pulumi.Input[pulumi.InputType['ConnectionNetworkParametersArgs']] network_parameters: The parameters that are configured for the network. See `network_parameters` below.
+        :param pulumi.Input[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']] network_parameters: The parameters that are configured for the network. See `network_parameters` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -46,7 +46,7 @@ import (
 //			}
 //			_, err = cdn.NewDomainNew(ctx, "default", &cdn.DomainNewArgs{
 //				Scope:      pulumi.String("overseas"),
-//				DomainName: pulumi.String(fmt.Sprintf("mycdndomain-%v.alicloud-provider.cn", _default.Result)),
+//				DomainName: pulumi.Sprintf("mycdndomain-%v.alicloud-provider.cn", _default.Result),
 //				CdnType:    pulumi.String("web"),
 //				Sources: cdn.DomainNewSourceArray{
 //					&cdn.DomainNewSourceArgs{

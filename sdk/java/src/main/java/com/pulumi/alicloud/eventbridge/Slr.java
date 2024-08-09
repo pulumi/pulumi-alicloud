@@ -26,7 +26,7 @@ public class Slr extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Slr(String name) {
+    public Slr(java.lang.String name) {
         this(name, SlrArgs.Empty);
     }
     /**
@@ -34,7 +34,7 @@ public class Slr extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Slr(String name, SlrArgs args) {
+    public Slr(java.lang.String name, SlrArgs args) {
         this(name, args, null);
     }
     /**
@@ -43,15 +43,22 @@ public class Slr extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Slr(String name, SlrArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eventbridge/slr:Slr", name, args == null ? SlrArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Slr(java.lang.String name, SlrArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eventbridge/slr:Slr", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Slr(String name, Output<String> id, @Nullable SlrState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eventbridge/slr:Slr", name, state, makeResourceOptions(options, id));
+    private Slr(java.lang.String name, Output<java.lang.String> id, @Nullable SlrState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eventbridge/slr:Slr", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SlrArgs makeArgs(SlrArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SlrArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -67,7 +74,7 @@ public class Slr extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Slr get(String name, Output<String> id, @Nullable SlrState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Slr get(java.lang.String name, Output<java.lang.String> id, @Nullable SlrState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Slr(name, id, state, options);
     }
 }

@@ -195,7 +195,7 @@ class ParameterGroup(pulumi.CustomResource):
                  db_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ParameterGroupParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a PolarDB Parameter Group resource.
@@ -216,10 +216,10 @@ class ParameterGroup(pulumi.CustomResource):
             name="example_value",
             db_type="MySQL",
             db_version="8.0",
-            parameters=[alicloud.polardb.ParameterGroupParameterArgs(
-                param_name="wait_timeout",
-                param_value="86400",
-            )],
+            parameters=[{
+                "param_name": "wait_timeout",
+                "param_value": "86400",
+            }],
             description="example_value")
         ```
 
@@ -237,7 +237,7 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] db_version: The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
         :param pulumi.Input[str] description: The description of the parameter template. It must be 0 to 200 characters in length.
         :param pulumi.Input[str] name: The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ParameterGroupParameterArgs']]]] parameters: The parameter template. See the following `Block parameters`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]] parameters: The parameter template. See the following `Block parameters`.
         """
         ...
     @overload
@@ -264,10 +264,10 @@ class ParameterGroup(pulumi.CustomResource):
             name="example_value",
             db_type="MySQL",
             db_version="8.0",
-            parameters=[alicloud.polardb.ParameterGroupParameterArgs(
-                param_name="wait_timeout",
-                param_value="86400",
-            )],
+            parameters=[{
+                "param_name": "wait_timeout",
+                "param_value": "86400",
+            }],
             description="example_value")
         ```
 
@@ -298,7 +298,7 @@ class ParameterGroup(pulumi.CustomResource):
                  db_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ParameterGroupParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -333,7 +333,7 @@ class ParameterGroup(pulumi.CustomResource):
             db_version: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ParameterGroupParameterArgs']]]]] = None) -> 'ParameterGroup':
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]]] = None) -> 'ParameterGroup':
         """
         Get an existing ParameterGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -345,7 +345,7 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[str] db_version: The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
         :param pulumi.Input[str] description: The description of the parameter template. It must be 0 to 200 characters in length.
         :param pulumi.Input[str] name: The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ParameterGroupParameterArgs']]]] parameters: The parameter template. See the following `Block parameters`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]] parameters: The parameter template. See the following `Block parameters`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

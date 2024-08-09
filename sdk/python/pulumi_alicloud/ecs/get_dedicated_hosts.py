@@ -195,7 +195,7 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
                         dedicated_host_type: Optional[str] = None,
                         ids: Optional[Sequence[str]] = None,
                         name_regex: Optional[str] = None,
-                        operation_locks: Optional[Sequence[pulumi.InputType['GetDedicatedHostsOperationLockArgs']]] = None,
+                        operation_locks: Optional[Sequence[Union['GetDedicatedHostsOperationLockArgs', 'GetDedicatedHostsOperationLockArgsDict']]] = None,
                         output_file: Optional[str] = None,
                         resource_group_id: Optional[str] = None,
                         status: Optional[str] = None,
@@ -226,7 +226,7 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
     :param str dedicated_host_type: The type of the dedicated host.
     :param Sequence[str] ids: A list of ECS Dedicated Host ids.
     :param str name_regex: A regex string to filter results by the ECS Dedicated Host name.
-    :param Sequence[pulumi.InputType['GetDedicatedHostsOperationLockArgs']] operation_locks: The reason why the dedicated host resource is locked.
+    :param Sequence[Union['GetDedicatedHostsOperationLockArgs', 'GetDedicatedHostsOperationLockArgsDict']] operation_locks: The reason why the dedicated host resource is locked.
     :param str output_file: Save the result to the file.
     :param str resource_group_id: The ID of the resource group to which the ECS Dedicated Host belongs.
     :param str status: The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
@@ -271,7 +271,7 @@ def get_dedicated_hosts_output(dedicated_host_id: Optional[pulumi.Input[Optional
                                dedicated_host_type: Optional[pulumi.Input[Optional[str]]] = None,
                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
-                               operation_locks: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDedicatedHostsOperationLockArgs']]]]] = None,
+                               operation_locks: Optional[pulumi.Input[Optional[Sequence[Union['GetDedicatedHostsOperationLockArgs', 'GetDedicatedHostsOperationLockArgsDict']]]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                status: Optional[pulumi.Input[Optional[str]]] = None,
@@ -302,7 +302,7 @@ def get_dedicated_hosts_output(dedicated_host_id: Optional[pulumi.Input[Optional
     :param str dedicated_host_type: The type of the dedicated host.
     :param Sequence[str] ids: A list of ECS Dedicated Host ids.
     :param str name_regex: A regex string to filter results by the ECS Dedicated Host name.
-    :param Sequence[pulumi.InputType['GetDedicatedHostsOperationLockArgs']] operation_locks: The reason why the dedicated host resource is locked.
+    :param Sequence[Union['GetDedicatedHostsOperationLockArgs', 'GetDedicatedHostsOperationLockArgsDict']] operation_locks: The reason why the dedicated host resource is locked.
     :param str output_file: Save the result to the file.
     :param str resource_group_id: The ID of the resource group to which the ECS Dedicated Host belongs.
     :param str status: The status of the ECS Dedicated Host. validate value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.

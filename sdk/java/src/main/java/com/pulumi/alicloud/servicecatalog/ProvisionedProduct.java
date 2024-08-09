@@ -399,7 +399,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ProvisionedProduct(String name) {
+    public ProvisionedProduct(java.lang.String name) {
         this(name, ProvisionedProductArgs.Empty);
     }
     /**
@@ -407,7 +407,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ProvisionedProduct(String name, ProvisionedProductArgs args) {
+    public ProvisionedProduct(java.lang.String name, ProvisionedProductArgs args) {
         this(name, args, null);
     }
     /**
@@ -416,15 +416,22 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ProvisionedProduct(String name, ProvisionedProductArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:servicecatalog/provisionedProduct:ProvisionedProduct", name, args == null ? ProvisionedProductArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ProvisionedProduct(java.lang.String name, ProvisionedProductArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:servicecatalog/provisionedProduct:ProvisionedProduct", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ProvisionedProduct(String name, Output<String> id, @Nullable ProvisionedProductState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:servicecatalog/provisionedProduct:ProvisionedProduct", name, state, makeResourceOptions(options, id));
+    private ProvisionedProduct(java.lang.String name, Output<java.lang.String> id, @Nullable ProvisionedProductState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:servicecatalog/provisionedProduct:ProvisionedProduct", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ProvisionedProductArgs makeArgs(ProvisionedProductArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ProvisionedProductArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -440,7 +447,7 @@ public class ProvisionedProduct extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ProvisionedProduct get(String name, Output<String> id, @Nullable ProvisionedProductState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ProvisionedProduct get(java.lang.String name, Output<java.lang.String> id, @Nullable ProvisionedProductState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ProvisionedProduct(name, id, state, options);
     }
 }

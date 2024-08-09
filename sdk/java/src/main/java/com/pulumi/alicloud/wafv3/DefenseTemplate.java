@@ -242,7 +242,7 @@ public class DefenseTemplate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DefenseTemplate(String name) {
+    public DefenseTemplate(java.lang.String name) {
         this(name, DefenseTemplateArgs.Empty);
     }
     /**
@@ -250,7 +250,7 @@ public class DefenseTemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DefenseTemplate(String name, DefenseTemplateArgs args) {
+    public DefenseTemplate(java.lang.String name, DefenseTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -259,15 +259,22 @@ public class DefenseTemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DefenseTemplate(String name, DefenseTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:wafv3/defenseTemplate:DefenseTemplate", name, args == null ? DefenseTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DefenseTemplate(java.lang.String name, DefenseTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:wafv3/defenseTemplate:DefenseTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DefenseTemplate(String name, Output<String> id, @Nullable DefenseTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:wafv3/defenseTemplate:DefenseTemplate", name, state, makeResourceOptions(options, id));
+    private DefenseTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable DefenseTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:wafv3/defenseTemplate:DefenseTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DefenseTemplateArgs makeArgs(DefenseTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DefenseTemplateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -283,7 +290,7 @@ public class DefenseTemplate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DefenseTemplate get(String name, Output<String> id, @Nullable DefenseTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DefenseTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable DefenseTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DefenseTemplate(name, id, state, options);
     }
 }

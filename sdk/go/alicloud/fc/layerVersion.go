@@ -40,7 +40,7 @@ import (
 //				return err
 //			}
 //			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				Bucket: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			_, err = fc.NewLayerVersion(ctx, "example", &fc.LayerVersionArgs{
-//				LayerName: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				LayerName: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				CompatibleRuntimes: pulumi.StringArray{
 //					pulumi.String("python2.7"),
 //				},

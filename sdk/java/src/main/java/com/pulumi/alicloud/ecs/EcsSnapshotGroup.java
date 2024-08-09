@@ -301,7 +301,7 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EcsSnapshotGroup(String name) {
+    public EcsSnapshotGroup(java.lang.String name) {
         this(name, EcsSnapshotGroupArgs.Empty);
     }
     /**
@@ -309,7 +309,7 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EcsSnapshotGroup(String name, @Nullable EcsSnapshotGroupArgs args) {
+    public EcsSnapshotGroup(java.lang.String name, @Nullable EcsSnapshotGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -318,15 +318,22 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EcsSnapshotGroup(String name, @Nullable EcsSnapshotGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup", name, args == null ? EcsSnapshotGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EcsSnapshotGroup(java.lang.String name, @Nullable EcsSnapshotGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EcsSnapshotGroup(String name, Output<String> id, @Nullable EcsSnapshotGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup", name, state, makeResourceOptions(options, id));
+    private EcsSnapshotGroup(java.lang.String name, Output<java.lang.String> id, @Nullable EcsSnapshotGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/ecsSnapshotGroup:EcsSnapshotGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EcsSnapshotGroupArgs makeArgs(@Nullable EcsSnapshotGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EcsSnapshotGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -342,7 +349,7 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EcsSnapshotGroup get(String name, Output<String> id, @Nullable EcsSnapshotGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EcsSnapshotGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable EcsSnapshotGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EcsSnapshotGroup(name, id, state, options);
     }
 }

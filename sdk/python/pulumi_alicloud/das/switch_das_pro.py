@@ -185,13 +185,13 @@ class SwitchDasPro(pulumi.CustomResource):
             pay_type="PostPaid",
             vswitch_id=default_switch.id,
             description=name,
-            db_cluster_ip_arrays=[alicloud.polardb.ClusterDbClusterIpArrayArgs(
-                db_cluster_ip_array_name="default",
-                security_ips=[
+            db_cluster_ip_arrays=[{
+                "db_cluster_ip_array_name": "default",
+                "security_ips": [
                     "1.2.3.4",
                     "1.2.3.5",
                 ],
-            )])
+            }])
         default_switch_das_pro = alicloud.das.SwitchDasPro("default",
             instance_id=default_cluster.id,
             sql_retention=30,
@@ -256,13 +256,13 @@ class SwitchDasPro(pulumi.CustomResource):
             pay_type="PostPaid",
             vswitch_id=default_switch.id,
             description=name,
-            db_cluster_ip_arrays=[alicloud.polardb.ClusterDbClusterIpArrayArgs(
-                db_cluster_ip_array_name="default",
-                security_ips=[
+            db_cluster_ip_arrays=[{
+                "db_cluster_ip_array_name": "default",
+                "security_ips": [
                     "1.2.3.4",
                     "1.2.3.5",
                 ],
-            )])
+            }])
         default_switch_das_pro = alicloud.das.SwitchDasPro("default",
             instance_id=default_cluster.id,
             sql_retention=30,

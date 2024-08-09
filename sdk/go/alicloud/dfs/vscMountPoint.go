@@ -59,7 +59,7 @@ import (
 //			_, err = dfs.NewFileSystem(ctx, "default", &dfs.FileSystemArgs{
 //				ProtocolType:                 pulumi.String("HDFS"),
 //				Description:                  pulumi.String(name),
-//				FileSystemName:               pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				FileSystemName:               pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				SpaceCapacity:                pulumi.Int(1024),
 //				ThroughputMode:               pulumi.String("Provisioned"),
 //				ProvisionedThroughputInMiBps: pulumi.Int(512),

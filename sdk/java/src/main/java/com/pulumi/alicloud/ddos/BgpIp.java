@@ -114,7 +114,7 @@ public class BgpIp extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BgpIp(String name) {
+    public BgpIp(java.lang.String name) {
         this(name, BgpIpArgs.Empty);
     }
     /**
@@ -122,7 +122,7 @@ public class BgpIp extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BgpIp(String name, BgpIpArgs args) {
+    public BgpIp(java.lang.String name, BgpIpArgs args) {
         this(name, args, null);
     }
     /**
@@ -131,15 +131,22 @@ public class BgpIp extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BgpIp(String name, BgpIpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ddos/bgpIp:BgpIp", name, args == null ? BgpIpArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BgpIp(java.lang.String name, BgpIpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ddos/bgpIp:BgpIp", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BgpIp(String name, Output<String> id, @Nullable BgpIpState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ddos/bgpIp:BgpIp", name, state, makeResourceOptions(options, id));
+    private BgpIp(java.lang.String name, Output<java.lang.String> id, @Nullable BgpIpState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ddos/bgpIp:BgpIp", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BgpIpArgs makeArgs(BgpIpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BgpIpArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -155,7 +162,7 @@ public class BgpIp extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BgpIp get(String name, Output<String> id, @Nullable BgpIpState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BgpIp get(java.lang.String name, Output<java.lang.String> id, @Nullable BgpIpState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BgpIp(name, id, state, options);
     }
 }

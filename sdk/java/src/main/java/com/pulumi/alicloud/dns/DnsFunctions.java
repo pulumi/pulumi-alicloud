@@ -2917,23 +2917,23 @@ public final class DnsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
      *             .domainName("xiaozhu.top")
      *             .isLocked(false)
      *             .type("A")
-     *             .hostRecordRegex("^{@literal @}")
+     *             .hostRecordRegex("^}{@literal @}{@code ")
      *             .outputFile("records.txt")
      *             .build());
      * 
      *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -2966,23 +2966,23 @@ public final class DnsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
      *             .domainName("xiaozhu.top")
      *             .isLocked(false)
      *             .type("A")
-     *             .hostRecordRegex("^{@literal @}")
+     *             .hostRecordRegex("^}{@literal @}{@code ")
      *             .outputFile("records.txt")
      *             .build());
      * 
      *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -3015,23 +3015,23 @@ public final class DnsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
      *             .domainName("xiaozhu.top")
      *             .isLocked(false)
      *             .type("A")
-     *             .hostRecordRegex("^{@literal @}")
+     *             .hostRecordRegex("^}{@literal @}{@code ")
      *             .outputFile("records.txt")
      *             .build());
      * 
      *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -3064,23 +3064,23 @@ public final class DnsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
      *             .domainName("xiaozhu.top")
      *             .isLocked(false)
      *             .type("A")
-     *             .hostRecordRegex("^{@literal @}")
+     *             .hostRecordRegex("^}{@literal @}{@code ")
      *             .outputFile("records.txt")
      *             .build());
      * 
      *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;

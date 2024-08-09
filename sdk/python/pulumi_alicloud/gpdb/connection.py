@@ -204,9 +204,9 @@ class Connection(pulumi.CustomResource):
             storage_size=50,
             vpc_id=default_get_networks.ids[0],
             vswitch_id=default_get_switches.ids[0],
-            ip_whitelists=[alicloud.gpdb.InstanceIpWhitelistArgs(
-                security_ip_list="127.0.0.1",
-            )])
+            ip_whitelists=[{
+                "security_ip_list": "127.0.0.1",
+            }])
         default_connection = alicloud.gpdb.Connection("default",
             instance_id=default_instance.id,
             connection_prefix="exampelcon")
@@ -273,9 +273,9 @@ class Connection(pulumi.CustomResource):
             storage_size=50,
             vpc_id=default_get_networks.ids[0],
             vswitch_id=default_get_switches.ids[0],
-            ip_whitelists=[alicloud.gpdb.InstanceIpWhitelistArgs(
-                security_ip_list="127.0.0.1",
-            )])
+            ip_whitelists=[{
+                "security_ip_list": "127.0.0.1",
+            }])
         default_connection = alicloud.gpdb.Connection("default",
             instance_id=default_instance.id,
             connection_prefix="exampelcon")

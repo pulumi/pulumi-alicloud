@@ -228,10 +228,10 @@ class EipInstanceAttachment(pulumi.CustomResource):
         if ens_region_id is None:
             ens_region_id = "cn-chenzhou-telecom_unicom_cmcc"
         default_x_kjq1_w = alicloud.ens.Instance("defaultXKjq1W",
-            system_disk=alicloud.ens.InstanceSystemDiskArgs(
-                size=20,
-                category="cloud_efficiency",
-            ),
+            system_disk={
+                "size": 20,
+                "category": "cloud_efficiency",
+            },
             scheduling_strategy="Concentrate",
             schedule_area_level="Region",
             image_id="centos_6_08_64_20G_alibase_20171208",
@@ -311,10 +311,10 @@ class EipInstanceAttachment(pulumi.CustomResource):
         if ens_region_id is None:
             ens_region_id = "cn-chenzhou-telecom_unicom_cmcc"
         default_x_kjq1_w = alicloud.ens.Instance("defaultXKjq1W",
-            system_disk=alicloud.ens.InstanceSystemDiskArgs(
-                size=20,
-                category="cloud_efficiency",
-            ),
+            system_disk={
+                "size": 20,
+                "category": "cloud_efficiency",
+            },
             scheduling_strategy="Concentrate",
             schedule_area_level="Region",
             image_id="centos_6_08_64_20G_alibase_20171208",

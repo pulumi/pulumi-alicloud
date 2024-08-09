@@ -398,7 +398,7 @@ class PolicyBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_options: Optional[pulumi.Input[pulumi.InputType['PolicyBindingAdvancedOptionsArgs']]] = None,
+                 advanced_options: Optional[pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  exclude: Optional[pulumi.Input[str]] = None,
@@ -437,14 +437,14 @@ class PolicyBinding(pulumi.CustomResource):
             vault_name=f"example-value-{default['result']}")
         defaultoq_wv_hq = alicloud.hbr.Policy("defaultoqWvHQ",
             policy_name=f"example-value-{default['result']}",
-            rules=[alicloud.hbr.PolicyRuleArgs(
-                rule_type="BACKUP",
-                backup_type="COMPLETE",
-                schedule="I|1631685600|P1D",
-                retention=7,
-                archive_days=0,
-                vault_id=defaultyk84_hc.id,
-            )],
+            rules=[{
+                "rule_type": "BACKUP",
+                "backup_type": "COMPLETE",
+                "schedule": "I|1631685600|P1D",
+                "retention": 7,
+                "archive_days": 0,
+                "vault_id": defaultyk84_hc.id,
+            }],
             policy_description="policy example")
         default_ktt2_xy = alicloud.oss.Bucket("defaultKtt2XY",
             storage_class="Standard",
@@ -468,7 +468,7 @@ class PolicyBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PolicyBindingAdvancedOptionsArgs']] advanced_options: Backup Advanced Options. See `advanced_options` below.
+        :param pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']] advanced_options: Backup Advanced Options. See `advanced_options` below.
         :param pulumi.Input[str] data_source_id: The data source ID.
         :param pulumi.Input[bool] disabled: Whether the policy is effective for the data source.
                - true: Pause
@@ -520,14 +520,14 @@ class PolicyBinding(pulumi.CustomResource):
             vault_name=f"example-value-{default['result']}")
         defaultoq_wv_hq = alicloud.hbr.Policy("defaultoqWvHQ",
             policy_name=f"example-value-{default['result']}",
-            rules=[alicloud.hbr.PolicyRuleArgs(
-                rule_type="BACKUP",
-                backup_type="COMPLETE",
-                schedule="I|1631685600|P1D",
-                retention=7,
-                archive_days=0,
-                vault_id=defaultyk84_hc.id,
-            )],
+            rules=[{
+                "rule_type": "BACKUP",
+                "backup_type": "COMPLETE",
+                "schedule": "I|1631685600|P1D",
+                "retention": 7,
+                "archive_days": 0,
+                "vault_id": defaultyk84_hc.id,
+            }],
             policy_description="policy example")
         default_ktt2_xy = alicloud.oss.Bucket("defaultKtt2XY",
             storage_class="Standard",
@@ -564,7 +564,7 @@ class PolicyBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_options: Optional[pulumi.Input[pulumi.InputType['PolicyBindingAdvancedOptionsArgs']]] = None,
+                 advanced_options: Optional[pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']]] = None,
                  data_source_id: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  exclude: Optional[pulumi.Input[str]] = None,
@@ -604,7 +604,7 @@ class PolicyBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_options: Optional[pulumi.Input[pulumi.InputType['PolicyBindingAdvancedOptionsArgs']]] = None,
+            advanced_options: Optional[pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             data_source_id: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
@@ -622,7 +622,7 @@ class PolicyBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PolicyBindingAdvancedOptionsArgs']] advanced_options: Backup Advanced Options. See `advanced_options` below.
+        :param pulumi.Input[Union['PolicyBindingAdvancedOptionsArgs', 'PolicyBindingAdvancedOptionsArgsDict']] advanced_options: Backup Advanced Options. See `advanced_options` below.
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] data_source_id: The data source ID.
         :param pulumi.Input[bool] disabled: Whether the policy is effective for the data source.

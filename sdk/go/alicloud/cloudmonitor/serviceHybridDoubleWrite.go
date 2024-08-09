@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			defaultNamespace, err := cms.NewNamespace(ctx, "default", &cms.NamespaceArgs{
-//				Namespace: pulumi.String(fmt.Sprintf("%v-source", name)),
+//				Namespace: pulumi.Sprintf("%v-source", name),
 //			})
 //			if err != nil {
 //				return err

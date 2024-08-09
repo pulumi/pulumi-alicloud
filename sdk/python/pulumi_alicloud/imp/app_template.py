@@ -218,7 +218,7 @@ class AppTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_template_name: Optional[pulumi.Input[str]] = None,
                  component_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppTemplateConfigListArgs']]]]] = None,
+                 config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppTemplateConfigListArgs', 'AppTemplateConfigListArgsDict']]]]] = None,
                  integration_mode: Optional[pulumi.Input[str]] = None,
                  scene: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -259,7 +259,7 @@ class AppTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_template_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] component_lists: List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppTemplateConfigListArgs']]]] config_lists: Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppTemplateConfigListArgs', 'AppTemplateConfigListArgsDict']]]] config_lists: Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
         :param pulumi.Input[str] integration_mode: Integration mode. Valid values:
                * paasSDK: Integrated SDK.
                * standardRoom: Model Room.
@@ -321,7 +321,7 @@ class AppTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_template_name: Optional[pulumi.Input[str]] = None,
                  component_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppTemplateConfigListArgs']]]]] = None,
+                 config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppTemplateConfigListArgs', 'AppTemplateConfigListArgsDict']]]]] = None,
                  integration_mode: Optional[pulumi.Input[str]] = None,
                  scene: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -355,7 +355,7 @@ class AppTemplate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             app_template_name: Optional[pulumi.Input[str]] = None,
             component_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppTemplateConfigListArgs']]]]] = None,
+            config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppTemplateConfigListArgs', 'AppTemplateConfigListArgsDict']]]]] = None,
             integration_mode: Optional[pulumi.Input[str]] = None,
             scene: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'AppTemplate':
@@ -368,7 +368,7 @@ class AppTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_template_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] component_lists: List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppTemplateConfigListArgs']]]] config_lists: Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppTemplateConfigListArgs', 'AppTemplateConfigListArgsDict']]]] config_lists: Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
         :param pulumi.Input[str] integration_mode: Integration mode. Valid values:
                * paasSDK: Integrated SDK.
                * standardRoom: Model Room.

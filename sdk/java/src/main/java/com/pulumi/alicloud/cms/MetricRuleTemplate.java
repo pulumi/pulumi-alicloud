@@ -258,7 +258,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MetricRuleTemplate(String name) {
+    public MetricRuleTemplate(java.lang.String name) {
         this(name, MetricRuleTemplateArgs.Empty);
     }
     /**
@@ -266,7 +266,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MetricRuleTemplate(String name, MetricRuleTemplateArgs args) {
+    public MetricRuleTemplate(java.lang.String name, MetricRuleTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -275,15 +275,22 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MetricRuleTemplate(String name, MetricRuleTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cms/metricRuleTemplate:MetricRuleTemplate", name, args == null ? MetricRuleTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MetricRuleTemplate(java.lang.String name, MetricRuleTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cms/metricRuleTemplate:MetricRuleTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MetricRuleTemplate(String name, Output<String> id, @Nullable MetricRuleTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cms/metricRuleTemplate:MetricRuleTemplate", name, state, makeResourceOptions(options, id));
+    private MetricRuleTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable MetricRuleTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cms/metricRuleTemplate:MetricRuleTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MetricRuleTemplateArgs makeArgs(MetricRuleTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MetricRuleTemplateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -299,7 +306,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MetricRuleTemplate get(String name, Output<String> id, @Nullable MetricRuleTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MetricRuleTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable MetricRuleTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MetricRuleTemplate(name, id, state, options);
     }
 }

@@ -122,7 +122,7 @@ public class TransitRouterMulticastDomainMember extends com.pulumi.resources.Cus
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TransitRouterMulticastDomainMember(String name) {
+    public TransitRouterMulticastDomainMember(java.lang.String name) {
         this(name, TransitRouterMulticastDomainMemberArgs.Empty);
     }
     /**
@@ -130,7 +130,7 @@ public class TransitRouterMulticastDomainMember extends com.pulumi.resources.Cus
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TransitRouterMulticastDomainMember(String name, TransitRouterMulticastDomainMemberArgs args) {
+    public TransitRouterMulticastDomainMember(java.lang.String name, TransitRouterMulticastDomainMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -139,15 +139,22 @@ public class TransitRouterMulticastDomainMember extends com.pulumi.resources.Cus
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TransitRouterMulticastDomainMember(String name, TransitRouterMulticastDomainMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterMulticastDomainMember:TransitRouterMulticastDomainMember", name, args == null ? TransitRouterMulticastDomainMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TransitRouterMulticastDomainMember(java.lang.String name, TransitRouterMulticastDomainMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterMulticastDomainMember:TransitRouterMulticastDomainMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TransitRouterMulticastDomainMember(String name, Output<String> id, @Nullable TransitRouterMulticastDomainMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterMulticastDomainMember:TransitRouterMulticastDomainMember", name, state, makeResourceOptions(options, id));
+    private TransitRouterMulticastDomainMember(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterMulticastDomainMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterMulticastDomainMember:TransitRouterMulticastDomainMember", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TransitRouterMulticastDomainMemberArgs makeArgs(TransitRouterMulticastDomainMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TransitRouterMulticastDomainMemberArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -163,7 +170,7 @@ public class TransitRouterMulticastDomainMember extends com.pulumi.resources.Cus
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TransitRouterMulticastDomainMember get(String name, Output<String> id, @Nullable TransitRouterMulticastDomainMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TransitRouterMulticastDomainMember get(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterMulticastDomainMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TransitRouterMulticastDomainMember(name, id, state, options);
     }
 }

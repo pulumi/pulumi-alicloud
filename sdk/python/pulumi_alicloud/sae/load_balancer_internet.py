@@ -146,7 +146,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  internet_slb_id: Optional[pulumi.Input[str]] = None,
-                 internets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerInternetInternetArgs']]]]] = None,
+                 internets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
@@ -210,11 +210,11 @@ class LoadBalancerInternet(pulumi.CustomResource):
         default_load_balancer_internet = alicloud.sae.LoadBalancerInternet("default",
             app_id=default_application.id,
             internet_slb_id=default_application_load_balancer.id,
-            internets=[alicloud.sae.LoadBalancerInternetInternetArgs(
-                protocol="TCP",
-                port=80,
-                target_port=8080,
-            )])
+            internets=[{
+                "protocol": "TCP",
+                "port": 80,
+                "target_port": 8080,
+            }])
         ```
 
         ## Import
@@ -229,7 +229,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The target application ID that needs to be bound to the SLB.
         :param pulumi.Input[str] internet_slb_id: The internet SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerInternetInternetArgs']]]] internets: The bound private network SLB. See `internet` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict']]]] internets: The bound private network SLB. See `internet` below.
         """
         ...
     @overload
@@ -299,11 +299,11 @@ class LoadBalancerInternet(pulumi.CustomResource):
         default_load_balancer_internet = alicloud.sae.LoadBalancerInternet("default",
             app_id=default_application.id,
             internet_slb_id=default_application_load_balancer.id,
-            internets=[alicloud.sae.LoadBalancerInternetInternetArgs(
-                protocol="TCP",
-                port=80,
-                target_port=8080,
-            )])
+            internets=[{
+                "protocol": "TCP",
+                "port": 80,
+                "target_port": 8080,
+            }])
         ```
 
         ## Import
@@ -331,7 +331,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  internet_slb_id: Optional[pulumi.Input[str]] = None,
-                 internets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerInternetInternetArgs']]]]] = None,
+                 internets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -362,7 +362,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
             app_id: Optional[pulumi.Input[str]] = None,
             internet_ip: Optional[pulumi.Input[str]] = None,
             internet_slb_id: Optional[pulumi.Input[str]] = None,
-            internets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerInternetInternetArgs']]]]] = None) -> 'LoadBalancerInternet':
+            internets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict']]]]] = None) -> 'LoadBalancerInternet':
         """
         Get an existing LoadBalancerInternet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -373,7 +373,7 @@ class LoadBalancerInternet(pulumi.CustomResource):
         :param pulumi.Input[str] app_id: The target application ID that needs to be bound to the SLB.
         :param pulumi.Input[str] internet_ip: Use designated public network SLBs that have been purchased to support non-shared instances.
         :param pulumi.Input[str] internet_slb_id: The internet SLB ID.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerInternetInternetArgs']]]] internets: The bound private network SLB. See `internet` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerInternetInternetArgs', 'LoadBalancerInternetInternetArgsDict']]]] internets: The bound private network SLB. See `internet` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

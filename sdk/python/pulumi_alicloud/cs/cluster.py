@@ -550,7 +550,7 @@ class Cluster(pulumi.CustomResource):
             name_prefix: Optional[pulumi.Input[str]] = None,
             need_slb: Optional[pulumi.Input[bool]] = None,
             node_number: Optional[pulumi.Input[int]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterNodeArgs']]]]] = None,
+            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeArgs', 'ClusterNodeArgsDict']]]]] = None,
             password: Optional[pulumi.Input[str]] = None,
             release_eip: Optional[pulumi.Input[bool]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,

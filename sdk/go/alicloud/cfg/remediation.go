@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				Bucket: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				Acl:    pulumi.String("public-read"),
 //				Tags: pulumi.Map{
 //					"For": pulumi.Any("example"),

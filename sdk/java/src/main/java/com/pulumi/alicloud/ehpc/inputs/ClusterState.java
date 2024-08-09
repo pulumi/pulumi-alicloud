@@ -484,14 +484,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ !{@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ !{@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+     * @return The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
      * 
      */
     public Optional<Output<String>> password() {
@@ -1691,7 +1691,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ !{@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+         * @param password The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
          * 
          * @return builder
          * 
@@ -1702,7 +1702,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ !{@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+         * @param password The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
          * 
          * @return builder
          * 

@@ -478,7 +478,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DBCluster(String name) {
+    public DBCluster(java.lang.String name) {
         this(name, DBClusterArgs.Empty);
     }
     /**
@@ -486,7 +486,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DBCluster(String name, DBClusterArgs args) {
+    public DBCluster(java.lang.String name, DBClusterArgs args) {
         this(name, args, null);
     }
     /**
@@ -495,15 +495,22 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DBCluster(String name, DBClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:adb/dBCluster:DBCluster", name, args == null ? DBClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DBCluster(java.lang.String name, DBClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:adb/dBCluster:DBCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DBCluster(String name, Output<String> id, @Nullable DBClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:adb/dBCluster:DBCluster", name, state, makeResourceOptions(options, id));
+    private DBCluster(java.lang.String name, Output<java.lang.String> id, @Nullable DBClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:adb/dBCluster:DBCluster", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DBClusterArgs makeArgs(DBClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DBClusterArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -519,7 +526,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DBCluster get(String name, Output<String> id, @Nullable DBClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DBCluster get(java.lang.String name, Output<java.lang.String> id, @Nullable DBClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DBCluster(name, id, state, options);
     }
 }

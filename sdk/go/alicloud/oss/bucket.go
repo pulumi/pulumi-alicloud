@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-acl", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
+//				Bucket: pulumi.Sprintf("example-value-%v", _default.Result),
 //				Acl:    pulumi.String("private"),
 //			})
 //			if err != nil {
@@ -81,7 +81,7 @@ import (
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-website", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
+//				Bucket: pulumi.Sprintf("example-value-%v", _default.Result),
 //				Website: &oss.BucketWebsiteArgs{
 //					IndexDocument: pulumi.String("index.html"),
 //					ErrorDocument: pulumi.String("error.html"),
@@ -121,14 +121,14 @@ import (
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-target", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
+//				Bucket: pulumi.Sprintf("example-value-%v", _default.Result),
 //				Acl:    pulumi.String("public-read"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-logging", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("example-logging-%v", _default.Result)),
+//				Bucket: pulumi.Sprintf("example-logging-%v", _default.Result),
 //				Logging: &oss.BucketLoggingTypeArgs{
 //					TargetBucket: bucket_target.ID(),
 //					TargetPrefix: pulumi.String("log/"),
@@ -168,7 +168,7 @@ import (
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-referer", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
+//				Bucket: pulumi.Sprintf("example-value-%v", _default.Result),
 //				Acl:    pulumi.String("private"),
 //				RefererConfig: &oss.BucketRefererConfigArgs{
 //					AllowEmpty: pulumi.Bool(false),

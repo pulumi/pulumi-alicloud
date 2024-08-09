@@ -266,7 +266,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * Host login password, which can be set later. The password must meet the following requirements:
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-     * - Special symbol &#39;()\&#39; ~!{@literal @}#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
+     * - Special symbol &#39;()\&#39; ~! {@literal @}#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
      * &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      * 
      */
@@ -277,7 +277,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * @return Host login password, which can be set later. The password must meet the following requirements:
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-     * - Special symbol &#39;()\&#39; ~!{@literal @}#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
+     * - Special symbol &#39;()\&#39; ~! {@literal @}#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
      * &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      * 
      */
@@ -449,7 +449,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DedicatedPropreHost(String name) {
+    public DedicatedPropreHost(java.lang.String name) {
         this(name, DedicatedPropreHostArgs.Empty);
     }
     /**
@@ -457,7 +457,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DedicatedPropreHost(String name, DedicatedPropreHostArgs args) {
+    public DedicatedPropreHost(java.lang.String name, DedicatedPropreHostArgs args) {
         this(name, args, null);
     }
     /**
@@ -466,15 +466,22 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DedicatedPropreHost(String name, DedicatedPropreHostArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost", name, args == null ? DedicatedPropreHostArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DedicatedPropreHost(java.lang.String name, DedicatedPropreHostArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DedicatedPropreHost(String name, Output<String> id, @Nullable DedicatedPropreHostState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost", name, state, makeResourceOptions(options, id));
+    private DedicatedPropreHost(java.lang.String name, Output<java.lang.String> id, @Nullable DedicatedPropreHostState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cddc/dedicatedPropreHost:DedicatedPropreHost", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DedicatedPropreHostArgs makeArgs(DedicatedPropreHostArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DedicatedPropreHostArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -490,7 +497,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DedicatedPropreHost get(String name, Output<String> id, @Nullable DedicatedPropreHostState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DedicatedPropreHost get(java.lang.String name, Output<java.lang.String> id, @Nullable DedicatedPropreHostState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DedicatedPropreHost(name, id, state, options);
     }
 }

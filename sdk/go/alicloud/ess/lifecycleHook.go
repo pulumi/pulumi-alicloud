@@ -77,7 +77,7 @@ import (
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.1.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(fmt.Sprintf("%v-bar", name)),
+//				VswitchName: pulumi.Sprintf("%v-bar", name),
 //			})
 //			if err != nil {
 //				return err

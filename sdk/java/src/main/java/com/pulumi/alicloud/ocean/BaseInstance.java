@@ -440,7 +440,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BaseInstance(String name) {
+    public BaseInstance(java.lang.String name) {
         this(name, BaseInstanceArgs.Empty);
     }
     /**
@@ -448,7 +448,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BaseInstance(String name, BaseInstanceArgs args) {
+    public BaseInstance(java.lang.String name, BaseInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -457,15 +457,22 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BaseInstance(String name, BaseInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ocean/baseInstance:BaseInstance", name, args == null ? BaseInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BaseInstance(java.lang.String name, BaseInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ocean/baseInstance:BaseInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BaseInstance(String name, Output<String> id, @Nullable BaseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ocean/baseInstance:BaseInstance", name, state, makeResourceOptions(options, id));
+    private BaseInstance(java.lang.String name, Output<java.lang.String> id, @Nullable BaseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ocean/baseInstance:BaseInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BaseInstanceArgs makeArgs(BaseInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BaseInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -481,7 +488,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BaseInstance get(String name, Output<String> id, @Nullable BaseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BaseInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable BaseInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BaseInstance(name, id, state, options);
     }
 }

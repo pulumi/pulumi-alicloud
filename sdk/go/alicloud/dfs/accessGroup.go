@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = dfs.NewAccessGroup(ctx, "default", &dfs.AccessGroupArgs{
-//				AccessGroupName: pulumi.String(fmt.Sprintf("tf-example-%v", _default.Result)),
+//				AccessGroupName: pulumi.Sprintf("tf-example-%v", _default.Result),
 //				NetworkType:     pulumi.String("VPC"),
 //			})
 //			if err != nil {

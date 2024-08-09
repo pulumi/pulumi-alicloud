@@ -54,15 +54,15 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var default_ = new AlertContact("default", AlertContactArgs.builder()
  *             .alertContactName("example_value")
- *             .email("example_value{@literal @}aaa.com")
+ *             .email("example_value}{@literal @}{@code aaa.com")
  *             .build());
  * 
  *         var defaultAlertContactGroup = new AlertContactGroup("defaultAlertContactGroup", AlertContactGroupArgs.builder()
@@ -106,8 +106,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -226,7 +226,7 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DispatchRule(String name) {
+    public DispatchRule(java.lang.String name) {
         this(name, DispatchRuleArgs.Empty);
     }
     /**
@@ -234,7 +234,7 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DispatchRule(String name, DispatchRuleArgs args) {
+    public DispatchRule(java.lang.String name, DispatchRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -243,15 +243,22 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DispatchRule(String name, DispatchRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:arms/dispatchRule:DispatchRule", name, args == null ? DispatchRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DispatchRule(java.lang.String name, DispatchRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:arms/dispatchRule:DispatchRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DispatchRule(String name, Output<String> id, @Nullable DispatchRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:arms/dispatchRule:DispatchRule", name, state, makeResourceOptions(options, id));
+    private DispatchRule(java.lang.String name, Output<java.lang.String> id, @Nullable DispatchRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:arms/dispatchRule:DispatchRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DispatchRuleArgs makeArgs(DispatchRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DispatchRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -267,7 +274,7 @@ public class DispatchRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DispatchRule get(String name, Output<String> id, @Nullable DispatchRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DispatchRule get(java.lang.String name, Output<java.lang.String> id, @Nullable DispatchRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DispatchRule(name, id, state, options);
     }
 }

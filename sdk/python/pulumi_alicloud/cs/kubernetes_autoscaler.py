@@ -225,7 +225,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cool_down_duration: Optional[pulumi.Input[str]] = None,
                  defer_scale_in_duration: Optional[pulumi.Input[str]] = None,
-                 nodepools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesAutoscalerNodepoolArgs']]]]] = None,
+                 nodepools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict']]]]] = None,
                  use_ecs_ram_role_token: Optional[pulumi.Input[bool]] = None,
                  utilization: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -236,7 +236,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] cool_down_duration: The cool_down_duration option of cluster-autoscaler.
         :param pulumi.Input[str] defer_scale_in_duration: The defer_scale_in_duration option of cluster-autoscaler.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesAutoscalerNodepoolArgs']]]] nodepools: The list of the node pools. See `nodepools` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict']]]] nodepools: The list of the node pools. See `nodepools` below.
         :param pulumi.Input[bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
         """
@@ -266,7 +266,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cool_down_duration: Optional[pulumi.Input[str]] = None,
                  defer_scale_in_duration: Optional[pulumi.Input[str]] = None,
-                 nodepools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesAutoscalerNodepoolArgs']]]]] = None,
+                 nodepools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict']]]]] = None,
                  use_ecs_ram_role_token: Optional[pulumi.Input[bool]] = None,
                  utilization: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -305,7 +305,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
             cluster_id: Optional[pulumi.Input[str]] = None,
             cool_down_duration: Optional[pulumi.Input[str]] = None,
             defer_scale_in_duration: Optional[pulumi.Input[str]] = None,
-            nodepools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesAutoscalerNodepoolArgs']]]]] = None,
+            nodepools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict']]]]] = None,
             use_ecs_ram_role_token: Optional[pulumi.Input[bool]] = None,
             utilization: Optional[pulumi.Input[str]] = None) -> 'KubernetesAutoscaler':
         """
@@ -318,7 +318,7 @@ class KubernetesAutoscaler(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] cool_down_duration: The cool_down_duration option of cluster-autoscaler.
         :param pulumi.Input[str] defer_scale_in_duration: The defer_scale_in_duration option of cluster-autoscaler.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesAutoscalerNodepoolArgs']]]] nodepools: The list of the node pools. See `nodepools` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesAutoscalerNodepoolArgs', 'KubernetesAutoscalerNodepoolArgsDict']]]] nodepools: The list of the node pools. See `nodepools` below.
         :param pulumi.Input[bool] use_ecs_ram_role_token: Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
         :param pulumi.Input[str] utilization: The utilization option of cluster-autoscaler.
         """

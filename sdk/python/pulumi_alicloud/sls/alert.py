@@ -270,11 +270,11 @@ class Alert(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alert_name: Optional[pulumi.Input[str]] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['AlertConfigurationArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['AlertScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -310,127 +310,127 @@ class Alert(pulumi.CustomResource):
             description=f"{project_name}-{default['result']}",
             name=f"{project_name}-{default['result']}")
         default_alert = alicloud.sls.Alert("default",
-            schedule=alicloud.sls.AlertScheduleArgs(
-                type="FixedRate",
-                run_immdiately=True,
-                interval="1m",
-                time_zone="+0800",
-                delay=10,
-            ),
+            schedule={
+                "type": "FixedRate",
+                "run_immdiately": True,
+                "interval": "1m",
+                "time_zone": "+0800",
+                "delay": 10,
+            },
             display_name="openapi-terraform",
             description="create alert",
             status="ENABLED",
-            configuration=alicloud.sls.AlertConfigurationArgs(
-                group_configuration=alicloud.sls.AlertConfigurationGroupConfigurationArgs(
-                    fields=[
+            configuration={
+                "group_configuration": {
+                    "fields": [
                         "a",
                         "b",
                     ],
-                    type="no_group",
-                ),
-                no_data_fire=False,
-                version="2",
-                severity_configurations=[alicloud.sls.AlertConfigurationSeverityConfigurationArgs(
-                    severity=6,
-                    eval_condition=alicloud.sls.AlertConfigurationSeverityConfigurationEvalConditionArgs(
-                        count_condition="cnt > 0",
-                        condition="__count__ > 1",
-                    ),
-                )],
-                labels=[alicloud.sls.AlertConfigurationLabelArgs(
-                    key="a",
-                    value="b",
-                )],
-                auto_annotation=True,
-                template_configuration=alicloud.sls.AlertConfigurationTemplateConfigurationArgs(
-                    lang="cn",
-                    tokens={
+                    "type": "no_group",
+                },
+                "no_data_fire": False,
+                "version": "2",
+                "severity_configurations": [{
+                    "severity": 6,
+                    "eval_condition": {
+                        "count_condition": "cnt > 0",
+                        "condition": "__count__ > 1",
+                    },
+                }],
+                "labels": [{
+                    "key": "a",
+                    "value": "b",
+                }],
+                "auto_annotation": True,
+                "template_configuration": {
+                    "lang": "cn",
+                    "tokens": {
                         "a": "b",
                     },
-                    annotations={
+                    "annotations": {
                         "x": "y",
                     },
-                    template_id="sls.app.ack.autoscaler.cluster_unhealthy",
-                    type="sys",
-                    version="1.0",
-                ),
-                mute_until=0,
-                annotations=[alicloud.sls.AlertConfigurationAnnotationArgs(
-                    key="x",
-                    value="y",
-                )],
-                send_resolved=False,
-                threshold=1,
-                sink_cms=alicloud.sls.AlertConfigurationSinkCmsArgs(
-                    enabled=False,
-                ),
-                condition_configuration=alicloud.sls.AlertConfigurationConditionConfigurationArgs(
-                    condition="cnt > 3",
-                    count_condition="__count__ < 3",
-                ),
-                policy_configuration=alicloud.sls.AlertConfigurationPolicyConfigurationArgs(
-                    alert_policy_id="sls.builtin.dynamic",
-                    action_policy_id="wkb-action",
-                    repeat_interval="1m",
-                ),
-                dashboard="internal-alert",
-                type="tpl",
-                query_lists=[
-                    alicloud.sls.AlertConfigurationQueryListArgs(
-                        ui="{}",
-                        role_arn="acs:ram::1654218965343050:role/aliyunslsalertmonitorrole",
-                        query="* | select *",
-                        time_span_type="Relative",
-                        project=default_ins_mgl.name,
-                        power_sql_mode="disable",
-                        dashboard_id="wkb-dashboard",
-                        chart_title="wkb-chart",
-                        start="-15m",
-                        end="now",
-                        store_type="log",
-                        store="alert",
-                        region="cn-shanghai",
-                    ),
-                    alicloud.sls.AlertConfigurationQueryListArgs(
-                        store_type="meta",
-                        store="user.rds_ip_whitelist",
-                    ),
-                    alicloud.sls.AlertConfigurationQueryListArgs(
-                        store_type="meta",
-                        store="myexample1",
-                    ),
+                    "template_id": "sls.app.ack.autoscaler.cluster_unhealthy",
+                    "type": "sys",
+                    "version": "1.0",
+                },
+                "mute_until": 0,
+                "annotations": [{
+                    "key": "x",
+                    "value": "y",
+                }],
+                "send_resolved": False,
+                "threshold": 1,
+                "sink_cms": {
+                    "enabled": False,
+                },
+                "condition_configuration": {
+                    "condition": "cnt > 3",
+                    "count_condition": "__count__ < 3",
+                },
+                "policy_configuration": {
+                    "alert_policy_id": "sls.builtin.dynamic",
+                    "action_policy_id": "wkb-action",
+                    "repeat_interval": "1m",
+                },
+                "dashboard": "internal-alert",
+                "type": "tpl",
+                "query_lists": [
+                    {
+                        "ui": "{}",
+                        "role_arn": "acs:ram::1654218965343050:role/aliyunslsalertmonitorrole",
+                        "query": "* | select *",
+                        "time_span_type": "Relative",
+                        "project": default_ins_mgl.name,
+                        "power_sql_mode": "disable",
+                        "dashboard_id": "wkb-dashboard",
+                        "chart_title": "wkb-chart",
+                        "start": "-15m",
+                        "end": "now",
+                        "store_type": "log",
+                        "store": "alert",
+                        "region": "cn-shanghai",
+                    },
+                    {
+                        "store_type": "meta",
+                        "store": "user.rds_ip_whitelist",
+                    },
+                    {
+                        "store_type": "meta",
+                        "store": "myexample1",
+                    },
                 ],
-                join_configurations=[
-                    alicloud.sls.AlertConfigurationJoinConfigurationArgs(
-                        type="no_join",
-                        condition="aa",
-                    ),
-                    alicloud.sls.AlertConfigurationJoinConfigurationArgs(
-                        type="cross_join",
-                        condition="qqq",
-                    ),
-                    alicloud.sls.AlertConfigurationJoinConfigurationArgs(
-                        type="inner_join",
-                        condition="fefefe",
-                    ),
+                "join_configurations": [
+                    {
+                        "type": "no_join",
+                        "condition": "aa",
+                    },
+                    {
+                        "type": "cross_join",
+                        "condition": "qqq",
+                    },
+                    {
+                        "type": "inner_join",
+                        "condition": "fefefe",
+                    },
                 ],
-                sink_event_store=alicloud.sls.AlertConfigurationSinkEventStoreArgs(
-                    enabled=True,
-                    endpoint="cn-shanghai-intranet.log.aliyuncs.com",
-                    project="wkb-wangren",
-                    event_store="alert",
-                    role_arn="acs:ram::1654218965343050:role/aliyunlogetlrole",
-                ),
-                sink_alerthub=alicloud.sls.AlertConfigurationSinkAlerthubArgs(
-                    enabled=False,
-                ),
-                no_data_severity=6,
-                tags=[
+                "sink_event_store": {
+                    "enabled": True,
+                    "endpoint": "cn-shanghai-intranet.log.aliyuncs.com",
+                    "project": "wkb-wangren",
+                    "event_store": "alert",
+                    "role_arn": "acs:ram::1654218965343050:role/aliyunlogetlrole",
+                },
+                "sink_alerthub": {
+                    "enabled": False,
+                },
+                "no_data_severity": 6,
+                "tags": [
                     "wkb",
                     "wangren",
                     "sls",
                 ],
-            ),
+            },
             alert_name=alert_name,
             project_name=default_ins_mgl.name)
         ```
@@ -446,11 +446,11 @@ class Alert(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alert_name: Alert rule ID, unique under Project.
-        :param pulumi.Input[pulumi.InputType['AlertConfigurationArgs']] configuration: Detailed configuration of alarm monitoring rules. See `configuration` below.
+        :param pulumi.Input[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict']] configuration: Detailed configuration of alarm monitoring rules. See `configuration` below.
         :param pulumi.Input[str] description: Compatible fields, set to empty strings.
         :param pulumi.Input[str] display_name: Display name of the alarm rule.
         :param pulumi.Input[str] project_name: Project Name.
-        :param pulumi.Input[pulumi.InputType['AlertScheduleArgs']] schedule: Check the frequency-dependent configuration. See `schedule` below.
+        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']] schedule: Check the frequency-dependent configuration. See `schedule` below.
         :param pulumi.Input[str] status: Resource attribute field representing alarm status.
         """
         ...
@@ -492,127 +492,127 @@ class Alert(pulumi.CustomResource):
             description=f"{project_name}-{default['result']}",
             name=f"{project_name}-{default['result']}")
         default_alert = alicloud.sls.Alert("default",
-            schedule=alicloud.sls.AlertScheduleArgs(
-                type="FixedRate",
-                run_immdiately=True,
-                interval="1m",
-                time_zone="+0800",
-                delay=10,
-            ),
+            schedule={
+                "type": "FixedRate",
+                "run_immdiately": True,
+                "interval": "1m",
+                "time_zone": "+0800",
+                "delay": 10,
+            },
             display_name="openapi-terraform",
             description="create alert",
             status="ENABLED",
-            configuration=alicloud.sls.AlertConfigurationArgs(
-                group_configuration=alicloud.sls.AlertConfigurationGroupConfigurationArgs(
-                    fields=[
+            configuration={
+                "group_configuration": {
+                    "fields": [
                         "a",
                         "b",
                     ],
-                    type="no_group",
-                ),
-                no_data_fire=False,
-                version="2",
-                severity_configurations=[alicloud.sls.AlertConfigurationSeverityConfigurationArgs(
-                    severity=6,
-                    eval_condition=alicloud.sls.AlertConfigurationSeverityConfigurationEvalConditionArgs(
-                        count_condition="cnt > 0",
-                        condition="__count__ > 1",
-                    ),
-                )],
-                labels=[alicloud.sls.AlertConfigurationLabelArgs(
-                    key="a",
-                    value="b",
-                )],
-                auto_annotation=True,
-                template_configuration=alicloud.sls.AlertConfigurationTemplateConfigurationArgs(
-                    lang="cn",
-                    tokens={
+                    "type": "no_group",
+                },
+                "no_data_fire": False,
+                "version": "2",
+                "severity_configurations": [{
+                    "severity": 6,
+                    "eval_condition": {
+                        "count_condition": "cnt > 0",
+                        "condition": "__count__ > 1",
+                    },
+                }],
+                "labels": [{
+                    "key": "a",
+                    "value": "b",
+                }],
+                "auto_annotation": True,
+                "template_configuration": {
+                    "lang": "cn",
+                    "tokens": {
                         "a": "b",
                     },
-                    annotations={
+                    "annotations": {
                         "x": "y",
                     },
-                    template_id="sls.app.ack.autoscaler.cluster_unhealthy",
-                    type="sys",
-                    version="1.0",
-                ),
-                mute_until=0,
-                annotations=[alicloud.sls.AlertConfigurationAnnotationArgs(
-                    key="x",
-                    value="y",
-                )],
-                send_resolved=False,
-                threshold=1,
-                sink_cms=alicloud.sls.AlertConfigurationSinkCmsArgs(
-                    enabled=False,
-                ),
-                condition_configuration=alicloud.sls.AlertConfigurationConditionConfigurationArgs(
-                    condition="cnt > 3",
-                    count_condition="__count__ < 3",
-                ),
-                policy_configuration=alicloud.sls.AlertConfigurationPolicyConfigurationArgs(
-                    alert_policy_id="sls.builtin.dynamic",
-                    action_policy_id="wkb-action",
-                    repeat_interval="1m",
-                ),
-                dashboard="internal-alert",
-                type="tpl",
-                query_lists=[
-                    alicloud.sls.AlertConfigurationQueryListArgs(
-                        ui="{}",
-                        role_arn="acs:ram::1654218965343050:role/aliyunslsalertmonitorrole",
-                        query="* | select *",
-                        time_span_type="Relative",
-                        project=default_ins_mgl.name,
-                        power_sql_mode="disable",
-                        dashboard_id="wkb-dashboard",
-                        chart_title="wkb-chart",
-                        start="-15m",
-                        end="now",
-                        store_type="log",
-                        store="alert",
-                        region="cn-shanghai",
-                    ),
-                    alicloud.sls.AlertConfigurationQueryListArgs(
-                        store_type="meta",
-                        store="user.rds_ip_whitelist",
-                    ),
-                    alicloud.sls.AlertConfigurationQueryListArgs(
-                        store_type="meta",
-                        store="myexample1",
-                    ),
+                    "template_id": "sls.app.ack.autoscaler.cluster_unhealthy",
+                    "type": "sys",
+                    "version": "1.0",
+                },
+                "mute_until": 0,
+                "annotations": [{
+                    "key": "x",
+                    "value": "y",
+                }],
+                "send_resolved": False,
+                "threshold": 1,
+                "sink_cms": {
+                    "enabled": False,
+                },
+                "condition_configuration": {
+                    "condition": "cnt > 3",
+                    "count_condition": "__count__ < 3",
+                },
+                "policy_configuration": {
+                    "alert_policy_id": "sls.builtin.dynamic",
+                    "action_policy_id": "wkb-action",
+                    "repeat_interval": "1m",
+                },
+                "dashboard": "internal-alert",
+                "type": "tpl",
+                "query_lists": [
+                    {
+                        "ui": "{}",
+                        "role_arn": "acs:ram::1654218965343050:role/aliyunslsalertmonitorrole",
+                        "query": "* | select *",
+                        "time_span_type": "Relative",
+                        "project": default_ins_mgl.name,
+                        "power_sql_mode": "disable",
+                        "dashboard_id": "wkb-dashboard",
+                        "chart_title": "wkb-chart",
+                        "start": "-15m",
+                        "end": "now",
+                        "store_type": "log",
+                        "store": "alert",
+                        "region": "cn-shanghai",
+                    },
+                    {
+                        "store_type": "meta",
+                        "store": "user.rds_ip_whitelist",
+                    },
+                    {
+                        "store_type": "meta",
+                        "store": "myexample1",
+                    },
                 ],
-                join_configurations=[
-                    alicloud.sls.AlertConfigurationJoinConfigurationArgs(
-                        type="no_join",
-                        condition="aa",
-                    ),
-                    alicloud.sls.AlertConfigurationJoinConfigurationArgs(
-                        type="cross_join",
-                        condition="qqq",
-                    ),
-                    alicloud.sls.AlertConfigurationJoinConfigurationArgs(
-                        type="inner_join",
-                        condition="fefefe",
-                    ),
+                "join_configurations": [
+                    {
+                        "type": "no_join",
+                        "condition": "aa",
+                    },
+                    {
+                        "type": "cross_join",
+                        "condition": "qqq",
+                    },
+                    {
+                        "type": "inner_join",
+                        "condition": "fefefe",
+                    },
                 ],
-                sink_event_store=alicloud.sls.AlertConfigurationSinkEventStoreArgs(
-                    enabled=True,
-                    endpoint="cn-shanghai-intranet.log.aliyuncs.com",
-                    project="wkb-wangren",
-                    event_store="alert",
-                    role_arn="acs:ram::1654218965343050:role/aliyunlogetlrole",
-                ),
-                sink_alerthub=alicloud.sls.AlertConfigurationSinkAlerthubArgs(
-                    enabled=False,
-                ),
-                no_data_severity=6,
-                tags=[
+                "sink_event_store": {
+                    "enabled": True,
+                    "endpoint": "cn-shanghai-intranet.log.aliyuncs.com",
+                    "project": "wkb-wangren",
+                    "event_store": "alert",
+                    "role_arn": "acs:ram::1654218965343050:role/aliyunlogetlrole",
+                },
+                "sink_alerthub": {
+                    "enabled": False,
+                },
+                "no_data_severity": 6,
+                "tags": [
                     "wkb",
                     "wangren",
                     "sls",
                 ],
-            ),
+            },
             alert_name=alert_name,
             project_name=default_ins_mgl.name)
         ```
@@ -641,11 +641,11 @@ class Alert(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alert_name: Optional[pulumi.Input[str]] = None,
-                 configuration: Optional[pulumi.Input[pulumi.InputType['AlertConfigurationArgs']]] = None,
+                 configuration: Optional[pulumi.Input[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project_name: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['AlertScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -685,12 +685,12 @@ class Alert(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             alert_name: Optional[pulumi.Input[str]] = None,
-            configuration: Optional[pulumi.Input[pulumi.InputType['AlertConfigurationArgs']]] = None,
+            configuration: Optional[pulumi.Input[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict']]] = None,
             create_time: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             project_name: Optional[pulumi.Input[str]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['AlertScheduleArgs']]] = None,
+            schedule: Optional[pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'Alert':
         """
         Get an existing Alert resource's state with the given name, id, and optional extra
@@ -700,12 +700,12 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alert_name: Alert rule ID, unique under Project.
-        :param pulumi.Input[pulumi.InputType['AlertConfigurationArgs']] configuration: Detailed configuration of alarm monitoring rules. See `configuration` below.
+        :param pulumi.Input[Union['AlertConfigurationArgs', 'AlertConfigurationArgsDict']] configuration: Detailed configuration of alarm monitoring rules. See `configuration` below.
         :param pulumi.Input[int] create_time: Alarm rule creation time.
         :param pulumi.Input[str] description: Compatible fields, set to empty strings.
         :param pulumi.Input[str] display_name: Display name of the alarm rule.
         :param pulumi.Input[str] project_name: Project Name.
-        :param pulumi.Input[pulumi.InputType['AlertScheduleArgs']] schedule: Check the frequency-dependent configuration. See `schedule` below.
+        :param pulumi.Input[Union['AlertScheduleArgs', 'AlertScheduleArgsDict']] schedule: Check the frequency-dependent configuration. See `schedule` below.
         :param pulumi.Input[str] status: Resource attribute field representing alarm status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -51,13 +51,13 @@ import (
 //			}
 //			defaultyk84Hc, err := hbr.NewVault(ctx, "defaultyk84Hc", &hbr.VaultArgs{
 //				VaultType: pulumi.String("STANDARD"),
-//				VaultName: pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
+//				VaultName: pulumi.Sprintf("example-value-%v", _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = hbr.NewPolicy(ctx, "defaultoqWvHQ", &hbr.PolicyArgs{
-//				PolicyName: pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
+//				PolicyName: pulumi.Sprintf("example-value-%v", _default.Result),
 //				Rules: hbr.PolicyRuleArray{
 //					&hbr.PolicyRuleArgs{
 //						RuleType:    pulumi.String("BACKUP"),

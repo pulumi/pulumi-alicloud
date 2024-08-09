@@ -94,7 +94,7 @@ public class Receivers extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Receivers(String name) {
+    public Receivers(java.lang.String name) {
         this(name, ReceiversArgs.Empty);
     }
     /**
@@ -102,7 +102,7 @@ public class Receivers extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Receivers(String name, ReceiversArgs args) {
+    public Receivers(java.lang.String name, ReceiversArgs args) {
         this(name, args, null);
     }
     /**
@@ -111,15 +111,22 @@ public class Receivers extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Receivers(String name, ReceiversArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:directmail/receivers:Receivers", name, args == null ? ReceiversArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Receivers(java.lang.String name, ReceiversArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:directmail/receivers:Receivers", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Receivers(String name, Output<String> id, @Nullable ReceiversState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:directmail/receivers:Receivers", name, state, makeResourceOptions(options, id));
+    private Receivers(java.lang.String name, Output<java.lang.String> id, @Nullable ReceiversState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:directmail/receivers:Receivers", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ReceiversArgs makeArgs(ReceiversArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ReceiversArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -135,7 +142,7 @@ public class Receivers extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Receivers get(String name, Output<String> id, @Nullable ReceiversState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Receivers get(java.lang.String name, Output<java.lang.String> id, @Nullable ReceiversState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Receivers(name, id, state, options);
     }
 }

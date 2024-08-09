@@ -161,7 +161,7 @@ public class RdsParameterGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RdsParameterGroup(String name) {
+    public RdsParameterGroup(java.lang.String name) {
         this(name, RdsParameterGroupArgs.Empty);
     }
     /**
@@ -169,7 +169,7 @@ public class RdsParameterGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RdsParameterGroup(String name, RdsParameterGroupArgs args) {
+    public RdsParameterGroup(java.lang.String name, RdsParameterGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -178,15 +178,22 @@ public class RdsParameterGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RdsParameterGroup(String name, RdsParameterGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/rdsParameterGroup:RdsParameterGroup", name, args == null ? RdsParameterGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RdsParameterGroup(java.lang.String name, RdsParameterGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/rdsParameterGroup:RdsParameterGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RdsParameterGroup(String name, Output<String> id, @Nullable RdsParameterGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/rdsParameterGroup:RdsParameterGroup", name, state, makeResourceOptions(options, id));
+    private RdsParameterGroup(java.lang.String name, Output<java.lang.String> id, @Nullable RdsParameterGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/rdsParameterGroup:RdsParameterGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RdsParameterGroupArgs makeArgs(RdsParameterGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RdsParameterGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -202,7 +209,7 @@ public class RdsParameterGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RdsParameterGroup get(String name, Output<String> id, @Nullable RdsParameterGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RdsParameterGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable RdsParameterGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RdsParameterGroup(name, id, state, options);
     }
 }

@@ -106,7 +106,7 @@ public class TransitRouterMulticastDomainSource extends com.pulumi.resources.Cus
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TransitRouterMulticastDomainSource(String name) {
+    public TransitRouterMulticastDomainSource(java.lang.String name) {
         this(name, TransitRouterMulticastDomainSourceArgs.Empty);
     }
     /**
@@ -114,7 +114,7 @@ public class TransitRouterMulticastDomainSource extends com.pulumi.resources.Cus
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TransitRouterMulticastDomainSource(String name, TransitRouterMulticastDomainSourceArgs args) {
+    public TransitRouterMulticastDomainSource(java.lang.String name, TransitRouterMulticastDomainSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -123,15 +123,22 @@ public class TransitRouterMulticastDomainSource extends com.pulumi.resources.Cus
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TransitRouterMulticastDomainSource(String name, TransitRouterMulticastDomainSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterMulticastDomainSource:TransitRouterMulticastDomainSource", name, args == null ? TransitRouterMulticastDomainSourceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TransitRouterMulticastDomainSource(java.lang.String name, TransitRouterMulticastDomainSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterMulticastDomainSource:TransitRouterMulticastDomainSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TransitRouterMulticastDomainSource(String name, Output<String> id, @Nullable TransitRouterMulticastDomainSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterMulticastDomainSource:TransitRouterMulticastDomainSource", name, state, makeResourceOptions(options, id));
+    private TransitRouterMulticastDomainSource(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterMulticastDomainSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterMulticastDomainSource:TransitRouterMulticastDomainSource", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TransitRouterMulticastDomainSourceArgs makeArgs(TransitRouterMulticastDomainSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TransitRouterMulticastDomainSourceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -147,7 +154,7 @@ public class TransitRouterMulticastDomainSource extends com.pulumi.resources.Cus
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TransitRouterMulticastDomainSource get(String name, Output<String> id, @Nullable TransitRouterMulticastDomainSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TransitRouterMulticastDomainSource get(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterMulticastDomainSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TransitRouterMulticastDomainSource(name, id, state, options);
     }
 }

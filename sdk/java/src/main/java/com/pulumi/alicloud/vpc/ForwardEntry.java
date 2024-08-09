@@ -285,7 +285,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ForwardEntry(String name) {
+    public ForwardEntry(java.lang.String name) {
         this(name, ForwardEntryArgs.Empty);
     }
     /**
@@ -293,7 +293,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ForwardEntry(String name, ForwardEntryArgs args) {
+    public ForwardEntry(java.lang.String name, ForwardEntryArgs args) {
         this(name, args, null);
     }
     /**
@@ -302,15 +302,22 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ForwardEntry(String name, ForwardEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/forwardEntry:ForwardEntry", name, args == null ? ForwardEntryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ForwardEntry(java.lang.String name, ForwardEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/forwardEntry:ForwardEntry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ForwardEntry(String name, Output<String> id, @Nullable ForwardEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/forwardEntry:ForwardEntry", name, state, makeResourceOptions(options, id));
+    private ForwardEntry(java.lang.String name, Output<java.lang.String> id, @Nullable ForwardEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/forwardEntry:ForwardEntry", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ForwardEntryArgs makeArgs(ForwardEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ForwardEntryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -326,7 +333,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ForwardEntry get(String name, Output<String> id, @Nullable ForwardEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ForwardEntry get(java.lang.String name, Output<java.lang.String> id, @Nullable ForwardEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ForwardEntry(name, id, state, options);
     }
 }

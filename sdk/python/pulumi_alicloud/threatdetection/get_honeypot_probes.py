@@ -157,13 +157,13 @@ def get_honeypot_probes(display_name: Optional[str] = None,
         probe_type="host_probe",
         control_node_id="e1397077-4941-4b14-b533-ca2bdebd00a3",
         ping=True,
-        honeypot_bind_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListArgs(
-            bind_port_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs(
-                start_port=80,
-                end_port=80,
-            )],
-            honeypot_id="4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05",
-        )],
+        honeypot_bind_lists=[{
+            "bind_port_lists": [{
+                "start_port": 80,
+                "end_port": 80,
+            }],
+            "honeypot_id": "4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05",
+        }],
         display_name=name,
         arp=True)
     default = alicloud.threatdetection.get_honeypot_probes_output(ids=[default_honeypot_probe.id],
@@ -233,13 +233,13 @@ def get_honeypot_probes_output(display_name: Optional[pulumi.Input[Optional[str]
         probe_type="host_probe",
         control_node_id="e1397077-4941-4b14-b533-ca2bdebd00a3",
         ping=True,
-        honeypot_bind_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListArgs(
-            bind_port_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs(
-                start_port=80,
-                end_port=80,
-            )],
-            honeypot_id="4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05",
-        )],
+        honeypot_bind_lists=[{
+            "bind_port_lists": [{
+                "start_port": 80,
+                "end_port": 80,
+            }],
+            "honeypot_id": "4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05",
+        }],
         display_name=name,
         arp=True)
     default = alicloud.threatdetection.get_honeypot_probes_output(ids=[default_honeypot_probe.id],

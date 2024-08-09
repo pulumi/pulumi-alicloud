@@ -492,7 +492,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public K8sApplication(String name) {
+    public K8sApplication(java.lang.String name) {
         this(name, K8sApplicationArgs.Empty);
     }
     /**
@@ -500,7 +500,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public K8sApplication(String name, K8sApplicationArgs args) {
+    public K8sApplication(java.lang.String name, K8sApplicationArgs args) {
         this(name, args, null);
     }
     /**
@@ -509,15 +509,22 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public K8sApplication(String name, K8sApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:edas/k8sApplication:K8sApplication", name, args == null ? K8sApplicationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public K8sApplication(java.lang.String name, K8sApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:edas/k8sApplication:K8sApplication", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private K8sApplication(String name, Output<String> id, @Nullable K8sApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:edas/k8sApplication:K8sApplication", name, state, makeResourceOptions(options, id));
+    private K8sApplication(java.lang.String name, Output<java.lang.String> id, @Nullable K8sApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:edas/k8sApplication:K8sApplication", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static K8sApplicationArgs makeArgs(K8sApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? K8sApplicationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -533,7 +540,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static K8sApplication get(String name, Output<String> id, @Nullable K8sApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static K8sApplication get(java.lang.String name, Output<java.lang.String> id, @Nullable K8sApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new K8sApplication(name, id, state, options);
     }
 }

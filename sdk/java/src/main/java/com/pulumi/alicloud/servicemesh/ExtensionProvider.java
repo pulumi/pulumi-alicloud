@@ -92,7 +92,7 @@ public class ExtensionProvider extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ExtensionProvider(String name) {
+    public ExtensionProvider(java.lang.String name) {
         this(name, ExtensionProviderArgs.Empty);
     }
     /**
@@ -100,7 +100,7 @@ public class ExtensionProvider extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ExtensionProvider(String name, ExtensionProviderArgs args) {
+    public ExtensionProvider(java.lang.String name, ExtensionProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -109,15 +109,22 @@ public class ExtensionProvider extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ExtensionProvider(String name, ExtensionProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:servicemesh/extensionProvider:ExtensionProvider", name, args == null ? ExtensionProviderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ExtensionProvider(java.lang.String name, ExtensionProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:servicemesh/extensionProvider:ExtensionProvider", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ExtensionProvider(String name, Output<String> id, @Nullable ExtensionProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:servicemesh/extensionProvider:ExtensionProvider", name, state, makeResourceOptions(options, id));
+    private ExtensionProvider(java.lang.String name, Output<java.lang.String> id, @Nullable ExtensionProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:servicemesh/extensionProvider:ExtensionProvider", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ExtensionProviderArgs makeArgs(ExtensionProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ExtensionProviderArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -133,7 +140,7 @@ public class ExtensionProvider extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ExtensionProvider get(String name, Output<String> id, @Nullable ExtensionProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ExtensionProvider get(java.lang.String name, Output<java.lang.String> id, @Nullable ExtensionProviderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ExtensionProvider(name, id, state, options);
     }
 }

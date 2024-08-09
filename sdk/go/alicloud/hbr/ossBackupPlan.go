@@ -46,13 +46,13 @@ import (
 //				return err
 //			}
 //			defaultVault, err := hbr.NewVault(ctx, "default", &hbr.VaultArgs{
-//				VaultName: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				VaultName: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				Bucket: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //			})
 //			if err != nil {
 //				return err

@@ -124,13 +124,13 @@ class WafDomain(pulumi.CustomResource):
         example = alicloud.dcdn.Domain("example",
             domain_name=f"{domain_name}-{default['result']}",
             scope="overseas",
-            sources=[alicloud.dcdn.DomainSourceArgs(
-                content="1.1.1.1",
-                port=80,
-                priority="20",
-                type="ipaddr",
-                weight="10",
-            )])
+            sources=[{
+                "content": "1.1.1.1",
+                "port": 80,
+                "priority": "20",
+                "type": "ipaddr",
+                "weight": "10",
+            }])
         example_waf_domain = alicloud.dcdn.WafDomain("example",
             domain_name=example.domain_name,
             client_ip_tag="X-Forwarded-For")
@@ -181,13 +181,13 @@ class WafDomain(pulumi.CustomResource):
         example = alicloud.dcdn.Domain("example",
             domain_name=f"{domain_name}-{default['result']}",
             scope="overseas",
-            sources=[alicloud.dcdn.DomainSourceArgs(
-                content="1.1.1.1",
-                port=80,
-                priority="20",
-                type="ipaddr",
-                weight="10",
-            )])
+            sources=[{
+                "content": "1.1.1.1",
+                "port": 80,
+                "priority": "20",
+                "type": "ipaddr",
+                "weight": "10",
+            }])
         example_waf_domain = alicloud.dcdn.WafDomain("example",
             domain_name=example.domain_name,
             client_ip_tag="X-Forwarded-For")

@@ -150,7 +150,7 @@ public class PolicyVersion extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PolicyVersion(String name) {
+    public PolicyVersion(java.lang.String name) {
         this(name, PolicyVersionArgs.Empty);
     }
     /**
@@ -158,7 +158,7 @@ public class PolicyVersion extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PolicyVersion(String name, PolicyVersionArgs args) {
+    public PolicyVersion(java.lang.String name, PolicyVersionArgs args) {
         this(name, args, null);
     }
     /**
@@ -167,15 +167,22 @@ public class PolicyVersion extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PolicyVersion(String name, PolicyVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:resourcemanager/policyVersion:PolicyVersion", name, args == null ? PolicyVersionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PolicyVersion(java.lang.String name, PolicyVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:resourcemanager/policyVersion:PolicyVersion", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PolicyVersion(String name, Output<String> id, @Nullable PolicyVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:resourcemanager/policyVersion:PolicyVersion", name, state, makeResourceOptions(options, id));
+    private PolicyVersion(java.lang.String name, Output<java.lang.String> id, @Nullable PolicyVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:resourcemanager/policyVersion:PolicyVersion", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PolicyVersionArgs makeArgs(PolicyVersionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PolicyVersionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -191,7 +198,7 @@ public class PolicyVersion extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PolicyVersion get(String name, Output<String> id, @Nullable PolicyVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PolicyVersion get(java.lang.String name, Output<java.lang.String> id, @Nullable PolicyVersionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PolicyVersion(name, id, state, options);
     }
 }

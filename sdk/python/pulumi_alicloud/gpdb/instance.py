@@ -1300,7 +1300,7 @@ class Instance(pulumi.CustomResource):
                  instance_group_count: Optional[pulumi.Input[int]] = None,
                  instance_network_type: Optional[pulumi.Input[str]] = None,
                  instance_spec: Optional[pulumi.Input[str]] = None,
-                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]]] = None,
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  master_cu: Optional[pulumi.Input[int]] = None,
@@ -1361,9 +1361,9 @@ class Instance(pulumi.CustomResource):
             storage_size=50,
             vpc_id=default_get_networks.ids[0],
             vswitch_id=default_get_switches.ids[0],
-            ip_whitelists=[alicloud.gpdb.InstanceIpWhitelistArgs(
-                security_ip_list="127.0.0.1",
-            )])
+            ip_whitelists=[{
+                "security_ip_list": "127.0.0.1",
+            }])
         ```
 
         ## Import
@@ -1398,7 +1398,7 @@ class Instance(pulumi.CustomResource):
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
@@ -1469,9 +1469,9 @@ class Instance(pulumi.CustomResource):
             storage_size=50,
             vpc_id=default_get_networks.ids[0],
             vswitch_id=default_get_switches.ids[0],
-            ip_whitelists=[alicloud.gpdb.InstanceIpWhitelistArgs(
-                security_ip_list="127.0.0.1",
-            )])
+            ip_whitelists=[{
+                "security_ip_list": "127.0.0.1",
+            }])
         ```
 
         ## Import
@@ -1511,7 +1511,7 @@ class Instance(pulumi.CustomResource):
                  instance_group_count: Optional[pulumi.Input[int]] = None,
                  instance_network_type: Optional[pulumi.Input[str]] = None,
                  instance_spec: Optional[pulumi.Input[str]] = None,
-                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]]] = None,
+                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]]] = None,
                  maintain_end_time: Optional[pulumi.Input[str]] = None,
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  master_cu: Optional[pulumi.Input[int]] = None,
@@ -1612,7 +1612,7 @@ class Instance(pulumi.CustomResource):
             instance_group_count: Optional[pulumi.Input[int]] = None,
             instance_network_type: Optional[pulumi.Input[str]] = None,
             instance_spec: Optional[pulumi.Input[str]] = None,
-            ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]]] = None,
+            ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]]] = None,
             maintain_end_time: Optional[pulumi.Input[str]] = None,
             maintain_start_time: Optional[pulumi.Input[str]] = None,
             master_cu: Optional[pulumi.Input[int]] = None,
@@ -1665,7 +1665,7 @@ class Instance(pulumi.CustomResource):
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.

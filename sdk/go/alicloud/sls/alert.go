@@ -60,8 +60,8 @@ import (
 //				return err
 //			}
 //			defaultINsMgl, err := log.NewProject(ctx, "defaultINsMgl", &log.ProjectArgs{
-//				Description: pulumi.String(fmt.Sprintf("%v-%v", projectName, _default.Result)),
-//				Name:        pulumi.String(fmt.Sprintf("%v-%v", projectName, _default.Result)),
+//				Description: pulumi.Sprintf("%v-%v", projectName, _default.Result),
+//				Name:        pulumi.Sprintf("%v-%v", projectName, _default.Result),
 //			})
 //			if err != nil {
 //				return err

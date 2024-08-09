@@ -166,7 +166,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Port(String name) {
+    public Port(java.lang.String name) {
         this(name, PortArgs.Empty);
     }
     /**
@@ -174,7 +174,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Port(String name, PortArgs args) {
+    public Port(java.lang.String name, PortArgs args) {
         this(name, args, null);
     }
     /**
@@ -183,15 +183,22 @@ public class Port extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Port(String name, PortArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ddos/port:Port", name, args == null ? PortArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Port(java.lang.String name, PortArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ddos/port:Port", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Port(String name, Output<String> id, @Nullable PortState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ddos/port:Port", name, state, makeResourceOptions(options, id));
+    private Port(java.lang.String name, Output<java.lang.String> id, @Nullable PortState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ddos/port:Port", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PortArgs makeArgs(PortArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PortArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -207,7 +214,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Port get(String name, Output<String> id, @Nullable PortState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Port get(java.lang.String name, Output<java.lang.String> id, @Nullable PortState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Port(name, id, state, options);
     }
 }

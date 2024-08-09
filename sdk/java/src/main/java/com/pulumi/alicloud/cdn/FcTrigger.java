@@ -185,7 +185,7 @@ public class FcTrigger extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FcTrigger(String name) {
+    public FcTrigger(java.lang.String name) {
         this(name, FcTriggerArgs.Empty);
     }
     /**
@@ -193,7 +193,7 @@ public class FcTrigger extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FcTrigger(String name, FcTriggerArgs args) {
+    public FcTrigger(java.lang.String name, FcTriggerArgs args) {
         this(name, args, null);
     }
     /**
@@ -202,15 +202,22 @@ public class FcTrigger extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FcTrigger(String name, FcTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cdn/fcTrigger:FcTrigger", name, args == null ? FcTriggerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public FcTrigger(java.lang.String name, FcTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cdn/fcTrigger:FcTrigger", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FcTrigger(String name, Output<String> id, @Nullable FcTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cdn/fcTrigger:FcTrigger", name, state, makeResourceOptions(options, id));
+    private FcTrigger(java.lang.String name, Output<java.lang.String> id, @Nullable FcTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cdn/fcTrigger:FcTrigger", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FcTriggerArgs makeArgs(FcTriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FcTriggerArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -226,7 +233,7 @@ public class FcTrigger extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FcTrigger get(String name, Output<String> id, @Nullable FcTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FcTrigger get(java.lang.String name, Output<java.lang.String> id, @Nullable FcTriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FcTrigger(name, id, state, options);
     }
 }

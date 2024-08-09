@@ -288,7 +288,7 @@ public class PolicyBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PolicyBinding(String name) {
+    public PolicyBinding(java.lang.String name) {
         this(name, PolicyBindingArgs.Empty);
     }
     /**
@@ -296,7 +296,7 @@ public class PolicyBinding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PolicyBinding(String name, @Nullable PolicyBindingArgs args) {
+    public PolicyBinding(java.lang.String name, @Nullable PolicyBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -305,15 +305,22 @@ public class PolicyBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PolicyBinding(String name, @Nullable PolicyBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/policyBinding:PolicyBinding", name, args == null ? PolicyBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PolicyBinding(java.lang.String name, @Nullable PolicyBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/policyBinding:PolicyBinding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PolicyBinding(String name, Output<String> id, @Nullable PolicyBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/policyBinding:PolicyBinding", name, state, makeResourceOptions(options, id));
+    private PolicyBinding(java.lang.String name, Output<java.lang.String> id, @Nullable PolicyBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/policyBinding:PolicyBinding", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PolicyBindingArgs makeArgs(@Nullable PolicyBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PolicyBindingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -329,7 +336,7 @@ public class PolicyBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PolicyBinding get(String name, Output<String> id, @Nullable PolicyBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PolicyBinding get(java.lang.String name, Output<java.lang.String> id, @Nullable PolicyBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PolicyBinding(name, id, state, options);
     }
 }

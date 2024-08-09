@@ -274,7 +274,7 @@ public class EnterpriseSnapshotPolicy extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EnterpriseSnapshotPolicy(String name) {
+    public EnterpriseSnapshotPolicy(java.lang.String name) {
         this(name, EnterpriseSnapshotPolicyArgs.Empty);
     }
     /**
@@ -282,7 +282,7 @@ public class EnterpriseSnapshotPolicy extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EnterpriseSnapshotPolicy(String name, EnterpriseSnapshotPolicyArgs args) {
+    public EnterpriseSnapshotPolicy(java.lang.String name, EnterpriseSnapshotPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -291,15 +291,22 @@ public class EnterpriseSnapshotPolicy extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EnterpriseSnapshotPolicy(String name, EnterpriseSnapshotPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy", name, args == null ? EnterpriseSnapshotPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EnterpriseSnapshotPolicy(java.lang.String name, EnterpriseSnapshotPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EnterpriseSnapshotPolicy(String name, Output<String> id, @Nullable EnterpriseSnapshotPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy", name, state, makeResourceOptions(options, id));
+    private EnterpriseSnapshotPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable EnterpriseSnapshotPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ebs/enterpriseSnapshotPolicy:EnterpriseSnapshotPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EnterpriseSnapshotPolicyArgs makeArgs(EnterpriseSnapshotPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EnterpriseSnapshotPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -315,7 +322,7 @@ public class EnterpriseSnapshotPolicy extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EnterpriseSnapshotPolicy get(String name, Output<String> id, @Nullable EnterpriseSnapshotPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EnterpriseSnapshotPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable EnterpriseSnapshotPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EnterpriseSnapshotPolicy(name, id, state, options);
     }
 }

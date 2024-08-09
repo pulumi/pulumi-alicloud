@@ -81,7 +81,7 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := alikafka.NewInstance(ctx, "default", &alikafka.InstanceArgs{
-//				Name:          pulumi.String(fmt.Sprintf("%v-%v", instanceName, defaultInteger.Result)),
+//				Name:          pulumi.Sprintf("%v-%v", instanceName, defaultInteger.Result),
 //				PartitionNum:  pulumi.Int(50),
 //				DiskType:      pulumi.Int(1),
 //				DiskSize:      pulumi.Int(500),

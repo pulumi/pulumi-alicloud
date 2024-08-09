@@ -58,7 +58,7 @@ public class BucketRequestPayment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BucketRequestPayment(String name) {
+    public BucketRequestPayment(java.lang.String name) {
         this(name, BucketRequestPaymentArgs.Empty);
     }
     /**
@@ -66,7 +66,7 @@ public class BucketRequestPayment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BucketRequestPayment(String name, BucketRequestPaymentArgs args) {
+    public BucketRequestPayment(java.lang.String name, BucketRequestPaymentArgs args) {
         this(name, args, null);
     }
     /**
@@ -75,15 +75,22 @@ public class BucketRequestPayment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BucketRequestPayment(String name, BucketRequestPaymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketRequestPayment:BucketRequestPayment", name, args == null ? BucketRequestPaymentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BucketRequestPayment(java.lang.String name, BucketRequestPaymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketRequestPayment:BucketRequestPayment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BucketRequestPayment(String name, Output<String> id, @Nullable BucketRequestPaymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketRequestPayment:BucketRequestPayment", name, state, makeResourceOptions(options, id));
+    private BucketRequestPayment(java.lang.String name, Output<java.lang.String> id, @Nullable BucketRequestPaymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketRequestPayment:BucketRequestPayment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BucketRequestPaymentArgs makeArgs(BucketRequestPaymentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BucketRequestPaymentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -99,7 +106,7 @@ public class BucketRequestPayment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BucketRequestPayment get(String name, Output<String> id, @Nullable BucketRequestPaymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BucketRequestPayment get(java.lang.String name, Output<java.lang.String> id, @Nullable BucketRequestPaymentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BucketRequestPayment(name, id, state, options);
     }
 }

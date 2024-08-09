@@ -1541,7 +1541,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LaunchTemplateDataDiskArgs', 'LaunchTemplateDataDiskArgsDict']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -1558,7 +1558,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  key_pair_name: Optional[pulumi.Input[str]] = None,
                  launch_template_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateNetworkInterfacesArgs']]] = None,
+                 network_interfaces: Optional[pulumi.Input[Union['LaunchTemplateNetworkInterfacesArgs', 'LaunchTemplateNetworkInterfacesArgsDict']]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -1572,7 +1572,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  spot_duration: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
-                 system_disk: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateSystemDiskArgs']]] = None,
+                 system_disk: Optional[pulumi.Input[Union['LaunchTemplateSystemDiskArgs', 'LaunchTemplateSystemDiskArgsDict']]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
@@ -1634,22 +1634,22 @@ class LaunchTemplate(pulumi.CustomResource):
                 "tag1": "hello",
                 "tag2": "world",
             },
-            network_interfaces=alicloud.ecs.LaunchTemplateNetworkInterfacesArgs(
-                name="eth0",
-                description="hello1",
-                primary_ip="10.0.0.2",
-                security_group_id="xxxx",
-                vswitch_id="xxxxxxx",
-            ),
+            network_interfaces={
+                "name": "eth0",
+                "description": "hello1",
+                "primary_ip": "10.0.0.2",
+                "security_group_id": "xxxx",
+                "vswitch_id": "xxxxxxx",
+            },
             data_disks=[
-                alicloud.ecs.LaunchTemplateDataDiskArgs(
-                    name="disk1",
-                    description="test1",
-                ),
-                alicloud.ecs.LaunchTemplateDataDiskArgs(
-                    name="disk2",
-                    description="test2",
-                ),
+                {
+                    "name": "disk1",
+                    "description": "test1",
+                },
+                {
+                    "name": "disk2",
+                    "description": "test2",
+                },
             ])
         ```
 
@@ -1664,7 +1664,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LaunchTemplateDataDiskArgs', 'LaunchTemplateDataDiskArgsDict']]]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         :param pulumi.Input[str] image_id: Image ID.
@@ -1685,7 +1685,7 @@ class LaunchTemplate(pulumi.CustomResource):
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
-        :param pulumi.Input[pulumi.InputType['LaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance.
+        :param pulumi.Input[Union['LaunchTemplateNetworkInterfacesArgs', 'LaunchTemplateNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance.
         :param pulumi.Input[str] network_type: Network type of the instance. Value options: `classic` | `vpc`.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
@@ -1764,22 +1764,22 @@ class LaunchTemplate(pulumi.CustomResource):
                 "tag1": "hello",
                 "tag2": "world",
             },
-            network_interfaces=alicloud.ecs.LaunchTemplateNetworkInterfacesArgs(
-                name="eth0",
-                description="hello1",
-                primary_ip="10.0.0.2",
-                security_group_id="xxxx",
-                vswitch_id="xxxxxxx",
-            ),
+            network_interfaces={
+                "name": "eth0",
+                "description": "hello1",
+                "primary_ip": "10.0.0.2",
+                "security_group_id": "xxxx",
+                "vswitch_id": "xxxxxxx",
+            },
             data_disks=[
-                alicloud.ecs.LaunchTemplateDataDiskArgs(
-                    name="disk1",
-                    description="test1",
-                ),
-                alicloud.ecs.LaunchTemplateDataDiskArgs(
-                    name="disk2",
-                    description="test2",
-                ),
+                {
+                    "name": "disk1",
+                    "description": "test1",
+                },
+                {
+                    "name": "disk2",
+                    "description": "test2",
+                },
             ])
         ```
 
@@ -1809,7 +1809,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  auto_release_time: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LaunchTemplateDataDiskArgs', 'LaunchTemplateDataDiskArgsDict']]]]] = None,
                  deployment_set_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -1826,7 +1826,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  key_pair_name: Optional[pulumi.Input[str]] = None,
                  launch_template_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_interfaces: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateNetworkInterfacesArgs']]] = None,
+                 network_interfaces: Optional[pulumi.Input[Union['LaunchTemplateNetworkInterfacesArgs', 'LaunchTemplateNetworkInterfacesArgsDict']]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
@@ -1840,7 +1840,7 @@ class LaunchTemplate(pulumi.CustomResource):
                  spot_duration: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
-                 system_disk: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateSystemDiskArgs']]] = None,
+                 system_disk: Optional[pulumi.Input[Union['LaunchTemplateSystemDiskArgs', 'LaunchTemplateSystemDiskArgsDict']]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
@@ -1924,7 +1924,7 @@ class LaunchTemplate(pulumi.CustomResource):
             auto_release_time: Optional[pulumi.Input[str]] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
-            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]]] = None,
+            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LaunchTemplateDataDiskArgs', 'LaunchTemplateDataDiskArgsDict']]]]] = None,
             deployment_set_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
@@ -1941,7 +1941,7 @@ class LaunchTemplate(pulumi.CustomResource):
             key_pair_name: Optional[pulumi.Input[str]] = None,
             launch_template_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_interfaces: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateNetworkInterfacesArgs']]] = None,
+            network_interfaces: Optional[pulumi.Input[Union['LaunchTemplateNetworkInterfacesArgs', 'LaunchTemplateNetworkInterfacesArgsDict']]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
             password_inherit: Optional[pulumi.Input[bool]] = None,
             period: Optional[pulumi.Input[int]] = None,
@@ -1955,7 +1955,7 @@ class LaunchTemplate(pulumi.CustomResource):
             spot_duration: Optional[pulumi.Input[str]] = None,
             spot_price_limit: Optional[pulumi.Input[float]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
-            system_disk: Optional[pulumi.Input[pulumi.InputType['LaunchTemplateSystemDiskArgs']]] = None,
+            system_disk: Optional[pulumi.Input[Union['LaunchTemplateSystemDiskArgs', 'LaunchTemplateSystemDiskArgsDict']]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
             system_disk_description: Optional[pulumi.Input[str]] = None,
             system_disk_name: Optional[pulumi.Input[str]] = None,
@@ -1977,7 +1977,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LaunchTemplateDataDiskArgs', 'LaunchTemplateDataDiskArgsDict']]]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         :param pulumi.Input[str] image_id: Image ID.
@@ -1998,7 +1998,7 @@ class LaunchTemplate(pulumi.CustomResource):
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
-        :param pulumi.Input[pulumi.InputType['LaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance.
+        :param pulumi.Input[Union['LaunchTemplateNetworkInterfacesArgs', 'LaunchTemplateNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance.
         :param pulumi.Input[str] network_type: Network type of the instance. Value options: `classic` | `vpc`.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.

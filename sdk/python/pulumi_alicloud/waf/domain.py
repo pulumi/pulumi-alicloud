@@ -624,7 +624,7 @@ class Domain(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  is_access_product: Optional[pulumi.Input[str]] = None,
                  load_balancing: Optional[pulumi.Input[str]] = None,
-                 log_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainLogHeaderArgs']]]]] = None,
+                 log_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict']]]]] = None,
                  read_time: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -657,10 +657,10 @@ class Domain(pulumi.CustomResource):
             http_to_user_ip="Off",
             https_redirect="Off",
             load_balancing="IpHash",
-            log_headers=[alicloud.waf.DomainLogHeaderArgs(
-                key="foo",
-                value="http",
-            )])
+            log_headers=[{
+                "key": "foo",
+                "value": "http",
+            }])
         ```
 
         ## Import
@@ -686,7 +686,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The ID of the WAF instance.
         :param pulumi.Input[str] is_access_product: Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
         :param pulumi.Input[str] load_balancing: The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainLogHeaderArgs']]]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict']]]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
                * key: The key of label
                * value: The value of label
         :param pulumi.Input[int] read_time: The read timeout of a WAF exclusive cluster. Unit: seconds.
@@ -727,10 +727,10 @@ class Domain(pulumi.CustomResource):
             http_to_user_ip="Off",
             https_redirect="Off",
             load_balancing="IpHash",
-            log_headers=[alicloud.waf.DomainLogHeaderArgs(
-                key="foo",
-                value="http",
-            )])
+            log_headers=[{
+                "key": "foo",
+                "value": "http",
+            }])
         ```
 
         ## Import
@@ -768,7 +768,7 @@ class Domain(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  is_access_product: Optional[pulumi.Input[str]] = None,
                  load_balancing: Optional[pulumi.Input[str]] = None,
-                 log_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainLogHeaderArgs']]]]] = None,
+                 log_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict']]]]] = None,
                  read_time: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -827,7 +827,7 @@ class Domain(pulumi.CustomResource):
             instance_id: Optional[pulumi.Input[str]] = None,
             is_access_product: Optional[pulumi.Input[str]] = None,
             load_balancing: Optional[pulumi.Input[str]] = None,
-            log_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainLogHeaderArgs']]]]] = None,
+            log_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict']]]]] = None,
             read_time: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -853,7 +853,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The ID of the WAF instance.
         :param pulumi.Input[str] is_access_product: Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and `Off`. Default to `Off`.
         :param pulumi.Input[str] load_balancing: The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainLogHeaderArgs']]]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainLogHeaderArgs', 'DomainLogHeaderArgsDict']]]] log_headers: The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
                * key: The key of label
                * value: The value of label
         :param pulumi.Input[int] read_time: The read timeout of a WAF exclusive cluster. Unit: seconds.

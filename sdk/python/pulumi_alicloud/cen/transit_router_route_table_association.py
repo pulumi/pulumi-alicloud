@@ -198,14 +198,14 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
             transit_router_id=example_transit_router.transit_router_id,
             vpc_id=example.id,
             zone_mappings=[
-                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                    zone_id=master_zone,
-                    vswitch_id=example_master.id,
-                ),
-                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                    zone_id=slave_zone,
-                    vswitch_id=example_slave.id,
-                ),
+                {
+                    "zone_id": master_zone,
+                    "vswitch_id": example_master.id,
+                },
+                {
+                    "zone_id": slave_zone,
+                    "vswitch_id": example_slave.id,
+                },
             ],
             transit_router_attachment_name=name,
             transit_router_attachment_description=name)
@@ -281,14 +281,14 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
             transit_router_id=example_transit_router.transit_router_id,
             vpc_id=example.id,
             zone_mappings=[
-                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                    zone_id=master_zone,
-                    vswitch_id=example_master.id,
-                ),
-                alicloud.cen.TransitRouterVpcAttachmentZoneMappingArgs(
-                    zone_id=slave_zone,
-                    vswitch_id=example_slave.id,
-                ),
+                {
+                    "zone_id": master_zone,
+                    "vswitch_id": example_master.id,
+                },
+                {
+                    "zone_id": slave_zone,
+                    "vswitch_id": example_slave.id,
+                },
             ],
             transit_router_attachment_name=name,
             transit_router_attachment_description=name)

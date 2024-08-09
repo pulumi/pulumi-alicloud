@@ -343,7 +343,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
                  transit_router_id: Optional[pulumi.Input[str]] = None,
                  vpn_id: Optional[pulumi.Input[str]] = None,
                  vpn_owner_id: Optional[pulumi.Input[str]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpnAttachmentZoneArgs']]]]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Vpn Attachment resource.
@@ -381,37 +381,37 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             local_subnet="0.0.0.0/0",
             remote_subnet="0.0.0.0/0",
             effect_immediately=False,
-            ike_config=alicloud.vpn.GatewayVpnAttachmentIkeConfigArgs(
-                ike_auth_alg="md5",
-                ike_enc_alg="des",
-                ike_version="ikev2",
-                ike_mode="main",
-                ike_lifetime=86400,
-                psk="tf-testvpn2",
-                ike_pfs="group1",
-                remote_id="testbob2",
-                local_id="testalice2",
-            ),
-            ipsec_config=alicloud.vpn.GatewayVpnAttachmentIpsecConfigArgs(
-                ipsec_pfs="group5",
-                ipsec_enc_alg="des",
-                ipsec_auth_alg="md5",
-                ipsec_lifetime=86400,
-            ),
-            bgp_config=alicloud.vpn.GatewayVpnAttachmentBgpConfigArgs(
-                enable=True,
-                local_asn=45014,
-                tunnel_cidr="169.254.11.0/30",
-                local_bgp_ip="169.254.11.1",
-            ),
-            health_check_config=alicloud.vpn.GatewayVpnAttachmentHealthCheckConfigArgs(
-                enable=True,
-                sip="192.168.1.1",
-                dip="10.0.0.1",
-                interval=10,
-                retry=10,
-                policy="revoke_route",
-            ),
+            ike_config={
+                "ike_auth_alg": "md5",
+                "ike_enc_alg": "des",
+                "ike_version": "ikev2",
+                "ike_mode": "main",
+                "ike_lifetime": 86400,
+                "psk": "tf-testvpn2",
+                "ike_pfs": "group1",
+                "remote_id": "testbob2",
+                "local_id": "testalice2",
+            },
+            ipsec_config={
+                "ipsec_pfs": "group5",
+                "ipsec_enc_alg": "des",
+                "ipsec_auth_alg": "md5",
+                "ipsec_lifetime": 86400,
+            },
+            bgp_config={
+                "enable": True,
+                "local_asn": 45014,
+                "tunnel_cidr": "169.254.11.0/30",
+                "local_bgp_ip": "169.254.11.1",
+            },
+            health_check_config={
+                "enable": True,
+                "sip": "192.168.1.1",
+                "dip": "10.0.0.1",
+                "interval": 10,
+                "retry": 10,
+                "policy": "revoke_route",
+            },
             enable_dpd=True,
             enable_nat_traversal=True,
             vpn_attachment_name=name)
@@ -428,9 +428,9 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             cen_id=example_transit_router.cen_id,
             transit_router_id=example_transit_router_cidr.transit_router_id,
             vpn_id=example_gateway_vpn_attachment.id,
-            zones=[alicloud.cen.TransitRouterVpnAttachmentZoneArgs(
-                zone_id=default.resources[0].master_zones[0],
-            )])
+            zones=[{
+                "zone_id": default.resources[0].master_zones[0],
+            }])
         ```
 
         ## Import
@@ -451,7 +451,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] transit_router_id: The ID of the forwarding router instance.
         :param pulumi.Input[str] vpn_id: The id of the vpn.
         :param pulumi.Input[str] vpn_owner_id: The owner id of vpn. **NOTE:** You must set `vpn_owner_id`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpnAttachmentZoneArgs']]]] zones: The list of zone mapping. See `zone` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]] zones: The list of zone mapping. See `zone` below.
         """
         ...
     @overload
@@ -495,37 +495,37 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             local_subnet="0.0.0.0/0",
             remote_subnet="0.0.0.0/0",
             effect_immediately=False,
-            ike_config=alicloud.vpn.GatewayVpnAttachmentIkeConfigArgs(
-                ike_auth_alg="md5",
-                ike_enc_alg="des",
-                ike_version="ikev2",
-                ike_mode="main",
-                ike_lifetime=86400,
-                psk="tf-testvpn2",
-                ike_pfs="group1",
-                remote_id="testbob2",
-                local_id="testalice2",
-            ),
-            ipsec_config=alicloud.vpn.GatewayVpnAttachmentIpsecConfigArgs(
-                ipsec_pfs="group5",
-                ipsec_enc_alg="des",
-                ipsec_auth_alg="md5",
-                ipsec_lifetime=86400,
-            ),
-            bgp_config=alicloud.vpn.GatewayVpnAttachmentBgpConfigArgs(
-                enable=True,
-                local_asn=45014,
-                tunnel_cidr="169.254.11.0/30",
-                local_bgp_ip="169.254.11.1",
-            ),
-            health_check_config=alicloud.vpn.GatewayVpnAttachmentHealthCheckConfigArgs(
-                enable=True,
-                sip="192.168.1.1",
-                dip="10.0.0.1",
-                interval=10,
-                retry=10,
-                policy="revoke_route",
-            ),
+            ike_config={
+                "ike_auth_alg": "md5",
+                "ike_enc_alg": "des",
+                "ike_version": "ikev2",
+                "ike_mode": "main",
+                "ike_lifetime": 86400,
+                "psk": "tf-testvpn2",
+                "ike_pfs": "group1",
+                "remote_id": "testbob2",
+                "local_id": "testalice2",
+            },
+            ipsec_config={
+                "ipsec_pfs": "group5",
+                "ipsec_enc_alg": "des",
+                "ipsec_auth_alg": "md5",
+                "ipsec_lifetime": 86400,
+            },
+            bgp_config={
+                "enable": True,
+                "local_asn": 45014,
+                "tunnel_cidr": "169.254.11.0/30",
+                "local_bgp_ip": "169.254.11.1",
+            },
+            health_check_config={
+                "enable": True,
+                "sip": "192.168.1.1",
+                "dip": "10.0.0.1",
+                "interval": 10,
+                "retry": 10,
+                "policy": "revoke_route",
+            },
             enable_dpd=True,
             enable_nat_traversal=True,
             vpn_attachment_name=name)
@@ -542,9 +542,9 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             cen_id=example_transit_router.cen_id,
             transit_router_id=example_transit_router_cidr.transit_router_id,
             vpn_id=example_gateway_vpn_attachment.id,
-            zones=[alicloud.cen.TransitRouterVpnAttachmentZoneArgs(
-                zone_id=default.resources[0].master_zones[0],
-            )])
+            zones=[{
+                "zone_id": default.resources[0].master_zones[0],
+            }])
         ```
 
         ## Import
@@ -578,7 +578,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
                  transit_router_id: Optional[pulumi.Input[str]] = None,
                  vpn_id: Optional[pulumi.Input[str]] = None,
                  vpn_owner_id: Optional[pulumi.Input[str]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpnAttachmentZoneArgs']]]]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -623,7 +623,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             transit_router_id: Optional[pulumi.Input[str]] = None,
             vpn_id: Optional[pulumi.Input[str]] = None,
             vpn_owner_id: Optional[pulumi.Input[str]] = None,
-            zones: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpnAttachmentZoneArgs']]]]] = None) -> 'TransitRouterVpnAttachment':
+            zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None) -> 'TransitRouterVpnAttachment':
         """
         Get an existing TransitRouterVpnAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -640,7 +640,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] transit_router_id: The ID of the forwarding router instance.
         :param pulumi.Input[str] vpn_id: The id of the vpn.
         :param pulumi.Input[str] vpn_owner_id: The owner id of vpn. **NOTE:** You must set `vpn_owner_id`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TransitRouterVpnAttachmentZoneArgs']]]] zones: The list of zone mapping. See `zone` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]] zones: The list of zone mapping. See `zone` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

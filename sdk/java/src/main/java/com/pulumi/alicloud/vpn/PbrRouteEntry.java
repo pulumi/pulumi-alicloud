@@ -273,7 +273,7 @@ public class PbrRouteEntry extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PbrRouteEntry(String name) {
+    public PbrRouteEntry(java.lang.String name) {
         this(name, PbrRouteEntryArgs.Empty);
     }
     /**
@@ -281,7 +281,7 @@ public class PbrRouteEntry extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PbrRouteEntry(String name, PbrRouteEntryArgs args) {
+    public PbrRouteEntry(java.lang.String name, PbrRouteEntryArgs args) {
         this(name, args, null);
     }
     /**
@@ -290,15 +290,22 @@ public class PbrRouteEntry extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PbrRouteEntry(String name, PbrRouteEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpn/pbrRouteEntry:PbrRouteEntry", name, args == null ? PbrRouteEntryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PbrRouteEntry(java.lang.String name, PbrRouteEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpn/pbrRouteEntry:PbrRouteEntry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PbrRouteEntry(String name, Output<String> id, @Nullable PbrRouteEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpn/pbrRouteEntry:PbrRouteEntry", name, state, makeResourceOptions(options, id));
+    private PbrRouteEntry(java.lang.String name, Output<java.lang.String> id, @Nullable PbrRouteEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpn/pbrRouteEntry:PbrRouteEntry", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PbrRouteEntryArgs makeArgs(PbrRouteEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PbrRouteEntryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -314,7 +321,7 @@ public class PbrRouteEntry extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PbrRouteEntry get(String name, Output<String> id, @Nullable PbrRouteEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PbrRouteEntry get(java.lang.String name, Output<java.lang.String> id, @Nullable PbrRouteEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PbrRouteEntry(name, id, state, options);
     }
 }

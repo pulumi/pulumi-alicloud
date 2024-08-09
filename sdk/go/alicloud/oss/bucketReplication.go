@@ -47,19 +47,19 @@ import (
 //				return err
 //			}
 //			bucketSrc, err := oss.NewBucket(ctx, "bucket_src", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("example-src-%v", _default.Result)),
+//				Bucket: pulumi.Sprintf("example-src-%v", _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			bucketDest, err := oss.NewBucket(ctx, "bucket_dest", &oss.BucketArgs{
-//				Bucket: pulumi.String(fmt.Sprintf("example-dest-%v", _default.Result)),
+//				Bucket: pulumi.Sprintf("example-dest-%v", _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
-//				Name: pulumi.String(fmt.Sprintf("example-role-%v", _default.Result)),
+//				Name: pulumi.Sprintf("example-role-%v", _default.Result),
 //				Document: pulumi.String(`		{
 //			  "Statement": [
 //				{
@@ -84,7 +84,7 @@ import (
 //		return err
 //	}
 //	policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-//		PolicyName: pulumi.String(fmt.Sprintf("example-policy-%v", _default.Result)),
+//		PolicyName: pulumi.Sprintf("example-policy-%v", _default.Result),
 //		PolicyDocument: pulumi.String(`		{
 //	  "Statement": [
 //		{

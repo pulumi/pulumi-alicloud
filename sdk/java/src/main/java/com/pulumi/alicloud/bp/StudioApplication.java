@@ -213,7 +213,7 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public StudioApplication(String name) {
+    public StudioApplication(java.lang.String name) {
         this(name, StudioApplicationArgs.Empty);
     }
     /**
@@ -221,7 +221,7 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StudioApplication(String name, StudioApplicationArgs args) {
+    public StudioApplication(java.lang.String name, StudioApplicationArgs args) {
         this(name, args, null);
     }
     /**
@@ -230,15 +230,22 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StudioApplication(String name, StudioApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:bp/studioApplication:StudioApplication", name, args == null ? StudioApplicationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public StudioApplication(java.lang.String name, StudioApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:bp/studioApplication:StudioApplication", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private StudioApplication(String name, Output<String> id, @Nullable StudioApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:bp/studioApplication:StudioApplication", name, state, makeResourceOptions(options, id));
+    private StudioApplication(java.lang.String name, Output<java.lang.String> id, @Nullable StudioApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:bp/studioApplication:StudioApplication", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static StudioApplicationArgs makeArgs(StudioApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? StudioApplicationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -254,7 +261,7 @@ public class StudioApplication extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static StudioApplication get(String name, Output<String> id, @Nullable StudioApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static StudioApplication get(java.lang.String name, Output<java.lang.String> id, @Nullable StudioApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new StudioApplication(name, id, state, options);
     }
 }

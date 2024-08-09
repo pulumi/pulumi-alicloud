@@ -52,14 +52,14 @@ import (
 //			}
 //			defaultKvNamespace, err := dcdn.NewKvNamespace(ctx, "default", &dcdn.KvNamespaceArgs{
 //				Description: pulumi.String(name),
-//				Namespace:   pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				Namespace:   pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dcdn.NewKv(ctx, "default", &dcdn.KvArgs{
 //				Value:     pulumi.String("example-value"),
-//				Key:       pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				Key:       pulumi.Sprintf("%v-%v", name, _default.Result),
 //				Namespace: defaultKvNamespace.Namespace,
 //			})
 //			if err != nil {

@@ -128,7 +128,7 @@ class SlsGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SlsGroupSlsGroupConfigArgs']]]]] = None,
+                 sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlsGroupSlsGroupConfigArgs', 'SlsGroupSlsGroupConfigArgsDict']]]]] = None,
                  sls_group_description: Optional[pulumi.Input[str]] = None,
                  sls_group_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -149,7 +149,7 @@ class SlsGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SlsGroupSlsGroupConfigArgs']]]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SlsGroupSlsGroupConfigArgs', 'SlsGroupSlsGroupConfigArgsDict']]]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         :param pulumi.Input[str] sls_group_description: The Description of the Sls Group.
         :param pulumi.Input[str] sls_group_name: The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
         """
@@ -189,7 +189,7 @@ class SlsGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SlsGroupSlsGroupConfigArgs']]]]] = None,
+                 sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlsGroupSlsGroupConfigArgs', 'SlsGroupSlsGroupConfigArgsDict']]]]] = None,
                  sls_group_description: Optional[pulumi.Input[str]] = None,
                  sls_group_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -218,7 +218,7 @@ class SlsGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SlsGroupSlsGroupConfigArgs']]]]] = None,
+            sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SlsGroupSlsGroupConfigArgs', 'SlsGroupSlsGroupConfigArgsDict']]]]] = None,
             sls_group_description: Optional[pulumi.Input[str]] = None,
             sls_group_name: Optional[pulumi.Input[str]] = None) -> 'SlsGroup':
         """
@@ -228,7 +228,7 @@ class SlsGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SlsGroupSlsGroupConfigArgs']]]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SlsGroupSlsGroupConfigArgs', 'SlsGroupSlsGroupConfigArgsDict']]]] sls_group_configs: The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
         :param pulumi.Input[str] sls_group_description: The Description of the Sls Group.
         :param pulumi.Input[str] sls_group_name: The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
         """

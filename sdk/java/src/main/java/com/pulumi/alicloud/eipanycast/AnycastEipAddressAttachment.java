@@ -418,7 +418,7 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AnycastEipAddressAttachment(String name) {
+    public AnycastEipAddressAttachment(java.lang.String name) {
         this(name, AnycastEipAddressAttachmentArgs.Empty);
     }
     /**
@@ -426,7 +426,7 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AnycastEipAddressAttachment(String name, AnycastEipAddressAttachmentArgs args) {
+    public AnycastEipAddressAttachment(java.lang.String name, AnycastEipAddressAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -435,15 +435,22 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AnycastEipAddressAttachment(String name, AnycastEipAddressAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment", name, args == null ? AnycastEipAddressAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AnycastEipAddressAttachment(java.lang.String name, AnycastEipAddressAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AnycastEipAddressAttachment(String name, Output<String> id, @Nullable AnycastEipAddressAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment", name, state, makeResourceOptions(options, id));
+    private AnycastEipAddressAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable AnycastEipAddressAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eipanycast/anycastEipAddressAttachment:AnycastEipAddressAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AnycastEipAddressAttachmentArgs makeArgs(AnycastEipAddressAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AnycastEipAddressAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -459,7 +466,7 @@ public class AnycastEipAddressAttachment extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AnycastEipAddressAttachment get(String name, Output<String> id, @Nullable AnycastEipAddressAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AnycastEipAddressAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable AnycastEipAddressAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AnycastEipAddressAttachment(name, id, state, options);
     }
 }

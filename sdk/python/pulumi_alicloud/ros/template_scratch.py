@@ -308,10 +308,10 @@ class TemplateScratch(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  execution_mode: Optional[pulumi.Input[str]] = None,
                  logical_id_strategy: Optional[pulumi.Input[str]] = None,
-                 preference_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateScratchPreferenceParameterArgs']]]]] = None,
-                 source_resource_group: Optional[pulumi.Input[pulumi.InputType['TemplateScratchSourceResourceGroupArgs']]] = None,
-                 source_resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateScratchSourceResourceArgs']]]]] = None,
-                 source_tag: Optional[pulumi.Input[pulumi.InputType['TemplateScratchSourceTagArgs']]] = None,
+                 preference_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchPreferenceParameterArgs', 'TemplateScratchPreferenceParameterArgsDict']]]]] = None,
+                 source_resource_group: Optional[pulumi.Input[Union['TemplateScratchSourceResourceGroupArgs', 'TemplateScratchSourceResourceGroupArgsDict']]] = None,
+                 source_resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchSourceResourceArgs', 'TemplateScratchSourceResourceArgsDict']]]]] = None,
+                 source_tag: Optional[pulumi.Input[Union['TemplateScratchSourceTagArgs', 'TemplateScratchSourceTagArgsDict']]] = None,
                  template_scratch_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -333,14 +333,14 @@ class TemplateScratch(pulumi.CustomResource):
         example = alicloud.ros.TemplateScratch("example",
             description="tf_testacc",
             template_scratch_type="ResourceImport",
-            preference_parameters=[alicloud.ros.TemplateScratchPreferenceParameterArgs(
-                parameter_key="DeletionPolicy",
-                parameter_value="Retain",
-            )],
-            source_resource_group=alicloud.ros.TemplateScratchSourceResourceGroupArgs(
-                resource_group_id=default.ids[0],
-                resource_type_filters=["ALIYUN::ECS::VPC"],
-            ))
+            preference_parameters=[{
+                "parameter_key": "DeletionPolicy",
+                "parameter_value": "Retain",
+            }],
+            source_resource_group={
+                "resource_group_id": default.ids[0],
+                "resource_type_filters": ["ALIYUN::ECS::VPC"],
+            })
         ```
 
         ## Import
@@ -356,10 +356,10 @@ class TemplateScratch(pulumi.CustomResource):
         :param pulumi.Input[str] description: The Description of the Template Scratch.
         :param pulumi.Input[str] execution_mode: The execution mode. Valid Values: `Async` or `Sync`.
         :param pulumi.Input[str] logical_id_strategy: Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateScratchPreferenceParameterArgs']]]] preference_parameters: Priority parameter. See the following `Block preference_parameters`.
-        :param pulumi.Input[pulumi.InputType['TemplateScratchSourceResourceGroupArgs']] source_resource_group: Source resource grouping. See the following `Block source_resource_group`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateScratchSourceResourceArgs']]]] source_resources: Source resource. See the following `Block source_resources`.
-        :param pulumi.Input[pulumi.InputType['TemplateScratchSourceTagArgs']] source_tag: Source tag. See the following `Block source_tag`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchPreferenceParameterArgs', 'TemplateScratchPreferenceParameterArgsDict']]]] preference_parameters: Priority parameter. See the following `Block preference_parameters`.
+        :param pulumi.Input[Union['TemplateScratchSourceResourceGroupArgs', 'TemplateScratchSourceResourceGroupArgsDict']] source_resource_group: Source resource grouping. See the following `Block source_resource_group`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchSourceResourceArgs', 'TemplateScratchSourceResourceArgsDict']]]] source_resources: Source resource. See the following `Block source_resources`.
+        :param pulumi.Input[Union['TemplateScratchSourceTagArgs', 'TemplateScratchSourceTagArgsDict']] source_tag: Source tag. See the following `Block source_tag`.
         :param pulumi.Input[str] template_scratch_type: The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
         """
         ...
@@ -387,14 +387,14 @@ class TemplateScratch(pulumi.CustomResource):
         example = alicloud.ros.TemplateScratch("example",
             description="tf_testacc",
             template_scratch_type="ResourceImport",
-            preference_parameters=[alicloud.ros.TemplateScratchPreferenceParameterArgs(
-                parameter_key="DeletionPolicy",
-                parameter_value="Retain",
-            )],
-            source_resource_group=alicloud.ros.TemplateScratchSourceResourceGroupArgs(
-                resource_group_id=default.ids[0],
-                resource_type_filters=["ALIYUN::ECS::VPC"],
-            ))
+            preference_parameters=[{
+                "parameter_key": "DeletionPolicy",
+                "parameter_value": "Retain",
+            }],
+            source_resource_group={
+                "resource_group_id": default.ids[0],
+                "resource_type_filters": ["ALIYUN::ECS::VPC"],
+            })
         ```
 
         ## Import
@@ -423,10 +423,10 @@ class TemplateScratch(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  execution_mode: Optional[pulumi.Input[str]] = None,
                  logical_id_strategy: Optional[pulumi.Input[str]] = None,
-                 preference_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateScratchPreferenceParameterArgs']]]]] = None,
-                 source_resource_group: Optional[pulumi.Input[pulumi.InputType['TemplateScratchSourceResourceGroupArgs']]] = None,
-                 source_resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateScratchSourceResourceArgs']]]]] = None,
-                 source_tag: Optional[pulumi.Input[pulumi.InputType['TemplateScratchSourceTagArgs']]] = None,
+                 preference_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchPreferenceParameterArgs', 'TemplateScratchPreferenceParameterArgsDict']]]]] = None,
+                 source_resource_group: Optional[pulumi.Input[Union['TemplateScratchSourceResourceGroupArgs', 'TemplateScratchSourceResourceGroupArgsDict']]] = None,
+                 source_resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchSourceResourceArgs', 'TemplateScratchSourceResourceArgsDict']]]]] = None,
+                 source_tag: Optional[pulumi.Input[Union['TemplateScratchSourceTagArgs', 'TemplateScratchSourceTagArgsDict']]] = None,
                  template_scratch_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -461,10 +461,10 @@ class TemplateScratch(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             execution_mode: Optional[pulumi.Input[str]] = None,
             logical_id_strategy: Optional[pulumi.Input[str]] = None,
-            preference_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateScratchPreferenceParameterArgs']]]]] = None,
-            source_resource_group: Optional[pulumi.Input[pulumi.InputType['TemplateScratchSourceResourceGroupArgs']]] = None,
-            source_resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateScratchSourceResourceArgs']]]]] = None,
-            source_tag: Optional[pulumi.Input[pulumi.InputType['TemplateScratchSourceTagArgs']]] = None,
+            preference_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchPreferenceParameterArgs', 'TemplateScratchPreferenceParameterArgsDict']]]]] = None,
+            source_resource_group: Optional[pulumi.Input[Union['TemplateScratchSourceResourceGroupArgs', 'TemplateScratchSourceResourceGroupArgsDict']]] = None,
+            source_resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchSourceResourceArgs', 'TemplateScratchSourceResourceArgsDict']]]]] = None,
+            source_tag: Optional[pulumi.Input[Union['TemplateScratchSourceTagArgs', 'TemplateScratchSourceTagArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             template_scratch_type: Optional[pulumi.Input[str]] = None) -> 'TemplateScratch':
         """
@@ -477,10 +477,10 @@ class TemplateScratch(pulumi.CustomResource):
         :param pulumi.Input[str] description: The Description of the Template Scratch.
         :param pulumi.Input[str] execution_mode: The execution mode. Valid Values: `Async` or `Sync`.
         :param pulumi.Input[str] logical_id_strategy: Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateScratchPreferenceParameterArgs']]]] preference_parameters: Priority parameter. See the following `Block preference_parameters`.
-        :param pulumi.Input[pulumi.InputType['TemplateScratchSourceResourceGroupArgs']] source_resource_group: Source resource grouping. See the following `Block source_resource_group`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateScratchSourceResourceArgs']]]] source_resources: Source resource. See the following `Block source_resources`.
-        :param pulumi.Input[pulumi.InputType['TemplateScratchSourceTagArgs']] source_tag: Source tag. See the following `Block source_tag`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchPreferenceParameterArgs', 'TemplateScratchPreferenceParameterArgsDict']]]] preference_parameters: Priority parameter. See the following `Block preference_parameters`.
+        :param pulumi.Input[Union['TemplateScratchSourceResourceGroupArgs', 'TemplateScratchSourceResourceGroupArgsDict']] source_resource_group: Source resource grouping. See the following `Block source_resource_group`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchSourceResourceArgs', 'TemplateScratchSourceResourceArgsDict']]]] source_resources: Source resource. See the following `Block source_resources`.
+        :param pulumi.Input[Union['TemplateScratchSourceTagArgs', 'TemplateScratchSourceTagArgsDict']] source_tag: Source tag. See the following `Block source_tag`.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] template_scratch_type: The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
         """

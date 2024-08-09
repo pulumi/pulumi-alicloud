@@ -43,18 +43,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // Create a RAM User Policy attachment.
  *         var user = new User("user", UserArgs.builder()
  *             .name("userName")
  *             .displayName("user_display_name")
  *             .mobile("86-18688888888")
- *             .email("hello.uuu{@literal @}aaa.com")
+ *             .email("hello.uuu}{@literal @}{@code aaa.com")
  *             .comments("yoyoyo")
  *             .build());
  * 
@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *         var policy = new Policy("policy", PolicyArgs.builder()
  *             .policyName(String.format("tf-example-%s", default_.result()))
  *             .policyDocument("""
- *   {
+ *   }{{@code
  *     "Statement": [
- *       {
+ *       }{{@code
  *         "Action": [
  *           "oss:ListObjects",
  *           "oss:GetObject"
@@ -78,10 +78,10 @@ import javax.annotation.Nullable;
  *           "acs:oss:*:*:mybucket",
  *           "acs:oss:*:*:mybucket/*"
  *         ]
- *       }
+ *       }}{@code
  *     ],
  *       "Version": "1"
- *   }
+ *   }}{@code
  *             """)
  *             .description("this is a policy test")
  *             .build());
@@ -92,8 +92,8 @@ import javax.annotation.Nullable;
  *             .userName(user.name())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -156,7 +156,7 @@ public class UserPolicyAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UserPolicyAttachment(String name) {
+    public UserPolicyAttachment(java.lang.String name) {
         this(name, UserPolicyAttachmentArgs.Empty);
     }
     /**
@@ -164,7 +164,7 @@ public class UserPolicyAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UserPolicyAttachment(String name, UserPolicyAttachmentArgs args) {
+    public UserPolicyAttachment(java.lang.String name, UserPolicyAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -173,15 +173,22 @@ public class UserPolicyAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UserPolicyAttachment(String name, UserPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ram/userPolicyAttachment:UserPolicyAttachment", name, args == null ? UserPolicyAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public UserPolicyAttachment(java.lang.String name, UserPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ram/userPolicyAttachment:UserPolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UserPolicyAttachment(String name, Output<String> id, @Nullable UserPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ram/userPolicyAttachment:UserPolicyAttachment", name, state, makeResourceOptions(options, id));
+    private UserPolicyAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable UserPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ram/userPolicyAttachment:UserPolicyAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static UserPolicyAttachmentArgs makeArgs(UserPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UserPolicyAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -197,7 +204,7 @@ public class UserPolicyAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UserPolicyAttachment get(String name, Output<String> id, @Nullable UserPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UserPolicyAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable UserPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UserPolicyAttachment(name, id, state, options);
     }
 }

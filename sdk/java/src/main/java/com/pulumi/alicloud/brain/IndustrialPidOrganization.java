@@ -102,7 +102,7 @@ public class IndustrialPidOrganization extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IndustrialPidOrganization(String name) {
+    public IndustrialPidOrganization(java.lang.String name) {
         this(name, IndustrialPidOrganizationArgs.Empty);
     }
     /**
@@ -110,7 +110,7 @@ public class IndustrialPidOrganization extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IndustrialPidOrganization(String name, IndustrialPidOrganizationArgs args) {
+    public IndustrialPidOrganization(java.lang.String name, IndustrialPidOrganizationArgs args) {
         this(name, args, null);
     }
     /**
@@ -119,15 +119,22 @@ public class IndustrialPidOrganization extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IndustrialPidOrganization(String name, IndustrialPidOrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:brain/industrialPidOrganization:IndustrialPidOrganization", name, args == null ? IndustrialPidOrganizationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IndustrialPidOrganization(java.lang.String name, IndustrialPidOrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:brain/industrialPidOrganization:IndustrialPidOrganization", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IndustrialPidOrganization(String name, Output<String> id, @Nullable IndustrialPidOrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:brain/industrialPidOrganization:IndustrialPidOrganization", name, state, makeResourceOptions(options, id));
+    private IndustrialPidOrganization(java.lang.String name, Output<java.lang.String> id, @Nullable IndustrialPidOrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:brain/industrialPidOrganization:IndustrialPidOrganization", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static IndustrialPidOrganizationArgs makeArgs(IndustrialPidOrganizationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IndustrialPidOrganizationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -143,7 +150,7 @@ public class IndustrialPidOrganization extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IndustrialPidOrganization get(String name, Output<String> id, @Nullable IndustrialPidOrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IndustrialPidOrganization get(java.lang.String name, Output<java.lang.String> id, @Nullable IndustrialPidOrganizationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IndustrialPidOrganization(name, id, state, options);
     }
 }

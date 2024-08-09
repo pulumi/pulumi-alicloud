@@ -240,10 +240,10 @@ class DispatchRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dispatch_rule_name: Optional[pulumi.Input[str]] = None,
                  dispatch_type: Optional[pulumi.Input[str]] = None,
-                 group_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleGroupRuleArgs']]]]] = None,
+                 group_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleGroupRuleArgs', 'DispatchRuleGroupRuleArgsDict']]]]] = None,
                  is_recover: Optional[pulumi.Input[bool]] = None,
-                 label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleLabelMatchExpressionGridArgs']]]]] = None,
-                 notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleNotifyRuleArgs']]]]] = None,
+                 label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]]] = None,
+                 notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule resource.
@@ -269,39 +269,39 @@ class DispatchRule(pulumi.CustomResource):
         default_dispatch_rule = alicloud.arms.DispatchRule("default",
             dispatch_rule_name="example_value",
             dispatch_type="CREATE_ALERT",
-            group_rules=[alicloud.arms.DispatchRuleGroupRuleArgs(
-                group_wait_time=5,
-                group_interval=15,
-                repeat_interval=100,
-                grouping_fields=["alertname"],
-            )],
-            label_match_expression_grids=[alicloud.arms.DispatchRuleLabelMatchExpressionGridArgs(
-                label_match_expression_groups=[alicloud.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs(
-                    label_match_expressions=[alicloud.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs(
-                        key="_aliyun_arms_involvedObject_kind",
-                        value="app",
-                        operator="eq",
-                    )],
-                )],
-            )],
-            notify_rules=[alicloud.arms.DispatchRuleNotifyRuleArgs(
-                notify_objects=[
-                    alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
-                        notify_object_id=default.id,
-                        notify_type="ARMS_CONTACT",
-                        name="example_value",
-                    ),
-                    alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
-                        notify_object_id=default_alert_contact_group.id,
-                        notify_type="ARMS_CONTACT_GROUP",
-                        name="example_value",
-                    ),
+            group_rules=[{
+                "group_wait_time": 5,
+                "group_interval": 15,
+                "repeat_interval": 100,
+                "grouping_fields": ["alertname"],
+            }],
+            label_match_expression_grids=[{
+                "label_match_expression_groups": [{
+                    "label_match_expressions": [{
+                        "key": "_aliyun_arms_involvedObject_kind",
+                        "value": "app",
+                        "operator": "eq",
+                    }],
+                }],
+            }],
+            notify_rules=[{
+                "notify_objects": [
+                    {
+                        "notify_object_id": default.id,
+                        "notify_type": "ARMS_CONTACT",
+                        "name": "example_value",
+                    },
+                    {
+                        "notify_object_id": default_alert_contact_group.id,
+                        "notify_type": "ARMS_CONTACT_GROUP",
+                        "name": "example_value",
+                    },
                 ],
-                notify_channels=[
+                "notify_channels": [
                     "dingTalk",
                     "wechat",
                 ],
-            )])
+            }])
         ```
 
         ## Import
@@ -316,10 +316,10 @@ class DispatchRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dispatch_rule_name: The name of the dispatch policy.
         :param pulumi.Input[str] dispatch_type: The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleGroupRuleArgs']]]] group_rules: Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleGroupRuleArgs', 'DispatchRuleGroupRuleArgsDict']]]] group_rules: Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         :param pulumi.Input[bool] is_recover: Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleLabelMatchExpressionGridArgs']]]] label_match_expression_grids: Sets the dispatch rule. See `label_match_expression_grid` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleNotifyRuleArgs']]]] notify_rules: Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]] label_match_expression_grids: Sets the dispatch rule. See `label_match_expression_grid` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]] notify_rules: Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         """
         ...
     @overload
@@ -351,39 +351,39 @@ class DispatchRule(pulumi.CustomResource):
         default_dispatch_rule = alicloud.arms.DispatchRule("default",
             dispatch_rule_name="example_value",
             dispatch_type="CREATE_ALERT",
-            group_rules=[alicloud.arms.DispatchRuleGroupRuleArgs(
-                group_wait_time=5,
-                group_interval=15,
-                repeat_interval=100,
-                grouping_fields=["alertname"],
-            )],
-            label_match_expression_grids=[alicloud.arms.DispatchRuleLabelMatchExpressionGridArgs(
-                label_match_expression_groups=[alicloud.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs(
-                    label_match_expressions=[alicloud.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs(
-                        key="_aliyun_arms_involvedObject_kind",
-                        value="app",
-                        operator="eq",
-                    )],
-                )],
-            )],
-            notify_rules=[alicloud.arms.DispatchRuleNotifyRuleArgs(
-                notify_objects=[
-                    alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
-                        notify_object_id=default.id,
-                        notify_type="ARMS_CONTACT",
-                        name="example_value",
-                    ),
-                    alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
-                        notify_object_id=default_alert_contact_group.id,
-                        notify_type="ARMS_CONTACT_GROUP",
-                        name="example_value",
-                    ),
+            group_rules=[{
+                "group_wait_time": 5,
+                "group_interval": 15,
+                "repeat_interval": 100,
+                "grouping_fields": ["alertname"],
+            }],
+            label_match_expression_grids=[{
+                "label_match_expression_groups": [{
+                    "label_match_expressions": [{
+                        "key": "_aliyun_arms_involvedObject_kind",
+                        "value": "app",
+                        "operator": "eq",
+                    }],
+                }],
+            }],
+            notify_rules=[{
+                "notify_objects": [
+                    {
+                        "notify_object_id": default.id,
+                        "notify_type": "ARMS_CONTACT",
+                        "name": "example_value",
+                    },
+                    {
+                        "notify_object_id": default_alert_contact_group.id,
+                        "notify_type": "ARMS_CONTACT_GROUP",
+                        "name": "example_value",
+                    },
                 ],
-                notify_channels=[
+                "notify_channels": [
                     "dingTalk",
                     "wechat",
                 ],
-            )])
+            }])
         ```
 
         ## Import
@@ -411,10 +411,10 @@ class DispatchRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dispatch_rule_name: Optional[pulumi.Input[str]] = None,
                  dispatch_type: Optional[pulumi.Input[str]] = None,
-                 group_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleGroupRuleArgs']]]]] = None,
+                 group_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleGroupRuleArgs', 'DispatchRuleGroupRuleArgsDict']]]]] = None,
                  is_recover: Optional[pulumi.Input[bool]] = None,
-                 label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleLabelMatchExpressionGridArgs']]]]] = None,
-                 notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleNotifyRuleArgs']]]]] = None,
+                 label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]]] = None,
+                 notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -451,10 +451,10 @@ class DispatchRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             dispatch_rule_name: Optional[pulumi.Input[str]] = None,
             dispatch_type: Optional[pulumi.Input[str]] = None,
-            group_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleGroupRuleArgs']]]]] = None,
+            group_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleGroupRuleArgs', 'DispatchRuleGroupRuleArgsDict']]]]] = None,
             is_recover: Optional[pulumi.Input[bool]] = None,
-            label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleLabelMatchExpressionGridArgs']]]]] = None,
-            notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleNotifyRuleArgs']]]]] = None,
+            label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]]] = None,
+            notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'DispatchRule':
         """
         Get an existing DispatchRule resource's state with the given name, id, and optional extra
@@ -465,10 +465,10 @@ class DispatchRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dispatch_rule_name: The name of the dispatch policy.
         :param pulumi.Input[str] dispatch_type: The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleGroupRuleArgs']]]] group_rules: Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleGroupRuleArgs', 'DispatchRuleGroupRuleArgsDict']]]] group_rules: Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         :param pulumi.Input[bool] is_recover: Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleLabelMatchExpressionGridArgs']]]] label_match_expression_grids: Sets the dispatch rule. See `label_match_expression_grid` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DispatchRuleNotifyRuleArgs']]]] notify_rules: Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]] label_match_expression_grids: Sets the dispatch rule. See `label_match_expression_grid` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]] notify_rules: Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         :param pulumi.Input[str] status: The resource status of Alert Dispatch Rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -52,7 +52,7 @@ import (
 //			}
 //			_, err = dcdn.NewKvNamespace(ctx, "default", &dcdn.KvNamespaceArgs{
 //				Description: pulumi.String(name),
-//				Namespace:   pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				Namespace:   pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err

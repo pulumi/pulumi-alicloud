@@ -169,7 +169,7 @@ public class DbResourceGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DbResourceGroup(String name) {
+    public DbResourceGroup(java.lang.String name) {
         this(name, DbResourceGroupArgs.Empty);
     }
     /**
@@ -177,7 +177,7 @@ public class DbResourceGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DbResourceGroup(String name, DbResourceGroupArgs args) {
+    public DbResourceGroup(java.lang.String name, DbResourceGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -186,15 +186,22 @@ public class DbResourceGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DbResourceGroup(String name, DbResourceGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:gpdb/dbResourceGroup:DbResourceGroup", name, args == null ? DbResourceGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DbResourceGroup(java.lang.String name, DbResourceGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:gpdb/dbResourceGroup:DbResourceGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DbResourceGroup(String name, Output<String> id, @Nullable DbResourceGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:gpdb/dbResourceGroup:DbResourceGroup", name, state, makeResourceOptions(options, id));
+    private DbResourceGroup(java.lang.String name, Output<java.lang.String> id, @Nullable DbResourceGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:gpdb/dbResourceGroup:DbResourceGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DbResourceGroupArgs makeArgs(DbResourceGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DbResourceGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -210,7 +217,7 @@ public class DbResourceGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DbResourceGroup get(String name, Output<String> id, @Nullable DbResourceGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DbResourceGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable DbResourceGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DbResourceGroup(name, id, state, options);
     }
 }

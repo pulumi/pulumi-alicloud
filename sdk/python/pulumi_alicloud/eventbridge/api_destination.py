@@ -178,7 +178,7 @@ class ApiDestination(pulumi.CustomResource):
                  api_destination_name: Optional[pulumi.Input[str]] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 http_api_parameters: Optional[pulumi.Input[pulumi.InputType['ApiDestinationHttpApiParametersArgs']]] = None,
+                 http_api_parameters: Optional[pulumi.Input[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Event Bridge Api Destination resource.
@@ -204,17 +204,17 @@ class ApiDestination(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.eventbridge.Connection("default",
             connection_name=name,
-            network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
-                network_type="PublicNetwork",
-            ))
+            network_parameters={
+                "network_type": "PublicNetwork",
+            })
         default_api_destination = alicloud.eventbridge.ApiDestination("default",
             connection_name=default.connection_name,
             api_destination_name=name,
             description="test-api-destination-connection",
-            http_api_parameters=alicloud.eventbridge.ApiDestinationHttpApiParametersArgs(
-                endpoint="http://127.0.0.1:8001",
-                method="POST",
-            ))
+            http_api_parameters={
+                "endpoint": "http://127.0.0.1:8001",
+                "method": "POST",
+            })
         ```
 
         ## Import
@@ -230,7 +230,7 @@ class ApiDestination(pulumi.CustomResource):
         :param pulumi.Input[str] api_destination_name: The name of the API destination.
         :param pulumi.Input[str] connection_name: The name of the connection.
         :param pulumi.Input[str] description: The description of the API destination.
-        :param pulumi.Input[pulumi.InputType['ApiDestinationHttpApiParametersArgs']] http_api_parameters: The parameters that are configured for the API destination. See `http_api_parameters` below.
+        :param pulumi.Input[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']] http_api_parameters: The parameters that are configured for the API destination. See `http_api_parameters` below.
         """
         ...
     @overload
@@ -262,17 +262,17 @@ class ApiDestination(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.eventbridge.Connection("default",
             connection_name=name,
-            network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
-                network_type="PublicNetwork",
-            ))
+            network_parameters={
+                "network_type": "PublicNetwork",
+            })
         default_api_destination = alicloud.eventbridge.ApiDestination("default",
             connection_name=default.connection_name,
             api_destination_name=name,
             description="test-api-destination-connection",
-            http_api_parameters=alicloud.eventbridge.ApiDestinationHttpApiParametersArgs(
-                endpoint="http://127.0.0.1:8001",
-                method="POST",
-            ))
+            http_api_parameters={
+                "endpoint": "http://127.0.0.1:8001",
+                "method": "POST",
+            })
         ```
 
         ## Import
@@ -301,7 +301,7 @@ class ApiDestination(pulumi.CustomResource):
                  api_destination_name: Optional[pulumi.Input[str]] = None,
                  connection_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 http_api_parameters: Optional[pulumi.Input[pulumi.InputType['ApiDestinationHttpApiParametersArgs']]] = None,
+                 http_api_parameters: Optional[pulumi.Input[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -336,7 +336,7 @@ class ApiDestination(pulumi.CustomResource):
             connection_name: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            http_api_parameters: Optional[pulumi.Input[pulumi.InputType['ApiDestinationHttpApiParametersArgs']]] = None) -> 'ApiDestination':
+            http_api_parameters: Optional[pulumi.Input[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']]] = None) -> 'ApiDestination':
         """
         Get an existing ApiDestination resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -348,7 +348,7 @@ class ApiDestination(pulumi.CustomResource):
         :param pulumi.Input[str] connection_name: The name of the connection.
         :param pulumi.Input[int] create_time: The creation time of the Api Destination.
         :param pulumi.Input[str] description: The description of the API destination.
-        :param pulumi.Input[pulumi.InputType['ApiDestinationHttpApiParametersArgs']] http_api_parameters: The parameters that are configured for the API destination. See `http_api_parameters` below.
+        :param pulumi.Input[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']] http_api_parameters: The parameters that are configured for the API destination. See `http_api_parameters` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

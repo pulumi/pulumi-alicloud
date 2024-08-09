@@ -64,14 +64,14 @@ import (
 //
 //				VpcId:                     defaulteVpc.ID(),
 //				GatewayEndpointDescrption: pulumi.String("test-gateway-endpoint"),
-//				GatewayEndpointName:       pulumi.String(fmt.Sprintf("%v1", name)),
+//				GatewayEndpointName:       pulumi.Sprintf("%v1", name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultRT, err := vpc.NewRouteTable(ctx, "defaultRT", &vpc.RouteTableArgs{
 //				VpcId:          defaulteVpc.ID(),
-//				RouteTableName: pulumi.String(fmt.Sprintf("%v2", name)),
+//				RouteTableName: pulumi.Sprintf("%v2", name),
 //			})
 //			if err != nil {
 //				return err

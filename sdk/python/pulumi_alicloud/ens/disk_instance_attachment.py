@@ -155,9 +155,9 @@ class DiskInstanceAttachment(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             category="cloud_efficiency")
         default_instance = alicloud.ens.Instance("default",
-            system_disk=alicloud.ens.InstanceSystemDiskArgs(
-                size=20,
-            ),
+            system_disk={
+                "size": 20,
+            },
             image_id="centos_6_08_64_20G_alibase_20171208",
             payment_type="Subscription",
             instance_type="ens.sn1.stiny",
@@ -221,9 +221,9 @@ class DiskInstanceAttachment(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             category="cloud_efficiency")
         default_instance = alicloud.ens.Instance("default",
-            system_disk=alicloud.ens.InstanceSystemDiskArgs(
-                size=20,
-            ),
+            system_disk={
+                "size": 20,
+            },
             image_id="centos_6_08_64_20G_alibase_20171208",
             payment_type="Subscription",
             instance_type="ens.sn1.stiny",

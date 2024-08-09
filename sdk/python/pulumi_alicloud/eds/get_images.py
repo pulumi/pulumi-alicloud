@@ -156,19 +156,19 @@ def get_images(desktop_instance_type: Optional[str] = None,
         policy_group_name="your_policy_group_name",
         clipboard="readwrite",
         local_drive="read",
-        authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-            description="example_value",
-            cidr_ip="1.2.3.4/24",
-        )],
-        authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-            type="inflow",
-            policy="accept",
-            description="example_value",
-            port_range="80/80",
-            ip_protocol="TCP",
-            priority="1",
-            cidr_ip="0.0.0.0/0",
-        )])
+        authorize_access_policy_rules=[{
+            "description": "example_value",
+            "cidr_ip": "1.2.3.4/24",
+        }],
+        authorize_security_policy_rules=[{
+            "type": "inflow",
+            "policy": "accept",
+            "description": "example_value",
+            "port_range": "80/80",
+            "ip_protocol": "TCP",
+            "priority": "1",
+            "cidr_ip": "0.0.0.0/0",
+        }])
     default_desktop = alicloud.eds.Desktop("default",
         office_site_id=default_simple_office_site.id,
         policy_group_id=default_ecd_policy_group.id,
@@ -248,19 +248,19 @@ def get_images_output(desktop_instance_type: Optional[pulumi.Input[Optional[str]
         policy_group_name="your_policy_group_name",
         clipboard="readwrite",
         local_drive="read",
-        authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-            description="example_value",
-            cidr_ip="1.2.3.4/24",
-        )],
-        authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-            type="inflow",
-            policy="accept",
-            description="example_value",
-            port_range="80/80",
-            ip_protocol="TCP",
-            priority="1",
-            cidr_ip="0.0.0.0/0",
-        )])
+        authorize_access_policy_rules=[{
+            "description": "example_value",
+            "cidr_ip": "1.2.3.4/24",
+        }],
+        authorize_security_policy_rules=[{
+            "type": "inflow",
+            "policy": "accept",
+            "description": "example_value",
+            "port_range": "80/80",
+            "ip_protocol": "TCP",
+            "priority": "1",
+            "cidr_ip": "0.0.0.0/0",
+        }])
     default_desktop = alicloud.eds.Desktop("default",
         office_site_id=default_simple_office_site.id,
         policy_group_id=default_ecd_policy_group.id,

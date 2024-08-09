@@ -140,20 +140,20 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
             load_balancer_name=name,
             load_balancer_edition="Standard",
             vpc_id=create_vpc.id,
-            load_balancer_billing_config=alicloud.alb.LoadBalancerLoadBalancerBillingConfigArgs(
-                pay_type="PayAsYouGo",
-            ),
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
             address_type="Intranet",
             address_allocated_mode="Fixed",
             zone_mappings=[
-                alicloud.alb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=create_vsw2.id,
-                    zone_id=create_vsw2.zone_id,
-                ),
-                alicloud.alb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=create_vsw1.id,
-                    zone_id=create_vsw1.zone_id,
-                ),
+                {
+                    "vswitch_id": create_vsw2.id,
+                    "zone_id": create_vsw2.zone_id,
+                },
+                {
+                    "vswitch_id": create_vsw1.id,
+                    "zone_id": create_vsw1.zone_id,
+                },
             ])
         default_load_balancer_security_group_attachment = alicloud.alb.LoadBalancerSecurityGroupAttachment("default",
             security_group_id=create_security_group.id,
@@ -221,20 +221,20 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
             load_balancer_name=name,
             load_balancer_edition="Standard",
             vpc_id=create_vpc.id,
-            load_balancer_billing_config=alicloud.alb.LoadBalancerLoadBalancerBillingConfigArgs(
-                pay_type="PayAsYouGo",
-            ),
+            load_balancer_billing_config={
+                "pay_type": "PayAsYouGo",
+            },
             address_type="Intranet",
             address_allocated_mode="Fixed",
             zone_mappings=[
-                alicloud.alb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=create_vsw2.id,
-                    zone_id=create_vsw2.zone_id,
-                ),
-                alicloud.alb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=create_vsw1.id,
-                    zone_id=create_vsw1.zone_id,
-                ),
+                {
+                    "vswitch_id": create_vsw2.id,
+                    "zone_id": create_vsw2.zone_id,
+                },
+                {
+                    "vswitch_id": create_vsw1.id,
+                    "zone_id": create_vsw1.zone_id,
+                },
             ])
         default_load_balancer_security_group_attachment = alicloud.alb.LoadBalancerSecurityGroupAttachment("default",
             security_group_id=create_security_group.id,

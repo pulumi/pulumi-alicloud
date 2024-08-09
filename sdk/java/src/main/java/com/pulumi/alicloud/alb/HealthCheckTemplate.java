@@ -171,14 +171,14 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
         return this.healthCheckMethod;
     }
     /**
-     * The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ]{@literal @} $ ^ : &#39; , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+     * The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] {@literal @} $ ^ : &#39; , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
      * 
      */
     @Export(name="healthCheckPath", refs={String.class}, tree="[0]")
     private Output<String> healthCheckPath;
 
     /**
-     * @return The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ]{@literal @} $ ^ : &#39; , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+     * @return The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] {@literal @} $ ^ : &#39; , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
      * 
      */
     public Output<String> healthCheckPath() {
@@ -259,7 +259,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HealthCheckTemplate(String name) {
+    public HealthCheckTemplate(java.lang.String name) {
         this(name, HealthCheckTemplateArgs.Empty);
     }
     /**
@@ -267,7 +267,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HealthCheckTemplate(String name, HealthCheckTemplateArgs args) {
+    public HealthCheckTemplate(java.lang.String name, HealthCheckTemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -276,15 +276,22 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HealthCheckTemplate(String name, HealthCheckTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:alb/healthCheckTemplate:HealthCheckTemplate", name, args == null ? HealthCheckTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HealthCheckTemplate(java.lang.String name, HealthCheckTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:alb/healthCheckTemplate:HealthCheckTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HealthCheckTemplate(String name, Output<String> id, @Nullable HealthCheckTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:alb/healthCheckTemplate:HealthCheckTemplate", name, state, makeResourceOptions(options, id));
+    private HealthCheckTemplate(java.lang.String name, Output<java.lang.String> id, @Nullable HealthCheckTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:alb/healthCheckTemplate:HealthCheckTemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HealthCheckTemplateArgs makeArgs(HealthCheckTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HealthCheckTemplateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -300,7 +307,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HealthCheckTemplate get(String name, Output<String> id, @Nullable HealthCheckTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HealthCheckTemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable HealthCheckTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HealthCheckTemplate(name, id, state, options);
     }
 }

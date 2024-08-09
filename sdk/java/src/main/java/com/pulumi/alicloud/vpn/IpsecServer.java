@@ -261,7 +261,7 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IpsecServer(String name) {
+    public IpsecServer(java.lang.String name) {
         this(name, IpsecServerArgs.Empty);
     }
     /**
@@ -269,7 +269,7 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IpsecServer(String name, IpsecServerArgs args) {
+    public IpsecServer(java.lang.String name, IpsecServerArgs args) {
         this(name, args, null);
     }
     /**
@@ -278,15 +278,22 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IpsecServer(String name, IpsecServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpn/ipsecServer:IpsecServer", name, args == null ? IpsecServerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IpsecServer(java.lang.String name, IpsecServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpn/ipsecServer:IpsecServer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IpsecServer(String name, Output<String> id, @Nullable IpsecServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpn/ipsecServer:IpsecServer", name, state, makeResourceOptions(options, id));
+    private IpsecServer(java.lang.String name, Output<java.lang.String> id, @Nullable IpsecServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpn/ipsecServer:IpsecServer", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static IpsecServerArgs makeArgs(IpsecServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IpsecServerArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -302,7 +309,7 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IpsecServer get(String name, Output<String> id, @Nullable IpsecServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IpsecServer get(java.lang.String name, Output<java.lang.String> id, @Nullable IpsecServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IpsecServer(name, id, state, options);
     }
 }

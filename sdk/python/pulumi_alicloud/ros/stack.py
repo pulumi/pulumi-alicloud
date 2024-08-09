@@ -693,7 +693,7 @@ class Stack(pulumi.CustomResource):
                  deletion_protection: Optional[pulumi.Input[str]] = None,
                  disable_rollback: Optional[pulumi.Input[bool]] = None,
                  notification_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict']]]]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  replacement_option: Optional[pulumi.Input[str]] = None,
                  retain_all_resources: Optional[pulumi.Input[bool]] = None,
@@ -756,7 +756,7 @@ class Stack(pulumi.CustomResource):
         :param pulumi.Input[str] deletion_protection: Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
         :param pulumi.Input[bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default to: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_urls: The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackParameterArgs']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
         :param pulumi.Input[str] ram_role_name: The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
         :param pulumi.Input[str] replacement_option: Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
         :param pulumi.Input[bool] retain_all_resources: The retain all resources.
@@ -838,7 +838,7 @@ class Stack(pulumi.CustomResource):
                  deletion_protection: Optional[pulumi.Input[str]] = None,
                  disable_rollback: Optional[pulumi.Input[bool]] = None,
                  notification_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict']]]]] = None,
                  ram_role_name: Optional[pulumi.Input[str]] = None,
                  replacement_option: Optional[pulumi.Input[str]] = None,
                  retain_all_resources: Optional[pulumi.Input[bool]] = None,
@@ -900,7 +900,7 @@ class Stack(pulumi.CustomResource):
             deletion_protection: Optional[pulumi.Input[str]] = None,
             disable_rollback: Optional[pulumi.Input[bool]] = None,
             notification_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackParameterArgs']]]]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict']]]]] = None,
             ram_role_name: Optional[pulumi.Input[str]] = None,
             replacement_option: Optional[pulumi.Input[str]] = None,
             retain_all_resources: Optional[pulumi.Input[bool]] = None,
@@ -928,7 +928,7 @@ class Stack(pulumi.CustomResource):
         :param pulumi.Input[str] deletion_protection: Specifies whether to enable deletion protection on the stack. Valid values: `Disabled`, `Enabled`. Default to: `Disabled`
         :param pulumi.Input[bool] disable_rollback: Specifies whether to disable rollback on stack creation failure. Default to: `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_urls: The callback URL for receiving stack event N. Only HTTP POST is supported. Maximum value of N: 5.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackParameterArgs']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackParameterArgs', 'StackParameterArgsDict']]]] parameters: The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
         :param pulumi.Input[str] ram_role_name: The name of the RAM role. ROS assumes the specified RAM role to create the stack and call API operations by using the credentials of the role.
         :param pulumi.Input[str] replacement_option: Specifies whether to enable replacement update after a resource attribute that does not support modification update is changed. Modification update keeps the physical ID of the resource unchanged. However, the resource is deleted and then recreated, and its physical ID is changed if replacement update is enabled.
         :param pulumi.Input[bool] retain_all_resources: The retain all resources.

@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
-//				Name: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				Name: pulumi.Sprintf("terraform-example-%v", _default.Result),
 //			})
 //			if err != nil {
 //				return err

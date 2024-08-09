@@ -354,8 +354,8 @@ class IpsecServer(pulumi.CustomResource):
                  client_ip_pool: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  effect_immediately: Optional[pulumi.Input[bool]] = None,
-                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIkeConfigArgs']]]]] = None,
-                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIpsecConfigArgs']]]]] = None,
+                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIkeConfigArgs', 'IpsecServerIkeConfigArgsDict']]]]] = None,
+                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIpsecConfigArgs', 'IpsecServerIpsecConfigArgsDict']]]]] = None,
                  ipsec_server_name: Optional[pulumi.Input[str]] = None,
                  local_subnet: Optional[pulumi.Input[str]] = None,
                  psk: Optional[pulumi.Input[str]] = None,
@@ -418,8 +418,8 @@ class IpsecServer(pulumi.CustomResource):
         :param pulumi.Input[str] client_ip_pool: The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] effect_immediately: Specifies whether you want the configuration to immediately take effect.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIkeConfigArgs']]]] ike_configs: The configuration of Phase 1 negotiations. See `ike_config` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIpsecConfigArgs']]]] ipsec_configs: The configuration of Phase 2 negotiations. See `ipsec_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIkeConfigArgs', 'IpsecServerIkeConfigArgsDict']]]] ike_configs: The configuration of Phase 1 negotiations. See `ike_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIpsecConfigArgs', 'IpsecServerIpsecConfigArgsDict']]]] ipsec_configs: The configuration of Phase 2 negotiations. See `ipsec_config` below.
         :param pulumi.Input[str] ipsec_server_name: The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
         :param pulumi.Input[str] local_subnet: The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
         :param pulumi.Input[str] psk: The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
@@ -501,8 +501,8 @@ class IpsecServer(pulumi.CustomResource):
                  client_ip_pool: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  effect_immediately: Optional[pulumi.Input[bool]] = None,
-                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIkeConfigArgs']]]]] = None,
-                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIpsecConfigArgs']]]]] = None,
+                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIkeConfigArgs', 'IpsecServerIkeConfigArgsDict']]]]] = None,
+                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIpsecConfigArgs', 'IpsecServerIpsecConfigArgsDict']]]]] = None,
                  ipsec_server_name: Optional[pulumi.Input[str]] = None,
                  local_subnet: Optional[pulumi.Input[str]] = None,
                  psk: Optional[pulumi.Input[str]] = None,
@@ -546,8 +546,8 @@ class IpsecServer(pulumi.CustomResource):
             client_ip_pool: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             effect_immediately: Optional[pulumi.Input[bool]] = None,
-            ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIkeConfigArgs']]]]] = None,
-            ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIpsecConfigArgs']]]]] = None,
+            ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIkeConfigArgs', 'IpsecServerIkeConfigArgsDict']]]]] = None,
+            ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIpsecConfigArgs', 'IpsecServerIpsecConfigArgsDict']]]]] = None,
             ipsec_server_name: Optional[pulumi.Input[str]] = None,
             local_subnet: Optional[pulumi.Input[str]] = None,
             psk: Optional[pulumi.Input[str]] = None,
@@ -563,8 +563,8 @@ class IpsecServer(pulumi.CustomResource):
         :param pulumi.Input[str] client_ip_pool: The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] effect_immediately: Specifies whether you want the configuration to immediately take effect.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIkeConfigArgs']]]] ike_configs: The configuration of Phase 1 negotiations. See `ike_config` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpsecServerIpsecConfigArgs']]]] ipsec_configs: The configuration of Phase 2 negotiations. See `ipsec_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIkeConfigArgs', 'IpsecServerIkeConfigArgsDict']]]] ike_configs: The configuration of Phase 1 negotiations. See `ike_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIpsecConfigArgs', 'IpsecServerIpsecConfigArgsDict']]]] ipsec_configs: The configuration of Phase 2 negotiations. See `ipsec_config` below.
         :param pulumi.Input[str] ipsec_server_name: The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
         :param pulumi.Input[str] local_subnet: The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
         :param pulumi.Input[str] psk: The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.

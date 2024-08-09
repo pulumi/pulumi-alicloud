@@ -172,7 +172,7 @@ public class HostGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HostGroup(String name) {
+    public HostGroup(java.lang.String name) {
         this(name, HostGroupArgs.Empty);
     }
     /**
@@ -180,7 +180,7 @@ public class HostGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HostGroup(String name, HostGroupArgs args) {
+    public HostGroup(java.lang.String name, HostGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -189,15 +189,22 @@ public class HostGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HostGroup(String name, HostGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:bastionhost/hostGroup:HostGroup", name, args == null ? HostGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HostGroup(java.lang.String name, HostGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:bastionhost/hostGroup:HostGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HostGroup(String name, Output<String> id, @Nullable HostGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:bastionhost/hostGroup:HostGroup", name, state, makeResourceOptions(options, id));
+    private HostGroup(java.lang.String name, Output<java.lang.String> id, @Nullable HostGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:bastionhost/hostGroup:HostGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HostGroupArgs makeArgs(HostGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HostGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -213,7 +220,7 @@ public class HostGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HostGroup get(String name, Output<String> id, @Nullable HostGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HostGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable HostGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HostGroup(name, id, state, options);
     }
 }

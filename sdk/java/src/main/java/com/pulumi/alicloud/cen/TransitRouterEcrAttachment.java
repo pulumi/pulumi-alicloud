@@ -244,7 +244,7 @@ public class TransitRouterEcrAttachment extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TransitRouterEcrAttachment(String name) {
+    public TransitRouterEcrAttachment(java.lang.String name) {
         this(name, TransitRouterEcrAttachmentArgs.Empty);
     }
     /**
@@ -252,7 +252,7 @@ public class TransitRouterEcrAttachment extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TransitRouterEcrAttachment(String name, TransitRouterEcrAttachmentArgs args) {
+    public TransitRouterEcrAttachment(java.lang.String name, TransitRouterEcrAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -261,15 +261,22 @@ public class TransitRouterEcrAttachment extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TransitRouterEcrAttachment(String name, TransitRouterEcrAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment", name, args == null ? TransitRouterEcrAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TransitRouterEcrAttachment(java.lang.String name, TransitRouterEcrAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TransitRouterEcrAttachment(String name, Output<String> id, @Nullable TransitRouterEcrAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment", name, state, makeResourceOptions(options, id));
+    private TransitRouterEcrAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterEcrAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterEcrAttachment:TransitRouterEcrAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TransitRouterEcrAttachmentArgs makeArgs(TransitRouterEcrAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TransitRouterEcrAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -285,7 +292,7 @@ public class TransitRouterEcrAttachment extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TransitRouterEcrAttachment get(String name, Output<String> id, @Nullable TransitRouterEcrAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TransitRouterEcrAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterEcrAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TransitRouterEcrAttachment(name, id, state, options);
     }
 }

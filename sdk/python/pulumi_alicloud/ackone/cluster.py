@@ -162,7 +162,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkArgs']]] = None,
+                 network: Optional[pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -193,10 +193,10 @@ class Cluster(pulumi.CustomResource):
             cidr_block="172.16.2.0/24",
             zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_cluster = alicloud.ackone.Cluster("default", network=alicloud.ackone.ClusterNetworkArgs(
-            vpc_id=default_vpc.id,
-            vswitches=[defaulty_v_switch.id],
-        ))
+        default_cluster = alicloud.ackone.Cluster("default", network={
+            "vpc_id": default_vpc.id,
+            "vswitches": [defaulty_v_switch.id],
+        })
         ```
 
         ## Import
@@ -210,7 +210,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: Cluster name.
-        :param pulumi.Input[pulumi.InputType['ClusterNetworkArgs']] network: Cluster network information. See `network` below.
+        :param pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']] network: Cluster network information. See `network` below.
         :param pulumi.Input[str] profile: Cluster attributes. Valid values: 'Default', 'XFlow'.
         """
         ...
@@ -247,10 +247,10 @@ class Cluster(pulumi.CustomResource):
             cidr_block="172.16.2.0/24",
             zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_cluster = alicloud.ackone.Cluster("default", network=alicloud.ackone.ClusterNetworkArgs(
-            vpc_id=default_vpc.id,
-            vswitches=[defaulty_v_switch.id],
-        ))
+        default_cluster = alicloud.ackone.Cluster("default", network={
+            "vpc_id": default_vpc.id,
+            "vswitches": [defaulty_v_switch.id],
+        })
         ```
 
         ## Import
@@ -277,7 +277,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
-                 network: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkArgs']]] = None,
+                 network: Optional[pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -307,7 +307,7 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            network: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkArgs']]] = None,
+            network: Optional[pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
             profile: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
@@ -319,7 +319,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_name: Cluster name.
         :param pulumi.Input[str] create_time: Cluster creation time.
-        :param pulumi.Input[pulumi.InputType['ClusterNetworkArgs']] network: Cluster network information. See `network` below.
+        :param pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']] network: Cluster network information. See `network` below.
         :param pulumi.Input[str] profile: Cluster attributes. Valid values: 'Default', 'XFlow'.
         :param pulumi.Input[str] status: The status of the resource.
         """

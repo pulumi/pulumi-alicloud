@@ -284,7 +284,7 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ImageCopy(String name) {
+    public ImageCopy(java.lang.String name) {
         this(name, ImageCopyArgs.Empty);
     }
     /**
@@ -292,7 +292,7 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ImageCopy(String name, ImageCopyArgs args) {
+    public ImageCopy(java.lang.String name, ImageCopyArgs args) {
         this(name, args, null);
     }
     /**
@@ -301,15 +301,22 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ImageCopy(String name, ImageCopyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/imageCopy:ImageCopy", name, args == null ? ImageCopyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ImageCopy(java.lang.String name, ImageCopyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/imageCopy:ImageCopy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ImageCopy(String name, Output<String> id, @Nullable ImageCopyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/imageCopy:ImageCopy", name, state, makeResourceOptions(options, id));
+    private ImageCopy(java.lang.String name, Output<java.lang.String> id, @Nullable ImageCopyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/imageCopy:ImageCopy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ImageCopyArgs makeArgs(ImageCopyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ImageCopyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -325,7 +332,7 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ImageCopy get(String name, Output<String> id, @Nullable ImageCopyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ImageCopy get(java.lang.String name, Output<java.lang.String> id, @Nullable ImageCopyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ImageCopy(name, id, state, options);
     }
 }

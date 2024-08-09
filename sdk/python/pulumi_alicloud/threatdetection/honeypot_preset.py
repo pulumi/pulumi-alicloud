@@ -175,7 +175,7 @@ class HoneypotPreset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  honeypot_image_name: Optional[pulumi.Input[str]] = None,
-                 meta: Optional[pulumi.Input[pulumi.InputType['HoneypotPresetMetaArgs']]] = None,
+                 meta: Optional[pulumi.Input[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
                  preset_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -207,10 +207,10 @@ class HoneypotPreset(pulumi.CustomResource):
             preset_name=name,
             node_id=default_honeypot_node.id,
             honeypot_image_name=default.images[0].honeypot_image_name,
-            meta=alicloud.threatdetection.HoneypotPresetMetaArgs(
-                portrait_option=True,
-                burp="open",
-            ))
+            meta={
+                "portrait_option": True,
+                "burp": "open",
+            })
         ```
 
         ## Import
@@ -224,7 +224,7 @@ class HoneypotPreset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] honeypot_image_name: Honeypot mirror name
-        :param pulumi.Input[pulumi.InputType['HoneypotPresetMetaArgs']] meta: Honeypot template custom parameters. See `meta` below.
+        :param pulumi.Input[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']] meta: Honeypot template custom parameters. See `meta` below.
         :param pulumi.Input[str] node_id: Unique id of management node
         :param pulumi.Input[str] preset_name: Honeypot template custom name
         """
@@ -262,10 +262,10 @@ class HoneypotPreset(pulumi.CustomResource):
             preset_name=name,
             node_id=default_honeypot_node.id,
             honeypot_image_name=default.images[0].honeypot_image_name,
-            meta=alicloud.threatdetection.HoneypotPresetMetaArgs(
-                portrait_option=True,
-                burp="open",
-            ))
+            meta={
+                "portrait_option": True,
+                "burp": "open",
+            })
         ```
 
         ## Import
@@ -292,7 +292,7 @@ class HoneypotPreset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  honeypot_image_name: Optional[pulumi.Input[str]] = None,
-                 meta: Optional[pulumi.Input[pulumi.InputType['HoneypotPresetMetaArgs']]] = None,
+                 meta: Optional[pulumi.Input[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']]] = None,
                  node_id: Optional[pulumi.Input[str]] = None,
                  preset_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -329,7 +329,7 @@ class HoneypotPreset(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             honeypot_image_name: Optional[pulumi.Input[str]] = None,
             honeypot_preset_id: Optional[pulumi.Input[str]] = None,
-            meta: Optional[pulumi.Input[pulumi.InputType['HoneypotPresetMetaArgs']]] = None,
+            meta: Optional[pulumi.Input[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']]] = None,
             node_id: Optional[pulumi.Input[str]] = None,
             preset_name: Optional[pulumi.Input[str]] = None) -> 'HoneypotPreset':
         """
@@ -341,7 +341,7 @@ class HoneypotPreset(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] honeypot_image_name: Honeypot mirror name
         :param pulumi.Input[str] honeypot_preset_id: Unique ID of honeypot Template
-        :param pulumi.Input[pulumi.InputType['HoneypotPresetMetaArgs']] meta: Honeypot template custom parameters. See `meta` below.
+        :param pulumi.Input[Union['HoneypotPresetMetaArgs', 'HoneypotPresetMetaArgsDict']] meta: Honeypot template custom parameters. See `meta` below.
         :param pulumi.Input[str] node_id: Unique id of management node
         :param pulumi.Input[str] preset_name: Honeypot template custom name
         """

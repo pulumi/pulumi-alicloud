@@ -117,7 +117,7 @@ public class ReplicaPairDrill extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ReplicaPairDrill(String name) {
+    public ReplicaPairDrill(java.lang.String name) {
         this(name, ReplicaPairDrillArgs.Empty);
     }
     /**
@@ -125,7 +125,7 @@ public class ReplicaPairDrill extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ReplicaPairDrill(String name, ReplicaPairDrillArgs args) {
+    public ReplicaPairDrill(java.lang.String name, ReplicaPairDrillArgs args) {
         this(name, args, null);
     }
     /**
@@ -134,15 +134,22 @@ public class ReplicaPairDrill extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ReplicaPairDrill(String name, ReplicaPairDrillArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ebs/replicaPairDrill:ReplicaPairDrill", name, args == null ? ReplicaPairDrillArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ReplicaPairDrill(java.lang.String name, ReplicaPairDrillArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ebs/replicaPairDrill:ReplicaPairDrill", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ReplicaPairDrill(String name, Output<String> id, @Nullable ReplicaPairDrillState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ebs/replicaPairDrill:ReplicaPairDrill", name, state, makeResourceOptions(options, id));
+    private ReplicaPairDrill(java.lang.String name, Output<java.lang.String> id, @Nullable ReplicaPairDrillState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ebs/replicaPairDrill:ReplicaPairDrill", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ReplicaPairDrillArgs makeArgs(ReplicaPairDrillArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ReplicaPairDrillArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -158,7 +165,7 @@ public class ReplicaPairDrill extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ReplicaPairDrill get(String name, Output<String> id, @Nullable ReplicaPairDrillState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ReplicaPairDrill get(java.lang.String name, Output<java.lang.String> id, @Nullable ReplicaPairDrillState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ReplicaPairDrill(name, id, state, options);
     }
 }

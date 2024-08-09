@@ -272,10 +272,10 @@ class DbInstanceEndpointAddress(pulumi.CustomResource):
             connection_string_prefix="example",
             port="3306",
             db_instance_endpoint_description=name,
-            node_items=[alicloud.rds.DbInstanceEndpointNodeItemArgs(
-                node_id=default_db_node.node_id,
-                weight=25,
-            )])
+            node_items=[{
+                "node_id": default_db_node.node_id,
+                "weight": 25,
+            }])
         default_db_instance_endpoint_address = alicloud.rds.DbInstanceEndpointAddress("default",
             db_instance_id=default_instance.id,
             db_instance_endpoint_id=default_db_instance_endpoint.db_instance_endpoint_id,
@@ -367,10 +367,10 @@ class DbInstanceEndpointAddress(pulumi.CustomResource):
             connection_string_prefix="example",
             port="3306",
             db_instance_endpoint_description=name,
-            node_items=[alicloud.rds.DbInstanceEndpointNodeItemArgs(
-                node_id=default_db_node.node_id,
-                weight=25,
-            )])
+            node_items=[{
+                "node_id": default_db_node.node_id,
+                "weight": 25,
+            }])
         default_db_instance_endpoint_address = alicloud.rds.DbInstanceEndpointAddress("default",
             db_instance_id=default_instance.id,
             db_instance_endpoint_id=default_db_instance_endpoint.db_instance_endpoint_id,

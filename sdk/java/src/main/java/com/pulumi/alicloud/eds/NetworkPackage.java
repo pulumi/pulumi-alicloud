@@ -147,7 +147,7 @@ public class NetworkPackage extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NetworkPackage(String name) {
+    public NetworkPackage(java.lang.String name) {
         this(name, NetworkPackageArgs.Empty);
     }
     /**
@@ -155,7 +155,7 @@ public class NetworkPackage extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NetworkPackage(String name, NetworkPackageArgs args) {
+    public NetworkPackage(java.lang.String name, NetworkPackageArgs args) {
         this(name, args, null);
     }
     /**
@@ -164,15 +164,22 @@ public class NetworkPackage extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NetworkPackage(String name, NetworkPackageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eds/networkPackage:NetworkPackage", name, args == null ? NetworkPackageArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NetworkPackage(java.lang.String name, NetworkPackageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eds/networkPackage:NetworkPackage", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NetworkPackage(String name, Output<String> id, @Nullable NetworkPackageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eds/networkPackage:NetworkPackage", name, state, makeResourceOptions(options, id));
+    private NetworkPackage(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkPackageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eds/networkPackage:NetworkPackage", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NetworkPackageArgs makeArgs(NetworkPackageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NetworkPackageArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -188,7 +195,7 @@ public class NetworkPackage extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NetworkPackage get(String name, Output<String> id, @Nullable NetworkPackageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NetworkPackage get(java.lang.String name, Output<java.lang.String> id, @Nullable NetworkPackageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NetworkPackage(name, id, state, options);
     }
 }

@@ -180,7 +180,7 @@ public class SwitchDasPro extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SwitchDasPro(String name) {
+    public SwitchDasPro(java.lang.String name) {
         this(name, SwitchDasProArgs.Empty);
     }
     /**
@@ -188,7 +188,7 @@ public class SwitchDasPro extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SwitchDasPro(String name, SwitchDasProArgs args) {
+    public SwitchDasPro(java.lang.String name, SwitchDasProArgs args) {
         this(name, args, null);
     }
     /**
@@ -197,15 +197,22 @@ public class SwitchDasPro extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SwitchDasPro(String name, SwitchDasProArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:das/switchDasPro:SwitchDasPro", name, args == null ? SwitchDasProArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SwitchDasPro(java.lang.String name, SwitchDasProArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:das/switchDasPro:SwitchDasPro", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SwitchDasPro(String name, Output<String> id, @Nullable SwitchDasProState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:das/switchDasPro:SwitchDasPro", name, state, makeResourceOptions(options, id));
+    private SwitchDasPro(java.lang.String name, Output<java.lang.String> id, @Nullable SwitchDasProState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:das/switchDasPro:SwitchDasPro", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SwitchDasProArgs makeArgs(SwitchDasProArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SwitchDasProArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -221,7 +228,7 @@ public class SwitchDasPro extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SwitchDasPro get(String name, Output<String> id, @Nullable SwitchDasProState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SwitchDasPro get(java.lang.String name, Output<java.lang.String> id, @Nullable SwitchDasProState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SwitchDasPro(name, id, state, options);
     }
 }

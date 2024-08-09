@@ -189,7 +189,7 @@ public class RoleAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RoleAttachment(String name) {
+    public RoleAttachment(java.lang.String name) {
         this(name, RoleAttachmentArgs.Empty);
     }
     /**
@@ -197,7 +197,7 @@ public class RoleAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RoleAttachment(String name, RoleAttachmentArgs args) {
+    public RoleAttachment(java.lang.String name, RoleAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -206,15 +206,22 @@ public class RoleAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RoleAttachment(String name, RoleAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ram/roleAttachment:RoleAttachment", name, args == null ? RoleAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RoleAttachment(java.lang.String name, RoleAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ram/roleAttachment:RoleAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RoleAttachment(String name, Output<String> id, @Nullable RoleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ram/roleAttachment:RoleAttachment", name, state, makeResourceOptions(options, id));
+    private RoleAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable RoleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ram/roleAttachment:RoleAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RoleAttachmentArgs makeArgs(RoleAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RoleAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -230,7 +237,7 @@ public class RoleAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RoleAttachment get(String name, Output<String> id, @Nullable RoleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RoleAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable RoleAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RoleAttachment(name, id, state, options);
     }
 }

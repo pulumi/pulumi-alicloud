@@ -241,7 +241,7 @@ public class EnterpriseProxy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EnterpriseProxy(String name) {
+    public EnterpriseProxy(java.lang.String name) {
         this(name, EnterpriseProxyArgs.Empty);
     }
     /**
@@ -249,7 +249,7 @@ public class EnterpriseProxy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EnterpriseProxy(String name, EnterpriseProxyArgs args) {
+    public EnterpriseProxy(java.lang.String name, EnterpriseProxyArgs args) {
         this(name, args, null);
     }
     /**
@@ -258,15 +258,22 @@ public class EnterpriseProxy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EnterpriseProxy(String name, EnterpriseProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dms/enterpriseProxy:EnterpriseProxy", name, args == null ? EnterpriseProxyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EnterpriseProxy(java.lang.String name, EnterpriseProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dms/enterpriseProxy:EnterpriseProxy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EnterpriseProxy(String name, Output<String> id, @Nullable EnterpriseProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dms/enterpriseProxy:EnterpriseProxy", name, state, makeResourceOptions(options, id));
+    private EnterpriseProxy(java.lang.String name, Output<java.lang.String> id, @Nullable EnterpriseProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dms/enterpriseProxy:EnterpriseProxy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EnterpriseProxyArgs makeArgs(EnterpriseProxyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EnterpriseProxyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -286,7 +293,7 @@ public class EnterpriseProxy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EnterpriseProxy get(String name, Output<String> id, @Nullable EnterpriseProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EnterpriseProxy get(java.lang.String name, Output<java.lang.String> id, @Nullable EnterpriseProxyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EnterpriseProxy(name, id, state, options);
     }
 }

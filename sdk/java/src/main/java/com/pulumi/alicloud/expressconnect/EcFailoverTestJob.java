@@ -190,7 +190,7 @@ public class EcFailoverTestJob extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EcFailoverTestJob(String name) {
+    public EcFailoverTestJob(java.lang.String name) {
         this(name, EcFailoverTestJobArgs.Empty);
     }
     /**
@@ -198,7 +198,7 @@ public class EcFailoverTestJob extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EcFailoverTestJob(String name, EcFailoverTestJobArgs args) {
+    public EcFailoverTestJob(java.lang.String name, EcFailoverTestJobArgs args) {
         this(name, args, null);
     }
     /**
@@ -207,15 +207,22 @@ public class EcFailoverTestJob extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EcFailoverTestJob(String name, EcFailoverTestJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob", name, args == null ? EcFailoverTestJobArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EcFailoverTestJob(java.lang.String name, EcFailoverTestJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EcFailoverTestJob(String name, Output<String> id, @Nullable EcFailoverTestJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob", name, state, makeResourceOptions(options, id));
+    private EcFailoverTestJob(java.lang.String name, Output<java.lang.String> id, @Nullable EcFailoverTestJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/ecFailoverTestJob:EcFailoverTestJob", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EcFailoverTestJobArgs makeArgs(EcFailoverTestJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EcFailoverTestJobArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -231,7 +238,7 @@ public class EcFailoverTestJob extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EcFailoverTestJob get(String name, Output<String> id, @Nullable EcFailoverTestJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EcFailoverTestJob get(java.lang.String name, Output<java.lang.String> id, @Nullable EcFailoverTestJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EcFailoverTestJob(name, id, state, options);
     }
 }

@@ -181,7 +181,7 @@ public class BandwidthLimit extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BandwidthLimit(String name) {
+    public BandwidthLimit(java.lang.String name) {
         this(name, BandwidthLimitArgs.Empty);
     }
     /**
@@ -189,7 +189,7 @@ public class BandwidthLimit extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BandwidthLimit(String name, BandwidthLimitArgs args) {
+    public BandwidthLimit(java.lang.String name, BandwidthLimitArgs args) {
         this(name, args, null);
     }
     /**
@@ -198,15 +198,22 @@ public class BandwidthLimit extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BandwidthLimit(String name, BandwidthLimitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/bandwidthLimit:BandwidthLimit", name, args == null ? BandwidthLimitArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BandwidthLimit(java.lang.String name, BandwidthLimitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/bandwidthLimit:BandwidthLimit", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BandwidthLimit(String name, Output<String> id, @Nullable BandwidthLimitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/bandwidthLimit:BandwidthLimit", name, state, makeResourceOptions(options, id));
+    private BandwidthLimit(java.lang.String name, Output<java.lang.String> id, @Nullable BandwidthLimitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/bandwidthLimit:BandwidthLimit", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BandwidthLimitArgs makeArgs(BandwidthLimitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BandwidthLimitArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -222,7 +229,7 @@ public class BandwidthLimit extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BandwidthLimit get(String name, Output<String> id, @Nullable BandwidthLimitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BandwidthLimit get(java.lang.String name, Output<java.lang.String> id, @Nullable BandwidthLimitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BandwidthLimit(name, id, state, options);
     }
 }

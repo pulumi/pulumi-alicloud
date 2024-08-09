@@ -402,7 +402,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 associate_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DhcpOptionsSetAssociateVpcArgs']]]]] = None,
+                 associate_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionsSetAssociateVpcArgs', 'DhcpOptionsSetAssociateVpcArgsDict']]]]] = None,
                  dhcp_options_set_description: Optional[pulumi.Input[str]] = None,
                  dhcp_options_set_name: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
@@ -452,7 +452,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DhcpOptionsSetAssociateVpcArgs']]]] associate_vpcs: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionsSetAssociateVpcArgs', 'DhcpOptionsSetAssociateVpcArgsDict']]]] associate_vpcs: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         :param pulumi.Input[str] dhcp_options_set_description: The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
         :param pulumi.Input[str] dhcp_options_set_name: The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         :param pulumi.Input[str] domain_name: The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
@@ -523,7 +523,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 associate_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DhcpOptionsSetAssociateVpcArgs']]]]] = None,
+                 associate_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionsSetAssociateVpcArgs', 'DhcpOptionsSetAssociateVpcArgsDict']]]]] = None,
                  dhcp_options_set_description: Optional[pulumi.Input[str]] = None,
                  dhcp_options_set_name: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
@@ -564,7 +564,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            associate_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DhcpOptionsSetAssociateVpcArgs']]]]] = None,
+            associate_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionsSetAssociateVpcArgs', 'DhcpOptionsSetAssociateVpcArgsDict']]]]] = None,
             dhcp_options_set_description: Optional[pulumi.Input[str]] = None,
             dhcp_options_set_name: Optional[pulumi.Input[str]] = None,
             domain_name: Optional[pulumi.Input[str]] = None,
@@ -583,7 +583,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DhcpOptionsSetAssociateVpcArgs']]]] associate_vpcs: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionsSetAssociateVpcArgs', 'DhcpOptionsSetAssociateVpcArgsDict']]]] associate_vpcs: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         :param pulumi.Input[str] dhcp_options_set_description: The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
         :param pulumi.Input[str] dhcp_options_set_name: The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         :param pulumi.Input[str] domain_name: The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.

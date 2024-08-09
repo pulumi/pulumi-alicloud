@@ -177,7 +177,7 @@ public class StoreIndex extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public StoreIndex(String name) {
+    public StoreIndex(java.lang.String name) {
         this(name, StoreIndexArgs.Empty);
     }
     /**
@@ -185,7 +185,7 @@ public class StoreIndex extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StoreIndex(String name, StoreIndexArgs args) {
+    public StoreIndex(java.lang.String name, StoreIndexArgs args) {
         this(name, args, null);
     }
     /**
@@ -194,15 +194,22 @@ public class StoreIndex extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StoreIndex(String name, StoreIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/storeIndex:StoreIndex", name, args == null ? StoreIndexArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public StoreIndex(java.lang.String name, StoreIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/storeIndex:StoreIndex", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private StoreIndex(String name, Output<String> id, @Nullable StoreIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/storeIndex:StoreIndex", name, state, makeResourceOptions(options, id));
+    private StoreIndex(java.lang.String name, Output<java.lang.String> id, @Nullable StoreIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/storeIndex:StoreIndex", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static StoreIndexArgs makeArgs(StoreIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? StoreIndexArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -218,7 +225,7 @@ public class StoreIndex extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static StoreIndex get(String name, Output<String> id, @Nullable StoreIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static StoreIndex get(java.lang.String name, Output<java.lang.String> id, @Nullable StoreIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new StoreIndex(name, id, state, options);
     }
 }

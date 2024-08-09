@@ -77,7 +77,7 @@ import (
 //				return err
 //			}
 //			exampleFolder, err := resourcemanager.NewFolder(ctx, "example", &resourcemanager.FolderArgs{
-//				FolderName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				FolderName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err

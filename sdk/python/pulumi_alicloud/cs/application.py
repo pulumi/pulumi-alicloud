@@ -361,7 +361,7 @@ class Application(pulumi.CustomResource):
             environment: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             latest_image: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationServiceArgs']]]]] = None,
+            services: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationServiceArgs', 'ApplicationServiceArgsDict']]]]] = None,
             template: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'Application':
         """

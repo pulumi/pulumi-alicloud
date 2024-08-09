@@ -825,7 +825,7 @@ class ReservedInstance(pulumi.CustomResource):
             instance_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             offering_type: Optional[pulumi.Input[str]] = None,
-            operation_locks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservedInstanceOperationLockArgs']]]]] = None,
+            operation_locks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReservedInstanceOperationLockArgs', 'ReservedInstanceOperationLockArgsDict']]]]] = None,
             period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
             platform: Optional[pulumi.Input[str]] = None,
@@ -856,7 +856,7 @@ class ReservedInstance(pulumi.CustomResource):
                - `No Upfront`: No upfront payment.
                - `Partial Upfront`: A portion of upfront payment.
                - `All Upfront`: Full upfront payment.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservedInstanceOperationLockArgs']]]] operation_locks: Details about the lock status of the reserved instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReservedInstanceOperationLockArgs', 'ReservedInstanceOperationLockArgsDict']]]] operation_locks: Details about the lock status of the reserved instance.
         :param pulumi.Input[int] period: The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
                - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
                - When `period_unit` is `Month`, Valid values: `1`.

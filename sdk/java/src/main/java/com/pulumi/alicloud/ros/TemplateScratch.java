@@ -220,7 +220,7 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TemplateScratch(String name) {
+    public TemplateScratch(java.lang.String name) {
         this(name, TemplateScratchArgs.Empty);
     }
     /**
@@ -228,7 +228,7 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TemplateScratch(String name, TemplateScratchArgs args) {
+    public TemplateScratch(java.lang.String name, TemplateScratchArgs args) {
         this(name, args, null);
     }
     /**
@@ -237,15 +237,22 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TemplateScratch(String name, TemplateScratchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ros/templateScratch:TemplateScratch", name, args == null ? TemplateScratchArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TemplateScratch(java.lang.String name, TemplateScratchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ros/templateScratch:TemplateScratch", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TemplateScratch(String name, Output<String> id, @Nullable TemplateScratchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ros/templateScratch:TemplateScratch", name, state, makeResourceOptions(options, id));
+    private TemplateScratch(java.lang.String name, Output<java.lang.String> id, @Nullable TemplateScratchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ros/templateScratch:TemplateScratch", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TemplateScratchArgs makeArgs(TemplateScratchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TemplateScratchArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -261,7 +268,7 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TemplateScratch get(String name, Output<String> id, @Nullable TemplateScratchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TemplateScratch get(java.lang.String name, Output<java.lang.String> id, @Nullable TemplateScratchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TemplateScratch(name, id, state, options);
     }
 }

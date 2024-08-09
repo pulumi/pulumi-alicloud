@@ -147,7 +147,7 @@ public class ServiceHybridDoubleWrite extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceHybridDoubleWrite(String name) {
+    public ServiceHybridDoubleWrite(java.lang.String name) {
         this(name, ServiceHybridDoubleWriteArgs.Empty);
     }
     /**
@@ -155,7 +155,7 @@ public class ServiceHybridDoubleWrite extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceHybridDoubleWrite(String name, ServiceHybridDoubleWriteArgs args) {
+    public ServiceHybridDoubleWrite(java.lang.String name, ServiceHybridDoubleWriteArgs args) {
         this(name, args, null);
     }
     /**
@@ -164,15 +164,22 @@ public class ServiceHybridDoubleWrite extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceHybridDoubleWrite(String name, ServiceHybridDoubleWriteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite", name, args == null ? ServiceHybridDoubleWriteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServiceHybridDoubleWrite(java.lang.String name, ServiceHybridDoubleWriteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceHybridDoubleWrite(String name, Output<String> id, @Nullable ServiceHybridDoubleWriteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite", name, state, makeResourceOptions(options, id));
+    private ServiceHybridDoubleWrite(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceHybridDoubleWriteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServiceHybridDoubleWriteArgs makeArgs(ServiceHybridDoubleWriteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceHybridDoubleWriteArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -188,7 +195,7 @@ public class ServiceHybridDoubleWrite extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceHybridDoubleWrite get(String name, Output<String> id, @Nullable ServiceHybridDoubleWriteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceHybridDoubleWrite get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceHybridDoubleWriteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceHybridDoubleWrite(name, id, state, options);
     }
 }

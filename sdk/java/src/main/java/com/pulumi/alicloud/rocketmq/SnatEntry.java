@@ -121,7 +121,7 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SnatEntry(String name) {
+    public SnatEntry(java.lang.String name) {
         this(name, SnatEntryArgs.Empty);
     }
     /**
@@ -129,7 +129,7 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SnatEntry(String name, SnatEntryArgs args) {
+    public SnatEntry(java.lang.String name, SnatEntryArgs args) {
         this(name, args, null);
     }
     /**
@@ -138,15 +138,22 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SnatEntry(String name, SnatEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rocketmq/snatEntry:SnatEntry", name, args == null ? SnatEntryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SnatEntry(java.lang.String name, SnatEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rocketmq/snatEntry:SnatEntry", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SnatEntry(String name, Output<String> id, @Nullable SnatEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rocketmq/snatEntry:SnatEntry", name, state, makeResourceOptions(options, id));
+    private SnatEntry(java.lang.String name, Output<java.lang.String> id, @Nullable SnatEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rocketmq/snatEntry:SnatEntry", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SnatEntryArgs makeArgs(SnatEntryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SnatEntryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -162,7 +169,7 @@ public class SnatEntry extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SnatEntry get(String name, Output<String> id, @Nullable SnatEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SnatEntry get(java.lang.String name, Output<java.lang.String> id, @Nullable SnatEntryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SnatEntry(name, id, state, options);
     }
 }

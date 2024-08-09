@@ -103,7 +103,7 @@ public class HpcCluster extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HpcCluster(String name) {
+    public HpcCluster(java.lang.String name) {
         this(name, HpcClusterArgs.Empty);
     }
     /**
@@ -111,7 +111,7 @@ public class HpcCluster extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HpcCluster(String name, @Nullable HpcClusterArgs args) {
+    public HpcCluster(java.lang.String name, @Nullable HpcClusterArgs args) {
         this(name, args, null);
     }
     /**
@@ -120,15 +120,22 @@ public class HpcCluster extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HpcCluster(String name, @Nullable HpcClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/hpcCluster:HpcCluster", name, args == null ? HpcClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HpcCluster(java.lang.String name, @Nullable HpcClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/hpcCluster:HpcCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HpcCluster(String name, Output<String> id, @Nullable HpcClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/hpcCluster:HpcCluster", name, state, makeResourceOptions(options, id));
+    private HpcCluster(java.lang.String name, Output<java.lang.String> id, @Nullable HpcClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/hpcCluster:HpcCluster", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HpcClusterArgs makeArgs(@Nullable HpcClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HpcClusterArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -144,7 +151,7 @@ public class HpcCluster extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HpcCluster get(String name, Output<String> id, @Nullable HpcClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HpcCluster get(java.lang.String name, Output<java.lang.String> id, @Nullable HpcClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HpcCluster(name, id, state, options);
     }
 }

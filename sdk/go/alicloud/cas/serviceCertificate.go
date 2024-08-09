@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = cas.NewServiceCertificate(ctx, "default", &cas.ServiceCertificateArgs{
-//				CertificateName: pulumi.String(fmt.Sprintf("tf-example-%v", _default.Result)),
+//				CertificateName: pulumi.Sprintf("tf-example-%v", _default.Result),
 //				Cert: pulumi.String(`-----BEGIN CERTIFICATE-----
 //
 // MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD

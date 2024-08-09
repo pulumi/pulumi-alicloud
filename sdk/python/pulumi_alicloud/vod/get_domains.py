@@ -140,11 +140,11 @@ def get_domains(domain_search_type: Optional[str] = None,
     default_domain = alicloud.vod.Domain("default",
         domain_name="your_domain_name",
         scope="domestic",
-        sources=[alicloud.vod.DomainSourceArgs(
-            source_type="domain",
-            source_content="your_source_content",
-            source_port="80",
-        )],
+        sources=[{
+            "source_type": "domain",
+            "source_content": "your_source_content",
+            "source_port": "80",
+        }],
         tags={
             "key1": "value1",
             "key2": "value2",
@@ -213,11 +213,11 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
     default_domain = alicloud.vod.Domain("default",
         domain_name="your_domain_name",
         scope="domestic",
-        sources=[alicloud.vod.DomainSourceArgs(
-            source_type="domain",
-            source_content="your_source_content",
-            source_port="80",
-        )],
+        sources=[{
+            "source_type": "domain",
+            "source_content": "your_source_content",
+            "source_port": "80",
+        }],
         tags={
             "key1": "value1",
             "key2": "value2",

@@ -97,7 +97,7 @@ class UserPermission(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionPermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionPermissionArgs', 'UserPermissionPermissionArgsDict']]]]] = None,
                  sub_account_user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -117,7 +117,7 @@ class UserPermission(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionPermissionArgs']]]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionPermissionArgs', 'UserPermissionPermissionArgsDict']]]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         :param pulumi.Input[str] sub_account_user_id: The configuration of the Load Balancer. See the following `Block load_balancer`.
         """
         ...
@@ -156,7 +156,7 @@ class UserPermission(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionPermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionPermissionArgs', 'UserPermissionPermissionArgsDict']]]]] = None,
                  sub_account_user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -181,7 +181,7 @@ class UserPermission(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionPermissionArgs']]]]] = None,
+            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionPermissionArgs', 'UserPermissionPermissionArgsDict']]]]] = None,
             sub_account_user_id: Optional[pulumi.Input[str]] = None) -> 'UserPermission':
         """
         Get an existing UserPermission resource's state with the given name, id, and optional extra
@@ -190,7 +190,7 @@ class UserPermission(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserPermissionPermissionArgs']]]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionPermissionArgs', 'UserPermissionPermissionArgsDict']]]] permissions: List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
         :param pulumi.Input[str] sub_account_user_id: The configuration of the Load Balancer. See the following `Block load_balancer`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

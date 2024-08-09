@@ -62,7 +62,7 @@ public class MscSubWebhook extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MscSubWebhook(String name) {
+    public MscSubWebhook(java.lang.String name) {
         this(name, MscSubWebhookArgs.Empty);
     }
     /**
@@ -70,7 +70,7 @@ public class MscSubWebhook extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MscSubWebhook(String name, MscSubWebhookArgs args) {
+    public MscSubWebhook(java.lang.String name, MscSubWebhookArgs args) {
         this(name, args, null);
     }
     /**
@@ -79,15 +79,22 @@ public class MscSubWebhook extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MscSubWebhook(String name, MscSubWebhookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:index/mscSubWebhook:MscSubWebhook", name, args == null ? MscSubWebhookArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MscSubWebhook(java.lang.String name, MscSubWebhookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:index/mscSubWebhook:MscSubWebhook", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MscSubWebhook(String name, Output<String> id, @Nullable MscSubWebhookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:index/mscSubWebhook:MscSubWebhook", name, state, makeResourceOptions(options, id));
+    private MscSubWebhook(java.lang.String name, Output<java.lang.String> id, @Nullable MscSubWebhookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:index/mscSubWebhook:MscSubWebhook", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MscSubWebhookArgs makeArgs(MscSubWebhookArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MscSubWebhookArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -103,7 +110,7 @@ public class MscSubWebhook extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MscSubWebhook get(String name, Output<String> id, @Nullable MscSubWebhookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MscSubWebhook get(java.lang.String name, Output<java.lang.String> id, @Nullable MscSubWebhookState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MscSubWebhook(name, id, state, options);
     }
 }

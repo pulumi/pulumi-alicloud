@@ -242,7 +242,7 @@ class LakeAccount(pulumi.CustomResource):
                  account_description: Optional[pulumi.Input[str]] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
-                 account_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LakeAccountAccountPrivilegeArgs']]]]] = None,
+                 account_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]]] = None,
                  account_type: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -291,33 +291,33 @@ class LakeAccount(pulumi.CustomResource):
             account_name="tfnormal",
             account_password="normal@2023",
             account_privileges=[
-                alicloud.adb.LakeAccountAccountPrivilegeArgs(
-                    privilege_type="Database",
-                    privilege_object=alicloud.adb.LakeAccountAccountPrivilegePrivilegeObjectArgs(
-                        database="MYSQL",
-                    ),
-                    privileges=[
+                {
+                    "privilege_type": "Database",
+                    "privilege_object": {
+                        "database": "MYSQL",
+                    },
+                    "privileges": [
                         "select",
                         "update",
                     ],
-                ),
-                alicloud.adb.LakeAccountAccountPrivilegeArgs(
-                    privilege_type="Table",
-                    privilege_object=alicloud.adb.LakeAccountAccountPrivilegePrivilegeObjectArgs(
-                        database="INFORMATION_SCHEMA",
-                        table="ENGINES",
-                    ),
-                    privileges=["update"],
-                ),
-                alicloud.adb.LakeAccountAccountPrivilegeArgs(
-                    privilege_type="Column",
-                    privilege_object=alicloud.adb.LakeAccountAccountPrivilegePrivilegeObjectArgs(
-                        table="COLUMNS",
-                        column="PRIVILEGES",
-                        database="INFORMATION_SCHEMA",
-                    ),
-                    privileges=["update"],
-                ),
+                },
+                {
+                    "privilege_type": "Table",
+                    "privilege_object": {
+                        "database": "INFORMATION_SCHEMA",
+                        "table": "ENGINES",
+                    },
+                    "privileges": ["update"],
+                },
+                {
+                    "privilege_type": "Column",
+                    "privilege_object": {
+                        "table": "COLUMNS",
+                        "column": "PRIVILEGES",
+                        "database": "INFORMATION_SCHEMA",
+                    },
+                    "privileges": ["update"],
+                },
             ],
             account_description=name)
         ```
@@ -335,7 +335,7 @@ class LakeAccount(pulumi.CustomResource):
         :param pulumi.Input[str] account_description: The description of the account.
         :param pulumi.Input[str] account_name: The name of the account.
         :param pulumi.Input[str] account_password: AccountPassword.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LakeAccountAccountPrivilegeArgs']]]] account_privileges: List of permissions granted. See `account_privileges` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]] account_privileges: List of permissions granted. See `account_privileges` below.
         :param pulumi.Input[str] account_type: The type of the account.
         :param pulumi.Input[str] db_cluster_id: The DBCluster ID.
         """
@@ -390,33 +390,33 @@ class LakeAccount(pulumi.CustomResource):
             account_name="tfnormal",
             account_password="normal@2023",
             account_privileges=[
-                alicloud.adb.LakeAccountAccountPrivilegeArgs(
-                    privilege_type="Database",
-                    privilege_object=alicloud.adb.LakeAccountAccountPrivilegePrivilegeObjectArgs(
-                        database="MYSQL",
-                    ),
-                    privileges=[
+                {
+                    "privilege_type": "Database",
+                    "privilege_object": {
+                        "database": "MYSQL",
+                    },
+                    "privileges": [
                         "select",
                         "update",
                     ],
-                ),
-                alicloud.adb.LakeAccountAccountPrivilegeArgs(
-                    privilege_type="Table",
-                    privilege_object=alicloud.adb.LakeAccountAccountPrivilegePrivilegeObjectArgs(
-                        database="INFORMATION_SCHEMA",
-                        table="ENGINES",
-                    ),
-                    privileges=["update"],
-                ),
-                alicloud.adb.LakeAccountAccountPrivilegeArgs(
-                    privilege_type="Column",
-                    privilege_object=alicloud.adb.LakeAccountAccountPrivilegePrivilegeObjectArgs(
-                        table="COLUMNS",
-                        column="PRIVILEGES",
-                        database="INFORMATION_SCHEMA",
-                    ),
-                    privileges=["update"],
-                ),
+                },
+                {
+                    "privilege_type": "Table",
+                    "privilege_object": {
+                        "database": "INFORMATION_SCHEMA",
+                        "table": "ENGINES",
+                    },
+                    "privileges": ["update"],
+                },
+                {
+                    "privilege_type": "Column",
+                    "privilege_object": {
+                        "table": "COLUMNS",
+                        "column": "PRIVILEGES",
+                        "database": "INFORMATION_SCHEMA",
+                    },
+                    "privileges": ["update"],
+                },
             ],
             account_description=name)
         ```
@@ -447,7 +447,7 @@ class LakeAccount(pulumi.CustomResource):
                  account_description: Optional[pulumi.Input[str]] = None,
                  account_name: Optional[pulumi.Input[str]] = None,
                  account_password: Optional[pulumi.Input[str]] = None,
-                 account_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LakeAccountAccountPrivilegeArgs']]]]] = None,
+                 account_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]]] = None,
                  account_type: Optional[pulumi.Input[str]] = None,
                  db_cluster_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -487,7 +487,7 @@ class LakeAccount(pulumi.CustomResource):
             account_description: Optional[pulumi.Input[str]] = None,
             account_name: Optional[pulumi.Input[str]] = None,
             account_password: Optional[pulumi.Input[str]] = None,
-            account_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LakeAccountAccountPrivilegeArgs']]]]] = None,
+            account_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]]] = None,
             account_type: Optional[pulumi.Input[str]] = None,
             db_cluster_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'LakeAccount':
@@ -501,7 +501,7 @@ class LakeAccount(pulumi.CustomResource):
         :param pulumi.Input[str] account_description: The description of the account.
         :param pulumi.Input[str] account_name: The name of the account.
         :param pulumi.Input[str] account_password: AccountPassword.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LakeAccountAccountPrivilegeArgs']]]] account_privileges: List of permissions granted. See `account_privileges` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LakeAccountAccountPrivilegeArgs', 'LakeAccountAccountPrivilegeArgsDict']]]] account_privileges: List of permissions granted. See `account_privileges` below.
         :param pulumi.Input[str] account_type: The type of the account.
         :param pulumi.Input[str] db_cluster_id: The DBCluster ID.
         :param pulumi.Input[str] status: The status of the resource.

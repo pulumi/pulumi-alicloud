@@ -314,7 +314,7 @@ class QuotaAlarm(pulumi.CustomResource):
                  product_code: Optional[pulumi.Input[str]] = None,
                  quota_action_code: Optional[pulumi.Input[str]] = None,
                  quota_alarm_name: Optional[pulumi.Input[str]] = None,
-                 quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]]] = None,
+                 quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict']]]]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  threshold_percent: Optional[pulumi.Input[float]] = None,
                  threshold_type: Optional[pulumi.Input[str]] = None,
@@ -345,10 +345,10 @@ class QuotaAlarm(pulumi.CustomResource):
             max=99999)
         default_quota_alarm = alicloud.quotas.QuotaAlarm("default",
             quota_action_code="q_desktop-count",
-            quota_dimensions=[alicloud.quotas.QuotaAlarmQuotaDimensionArgs(
-                key="regionId",
-                value="cn-hangzhou",
-            )],
+            quota_dimensions=[{
+                "key": "regionId",
+                "value": "cn-hangzhou",
+            }],
             threshold_percent=80,
             product_code="gws",
             quota_alarm_name=f"{name}-{default['result']}",
@@ -368,7 +368,7 @@ class QuotaAlarm(pulumi.CustomResource):
         :param pulumi.Input[str] product_code: The Product Code.
         :param pulumi.Input[str] quota_action_code: The Quota Action Code.
         :param pulumi.Input[str] quota_alarm_name: The name of Quota Alarm.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict']]]] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
         :param pulumi.Input[float] threshold: The threshold of Quota Alarm.
         :param pulumi.Input[float] threshold_percent: The threshold percent of Quota Alarm.
         :param pulumi.Input[str] threshold_type: Quota alarm type. Value:
@@ -407,10 +407,10 @@ class QuotaAlarm(pulumi.CustomResource):
             max=99999)
         default_quota_alarm = alicloud.quotas.QuotaAlarm("default",
             quota_action_code="q_desktop-count",
-            quota_dimensions=[alicloud.quotas.QuotaAlarmQuotaDimensionArgs(
-                key="regionId",
-                value="cn-hangzhou",
-            )],
+            quota_dimensions=[{
+                "key": "regionId",
+                "value": "cn-hangzhou",
+            }],
             threshold_percent=80,
             product_code="gws",
             quota_alarm_name=f"{name}-{default['result']}",
@@ -443,7 +443,7 @@ class QuotaAlarm(pulumi.CustomResource):
                  product_code: Optional[pulumi.Input[str]] = None,
                  quota_action_code: Optional[pulumi.Input[str]] = None,
                  quota_alarm_name: Optional[pulumi.Input[str]] = None,
-                 quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]]] = None,
+                 quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict']]]]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  threshold_percent: Optional[pulumi.Input[float]] = None,
                  threshold_type: Optional[pulumi.Input[str]] = None,
@@ -486,7 +486,7 @@ class QuotaAlarm(pulumi.CustomResource):
             product_code: Optional[pulumi.Input[str]] = None,
             quota_action_code: Optional[pulumi.Input[str]] = None,
             quota_alarm_name: Optional[pulumi.Input[str]] = None,
-            quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]]] = None,
+            quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict']]]]] = None,
             threshold: Optional[pulumi.Input[float]] = None,
             threshold_percent: Optional[pulumi.Input[float]] = None,
             threshold_type: Optional[pulumi.Input[str]] = None,
@@ -502,7 +502,7 @@ class QuotaAlarm(pulumi.CustomResource):
         :param pulumi.Input[str] product_code: The Product Code.
         :param pulumi.Input[str] quota_action_code: The Quota Action Code.
         :param pulumi.Input[str] quota_alarm_name: The name of Quota Alarm.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaAlarmQuotaDimensionArgs', 'QuotaAlarmQuotaDimensionArgsDict']]]] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
         :param pulumi.Input[float] threshold: The threshold of Quota Alarm.
         :param pulumi.Input[float] threshold_percent: The threshold percent of Quota Alarm.
         :param pulumi.Input[str] threshold_type: Quota alarm type. Value:

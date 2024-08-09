@@ -2242,7 +2242,7 @@ class Cluster(pulumi.CustomResource):
                  collector_status: Optional[pulumi.Input[str]] = None,
                  creation_category: Optional[pulumi.Input[str]] = None,
                  creation_option: Optional[pulumi.Input[str]] = None,
-                 db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]]] = None,
+                 db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_id: Optional[pulumi.Input[str]] = None,
@@ -2264,7 +2264,7 @@ class Cluster(pulumi.CustomResource):
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  parameter_group_id: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  planned_end_time: Optional[pulumi.Input[str]] = None,
@@ -2319,7 +2319,7 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
@@ -2353,7 +2353,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[str] parameter_group_id: The ID of the parameter template
                > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -2439,7 +2439,7 @@ class Cluster(pulumi.CustomResource):
                  collector_status: Optional[pulumi.Input[str]] = None,
                  creation_category: Optional[pulumi.Input[str]] = None,
                  creation_option: Optional[pulumi.Input[str]] = None,
-                 db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]]] = None,
+                 db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
                  db_node_class: Optional[pulumi.Input[str]] = None,
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_id: Optional[pulumi.Input[str]] = None,
@@ -2461,7 +2461,7 @@ class Cluster(pulumi.CustomResource):
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  parameter_group_id: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  planned_end_time: Optional[pulumi.Input[str]] = None,
@@ -2596,12 +2596,12 @@ class Cluster(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             creation_category: Optional[pulumi.Input[str]] = None,
             creation_option: Optional[pulumi.Input[str]] = None,
-            db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]]] = None,
+            db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
             db_node_class: Optional[pulumi.Input[str]] = None,
             db_node_count: Optional[pulumi.Input[int]] = None,
             db_node_id: Optional[pulumi.Input[str]] = None,
             db_node_num: Optional[pulumi.Input[int]] = None,
-            db_revision_version_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbRevisionVersionListArgs']]]]] = None,
+            db_revision_version_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbRevisionVersionListArgs', 'ClusterDbRevisionVersionListArgsDict']]]]] = None,
             db_type: Optional[pulumi.Input[str]] = None,
             db_version: Optional[pulumi.Input[str]] = None,
             default_time_zone: Optional[pulumi.Input[str]] = None,
@@ -2619,7 +2619,7 @@ class Cluster(pulumi.CustomResource):
             maintain_time: Optional[pulumi.Input[str]] = None,
             modify_type: Optional[pulumi.Input[str]] = None,
             parameter_group_id: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]]] = None,
             pay_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
             planned_end_time: Optional[pulumi.Input[str]] = None,
@@ -2674,7 +2674,7 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
                > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
                From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
@@ -2682,7 +2682,7 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
         :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbRevisionVersionListArgs']]]] db_revision_version_lists: (Available since v1.216.0) The db_revision_version_list supports the following:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbRevisionVersionListArgs', 'ClusterDbRevisionVersionListArgsDict']]]] db_revision_version_lists: (Available since v1.216.0) The db_revision_version_list supports the following:
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         :param pulumi.Input[str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
@@ -2709,7 +2709,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[str] parameter_group_id: The ID of the parameter template
                > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.

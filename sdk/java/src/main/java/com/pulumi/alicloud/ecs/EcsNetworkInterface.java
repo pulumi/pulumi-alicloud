@@ -468,7 +468,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EcsNetworkInterface(String name) {
+    public EcsNetworkInterface(java.lang.String name) {
         this(name, EcsNetworkInterfaceArgs.Empty);
     }
     /**
@@ -476,7 +476,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EcsNetworkInterface(String name, EcsNetworkInterfaceArgs args) {
+    public EcsNetworkInterface(java.lang.String name, EcsNetworkInterfaceArgs args) {
         this(name, args, null);
     }
     /**
@@ -485,15 +485,22 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EcsNetworkInterface(String name, EcsNetworkInterfaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface", name, args == null ? EcsNetworkInterfaceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EcsNetworkInterface(java.lang.String name, EcsNetworkInterfaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EcsNetworkInterface(String name, Output<String> id, @Nullable EcsNetworkInterfaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface", name, state, makeResourceOptions(options, id));
+    private EcsNetworkInterface(java.lang.String name, Output<java.lang.String> id, @Nullable EcsNetworkInterfaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/ecsNetworkInterface:EcsNetworkInterface", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EcsNetworkInterfaceArgs makeArgs(EcsNetworkInterfaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EcsNetworkInterfaceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -509,7 +516,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EcsNetworkInterface get(String name, Output<String> id, @Nullable EcsNetworkInterfaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EcsNetworkInterface get(java.lang.String name, Output<java.lang.String> id, @Nullable EcsNetworkInterfaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EcsNetworkInterface(name, id, state, options);
     }
 }

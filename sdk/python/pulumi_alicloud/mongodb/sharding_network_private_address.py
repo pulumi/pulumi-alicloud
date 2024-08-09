@@ -338,7 +338,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
             account_name: Optional[pulumi.Input[str]] = None,
             account_password: Optional[pulumi.Input[str]] = None,
             db_instance_id: Optional[pulumi.Input[str]] = None,
-            network_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingNetworkPrivateAddressNetworkAddressArgs']]]]] = None,
+            network_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingNetworkPrivateAddressNetworkAddressArgs', 'ShardingNetworkPrivateAddressNetworkAddressArgsDict']]]]] = None,
             node_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ShardingNetworkPrivateAddress':
         """
@@ -356,7 +356,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
                - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
                - The password must be 8 to 32 characters in length.
         :param pulumi.Input[str] db_instance_id: The db instance id.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingNetworkPrivateAddressNetworkAddressArgs']]]] network_addresses: The endpoint of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingNetworkPrivateAddressNetworkAddressArgs', 'ShardingNetworkPrivateAddressNetworkAddressArgsDict']]]] network_addresses: The endpoint of the instance.
         :param pulumi.Input[str] node_id: The ID of the Shard node or the ConfigServer node.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """

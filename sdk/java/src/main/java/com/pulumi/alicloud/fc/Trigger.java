@@ -385,12 +385,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var default = AlicloudFunctions.getAccount();
  * 
  *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
@@ -420,20 +420,20 @@ import javax.annotation.Nullable;
  *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(String.format("fcservicerole-%s", defaultInteger.result()))
  *             .document("""
- *     {
+ *     }{{@code
  *       "Statement": [
- *         {
+ *         }{{@code
  *           "Action": "sts:AssumeRole",
  *           "Effect": "Allow",
- *           "Principal": {
+ *           "Principal": }{{@code
  *             "Service": [
  *               "cdn.aliyuncs.com"
  *             ]
- *           }
- *         }
+ *           }}{@code
+ *         }}{@code
  *       ],
  *       "Version": "1"
- *   }
+ *   }}{@code
  *             """)
  *             .description("this is a example")
  *             .force(true)
@@ -441,27 +441,27 @@ import javax.annotation.Nullable;
  * 
  *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
  *             .policyName(String.format("fcservicepolicy-%s", defaultInteger.result()))
- *             .policyDocument(Output.tuple(defaultService.name(), defaultService.name()).applyValue(values -> {
+ *             .policyDocument(Output.tuple(defaultService.name(), defaultService.name()).applyValue(values -> }{{@code
  *                 var defaultServiceName = values.t1;
  *                 var defaultServiceName1 = values.t2;
  *                 return """
- *     {
+ *     }{{@code
  *         "Version": "1",
  *         "Statement": [
- *         {
+ *         }{{@code
  *             "Action": [
  *             "fc:InvokeFunction"
  *             ],
  *         "Resource": [
  *             "acs:fc:*:*:services/%s/functions/*",
- *             "acs:fc:*:*:services/%s.*{@literal /}functions/*"
+ *             "acs:fc:*:*:services/%s.*}&#47;{@code functions/*"
  *         ],
  *         "Effect": "Allow"
- *         }
+ *         }}{@code
  *         ]
- *     }
+ *     }}{@code
  * ", defaultServiceName,defaultServiceName1);
- *             }))
+ *             }}{@code ))
  *             .description("this is a example")
  *             .force(true)
  *             .build());
@@ -507,18 +507,18 @@ import javax.annotation.Nullable;
  *             .sourceArn(String.format("acs:cdn:*:%s", default_.id()))
  *             .type("cdn_events")
  *             .config(defaultDomainNew.domainName().applyValue(domainName -> """
- *       {"eventName":"LogFileCreated",
+ *       }{{@code "eventName":"LogFileCreated",
  *      "eventVersion":"1.0.0",
  *      "notes":"cdn events trigger",
- *      "filter":{
+ *      "filter":}{{@code
  *         "domain": ["%s"]
- *         }
- *     }
+ *         }}{@code
+ *     }}{@code
  * ", domainName)))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -962,7 +962,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Trigger(String name) {
+    public Trigger(java.lang.String name) {
         this(name, TriggerArgs.Empty);
     }
     /**
@@ -970,7 +970,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Trigger(String name, TriggerArgs args) {
+    public Trigger(java.lang.String name, TriggerArgs args) {
         this(name, args, null);
     }
     /**
@@ -979,15 +979,22 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Trigger(String name, TriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:fc/trigger:Trigger", name, args == null ? TriggerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Trigger(java.lang.String name, TriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:fc/trigger:Trigger", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Trigger(String name, Output<String> id, @Nullable TriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:fc/trigger:Trigger", name, state, makeResourceOptions(options, id));
+    private Trigger(java.lang.String name, Output<java.lang.String> id, @Nullable TriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:fc/trigger:Trigger", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TriggerArgs makeArgs(TriggerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TriggerArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1003,7 +1010,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Trigger get(String name, Output<String> id, @Nullable TriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Trigger get(java.lang.String name, Output<java.lang.String> id, @Nullable TriggerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Trigger(name, id, state, options);
     }
 }

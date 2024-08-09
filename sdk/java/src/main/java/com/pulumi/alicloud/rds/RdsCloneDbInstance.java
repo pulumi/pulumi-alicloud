@@ -1145,7 +1145,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RdsCloneDbInstance(String name) {
+    public RdsCloneDbInstance(java.lang.String name) {
         this(name, RdsCloneDbInstanceArgs.Empty);
     }
     /**
@@ -1153,7 +1153,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RdsCloneDbInstance(String name, RdsCloneDbInstanceArgs args) {
+    public RdsCloneDbInstance(java.lang.String name, RdsCloneDbInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -1162,15 +1162,22 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RdsCloneDbInstance(String name, RdsCloneDbInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance", name, args == null ? RdsCloneDbInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RdsCloneDbInstance(java.lang.String name, RdsCloneDbInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RdsCloneDbInstance(String name, Output<String> id, @Nullable RdsCloneDbInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance", name, state, makeResourceOptions(options, id));
+    private RdsCloneDbInstance(java.lang.String name, Output<java.lang.String> id, @Nullable RdsCloneDbInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RdsCloneDbInstanceArgs makeArgs(RdsCloneDbInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RdsCloneDbInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -1186,7 +1193,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RdsCloneDbInstance get(String name, Output<String> id, @Nullable RdsCloneDbInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RdsCloneDbInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable RdsCloneDbInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RdsCloneDbInstance(name, id, state, options);
     }
 }

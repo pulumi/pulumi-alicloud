@@ -336,15 +336,15 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  internet_access: Optional[pulumi.Input[bool]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['ServiceLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['ServiceLogConfigArgs', 'ServiceLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
-                 nas_config: Optional[pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']]] = None,
+                 nas_config: Optional[pulumi.Input[Union['ServiceNasConfigArgs', 'ServiceNasConfigArgsDict']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 tracing_config: Optional[pulumi.Input[pulumi.InputType['ServiceTracingConfigArgs']]] = None,
-                 vpc_config: Optional[pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']]] = None,
+                 tracing_config: Optional[pulumi.Input[Union['ServiceTracingConfigArgs', 'ServiceTracingConfigArgsDict']]] = None,
+                 vpc_config: Optional[pulumi.Input[Union['ServiceVpcConfigArgs', 'ServiceVpcConfigArgsDict']]] = None,
                  __props__=None):
         """
         Create a Service resource with the given unique name, props, and options.
@@ -376,15 +376,15 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  internet_access: Optional[pulumi.Input[bool]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['ServiceLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[Union['ServiceLogConfigArgs', 'ServiceLogConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
-                 nas_config: Optional[pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']]] = None,
+                 nas_config: Optional[pulumi.Input[Union['ServiceNasConfigArgs', 'ServiceNasConfigArgsDict']]] = None,
                  publish: Optional[pulumi.Input[bool]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 tracing_config: Optional[pulumi.Input[pulumi.InputType['ServiceTracingConfigArgs']]] = None,
-                 vpc_config: Optional[pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']]] = None,
+                 tracing_config: Optional[pulumi.Input[Union['ServiceTracingConfigArgs', 'ServiceTracingConfigArgsDict']]] = None,
+                 vpc_config: Optional[pulumi.Input[Union['ServiceVpcConfigArgs', 'ServiceVpcConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -421,17 +421,17 @@ class Service(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             internet_access: Optional[pulumi.Input[bool]] = None,
             last_modified: Optional[pulumi.Input[str]] = None,
-            log_config: Optional[pulumi.Input[pulumi.InputType['ServiceLogConfigArgs']]] = None,
+            log_config: Optional[pulumi.Input[Union['ServiceLogConfigArgs', 'ServiceLogConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
-            nas_config: Optional[pulumi.Input[pulumi.InputType['ServiceNasConfigArgs']]] = None,
+            nas_config: Optional[pulumi.Input[Union['ServiceNasConfigArgs', 'ServiceNasConfigArgsDict']]] = None,
             publish: Optional[pulumi.Input[bool]] = None,
             role: Optional[pulumi.Input[str]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            tracing_config: Optional[pulumi.Input[pulumi.InputType['ServiceTracingConfigArgs']]] = None,
+            tracing_config: Optional[pulumi.Input[Union['ServiceTracingConfigArgs', 'ServiceTracingConfigArgsDict']]] = None,
             version: Optional[pulumi.Input[str]] = None,
-            vpc_config: Optional[pulumi.Input[pulumi.InputType['ServiceVpcConfigArgs']]] = None) -> 'Service':
+            vpc_config: Optional[pulumi.Input[Union['ServiceVpcConfigArgs', 'ServiceVpcConfigArgsDict']]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

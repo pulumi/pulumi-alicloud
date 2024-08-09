@@ -175,7 +175,7 @@ public class ClientKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ClientKey(String name) {
+    public ClientKey(java.lang.String name) {
         this(name, ClientKeyArgs.Empty);
     }
     /**
@@ -183,7 +183,7 @@ public class ClientKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClientKey(String name, ClientKeyArgs args) {
+    public ClientKey(java.lang.String name, ClientKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -192,15 +192,22 @@ public class ClientKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClientKey(String name, ClientKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:kms/clientKey:ClientKey", name, args == null ? ClientKeyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ClientKey(java.lang.String name, ClientKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:kms/clientKey:ClientKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ClientKey(String name, Output<String> id, @Nullable ClientKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:kms/clientKey:ClientKey", name, state, makeResourceOptions(options, id));
+    private ClientKey(java.lang.String name, Output<java.lang.String> id, @Nullable ClientKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:kms/clientKey:ClientKey", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ClientKeyArgs makeArgs(ClientKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClientKeyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -219,7 +226,7 @@ public class ClientKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ClientKey get(String name, Output<String> id, @Nullable ClientKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ClientKey get(java.lang.String name, Output<java.lang.String> id, @Nullable ClientKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ClientKey(name, id, state, options);
     }
 }

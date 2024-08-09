@@ -89,7 +89,7 @@ public class AccountPublicAccessBlock extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccountPublicAccessBlock(String name) {
+    public AccountPublicAccessBlock(java.lang.String name) {
         this(name, AccountPublicAccessBlockArgs.Empty);
     }
     /**
@@ -97,7 +97,7 @@ public class AccountPublicAccessBlock extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccountPublicAccessBlock(String name, AccountPublicAccessBlockArgs args) {
+    public AccountPublicAccessBlock(java.lang.String name, AccountPublicAccessBlockArgs args) {
         this(name, args, null);
     }
     /**
@@ -106,15 +106,22 @@ public class AccountPublicAccessBlock extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccountPublicAccessBlock(String name, AccountPublicAccessBlockArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock", name, args == null ? AccountPublicAccessBlockArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AccountPublicAccessBlock(java.lang.String name, AccountPublicAccessBlockArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccountPublicAccessBlock(String name, Output<String> id, @Nullable AccountPublicAccessBlockState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock", name, state, makeResourceOptions(options, id));
+    private AccountPublicAccessBlock(java.lang.String name, Output<java.lang.String> id, @Nullable AccountPublicAccessBlockState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/accountPublicAccessBlock:AccountPublicAccessBlock", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AccountPublicAccessBlockArgs makeArgs(AccountPublicAccessBlockArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccountPublicAccessBlockArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -130,7 +137,7 @@ public class AccountPublicAccessBlock extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccountPublicAccessBlock get(String name, Output<String> id, @Nullable AccountPublicAccessBlockState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccountPublicAccessBlock get(java.lang.String name, Output<java.lang.String> id, @Nullable AccountPublicAccessBlockState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccountPublicAccessBlock(name, id, state, options);
     }
 }

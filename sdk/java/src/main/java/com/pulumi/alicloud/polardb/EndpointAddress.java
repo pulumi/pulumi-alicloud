@@ -213,7 +213,7 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EndpointAddress(String name) {
+    public EndpointAddress(java.lang.String name) {
         this(name, EndpointAddressArgs.Empty);
     }
     /**
@@ -221,7 +221,7 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EndpointAddress(String name, EndpointAddressArgs args) {
+    public EndpointAddress(java.lang.String name, EndpointAddressArgs args) {
         this(name, args, null);
     }
     /**
@@ -230,15 +230,22 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EndpointAddress(String name, EndpointAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:polardb/endpointAddress:EndpointAddress", name, args == null ? EndpointAddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EndpointAddress(java.lang.String name, EndpointAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:polardb/endpointAddress:EndpointAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EndpointAddress(String name, Output<String> id, @Nullable EndpointAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:polardb/endpointAddress:EndpointAddress", name, state, makeResourceOptions(options, id));
+    private EndpointAddress(java.lang.String name, Output<java.lang.String> id, @Nullable EndpointAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:polardb/endpointAddress:EndpointAddress", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EndpointAddressArgs makeArgs(EndpointAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EndpointAddressArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -254,7 +261,7 @@ public class EndpointAddress extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EndpointAddress get(String name, Output<String> id, @Nullable EndpointAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EndpointAddress get(java.lang.String name, Output<java.lang.String> id, @Nullable EndpointAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EndpointAddress(name, id, state, options);
     }
 }

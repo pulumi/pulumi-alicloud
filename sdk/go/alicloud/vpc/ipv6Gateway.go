@@ -52,14 +52,14 @@ import (
 //			}
 //			defaultRg, err := resourcemanager.NewResourceGroup(ctx, "defaultRg", &resourcemanager.ResourceGroupArgs{
 //				DisplayName:       pulumi.String("tf-testacc-ipv6gateway503"),
-//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v1", name)),
+//				ResourceGroupName: pulumi.Sprintf("%v1", name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = resourcemanager.NewResourceGroup(ctx, "changeRg", &resourcemanager.ResourceGroupArgs{
 //				DisplayName:       pulumi.String("tf-testacc-ipv6gateway311"),
-//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v2", name)),
+//				ResourceGroupName: pulumi.Sprintf("%v2", name),
 //			})
 //			if err != nil {
 //				return err

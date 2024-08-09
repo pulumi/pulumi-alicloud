@@ -139,7 +139,7 @@ public class BgpPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BgpPolicy(String name) {
+    public BgpPolicy(java.lang.String name) {
         this(name, BgpPolicyArgs.Empty);
     }
     /**
@@ -147,7 +147,7 @@ public class BgpPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BgpPolicy(String name, BgpPolicyArgs args) {
+    public BgpPolicy(java.lang.String name, BgpPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -156,15 +156,22 @@ public class BgpPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BgpPolicy(String name, BgpPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ddos/bgpPolicy:BgpPolicy", name, args == null ? BgpPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BgpPolicy(java.lang.String name, BgpPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ddos/bgpPolicy:BgpPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BgpPolicy(String name, Output<String> id, @Nullable BgpPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ddos/bgpPolicy:BgpPolicy", name, state, makeResourceOptions(options, id));
+    private BgpPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable BgpPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ddos/bgpPolicy:BgpPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BgpPolicyArgs makeArgs(BgpPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BgpPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -180,7 +187,7 @@ public class BgpPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BgpPolicy get(String name, Output<String> id, @Nullable BgpPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BgpPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable BgpPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BgpPolicy(name, id, state, options);
     }
 }

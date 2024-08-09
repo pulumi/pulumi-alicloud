@@ -201,7 +201,7 @@ public class AccountPrivilege extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccountPrivilege(String name) {
+    public AccountPrivilege(java.lang.String name) {
         this(name, AccountPrivilegeArgs.Empty);
     }
     /**
@@ -209,7 +209,7 @@ public class AccountPrivilege extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccountPrivilege(String name, AccountPrivilegeArgs args) {
+    public AccountPrivilege(java.lang.String name, AccountPrivilegeArgs args) {
         this(name, args, null);
     }
     /**
@@ -218,15 +218,22 @@ public class AccountPrivilege extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccountPrivilege(String name, AccountPrivilegeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/accountPrivilege:AccountPrivilege", name, args == null ? AccountPrivilegeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AccountPrivilege(java.lang.String name, AccountPrivilegeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/accountPrivilege:AccountPrivilege", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccountPrivilege(String name, Output<String> id, @Nullable AccountPrivilegeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rds/accountPrivilege:AccountPrivilege", name, state, makeResourceOptions(options, id));
+    private AccountPrivilege(java.lang.String name, Output<java.lang.String> id, @Nullable AccountPrivilegeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rds/accountPrivilege:AccountPrivilege", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AccountPrivilegeArgs makeArgs(AccountPrivilegeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccountPrivilegeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -242,7 +249,7 @@ public class AccountPrivilege extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccountPrivilege get(String name, Output<String> id, @Nullable AccountPrivilegeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccountPrivilege get(java.lang.String name, Output<java.lang.String> id, @Nullable AccountPrivilegeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccountPrivilege(name, id, state, options);
     }
 }

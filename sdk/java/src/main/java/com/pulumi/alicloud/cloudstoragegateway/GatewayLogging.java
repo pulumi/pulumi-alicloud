@@ -92,7 +92,7 @@ public class GatewayLogging extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GatewayLogging(String name) {
+    public GatewayLogging(java.lang.String name) {
         this(name, GatewayLoggingArgs.Empty);
     }
     /**
@@ -100,7 +100,7 @@ public class GatewayLogging extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GatewayLogging(String name, GatewayLoggingArgs args) {
+    public GatewayLogging(java.lang.String name, GatewayLoggingArgs args) {
         this(name, args, null);
     }
     /**
@@ -109,15 +109,22 @@ public class GatewayLogging extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GatewayLogging(String name, GatewayLoggingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging", name, args == null ? GatewayLoggingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GatewayLogging(java.lang.String name, GatewayLoggingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GatewayLogging(String name, Output<String> id, @Nullable GatewayLoggingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging", name, state, makeResourceOptions(options, id));
+    private GatewayLogging(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayLoggingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudstoragegateway/gatewayLogging:GatewayLogging", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GatewayLoggingArgs makeArgs(GatewayLoggingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GatewayLoggingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -133,7 +140,7 @@ public class GatewayLogging extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GatewayLogging get(String name, Output<String> id, @Nullable GatewayLoggingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GatewayLogging get(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayLoggingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GatewayLogging(name, id, state, options);
     }
 }

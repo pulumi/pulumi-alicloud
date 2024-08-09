@@ -304,7 +304,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HanaInstance(String name) {
+    public HanaInstance(java.lang.String name) {
         this(name, HanaInstanceArgs.Empty);
     }
     /**
@@ -312,7 +312,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HanaInstance(String name, HanaInstanceArgs args) {
+    public HanaInstance(java.lang.String name, HanaInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -321,15 +321,22 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HanaInstance(String name, HanaInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/hanaInstance:HanaInstance", name, args == null ? HanaInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HanaInstance(java.lang.String name, HanaInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/hanaInstance:HanaInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HanaInstance(String name, Output<String> id, @Nullable HanaInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:hbr/hanaInstance:HanaInstance", name, state, makeResourceOptions(options, id));
+    private HanaInstance(java.lang.String name, Output<java.lang.String> id, @Nullable HanaInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:hbr/hanaInstance:HanaInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HanaInstanceArgs makeArgs(HanaInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HanaInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -348,7 +355,7 @@ public class HanaInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HanaInstance get(String name, Output<String> id, @Nullable HanaInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HanaInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable HanaInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HanaInstance(name, id, state, options);
     }
 }

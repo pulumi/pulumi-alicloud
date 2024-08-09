@@ -294,7 +294,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessStrategy(String name) {
+    public AccessStrategy(java.lang.String name) {
         this(name, AccessStrategyArgs.Empty);
     }
     /**
@@ -302,7 +302,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessStrategy(String name, AccessStrategyArgs args) {
+    public AccessStrategy(java.lang.String name, AccessStrategyArgs args) {
         this(name, args, null);
     }
     /**
@@ -311,15 +311,22 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessStrategy(String name, AccessStrategyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/accessStrategy:AccessStrategy", name, args == null ? AccessStrategyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AccessStrategy(java.lang.String name, AccessStrategyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/accessStrategy:AccessStrategy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessStrategy(String name, Output<String> id, @Nullable AccessStrategyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/accessStrategy:AccessStrategy", name, state, makeResourceOptions(options, id));
+    private AccessStrategy(java.lang.String name, Output<java.lang.String> id, @Nullable AccessStrategyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/accessStrategy:AccessStrategy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AccessStrategyArgs makeArgs(AccessStrategyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessStrategyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -335,7 +342,7 @@ public class AccessStrategy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessStrategy get(String name, Output<String> id, @Nullable AccessStrategyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessStrategy get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessStrategyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessStrategy(name, id, state, options);
     }
 }

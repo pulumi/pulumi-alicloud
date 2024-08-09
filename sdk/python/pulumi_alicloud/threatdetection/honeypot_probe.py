@@ -418,7 +418,7 @@ class HoneypotProbe(pulumi.CustomResource):
                  arp: Optional[pulumi.Input[bool]] = None,
                  control_node_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HoneypotProbeHoneypotBindListArgs']]]]] = None,
+                 honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict']]]]] = None,
                  ping: Optional[pulumi.Input[bool]] = None,
                  probe_type: Optional[pulumi.Input[str]] = None,
                  probe_version: Optional[pulumi.Input[str]] = None,
@@ -447,13 +447,13 @@ class HoneypotProbe(pulumi.CustomResource):
             probe_type="host_probe",
             control_node_id="a44e1ab3-6945-444c-889d-5bacee7056e8",
             ping=True,
-            honeypot_bind_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListArgs(
-                bind_port_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs(
-                    start_port=80,
-                    end_port=80,
-                )],
-                honeypot_id="ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9",
-            )],
+            honeypot_bind_lists=[{
+                "bind_port_lists": [{
+                    "start_port": 80,
+                    "end_port": 80,
+                }],
+                "honeypot_id": "ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9",
+            }],
             display_name="apispec",
             arp=True)
         ```
@@ -471,7 +471,7 @@ class HoneypotProbe(pulumi.CustomResource):
         :param pulumi.Input[bool] arp: ARP spoofing detection.**true**: Enable **false**: Disabled
         :param pulumi.Input[str] control_node_id: The ID of the management node.
         :param pulumi.Input[str] display_name: Probe display name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HoneypotProbeHoneypotBindListArgs']]]] honeypot_bind_lists: Configure the service.See the following `Block HoneypotBindList`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict']]]] honeypot_bind_lists: Configure the service.See the following `Block HoneypotBindList`.
         :param pulumi.Input[bool] ping: Ping scan detection. Value: **true**: Enable **false**: Disabled
         :param pulumi.Input[str] probe_type: Probe type, support `host_probe` and `vpc_black_hole_probe`.
         :param pulumi.Input[str] probe_version: The version of the probe.
@@ -506,13 +506,13 @@ class HoneypotProbe(pulumi.CustomResource):
             probe_type="host_probe",
             control_node_id="a44e1ab3-6945-444c-889d-5bacee7056e8",
             ping=True,
-            honeypot_bind_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListArgs(
-                bind_port_lists=[alicloud.threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs(
-                    start_port=80,
-                    end_port=80,
-                )],
-                honeypot_id="ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9",
-            )],
+            honeypot_bind_lists=[{
+                "bind_port_lists": [{
+                    "start_port": 80,
+                    "end_port": 80,
+                }],
+                "honeypot_id": "ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9",
+            }],
             display_name="apispec",
             arp=True)
         ```
@@ -543,7 +543,7 @@ class HoneypotProbe(pulumi.CustomResource):
                  arp: Optional[pulumi.Input[bool]] = None,
                  control_node_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HoneypotProbeHoneypotBindListArgs']]]]] = None,
+                 honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict']]]]] = None,
                  ping: Optional[pulumi.Input[bool]] = None,
                  probe_type: Optional[pulumi.Input[str]] = None,
                  probe_version: Optional[pulumi.Input[str]] = None,
@@ -592,7 +592,7 @@ class HoneypotProbe(pulumi.CustomResource):
             arp: Optional[pulumi.Input[bool]] = None,
             control_node_id: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HoneypotProbeHoneypotBindListArgs']]]]] = None,
+            honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict']]]]] = None,
             honeypot_probe_id: Optional[pulumi.Input[str]] = None,
             ping: Optional[pulumi.Input[bool]] = None,
             probe_type: Optional[pulumi.Input[str]] = None,
@@ -612,7 +612,7 @@ class HoneypotProbe(pulumi.CustomResource):
         :param pulumi.Input[bool] arp: ARP spoofing detection.**true**: Enable **false**: Disabled
         :param pulumi.Input[str] control_node_id: The ID of the management node.
         :param pulumi.Input[str] display_name: Probe display name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HoneypotProbeHoneypotBindListArgs']]]] honeypot_bind_lists: Configure the service.See the following `Block HoneypotBindList`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict']]]] honeypot_bind_lists: Configure the service.See the following `Block HoneypotBindList`.
         :param pulumi.Input[str] honeypot_probe_id: The first ID of the resource
         :param pulumi.Input[bool] ping: Ping scan detection. Value: **true**: Enable **false**: Disabled
         :param pulumi.Input[str] probe_type: Probe type, support `host_probe` and `vpc_black_hole_probe`.

@@ -42,22 +42,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // Create a new Domain record
  *         var record = new Record("record", RecordArgs.builder()
  *             .name("domainname")
- *             .hostRecord("{@literal @}")
+ *             .hostRecord("}{@literal @}{@code ")
  *             .type("A")
  *             .value("192.168.99.99")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -74,14 +74,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dns/record:Record")
 public class Record extends com.pulumi.resources.CustomResource {
     /**
-     * Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;{@literal @}&#34;,  and must not begin or end with &#34;-&#34;.
+     * Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;{@literal @}",  and must not begin or end with &#34;-&#34;.
      * 
      */
     @Export(name="hostRecord", refs={String.class}, tree="[0]")
     private Output<String> hostRecord;
 
     /**
-     * @return Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;{@literal @}&#34;,  and must not begin or end with &#34;-&#34;.
+     * @return Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;{@literal @}",  and must not begin or end with &#34;-&#34;.
      * 
      */
     public Output<String> hostRecord() {
@@ -198,7 +198,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Record(String name) {
+    public Record(java.lang.String name) {
         this(name, RecordArgs.Empty);
     }
     /**
@@ -206,7 +206,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Record(String name, RecordArgs args) {
+    public Record(java.lang.String name, RecordArgs args) {
         this(name, args, null);
     }
     /**
@@ -215,15 +215,22 @@ public class Record extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Record(String name, RecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/record:Record", name, args == null ? RecordArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Record(java.lang.String name, RecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/record:Record", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Record(String name, Output<String> id, @Nullable RecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/record:Record", name, state, makeResourceOptions(options, id));
+    private Record(java.lang.String name, Output<java.lang.String> id, @Nullable RecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/record:Record", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RecordArgs makeArgs(RecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RecordArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -239,7 +246,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Record get(String name, Output<String> id, @Nullable RecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Record get(java.lang.String name, Output<java.lang.String> id, @Nullable RecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Record(name, id, state, options);
     }
 }

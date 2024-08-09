@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexampleuser");
  *         var example = new VpcEndpointService("example", VpcEndpointServiceArgs.builder()
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .name(name)
  *             .displayName("user_display_name")
  *             .mobile("86-18688888888")
- *             .email("hello.uuu{@literal @}aaa.com")
+ *             .email("hello.uuu}{@literal @}{@code aaa.com")
  *             .comments("yoyoyo")
  *             .build());
  * 
@@ -74,8 +74,8 @@ import javax.annotation.Nullable;
  *             .userId(exampleUser.id())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -142,7 +142,7 @@ public class VpcEndpointServiceUser extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VpcEndpointServiceUser(String name) {
+    public VpcEndpointServiceUser(java.lang.String name) {
         this(name, VpcEndpointServiceUserArgs.Empty);
     }
     /**
@@ -150,7 +150,7 @@ public class VpcEndpointServiceUser extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VpcEndpointServiceUser(String name, VpcEndpointServiceUserArgs args) {
+    public VpcEndpointServiceUser(java.lang.String name, VpcEndpointServiceUserArgs args) {
         this(name, args, null);
     }
     /**
@@ -159,15 +159,22 @@ public class VpcEndpointServiceUser extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VpcEndpointServiceUser(String name, VpcEndpointServiceUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser", name, args == null ? VpcEndpointServiceUserArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VpcEndpointServiceUser(java.lang.String name, VpcEndpointServiceUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VpcEndpointServiceUser(String name, Output<String> id, @Nullable VpcEndpointServiceUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser", name, state, makeResourceOptions(options, id));
+    private VpcEndpointServiceUser(java.lang.String name, Output<java.lang.String> id, @Nullable VpcEndpointServiceUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:privatelink/vpcEndpointServiceUser:VpcEndpointServiceUser", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VpcEndpointServiceUserArgs makeArgs(VpcEndpointServiceUserArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VpcEndpointServiceUserArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -183,7 +190,7 @@ public class VpcEndpointServiceUser extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VpcEndpointServiceUser get(String name, Output<String> id, @Nullable VpcEndpointServiceUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VpcEndpointServiceUser get(java.lang.String name, Output<java.lang.String> id, @Nullable VpcEndpointServiceUserState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VpcEndpointServiceUser(name, id, state, options);
     }
 }

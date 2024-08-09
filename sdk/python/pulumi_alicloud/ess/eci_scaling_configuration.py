@@ -1305,13 +1305,13 @@ class EciScalingConfiguration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]]] = None,
+                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationAcrRegistryInfoArgs', 'EciScalingConfigurationAcrRegistryInfoArgsDict']]]]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  active_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  auto_create_eip: Optional[pulumi.Input[bool]] = None,
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]]] = None,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationContainerArgs', 'EciScalingConfigurationContainerArgsDict']]]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  cpu_options_core: Optional[pulumi.Input[int]] = None,
                  cpu_options_threads_per_core: Optional[pulumi.Input[int]] = None,
@@ -1322,12 +1322,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  enable_sls: Optional[pulumi.Input[bool]] = None,
                  ephemeral_storage: Optional[pulumi.Input[int]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
-                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationHostAliasArgs']]]]] = None,
+                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationHostAliasArgs', 'EciScalingConfigurationHostAliasArgsDict']]]]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationImageRegistryCredentialArgs']]]]] = None,
+                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationImageRegistryCredentialArgs', 'EciScalingConfigurationImageRegistryCredentialArgsDict']]]]] = None,
                  image_snapshot_id: Optional[pulumi.Input[str]] = None,
                  ingress_bandwidth: Optional[pulumi.Input[int]] = None,
-                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]]] = None,
+                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationInitContainerArgs', 'EciScalingConfigurationInitContainerArgsDict']]]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[int]] = None,
@@ -1342,7 +1342,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationVolumeArgs']]]]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationVolumeArgs', 'EciScalingConfigurationVolumeArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a ESS eci scaling configuration resource.
@@ -1399,10 +1399,10 @@ class EciScalingConfiguration(pulumi.CustomResource):
             force_delete=True,
             active=True,
             container_group_name="container-group-1649839595174",
-            containers=[alicloud.ess.EciScalingConfigurationContainerArgs(
-                name="container-1",
-                image="registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
-            )])
+            containers=[{
+                "name": "container-1",
+                "image": "registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
+            }])
         ```
 
         ## Import
@@ -1415,7 +1415,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationAcrRegistryInfoArgs', 'EciScalingConfigurationAcrRegistryInfoArgsDict']]]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         :param pulumi.Input[bool] active: Whether active current eci scaling configuration in the specified scaling group. Note that only
                one configuration can be active. Default to `false`.
         :param pulumi.Input[int] active_deadline_seconds: The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
@@ -1423,7 +1423,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_match_image_cache: Whether to automatically match the image cache.
         :param pulumi.Input[str] container_group_name: The name of the container group. which must contain 2-128 characters (
                English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]] containers: The list of containers. See `containers` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationContainerArgs', 'EciScalingConfigurationContainerArgsDict']]]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[int] cpu_options_core: The number of physical CPU cores. You can specify this parameter for only specific instance types.
         :param pulumi.Input[int] cpu_options_threads_per_core: The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
@@ -1436,13 +1436,13 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[int] ephemeral_storage: The size of ephemeral storage.
         :param pulumi.Input[bool] force_delete: The eci scaling configuration will be deleted forcibly with deleting its scaling group.
                Default to false.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationHostAliasArgs']]]] host_aliases: HostAliases. See `host_aliases` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationHostAliasArgs', 'EciScalingConfigurationHostAliasArgsDict']]]] host_aliases: HostAliases. See `host_aliases` below.
         :param pulumi.Input[str] host_name: Hostname of an ECI instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential.   See `image_registry_credentials` below for
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationImageRegistryCredentialArgs', 'EciScalingConfigurationImageRegistryCredentialArgsDict']]]] image_registry_credentials: The image registry credential.   See `image_registry_credentials` below for
                details.
         :param pulumi.Input[str] image_snapshot_id: The ID of image cache.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]] init_containers: The list of initContainers. See `init_containers` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationInitContainerArgs', 'EciScalingConfigurationInitContainerArgsDict']]]] init_containers: The list of initContainers. See `init_containers` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The specified ECS instance types. You can specify up to five ECS instance types.
         :param pulumi.Input[int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
@@ -1466,7 +1466,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
                a null string.
         :param pulumi.Input[int] termination_grace_period_seconds: The program's buffering time before closing.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationVolumeArgs']]]] volumes: The list of volumes. See `volumes` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationVolumeArgs', 'EciScalingConfigurationVolumeArgsDict']]]] volumes: The list of volumes. See `volumes` below for details.
         """
         ...
     @overload
@@ -1529,10 +1529,10 @@ class EciScalingConfiguration(pulumi.CustomResource):
             force_delete=True,
             active=True,
             container_group_name="container-group-1649839595174",
-            containers=[alicloud.ess.EciScalingConfigurationContainerArgs(
-                name="container-1",
-                image="registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
-            )])
+            containers=[{
+                "name": "container-1",
+                "image": "registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
+            }])
         ```
 
         ## Import
@@ -1558,13 +1558,13 @@ class EciScalingConfiguration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]]] = None,
+                 acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationAcrRegistryInfoArgs', 'EciScalingConfigurationAcrRegistryInfoArgsDict']]]]] = None,
                  active: Optional[pulumi.Input[bool]] = None,
                  active_deadline_seconds: Optional[pulumi.Input[int]] = None,
                  auto_create_eip: Optional[pulumi.Input[bool]] = None,
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]]] = None,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationContainerArgs', 'EciScalingConfigurationContainerArgsDict']]]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  cpu_options_core: Optional[pulumi.Input[int]] = None,
                  cpu_options_threads_per_core: Optional[pulumi.Input[int]] = None,
@@ -1575,12 +1575,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  enable_sls: Optional[pulumi.Input[bool]] = None,
                  ephemeral_storage: Optional[pulumi.Input[int]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
-                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationHostAliasArgs']]]]] = None,
+                 host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationHostAliasArgs', 'EciScalingConfigurationHostAliasArgsDict']]]]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationImageRegistryCredentialArgs']]]]] = None,
+                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationImageRegistryCredentialArgs', 'EciScalingConfigurationImageRegistryCredentialArgsDict']]]]] = None,
                  image_snapshot_id: Optional[pulumi.Input[str]] = None,
                  ingress_bandwidth: Optional[pulumi.Input[int]] = None,
-                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]]] = None,
+                 init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationInitContainerArgs', 'EciScalingConfigurationInitContainerArgsDict']]]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[int]] = None,
@@ -1595,7 +1595,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationVolumeArgs']]]]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationVolumeArgs', 'EciScalingConfigurationVolumeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1655,13 +1655,13 @@ class EciScalingConfiguration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]]] = None,
+            acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationAcrRegistryInfoArgs', 'EciScalingConfigurationAcrRegistryInfoArgsDict']]]]] = None,
             active: Optional[pulumi.Input[bool]] = None,
             active_deadline_seconds: Optional[pulumi.Input[int]] = None,
             auto_create_eip: Optional[pulumi.Input[bool]] = None,
             auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
             container_group_name: Optional[pulumi.Input[str]] = None,
-            containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]]] = None,
+            containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationContainerArgs', 'EciScalingConfigurationContainerArgsDict']]]]] = None,
             cpu: Optional[pulumi.Input[float]] = None,
             cpu_options_core: Optional[pulumi.Input[int]] = None,
             cpu_options_threads_per_core: Optional[pulumi.Input[int]] = None,
@@ -1672,12 +1672,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
             enable_sls: Optional[pulumi.Input[bool]] = None,
             ephemeral_storage: Optional[pulumi.Input[int]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
-            host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationHostAliasArgs']]]]] = None,
+            host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationHostAliasArgs', 'EciScalingConfigurationHostAliasArgsDict']]]]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
-            image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationImageRegistryCredentialArgs']]]]] = None,
+            image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationImageRegistryCredentialArgs', 'EciScalingConfigurationImageRegistryCredentialArgsDict']]]]] = None,
             image_snapshot_id: Optional[pulumi.Input[str]] = None,
             ingress_bandwidth: Optional[pulumi.Input[int]] = None,
-            init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]]] = None,
+            init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationInitContainerArgs', 'EciScalingConfigurationInitContainerArgsDict']]]]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ipv6_address_count: Optional[pulumi.Input[int]] = None,
             load_balancer_weight: Optional[pulumi.Input[int]] = None,
@@ -1692,7 +1692,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
             spot_strategy: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
-            volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationVolumeArgs']]]]] = None) -> 'EciScalingConfiguration':
+            volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationVolumeArgs', 'EciScalingConfigurationVolumeArgsDict']]]]] = None) -> 'EciScalingConfiguration':
         """
         Get an existing EciScalingConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1700,7 +1700,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationAcrRegistryInfoArgs', 'EciScalingConfigurationAcrRegistryInfoArgsDict']]]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         :param pulumi.Input[bool] active: Whether active current eci scaling configuration in the specified scaling group. Note that only
                one configuration can be active. Default to `false`.
         :param pulumi.Input[int] active_deadline_seconds: The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
@@ -1708,7 +1708,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_match_image_cache: Whether to automatically match the image cache.
         :param pulumi.Input[str] container_group_name: The name of the container group. which must contain 2-128 characters (
                English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]] containers: The list of containers. See `containers` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationContainerArgs', 'EciScalingConfigurationContainerArgsDict']]]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[int] cpu_options_core: The number of physical CPU cores. You can specify this parameter for only specific instance types.
         :param pulumi.Input[int] cpu_options_threads_per_core: The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
@@ -1721,13 +1721,13 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[int] ephemeral_storage: The size of ephemeral storage.
         :param pulumi.Input[bool] force_delete: The eci scaling configuration will be deleted forcibly with deleting its scaling group.
                Default to false.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationHostAliasArgs']]]] host_aliases: HostAliases. See `host_aliases` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationHostAliasArgs', 'EciScalingConfigurationHostAliasArgsDict']]]] host_aliases: HostAliases. See `host_aliases` below.
         :param pulumi.Input[str] host_name: Hostname of an ECI instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential.   See `image_registry_credentials` below for
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationImageRegistryCredentialArgs', 'EciScalingConfigurationImageRegistryCredentialArgsDict']]]] image_registry_credentials: The image registry credential.   See `image_registry_credentials` below for
                details.
         :param pulumi.Input[str] image_snapshot_id: The ID of image cache.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]] init_containers: The list of initContainers. See `init_containers` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationInitContainerArgs', 'EciScalingConfigurationInitContainerArgsDict']]]] init_containers: The list of initContainers. See `init_containers` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The specified ECS instance types. You can specify up to five ECS instance types.
         :param pulumi.Input[int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
@@ -1751,7 +1751,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
                a null string.
         :param pulumi.Input[int] termination_grace_period_seconds: The program's buffering time before closing.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationVolumeArgs']]]] volumes: The list of volumes. See `volumes` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationVolumeArgs', 'EciScalingConfigurationVolumeArgsDict']]]] volumes: The list of volumes. See `volumes` below for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

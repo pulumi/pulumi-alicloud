@@ -167,7 +167,7 @@ public class HoneypotPreset extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HoneypotPreset(String name) {
+    public HoneypotPreset(java.lang.String name) {
         this(name, HoneypotPresetArgs.Empty);
     }
     /**
@@ -175,7 +175,7 @@ public class HoneypotPreset extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HoneypotPreset(String name, HoneypotPresetArgs args) {
+    public HoneypotPreset(java.lang.String name, HoneypotPresetArgs args) {
         this(name, args, null);
     }
     /**
@@ -184,15 +184,22 @@ public class HoneypotPreset extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HoneypotPreset(String name, HoneypotPresetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/honeypotPreset:HoneypotPreset", name, args == null ? HoneypotPresetArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HoneypotPreset(java.lang.String name, HoneypotPresetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/honeypotPreset:HoneypotPreset", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HoneypotPreset(String name, Output<String> id, @Nullable HoneypotPresetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/honeypotPreset:HoneypotPreset", name, state, makeResourceOptions(options, id));
+    private HoneypotPreset(java.lang.String name, Output<java.lang.String> id, @Nullable HoneypotPresetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/honeypotPreset:HoneypotPreset", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HoneypotPresetArgs makeArgs(HoneypotPresetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HoneypotPresetArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -208,7 +215,7 @@ public class HoneypotPreset extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HoneypotPreset get(String name, Output<String> id, @Nullable HoneypotPresetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HoneypotPreset get(java.lang.String name, Output<java.lang.String> id, @Nullable HoneypotPresetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HoneypotPreset(name, id, state, options);
     }
 }

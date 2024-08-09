@@ -46,7 +46,7 @@ import (
 // }
 // defaultSiteMonitor, err := cms.NewSiteMonitor(ctx, "default", &cms.SiteMonitorArgs{
 // Address: pulumi.String("http://www.alibabacloud.com"),
-// TaskName: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+// TaskName: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 // TaskType: pulumi.String("HTTP"),
 // Interval: pulumi.Int(5),
 // IspCities: cms.SiteMonitorIspCityArray{

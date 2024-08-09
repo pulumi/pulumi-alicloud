@@ -233,7 +233,7 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GatewayEndpoint(String name) {
+    public GatewayEndpoint(java.lang.String name) {
         this(name, GatewayEndpointArgs.Empty);
     }
     /**
@@ -241,7 +241,7 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GatewayEndpoint(String name, GatewayEndpointArgs args) {
+    public GatewayEndpoint(java.lang.String name, GatewayEndpointArgs args) {
         this(name, args, null);
     }
     /**
@@ -250,15 +250,22 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GatewayEndpoint(String name, GatewayEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/gatewayEndpoint:GatewayEndpoint", name, args == null ? GatewayEndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GatewayEndpoint(java.lang.String name, GatewayEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/gatewayEndpoint:GatewayEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GatewayEndpoint(String name, Output<String> id, @Nullable GatewayEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/gatewayEndpoint:GatewayEndpoint", name, state, makeResourceOptions(options, id));
+    private GatewayEndpoint(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/gatewayEndpoint:GatewayEndpoint", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GatewayEndpointArgs makeArgs(GatewayEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GatewayEndpointArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -274,7 +281,7 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GatewayEndpoint get(String name, Output<String> id, @Nullable GatewayEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GatewayEndpoint get(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GatewayEndpoint(name, id, state, options);
     }
 }

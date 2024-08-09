@@ -97,7 +97,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_acl_id: Optional[pulumi.Input[str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a network acl attachment resource to associate network acls to vswitches.
@@ -133,16 +133,16 @@ class NetworkAclAttachment(pulumi.CustomResource):
             vswitch_name=name)
         default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("default",
             network_acl_id=default_network_acl.id,
-            resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(
-                resource_id=default_switch.id,
-                resource_type="VSwitch",
-            )])
+            resources=[{
+                "resource_id": default_switch.id,
+                "resource_type": "VSwitch",
+            }])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
         """
         ...
     @overload
@@ -184,10 +184,10 @@ class NetworkAclAttachment(pulumi.CustomResource):
             vswitch_name=name)
         default_network_acl_attachment = alicloud.vpc.NetworkAclAttachment("default",
             network_acl_id=default_network_acl.id,
-            resources=[alicloud.vpc.NetworkAclAttachmentResourceArgs(
-                resource_id=default_switch.id,
-                resource_type="VSwitch",
-            )])
+            resources=[{
+                "resource_id": default_switch.id,
+                "resource_type": "VSwitch",
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -206,7 +206,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_acl_id: Optional[pulumi.Input[str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -233,7 +233,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             network_acl_id: Optional[pulumi.Input[str]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]]] = None) -> 'NetworkAclAttachment':
+            resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]]] = None) -> 'NetworkAclAttachment':
         """
         Get an existing NetworkAclAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -242,7 +242,7 @@ class NetworkAclAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclAttachmentResourceArgs']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]] resources: List of the resources associated with the network acl. The details see Block Resources.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

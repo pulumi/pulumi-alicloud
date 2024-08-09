@@ -259,7 +259,7 @@ public class ConsumerChannel extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConsumerChannel(String name) {
+    public ConsumerChannel(java.lang.String name) {
         this(name, ConsumerChannelArgs.Empty);
     }
     /**
@@ -267,7 +267,7 @@ public class ConsumerChannel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConsumerChannel(String name, ConsumerChannelArgs args) {
+    public ConsumerChannel(java.lang.String name, ConsumerChannelArgs args) {
         this(name, args, null);
     }
     /**
@@ -276,15 +276,22 @@ public class ConsumerChannel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConsumerChannel(String name, ConsumerChannelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dts/consumerChannel:ConsumerChannel", name, args == null ? ConsumerChannelArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConsumerChannel(java.lang.String name, ConsumerChannelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dts/consumerChannel:ConsumerChannel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConsumerChannel(String name, Output<String> id, @Nullable ConsumerChannelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dts/consumerChannel:ConsumerChannel", name, state, makeResourceOptions(options, id));
+    private ConsumerChannel(java.lang.String name, Output<java.lang.String> id, @Nullable ConsumerChannelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dts/consumerChannel:ConsumerChannel", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConsumerChannelArgs makeArgs(ConsumerChannelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConsumerChannelArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -300,7 +307,7 @@ public class ConsumerChannel extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConsumerChannel get(String name, Output<String> id, @Nullable ConsumerChannelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConsumerChannel get(java.lang.String name, Output<java.lang.String> id, @Nullable ConsumerChannelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConsumerChannel(name, id, state, options);
     }
 }

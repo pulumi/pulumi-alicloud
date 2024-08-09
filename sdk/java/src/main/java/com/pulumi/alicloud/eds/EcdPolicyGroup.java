@@ -377,7 +377,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EcdPolicyGroup(String name) {
+    public EcdPolicyGroup(java.lang.String name) {
         this(name, EcdPolicyGroupArgs.Empty);
     }
     /**
@@ -385,7 +385,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EcdPolicyGroup(String name, @Nullable EcdPolicyGroupArgs args) {
+    public EcdPolicyGroup(java.lang.String name, @Nullable EcdPolicyGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -394,15 +394,22 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EcdPolicyGroup(String name, @Nullable EcdPolicyGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eds/ecdPolicyGroup:EcdPolicyGroup", name, args == null ? EcdPolicyGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EcdPolicyGroup(java.lang.String name, @Nullable EcdPolicyGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eds/ecdPolicyGroup:EcdPolicyGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EcdPolicyGroup(String name, Output<String> id, @Nullable EcdPolicyGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eds/ecdPolicyGroup:EcdPolicyGroup", name, state, makeResourceOptions(options, id));
+    private EcdPolicyGroup(java.lang.String name, Output<java.lang.String> id, @Nullable EcdPolicyGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eds/ecdPolicyGroup:EcdPolicyGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EcdPolicyGroupArgs makeArgs(@Nullable EcdPolicyGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EcdPolicyGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -418,7 +425,7 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EcdPolicyGroup get(String name, Output<String> id, @Nullable EcdPolicyGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EcdPolicyGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable EcdPolicyGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EcdPolicyGroup(name, id, state, options);
     }
 }

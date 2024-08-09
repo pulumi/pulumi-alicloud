@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = vod.NewDomain(ctx, "default", &vod.DomainArgs{
-//				DomainName: pulumi.String(fmt.Sprintf("example-%v.com", _default.Result)),
+//				DomainName: pulumi.Sprintf("example-%v.com", _default.Result),
 //				Scope:      pulumi.String("domestic"),
 //				Sources: vod.DomainSourceArray{
 //					&vod.DomainSourceArgs{

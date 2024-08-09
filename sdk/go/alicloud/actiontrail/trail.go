@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			exampleProject, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				ProjectName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				ProjectName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //				Description: pulumi.String("tf actiontrail example"),
 //			})
 //			if err != nil {

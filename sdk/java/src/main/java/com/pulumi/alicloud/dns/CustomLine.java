@@ -138,7 +138,7 @@ public class CustomLine extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CustomLine(String name) {
+    public CustomLine(java.lang.String name) {
         this(name, CustomLineArgs.Empty);
     }
     /**
@@ -146,7 +146,7 @@ public class CustomLine extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CustomLine(String name, CustomLineArgs args) {
+    public CustomLine(java.lang.String name, CustomLineArgs args) {
         this(name, args, null);
     }
     /**
@@ -155,15 +155,22 @@ public class CustomLine extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CustomLine(String name, CustomLineArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/customLine:CustomLine", name, args == null ? CustomLineArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CustomLine(java.lang.String name, CustomLineArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/customLine:CustomLine", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CustomLine(String name, Output<String> id, @Nullable CustomLineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/customLine:CustomLine", name, state, makeResourceOptions(options, id));
+    private CustomLine(java.lang.String name, Output<java.lang.String> id, @Nullable CustomLineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/customLine:CustomLine", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CustomLineArgs makeArgs(CustomLineArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CustomLineArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -179,7 +186,7 @@ public class CustomLine extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CustomLine get(String name, Output<String> id, @Nullable CustomLineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CustomLine get(java.lang.String name, Output<java.lang.String> id, @Nullable CustomLineState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CustomLine(name, id, state, options);
     }
 }

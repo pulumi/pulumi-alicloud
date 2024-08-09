@@ -226,7 +226,7 @@ public class EcsNetworkInterfaceAttachment extends com.pulumi.resources.CustomRe
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EcsNetworkInterfaceAttachment(String name) {
+    public EcsNetworkInterfaceAttachment(java.lang.String name) {
         this(name, EcsNetworkInterfaceAttachmentArgs.Empty);
     }
     /**
@@ -234,7 +234,7 @@ public class EcsNetworkInterfaceAttachment extends com.pulumi.resources.CustomRe
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EcsNetworkInterfaceAttachment(String name, EcsNetworkInterfaceAttachmentArgs args) {
+    public EcsNetworkInterfaceAttachment(java.lang.String name, EcsNetworkInterfaceAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -243,15 +243,22 @@ public class EcsNetworkInterfaceAttachment extends com.pulumi.resources.CustomRe
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EcsNetworkInterfaceAttachment(String name, EcsNetworkInterfaceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment", name, args == null ? EcsNetworkInterfaceAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EcsNetworkInterfaceAttachment(java.lang.String name, EcsNetworkInterfaceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EcsNetworkInterfaceAttachment(String name, Output<String> id, @Nullable EcsNetworkInterfaceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment", name, state, makeResourceOptions(options, id));
+    private EcsNetworkInterfaceAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable EcsNetworkInterfaceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EcsNetworkInterfaceAttachmentArgs makeArgs(EcsNetworkInterfaceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EcsNetworkInterfaceAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -267,7 +274,7 @@ public class EcsNetworkInterfaceAttachment extends com.pulumi.resources.CustomRe
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EcsNetworkInterfaceAttachment get(String name, Output<String> id, @Nullable EcsNetworkInterfaceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EcsNetworkInterfaceAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable EcsNetworkInterfaceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EcsNetworkInterfaceAttachment(name, id, state, options);
     }
 }

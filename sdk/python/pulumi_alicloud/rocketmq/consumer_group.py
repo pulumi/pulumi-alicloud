@@ -223,7 +223,7 @@ class ConsumerGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consume_retry_policy: Optional[pulumi.Input[pulumi.InputType['ConsumerGroupConsumeRetryPolicyArgs']]] = None,
+                 consume_retry_policy: Optional[pulumi.Input[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']]] = None,
                  consumer_group_id: Optional[pulumi.Input[str]] = None,
                  delivery_order_type: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -261,22 +261,22 @@ class ConsumerGroup(pulumi.CustomResource):
             vswitch_name=name)
         create_instance = alicloud.rocketmq.RocketMQInstance("createInstance",
             auto_renew_period=1,
-            product_info=alicloud.rocketmq.RocketMQInstanceProductInfoArgs(
-                msg_process_spec="rmq.p2.4xlarge",
-                send_receive_ratio=0.3,
-                message_retention_time=70,
-            ),
-            network_info=alicloud.rocketmq.RocketMQInstanceNetworkInfoArgs(
-                vpc_info=alicloud.rocketmq.RocketMQInstanceNetworkInfoVpcInfoArgs(
-                    vpc_id=create_vpc.id,
-                    vswitch_id=create_vswitch.id,
-                ),
-                internet_info=alicloud.rocketmq.RocketMQInstanceNetworkInfoInternetInfoArgs(
-                    internet_spec="enable",
-                    flow_out_type="payByBandwidth",
-                    flow_out_bandwidth=30,
-                ),
-            ),
+            product_info={
+                "msg_process_spec": "rmq.p2.4xlarge",
+                "send_receive_ratio": 0.3,
+                "message_retention_time": 70,
+            },
+            network_info={
+                "vpc_info": {
+                    "vpc_id": create_vpc.id,
+                    "vswitch_id": create_vswitch.id,
+                },
+                "internet_info": {
+                    "internet_spec": "enable",
+                    "flow_out_type": "payByBandwidth",
+                    "flow_out_bandwidth": 30,
+                },
+            },
             period=1,
             sub_series_code="cluster_ha",
             remark="example",
@@ -288,10 +288,10 @@ class ConsumerGroup(pulumi.CustomResource):
         default_consumer_group = alicloud.rocketmq.ConsumerGroup("default",
             consumer_group_id=name,
             instance_id=create_instance.id,
-            consume_retry_policy=alicloud.rocketmq.ConsumerGroupConsumeRetryPolicyArgs(
-                retry_policy="DefaultRetryPolicy",
-                max_retry_times=10,
-            ),
+            consume_retry_policy={
+                "retry_policy": "DefaultRetryPolicy",
+                "max_retry_times": 10,
+            },
             delivery_order_type="Concurrently",
             remark="example")
         ```
@@ -306,7 +306,7 @@ class ConsumerGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConsumerGroupConsumeRetryPolicyArgs']] consume_retry_policy: Consumption retry strategy. See `consume_retry_policy` below.
+        :param pulumi.Input[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']] consume_retry_policy: Consumption retry strategy. See `consume_retry_policy` below.
         :param pulumi.Input[str] consumer_group_id: The first ID of the resource.
         :param pulumi.Input[str] delivery_order_type: Delivery order.
         :param pulumi.Input[str] instance_id: Instance ID.
@@ -350,22 +350,22 @@ class ConsumerGroup(pulumi.CustomResource):
             vswitch_name=name)
         create_instance = alicloud.rocketmq.RocketMQInstance("createInstance",
             auto_renew_period=1,
-            product_info=alicloud.rocketmq.RocketMQInstanceProductInfoArgs(
-                msg_process_spec="rmq.p2.4xlarge",
-                send_receive_ratio=0.3,
-                message_retention_time=70,
-            ),
-            network_info=alicloud.rocketmq.RocketMQInstanceNetworkInfoArgs(
-                vpc_info=alicloud.rocketmq.RocketMQInstanceNetworkInfoVpcInfoArgs(
-                    vpc_id=create_vpc.id,
-                    vswitch_id=create_vswitch.id,
-                ),
-                internet_info=alicloud.rocketmq.RocketMQInstanceNetworkInfoInternetInfoArgs(
-                    internet_spec="enable",
-                    flow_out_type="payByBandwidth",
-                    flow_out_bandwidth=30,
-                ),
-            ),
+            product_info={
+                "msg_process_spec": "rmq.p2.4xlarge",
+                "send_receive_ratio": 0.3,
+                "message_retention_time": 70,
+            },
+            network_info={
+                "vpc_info": {
+                    "vpc_id": create_vpc.id,
+                    "vswitch_id": create_vswitch.id,
+                },
+                "internet_info": {
+                    "internet_spec": "enable",
+                    "flow_out_type": "payByBandwidth",
+                    "flow_out_bandwidth": 30,
+                },
+            },
             period=1,
             sub_series_code="cluster_ha",
             remark="example",
@@ -377,10 +377,10 @@ class ConsumerGroup(pulumi.CustomResource):
         default_consumer_group = alicloud.rocketmq.ConsumerGroup("default",
             consumer_group_id=name,
             instance_id=create_instance.id,
-            consume_retry_policy=alicloud.rocketmq.ConsumerGroupConsumeRetryPolicyArgs(
-                retry_policy="DefaultRetryPolicy",
-                max_retry_times=10,
-            ),
+            consume_retry_policy={
+                "retry_policy": "DefaultRetryPolicy",
+                "max_retry_times": 10,
+            },
             delivery_order_type="Concurrently",
             remark="example")
         ```
@@ -408,7 +408,7 @@ class ConsumerGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consume_retry_policy: Optional[pulumi.Input[pulumi.InputType['ConsumerGroupConsumeRetryPolicyArgs']]] = None,
+                 consume_retry_policy: Optional[pulumi.Input[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']]] = None,
                  consumer_group_id: Optional[pulumi.Input[str]] = None,
                  delivery_order_type: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -445,7 +445,7 @@ class ConsumerGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            consume_retry_policy: Optional[pulumi.Input[pulumi.InputType['ConsumerGroupConsumeRetryPolicyArgs']]] = None,
+            consume_retry_policy: Optional[pulumi.Input[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']]] = None,
             consumer_group_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             delivery_order_type: Optional[pulumi.Input[str]] = None,
@@ -459,7 +459,7 @@ class ConsumerGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConsumerGroupConsumeRetryPolicyArgs']] consume_retry_policy: Consumption retry strategy. See `consume_retry_policy` below.
+        :param pulumi.Input[Union['ConsumerGroupConsumeRetryPolicyArgs', 'ConsumerGroupConsumeRetryPolicyArgsDict']] consume_retry_policy: Consumption retry strategy. See `consume_retry_policy` below.
         :param pulumi.Input[str] consumer_group_id: The first ID of the resource.
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] delivery_order_type: Delivery order.

@@ -152,7 +152,7 @@ public class GlobalDatabaseNetwork extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GlobalDatabaseNetwork(String name) {
+    public GlobalDatabaseNetwork(java.lang.String name) {
         this(name, GlobalDatabaseNetworkArgs.Empty);
     }
     /**
@@ -160,7 +160,7 @@ public class GlobalDatabaseNetwork extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GlobalDatabaseNetwork(String name, GlobalDatabaseNetworkArgs args) {
+    public GlobalDatabaseNetwork(java.lang.String name, GlobalDatabaseNetworkArgs args) {
         this(name, args, null);
     }
     /**
@@ -169,15 +169,22 @@ public class GlobalDatabaseNetwork extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GlobalDatabaseNetwork(String name, GlobalDatabaseNetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork", name, args == null ? GlobalDatabaseNetworkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GlobalDatabaseNetwork(java.lang.String name, GlobalDatabaseNetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GlobalDatabaseNetwork(String name, Output<String> id, @Nullable GlobalDatabaseNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork", name, state, makeResourceOptions(options, id));
+    private GlobalDatabaseNetwork(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalDatabaseNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GlobalDatabaseNetworkArgs makeArgs(GlobalDatabaseNetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GlobalDatabaseNetworkArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -193,7 +200,7 @@ public class GlobalDatabaseNetwork extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GlobalDatabaseNetwork get(String name, Output<String> id, @Nullable GlobalDatabaseNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GlobalDatabaseNetwork get(java.lang.String name, Output<java.lang.String> id, @Nullable GlobalDatabaseNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GlobalDatabaseNetwork(name, id, state, options);
     }
 }

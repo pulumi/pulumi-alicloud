@@ -243,7 +243,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AutoscalingConfig(String name) {
+    public AutoscalingConfig(java.lang.String name) {
         this(name, AutoscalingConfigArgs.Empty);
     }
     /**
@@ -251,7 +251,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AutoscalingConfig(String name, @Nullable AutoscalingConfigArgs args) {
+    public AutoscalingConfig(java.lang.String name, @Nullable AutoscalingConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -260,15 +260,22 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AutoscalingConfig(String name, @Nullable AutoscalingConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cs/autoscalingConfig:AutoscalingConfig", name, args == null ? AutoscalingConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AutoscalingConfig(java.lang.String name, @Nullable AutoscalingConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cs/autoscalingConfig:AutoscalingConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AutoscalingConfig(String name, Output<String> id, @Nullable AutoscalingConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cs/autoscalingConfig:AutoscalingConfig", name, state, makeResourceOptions(options, id));
+    private AutoscalingConfig(java.lang.String name, Output<java.lang.String> id, @Nullable AutoscalingConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cs/autoscalingConfig:AutoscalingConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AutoscalingConfigArgs makeArgs(@Nullable AutoscalingConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AutoscalingConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -284,7 +291,7 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AutoscalingConfig get(String name, Output<String> id, @Nullable AutoscalingConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AutoscalingConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable AutoscalingConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AutoscalingConfig(name, id, state, options);
     }
 }

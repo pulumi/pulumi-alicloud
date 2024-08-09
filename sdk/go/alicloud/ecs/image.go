@@ -115,7 +115,7 @@ import (
 //			}
 //			_, err = ecs.NewImage(ctx, "default", &ecs.ImageArgs{
 //				InstanceId:      defaultInstance.ID(),
-//				ImageName:       pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//				ImageName:       pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Description:     pulumi.String("terraform-example"),
 //				Architecture:    pulumi.String("x86_64"),
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),

@@ -243,7 +243,7 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HostAccount(String name) {
+    public HostAccount(java.lang.String name) {
         this(name, HostAccountArgs.Empty);
     }
     /**
@@ -251,7 +251,7 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HostAccount(String name, HostAccountArgs args) {
+    public HostAccount(java.lang.String name, HostAccountArgs args) {
         this(name, args, null);
     }
     /**
@@ -260,15 +260,22 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HostAccount(String name, HostAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:bastionhost/hostAccount:HostAccount", name, args == null ? HostAccountArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HostAccount(java.lang.String name, HostAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:bastionhost/hostAccount:HostAccount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HostAccount(String name, Output<String> id, @Nullable HostAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:bastionhost/hostAccount:HostAccount", name, state, makeResourceOptions(options, id));
+    private HostAccount(java.lang.String name, Output<java.lang.String> id, @Nullable HostAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:bastionhost/hostAccount:HostAccount", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HostAccountArgs makeArgs(HostAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HostAccountArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -289,7 +296,7 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HostAccount get(String name, Output<String> id, @Nullable HostAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HostAccount get(java.lang.String name, Output<java.lang.String> id, @Nullable HostAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HostAccount(name, id, state, options);
     }
 }

@@ -174,7 +174,7 @@ public class HostAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HostAttachment(String name) {
+    public HostAttachment(java.lang.String name) {
         this(name, HostAttachmentArgs.Empty);
     }
     /**
@@ -182,7 +182,7 @@ public class HostAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HostAttachment(String name, HostAttachmentArgs args) {
+    public HostAttachment(java.lang.String name, HostAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -191,15 +191,22 @@ public class HostAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HostAttachment(String name, HostAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:bastionhost/hostAttachment:HostAttachment", name, args == null ? HostAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HostAttachment(java.lang.String name, HostAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:bastionhost/hostAttachment:HostAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HostAttachment(String name, Output<String> id, @Nullable HostAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:bastionhost/hostAttachment:HostAttachment", name, state, makeResourceOptions(options, id));
+    private HostAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable HostAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:bastionhost/hostAttachment:HostAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HostAttachmentArgs makeArgs(HostAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HostAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -215,7 +222,7 @@ public class HostAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HostAttachment get(String name, Output<String> id, @Nullable HostAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HostAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable HostAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HostAttachment(name, id, state, options);
     }
 }

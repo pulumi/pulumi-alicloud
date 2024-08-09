@@ -397,7 +397,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Desktop(String name) {
+    public Desktop(java.lang.String name) {
         this(name, DesktopArgs.Empty);
     }
     /**
@@ -405,7 +405,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Desktop(String name, DesktopArgs args) {
+    public Desktop(java.lang.String name, DesktopArgs args) {
         this(name, args, null);
     }
     /**
@@ -414,15 +414,22 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Desktop(String name, DesktopArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eds/desktop:Desktop", name, args == null ? DesktopArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Desktop(java.lang.String name, DesktopArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eds/desktop:Desktop", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Desktop(String name, Output<String> id, @Nullable DesktopState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eds/desktop:Desktop", name, state, makeResourceOptions(options, id));
+    private Desktop(java.lang.String name, Output<java.lang.String> id, @Nullable DesktopState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eds/desktop:Desktop", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DesktopArgs makeArgs(DesktopArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DesktopArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -438,7 +445,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Desktop get(String name, Output<String> id, @Nullable DesktopState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Desktop get(java.lang.String name, Output<java.lang.String> id, @Nullable DesktopState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Desktop(name, id, state, options);
     }
 }

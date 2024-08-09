@@ -143,7 +143,7 @@ public class WafPolicyDomainAttachment extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WafPolicyDomainAttachment(String name) {
+    public WafPolicyDomainAttachment(java.lang.String name) {
         this(name, WafPolicyDomainAttachmentArgs.Empty);
     }
     /**
@@ -151,7 +151,7 @@ public class WafPolicyDomainAttachment extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WafPolicyDomainAttachment(String name, WafPolicyDomainAttachmentArgs args) {
+    public WafPolicyDomainAttachment(java.lang.String name, WafPolicyDomainAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -160,15 +160,22 @@ public class WafPolicyDomainAttachment extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WafPolicyDomainAttachment(String name, WafPolicyDomainAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment", name, args == null ? WafPolicyDomainAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WafPolicyDomainAttachment(java.lang.String name, WafPolicyDomainAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WafPolicyDomainAttachment(String name, Output<String> id, @Nullable WafPolicyDomainAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment", name, state, makeResourceOptions(options, id));
+    private WafPolicyDomainAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable WafPolicyDomainAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dcdn/wafPolicyDomainAttachment:WafPolicyDomainAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WafPolicyDomainAttachmentArgs makeArgs(WafPolicyDomainAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WafPolicyDomainAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -184,7 +191,7 @@ public class WafPolicyDomainAttachment extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WafPolicyDomainAttachment get(String name, Output<String> id, @Nullable WafPolicyDomainAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WafPolicyDomainAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable WafPolicyDomainAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WafPolicyDomainAttachment(name, id, state, options);
     }
 }

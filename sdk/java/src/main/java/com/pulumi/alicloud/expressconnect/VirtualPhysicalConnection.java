@@ -482,7 +482,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VirtualPhysicalConnection(String name) {
+    public VirtualPhysicalConnection(java.lang.String name) {
         this(name, VirtualPhysicalConnectionArgs.Empty);
     }
     /**
@@ -490,7 +490,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VirtualPhysicalConnection(String name, VirtualPhysicalConnectionArgs args) {
+    public VirtualPhysicalConnection(java.lang.String name, VirtualPhysicalConnectionArgs args) {
         this(name, args, null);
     }
     /**
@@ -499,15 +499,22 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VirtualPhysicalConnection(String name, VirtualPhysicalConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection", name, args == null ? VirtualPhysicalConnectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VirtualPhysicalConnection(java.lang.String name, VirtualPhysicalConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VirtualPhysicalConnection(String name, Output<String> id, @Nullable VirtualPhysicalConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection", name, state, makeResourceOptions(options, id));
+    private VirtualPhysicalConnection(java.lang.String name, Output<java.lang.String> id, @Nullable VirtualPhysicalConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/virtualPhysicalConnection:VirtualPhysicalConnection", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VirtualPhysicalConnectionArgs makeArgs(VirtualPhysicalConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VirtualPhysicalConnectionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -523,7 +530,7 @@ public class VirtualPhysicalConnection extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VirtualPhysicalConnection get(String name, Output<String> id, @Nullable VirtualPhysicalConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VirtualPhysicalConnection get(java.lang.String name, Output<java.lang.String> id, @Nullable VirtualPhysicalConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VirtualPhysicalConnection(name, id, state, options);
     }
 }

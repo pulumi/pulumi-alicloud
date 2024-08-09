@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *             .dbClusterId(createInstance.id())
  *             .accountType("Super")
  *             .accountName("tfnormal")
- *             .accountPassword("normal{@literal @}2023")
+ *             .accountPassword("normal}{@literal @}{@code 2023")
  *             .accountPrivileges(            
  *                 LakeAccountAccountPrivilegeArgs.builder()
  *                     .privilegeType("Database")
@@ -126,8 +126,8 @@ import javax.annotation.Nullable;
  *             .accountDescription(name)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -246,7 +246,7 @@ public class LakeAccount extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LakeAccount(String name) {
+    public LakeAccount(java.lang.String name) {
         this(name, LakeAccountArgs.Empty);
     }
     /**
@@ -254,7 +254,7 @@ public class LakeAccount extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LakeAccount(String name, LakeAccountArgs args) {
+    public LakeAccount(java.lang.String name, LakeAccountArgs args) {
         this(name, args, null);
     }
     /**
@@ -263,15 +263,22 @@ public class LakeAccount extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LakeAccount(String name, LakeAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:adb/lakeAccount:LakeAccount", name, args == null ? LakeAccountArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public LakeAccount(java.lang.String name, LakeAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:adb/lakeAccount:LakeAccount", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LakeAccount(String name, Output<String> id, @Nullable LakeAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:adb/lakeAccount:LakeAccount", name, state, makeResourceOptions(options, id));
+    private LakeAccount(java.lang.String name, Output<java.lang.String> id, @Nullable LakeAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:adb/lakeAccount:LakeAccount", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static LakeAccountArgs makeArgs(LakeAccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LakeAccountArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -290,7 +297,7 @@ public class LakeAccount extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LakeAccount get(String name, Output<String> id, @Nullable LakeAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LakeAccount get(java.lang.String name, Output<java.lang.String> id, @Nullable LakeAccountState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LakeAccount(name, id, state, options);
     }
 }

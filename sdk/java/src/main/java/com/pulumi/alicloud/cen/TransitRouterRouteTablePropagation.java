@@ -207,7 +207,7 @@ public class TransitRouterRouteTablePropagation extends com.pulumi.resources.Cus
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TransitRouterRouteTablePropagation(String name) {
+    public TransitRouterRouteTablePropagation(java.lang.String name) {
         this(name, TransitRouterRouteTablePropagationArgs.Empty);
     }
     /**
@@ -215,7 +215,7 @@ public class TransitRouterRouteTablePropagation extends com.pulumi.resources.Cus
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TransitRouterRouteTablePropagation(String name, TransitRouterRouteTablePropagationArgs args) {
+    public TransitRouterRouteTablePropagation(java.lang.String name, TransitRouterRouteTablePropagationArgs args) {
         this(name, args, null);
     }
     /**
@@ -224,15 +224,22 @@ public class TransitRouterRouteTablePropagation extends com.pulumi.resources.Cus
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TransitRouterRouteTablePropagation(String name, TransitRouterRouteTablePropagationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation", name, args == null ? TransitRouterRouteTablePropagationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TransitRouterRouteTablePropagation(java.lang.String name, TransitRouterRouteTablePropagationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TransitRouterRouteTablePropagation(String name, Output<String> id, @Nullable TransitRouterRouteTablePropagationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation", name, state, makeResourceOptions(options, id));
+    private TransitRouterRouteTablePropagation(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterRouteTablePropagationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cen/transitRouterRouteTablePropagation:TransitRouterRouteTablePropagation", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TransitRouterRouteTablePropagationArgs makeArgs(TransitRouterRouteTablePropagationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TransitRouterRouteTablePropagationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -248,7 +255,7 @@ public class TransitRouterRouteTablePropagation extends com.pulumi.resources.Cus
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TransitRouterRouteTablePropagation get(String name, Output<String> id, @Nullable TransitRouterRouteTablePropagationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TransitRouterRouteTablePropagation get(java.lang.String name, Output<java.lang.String> id, @Nullable TransitRouterRouteTablePropagationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TransitRouterRouteTablePropagation(name, id, state, options);
     }
 }

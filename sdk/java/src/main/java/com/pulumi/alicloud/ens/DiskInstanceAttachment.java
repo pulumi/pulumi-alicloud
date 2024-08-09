@@ -150,7 +150,7 @@ public class DiskInstanceAttachment extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DiskInstanceAttachment(String name) {
+    public DiskInstanceAttachment(java.lang.String name) {
         this(name, DiskInstanceAttachmentArgs.Empty);
     }
     /**
@@ -158,7 +158,7 @@ public class DiskInstanceAttachment extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DiskInstanceAttachment(String name, DiskInstanceAttachmentArgs args) {
+    public DiskInstanceAttachment(java.lang.String name, DiskInstanceAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -167,15 +167,22 @@ public class DiskInstanceAttachment extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DiskInstanceAttachment(String name, DiskInstanceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment", name, args == null ? DiskInstanceAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DiskInstanceAttachment(java.lang.String name, DiskInstanceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DiskInstanceAttachment(String name, Output<String> id, @Nullable DiskInstanceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment", name, state, makeResourceOptions(options, id));
+    private DiskInstanceAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable DiskInstanceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ens/diskInstanceAttachment:DiskInstanceAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DiskInstanceAttachmentArgs makeArgs(DiskInstanceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DiskInstanceAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -191,7 +198,7 @@ public class DiskInstanceAttachment extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DiskInstanceAttachment get(String name, Output<String> id, @Nullable DiskInstanceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DiskInstanceAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable DiskInstanceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DiskInstanceAttachment(name, id, state, options);
     }
 }

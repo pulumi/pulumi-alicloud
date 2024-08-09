@@ -260,7 +260,7 @@ class SearchIndex(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  index_name: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
-                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SearchIndexSchemaArgs']]]]] = None,
+                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]]] = None,
                  table_name: Optional[pulumi.Input[str]] = None,
                  time_to_live: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -301,69 +301,69 @@ class SearchIndex(pulumi.CustomResource):
             enable_sse=True,
             sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk1",
-                    type="Integer",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk2",
-                    type="String",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk3",
-                    type="Binary",
-                ),
+                {
+                    "name": "pk1",
+                    "type": "Integer",
+                },
+                {
+                    "name": "pk2",
+                    "type": "String",
+                },
+                {
+                    "name": "pk3",
+                    "type": "Binary",
+                },
             ])
         default_search_index = alicloud.ots.SearchIndex("default",
             instance_name=default_instance.name,
             table_name=default_table.table_name,
             index_name="example_index",
             time_to_live=-1,
-            schemas=[alicloud.ots.SearchIndexSchemaArgs(
-                field_schemas=[
-                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
-                        field_name="col1",
-                        field_type="Text",
-                        is_array=False,
-                        index=True,
-                        analyzer="Split",
-                        store=True,
-                    ),
-                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
-                        field_name="col2",
-                        field_type="Long",
-                        enable_sort_and_agg=True,
-                    ),
-                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
-                        field_name="pk1",
-                        field_type="Long",
-                    ),
-                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
-                        field_name="pk2",
-                        field_type="Text",
-                    ),
+            schemas=[{
+                "field_schemas": [
+                    {
+                        "field_name": "col1",
+                        "field_type": "Text",
+                        "is_array": False,
+                        "index": True,
+                        "analyzer": "Split",
+                        "store": True,
+                    },
+                    {
+                        "field_name": "col2",
+                        "field_type": "Long",
+                        "enable_sort_and_agg": True,
+                    },
+                    {
+                        "field_name": "pk1",
+                        "field_type": "Long",
+                    },
+                    {
+                        "field_name": "pk2",
+                        "field_type": "Text",
+                    },
                 ],
-                index_settings=[alicloud.ots.SearchIndexSchemaIndexSettingArgs(
-                    routing_fields=[
+                "index_settings": [{
+                    "routing_fields": [
                         "pk1",
                         "pk2",
                     ],
-                )],
-                index_sorts=[alicloud.ots.SearchIndexSchemaIndexSortArgs(
-                    sorters=[
-                        alicloud.ots.SearchIndexSchemaIndexSortSorterArgs(
-                            sorter_type="PrimaryKeySort",
-                            order="Asc",
-                        ),
-                        alicloud.ots.SearchIndexSchemaIndexSortSorterArgs(
-                            sorter_type="FieldSort",
-                            order="Desc",
-                            field_name="col2",
-                            mode="Max",
-                        ),
+                }],
+                "index_sorts": [{
+                    "sorters": [
+                        {
+                            "sorter_type": "PrimaryKeySort",
+                            "order": "Asc",
+                        },
+                        {
+                            "sorter_type": "FieldSort",
+                            "order": "Desc",
+                            "field_name": "col2",
+                            "mode": "Max",
+                        },
                     ],
-                )],
-            )])
+                }],
+            }])
         ```
 
         ## Import
@@ -378,7 +378,7 @@ class SearchIndex(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] index_name: The index name of the OTS Table. If changed, a new index would be created.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SearchIndexSchemaArgs']]]] schemas: The schema of the search index. If changed, a new index would be created. See `schema` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]] schemas: The schema of the search index. If changed, a new index would be created. See `schema` below.
         :param pulumi.Input[str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
                If the retention period exceeds the TTL value, OTS automatically deletes expired data.
@@ -426,69 +426,69 @@ class SearchIndex(pulumi.CustomResource):
             enable_sse=True,
             sse_key_type="SSE_KMS_SERVICE",
             primary_keys=[
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk1",
-                    type="Integer",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk2",
-                    type="String",
-                ),
-                alicloud.ots.TablePrimaryKeyArgs(
-                    name="pk3",
-                    type="Binary",
-                ),
+                {
+                    "name": "pk1",
+                    "type": "Integer",
+                },
+                {
+                    "name": "pk2",
+                    "type": "String",
+                },
+                {
+                    "name": "pk3",
+                    "type": "Binary",
+                },
             ])
         default_search_index = alicloud.ots.SearchIndex("default",
             instance_name=default_instance.name,
             table_name=default_table.table_name,
             index_name="example_index",
             time_to_live=-1,
-            schemas=[alicloud.ots.SearchIndexSchemaArgs(
-                field_schemas=[
-                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
-                        field_name="col1",
-                        field_type="Text",
-                        is_array=False,
-                        index=True,
-                        analyzer="Split",
-                        store=True,
-                    ),
-                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
-                        field_name="col2",
-                        field_type="Long",
-                        enable_sort_and_agg=True,
-                    ),
-                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
-                        field_name="pk1",
-                        field_type="Long",
-                    ),
-                    alicloud.ots.SearchIndexSchemaFieldSchemaArgs(
-                        field_name="pk2",
-                        field_type="Text",
-                    ),
+            schemas=[{
+                "field_schemas": [
+                    {
+                        "field_name": "col1",
+                        "field_type": "Text",
+                        "is_array": False,
+                        "index": True,
+                        "analyzer": "Split",
+                        "store": True,
+                    },
+                    {
+                        "field_name": "col2",
+                        "field_type": "Long",
+                        "enable_sort_and_agg": True,
+                    },
+                    {
+                        "field_name": "pk1",
+                        "field_type": "Long",
+                    },
+                    {
+                        "field_name": "pk2",
+                        "field_type": "Text",
+                    },
                 ],
-                index_settings=[alicloud.ots.SearchIndexSchemaIndexSettingArgs(
-                    routing_fields=[
+                "index_settings": [{
+                    "routing_fields": [
                         "pk1",
                         "pk2",
                     ],
-                )],
-                index_sorts=[alicloud.ots.SearchIndexSchemaIndexSortArgs(
-                    sorters=[
-                        alicloud.ots.SearchIndexSchemaIndexSortSorterArgs(
-                            sorter_type="PrimaryKeySort",
-                            order="Asc",
-                        ),
-                        alicloud.ots.SearchIndexSchemaIndexSortSorterArgs(
-                            sorter_type="FieldSort",
-                            order="Desc",
-                            field_name="col2",
-                            mode="Max",
-                        ),
+                }],
+                "index_sorts": [{
+                    "sorters": [
+                        {
+                            "sorter_type": "PrimaryKeySort",
+                            "order": "Asc",
+                        },
+                        {
+                            "sorter_type": "FieldSort",
+                            "order": "Desc",
+                            "field_name": "col2",
+                            "mode": "Max",
+                        },
                     ],
-                )],
-            )])
+                }],
+            }])
         ```
 
         ## Import
@@ -516,7 +516,7 @@ class SearchIndex(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  index_name: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
-                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SearchIndexSchemaArgs']]]]] = None,
+                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]]] = None,
                  table_name: Optional[pulumi.Input[str]] = None,
                  time_to_live: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -560,7 +560,7 @@ class SearchIndex(pulumi.CustomResource):
             index_id: Optional[pulumi.Input[str]] = None,
             index_name: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
-            schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SearchIndexSchemaArgs']]]]] = None,
+            schemas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]]] = None,
             sync_phase: Optional[pulumi.Input[str]] = None,
             table_name: Optional[pulumi.Input[str]] = None,
             time_to_live: Optional[pulumi.Input[int]] = None) -> 'SearchIndex':
@@ -576,7 +576,7 @@ class SearchIndex(pulumi.CustomResource):
         :param pulumi.Input[str] index_id: The index id of the search index which could not be changed.
         :param pulumi.Input[str] index_name: The index name of the OTS Table. If changed, a new index would be created.
         :param pulumi.Input[str] instance_name: The name of the OTS instance in which table will located.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SearchIndexSchemaArgs']]]] schemas: The schema of the search index. If changed, a new index would be created. See `schema` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]] schemas: The schema of the search index. If changed, a new index would be created. See `schema` below.
         :param pulumi.Input[str] sync_phase: The search index sync phase. possible values: `Full`, `Incr`.
         :param pulumi.Input[str] table_name: The name of the OTS table. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.

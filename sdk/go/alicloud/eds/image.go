@@ -54,7 +54,7 @@ import (
 //				CidrBlock:         pulumi.String("172.16.0.0/12"),
 //				EnableAdminAccess: pulumi.Bool(true),
 //				DesktopAccessType: pulumi.String("Internet"),
-//				OfficeSiteName:    pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				OfficeSiteName:    pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err

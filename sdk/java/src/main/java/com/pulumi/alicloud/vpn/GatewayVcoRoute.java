@@ -237,7 +237,7 @@ public class GatewayVcoRoute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GatewayVcoRoute(String name) {
+    public GatewayVcoRoute(java.lang.String name) {
         this(name, GatewayVcoRouteArgs.Empty);
     }
     /**
@@ -245,7 +245,7 @@ public class GatewayVcoRoute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GatewayVcoRoute(String name, GatewayVcoRouteArgs args) {
+    public GatewayVcoRoute(java.lang.String name, GatewayVcoRouteArgs args) {
         this(name, args, null);
     }
     /**
@@ -254,15 +254,22 @@ public class GatewayVcoRoute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GatewayVcoRoute(String name, GatewayVcoRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute", name, args == null ? GatewayVcoRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GatewayVcoRoute(java.lang.String name, GatewayVcoRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GatewayVcoRoute(String name, Output<String> id, @Nullable GatewayVcoRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute", name, state, makeResourceOptions(options, id));
+    private GatewayVcoRoute(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayVcoRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GatewayVcoRouteArgs makeArgs(GatewayVcoRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GatewayVcoRouteArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -278,7 +285,7 @@ public class GatewayVcoRoute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GatewayVcoRoute get(String name, Output<String> id, @Nullable GatewayVcoRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GatewayVcoRoute get(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayVcoRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GatewayVcoRoute(name, id, state, options);
     }
 }

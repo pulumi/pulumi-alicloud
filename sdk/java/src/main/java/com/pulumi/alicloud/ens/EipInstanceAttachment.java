@@ -199,7 +199,7 @@ public class EipInstanceAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EipInstanceAttachment(String name) {
+    public EipInstanceAttachment(java.lang.String name) {
         this(name, EipInstanceAttachmentArgs.Empty);
     }
     /**
@@ -207,7 +207,7 @@ public class EipInstanceAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EipInstanceAttachment(String name, EipInstanceAttachmentArgs args) {
+    public EipInstanceAttachment(java.lang.String name, EipInstanceAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -216,15 +216,22 @@ public class EipInstanceAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EipInstanceAttachment(String name, EipInstanceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ens/eipInstanceAttachment:EipInstanceAttachment", name, args == null ? EipInstanceAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EipInstanceAttachment(java.lang.String name, EipInstanceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ens/eipInstanceAttachment:EipInstanceAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EipInstanceAttachment(String name, Output<String> id, @Nullable EipInstanceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ens/eipInstanceAttachment:EipInstanceAttachment", name, state, makeResourceOptions(options, id));
+    private EipInstanceAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable EipInstanceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ens/eipInstanceAttachment:EipInstanceAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EipInstanceAttachmentArgs makeArgs(EipInstanceAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EipInstanceAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -240,7 +247,7 @@ public class EipInstanceAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EipInstanceAttachment get(String name, Output<String> id, @Nullable EipInstanceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EipInstanceAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable EipInstanceAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EipInstanceAttachment(name, id, state, options);
     }
 }

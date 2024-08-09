@@ -72,7 +72,7 @@ import (
 //				return err
 //			}
 //			_, err = eds.NewAdConnectorDirectory(ctx, "default", &eds.AdConnectorDirectoryArgs{
-//				DirectoryName:     pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				DirectoryName:     pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				DesktopAccessType: pulumi.String("INTERNET"),
 //				DnsAddresses: pulumi.StringArray{
 //					pulumi.String("127.0.0.2"),

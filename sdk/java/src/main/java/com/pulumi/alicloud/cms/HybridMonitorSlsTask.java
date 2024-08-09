@@ -139,7 +139,7 @@ public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HybridMonitorSlsTask(String name) {
+    public HybridMonitorSlsTask(java.lang.String name) {
         this(name, HybridMonitorSlsTaskArgs.Empty);
     }
     /**
@@ -147,7 +147,7 @@ public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HybridMonitorSlsTask(String name, HybridMonitorSlsTaskArgs args) {
+    public HybridMonitorSlsTask(java.lang.String name, HybridMonitorSlsTaskArgs args) {
         this(name, args, null);
     }
     /**
@@ -156,15 +156,22 @@ public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HybridMonitorSlsTask(String name, HybridMonitorSlsTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask", name, args == null ? HybridMonitorSlsTaskArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HybridMonitorSlsTask(java.lang.String name, HybridMonitorSlsTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HybridMonitorSlsTask(String name, Output<String> id, @Nullable HybridMonitorSlsTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask", name, state, makeResourceOptions(options, id));
+    private HybridMonitorSlsTask(java.lang.String name, Output<java.lang.String> id, @Nullable HybridMonitorSlsTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cms/hybridMonitorSlsTask:HybridMonitorSlsTask", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HybridMonitorSlsTaskArgs makeArgs(HybridMonitorSlsTaskArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HybridMonitorSlsTaskArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -180,7 +187,7 @@ public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HybridMonitorSlsTask get(String name, Output<String> id, @Nullable HybridMonitorSlsTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HybridMonitorSlsTask get(java.lang.String name, Output<java.lang.String> id, @Nullable HybridMonitorSlsTaskState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HybridMonitorSlsTask(name, id, state, options);
     }
 }

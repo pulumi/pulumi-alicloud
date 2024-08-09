@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			_, err = dcdn.NewIpaDomain(ctx, "example", &dcdn.IpaDomainArgs{
-//				DomainName:      pulumi.String(fmt.Sprintf("example-%v.com", defaultInteger.Result)),
+//				DomainName:      pulumi.Sprintf("example-%v.com", defaultInteger.Result),
 //				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
 //				Scope:           pulumi.String("overseas"),
 //				Status:          pulumi.String("online"),

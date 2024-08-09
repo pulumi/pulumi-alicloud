@@ -232,7 +232,7 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public QosCar(String name) {
+    public QosCar(java.lang.String name) {
         this(name, QosCarArgs.Empty);
     }
     /**
@@ -240,7 +240,7 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public QosCar(String name, QosCarArgs args) {
+    public QosCar(java.lang.String name, QosCarArgs args) {
         this(name, args, null);
     }
     /**
@@ -249,15 +249,22 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public QosCar(String name, QosCarArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rocketmq/qosCar:QosCar", name, args == null ? QosCarArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public QosCar(java.lang.String name, QosCarArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rocketmq/qosCar:QosCar", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private QosCar(String name, Output<String> id, @Nullable QosCarState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rocketmq/qosCar:QosCar", name, state, makeResourceOptions(options, id));
+    private QosCar(java.lang.String name, Output<java.lang.String> id, @Nullable QosCarState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rocketmq/qosCar:QosCar", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static QosCarArgs makeArgs(QosCarArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? QosCarArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -273,7 +280,7 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static QosCar get(String name, Output<String> id, @Nullable QosCarState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static QosCar get(java.lang.String name, Output<java.lang.String> id, @Nullable QosCarState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new QosCar(name, id, state, options);
     }
 }

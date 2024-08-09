@@ -57,7 +57,7 @@ import (
 //			}
 //			_, err = oos.NewApplication(ctx, "default", &oos.ApplicationArgs{
 //				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
-//				ApplicationName: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				ApplicationName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				Description:     pulumi.String(name),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),

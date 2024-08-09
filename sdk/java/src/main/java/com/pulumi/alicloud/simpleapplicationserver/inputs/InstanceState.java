@@ -93,14 +93,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ !{@literal @} # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
+     * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ !{@literal @} # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
+     * @return The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
      * 
      */
     public Optional<Output<String>> password() {
@@ -306,7 +306,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ !{@literal @} # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
+         * @param password The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ !{@literal @} # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
+         * @param password The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! {@literal @} # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
          * 
          * @return builder
          * 

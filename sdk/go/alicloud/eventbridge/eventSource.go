@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			exampleQueue, err := mns.NewQueue(ctx, "example", &mns.QueueArgs{
-//				Name: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				Name: pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err

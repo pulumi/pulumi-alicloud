@@ -107,7 +107,7 @@ public class MailAddress extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MailAddress(String name) {
+    public MailAddress(java.lang.String name) {
         this(name, MailAddressArgs.Empty);
     }
     /**
@@ -115,7 +115,7 @@ public class MailAddress extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MailAddress(String name, MailAddressArgs args) {
+    public MailAddress(java.lang.String name, MailAddressArgs args) {
         this(name, args, null);
     }
     /**
@@ -124,15 +124,22 @@ public class MailAddress extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MailAddress(String name, MailAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:directmail/mailAddress:MailAddress", name, args == null ? MailAddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MailAddress(java.lang.String name, MailAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:directmail/mailAddress:MailAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MailAddress(String name, Output<String> id, @Nullable MailAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:directmail/mailAddress:MailAddress", name, state, makeResourceOptions(options, id));
+    private MailAddress(java.lang.String name, Output<java.lang.String> id, @Nullable MailAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:directmail/mailAddress:MailAddress", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MailAddressArgs makeArgs(MailAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MailAddressArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -148,7 +155,7 @@ public class MailAddress extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MailAddress get(String name, Output<String> id, @Nullable MailAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MailAddress get(java.lang.String name, Output<java.lang.String> id, @Nullable MailAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MailAddress(name, id, state, options);
     }
 }

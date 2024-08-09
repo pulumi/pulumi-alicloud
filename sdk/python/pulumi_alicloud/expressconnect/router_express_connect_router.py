@@ -264,7 +264,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
                  alibaba_side_asn: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ecr_name: Optional[pulumi.Input[str]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterExpressConnectRouterRegionArgs']]]]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
@@ -282,7 +282,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         :param pulumi.Input[int] alibaba_side_asn: ASN representing resources.
         :param pulumi.Input[str] description: Represents the description of the leased line gateway.
         :param pulumi.Input[str] ecr_name: Name of the Gateway representing the leased line.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterExpressConnectRouterRegionArgs']]]] regions: List of regions representing leased line gateways. See `regions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]] regions: List of regions representing leased line gateways. See `regions` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the ECR instance belongs.
                - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
@@ -320,7 +320,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
                  alibaba_side_asn: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ecr_name: Optional[pulumi.Input[str]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterExpressConnectRouterRegionArgs']]]]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
@@ -356,7 +356,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             ecr_name: Optional[pulumi.Input[str]] = None,
-            regions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterExpressConnectRouterRegionArgs']]]]] = None,
+            regions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'RouterExpressConnectRouter':
@@ -371,7 +371,7 @@ class RouterExpressConnectRouter(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Represents the creation time of the resource.
         :param pulumi.Input[str] description: Represents the description of the leased line gateway.
         :param pulumi.Input[str] ecr_name: Name of the Gateway representing the leased line.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterExpressConnectRouterRegionArgs']]]] regions: List of regions representing leased line gateways. See `regions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExpressConnectRouterRegionArgs', 'RouterExpressConnectRouterRegionArgsDict']]]] regions: List of regions representing leased line gateways. See `regions` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the ECR instance belongs.
                - A string consisting of letters, numbers, hyphens (-), and underscores (_), and the string length can be 0 to 64 characters.
         :param pulumi.Input[str] status: The status of the resource.

@@ -280,7 +280,7 @@ public class PrimaryEndpoint extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PrimaryEndpoint(String name) {
+    public PrimaryEndpoint(java.lang.String name) {
         this(name, PrimaryEndpointArgs.Empty);
     }
     /**
@@ -288,7 +288,7 @@ public class PrimaryEndpoint extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PrimaryEndpoint(String name, PrimaryEndpointArgs args) {
+    public PrimaryEndpoint(java.lang.String name, PrimaryEndpointArgs args) {
         this(name, args, null);
     }
     /**
@@ -297,15 +297,22 @@ public class PrimaryEndpoint extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PrimaryEndpoint(String name, PrimaryEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:polardb/primaryEndpoint:PrimaryEndpoint", name, args == null ? PrimaryEndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PrimaryEndpoint(java.lang.String name, PrimaryEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:polardb/primaryEndpoint:PrimaryEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PrimaryEndpoint(String name, Output<String> id, @Nullable PrimaryEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:polardb/primaryEndpoint:PrimaryEndpoint", name, state, makeResourceOptions(options, id));
+    private PrimaryEndpoint(java.lang.String name, Output<java.lang.String> id, @Nullable PrimaryEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:polardb/primaryEndpoint:PrimaryEndpoint", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PrimaryEndpointArgs makeArgs(PrimaryEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PrimaryEndpointArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -321,7 +328,7 @@ public class PrimaryEndpoint extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PrimaryEndpoint get(String name, Output<String> id, @Nullable PrimaryEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PrimaryEndpoint get(java.lang.String name, Output<java.lang.String> id, @Nullable PrimaryEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PrimaryEndpoint(name, id, state, options);
     }
 }

@@ -190,7 +190,7 @@ class AddressPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_pool_name: Optional[pulumi.Input[str]] = None,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressPoolAddressArgs']]]]] = None,
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  lba_strategy: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -233,28 +233,28 @@ class AddressPool(pulumi.CustomResource):
             resource_group_id=default.groups[0].id,
             alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
             public_user_domain_name=domain_name,
-            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
-                sms_notice=True,
-                notice_type="ADDR_ALERT",
-                email_notice=True,
-                dingtalk_notice=True,
-            )])
+            alert_configs=[{
+                "sms_notice": True,
+                "notice_type": "ADDR_ALERT",
+                "email_notice": True,
+                "dingtalk_notice": True,
+            }])
         default_address_pool = alicloud.dns.AddressPool("default",
             address_pool_name=name,
             instance_id=default_gtm_instance.id,
             lba_strategy="RATIO",
             type="IPV4",
-            addresses=[alicloud.dns.AddressPoolAddressArgs(
-                attribute_info=\"\"\"    {
+            addresses=[{
+                "attribute_info": \"\"\"    {
               "lineCodeRectifyType": "RECTIFIED",
               "lineCodes": ["os_namerica_us"]
             }
         \"\"\",
-                remark="address_remark",
-                address="1.1.1.1",
-                mode="SMART",
-                lba_weight=1,
-            )])
+                "remark": "address_remark",
+                "address": "1.1.1.1",
+                "mode": "SMART",
+                "lba_weight": 1,
+            }])
         ```
 
         ## Import
@@ -268,7 +268,7 @@ class AddressPool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_pool_name: The name of the address pool.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressPoolAddressArgs']]]] addresses: The address lists of the Address Pool. See `address` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]] addresses: The address lists of the Address Pool. See `address` below for details.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
@@ -317,28 +317,28 @@ class AddressPool(pulumi.CustomResource):
             resource_group_id=default.groups[0].id,
             alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
             public_user_domain_name=domain_name,
-            alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
-                sms_notice=True,
-                notice_type="ADDR_ALERT",
-                email_notice=True,
-                dingtalk_notice=True,
-            )])
+            alert_configs=[{
+                "sms_notice": True,
+                "notice_type": "ADDR_ALERT",
+                "email_notice": True,
+                "dingtalk_notice": True,
+            }])
         default_address_pool = alicloud.dns.AddressPool("default",
             address_pool_name=name,
             instance_id=default_gtm_instance.id,
             lba_strategy="RATIO",
             type="IPV4",
-            addresses=[alicloud.dns.AddressPoolAddressArgs(
-                attribute_info=\"\"\"    {
+            addresses=[{
+                "attribute_info": \"\"\"    {
               "lineCodeRectifyType": "RECTIFIED",
               "lineCodes": ["os_namerica_us"]
             }
         \"\"\",
-                remark="address_remark",
-                address="1.1.1.1",
-                mode="SMART",
-                lba_weight=1,
-            )])
+                "remark": "address_remark",
+                "address": "1.1.1.1",
+                "mode": "SMART",
+                "lba_weight": 1,
+            }])
         ```
 
         ## Import
@@ -365,7 +365,7 @@ class AddressPool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_pool_name: Optional[pulumi.Input[str]] = None,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressPoolAddressArgs']]]]] = None,
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  lba_strategy: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -404,7 +404,7 @@ class AddressPool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address_pool_name: Optional[pulumi.Input[str]] = None,
-            addresses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressPoolAddressArgs']]]]] = None,
+            addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             lba_strategy: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'AddressPool':
@@ -416,7 +416,7 @@ class AddressPool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_pool_name: The name of the address pool.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressPoolAddressArgs']]]] addresses: The address lists of the Address Pool. See `address` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]] addresses: The address lists of the Address Pool. See `address` below for details.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] lba_strategy: The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         :param pulumi.Input[str] type: The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.

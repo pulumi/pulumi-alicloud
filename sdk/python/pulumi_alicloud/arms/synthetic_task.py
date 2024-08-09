@@ -412,13 +412,13 @@ class SyntheticTask(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 available_assertions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SyntheticTaskAvailableAssertionArgs']]]]] = None,
-                 common_setting: Optional[pulumi.Input[pulumi.InputType['SyntheticTaskCommonSettingArgs']]] = None,
-                 custom_period: Optional[pulumi.Input[pulumi.InputType['SyntheticTaskCustomPeriodArgs']]] = None,
+                 available_assertions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskAvailableAssertionArgs', 'SyntheticTaskAvailableAssertionArgsDict']]]]] = None,
+                 common_setting: Optional[pulumi.Input[Union['SyntheticTaskCommonSettingArgs', 'SyntheticTaskCommonSettingArgsDict']]] = None,
+                 custom_period: Optional[pulumi.Input[Union['SyntheticTaskCustomPeriodArgs', 'SyntheticTaskCustomPeriodArgsDict']]] = None,
                  frequency: Optional[pulumi.Input[str]] = None,
                  monitor_category: Optional[pulumi.Input[int]] = None,
-                 monitor_conf: Optional[pulumi.Input[pulumi.InputType['SyntheticTaskMonitorConfArgs']]] = None,
-                 monitors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SyntheticTaskMonitorArgs']]]]] = None,
+                 monitor_conf: Optional[pulumi.Input[Union['SyntheticTaskMonitorConfArgs', 'SyntheticTaskMonitorConfArgsDict']]] = None,
+                 monitors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskMonitorArgs', 'SyntheticTaskMonitorArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  synthetic_task_name: Optional[pulumi.Input[str]] = None,
@@ -446,173 +446,173 @@ class SyntheticTask(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.resourcemanager.get_resource_groups()
         default_synthetic_task = alicloud.arms.SyntheticTask("default",
-            monitors=[alicloud.arms.SyntheticTaskMonitorArgs(
-                city_code="1200101",
-                operator_code="246",
-                client_type=4,
-            )],
+            monitors=[{
+                "city_code": "1200101",
+                "operator_code": "246",
+                "client_type": 4,
+            }],
             synthetic_task_name=name,
-            custom_period=alicloud.arms.SyntheticTaskCustomPeriodArgs(
-                end_hour=12,
-                start_hour=11,
-            ),
+            custom_period={
+                "end_hour": 12,
+                "start_hour": 11,
+            },
             available_assertions=[
-                alicloud.arms.SyntheticTaskAvailableAssertionArgs(
-                    type="IcmpPackLoss",
-                    operator="neq",
-                    expect="200",
-                    target="example",
-                ),
-                alicloud.arms.SyntheticTaskAvailableAssertionArgs(
-                    type="IcmpPackAvgLatency",
-                    operator="lte",
-                    expect="1000",
-                ),
-                alicloud.arms.SyntheticTaskAvailableAssertionArgs(
-                    type="IcmpPackMaxLatency",
-                    operator="lte",
-                    expect="10000",
-                ),
+                {
+                    "type": "IcmpPackLoss",
+                    "operator": "neq",
+                    "expect": "200",
+                    "target": "example",
+                },
+                {
+                    "type": "IcmpPackAvgLatency",
+                    "operator": "lte",
+                    "expect": "1000",
+                },
+                {
+                    "type": "IcmpPackMaxLatency",
+                    "operator": "lte",
+                    "expect": "10000",
+                },
             ],
             tags={
                 "Created": "TF",
                 "For": "example",
             },
             status="RUNNING",
-            monitor_conf=alicloud.arms.SyntheticTaskMonitorConfArgs(
-                net_tcp=alicloud.arms.SyntheticTaskMonitorConfNetTcpArgs(
-                    tracert_timeout=1050,
-                    target_url="www.aliyun.com",
-                    connect_times=6,
-                    interval=300,
-                    timeout=3000,
-                    tracert_num_max=2,
-                ),
-                net_dns=alicloud.arms.SyntheticTaskMonitorConfNetDnsArgs(
-                    query_method=1,
-                    timeout=5050,
-                    target_url="www.aliyun.com",
-                    dns_server_ip_type=1,
-                    ns_server="61.128.114.167",
-                ),
-                api_http=alicloud.arms.SyntheticTaskMonitorConfApiHttpArgs(
-                    timeout=10050,
-                    target_url="https://www.aliyun.com",
-                    method="POST",
-                    request_headers={
+            monitor_conf={
+                "net_tcp": {
+                    "tracert_timeout": 1050,
+                    "target_url": "www.aliyun.com",
+                    "connect_times": 6,
+                    "interval": 300,
+                    "timeout": 3000,
+                    "tracert_num_max": 2,
+                },
+                "net_dns": {
+                    "query_method": 1,
+                    "timeout": 5050,
+                    "target_url": "www.aliyun.com",
+                    "dns_server_ip_type": 1,
+                    "ns_server": "61.128.114.167",
+                },
+                "api_http": {
+                    "timeout": 10050,
+                    "target_url": "https://www.aliyun.com",
+                    "method": "POST",
+                    "request_headers": {
                         "key1": "value1",
                     },
-                    request_body=alicloud.arms.SyntheticTaskMonitorConfApiHttpRequestBodyArgs(
-                        content="example2",
-                        type="text/html",
-                    ),
-                    connect_timeout=6000,
-                ),
-                website=alicloud.arms.SyntheticTaskMonitorConfWebsiteArgs(
-                    slow_element_threshold=5005,
-                    verify_string_blacklist="Failed",
-                    element_blacklist="a.jpg",
-                    disable_compression=1,
-                    ignore_certificate_error=0,
-                    monitor_timeout=20000,
-                    redirection=0,
-                    dns_hijack_whitelist="www.aliyun.com:203.0.3.55",
-                    page_tamper="www.aliyun.com:|/cc/bb/a.gif",
-                    flow_hijack_jump_times=10,
-                    custom_header=1,
-                    disable_cache=1,
-                    verify_string_whitelist="Senyuan",
-                    target_url="http://www.aliyun.com",
-                    automatic_scrolling=1,
-                    wait_completion_time=5005,
-                    flow_hijack_logo="senyuan1",
-                    custom_header_content={
+                    "request_body": {
+                        "content": "example2",
+                        "type": "text/html",
+                    },
+                    "connect_timeout": 6000,
+                },
+                "website": {
+                    "slow_element_threshold": 5005,
+                    "verify_string_blacklist": "Failed",
+                    "element_blacklist": "a.jpg",
+                    "disable_compression": 1,
+                    "ignore_certificate_error": 0,
+                    "monitor_timeout": 20000,
+                    "redirection": 0,
+                    "dns_hijack_whitelist": "www.aliyun.com:203.0.3.55",
+                    "page_tamper": "www.aliyun.com:|/cc/bb/a.gif",
+                    "flow_hijack_jump_times": 10,
+                    "custom_header": 1,
+                    "disable_cache": 1,
+                    "verify_string_whitelist": "Senyuan",
+                    "target_url": "http://www.aliyun.com",
+                    "automatic_scrolling": 1,
+                    "wait_completion_time": 5005,
+                    "flow_hijack_logo": "senyuan1",
+                    "custom_header_content": {
                         "key1": "value1",
                     },
-                    filter_invalid_ip=0,
-                ),
-                file_download=alicloud.arms.SyntheticTaskMonitorConfFileDownloadArgs(
-                    white_list="www.aliyun.com:203.0.3.55",
-                    monitor_timeout=1050,
-                    ignore_certificate_untrustworthy_error=0,
-                    redirection=0,
-                    ignore_certificate_canceled_error=0,
-                    ignore_certificate_auth_error=0,
-                    ignore_certificate_out_of_date_error=0,
-                    ignore_certificate_using_error=0,
-                    connection_timeout=6090,
-                    ignore_invalid_host_error=0,
-                    verify_way=0,
-                    custom_header_content={
+                    "filter_invalid_ip": 0,
+                },
+                "file_download": {
+                    "white_list": "www.aliyun.com:203.0.3.55",
+                    "monitor_timeout": 1050,
+                    "ignore_certificate_untrustworthy_error": 0,
+                    "redirection": 0,
+                    "ignore_certificate_canceled_error": 0,
+                    "ignore_certificate_auth_error": 0,
+                    "ignore_certificate_out_of_date_error": 0,
+                    "ignore_certificate_using_error": 0,
+                    "connection_timeout": 6090,
+                    "ignore_invalid_host_error": 0,
+                    "verify_way": 0,
+                    "custom_header_content": {
                         "key1": "value1",
                     },
-                    target_url="https://www.aliyun.com",
-                    download_kernel=0,
-                    quick_protocol=2,
-                    ignore_certificate_status_error=1,
-                    transmission_size=128,
-                    validate_keywords="senyuan1",
-                ),
-                stream=alicloud.arms.SyntheticTaskMonitorConfStreamArgs(
-                    stream_monitor_timeout=10,
-                    stream_address_type=0,
-                    player_type=2,
-                    custom_header_content={
+                    "target_url": "https://www.aliyun.com",
+                    "download_kernel": 0,
+                    "quick_protocol": 2,
+                    "ignore_certificate_status_error": 1,
+                    "transmission_size": 128,
+                    "validate_keywords": "senyuan1",
+                },
+                "stream": {
+                    "stream_monitor_timeout": 10,
+                    "stream_address_type": 0,
+                    "player_type": 2,
+                    "custom_header_content": {
                         "key1": "value1",
                     },
-                    white_list="www.aliyun.com:203.0.3.55",
-                    target_url="https://acd-assets.alicdn.com:443/2021productweek/week1_s.mp4",
-                    stream_type=1,
-                ),
-                net_icmp=alicloud.arms.SyntheticTaskMonitorConfNetIcmpArgs(
-                    target_url="www.aliyun.com",
-                    interval=200,
-                    package_num=36,
-                    package_size=512,
-                    timeout=1000,
-                    tracert_enable=True,
-                    tracert_num_max=1,
-                    tracert_timeout=1200,
-                ),
-            ),
+                    "white_list": "www.aliyun.com:203.0.3.55",
+                    "target_url": "https://acd-assets.alicdn.com:443/2021productweek/week1_s.mp4",
+                    "stream_type": 1,
+                },
+                "net_icmp": {
+                    "target_url": "www.aliyun.com",
+                    "interval": 200,
+                    "package_num": 36,
+                    "package_size": 512,
+                    "timeout": 1000,
+                    "tracert_enable": True,
+                    "tracert_num_max": 1,
+                    "tracert_timeout": 1200,
+                },
+            },
             task_type=1,
             frequency="1h",
             monitor_category=1,
-            common_setting=alicloud.arms.SyntheticTaskCommonSettingArgs(
-                xtrace_region="cn-beijing",
-                custom_host=alicloud.arms.SyntheticTaskCommonSettingCustomHostArgs(
-                    hosts=[
-                        alicloud.arms.SyntheticTaskCommonSettingCustomHostHostArgs(
-                            domain="www.a.aliyun.com",
-                            ips=["153.3.238.102"],
-                            ip_type=0,
-                        ),
-                        alicloud.arms.SyntheticTaskCommonSettingCustomHostHostArgs(
-                            domain="www.shifen.com",
-                            ips=[
+            common_setting={
+                "xtrace_region": "cn-beijing",
+                "custom_host": {
+                    "hosts": [
+                        {
+                            "domain": "www.a.aliyun.com",
+                            "ips": ["153.3.238.102"],
+                            "ip_type": 0,
+                        },
+                        {
+                            "domain": "www.shifen.com",
+                            "ips": [
                                 "153.3.238.110",
                                 "114.114.114.114",
                                 "127.0.0.1",
                             ],
-                            ip_type=1,
-                        ),
-                        alicloud.arms.SyntheticTaskCommonSettingCustomHostHostArgs(
-                            domain="www.aliyun.com",
-                            ips=[
+                            "ip_type": 1,
+                        },
+                        {
+                            "domain": "www.aliyun.com",
+                            "ips": [
                                 "153.3.238.110",
                                 "180.101.50.242",
                                 "180.101.50.188",
                             ],
-                            ip_type=0,
-                        ),
+                            "ip_type": 0,
+                        },
                     ],
-                    select_type=1,
-                ),
-                monitor_samples=1,
-                ip_type=1,
-                is_open_trace=True,
-                trace_client_type=1,
-            ),
+                    "select_type": 1,
+                },
+                "monitor_samples": 1,
+                "ip_type": 1,
+                "is_open_trace": True,
+                "trace_client_type": 1,
+            },
             resource_group_id=default.ids[0])
         ```
 
@@ -626,13 +626,13 @@ class SyntheticTask(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SyntheticTaskAvailableAssertionArgs']]]] available_assertions: Assertion List. See `available_assertions` below.
-        :param pulumi.Input[pulumi.InputType['SyntheticTaskCommonSettingArgs']] common_setting: Common settings. See `common_setting` below.
-        :param pulumi.Input[pulumi.InputType['SyntheticTaskCustomPeriodArgs']] custom_period: Custom Cycle. See `custom_period` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskAvailableAssertionArgs', 'SyntheticTaskAvailableAssertionArgsDict']]]] available_assertions: Assertion List. See `available_assertions` below.
+        :param pulumi.Input[Union['SyntheticTaskCommonSettingArgs', 'SyntheticTaskCommonSettingArgsDict']] common_setting: Common settings. See `common_setting` below.
+        :param pulumi.Input[Union['SyntheticTaskCustomPeriodArgs', 'SyntheticTaskCustomPeriodArgsDict']] custom_period: Custom Cycle. See `custom_period` below.
         :param pulumi.Input[str] frequency: Frequency.
         :param pulumi.Input[int] monitor_category: Classification of selected monitors.
-        :param pulumi.Input[pulumi.InputType['SyntheticTaskMonitorConfArgs']] monitor_conf: Monitoring configuration. See `monitor_conf` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SyntheticTaskMonitorArgs']]]] monitors: List of selected monitors. See `monitors` below.
+        :param pulumi.Input[Union['SyntheticTaskMonitorConfArgs', 'SyntheticTaskMonitorConfArgsDict']] monitor_conf: Monitoring configuration. See `monitor_conf` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskMonitorArgs', 'SyntheticTaskMonitorArgsDict']]]] monitors: List of selected monitors. See `monitors` below.
         :param pulumi.Input[str] resource_group_id: Describes which resource group the resource belongs.
         :param pulumi.Input[str] status: task status.
         :param pulumi.Input[str] synthetic_task_name: The name of synthetic task.
@@ -666,173 +666,173 @@ class SyntheticTask(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.resourcemanager.get_resource_groups()
         default_synthetic_task = alicloud.arms.SyntheticTask("default",
-            monitors=[alicloud.arms.SyntheticTaskMonitorArgs(
-                city_code="1200101",
-                operator_code="246",
-                client_type=4,
-            )],
+            monitors=[{
+                "city_code": "1200101",
+                "operator_code": "246",
+                "client_type": 4,
+            }],
             synthetic_task_name=name,
-            custom_period=alicloud.arms.SyntheticTaskCustomPeriodArgs(
-                end_hour=12,
-                start_hour=11,
-            ),
+            custom_period={
+                "end_hour": 12,
+                "start_hour": 11,
+            },
             available_assertions=[
-                alicloud.arms.SyntheticTaskAvailableAssertionArgs(
-                    type="IcmpPackLoss",
-                    operator="neq",
-                    expect="200",
-                    target="example",
-                ),
-                alicloud.arms.SyntheticTaskAvailableAssertionArgs(
-                    type="IcmpPackAvgLatency",
-                    operator="lte",
-                    expect="1000",
-                ),
-                alicloud.arms.SyntheticTaskAvailableAssertionArgs(
-                    type="IcmpPackMaxLatency",
-                    operator="lte",
-                    expect="10000",
-                ),
+                {
+                    "type": "IcmpPackLoss",
+                    "operator": "neq",
+                    "expect": "200",
+                    "target": "example",
+                },
+                {
+                    "type": "IcmpPackAvgLatency",
+                    "operator": "lte",
+                    "expect": "1000",
+                },
+                {
+                    "type": "IcmpPackMaxLatency",
+                    "operator": "lte",
+                    "expect": "10000",
+                },
             ],
             tags={
                 "Created": "TF",
                 "For": "example",
             },
             status="RUNNING",
-            monitor_conf=alicloud.arms.SyntheticTaskMonitorConfArgs(
-                net_tcp=alicloud.arms.SyntheticTaskMonitorConfNetTcpArgs(
-                    tracert_timeout=1050,
-                    target_url="www.aliyun.com",
-                    connect_times=6,
-                    interval=300,
-                    timeout=3000,
-                    tracert_num_max=2,
-                ),
-                net_dns=alicloud.arms.SyntheticTaskMonitorConfNetDnsArgs(
-                    query_method=1,
-                    timeout=5050,
-                    target_url="www.aliyun.com",
-                    dns_server_ip_type=1,
-                    ns_server="61.128.114.167",
-                ),
-                api_http=alicloud.arms.SyntheticTaskMonitorConfApiHttpArgs(
-                    timeout=10050,
-                    target_url="https://www.aliyun.com",
-                    method="POST",
-                    request_headers={
+            monitor_conf={
+                "net_tcp": {
+                    "tracert_timeout": 1050,
+                    "target_url": "www.aliyun.com",
+                    "connect_times": 6,
+                    "interval": 300,
+                    "timeout": 3000,
+                    "tracert_num_max": 2,
+                },
+                "net_dns": {
+                    "query_method": 1,
+                    "timeout": 5050,
+                    "target_url": "www.aliyun.com",
+                    "dns_server_ip_type": 1,
+                    "ns_server": "61.128.114.167",
+                },
+                "api_http": {
+                    "timeout": 10050,
+                    "target_url": "https://www.aliyun.com",
+                    "method": "POST",
+                    "request_headers": {
                         "key1": "value1",
                     },
-                    request_body=alicloud.arms.SyntheticTaskMonitorConfApiHttpRequestBodyArgs(
-                        content="example2",
-                        type="text/html",
-                    ),
-                    connect_timeout=6000,
-                ),
-                website=alicloud.arms.SyntheticTaskMonitorConfWebsiteArgs(
-                    slow_element_threshold=5005,
-                    verify_string_blacklist="Failed",
-                    element_blacklist="a.jpg",
-                    disable_compression=1,
-                    ignore_certificate_error=0,
-                    monitor_timeout=20000,
-                    redirection=0,
-                    dns_hijack_whitelist="www.aliyun.com:203.0.3.55",
-                    page_tamper="www.aliyun.com:|/cc/bb/a.gif",
-                    flow_hijack_jump_times=10,
-                    custom_header=1,
-                    disable_cache=1,
-                    verify_string_whitelist="Senyuan",
-                    target_url="http://www.aliyun.com",
-                    automatic_scrolling=1,
-                    wait_completion_time=5005,
-                    flow_hijack_logo="senyuan1",
-                    custom_header_content={
+                    "request_body": {
+                        "content": "example2",
+                        "type": "text/html",
+                    },
+                    "connect_timeout": 6000,
+                },
+                "website": {
+                    "slow_element_threshold": 5005,
+                    "verify_string_blacklist": "Failed",
+                    "element_blacklist": "a.jpg",
+                    "disable_compression": 1,
+                    "ignore_certificate_error": 0,
+                    "monitor_timeout": 20000,
+                    "redirection": 0,
+                    "dns_hijack_whitelist": "www.aliyun.com:203.0.3.55",
+                    "page_tamper": "www.aliyun.com:|/cc/bb/a.gif",
+                    "flow_hijack_jump_times": 10,
+                    "custom_header": 1,
+                    "disable_cache": 1,
+                    "verify_string_whitelist": "Senyuan",
+                    "target_url": "http://www.aliyun.com",
+                    "automatic_scrolling": 1,
+                    "wait_completion_time": 5005,
+                    "flow_hijack_logo": "senyuan1",
+                    "custom_header_content": {
                         "key1": "value1",
                     },
-                    filter_invalid_ip=0,
-                ),
-                file_download=alicloud.arms.SyntheticTaskMonitorConfFileDownloadArgs(
-                    white_list="www.aliyun.com:203.0.3.55",
-                    monitor_timeout=1050,
-                    ignore_certificate_untrustworthy_error=0,
-                    redirection=0,
-                    ignore_certificate_canceled_error=0,
-                    ignore_certificate_auth_error=0,
-                    ignore_certificate_out_of_date_error=0,
-                    ignore_certificate_using_error=0,
-                    connection_timeout=6090,
-                    ignore_invalid_host_error=0,
-                    verify_way=0,
-                    custom_header_content={
+                    "filter_invalid_ip": 0,
+                },
+                "file_download": {
+                    "white_list": "www.aliyun.com:203.0.3.55",
+                    "monitor_timeout": 1050,
+                    "ignore_certificate_untrustworthy_error": 0,
+                    "redirection": 0,
+                    "ignore_certificate_canceled_error": 0,
+                    "ignore_certificate_auth_error": 0,
+                    "ignore_certificate_out_of_date_error": 0,
+                    "ignore_certificate_using_error": 0,
+                    "connection_timeout": 6090,
+                    "ignore_invalid_host_error": 0,
+                    "verify_way": 0,
+                    "custom_header_content": {
                         "key1": "value1",
                     },
-                    target_url="https://www.aliyun.com",
-                    download_kernel=0,
-                    quick_protocol=2,
-                    ignore_certificate_status_error=1,
-                    transmission_size=128,
-                    validate_keywords="senyuan1",
-                ),
-                stream=alicloud.arms.SyntheticTaskMonitorConfStreamArgs(
-                    stream_monitor_timeout=10,
-                    stream_address_type=0,
-                    player_type=2,
-                    custom_header_content={
+                    "target_url": "https://www.aliyun.com",
+                    "download_kernel": 0,
+                    "quick_protocol": 2,
+                    "ignore_certificate_status_error": 1,
+                    "transmission_size": 128,
+                    "validate_keywords": "senyuan1",
+                },
+                "stream": {
+                    "stream_monitor_timeout": 10,
+                    "stream_address_type": 0,
+                    "player_type": 2,
+                    "custom_header_content": {
                         "key1": "value1",
                     },
-                    white_list="www.aliyun.com:203.0.3.55",
-                    target_url="https://acd-assets.alicdn.com:443/2021productweek/week1_s.mp4",
-                    stream_type=1,
-                ),
-                net_icmp=alicloud.arms.SyntheticTaskMonitorConfNetIcmpArgs(
-                    target_url="www.aliyun.com",
-                    interval=200,
-                    package_num=36,
-                    package_size=512,
-                    timeout=1000,
-                    tracert_enable=True,
-                    tracert_num_max=1,
-                    tracert_timeout=1200,
-                ),
-            ),
+                    "white_list": "www.aliyun.com:203.0.3.55",
+                    "target_url": "https://acd-assets.alicdn.com:443/2021productweek/week1_s.mp4",
+                    "stream_type": 1,
+                },
+                "net_icmp": {
+                    "target_url": "www.aliyun.com",
+                    "interval": 200,
+                    "package_num": 36,
+                    "package_size": 512,
+                    "timeout": 1000,
+                    "tracert_enable": True,
+                    "tracert_num_max": 1,
+                    "tracert_timeout": 1200,
+                },
+            },
             task_type=1,
             frequency="1h",
             monitor_category=1,
-            common_setting=alicloud.arms.SyntheticTaskCommonSettingArgs(
-                xtrace_region="cn-beijing",
-                custom_host=alicloud.arms.SyntheticTaskCommonSettingCustomHostArgs(
-                    hosts=[
-                        alicloud.arms.SyntheticTaskCommonSettingCustomHostHostArgs(
-                            domain="www.a.aliyun.com",
-                            ips=["153.3.238.102"],
-                            ip_type=0,
-                        ),
-                        alicloud.arms.SyntheticTaskCommonSettingCustomHostHostArgs(
-                            domain="www.shifen.com",
-                            ips=[
+            common_setting={
+                "xtrace_region": "cn-beijing",
+                "custom_host": {
+                    "hosts": [
+                        {
+                            "domain": "www.a.aliyun.com",
+                            "ips": ["153.3.238.102"],
+                            "ip_type": 0,
+                        },
+                        {
+                            "domain": "www.shifen.com",
+                            "ips": [
                                 "153.3.238.110",
                                 "114.114.114.114",
                                 "127.0.0.1",
                             ],
-                            ip_type=1,
-                        ),
-                        alicloud.arms.SyntheticTaskCommonSettingCustomHostHostArgs(
-                            domain="www.aliyun.com",
-                            ips=[
+                            "ip_type": 1,
+                        },
+                        {
+                            "domain": "www.aliyun.com",
+                            "ips": [
                                 "153.3.238.110",
                                 "180.101.50.242",
                                 "180.101.50.188",
                             ],
-                            ip_type=0,
-                        ),
+                            "ip_type": 0,
+                        },
                     ],
-                    select_type=1,
-                ),
-                monitor_samples=1,
-                ip_type=1,
-                is_open_trace=True,
-                trace_client_type=1,
-            ),
+                    "select_type": 1,
+                },
+                "monitor_samples": 1,
+                "ip_type": 1,
+                "is_open_trace": True,
+                "trace_client_type": 1,
+            },
             resource_group_id=default.ids[0])
         ```
 
@@ -859,13 +859,13 @@ class SyntheticTask(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 available_assertions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SyntheticTaskAvailableAssertionArgs']]]]] = None,
-                 common_setting: Optional[pulumi.Input[pulumi.InputType['SyntheticTaskCommonSettingArgs']]] = None,
-                 custom_period: Optional[pulumi.Input[pulumi.InputType['SyntheticTaskCustomPeriodArgs']]] = None,
+                 available_assertions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskAvailableAssertionArgs', 'SyntheticTaskAvailableAssertionArgsDict']]]]] = None,
+                 common_setting: Optional[pulumi.Input[Union['SyntheticTaskCommonSettingArgs', 'SyntheticTaskCommonSettingArgsDict']]] = None,
+                 custom_period: Optional[pulumi.Input[Union['SyntheticTaskCustomPeriodArgs', 'SyntheticTaskCustomPeriodArgsDict']]] = None,
                  frequency: Optional[pulumi.Input[str]] = None,
                  monitor_category: Optional[pulumi.Input[int]] = None,
-                 monitor_conf: Optional[pulumi.Input[pulumi.InputType['SyntheticTaskMonitorConfArgs']]] = None,
-                 monitors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SyntheticTaskMonitorArgs']]]]] = None,
+                 monitor_conf: Optional[pulumi.Input[Union['SyntheticTaskMonitorConfArgs', 'SyntheticTaskMonitorConfArgsDict']]] = None,
+                 monitors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskMonitorArgs', 'SyntheticTaskMonitorArgsDict']]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  synthetic_task_name: Optional[pulumi.Input[str]] = None,
@@ -914,13 +914,13 @@ class SyntheticTask(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            available_assertions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SyntheticTaskAvailableAssertionArgs']]]]] = None,
-            common_setting: Optional[pulumi.Input[pulumi.InputType['SyntheticTaskCommonSettingArgs']]] = None,
-            custom_period: Optional[pulumi.Input[pulumi.InputType['SyntheticTaskCustomPeriodArgs']]] = None,
+            available_assertions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskAvailableAssertionArgs', 'SyntheticTaskAvailableAssertionArgsDict']]]]] = None,
+            common_setting: Optional[pulumi.Input[Union['SyntheticTaskCommonSettingArgs', 'SyntheticTaskCommonSettingArgsDict']]] = None,
+            custom_period: Optional[pulumi.Input[Union['SyntheticTaskCustomPeriodArgs', 'SyntheticTaskCustomPeriodArgsDict']]] = None,
             frequency: Optional[pulumi.Input[str]] = None,
             monitor_category: Optional[pulumi.Input[int]] = None,
-            monitor_conf: Optional[pulumi.Input[pulumi.InputType['SyntheticTaskMonitorConfArgs']]] = None,
-            monitors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SyntheticTaskMonitorArgs']]]]] = None,
+            monitor_conf: Optional[pulumi.Input[Union['SyntheticTaskMonitorConfArgs', 'SyntheticTaskMonitorConfArgsDict']]] = None,
+            monitors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskMonitorArgs', 'SyntheticTaskMonitorArgsDict']]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             synthetic_task_name: Optional[pulumi.Input[str]] = None,
@@ -933,13 +933,13 @@ class SyntheticTask(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SyntheticTaskAvailableAssertionArgs']]]] available_assertions: Assertion List. See `available_assertions` below.
-        :param pulumi.Input[pulumi.InputType['SyntheticTaskCommonSettingArgs']] common_setting: Common settings. See `common_setting` below.
-        :param pulumi.Input[pulumi.InputType['SyntheticTaskCustomPeriodArgs']] custom_period: Custom Cycle. See `custom_period` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskAvailableAssertionArgs', 'SyntheticTaskAvailableAssertionArgsDict']]]] available_assertions: Assertion List. See `available_assertions` below.
+        :param pulumi.Input[Union['SyntheticTaskCommonSettingArgs', 'SyntheticTaskCommonSettingArgsDict']] common_setting: Common settings. See `common_setting` below.
+        :param pulumi.Input[Union['SyntheticTaskCustomPeriodArgs', 'SyntheticTaskCustomPeriodArgsDict']] custom_period: Custom Cycle. See `custom_period` below.
         :param pulumi.Input[str] frequency: Frequency.
         :param pulumi.Input[int] monitor_category: Classification of selected monitors.
-        :param pulumi.Input[pulumi.InputType['SyntheticTaskMonitorConfArgs']] monitor_conf: Monitoring configuration. See `monitor_conf` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SyntheticTaskMonitorArgs']]]] monitors: List of selected monitors. See `monitors` below.
+        :param pulumi.Input[Union['SyntheticTaskMonitorConfArgs', 'SyntheticTaskMonitorConfArgsDict']] monitor_conf: Monitoring configuration. See `monitor_conf` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskMonitorArgs', 'SyntheticTaskMonitorArgsDict']]]] monitors: List of selected monitors. See `monitors` below.
         :param pulumi.Input[str] resource_group_id: Describes which resource group the resource belongs.
         :param pulumi.Input[str] status: task status.
         :param pulumi.Input[str] synthetic_task_name: The name of synthetic task.

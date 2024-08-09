@@ -167,7 +167,7 @@ public class MachineGroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MachineGroup(String name) {
+    public MachineGroup(java.lang.String name) {
         this(name, MachineGroupArgs.Empty);
     }
     /**
@@ -175,7 +175,7 @@ public class MachineGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MachineGroup(String name, MachineGroupArgs args) {
+    public MachineGroup(java.lang.String name, MachineGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -184,15 +184,22 @@ public class MachineGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MachineGroup(String name, MachineGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/machineGroup:MachineGroup", name, args == null ? MachineGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public MachineGroup(java.lang.String name, MachineGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/machineGroup:MachineGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MachineGroup(String name, Output<String> id, @Nullable MachineGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:log/machineGroup:MachineGroup", name, state, makeResourceOptions(options, id));
+    private MachineGroup(java.lang.String name, Output<java.lang.String> id, @Nullable MachineGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:log/machineGroup:MachineGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static MachineGroupArgs makeArgs(MachineGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MachineGroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -208,7 +215,7 @@ public class MachineGroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MachineGroup get(String name, Output<String> id, @Nullable MachineGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MachineGroup get(java.lang.String name, Output<java.lang.String> id, @Nullable MachineGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MachineGroup(name, id, state, options);
     }
 }

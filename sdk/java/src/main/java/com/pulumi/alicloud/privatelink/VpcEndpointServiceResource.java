@@ -214,7 +214,7 @@ public class VpcEndpointServiceResource extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VpcEndpointServiceResource(String name) {
+    public VpcEndpointServiceResource(java.lang.String name) {
         this(name, VpcEndpointServiceResourceArgs.Empty);
     }
     /**
@@ -222,7 +222,7 @@ public class VpcEndpointServiceResource extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VpcEndpointServiceResource(String name, VpcEndpointServiceResourceArgs args) {
+    public VpcEndpointServiceResource(java.lang.String name, VpcEndpointServiceResourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -231,15 +231,22 @@ public class VpcEndpointServiceResource extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VpcEndpointServiceResource(String name, VpcEndpointServiceResourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource", name, args == null ? VpcEndpointServiceResourceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VpcEndpointServiceResource(java.lang.String name, VpcEndpointServiceResourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VpcEndpointServiceResource(String name, Output<String> id, @Nullable VpcEndpointServiceResourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource", name, state, makeResourceOptions(options, id));
+    private VpcEndpointServiceResource(java.lang.String name, Output<java.lang.String> id, @Nullable VpcEndpointServiceResourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VpcEndpointServiceResourceArgs makeArgs(VpcEndpointServiceResourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VpcEndpointServiceResourceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -255,7 +262,7 @@ public class VpcEndpointServiceResource extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VpcEndpointServiceResource get(String name, Output<String> id, @Nullable VpcEndpointServiceResourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VpcEndpointServiceResource get(java.lang.String name, Output<java.lang.String> id, @Nullable VpcEndpointServiceResourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VpcEndpointServiceResource(name, id, state, options);
     }
 }

@@ -946,7 +946,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
                  auto_pay: Optional[pulumi.Input[bool]] = None,
                  auto_renew: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
-                 ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedPropreHostEcsClassListArgs']]]]] = None,
+                 ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedPropreHostEcsClassListArgs', 'DedicatedPropreHostEcsClassListArgsDict']]]]] = None,
                  ecs_deployment_set_id: Optional[pulumi.Input[str]] = None,
                  ecs_host_name: Optional[pulumi.Input[str]] = None,
                  ecs_instance_name: Optional[pulumi.Input[str]] = None,
@@ -986,7 +986,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
                - **true**: On
                - **false** (default): Off
         :param pulumi.Input[str] dedicated_host_group_id: You have a dedicated cluster ID.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedPropreHostEcsClassListArgs']]]] ecs_class_lists: ECS specifications. See `ecs_class_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DedicatedPropreHostEcsClassListArgs', 'DedicatedPropreHostEcsClassListArgsDict']]]] ecs_class_lists: ECS specifications. See `ecs_class_list` below.
         :param pulumi.Input[str] ecs_deployment_set_id: The ID of the cloud server deployment set.
         :param pulumi.Input[str] ecs_host_name: Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         :param pulumi.Input[str] ecs_instance_name: The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of the instance.
@@ -1058,7 +1058,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
                  auto_pay: Optional[pulumi.Input[bool]] = None,
                  auto_renew: Optional[pulumi.Input[str]] = None,
                  dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
-                 ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedPropreHostEcsClassListArgs']]]]] = None,
+                 ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedPropreHostEcsClassListArgs', 'DedicatedPropreHostEcsClassListArgsDict']]]]] = None,
                  ecs_deployment_set_id: Optional[pulumi.Input[str]] = None,
                  ecs_host_name: Optional[pulumi.Input[str]] = None,
                  ecs_instance_name: Optional[pulumi.Input[str]] = None,
@@ -1144,7 +1144,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
             auto_pay: Optional[pulumi.Input[bool]] = None,
             auto_renew: Optional[pulumi.Input[str]] = None,
             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
-            ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedPropreHostEcsClassListArgs']]]]] = None,
+            ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedPropreHostEcsClassListArgs', 'DedicatedPropreHostEcsClassListArgsDict']]]]] = None,
             ecs_deployment_set_id: Optional[pulumi.Input[str]] = None,
             ecs_host_name: Optional[pulumi.Input[str]] = None,
             ecs_instance_id: Optional[pulumi.Input[str]] = None,
@@ -1180,7 +1180,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
                - **true**: On
                - **false** (default): Off
         :param pulumi.Input[str] dedicated_host_group_id: You have a dedicated cluster ID.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedPropreHostEcsClassListArgs']]]] ecs_class_lists: ECS specifications. See `ecs_class_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DedicatedPropreHostEcsClassListArgs', 'DedicatedPropreHostEcsClassListArgsDict']]]] ecs_class_lists: ECS specifications. See `ecs_class_list` below.
         :param pulumi.Input[str] ecs_deployment_set_id: The ID of the cloud server deployment set.
         :param pulumi.Input[str] ecs_host_name: Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         :param pulumi.Input[str] ecs_instance_id: ECS instance ID.

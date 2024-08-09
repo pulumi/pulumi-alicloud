@@ -205,7 +205,7 @@ public class HoneyPot extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HoneyPot(String name) {
+    public HoneyPot(java.lang.String name) {
         this(name, HoneyPotArgs.Empty);
     }
     /**
@@ -213,7 +213,7 @@ public class HoneyPot extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HoneyPot(String name, HoneyPotArgs args) {
+    public HoneyPot(java.lang.String name, HoneyPotArgs args) {
         this(name, args, null);
     }
     /**
@@ -222,15 +222,22 @@ public class HoneyPot extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HoneyPot(String name, HoneyPotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/honeyPot:HoneyPot", name, args == null ? HoneyPotArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HoneyPot(java.lang.String name, HoneyPotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/honeyPot:HoneyPot", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HoneyPot(String name, Output<String> id, @Nullable HoneyPotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/honeyPot:HoneyPot", name, state, makeResourceOptions(options, id));
+    private HoneyPot(java.lang.String name, Output<java.lang.String> id, @Nullable HoneyPotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/honeyPot:HoneyPot", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HoneyPotArgs makeArgs(HoneyPotArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HoneyPotArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -246,7 +253,7 @@ public class HoneyPot extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HoneyPot get(String name, Output<String> id, @Nullable HoneyPotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HoneyPot get(java.lang.String name, Output<java.lang.String> id, @Nullable HoneyPotState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HoneyPot(name, id, state, options);
     }
 }

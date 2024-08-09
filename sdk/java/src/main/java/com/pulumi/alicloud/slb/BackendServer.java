@@ -80,7 +80,7 @@ public class BackendServer extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BackendServer(String name) {
+    public BackendServer(java.lang.String name) {
         this(name, BackendServerArgs.Empty);
     }
     /**
@@ -88,7 +88,7 @@ public class BackendServer extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BackendServer(String name, BackendServerArgs args) {
+    public BackendServer(java.lang.String name, BackendServerArgs args) {
         this(name, args, null);
     }
     /**
@@ -97,15 +97,22 @@ public class BackendServer extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BackendServer(String name, BackendServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:slb/backendServer:BackendServer", name, args == null ? BackendServerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BackendServer(java.lang.String name, BackendServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:slb/backendServer:BackendServer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BackendServer(String name, Output<String> id, @Nullable BackendServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:slb/backendServer:BackendServer", name, state, makeResourceOptions(options, id));
+    private BackendServer(java.lang.String name, Output<java.lang.String> id, @Nullable BackendServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:slb/backendServer:BackendServer", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BackendServerArgs makeArgs(BackendServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BackendServerArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -121,7 +128,7 @@ public class BackendServer extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BackendServer get(String name, Output<String> id, @Nullable BackendServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BackendServer get(java.lang.String name, Output<java.lang.String> id, @Nullable BackendServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BackendServer(name, id, state, options);
     }
 }

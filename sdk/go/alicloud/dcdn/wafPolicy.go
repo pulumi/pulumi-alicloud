@@ -52,7 +52,7 @@ import (
 //			}
 //			_, err = dcdn.NewWafPolicy(ctx, "example", &dcdn.WafPolicyArgs{
 //				DefenseScene: pulumi.String("waf_group"),
-//				PolicyName:   pulumi.String(fmt.Sprintf("%v_%v", name, _default.Result)),
+//				PolicyName:   pulumi.Sprintf("%v_%v", name, _default.Result),
 //				PolicyType:   pulumi.String("custom"),
 //				Status:       pulumi.String("on"),
 //			})

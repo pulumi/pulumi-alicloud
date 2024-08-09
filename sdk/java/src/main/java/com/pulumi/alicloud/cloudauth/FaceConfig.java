@@ -80,7 +80,7 @@ public class FaceConfig extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FaceConfig(String name) {
+    public FaceConfig(java.lang.String name) {
         this(name, FaceConfigArgs.Empty);
     }
     /**
@@ -88,7 +88,7 @@ public class FaceConfig extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FaceConfig(String name, FaceConfigArgs args) {
+    public FaceConfig(java.lang.String name, FaceConfigArgs args) {
         this(name, args, null);
     }
     /**
@@ -97,15 +97,22 @@ public class FaceConfig extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FaceConfig(String name, FaceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudauth/faceConfig:FaceConfig", name, args == null ? FaceConfigArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public FaceConfig(java.lang.String name, FaceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudauth/faceConfig:FaceConfig", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FaceConfig(String name, Output<String> id, @Nullable FaceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudauth/faceConfig:FaceConfig", name, state, makeResourceOptions(options, id));
+    private FaceConfig(java.lang.String name, Output<java.lang.String> id, @Nullable FaceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudauth/faceConfig:FaceConfig", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FaceConfigArgs makeArgs(FaceConfigArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FaceConfigArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -121,7 +128,7 @@ public class FaceConfig extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FaceConfig get(String name, Output<String> id, @Nullable FaceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FaceConfig get(java.lang.String name, Output<java.lang.String> id, @Nullable FaceConfigState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FaceConfig(name, id, state, options);
     }
 }

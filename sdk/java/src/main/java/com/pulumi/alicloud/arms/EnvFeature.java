@@ -106,7 +106,7 @@ public class EnvFeature extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EnvFeature(String name) {
+    public EnvFeature(java.lang.String name) {
         this(name, EnvFeatureArgs.Empty);
     }
     /**
@@ -114,7 +114,7 @@ public class EnvFeature extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EnvFeature(String name, EnvFeatureArgs args) {
+    public EnvFeature(java.lang.String name, EnvFeatureArgs args) {
         this(name, args, null);
     }
     /**
@@ -123,15 +123,22 @@ public class EnvFeature extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EnvFeature(String name, EnvFeatureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:arms/envFeature:EnvFeature", name, args == null ? EnvFeatureArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EnvFeature(java.lang.String name, EnvFeatureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:arms/envFeature:EnvFeature", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EnvFeature(String name, Output<String> id, @Nullable EnvFeatureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:arms/envFeature:EnvFeature", name, state, makeResourceOptions(options, id));
+    private EnvFeature(java.lang.String name, Output<java.lang.String> id, @Nullable EnvFeatureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:arms/envFeature:EnvFeature", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EnvFeatureArgs makeArgs(EnvFeatureArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EnvFeatureArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -147,7 +154,7 @@ public class EnvFeature extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EnvFeature get(String name, Output<String> id, @Nullable EnvFeatureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EnvFeature get(java.lang.String name, Output<java.lang.String> id, @Nullable EnvFeatureState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EnvFeature(name, id, state, options);
     }
 }

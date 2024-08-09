@@ -370,11 +370,11 @@ class NetworkAcl(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEgressAclEntryArgs']]]]] = None,
-                 ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]]] = None,
+                 egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]]] = None,
+                 ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_acl_name: Optional[pulumi.Input[str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
                  source_network_acl_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -411,26 +411,26 @@ class NetworkAcl(pulumi.CustomResource):
             vpc_id=example.id,
             network_acl_name=name,
             description=name,
-            ingress_acl_entries=[alicloud.vpc.NetworkAclIngressAclEntryArgs(
-                description=f"{name}-ingress",
-                network_acl_entry_name=f"{name}-ingress",
-                source_cidr_ip="10.0.0.0/24",
-                policy="accept",
-                port="20/80",
-                protocol="tcp",
-            )],
-            egress_acl_entries=[alicloud.vpc.NetworkAclEgressAclEntryArgs(
-                description=f"{name}-egress",
-                network_acl_entry_name=f"{name}-egress",
-                destination_cidr_ip="10.0.0.0/24",
-                policy="accept",
-                port="20/80",
-                protocol="tcp",
-            )],
-            resources=[alicloud.vpc.NetworkAclResourceArgs(
-                resource_id=example_switch.id,
-                resource_type="VSwitch",
-            )])
+            ingress_acl_entries=[{
+                "description": f"{name}-ingress",
+                "network_acl_entry_name": f"{name}-ingress",
+                "source_cidr_ip": "10.0.0.0/24",
+                "policy": "accept",
+                "port": "20/80",
+                "protocol": "tcp",
+            }],
+            egress_acl_entries=[{
+                "description": f"{name}-egress",
+                "network_acl_entry_name": f"{name}-egress",
+                "destination_cidr_ip": "10.0.0.0/24",
+                "policy": "accept",
+                "port": "20/80",
+                "protocol": "tcp",
+            }],
+            resources=[{
+                "resource_id": example_switch.id,
+                "resource_type": "VSwitch",
+            }])
         ```
 
         ## Import
@@ -444,11 +444,11 @@ class NetworkAcl(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEgressAclEntryArgs']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         :param pulumi.Input[str] network_acl_name: The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]] resources: The associated resource. See `resources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
         :param pulumi.Input[str] vpc_id: The ID of the associated VPC.
@@ -493,26 +493,26 @@ class NetworkAcl(pulumi.CustomResource):
             vpc_id=example.id,
             network_acl_name=name,
             description=name,
-            ingress_acl_entries=[alicloud.vpc.NetworkAclIngressAclEntryArgs(
-                description=f"{name}-ingress",
-                network_acl_entry_name=f"{name}-ingress",
-                source_cidr_ip="10.0.0.0/24",
-                policy="accept",
-                port="20/80",
-                protocol="tcp",
-            )],
-            egress_acl_entries=[alicloud.vpc.NetworkAclEgressAclEntryArgs(
-                description=f"{name}-egress",
-                network_acl_entry_name=f"{name}-egress",
-                destination_cidr_ip="10.0.0.0/24",
-                policy="accept",
-                port="20/80",
-                protocol="tcp",
-            )],
-            resources=[alicloud.vpc.NetworkAclResourceArgs(
-                resource_id=example_switch.id,
-                resource_type="VSwitch",
-            )])
+            ingress_acl_entries=[{
+                "description": f"{name}-ingress",
+                "network_acl_entry_name": f"{name}-ingress",
+                "source_cidr_ip": "10.0.0.0/24",
+                "policy": "accept",
+                "port": "20/80",
+                "protocol": "tcp",
+            }],
+            egress_acl_entries=[{
+                "description": f"{name}-egress",
+                "network_acl_entry_name": f"{name}-egress",
+                "destination_cidr_ip": "10.0.0.0/24",
+                "policy": "accept",
+                "port": "20/80",
+                "protocol": "tcp",
+            }],
+            resources=[{
+                "resource_id": example_switch.id,
+                "resource_type": "VSwitch",
+            }])
         ```
 
         ## Import
@@ -539,11 +539,11 @@ class NetworkAcl(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEgressAclEntryArgs']]]]] = None,
-                 ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]]] = None,
+                 egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]]] = None,
+                 ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_acl_name: Optional[pulumi.Input[str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
                  source_network_acl_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -581,11 +581,11 @@ class NetworkAcl(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEgressAclEntryArgs']]]]] = None,
-            ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]]] = None,
+            egress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]]] = None,
+            ingress_acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_acl_name: Optional[pulumi.Input[str]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]]] = None,
+            resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]]] = None,
             source_network_acl_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -599,11 +599,11 @@ class NetworkAcl(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] description: The description of the network ACL.  The description must be 1 to 256 characters in length and cannot start with http:// or https.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEgressAclEntryArgs']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEgressAclEntryArgs', 'NetworkAclEgressAclEntryArgsDict']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclIngressAclEntryArgs', 'NetworkAclIngressAclEntryArgsDict']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         :param pulumi.Input[str] network_acl_name: The name of the network ACL.  The name must be 1 to 128 characters in length and cannot start with http:// or https.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]] resources: The associated resource. See `resources` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclResourceArgs', 'NetworkAclResourceArgsDict']]]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[str] source_network_acl_id: SOURCE NetworkAcl specified by CopyNetworkAclEntries.
         :param pulumi.Input[str] status: The state of the network ACL.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.

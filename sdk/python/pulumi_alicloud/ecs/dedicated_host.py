@@ -703,7 +703,7 @@ class DedicatedHost(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  expired_time: Optional[pulumi.Input[str]] = None,
                  min_quantity: Optional[pulumi.Input[int]] = None,
-                 network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]]] = None,
+                 network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict']]]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  sale_cycle: Optional[pulumi.Input[str]] = None,
@@ -735,7 +735,7 @@ class DedicatedHost(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether to only validate the request. Default: `false`.
         :param pulumi.Input[str] expired_time: The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
         :param pulumi.Input[int] min_quantity: Specify the minimum purchase quantity of a dedicated host.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]] network_attributes: dedicated host network parameters. contains the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict']]]] network_attributes: dedicated host network parameters. contains the following attributes:
         :param pulumi.Input[str] payment_type: The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the dedicated host belongs.
         :param pulumi.Input[str] sale_cycle: The unit of the subscription period of the dedicated host.
@@ -786,7 +786,7 @@ class DedicatedHost(pulumi.CustomResource):
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  expired_time: Optional[pulumi.Input[str]] = None,
                  min_quantity: Optional[pulumi.Input[int]] = None,
-                 network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]]] = None,
+                 network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict']]]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  sale_cycle: Optional[pulumi.Input[str]] = None,
@@ -848,7 +848,7 @@ class DedicatedHost(pulumi.CustomResource):
             dry_run: Optional[pulumi.Input[bool]] = None,
             expired_time: Optional[pulumi.Input[str]] = None,
             min_quantity: Optional[pulumi.Input[int]] = None,
-            network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]]] = None,
+            network_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict']]]]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             sale_cycle: Optional[pulumi.Input[str]] = None,
@@ -876,7 +876,7 @@ class DedicatedHost(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether to only validate the request. Default: `false`.
         :param pulumi.Input[str] expired_time: The subscription period of the dedicated host. The Period parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
         :param pulumi.Input[int] min_quantity: Specify the minimum purchase quantity of a dedicated host.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DedicatedHostNetworkAttributeArgs']]]] network_attributes: dedicated host network parameters. contains the following attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DedicatedHostNetworkAttributeArgs', 'DedicatedHostNetworkAttributeArgsDict']]]] network_attributes: dedicated host network parameters. contains the following attributes:
         :param pulumi.Input[str] payment_type: The billing method of the dedicated host. Valid values: `PrePaid`, `PostPaid`. Default: `PostPaid`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the dedicated host belongs.
         :param pulumi.Input[str] sale_cycle: The unit of the subscription period of the dedicated host.

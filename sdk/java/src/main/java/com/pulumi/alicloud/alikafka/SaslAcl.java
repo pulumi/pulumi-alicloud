@@ -246,7 +246,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SaslAcl(String name) {
+    public SaslAcl(java.lang.String name) {
         this(name, SaslAclArgs.Empty);
     }
     /**
@@ -254,7 +254,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SaslAcl(String name, SaslAclArgs args) {
+    public SaslAcl(java.lang.String name, SaslAclArgs args) {
         this(name, args, null);
     }
     /**
@@ -263,15 +263,22 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SaslAcl(String name, SaslAclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:alikafka/saslAcl:SaslAcl", name, args == null ? SaslAclArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SaslAcl(java.lang.String name, SaslAclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:alikafka/saslAcl:SaslAcl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SaslAcl(String name, Output<String> id, @Nullable SaslAclState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:alikafka/saslAcl:SaslAcl", name, state, makeResourceOptions(options, id));
+    private SaslAcl(java.lang.String name, Output<java.lang.String> id, @Nullable SaslAclState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:alikafka/saslAcl:SaslAcl", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SaslAclArgs makeArgs(SaslAclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SaslAclArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -287,7 +294,7 @@ public class SaslAcl extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SaslAcl get(String name, Output<String> id, @Nullable SaslAclState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SaslAcl get(java.lang.String name, Output<java.lang.String> id, @Nullable SaslAclState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SaslAcl(name, id, state, options);
     }
 }

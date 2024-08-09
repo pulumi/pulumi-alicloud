@@ -101,7 +101,7 @@ public class SasTrail extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SasTrail(String name) {
+    public SasTrail(java.lang.String name) {
         this(name, SasTrailArgs.Empty);
     }
     /**
@@ -109,7 +109,7 @@ public class SasTrail extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SasTrail(String name, @Nullable SasTrailArgs args) {
+    public SasTrail(java.lang.String name, @Nullable SasTrailArgs args) {
         this(name, args, null);
     }
     /**
@@ -118,15 +118,22 @@ public class SasTrail extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SasTrail(String name, @Nullable SasTrailArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/sasTrail:SasTrail", name, args == null ? SasTrailArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SasTrail(java.lang.String name, @Nullable SasTrailArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/sasTrail:SasTrail", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SasTrail(String name, Output<String> id, @Nullable SasTrailState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:threatdetection/sasTrail:SasTrail", name, state, makeResourceOptions(options, id));
+    private SasTrail(java.lang.String name, Output<java.lang.String> id, @Nullable SasTrailState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:threatdetection/sasTrail:SasTrail", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SasTrailArgs makeArgs(@Nullable SasTrailArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SasTrailArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -142,7 +149,7 @@ public class SasTrail extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SasTrail get(String name, Output<String> id, @Nullable SasTrailState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SasTrail get(java.lang.String name, Output<java.lang.String> id, @Nullable SasTrailState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SasTrail(name, id, state, options);
     }
 }

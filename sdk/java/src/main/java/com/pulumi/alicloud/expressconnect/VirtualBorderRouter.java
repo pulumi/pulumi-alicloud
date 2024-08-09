@@ -393,7 +393,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VirtualBorderRouter(String name) {
+    public VirtualBorderRouter(java.lang.String name) {
         this(name, VirtualBorderRouterArgs.Empty);
     }
     /**
@@ -401,7 +401,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VirtualBorderRouter(String name, VirtualBorderRouterArgs args) {
+    public VirtualBorderRouter(java.lang.String name, VirtualBorderRouterArgs args) {
         this(name, args, null);
     }
     /**
@@ -410,15 +410,22 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VirtualBorderRouter(String name, VirtualBorderRouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter", name, args == null ? VirtualBorderRouterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VirtualBorderRouter(java.lang.String name, VirtualBorderRouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VirtualBorderRouter(String name, Output<String> id, @Nullable VirtualBorderRouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter", name, state, makeResourceOptions(options, id));
+    private VirtualBorderRouter(java.lang.String name, Output<java.lang.String> id, @Nullable VirtualBorderRouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VirtualBorderRouterArgs makeArgs(VirtualBorderRouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VirtualBorderRouterArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -434,7 +441,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VirtualBorderRouter get(String name, Output<String> id, @Nullable VirtualBorderRouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VirtualBorderRouter get(java.lang.String name, Output<java.lang.String> id, @Nullable VirtualBorderRouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VirtualBorderRouter(name, id, state, options);
     }
 }

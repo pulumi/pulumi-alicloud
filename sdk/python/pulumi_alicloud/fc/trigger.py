@@ -431,12 +431,12 @@ class Trigger(pulumi.CustomResource):
             name=f"example-value-{default_integer['result']}",
             description="example-value",
             role=default_role.arn,
-            log_config=alicloud.fc.ServiceLogConfigArgs(
-                project=default_project.name,
-                logstore=default_store.name,
-                enable_instance_metrics=True,
-                enable_request_metrics=True,
-            ))
+            log_config={
+                "project": default_project.name,
+                "logstore": default_store.name,
+                "enable_instance_metrics": True,
+                "enable_request_metrics": True,
+            })
         default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default_integer['result']}")
         # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
         default_bucket_object = alicloud.oss.BucketObject("default",
@@ -576,13 +576,13 @@ class Trigger(pulumi.CustomResource):
             domain_name=f"example{default_integer['result']}.tf.com",
             cdn_type="web",
             scope="overseas",
-            sources=[alicloud.cdn.DomainNewSourceArgs(
-                content="1.1.1.1",
-                type="ipaddr",
-                priority=20,
-                port=80,
-                weight=10,
-            )])
+            sources=[{
+                "content": "1.1.1.1",
+                "type": "ipaddr",
+                "priority": 20,
+                "port": 80,
+                "weight": 10,
+            }])
         default_service = alicloud.fc.Service("default",
             name=f"example-value-{default_integer['result']}",
             description="example-value",
@@ -912,12 +912,12 @@ class Trigger(pulumi.CustomResource):
             name=f"example-value-{default_integer['result']}",
             description="example-value",
             role=default_role.arn,
-            log_config=alicloud.fc.ServiceLogConfigArgs(
-                project=default_project.name,
-                logstore=default_store.name,
-                enable_instance_metrics=True,
-                enable_request_metrics=True,
-            ))
+            log_config={
+                "project": default_project.name,
+                "logstore": default_store.name,
+                "enable_instance_metrics": True,
+                "enable_request_metrics": True,
+            })
         default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default_integer['result']}")
         # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
         default_bucket_object = alicloud.oss.BucketObject("default",
@@ -1057,13 +1057,13 @@ class Trigger(pulumi.CustomResource):
             domain_name=f"example{default_integer['result']}.tf.com",
             cdn_type="web",
             scope="overseas",
-            sources=[alicloud.cdn.DomainNewSourceArgs(
-                content="1.1.1.1",
-                type="ipaddr",
-                priority=20,
-                port=80,
-                weight=10,
-            )])
+            sources=[{
+                "content": "1.1.1.1",
+                "type": "ipaddr",
+                "priority": 20,
+                "port": 80,
+                "weight": 10,
+            }])
         default_service = alicloud.fc.Service("default",
             name=f"example-value-{default_integer['result']}",
             description="example-value",

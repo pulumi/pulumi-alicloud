@@ -128,7 +128,7 @@ class BgpPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: Optional[pulumi.Input[pulumi.InputType['BgpPolicyContentArgs']]] = None,
+                 content: Optional[pulumi.Input[Union['BgpPolicyContentArgs', 'BgpPolicyContentArgsDict']]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -157,22 +157,22 @@ class BgpPolicy(pulumi.CustomResource):
         if policy_name is None:
             policy_name = "example_l4_policy"
         default = alicloud.ddos.BgpPolicy("default",
-            content=alicloud.ddos.BgpPolicyContentArgs(
-                enable_defense=False,
-                layer4_rule_lists=[alicloud.ddos.BgpPolicyContentLayer4RuleListArgs(
-                    method="hex",
-                    match="1",
-                    action="1",
-                    limited=0,
-                    condition_lists=[alicloud.ddos.BgpPolicyContentLayer4RuleListConditionListArgs(
-                        arg="3C",
-                        position=1,
-                        depth=2,
-                    )],
-                    name="11",
-                    priority=10,
-                )],
-            ),
+            content={
+                "enable_defense": False,
+                "layer4_rule_lists": [{
+                    "method": "hex",
+                    "match": "1",
+                    "action": "1",
+                    "limited": 0,
+                    "condition_lists": [{
+                        "arg": "3C",
+                        "position": 1,
+                        "depth": 2,
+                    }],
+                    "name": "11",
+                    "priority": 10,
+                }],
+            },
             type="l4",
             policy_name="tf_exampleacc_bgp32594")
         ```
@@ -187,7 +187,7 @@ class BgpPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BgpPolicyContentArgs']] content: Configuration Content See `content` below.
+        :param pulumi.Input[Union['BgpPolicyContentArgs', 'BgpPolicyContentArgsDict']] content: Configuration Content See `content` below.
         :param pulumi.Input[str] policy_name: The name of the resource
         :param pulumi.Input[str] type: Type
         """
@@ -222,22 +222,22 @@ class BgpPolicy(pulumi.CustomResource):
         if policy_name is None:
             policy_name = "example_l4_policy"
         default = alicloud.ddos.BgpPolicy("default",
-            content=alicloud.ddos.BgpPolicyContentArgs(
-                enable_defense=False,
-                layer4_rule_lists=[alicloud.ddos.BgpPolicyContentLayer4RuleListArgs(
-                    method="hex",
-                    match="1",
-                    action="1",
-                    limited=0,
-                    condition_lists=[alicloud.ddos.BgpPolicyContentLayer4RuleListConditionListArgs(
-                        arg="3C",
-                        position=1,
-                        depth=2,
-                    )],
-                    name="11",
-                    priority=10,
-                )],
-            ),
+            content={
+                "enable_defense": False,
+                "layer4_rule_lists": [{
+                    "method": "hex",
+                    "match": "1",
+                    "action": "1",
+                    "limited": 0,
+                    "condition_lists": [{
+                        "arg": "3C",
+                        "position": 1,
+                        "depth": 2,
+                    }],
+                    "name": "11",
+                    "priority": 10,
+                }],
+            },
             type="l4",
             policy_name="tf_exampleacc_bgp32594")
         ```
@@ -265,7 +265,7 @@ class BgpPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: Optional[pulumi.Input[pulumi.InputType['BgpPolicyContentArgs']]] = None,
+                 content: Optional[pulumi.Input[Union['BgpPolicyContentArgs', 'BgpPolicyContentArgsDict']]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -294,7 +294,7 @@ class BgpPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            content: Optional[pulumi.Input[pulumi.InputType['BgpPolicyContentArgs']]] = None,
+            content: Optional[pulumi.Input[Union['BgpPolicyContentArgs', 'BgpPolicyContentArgsDict']]] = None,
             policy_name: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'BgpPolicy':
         """
@@ -304,7 +304,7 @@ class BgpPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['BgpPolicyContentArgs']] content: Configuration Content See `content` below.
+        :param pulumi.Input[Union['BgpPolicyContentArgs', 'BgpPolicyContentArgsDict']] content: Configuration Content See `content` below.
         :param pulumi.Input[str] policy_name: The name of the resource
         :param pulumi.Input[str] type: Type
         """

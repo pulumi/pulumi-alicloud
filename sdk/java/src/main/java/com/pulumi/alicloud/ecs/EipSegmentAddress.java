@@ -262,7 +262,7 @@ public class EipSegmentAddress extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EipSegmentAddress(String name) {
+    public EipSegmentAddress(java.lang.String name) {
         this(name, EipSegmentAddressArgs.Empty);
     }
     /**
@@ -270,7 +270,7 @@ public class EipSegmentAddress extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EipSegmentAddress(String name, EipSegmentAddressArgs args) {
+    public EipSegmentAddress(java.lang.String name, EipSegmentAddressArgs args) {
         this(name, args, null);
     }
     /**
@@ -279,15 +279,22 @@ public class EipSegmentAddress extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EipSegmentAddress(String name, EipSegmentAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/eipSegmentAddress:EipSegmentAddress", name, args == null ? EipSegmentAddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EipSegmentAddress(java.lang.String name, EipSegmentAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/eipSegmentAddress:EipSegmentAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EipSegmentAddress(String name, Output<String> id, @Nullable EipSegmentAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/eipSegmentAddress:EipSegmentAddress", name, state, makeResourceOptions(options, id));
+    private EipSegmentAddress(java.lang.String name, Output<java.lang.String> id, @Nullable EipSegmentAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/eipSegmentAddress:EipSegmentAddress", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EipSegmentAddressArgs makeArgs(EipSegmentAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EipSegmentAddressArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -303,7 +310,7 @@ public class EipSegmentAddress extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EipSegmentAddress get(String name, Output<String> id, @Nullable EipSegmentAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EipSegmentAddress get(java.lang.String name, Output<java.lang.String> id, @Nullable EipSegmentAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EipSegmentAddress(name, id, state, options);
     }
 }

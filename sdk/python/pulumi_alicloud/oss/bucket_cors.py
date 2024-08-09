@@ -129,7 +129,7 @@ class BucketCors(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsCorsRuleArgs']]]]] = None,
+                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]]] = None,
                  response_vary: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -159,16 +159,16 @@ class BucketCors(pulumi.CustomResource):
         default_bucket_cors = alicloud.oss.BucketCors("default",
             bucket=create_bucket.bucket,
             response_vary=True,
-            cors_rules=[alicloud.oss.BucketCorsCorsRuleArgs(
-                allowed_methods=["GET"],
-                allowed_origins=["*"],
-                allowed_headers=[
+            cors_rules=[{
+                "allowed_methods": ["GET"],
+                "allowed_origins": ["*"],
+                "allowed_headers": [
                     "x-oss-test",
                     "x-oss-abc",
                 ],
-                expose_headers=["x-oss-request-id"],
-                max_age_seconds=1000,
-            )])
+                "expose_headers": ["x-oss-request-id"],
+                "max_age_seconds": 1000,
+            }])
         ```
 
         ## Import
@@ -182,7 +182,7 @@ class BucketCors(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the Bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsCorsRuleArgs']]]] cors_rules: The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]] cors_rules: The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
         :param pulumi.Input[bool] response_vary: Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
         """
         ...
@@ -218,16 +218,16 @@ class BucketCors(pulumi.CustomResource):
         default_bucket_cors = alicloud.oss.BucketCors("default",
             bucket=create_bucket.bucket,
             response_vary=True,
-            cors_rules=[alicloud.oss.BucketCorsCorsRuleArgs(
-                allowed_methods=["GET"],
-                allowed_origins=["*"],
-                allowed_headers=[
+            cors_rules=[{
+                "allowed_methods": ["GET"],
+                "allowed_origins": ["*"],
+                "allowed_headers": [
                     "x-oss-test",
                     "x-oss-abc",
                 ],
-                expose_headers=["x-oss-request-id"],
-                max_age_seconds=1000,
-            )])
+                "expose_headers": ["x-oss-request-id"],
+                "max_age_seconds": 1000,
+            }])
         ```
 
         ## Import
@@ -254,7 +254,7 @@ class BucketCors(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsCorsRuleArgs']]]]] = None,
+                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]]] = None,
                  response_vary: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -283,7 +283,7 @@ class BucketCors(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: Optional[pulumi.Input[str]] = None,
-            cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsCorsRuleArgs']]]]] = None,
+            cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]]] = None,
             response_vary: Optional[pulumi.Input[bool]] = None) -> 'BucketCors':
         """
         Get an existing BucketCors resource's state with the given name, id, and optional extra
@@ -293,7 +293,7 @@ class BucketCors(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the Bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsCorsRuleArgs']]]] cors_rules: The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]] cors_rules: The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
         :param pulumi.Input[bool] response_vary: Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -46,7 +46,7 @@ import (
 //			}
 //			_, err = resourcemanager.NewRole(ctx, "example", &resourcemanager.RoleArgs{
 //				RoleName: pulumi.String(name),
-//				AssumeRolePolicyDocument: pulumi.String(fmt.Sprintf(`     {
+//				AssumeRolePolicyDocument: pulumi.Sprintf(`     {
 //	          "Statement": [
 //	               {
 //	                    "Action": "sts:AssumeRole",
@@ -61,7 +61,7 @@ import (
 //	          "Version": "1"
 //	     }
 //
-// `, _default.Id)),
+// `, _default.Id),
 //
 //			})
 //			if err != nil {

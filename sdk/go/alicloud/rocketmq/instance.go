@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			_, err = rocketmq.NewInstance(ctx, "example", &rocketmq.InstanceArgs{
-//				InstanceName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				InstanceName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //				Remark:       pulumi.String(name),
 //			})
 //			if err != nil {

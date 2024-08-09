@@ -165,11 +165,11 @@ def get_app_groups(enable_details: Optional[bool] = None,
         app_group_name=name,
         payment_type="PayAsYouGo",
         type="standard",
-        quota=alicloud.opensearch.AppGroupQuotaArgs(
-            doc_size=1,
-            compute_resource=20,
-            spec="opensearch.share.common",
-        ))
+        quota={
+            "doc_size": 1,
+            "compute_resource": 20,
+            "spec": "opensearch.share.common",
+        })
     default = alicloud.opensearch.get_app_groups_output(ids=[default_app_group.id])
     pulumi.export("appGroups", default.groups)
     ```
@@ -240,11 +240,11 @@ def get_app_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
         app_group_name=name,
         payment_type="PayAsYouGo",
         type="standard",
-        quota=alicloud.opensearch.AppGroupQuotaArgs(
-            doc_size=1,
-            compute_resource=20,
-            spec="opensearch.share.common",
-        ))
+        quota={
+            "doc_size": 1,
+            "compute_resource": 20,
+            "spec": "opensearch.share.common",
+        })
     default = alicloud.opensearch.get_app_groups_output(ids=[default_app_group.id])
     pulumi.export("appGroups", default.groups)
     ```
