@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = hbr.NewVault(ctx, "example", &hbr.VaultArgs{
-//				VaultName: pulumi.String(fmt.Sprintf("example_value_%v", _default.Result)),
+//				VaultName: pulumi.Sprintf("example_value_%v", _default.Result),
 //			})
 //			if err != nil {
 //				return err

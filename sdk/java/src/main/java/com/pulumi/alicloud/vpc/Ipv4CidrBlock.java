@@ -118,7 +118,7 @@ public class Ipv4CidrBlock extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Ipv4CidrBlock(String name) {
+    public Ipv4CidrBlock(java.lang.String name) {
         this(name, Ipv4CidrBlockArgs.Empty);
     }
     /**
@@ -126,7 +126,7 @@ public class Ipv4CidrBlock extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Ipv4CidrBlock(String name, Ipv4CidrBlockArgs args) {
+    public Ipv4CidrBlock(java.lang.String name, Ipv4CidrBlockArgs args) {
         this(name, args, null);
     }
     /**
@@ -135,15 +135,22 @@ public class Ipv4CidrBlock extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Ipv4CidrBlock(String name, Ipv4CidrBlockArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock", name, args == null ? Ipv4CidrBlockArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Ipv4CidrBlock(java.lang.String name, Ipv4CidrBlockArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Ipv4CidrBlock(String name, Output<String> id, @Nullable Ipv4CidrBlockState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock", name, state, makeResourceOptions(options, id));
+    private Ipv4CidrBlock(java.lang.String name, Output<java.lang.String> id, @Nullable Ipv4CidrBlockState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static Ipv4CidrBlockArgs makeArgs(Ipv4CidrBlockArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? Ipv4CidrBlockArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -159,7 +166,7 @@ public class Ipv4CidrBlock extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Ipv4CidrBlock get(String name, Output<String> id, @Nullable Ipv4CidrBlockState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Ipv4CidrBlock get(java.lang.String name, Output<java.lang.String> id, @Nullable Ipv4CidrBlockState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Ipv4CidrBlock(name, id, state, options);
     }
 }

@@ -899,12 +899,12 @@ class ShardingInstance(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
-                 config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceConfigServerListArgs']]]]] = None,
+                 config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceMongoListArgs']]]]] = None,
+                 mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceMongoListArgs', 'ShardingInstanceMongoListArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
@@ -913,7 +913,7 @@ class ShardingInstance(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceShardListArgs']]]]] = None,
+                 shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -963,23 +963,23 @@ class ShardingInstance(pulumi.CustomResource):
             zone_id=zone_id,
             name=name,
             mongo_lists=[
-                alicloud.mongodb.ShardingInstanceMongoListArgs(
-                    node_class="dds.mongos.mid",
-                ),
-                alicloud.mongodb.ShardingInstanceMongoListArgs(
-                    node_class="dds.mongos.mid",
-                ),
+                {
+                    "node_class": "dds.mongos.mid",
+                },
+                {
+                    "node_class": "dds.mongos.mid",
+                },
             ],
             shard_lists=[
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.mid",
-                    node_storage=10,
-                ),
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.standard",
-                    node_storage=20,
-                    readonly_replicas=1,
-                ),
+                {
+                    "node_class": "dds.shard.mid",
+                    "node_storage": 10,
+                },
+                {
+                    "node_class": "dds.shard.standard",
+                    "node_storage": 20,
+                    "readonly_replicas": 1,
+                },
             ])
         ```
 
@@ -1002,12 +1002,12 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         :param pulumi.Input[str] backup_time: Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceConfigServerListArgs']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
         :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceMongoListArgs']]]] mongo_lists: The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceMongoListArgs', 'ShardingInstanceMongoListArgsDict']]]] mongo_lists: The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
         :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
@@ -1019,7 +1019,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceShardListArgs']]]] shard_lists: The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]] shard_lists: The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -1076,23 +1076,23 @@ class ShardingInstance(pulumi.CustomResource):
             zone_id=zone_id,
             name=name,
             mongo_lists=[
-                alicloud.mongodb.ShardingInstanceMongoListArgs(
-                    node_class="dds.mongos.mid",
-                ),
-                alicloud.mongodb.ShardingInstanceMongoListArgs(
-                    node_class="dds.mongos.mid",
-                ),
+                {
+                    "node_class": "dds.mongos.mid",
+                },
+                {
+                    "node_class": "dds.mongos.mid",
+                },
             ],
             shard_lists=[
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.mid",
-                    node_storage=10,
-                ),
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.standard",
-                    node_storage=20,
-                    readonly_replicas=1,
-                ),
+                {
+                    "node_class": "dds.shard.mid",
+                    "node_storage": 10,
+                },
+                {
+                    "node_class": "dds.shard.standard",
+                    "node_storage": 20,
+                    "readonly_replicas": 1,
+                },
             ])
         ```
 
@@ -1128,12 +1128,12 @@ class ShardingInstance(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
-                 config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceConfigServerListArgs']]]]] = None,
+                 config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceMongoListArgs']]]]] = None,
+                 mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceMongoListArgs', 'ShardingInstanceMongoListArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
@@ -1142,7 +1142,7 @@ class ShardingInstance(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceShardListArgs']]]]] = None,
+                 shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]]] = None,
                  storage_engine: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1208,12 +1208,12 @@ class ShardingInstance(pulumi.CustomResource):
             auto_renew: Optional[pulumi.Input[bool]] = None,
             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             backup_time: Optional[pulumi.Input[str]] = None,
-            config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceConfigServerListArgs']]]]] = None,
+            config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceMongoListArgs']]]]] = None,
+            mongo_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceMongoListArgs', 'ShardingInstanceMongoListArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
             order_type: Optional[pulumi.Input[str]] = None,
@@ -1223,7 +1223,7 @@ class ShardingInstance(pulumi.CustomResource):
             retention_period: Optional[pulumi.Input[int]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceShardListArgs']]]]] = None,
+            shard_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]]] = None,
             storage_engine: Optional[pulumi.Input[str]] = None,
             storage_type: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -1242,12 +1242,12 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         :param pulumi.Input[str] backup_time: Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceConfigServerListArgs']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
         :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a instance. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceMongoListArgs']]]] mongo_lists: The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceMongoListArgs', 'ShardingInstanceMongoListArgsDict']]]] mongo_lists: The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
         :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
@@ -1260,7 +1260,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[int] retention_period: (Available since v1.42.0) Instance data backup retention days.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceShardListArgs']]]] shard_lists: The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]] shard_lists: The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.

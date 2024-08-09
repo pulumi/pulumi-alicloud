@@ -53,28 +53,28 @@ import (
 //			}
 //			bucketRandom := _default.Result
 //			default8j4t1R, err := oss.NewBucket(ctx, "default8j4t1R", &oss.BucketArgs{
-//				Bucket:       pulumi.String(fmt.Sprintf("%v-1-%v", name, bucketRandom)),
+//				Bucket:       pulumi.Sprintf("%v-1-%v", name, bucketRandom),
 //				StorageClass: pulumi.String("Standard"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			default9HMqfT, err := oss.NewBucket(ctx, "default9HMqfT", &oss.BucketArgs{
-//				Bucket:       pulumi.String(fmt.Sprintf("%v-2-%v", name, bucketRandom)),
+//				Bucket:       pulumi.Sprintf("%v-2-%v", name, bucketRandom),
 //				StorageClass: pulumi.String("Standard"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultxBXqFQ, err := oss.NewBucket(ctx, "defaultxBXqFQ", &oss.BucketArgs{
-//				Bucket:       pulumi.String(fmt.Sprintf("%v-3-%v", name, bucketRandom)),
+//				Bucket:       pulumi.Sprintf("%v-3-%v", name, bucketRandom),
 //				StorageClass: pulumi.String("Standard"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "defaulthZvCmR", &oss.BucketArgs{
-//				Bucket:       pulumi.String(fmt.Sprintf("%v-4-%v", name, bucketRandom)),
+//				Bucket:       pulumi.Sprintf("%v-4-%v", name, bucketRandom),
 //				StorageClass: pulumi.String("Standard"),
 //			})
 //			if err != nil {

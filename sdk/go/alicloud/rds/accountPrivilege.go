@@ -81,7 +81,7 @@ import (
 //				val0 := index
 //				__res, err := rds.NewDatabase(ctx, fmt.Sprintf("db-%v", key0), &rds.DatabaseArgs{
 //					InstanceId:  instance.ID(),
-//					Name:        pulumi.String(fmt.Sprintf("%v_%v", name, val0)),
+//					Name:        pulumi.Sprintf("%v_%v", name, val0),
 //					Description: pulumi.String("from terraform"),
 //				})
 //				if err != nil {

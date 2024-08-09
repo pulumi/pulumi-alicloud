@@ -213,7 +213,7 @@ public class TrafficQosQueue extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TrafficQosQueue(String name) {
+    public TrafficQosQueue(java.lang.String name) {
         this(name, TrafficQosQueueArgs.Empty);
     }
     /**
@@ -221,7 +221,7 @@ public class TrafficQosQueue extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TrafficQosQueue(String name, TrafficQosQueueArgs args) {
+    public TrafficQosQueue(java.lang.String name, TrafficQosQueueArgs args) {
         this(name, args, null);
     }
     /**
@@ -230,15 +230,22 @@ public class TrafficQosQueue extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TrafficQosQueue(String name, TrafficQosQueueArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/trafficQosQueue:TrafficQosQueue", name, args == null ? TrafficQosQueueArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TrafficQosQueue(java.lang.String name, TrafficQosQueueArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/trafficQosQueue:TrafficQosQueue", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TrafficQosQueue(String name, Output<String> id, @Nullable TrafficQosQueueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/trafficQosQueue:TrafficQosQueue", name, state, makeResourceOptions(options, id));
+    private TrafficQosQueue(java.lang.String name, Output<java.lang.String> id, @Nullable TrafficQosQueueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/trafficQosQueue:TrafficQosQueue", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TrafficQosQueueArgs makeArgs(TrafficQosQueueArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TrafficQosQueueArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -254,7 +261,7 @@ public class TrafficQosQueue extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TrafficQosQueue get(String name, Output<String> id, @Nullable TrafficQosQueueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TrafficQosQueue get(java.lang.String name, Output<java.lang.String> id, @Nullable TrafficQosQueueState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TrafficQosQueue(name, id, state, options);
     }
 }

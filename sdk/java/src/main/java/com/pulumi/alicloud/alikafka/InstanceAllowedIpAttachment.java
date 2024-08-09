@@ -190,7 +190,7 @@ public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceAllowedIpAttachment(String name) {
+    public InstanceAllowedIpAttachment(java.lang.String name) {
         this(name, InstanceAllowedIpAttachmentArgs.Empty);
     }
     /**
@@ -198,7 +198,7 @@ public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceAllowedIpAttachment(String name, InstanceAllowedIpAttachmentArgs args) {
+    public InstanceAllowedIpAttachment(java.lang.String name, InstanceAllowedIpAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -207,15 +207,22 @@ public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceAllowedIpAttachment(String name, InstanceAllowedIpAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment", name, args == null ? InstanceAllowedIpAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InstanceAllowedIpAttachment(java.lang.String name, InstanceAllowedIpAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstanceAllowedIpAttachment(String name, Output<String> id, @Nullable InstanceAllowedIpAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment", name, state, makeResourceOptions(options, id));
+    private InstanceAllowedIpAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceAllowedIpAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:alikafka/instanceAllowedIpAttachment:InstanceAllowedIpAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InstanceAllowedIpAttachmentArgs makeArgs(InstanceAllowedIpAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InstanceAllowedIpAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -231,7 +238,7 @@ public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceAllowedIpAttachment get(String name, Output<String> id, @Nullable InstanceAllowedIpAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstanceAllowedIpAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable InstanceAllowedIpAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstanceAllowedIpAttachment(name, id, state, options);
     }
 }

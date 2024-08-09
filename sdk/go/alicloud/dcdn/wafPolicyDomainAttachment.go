@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			example, err := dcdn.NewDomain(ctx, "example", &dcdn.DomainArgs{
-//				DomainName: pulumi.String(fmt.Sprintf("%v-%v", domainName, _default.Result)),
+//				DomainName: pulumi.Sprintf("%v-%v", domainName, _default.Result),
 //				Scope:      pulumi.String("overseas"),
 //				Sources: dcdn.DomainSourceArray{
 //					&dcdn.DomainSourceArgs{
@@ -79,7 +79,7 @@ import (
 //			}
 //			exampleWafPolicy, err := dcdn.NewWafPolicy(ctx, "example", &dcdn.WafPolicyArgs{
 //				DefenseScene: pulumi.String("waf_group"),
-//				PolicyName:   pulumi.String(fmt.Sprintf("%v_%v", name, _default.Result)),
+//				PolicyName:   pulumi.Sprintf("%v_%v", name, _default.Result),
 //				PolicyType:   pulumi.String("custom"),
 //				Status:       pulumi.String("on"),
 //			})

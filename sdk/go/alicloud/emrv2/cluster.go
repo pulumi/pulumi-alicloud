@@ -91,7 +91,7 @@ import (
 //				return err
 //			}
 //			defaultEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "default", &ecs.EcsKeyPairArgs{
-//				KeyPairName: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//				KeyPairName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //			})
 //			if err != nil {
 //				return err

@@ -320,7 +320,7 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RocketMQInstance(String name) {
+    public RocketMQInstance(java.lang.String name) {
         this(name, RocketMQInstanceArgs.Empty);
     }
     /**
@@ -328,7 +328,7 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RocketMQInstance(String name, RocketMQInstanceArgs args) {
+    public RocketMQInstance(java.lang.String name, RocketMQInstanceArgs args) {
         this(name, args, null);
     }
     /**
@@ -337,15 +337,22 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RocketMQInstance(String name, RocketMQInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rocketmq/rocketMQInstance:RocketMQInstance", name, args == null ? RocketMQInstanceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RocketMQInstance(java.lang.String name, RocketMQInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rocketmq/rocketMQInstance:RocketMQInstance", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RocketMQInstance(String name, Output<String> id, @Nullable RocketMQInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:rocketmq/rocketMQInstance:RocketMQInstance", name, state, makeResourceOptions(options, id));
+    private RocketMQInstance(java.lang.String name, Output<java.lang.String> id, @Nullable RocketMQInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:rocketmq/rocketMQInstance:RocketMQInstance", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RocketMQInstanceArgs makeArgs(RocketMQInstanceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RocketMQInstanceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -361,7 +368,7 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RocketMQInstance get(String name, Output<String> id, @Nullable RocketMQInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RocketMQInstance get(java.lang.String name, Output<java.lang.String> id, @Nullable RocketMQInstanceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RocketMQInstance(name, id, state, options);
     }
 }

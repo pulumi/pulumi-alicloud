@@ -208,13 +208,13 @@ class RealTimeLogDelivery(pulumi.CustomResource):
             scope="overseas",
             domain_name=f"mycdndomain-{default_integer['result']}.alicloud-provider.cn",
             cdn_type="web",
-            sources=[alicloud.cdn.DomainNewSourceArgs(
-                type="ipaddr",
-                content="1.1.3.1",
-                priority=20,
-                port=80,
-                weight=15,
-            )])
+            sources=[{
+                "type": "ipaddr",
+                "content": "1.1.3.1",
+                "priority": 20,
+                "port": 80,
+                "weight": 15,
+            }])
         default_project = alicloud.log.Project("default",
             project_name=f"terraform-example-{default_integer['result']}",
             description="terraform-example")
@@ -279,13 +279,13 @@ class RealTimeLogDelivery(pulumi.CustomResource):
             scope="overseas",
             domain_name=f"mycdndomain-{default_integer['result']}.alicloud-provider.cn",
             cdn_type="web",
-            sources=[alicloud.cdn.DomainNewSourceArgs(
-                type="ipaddr",
-                content="1.1.3.1",
-                priority=20,
-                port=80,
-                weight=15,
-            )])
+            sources=[{
+                "type": "ipaddr",
+                "content": "1.1.3.1",
+                "priority": 20,
+                "port": 80,
+                "weight": 15,
+            }])
         default_project = alicloud.log.Project("default",
             project_name=f"terraform-example-{default_integer['result']}",
             description="terraform-example")

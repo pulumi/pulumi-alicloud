@@ -187,14 +187,14 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
                 "For": "example",
             },
             zone_mappings=[
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default_switch.id,
-                    zone_id=default_get_zones.zones[0].id,
-                ),
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default1.id,
-                    zone_id=default_get_zones.zones[1].id,
-                ),
+                {
+                    "vswitch_id": default_switch.id,
+                    "zone_id": default_get_zones.zones[0].id,
+                },
+                {
+                    "vswitch_id": default1.id,
+                    "zone_id": default_get_zones.zones[1].id,
+                },
             ])
         default_load_balancer_security_group_attachment = alicloud.nlb.LoadBalancerSecurityGroupAttachment("default",
             security_group_id=default_security_group.id,
@@ -272,14 +272,14 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
                 "For": "example",
             },
             zone_mappings=[
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default_switch.id,
-                    zone_id=default_get_zones.zones[0].id,
-                ),
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default1.id,
-                    zone_id=default_get_zones.zones[1].id,
-                ),
+                {
+                    "vswitch_id": default_switch.id,
+                    "zone_id": default_get_zones.zones[0].id,
+                },
+                {
+                    "vswitch_id": default1.id,
+                    "zone_id": default_get_zones.zones[1].id,
+                },
             ])
         default_load_balancer_security_group_attachment = alicloud.nlb.LoadBalancerSecurityGroupAttachment("default",
             security_group_id=default_security_group.id,

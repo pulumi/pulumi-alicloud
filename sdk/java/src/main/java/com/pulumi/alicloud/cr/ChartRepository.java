@@ -166,7 +166,7 @@ public class ChartRepository extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ChartRepository(String name) {
+    public ChartRepository(java.lang.String name) {
         this(name, ChartRepositoryArgs.Empty);
     }
     /**
@@ -174,7 +174,7 @@ public class ChartRepository extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ChartRepository(String name, ChartRepositoryArgs args) {
+    public ChartRepository(java.lang.String name, ChartRepositoryArgs args) {
         this(name, args, null);
     }
     /**
@@ -183,15 +183,22 @@ public class ChartRepository extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ChartRepository(String name, ChartRepositoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cr/chartRepository:ChartRepository", name, args == null ? ChartRepositoryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ChartRepository(java.lang.String name, ChartRepositoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cr/chartRepository:ChartRepository", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ChartRepository(String name, Output<String> id, @Nullable ChartRepositoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cr/chartRepository:ChartRepository", name, state, makeResourceOptions(options, id));
+    private ChartRepository(java.lang.String name, Output<java.lang.String> id, @Nullable ChartRepositoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cr/chartRepository:ChartRepository", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ChartRepositoryArgs makeArgs(ChartRepositoryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ChartRepositoryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -207,7 +214,7 @@ public class ChartRepository extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ChartRepository get(String name, Output<String> id, @Nullable ChartRepositoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ChartRepository get(java.lang.String name, Output<java.lang.String> id, @Nullable ChartRepositoryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ChartRepository(name, id, state, options);
     }
 }

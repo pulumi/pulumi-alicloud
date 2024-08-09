@@ -181,19 +181,19 @@ class Image(pulumi.CustomResource):
             local_drive="read",
             usb_redirect="off",
             watermark="off",
-            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-                description=name,
-                cidr_ip="1.2.3.45/24",
-            )],
-            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-                type="inflow",
-                policy="accept",
-                description=name,
-                port_range="80/80",
-                ip_protocol="TCP",
-                priority="1",
-                cidr_ip="1.2.3.4/24",
-            )])
+            authorize_access_policy_rules=[{
+                "description": name,
+                "cidr_ip": "1.2.3.45/24",
+            }],
+            authorize_security_policy_rules=[{
+                "type": "inflow",
+                "policy": "accept",
+                "description": name,
+                "port_range": "80/80",
+                "ip_protocol": "TCP",
+                "priority": "1",
+                "cidr_ip": "1.2.3.4/24",
+            }])
         default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
         default_desktop = alicloud.eds.Desktop("default",
             office_site_id=default_simple_office_site.id,
@@ -260,19 +260,19 @@ class Image(pulumi.CustomResource):
             local_drive="read",
             usb_redirect="off",
             watermark="off",
-            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-                description=name,
-                cidr_ip="1.2.3.45/24",
-            )],
-            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-                type="inflow",
-                policy="accept",
-                description=name,
-                port_range="80/80",
-                ip_protocol="TCP",
-                priority="1",
-                cidr_ip="1.2.3.4/24",
-            )])
+            authorize_access_policy_rules=[{
+                "description": name,
+                "cidr_ip": "1.2.3.45/24",
+            }],
+            authorize_security_policy_rules=[{
+                "type": "inflow",
+                "policy": "accept",
+                "description": name,
+                "port_range": "80/80",
+                "ip_protocol": "TCP",
+                "priority": "1",
+                "cidr_ip": "1.2.3.4/24",
+            }])
         default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
         default_desktop = alicloud.eds.Desktop("default",
             office_site_id=default_simple_office_site.id,

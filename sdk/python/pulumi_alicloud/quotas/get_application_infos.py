@@ -136,7 +136,7 @@ class AwaitableGetApplicationInfosResult(GetApplicationInfosResult):
             status=self.status)
 
 
-def get_application_infos(dimensions: Optional[Sequence[pulumi.InputType['GetApplicationInfosDimensionArgs']]] = None,
+def get_application_infos(dimensions: Optional[Sequence[Union['GetApplicationInfosDimensionArgs', 'GetApplicationInfosDimensionArgsDict']]] = None,
                           enable_details: Optional[bool] = None,
                           ids: Optional[Sequence[str]] = None,
                           key_word: Optional[str] = None,
@@ -177,7 +177,7 @@ def get_application_infos(dimensions: Optional[Sequence[pulumi.InputType['GetApp
 
 
 @_utilities.lift_output_func(get_application_infos)
-def get_application_infos_output(dimensions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetApplicationInfosDimensionArgs']]]]] = None,
+def get_application_infos_output(dimensions: Optional[pulumi.Input[Optional[Sequence[Union['GetApplicationInfosDimensionArgs', 'GetApplicationInfosDimensionArgsDict']]]]] = None,
                                  enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  key_word: Optional[pulumi.Input[Optional[str]]] = None,

@@ -293,7 +293,7 @@ class DomainResource(pulumi.CustomResource):
                  https_ext: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ocsp_enabled: Optional[pulumi.Input[bool]] = None,
-                 proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]]] = None,
+                 proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
                  real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  rs_type: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -334,10 +334,10 @@ class DomainResource(pulumi.CustomResource):
             instance_ids=[default.id],
             real_servers=["177.167.32.11"],
             https_ext="{\\"Http2\\":1,\\"Http2https\\":0,\\"Https2http\\":0}",
-            proxy_types=[alicloud.ddos.DomainResourceProxyTypeArgs(
-                proxy_ports=[443],
-                proxy_type="https",
-            )])
+            proxy_types=[{
+                "proxy_ports": [443],
+                "proxy_type": "https",
+            }])
         ```
 
         ## Import
@@ -358,7 +358,7 @@ class DomainResource(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
                > **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
         :param pulumi.Input[bool] ocsp_enabled: Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
                > **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
         :param pulumi.Input[int] rs_type: The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
@@ -406,10 +406,10 @@ class DomainResource(pulumi.CustomResource):
             instance_ids=[default.id],
             real_servers=["177.167.32.11"],
             https_ext="{\\"Http2\\":1,\\"Http2https\\":0,\\"Https2http\\":0}",
-            proxy_types=[alicloud.ddos.DomainResourceProxyTypeArgs(
-                proxy_ports=[443],
-                proxy_type="https",
-            )])
+            proxy_types=[{
+                "proxy_ports": [443],
+                "proxy_type": "https",
+            }])
         ```
 
         ## Import
@@ -439,7 +439,7 @@ class DomainResource(pulumi.CustomResource):
                  https_ext: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ocsp_enabled: Optional[pulumi.Input[bool]] = None,
-                 proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]]] = None,
+                 proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
                  real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  rs_type: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -484,7 +484,7 @@ class DomainResource(pulumi.CustomResource):
             https_ext: Optional[pulumi.Input[str]] = None,
             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ocsp_enabled: Optional[pulumi.Input[bool]] = None,
-            proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]]] = None,
+            proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
             real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             rs_type: Optional[pulumi.Input[int]] = None) -> 'DomainResource':
         """
@@ -503,7 +503,7 @@ class DomainResource(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
                > **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
         :param pulumi.Input[bool] ocsp_enabled: Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
                > **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
         :param pulumi.Input[int] rs_type: The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:

@@ -110,7 +110,7 @@ public class CustomProperty extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CustomProperty(String name) {
+    public CustomProperty(java.lang.String name) {
         this(name, CustomPropertyArgs.Empty);
     }
     /**
@@ -118,7 +118,7 @@ public class CustomProperty extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CustomProperty(String name, CustomPropertyArgs args) {
+    public CustomProperty(java.lang.String name, CustomPropertyArgs args) {
         this(name, args, null);
     }
     /**
@@ -127,15 +127,22 @@ public class CustomProperty extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CustomProperty(String name, CustomPropertyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eds/customProperty:CustomProperty", name, args == null ? CustomPropertyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CustomProperty(java.lang.String name, CustomPropertyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eds/customProperty:CustomProperty", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CustomProperty(String name, Output<String> id, @Nullable CustomPropertyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eds/customProperty:CustomProperty", name, state, makeResourceOptions(options, id));
+    private CustomProperty(java.lang.String name, Output<java.lang.String> id, @Nullable CustomPropertyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eds/customProperty:CustomProperty", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CustomPropertyArgs makeArgs(CustomPropertyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CustomPropertyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -151,7 +158,7 @@ public class CustomProperty extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CustomProperty get(String name, Output<String> id, @Nullable CustomPropertyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CustomProperty get(java.lang.String name, Output<java.lang.String> id, @Nullable CustomPropertyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CustomProperty(name, id, state, options);
     }
 }

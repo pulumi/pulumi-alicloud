@@ -192,7 +192,7 @@ class DomainConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 function_args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]]] = None,
+                 function_args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict']]]]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -220,20 +220,20 @@ class DomainConfig(pulumi.CustomResource):
             domain_name=f"mycdndomain-{default['result']}.alicloud-provider.cn",
             cdn_type="web",
             scope="overseas",
-            sources=[alicloud.cdn.DomainNewSourceArgs(
-                content="1.1.1.1",
-                type="ipaddr",
-                priority=20,
-                port=80,
-                weight=15,
-            )])
+            sources=[{
+                "content": "1.1.1.1",
+                "type": "ipaddr",
+                "priority": 20,
+                "port": 80,
+                "weight": 15,
+            }])
         config = alicloud.cdn.DomainConfig("config",
             domain_name=domain.domain_name,
             function_name="ip_allow_list_set",
-            function_args=[alicloud.cdn.DomainConfigFunctionArgArgs(
-                arg_name="ip_list",
-                arg_value="110.110.110.110",
-            )])
+            function_args=[{
+                "arg_name": "ip_list",
+                "arg_value": "110.110.110.110",
+            }])
         ```
 
         ## Import
@@ -251,7 +251,7 @@ class DomainConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config. See `function_args` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict']]]] function_args: The args of the domain config. See `function_args` below.
         :param pulumi.Input[str] function_name: The name of the domain config.
         :param pulumi.Input[str] parent_id: By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
         """
@@ -285,20 +285,20 @@ class DomainConfig(pulumi.CustomResource):
             domain_name=f"mycdndomain-{default['result']}.alicloud-provider.cn",
             cdn_type="web",
             scope="overseas",
-            sources=[alicloud.cdn.DomainNewSourceArgs(
-                content="1.1.1.1",
-                type="ipaddr",
-                priority=20,
-                port=80,
-                weight=15,
-            )])
+            sources=[{
+                "content": "1.1.1.1",
+                "type": "ipaddr",
+                "priority": 20,
+                "port": 80,
+                "weight": 15,
+            }])
         config = alicloud.cdn.DomainConfig("config",
             domain_name=domain.domain_name,
             function_name="ip_allow_list_set",
-            function_args=[alicloud.cdn.DomainConfigFunctionArgArgs(
-                arg_name="ip_list",
-                arg_value="110.110.110.110",
-            )])
+            function_args=[{
+                "arg_name": "ip_list",
+                "arg_value": "110.110.110.110",
+            }])
         ```
 
         ## Import
@@ -329,7 +329,7 @@ class DomainConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 function_args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]]] = None,
+                 function_args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict']]]]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -365,7 +365,7 @@ class DomainConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             config_id: Optional[pulumi.Input[str]] = None,
             domain_name: Optional[pulumi.Input[str]] = None,
-            function_args: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]]] = None,
+            function_args: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict']]]]] = None,
             function_name: Optional[pulumi.Input[str]] = None,
             parent_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'DomainConfig':
@@ -378,7 +378,7 @@ class DomainConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config_id: (Available since v1.132.0) The ID of the domain config function.
         :param pulumi.Input[str] domain_name: Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainConfigFunctionArgArgs']]]] function_args: The args of the domain config. See `function_args` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainConfigFunctionArgArgs', 'DomainConfigFunctionArgArgsDict']]]] function_args: The args of the domain config. See `function_args` below.
         :param pulumi.Input[str] function_name: The name of the domain config.
         :param pulumi.Input[str] parent_id: By configuring the function condition (rule engine) in the domain name configuration function parameters, Rule conditions can be created (Rule conditions can match and filter user requests by identifying various parameters carried in user requests). After each rule condition is created, a corresponding ConfigId will be generated, and the ConfigId can be referenced by other functions as a ParentId parameter, in this way, the rule conditions can be combined with the functional configuration to form a more flexible configuration.
         :param pulumi.Input[str] status: (Available since v1.132.0) The Status of the function.

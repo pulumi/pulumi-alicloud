@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			example, err := dcdn.NewDomain(ctx, "example", &dcdn.DomainArgs{
-//				DomainName: pulumi.String(fmt.Sprintf("%v-%v", domainName, _default.Result)),
+//				DomainName: pulumi.Sprintf("%v-%v", domainName, _default.Result),
 //				Scope:      pulumi.String("overseas"),
 //				Sources: dcdn.DomainSourceArray{
 //					&dcdn.DomainSourceArgs{

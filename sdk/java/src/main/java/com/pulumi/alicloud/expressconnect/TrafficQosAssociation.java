@@ -146,7 +146,7 @@ public class TrafficQosAssociation extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TrafficQosAssociation(String name) {
+    public TrafficQosAssociation(java.lang.String name) {
         this(name, TrafficQosAssociationArgs.Empty);
     }
     /**
@@ -154,7 +154,7 @@ public class TrafficQosAssociation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TrafficQosAssociation(String name, TrafficQosAssociationArgs args) {
+    public TrafficQosAssociation(java.lang.String name, TrafficQosAssociationArgs args) {
         this(name, args, null);
     }
     /**
@@ -163,15 +163,22 @@ public class TrafficQosAssociation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TrafficQosAssociation(String name, TrafficQosAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation", name, args == null ? TrafficQosAssociationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TrafficQosAssociation(java.lang.String name, TrafficQosAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TrafficQosAssociation(String name, Output<String> id, @Nullable TrafficQosAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation", name, state, makeResourceOptions(options, id));
+    private TrafficQosAssociation(java.lang.String name, Output<java.lang.String> id, @Nullable TrafficQosAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/trafficQosAssociation:TrafficQosAssociation", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TrafficQosAssociationArgs makeArgs(TrafficQosAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TrafficQosAssociationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -187,7 +194,7 @@ public class TrafficQosAssociation extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TrafficQosAssociation get(String name, Output<String> id, @Nullable TrafficQosAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TrafficQosAssociation get(java.lang.String name, Output<java.lang.String> id, @Nullable TrafficQosAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TrafficQosAssociation(name, id, state, options);
     }
 }

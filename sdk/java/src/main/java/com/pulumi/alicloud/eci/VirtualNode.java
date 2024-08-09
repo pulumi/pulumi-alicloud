@@ -290,7 +290,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VirtualNode(String name) {
+    public VirtualNode(java.lang.String name) {
         this(name, VirtualNodeArgs.Empty);
     }
     /**
@@ -298,7 +298,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VirtualNode(String name, VirtualNodeArgs args) {
+    public VirtualNode(java.lang.String name, VirtualNodeArgs args) {
         this(name, args, null);
     }
     /**
@@ -307,15 +307,22 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VirtualNode(String name, VirtualNodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eci/virtualNode:VirtualNode", name, args == null ? VirtualNodeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VirtualNode(java.lang.String name, VirtualNodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eci/virtualNode:VirtualNode", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VirtualNode(String name, Output<String> id, @Nullable VirtualNodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:eci/virtualNode:VirtualNode", name, state, makeResourceOptions(options, id));
+    private VirtualNode(java.lang.String name, Output<java.lang.String> id, @Nullable VirtualNodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:eci/virtualNode:VirtualNode", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VirtualNodeArgs makeArgs(VirtualNodeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VirtualNodeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -331,7 +338,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VirtualNode get(String name, Output<String> id, @Nullable VirtualNodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VirtualNode get(java.lang.String name, Output<java.lang.String> id, @Nullable VirtualNodeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VirtualNode(name, id, state, options);
     }
 }

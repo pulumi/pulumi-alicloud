@@ -52,7 +52,7 @@ import (
 //			}
 //			createBucket, err := oss.NewBucket(ctx, "CreateBucket", &oss.BucketArgs{
 //				StorageClass: pulumi.String("Standard"),
-//				Bucket:       pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
+//				Bucket:       pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err

@@ -109,7 +109,7 @@ class AwaitableGetVirtualBorderRoutersResult(GetVirtualBorderRoutersResult):
             status=self.status)
 
 
-def get_virtual_border_routers(filters: Optional[Sequence[pulumi.InputType['GetVirtualBorderRoutersFilterArgs']]] = None,
+def get_virtual_border_routers(filters: Optional[Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']]] = None,
                                ids: Optional[Sequence[str]] = None,
                                name_regex: Optional[str] = None,
                                output_file: Optional[str] = None,
@@ -133,23 +133,23 @@ def get_virtual_border_routers(filters: Optional[Sequence[pulumi.InputType['GetV
     name_regex = alicloud.expressconnect.get_virtual_border_routers(name_regex="^my-VirtualBorderRouter")
     pulumi.export("expressConnectVirtualBorderRouterId2", name_regex.routers[0].id)
     filter = alicloud.expressconnect.get_virtual_border_routers(filters=[
-        alicloud.expressconnect.GetVirtualBorderRoutersFilterArgs(
-            key="PhysicalConnectionId",
-            values=["pc-xxxx1"],
-        ),
-        alicloud.expressconnect.GetVirtualBorderRoutersFilterArgs(
-            key="VbrId",
-            values=[
+        {
+            "key": "PhysicalConnectionId",
+            "values": ["pc-xxxx1"],
+        },
+        {
+            "key": "VbrId",
+            "values": [
                 "vbr-xxxx1",
                 "vbr-xxxx2",
             ],
-        ),
+        },
     ])
     pulumi.export("expressConnectVirtualBorderRouterId3", filter.routers[0].id)
     ```
 
 
-    :param Sequence[pulumi.InputType['GetVirtualBorderRoutersFilterArgs']] filters: Custom filter block as described below.
+    :param Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']] filters: Custom filter block as described below.
     :param Sequence[str] ids: A list of Virtual Border Router IDs.
     :param str name_regex: A regex string to filter results by Virtual Border Router name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -176,7 +176,7 @@ def get_virtual_border_routers(filters: Optional[Sequence[pulumi.InputType['GetV
 
 
 @_utilities.lift_output_func(get_virtual_border_routers)
-def get_virtual_border_routers_output(filters: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetVirtualBorderRoutersFilterArgs']]]]] = None,
+def get_virtual_border_routers_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']]]]] = None,
                                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -200,23 +200,23 @@ def get_virtual_border_routers_output(filters: Optional[pulumi.Input[Optional[Se
     name_regex = alicloud.expressconnect.get_virtual_border_routers(name_regex="^my-VirtualBorderRouter")
     pulumi.export("expressConnectVirtualBorderRouterId2", name_regex.routers[0].id)
     filter = alicloud.expressconnect.get_virtual_border_routers(filters=[
-        alicloud.expressconnect.GetVirtualBorderRoutersFilterArgs(
-            key="PhysicalConnectionId",
-            values=["pc-xxxx1"],
-        ),
-        alicloud.expressconnect.GetVirtualBorderRoutersFilterArgs(
-            key="VbrId",
-            values=[
+        {
+            "key": "PhysicalConnectionId",
+            "values": ["pc-xxxx1"],
+        },
+        {
+            "key": "VbrId",
+            "values": [
                 "vbr-xxxx1",
                 "vbr-xxxx2",
             ],
-        ),
+        },
     ])
     pulumi.export("expressConnectVirtualBorderRouterId3", filter.routers[0].id)
     ```
 
 
-    :param Sequence[pulumi.InputType['GetVirtualBorderRoutersFilterArgs']] filters: Custom filter block as described below.
+    :param Sequence[Union['GetVirtualBorderRoutersFilterArgs', 'GetVirtualBorderRoutersFilterArgsDict']] filters: Custom filter block as described below.
     :param Sequence[str] ids: A list of Virtual Border Router IDs.
     :param str name_regex: A regex string to filter results by Virtual Border Router name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

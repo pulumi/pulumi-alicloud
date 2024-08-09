@@ -230,7 +230,7 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AlidnsDomain(String name) {
+    public AlidnsDomain(java.lang.String name) {
         this(name, AlidnsDomainArgs.Empty);
     }
     /**
@@ -238,7 +238,7 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AlidnsDomain(String name, AlidnsDomainArgs args) {
+    public AlidnsDomain(java.lang.String name, AlidnsDomainArgs args) {
         this(name, args, null);
     }
     /**
@@ -247,15 +247,22 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AlidnsDomain(String name, AlidnsDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/alidnsDomain:AlidnsDomain", name, args == null ? AlidnsDomainArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AlidnsDomain(java.lang.String name, AlidnsDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/alidnsDomain:AlidnsDomain", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AlidnsDomain(String name, Output<String> id, @Nullable AlidnsDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/alidnsDomain:AlidnsDomain", name, state, makeResourceOptions(options, id));
+    private AlidnsDomain(java.lang.String name, Output<java.lang.String> id, @Nullable AlidnsDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/alidnsDomain:AlidnsDomain", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AlidnsDomainArgs makeArgs(AlidnsDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AlidnsDomainArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -271,7 +278,7 @@ public class AlidnsDomain extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AlidnsDomain get(String name, Output<String> id, @Nullable AlidnsDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AlidnsDomain get(java.lang.String name, Output<java.lang.String> id, @Nullable AlidnsDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AlidnsDomain(name, id, state, options);
     }
 }

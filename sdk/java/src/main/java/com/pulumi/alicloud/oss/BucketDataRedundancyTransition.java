@@ -145,7 +145,7 @@ public class BucketDataRedundancyTransition extends com.pulumi.resources.CustomR
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BucketDataRedundancyTransition(String name) {
+    public BucketDataRedundancyTransition(java.lang.String name) {
         this(name, BucketDataRedundancyTransitionArgs.Empty);
     }
     /**
@@ -153,7 +153,7 @@ public class BucketDataRedundancyTransition extends com.pulumi.resources.CustomR
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BucketDataRedundancyTransition(String name, BucketDataRedundancyTransitionArgs args) {
+    public BucketDataRedundancyTransition(java.lang.String name, BucketDataRedundancyTransitionArgs args) {
         this(name, args, null);
     }
     /**
@@ -162,15 +162,22 @@ public class BucketDataRedundancyTransition extends com.pulumi.resources.CustomR
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BucketDataRedundancyTransition(String name, BucketDataRedundancyTransitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition", name, args == null ? BucketDataRedundancyTransitionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BucketDataRedundancyTransition(java.lang.String name, BucketDataRedundancyTransitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BucketDataRedundancyTransition(String name, Output<String> id, @Nullable BucketDataRedundancyTransitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition", name, state, makeResourceOptions(options, id));
+    private BucketDataRedundancyTransition(java.lang.String name, Output<java.lang.String> id, @Nullable BucketDataRedundancyTransitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BucketDataRedundancyTransitionArgs makeArgs(BucketDataRedundancyTransitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BucketDataRedundancyTransitionArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -186,7 +193,7 @@ public class BucketDataRedundancyTransition extends com.pulumi.resources.CustomR
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BucketDataRedundancyTransition get(String name, Output<String> id, @Nullable BucketDataRedundancyTransitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BucketDataRedundancyTransition get(java.lang.String name, Output<java.lang.String> id, @Nullable BucketDataRedundancyTransitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BucketDataRedundancyTransition(name, id, state, options);
     }
 }

@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				Name:        pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -113,7 +113,7 @@ import (
 //				return err
 //			}
 //			exampleProject, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				Name:        pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				Name:        pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -130,7 +130,7 @@ import (
 //					EncryptType: pulumi.String("default"),
 //					UserCmkInfo: &log.StoreEncryptConfUserCmkInfoArgs{
 //						CmkKeyId: exampleKey.ID(),
-//						Arn:      pulumi.String(fmt.Sprintf("acs:ram::%v:role/aliyunlogdefaultrole", example.Id)),
+//						Arn:      pulumi.Sprintf("acs:ram::%v:role/aliyunlogdefaultrole", example.Id),
 //						RegionId: pulumi.String(region),
 //					},
 //				},

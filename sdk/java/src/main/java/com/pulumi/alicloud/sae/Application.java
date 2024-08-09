@@ -1138,14 +1138,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vswitchId);
     }
     /**
-     * WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}&#34; start.
+     * WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}" start.
      * 
      */
     @Export(name="warStartOptions", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> warStartOptions;
 
     /**
-     * @return WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}&#34; start.
+     * @return WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}" start.
      * 
      */
     public Output<Optional<String>> warStartOptions() {
@@ -1170,7 +1170,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Application(String name) {
+    public Application(java.lang.String name) {
         this(name, ApplicationArgs.Empty);
     }
     /**
@@ -1178,7 +1178,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Application(String name, ApplicationArgs args) {
+    public Application(java.lang.String name, ApplicationArgs args) {
         this(name, args, null);
     }
     /**
@@ -1187,15 +1187,22 @@ public class Application extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Application(String name, ApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:sae/application:Application", name, args == null ? ApplicationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Application(java.lang.String name, ApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:sae/application:Application", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Application(String name, Output<String> id, @Nullable ApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:sae/application:Application", name, state, makeResourceOptions(options, id));
+    private Application(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:sae/application:Application", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApplicationArgs makeArgs(ApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -1215,7 +1222,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Application get(String name, Output<String> id, @Nullable ApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Application get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Application(name, id, state, options);
     }
 }

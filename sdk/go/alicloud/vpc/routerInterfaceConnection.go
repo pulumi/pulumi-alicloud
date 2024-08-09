@@ -84,8 +84,8 @@ import (
 //				RouterId:       bar.RouterId,
 //				Role:           pulumi.String("AcceptingSide"),
 //				Specification:  pulumi.String("Large.1"),
-//				Name:           pulumi.String(fmt.Sprintf("%v-opposite", name)),
-//				Description:    pulumi.String(fmt.Sprintf("%v-opposite", name)),
+//				Name:           pulumi.Sprintf("%v-opposite", name),
+//				Description:    pulumi.Sprintf("%v-opposite", name),
 //			})
 //			if err != nil {
 //				return err

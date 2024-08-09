@@ -743,8 +743,8 @@ class Image(pulumi.CustomResource):
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detection_strategy: Optional[pulumi.Input[str]] = None,
-                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]]] = None,
-                 features: Optional[pulumi.Input[pulumi.InputType['ImageFeaturesArgs']]] = None,
+                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageDiskDeviceMappingArgs', 'ImageDiskDeviceMappingArgsDict']]]]] = None,
+                 features: Optional[pulumi.Input[Union['ImageFeaturesArgs', 'ImageFeaturesArgsDict']]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  image_family: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
@@ -845,8 +845,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] detection_strategy: The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
                
                > **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]] disk_device_mappings: Snapshot information for the image See `disk_device_mapping` below.
-        :param pulumi.Input[pulumi.InputType['ImageFeaturesArgs']] features: Features See `features` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageDiskDeviceMappingArgs', 'ImageDiskDeviceMappingArgsDict']]]] disk_device_mappings: Snapshot information for the image See `disk_device_mapping` below.
+        :param pulumi.Input[Union['ImageFeaturesArgs', 'ImageFeaturesArgsDict']] features: Features See `features` below.
         :param pulumi.Input[bool] force: Whether to perform forced deletion. Value range:
                - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
                - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.
@@ -964,8 +964,8 @@ class Image(pulumi.CustomResource):
                  delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detection_strategy: Optional[pulumi.Input[str]] = None,
-                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]]] = None,
-                 features: Optional[pulumi.Input[pulumi.InputType['ImageFeaturesArgs']]] = None,
+                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageDiskDeviceMappingArgs', 'ImageDiskDeviceMappingArgsDict']]]]] = None,
+                 features: Optional[pulumi.Input[Union['ImageFeaturesArgs', 'ImageFeaturesArgsDict']]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  image_family: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
@@ -1022,8 +1022,8 @@ class Image(pulumi.CustomResource):
             delete_auto_snapshot: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             detection_strategy: Optional[pulumi.Input[str]] = None,
-            disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]]] = None,
-            features: Optional[pulumi.Input[pulumi.InputType['ImageFeaturesArgs']]] = None,
+            disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageDiskDeviceMappingArgs', 'ImageDiskDeviceMappingArgsDict']]]]] = None,
+            features: Optional[pulumi.Input[Union['ImageFeaturesArgs', 'ImageFeaturesArgsDict']]] = None,
             force: Optional[pulumi.Input[bool]] = None,
             image_family: Optional[pulumi.Input[str]] = None,
             image_name: Optional[pulumi.Input[str]] = None,
@@ -1061,8 +1061,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] detection_strategy: The mode in which to check the custom image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
                
                > **NOTE:**   This parameter is supported for most Linux and Windows operating system versions. For information about image check items and operating system limits for image check, see [Overview of image check](https://www.alibabacloud.com/help/en/doc-detail/439819.html) and [Operating system limits for image check](https://www.alibabacloud.com/help/en/doc-detail/475800.html).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageDiskDeviceMappingArgs']]]] disk_device_mappings: Snapshot information for the image See `disk_device_mapping` below.
-        :param pulumi.Input[pulumi.InputType['ImageFeaturesArgs']] features: Features See `features` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageDiskDeviceMappingArgs', 'ImageDiskDeviceMappingArgsDict']]]] disk_device_mappings: Snapshot information for the image See `disk_device_mapping` below.
+        :param pulumi.Input[Union['ImageFeaturesArgs', 'ImageFeaturesArgsDict']] features: Features See `features` below.
         :param pulumi.Input[bool] force: Whether to perform forced deletion. Value range:
                - true: forcibly deletes the custom image, ignoring whether the current image is used by other instances.
                - false: The custom image is deleted normally. Before deleting the custom image, check whether the current image is used by other instances.

@@ -802,14 +802,14 @@ class Listener(pulumi.CustomResource):
                 "For": "example",
             },
             zone_mappings=[
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default_switch.id,
-                    zone_id=default_get_zones.zones[0].id,
-                ),
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default1.id,
-                    zone_id=default_get_zones.zones[1].id,
-                ),
+                {
+                    "vswitch_id": default_switch.id,
+                    "zone_id": default_get_zones.zones[0].id,
+                },
+                {
+                    "vswitch_id": default1.id,
+                    "zone_id": default_get_zones.zones[1].id,
+                },
             ])
         default_server_group = alicloud.nlb.ServerGroup("default",
             resource_group_id=default.ids[0],
@@ -821,21 +821,21 @@ class Listener(pulumi.CustomResource):
             connection_drain_enabled=True,
             connection_drain_timeout=60,
             address_ip_version="Ipv4",
-            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
-                health_check_enabled=True,
-                health_check_type="TCP",
-                health_check_connect_port=0,
-                healthy_threshold=2,
-                unhealthy_threshold=2,
-                health_check_connect_timeout=5,
-                health_check_interval=10,
-                http_check_method="GET",
-                health_check_http_codes=[
+            health_check={
+                "health_check_enabled": True,
+                "health_check_type": "TCP",
+                "health_check_connect_port": 0,
+                "healthy_threshold": 2,
+                "unhealthy_threshold": 2,
+                "health_check_connect_timeout": 5,
+                "health_check_interval": 10,
+                "http_check_method": "GET",
+                "health_check_http_codes": [
                     "http_2xx",
                     "http_3xx",
                     "http_4xx",
                 ],
-            ),
+            },
             tags={
                 "Created": "TF",
                 "For": "example",
@@ -954,14 +954,14 @@ class Listener(pulumi.CustomResource):
                 "For": "example",
             },
             zone_mappings=[
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default_switch.id,
-                    zone_id=default_get_zones.zones[0].id,
-                ),
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default1.id,
-                    zone_id=default_get_zones.zones[1].id,
-                ),
+                {
+                    "vswitch_id": default_switch.id,
+                    "zone_id": default_get_zones.zones[0].id,
+                },
+                {
+                    "vswitch_id": default1.id,
+                    "zone_id": default_get_zones.zones[1].id,
+                },
             ])
         default_server_group = alicloud.nlb.ServerGroup("default",
             resource_group_id=default.ids[0],
@@ -973,21 +973,21 @@ class Listener(pulumi.CustomResource):
             connection_drain_enabled=True,
             connection_drain_timeout=60,
             address_ip_version="Ipv4",
-            health_check=alicloud.nlb.ServerGroupHealthCheckArgs(
-                health_check_enabled=True,
-                health_check_type="TCP",
-                health_check_connect_port=0,
-                healthy_threshold=2,
-                unhealthy_threshold=2,
-                health_check_connect_timeout=5,
-                health_check_interval=10,
-                http_check_method="GET",
-                health_check_http_codes=[
+            health_check={
+                "health_check_enabled": True,
+                "health_check_type": "TCP",
+                "health_check_connect_port": 0,
+                "healthy_threshold": 2,
+                "unhealthy_threshold": 2,
+                "health_check_connect_timeout": 5,
+                "health_check_interval": 10,
+                "http_check_method": "GET",
+                "health_check_http_codes": [
                     "http_2xx",
                     "http_3xx",
                     "http_4xx",
                 ],
-            ),
+            },
             tags={
                 "Created": "TF",
                 "For": "example",

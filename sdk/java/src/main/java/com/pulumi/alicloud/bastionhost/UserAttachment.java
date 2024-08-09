@@ -174,7 +174,7 @@ public class UserAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UserAttachment(String name) {
+    public UserAttachment(java.lang.String name) {
         this(name, UserAttachmentArgs.Empty);
     }
     /**
@@ -182,7 +182,7 @@ public class UserAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UserAttachment(String name, UserAttachmentArgs args) {
+    public UserAttachment(java.lang.String name, UserAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -191,15 +191,22 @@ public class UserAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UserAttachment(String name, UserAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:bastionhost/userAttachment:UserAttachment", name, args == null ? UserAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public UserAttachment(java.lang.String name, UserAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:bastionhost/userAttachment:UserAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UserAttachment(String name, Output<String> id, @Nullable UserAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:bastionhost/userAttachment:UserAttachment", name, state, makeResourceOptions(options, id));
+    private UserAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable UserAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:bastionhost/userAttachment:UserAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static UserAttachmentArgs makeArgs(UserAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UserAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -215,7 +222,7 @@ public class UserAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UserAttachment get(String name, Output<String> id, @Nullable UserAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UserAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable UserAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UserAttachment(name, id, state, options);
     }
 }

@@ -178,7 +178,7 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DataLimit(String name) {
+    public DataLimit(java.lang.String name) {
         this(name, DataLimitArgs.Empty);
     }
     /**
@@ -186,7 +186,7 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DataLimit(String name, DataLimitArgs args) {
+    public DataLimit(java.lang.String name, DataLimitArgs args) {
         this(name, args, null);
     }
     /**
@@ -195,15 +195,22 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DataLimit(String name, DataLimitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:sddp/dataLimit:DataLimit", name, args == null ? DataLimitArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DataLimit(java.lang.String name, DataLimitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:sddp/dataLimit:DataLimit", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DataLimit(String name, Output<String> id, @Nullable DataLimitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:sddp/dataLimit:DataLimit", name, state, makeResourceOptions(options, id));
+    private DataLimit(java.lang.String name, Output<java.lang.String> id, @Nullable DataLimitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:sddp/dataLimit:DataLimit", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DataLimitArgs makeArgs(DataLimitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DataLimitArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -219,7 +226,7 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DataLimit get(String name, Output<String> id, @Nullable DataLimitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DataLimit get(java.lang.String name, Output<java.lang.String> id, @Nullable DataLimitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DataLimit(name, id, state, options);
     }
 }

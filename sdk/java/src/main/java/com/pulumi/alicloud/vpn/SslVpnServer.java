@@ -197,7 +197,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SslVpnServer(String name) {
+    public SslVpnServer(java.lang.String name) {
         this(name, SslVpnServerArgs.Empty);
     }
     /**
@@ -205,7 +205,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SslVpnServer(String name, SslVpnServerArgs args) {
+    public SslVpnServer(java.lang.String name, SslVpnServerArgs args) {
         this(name, args, null);
     }
     /**
@@ -214,15 +214,22 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SslVpnServer(String name, SslVpnServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpn/sslVpnServer:SslVpnServer", name, args == null ? SslVpnServerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SslVpnServer(java.lang.String name, SslVpnServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpn/sslVpnServer:SslVpnServer", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SslVpnServer(String name, Output<String> id, @Nullable SslVpnServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpn/sslVpnServer:SslVpnServer", name, state, makeResourceOptions(options, id));
+    private SslVpnServer(java.lang.String name, Output<java.lang.String> id, @Nullable SslVpnServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpn/sslVpnServer:SslVpnServer", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SslVpnServerArgs makeArgs(SslVpnServerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SslVpnServerArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -238,7 +245,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SslVpnServer get(String name, Output<String> id, @Nullable SslVpnServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SslVpnServer get(java.lang.String name, Output<java.lang.String> id, @Nullable SslVpnServerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SslVpnServer(name, id, state, options);
     }
 }

@@ -658,7 +658,7 @@ class Instance(pulumi.CustomResource):
                  advanced_features: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  delete_snapshot: Optional[pulumi.Input[bool]] = None,
-                 ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]]] = None,
+                 ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]]] = None,
                  enable_raid: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[bool]] = None,
                  fs_name: Optional[pulumi.Input[str]] = None,
@@ -713,7 +713,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] advanced_features: The number of CPU cores and the upper limit of memory used by the database file storage instance.
         :param pulumi.Input[str] category: Category of database file system.
         :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after creating DBFS using the snapshot.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         :param pulumi.Input[str] fs_name: Database file system name.
@@ -796,7 +796,7 @@ class Instance(pulumi.CustomResource):
                  advanced_features: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  delete_snapshot: Optional[pulumi.Input[bool]] = None,
-                 ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]]] = None,
+                 ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]]] = None,
                  enable_raid: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[bool]] = None,
                  fs_name: Optional[pulumi.Input[str]] = None,
@@ -858,7 +858,7 @@ class Instance(pulumi.CustomResource):
             category: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             delete_snapshot: Optional[pulumi.Input[bool]] = None,
-            ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]]] = None,
+            ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]]] = None,
             enable_raid: Optional[pulumi.Input[bool]] = None,
             encryption: Optional[pulumi.Input[bool]] = None,
             fs_name: Optional[pulumi.Input[str]] = None,
@@ -884,7 +884,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] category: Category of database file system.
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[bool] delete_snapshot: Whether to delete the original snapshot after creating DBFS using the snapshot.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceEcsListArgs']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]] ecs_lists: The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         :param pulumi.Input[str] fs_name: Database file system name.

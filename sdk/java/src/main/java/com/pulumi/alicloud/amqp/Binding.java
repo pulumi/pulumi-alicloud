@@ -234,7 +234,7 @@ public class Binding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Binding(String name) {
+    public Binding(java.lang.String name) {
         this(name, BindingArgs.Empty);
     }
     /**
@@ -242,7 +242,7 @@ public class Binding extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Binding(String name, BindingArgs args) {
+    public Binding(java.lang.String name, BindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -251,15 +251,22 @@ public class Binding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Binding(String name, BindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:amqp/binding:Binding", name, args == null ? BindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Binding(java.lang.String name, BindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:amqp/binding:Binding", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Binding(String name, Output<String> id, @Nullable BindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:amqp/binding:Binding", name, state, makeResourceOptions(options, id));
+    private Binding(java.lang.String name, Output<java.lang.String> id, @Nullable BindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:amqp/binding:Binding", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BindingArgs makeArgs(BindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BindingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -275,7 +282,7 @@ public class Binding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Binding get(String name, Output<String> id, @Nullable BindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Binding get(java.lang.String name, Output<java.lang.String> id, @Nullable BindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Binding(name, id, state, options);
     }
 }

@@ -453,7 +453,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FirewallVpcFirewallControlPolicy(String name) {
+    public FirewallVpcFirewallControlPolicy(java.lang.String name) {
         this(name, FirewallVpcFirewallControlPolicyArgs.Empty);
     }
     /**
@@ -461,7 +461,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FirewallVpcFirewallControlPolicy(String name, FirewallVpcFirewallControlPolicyArgs args) {
+    public FirewallVpcFirewallControlPolicy(java.lang.String name, FirewallVpcFirewallControlPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -470,15 +470,22 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FirewallVpcFirewallControlPolicy(String name, FirewallVpcFirewallControlPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy", name, args == null ? FirewallVpcFirewallControlPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public FirewallVpcFirewallControlPolicy(java.lang.String name, FirewallVpcFirewallControlPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FirewallVpcFirewallControlPolicy(String name, Output<String> id, @Nullable FirewallVpcFirewallControlPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy", name, state, makeResourceOptions(options, id));
+    private FirewallVpcFirewallControlPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallVpcFirewallControlPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudfirewall/firewallVpcFirewallControlPolicy:FirewallVpcFirewallControlPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FirewallVpcFirewallControlPolicyArgs makeArgs(FirewallVpcFirewallControlPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FirewallVpcFirewallControlPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -494,7 +501,7 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FirewallVpcFirewallControlPolicy get(String name, Output<String> id, @Nullable FirewallVpcFirewallControlPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FirewallVpcFirewallControlPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallVpcFirewallControlPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FirewallVpcFirewallControlPolicy(name, id, state, options);
     }
 }

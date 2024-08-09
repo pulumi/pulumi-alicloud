@@ -715,20 +715,20 @@ class LoadBalancer(pulumi.CustomResource):
                  address_type: Optional[pulumi.Input[str]] = None,
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cross_zone_enabled: Optional[pulumi.Input[bool]] = None,
-                 deletion_protection_config: Optional[pulumi.Input[pulumi.InputType['LoadBalancerDeletionProtectionConfigArgs']]] = None,
+                 deletion_protection_config: Optional[pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  ipv6_address_type: Optional[pulumi.Input[str]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
                  load_balancer_type: Optional[pulumi.Input[str]] = None,
-                 modification_protection_config: Optional[pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']]] = None,
+                 modification_protection_config: Optional[pulumi.Input[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']]] = None,
                  modification_protection_reason: Optional[pulumi.Input[str]] = None,
                  modification_protection_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
-                 zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerZoneMappingArgs']]]]] = None,
+                 zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a NLB Load Balancer resource.
@@ -776,14 +776,14 @@ class LoadBalancer(pulumi.CustomResource):
                 "For": "example",
             },
             zone_mappings=[
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default_switch.id,
-                    zone_id=default_get_zones.zones[0].id,
-                ),
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default1.id,
-                    zone_id=default_get_zones.zones[1].id,
-                ),
+                {
+                    "vswitch_id": default_switch.id,
+                    "zone_id": default_get_zones.zones[0].id,
+                },
+                {
+                    "vswitch_id": default1.id,
+                    "zone_id": default_get_zones.zones[1].id,
+                },
             ])
         ```
 
@@ -807,7 +807,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[bool] cross_zone_enabled: Whether cross-zone is enabled for a network-based load balancing instance. Value:
                - **true**: on.
                - **false**: closed.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerDeletionProtectionConfigArgs']] deletion_protection_config: Delete protection. See `deletion_protection_config` below.
+        :param pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']] deletion_protection_config: Delete protection. See `deletion_protection_config` below.
         :param pulumi.Input[bool] deletion_protection_enabled: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         :param pulumi.Input[str] deletion_protection_reason: The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
         :param pulumi.Input[str] ipv6_address_type: The IPv6 address type of network load balancing. Value:
@@ -815,7 +815,7 @@ class LoadBalancer(pulumi.CustomResource):
                - **Intranet**: SLB only has the private IP address, and the DNS domain name is resolved to the private IP address, so it can only be accessed by the Intranet environment of the VPC where SLB is located.
         :param pulumi.Input[str] load_balancer_name: The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
         :param pulumi.Input[str] load_balancer_type: Load balancing type. Only value: **network**, which indicates network-based load balancing.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']] modification_protection_config: Modify protection. See `modification_protection_config` below.
+        :param pulumi.Input[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']] modification_protection_config: Modify protection. See `modification_protection_config` below.
         :param pulumi.Input[str] modification_protection_reason: The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
                - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
@@ -824,7 +824,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security group to which the network-based SLB instance belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: List of labels.
         :param pulumi.Input[str] vpc_id: The ID of the network-based SLB instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerZoneMappingArgs']]]] zone_mappings: The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]] zone_mappings: The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
         """
         ...
     @overload
@@ -878,14 +878,14 @@ class LoadBalancer(pulumi.CustomResource):
                 "For": "example",
             },
             zone_mappings=[
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default_switch.id,
-                    zone_id=default_get_zones.zones[0].id,
-                ),
-                alicloud.nlb.LoadBalancerZoneMappingArgs(
-                    vswitch_id=default1.id,
-                    zone_id=default_get_zones.zones[1].id,
-                ),
+                {
+                    "vswitch_id": default_switch.id,
+                    "zone_id": default_get_zones.zones[0].id,
+                },
+                {
+                    "vswitch_id": default1.id,
+                    "zone_id": default_get_zones.zones[1].id,
+                },
             ])
         ```
 
@@ -916,20 +916,20 @@ class LoadBalancer(pulumi.CustomResource):
                  address_type: Optional[pulumi.Input[str]] = None,
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cross_zone_enabled: Optional[pulumi.Input[bool]] = None,
-                 deletion_protection_config: Optional[pulumi.Input[pulumi.InputType['LoadBalancerDeletionProtectionConfigArgs']]] = None,
+                 deletion_protection_config: Optional[pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  ipv6_address_type: Optional[pulumi.Input[str]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
                  load_balancer_type: Optional[pulumi.Input[str]] = None,
-                 modification_protection_config: Optional[pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']]] = None,
+                 modification_protection_config: Optional[pulumi.Input[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']]] = None,
                  modification_protection_reason: Optional[pulumi.Input[str]] = None,
                  modification_protection_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
-                 zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerZoneMappingArgs']]]]] = None,
+                 zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -982,7 +982,7 @@ class LoadBalancer(pulumi.CustomResource):
             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             cross_zone_enabled: Optional[pulumi.Input[bool]] = None,
-            deletion_protection_config: Optional[pulumi.Input[pulumi.InputType['LoadBalancerDeletionProtectionConfigArgs']]] = None,
+            deletion_protection_config: Optional[pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']]] = None,
             deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
             deletion_protection_reason: Optional[pulumi.Input[str]] = None,
             dns_name: Optional[pulumi.Input[str]] = None,
@@ -990,7 +990,7 @@ class LoadBalancer(pulumi.CustomResource):
             load_balancer_business_status: Optional[pulumi.Input[str]] = None,
             load_balancer_name: Optional[pulumi.Input[str]] = None,
             load_balancer_type: Optional[pulumi.Input[str]] = None,
-            modification_protection_config: Optional[pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']]] = None,
+            modification_protection_config: Optional[pulumi.Input[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']]] = None,
             modification_protection_reason: Optional[pulumi.Input[str]] = None,
             modification_protection_status: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -998,7 +998,7 @@ class LoadBalancer(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
-            zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerZoneMappingArgs']]]]] = None) -> 'LoadBalancer':
+            zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]]] = None) -> 'LoadBalancer':
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1017,7 +1017,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[bool] cross_zone_enabled: Whether cross-zone is enabled for a network-based load balancing instance. Value:
                - **true**: on.
                - **false**: closed.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerDeletionProtectionConfigArgs']] deletion_protection_config: Delete protection. See `deletion_protection_config` below.
+        :param pulumi.Input[Union['LoadBalancerDeletionProtectionConfigArgs', 'LoadBalancerDeletionProtectionConfigArgsDict']] deletion_protection_config: Delete protection. See `deletion_protection_config` below.
         :param pulumi.Input[bool] deletion_protection_enabled: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         :param pulumi.Input[str] deletion_protection_reason: The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
         :param pulumi.Input[str] dns_name: The domain name of the NLB instance.
@@ -1027,7 +1027,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancer_business_status: The business status of the NLB instance.
         :param pulumi.Input[str] load_balancer_name: The name of the network-based load balancing instance.  2 to 128 English or Chinese characters in length, which must start with a letter or Chinese, and can contain numbers, half-width periods (.), underscores (_), and dashes (-).
         :param pulumi.Input[str] load_balancer_type: Load balancing type. Only value: **network**, which indicates network-based load balancing.
-        :param pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']] modification_protection_config: Modify protection. See `modification_protection_config` below.
+        :param pulumi.Input[Union['LoadBalancerModificationProtectionConfigArgs', 'LoadBalancerModificationProtectionConfigArgsDict']] modification_protection_config: Modify protection. See `modification_protection_config` below.
         :param pulumi.Input[str] modification_protection_reason: The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
         :param pulumi.Input[str] modification_protection_status: Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
                - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
@@ -1037,7 +1037,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: List of labels.
         :param pulumi.Input[str] vpc_id: The ID of the network-based SLB instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerZoneMappingArgs']]]] zone_mappings: The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]] zone_mappings: The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

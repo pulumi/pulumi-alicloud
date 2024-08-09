@@ -202,7 +202,7 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VpcEndpointLinkedVpc(String name) {
+    public VpcEndpointLinkedVpc(java.lang.String name) {
         this(name, VpcEndpointLinkedVpcArgs.Empty);
     }
     /**
@@ -210,7 +210,7 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VpcEndpointLinkedVpc(String name, VpcEndpointLinkedVpcArgs args) {
+    public VpcEndpointLinkedVpc(java.lang.String name, VpcEndpointLinkedVpcArgs args) {
         this(name, args, null);
     }
     /**
@@ -219,15 +219,22 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VpcEndpointLinkedVpc(String name, VpcEndpointLinkedVpcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc", name, args == null ? VpcEndpointLinkedVpcArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public VpcEndpointLinkedVpc(java.lang.String name, VpcEndpointLinkedVpcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VpcEndpointLinkedVpc(String name, Output<String> id, @Nullable VpcEndpointLinkedVpcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc", name, state, makeResourceOptions(options, id));
+    private VpcEndpointLinkedVpc(java.lang.String name, Output<java.lang.String> id, @Nullable VpcEndpointLinkedVpcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VpcEndpointLinkedVpcArgs makeArgs(VpcEndpointLinkedVpcArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VpcEndpointLinkedVpcArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -243,7 +250,7 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VpcEndpointLinkedVpc get(String name, Output<String> id, @Nullable VpcEndpointLinkedVpcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VpcEndpointLinkedVpc get(java.lang.String name, Output<java.lang.String> id, @Nullable VpcEndpointLinkedVpcState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VpcEndpointLinkedVpc(name, id, state, options);
     }
 }

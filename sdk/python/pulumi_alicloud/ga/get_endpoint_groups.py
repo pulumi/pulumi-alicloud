@@ -185,10 +185,10 @@ def get_endpoint_groups(accelerator_id: Optional[str] = None,
         client_affinity="SOURCE_IP",
         protocol="UDP",
         name=name,
-        port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-            from_port=60,
-            to_port=70,
-        )])
+        port_ranges=[{
+            "from_port": 60,
+            "to_port": 70,
+        }])
     default_eip_address = alicloud.ecs.EipAddress("default",
         bandwidth="10",
         internet_charge_type="PayByBandwidth",
@@ -205,15 +205,15 @@ def get_endpoint_groups(accelerator_id: Optional[str] = None,
         health_check_path="/healthcheck",
         health_check_port=9999,
         health_check_protocol="http",
-        port_overrides=alicloud.ga.EndpointGroupPortOverridesArgs(
-            endpoint_port=10,
-            listener_port=60,
-        ),
-        endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-            endpoint=default_eip_address.ip_address,
-            type="PublicIp",
-            weight=20,
-        )])
+        port_overrides={
+            "endpoint_port": 10,
+            "listener_port": 60,
+        },
+        endpoint_configurations=[{
+            "endpoint": default_eip_address.ip_address,
+            "type": "PublicIp",
+            "weight": 20,
+        }])
     default_get_endpoint_groups = alicloud.ga.get_endpoint_groups_output(accelerator_id=default_endpoint_group.accelerator_id,
         ids=[default_endpoint_group.id])
     pulumi.export("firstGaEndpointGroupId", default_get_endpoint_groups.groups[0].id)
@@ -300,10 +300,10 @@ def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = Non
         client_affinity="SOURCE_IP",
         protocol="UDP",
         name=name,
-        port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-            from_port=60,
-            to_port=70,
-        )])
+        port_ranges=[{
+            "from_port": 60,
+            "to_port": 70,
+        }])
     default_eip_address = alicloud.ecs.EipAddress("default",
         bandwidth="10",
         internet_charge_type="PayByBandwidth",
@@ -320,15 +320,15 @@ def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = Non
         health_check_path="/healthcheck",
         health_check_port=9999,
         health_check_protocol="http",
-        port_overrides=alicloud.ga.EndpointGroupPortOverridesArgs(
-            endpoint_port=10,
-            listener_port=60,
-        ),
-        endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-            endpoint=default_eip_address.ip_address,
-            type="PublicIp",
-            weight=20,
-        )])
+        port_overrides={
+            "endpoint_port": 10,
+            "listener_port": 60,
+        },
+        endpoint_configurations=[{
+            "endpoint": default_eip_address.ip_address,
+            "type": "PublicIp",
+            "weight": 20,
+        }])
     default_get_endpoint_groups = alicloud.ga.get_endpoint_groups_output(accelerator_id=default_endpoint_group.accelerator_id,
         ids=[default_endpoint_group.id])
     pulumi.export("firstGaEndpointGroupId", default_get_endpoint_groups.groups[0].id)

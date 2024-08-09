@@ -190,7 +190,7 @@ public class LoadbalancerCommonBandwidthPackageAttachment extends com.pulumi.res
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LoadbalancerCommonBandwidthPackageAttachment(String name) {
+    public LoadbalancerCommonBandwidthPackageAttachment(java.lang.String name) {
         this(name, LoadbalancerCommonBandwidthPackageAttachmentArgs.Empty);
     }
     /**
@@ -198,7 +198,7 @@ public class LoadbalancerCommonBandwidthPackageAttachment extends com.pulumi.res
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LoadbalancerCommonBandwidthPackageAttachment(String name, LoadbalancerCommonBandwidthPackageAttachmentArgs args) {
+    public LoadbalancerCommonBandwidthPackageAttachment(java.lang.String name, LoadbalancerCommonBandwidthPackageAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -207,15 +207,22 @@ public class LoadbalancerCommonBandwidthPackageAttachment extends com.pulumi.res
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LoadbalancerCommonBandwidthPackageAttachment(String name, LoadbalancerCommonBandwidthPackageAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment", name, args == null ? LoadbalancerCommonBandwidthPackageAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public LoadbalancerCommonBandwidthPackageAttachment(java.lang.String name, LoadbalancerCommonBandwidthPackageAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LoadbalancerCommonBandwidthPackageAttachment(String name, Output<String> id, @Nullable LoadbalancerCommonBandwidthPackageAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment", name, state, makeResourceOptions(options, id));
+    private LoadbalancerCommonBandwidthPackageAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable LoadbalancerCommonBandwidthPackageAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:nlb/loadbalancerCommonBandwidthPackageAttachment:LoadbalancerCommonBandwidthPackageAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static LoadbalancerCommonBandwidthPackageAttachmentArgs makeArgs(LoadbalancerCommonBandwidthPackageAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LoadbalancerCommonBandwidthPackageAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -231,7 +238,7 @@ public class LoadbalancerCommonBandwidthPackageAttachment extends com.pulumi.res
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LoadbalancerCommonBandwidthPackageAttachment get(String name, Output<String> id, @Nullable LoadbalancerCommonBandwidthPackageAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LoadbalancerCommonBandwidthPackageAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable LoadbalancerCommonBandwidthPackageAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LoadbalancerCommonBandwidthPackageAttachment(name, id, state, options);
     }
 }

@@ -246,7 +246,7 @@ public class FirewallVpcFirewall extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FirewallVpcFirewall(String name) {
+    public FirewallVpcFirewall(java.lang.String name) {
         this(name, FirewallVpcFirewallArgs.Empty);
     }
     /**
@@ -254,7 +254,7 @@ public class FirewallVpcFirewall extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FirewallVpcFirewall(String name, FirewallVpcFirewallArgs args) {
+    public FirewallVpcFirewall(java.lang.String name, FirewallVpcFirewallArgs args) {
         this(name, args, null);
     }
     /**
@@ -263,15 +263,22 @@ public class FirewallVpcFirewall extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FirewallVpcFirewall(String name, FirewallVpcFirewallArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall", name, args == null ? FirewallVpcFirewallArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public FirewallVpcFirewall(java.lang.String name, FirewallVpcFirewallArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FirewallVpcFirewall(String name, Output<String> id, @Nullable FirewallVpcFirewallState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall", name, state, makeResourceOptions(options, id));
+    private FirewallVpcFirewall(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallVpcFirewallState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cloudfirewall/firewallVpcFirewall:FirewallVpcFirewall", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static FirewallVpcFirewallArgs makeArgs(FirewallVpcFirewallArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FirewallVpcFirewallArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -287,7 +294,7 @@ public class FirewallVpcFirewall extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FirewallVpcFirewall get(String name, Output<String> id, @Nullable FirewallVpcFirewallState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FirewallVpcFirewall get(java.lang.String name, Output<java.lang.String> id, @Nullable FirewallVpcFirewallState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FirewallVpcFirewall(name, id, state, options);
     }
 }

@@ -238,7 +238,7 @@ public class RouterTrAssociation extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RouterTrAssociation(String name) {
+    public RouterTrAssociation(java.lang.String name) {
         this(name, RouterTrAssociationArgs.Empty);
     }
     /**
@@ -246,7 +246,7 @@ public class RouterTrAssociation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RouterTrAssociation(String name, RouterTrAssociationArgs args) {
+    public RouterTrAssociation(java.lang.String name, RouterTrAssociationArgs args) {
         this(name, args, null);
     }
     /**
@@ -255,15 +255,22 @@ public class RouterTrAssociation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RouterTrAssociation(String name, RouterTrAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/routerTrAssociation:RouterTrAssociation", name, args == null ? RouterTrAssociationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RouterTrAssociation(java.lang.String name, RouterTrAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/routerTrAssociation:RouterTrAssociation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RouterTrAssociation(String name, Output<String> id, @Nullable RouterTrAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:expressconnect/routerTrAssociation:RouterTrAssociation", name, state, makeResourceOptions(options, id));
+    private RouterTrAssociation(java.lang.String name, Output<java.lang.String> id, @Nullable RouterTrAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:expressconnect/routerTrAssociation:RouterTrAssociation", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RouterTrAssociationArgs makeArgs(RouterTrAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RouterTrAssociationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -279,7 +286,7 @@ public class RouterTrAssociation extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RouterTrAssociation get(String name, Output<String> id, @Nullable RouterTrAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RouterTrAssociation get(java.lang.String name, Output<java.lang.String> id, @Nullable RouterTrAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RouterTrAssociation(name, id, state, options);
     }
 }

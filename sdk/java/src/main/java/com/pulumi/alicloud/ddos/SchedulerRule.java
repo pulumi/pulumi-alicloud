@@ -184,7 +184,7 @@ public class SchedulerRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SchedulerRule(String name) {
+    public SchedulerRule(java.lang.String name) {
         this(name, SchedulerRuleArgs.Empty);
     }
     /**
@@ -192,7 +192,7 @@ public class SchedulerRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SchedulerRule(String name, SchedulerRuleArgs args) {
+    public SchedulerRule(java.lang.String name, SchedulerRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -201,15 +201,22 @@ public class SchedulerRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SchedulerRule(String name, SchedulerRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ddos/schedulerRule:SchedulerRule", name, args == null ? SchedulerRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SchedulerRule(java.lang.String name, SchedulerRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ddos/schedulerRule:SchedulerRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SchedulerRule(String name, Output<String> id, @Nullable SchedulerRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ddos/schedulerRule:SchedulerRule", name, state, makeResourceOptions(options, id));
+    private SchedulerRule(java.lang.String name, Output<java.lang.String> id, @Nullable SchedulerRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ddos/schedulerRule:SchedulerRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SchedulerRuleArgs makeArgs(SchedulerRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SchedulerRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -225,7 +232,7 @@ public class SchedulerRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SchedulerRule get(String name, Output<String> id, @Nullable SchedulerRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SchedulerRule get(java.lang.String name, Output<java.lang.String> id, @Nullable SchedulerRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SchedulerRule(name, id, state, options);
     }
 }

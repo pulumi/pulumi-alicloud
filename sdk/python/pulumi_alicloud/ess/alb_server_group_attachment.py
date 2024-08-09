@@ -263,14 +263,14 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
         default_server_group = alicloud.alb.ServerGroup("default",
             server_group_name=my_name,
             vpc_id=default_network.id,
-            health_check_config=alicloud.alb.ServerGroupHealthCheckConfigArgs(
-                health_check_enabled=False,
-            ),
-            sticky_session_config=alicloud.alb.ServerGroupStickySessionConfigArgs(
-                sticky_session_enabled=True,
-                cookie="tf-example",
-                sticky_session_type="Server",
-            ))
+            health_check_config={
+                "health_check_enabled": False,
+            },
+            sticky_session_config={
+                "sticky_session_enabled": True,
+                "cookie": "tf-example",
+                "sticky_session_type": "Server",
+            })
         default_alb_server_group_attachment = alicloud.ess.AlbServerGroupAttachment("default",
             scaling_group_id=default_scaling_configuration.scaling_group_id,
             alb_server_group_id=default_server_group.id,
@@ -367,14 +367,14 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
         default_server_group = alicloud.alb.ServerGroup("default",
             server_group_name=my_name,
             vpc_id=default_network.id,
-            health_check_config=alicloud.alb.ServerGroupHealthCheckConfigArgs(
-                health_check_enabled=False,
-            ),
-            sticky_session_config=alicloud.alb.ServerGroupStickySessionConfigArgs(
-                sticky_session_enabled=True,
-                cookie="tf-example",
-                sticky_session_type="Server",
-            ))
+            health_check_config={
+                "health_check_enabled": False,
+            },
+            sticky_session_config={
+                "sticky_session_enabled": True,
+                "cookie": "tf-example",
+                "sticky_session_type": "Server",
+            })
         default_alb_server_group_attachment = alicloud.ess.AlbServerGroupAttachment("default",
             scaling_group_id=default_scaling_configuration.scaling_group_id,
             alb_server_group_id=default_server_group.id,

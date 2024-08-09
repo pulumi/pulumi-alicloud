@@ -526,7 +526,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EipAddress(String name) {
+    public EipAddress(java.lang.String name) {
         this(name, EipAddressArgs.Empty);
     }
     /**
@@ -534,7 +534,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EipAddress(String name, @Nullable EipAddressArgs args) {
+    public EipAddress(java.lang.String name, @Nullable EipAddressArgs args) {
         this(name, args, null);
     }
     /**
@@ -543,15 +543,22 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EipAddress(String name, @Nullable EipAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/eipAddress:EipAddress", name, args == null ? EipAddressArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EipAddress(java.lang.String name, @Nullable EipAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/eipAddress:EipAddress", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EipAddress(String name, Output<String> id, @Nullable EipAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ecs/eipAddress:EipAddress", name, state, makeResourceOptions(options, id));
+    private EipAddress(java.lang.String name, Output<java.lang.String> id, @Nullable EipAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ecs/eipAddress:EipAddress", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EipAddressArgs makeArgs(@Nullable EipAddressArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EipAddressArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -567,7 +574,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EipAddress get(String name, Output<String> id, @Nullable EipAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EipAddress get(java.lang.String name, Output<java.lang.String> id, @Nullable EipAddressState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EipAddress(name, id, state, options);
     }
 }

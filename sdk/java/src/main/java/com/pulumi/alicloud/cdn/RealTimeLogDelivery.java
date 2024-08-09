@@ -197,7 +197,7 @@ public class RealTimeLogDelivery extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RealTimeLogDelivery(String name) {
+    public RealTimeLogDelivery(java.lang.String name) {
         this(name, RealTimeLogDeliveryArgs.Empty);
     }
     /**
@@ -205,7 +205,7 @@ public class RealTimeLogDelivery extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RealTimeLogDelivery(String name, RealTimeLogDeliveryArgs args) {
+    public RealTimeLogDelivery(java.lang.String name, RealTimeLogDeliveryArgs args) {
         this(name, args, null);
     }
     /**
@@ -214,15 +214,22 @@ public class RealTimeLogDelivery extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RealTimeLogDelivery(String name, RealTimeLogDeliveryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery", name, args == null ? RealTimeLogDeliveryArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RealTimeLogDelivery(java.lang.String name, RealTimeLogDeliveryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RealTimeLogDelivery(String name, Output<String> id, @Nullable RealTimeLogDeliveryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery", name, state, makeResourceOptions(options, id));
+    private RealTimeLogDelivery(java.lang.String name, Output<java.lang.String> id, @Nullable RealTimeLogDeliveryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RealTimeLogDeliveryArgs makeArgs(RealTimeLogDeliveryArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RealTimeLogDeliveryArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -238,7 +245,7 @@ public class RealTimeLogDelivery extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RealTimeLogDelivery get(String name, Output<String> id, @Nullable RealTimeLogDeliveryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RealTimeLogDelivery get(java.lang.String name, Output<java.lang.String> id, @Nullable RealTimeLogDeliveryState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RealTimeLogDelivery(name, id, state, options);
     }
 }

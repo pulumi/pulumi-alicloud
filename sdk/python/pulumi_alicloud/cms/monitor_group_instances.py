@@ -97,7 +97,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorGroupInstancesInstanceArgs']]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorGroupInstancesInstanceArgs', 'MonitorGroupInstancesInstanceArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Monitor Group Instances resource.
@@ -125,12 +125,12 @@ class MonitorGroupInstances(pulumi.CustomResource):
         default = alicloud.get_regions(current=True)
         example = alicloud.cms.MonitorGroupInstances("example",
             group_id=default_monitor_group.id,
-            instances=[alicloud.cms.MonitorGroupInstancesInstanceArgs(
-                instance_id=default_network.id,
-                instance_name=name,
-                region_id=default.regions[0].id,
-                category="vpc",
-            )])
+            instances=[{
+                "instance_id": default_network.id,
+                "instance_name": name,
+                "region_id": default.regions[0].id,
+                "category": "vpc",
+            }])
         ```
 
         ## Import
@@ -144,7 +144,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The id of Cms Group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorGroupInstancesInstanceArgs']]]] instances: Instance information added to the Cms Group. See `instances` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorGroupInstancesInstanceArgs', 'MonitorGroupInstancesInstanceArgsDict']]]] instances: Instance information added to the Cms Group. See `instances` below.
         """
         ...
     @overload
@@ -178,12 +178,12 @@ class MonitorGroupInstances(pulumi.CustomResource):
         default = alicloud.get_regions(current=True)
         example = alicloud.cms.MonitorGroupInstances("example",
             group_id=default_monitor_group.id,
-            instances=[alicloud.cms.MonitorGroupInstancesInstanceArgs(
-                instance_id=default_network.id,
-                instance_name=name,
-                region_id=default.regions[0].id,
-                category="vpc",
-            )])
+            instances=[{
+                "instance_id": default_network.id,
+                "instance_name": name,
+                "region_id": default.regions[0].id,
+                "category": "vpc",
+            }])
         ```
 
         ## Import
@@ -210,7 +210,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorGroupInstancesInstanceArgs']]]]] = None,
+                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorGroupInstancesInstanceArgs', 'MonitorGroupInstancesInstanceArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -237,7 +237,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             group_id: Optional[pulumi.Input[str]] = None,
-            instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorGroupInstancesInstanceArgs']]]]] = None) -> 'MonitorGroupInstances':
+            instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorGroupInstancesInstanceArgs', 'MonitorGroupInstancesInstanceArgsDict']]]]] = None) -> 'MonitorGroupInstances':
         """
         Get an existing MonitorGroupInstances resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -246,7 +246,7 @@ class MonitorGroupInstances(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The id of Cms Group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorGroupInstancesInstanceArgs']]]] instances: Instance information added to the Cms Group. See `instances` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorGroupInstancesInstanceArgs', 'MonitorGroupInstancesInstanceArgsDict']]]] instances: Instance information added to the Cms Group. See `instances` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

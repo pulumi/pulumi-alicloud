@@ -416,8 +416,8 @@ class VvpInstance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 resource_spec: Optional[pulumi.Input[pulumi.InputType['VvpInstanceResourceSpecArgs']]] = None,
-                 storage: Optional[pulumi.Input[pulumi.InputType['VvpInstanceStorageArgs']]] = None,
+                 resource_spec: Optional[pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']]] = None,
+                 storage: Optional[pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -439,8 +439,8 @@ class VvpInstance(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type of the resource.
         :param pulumi.Input[str] pricing_cycle: The subscription period. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[str] resource_group_id: The resource group to which the newly purchased instance belongs.
-        :param pulumi.Input[pulumi.InputType['VvpInstanceResourceSpecArgs']] resource_spec: Resource specifications. See `resource_spec` below.
-        :param pulumi.Input[pulumi.InputType['VvpInstanceStorageArgs']] storage: Store information. See `storage` below.
+        :param pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']] resource_spec: Resource specifications. See `resource_spec` below.
+        :param pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']] storage: Store information. See `storage` below.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: Virtual Switch ID.
@@ -481,8 +481,8 @@ class VvpInstance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
-                 resource_spec: Optional[pulumi.Input[pulumi.InputType['VvpInstanceResourceSpecArgs']]] = None,
-                 storage: Optional[pulumi.Input[pulumi.InputType['VvpInstanceStorageArgs']]] = None,
+                 resource_spec: Optional[pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']]] = None,
+                 storage: Optional[pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -537,9 +537,9 @@ class VvpInstance(pulumi.CustomResource):
             payment_type: Optional[pulumi.Input[str]] = None,
             pricing_cycle: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
-            resource_spec: Optional[pulumi.Input[pulumi.InputType['VvpInstanceResourceSpecArgs']]] = None,
+            resource_spec: Optional[pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            storage: Optional[pulumi.Input[pulumi.InputType['VvpInstanceStorageArgs']]] = None,
+            storage: Optional[pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -557,9 +557,9 @@ class VvpInstance(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type of the resource.
         :param pulumi.Input[str] pricing_cycle: The subscription period. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[str] resource_group_id: The resource group to which the newly purchased instance belongs.
-        :param pulumi.Input[pulumi.InputType['VvpInstanceResourceSpecArgs']] resource_spec: Resource specifications. See `resource_spec` below.
+        :param pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']] resource_spec: Resource specifications. See `resource_spec` below.
         :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[pulumi.InputType['VvpInstanceStorageArgs']] storage: Store information. See `storage` below.
+        :param pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']] storage: Store information. See `storage` below.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of the resource.
         :param pulumi.Input[str] vpc_id: The VPC ID of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: Virtual Switch ID.

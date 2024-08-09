@@ -142,7 +142,7 @@ public class SecondaryIndex extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SecondaryIndex(String name) {
+    public SecondaryIndex(java.lang.String name) {
         this(name, SecondaryIndexArgs.Empty);
     }
     /**
@@ -150,7 +150,7 @@ public class SecondaryIndex extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SecondaryIndex(String name, SecondaryIndexArgs args) {
+    public SecondaryIndex(java.lang.String name, SecondaryIndexArgs args) {
         this(name, args, null);
     }
     /**
@@ -159,15 +159,22 @@ public class SecondaryIndex extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SecondaryIndex(String name, SecondaryIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ots/secondaryIndex:SecondaryIndex", name, args == null ? SecondaryIndexArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SecondaryIndex(java.lang.String name, SecondaryIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ots/secondaryIndex:SecondaryIndex", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SecondaryIndex(String name, Output<String> id, @Nullable SecondaryIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ots/secondaryIndex:SecondaryIndex", name, state, makeResourceOptions(options, id));
+    private SecondaryIndex(java.lang.String name, Output<java.lang.String> id, @Nullable SecondaryIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ots/secondaryIndex:SecondaryIndex", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SecondaryIndexArgs makeArgs(SecondaryIndexArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SecondaryIndexArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -183,7 +190,7 @@ public class SecondaryIndex extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SecondaryIndex get(String name, Output<String> id, @Nullable SecondaryIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SecondaryIndex get(java.lang.String name, Output<java.lang.String> id, @Nullable SecondaryIndexState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SecondaryIndex(name, id, state, options);
     }
 }

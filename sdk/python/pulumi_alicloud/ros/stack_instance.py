@@ -331,7 +331,7 @@ class StackInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  operation_description: Optional[pulumi.Input[str]] = None,
                  operation_preferences: Optional[pulumi.Input[str]] = None,
-                 parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackInstanceParameterOverrideArgs']]]]] = None,
+                 parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]]] = None,
                  retain_stacks: Optional[pulumi.Input[bool]] = None,
                  stack_group_name: Optional[pulumi.Input[str]] = None,
                  stack_instance_account_id: Optional[pulumi.Input[str]] = None,
@@ -364,14 +364,14 @@ class StackInstance(pulumi.CustomResource):
             template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\", \\"Parameters\\": {\\"VpcName\\": {\\"Type\\": \\"String\\"},\\"InstanceType\\": {\\"Type\\": \\"String\\"}}}",
             description="test for stack groups",
             parameters=[
-                alicloud.ros.StackGroupParameterArgs(
-                    parameter_key="VpcName",
-                    parameter_value="VpcName",
-                ),
-                alicloud.ros.StackGroupParameterArgs(
-                    parameter_key="InstanceType",
-                    parameter_value="InstanceType",
-                ),
+                {
+                    "parameter_key": "VpcName",
+                    "parameter_value": "VpcName",
+                },
+                {
+                    "parameter_key": "InstanceType",
+                    "parameter_value": "InstanceType",
+                },
             ])
         example = alicloud.ros.StackInstance("example",
             stack_group_name=default_stack_group.stack_group_name,
@@ -381,10 +381,10 @@ class StackInstance(pulumi.CustomResource):
             timeout_in_minutes="60",
             operation_description="tf-example",
             retain_stacks=True,
-            parameter_overrides=[alicloud.ros.StackInstanceParameterOverrideArgs(
-                parameter_value="VpcName",
-                parameter_key="VpcName",
-            )])
+            parameter_overrides=[{
+                "parameter_value": "VpcName",
+                "parameter_key": "VpcName",
+            }])
         ```
 
         ## Import
@@ -403,7 +403,7 @@ class StackInstance(pulumi.CustomResource):
                * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
                * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
                * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackInstanceParameterOverrideArgs']]]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
         :param pulumi.Input[bool] retain_stacks: Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         :param pulumi.Input[str] stack_group_name: The name of the stack group.
         :param pulumi.Input[str] stack_instance_account_id: The account to which the stack instance belongs.
@@ -442,14 +442,14 @@ class StackInstance(pulumi.CustomResource):
             template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\", \\"Parameters\\": {\\"VpcName\\": {\\"Type\\": \\"String\\"},\\"InstanceType\\": {\\"Type\\": \\"String\\"}}}",
             description="test for stack groups",
             parameters=[
-                alicloud.ros.StackGroupParameterArgs(
-                    parameter_key="VpcName",
-                    parameter_value="VpcName",
-                ),
-                alicloud.ros.StackGroupParameterArgs(
-                    parameter_key="InstanceType",
-                    parameter_value="InstanceType",
-                ),
+                {
+                    "parameter_key": "VpcName",
+                    "parameter_value": "VpcName",
+                },
+                {
+                    "parameter_key": "InstanceType",
+                    "parameter_value": "InstanceType",
+                },
             ])
         example = alicloud.ros.StackInstance("example",
             stack_group_name=default_stack_group.stack_group_name,
@@ -459,10 +459,10 @@ class StackInstance(pulumi.CustomResource):
             timeout_in_minutes="60",
             operation_description="tf-example",
             retain_stacks=True,
-            parameter_overrides=[alicloud.ros.StackInstanceParameterOverrideArgs(
-                parameter_value="VpcName",
-                parameter_key="VpcName",
-            )])
+            parameter_overrides=[{
+                "parameter_value": "VpcName",
+                "parameter_key": "VpcName",
+            }])
         ```
 
         ## Import
@@ -490,7 +490,7 @@ class StackInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  operation_description: Optional[pulumi.Input[str]] = None,
                  operation_preferences: Optional[pulumi.Input[str]] = None,
-                 parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackInstanceParameterOverrideArgs']]]]] = None,
+                 parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]]] = None,
                  retain_stacks: Optional[pulumi.Input[bool]] = None,
                  stack_group_name: Optional[pulumi.Input[str]] = None,
                  stack_instance_account_id: Optional[pulumi.Input[str]] = None,
@@ -534,7 +534,7 @@ class StackInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             operation_description: Optional[pulumi.Input[str]] = None,
             operation_preferences: Optional[pulumi.Input[str]] = None,
-            parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackInstanceParameterOverrideArgs']]]]] = None,
+            parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]]] = None,
             retain_stacks: Optional[pulumi.Input[bool]] = None,
             stack_group_name: Optional[pulumi.Input[str]] = None,
             stack_instance_account_id: Optional[pulumi.Input[str]] = None,
@@ -554,7 +554,7 @@ class StackInstance(pulumi.CustomResource):
                * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
                * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
                * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackInstanceParameterOverrideArgs']]]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
         :param pulumi.Input[bool] retain_stacks: Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         :param pulumi.Input[str] stack_group_name: The name of the stack group.
         :param pulumi.Input[str] stack_instance_account_id: The account to which the stack instance belongs.

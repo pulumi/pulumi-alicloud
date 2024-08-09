@@ -183,7 +183,7 @@ public class PluginAttachment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PluginAttachment(String name) {
+    public PluginAttachment(java.lang.String name) {
         this(name, PluginAttachmentArgs.Empty);
     }
     /**
@@ -191,7 +191,7 @@ public class PluginAttachment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PluginAttachment(String name, PluginAttachmentArgs args) {
+    public PluginAttachment(java.lang.String name, PluginAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -200,15 +200,22 @@ public class PluginAttachment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PluginAttachment(String name, PluginAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:apigateway/pluginAttachment:PluginAttachment", name, args == null ? PluginAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PluginAttachment(java.lang.String name, PluginAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:apigateway/pluginAttachment:PluginAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PluginAttachment(String name, Output<String> id, @Nullable PluginAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:apigateway/pluginAttachment:PluginAttachment", name, state, makeResourceOptions(options, id));
+    private PluginAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable PluginAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:apigateway/pluginAttachment:PluginAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PluginAttachmentArgs makeArgs(PluginAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PluginAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -224,7 +231,7 @@ public class PluginAttachment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PluginAttachment get(String name, Output<String> id, @Nullable PluginAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PluginAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable PluginAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PluginAttachment(name, id, state, options);
     }
 }

@@ -105,7 +105,7 @@ import (
 //				return err
 //			}
 //			exampleEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "example", &ecs.EcsKeyPairArgs{
-//				KeyPairName: pulumi.String(fmt.Sprintf("tf-example-%v", _default.Result)),
+//				KeyPairName: pulumi.Sprintf("tf-example-%v", _default.Result),
 //			})
 //			if err != nil {
 //				return err

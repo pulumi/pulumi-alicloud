@@ -199,7 +199,7 @@ public class AddressPool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AddressPool(String name) {
+    public AddressPool(java.lang.String name) {
         this(name, AddressPoolArgs.Empty);
     }
     /**
@@ -207,7 +207,7 @@ public class AddressPool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AddressPool(String name, AddressPoolArgs args) {
+    public AddressPool(java.lang.String name, AddressPoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -216,15 +216,22 @@ public class AddressPool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AddressPool(String name, AddressPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/addressPool:AddressPool", name, args == null ? AddressPoolArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AddressPool(java.lang.String name, AddressPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/addressPool:AddressPool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AddressPool(String name, Output<String> id, @Nullable AddressPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:dns/addressPool:AddressPool", name, state, makeResourceOptions(options, id));
+    private AddressPool(java.lang.String name, Output<java.lang.String> id, @Nullable AddressPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:dns/addressPool:AddressPool", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AddressPoolArgs makeArgs(AddressPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AddressPoolArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -240,7 +247,7 @@ public class AddressPool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AddressPool get(String name, Output<String> id, @Nullable AddressPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AddressPool get(java.lang.String name, Output<java.lang.String> id, @Nullable AddressPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AddressPool(name, id, state, options);
     }
 }

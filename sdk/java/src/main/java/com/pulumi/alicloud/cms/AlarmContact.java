@@ -40,21 +40,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // You need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible. Besides, you can ignore the diff of the alarm contact information by `lifestyle`. 
  *         var example = new AlarmContact("example", AlarmContactArgs.builder()
  *             .alarmContactName("tf-example")
  *             .describe("For example")
- *             .channelsMail("terraform{@literal @}test.com")
+ *             .channelsMail("terraform}{@literal @}{@code test.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -177,7 +177,7 @@ public class AlarmContact extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AlarmContact(String name) {
+    public AlarmContact(java.lang.String name) {
         this(name, AlarmContactArgs.Empty);
     }
     /**
@@ -185,7 +185,7 @@ public class AlarmContact extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AlarmContact(String name, AlarmContactArgs args) {
+    public AlarmContact(java.lang.String name, AlarmContactArgs args) {
         this(name, args, null);
     }
     /**
@@ -194,15 +194,22 @@ public class AlarmContact extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AlarmContact(String name, AlarmContactArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cms/alarmContact:AlarmContact", name, args == null ? AlarmContactArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AlarmContact(java.lang.String name, AlarmContactArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cms/alarmContact:AlarmContact", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AlarmContact(String name, Output<String> id, @Nullable AlarmContactState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:cms/alarmContact:AlarmContact", name, state, makeResourceOptions(options, id));
+    private AlarmContact(java.lang.String name, Output<java.lang.String> id, @Nullable AlarmContactState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:cms/alarmContact:AlarmContact", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AlarmContactArgs makeArgs(AlarmContactArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AlarmContactArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -218,7 +225,7 @@ public class AlarmContact extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AlarmContact get(String name, Output<String> id, @Nullable AlarmContactState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AlarmContact get(java.lang.String name, Output<java.lang.String> id, @Nullable AlarmContactState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AlarmContact(name, id, state, options);
     }
 }

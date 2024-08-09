@@ -122,7 +122,7 @@ public class ServiceTopic extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServiceTopic(String name) {
+    public ServiceTopic(java.lang.String name) {
         this(name, ServiceTopicArgs.Empty);
     }
     /**
@@ -130,7 +130,7 @@ public class ServiceTopic extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServiceTopic(String name, ServiceTopicArgs args) {
+    public ServiceTopic(java.lang.String name, ServiceTopicArgs args) {
         this(name, args, null);
     }
     /**
@@ -139,15 +139,22 @@ public class ServiceTopic extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServiceTopic(String name, ServiceTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:message/serviceTopic:ServiceTopic", name, args == null ? ServiceTopicArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServiceTopic(java.lang.String name, ServiceTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:message/serviceTopic:ServiceTopic", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServiceTopic(String name, Output<String> id, @Nullable ServiceTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:message/serviceTopic:ServiceTopic", name, state, makeResourceOptions(options, id));
+    private ServiceTopic(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:message/serviceTopic:ServiceTopic", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServiceTopicArgs makeArgs(ServiceTopicArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceTopicArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -163,7 +170,7 @@ public class ServiceTopic extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServiceTopic get(String name, Output<String> id, @Nullable ServiceTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServiceTopic get(java.lang.String name, Output<java.lang.String> id, @Nullable ServiceTopicState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServiceTopic(name, id, state, options);
     }
 }

@@ -223,7 +223,7 @@ public class Ipv6InternetBandwidth extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Ipv6InternetBandwidth(String name) {
+    public Ipv6InternetBandwidth(java.lang.String name) {
         this(name, Ipv6InternetBandwidthArgs.Empty);
     }
     /**
@@ -231,7 +231,7 @@ public class Ipv6InternetBandwidth extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Ipv6InternetBandwidth(String name, Ipv6InternetBandwidthArgs args) {
+    public Ipv6InternetBandwidth(java.lang.String name, Ipv6InternetBandwidthArgs args) {
         this(name, args, null);
     }
     /**
@@ -240,15 +240,22 @@ public class Ipv6InternetBandwidth extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Ipv6InternetBandwidth(String name, Ipv6InternetBandwidthArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth", name, args == null ? Ipv6InternetBandwidthArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Ipv6InternetBandwidth(java.lang.String name, Ipv6InternetBandwidthArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Ipv6InternetBandwidth(String name, Output<String> id, @Nullable Ipv6InternetBandwidthState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth", name, state, makeResourceOptions(options, id));
+    private Ipv6InternetBandwidth(java.lang.String name, Output<java.lang.String> id, @Nullable Ipv6InternetBandwidthState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:vpc/ipv6InternetBandwidth:Ipv6InternetBandwidth", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static Ipv6InternetBandwidthArgs makeArgs(Ipv6InternetBandwidthArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? Ipv6InternetBandwidthArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -264,7 +271,7 @@ public class Ipv6InternetBandwidth extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Ipv6InternetBandwidth get(String name, Output<String> id, @Nullable Ipv6InternetBandwidthState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Ipv6InternetBandwidth get(java.lang.String name, Output<java.lang.String> id, @Nullable Ipv6InternetBandwidthState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Ipv6InternetBandwidth(name, id, state, options);
     }
 }

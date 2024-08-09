@@ -240,7 +240,7 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CustomRoutingEndpointGroupDestination(String name) {
+    public CustomRoutingEndpointGroupDestination(java.lang.String name) {
         this(name, CustomRoutingEndpointGroupDestinationArgs.Empty);
     }
     /**
@@ -248,7 +248,7 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CustomRoutingEndpointGroupDestination(String name, CustomRoutingEndpointGroupDestinationArgs args) {
+    public CustomRoutingEndpointGroupDestination(java.lang.String name, CustomRoutingEndpointGroupDestinationArgs args) {
         this(name, args, null);
     }
     /**
@@ -257,15 +257,22 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CustomRoutingEndpointGroupDestination(String name, CustomRoutingEndpointGroupDestinationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination", name, args == null ? CustomRoutingEndpointGroupDestinationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CustomRoutingEndpointGroupDestination(java.lang.String name, CustomRoutingEndpointGroupDestinationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CustomRoutingEndpointGroupDestination(String name, Output<String> id, @Nullable CustomRoutingEndpointGroupDestinationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination", name, state, makeResourceOptions(options, id));
+    private CustomRoutingEndpointGroupDestination(java.lang.String name, Output<java.lang.String> id, @Nullable CustomRoutingEndpointGroupDestinationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("alicloud:ga/customRoutingEndpointGroupDestination:CustomRoutingEndpointGroupDestination", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CustomRoutingEndpointGroupDestinationArgs makeArgs(CustomRoutingEndpointGroupDestinationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CustomRoutingEndpointGroupDestinationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -281,7 +288,7 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CustomRoutingEndpointGroupDestination get(String name, Output<String> id, @Nullable CustomRoutingEndpointGroupDestinationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CustomRoutingEndpointGroupDestination get(java.lang.String name, Output<java.lang.String> id, @Nullable CustomRoutingEndpointGroupDestinationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CustomRoutingEndpointGroupDestination(name, id, state, options);
     }
 }
