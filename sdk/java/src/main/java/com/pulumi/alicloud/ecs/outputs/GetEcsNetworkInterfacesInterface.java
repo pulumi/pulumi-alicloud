@@ -42,12 +42,17 @@ public final class GetEcsNetworkInterfacesInterface {
      */
     private String instanceId;
     /**
+     * @return A list of IPv6 addresses that is assigned to the ENI.  **NOTE:** Available since v1.228.0.
+     * 
+     */
+    private List<String> ipv6Sets;
+    /**
      * @return The MAC address of the ENI.
      * 
      */
     private String mac;
     /**
-     * @return The network interface name.
+     * @return Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
      * 
      */
     private String name;
@@ -77,10 +82,14 @@ public final class GetEcsNetworkInterfacesInterface {
      */
     private String primaryIpAddress;
     /**
-     * @return The primary private IP address of the ENI.
+     * @return Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
      * 
      */
     private String privateIp;
+    /**
+     * @return A list of secondary private IP address that is assigned to the ENI.
+     * 
+     */
     private List<String> privateIpAddresses;
     /**
      * @return A list of secondary private IP address that is assigned to the ENI.
@@ -118,22 +127,22 @@ public final class GetEcsNetworkInterfacesInterface {
      */
     private Boolean serviceManaged;
     /**
-     * @return The status of the ENI.
+     * @return The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
      * 
      */
     private String status;
     /**
-     * @return The tags.
+     * @return A map of tags assigned to ENIs.
      * 
      */
     private Map<String,Object> tags;
     /**
-     * @return The type of the ENI.
+     * @return The type of ENI. Valid Values: `Primary`, `Secondary`.
      * 
      */
     private String type;
     /**
-     * @return The Vpc Id.
+     * @return The vpc id.
      * 
      */
     private String vpcId;
@@ -185,6 +194,13 @@ public final class GetEcsNetworkInterfacesInterface {
         return this.instanceId;
     }
     /**
+     * @return A list of IPv6 addresses that is assigned to the ENI.  **NOTE:** Available since v1.228.0.
+     * 
+     */
+    public List<String> ipv6Sets() {
+        return this.ipv6Sets;
+    }
+    /**
      * @return The MAC address of the ENI.
      * 
      */
@@ -192,7 +208,7 @@ public final class GetEcsNetworkInterfacesInterface {
         return this.mac;
     }
     /**
-     * @return The network interface name.
+     * @return Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
      * 
      */
     public String name() {
@@ -234,12 +250,16 @@ public final class GetEcsNetworkInterfacesInterface {
         return this.primaryIpAddress;
     }
     /**
-     * @return The primary private IP address of the ENI.
+     * @return Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
      * 
      */
     public String privateIp() {
         return this.privateIp;
     }
+    /**
+     * @return A list of secondary private IP address that is assigned to the ENI.
+     * 
+     */
     public List<String> privateIpAddresses() {
         return this.privateIpAddresses;
     }
@@ -293,28 +313,28 @@ public final class GetEcsNetworkInterfacesInterface {
         return this.serviceManaged;
     }
     /**
-     * @return The status of the ENI.
+     * @return The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The tags.
+     * @return A map of tags assigned to ENIs.
      * 
      */
     public Map<String,Object> tags() {
         return this.tags;
     }
     /**
-     * @return The type of the ENI.
+     * @return The type of ENI. Valid Values: `Primary`, `Secondary`.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return The Vpc Id.
+     * @return The vpc id.
      * 
      */
     public String vpcId() {
@@ -349,6 +369,7 @@ public final class GetEcsNetworkInterfacesInterface {
         private String description;
         private String id;
         private String instanceId;
+        private List<String> ipv6Sets;
         private String mac;
         private String name;
         private String networkInterfaceId;
@@ -379,6 +400,7 @@ public final class GetEcsNetworkInterfacesInterface {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.instanceId = defaults.instanceId;
+    	      this.ipv6Sets = defaults.ipv6Sets;
     	      this.mac = defaults.mac;
     	      this.name = defaults.name;
     	      this.networkInterfaceId = defaults.networkInterfaceId;
@@ -445,6 +467,17 @@ public final class GetEcsNetworkInterfacesInterface {
             }
             this.instanceId = instanceId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6Sets(List<String> ipv6Sets) {
+            if (ipv6Sets == null) {
+              throw new MissingRequiredPropertyException("GetEcsNetworkInterfacesInterface", "ipv6Sets");
+            }
+            this.ipv6Sets = ipv6Sets;
+            return this;
+        }
+        public Builder ipv6Sets(String... ipv6Sets) {
+            return ipv6Sets(List.of(ipv6Sets));
         }
         @CustomType.Setter
         public Builder mac(String mac) {
@@ -641,6 +674,7 @@ public final class GetEcsNetworkInterfacesInterface {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.instanceId = instanceId;
+            _resultValue.ipv6Sets = ipv6Sets;
             _resultValue.mac = mac;
             _resultValue.name = name;
             _resultValue.networkInterfaceId = networkInterfaceId;

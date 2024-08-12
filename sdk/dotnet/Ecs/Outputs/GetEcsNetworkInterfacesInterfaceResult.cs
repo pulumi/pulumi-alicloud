@@ -34,11 +34,15 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
+        /// A list of IPv6 addresses that is assigned to the ENI.  **NOTE:** Available since v1.228.0.
+        /// </summary>
+        public readonly ImmutableArray<string> Ipv6Sets;
+        /// <summary>
         /// The MAC address of the ENI.
         /// </summary>
         public readonly string Mac;
         /// <summary>
-        /// The network interface name.
+        /// Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -62,9 +66,12 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string PrimaryIpAddress;
         /// <summary>
-        /// The primary private IP address of the ENI.
+        /// Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
         /// </summary>
         public readonly string PrivateIp;
+        /// <summary>
+        /// A list of secondary private IP address that is assigned to the ENI.
+        /// </summary>
         public readonly ImmutableArray<string> PrivateIpAddresses;
         /// <summary>
         /// A list of secondary private IP address that is assigned to the ENI.
@@ -95,19 +102,19 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly bool ServiceManaged;
         /// <summary>
-        /// The status of the ENI.
+        /// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The tags.
+        /// A map of tags assigned to ENIs.
         /// </summary>
         public readonly ImmutableDictionary<string, object> Tags;
         /// <summary>
-        /// The type of the ENI.
+        /// The type of ENI. Valid Values: `Primary`, `Secondary`.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The Vpc Id.
+        /// The vpc id.
         /// </summary>
         public readonly string VpcId;
         /// <summary>
@@ -130,6 +137,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             string id,
 
             string instanceId,
+
+            ImmutableArray<string> ipv6Sets,
 
             string mac,
 
@@ -180,6 +189,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             Description = description;
             Id = id;
             InstanceId = instanceId;
+            Ipv6Sets = ipv6Sets;
             Mac = mac;
             Name = name;
             NetworkInterfaceId = networkInterfaceId;

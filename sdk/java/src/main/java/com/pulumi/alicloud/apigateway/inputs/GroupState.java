@@ -16,6 +16,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     public static final GroupState Empty = new GroupState();
 
     /**
+     * The base path of the api gateway group. Defaults to `/`.
+     * 
+     */
+    @Import(name="basePath")
+    private @Nullable Output<String> basePath;
+
+    /**
+     * @return The base path of the api gateway group. Defaults to `/`.
+     * 
+     */
+    public Optional<Output<String>> basePath() {
+        return Optional.ofNullable(this.basePath);
+    }
+
+    /**
      * The description of the api gateway group. Defaults to null.
      * 
      */
@@ -93,6 +108,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     private GroupState() {}
 
     private GroupState(GroupState $) {
+        this.basePath = $.basePath;
         this.description = $.description;
         this.instanceId = $.instanceId;
         this.name = $.name;
@@ -116,6 +132,27 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(GroupState defaults) {
             $ = new GroupState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param basePath The base path of the api gateway group. Defaults to `/`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder basePath(@Nullable Output<String> basePath) {
+            $.basePath = basePath;
+            return this;
+        }
+
+        /**
+         * @param basePath The base path of the api gateway group. Defaults to `/`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder basePath(String basePath) {
+            return basePath(Output.of(basePath));
         }
 
         /**

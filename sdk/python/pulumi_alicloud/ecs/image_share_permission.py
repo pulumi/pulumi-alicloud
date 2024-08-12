@@ -117,7 +117,7 @@ class ImageSharePermission(pulumi.CustomResource):
 
         default = alicloud.get_zones(available_resource_creation="Instance")
         default_get_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.sn1ne")
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
@@ -199,7 +199,7 @@ class ImageSharePermission(pulumi.CustomResource):
 
         default = alicloud.get_zones(available_resource_creation="Instance")
         default_get_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.sn1ne")
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",

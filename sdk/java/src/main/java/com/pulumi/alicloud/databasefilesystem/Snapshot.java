@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .instanceType(example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length() - 1].id())
- *             .nameRegex("^aliyun_2_1903_x64_20G_alibase_20231221.vhd")
+ *             .nameRegex("^aliyun_2_1903_x64_20G_alibase_20240628.vhd")
  *             .owners("system")
  *             .build());
  * 

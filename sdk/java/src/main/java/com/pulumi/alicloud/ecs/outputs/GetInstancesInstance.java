@@ -167,7 +167,7 @@ public final class GetInstancesInstance {
      */
     private String vpcId;
     /**
-     * @return ID of the VSwitch linked to the instances.
+     * @return ID of the vSwitch linked to the instances.
      * 
      */
     private String vswitchId;
@@ -370,7 +370,7 @@ public final class GetInstancesInstance {
         return this.vpcId;
     }
     /**
-     * @return ID of the VSwitch linked to the instances.
+     * @return ID of the vSwitch linked to the instances.
      * 
      */
     public String vswitchId() {

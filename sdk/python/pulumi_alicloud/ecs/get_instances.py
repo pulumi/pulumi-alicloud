@@ -208,7 +208,7 @@ class GetInstancesResult:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[str]:
         """
-        ID of the VSwitch the instance belongs to.
+        ID of the vSwitch the instance belongs to.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -293,7 +293,7 @@ def get_instances(availability_zone: Optional[str] = None,
            })
            ```
     :param str vpc_id: ID of the VPC linked to the instances.
-    :param str vswitch_id: ID of the VSwitch linked to the instances.
+    :param str vswitch_id: ID of the vSwitch linked to the instances.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
@@ -390,6 +390,6 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
            })
            ```
     :param str vpc_id: ID of the VPC linked to the instances.
-    :param str vswitch_id: ID of the VSwitch linked to the instances.
+    :param str vswitch_id: ID of the vSwitch linked to the instances.
     """
     ...

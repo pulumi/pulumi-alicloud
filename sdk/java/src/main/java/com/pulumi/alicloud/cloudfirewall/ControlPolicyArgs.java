@@ -64,14 +64,14 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The destination port defined in the access control policy.
+     * The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
      * 
      */
     @Import(name="destPort")
     private @Nullable Output<String> destPort;
 
     /**
-     * @return The destination port defined in the access control policy.
+     * @return The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
      * 
      */
     public Optional<Output<String>> destPort() {
@@ -79,14 +79,14 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The destination port address book defined in the access control policy.
+     * The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
      * 
      */
     @Import(name="destPortGroup")
     private @Nullable Output<String> destPortGroup;
 
     /**
-     * @return The destination port address book defined in the access control policy.
+     * @return The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
      * 
      */
     public Optional<Output<String>> destPortGroup() {
@@ -94,14 +94,14 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The destination port type defined in the access control policy. Valid values: `group`, `port`.
+     * The type of the destination port in the access control policy. Valid values: `port`, `group`.
      * 
      */
     @Import(name="destPortType")
     private @Nullable Output<String> destPortType;
 
     /**
-     * @return The destination port type defined in the access control policy. Valid values: `group`, `port`.
+     * @return The type of the destination port in the access control policy. Valid values: `port`, `group`.
      * 
      */
     public Optional<Output<String>> destPortType() {
@@ -109,14 +109,14 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The destination address defined in the access control policy.
+     * The destination address in the access control policy.
      * 
      */
     @Import(name="destination", required=true)
     private Output<String> destination;
 
     /**
-     * @return The destination address defined in the access control policy.
+     * @return The destination address in the access control policy.
      * 
      */
     public Output<String> destination() {
@@ -124,14 +124,14 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+     * The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
      * 
      */
     @Import(name="destinationType", required=true)
     private Output<String> destinationType;
 
     /**
-     * @return DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+     * @return The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
      * 
      */
     public Output<String> destinationType() {
@@ -139,14 +139,14 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Direction. Valid values: `in`, `out`.
+     * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     @Import(name="direction", required=true)
     private Output<String> direction;
 
     /**
-     * @return Direction. Valid values: `in`, `out`.
+     * @return The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     public Output<String> direction() {
@@ -154,14 +154,14 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ip version.
+     * The IP version supported by the access control policy. Default value: `4`. Valid values:
      * 
      */
     @Import(name="ipVersion")
     private @Nullable Output<String> ipVersion;
 
     /**
-     * @return The ip version.
+     * @return The IP version supported by the access control policy. Default value: `4`. Valid values:
      * 
      */
     public Optional<Output<String>> ipVersion() {
@@ -169,14 +169,14 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * DestPortGroupPorts. Valid values: `en`, `zh`.
+     * The language of the content within the request and response. Valid values: `zh`, `en`.
      * 
      */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @return DestPortGroupPorts. Valid values: `en`, `zh`.
+     * @return The language of the content within the request and response. Valid values: `zh`, `en`.
      * 
      */
     public Optional<Output<String>> lang() {
@@ -184,14 +184,14 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
+     * The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
      * 
      */
     @Import(name="proto", required=true)
     private Output<String> proto;
 
     /**
-     * @return Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
+     * @return The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
      * 
      */
     public Output<String> proto() {
@@ -199,14 +199,14 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+     * The status of the access control policy. Valid values: `true`, `false`.
      * 
      */
     @Import(name="release")
     private @Nullable Output<String> release;
 
     /**
-     * @return Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+     * @return The status of the access control policy. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<String>> release() {
@@ -214,14 +214,14 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Source.
+     * The source address in the access control policy.
      * 
      */
     @Import(name="source", required=true)
     private Output<String> source;
 
     /**
-     * @return Source.
+     * @return The source address in the access control policy.
      * 
      */
     public Output<String> source() {
@@ -229,14 +229,14 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source ip.
+     * The source IP address of the request.
      * 
      */
     @Import(name="sourceIp")
     private @Nullable Output<String> sourceIp;
 
     /**
-     * @return The source ip.
+     * @return The source IP address of the request.
      * 
      */
     public Optional<Output<String>> sourceIp() {
@@ -244,14 +244,14 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+     * The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
      * 
      */
     @Import(name="sourceType", required=true)
     private Output<String> sourceType;
 
     /**
-     * @return SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+     * @return The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
      * 
      */
     public Output<String> sourceType() {
@@ -363,7 +363,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destPort The destination port defined in the access control policy.
+         * @param destPort The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destPort The destination port defined in the access control policy.
+         * @param destPort The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destPortGroup The destination port address book defined in the access control policy.
+         * @param destPortGroup The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destPortGroup The destination port address book defined in the access control policy.
+         * @param destPortGroup The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destPortType The destination port type defined in the access control policy. Valid values: `group`, `port`.
+         * @param destPortType The type of the destination port in the access control policy. Valid values: `port`, `group`.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destPortType The destination port type defined in the access control policy. Valid values: `group`, `port`.
+         * @param destPortType The type of the destination port in the access control policy. Valid values: `port`, `group`.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destination The destination address defined in the access control policy.
+         * @param destination The destination address in the access control policy.
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destination The destination address defined in the access control policy.
+         * @param destination The destination address in the access control policy.
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationType DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+         * @param destinationType The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationType DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+         * @param destinationType The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param direction Direction. Valid values: `in`, `out`.
+         * @param direction The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param direction Direction. Valid values: `in`, `out`.
+         * @param direction The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipVersion The ip version.
+         * @param ipVersion The IP version supported by the access control policy. Default value: `4`. Valid values:
          * 
          * @return builder
          * 
@@ -500,7 +500,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipVersion The ip version.
+         * @param ipVersion The IP version supported by the access control policy. Default value: `4`. Valid values:
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lang DestPortGroupPorts. Valid values: `en`, `zh`.
+         * @param lang The language of the content within the request and response. Valid values: `zh`, `en`.
          * 
          * @return builder
          * 
@@ -521,7 +521,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lang DestPortGroupPorts. Valid values: `en`, `zh`.
+         * @param lang The language of the content within the request and response. Valid values: `zh`, `en`.
          * 
          * @return builder
          * 
@@ -531,7 +531,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proto Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
+         * @param proto The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proto Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
+         * @param proto The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param release Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+         * @param release The status of the access control policy. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -563,7 +563,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param release Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+         * @param release The status of the access control policy. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param source Source.
+         * @param source The source address in the access control policy.
          * 
          * @return builder
          * 
@@ -584,7 +584,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param source Source.
+         * @param source The source address in the access control policy.
          * 
          * @return builder
          * 
@@ -594,7 +594,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceIp The source ip.
+         * @param sourceIp The source IP address of the request.
          * 
          * @return builder
          * 
@@ -605,7 +605,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceIp The source ip.
+         * @param sourceIp The source IP address of the request.
          * 
          * @return builder
          * 
@@ -615,7 +615,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceType SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+         * @param sourceType The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
          * 
          * @return builder
          * 
@@ -626,7 +626,7 @@ public final class ControlPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceType SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+         * @param sourceType The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
          * 
          * @return builder
          * 

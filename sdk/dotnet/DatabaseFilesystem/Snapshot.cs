@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     ///     var exampleGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         InstanceType = example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length - 1].Id,
-    ///         NameRegex = "^aliyun_2_1903_x64_20G_alibase_20231221.vhd",
+    ///         NameRegex = "^aliyun_2_1903_x64_20G_alibase_20240628.vhd",
     ///         Owners = "system",
     ///     });
     /// 

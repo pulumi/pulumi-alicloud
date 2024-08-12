@@ -189,10 +189,22 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> GroupType { get; private set; } = null!;
 
         /// <summary>
-        /// Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
+        /// Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
         /// </summary>
         [Output("healthCheckType")]
         public Output<string> HealthCheckType { get; private set; } = null!;
+
+        /// <summary>
+        /// The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+        /// </summary>
+        [Output("healthCheckTypes")]
+        public Output<ImmutableArray<string>> HealthCheckTypes { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string?> InstanceId { get; private set; } = null!;
 
         /// <summary>
         /// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
@@ -442,10 +454,28 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? GroupType { get; set; }
 
         /// <summary>
-        /// Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
+        /// Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
+
+        [Input("healthCheckTypes")]
+        private InputList<string>? _healthCheckTypes;
+
+        /// <summary>
+        /// The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+        /// </summary>
+        public InputList<string> HealthCheckTypes
+        {
+            get => _healthCheckTypes ?? (_healthCheckTypes = new InputList<string>());
+            set => _healthCheckTypes = value;
+        }
+
+        /// <summary>
+        /// The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
 
         /// <summary>
         /// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
@@ -693,10 +723,28 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? GroupType { get; set; }
 
         /// <summary>
-        /// Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
+        /// Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
+
+        [Input("healthCheckTypes")]
+        private InputList<string>? _healthCheckTypes;
+
+        /// <summary>
+        /// The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+        /// </summary>
+        public InputList<string> HealthCheckTypes
+        {
+            get => _healthCheckTypes ?? (_healthCheckTypes = new InputList<string>());
+            set => _healthCheckTypes = value;
+        }
+
+        /// <summary>
+        /// The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
 
         /// <summary>
         /// Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.

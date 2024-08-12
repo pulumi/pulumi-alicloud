@@ -126,7 +126,7 @@ type VbrHealthCheck struct {
 	// Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
 	HealthCheckInterval pulumi.IntPtrOutput `pulumi:"healthCheckInterval"`
 	// The source IP address of health checks.
-	HealthCheckSourceIp pulumi.StringPtrOutput `pulumi:"healthCheckSourceIp"`
+	HealthCheckSourceIp pulumi.StringOutput `pulumi:"healthCheckSourceIp"`
 	// The destination IP address of health checks.
 	HealthCheckTargetIp pulumi.StringOutput `pulumi:"healthCheckTargetIp"`
 	// Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
@@ -369,8 +369,8 @@ func (o VbrHealthCheckOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 }
 
 // The source IP address of health checks.
-func (o VbrHealthCheckOutput) HealthCheckSourceIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VbrHealthCheck) pulumi.StringPtrOutput { return v.HealthCheckSourceIp }).(pulumi.StringPtrOutput)
+func (o VbrHealthCheckOutput) HealthCheckSourceIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *VbrHealthCheck) pulumi.StringOutput { return v.HealthCheckSourceIp }).(pulumi.StringOutput)
 }
 
 // The destination IP address of health checks.

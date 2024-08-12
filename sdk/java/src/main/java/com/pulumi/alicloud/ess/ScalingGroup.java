@@ -285,18 +285,46 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return this.groupType;
     }
     /**
-     * Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
+     * Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
      * 
      */
     @Export(name="healthCheckType", refs={String.class}, tree="[0]")
     private Output<String> healthCheckType;
 
     /**
-     * @return Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
+     * @return Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
      * 
      */
     public Output<String> healthCheckType() {
         return this.healthCheckType;
+    }
+    /**
+     * The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+     * 
+     */
+    @Export(name="healthCheckTypes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> healthCheckTypes;
+
+    /**
+     * @return The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+     * 
+     */
+    public Output<Optional<List<String>>> healthCheckTypes() {
+        return Codegen.optional(this.healthCheckTypes);
+    }
+    /**
+     * The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
+     * 
+     */
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> instanceId;
+
+    /**
+     * @return The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
+     * 
+     */
+    public Output<Optional<String>> instanceId() {
+        return Codegen.optional(this.instanceId);
     }
     /**
      * Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.

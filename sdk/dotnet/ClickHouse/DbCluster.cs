@@ -29,10 +29,11 @@ namespace Pulumi.AliCloud.ClickHouse
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = AliCloud.ClickHouse.GetRegions.Invoke(new()
     ///     {
-    ///         Current = true,
+    ///         RegionId = region,
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
@@ -51,13 +52,13 @@ namespace Pulumi.AliCloud.ClickHouse
     /// 
     ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("default", new()
     ///     {
-    ///         DbClusterVersion = "22.8.5.29",
+    ///         DbClusterVersion = "23.8",
     ///         Category = "Basic",
     ///         DbClusterClass = "S8",
     ///         DbClusterNetworkType = "vpc",
     ///         DbNodeGroupCount = 1,
     ///         PaymentType = "PayAsYouGo",
-    ///         DbNodeStorage = "500",
+    ///         DbNodeStorage = "100",
     ///         StorageType = "cloud_essd",
     ///         VswitchId = defaultSwitch.Id,
     ///         VpcId = defaultNetwork.Id,
@@ -150,6 +151,13 @@ namespace Pulumi.AliCloud.ClickHouse
         /// </summary>
         [Output("maintainTime")]
         public Output<string> MaintainTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The zone IDs and 
+        /// corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
+        /// </summary>
+        [Output("multiZoneVswitchLists")]
+        public Output<ImmutableArray<Outputs.DbClusterMultiZoneVswitchList>> MultiZoneVswitchLists { get; private set; } = null!;
 
         /// <summary>
         /// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
@@ -331,6 +339,19 @@ namespace Pulumi.AliCloud.ClickHouse
         [Input("maintainTime")]
         public Input<string>? MaintainTime { get; set; }
 
+        [Input("multiZoneVswitchLists")]
+        private InputList<Inputs.DbClusterMultiZoneVswitchListArgs>? _multiZoneVswitchLists;
+
+        /// <summary>
+        /// The zone IDs and 
+        /// corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
+        /// </summary>
+        public InputList<Inputs.DbClusterMultiZoneVswitchListArgs> MultiZoneVswitchLists
+        {
+            get => _multiZoneVswitchLists ?? (_multiZoneVswitchLists = new InputList<Inputs.DbClusterMultiZoneVswitchListArgs>());
+            set => _multiZoneVswitchLists = value;
+        }
+
         /// <summary>
         /// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
         /// </summary>
@@ -472,6 +493,19 @@ namespace Pulumi.AliCloud.ClickHouse
         /// </summary>
         [Input("maintainTime")]
         public Input<string>? MaintainTime { get; set; }
+
+        [Input("multiZoneVswitchLists")]
+        private InputList<Inputs.DbClusterMultiZoneVswitchListGetArgs>? _multiZoneVswitchLists;
+
+        /// <summary>
+        /// The zone IDs and 
+        /// corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
+        /// </summary>
+        public InputList<Inputs.DbClusterMultiZoneVswitchListGetArgs> MultiZoneVswitchLists
+        {
+            get => _multiZoneVswitchLists ?? (_multiZoneVswitchLists = new InputList<Inputs.DbClusterMultiZoneVswitchListGetArgs>());
+            set => _multiZoneVswitchLists = value;
+        }
 
         /// <summary>
         /// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.

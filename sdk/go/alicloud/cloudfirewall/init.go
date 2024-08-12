@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NatFirewall{}
 	case "alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy":
 		r = &NatFirewallControlPolicy{}
+	case "alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall":
+		r = &VpcCenTrFirewall{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -102,6 +104,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudfirewall/natFirewallControlPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/vpcCenTrFirewall",
 		&module{version},
 	)
 }

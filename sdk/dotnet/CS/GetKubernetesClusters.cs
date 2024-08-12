@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.34.0+.
+        /// &gt; **NOTE:** Available since v1.34.0+.
         /// 
         /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.34.0+.
+        /// &gt; **NOTE:** Available since v1.34.0+.
         /// 
         /// &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kube_config_file_prefix`.
         /// 
@@ -85,6 +85,9 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class GetKubernetesClustersArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -126,6 +129,9 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class GetKubernetesClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `master_disk_category`, `slb_internet_enabled`, `connections`. See full list in attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 

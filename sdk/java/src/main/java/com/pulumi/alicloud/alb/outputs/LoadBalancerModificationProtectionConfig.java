@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerModificationProtectionConfig {
     /**
-     * @return Managed Instance.
+     * @return The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
      * 
      */
     private @Nullable String reason;
     /**
-     * @return Load Balancing Modify the Protection Status.
+     * @return Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
      * 
      */
     private @Nullable String status;
 
     private LoadBalancerModificationProtectionConfig() {}
     /**
-     * @return Managed Instance.
+     * @return The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
      * 
      */
     public Optional<String> reason() {
         return Optional.ofNullable(this.reason);
     }
     /**
-     * @return Load Balancing Modify the Protection Status.
+     * @return Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
      * 
      */
     public Optional<String> status() {

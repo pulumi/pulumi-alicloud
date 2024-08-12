@@ -19,6 +19,8 @@ __all__ = [
     'ApiRequestConfigArgs',
     'ApiRequestParameterArgs',
     'ApiSystemParameterArgs',
+    'InstanceToConnectVpcIpBlockArgs',
+    'InstanceZoneVswitchSecurityGroupArgs',
 ]
 
 @pulumi.input_type
@@ -315,13 +317,17 @@ class ApiHttpServiceConfigArgs:
                  method: pulumi.Input[str],
                  path: pulumi.Input[str],
                  timeout: pulumi.Input[int],
-                 aone_name: Optional[pulumi.Input[str]] = None):
+                 aone_name: Optional[pulumi.Input[str]] = None,
+                 content_type_category: Optional[pulumi.Input[str]] = None,
+                 content_type_value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] address: The address of backend service.
         :param pulumi.Input[str] method: The http method of backend service.
         :param pulumi.Input[str] path: The path of backend service.
         :param pulumi.Input[int] timeout: Backend service time-out time; unit: millisecond.
         :param pulumi.Input[str] aone_name: The name of aone.
+        :param pulumi.Input[str] content_type_category: The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+        :param pulumi.Input[str] content_type_value: The content type value of backend service.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "method", method)
@@ -329,6 +335,10 @@ class ApiHttpServiceConfigArgs:
         pulumi.set(__self__, "timeout", timeout)
         if aone_name is not None:
             pulumi.set(__self__, "aone_name", aone_name)
+        if content_type_category is not None:
+            pulumi.set(__self__, "content_type_category", content_type_category)
+        if content_type_value is not None:
+            pulumi.set(__self__, "content_type_value", content_type_value)
 
     @property
     @pulumi.getter
@@ -390,6 +400,30 @@ class ApiHttpServiceConfigArgs:
     def aone_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "aone_name", value)
 
+    @property
+    @pulumi.getter(name="contentTypeCategory")
+    def content_type_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+        """
+        return pulumi.get(self, "content_type_category")
+
+    @content_type_category.setter
+    def content_type_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_type_category", value)
+
+    @property
+    @pulumi.getter(name="contentTypeValue")
+    def content_type_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content type value of backend service.
+        """
+        return pulumi.get(self, "content_type_value")
+
+    @content_type_value.setter
+    def content_type_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_type_value", value)
+
 
 @pulumi.input_type
 class ApiHttpVpcServiceConfigArgs:
@@ -398,13 +432,19 @@ class ApiHttpVpcServiceConfigArgs:
                  name: pulumi.Input[str],
                  path: pulumi.Input[str],
                  timeout: pulumi.Input[int],
-                 aone_name: Optional[pulumi.Input[str]] = None):
+                 aone_name: Optional[pulumi.Input[str]] = None,
+                 content_type_category: Optional[pulumi.Input[str]] = None,
+                 content_type_value: Optional[pulumi.Input[str]] = None,
+                 vpc_scheme: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] method: The http method of backend service.
         :param pulumi.Input[str] name: The name of vpc instance.
         :param pulumi.Input[str] path: The path of backend service.
         :param pulumi.Input[int] timeout: Backend service time-out time. Unit: millisecond.
         :param pulumi.Input[str] aone_name: The name of aone.
+        :param pulumi.Input[str] content_type_category: The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+        :param pulumi.Input[str] content_type_value: The content type value of backend service.
+        :param pulumi.Input[str] vpc_scheme: The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
         """
         pulumi.set(__self__, "method", method)
         pulumi.set(__self__, "name", name)
@@ -412,6 +452,12 @@ class ApiHttpVpcServiceConfigArgs:
         pulumi.set(__self__, "timeout", timeout)
         if aone_name is not None:
             pulumi.set(__self__, "aone_name", aone_name)
+        if content_type_category is not None:
+            pulumi.set(__self__, "content_type_category", content_type_category)
+        if content_type_value is not None:
+            pulumi.set(__self__, "content_type_value", content_type_value)
+        if vpc_scheme is not None:
+            pulumi.set(__self__, "vpc_scheme", vpc_scheme)
 
     @property
     @pulumi.getter
@@ -472,6 +518,42 @@ class ApiHttpVpcServiceConfigArgs:
     @aone_name.setter
     def aone_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "aone_name", value)
+
+    @property
+    @pulumi.getter(name="contentTypeCategory")
+    def content_type_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+        """
+        return pulumi.get(self, "content_type_category")
+
+    @content_type_category.setter
+    def content_type_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_type_category", value)
+
+    @property
+    @pulumi.getter(name="contentTypeValue")
+    def content_type_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content type value of backend service.
+        """
+        return pulumi.get(self, "content_type_value")
+
+    @content_type_value.setter
+    def content_type_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_type_value", value)
+
+    @property
+    @pulumi.getter(name="vpcScheme")
+    def vpc_scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+        """
+        return pulumi.get(self, "vpc_scheme")
+
+    @vpc_scheme.setter
+    def vpc_scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_scheme", value)
 
 
 @pulumi.input_type
@@ -774,5 +856,142 @@ class ApiSystemParameterArgs:
     @name_service.setter
     def name_service(self, value: pulumi.Input[str]):
         pulumi.set(self, "name_service", value)
+
+
+@pulumi.input_type
+class InstanceToConnectVpcIpBlockArgs:
+    def __init__(__self__, *,
+                 cidr_block: pulumi.Input[str],
+                 customized: Optional[pulumi.Input[bool]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cidr_block: The CIDR block of the VSwitch.
+        :param pulumi.Input[bool] customized: Specifies whether the IP block is customized.
+        :param pulumi.Input[str] vswitch_id: The VSwitch ID.
+        :param pulumi.Input[str] zone_id: The zone ID.
+        """
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        if customized is not None:
+            pulumi.set(__self__, "customized", customized)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> pulumi.Input[str]:
+        """
+        The CIDR block of the VSwitch.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @cidr_block.setter
+    def cidr_block(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cidr_block", value)
+
+    @property
+    @pulumi.getter
+    def customized(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the IP block is customized.
+        """
+        return pulumi.get(self, "customized")
+
+    @customized.setter
+    def customized(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "customized", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VSwitch ID.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+
+@pulumi.input_type
+class InstanceZoneVswitchSecurityGroupArgs:
+    def __init__(__self__, *,
+                 cidr_block: pulumi.Input[str],
+                 security_group: pulumi.Input[str],
+                 vswitch_id: pulumi.Input[str],
+                 zone_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] cidr_block: The CIDR block of the VSwitch.
+        :param pulumi.Input[str] security_group: The ID of the security group.
+        :param pulumi.Input[str] vswitch_id: The VSwitch ID.
+        :param pulumi.Input[str] zone_id: The zone ID.
+        """
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "security_group", security_group)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> pulumi.Input[str]:
+        """
+        The CIDR block of the VSwitch.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @cidr_block.setter
+    def cidr_block(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cidr_block", value)
+
+    @property
+    @pulumi.getter(name="securityGroup")
+    def security_group(self) -> pulumi.Input[str]:
+        """
+        The ID of the security group.
+        """
+        return pulumi.get(self, "security_group")
+
+    @security_group.setter
+    def security_group(self, value: pulumi.Input[str]):
+        pulumi.set(self, "security_group", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Input[str]:
+        """
+        The VSwitch ID.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The zone ID.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
 
 

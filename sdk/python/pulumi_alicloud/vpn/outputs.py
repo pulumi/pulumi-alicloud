@@ -3061,7 +3061,7 @@ class GetGatewaysGatewayResult(dict):
         :param str create_time: The creation time of the VPN gateway.
         :param str description: The description of the VPN
         :param str disaster_recovery_internet_ip: The backup public IP address of the VPN gateway. The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
-        :param str disaster_recovery_vswitch_id: - The ID of the backup VSwitch to which the VPN gateway is attached.
+        :param str disaster_recovery_vswitch_id: - The ID of the backup vSwitch to which the VPN gateway is attached.
         :param str enable_ipsec: Indicates whether the IPsec-VPN feature is enabled.
         :param str enable_ssl: Whether the ssl function is enabled.
         :param str end_time: The expiration time of the VPN gateway.
@@ -3078,7 +3078,7 @@ class GetGatewaysGatewayResult(dict):
         :param Mapping[str, Any] tags: The Tag of.
         :param str vpc_id: Use the VPC ID as the search key.
         :param str vpn_type: - The VPN gateway type. Value:  Normal (default): Normal type. NationalStandard: National Secret type.
-        :param str vswitch_id: - The ID of the VSwitch to which the VPN gateway is attached.
+        :param str vswitch_id: - The ID of the vSwitch to which the VPN gateway is attached.
         """
         pulumi.set(__self__, "auto_propagate", auto_propagate)
         pulumi.set(__self__, "business_status", business_status)
@@ -3148,7 +3148,7 @@ class GetGatewaysGatewayResult(dict):
     @pulumi.getter(name="disasterRecoveryVswitchId")
     def disaster_recovery_vswitch_id(self) -> str:
         """
-        - The ID of the backup VSwitch to which the VPN gateway is attached.
+        - The ID of the backup vSwitch to which the VPN gateway is attached.
         """
         return pulumi.get(self, "disaster_recovery_vswitch_id")
 
@@ -3284,7 +3284,7 @@ class GetGatewaysGatewayResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        - The ID of the VSwitch to which the VPN gateway is attached.
+        - The ID of the vSwitch to which the VPN gateway is attached.
         """
         return pulumi.get(self, "vswitch_id")
 

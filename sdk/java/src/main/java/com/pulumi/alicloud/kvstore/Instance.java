@@ -527,6 +527,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceType);
     }
     /**
+     * Specifies whether to enable automatic minor version update. Valid values:
+     * 
+     */
+    @Export(name="isAutoUpgradeOpen", refs={String.class}, tree="[0]")
+    private Output<String> isAutoUpgradeOpen;
+
+    /**
+     * @return Specifies whether to enable automatic minor version update. Valid values:
+     * 
+     */
+    public Output<String> isAutoUpgradeOpen() {
+        return this.isAutoUpgradeOpen;
+    }
+    /**
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      * 
      */

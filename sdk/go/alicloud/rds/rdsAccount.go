@@ -106,17 +106,37 @@ import (
 type RdsAccount struct {
 	pulumi.CustomResourceState
 
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+	//
+	// > **NOTE:** The name cannot start with http:// or https://.
 	AccountDescription pulumi.StringOutput `pulumi:"accountDescription"`
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
+	// The name of the database account.
+	// * The name must be unique.
+	// * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+	// * The name must start with a letter and end with a letter or digit.
+	// * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+	// * The length of the value must meet the following requirements:
+	// * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+	// * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+	// * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+	// * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+	// * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+	// * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+	// * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// The password of the account.
+	// * The value must be 8 to 32 characters in length.
+	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// * Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
-	// Privilege type of account. Default to `Normal`.
-	// `Normal`: Common privilege.
-	// `Super`: High privilege.
+	// The account type. Valid values:
+	// * Normal: standard account (default).
+	// * Super: privileged account.
+	// * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+	//
+	// > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountType pulumi.StringOutput `pulumi:"accountType"`
-	// The Id of instance in which account belongs.
+	// The ID of the instance.
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
 	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
 	//
@@ -191,17 +211,37 @@ func GetRdsAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RdsAccount resources.
 type rdsAccountState struct {
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+	//
+	// > **NOTE:** The name cannot start with http:// or https://.
 	AccountDescription *string `pulumi:"accountDescription"`
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
+	// The name of the database account.
+	// * The name must be unique.
+	// * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+	// * The name must start with a letter and end with a letter or digit.
+	// * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+	// * The length of the value must meet the following requirements:
+	// * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+	// * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+	// * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+	// * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+	// * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+	// * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+	// * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountName *string `pulumi:"accountName"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// The password of the account.
+	// * The value must be 8 to 32 characters in length.
+	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// * Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	AccountPassword *string `pulumi:"accountPassword"`
-	// Privilege type of account. Default to `Normal`.
-	// `Normal`: Common privilege.
-	// `Super`: High privilege.
+	// The account type. Valid values:
+	// * Normal: standard account (default).
+	// * Super: privileged account.
+	// * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+	//
+	// > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountType *string `pulumi:"accountType"`
-	// The Id of instance in which account belongs.
+	// The ID of the instance.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
 	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
 	//
@@ -236,17 +276,37 @@ type rdsAccountState struct {
 }
 
 type RdsAccountState struct {
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+	//
+	// > **NOTE:** The name cannot start with http:// or https://.
 	AccountDescription pulumi.StringPtrInput
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
+	// The name of the database account.
+	// * The name must be unique.
+	// * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+	// * The name must start with a letter and end with a letter or digit.
+	// * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+	// * The length of the value must meet the following requirements:
+	// * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+	// * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+	// * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+	// * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+	// * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+	// * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+	// * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountName pulumi.StringPtrInput
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// The password of the account.
+	// * The value must be 8 to 32 characters in length.
+	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// * Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	AccountPassword pulumi.StringPtrInput
-	// Privilege type of account. Default to `Normal`.
-	// `Normal`: Common privilege.
-	// `Super`: High privilege.
+	// The account type. Valid values:
+	// * Normal: standard account (default).
+	// * Super: privileged account.
+	// * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+	//
+	// > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountType pulumi.StringPtrInput
-	// The Id of instance in which account belongs.
+	// The ID of the instance.
 	DbInstanceId pulumi.StringPtrInput
 	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
 	//
@@ -285,17 +345,37 @@ func (RdsAccountState) ElementType() reflect.Type {
 }
 
 type rdsAccountArgs struct {
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+	//
+	// > **NOTE:** The name cannot start with http:// or https://.
 	AccountDescription *string `pulumi:"accountDescription"`
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
+	// The name of the database account.
+	// * The name must be unique.
+	// * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+	// * The name must start with a letter and end with a letter or digit.
+	// * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+	// * The length of the value must meet the following requirements:
+	// * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+	// * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+	// * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+	// * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+	// * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+	// * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+	// * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountName *string `pulumi:"accountName"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// The password of the account.
+	// * The value must be 8 to 32 characters in length.
+	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// * Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	AccountPassword *string `pulumi:"accountPassword"`
-	// Privilege type of account. Default to `Normal`.
-	// `Normal`: Common privilege.
-	// `Super`: High privilege.
+	// The account type. Valid values:
+	// * Normal: standard account (default).
+	// * Super: privileged account.
+	// * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+	//
+	// > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountType *string `pulumi:"accountType"`
-	// The Id of instance in which account belongs.
+	// The ID of the instance.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
 	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
 	//
@@ -329,17 +409,37 @@ type rdsAccountArgs struct {
 
 // The set of arguments for constructing a RdsAccount resource.
 type RdsAccountArgs struct {
-	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+	//
+	// > **NOTE:** The name cannot start with http:// or https://.
 	AccountDescription pulumi.StringPtrInput
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
+	// The name of the database account.
+	// * The name must be unique.
+	// * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+	// * The name must start with a letter and end with a letter or digit.
+	// * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+	// * The length of the value must meet the following requirements:
+	// * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+	// * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+	// * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+	// * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+	// * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+	// * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+	// * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountName pulumi.StringPtrInput
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+	// The password of the account.
+	// * The value must be 8 to 32 characters in length.
+	// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// * Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	AccountPassword pulumi.StringPtrInput
-	// Privilege type of account. Default to `Normal`.
-	// `Normal`: Common privilege.
-	// `Super`: High privilege.
+	// The account type. Valid values:
+	// * Normal: standard account (default).
+	// * Super: privileged account.
+	// * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+	//
+	// > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountType pulumi.StringPtrInput
-	// The Id of instance in which account belongs.
+	// The ID of the instance.
 	DbInstanceId pulumi.StringPtrInput
 	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
 	//
@@ -458,29 +558,49 @@ func (o RdsAccountOutput) ToRdsAccountOutputWithContext(ctx context.Context) Rds
 	return o
 }
 
-// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+// The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+//
+// > **NOTE:** The name cannot start with http:// or https://.
 func (o RdsAccountOutput) AccountDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.AccountDescription }).(pulumi.StringOutput)
 }
 
-// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
+// The name of the database account.
+// * The name must be unique.
+// * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+// * The name must start with a letter and end with a letter or digit.
+// * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+// * The length of the value must meet the following requirements:
+// * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+// * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+// * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+// * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+// * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+// * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+// * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 func (o RdsAccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+// The password of the account.
+// * The value must be 8 to 32 characters in length.
+// * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+// * Special characters include ! @ # $ % ^ & * ( ) _ + - =
 func (o RdsAccountOutput) AccountPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
 }
 
-// Privilege type of account. Default to `Normal`.
-// `Normal`: Common privilege.
-// `Super`: High privilege.
+// The account type. Valid values:
+// * Normal: standard account (default).
+// * Super: privileged account.
+// * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+//
+// > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 func (o RdsAccountOutput) AccountType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.AccountType }).(pulumi.StringOutput)
 }
 
-// The Id of instance in which account belongs.
+// The ID of the instance.
 func (o RdsAccountOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
 }

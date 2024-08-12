@@ -51,9 +51,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var exampleGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         NameRegex = "^ubuntu_18.*64",
     ///         Owners = "system",
-    ///         InstanceType = exampleGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///     });
     /// 
     ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()

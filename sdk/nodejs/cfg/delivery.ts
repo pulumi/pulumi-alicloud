@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Cloud Config Delivery resource.
+ * Provides a Config Delivery resource.
  *
- * For information about Cloud Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createconfigdeliverychannel).
+ * Delivery channel of current account.
+ *
+ * For information about Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createconfigdeliverychannel).
  *
  * > **NOTE:** Available since v1.171.0.
  *
@@ -25,16 +27,16 @@ import * as utilities from "../utilities";
  * const thisGetRegions = alicloud.getRegions({
  *     current: true,
  * });
- * const _default = new alicloud.log.Project("default", {name: name});
+ * const _default = new alicloud.log.Project("default", {projectName: name});
  * const defaultStore = new alicloud.log.Store("default", {
- *     name: name,
- *     project: _default.name,
+ *     logstoreName: name,
+ *     projectName: _default.projectName,
  * });
  * const defaultDelivery = new alicloud.cfg.Delivery("default", {
  *     configurationItemChangeNotification: true,
  *     nonCompliantNotification: true,
  *     deliveryChannelName: name,
- *     deliveryChannelTargetArn: pulumi.all([thisGetRegions, _this, _default.name, defaultStore.name]).apply(([thisGetRegions, _this, defaultName, defaultStoreName]) => `acs:log:${thisGetRegions.ids?.[0]}:${_this.id}:project/${defaultName}/logstore/${defaultStoreName}`),
+ *     deliveryChannelTargetArn: pulumi.all([thisGetRegions, _this, _default.projectName, defaultStore.logstoreName]).apply(([thisGetRegions, _this, projectName, logstoreName]) => `acs:log:${thisGetRegions.ids?.[0]}:${_this.id}:project/${projectName}/logstore/${logstoreName}`),
  *     deliveryChannelType: "SLS",
  *     description: name,
  * });
@@ -42,7 +44,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cloud Config Delivery can be imported using the id, e.g.
+ * Config Delivery can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:cfg/delivery:Delivery example <id>
@@ -77,48 +79,67 @@ export class Delivery extends pulumi.CustomResource {
     }
 
     /**
-     * Open or close delivery configuration change history. true: open, false: close.
+     * Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
+     * - true: The specified destination receives resource change logs.
+     * - false: The specified destination does not receive resource change logs.
      */
-    public readonly configurationItemChangeNotification!: pulumi.Output<boolean>;
+    public readonly configurationItemChangeNotification!: pulumi.Output<boolean | undefined>;
     /**
-     * Open or close timed snapshot of shipping resources. **NOTE:** The attribute is valid when the attribute `deliveryChannelType` is `OSS`.
+     * Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
+     * - true: The specified destination receives scheduled resource snapshots.
+     * - false: The specified destination does not receive scheduled resource snapshots.
      */
-    public readonly configurationSnapshot!: pulumi.Output<boolean>;
+    public readonly configurationSnapshot!: pulumi.Output<boolean | undefined>;
     /**
-     * The rule attached to the delivery method. Please refer to api [CreateConfigDeliveryChannel](https://help.aliyun.com/document_detail/429798.html) for example format. **NOTE:** The attribute is valid when the attribute `deliveryChannelType` is `MNS`.
+     * The rule that is attached to the delivery channel.  
+     *
+     * This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+     *
+     * If you specify the risk level or resource types for subscription events, this is as follows:
+     *
+     * The lowest risk level of the events to which you want to subscribe is in the following format: {"filterType":"RuleRiskLevel","value":"1","multiple":false}, The value field indicates the risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3. The value 1 indicates the high risk level, the value 2 indicates the medium risk level, and the value 3 indicates the low risk level.
+     *
+     * The setting of the resource types of the events to which you want to subscribe is in the following format: {"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}, The values field indicates the resource types of the events to which you want to subscribe. The value of the field is a JSON array.
+     *
+     * Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
      */
     public readonly deliveryChannelCondition!: pulumi.Output<string | undefined>;
     /**
-     * The name of the delivery method.
+     * The name of the delivery channel.
      */
     public readonly deliveryChannelName!: pulumi.Output<string | undefined>;
     /**
-     * The ARN of the delivery destination. The value must be in one of the following formats:
-     * * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
+     * The ARN of the delivery destination.  
+     * - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
+     * - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
+     * - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
      */
     public readonly deliveryChannelTargetArn!: pulumi.Output<string>;
     /**
-     * The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+     * The type of the delivery channel. Valid values:  
+     * - OSS: Object Storage Service (OSS)
+     * - MNS: Message Service (MNS)
+     * - SLS: Log Service
      */
     public readonly deliveryChannelType!: pulumi.Output<string>;
     /**
-     * The description of the delivery method.
+     * The description of the delivery channel.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `deliveryChannelType` is `SLS` or `MNS`.
+     * Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
+     * - true: The specified destination receives resource non-compliance events.
+     * - false: The specified destination does not receive resource non-compliance events.
      */
-    public readonly nonCompliantNotification!: pulumi.Output<boolean>;
+    public readonly nonCompliantNotification!: pulumi.Output<boolean | undefined>;
     /**
-     * The oss ARN of the delivery channel when the value data oversized limit. 
-     * * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
+     * The oss ARN of the delivery channel when the value data oversized limit.  The value must be in one of the following formats:  acs:oss:{RegionId}:{Aliuid}:{bucketName} if your delivery destination is an Object Storage Service (OSS) bucket.
      */
     public readonly oversizedDataOssTargetArn!: pulumi.Output<string | undefined>;
     /**
-     * The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
+     * The status of the delivery channel. Valid values:  
+     * - 0: The delivery channel is disabled.
+     * - 1: The delivery channel is enabled.
      */
     public readonly status!: pulumi.Output<number>;
 
@@ -174,48 +195,67 @@ export class Delivery extends pulumi.CustomResource {
  */
 export interface DeliveryState {
     /**
-     * Open or close delivery configuration change history. true: open, false: close.
+     * Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
+     * - true: The specified destination receives resource change logs.
+     * - false: The specified destination does not receive resource change logs.
      */
     configurationItemChangeNotification?: pulumi.Input<boolean>;
     /**
-     * Open or close timed snapshot of shipping resources. **NOTE:** The attribute is valid when the attribute `deliveryChannelType` is `OSS`.
+     * Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
+     * - true: The specified destination receives scheduled resource snapshots.
+     * - false: The specified destination does not receive scheduled resource snapshots.
      */
     configurationSnapshot?: pulumi.Input<boolean>;
     /**
-     * The rule attached to the delivery method. Please refer to api [CreateConfigDeliveryChannel](https://help.aliyun.com/document_detail/429798.html) for example format. **NOTE:** The attribute is valid when the attribute `deliveryChannelType` is `MNS`.
+     * The rule that is attached to the delivery channel.  
+     *
+     * This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+     *
+     * If you specify the risk level or resource types for subscription events, this is as follows:
+     *
+     * The lowest risk level of the events to which you want to subscribe is in the following format: {"filterType":"RuleRiskLevel","value":"1","multiple":false}, The value field indicates the risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3. The value 1 indicates the high risk level, the value 2 indicates the medium risk level, and the value 3 indicates the low risk level.
+     *
+     * The setting of the resource types of the events to which you want to subscribe is in the following format: {"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}, The values field indicates the resource types of the events to which you want to subscribe. The value of the field is a JSON array.
+     *
+     * Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
      */
     deliveryChannelCondition?: pulumi.Input<string>;
     /**
-     * The name of the delivery method.
+     * The name of the delivery channel.
      */
     deliveryChannelName?: pulumi.Input<string>;
     /**
-     * The ARN of the delivery destination. The value must be in one of the following formats:
-     * * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
+     * The ARN of the delivery destination.  
+     * - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
+     * - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
+     * - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
      */
     deliveryChannelTargetArn?: pulumi.Input<string>;
     /**
-     * The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+     * The type of the delivery channel. Valid values:  
+     * - OSS: Object Storage Service (OSS)
+     * - MNS: Message Service (MNS)
+     * - SLS: Log Service
      */
     deliveryChannelType?: pulumi.Input<string>;
     /**
-     * The description of the delivery method.
+     * The description of the delivery channel.
      */
     description?: pulumi.Input<string>;
     /**
-     * Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `deliveryChannelType` is `SLS` or `MNS`.
+     * Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
+     * - true: The specified destination receives resource non-compliance events.
+     * - false: The specified destination does not receive resource non-compliance events.
      */
     nonCompliantNotification?: pulumi.Input<boolean>;
     /**
-     * The oss ARN of the delivery channel when the value data oversized limit. 
-     * * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
+     * The oss ARN of the delivery channel when the value data oversized limit.  The value must be in one of the following formats:  acs:oss:{RegionId}:{Aliuid}:{bucketName} if your delivery destination is an Object Storage Service (OSS) bucket.
      */
     oversizedDataOssTargetArn?: pulumi.Input<string>;
     /**
-     * The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
+     * The status of the delivery channel. Valid values:  
+     * - 0: The delivery channel is disabled.
+     * - 1: The delivery channel is enabled.
      */
     status?: pulumi.Input<number>;
 }
@@ -225,48 +265,67 @@ export interface DeliveryState {
  */
 export interface DeliveryArgs {
     /**
-     * Open or close delivery configuration change history. true: open, false: close.
+     * Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
+     * - true: The specified destination receives resource change logs.
+     * - false: The specified destination does not receive resource change logs.
      */
     configurationItemChangeNotification?: pulumi.Input<boolean>;
     /**
-     * Open or close timed snapshot of shipping resources. **NOTE:** The attribute is valid when the attribute `deliveryChannelType` is `OSS`.
+     * Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
+     * - true: The specified destination receives scheduled resource snapshots.
+     * - false: The specified destination does not receive scheduled resource snapshots.
      */
     configurationSnapshot?: pulumi.Input<boolean>;
     /**
-     * The rule attached to the delivery method. Please refer to api [CreateConfigDeliveryChannel](https://help.aliyun.com/document_detail/429798.html) for example format. **NOTE:** The attribute is valid when the attribute `deliveryChannelType` is `MNS`.
+     * The rule that is attached to the delivery channel.  
+     *
+     * This parameter is available when you deliver data of all types to MNS or deliver snapshots to Log Service.
+     *
+     * If you specify the risk level or resource types for subscription events, this is as follows:
+     *
+     * The lowest risk level of the events to which you want to subscribe is in the following format: {"filterType":"RuleRiskLevel","value":"1","multiple":false}, The value field indicates the risk level of the events to which you want to subscribe. Valid values: 1, 2, and 3. The value 1 indicates the high risk level, the value 2 indicates the medium risk level, and the value 3 indicates the low risk level.
+     *
+     * The setting of the resource types of the events to which you want to subscribe is in the following format: {"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}, The values field indicates the resource types of the events to which you want to subscribe. The value of the field is a JSON array.
+     *
+     * Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
      */
     deliveryChannelCondition?: pulumi.Input<string>;
     /**
-     * The name of the delivery method.
+     * The name of the delivery channel.
      */
     deliveryChannelName?: pulumi.Input<string>;
     /**
-     * The ARN of the delivery destination. The value must be in one of the following formats:
-     * * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
+     * The ARN of the delivery destination.  
+     * - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
+     * - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
+     * - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
      */
     deliveryChannelTargetArn: pulumi.Input<string>;
     /**
-     * The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
+     * The type of the delivery channel. Valid values:  
+     * - OSS: Object Storage Service (OSS)
+     * - MNS: Message Service (MNS)
+     * - SLS: Log Service
      */
     deliveryChannelType: pulumi.Input<string>;
     /**
-     * The description of the delivery method.
+     * The description of the delivery channel.
      */
     description?: pulumi.Input<string>;
     /**
-     * Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `deliveryChannelType` is `SLS` or `MNS`.
+     * Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
+     * - true: The specified destination receives resource non-compliance events.
+     * - false: The specified destination does not receive resource non-compliance events.
      */
     nonCompliantNotification?: pulumi.Input<boolean>;
     /**
-     * The oss ARN of the delivery channel when the value data oversized limit. 
-     * * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
+     * The oss ARN of the delivery channel when the value data oversized limit.  The value must be in one of the following formats:  acs:oss:{RegionId}:{Aliuid}:{bucketName} if your delivery destination is an Object Storage Service (OSS) bucket.
      */
     oversizedDataOssTargetArn?: pulumi.Input<string>;
     /**
-     * The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
+     * The status of the delivery channel. Valid values:  
+     * - 0: The delivery channel is disabled.
+     * - 1: The delivery channel is enabled.
      */
     status?: pulumi.Input<number>;
 }

@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a RabbitMQ (AMQP) Binding resource to bind tha exchange with another exchange or queue.
+ * Provides a RabbitMQ (AMQP) Binding resource.
  * 
  * For information about RabbitMQ (AMQP) Binding and how to use it, see [What is Binding](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createbinding).
  * 
@@ -55,6 +55,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .instanceType("enterprise")
  *             .maxTps(3000)
@@ -63,37 +65,36 @@ import javax.annotation.Nullable;
  *             .supportEip(false)
  *             .maxEipTps(128)
  *             .paymentType("Subscription")
- *             .period(1)
  *             .build());
  * 
  *         var defaultVirtualHost = new VirtualHost("defaultVirtualHost", VirtualHostArgs.builder()
  *             .instanceId(default_.id())
- *             .virtualHostName("tf-example")
+ *             .virtualHostName(name)
  *             .build());
  * 
  *         var defaultExchange = new Exchange("defaultExchange", ExchangeArgs.builder()
- *             .autoDeleteState(false)
- *             .exchangeName("tf-example")
- *             .exchangeType("HEADERS")
  *             .instanceId(default_.id())
- *             .internal(false)
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
+ *             .exchangeName(name)
+ *             .exchangeType("HEADERS")
+ *             .autoDeleteState(false)
+ *             .internal(false)
  *             .build());
  * 
  *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()
  *             .instanceId(default_.id())
- *             .queueName("tf-example")
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
+ *             .queueName(name)
  *             .build());
  * 
  *         var defaultBinding = new Binding("defaultBinding", BindingArgs.builder()
- *             .argument("x-match:all")
- *             .bindingKey(defaultQueue.queueName())
- *             .bindingType("QUEUE")
- *             .destinationName("tf-example")
  *             .instanceId(default_.id())
- *             .sourceExchange(defaultExchange.exchangeName())
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
+ *             .sourceExchange(defaultExchange.exchangeName())
+ *             .destinationName(name)
+ *             .bindingType("QUEUE")
+ *             .bindingKey(defaultQueue.queueName())
+ *             .argument("x-match:all")
  *             .build());
  * 
  *     }
@@ -114,22 +115,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:amqp/binding:Binding")
 public class Binding extends com.pulumi.resources.CustomResource {
     /**
-     * X-match Attributes. Valid Values:
-     * * &#34;x-match:all&#34;: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-     * * &#34;x-match:any&#34;: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-     * 
-     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+     * The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+     * - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+     * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
      * 
      */
     @Export(name="argument", refs={String.class}, tree="[0]")
     private Output<String> argument;
 
     /**
-     * @return X-match Attributes. Valid Values:
-     * * &#34;x-match:all&#34;: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-     * * &#34;x-match:any&#34;: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-     * 
-     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+     * @return The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+     * - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+     * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
      * 
      */
     public Output<String> argument() {
@@ -160,70 +157,70 @@ public class Binding extends com.pulumi.resources.CustomResource {
         return this.bindingKey;
     }
     /**
-     * The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+     * The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
      * 
      */
     @Export(name="bindingType", refs={String.class}, tree="[0]")
     private Output<String> bindingType;
 
     /**
-     * @return The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+     * @return The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
      * 
      */
     public Output<String> bindingType() {
         return this.bindingType;
     }
     /**
-     * The Target Queue Or Exchange of the Name.
+     * The name of the object that you want to bind to the source exchange.
      * 
      */
     @Export(name="destinationName", refs={String.class}, tree="[0]")
     private Output<String> destinationName;
 
     /**
-     * @return The Target Queue Or Exchange of the Name.
+     * @return The name of the object that you want to bind to the source exchange.
      * 
      */
     public Output<String> destinationName() {
         return this.destinationName;
     }
     /**
-     * Instance Id.
+     * The ID of the instance.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return Instance Id.
+     * @return The ID of the instance.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * The Source Exchange Name.
+     * The name of the source exchange.
      * 
      */
     @Export(name="sourceExchange", refs={String.class}, tree="[0]")
     private Output<String> sourceExchange;
 
     /**
-     * @return The Source Exchange Name.
+     * @return The name of the source exchange.
      * 
      */
     public Output<String> sourceExchange() {
         return this.sourceExchange;
     }
     /**
-     * Virtualhost Name.
+     * The name of the vhost.
      * 
      */
     @Export(name="virtualHostName", refs={String.class}, tree="[0]")
     private Output<String> virtualHostName;
 
     /**
-     * @return Virtualhost Name.
+     * @return The name of the vhost.
      * 
      */
     public Output<String> virtualHostName() {

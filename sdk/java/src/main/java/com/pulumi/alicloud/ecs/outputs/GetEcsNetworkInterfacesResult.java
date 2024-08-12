@@ -23,9 +23,19 @@ public final class GetEcsNetworkInterfacesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The instance id.
+     * 
+     */
     private @Nullable String instanceId;
+    /**
+     * @return A list of Ecs Network Interfaces. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsNetworkInterfacesInterface> interfaces;
     /**
+     * @return The network interface name.
+     * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
      * 
@@ -33,24 +43,66 @@ public final class GetEcsNetworkInterfacesResult {
     @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
     private @Nullable String name;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Network Interface names.
+     * 
+     */
     private List<String> names;
+    /**
+     * @return The network interface name.
+     * 
+     */
     private @Nullable String networkInterfaceName;
     private @Nullable String outputFile;
+    /**
+     * @return The primary private IP address of the ENI.
+     * 
+     */
     private @Nullable String primaryIpAddress;
     /**
+     * @return The primary private IP address of the ENI.
+     * 
      * @deprecated
      * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
      * 
      */
     @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
     private @Nullable String privateIp;
+    /**
+     * @return The resource group id.
+     * 
+     */
     private @Nullable String resourceGroupId;
     private @Nullable String securityGroupId;
+    /**
+     * @return Whether the user of the elastic network card is a cloud product or a virtual vendor.
+     * 
+     */
     private @Nullable Boolean serviceManaged;
+    /**
+     * @return The status of the ENI.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tags.
+     * 
+     */
     private @Nullable Map<String,Object> tags;
+    /**
+     * @return The type of the ENI.
+     * 
+     */
     private @Nullable String type;
+    /**
+     * @return The Vpc Id.
+     * 
+     */
     private @Nullable String vpcId;
+    /**
+     * @return The vswitch id.
+     * 
+     */
     private @Nullable String vswitchId;
 
     private GetEcsNetworkInterfacesResult() {}
@@ -64,13 +116,23 @@ public final class GetEcsNetworkInterfacesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The instance id.
+     * 
+     */
     public Optional<String> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
+    /**
+     * @return A list of Ecs Network Interfaces. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsNetworkInterfacesInterface> interfaces() {
         return this.interfaces;
     }
     /**
+     * @return The network interface name.
+     * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
      * 
@@ -82,19 +144,33 @@ public final class GetEcsNetworkInterfacesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Network Interface names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
+    /**
+     * @return The network interface name.
+     * 
+     */
     public Optional<String> networkInterfaceName() {
         return Optional.ofNullable(this.networkInterfaceName);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The primary private IP address of the ENI.
+     * 
+     */
     public Optional<String> primaryIpAddress() {
         return Optional.ofNullable(this.primaryIpAddress);
     }
     /**
+     * @return The primary private IP address of the ENI.
+     * 
      * @deprecated
      * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
      * 
@@ -103,27 +179,55 @@ public final class GetEcsNetworkInterfacesResult {
     public Optional<String> privateIp() {
         return Optional.ofNullable(this.privateIp);
     }
+    /**
+     * @return The resource group id.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
     public Optional<String> securityGroupId() {
         return Optional.ofNullable(this.securityGroupId);
     }
+    /**
+     * @return Whether the user of the elastic network card is a cloud product or a virtual vendor.
+     * 
+     */
     public Optional<Boolean> serviceManaged() {
         return Optional.ofNullable(this.serviceManaged);
     }
+    /**
+     * @return The status of the ENI.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tags.
+     * 
+     */
     public Map<String,Object> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The type of the ENI.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return The Vpc Id.
+     * 
+     */
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
+    /**
+     * @return The vswitch id.
+     * 
+     */
     public Optional<String> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
     }

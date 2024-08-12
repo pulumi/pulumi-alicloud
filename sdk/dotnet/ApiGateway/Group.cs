@@ -26,6 +26,7 @@ namespace Pulumi.AliCloud.ApiGateway
     ///     {
     ///         Name = "tf_example",
     ///         Description = "tf_example",
+    ///         BasePath = "/",
     ///     });
     /// 
     /// });
@@ -42,6 +43,12 @@ namespace Pulumi.AliCloud.ApiGateway
     [AliCloudResourceType("alicloud:apigateway/group:Group")]
     public partial class Group : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The base path of the api gateway group. Defaults to `/`.
+        /// </summary>
+        [Output("basePath")]
+        public Output<string> BasePath { get; private set; } = null!;
+
         /// <summary>
         /// The description of the api gateway group. Defaults to null.
         /// </summary>
@@ -119,6 +126,12 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The base path of the api gateway group. Defaults to `/`.
+        /// </summary>
+        [Input("basePath")]
+        public Input<string>? BasePath { get; set; }
+
+        /// <summary>
         /// The description of the api gateway group. Defaults to null.
         /// </summary>
         [Input("description")]
@@ -144,6 +157,12 @@ namespace Pulumi.AliCloud.ApiGateway
 
     public sealed class GroupState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The base path of the api gateway group. Defaults to `/`.
+        /// </summary>
+        [Input("basePath")]
+        public Input<string>? BasePath { get; set; }
+
         /// <summary>
         /// The description of the api gateway group. Defaults to null.
         /// </summary>

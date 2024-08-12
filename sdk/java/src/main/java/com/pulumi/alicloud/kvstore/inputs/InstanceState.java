@@ -573,6 +573,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable automatic minor version update. Valid values:
+     * 
+     */
+    @Import(name="isAutoUpgradeOpen")
+    private @Nullable Output<String> isAutoUpgradeOpen;
+
+    /**
+     * @return Specifies whether to enable automatic minor version update. Valid values:
+     * 
+     */
+    public Optional<Output<String>> isAutoUpgradeOpen() {
+        return Optional.ofNullable(this.isAutoUpgradeOpen);
+    }
+
+    /**
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      * 
      */
@@ -1144,6 +1159,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.instanceName = $.instanceName;
         this.instanceReleaseProtection = $.instanceReleaseProtection;
         this.instanceType = $.instanceType;
+        this.isAutoUpgradeOpen = $.isAutoUpgradeOpen;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
         this.maintainEndTime = $.maintainEndTime;
@@ -1955,6 +1971,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceType(String instanceType) {
             return instanceType(Output.of(instanceType));
+        }
+
+        /**
+         * @param isAutoUpgradeOpen Specifies whether to enable automatic minor version update. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAutoUpgradeOpen(@Nullable Output<String> isAutoUpgradeOpen) {
+            $.isAutoUpgradeOpen = isAutoUpgradeOpen;
+            return this;
+        }
+
+        /**
+         * @param isAutoUpgradeOpen Specifies whether to enable automatic minor version update. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAutoUpgradeOpen(String isAutoUpgradeOpen) {
+            return isAutoUpgradeOpen(Output.of(isAutoUpgradeOpen));
         }
 
         /**

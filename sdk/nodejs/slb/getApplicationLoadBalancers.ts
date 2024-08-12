@@ -137,7 +137,7 @@ export interface GetApplicationLoadBalancersArgs {
      */
     vpcId?: string;
     /**
-     * ID of the VSwitch linked to the SLBs.
+     * ID of the vSwitch linked to the SLBs.
      */
     vswitchId?: string;
 }
@@ -227,7 +227,7 @@ export interface GetApplicationLoadBalancersResult {
      */
     readonly vpcId?: string;
     /**
-     * ID of the VSwitch the SLB belongs to.
+     * ID of the vSwitch the SLB belongs to.
      */
     readonly vswitchId?: string;
 }
@@ -336,7 +336,7 @@ export interface GetApplicationLoadBalancersOutputArgs {
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * ID of the VSwitch linked to the SLBs.
+     * ID of the vSwitch linked to the SLBs.
      */
     vswitchId?: pulumi.Input<string>;
 }

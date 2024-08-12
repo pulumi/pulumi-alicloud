@@ -39,7 +39,7 @@ public final class GetGatewaysGateway {
      */
     private String disasterRecoveryInternetIp;
     /**
-     * @return - The ID of the backup VSwitch to which the VPN gateway is attached.
+     * @return - The ID of the backup vSwitch to which the VPN gateway is attached.
      * 
      */
     private String disasterRecoveryVswitchId;
@@ -124,7 +124,7 @@ public final class GetGatewaysGateway {
      */
     private String vpnType;
     /**
-     * @return - The ID of the VSwitch to which the VPN gateway is attached.
+     * @return - The ID of the vSwitch to which the VPN gateway is attached.
      * 
      */
     private String vswitchId;
@@ -166,7 +166,7 @@ public final class GetGatewaysGateway {
         return this.disasterRecoveryInternetIp;
     }
     /**
-     * @return - The ID of the backup VSwitch to which the VPN gateway is attached.
+     * @return - The ID of the backup vSwitch to which the VPN gateway is attached.
      * 
      */
     public String disasterRecoveryVswitchId() {
@@ -285,7 +285,7 @@ public final class GetGatewaysGateway {
         return this.vpnType;
     }
     /**
-     * @return - The ID of the VSwitch to which the VPN gateway is attached.
+     * @return - The ID of the vSwitch to which the VPN gateway is attached.
      * 
      */
     public String vswitchId() {

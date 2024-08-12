@@ -355,14 +355,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+     * The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+     * @return The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -866,7 +866,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+         * @param vswitchId The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
          * 
          * @return builder
          * 
@@ -877,7 +877,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+         * @param vswitchId The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
          * 
          * @return builder
          * 

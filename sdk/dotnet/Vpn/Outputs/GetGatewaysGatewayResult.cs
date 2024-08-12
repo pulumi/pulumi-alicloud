@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string DisasterRecoveryInternetIp;
         /// <summary>
-        /// - The ID of the backup VSwitch to which the VPN gateway is attached.
+        /// - The ID of the backup vSwitch to which the VPN gateway is attached.
         /// </summary>
         public readonly string DisasterRecoveryVswitchId;
         /// <summary>
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string VpnType;
         /// <summary>
-        /// - The ID of the VSwitch to which the VPN gateway is attached.
+        /// - The ID of the vSwitch to which the VPN gateway is attached.
         /// </summary>
         public readonly string VswitchId;
 

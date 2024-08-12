@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.clickhouse.inputs;
 
 import com.pulumi.alicloud.clickhouse.inputs.DbClusterDbClusterAccessWhiteListArgs;
+import com.pulumi.alicloud.clickhouse.inputs.DbClusterMultiZoneVswitchListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -203,6 +204,23 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The zone IDs and
+     * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
+     * 
+     */
+    @Import(name="multiZoneVswitchLists")
+    private @Nullable Output<List<DbClusterMultiZoneVswitchListArgs>> multiZoneVswitchLists;
+
+    /**
+     * @return The zone IDs and
+     * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
+     * 
+     */
+    public Optional<Output<List<DbClusterMultiZoneVswitchListArgs>>> multiZoneVswitchLists() {
+        return Optional.ofNullable(this.multiZoneVswitchLists);
+    }
+
+    /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      * 
      */
@@ -367,6 +385,7 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
         this.encryptionKey = $.encryptionKey;
         this.encryptionType = $.encryptionType;
         this.maintainTime = $.maintainTime;
+        this.multiZoneVswitchLists = $.multiZoneVswitchLists;
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.port = $.port;
@@ -661,6 +680,40 @@ public final class DbClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maintainTime(String maintainTime) {
             return maintainTime(Output.of(maintainTime));
+        }
+
+        /**
+         * @param multiZoneVswitchLists The zone IDs and
+         * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiZoneVswitchLists(@Nullable Output<List<DbClusterMultiZoneVswitchListArgs>> multiZoneVswitchLists) {
+            $.multiZoneVswitchLists = multiZoneVswitchLists;
+            return this;
+        }
+
+        /**
+         * @param multiZoneVswitchLists The zone IDs and
+         * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiZoneVswitchLists(List<DbClusterMultiZoneVswitchListArgs> multiZoneVswitchLists) {
+            return multiZoneVswitchLists(Output.of(multiZoneVswitchLists));
+        }
+
+        /**
+         * @param multiZoneVswitchLists The zone IDs and
+         * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multi_zone_vswitch_list` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiZoneVswitchLists(DbClusterMultiZoneVswitchListArgs... multiZoneVswitchLists) {
+            return multiZoneVswitchLists(List.of(multiZoneVswitchLists));
         }
 
         /**

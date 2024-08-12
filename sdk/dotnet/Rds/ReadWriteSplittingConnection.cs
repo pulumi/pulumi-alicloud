@@ -21,6 +21,7 @@ namespace Pulumi.AliCloud.Rds
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -87,10 +88,16 @@ namespace Pulumi.AliCloud.Rds
     ///         VswitchId = exampleSwitch.Id,
     ///     });
     /// 
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var exampleReadWriteSplittingConnection = new AliCloud.Rds.ReadWriteSplittingConnection("example", new()
     ///     {
     ///         InstanceId = exampleReadOnlyInstance.MasterDbInstanceId,
-    ///         ConnectionPrefix = "example-con-123",
+    ///         ConnectionPrefix = $"example-con-{@default.Result}",
     ///         DistributionType = "Standard",
     ///     });
     /// 

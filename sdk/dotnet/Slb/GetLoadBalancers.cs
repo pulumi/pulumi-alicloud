@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Slb
         public string? VpcId { get; set; }
 
         /// <summary>
-        /// ID of the VSwitch linked to the SLBs.
+        /// ID of the vSwitch linked to the SLBs.
         /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
@@ -342,7 +342,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// ID of the VSwitch linked to the SLBs.
+        /// ID of the vSwitch linked to the SLBs.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -411,7 +411,7 @@ namespace Pulumi.AliCloud.Slb
         /// </summary>
         public readonly string? VpcId;
         /// <summary>
-        /// ID of the VSwitch the SLB belongs to.
+        /// ID of the vSwitch the SLB belongs to.
         /// </summary>
         public readonly string? VswitchId;
 

@@ -255,6 +255,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -297,9 +298,12 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
             instance_type=example_instance.instance_type,
             instance_name=f"{name}readonly",
             vswitch_id=example_switch.id)
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         example_read_write_splitting_connection = alicloud.rds.ReadWriteSplittingConnection("example",
             instance_id=example_read_only_instance.master_db_instance_id,
-            connection_prefix="example-con-123",
+            connection_prefix=f"example-con-{default['result']}",
             distribution_type="Standard")
         ```
 
@@ -338,6 +342,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
@@ -380,9 +385,12 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
             instance_type=example_instance.instance_type,
             instance_name=f"{name}readonly",
             vswitch_id=example_switch.id)
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         example_read_write_splitting_connection = alicloud.rds.ReadWriteSplittingConnection("example",
             instance_id=example_read_only_instance.master_db_instance_id,
-            connection_prefix="example-con-123",
+            connection_prefix=f"example-con-{default['result']}",
             distribution_type="Standard")
         ```
 

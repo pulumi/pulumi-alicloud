@@ -187,7 +187,7 @@ class VpcAccess(pulumi.CustomResource):
             name="terraform-example",
             description="New security group",
             vpc_id=example_network.id)
-        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         example_instance = alicloud.ecs.Instance("example",
             availability_zone=example.zones[0].id,
@@ -249,7 +249,7 @@ class VpcAccess(pulumi.CustomResource):
             name="terraform-example",
             description="New security group",
             vpc_id=example_network.id)
-        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         example_instance = alicloud.ecs.Instance("example",
             availability_zone=example.zones[0].id,

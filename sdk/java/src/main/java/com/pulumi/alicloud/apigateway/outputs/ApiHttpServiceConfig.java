@@ -24,6 +24,16 @@ public final class ApiHttpServiceConfig {
      */
     private @Nullable String aoneName;
     /**
+     * @return The content type category of backend service which supports values of &#39;DEFAULT&#39;,&#39;CUSTOM&#39; and &#39;CLIENT&#39;.
+     * 
+     */
+    private @Nullable String contentTypeCategory;
+    /**
+     * @return The content type value of backend service.
+     * 
+     */
+    private @Nullable String contentTypeValue;
+    /**
      * @return The http method of backend service.
      * 
      */
@@ -53,6 +63,20 @@ public final class ApiHttpServiceConfig {
      */
     public Optional<String> aoneName() {
         return Optional.ofNullable(this.aoneName);
+    }
+    /**
+     * @return The content type category of backend service which supports values of &#39;DEFAULT&#39;,&#39;CUSTOM&#39; and &#39;CLIENT&#39;.
+     * 
+     */
+    public Optional<String> contentTypeCategory() {
+        return Optional.ofNullable(this.contentTypeCategory);
+    }
+    /**
+     * @return The content type value of backend service.
+     * 
+     */
+    public Optional<String> contentTypeValue() {
+        return Optional.ofNullable(this.contentTypeValue);
     }
     /**
      * @return The http method of backend service.
@@ -87,6 +111,8 @@ public final class ApiHttpServiceConfig {
     public static final class Builder {
         private String address;
         private @Nullable String aoneName;
+        private @Nullable String contentTypeCategory;
+        private @Nullable String contentTypeValue;
         private String method;
         private String path;
         private Integer timeout;
@@ -95,6 +121,8 @@ public final class ApiHttpServiceConfig {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
     	      this.aoneName = defaults.aoneName;
+    	      this.contentTypeCategory = defaults.contentTypeCategory;
+    	      this.contentTypeValue = defaults.contentTypeValue;
     	      this.method = defaults.method;
     	      this.path = defaults.path;
     	      this.timeout = defaults.timeout;
@@ -112,6 +140,18 @@ public final class ApiHttpServiceConfig {
         public Builder aoneName(@Nullable String aoneName) {
 
             this.aoneName = aoneName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder contentTypeCategory(@Nullable String contentTypeCategory) {
+
+            this.contentTypeCategory = contentTypeCategory;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder contentTypeValue(@Nullable String contentTypeValue) {
+
+            this.contentTypeValue = contentTypeValue;
             return this;
         }
         @CustomType.Setter
@@ -142,6 +182,8 @@ public final class ApiHttpServiceConfig {
             final var _resultValue = new ApiHttpServiceConfig();
             _resultValue.address = address;
             _resultValue.aoneName = aoneName;
+            _resultValue.contentTypeCategory = contentTypeCategory;
+            _resultValue.contentTypeValue = contentTypeValue;
             _resultValue.method = method;
             _resultValue.path = path;
             _resultValue.timeout = timeout;

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.123.1+.
+ * > **NOTE:** Available since v1.123.1.
  *
  * ## Example Usage
  *
@@ -20,8 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.ecs.getEcsNetworkInterfaces({
- *     ids: ["eni-abcd1234"],
- *     nameRegex: "tf-testAcc",
+ *     nameRegex: "eni-ipv6",
  * });
  * export const firstEcsNetworkInterfaceId = example.then(example => example.interfaces?.[0]?.id);
  * ```
@@ -133,34 +132,74 @@ export interface GetEcsNetworkInterfacesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The instance id.
+     */
     readonly instanceId?: string;
+    /**
+     * A list of Ecs Network Interfaces. Each element contains the following attributes:
+     */
     readonly interfaces: outputs.ecs.GetEcsNetworkInterfacesInterface[];
     /**
+     * The network interface name.
+     *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
     readonly name?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Network Interface names.
+     */
     readonly names: string[];
+    /**
+     * The network interface name.
+     */
     readonly networkInterfaceName?: string;
     readonly outputFile?: string;
+    /**
+     * The primary private IP address of the ENI.
+     */
     readonly primaryIpAddress?: string;
     /**
+     * The primary private IP address of the ENI.
+     *
      * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
     readonly privateIp?: string;
+    /**
+     * The resource group id.
+     */
     readonly resourceGroupId?: string;
     readonly securityGroupId?: string;
+    /**
+     * Whether the user of the elastic network card is a cloud product or a virtual vendor.
+     */
     readonly serviceManaged?: boolean;
+    /**
+     * The status of the ENI.
+     */
     readonly status?: string;
+    /**
+     * The tags.
+     */
     readonly tags?: {[key: string]: any};
+    /**
+     * The type of the ENI.
+     */
     readonly type?: string;
+    /**
+     * The Vpc Id.
+     */
     readonly vpcId?: string;
+    /**
+     * The vswitch id.
+     */
     readonly vswitchId?: string;
 }
 /**
  * This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.123.1+.
+ * > **NOTE:** Available since v1.123.1.
  *
  * ## Example Usage
  *
@@ -171,8 +210,7 @@ export interface GetEcsNetworkInterfacesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.ecs.getEcsNetworkInterfaces({
- *     ids: ["eni-abcd1234"],
- *     nameRegex: "tf-testAcc",
+ *     nameRegex: "eni-ipv6",
  * });
  * export const firstEcsNetworkInterfaceId = example.then(example => example.interfaces?.[0]?.id);
  * ```

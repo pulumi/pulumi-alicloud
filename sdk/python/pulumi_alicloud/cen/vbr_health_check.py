@@ -560,7 +560,7 @@ class VbrHealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="healthCheckSourceIp")
-    def health_check_source_ip(self) -> pulumi.Output[Optional[str]]:
+    def health_check_source_ip(self) -> pulumi.Output[str]:
         """
         The source IP address of health checks.
         """

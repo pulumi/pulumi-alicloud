@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * const example = new alicloud.apigateway.Group("example", {
  *     name: "tf-example",
  *     description: "tf-example",
+ *     basePath: "/",
  * });
  * const exampleApi = new alicloud.apigateway.Api("example", {
  *     groupId: example.id,

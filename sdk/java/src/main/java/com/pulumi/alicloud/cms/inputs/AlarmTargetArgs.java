@@ -16,16 +16,18 @@ public final class AlarmTargetArgs extends com.pulumi.resources.ResourceArgs {
     public static final AlarmTargetArgs Empty = new AlarmTargetArgs();
 
     /**
-     * The Alibaba Cloud Resource Name (ARN) of the resource.
-     * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+     * ARN uniquely identifies the resource that the alert targets.
+     * &gt; **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the &#34;Push Channel&#34; in the Alibaba Cloud console.
+     * **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
     @Import(name="arn")
     private @Nullable Output<String> arn;
 
     /**
-     * @return The Alibaba Cloud Resource Name (ARN) of the resource.
-     * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+     * @return ARN uniquely identifies the resource that the alert targets.
+     * &gt; **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the &#34;Push Channel&#34; in the Alibaba Cloud console.
+     * **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
     public Optional<Output<String>> arn() {
@@ -33,14 +35,14 @@ public final class AlarmTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The parameters of the alert callback. The parameters are in the JSON format.
+     * Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
      * 
      */
     @Import(name="jsonParams")
     private @Nullable Output<String> jsonParams;
 
     /**
-     * @return The parameters of the alert callback. The parameters are in the JSON format.
+     * @return Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
      * 
      */
     public Optional<Output<String>> jsonParams() {
@@ -63,14 +65,14 @@ public final class AlarmTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource for which alerts are triggered.
+     * The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
      * 
      */
     @Import(name="targetId")
     private @Nullable Output<String> targetId;
 
     /**
-     * @return The ID of the resource for which alerts are triggered.
+     * @return The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
      * 
      */
     public Optional<Output<String>> targetId() {
@@ -105,8 +107,9 @@ public final class AlarmTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param arn The Alibaba Cloud Resource Name (ARN) of the resource.
-         * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+         * @param arn ARN uniquely identifies the resource that the alert targets.
+         * &gt; **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the &#34;Push Channel&#34; in the Alibaba Cloud console.
+         * **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          * 
          * @return builder
          * 
@@ -117,8 +120,9 @@ public final class AlarmTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param arn The Alibaba Cloud Resource Name (ARN) of the resource.
-         * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+         * @param arn ARN uniquely identifies the resource that the alert targets.
+         * &gt; **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the &#34;Push Channel&#34; in the Alibaba Cloud console.
+         * **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          * 
          * @return builder
          * 
@@ -128,7 +132,7 @@ public final class AlarmTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jsonParams The parameters of the alert callback. The parameters are in the JSON format.
+         * @param jsonParams Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
          * 
          * @return builder
          * 
@@ -139,7 +143,7 @@ public final class AlarmTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jsonParams The parameters of the alert callback. The parameters are in the JSON format.
+         * @param jsonParams Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
          * 
          * @return builder
          * 
@@ -170,7 +174,7 @@ public final class AlarmTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetId The ID of the resource for which alerts are triggered.
+         * @param targetId The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
          * 
          * @return builder
          * 
@@ -181,7 +185,7 @@ public final class AlarmTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetId The ID of the resource for which alerts are triggered.
+         * @param targetId The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
          * 
          * @return builder
          * 

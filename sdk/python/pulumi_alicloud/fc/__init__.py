@@ -19,5 +19,12 @@ from .layer_version import *
 from .service import *
 from .trigger import *
 from .v2_function import *
+from .v3_alias import *
+from .v3_async_invoke_config import *
+from .v3_concurrency_config import *
+from .v3_custom_domain import *
+from .v3_function import *
+from .v3_function_version import *
+from .v3_trigger import *
 from ._inputs import *
 from . import outputs

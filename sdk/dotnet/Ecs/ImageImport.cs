@@ -29,19 +29,26 @@ namespace Pulumi.AliCloud.Ecs
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-image-import-example";
-    ///     var @default = new AliCloud.Oss.Bucket("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         BucketName = name,
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
+    ///     {
+    ///         BucketName = $"{name}-{@default.Result}",
     ///     });
     /// 
     ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("default", new()
     ///     {
-    ///         Bucket = @default.Id,
+    ///         Bucket = defaultBucket.Id,
     ///         Key = "fc/hello.zip",
     ///         Content = @"    # -*- coding: utf-8 -*-
     ///     def handler(event, context):
@@ -62,7 +69,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         {
     ///             new AliCloud.Ecs.Inputs.ImageImportDiskDeviceMappingArgs
     ///             {
-    ///                 OssBucket = @default.Id,
+    ///                 OssBucket = defaultBucket.Id,
     ///                 OssObject = defaultBucketObject.Id,
     ///                 DiskImageSize = 5,
     ///             },

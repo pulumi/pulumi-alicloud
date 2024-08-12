@@ -48,6 +48,36 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The content type category of backend service which supports values of &#39;DEFAULT&#39;,&#39;CUSTOM&#39; and &#39;CLIENT&#39;.
+     * 
+     */
+    @Import(name="contentTypeCategory")
+    private @Nullable Output<String> contentTypeCategory;
+
+    /**
+     * @return The content type category of backend service which supports values of &#39;DEFAULT&#39;,&#39;CUSTOM&#39; and &#39;CLIENT&#39;.
+     * 
+     */
+    public Optional<Output<String>> contentTypeCategory() {
+        return Optional.ofNullable(this.contentTypeCategory);
+    }
+
+    /**
+     * The content type value of backend service.
+     * 
+     */
+    @Import(name="contentTypeValue")
+    private @Nullable Output<String> contentTypeValue;
+
+    /**
+     * @return The content type value of backend service.
+     * 
+     */
+    public Optional<Output<String>> contentTypeValue() {
+        return Optional.ofNullable(this.contentTypeValue);
+    }
+
+    /**
      * The http method of backend service.
      * 
      */
@@ -97,6 +127,8 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
     private ApiHttpServiceConfigArgs(ApiHttpServiceConfigArgs $) {
         this.address = $.address;
         this.aoneName = $.aoneName;
+        this.contentTypeCategory = $.contentTypeCategory;
+        this.contentTypeValue = $.contentTypeValue;
         this.method = $.method;
         this.path = $.path;
         this.timeout = $.timeout;
@@ -160,6 +192,48 @@ public final class ApiHttpServiceConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder aoneName(String aoneName) {
             return aoneName(Output.of(aoneName));
+        }
+
+        /**
+         * @param contentTypeCategory The content type category of backend service which supports values of &#39;DEFAULT&#39;,&#39;CUSTOM&#39; and &#39;CLIENT&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentTypeCategory(@Nullable Output<String> contentTypeCategory) {
+            $.contentTypeCategory = contentTypeCategory;
+            return this;
+        }
+
+        /**
+         * @param contentTypeCategory The content type category of backend service which supports values of &#39;DEFAULT&#39;,&#39;CUSTOM&#39; and &#39;CLIENT&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentTypeCategory(String contentTypeCategory) {
+            return contentTypeCategory(Output.of(contentTypeCategory));
+        }
+
+        /**
+         * @param contentTypeValue The content type value of backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentTypeValue(@Nullable Output<String> contentTypeValue) {
+            $.contentTypeValue = contentTypeValue;
+            return this;
+        }
+
+        /**
+         * @param contentTypeValue The content type value of backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentTypeValue(String contentTypeValue) {
+            return contentTypeValue(Output.of(contentTypeValue));
         }
 
         /**

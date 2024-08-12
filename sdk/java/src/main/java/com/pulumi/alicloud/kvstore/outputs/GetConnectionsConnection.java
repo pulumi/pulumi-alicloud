@@ -53,7 +53,7 @@ public final class GetConnectionsConnection {
      */
     private String vpcInstanceId;
     /**
-     * @return The ID of the VSwitch.
+     * @return The ID of the vSwitch.
      * 
      */
     private String vswitchId;
@@ -122,7 +122,7 @@ public final class GetConnectionsConnection {
         return this.vpcInstanceId;
     }
     /**
-     * @return The ID of the VSwitch.
+     * @return The ID of the vSwitch.
      * 
      */
     public String vswitchId() {

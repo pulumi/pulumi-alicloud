@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string NetworkInterfaceId;
         /// <summary>
-        /// The ID of VSwitch.
+        /// The ID of vSwitch.
         /// </summary>
         public readonly string VswitchId;
 

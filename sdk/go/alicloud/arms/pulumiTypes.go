@@ -5881,7 +5881,7 @@ type GetPrometheisPromethei struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
-	// The ID of the VSwitch.
+	// The ID of the vSwitch.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -5935,7 +5935,7 @@ type GetPrometheisPrometheiArgs struct {
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// The ID of the VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// The ID of the VSwitch.
+	// The ID of the vSwitch.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -6085,7 +6085,7 @@ func (o GetPrometheisPrometheiOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The ID of the VSwitch.
+// The ID of the vSwitch.
 func (o GetPrometheisPrometheiOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.VswitchId }).(pulumi.StringOutput)
 }

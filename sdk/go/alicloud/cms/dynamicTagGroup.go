@@ -29,27 +29,31 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
-//				AlarmContactGroupName: pulumi.String("example_value"),
-//				Describe:              pulumi.String("example_value"),
-//				EnableSubscribed:      pulumi.Bool(true),
+//				AlarmContactGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cms.NewDynamicTagGroup(ctx, "default", &cms.DynamicTagGroupArgs{
+//				TagKey: pulumi.String(name),
 //				ContactGroupLists: pulumi.StringArray{
 //					_default.ID(),
 //				},
-//				TagKey: pulumi.String("your_tag_key"),
 //				MatchExpresses: cms.DynamicTagGroupMatchExpressArray{
 //					&cms.DynamicTagGroupMatchExpressArgs{
-//						TagValue:              pulumi.String("your_tag_value"),
+//						TagValue:              pulumi.String(name),
 //						TagValueMatchFunction: pulumi.String("all"),
 //					},
 //				},
@@ -73,17 +77,17 @@ import (
 type DynamicTagGroup struct {
 	pulumi.CustomResourceState
 
-	// Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+	// The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
 	ContactGroupLists pulumi.StringArrayOutput `pulumi:"contactGroupLists"`
-	// The relationship between conditional expressions. Valid values: `and`, `or`.
+	// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
 	MatchExpressFilterRelation pulumi.StringOutput `pulumi:"matchExpressFilterRelation"`
-	// The label generates a matching expression that applies the grouping. See `matchExpress` below.
+	// The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
 	MatchExpresses DynamicTagGroupMatchExpressArrayOutput `pulumi:"matchExpresses"`
-	// The status of the resource. Valid values: `RUNNING`, `FINISH`.
+	// The status of the Dynamic Tag Group.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The tag key of the tag.
+	// The tag keys of the cloud resources.
 	TagKey pulumi.StringOutput `pulumi:"tagKey"`
-	// Alarm template ID list.
+	// The IDs of the alert templates.
 	TemplateIdLists pulumi.StringArrayOutput `pulumi:"templateIdLists"`
 }
 
@@ -126,32 +130,32 @@ func GetDynamicTagGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DynamicTagGroup resources.
 type dynamicTagGroupState struct {
-	// Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+	// The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
 	ContactGroupLists []string `pulumi:"contactGroupLists"`
-	// The relationship between conditional expressions. Valid values: `and`, `or`.
+	// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
 	MatchExpressFilterRelation *string `pulumi:"matchExpressFilterRelation"`
-	// The label generates a matching expression that applies the grouping. See `matchExpress` below.
+	// The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
 	MatchExpresses []DynamicTagGroupMatchExpress `pulumi:"matchExpresses"`
-	// The status of the resource. Valid values: `RUNNING`, `FINISH`.
+	// The status of the Dynamic Tag Group.
 	Status *string `pulumi:"status"`
-	// The tag key of the tag.
+	// The tag keys of the cloud resources.
 	TagKey *string `pulumi:"tagKey"`
-	// Alarm template ID list.
+	// The IDs of the alert templates.
 	TemplateIdLists []string `pulumi:"templateIdLists"`
 }
 
 type DynamicTagGroupState struct {
-	// Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+	// The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
 	ContactGroupLists pulumi.StringArrayInput
-	// The relationship between conditional expressions. Valid values: `and`, `or`.
+	// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
 	MatchExpressFilterRelation pulumi.StringPtrInput
-	// The label generates a matching expression that applies the grouping. See `matchExpress` below.
+	// The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
 	MatchExpresses DynamicTagGroupMatchExpressArrayInput
-	// The status of the resource. Valid values: `RUNNING`, `FINISH`.
+	// The status of the Dynamic Tag Group.
 	Status pulumi.StringPtrInput
-	// The tag key of the tag.
+	// The tag keys of the cloud resources.
 	TagKey pulumi.StringPtrInput
-	// Alarm template ID list.
+	// The IDs of the alert templates.
 	TemplateIdLists pulumi.StringArrayInput
 }
 
@@ -160,29 +164,29 @@ func (DynamicTagGroupState) ElementType() reflect.Type {
 }
 
 type dynamicTagGroupArgs struct {
-	// Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+	// The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
 	ContactGroupLists []string `pulumi:"contactGroupLists"`
-	// The relationship between conditional expressions. Valid values: `and`, `or`.
+	// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
 	MatchExpressFilterRelation *string `pulumi:"matchExpressFilterRelation"`
-	// The label generates a matching expression that applies the grouping. See `matchExpress` below.
+	// The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
 	MatchExpresses []DynamicTagGroupMatchExpress `pulumi:"matchExpresses"`
-	// The tag key of the tag.
+	// The tag keys of the cloud resources.
 	TagKey string `pulumi:"tagKey"`
-	// Alarm template ID list.
+	// The IDs of the alert templates.
 	TemplateIdLists []string `pulumi:"templateIdLists"`
 }
 
 // The set of arguments for constructing a DynamicTagGroup resource.
 type DynamicTagGroupArgs struct {
-	// Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+	// The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
 	ContactGroupLists pulumi.StringArrayInput
-	// The relationship between conditional expressions. Valid values: `and`, `or`.
+	// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
 	MatchExpressFilterRelation pulumi.StringPtrInput
-	// The label generates a matching expression that applies the grouping. See `matchExpress` below.
+	// The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
 	MatchExpresses DynamicTagGroupMatchExpressArrayInput
-	// The tag key of the tag.
+	// The tag keys of the cloud resources.
 	TagKey pulumi.StringInput
-	// Alarm template ID list.
+	// The IDs of the alert templates.
 	TemplateIdLists pulumi.StringArrayInput
 }
 
@@ -273,32 +277,32 @@ func (o DynamicTagGroupOutput) ToDynamicTagGroupOutputWithContext(ctx context.Co
 	return o
 }
 
-// Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+// The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
 func (o DynamicTagGroupOutput) ContactGroupLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DynamicTagGroup) pulumi.StringArrayOutput { return v.ContactGroupLists }).(pulumi.StringArrayOutput)
 }
 
-// The relationship between conditional expressions. Valid values: `and`, `or`.
+// The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
 func (o DynamicTagGroupOutput) MatchExpressFilterRelation() pulumi.StringOutput {
 	return o.ApplyT(func(v *DynamicTagGroup) pulumi.StringOutput { return v.MatchExpressFilterRelation }).(pulumi.StringOutput)
 }
 
-// The label generates a matching expression that applies the grouping. See `matchExpress` below.
+// The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
 func (o DynamicTagGroupOutput) MatchExpresses() DynamicTagGroupMatchExpressArrayOutput {
 	return o.ApplyT(func(v *DynamicTagGroup) DynamicTagGroupMatchExpressArrayOutput { return v.MatchExpresses }).(DynamicTagGroupMatchExpressArrayOutput)
 }
 
-// The status of the resource. Valid values: `RUNNING`, `FINISH`.
+// The status of the Dynamic Tag Group.
 func (o DynamicTagGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *DynamicTagGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tag key of the tag.
+// The tag keys of the cloud resources.
 func (o DynamicTagGroupOutput) TagKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *DynamicTagGroup) pulumi.StringOutput { return v.TagKey }).(pulumi.StringOutput)
 }
 
-// Alarm template ID list.
+// The IDs of the alert templates.
 func (o DynamicTagGroupOutput) TemplateIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DynamicTagGroup) pulumi.StringArrayOutput { return v.TemplateIdLists }).(pulumi.StringArrayOutput)
 }

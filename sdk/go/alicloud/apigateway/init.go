@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:apigateway/accessControlList:AccessControlList":
 		r = &AccessControlList{}
+	case "alicloud:apigateway/aclEntryAttachment:AclEntryAttachment":
+		r = &AclEntryAttachment{}
 	case "alicloud:apigateway/api:Api":
 		r = &Api{}
 	case "alicloud:apigateway/app:App":
@@ -35,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Group{}
 	case "alicloud:apigateway/instance:Instance":
 		r = &Instance{}
+	case "alicloud:apigateway/instanceAclAttachment:InstanceAclAttachment":
+		r = &InstanceAclAttachment{}
 	case "alicloud:apigateway/logConfig:LogConfig":
 		r = &LogConfig{}
 	case "alicloud:apigateway/model:Model":
@@ -65,6 +69,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"apigateway/aclEntryAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"apigateway/api",
 		&module{version},
 	)
@@ -91,6 +100,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"apigateway/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"apigateway/instanceAclAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

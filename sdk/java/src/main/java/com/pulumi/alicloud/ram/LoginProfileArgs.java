@@ -18,14 +18,14 @@ public final class LoginProfileArgs extends com.pulumi.resources.ResourceArgs {
     public static final LoginProfileArgs Empty = new LoginProfileArgs();
 
     /**
-     * Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+     * Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
      * 
      */
     @Import(name="mfaBindRequired")
     private @Nullable Output<Boolean> mfaBindRequired;
 
     /**
-     * @return Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+     * @return Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
      * 
      */
     public Optional<Output<Boolean>> mfaBindRequired() {
@@ -105,7 +105,7 @@ public final class LoginProfileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mfaBindRequired Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+         * @param mfaBindRequired Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class LoginProfileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mfaBindRequired Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+         * @param mfaBindRequired Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
          * 
          * @return builder
          * 

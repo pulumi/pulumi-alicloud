@@ -311,14 +311,14 @@ public final class GetApplicationLoadBalancersPlainArgs extends com.pulumi.resou
     }
 
     /**
-     * ID of the VSwitch linked to the SLBs.
+     * ID of the vSwitch linked to the SLBs.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable String vswitchId;
 
     /**
-     * @return ID of the VSwitch linked to the SLBs.
+     * @return ID of the vSwitch linked to the SLBs.
      * 
      */
     public Optional<String> vswitchId() {
@@ -594,7 +594,7 @@ public final class GetApplicationLoadBalancersPlainArgs extends com.pulumi.resou
         }
 
         /**
-         * @param vswitchId ID of the VSwitch linked to the SLBs.
+         * @param vswitchId ID of the vSwitch linked to the SLBs.
          * 
          * @return builder
          * 

@@ -30,6 +30,7 @@ import (
 //			_, err := apigateway.NewGroup(ctx, "default", &apigateway.GroupArgs{
 //				Name:        pulumi.String("tf_example"),
 //				Description: pulumi.String("tf_example"),
+//				BasePath:    pulumi.String("/"),
 //			})
 //			if err != nil {
 //				return err
@@ -50,6 +51,8 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
+	// The base path of the api gateway group. Defaults to `/`.
+	BasePath pulumi.StringOutput `pulumi:"basePath"`
 	// The description of the api gateway group. Defaults to null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The id of the api gateway.
@@ -92,6 +95,8 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
+	// The base path of the api gateway group. Defaults to `/`.
+	BasePath *string `pulumi:"basePath"`
 	// The description of the api gateway group. Defaults to null.
 	Description *string `pulumi:"description"`
 	// The id of the api gateway.
@@ -105,6 +110,8 @@ type groupState struct {
 }
 
 type GroupState struct {
+	// The base path of the api gateway group. Defaults to `/`.
+	BasePath pulumi.StringPtrInput
 	// The description of the api gateway group. Defaults to null.
 	Description pulumi.StringPtrInput
 	// The id of the api gateway.
@@ -122,6 +129,8 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
+	// The base path of the api gateway group. Defaults to `/`.
+	BasePath *string `pulumi:"basePath"`
 	// The description of the api gateway group. Defaults to null.
 	Description *string `pulumi:"description"`
 	// The id of the api gateway.
@@ -132,6 +141,8 @@ type groupArgs struct {
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
+	// The base path of the api gateway group. Defaults to `/`.
+	BasePath pulumi.StringPtrInput
 	// The description of the api gateway group. Defaults to null.
 	Description pulumi.StringPtrInput
 	// The id of the api gateway.
@@ -225,6 +236,11 @@ func (o GroupOutput) ToGroupOutput() GroupOutput {
 
 func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
+}
+
+// The base path of the api gateway group. Defaults to `/`.
+func (o GroupOutput) BasePath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.BasePath }).(pulumi.StringOutput)
 }
 
 // The description of the api gateway group. Defaults to null.

@@ -39,6 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.BucketObject;
@@ -61,12 +63,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-image-import-example");
- *         var default_ = new Bucket("default", BucketArgs.builder()
- *             .bucket(name)
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
+ *             .bucket(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
  *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
- *             .bucket(default_.id())
+ *             .bucket(defaultBucket.id())
  *             .key("fc/hello.zip")
  *             .content("""
  *     # -*- coding: utf-8 -*-
@@ -84,7 +91,7 @@ import javax.annotation.Nullable;
  *             .imageName(name)
  *             .description(name)
  *             .diskDeviceMappings(ImageImportDiskDeviceMappingArgs.builder()
- *                 .ossBucket(default_.id())
+ *                 .ossBucket(defaultBucket.id())
  *                 .ossObject(defaultBucketObject.id())
  *                 .diskImageSize(5)
  *                 .build())

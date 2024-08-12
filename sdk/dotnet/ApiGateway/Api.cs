@@ -26,6 +26,7 @@ namespace Pulumi.AliCloud.ApiGateway
     ///     {
     ///         Name = "tf-example",
     ///         Description = "tf-example",
+    ///         BasePath = "/",
     ///     });
     /// 
     ///     var exampleApi = new AliCloud.ApiGateway.Api("example", new()

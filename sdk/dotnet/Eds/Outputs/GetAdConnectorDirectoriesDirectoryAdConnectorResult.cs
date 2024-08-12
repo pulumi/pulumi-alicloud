@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string TrustKey;
         /// <summary>
-        /// The ID of VSwitch.
+        /// The ID of vSwitch.
         /// </summary>
         public readonly string VswitchId;
 

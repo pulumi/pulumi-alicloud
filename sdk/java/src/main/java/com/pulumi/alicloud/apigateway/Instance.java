@@ -6,6 +6,8 @@ package com.pulumi.alicloud.apigateway;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.apigateway.InstanceArgs;
 import com.pulumi.alicloud.apigateway.inputs.InstanceState;
+import com.pulumi.alicloud.apigateway.outputs.InstanceToConnectVpcIpBlock;
+import com.pulumi.alicloud.apigateway.outputs.InstanceZoneVswitchSecurityGroup;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -13,6 +15,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -58,8 +61,92 @@ import javax.annotation.Nullable;
  *             .httpsPolicy("HTTPS2_TLS1_0")
  *             .zoneId("cn-hangzhou-MAZ6")
  *             .paymentType("PayAsYouGo")
- *             .userVpcId("1709116870")
  *             .instanceType("normal")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.apigateway.Instance;
+ * import com.pulumi.alicloud.apigateway.InstanceArgs;
+ * import com.pulumi.alicloud.apigateway.inputs.InstanceZoneVswitchSecurityGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName(name)
+ *             .build());
+ * 
+ *         var vswitch1 = new Switch("vswitch1", SwitchArgs.builder()
+ *             .vpcId(vpc.id())
+ *             .cidrBlock("172.16.0.0/16")
+ *             .zoneId("cn-hangzhou-j")
+ *             .vswitchName(String.format("%s_1", name))
+ *             .build());
+ * 
+ *         var vswitch2 = new Switch("vswitch2", SwitchArgs.builder()
+ *             .vpcId(vpc.id())
+ *             .cidrBlock("172.17.0.0/16")
+ *             .zoneId("cn-hangzhou-k")
+ *             .vswitchName(String.format("%s_2", name))
+ *             .build());
+ * 
+ *         var securityGroup = new SecurityGroup("securityGroup", SecurityGroupArgs.builder()
+ *             .vpcId(vpc.id())
+ *             .name(name)
+ *             .build());
+ * 
+ *         var vpcIntegrationInstance = new Instance("vpcIntegrationInstance", InstanceArgs.builder()
+ *             .instanceName(name)
+ *             .httpsPolicy("HTTPS2_TLS1_0")
+ *             .instanceSpec("api.s1.small")
+ *             .instanceType("vpc_connect")
+ *             .paymentType("PayAsYouGo")
+ *             .userVpcId(vpc.id())
+ *             .instanceCidr("192.168.0.0/16")
+ *             .zoneVswitchSecurityGroups(            
+ *                 InstanceZoneVswitchSecurityGroupArgs.builder()
+ *                     .zoneId(vswitch1.zoneId())
+ *                     .vswitchId(vswitch1.id())
+ *                     .cidrBlock(vswitch1.cidrBlock())
+ *                     .securityGroup(securityGroup.id())
+ *                     .build(),
+ *                 InstanceZoneVswitchSecurityGroupArgs.builder()
+ *                     .zoneId(vswitch2.zoneId())
+ *                     .vswitchId(vswitch2.id())
+ *                     .cidrBlock(vswitch2.cidrBlock())
+ *                     .securityGroup(securityGroup.id())
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -80,6 +167,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:apigateway/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
+     * (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+     * 
+     */
+    @Export(name="connectCidrBlocks", refs={String.class}, tree="[0]")
+    private Output<String> connectCidrBlocks;
+
+    /**
+     * @return (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+     * 
+     */
+    public Output<String> connectCidrBlocks() {
+        return this.connectCidrBlocks;
+    }
+    /**
      * Creation time.
      * 
      */
@@ -92,6 +193,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+     * 
+     */
+    @Export(name="deleteVpcIpBlock", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deleteVpcIpBlock;
+
+    /**
+     * @return Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+     * 
+     */
+    public Output<Optional<String>> deleteVpcIpBlock() {
+        return Codegen.optional(this.deleteVpcIpBlock);
     }
     /**
      * The time of the instance package. Valid values:
@@ -116,14 +231,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.duration);
     }
     /**
-     * Does IPV6 Capability Support.
+     * Specifies whether IPv6 egress capability is enabled.
      * 
      */
     @Export(name="egressIpv6Enable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> egressIpv6Enable;
 
     /**
-     * @return Does IPV6 Capability Support.
+     * @return Specifies whether IPv6 egress capability is enabled.
      * 
      */
     public Output<Optional<Boolean>> egressIpv6Enable() {
@@ -142,6 +257,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> httpsPolicy() {
         return this.httpsPolicy;
+    }
+    /**
+     * The CIDR block for the instance deployment. Valid values are:
+     * - `192.168.0.0/16`.
+     * - `172.16.0.0/12`.
+     * 
+     */
+    @Export(name="instanceCidr", refs={String.class}, tree="[0]")
+    private Output<String> instanceCidr;
+
+    /**
+     * @return The CIDR block for the instance deployment. Valid values are:
+     * - `192.168.0.0/16`.
+     * - `172.16.0.0/12`.
+     * 
+     */
+    public Output<String> instanceCidr() {
+        return this.instanceCidr;
     }
     /**
      * Instance name.
@@ -172,18 +305,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceSpec;
     }
     /**
-     * Instance type-normal: traditional exclusive instance.
+     * The type of the instance. Valid values are:
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return Instance type-normal: traditional exclusive instance.
+     * @return The type of the instance. Valid values are:
      * 
      */
     public Output<String> instanceType() {
         return this.instanceType;
+    }
+    /**
+     * Specifies whether IPv6 ingress capability is enabled.
+     * 
+     */
+    @Export(name="ipv6Enabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ipv6Enabled;
+
+    /**
+     * @return Specifies whether IPv6 ingress capability is enabled.
+     * 
+     */
+    public Output<Optional<Boolean>> ipv6Enabled() {
+        return Codegen.optional(this.ipv6Enabled);
     }
     /**
      * The payment type of the resource.
@@ -200,20 +347,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * The subscription instance is of the subscription year or month type. The value range is as follows:
-     * - **year**: year
-     * - **month**: month
-     * &gt; **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+     * The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
      * 
      */
     @Export(name="pricingCycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pricingCycle;
 
     /**
-     * @return The subscription instance is of the subscription year or month type. The value range is as follows:
-     * - **year**: year
-     * - **month**: month
-     * &gt; **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+     * @return The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
      * 
      */
     public Output<Optional<String>> pricingCycle() {
@@ -238,14 +379,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="supportIpv6", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> supportIpv6;
+    private Output<Boolean> supportIpv6;
 
     /**
      * @return Does ipv6 support.
      * 
      */
-    public Output<Optional<Boolean>> supportIpv6() {
-        return Codegen.optional(this.supportIpv6);
+    public Output<Boolean> supportIpv6() {
+        return this.supportIpv6;
+    }
+    /**
+     * The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+     * 
+     */
+    @Export(name="toConnectVpcIpBlock", refs={InstanceToConnectVpcIpBlock.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceToConnectVpcIpBlock> toConnectVpcIpBlock;
+
+    /**
+     * @return The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+     * 
+     */
+    public Output<Optional<InstanceToConnectVpcIpBlock>> toConnectVpcIpBlock() {
+        return Codegen.optional(this.toConnectVpcIpBlock);
     }
     /**
      * User&#39;s VpcID.
@@ -288,6 +443,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> zoneId() {
         return this.zoneId;
+    }
+    /**
+     * Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+     * 
+     */
+    @Export(name="zoneVswitchSecurityGroups", refs={List.class,InstanceZoneVswitchSecurityGroup.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<InstanceZoneVswitchSecurityGroup>> zoneVswitchSecurityGroups;
+
+    /**
+     * @return Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+     * 
+     */
+    public Output<Optional<List<InstanceZoneVswitchSecurityGroup>>> zoneVswitchSecurityGroups() {
+        return Codegen.optional(this.zoneVswitchSecurityGroups);
     }
 
     /**

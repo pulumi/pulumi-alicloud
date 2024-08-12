@@ -81,7 +81,7 @@ public final class GetInstancesResult {
      */
     private @Nullable String vpcId;
     /**
-     * @return ID of the VSwitch the instance belongs to.
+     * @return ID of the vSwitch the instance belongs to.
      * 
      */
     private @Nullable String vswitchId;
@@ -186,7 +186,7 @@ public final class GetInstancesResult {
         return Optional.ofNullable(this.vpcId);
     }
     /**
-     * @return ID of the VSwitch the instance belongs to.
+     * @return ID of the vSwitch the instance belongs to.
      * 
      */
     public Optional<String> vswitchId() {

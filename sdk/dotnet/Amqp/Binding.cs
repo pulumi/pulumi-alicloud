@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Amqp
 {
     /// <summary>
-    /// Provides a RabbitMQ (AMQP) Binding resource to bind tha exchange with another exchange or queue.
+    /// Provides a RabbitMQ (AMQP) Binding resource.
     /// 
     /// For information about RabbitMQ (AMQP) Binding and how to use it, see [What is Binding](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createbinding).
     /// 
@@ -28,6 +28,8 @@ namespace Pulumi.AliCloud.Amqp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Amqp.Instance("default", new()
     ///     {
     ///         InstanceType = "enterprise",
@@ -37,41 +39,40 @@ namespace Pulumi.AliCloud.Amqp
     ///         SupportEip = false,
     ///         MaxEipTps = "128",
     ///         PaymentType = "Subscription",
-    ///         Period = 1,
     ///     });
     /// 
     ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("default", new()
     ///     {
     ///         InstanceId = @default.Id,
-    ///         VirtualHostName = "tf-example",
+    ///         VirtualHostName = name,
     ///     });
     /// 
     ///     var defaultExchange = new AliCloud.Amqp.Exchange("default", new()
     ///     {
-    ///         AutoDeleteState = false,
-    ///         ExchangeName = "tf-example",
-    ///         ExchangeType = "HEADERS",
     ///         InstanceId = @default.Id,
-    ///         Internal = false,
     ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
+    ///         ExchangeName = name,
+    ///         ExchangeType = "HEADERS",
+    ///         AutoDeleteState = false,
+    ///         Internal = false,
     ///     });
     /// 
     ///     var defaultQueue = new AliCloud.Amqp.Queue("default", new()
     ///     {
     ///         InstanceId = @default.Id,
-    ///         QueueName = "tf-example",
     ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
+    ///         QueueName = name,
     ///     });
     /// 
     ///     var defaultBinding = new AliCloud.Amqp.Binding("default", new()
     ///     {
-    ///         Argument = "x-match:all",
-    ///         BindingKey = defaultQueue.QueueName,
-    ///         BindingType = "QUEUE",
-    ///         DestinationName = "tf-example",
     ///         InstanceId = @default.Id,
-    ///         SourceExchange = defaultExchange.ExchangeName,
     ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
+    ///         SourceExchange = defaultExchange.ExchangeName,
+    ///         DestinationName = name,
+    ///         BindingType = "QUEUE",
+    ///         BindingKey = defaultQueue.QueueName,
+    ///         Argument = "x-match:all",
     ///     });
     /// 
     /// });
@@ -89,11 +90,9 @@ namespace Pulumi.AliCloud.Amqp
     public partial class Binding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// X-match Attributes. Valid Values: 
-        /// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-        /// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-        /// 
-        /// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+        /// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+        /// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+        /// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
         /// </summary>
         [Output("argument")]
         public Output<string> Argument { get; private set; } = null!;
@@ -110,31 +109,31 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string> BindingKey { get; private set; } = null!;
 
         /// <summary>
-        /// The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+        /// The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
         /// </summary>
         [Output("bindingType")]
         public Output<string> BindingType { get; private set; } = null!;
 
         /// <summary>
-        /// The Target Queue Or Exchange of the Name.
+        /// The name of the object that you want to bind to the source exchange.
         /// </summary>
         [Output("destinationName")]
         public Output<string> DestinationName { get; private set; } = null!;
 
         /// <summary>
-        /// Instance Id.
+        /// The ID of the instance.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The Source Exchange Name.
+        /// The name of the source exchange.
         /// </summary>
         [Output("sourceExchange")]
         public Output<string> SourceExchange { get; private set; } = null!;
 
         /// <summary>
-        /// Virtualhost Name.
+        /// The name of the vhost.
         /// </summary>
         [Output("virtualHostName")]
         public Output<string> VirtualHostName { get; private set; } = null!;
@@ -186,11 +185,9 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class BindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// X-match Attributes. Valid Values: 
-        /// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-        /// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-        /// 
-        /// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+        /// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+        /// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+        /// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
         /// </summary>
         [Input("argument")]
         public Input<string>? Argument { get; set; }
@@ -207,31 +204,31 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string> BindingKey { get; set; } = null!;
 
         /// <summary>
-        /// The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+        /// The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
         /// </summary>
         [Input("bindingType", required: true)]
         public Input<string> BindingType { get; set; } = null!;
 
         /// <summary>
-        /// The Target Queue Or Exchange of the Name.
+        /// The name of the object that you want to bind to the source exchange.
         /// </summary>
         [Input("destinationName", required: true)]
         public Input<string> DestinationName { get; set; } = null!;
 
         /// <summary>
-        /// Instance Id.
+        /// The ID of the instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The Source Exchange Name.
+        /// The name of the source exchange.
         /// </summary>
         [Input("sourceExchange", required: true)]
         public Input<string> SourceExchange { get; set; } = null!;
 
         /// <summary>
-        /// Virtualhost Name.
+        /// The name of the vhost.
         /// </summary>
         [Input("virtualHostName", required: true)]
         public Input<string> VirtualHostName { get; set; } = null!;
@@ -245,11 +242,9 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class BindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// X-match Attributes. Valid Values: 
-        /// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-        /// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-        /// 
-        /// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+        /// The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+        /// - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+        /// - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
         /// </summary>
         [Input("argument")]
         public Input<string>? Argument { get; set; }
@@ -266,31 +261,31 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? BindingKey { get; set; }
 
         /// <summary>
-        /// The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+        /// The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
         /// </summary>
         [Input("bindingType")]
         public Input<string>? BindingType { get; set; }
 
         /// <summary>
-        /// The Target Queue Or Exchange of the Name.
+        /// The name of the object that you want to bind to the source exchange.
         /// </summary>
         [Input("destinationName")]
         public Input<string>? DestinationName { get; set; }
 
         /// <summary>
-        /// Instance Id.
+        /// The ID of the instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The Source Exchange Name.
+        /// The name of the source exchange.
         /// </summary>
         [Input("sourceExchange")]
         public Input<string>? SourceExchange { get; set; }
 
         /// <summary>
-        /// Virtualhost Name.
+        /// The name of the vhost.
         /// </summary>
         [Input("virtualHostName")]
         public Input<string>? VirtualHostName { get; set; }

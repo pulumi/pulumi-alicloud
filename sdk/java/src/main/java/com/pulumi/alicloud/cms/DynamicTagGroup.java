@@ -53,17 +53,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()
- *             .alarmContactGroupName("example_value")
- *             .describe("example_value")
- *             .enableSubscribed(true)
+ *             .alarmContactGroupName(name)
  *             .build());
  * 
  *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()
+ *             .tagKey(name)
  *             .contactGroupLists(default_.id())
- *             .tagKey("your_tag_key")
  *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
- *                 .tagValue("your_tag_value")
+ *                 .tagValue(name)
  *                 .tagValueMatchFunction("all")
  *                 .build())
  *             .build());
@@ -86,84 +86,84 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cms/dynamicTagGroup:DynamicTagGroup")
 public class DynamicTagGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+     * The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
      * 
      */
     @Export(name="contactGroupLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> contactGroupLists;
 
     /**
-     * @return Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+     * @return The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
      * 
      */
     public Output<List<String>> contactGroupLists() {
         return this.contactGroupLists;
     }
     /**
-     * The relationship between conditional expressions. Valid values: `and`, `or`.
+     * The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
      * 
      */
     @Export(name="matchExpressFilterRelation", refs={String.class}, tree="[0]")
     private Output<String> matchExpressFilterRelation;
 
     /**
-     * @return The relationship between conditional expressions. Valid values: `and`, `or`.
+     * @return The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
      * 
      */
     public Output<String> matchExpressFilterRelation() {
         return this.matchExpressFilterRelation;
     }
     /**
-     * The label generates a matching expression that applies the grouping. See `match_express` below.
+     * The conditional expressions used to create an application group based on the tag. See `match_express` below.
      * 
      */
     @Export(name="matchExpresses", refs={List.class,DynamicTagGroupMatchExpress.class}, tree="[0,1]")
     private Output<List<DynamicTagGroupMatchExpress>> matchExpresses;
 
     /**
-     * @return The label generates a matching expression that applies the grouping. See `match_express` below.
+     * @return The conditional expressions used to create an application group based on the tag. See `match_express` below.
      * 
      */
     public Output<List<DynamicTagGroupMatchExpress>> matchExpresses() {
         return this.matchExpresses;
     }
     /**
-     * The status of the resource. Valid values: `RUNNING`, `FINISH`.
+     * The status of the Dynamic Tag Group.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `RUNNING`, `FINISH`.
+     * @return The status of the Dynamic Tag Group.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The tag key of the tag.
+     * The tag keys of the cloud resources.
      * 
      */
     @Export(name="tagKey", refs={String.class}, tree="[0]")
     private Output<String> tagKey;
 
     /**
-     * @return The tag key of the tag.
+     * @return The tag keys of the cloud resources.
      * 
      */
     public Output<String> tagKey() {
         return this.tagKey;
     }
     /**
-     * Alarm template ID list.
+     * The IDs of the alert templates.
      * 
      */
     @Export(name="templateIdLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> templateIdLists;
 
     /**
-     * @return Alarm template ID list.
+     * @return The IDs of the alert templates.
      * 
      */
     public Output<Optional<List<String>>> templateIdLists() {

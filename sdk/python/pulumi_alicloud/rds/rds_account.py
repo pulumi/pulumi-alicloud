@@ -29,13 +29,33 @@ class RdsAccountArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RdsAccount resource.
-        :param pulumi.Input[str] account_description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[str] account_name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
-        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] account_type: Privilege type of account. Default to `Normal`.
-               `Normal`: Common privilege.
-               `Super`: High privilege.
-        :param pulumi.Input[str] db_instance_id: The Id of instance in which account belongs.
+        :param pulumi.Input[str] account_description: The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+               
+               > **NOTE:** The name cannot start with http:// or https://.
+        :param pulumi.Input[str] account_name: The name of the database account.
+               * The name must be unique.
+               * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+               * The name must start with a letter and end with a letter or digit.
+               * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+               * The length of the value must meet the following requirements:
+               * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+               * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+               * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+               * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+               * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+               * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+               * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        :param pulumi.Input[str] account_password: The password of the account.
+               * The value must be 8 to 32 characters in length.
+               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+               * Special characters include ! @ # $ % ^ & * ( ) _ + - =
+        :param pulumi.Input[str] account_type: The account type. Valid values:
+               * Normal: standard account (default).
+               * Super: privileged account.
+               * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+               
+               > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
@@ -93,7 +113,9 @@ class RdsAccountArgs:
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> Optional[pulumi.Input[str]]:
         """
-        Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+
+        > **NOTE:** The name cannot start with http:// or https://.
         """
         return pulumi.get(self, "account_description")
 
@@ -105,7 +127,19 @@ class RdsAccountArgs:
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
+        The name of the database account.
+        * The name must be unique.
+        * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+        * The name must start with a letter and end with a letter or digit.
+        * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+        * The length of the value must meet the following requirements:
+        * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+        * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+        * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+        * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+        * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+        * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+        * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
         """
         return pulumi.get(self, "account_name")
 
@@ -117,7 +151,10 @@ class RdsAccountArgs:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        The password of the account.
+        * The value must be 8 to 32 characters in length.
+        * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        * Special characters include ! @ # $ % ^ & * ( ) _ + - =
         """
         return pulumi.get(self, "account_password")
 
@@ -129,9 +166,12 @@ class RdsAccountArgs:
     @pulumi.getter(name="accountType")
     def account_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Privilege type of account. Default to `Normal`.
-        `Normal`: Common privilege.
-        `Super`: High privilege.
+        The account type. Valid values:
+        * Normal: standard account (default).
+        * Super: privileged account.
+        * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+
+        > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
         """
         return pulumi.get(self, "account_type")
 
@@ -143,7 +183,7 @@ class RdsAccountArgs:
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of instance in which account belongs.
+        The ID of the instance.
         """
         return pulumi.get(self, "db_instance_id")
 
@@ -274,13 +314,33 @@ class _RdsAccountState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RdsAccount resources.
-        :param pulumi.Input[str] account_description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[str] account_name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
-        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] account_type: Privilege type of account. Default to `Normal`.
-               `Normal`: Common privilege.
-               `Super`: High privilege.
-        :param pulumi.Input[str] db_instance_id: The Id of instance in which account belongs.
+        :param pulumi.Input[str] account_description: The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+               
+               > **NOTE:** The name cannot start with http:// or https://.
+        :param pulumi.Input[str] account_name: The name of the database account.
+               * The name must be unique.
+               * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+               * The name must start with a letter and end with a letter or digit.
+               * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+               * The length of the value must meet the following requirements:
+               * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+               * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+               * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+               * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+               * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+               * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+               * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        :param pulumi.Input[str] account_password: The password of the account.
+               * The value must be 8 to 32 characters in length.
+               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+               * Special characters include ! @ # $ % ^ & * ( ) _ + - =
+        :param pulumi.Input[str] account_type: The account type. Valid values:
+               * Normal: standard account (default).
+               * Super: privileged account.
+               * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+               
+               > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
@@ -341,7 +401,9 @@ class _RdsAccountState:
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> Optional[pulumi.Input[str]]:
         """
-        Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+
+        > **NOTE:** The name cannot start with http:// or https://.
         """
         return pulumi.get(self, "account_description")
 
@@ -353,7 +415,19 @@ class _RdsAccountState:
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
+        The name of the database account.
+        * The name must be unique.
+        * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+        * The name must start with a letter and end with a letter or digit.
+        * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+        * The length of the value must meet the following requirements:
+        * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+        * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+        * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+        * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+        * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+        * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+        * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
         """
         return pulumi.get(self, "account_name")
 
@@ -365,7 +439,10 @@ class _RdsAccountState:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        The password of the account.
+        * The value must be 8 to 32 characters in length.
+        * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        * Special characters include ! @ # $ % ^ & * ( ) _ + - =
         """
         return pulumi.get(self, "account_password")
 
@@ -377,9 +454,12 @@ class _RdsAccountState:
     @pulumi.getter(name="accountType")
     def account_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Privilege type of account. Default to `Normal`.
-        `Normal`: Common privilege.
-        `Super`: High privilege.
+        The account type. Valid values:
+        * Normal: standard account (default).
+        * Super: privileged account.
+        * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+
+        > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
         """
         return pulumi.get(self, "account_type")
 
@@ -391,7 +471,7 @@ class _RdsAccountState:
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of instance in which account belongs.
+        The ID of the instance.
         """
         return pulumi.get(self, "db_instance_id")
 
@@ -589,13 +669,33 @@ class RdsAccount(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[str] account_name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
-        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] account_type: Privilege type of account. Default to `Normal`.
-               `Normal`: Common privilege.
-               `Super`: High privilege.
-        :param pulumi.Input[str] db_instance_id: The Id of instance in which account belongs.
+        :param pulumi.Input[str] account_description: The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+               
+               > **NOTE:** The name cannot start with http:// or https://.
+        :param pulumi.Input[str] account_name: The name of the database account.
+               * The name must be unique.
+               * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+               * The name must start with a letter and end with a letter or digit.
+               * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+               * The length of the value must meet the following requirements:
+               * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+               * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+               * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+               * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+               * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+               * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+               * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        :param pulumi.Input[str] account_password: The password of the account.
+               * The value must be 8 to 32 characters in length.
+               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+               * Special characters include ! @ # $ % ^ & * ( ) _ + - =
+        :param pulumi.Input[str] account_type: The account type. Valid values:
+               * Normal: standard account (default).
+               * Super: privileged account.
+               * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+               
+               > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
@@ -750,13 +850,33 @@ class RdsAccount(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[str] account_name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
-        :param pulumi.Input[str] account_password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] account_type: Privilege type of account. Default to `Normal`.
-               `Normal`: Common privilege.
-               `Super`: High privilege.
-        :param pulumi.Input[str] db_instance_id: The Id of instance in which account belongs.
+        :param pulumi.Input[str] account_description: The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+               
+               > **NOTE:** The name cannot start with http:// or https://.
+        :param pulumi.Input[str] account_name: The name of the database account.
+               * The name must be unique.
+               * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+               * The name must start with a letter and end with a letter or digit.
+               * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+               * The length of the value must meet the following requirements:
+               * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+               * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+               * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+               * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+               * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+               * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+               * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        :param pulumi.Input[str] account_password: The password of the account.
+               * The value must be 8 to 32 characters in length.
+               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+               * Special characters include ! @ # $ % ^ & * ( ) _ + - =
+        :param pulumi.Input[str] account_type: The account type. Valid values:
+               * Normal: standard account (default).
+               * Super: privileged account.
+               * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+               
+               > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
@@ -793,7 +913,9 @@ class RdsAccount(pulumi.CustomResource):
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> pulumi.Output[str]:
         """
-        Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+
+        > **NOTE:** The name cannot start with http:// or https://.
         """
         return pulumi.get(self, "account_description")
 
@@ -801,7 +923,19 @@ class RdsAccount(pulumi.CustomResource):
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[str]:
         """
-        Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and end with letters or numbers, The length must be 2-63 characters for PostgreSQL, otherwise the length must be 2-32 characters.
+        The name of the database account.
+        * The name must be unique.
+        * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+        * The name must start with a letter and end with a letter or digit.
+        * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+        * The length of the value must meet the following requirements:
+        * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+        * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+        * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+        * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+        * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+        * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+        * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
         """
         return pulumi.get(self, "account_name")
 
@@ -809,7 +943,10 @@ class RdsAccount(pulumi.CustomResource):
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[str]:
         """
-        Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
+        The password of the account.
+        * The value must be 8 to 32 characters in length.
+        * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        * Special characters include ! @ # $ % ^ & * ( ) _ + - =
         """
         return pulumi.get(self, "account_password")
 
@@ -817,9 +954,12 @@ class RdsAccount(pulumi.CustomResource):
     @pulumi.getter(name="accountType")
     def account_type(self) -> pulumi.Output[str]:
         """
-        Privilege type of account. Default to `Normal`.
-        `Normal`: Common privilege.
-        `Super`: High privilege.
+        The account type. Valid values:
+        * Normal: standard account (default).
+        * Super: privileged account.
+        * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+
+        > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
         """
         return pulumi.get(self, "account_type")
 
@@ -827,7 +967,7 @@ class RdsAccount(pulumi.CustomResource):
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Output[str]:
         """
-        The Id of instance in which account belongs.
+        The ID of the instance.
         """
         return pulumi.get(self, "db_instance_id")
 

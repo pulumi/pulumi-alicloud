@@ -37,12 +37,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
 //			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			_default, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
-//				Current: pulumi.BoolRef(true),
+//				RegionId: pulumi.StringRef(region),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -64,13 +68,13 @@ import (
 //				return err
 //			}
 //			_, err = clickhouse.NewDbCluster(ctx, "default", &clickhouse.DbClusterArgs{
-//				DbClusterVersion:     pulumi.String("22.8.5.29"),
+//				DbClusterVersion:     pulumi.String("23.8"),
 //				Category:             pulumi.String("Basic"),
 //				DbClusterClass:       pulumi.String("S8"),
 //				DbClusterNetworkType: pulumi.String("vpc"),
 //				DbNodeGroupCount:     pulumi.Int(1),
 //				PaymentType:          pulumi.String("PayAsYouGo"),
-//				DbNodeStorage:        pulumi.String("500"),
+//				DbNodeStorage:        pulumi.String("100"),
 //				StorageType:          pulumi.String("cloud_essd"),
 //				VswitchId:            defaultSwitch.ID(),
 //				VpcId:                defaultNetwork.ID(),
@@ -120,6 +124,9 @@ type DbCluster struct {
 	EncryptionType pulumi.StringPtrOutput `pulumi:"encryptionType"`
 	// The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
+	// The zone IDs and
+	// corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
+	MultiZoneVswitchLists DbClusterMultiZoneVswitchListArrayOutput `pulumi:"multiZoneVswitchLists"`
 	// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
@@ -222,6 +229,9 @@ type dbClusterState struct {
 	EncryptionType *string `pulumi:"encryptionType"`
 	// The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
 	MaintainTime *string `pulumi:"maintainTime"`
+	// The zone IDs and
+	// corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
+	MultiZoneVswitchLists []DbClusterMultiZoneVswitchList `pulumi:"multiZoneVswitchLists"`
 	// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
@@ -271,6 +281,9 @@ type DbClusterState struct {
 	EncryptionType pulumi.StringPtrInput
 	// The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
 	MaintainTime pulumi.StringPtrInput
+	// The zone IDs and
+	// corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
+	MultiZoneVswitchLists DbClusterMultiZoneVswitchListArrayInput
 	// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType pulumi.StringPtrInput
 	// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
@@ -322,6 +335,9 @@ type dbClusterArgs struct {
 	EncryptionType *string `pulumi:"encryptionType"`
 	// The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
 	MaintainTime *string `pulumi:"maintainTime"`
+	// The zone IDs and
+	// corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
+	MultiZoneVswitchLists []DbClusterMultiZoneVswitchList `pulumi:"multiZoneVswitchLists"`
 	// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType string `pulumi:"paymentType"`
 	// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
@@ -368,6 +384,9 @@ type DbClusterArgs struct {
 	EncryptionType pulumi.StringPtrInput
 	// The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
 	MaintainTime pulumi.StringPtrInput
+	// The zone IDs and
+	// corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
+	MultiZoneVswitchLists DbClusterMultiZoneVswitchListArrayInput
 	// The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
 	PaymentType pulumi.StringInput
 	// Pre-paid cluster of the pay-as-you-go cycle. It is valid and required when paymentType is `Subscription`. Valid values: `Month`, `Year`.
@@ -535,6 +554,12 @@ func (o DbClusterOutput) EncryptionType() pulumi.StringPtrOutput {
 // The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
 func (o DbClusterOutput) MaintainTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbCluster) pulumi.StringOutput { return v.MaintainTime }).(pulumi.StringOutput)
+}
+
+// The zone IDs and
+// corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
+func (o DbClusterOutput) MultiZoneVswitchLists() DbClusterMultiZoneVswitchListArrayOutput {
+	return o.ApplyT(func(v *DbCluster) DbClusterMultiZoneVswitchListArrayOutput { return v.MultiZoneVswitchLists }).(DbClusterMultiZoneVswitchListArrayOutput)
 }
 
 // The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.

@@ -164,7 +164,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
             name = "tf-example"
         default = alicloud.get_regions(current=True)
         default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
             cpu_core_count=1,
@@ -226,7 +226,7 @@ class InstanceClusterAttachment(pulumi.CustomResource):
             name = "tf-example"
         default = alicloud.get_regions(current=True)
         default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_get_zones.zones[0].id,
             cpu_core_count=1,

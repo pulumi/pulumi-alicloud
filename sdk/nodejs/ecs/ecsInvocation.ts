@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     availabilityZone: _default.zones?.[0]?.id,
  * }));
  * const defaultGetImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu",
+ *     nameRegex: "^ubuntu_18.*64",
  *     mostRecent: true,
  *     owners: "system",
  * });

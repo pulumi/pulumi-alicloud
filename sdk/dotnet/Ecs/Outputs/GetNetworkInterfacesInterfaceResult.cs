@@ -30,6 +30,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// ID of the instance that the ENI is attached to.
         /// </summary>
         public readonly string InstanceId;
+        public readonly ImmutableArray<string> Ipv6Sets;
         /// <summary>
         /// MAC address of the ENI.
         /// </summary>
@@ -78,7 +79,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// ID of the VSwitch that the ENI is linked to.
+        /// ID of the vSwitch that the ENI is linked to.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>
@@ -97,6 +98,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             string id,
 
             string instanceId,
+
+            ImmutableArray<string> ipv6Sets,
 
             string mac,
 
@@ -147,6 +150,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             Description = description;
             Id = id;
             InstanceId = instanceId;
+            Ipv6Sets = ipv6Sets;
             Mac = mac;
             Name = name;
             NetworkInterfaceId = networkInterfaceId;

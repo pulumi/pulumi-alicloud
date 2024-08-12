@@ -16,7 +16,7 @@ public final class GetProjectsProjectPropertiesTableLifecycle {
      */
     private String type;
     /**
-     * @return The value of the life cycle.
+     * @return The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
      * 
      */
     private String value;
@@ -30,7 +30,7 @@ public final class GetProjectsProjectPropertiesTableLifecycle {
         return this.type;
     }
     /**
-     * @return The value of the life cycle.
+     * @return The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
      * 
      */
     public String value() {

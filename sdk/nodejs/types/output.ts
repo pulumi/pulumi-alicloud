@@ -2351,59 +2351,59 @@ export namespace alb {
 
     export interface LoadBalancerAccessLogConfig {
         /**
-         * This Log Storage Project.
+         * The project to which the access log is shipped.
          */
         logProject: string;
         /**
-         * This Log Storage Method Is Increased.
+         * The Logstore to which the access log is shipped.
          */
         logStore: string;
     }
 
     export interface LoadBalancerLoadBalancerBillingConfig {
         /**
-         * Pay Type. Valid values: `PayAsYouGo`. **Note:** provider changes the payment type to `PayAsYouGo`, while the actual parameter on api is `PostPay`.
+         * The billing method of the ALB instance. Valid values: `PayAsYouGo`.
          */
         payType: string;
     }
 
     export interface LoadBalancerModificationProtectionConfig {
         /**
-         * Managed Instance.
+         * The reason for enabling the configuration read-only mode. **NOTE:** `reason` takes effect only if `status` is set to `ConsoleProtection`.
          */
         reason: string;
         /**
-         * Load Balancing Modify the Protection Status.
+         * Specifies whether to enable the configuration read-only mode. Valid values: `ConsoleProtection`, `NonProtection`.
          */
         status: string;
     }
 
     export interface LoadBalancerZoneMapping {
         /**
-         * The SLB Instance Address.
+         * The IP address of the ALB instance.
          */
         loadBalancerAddresses: outputs.alb.LoadBalancerZoneMappingLoadBalancerAddress[];
         /**
-         * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+         * The ID of the VSwitch.
          */
         vswitchId: string;
         /**
-         * The ID of the zone to which the SLB instance belongs.
+         * The zone ID of the ALB instance.
          */
         zoneId: string;
     }
 
     export interface LoadBalancerZoneMappingLoadBalancerAddress {
         /**
-         * IP Address. The Public IP Address, and Private IP Address from the Address Type.
+         * IP address. The Public IP Address, and Private IP Address from the Address Type.
          */
         address: string;
         /**
-         * The ID of the EIP instance.
+         * The ID of the EIP.
          */
         allocationId: string;
         /**
-         * The type of the EIP instance.
+         * The type of the EIP.
          */
         eipType: string;
         /**
@@ -3180,6 +3180,14 @@ export namespace apigateway {
          */
         aoneName?: string;
         /**
+         * The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+         */
+        contentTypeCategory: string;
+        /**
+         * The content type value of backend service.
+         */
+        contentTypeValue: string;
+        /**
          * The http method of backend service.
          */
         method: string;
@@ -3199,6 +3207,14 @@ export namespace apigateway {
          */
         aoneName?: string;
         /**
+         * The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+         */
+        contentTypeCategory: string;
+        /**
+         * The content type value of backend service.
+         */
+        contentTypeValue: string;
+        /**
          * The http method of backend service.
          */
         method: string;
@@ -3214,6 +3230,10 @@ export namespace apigateway {
          * Backend service time-out time. Unit: millisecond.
          */
         timeout: number;
+        /**
+         * The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+         */
+        vpcScheme?: string;
     }
 
     export interface ApiMockServiceConfig {
@@ -3529,6 +3549,44 @@ export namespace apigateway {
          * The tag of the resource.
          */
         tags: {[key: string]: any};
+    }
+
+    export interface InstanceToConnectVpcIpBlock {
+        /**
+         * The CIDR block of the VSwitch.
+         */
+        cidrBlock: string;
+        /**
+         * Specifies whether the IP block is customized.
+         */
+        customized?: boolean;
+        /**
+         * The VSwitch ID.
+         */
+        vswitchId?: string;
+        /**
+         * The zone ID.
+         */
+        zoneId?: string;
+    }
+
+    export interface InstanceZoneVswitchSecurityGroup {
+        /**
+         * The CIDR block of the VSwitch.
+         */
+        cidrBlock: string;
+        /**
+         * The ID of the security group.
+         */
+        securityGroup: string;
+        /**
+         * The VSwitch ID.
+         */
+        vswitchId: string;
+        /**
+         * The zone ID.
+         */
+        zoneId: string;
     }
 
 }
@@ -3908,7 +3966,7 @@ export namespace arms {
          */
         vpcId: string;
         /**
-         * The ID of the VSwitch.
+         * The ID of the vSwitch.
          */
         vswitchId: string;
     }
@@ -8048,6 +8106,17 @@ export namespace clickhouse {
         securityIpList?: string;
     }
 
+    export interface DbClusterMultiZoneVswitchList {
+        /**
+         * The ID of the vswitch.
+         */
+        vswitchId: string;
+        /**
+         * The zone ID of the vswitch.
+         */
+        zoneId: string;
+    }
+
     export interface GetAccountsAccount {
         /**
          * In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
@@ -10229,6 +10298,49 @@ export namespace cloudstoragegateway {
 }
 
 export namespace cms {
+    export interface AlarmCompositeExpression {
+        /**
+         * The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
+         */
+        expressionListJoin?: string;
+        /**
+         * The trigger conditions that are created in standard mode. See `expressionList` below.
+         */
+        expressionLists?: outputs.cms.AlarmCompositeExpressionExpressionList[];
+        /**
+         * The trigger conditions that are created by using expressions.
+         */
+        expressionRaw?: string;
+        /**
+         * The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
+         */
+        level?: string;
+        /**
+         * The number of consecutive triggers.
+         */
+        times?: number;
+    }
+
+    export interface AlarmCompositeExpressionExpressionList {
+        comparisonOperator?: string;
+        /**
+         * The metric that is used to monitor the cloud service.
+         */
+        metricName?: string;
+        /**
+         * The statistical period of the metric. Unit: seconds. Default value: `300`.
+         */
+        period?: string;
+        /**
+         * Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
+         */
+        statistics?: string;
+        /**
+         * Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
+         */
+        threshold?: string;
+    }
+
     export interface AlarmEscalationsCritical {
         /**
          * Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
@@ -10307,12 +10419,13 @@ export namespace cms {
 
     export interface AlarmTarget {
         /**
-         * The Alibaba Cloud Resource Name (ARN) of the resource.
+         * ARN uniquely identifies the resource that the alert targets.
+         * > **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the "Push Channel" in the Alibaba Cloud console.
          * > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          */
         arn?: string;
         /**
-         * The parameters of the alert callback. The parameters are in the JSON format.
+         * Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
          */
         jsonParams?: string;
         /**
@@ -10320,18 +10433,18 @@ export namespace cms {
          */
         level?: string;
         /**
-         * The ID of the resource for which alerts are triggered.
+         * The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
          */
         targetId?: string;
     }
 
     export interface DynamicTagGroupMatchExpress {
         /**
-         * The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+         * The tag values of the cloud resources.
          */
         tagValue: string;
         /**
-         * Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+         * The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
          */
         tagValueMatchFunction: string;
     }
@@ -11667,7 +11780,8 @@ export namespace cms {
 
     export interface MetricRuleTemplateAlertTemplate {
         /**
-         * The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+         * The abbreviation of the Alibaba Cloud service name.
+         * > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
          */
         category: string;
         /**
@@ -11676,13 +11790,11 @@ export namespace cms {
         escalations?: outputs.cms.MetricRuleTemplateAlertTemplateEscalations;
         /**
          * The name of the metric.
-         *
          * > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          */
         metricName: string;
         /**
-         * The namespace of the service.
-         *
+         * The namespace of the cloud service.
          * > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          */
         namespace: string;
@@ -11713,57 +11825,57 @@ export namespace cms {
 
     export interface MetricRuleTemplateAlertTemplateEscalationsCritical {
         /**
-         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         * The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
          */
         comparisonOperator?: string;
         /**
-         * The statistical aggregation method for critical-level alerts.
+         * The statistical aggregation method for warn-level alerts.
          */
         statistics?: string;
         /**
-         * The threshold for critical-level alerts.
+         * The threshold for warn-level alerts.
          */
         threshold?: string;
         /**
-         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times?: string;
     }
 
     export interface MetricRuleTemplateAlertTemplateEscalationsInfo {
         /**
-         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         * The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
          */
         comparisonOperator?: string;
         /**
-         * The statistical aggregation method for critical-level alerts.
+         * The statistical aggregation method for warn-level alerts.
          */
         statistics?: string;
         /**
-         * The threshold for critical-level alerts.
+         * The threshold for warn-level alerts.
          */
         threshold?: string;
         /**
-         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times?: string;
     }
 
     export interface MetricRuleTemplateAlertTemplateEscalationsWarn {
         /**
-         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         * The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
          */
         comparisonOperator?: string;
         /**
-         * The statistical aggregation method for critical-level alerts.
+         * The statistical aggregation method for warn-level alerts.
          */
         statistics?: string;
         /**
-         * The threshold for critical-level alerts.
+         * The threshold for warn-level alerts.
          */
         threshold?: string;
         /**
-         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times?: string;
     }
@@ -13813,7 +13925,7 @@ export namespace cs {
          */
         vpcId: string;
         /**
-         * The ID of VSwitch where the current cluster is located.
+         * The ID of vSwitch where the current cluster is located.
          */
         vswitchId: string;
     }
@@ -21825,7 +21937,7 @@ export namespace ecs {
         regionId: string;
         status: string;
         /**
-         * The ID of the VSwitch attached to the ECS instance.
+         * The ID of the vSwitch attached to the ECS instance.
          */
         vswitchId: string;
     }
@@ -21889,7 +22001,7 @@ export namespace ecs {
         regionId: string;
         status: string;
         /**
-         * The ID of the VSwitch attached to the ECS instance.
+         * The ID of the vSwitch attached to the ECS instance.
          */
         vswitchId: string;
     }
@@ -22122,7 +22234,7 @@ export namespace ecs {
          */
         securityGroupId: string;
         /**
-         * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+         * The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
          */
         vswitchId: string;
     }
@@ -22211,11 +22323,15 @@ export namespace ecs {
          */
         instanceId: string;
         /**
+         * A list of IPv6 addresses that is assigned to the ENI.  **NOTE:** Available since v1.228.0.
+         */
+        ipv6Sets: string[];
+        /**
          * The MAC address of the ENI.
          */
         mac: string;
         /**
-         * The network interface name.
+         * Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
          */
         name: string;
         /**
@@ -22239,9 +22355,12 @@ export namespace ecs {
          */
         primaryIpAddress: string;
         /**
-         * The primary private IP address of the ENI.
+         * Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
          */
         privateIp: string;
+        /**
+         * A list of secondary private IP address that is assigned to the ENI.
+         */
         privateIpAddresses: string[];
         /**
          * A list of secondary private IP address that is assigned to the ENI.
@@ -22272,19 +22391,19 @@ export namespace ecs {
          */
         serviceManaged: boolean;
         /**
-         * The status of the ENI.
+         * The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
          */
         status: string;
         /**
-         * The tags.
+         * A map of tags assigned to ENIs.
          */
         tags: {[key: string]: any};
         /**
-         * The type of the ENI.
+         * The type of ENI. Valid Values: `Primary`, `Secondary`.
          */
         type: string;
         /**
-         * The Vpc Id.
+         * The vpc id.
          */
         vpcId: string;
         /**
@@ -23189,7 +23308,7 @@ export namespace ecs {
          */
         vpcId: string;
         /**
-         * ID of the VSwitch linked to the instances.
+         * ID of the vSwitch linked to the instances.
          */
         vswitchId: string;
     }
@@ -23280,7 +23399,7 @@ export namespace ecs {
         regionId: string;
         status: string;
         /**
-         * The ID of the VSwitch attached to the ECS instance.
+         * The ID of the vSwitch attached to the ECS instance.
          */
         vswitchId: string;
     }
@@ -23344,7 +23463,7 @@ export namespace ecs {
         regionId: string;
         status: string;
         /**
-         * The ID of the VSwitch attached to the ECS instance.
+         * The ID of the vSwitch attached to the ECS instance.
          */
         vswitchId: string;
     }
@@ -23367,6 +23486,7 @@ export namespace ecs {
          * ID of the instance that the ENI is attached to.
          */
         instanceId: string;
+        ipv6Sets: string[];
         /**
          * MAC address of the ENI.
          */
@@ -23415,7 +23535,7 @@ export namespace ecs {
          */
         vpcId: string;
         /**
-         * ID of the VSwitch that the ENI is linked to.
+         * ID of the vSwitch that the ENI is linked to.
          */
         vswitchId: string;
         /**
@@ -24256,7 +24376,7 @@ export namespace eds {
          */
         vpcId: string;
         /**
-         * List of VSwitch IDs in the directory.
+         * List of vSwitch IDs in the directory.
          */
         vswitchIds: string[];
     }
@@ -24283,7 +24403,7 @@ export namespace eds {
          */
         trustKey: string;
         /**
-         * The ID of VSwitch.
+         * The ID of vSwitch.
          */
         vswitchId: string;
     }
@@ -24425,7 +24545,7 @@ export namespace eds {
          */
         networkInterfaceId: string;
         /**
-         * AD Connector in the Network Corresponding to the ID of the VSwitch in.
+         * AD Connector in the Network Corresponding to the ID of the vSwitch in.
          */
         vswitchId: string;
     }
@@ -25144,7 +25264,7 @@ export namespace eds {
          */
         vpcId: string;
         /**
-         * List of VSwitch IDs in the directory.
+         * List of vSwitch IDs in the directory.
          */
         vswitchIds: string[];
     }
@@ -25163,7 +25283,7 @@ export namespace eds {
          */
         networkInterfaceId: string;
         /**
-         * The ID of VSwitch.
+         * The ID of vSwitch.
          */
         vswitchId: string;
     }
@@ -29458,7 +29578,7 @@ export namespace fc {
          */
         vpcId: string;
         /**
-         * Associated VSwitch IDs.
+         * Associated vSwitch IDs.
          */
         vswitchIds: string[];
     }
@@ -29709,6 +29829,432 @@ export namespace fc {
          * max running time of function.
          */
         timeout?: number;
+    }
+
+    export interface V3AsyncInvokeConfigDestinationConfig {
+        /**
+         * Failed callback target structure. See `onFailure` below.
+         */
+        onFailure?: outputs.fc.V3AsyncInvokeConfigDestinationConfigOnFailure;
+        /**
+         * Successful callback target structure. See `onSuccess` below.
+         */
+        onSuccess?: outputs.fc.V3AsyncInvokeConfigDestinationConfigOnSuccess;
+    }
+
+    export interface V3AsyncInvokeConfigDestinationConfigOnFailure {
+        /**
+         * Asynchronous call target Resource Descriptor.
+         */
+        destination?: string;
+    }
+
+    export interface V3AsyncInvokeConfigDestinationConfigOnSuccess {
+        /**
+         * Asynchronous call target Resource Descriptor.
+         */
+        destination?: string;
+    }
+
+    export interface V3CustomDomainAuthConfig {
+        /**
+         * Authentication Information.
+         */
+        authInfo?: string;
+        /**
+         * Authentication type. anonymous, function, or jwt.
+         */
+        authType?: string;
+    }
+
+    export interface V3CustomDomainCertConfig {
+        /**
+         * Certificate Name.
+         */
+        certName?: string;
+        /**
+         * PEM format certificate.
+         */
+        certificate?: string;
+        /**
+         * Private Key in PEM format.
+         */
+        privateKey?: string;
+    }
+
+    export interface V3CustomDomainRouteConfig {
+        /**
+         * Routing Configuration List. See `routes` below.
+         */
+        routes?: outputs.fc.V3CustomDomainRouteConfigRoute[];
+    }
+
+    export interface V3CustomDomainRouteConfigRoute {
+        /**
+         * Function name.
+         */
+        functionName?: string;
+        /**
+         * List of supported HTTP methods.
+         */
+        methods?: string[];
+        /**
+         * Route matching rule.
+         */
+        path?: string;
+        /**
+         * Version or Alias.
+         */
+        qualifier?: string;
+        /**
+         * Override Configuration. See `rewriteConfig` below.
+         */
+        rewriteConfig: outputs.fc.V3CustomDomainRouteConfigRouteRewriteConfig;
+    }
+
+    export interface V3CustomDomainRouteConfigRouteRewriteConfig {
+        /**
+         * Exact Match Rule List. See `equalRules` below.
+         */
+        equalRules?: outputs.fc.V3CustomDomainRouteConfigRouteRewriteConfigEqualRule[];
+        /**
+         * Regular match rule list. See `regexRules` below.
+         */
+        regexRules?: outputs.fc.V3CustomDomainRouteConfigRouteRewriteConfigRegexRule[];
+        /**
+         * List of wildcard matching rules. See `wildcardRules` below.
+         */
+        wildcardRules?: outputs.fc.V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule[];
+    }
+
+    export interface V3CustomDomainRouteConfigRouteRewriteConfigEqualRule {
+        /**
+         * Matching Rules.
+         */
+        match?: string;
+        /**
+         * Replace Rules.
+         */
+        replacement?: string;
+    }
+
+    export interface V3CustomDomainRouteConfigRouteRewriteConfigRegexRule {
+        /**
+         * Matching Rules.
+         */
+        match?: string;
+        /**
+         * Replace Rules.
+         */
+        replacement?: string;
+    }
+
+    export interface V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule {
+        /**
+         * Matching Rules.
+         */
+        match?: string;
+        /**
+         * Replace Rules.
+         */
+        replacement?: string;
+    }
+
+    export interface V3CustomDomainTlsConfig {
+        /**
+         * List of TLS cipher suites.
+         */
+        cipherSuites?: string[];
+        /**
+         * The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+         */
+        maxVersion?: string;
+        /**
+         * TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+         */
+        minVersion?: string;
+    }
+
+    export interface V3CustomDomainWafConfig {
+        /**
+         * Enable WAF protection.
+         */
+        enableWaf?: boolean;
+    }
+
+    export interface V3FunctionCode {
+        /**
+         * The CRC-64 value of the function code package.
+         */
+        checksum?: string;
+        /**
+         * The name of the OSS Bucket that stores the function code ZIP package.
+         */
+        ossBucketName?: string;
+        /**
+         * The name of the OSS Object that stores the function code ZIP package.
+         */
+        ossObjectName?: string;
+        /**
+         * The Base 64 encoding of the function code ZIP package.
+         */
+        zipFile?: string;
+    }
+
+    export interface V3FunctionCustomContainerConfig {
+        /**
+         * (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+         *
+         * @deprecated Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
+         */
+        accelerationInfo: outputs.fc.V3FunctionCustomContainerConfigAccelerationInfo;
+        /**
+         * Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+         *
+         * @deprecated Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
+         */
+        accelerationType?: string;
+        /**
+         * ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+         *
+         * @deprecated Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
+         */
+        acrInstanceId?: string;
+        /**
+         * Container startup parameters.
+         */
+        commands?: string[];
+        /**
+         * Container start command.
+         */
+        entrypoints?: string[];
+        /**
+         * Function custom health check configuration. See `healthCheckConfig` below.
+         */
+        healthCheckConfig?: outputs.fc.V3FunctionCustomContainerConfigHealthCheckConfig;
+        /**
+         * The container Image address.
+         */
+        image?: string;
+        /**
+         * The listening port of the HTTP Server when the custom container runs.
+         */
+        port?: number;
+        /**
+         * The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
+         */
+        resolvedImageUri: string;
+    }
+
+    export interface V3FunctionCustomContainerConfigAccelerationInfo {
+        /**
+         * Image Acceleration Status (Deprecated).
+         *
+         * @deprecated Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)
+         */
+        status: string;
+    }
+
+    export interface V3FunctionCustomContainerConfigHealthCheckConfig {
+        failureThreshold?: number;
+        httpGetUrl?: string;
+        initialDelaySeconds?: number;
+        periodSeconds?: number;
+        successThreshold?: number;
+        timeoutSeconds?: number;
+    }
+
+    export interface V3FunctionCustomDns {
+        /**
+         * List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dnsOptions` below.
+         */
+        dnsOptions?: outputs.fc.V3FunctionCustomDnsDnsOption[];
+        /**
+         * IP Address List of DNS servers.
+         */
+        nameServers?: string[];
+        /**
+         * DNS search domain list.
+         */
+        searches?: string[];
+    }
+
+    export interface V3FunctionCustomDnsDnsOption {
+        /**
+         * Configuration Item Name.
+         */
+        name?: string;
+        /**
+         * Configuration Item Value.
+         */
+        value?: string;
+    }
+
+    export interface V3FunctionCustomRuntimeConfig {
+        /**
+         * Instance startup parameters.
+         */
+        args?: string[];
+        /**
+         * Instance start command.
+         */
+        commands?: string[];
+        /**
+         * Function custom health check configuration. See `healthCheckConfig` below.
+         */
+        healthCheckConfig?: outputs.fc.V3FunctionCustomRuntimeConfigHealthCheckConfig;
+        /**
+         * The listening port of the HTTP Server.
+         */
+        port: number;
+    }
+
+    export interface V3FunctionCustomRuntimeConfigHealthCheckConfig {
+        failureThreshold: number;
+        httpGetUrl?: string;
+        initialDelaySeconds?: number;
+        periodSeconds?: number;
+        successThreshold?: number;
+        timeoutSeconds?: number;
+    }
+
+    export interface V3FunctionGpuConfig {
+        /**
+         * GPU memory specification, unit: MB, multiple of 1024MB.
+         */
+        gpuMemorySize?: number;
+        /**
+         * GPU card architecture.
+         * - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+         * - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+         * - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+         */
+        gpuType?: string;
+    }
+
+    export interface V3FunctionInstanceLifecycleConfig {
+        /**
+         * Initializer handler method configuration. See `initializer` below.
+         */
+        initializer?: outputs.fc.V3FunctionInstanceLifecycleConfigInitializer;
+        /**
+         * PreStop handler method configuration. See `preStop` below.
+         */
+        preStop?: outputs.fc.V3FunctionInstanceLifecycleConfigPreStop;
+    }
+
+    export interface V3FunctionInstanceLifecycleConfigInitializer {
+        /**
+         * Function Handler: the call entry for the function compute system to run your function.
+         */
+        handler?: string;
+        /**
+         * The maximum running time of the function, in seconds.
+         */
+        timeout?: number;
+    }
+
+    export interface V3FunctionInstanceLifecycleConfigPreStop {
+        /**
+         * Function Handler: the call entry for the function compute system to run your function.
+         */
+        handler?: string;
+        /**
+         * The maximum running time of the function, in seconds.
+         */
+        timeout?: number;
+    }
+
+    export interface V3FunctionLogConfig {
+        /**
+         * After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
+         */
+        enableInstanceMetrics: boolean;
+        /**
+         * After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
+         */
+        enableRequestMetrics: boolean;
+        /**
+         * Log Line First Matching Rules.
+         */
+        logBeginRule: string;
+        /**
+         * The Logstore name of log service.
+         */
+        logstore?: string;
+        /**
+         * The name of the log service Project.
+         */
+        project?: string;
+    }
+
+    export interface V3FunctionNasConfig {
+        /**
+         * Group ID.
+         */
+        groupId: number;
+        /**
+         * Mount point list. See `mountPoints` below.
+         */
+        mountPoints?: outputs.fc.V3FunctionNasConfigMountPoint[];
+        /**
+         * Account ID.
+         */
+        userId: number;
+    }
+
+    export interface V3FunctionNasConfigMountPoint {
+        /**
+         * Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
+         */
+        enableTls?: boolean;
+        mountDir?: string;
+        /**
+         * NAS server address.
+         */
+        serverAddr?: string;
+    }
+
+    export interface V3FunctionOssMountConfig {
+        /**
+         * OSS mount point list. See `mountPoints` below.
+         */
+        mountPoints?: outputs.fc.V3FunctionOssMountConfigMountPoint[];
+    }
+
+    export interface V3FunctionOssMountConfigMountPoint {
+        /**
+         * OSS Bucket name.
+         */
+        bucketName?: string;
+        /**
+         * Path of the mounted OSS Bucket.
+         */
+        bucketPath?: string;
+        /**
+         * OSS access endpoint.
+         */
+        endpoint?: string;
+        mountDir?: string;
+        /**
+         * Read-only.
+         */
+        readOnly?: boolean;
+    }
+
+    export interface V3FunctionVpcConfig {
+        /**
+         * Security group ID.
+         */
+        securityGroupId?: string;
+        /**
+         * VPC network ID.
+         */
+        vpcId?: string;
+        /**
+         * Switch List.
+         */
+        vswitchIds?: string[];
     }
 
 }
@@ -30927,6 +31473,39 @@ export namespace ga {
          * The end listening port used to receive requests and forward them to terminal nodes.
          */
         toPort: number;
+    }
+
+}
+
+export namespace governance {
+    export interface BaselineBaselineItem {
+        /**
+         * Baseline item configuration. The format is a JSON string.
+         */
+        config?: string;
+        /**
+         * The baseline item name.
+         */
+        name?: string;
+        /**
+         * The baseline item version.
+         */
+        version: string;
+    }
+
+    export interface GetBaselinesBaseline {
+        /**
+         * Baseline ID
+         */
+        baselineId: string;
+        /**
+         * Baseline Name.
+         */
+        baselineName: string;
+        /**
+         * Baseline Description.
+         */
+        description: string;
     }
 
 }
@@ -33518,7 +34097,7 @@ export namespace kvstore {
          */
         vpcInstanceId: string;
         /**
-         * The ID of the VSwitch.
+         * The ID of the vSwitch.
          */
         vswitchId: string;
     }
@@ -34459,15 +35038,22 @@ export namespace marketplace {
 
 export namespace maxcompute {
     export interface GetProjectsProject {
+        /**
+         * Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
+         */
         comment: string;
         /**
-         * Default Computing Resource Group
+         * View the current storage size of the Project. The storage size is the same as the measurement size, that is, the compressed logical storage size collected by the Project.
+         */
+        costStorage: string;
+        /**
+         * Represents the creation time of the project
+         */
+        createTime: string;
+        /**
+         * Used to implement computing resource allocation.If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
          */
         defaultQuota: string;
-        /**
-         * Project ID. The value is the same as `projectName`.
-         */
-        id: string;
         /**
          * IP whitelist
          */
@@ -34477,7 +35063,7 @@ export namespace maxcompute {
          */
         owner: string;
         /**
-         * The name of the resource
+         * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
          */
         projectName: string;
         /**
@@ -34489,7 +35075,7 @@ export namespace maxcompute {
          */
         securityProperties: outputs.maxcompute.GetProjectsProjectSecurityProperties;
         /**
-         * The status of the resource
+         * The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
          */
         status: string;
         /**
@@ -34500,18 +35086,18 @@ export namespace maxcompute {
 
     export interface GetProjectsProjectIpWhiteList {
         /**
-         * Classic network IP white list.
+         * Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
          */
         ipList: string;
         /**
-         * VPC network whitelist.
+         * Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
          */
         vpcIpList: string;
     }
 
     export interface GetProjectsProjectProperties {
         /**
-         * Whether to allow full table scan.
+         * Whether to allow full table scan. Default: false.
          */
         allowFullScan: boolean;
         /**
@@ -34519,42 +35105,42 @@ export namespace maxcompute {
          */
         enableDecimal2: boolean;
         /**
-         * Whether encryption is turned on.
+         * Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)> **NOTE :**:To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm.
          */
         encryption: outputs.maxcompute.GetProjectsProjectPropertiesEncryption;
         /**
-         * Job default retention time.
+         * Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.The effective policy after adjusting the backup cycle is:Extend the backup cycle: The new backup cycle takes effect on the same day.Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
          */
-        retentionDays: string;
+        retentionDays: number;
         /**
-         * SQL charge limit.
+         * Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).Unit: scan volume (GB)* complexity.
          */
         sqlMeteringMax: string;
         /**
-         * Life cycle of tables.
+         * Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,.
          */
         tableLifecycle: outputs.maxcompute.GetProjectsProjectPropertiesTableLifecycle;
         /**
-         * Project time zone.
+         * Project time zone, example value: Asia/Shanghai.
          */
         timezone: string;
         /**
-         * Type system.
+         * Data type version. Value:(1/2/hive)1: The original MaxCompute type system.2: New type system introduced by MaxCompute 2.0.hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
          */
         typeSystem: string;
     }
 
     export interface GetProjectsProjectPropertiesEncryption {
         /**
-         * Algorithm.
+         * The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
          */
         algorithm: string;
         /**
-         * Whether to open.
+         * Only enable function is supported. Value: (true).
          */
         enable: boolean;
         /**
-         * Encryption algorithm key.
+         * The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
          */
         key: string;
     }
@@ -34565,26 +35151,26 @@ export namespace maxcompute {
          */
         type: string;
         /**
-         * The value of the life cycle.
+         * The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
          */
         value: string;
     }
 
     export interface GetProjectsProjectSecurityProperties {
         /**
-         * Whether to enable download permission check.
+         * Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
          */
         enableDownloadPrivilege: boolean;
         /**
-         * Label authorization.
+         * Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
          */
         labelSecurity: boolean;
         /**
-         * Project creator permissions.
+         * Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
          */
         objectCreatorHasAccessPermission: boolean;
         /**
-         * Does the project creator have authorization rights.
+         * The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
          */
         objectCreatorHasGrantPermission: boolean;
         /**
@@ -34592,22 +35178,22 @@ export namespace maxcompute {
          */
         projectProtection: outputs.maxcompute.GetProjectsProjectSecurityPropertiesProjectProtection;
         /**
-         * Whether to turn on ACL.
+         * Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          */
         usingAcl: boolean;
         /**
-         * Whether to enable Policy.
+         * Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
          */
         usingPolicy: boolean;
     }
 
     export interface GetProjectsProjectSecurityPropertiesProjectProtection {
         /**
-         * Exclusion policy.
+         * Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
          */
         exceptionPolicy: string;
         /**
-         * Is it turned on.
+         * Whether enabled, value:(true/false).
          */
         protected: boolean;
     }
@@ -39044,7 +39630,7 @@ export namespace polardb {
          */
         vpcId: string;
         /**
-         * ID of the VSwitch the cluster belongs to.
+         * ID of the vSwitch the cluster belongs to.
          */
         vswitchId: string;
     }
@@ -39298,7 +39884,7 @@ export namespace privatelink {
          */
         status: string;
         /**
-         * The VSwitch id.
+         * The vSwitch id.
          */
         vswitchId: string;
         /**
@@ -46155,7 +46741,7 @@ export namespace slb {
          */
         vpcId: string;
         /**
-         * ID of the VSwitch linked to the SLBs.
+         * ID of the vSwitch linked to the SLBs.
          */
         vswitchId: string;
     }
@@ -46245,7 +46831,7 @@ export namespace slb {
          */
         vpcId: string;
         /**
-         * ID of the VSwitch linked to the SLBs.
+         * ID of the vSwitch linked to the SLBs.
          */
         vswitchId: string;
     }
@@ -46563,7 +47149,7 @@ export namespace slb {
          */
         vpcId: string;
         /**
-         * ID of the VSwitch linked to the SLBs.
+         * ID of the vSwitch linked to the SLBs.
          */
         vswitchId: string;
     }
@@ -46649,7 +47235,7 @@ export namespace slb {
          */
         vpcId: string;
         /**
-         * ID of the VSwitch linked to the SLBs.
+         * ID of the vSwitch linked to the SLBs.
          */
         vswitchId: string;
     }
@@ -49216,7 +49802,7 @@ export namespace vpc {
          */
         vrouterId: string;
         /**
-         * List of VSwitch IDs in the specified VPC
+         * List of vSwitch IDs in the specified VPC
          */
         vswitchIds: string[];
     }
@@ -49708,7 +50294,7 @@ export namespace vpc {
 
     export interface GetSwitchesVswitch {
         /**
-         * The available ip address count of the VSwitch.
+         * The available ip address count of the vSwitch.
          */
         availableIpAddressCount: number;
         /**
@@ -49720,11 +50306,11 @@ export namespace vpc {
          */
         creationTime: string;
         /**
-         * Description of the VSwitch.
+         * Description of the vSwitch.
          */
         description: string;
         /**
-         * ID of the VSwitch.
+         * ID of the vSwitch.
          */
         id: string;
         /**
@@ -49732,11 +50318,11 @@ export namespace vpc {
          */
         ipv6CidrBlock: string;
         /**
-         * Indicate whether the VSwitch is created by the system.
+         * Indicate whether the vSwitch is created by the system.
          */
         isDefault: boolean;
         /**
-         * Name of the VSwitch.
+         * Name of the vSwitch.
          */
         name: string;
         /**
@@ -49744,11 +50330,11 @@ export namespace vpc {
          */
         resourceGroupId: string;
         /**
-         * The route table ID of the VSwitch.
+         * The route table ID of the vSwitch.
          */
         routeTableId: string;
         /**
-         * The status of the VSwitch. Valid values: `Available` and `Pending`.
+         * The status of the vSwitch. Valid values: `Available` and `Pending`.
          */
         status: string;
         /**
@@ -49756,19 +50342,19 @@ export namespace vpc {
          */
         tags: {[key: string]: any};
         /**
-         * ID of the VPC that owns the VSwitch.
+         * ID of the VPC that owns the vSwitch.
          */
         vpcId: string;
         /**
-         * ID of the VSwitch.
+         * ID of the vSwitch.
          */
         vswitchId: string;
         /**
-         * The name of the VSwitch.
+         * The name of the vSwitch.
          */
         vswitchName: string;
         /**
-         * The availability zone of the VSwitch.
+         * The availability zone of the vSwitch.
          */
         zoneId: string;
     }
@@ -51093,7 +51679,7 @@ export namespace vpn {
          */
         disasterRecoveryInternetIp: string;
         /**
-         * - The ID of the backup VSwitch to which the VPN gateway is attached.
+         * - The ID of the backup vSwitch to which the VPN gateway is attached.
          */
         disasterRecoveryVswitchId: string;
         /**
@@ -51161,7 +51747,7 @@ export namespace vpn {
          */
         vpnType: string;
         /**
-         * - The ID of the VSwitch to which the VPN gateway is attached.
+         * - The ID of the vSwitch to which the VPN gateway is attached.
          */
         vswitchId: string;
     }

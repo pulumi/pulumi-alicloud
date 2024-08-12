@@ -26,7 +26,7 @@ public final class GetAdConnectorOfficeSitesSiteAdConnector {
      */
     private String networkInterfaceId;
     /**
-     * @return AD Connector in the Network Corresponding to the ID of the VSwitch in.
+     * @return AD Connector in the Network Corresponding to the ID of the vSwitch in.
      * 
      */
     private String vswitchId;
@@ -54,7 +54,7 @@ public final class GetAdConnectorOfficeSitesSiteAdConnector {
         return this.networkInterfaceId;
     }
     /**
-     * @return AD Connector in the Network Corresponding to the ID of the VSwitch in.
+     * @return AD Connector in the Network Corresponding to the ID of the vSwitch in.
      * 
      */
     public String vswitchId() {

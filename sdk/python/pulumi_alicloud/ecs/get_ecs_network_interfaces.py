@@ -97,17 +97,26 @@ class GetEcsNetworkInterfacesResult:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[str]:
+        """
+        The instance id.
+        """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter
     def interfaces(self) -> Sequence['outputs.GetEcsNetworkInterfacesInterfaceResult']:
+        """
+        A list of Ecs Network Interfaces. Each element contains the following attributes:
+        """
         return pulumi.get(self, "interfaces")
 
     @property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
     def name(self) -> Optional[str]:
+        """
+        The network interface name.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -118,11 +127,17 @@ class GetEcsNetworkInterfacesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Network Interface names.
+        """
         return pulumi.get(self, "names")
 
     @property
     @pulumi.getter(name="networkInterfaceName")
     def network_interface_name(self) -> Optional[str]:
+        """
+        The network interface name.
+        """
         return pulumi.get(self, "network_interface_name")
 
     @property
@@ -133,17 +148,26 @@ class GetEcsNetworkInterfacesResult:
     @property
     @pulumi.getter(name="primaryIpAddress")
     def primary_ip_address(self) -> Optional[str]:
+        """
+        The primary private IP address of the ENI.
+        """
         return pulumi.get(self, "primary_ip_address")
 
     @property
     @pulumi.getter(name="privateIp")
     @_utilities.deprecated("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
     def private_ip(self) -> Optional[str]:
+        """
+        The primary private IP address of the ENI.
+        """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
+        """
+        The resource group id.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
@@ -154,31 +178,49 @@ class GetEcsNetworkInterfacesResult:
     @property
     @pulumi.getter(name="serviceManaged")
     def service_managed(self) -> Optional[bool]:
+        """
+        Whether the user of the elastic network card is a cloud product or a virtual vendor.
+        """
         return pulumi.get(self, "service_managed")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the ENI.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        The tags.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        The type of the ENI.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
+        """
+        The Vpc Id.
+        """
         return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[str]:
+        """
+        The vswitch id.
+        """
         return pulumi.get(self, "vswitch_id")
 
 
@@ -229,7 +271,7 @@ def get_ecs_network_interfaces(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.123.1+.
+    > **NOTE:** Available since v1.123.1.
 
     ## Example Usage
 
@@ -239,8 +281,7 @@ def get_ecs_network_interfaces(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ecs.get_ecs_network_interfaces(ids=["eni-abcd1234"],
-        name_regex="tf-testAcc")
+    example = alicloud.ecs.get_ecs_network_interfaces(name_regex="eni-ipv6")
     pulumi.export("firstEcsNetworkInterfaceId", example.interfaces[0].id)
     ```
 
@@ -325,7 +366,7 @@ def get_ecs_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequen
     """
     This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.123.1+.
+    > **NOTE:** Available since v1.123.1.
 
     ## Example Usage
 
@@ -335,8 +376,7 @@ def get_ecs_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequen
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ecs.get_ecs_network_interfaces(ids=["eni-abcd1234"],
-        name_regex="tf-testAcc")
+    example = alicloud.ecs.get_ecs_network_interfaces(name_regex="eni-ipv6")
     pulumi.export("firstEcsNetworkInterfaceId", example.interfaces[0].id)
     ```
 

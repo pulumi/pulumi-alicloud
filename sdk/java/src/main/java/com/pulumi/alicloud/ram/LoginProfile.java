@@ -84,18 +84,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ram/loginProfile:LoginProfile")
 public class LoginProfile extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+     * Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
      * 
      */
     @Export(name="mfaBindRequired", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> mfaBindRequired;
+    private Output<Boolean> mfaBindRequired;
 
     /**
-     * @return Specifies whether an MFA device must be attached to the RAM user upon logon. Default value: `false`. Valid values: `true`, `false`.
+     * @return Specifies whether an MFA device must be attached to the RAM user upon logon. Valid values: `true`, `false`. [To enhance the security of your resources and data, the default value has been changed to `true`](https://www.alibabacloud.com/en/notice/mfa20240524?_p_lc=1) .
      * 
      */
-    public Output<Optional<Boolean>> mfaBindRequired() {
-        return Codegen.optional(this.mfaBindRequired);
+    public Output<Boolean> mfaBindRequired() {
+        return this.mfaBindRequired;
     }
     /**
      * The logon password of the RAM user. The password must meet the password strength requirements.

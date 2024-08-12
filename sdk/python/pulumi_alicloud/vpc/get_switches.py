@@ -79,7 +79,7 @@ class GetSwitchesResult:
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> Optional[str]:
         """
-        CIDR block of the VSwitch.
+        CIDR block of the vSwitch.
         """
         return pulumi.get(self, "cidr_block")
 
@@ -100,7 +100,7 @@ class GetSwitchesResult:
     @pulumi.getter
     def ids(self) -> Sequence[str]:
         """
-        A list of VSwitch IDs.
+        A list of vSwitch IDs.
         """
         return pulumi.get(self, "ids")
 
@@ -108,7 +108,7 @@ class GetSwitchesResult:
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[bool]:
         """
-        Whether the VSwitch is the default one in the region.
+        Whether the vSwitch is the default one in the region.
         """
         return pulumi.get(self, "is_default")
 
@@ -121,7 +121,7 @@ class GetSwitchesResult:
     @pulumi.getter
     def names(self) -> Sequence[str]:
         """
-        A list of VSwitch names.
+        A list of vSwitch names.
         """
         return pulumi.get(self, "names")
 
@@ -134,7 +134,7 @@ class GetSwitchesResult:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
         """
-        The resource group ID of the VSwitch.
+        The resource group ID of the vSwitch.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -142,7 +142,7 @@ class GetSwitchesResult:
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[str]:
         """
-        The route table ID of the VSwitch.
+        The route table ID of the vSwitch.
         """
         return pulumi.get(self, "route_table_id")
 
@@ -150,7 +150,7 @@ class GetSwitchesResult:
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        The status of the VSwitch.
+        The status of the vSwitch.
         """
         return pulumi.get(self, "status")
 
@@ -158,7 +158,7 @@ class GetSwitchesResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
-        The Tags of the VSwitch.
+        The Tags of the vSwitch.
         """
         return pulumi.get(self, "tags")
 
@@ -166,7 +166,7 @@ class GetSwitchesResult:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
         """
-        ID of the VPC that owns the VSwitch.
+        ID of the VPC that owns the vSwitch.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -174,7 +174,7 @@ class GetSwitchesResult:
     @pulumi.getter(name="vswitchName")
     def vswitch_name(self) -> Optional[str]:
         """
-        Name of the VSwitch.
+        Name of the vSwitch.
         """
         return pulumi.get(self, "vswitch_name")
 
@@ -195,7 +195,7 @@ class GetSwitchesResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[str]:
         """
-        ID of the availability zone where the VSwitch is located.
+        ID of the availability zone where the vSwitch is located.
         """
         return pulumi.get(self, "zone_id")
 
@@ -268,18 +268,18 @@ def get_switches(cidr_block: Optional[str] = None,
 
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
     :param bool dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
-    :param Sequence[str] ids: A list of VSwitch IDs.
-    :param bool is_default: Indicate whether the VSwitch is created by the system.
+    :param Sequence[str] ids: A list of vSwitch IDs.
+    :param bool is_default: Indicate whether the vSwitch is created by the system.
     :param str name_regex: A regex string to filter results by name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which VSWitch belongs.
-    :param str route_table_id: The route table ID of the VSwitch.
-    :param str status: The status of the VSwitch. Valid values: `Available` and `Pending`.
+    :param str route_table_id: The route table ID of the vSwitch.
+    :param str status: The status of the vSwitch. Valid values: `Available` and `Pending`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
-    :param str vpc_id: ID of the VPC that owns the VSwitch.
-    :param str vswitch_name: The name of the VSwitch.
-    :param int vswitch_owner_id: The VSwitch owner id.
-    :param str zone_id: The availability zone of the VSwitch.
+    :param str vpc_id: ID of the VPC that owns the vSwitch.
+    :param str vswitch_name: The name of the vSwitch.
+    :param int vswitch_owner_id: The vSwitch owner id.
+    :param str zone_id: The availability zone of the vSwitch.
     """
     __args__ = dict()
     __args__['cidrBlock'] = cidr_block
@@ -363,17 +363,17 @@ def get_switches_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
 
     :param str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
     :param bool dry_run: Specifies whether to precheck this request only. Valid values: `true` and `false`.
-    :param Sequence[str] ids: A list of VSwitch IDs.
-    :param bool is_default: Indicate whether the VSwitch is created by the system.
+    :param Sequence[str] ids: A list of vSwitch IDs.
+    :param bool is_default: Indicate whether the vSwitch is created by the system.
     :param str name_regex: A regex string to filter results by name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which VSWitch belongs.
-    :param str route_table_id: The route table ID of the VSwitch.
-    :param str status: The status of the VSwitch. Valid values: `Available` and `Pending`.
+    :param str route_table_id: The route table ID of the vSwitch.
+    :param str status: The status of the vSwitch. Valid values: `Available` and `Pending`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
-    :param str vpc_id: ID of the VPC that owns the VSwitch.
-    :param str vswitch_name: The name of the VSwitch.
-    :param int vswitch_owner_id: The VSwitch owner id.
-    :param str zone_id: The availability zone of the VSwitch.
+    :param str vpc_id: ID of the VPC that owns the vSwitch.
+    :param str vswitch_name: The name of the vSwitch.
+    :param int vswitch_owner_id: The vSwitch owner id.
+    :param str zone_id: The availability zone of the vSwitch.
     """
     ...

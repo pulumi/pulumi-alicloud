@@ -116,7 +116,7 @@ export class BgpPeer extends pulumi.CustomResource {
     /**
      * The IP address of the BGP peer.
      */
-    public readonly peerIpAddress!: pulumi.Output<string | undefined>;
+    public readonly peerIpAddress!: pulumi.Output<string>;
     /**
      * Status of BGP neighbors.
      */

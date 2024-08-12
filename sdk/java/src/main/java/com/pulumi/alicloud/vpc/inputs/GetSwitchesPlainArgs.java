@@ -50,14 +50,14 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * A list of VSwitch IDs.
+     * A list of vSwitch IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of VSwitch IDs.
+     * @return A list of vSwitch IDs.
      * 
      */
     public Optional<List<String>> ids() {
@@ -65,14 +65,14 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Indicate whether the VSwitch is created by the system.
+     * Indicate whether the vSwitch is created by the system.
      * 
      */
     @Import(name="isDefault")
     private @Nullable Boolean isDefault;
 
     /**
-     * @return Indicate whether the VSwitch is created by the system.
+     * @return Indicate whether the vSwitch is created by the system.
      * 
      */
     public Optional<Boolean> isDefault() {
@@ -125,14 +125,14 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The route table ID of the VSwitch.
+     * The route table ID of the vSwitch.
      * 
      */
     @Import(name="routeTableId")
     private @Nullable String routeTableId;
 
     /**
-     * @return The route table ID of the VSwitch.
+     * @return The route table ID of the vSwitch.
      * 
      */
     public Optional<String> routeTableId() {
@@ -140,14 +140,14 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The status of the VSwitch. Valid values: `Available` and `Pending`.
+     * The status of the vSwitch. Valid values: `Available` and `Pending`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the VSwitch. Valid values: `Available` and `Pending`.
+     * @return The status of the vSwitch. Valid values: `Available` and `Pending`.
      * 
      */
     public Optional<String> status() {
@@ -170,14 +170,14 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * ID of the VPC that owns the VSwitch.
+     * ID of the VPC that owns the vSwitch.
      * 
      */
     @Import(name="vpcId")
     private @Nullable String vpcId;
 
     /**
-     * @return ID of the VPC that owns the VSwitch.
+     * @return ID of the VPC that owns the vSwitch.
      * 
      */
     public Optional<String> vpcId() {
@@ -185,14 +185,14 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The name of the VSwitch.
+     * The name of the vSwitch.
      * 
      */
     @Import(name="vswitchName")
     private @Nullable String vswitchName;
 
     /**
-     * @return The name of the VSwitch.
+     * @return The name of the vSwitch.
      * 
      */
     public Optional<String> vswitchName() {
@@ -200,14 +200,14 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The VSwitch owner id.
+     * The vSwitch owner id.
      * 
      */
     @Import(name="vswitchOwnerId")
     private @Nullable Integer vswitchOwnerId;
 
     /**
-     * @return The VSwitch owner id.
+     * @return The vSwitch owner id.
      * 
      */
     public Optional<Integer> vswitchOwnerId() {
@@ -215,14 +215,14 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The availability zone of the VSwitch.
+     * The availability zone of the vSwitch.
      * 
      */
     @Import(name="zoneId")
     private @Nullable String zoneId;
 
     /**
-     * @return The availability zone of the VSwitch.
+     * @return The availability zone of the vSwitch.
      * 
      */
     public Optional<String> zoneId() {
@@ -289,7 +289,7 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param ids A list of VSwitch IDs.
+         * @param ids A list of vSwitch IDs.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param ids A list of VSwitch IDs.
+         * @param ids A list of vSwitch IDs.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param isDefault Indicate whether the VSwitch is created by the system.
+         * @param isDefault Indicate whether the vSwitch is created by the system.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param routeTableId The route table ID of the VSwitch.
+         * @param routeTableId The route table ID of the vSwitch.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The status of the VSwitch. Valid values: `Available` and `Pending`.
+         * @param status The status of the vSwitch. Valid values: `Available` and `Pending`.
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param vpcId ID of the VPC that owns the VSwitch.
+         * @param vpcId ID of the VPC that owns the vSwitch.
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param vswitchName The name of the VSwitch.
+         * @param vswitchName The name of the vSwitch.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param vswitchOwnerId The VSwitch owner id.
+         * @param vswitchOwnerId The vSwitch owner id.
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class GetSwitchesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param zoneId The availability zone of the VSwitch.
+         * @param zoneId The availability zone of the vSwitch.
          * 
          * @return builder
          * 

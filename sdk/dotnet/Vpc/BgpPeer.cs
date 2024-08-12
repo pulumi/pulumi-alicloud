@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Vpc
         /// The IP address of the BGP peer.
         /// </summary>
         [Output("peerIpAddress")]
-        public Output<string?> PeerIpAddress { get; private set; } = null!;
+        public Output<string> PeerIpAddress { get; private set; } = null!;
 
         /// <summary>
         /// Status of BGP neighbors.

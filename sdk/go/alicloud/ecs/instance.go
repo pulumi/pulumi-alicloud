@@ -300,7 +300,7 @@ type Instance struct {
 	RoleName pulumi.StringOutput `pulumi:"roleName"`
 	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
 	SecondaryPrivateIpAddressCount pulumi.IntOutput `pulumi:"secondaryPrivateIpAddressCount"`
-	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+	// A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
 	SecondaryPrivateIps pulumi.StringArrayOutput `pulumi:"secondaryPrivateIps"`
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
@@ -565,7 +565,7 @@ type instanceState struct {
 	RoleName *string `pulumi:"roleName"`
 	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
 	SecondaryPrivateIpAddressCount *int `pulumi:"secondaryPrivateIpAddressCount"`
-	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+	// A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
 	SecondaryPrivateIps []string `pulumi:"secondaryPrivateIps"`
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
@@ -794,7 +794,7 @@ type InstanceState struct {
 	RoleName pulumi.StringPtrInput
 	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
 	SecondaryPrivateIpAddressCount pulumi.IntPtrInput
-	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+	// A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
 	SecondaryPrivateIps pulumi.StringArrayInput
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
@@ -1011,7 +1011,7 @@ type instanceArgs struct {
 	RoleName *string `pulumi:"roleName"`
 	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
 	SecondaryPrivateIpAddressCount *int `pulumi:"secondaryPrivateIpAddressCount"`
-	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+	// A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
 	SecondaryPrivateIps []string `pulumi:"secondaryPrivateIps"`
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
@@ -1223,7 +1223,7 @@ type InstanceArgs struct {
 	RoleName pulumi.StringPtrInput
 	// The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondaryPrivateIps` or `secondaryPrivateIpAddressCount` but not both.
 	SecondaryPrivateIpAddressCount pulumi.IntPtrInput
-	// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+	// A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
 	SecondaryPrivateIps pulumi.StringArrayInput
 	// The security enhancement strategy.
 	// - Active: Enable security enhancement strategy, it only works on system images.
@@ -1713,7 +1713,7 @@ func (o InstanceOutput) SecondaryPrivateIpAddressCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.SecondaryPrivateIpAddressCount }).(pulumi.IntOutput)
 }
 
-// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+// A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
 func (o InstanceOutput) SecondaryPrivateIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecondaryPrivateIps }).(pulumi.StringArrayOutput)
 }

@@ -13,6 +13,349 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AlarmCompositeExpression struct {
+	// The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
+	ExpressionListJoin *string `pulumi:"expressionListJoin"`
+	// The trigger conditions that are created in standard mode. See `expressionList` below.
+	ExpressionLists []AlarmCompositeExpressionExpressionList `pulumi:"expressionLists"`
+	// The trigger conditions that are created by using expressions.
+	ExpressionRaw *string `pulumi:"expressionRaw"`
+	// The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
+	Level *string `pulumi:"level"`
+	// The number of consecutive triggers.
+	Times *int `pulumi:"times"`
+}
+
+// AlarmCompositeExpressionInput is an input type that accepts AlarmCompositeExpressionArgs and AlarmCompositeExpressionOutput values.
+// You can construct a concrete instance of `AlarmCompositeExpressionInput` via:
+//
+//	AlarmCompositeExpressionArgs{...}
+type AlarmCompositeExpressionInput interface {
+	pulumi.Input
+
+	ToAlarmCompositeExpressionOutput() AlarmCompositeExpressionOutput
+	ToAlarmCompositeExpressionOutputWithContext(context.Context) AlarmCompositeExpressionOutput
+}
+
+type AlarmCompositeExpressionArgs struct {
+	// The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
+	ExpressionListJoin pulumi.StringPtrInput `pulumi:"expressionListJoin"`
+	// The trigger conditions that are created in standard mode. See `expressionList` below.
+	ExpressionLists AlarmCompositeExpressionExpressionListArrayInput `pulumi:"expressionLists"`
+	// The trigger conditions that are created by using expressions.
+	ExpressionRaw pulumi.StringPtrInput `pulumi:"expressionRaw"`
+	// The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
+	Level pulumi.StringPtrInput `pulumi:"level"`
+	// The number of consecutive triggers.
+	Times pulumi.IntPtrInput `pulumi:"times"`
+}
+
+func (AlarmCompositeExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmCompositeExpression)(nil)).Elem()
+}
+
+func (i AlarmCompositeExpressionArgs) ToAlarmCompositeExpressionOutput() AlarmCompositeExpressionOutput {
+	return i.ToAlarmCompositeExpressionOutputWithContext(context.Background())
+}
+
+func (i AlarmCompositeExpressionArgs) ToAlarmCompositeExpressionOutputWithContext(ctx context.Context) AlarmCompositeExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmCompositeExpressionOutput)
+}
+
+func (i AlarmCompositeExpressionArgs) ToAlarmCompositeExpressionPtrOutput() AlarmCompositeExpressionPtrOutput {
+	return i.ToAlarmCompositeExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i AlarmCompositeExpressionArgs) ToAlarmCompositeExpressionPtrOutputWithContext(ctx context.Context) AlarmCompositeExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmCompositeExpressionOutput).ToAlarmCompositeExpressionPtrOutputWithContext(ctx)
+}
+
+// AlarmCompositeExpressionPtrInput is an input type that accepts AlarmCompositeExpressionArgs, AlarmCompositeExpressionPtr and AlarmCompositeExpressionPtrOutput values.
+// You can construct a concrete instance of `AlarmCompositeExpressionPtrInput` via:
+//
+//	        AlarmCompositeExpressionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlarmCompositeExpressionPtrInput interface {
+	pulumi.Input
+
+	ToAlarmCompositeExpressionPtrOutput() AlarmCompositeExpressionPtrOutput
+	ToAlarmCompositeExpressionPtrOutputWithContext(context.Context) AlarmCompositeExpressionPtrOutput
+}
+
+type alarmCompositeExpressionPtrType AlarmCompositeExpressionArgs
+
+func AlarmCompositeExpressionPtr(v *AlarmCompositeExpressionArgs) AlarmCompositeExpressionPtrInput {
+	return (*alarmCompositeExpressionPtrType)(v)
+}
+
+func (*alarmCompositeExpressionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlarmCompositeExpression)(nil)).Elem()
+}
+
+func (i *alarmCompositeExpressionPtrType) ToAlarmCompositeExpressionPtrOutput() AlarmCompositeExpressionPtrOutput {
+	return i.ToAlarmCompositeExpressionPtrOutputWithContext(context.Background())
+}
+
+func (i *alarmCompositeExpressionPtrType) ToAlarmCompositeExpressionPtrOutputWithContext(ctx context.Context) AlarmCompositeExpressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmCompositeExpressionPtrOutput)
+}
+
+type AlarmCompositeExpressionOutput struct{ *pulumi.OutputState }
+
+func (AlarmCompositeExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmCompositeExpression)(nil)).Elem()
+}
+
+func (o AlarmCompositeExpressionOutput) ToAlarmCompositeExpressionOutput() AlarmCompositeExpressionOutput {
+	return o
+}
+
+func (o AlarmCompositeExpressionOutput) ToAlarmCompositeExpressionOutputWithContext(ctx context.Context) AlarmCompositeExpressionOutput {
+	return o
+}
+
+func (o AlarmCompositeExpressionOutput) ToAlarmCompositeExpressionPtrOutput() AlarmCompositeExpressionPtrOutput {
+	return o.ToAlarmCompositeExpressionPtrOutputWithContext(context.Background())
+}
+
+func (o AlarmCompositeExpressionOutput) ToAlarmCompositeExpressionPtrOutputWithContext(ctx context.Context) AlarmCompositeExpressionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlarmCompositeExpression) *AlarmCompositeExpression {
+		return &v
+	}).(AlarmCompositeExpressionPtrOutput)
+}
+
+// The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
+func (o AlarmCompositeExpressionOutput) ExpressionListJoin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmCompositeExpression) *string { return v.ExpressionListJoin }).(pulumi.StringPtrOutput)
+}
+
+// The trigger conditions that are created in standard mode. See `expressionList` below.
+func (o AlarmCompositeExpressionOutput) ExpressionLists() AlarmCompositeExpressionExpressionListArrayOutput {
+	return o.ApplyT(func(v AlarmCompositeExpression) []AlarmCompositeExpressionExpressionList { return v.ExpressionLists }).(AlarmCompositeExpressionExpressionListArrayOutput)
+}
+
+// The trigger conditions that are created by using expressions.
+func (o AlarmCompositeExpressionOutput) ExpressionRaw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmCompositeExpression) *string { return v.ExpressionRaw }).(pulumi.StringPtrOutput)
+}
+
+// The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
+func (o AlarmCompositeExpressionOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmCompositeExpression) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// The number of consecutive triggers.
+func (o AlarmCompositeExpressionOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlarmCompositeExpression) *int { return v.Times }).(pulumi.IntPtrOutput)
+}
+
+type AlarmCompositeExpressionPtrOutput struct{ *pulumi.OutputState }
+
+func (AlarmCompositeExpressionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlarmCompositeExpression)(nil)).Elem()
+}
+
+func (o AlarmCompositeExpressionPtrOutput) ToAlarmCompositeExpressionPtrOutput() AlarmCompositeExpressionPtrOutput {
+	return o
+}
+
+func (o AlarmCompositeExpressionPtrOutput) ToAlarmCompositeExpressionPtrOutputWithContext(ctx context.Context) AlarmCompositeExpressionPtrOutput {
+	return o
+}
+
+func (o AlarmCompositeExpressionPtrOutput) Elem() AlarmCompositeExpressionOutput {
+	return o.ApplyT(func(v *AlarmCompositeExpression) AlarmCompositeExpression {
+		if v != nil {
+			return *v
+		}
+		var ret AlarmCompositeExpression
+		return ret
+	}).(AlarmCompositeExpressionOutput)
+}
+
+// The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
+func (o AlarmCompositeExpressionPtrOutput) ExpressionListJoin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmCompositeExpression) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpressionListJoin
+	}).(pulumi.StringPtrOutput)
+}
+
+// The trigger conditions that are created in standard mode. See `expressionList` below.
+func (o AlarmCompositeExpressionPtrOutput) ExpressionLists() AlarmCompositeExpressionExpressionListArrayOutput {
+	return o.ApplyT(func(v *AlarmCompositeExpression) []AlarmCompositeExpressionExpressionList {
+		if v == nil {
+			return nil
+		}
+		return v.ExpressionLists
+	}).(AlarmCompositeExpressionExpressionListArrayOutput)
+}
+
+// The trigger conditions that are created by using expressions.
+func (o AlarmCompositeExpressionPtrOutput) ExpressionRaw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmCompositeExpression) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpressionRaw
+	}).(pulumi.StringPtrOutput)
+}
+
+// The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
+func (o AlarmCompositeExpressionPtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlarmCompositeExpression) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Level
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of consecutive triggers.
+func (o AlarmCompositeExpressionPtrOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlarmCompositeExpression) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Times
+	}).(pulumi.IntPtrOutput)
+}
+
+type AlarmCompositeExpressionExpressionList struct {
+	ComparisonOperator *string `pulumi:"comparisonOperator"`
+	// The metric that is used to monitor the cloud service.
+	MetricName *string `pulumi:"metricName"`
+	// The statistical period of the metric. Unit: seconds. Default value: `300`.
+	Period *string `pulumi:"period"`
+	// Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
+	Statistics *string `pulumi:"statistics"`
+	// Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
+	Threshold *string `pulumi:"threshold"`
+}
+
+// AlarmCompositeExpressionExpressionListInput is an input type that accepts AlarmCompositeExpressionExpressionListArgs and AlarmCompositeExpressionExpressionListOutput values.
+// You can construct a concrete instance of `AlarmCompositeExpressionExpressionListInput` via:
+//
+//	AlarmCompositeExpressionExpressionListArgs{...}
+type AlarmCompositeExpressionExpressionListInput interface {
+	pulumi.Input
+
+	ToAlarmCompositeExpressionExpressionListOutput() AlarmCompositeExpressionExpressionListOutput
+	ToAlarmCompositeExpressionExpressionListOutputWithContext(context.Context) AlarmCompositeExpressionExpressionListOutput
+}
+
+type AlarmCompositeExpressionExpressionListArgs struct {
+	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
+	// The metric that is used to monitor the cloud service.
+	MetricName pulumi.StringPtrInput `pulumi:"metricName"`
+	// The statistical period of the metric. Unit: seconds. Default value: `300`.
+	Period pulumi.StringPtrInput `pulumi:"period"`
+	// Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
+	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
+	// Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
+	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
+}
+
+func (AlarmCompositeExpressionExpressionListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmCompositeExpressionExpressionList)(nil)).Elem()
+}
+
+func (i AlarmCompositeExpressionExpressionListArgs) ToAlarmCompositeExpressionExpressionListOutput() AlarmCompositeExpressionExpressionListOutput {
+	return i.ToAlarmCompositeExpressionExpressionListOutputWithContext(context.Background())
+}
+
+func (i AlarmCompositeExpressionExpressionListArgs) ToAlarmCompositeExpressionExpressionListOutputWithContext(ctx context.Context) AlarmCompositeExpressionExpressionListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmCompositeExpressionExpressionListOutput)
+}
+
+// AlarmCompositeExpressionExpressionListArrayInput is an input type that accepts AlarmCompositeExpressionExpressionListArray and AlarmCompositeExpressionExpressionListArrayOutput values.
+// You can construct a concrete instance of `AlarmCompositeExpressionExpressionListArrayInput` via:
+//
+//	AlarmCompositeExpressionExpressionListArray{ AlarmCompositeExpressionExpressionListArgs{...} }
+type AlarmCompositeExpressionExpressionListArrayInput interface {
+	pulumi.Input
+
+	ToAlarmCompositeExpressionExpressionListArrayOutput() AlarmCompositeExpressionExpressionListArrayOutput
+	ToAlarmCompositeExpressionExpressionListArrayOutputWithContext(context.Context) AlarmCompositeExpressionExpressionListArrayOutput
+}
+
+type AlarmCompositeExpressionExpressionListArray []AlarmCompositeExpressionExpressionListInput
+
+func (AlarmCompositeExpressionExpressionListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmCompositeExpressionExpressionList)(nil)).Elem()
+}
+
+func (i AlarmCompositeExpressionExpressionListArray) ToAlarmCompositeExpressionExpressionListArrayOutput() AlarmCompositeExpressionExpressionListArrayOutput {
+	return i.ToAlarmCompositeExpressionExpressionListArrayOutputWithContext(context.Background())
+}
+
+func (i AlarmCompositeExpressionExpressionListArray) ToAlarmCompositeExpressionExpressionListArrayOutputWithContext(ctx context.Context) AlarmCompositeExpressionExpressionListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmCompositeExpressionExpressionListArrayOutput)
+}
+
+type AlarmCompositeExpressionExpressionListOutput struct{ *pulumi.OutputState }
+
+func (AlarmCompositeExpressionExpressionListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmCompositeExpressionExpressionList)(nil)).Elem()
+}
+
+func (o AlarmCompositeExpressionExpressionListOutput) ToAlarmCompositeExpressionExpressionListOutput() AlarmCompositeExpressionExpressionListOutput {
+	return o
+}
+
+func (o AlarmCompositeExpressionExpressionListOutput) ToAlarmCompositeExpressionExpressionListOutputWithContext(ctx context.Context) AlarmCompositeExpressionExpressionListOutput {
+	return o
+}
+
+func (o AlarmCompositeExpressionExpressionListOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmCompositeExpressionExpressionList) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// The metric that is used to monitor the cloud service.
+func (o AlarmCompositeExpressionExpressionListOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmCompositeExpressionExpressionList) *string { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+// The statistical period of the metric. Unit: seconds. Default value: `300`.
+func (o AlarmCompositeExpressionExpressionListOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmCompositeExpressionExpressionList) *string { return v.Period }).(pulumi.StringPtrOutput)
+}
+
+// Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
+func (o AlarmCompositeExpressionExpressionListOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmCompositeExpressionExpressionList) *string { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
+func (o AlarmCompositeExpressionExpressionListOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlarmCompositeExpressionExpressionList) *string { return v.Threshold }).(pulumi.StringPtrOutput)
+}
+
+type AlarmCompositeExpressionExpressionListArrayOutput struct{ *pulumi.OutputState }
+
+func (AlarmCompositeExpressionExpressionListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlarmCompositeExpressionExpressionList)(nil)).Elem()
+}
+
+func (o AlarmCompositeExpressionExpressionListArrayOutput) ToAlarmCompositeExpressionExpressionListArrayOutput() AlarmCompositeExpressionExpressionListArrayOutput {
+	return o
+}
+
+func (o AlarmCompositeExpressionExpressionListArrayOutput) ToAlarmCompositeExpressionExpressionListArrayOutputWithContext(ctx context.Context) AlarmCompositeExpressionExpressionListArrayOutput {
+	return o
+}
+
+func (o AlarmCompositeExpressionExpressionListArrayOutput) Index(i pulumi.IntInput) AlarmCompositeExpressionExpressionListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlarmCompositeExpressionExpressionList {
+		return vs[0].([]AlarmCompositeExpressionExpressionList)[vs[1].(int)]
+	}).(AlarmCompositeExpressionExpressionListOutput)
+}
+
 type AlarmEscalationsCritical struct {
 	// Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
@@ -720,14 +1063,15 @@ func (o AlarmPrometheusArrayOutput) Index(i pulumi.IntInput) AlarmPrometheusOutp
 }
 
 type AlarmTarget struct {
-	// The Alibaba Cloud Resource Name (ARN) of the resource.
-	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+	// ARN uniquely identifies the resource that the alert targets.
+	// > **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the "Push Channel" in the Alibaba Cloud console.
+	// **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 	Arn *string `pulumi:"arn"`
-	// The parameters of the alert callback. The parameters are in the JSON format.
+	// Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
 	JsonParams *string `pulumi:"jsonParams"`
 	// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
 	Level *string `pulumi:"level"`
-	// The ID of the resource for which alerts are triggered.
+	// The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
 	TargetId *string `pulumi:"targetId"`
 }
 
@@ -743,14 +1087,15 @@ type AlarmTargetInput interface {
 }
 
 type AlarmTargetArgs struct {
-	// The Alibaba Cloud Resource Name (ARN) of the resource.
-	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+	// ARN uniquely identifies the resource that the alert targets.
+	// > **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the "Push Channel" in the Alibaba Cloud console.
+	// **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 	Arn pulumi.StringPtrInput `pulumi:"arn"`
-	// The parameters of the alert callback. The parameters are in the JSON format.
+	// Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
 	JsonParams pulumi.StringPtrInput `pulumi:"jsonParams"`
 	// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
 	Level pulumi.StringPtrInput `pulumi:"level"`
-	// The ID of the resource for which alerts are triggered.
+	// The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
 	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
 }
 
@@ -805,13 +1150,14 @@ func (o AlarmTargetOutput) ToAlarmTargetOutputWithContext(ctx context.Context) A
 	return o
 }
 
-// The Alibaba Cloud Resource Name (ARN) of the resource.
-// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
+// ARN uniquely identifies the resource that the alert targets.
+// > **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the "Push Channel" in the Alibaba Cloud console.
+// **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 func (o AlarmTargetOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmTarget) *string { return v.Arn }).(pulumi.StringPtrOutput)
 }
 
-// The parameters of the alert callback. The parameters are in the JSON format.
+// Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
 func (o AlarmTargetOutput) JsonParams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmTarget) *string { return v.JsonParams }).(pulumi.StringPtrOutput)
 }
@@ -821,7 +1167,7 @@ func (o AlarmTargetOutput) Level() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmTarget) *string { return v.Level }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the resource for which alerts are triggered.
+// The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
 func (o AlarmTargetOutput) TargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlarmTarget) *string { return v.TargetId }).(pulumi.StringPtrOutput)
 }
@@ -847,9 +1193,9 @@ func (o AlarmTargetArrayOutput) Index(i pulumi.IntInput) AlarmTargetOutput {
 }
 
 type DynamicTagGroupMatchExpress struct {
-	// The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+	// The tag values of the cloud resources.
 	TagValue string `pulumi:"tagValue"`
-	// Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+	// The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
 	TagValueMatchFunction string `pulumi:"tagValueMatchFunction"`
 }
 
@@ -865,9 +1211,9 @@ type DynamicTagGroupMatchExpressInput interface {
 }
 
 type DynamicTagGroupMatchExpressArgs struct {
-	// The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+	// The tag values of the cloud resources.
 	TagValue pulumi.StringInput `pulumi:"tagValue"`
-	// Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+	// The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
 	TagValueMatchFunction pulumi.StringInput `pulumi:"tagValueMatchFunction"`
 }
 
@@ -922,12 +1268,12 @@ func (o DynamicTagGroupMatchExpressOutput) ToDynamicTagGroupMatchExpressOutputWi
 	return o
 }
 
-// The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+// The tag values of the cloud resources.
 func (o DynamicTagGroupMatchExpressOutput) TagValue() pulumi.StringOutput {
 	return o.ApplyT(func(v DynamicTagGroupMatchExpress) string { return v.TagValue }).(pulumi.StringOutput)
 }
 
-// Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+// The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
 func (o DynamicTagGroupMatchExpressOutput) TagValueMatchFunction() pulumi.StringOutput {
 	return o.ApplyT(func(v DynamicTagGroupMatchExpress) string { return v.TagValueMatchFunction }).(pulumi.StringOutput)
 }
@@ -3906,16 +4252,15 @@ func (o MetricRuleBlackListMetricArrayOutput) Index(i pulumi.IntInput) MetricRul
 }
 
 type MetricRuleTemplateAlertTemplate struct {
-	// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+	// The abbreviation of the Alibaba Cloud service name.
+	// > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
 	Category string `pulumi:"category"`
 	// The information about the trigger condition based on the alert level. See `escalations` below.
 	Escalations *MetricRuleTemplateAlertTemplateEscalations `pulumi:"escalations"`
 	// The name of the metric.
-	//
 	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	MetricName string `pulumi:"metricName"`
-	// The namespace of the service.
-	//
+	// The namespace of the cloud service.
 	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Namespace string `pulumi:"namespace"`
 	// The name of the alert rule.
@@ -3936,16 +4281,15 @@ type MetricRuleTemplateAlertTemplateInput interface {
 }
 
 type MetricRuleTemplateAlertTemplateArgs struct {
-	// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+	// The abbreviation of the Alibaba Cloud service name.
+	// > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
 	Category pulumi.StringInput `pulumi:"category"`
 	// The information about the trigger condition based on the alert level. See `escalations` below.
 	Escalations MetricRuleTemplateAlertTemplateEscalationsPtrInput `pulumi:"escalations"`
 	// The name of the metric.
-	//
 	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	MetricName pulumi.StringInput `pulumi:"metricName"`
-	// The namespace of the service.
-	//
+	// The namespace of the cloud service.
 	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// The name of the alert rule.
@@ -4005,7 +4349,8 @@ func (o MetricRuleTemplateAlertTemplateOutput) ToMetricRuleTemplateAlertTemplate
 	return o
 }
 
-// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+// The abbreviation of the Alibaba Cloud service name.
+// > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
 func (o MetricRuleTemplateAlertTemplateOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.Category }).(pulumi.StringOutput)
 }
@@ -4018,14 +4363,12 @@ func (o MetricRuleTemplateAlertTemplateOutput) Escalations() MetricRuleTemplateA
 }
 
 // The name of the metric.
-//
 // > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 func (o MetricRuleTemplateAlertTemplateOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
-// The namespace of the service.
-//
+// The namespace of the cloud service.
 // > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 func (o MetricRuleTemplateAlertTemplateOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.Namespace }).(pulumi.StringOutput)
@@ -4243,13 +4586,13 @@ func (o MetricRuleTemplateAlertTemplateEscalationsPtrOutput) Warn() MetricRuleTe
 }
 
 type MetricRuleTemplateAlertTemplateEscalationsCritical struct {
-	// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for critical-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics *string `pulumi:"statistics"`
-	// The threshold for critical-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold *string `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times *string `pulumi:"times"`
 }
 
@@ -4265,13 +4608,13 @@ type MetricRuleTemplateAlertTemplateEscalationsCriticalInput interface {
 }
 
 type MetricRuleTemplateAlertTemplateEscalationsCriticalArgs struct {
-	// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for critical-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
-	// The threshold for critical-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times pulumi.StringPtrInput `pulumi:"times"`
 }
 
@@ -4352,22 +4695,22 @@ func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) ToMetricRuleTe
 	}).(MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput)
 }
 
-// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsCritical) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// The statistical aggregation method for critical-level alerts.
+// The statistical aggregation method for warn-level alerts.
 func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsCritical) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for critical-level alerts.
+// The threshold for warn-level alerts.
 func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsCritical) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 func (o MetricRuleTemplateAlertTemplateEscalationsCriticalOutput) Times() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsCritical) *string { return v.Times }).(pulumi.StringPtrOutput)
 }
@@ -4396,7 +4739,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) Elem() Metr
 	}).(MetricRuleTemplateAlertTemplateEscalationsCriticalOutput)
 }
 
-// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsCritical) *string {
 		if v == nil {
@@ -4406,7 +4749,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) ComparisonO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The statistical aggregation method for critical-level alerts.
+// The statistical aggregation method for warn-level alerts.
 func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsCritical) *string {
 		if v == nil {
@@ -4416,7 +4759,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) Statistics(
 	}).(pulumi.StringPtrOutput)
 }
 
-// The threshold for critical-level alerts.
+// The threshold for warn-level alerts.
 func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsCritical) *string {
 		if v == nil {
@@ -4426,7 +4769,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) Threshold()
 	}).(pulumi.StringPtrOutput)
 }
 
-// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) Times() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsCritical) *string {
 		if v == nil {
@@ -4437,13 +4780,13 @@ func (o MetricRuleTemplateAlertTemplateEscalationsCriticalPtrOutput) Times() pul
 }
 
 type MetricRuleTemplateAlertTemplateEscalationsInfo struct {
-	// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for critical-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics *string `pulumi:"statistics"`
-	// The threshold for critical-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold *string `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times *string `pulumi:"times"`
 }
 
@@ -4459,13 +4802,13 @@ type MetricRuleTemplateAlertTemplateEscalationsInfoInput interface {
 }
 
 type MetricRuleTemplateAlertTemplateEscalationsInfoArgs struct {
-	// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for critical-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
-	// The threshold for critical-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times pulumi.StringPtrInput `pulumi:"times"`
 }
 
@@ -4546,22 +4889,22 @@ func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) ToMetricRuleTempla
 	}).(MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput)
 }
 
-// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsInfo) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// The statistical aggregation method for critical-level alerts.
+// The statistical aggregation method for warn-level alerts.
 func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsInfo) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for critical-level alerts.
+// The threshold for warn-level alerts.
 func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsInfo) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 func (o MetricRuleTemplateAlertTemplateEscalationsInfoOutput) Times() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsInfo) *string { return v.Times }).(pulumi.StringPtrOutput)
 }
@@ -4590,7 +4933,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) Elem() MetricRu
 	}).(MetricRuleTemplateAlertTemplateEscalationsInfoOutput)
 }
 
-// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsInfo) *string {
 		if v == nil {
@@ -4600,7 +4943,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) ComparisonOpera
 	}).(pulumi.StringPtrOutput)
 }
 
-// The statistical aggregation method for critical-level alerts.
+// The statistical aggregation method for warn-level alerts.
 func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsInfo) *string {
 		if v == nil {
@@ -4610,7 +4953,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) Statistics() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The threshold for critical-level alerts.
+// The threshold for warn-level alerts.
 func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsInfo) *string {
 		if v == nil {
@@ -4620,7 +4963,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) Threshold() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) Times() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsInfo) *string {
 		if v == nil {
@@ -4631,13 +4974,13 @@ func (o MetricRuleTemplateAlertTemplateEscalationsInfoPtrOutput) Times() pulumi.
 }
 
 type MetricRuleTemplateAlertTemplateEscalationsWarn struct {
-	// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for critical-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics *string `pulumi:"statistics"`
-	// The threshold for critical-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold *string `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times *string `pulumi:"times"`
 }
 
@@ -4653,13 +4996,13 @@ type MetricRuleTemplateAlertTemplateEscalationsWarnInput interface {
 }
 
 type MetricRuleTemplateAlertTemplateEscalationsWarnArgs struct {
-	// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+	// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
-	// The statistical aggregation method for critical-level alerts.
+	// The statistical aggregation method for warn-level alerts.
 	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
-	// The threshold for critical-level alerts.
+	// The threshold for warn-level alerts.
 	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
-	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 	Times pulumi.StringPtrInput `pulumi:"times"`
 }
 
@@ -4740,22 +5083,22 @@ func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) ToMetricRuleTempla
 	}).(MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput)
 }
 
-// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsWarn) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
 }
 
-// The statistical aggregation method for critical-level alerts.
+// The statistical aggregation method for warn-level alerts.
 func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsWarn) *string { return v.Statistics }).(pulumi.StringPtrOutput)
 }
 
-// The threshold for critical-level alerts.
+// The threshold for warn-level alerts.
 func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsWarn) *string { return v.Threshold }).(pulumi.StringPtrOutput)
 }
 
-// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 func (o MetricRuleTemplateAlertTemplateEscalationsWarnOutput) Times() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplateEscalationsWarn) *string { return v.Times }).(pulumi.StringPtrOutput)
 }
@@ -4784,7 +5127,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) Elem() MetricRu
 	}).(MetricRuleTemplateAlertTemplateEscalationsWarnOutput)
 }
 
-// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) ComparisonOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsWarn) *string {
 		if v == nil {
@@ -4794,7 +5137,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) ComparisonOpera
 	}).(pulumi.StringPtrOutput)
 }
 
-// The statistical aggregation method for critical-level alerts.
+// The statistical aggregation method for warn-level alerts.
 func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) Statistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsWarn) *string {
 		if v == nil {
@@ -4804,7 +5147,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) Statistics() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The threshold for critical-level alerts.
+// The threshold for warn-level alerts.
 func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) Threshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsWarn) *string {
 		if v == nil {
@@ -4814,7 +5157,7 @@ func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) Threshold() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 func (o MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput) Times() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplateAlertTemplateEscalationsWarn) *string {
 		if v == nil {
@@ -10699,6 +11042,10 @@ func (o GetSlsGroupsGroupSlsGroupConfigArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmCompositeExpressionInput)(nil)).Elem(), AlarmCompositeExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmCompositeExpressionPtrInput)(nil)).Elem(), AlarmCompositeExpressionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmCompositeExpressionExpressionListInput)(nil)).Elem(), AlarmCompositeExpressionExpressionListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmCompositeExpressionExpressionListArrayInput)(nil)).Elem(), AlarmCompositeExpressionExpressionListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsCriticalInput)(nil)).Elem(), AlarmEscalationsCriticalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsCriticalPtrInput)(nil)).Elem(), AlarmEscalationsCriticalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmEscalationsInfoInput)(nil)).Elem(), AlarmEscalationsInfoArgs{})
@@ -10847,6 +11194,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSlsGroupsGroupArrayInput)(nil)).Elem(), GetSlsGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSlsGroupsGroupSlsGroupConfigInput)(nil)).Elem(), GetSlsGroupsGroupSlsGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSlsGroupsGroupSlsGroupConfigArrayInput)(nil)).Elem(), GetSlsGroupsGroupSlsGroupConfigArray{})
+	pulumi.RegisterOutputType(AlarmCompositeExpressionOutput{})
+	pulumi.RegisterOutputType(AlarmCompositeExpressionPtrOutput{})
+	pulumi.RegisterOutputType(AlarmCompositeExpressionExpressionListOutput{})
+	pulumi.RegisterOutputType(AlarmCompositeExpressionExpressionListArrayOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsCriticalOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsCriticalPtrOutput{})
 	pulumi.RegisterOutputType(AlarmEscalationsInfoOutput{})

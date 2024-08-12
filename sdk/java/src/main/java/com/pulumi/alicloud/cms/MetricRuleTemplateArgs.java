@@ -35,14 +35,18 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+     * The mode in which the alert template is applied. Valid values:
+     * - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+     * - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
      * 
      */
     @Import(name="applyMode")
     private @Nullable Output<String> applyMode;
 
     /**
-     * @return The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+     * @return The mode in which the alert template is applied. Valid values:
+     * - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+     * - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
      * 
      */
     public Optional<Output<String>> applyMode() {
@@ -65,14 +69,14 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+     * The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
      * 
      */
     @Import(name="enableEndTime")
     private @Nullable Output<String> enableEndTime;
 
     /**
-     * @return The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+     * @return The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
      * 
      */
     public Optional<Output<String>> enableEndTime() {
@@ -80,14 +84,14 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+     * The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
      * 
      */
     @Import(name="enableStartTime")
     private @Nullable Output<String> enableStartTime;
 
     /**
-     * @return The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+     * @return The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
      * 
      */
     public Optional<Output<String>> enableStartTime() {
@@ -125,14 +129,14 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+     * The alert notification method. Valid values:
      * 
      */
     @Import(name="notifyLevel")
     private @Nullable Output<String> notifyLevel;
 
     /**
-     * @return The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+     * @return The alert notification method. Valid values:
      * 
      */
     public Optional<Output<String>> notifyLevel() {
@@ -140,37 +144,14 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The version of the alert template to be modified.
-     * 
-     * &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
-     * 
-     */
-    @Import(name="restVersion")
-    private @Nullable Output<String> restVersion;
-
-    /**
-     * @return The version of the alert template to be modified.
-     * 
-     * &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
-     * 
-     */
-    public Optional<Output<String>> restVersion() {
-        return Optional.ofNullable(this.restVersion);
-    }
-
-    /**
-     * The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-     * 
-     * &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+     * The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
      * 
      */
     @Import(name="silenceTime")
     private @Nullable Output<Integer> silenceTime;
 
     /**
-     * @return The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-     * 
-     * &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+     * @return The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
      * 
      */
     public Optional<Output<Integer>> silenceTime() {
@@ -203,7 +184,6 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
         this.groupId = $.groupId;
         this.metricRuleTemplateName = $.metricRuleTemplateName;
         this.notifyLevel = $.notifyLevel;
-        this.restVersion = $.restVersion;
         this.silenceTime = $.silenceTime;
         this.webhook = $.webhook;
     }
@@ -258,7 +238,9 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param applyMode The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+         * @param applyMode The mode in which the alert template is applied. Valid values:
+         * - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+         * - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
          * 
          * @return builder
          * 
@@ -269,7 +251,9 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param applyMode The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
+         * @param applyMode The mode in which the alert template is applied. Valid values:
+         * - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
+         * - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
          * 
          * @return builder
          * 
@@ -300,7 +284,7 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableEndTime The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+         * @param enableEndTime The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
          * 
          * @return builder
          * 
@@ -311,7 +295,7 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableEndTime The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
+         * @param enableEndTime The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
          * 
          * @return builder
          * 
@@ -321,7 +305,7 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableStartTime The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+         * @param enableStartTime The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
          * 
          * @return builder
          * 
@@ -332,7 +316,7 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableStartTime The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
+         * @param enableStartTime The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
          * 
          * @return builder
          * 
@@ -384,7 +368,7 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param notifyLevel The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+         * @param notifyLevel The alert notification method. Valid values:
          * 
          * @return builder
          * 
@@ -395,7 +379,7 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param notifyLevel The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
+         * @param notifyLevel The alert notification method. Valid values:
          * 
          * @return builder
          * 
@@ -405,34 +389,7 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param restVersion The version of the alert template to be modified.
-         * 
-         * &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder restVersion(@Nullable Output<String> restVersion) {
-            $.restVersion = restVersion;
-            return this;
-        }
-
-        /**
-         * @param restVersion The version of the alert template to be modified.
-         * 
-         * &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder restVersion(String restVersion) {
-            return restVersion(Output.of(restVersion));
-        }
-
-        /**
-         * @param silenceTime The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-         * 
-         * &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+         * @param silenceTime The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
          * 
          * @return builder
          * 
@@ -443,9 +400,7 @@ public final class MetricRuleTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param silenceTime The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
-         * 
-         * &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+         * @param silenceTime The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
          * 
          * @return builder
          * 

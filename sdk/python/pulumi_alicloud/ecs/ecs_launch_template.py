@@ -77,7 +77,7 @@ class EcsLaunchTemplateArgs:
         :param pulumi.Input[str] image_id: The Image ID.
         :param pulumi.Input[str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
-        :param pulumi.Input[str] instance_name: The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        :param pulumi.Input[str] instance_name: The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
@@ -372,7 +372,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
         """
         return pulumi.get(self, "instance_name")
 
@@ -889,7 +889,7 @@ class _EcsLaunchTemplateState:
         :param pulumi.Input[str] image_id: The Image ID.
         :param pulumi.Input[str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
-        :param pulumi.Input[str] instance_name: The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        :param pulumi.Input[str] instance_name: The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
@@ -1184,7 +1184,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
         """
         return pulumi.get(self, "instance_name")
 
@@ -1709,7 +1709,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
@@ -1806,7 +1806,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: The Image ID.
         :param pulumi.Input[str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
-        :param pulumi.Input[str] instance_name: The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        :param pulumi.Input[str] instance_name: The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
@@ -1874,7 +1874,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
@@ -2154,7 +2154,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: The Image ID.
         :param pulumi.Input[str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
-        :param pulumi.Input[str] instance_name: The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        :param pulumi.Input[str] instance_name: The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
@@ -2344,7 +2344,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the instance. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
         """
         return pulumi.get(self, "instance_name")
 

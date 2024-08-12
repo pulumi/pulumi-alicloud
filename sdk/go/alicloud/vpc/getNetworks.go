@@ -81,7 +81,7 @@ type GetNetworksArgs struct {
 	VpcName *string `pulumi:"vpcName"`
 	// The owner ID of VPC.
 	VpcOwnerId *int `pulumi:"vpcOwnerId"`
-	// Filter results by the specified VSwitch.
+	// Filter results by the specified vSwitch.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -161,7 +161,7 @@ type GetNetworksOutputArgs struct {
 	VpcName pulumi.StringPtrInput `pulumi:"vpcName"`
 	// The owner ID of VPC.
 	VpcOwnerId pulumi.IntPtrInput `pulumi:"vpcOwnerId"`
-	// Filter results by the specified VSwitch.
+	// Filter results by the specified vSwitch.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 

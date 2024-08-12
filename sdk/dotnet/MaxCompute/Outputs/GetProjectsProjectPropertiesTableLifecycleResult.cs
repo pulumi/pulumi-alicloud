@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The value of the life cycle.
+        /// The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
         /// </summary>
         public readonly string Value;
 

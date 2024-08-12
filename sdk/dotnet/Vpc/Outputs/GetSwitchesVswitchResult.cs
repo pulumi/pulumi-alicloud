@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class GetSwitchesVswitchResult
     {
         /// <summary>
-        /// The available ip address count of the VSwitch.
+        /// The available ip address count of the vSwitch.
         /// </summary>
         public readonly int AvailableIpAddressCount;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
-        /// Description of the VSwitch.
+        /// Description of the vSwitch.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// ID of the VSwitch.
+        /// ID of the vSwitch.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Ipv6CidrBlock;
         /// <summary>
-        /// Indicate whether the VSwitch is created by the system.
+        /// Indicate whether the vSwitch is created by the system.
         /// </summary>
         public readonly bool IsDefault;
         /// <summary>
-        /// Name of the VSwitch.
+        /// Name of the vSwitch.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -50,11 +50,11 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// The route table ID of the VSwitch.
+        /// The route table ID of the vSwitch.
         /// </summary>
         public readonly string RouteTableId;
         /// <summary>
-        /// The status of the VSwitch. Valid values: `Available` and `Pending`.
+        /// The status of the vSwitch. Valid values: `Available` and `Pending`.
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -62,19 +62,19 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object> Tags;
         /// <summary>
-        /// ID of the VPC that owns the VSwitch.
+        /// ID of the VPC that owns the vSwitch.
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// ID of the VSwitch.
+        /// ID of the vSwitch.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>
-        /// The name of the VSwitch.
+        /// The name of the vSwitch.
         /// </summary>
         public readonly string VswitchName;
         /// <summary>
-        /// The availability zone of the VSwitch.
+        /// The availability zone of the vSwitch.
         /// </summary>
         public readonly string ZoneId;
 

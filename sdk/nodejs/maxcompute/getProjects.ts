@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+ * This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Example Usage
  *
@@ -18,18 +18,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_testaccmp";
+ * const name = config.get("name") || "tf_example_acc";
  * const defaultProject = new alicloud.maxcompute.Project("default", {
  *     defaultQuota: "默认后付费Quota",
  *     projectName: name,
  *     comment: name,
- *     productType: "PAYASYOUGO",
+ *     productType: "PayAsYouGo",
  * });
- * const default = defaultProject.id.apply(id => alicloud.maxcompute.getProjectsOutput({
- *     ids: [id],
- *     nameRegex: defaultProject.name,
- * }));
- * export const alicloudMaxcomputeProjectExampleId = _default.apply(_default => _default.projects?.[0]?.id);
+ * const default = alicloud.maxcompute.getProjectsOutput({
+ *     nameRegex: defaultProject.projectName,
+ * });
+ * export const alicloudMaxcomputeProjectExampleId = _default.apply(_default => _default.projects?.[0]?.projectName);
  * ```
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
@@ -85,9 +84,9 @@ export interface GetProjectsResult {
     readonly projects: outputs.maxcompute.GetProjectsProject[];
 }
 /**
- * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+ * This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Example Usage
  *
@@ -96,18 +95,17 @@ export interface GetProjectsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_testaccmp";
+ * const name = config.get("name") || "tf_example_acc";
  * const defaultProject = new alicloud.maxcompute.Project("default", {
  *     defaultQuota: "默认后付费Quota",
  *     projectName: name,
  *     comment: name,
- *     productType: "PAYASYOUGO",
+ *     productType: "PayAsYouGo",
  * });
- * const default = defaultProject.id.apply(id => alicloud.maxcompute.getProjectsOutput({
- *     ids: [id],
- *     nameRegex: defaultProject.name,
- * }));
- * export const alicloudMaxcomputeProjectExampleId = _default.apply(_default => _default.projects?.[0]?.id);
+ * const default = alicloud.maxcompute.getProjectsOutput({
+ *     nameRegex: defaultProject.projectName,
+ * });
+ * export const alicloudMaxcomputeProjectExampleId = _default.apply(_default => _default.projects?.[0]?.projectName);
  * ```
  */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {

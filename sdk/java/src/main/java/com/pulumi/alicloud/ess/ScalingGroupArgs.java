@@ -148,18 +148,48 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
+     * Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
      * 
      */
     @Import(name="healthCheckType")
     private @Nullable Output<String> healthCheckType;
 
     /**
-     * @return Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
+     * @return Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
      * 
      */
     public Optional<Output<String>> healthCheckType() {
         return Optional.ofNullable(this.healthCheckType);
+    }
+
+    /**
+     * The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+     * 
+     */
+    @Import(name="healthCheckTypes")
+    private @Nullable Output<List<String>> healthCheckTypes;
+
+    /**
+     * @return The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+     * 
+     */
+    public Optional<Output<List<String>>> healthCheckTypes() {
+        return Optional.ofNullable(this.healthCheckTypes);
+    }
+
+    /**
+     * The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
+     * 
+     */
+    @Import(name="instanceId")
+    private @Nullable Output<String> instanceId;
+
+    /**
+     * @return The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
+     * 
+     */
+    public Optional<Output<String>> instanceId() {
+        return Optional.ofNullable(this.instanceId);
     }
 
     /**
@@ -523,6 +553,8 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.groupDeletionProtection = $.groupDeletionProtection;
         this.groupType = $.groupType;
         this.healthCheckType = $.healthCheckType;
+        this.healthCheckTypes = $.healthCheckTypes;
+        this.instanceId = $.instanceId;
         this.launchTemplateId = $.launchTemplateId;
         this.launchTemplateOverrides = $.launchTemplateOverrides;
         this.launchTemplateVersion = $.launchTemplateVersion;
@@ -759,7 +791,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckType Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
+         * @param healthCheckType Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
          * 
          * @return builder
          * 
@@ -770,13 +802,65 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckType Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
+         * @param healthCheckType Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
          * 
          * @return builder
          * 
          */
         public Builder healthCheckType(String healthCheckType) {
             return healthCheckType(Output.of(healthCheckType));
+        }
+
+        /**
+         * @param healthCheckTypes The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckTypes(@Nullable Output<List<String>> healthCheckTypes) {
+            $.healthCheckTypes = healthCheckTypes;
+            return this;
+        }
+
+        /**
+         * @param healthCheckTypes The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckTypes(List<String> healthCheckTypes) {
+            return healthCheckTypes(Output.of(healthCheckTypes));
+        }
+
+        /**
+         * @param healthCheckTypes The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckTypes(String... healthCheckTypes) {
+            return healthCheckTypes(List.of(healthCheckTypes));
+        }
+
+        /**
+         * @param instanceId The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceId(@Nullable Output<String> instanceId) {
+            $.instanceId = instanceId;
+            return this;
+        }
+
+        /**
+         * @param instanceId The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceId(String instanceId) {
+            return instanceId(Output.of(instanceId));
         }
 
         /**

@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
 //
-// > **NOTE:** Available in v1.34.0+.
+// > **NOTE:** Available since v1.34.0+.
 //
 // > **NOTE:** From version 1.177.0+, We supported batch export of clusters' kube config information by `kubeConfigFilePrefix`.
 //
@@ -58,6 +58,7 @@ func GetKubernetesClusters(ctx *pulumi.Context, args *GetKubernetesClustersArgs,
 
 // A collection of arguments for invoking getKubernetesClusters.
 type GetKubernetesClustersArgs struct {
+	// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids []string `pulumi:"ids"`
@@ -100,6 +101,7 @@ func GetKubernetesClustersOutput(ctx *pulumi.Context, args GetKubernetesClusters
 
 // A collection of arguments for invoking getKubernetesClusters.
 type GetKubernetesClustersOutputArgs struct {
+	// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g., `masterDiskCategory`, `slbInternetEnabled`, `connections`. See full list in attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

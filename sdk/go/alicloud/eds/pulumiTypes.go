@@ -413,7 +413,7 @@ type GetAdConnectorDirectoriesDirectory struct {
 	TrustPassword string `pulumi:"trustPassword"`
 	// The ID of the vpc.
 	VpcId string `pulumi:"vpcId"`
-	// List of VSwitch IDs in the directory.
+	// List of vSwitch IDs in the directory.
 	VswitchIds []string `pulumi:"vswitchIds"`
 }
 
@@ -465,7 +465,7 @@ type GetAdConnectorDirectoriesDirectoryArgs struct {
 	TrustPassword pulumi.StringInput `pulumi:"trustPassword"`
 	// The ID of the vpc.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// List of VSwitch IDs in the directory.
+	// List of vSwitch IDs in the directory.
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
 }
 
@@ -612,7 +612,7 @@ func (o GetAdConnectorDirectoriesDirectoryOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdConnectorDirectoriesDirectory) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// List of VSwitch IDs in the directory.
+// List of vSwitch IDs in the directory.
 func (o GetAdConnectorDirectoriesDirectoryOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAdConnectorDirectoriesDirectory) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
@@ -648,7 +648,7 @@ type GetAdConnectorDirectoriesDirectoryAdConnector struct {
 	Specification string `pulumi:"specification"`
 	// The AD Connector control trust password.
 	TrustKey string `pulumi:"trustKey"`
-	// The ID of VSwitch.
+	// The ID of vSwitch.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -674,7 +674,7 @@ type GetAdConnectorDirectoriesDirectoryAdConnectorArgs struct {
 	Specification pulumi.StringInput `pulumi:"specification"`
 	// The AD Connector control trust password.
 	TrustKey pulumi.StringInput `pulumi:"trustKey"`
-	// The ID of VSwitch.
+	// The ID of vSwitch.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -754,7 +754,7 @@ func (o GetAdConnectorDirectoriesDirectoryAdConnectorOutput) TrustKey() pulumi.S
 	return o.ApplyT(func(v GetAdConnectorDirectoriesDirectoryAdConnector) string { return v.TrustKey }).(pulumi.StringOutput)
 }
 
-// The ID of VSwitch.
+// The ID of vSwitch.
 func (o GetAdConnectorDirectoriesDirectoryAdConnectorOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdConnectorDirectoriesDirectoryAdConnector) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -1146,7 +1146,7 @@ type GetAdConnectorOfficeSitesSiteAdConnector struct {
 	ConnectorStatus string `pulumi:"connectorStatus"`
 	// AD Connector Mount of the Card ID.
 	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
-	// AD Connector in the Network Corresponding to the ID of the VSwitch in.
+	// AD Connector in the Network Corresponding to the ID of the vSwitch in.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -1168,7 +1168,7 @@ type GetAdConnectorOfficeSitesSiteAdConnectorArgs struct {
 	ConnectorStatus pulumi.StringInput `pulumi:"connectorStatus"`
 	// AD Connector Mount of the Card ID.
 	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
-	// AD Connector in the Network Corresponding to the ID of the VSwitch in.
+	// AD Connector in the Network Corresponding to the ID of the vSwitch in.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -1238,7 +1238,7 @@ func (o GetAdConnectorOfficeSitesSiteAdConnectorOutput) NetworkInterfaceId() pul
 	return o.ApplyT(func(v GetAdConnectorOfficeSitesSiteAdConnector) string { return v.NetworkInterfaceId }).(pulumi.StringOutput)
 }
 
-// AD Connector in the Network Corresponding to the ID of the VSwitch in.
+// AD Connector in the Network Corresponding to the ID of the vSwitch in.
 func (o GetAdConnectorOfficeSitesSiteAdConnectorOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdConnectorOfficeSitesSiteAdConnector) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -3990,7 +3990,7 @@ type GetRamDirectoriesDirectory struct {
 	TrustPassword string `pulumi:"trustPassword"`
 	// The ID of the vpc.
 	VpcId string `pulumi:"vpcId"`
-	// List of VSwitch IDs in the directory.
+	// List of vSwitch IDs in the directory.
 	VswitchIds []string `pulumi:"vswitchIds"`
 }
 
@@ -4058,7 +4058,7 @@ type GetRamDirectoriesDirectoryArgs struct {
 	TrustPassword pulumi.StringInput `pulumi:"trustPassword"`
 	// The ID of the vpc.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// List of VSwitch IDs in the directory.
+	// List of vSwitch IDs in the directory.
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
 }
 
@@ -4243,7 +4243,7 @@ func (o GetRamDirectoriesDirectoryOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRamDirectoriesDirectory) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// List of VSwitch IDs in the directory.
+// List of vSwitch IDs in the directory.
 func (o GetRamDirectoriesDirectoryOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRamDirectoriesDirectory) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
@@ -4275,7 +4275,7 @@ type GetRamDirectoriesDirectoryAdConnector struct {
 	ConnectorStatus string `pulumi:"connectorStatus"`
 	// The ID of the network interface.
 	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
-	// The ID of VSwitch.
+	// The ID of vSwitch.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -4297,7 +4297,7 @@ type GetRamDirectoriesDirectoryAdConnectorArgs struct {
 	ConnectorStatus pulumi.StringInput `pulumi:"connectorStatus"`
 	// The ID of the network interface.
 	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
-	// The ID of VSwitch.
+	// The ID of vSwitch.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -4367,7 +4367,7 @@ func (o GetRamDirectoriesDirectoryAdConnectorOutput) NetworkInterfaceId() pulumi
 	return o.ApplyT(func(v GetRamDirectoriesDirectoryAdConnector) string { return v.NetworkInterfaceId }).(pulumi.StringOutput)
 }
 
-// The ID of VSwitch.
+// The ID of vSwitch.
 func (o GetRamDirectoriesDirectoryAdConnectorOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRamDirectoriesDirectoryAdConnector) string { return v.VswitchId }).(pulumi.StringOutput)
 }

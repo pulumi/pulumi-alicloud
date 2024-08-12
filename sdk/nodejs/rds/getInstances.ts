@@ -151,7 +151,7 @@ export interface GetInstancesResult {
      */
     readonly vpcId?: string;
     /**
-     * ID of the VSwitch the instance belongs to.
+     * ID of the vSwitch the instance belongs to.
      */
     readonly vswitchId?: string;
 }

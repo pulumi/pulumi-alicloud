@@ -286,7 +286,7 @@ def get_networks(cidr_block: Optional[str] = None,
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     :param str vpc_name: The name of the VPC.
     :param int vpc_owner_id: The owner ID of VPC.
-    :param str vswitch_id: Filter results by the specified VSwitch.
+    :param str vswitch_id: Filter results by the specified vSwitch.
     """
     __args__ = dict()
     __args__['cidrBlock'] = cidr_block
@@ -378,6 +378,6 @@ def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     :param str vpc_name: The name of the VPC.
     :param int vpc_owner_id: The owner ID of VPC.
-    :param str vswitch_id: Filter results by the specified VSwitch.
+    :param str vswitch_id: Filter results by the specified vSwitch.
     """
     ...

@@ -24,12 +24,17 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-image-import-example";
- * const _default = new alicloud.oss.Bucket("default", {bucket: name});
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultBucket = new alicloud.oss.Bucket("default", {bucket: `${name}-${_default.result}`});
  * const defaultBucketObject = new alicloud.oss.BucketObject("default", {
- *     bucket: _default.id,
+ *     bucket: defaultBucket.id,
  *     key: "fc/hello.zip",
  *     content: `    # -*- coding: utf-8 -*-
  *     def handler(event, context):
@@ -45,7 +50,7 @@ import * as utilities from "../utilities";
  *     imageName: name,
  *     description: name,
  *     diskDeviceMappings: [{
- *         ossBucket: _default.id,
+ *         ossBucket: defaultBucket.id,
  *         ossObject: defaultBucketObject.id,
  *         diskImageSize: 5,
  *     }],

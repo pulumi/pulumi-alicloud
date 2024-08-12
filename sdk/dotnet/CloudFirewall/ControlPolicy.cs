@@ -28,17 +28,19 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.CloudFirewall.ControlPolicy("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.CloudFirewall.ControlPolicy("default", new()
     ///     {
+    ///         Direction = "in",
     ///         ApplicationName = "ANY",
+    ///         Description = name,
     ///         AclAction = "accept",
-    ///         Description = "example",
-    ///         DestinationType = "net",
-    ///         Destination = "100.1.1.0/24",
-    ///         Direction = "out",
-    ///         Proto = "ANY",
-    ///         Source = "1.2.3.0/24",
+    ///         Source = "127.0.0.1/32",
     ///         SourceType = "net",
+    ///         Destination = "127.0.0.2/32",
+    ///         DestinationType = "net",
+    ///         Proto = "ANY",
     ///     });
     /// 
     /// });
@@ -81,79 +83,79 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The destination port defined in the access control policy.
+        /// The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
         /// </summary>
         [Output("destPort")]
         public Output<string> DestPort { get; private set; } = null!;
 
         /// <summary>
-        /// The destination port address book defined in the access control policy.
+        /// The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
         /// </summary>
         [Output("destPortGroup")]
-        public Output<string> DestPortGroup { get; private set; } = null!;
+        public Output<string?> DestPortGroup { get; private set; } = null!;
 
         /// <summary>
-        /// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+        /// The type of the destination port in the access control policy. Valid values: `port`, `group`.
         /// </summary>
         [Output("destPortType")]
         public Output<string> DestPortType { get; private set; } = null!;
 
         /// <summary>
-        /// The destination address defined in the access control policy.
+        /// The destination address in the access control policy.
         /// </summary>
         [Output("destination")]
         public Output<string> Destination { get; private set; } = null!;
 
         /// <summary>
-        /// DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+        /// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
         /// </summary>
         [Output("destinationType")]
         public Output<string> DestinationType { get; private set; } = null!;
 
         /// <summary>
-        /// Direction. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         /// </summary>
         [Output("direction")]
         public Output<string> Direction { get; private set; } = null!;
 
         /// <summary>
-        /// The ip version.
+        /// The IP version supported by the access control policy. Default value: `4`. Valid values:
         /// </summary>
         [Output("ipVersion")]
-        public Output<string?> IpVersion { get; private set; } = null!;
+        public Output<string> IpVersion { get; private set; } = null!;
 
         /// <summary>
-        /// DestPortGroupPorts. Valid values: `en`, `zh`.
+        /// The language of the content within the request and response. Valid values: `zh`, `en`.
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// Proto. Valid values: ` TCP`, ` UDP`, `ANY`, `ICMP`.
+        /// The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
         /// </summary>
         [Output("proto")]
         public Output<string> Proto { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+        /// The status of the access control policy. Valid values: `true`, `false`.
         /// </summary>
         [Output("release")]
         public Output<string> Release { get; private set; } = null!;
 
         /// <summary>
-        /// Source.
+        /// The source address in the access control policy.
         /// </summary>
         [Output("source")]
         public Output<string> Source { get; private set; } = null!;
 
         /// <summary>
-        /// The source ip.
+        /// The source IP address of the request.
         /// </summary>
         [Output("sourceIp")]
-        public Output<string> SourceIp { get; private set; } = null!;
+        public Output<string?> SourceIp { get; private set; } = null!;
 
         /// <summary>
-        /// SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+        /// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
         /// </summary>
         [Output("sourceType")]
         public Output<string> SourceType { get; private set; } = null!;
@@ -224,79 +226,79 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The destination port defined in the access control policy.
+        /// The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
         /// </summary>
         [Input("destPort")]
         public Input<string>? DestPort { get; set; }
 
         /// <summary>
-        /// The destination port address book defined in the access control policy.
+        /// The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
         /// </summary>
         [Input("destPortGroup")]
         public Input<string>? DestPortGroup { get; set; }
 
         /// <summary>
-        /// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+        /// The type of the destination port in the access control policy. Valid values: `port`, `group`.
         /// </summary>
         [Input("destPortType")]
         public Input<string>? DestPortType { get; set; }
 
         /// <summary>
-        /// The destination address defined in the access control policy.
+        /// The destination address in the access control policy.
         /// </summary>
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;
 
         /// <summary>
-        /// DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+        /// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
         /// </summary>
         [Input("destinationType", required: true)]
         public Input<string> DestinationType { get; set; } = null!;
 
         /// <summary>
-        /// Direction. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
 
         /// <summary>
-        /// The ip version.
+        /// The IP version supported by the access control policy. Default value: `4`. Valid values:
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
 
         /// <summary>
-        /// DestPortGroupPorts. Valid values: `en`, `zh`.
+        /// The language of the content within the request and response. Valid values: `zh`, `en`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// Proto. Valid values: ` TCP`, ` UDP`, `ANY`, `ICMP`.
+        /// The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
         /// </summary>
         [Input("proto", required: true)]
         public Input<string> Proto { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+        /// The status of the access control policy. Valid values: `true`, `false`.
         /// </summary>
         [Input("release")]
         public Input<string>? Release { get; set; }
 
         /// <summary>
-        /// Source.
+        /// The source address in the access control policy.
         /// </summary>
         [Input("source", required: true)]
         public Input<string> Source { get; set; } = null!;
 
         /// <summary>
-        /// The source ip.
+        /// The source IP address of the request.
         /// </summary>
         [Input("sourceIp")]
         public Input<string>? SourceIp { get; set; }
 
         /// <summary>
-        /// SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+        /// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
         /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;
@@ -335,79 +337,79 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The destination port defined in the access control policy.
+        /// The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
         /// </summary>
         [Input("destPort")]
         public Input<string>? DestPort { get; set; }
 
         /// <summary>
-        /// The destination port address book defined in the access control policy.
+        /// The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
         /// </summary>
         [Input("destPortGroup")]
         public Input<string>? DestPortGroup { get; set; }
 
         /// <summary>
-        /// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+        /// The type of the destination port in the access control policy. Valid values: `port`, `group`.
         /// </summary>
         [Input("destPortType")]
         public Input<string>? DestPortType { get; set; }
 
         /// <summary>
-        /// The destination address defined in the access control policy.
+        /// The destination address in the access control policy.
         /// </summary>
         [Input("destination")]
         public Input<string>? Destination { get; set; }
 
         /// <summary>
-        /// DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+        /// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
         /// </summary>
         [Input("destinationType")]
         public Input<string>? DestinationType { get; set; }
 
         /// <summary>
-        /// Direction. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// The ip version.
+        /// The IP version supported by the access control policy. Default value: `4`. Valid values:
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
 
         /// <summary>
-        /// DestPortGroupPorts. Valid values: `en`, `zh`.
+        /// The language of the content within the request and response. Valid values: `zh`, `en`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// Proto. Valid values: ` TCP`, ` UDP`, `ANY`, `ICMP`.
+        /// The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
         /// </summary>
         [Input("proto")]
         public Input<string>? Proto { get; set; }
 
         /// <summary>
-        /// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+        /// The status of the access control policy. Valid values: `true`, `false`.
         /// </summary>
         [Input("release")]
         public Input<string>? Release { get; set; }
 
         /// <summary>
-        /// Source.
+        /// The source address in the access control policy.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 
         /// <summary>
-        /// The source ip.
+        /// The source IP address of the request.
         /// </summary>
         [Input("sourceIp")]
         public Input<string>? SourceIp { get; set; }
 
         /// <summary>
-        /// SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+        /// The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }

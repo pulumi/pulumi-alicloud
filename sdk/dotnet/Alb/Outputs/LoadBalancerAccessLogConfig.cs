@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class LoadBalancerAccessLogConfig
     {
         /// <summary>
-        /// This Log Storage Project.
+        /// The project to which the access log is shipped.
         /// </summary>
         public readonly string LogProject;
         /// <summary>
-        /// This Log Storage Method Is Increased.
+        /// The Logstore to which the access log is shipped.
         /// </summary>
         public readonly string LogStore;
 

@@ -13,14 +13,15 @@ namespace Pulumi.AliCloud.Cms.Inputs
     public sealed class AlarmTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Alibaba Cloud Resource Name (ARN) of the resource.
+        /// ARN uniquely identifies the resource that the alert targets.
+        /// &gt; **NOTE:** The targets attribute is used to specify where notifications or actions should be directed when an alarm condition is met. This attribute corresponds to what is referred to as the "Push Channel" in the Alibaba Cloud console.
         /// &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
         /// <summary>
-        /// The parameters of the alert callback. The parameters are in the JSON format.
+        /// Specifies additional parameters for the alert callback in JSON format. This can include configuration settings specific to the alert action.
         /// </summary>
         [Input("jsonParams")]
         public Input<string>? JsonParams { get; set; }
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public Input<string>? Level { get; set; }
 
         /// <summary>
-        /// The ID of the resource for which alerts are triggered.
+        /// The ID of the resource for which alerts are triggered. This is typically used to specify individual resources that should respond to the alert.
         /// </summary>
         [Input("targetId")]
         public Input<string>? TargetId { get; set; }

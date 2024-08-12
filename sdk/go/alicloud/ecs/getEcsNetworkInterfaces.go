@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Network Interfaces of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.123.1+.
+// > **NOTE:** Available since v1.123.1.
 //
 // ## Example Usage
 //
@@ -32,10 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := ecs.GetEcsNetworkInterfaces(ctx, &ecs.GetEcsNetworkInterfacesArgs{
-//				Ids: []string{
-//					"eni-abcd1234",
-//				},
-//				NameRegex: pulumi.StringRef("tf-testAcc"),
+//				NameRegex: pulumi.StringRef("eni-ipv6"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -99,27 +96,43 @@ type GetEcsNetworkInterfacesArgs struct {
 // A collection of values returned by getEcsNetworkInterfaces.
 type GetEcsNetworkInterfacesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                             `pulumi:"id"`
-	Ids        []string                           `pulumi:"ids"`
-	InstanceId *string                            `pulumi:"instanceId"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The instance id.
+	InstanceId *string `pulumi:"instanceId"`
+	// A list of Ecs Network Interfaces. Each element contains the following attributes:
 	Interfaces []GetEcsNetworkInterfacesInterface `pulumi:"interfaces"`
+	// The network interface name.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
-	Name                 *string  `pulumi:"name"`
-	NameRegex            *string  `pulumi:"nameRegex"`
-	Names                []string `pulumi:"names"`
-	NetworkInterfaceName *string  `pulumi:"networkInterfaceName"`
-	OutputFile           *string  `pulumi:"outputFile"`
-	PrimaryIpAddress     *string  `pulumi:"primaryIpAddress"`
+	Name      *string `pulumi:"name"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// A list of Network Interface names.
+	Names []string `pulumi:"names"`
+	// The network interface name.
+	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
+	OutputFile           *string `pulumi:"outputFile"`
+	// The primary private IP address of the ENI.
+	PrimaryIpAddress *string `pulumi:"primaryIpAddress"`
+	// The primary private IP address of the ENI.
+	//
 	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
-	PrivateIp       *string                `pulumi:"privateIp"`
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	SecurityGroupId *string                `pulumi:"securityGroupId"`
-	ServiceManaged  *bool                  `pulumi:"serviceManaged"`
-	Status          *string                `pulumi:"status"`
-	Tags            map[string]interface{} `pulumi:"tags"`
-	Type            *string                `pulumi:"type"`
-	VpcId           *string                `pulumi:"vpcId"`
-	VswitchId       *string                `pulumi:"vswitchId"`
+	PrivateIp *string `pulumi:"privateIp"`
+	// The resource group id.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// Whether the user of the elastic network card is a cloud product or a virtual vendor.
+	ServiceManaged *bool `pulumi:"serviceManaged"`
+	// The status of the ENI.
+	Status *string `pulumi:"status"`
+	// The tags.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The type of the ENI.
+	Type *string `pulumi:"type"`
+	// The Vpc Id.
+	VpcId *string `pulumi:"vpcId"`
+	// The vswitch id.
+	VswitchId *string `pulumi:"vswitchId"`
 }
 
 func GetEcsNetworkInterfacesOutput(ctx *pulumi.Context, args GetEcsNetworkInterfacesOutputArgs, opts ...pulumi.InvokeOption) GetEcsNetworkInterfacesResultOutput {
@@ -203,14 +216,18 @@ func (o GetEcsNetworkInterfacesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The instance id.
 func (o GetEcsNetworkInterfacesResultOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
+// A list of Ecs Network Interfaces. Each element contains the following attributes:
 func (o GetEcsNetworkInterfacesResultOutput) Interfaces() GetEcsNetworkInterfacesInterfaceArrayOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) []GetEcsNetworkInterfacesInterface { return v.Interfaces }).(GetEcsNetworkInterfacesInterfaceArrayOutput)
 }
 
+// The network interface name.
+//
 // Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
 func (o GetEcsNetworkInterfacesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -220,10 +237,12 @@ func (o GetEcsNetworkInterfacesResultOutput) NameRegex() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Network Interface names.
 func (o GetEcsNetworkInterfacesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
+// The network interface name.
 func (o GetEcsNetworkInterfacesResultOutput) NetworkInterfaceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *string { return v.NetworkInterfaceName }).(pulumi.StringPtrOutput)
 }
@@ -232,15 +251,19 @@ func (o GetEcsNetworkInterfacesResultOutput) OutputFile() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The primary private IP address of the ENI.
 func (o GetEcsNetworkInterfacesResultOutput) PrimaryIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *string { return v.PrimaryIpAddress }).(pulumi.StringPtrOutput)
 }
 
+// The primary private IP address of the ENI.
+//
 // Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
 func (o GetEcsNetworkInterfacesResultOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
 
+// The resource group id.
 func (o GetEcsNetworkInterfacesResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
@@ -249,26 +272,32 @@ func (o GetEcsNetworkInterfacesResultOutput) SecurityGroupId() pulumi.StringPtrO
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
 
+// Whether the user of the elastic network card is a cloud product or a virtual vendor.
 func (o GetEcsNetworkInterfacesResultOutput) ServiceManaged() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *bool { return v.ServiceManaged }).(pulumi.BoolPtrOutput)
 }
 
+// The status of the ENI.
 func (o GetEcsNetworkInterfacesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tags.
 func (o GetEcsNetworkInterfacesResultOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
+// The type of the ENI.
 func (o GetEcsNetworkInterfacesResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// The Vpc Id.
 func (o GetEcsNetworkInterfacesResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
+// The vswitch id.
 func (o GetEcsNetworkInterfacesResultOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesResult) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

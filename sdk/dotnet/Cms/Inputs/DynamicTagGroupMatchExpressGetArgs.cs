@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Cms.Inputs
     public sealed class DynamicTagGroupMatchExpressGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
+        /// The tag values of the cloud resources.
         /// </summary>
         [Input("tagValue", required: true)]
         public Input<string> TagValue { get; set; } = null!;
 
         /// <summary>
-        /// Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
+        /// The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
         /// </summary>
         [Input("tagValueMatchFunction", required: true)]
         public Input<string> TagValueMatchFunction { get; set; } = null!;

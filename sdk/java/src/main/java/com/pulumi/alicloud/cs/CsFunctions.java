@@ -646,7 +646,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.34.0+.
+     * &gt; **NOTE:** Available since v1.34.0+.
      * 
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
@@ -696,7 +696,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.34.0+.
+     * &gt; **NOTE:** Available since v1.34.0+.
      * 
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
@@ -746,7 +746,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.34.0+.
+     * &gt; **NOTE:** Available since v1.34.0+.
      * 
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
@@ -796,7 +796,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.34.0+.
+     * &gt; **NOTE:** Available since v1.34.0+.
      * 
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
@@ -846,7 +846,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.34.0+.
+     * &gt; **NOTE:** Available since v1.34.0+.
      * 
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 
@@ -896,7 +896,7 @@ public final class CsFunctions {
     /**
      * This data source provides a list Container Service Kubernetes Clusters on Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available in v1.34.0+.
+     * &gt; **NOTE:** Available since v1.34.0+.
      * 
      * &gt; **NOTE:** From version 1.177.0+, We supported batch export of clusters&#39; kube config information by `kube_config_file_prefix`.
      * 

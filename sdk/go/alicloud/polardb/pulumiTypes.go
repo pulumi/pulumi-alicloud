@@ -1592,7 +1592,7 @@ type GetEndpointsEndpointAddressItem struct {
 	Port string `pulumi:"port"`
 	// ID of the VPC the instance belongs to.
 	VpcId string `pulumi:"vpcId"`
-	// ID of the VSwitch the cluster belongs to.
+	// ID of the vSwitch the cluster belongs to.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -1618,7 +1618,7 @@ type GetEndpointsEndpointAddressItemArgs struct {
 	Port pulumi.StringInput `pulumi:"port"`
 	// ID of the VPC the instance belongs to.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// ID of the VSwitch the cluster belongs to.
+	// ID of the vSwitch the cluster belongs to.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -1698,7 +1698,7 @@ func (o GetEndpointsEndpointAddressItemOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointsEndpointAddressItem) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// ID of the VSwitch the cluster belongs to.
+// ID of the vSwitch the cluster belongs to.
 func (o GetEndpointsEndpointAddressItemOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointsEndpointAddressItem) string { return v.VswitchId }).(pulumi.StringOutput)
 }

@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .access_control_list import *
+from .acl_entry_attachment import *
 from .api import *
 from .app import *
 from .app_attachment import *
@@ -20,6 +21,7 @@ from .get_plugins import *
 from .get_service import *
 from .group import *
 from .instance import *
+from .instance_acl_attachment import *
 from .log_config import *
 from .model import *
 from .plugin import *

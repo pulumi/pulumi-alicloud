@@ -148,14 +148,14 @@ public final class GetContainerGroupsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
+     * The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
+     * @return The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -407,7 +407,7 @@ public final class GetContainerGroupsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param vswitchId The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
+         * @param vswitchId The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
          * 
          * @return builder
          * 
@@ -418,7 +418,7 @@ public final class GetContainerGroupsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param vswitchId The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
+         * @param vswitchId The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
          * 
          * @return builder
          * 

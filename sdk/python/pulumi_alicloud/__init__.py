@@ -31,6 +31,8 @@ if typing.TYPE_CHECKING:
     adb = __adb
     import pulumi_alicloud.alb as __alb
     alb = __alb
+    import pulumi_alicloud.aligreen as __aligreen
+    aligreen = __aligreen
     import pulumi_alicloud.alikafka as __alikafka
     alikafka = __alikafka
     import pulumi_alicloud.amqp as __amqp
@@ -155,6 +157,8 @@ if typing.TYPE_CHECKING:
     fnf = __fnf
     import pulumi_alicloud.ga as __ga
     ga = __ga
+    import pulumi_alicloud.governance as __governance
+    governance = __governance
     import pulumi_alicloud.gpdb as __gpdb
     gpdb = __gpdb
     import pulumi_alicloud.graphdatabase as __graphdatabase
@@ -284,6 +288,7 @@ else:
     actiontrail = _utilities.lazy_import('pulumi_alicloud.actiontrail')
     adb = _utilities.lazy_import('pulumi_alicloud.adb')
     alb = _utilities.lazy_import('pulumi_alicloud.alb')
+    aligreen = _utilities.lazy_import('pulumi_alicloud.aligreen')
     alikafka = _utilities.lazy_import('pulumi_alicloud.alikafka')
     amqp = _utilities.lazy_import('pulumi_alicloud.amqp')
     apigateway = _utilities.lazy_import('pulumi_alicloud.apigateway')
@@ -346,6 +351,7 @@ else:
     fc = _utilities.lazy_import('pulumi_alicloud.fc')
     fnf = _utilities.lazy_import('pulumi_alicloud.fnf')
     ga = _utilities.lazy_import('pulumi_alicloud.ga')
+    governance = _utilities.lazy_import('pulumi_alicloud.governance')
     gpdb = _utilities.lazy_import('pulumi_alicloud.gpdb')
     graphdatabase = _utilities.lazy_import('pulumi_alicloud.graphdatabase')
     hbase = _utilities.lazy_import('pulumi_alicloud.hbase')
@@ -622,6 +628,54 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "aligreen/auditCallback",
+  "fqn": "pulumi_alicloud.aligreen",
+  "classes": {
+   "alicloud:aligreen/auditCallback:AuditCallback": "AuditCallback"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "aligreen/bizType",
+  "fqn": "pulumi_alicloud.aligreen",
+  "classes": {
+   "alicloud:aligreen/bizType:BizType": "BizType"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "aligreen/callback",
+  "fqn": "pulumi_alicloud.aligreen",
+  "classes": {
+   "alicloud:aligreen/callback:Callback": "Callback"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "aligreen/imageLib",
+  "fqn": "pulumi_alicloud.aligreen",
+  "classes": {
+   "alicloud:aligreen/imageLib:ImageLib": "ImageLib"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "aligreen/keywordLib",
+  "fqn": "pulumi_alicloud.aligreen",
+  "classes": {
+   "alicloud:aligreen/keywordLib:KeywordLib": "KeywordLib"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "aligreen/ossStockTask",
+  "fqn": "pulumi_alicloud.aligreen",
+  "classes": {
+   "alicloud:aligreen/ossStockTask:OssStockTask": "OssStockTask"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "alikafka/consumerGroup",
   "fqn": "pulumi_alicloud.alikafka",
   "classes": {
@@ -726,6 +780,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "apigateway/aclEntryAttachment",
+  "fqn": "pulumi_alicloud.apigateway",
+  "classes": {
+   "alicloud:apigateway/aclEntryAttachment:AclEntryAttachment": "AclEntryAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "apigateway/api",
   "fqn": "pulumi_alicloud.apigateway",
   "classes": {
@@ -770,6 +832,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.apigateway",
   "classes": {
    "alicloud:apigateway/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "apigateway/instanceAclAttachment",
+  "fqn": "pulumi_alicloud.apigateway",
+  "classes": {
+   "alicloud:apigateway/instanceAclAttachment:InstanceAclAttachment": "InstanceAclAttachment"
   }
  },
  {
@@ -1698,6 +1768,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
    "alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy": "NatFirewallControlPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudfirewall/vpcCenTrFirewall",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall": "VpcCenTrFirewall"
   }
  },
  {
@@ -4022,6 +4100,62 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "fc/v3Alias",
+  "fqn": "pulumi_alicloud.fc",
+  "classes": {
+   "alicloud:fc/v3Alias:V3Alias": "V3Alias"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "fc/v3AsyncInvokeConfig",
+  "fqn": "pulumi_alicloud.fc",
+  "classes": {
+   "alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig": "V3AsyncInvokeConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "fc/v3ConcurrencyConfig",
+  "fqn": "pulumi_alicloud.fc",
+  "classes": {
+   "alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig": "V3ConcurrencyConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "fc/v3CustomDomain",
+  "fqn": "pulumi_alicloud.fc",
+  "classes": {
+   "alicloud:fc/v3CustomDomain:V3CustomDomain": "V3CustomDomain"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "fc/v3Function",
+  "fqn": "pulumi_alicloud.fc",
+  "classes": {
+   "alicloud:fc/v3Function:V3Function": "V3Function"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "fc/v3FunctionVersion",
+  "fqn": "pulumi_alicloud.fc",
+  "classes": {
+   "alicloud:fc/v3FunctionVersion:V3FunctionVersion": "V3FunctionVersion"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "fc/v3Trigger",
+  "fqn": "pulumi_alicloud.fc",
+  "classes": {
+   "alicloud:fc/v3Trigger:V3Trigger": "V3Trigger"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "fnf/execution",
   "fqn": "pulumi_alicloud.fnf",
   "classes": {
@@ -4234,6 +4368,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ga",
   "classes": {
    "alicloud:ga/listener:Listener": "Listener"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "governance/account",
+  "fqn": "pulumi_alicloud.governance",
+  "classes": {
+   "alicloud:governance/account:Account": "Account"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "governance/baseline",
+  "fqn": "pulumi_alicloud.governance",
+  "classes": {
+   "alicloud:governance/baseline:Baseline": "Baseline"
   }
  },
  {

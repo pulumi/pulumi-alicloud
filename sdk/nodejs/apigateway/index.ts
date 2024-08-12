@@ -10,6 +10,11 @@ export type AccessControlList = import("./accessControlList").AccessControlList;
 export const AccessControlList: typeof import("./accessControlList").AccessControlList = null as any;
 utilities.lazyLoad(exports, ["AccessControlList"], () => require("./accessControlList"));
 
+export { AclEntryAttachmentArgs, AclEntryAttachmentState } from "./aclEntryAttachment";
+export type AclEntryAttachment = import("./aclEntryAttachment").AclEntryAttachment;
+export const AclEntryAttachment: typeof import("./aclEntryAttachment").AclEntryAttachment = null as any;
+utilities.lazyLoad(exports, ["AclEntryAttachment"], () => require("./aclEntryAttachment"));
+
 export { ApiArgs, ApiState } from "./api";
 export type Api = import("./api").Api;
 export const Api: typeof import("./api").Api = null as any;
@@ -80,6 +85,11 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { InstanceAclAttachmentArgs, InstanceAclAttachmentState } from "./instanceAclAttachment";
+export type InstanceAclAttachment = import("./instanceAclAttachment").InstanceAclAttachment;
+export const InstanceAclAttachment: typeof import("./instanceAclAttachment").InstanceAclAttachment = null as any;
+utilities.lazyLoad(exports, ["InstanceAclAttachment"], () => require("./instanceAclAttachment"));
+
 export { LogConfigArgs, LogConfigState } from "./logConfig";
 export type LogConfig = import("./logConfig").LogConfig;
 export const LogConfig: typeof import("./logConfig").LogConfig = null as any;
@@ -112,6 +122,8 @@ const _module = {
         switch (type) {
             case "alicloud:apigateway/accessControlList:AccessControlList":
                 return new AccessControlList(name, <any>undefined, { urn })
+            case "alicloud:apigateway/aclEntryAttachment:AclEntryAttachment":
+                return new AclEntryAttachment(name, <any>undefined, { urn })
             case "alicloud:apigateway/api:Api":
                 return new Api(name, <any>undefined, { urn })
             case "alicloud:apigateway/app:App":
@@ -124,6 +136,8 @@ const _module = {
                 return new Group(name, <any>undefined, { urn })
             case "alicloud:apigateway/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:apigateway/instanceAclAttachment:InstanceAclAttachment":
+                return new InstanceAclAttachment(name, <any>undefined, { urn })
             case "alicloud:apigateway/logConfig:LogConfig":
                 return new LogConfig(name, <any>undefined, { urn })
             case "alicloud:apigateway/model:Model":
@@ -140,12 +154,14 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/accessControlList", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apigateway/aclEntryAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/api", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/app", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/appAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/backend", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/group", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apigateway/instanceAclAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/logConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/model", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/plugin", _module)

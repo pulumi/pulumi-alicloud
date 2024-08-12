@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -18,56 +20,71 @@ class InstanceArgs:
                  instance_name: pulumi.Input[str],
                  instance_spec: pulumi.Input[str],
                  payment_type: pulumi.Input[str],
+                 delete_vpc_ip_block: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  egress_ipv6_enable: Optional[pulumi.Input[bool]] = None,
+                 instance_cidr: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_enabled: Optional[pulumi.Input[bool]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
-                 support_ipv6: Optional[pulumi.Input[bool]] = None,
+                 to_connect_vpc_ip_block: Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']] = None,
                  user_vpc_id: Optional[pulumi.Input[str]] = None,
                  vpc_slb_intranet_enable: Optional[pulumi.Input[bool]] = None,
-                 zone_id: Optional[pulumi.Input[str]] = None):
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_vswitch_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] https_policy: Https policy.
         :param pulumi.Input[str] instance_name: Instance name.
         :param pulumi.Input[str] instance_spec: Instance type.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
+        :param pulumi.Input[str] delete_vpc_ip_block: Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
         :param pulumi.Input[int] duration: The time of the instance package. Valid values:
                - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
                - PricingCycle is **Year**, indicating annual payment. The value range is **1** to **3**.
                
                When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
-        :param pulumi.Input[bool] egress_ipv6_enable: Does IPV6 Capability Support.
-        :param pulumi.Input[str] instance_type: Instance type-normal: traditional exclusive instance.
-        :param pulumi.Input[str] pricing_cycle: The subscription instance is of the subscription year or month type. The value range is as follows:
-               - **year**: year
-               - **month**: month
-               > **NOTE:**  If the Payment type is PrePaid, this parameter is required.
-        :param pulumi.Input[bool] support_ipv6: Does ipv6 support.
+        :param pulumi.Input[bool] egress_ipv6_enable: Specifies whether IPv6 egress capability is enabled.
+        :param pulumi.Input[str] instance_cidr: The CIDR block for the instance deployment. Valid values are:
+               - `192.168.0.0/16`.
+               - `172.16.0.0/12`.
+        :param pulumi.Input[str] instance_type: The type of the instance. Valid values are:
+        :param pulumi.Input[bool] ipv6_enabled: Specifies whether IPv6 ingress capability is enabled.
+        :param pulumi.Input[str] pricing_cycle: The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
+        :param pulumi.Input['InstanceToConnectVpcIpBlockArgs'] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         :param pulumi.Input[str] user_vpc_id: User's VpcID.
         :param pulumi.Input[bool] vpc_slb_intranet_enable: Whether the slb of the Vpc supports.
         :param pulumi.Input[str] zone_id: The zone where the instance is deployed.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]] zone_vswitch_security_groups: Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
         """
         pulumi.set(__self__, "https_policy", https_policy)
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "instance_spec", instance_spec)
         pulumi.set(__self__, "payment_type", payment_type)
+        if delete_vpc_ip_block is not None:
+            pulumi.set(__self__, "delete_vpc_ip_block", delete_vpc_ip_block)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
         if egress_ipv6_enable is not None:
             pulumi.set(__self__, "egress_ipv6_enable", egress_ipv6_enable)
+        if instance_cidr is not None:
+            pulumi.set(__self__, "instance_cidr", instance_cidr)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if ipv6_enabled is not None:
+            pulumi.set(__self__, "ipv6_enabled", ipv6_enabled)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
-        if support_ipv6 is not None:
-            pulumi.set(__self__, "support_ipv6", support_ipv6)
+        if to_connect_vpc_ip_block is not None:
+            pulumi.set(__self__, "to_connect_vpc_ip_block", to_connect_vpc_ip_block)
         if user_vpc_id is not None:
             pulumi.set(__self__, "user_vpc_id", user_vpc_id)
         if vpc_slb_intranet_enable is not None:
             pulumi.set(__self__, "vpc_slb_intranet_enable", vpc_slb_intranet_enable)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+        if zone_vswitch_security_groups is not None:
+            pulumi.set(__self__, "zone_vswitch_security_groups", zone_vswitch_security_groups)
 
     @property
     @pulumi.getter(name="httpsPolicy")
@@ -118,6 +135,18 @@ class InstanceArgs:
         pulumi.set(self, "payment_type", value)
 
     @property
+    @pulumi.getter(name="deleteVpcIpBlock")
+    def delete_vpc_ip_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+        """
+        return pulumi.get(self, "delete_vpc_ip_block")
+
+    @delete_vpc_ip_block.setter
+    def delete_vpc_ip_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_vpc_ip_block", value)
+
+    @property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[int]]:
         """
@@ -137,7 +166,7 @@ class InstanceArgs:
     @pulumi.getter(name="egressIpv6Enable")
     def egress_ipv6_enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        Does IPV6 Capability Support.
+        Specifies whether IPv6 egress capability is enabled.
         """
         return pulumi.get(self, "egress_ipv6_enable")
 
@@ -146,10 +175,24 @@ class InstanceArgs:
         pulumi.set(self, "egress_ipv6_enable", value)
 
     @property
+    @pulumi.getter(name="instanceCidr")
+    def instance_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CIDR block for the instance deployment. Valid values are:
+        - `192.168.0.0/16`.
+        - `172.16.0.0/12`.
+        """
+        return pulumi.get(self, "instance_cidr")
+
+    @instance_cidr.setter
+    def instance_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_cidr", value)
+
+    @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance type-normal: traditional exclusive instance.
+        The type of the instance. Valid values are:
         """
         return pulumi.get(self, "instance_type")
 
@@ -158,13 +201,22 @@ class InstanceArgs:
         pulumi.set(self, "instance_type", value)
 
     @property
+    @pulumi.getter(name="ipv6Enabled")
+    def ipv6_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether IPv6 ingress capability is enabled.
+        """
+        return pulumi.get(self, "ipv6_enabled")
+
+    @ipv6_enabled.setter
+    def ipv6_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ipv6_enabled", value)
+
+    @property
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
         """
-        The subscription instance is of the subscription year or month type. The value range is as follows:
-        - **year**: year
-        - **month**: month
-        > **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+        The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -173,16 +225,16 @@ class InstanceArgs:
         pulumi.set(self, "pricing_cycle", value)
 
     @property
-    @pulumi.getter(name="supportIpv6")
-    def support_ipv6(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="toConnectVpcIpBlock")
+    def to_connect_vpc_ip_block(self) -> Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]:
         """
-        Does ipv6 support.
+        The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         """
-        return pulumi.get(self, "support_ipv6")
+        return pulumi.get(self, "to_connect_vpc_ip_block")
 
-    @support_ipv6.setter
-    def support_ipv6(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "support_ipv6", value)
+    @to_connect_vpc_ip_block.setter
+    def to_connect_vpc_ip_block(self, value: Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]):
+        pulumi.set(self, "to_connect_vpc_ip_block", value)
 
     @property
     @pulumi.getter(name="userVpcId")
@@ -220,62 +272,93 @@ class InstanceArgs:
     def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
 
+    @property
+    @pulumi.getter(name="zoneVswitchSecurityGroups")
+    def zone_vswitch_security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]]:
+        """
+        Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+        """
+        return pulumi.get(self, "zone_vswitch_security_groups")
+
+    @zone_vswitch_security_groups.setter
+    def zone_vswitch_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]]):
+        pulumi.set(self, "zone_vswitch_security_groups", value)
+
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 connect_cidr_blocks: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 delete_vpc_ip_block: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  egress_ipv6_enable: Optional[pulumi.Input[bool]] = None,
                  https_policy: Optional[pulumi.Input[str]] = None,
+                 instance_cidr: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_spec: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_enabled: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  support_ipv6: Optional[pulumi.Input[bool]] = None,
+                 to_connect_vpc_ip_block: Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']] = None,
                  user_vpc_id: Optional[pulumi.Input[str]] = None,
                  vpc_slb_intranet_enable: Optional[pulumi.Input[bool]] = None,
-                 zone_id: Optional[pulumi.Input[str]] = None):
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_vswitch_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+        :param pulumi.Input[str] connect_cidr_blocks: (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
         :param pulumi.Input[str] create_time: Creation time.
+        :param pulumi.Input[str] delete_vpc_ip_block: Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
         :param pulumi.Input[int] duration: The time of the instance package. Valid values:
                - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
                - PricingCycle is **Year**, indicating annual payment. The value range is **1** to **3**.
                
                When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
-        :param pulumi.Input[bool] egress_ipv6_enable: Does IPV6 Capability Support.
+        :param pulumi.Input[bool] egress_ipv6_enable: Specifies whether IPv6 egress capability is enabled.
         :param pulumi.Input[str] https_policy: Https policy.
+        :param pulumi.Input[str] instance_cidr: The CIDR block for the instance deployment. Valid values are:
+               - `192.168.0.0/16`.
+               - `172.16.0.0/12`.
         :param pulumi.Input[str] instance_name: Instance name.
         :param pulumi.Input[str] instance_spec: Instance type.
-        :param pulumi.Input[str] instance_type: Instance type-normal: traditional exclusive instance.
+        :param pulumi.Input[str] instance_type: The type of the instance. Valid values are:
+        :param pulumi.Input[bool] ipv6_enabled: Specifies whether IPv6 ingress capability is enabled.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
-        :param pulumi.Input[str] pricing_cycle: The subscription instance is of the subscription year or month type. The value range is as follows:
-               - **year**: year
-               - **month**: month
-               > **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+        :param pulumi.Input[str] pricing_cycle: The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[bool] support_ipv6: Does ipv6 support.
+        :param pulumi.Input['InstanceToConnectVpcIpBlockArgs'] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         :param pulumi.Input[str] user_vpc_id: User's VpcID.
         :param pulumi.Input[bool] vpc_slb_intranet_enable: Whether the slb of the Vpc supports.
         :param pulumi.Input[str] zone_id: The zone where the instance is deployed.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]] zone_vswitch_security_groups: Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
         """
+        if connect_cidr_blocks is not None:
+            pulumi.set(__self__, "connect_cidr_blocks", connect_cidr_blocks)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if delete_vpc_ip_block is not None:
+            pulumi.set(__self__, "delete_vpc_ip_block", delete_vpc_ip_block)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
         if egress_ipv6_enable is not None:
             pulumi.set(__self__, "egress_ipv6_enable", egress_ipv6_enable)
         if https_policy is not None:
             pulumi.set(__self__, "https_policy", https_policy)
+        if instance_cidr is not None:
+            pulumi.set(__self__, "instance_cidr", instance_cidr)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_spec is not None:
             pulumi.set(__self__, "instance_spec", instance_spec)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if ipv6_enabled is not None:
+            pulumi.set(__self__, "ipv6_enabled", ipv6_enabled)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if pricing_cycle is not None:
@@ -284,12 +367,28 @@ class _InstanceState:
             pulumi.set(__self__, "status", status)
         if support_ipv6 is not None:
             pulumi.set(__self__, "support_ipv6", support_ipv6)
+        if to_connect_vpc_ip_block is not None:
+            pulumi.set(__self__, "to_connect_vpc_ip_block", to_connect_vpc_ip_block)
         if user_vpc_id is not None:
             pulumi.set(__self__, "user_vpc_id", user_vpc_id)
         if vpc_slb_intranet_enable is not None:
             pulumi.set(__self__, "vpc_slb_intranet_enable", vpc_slb_intranet_enable)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+        if zone_vswitch_security_groups is not None:
+            pulumi.set(__self__, "zone_vswitch_security_groups", zone_vswitch_security_groups)
+
+    @property
+    @pulumi.getter(name="connectCidrBlocks")
+    def connect_cidr_blocks(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+        """
+        return pulumi.get(self, "connect_cidr_blocks")
+
+    @connect_cidr_blocks.setter
+    def connect_cidr_blocks(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connect_cidr_blocks", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -302,6 +401,18 @@ class _InstanceState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deleteVpcIpBlock")
+    def delete_vpc_ip_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+        """
+        return pulumi.get(self, "delete_vpc_ip_block")
+
+    @delete_vpc_ip_block.setter
+    def delete_vpc_ip_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_vpc_ip_block", value)
 
     @property
     @pulumi.getter
@@ -323,7 +434,7 @@ class _InstanceState:
     @pulumi.getter(name="egressIpv6Enable")
     def egress_ipv6_enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        Does IPV6 Capability Support.
+        Specifies whether IPv6 egress capability is enabled.
         """
         return pulumi.get(self, "egress_ipv6_enable")
 
@@ -342,6 +453,20 @@ class _InstanceState:
     @https_policy.setter
     def https_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "https_policy", value)
+
+    @property
+    @pulumi.getter(name="instanceCidr")
+    def instance_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CIDR block for the instance deployment. Valid values are:
+        - `192.168.0.0/16`.
+        - `172.16.0.0/12`.
+        """
+        return pulumi.get(self, "instance_cidr")
+
+    @instance_cidr.setter
+    def instance_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_cidr", value)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -371,13 +496,25 @@ class _InstanceState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance type-normal: traditional exclusive instance.
+        The type of the instance. Valid values are:
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
     def instance_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="ipv6Enabled")
+    def ipv6_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether IPv6 ingress capability is enabled.
+        """
+        return pulumi.get(self, "ipv6_enabled")
+
+    @ipv6_enabled.setter
+    def ipv6_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ipv6_enabled", value)
 
     @property
     @pulumi.getter(name="paymentType")
@@ -395,10 +532,7 @@ class _InstanceState:
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
         """
-        The subscription instance is of the subscription year or month type. The value range is as follows:
-        - **year**: year
-        - **month**: month
-        > **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+        The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -431,6 +565,18 @@ class _InstanceState:
         pulumi.set(self, "support_ipv6", value)
 
     @property
+    @pulumi.getter(name="toConnectVpcIpBlock")
+    def to_connect_vpc_ip_block(self) -> Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]:
+        """
+        The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        """
+        return pulumi.get(self, "to_connect_vpc_ip_block")
+
+    @to_connect_vpc_ip_block.setter
+    def to_connect_vpc_ip_block(self, value: Optional[pulumi.Input['InstanceToConnectVpcIpBlockArgs']]):
+        pulumi.set(self, "to_connect_vpc_ip_block", value)
+
+    @property
     @pulumi.getter(name="userVpcId")
     def user_vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -466,24 +612,40 @@ class _InstanceState:
     def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
 
+    @property
+    @pulumi.getter(name="zoneVswitchSecurityGroups")
+    def zone_vswitch_security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]]:
+        """
+        Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+        """
+        return pulumi.get(self, "zone_vswitch_security_groups")
+
+    @zone_vswitch_security_groups.setter
+    def zone_vswitch_security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceZoneVswitchSecurityGroupArgs']]]]):
+        pulumi.set(self, "zone_vswitch_security_groups", value)
+
 
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 delete_vpc_ip_block: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  egress_ipv6_enable: Optional[pulumi.Input[bool]] = None,
                  https_policy: Optional[pulumi.Input[str]] = None,
+                 instance_cidr: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_spec: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_enabled: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
-                 support_ipv6: Optional[pulumi.Input[bool]] = None,
+                 to_connect_vpc_ip_block: Optional[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
                  user_vpc_id: Optional[pulumi.Input[str]] = None,
                  vpc_slb_intranet_enable: Optional[pulumi.Input[bool]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_vswitch_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Api Gateway Instance resource.
@@ -510,8 +672,55 @@ class Instance(pulumi.CustomResource):
             https_policy="HTTPS2_TLS1_0",
             zone_id="cn-hangzhou-MAZ6",
             payment_type="PayAsYouGo",
-            user_vpc_id="1709116870",
             instance_type="normal")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        vpc = alicloud.vpc.Network("vpc",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        vswitch1 = alicloud.vpc.Switch("vswitch_1",
+            vpc_id=vpc.id,
+            cidr_block="172.16.0.0/16",
+            zone_id="cn-hangzhou-j",
+            vswitch_name=f"{name}_1")
+        vswitch2 = alicloud.vpc.Switch("vswitch_2",
+            vpc_id=vpc.id,
+            cidr_block="172.17.0.0/16",
+            zone_id="cn-hangzhou-k",
+            vswitch_name=f"{name}_2")
+        security_group = alicloud.ecs.SecurityGroup("security_group",
+            vpc_id=vpc.id,
+            name=name)
+        vpc_integration_instance = alicloud.apigateway.Instance("vpc_integration_instance",
+            instance_name=name,
+            https_policy="HTTPS2_TLS1_0",
+            instance_spec="api.s1.small",
+            instance_type="vpc_connect",
+            payment_type="PayAsYouGo",
+            user_vpc_id=vpc.id,
+            instance_cidr="192.168.0.0/16",
+            zone_vswitch_security_groups=[
+                {
+                    "zone_id": vswitch1.zone_id,
+                    "vswitch_id": vswitch1.id,
+                    "cidr_block": vswitch1.cidr_block,
+                    "security_group": security_group.id,
+                },
+                {
+                    "zone_id": vswitch2.zone_id,
+                    "vswitch_id": vswitch2.id,
+                    "cidr_block": vswitch2.cidr_block,
+                    "security_group": security_group.id,
+                },
+            ])
         ```
 
         ## Import
@@ -524,25 +733,28 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] delete_vpc_ip_block: Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
         :param pulumi.Input[int] duration: The time of the instance package. Valid values:
                - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
                - PricingCycle is **Year**, indicating annual payment. The value range is **1** to **3**.
                
                When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
-        :param pulumi.Input[bool] egress_ipv6_enable: Does IPV6 Capability Support.
+        :param pulumi.Input[bool] egress_ipv6_enable: Specifies whether IPv6 egress capability is enabled.
         :param pulumi.Input[str] https_policy: Https policy.
+        :param pulumi.Input[str] instance_cidr: The CIDR block for the instance deployment. Valid values are:
+               - `192.168.0.0/16`.
+               - `172.16.0.0/12`.
         :param pulumi.Input[str] instance_name: Instance name.
         :param pulumi.Input[str] instance_spec: Instance type.
-        :param pulumi.Input[str] instance_type: Instance type-normal: traditional exclusive instance.
+        :param pulumi.Input[str] instance_type: The type of the instance. Valid values are:
+        :param pulumi.Input[bool] ipv6_enabled: Specifies whether IPv6 ingress capability is enabled.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
-        :param pulumi.Input[str] pricing_cycle: The subscription instance is of the subscription year or month type. The value range is as follows:
-               - **year**: year
-               - **month**: month
-               > **NOTE:**  If the Payment type is PrePaid, this parameter is required.
-        :param pulumi.Input[bool] support_ipv6: Does ipv6 support.
+        :param pulumi.Input[str] pricing_cycle: The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
+        :param pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         :param pulumi.Input[str] user_vpc_id: User's VpcID.
         :param pulumi.Input[bool] vpc_slb_intranet_enable: Whether the slb of the Vpc supports.
         :param pulumi.Input[str] zone_id: The zone where the instance is deployed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]] zone_vswitch_security_groups: Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
         """
         ...
     @overload
@@ -575,8 +787,55 @@ class Instance(pulumi.CustomResource):
             https_policy="HTTPS2_TLS1_0",
             zone_id="cn-hangzhou-MAZ6",
             payment_type="PayAsYouGo",
-            user_vpc_id="1709116870",
             instance_type="normal")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        vpc = alicloud.vpc.Network("vpc",
+            cidr_block="172.16.0.0/12",
+            vpc_name=name)
+        vswitch1 = alicloud.vpc.Switch("vswitch_1",
+            vpc_id=vpc.id,
+            cidr_block="172.16.0.0/16",
+            zone_id="cn-hangzhou-j",
+            vswitch_name=f"{name}_1")
+        vswitch2 = alicloud.vpc.Switch("vswitch_2",
+            vpc_id=vpc.id,
+            cidr_block="172.17.0.0/16",
+            zone_id="cn-hangzhou-k",
+            vswitch_name=f"{name}_2")
+        security_group = alicloud.ecs.SecurityGroup("security_group",
+            vpc_id=vpc.id,
+            name=name)
+        vpc_integration_instance = alicloud.apigateway.Instance("vpc_integration_instance",
+            instance_name=name,
+            https_policy="HTTPS2_TLS1_0",
+            instance_spec="api.s1.small",
+            instance_type="vpc_connect",
+            payment_type="PayAsYouGo",
+            user_vpc_id=vpc.id,
+            instance_cidr="192.168.0.0/16",
+            zone_vswitch_security_groups=[
+                {
+                    "zone_id": vswitch1.zone_id,
+                    "vswitch_id": vswitch1.id,
+                    "cidr_block": vswitch1.cidr_block,
+                    "security_group": security_group.id,
+                },
+                {
+                    "zone_id": vswitch2.zone_id,
+                    "vswitch_id": vswitch2.id,
+                    "cidr_block": vswitch2.cidr_block,
+                    "security_group": security_group.id,
+                },
+            ])
         ```
 
         ## Import
@@ -602,18 +861,22 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 delete_vpc_ip_block: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  egress_ipv6_enable: Optional[pulumi.Input[bool]] = None,
                  https_policy: Optional[pulumi.Input[str]] = None,
+                 instance_cidr: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_spec: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_enabled: Optional[pulumi.Input[bool]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
-                 support_ipv6: Optional[pulumi.Input[bool]] = None,
+                 to_connect_vpc_ip_block: Optional[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
                  user_vpc_id: Optional[pulumi.Input[str]] = None,
                  vpc_slb_intranet_enable: Optional[pulumi.Input[bool]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_vswitch_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -623,11 +886,13 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["delete_vpc_ip_block"] = delete_vpc_ip_block
             __props__.__dict__["duration"] = duration
             __props__.__dict__["egress_ipv6_enable"] = egress_ipv6_enable
             if https_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'https_policy'")
             __props__.__dict__["https_policy"] = https_policy
+            __props__.__dict__["instance_cidr"] = instance_cidr
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
             __props__.__dict__["instance_name"] = instance_name
@@ -635,16 +900,20 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_spec'")
             __props__.__dict__["instance_spec"] = instance_spec
             __props__.__dict__["instance_type"] = instance_type
+            __props__.__dict__["ipv6_enabled"] = ipv6_enabled
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["pricing_cycle"] = pricing_cycle
-            __props__.__dict__["support_ipv6"] = support_ipv6
+            __props__.__dict__["to_connect_vpc_ip_block"] = to_connect_vpc_ip_block
             __props__.__dict__["user_vpc_id"] = user_vpc_id
             __props__.__dict__["vpc_slb_intranet_enable"] = vpc_slb_intranet_enable
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["zone_vswitch_security_groups"] = zone_vswitch_security_groups
+            __props__.__dict__["connect_cidr_blocks"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["support_ipv6"] = None
         super(Instance, __self__).__init__(
             'alicloud:apigateway/instance:Instance',
             resource_name,
@@ -655,20 +924,26 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            connect_cidr_blocks: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            delete_vpc_ip_block: Optional[pulumi.Input[str]] = None,
             duration: Optional[pulumi.Input[int]] = None,
             egress_ipv6_enable: Optional[pulumi.Input[bool]] = None,
             https_policy: Optional[pulumi.Input[str]] = None,
+            instance_cidr: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_spec: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
+            ipv6_enabled: Optional[pulumi.Input[bool]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             pricing_cycle: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             support_ipv6: Optional[pulumi.Input[bool]] = None,
+            to_connect_vpc_ip_block: Optional[pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']]] = None,
             user_vpc_id: Optional[pulumi.Input[str]] = None,
             vpc_slb_intranet_enable: Optional[pulumi.Input[bool]] = None,
-            zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
+            zone_id: Optional[pulumi.Input[str]] = None,
+            zone_vswitch_security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -676,47 +951,66 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] connect_cidr_blocks: (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
         :param pulumi.Input[str] create_time: Creation time.
+        :param pulumi.Input[str] delete_vpc_ip_block: Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
         :param pulumi.Input[int] duration: The time of the instance package. Valid values:
                - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
                - PricingCycle is **Year**, indicating annual payment. The value range is **1** to **3**.
                
                When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
-        :param pulumi.Input[bool] egress_ipv6_enable: Does IPV6 Capability Support.
+        :param pulumi.Input[bool] egress_ipv6_enable: Specifies whether IPv6 egress capability is enabled.
         :param pulumi.Input[str] https_policy: Https policy.
+        :param pulumi.Input[str] instance_cidr: The CIDR block for the instance deployment. Valid values are:
+               - `192.168.0.0/16`.
+               - `172.16.0.0/12`.
         :param pulumi.Input[str] instance_name: Instance name.
         :param pulumi.Input[str] instance_spec: Instance type.
-        :param pulumi.Input[str] instance_type: Instance type-normal: traditional exclusive instance.
+        :param pulumi.Input[str] instance_type: The type of the instance. Valid values are:
+        :param pulumi.Input[bool] ipv6_enabled: Specifies whether IPv6 ingress capability is enabled.
         :param pulumi.Input[str] payment_type: The payment type of the resource.
-        :param pulumi.Input[str] pricing_cycle: The subscription instance is of the subscription year or month type. The value range is as follows:
-               - **year**: year
-               - **month**: month
-               > **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+        :param pulumi.Input[str] pricing_cycle: The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[bool] support_ipv6: Does ipv6 support.
+        :param pulumi.Input[Union['InstanceToConnectVpcIpBlockArgs', 'InstanceToConnectVpcIpBlockArgsDict']] to_connect_vpc_ip_block: The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
         :param pulumi.Input[str] user_vpc_id: User's VpcID.
         :param pulumi.Input[bool] vpc_slb_intranet_enable: Whether the slb of the Vpc supports.
         :param pulumi.Input[str] zone_id: The zone where the instance is deployed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceZoneVswitchSecurityGroupArgs', 'InstanceZoneVswitchSecurityGroupArgsDict']]]] zone_vswitch_security_groups: Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["connect_cidr_blocks"] = connect_cidr_blocks
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["delete_vpc_ip_block"] = delete_vpc_ip_block
         __props__.__dict__["duration"] = duration
         __props__.__dict__["egress_ipv6_enable"] = egress_ipv6_enable
         __props__.__dict__["https_policy"] = https_policy
+        __props__.__dict__["instance_cidr"] = instance_cidr
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_spec"] = instance_spec
         __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["ipv6_enabled"] = ipv6_enabled
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["pricing_cycle"] = pricing_cycle
         __props__.__dict__["status"] = status
         __props__.__dict__["support_ipv6"] = support_ipv6
+        __props__.__dict__["to_connect_vpc_ip_block"] = to_connect_vpc_ip_block
         __props__.__dict__["user_vpc_id"] = user_vpc_id
         __props__.__dict__["vpc_slb_intranet_enable"] = vpc_slb_intranet_enable
         __props__.__dict__["zone_id"] = zone_id
+        __props__.__dict__["zone_vswitch_security_groups"] = zone_vswitch_security_groups
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="connectCidrBlocks")
+    def connect_cidr_blocks(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+        """
+        return pulumi.get(self, "connect_cidr_blocks")
 
     @property
     @pulumi.getter(name="createTime")
@@ -725,6 +1019,14 @@ class Instance(pulumi.CustomResource):
         Creation time.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deleteVpcIpBlock")
+    def delete_vpc_ip_block(self) -> pulumi.Output[Optional[str]]:
+        """
+        Indicates whether to delete the IP block that the VPC can access, conflict with `to_connect_vpc_ip_block`.
+        """
+        return pulumi.get(self, "delete_vpc_ip_block")
 
     @property
     @pulumi.getter
@@ -742,7 +1044,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="egressIpv6Enable")
     def egress_ipv6_enable(self) -> pulumi.Output[Optional[bool]]:
         """
-        Does IPV6 Capability Support.
+        Specifies whether IPv6 egress capability is enabled.
         """
         return pulumi.get(self, "egress_ipv6_enable")
 
@@ -753,6 +1055,16 @@ class Instance(pulumi.CustomResource):
         Https policy.
         """
         return pulumi.get(self, "https_policy")
+
+    @property
+    @pulumi.getter(name="instanceCidr")
+    def instance_cidr(self) -> pulumi.Output[str]:
+        """
+        The CIDR block for the instance deployment. Valid values are:
+        - `192.168.0.0/16`.
+        - `172.16.0.0/12`.
+        """
+        return pulumi.get(self, "instance_cidr")
 
     @property
     @pulumi.getter(name="instanceName")
@@ -774,9 +1086,17 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        Instance type-normal: traditional exclusive instance.
+        The type of the instance. Valid values are:
         """
         return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="ipv6Enabled")
+    def ipv6_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether IPv6 ingress capability is enabled.
+        """
+        return pulumi.get(self, "ipv6_enabled")
 
     @property
     @pulumi.getter(name="paymentType")
@@ -790,10 +1110,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> pulumi.Output[Optional[str]]:
         """
-        The subscription instance is of the subscription year or month type. The value range is as follows:
-        - **year**: year
-        - **month**: month
-        > **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+        The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -807,11 +1124,19 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="supportIpv6")
-    def support_ipv6(self) -> pulumi.Output[Optional[bool]]:
+    def support_ipv6(self) -> pulumi.Output[bool]:
         """
         Does ipv6 support.
         """
         return pulumi.get(self, "support_ipv6")
+
+    @property
+    @pulumi.getter(name="toConnectVpcIpBlock")
+    def to_connect_vpc_ip_block(self) -> pulumi.Output[Optional['outputs.InstanceToConnectVpcIpBlock']]:
+        """
+        The additional IP block that the VPC integration instance can access, conflict with `delete_vpc_ip_block`. See `to_connect_vpc_ip_block` below.
+        """
+        return pulumi.get(self, "to_connect_vpc_ip_block")
 
     @property
     @pulumi.getter(name="userVpcId")
@@ -836,4 +1161,12 @@ class Instance(pulumi.CustomResource):
         The zone where the instance is deployed.
         """
         return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter(name="zoneVswitchSecurityGroups")
+    def zone_vswitch_security_groups(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceZoneVswitchSecurityGroup']]]:
+        """
+        Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zone_vswitch_security_group` below.
+        """
+        return pulumi.get(self, "zone_vswitch_security_groups")
 

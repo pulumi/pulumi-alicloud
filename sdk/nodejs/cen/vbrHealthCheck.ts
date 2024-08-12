@@ -112,7 +112,7 @@ export class VbrHealthCheck extends pulumi.CustomResource {
     /**
      * The source IP address of health checks.
      */
-    public readonly healthCheckSourceIp!: pulumi.Output<string | undefined>;
+    public readonly healthCheckSourceIp!: pulumi.Output<string>;
     /**
      * The destination IP address of health checks.
      */

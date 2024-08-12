@@ -310,14 +310,14 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * ID of the VSwitch linked to the SLBs.
+     * ID of the vSwitch linked to the SLBs.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return ID of the VSwitch linked to the SLBs.
+     * @return ID of the vSwitch linked to the SLBs.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -747,7 +747,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param vswitchId ID of the VSwitch linked to the SLBs.
+         * @param vswitchId ID of the vSwitch linked to the SLBs.
          * 
          * @return builder
          * 
@@ -758,7 +758,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param vswitchId ID of the VSwitch linked to the SLBs.
+         * @param vswitchId ID of the vSwitch linked to the SLBs.
          * 
          * @return builder
          * 

@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const default = alicloud.resourcemanager.getResourceGroups({});
- * const current = alicloud.getAccount({});
  * const instance = new alicloud.ddos.DdosBgpInstance("instance", {
  *     name: name,
  *     baseBandwidth: 20,
@@ -37,7 +36,6 @@ import * as utilities from "../utilities";
  *     instanceId: instance.id,
  *     ip: defaultEipAddress.ipAddress,
  *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
- *     memberUid: current.then(current => current.id),
  * });
  * ```
  *

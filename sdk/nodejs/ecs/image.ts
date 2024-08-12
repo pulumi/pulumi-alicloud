@@ -34,11 +34,10 @@ import * as utilities from "../utilities";
  * const defaultGetInstanceTypes = alicloud.ecs.getInstanceTypes({
  *     instanceTypeFamily: "ecs.sn1ne",
  * });
- * const defaultGetImages = defaultGetInstanceTypes.then(defaultGetInstanceTypes => alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
  *     owners: "system",
- *     instanceType: defaultGetInstanceTypes.ids?.[0],
- * }));
+ * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",

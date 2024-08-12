@@ -11,48 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.144.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const default = alicloud.cloudstoragegateway.getStocks({
- *     gatewayClass: "Standard",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: _default.then(_default => _default.stocks?.[0]?.zoneId),
- *     vswitchName: name,
- * });
- * const defaultStorageBundle = new alicloud.cloudstoragegateway.StorageBundle("default", {storageBundleName: name});
- * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("default", {
- *     description: name,
- *     gatewayClass: "Standard",
- *     type: "File",
- *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitch.id,
- *     releaseAfterExpiration: true,
- *     storageBundleId: defaultStorageBundle.id,
- *     location: "Cloud",
- *     gatewayName: name,
- * });
- * const defaultGatewayCacheDisk = new alicloud.cloudstoragegateway.GatewayCacheDisk("default", {
- *     gatewayId: defaultGateway.id,
- *     cacheDiskSizeInGb: 50,
- *     cacheDiskCategory: "cloud_efficiency",
- * });
- * ```
- *
  * ## Import
  *
  * Cloud Storage Gateway Gateway Cache Disk can be imported using the id, e.g.

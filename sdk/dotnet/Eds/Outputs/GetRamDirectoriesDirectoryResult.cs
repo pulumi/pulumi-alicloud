@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// List of VSwitch IDs in the directory.
+        /// List of vSwitch IDs in the directory.
         /// </summary>
         public readonly ImmutableArray<string> VswitchIds;
 

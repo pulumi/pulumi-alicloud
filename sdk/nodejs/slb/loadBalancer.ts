@@ -191,7 +191,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+     * The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
 
@@ -361,7 +361,7 @@ export interface LoadBalancerState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+     * The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
      */
     vswitchId?: pulumi.Input<string>;
 }
@@ -466,7 +466,7 @@ export interface LoadBalancerArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
+     * The vSwitch ID to launch in. If `addressType` is internet, it will be ignore.
      */
     vswitchId?: pulumi.Input<string>;
 }

@@ -18,9 +18,9 @@ import java.util.concurrent.CompletableFuture;
 
 public final class MaxcomputeFunctions {
     /**
-     * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+     * This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -50,20 +50,19 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf_testaccmp");
+     *         final var name = config.get("name").orElse("tf_example_acc");
      *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
      *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
-     *             .productType("PAYASYOUGO")
+     *             .productType("PayAsYouGo")
      *             .build());
      * 
      *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
-     *             .ids(defaultProject.id())
-     *             .nameRegex(defaultProject.name())
+     *             .nameRegex(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].id()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
      *     }
      * }
      * }
@@ -75,9 +74,9 @@ public final class MaxcomputeFunctions {
         return getProjects(GetProjectsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+     * This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -107,20 +106,19 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf_testaccmp");
+     *         final var name = config.get("name").orElse("tf_example_acc");
      *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
      *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
-     *             .productType("PAYASYOUGO")
+     *             .productType("PayAsYouGo")
      *             .build());
      * 
      *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
-     *             .ids(defaultProject.id())
-     *             .nameRegex(defaultProject.name())
+     *             .nameRegex(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].id()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
      *     }
      * }
      * }
@@ -132,9 +130,9 @@ public final class MaxcomputeFunctions {
         return getProjectsPlain(GetProjectsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+     * This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -164,20 +162,19 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf_testaccmp");
+     *         final var name = config.get("name").orElse("tf_example_acc");
      *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
      *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
-     *             .productType("PAYASYOUGO")
+     *             .productType("PayAsYouGo")
      *             .build());
      * 
      *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
-     *             .ids(defaultProject.id())
-     *             .nameRegex(defaultProject.name())
+     *             .nameRegex(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].id()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
      *     }
      * }
      * }
@@ -189,9 +186,9 @@ public final class MaxcomputeFunctions {
         return getProjects(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+     * This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -221,20 +218,19 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf_testaccmp");
+     *         final var name = config.get("name").orElse("tf_example_acc");
      *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
      *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
-     *             .productType("PAYASYOUGO")
+     *             .productType("PayAsYouGo")
      *             .build());
      * 
      *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
-     *             .ids(defaultProject.id())
-     *             .nameRegex(defaultProject.name())
+     *             .nameRegex(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].id()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
      *     }
      * }
      * }
@@ -246,9 +242,9 @@ public final class MaxcomputeFunctions {
         return getProjectsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+     * This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -278,20 +274,19 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf_testaccmp");
+     *         final var name = config.get("name").orElse("tf_example_acc");
      *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
      *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
-     *             .productType("PAYASYOUGO")
+     *             .productType("PayAsYouGo")
      *             .build());
      * 
      *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
-     *             .ids(defaultProject.id())
-     *             .nameRegex(defaultProject.name())
+     *             .nameRegex(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].id()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
      *     }
      * }
      * }
@@ -303,9 +298,9 @@ public final class MaxcomputeFunctions {
         return Deployment.getInstance().invoke("alicloud:maxcompute/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Max Compute Project available to the user.[What is Project](https://help.aliyun.com/document_detail/473479.html)
+     * This data source provides Max Compute Project available to the user.[What is Project](https://www.alibabacloud.com/help/en/maxcompute/)
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
      * 
@@ -335,20 +330,19 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("tf_testaccmp");
+     *         final var name = config.get("name").orElse("tf_example_acc");
      *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
      *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
-     *             .productType("PAYASYOUGO")
+     *             .productType("PayAsYouGo")
      *             .build());
      * 
      *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
-     *             .ids(defaultProject.id())
-     *             .nameRegex(defaultProject.name())
+     *             .nameRegex(defaultProject.projectName())
      *             .build());
      * 
-     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].id()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].projectName()));
      *     }
      * }
      * }
@@ -367,6 +361,8 @@ public final class MaxcomputeFunctions {
      * For information about Maxcompute and how to use it, see [What is Maxcompute](https://www.alibabacloud.com/help/en/product/27797.htm).
      * 
      * &gt; **NOTE:** Available in v1.117.0+
+     * 
+     * &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0.
      * 
      * ## Example Usage
      * 
@@ -416,6 +412,8 @@ public final class MaxcomputeFunctions {
      * 
      * &gt; **NOTE:** Available in v1.117.0+
      * 
+     * &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -463,6 +461,8 @@ public final class MaxcomputeFunctions {
      * For information about Maxcompute and how to use it, see [What is Maxcompute](https://www.alibabacloud.com/help/en/product/27797.htm).
      * 
      * &gt; **NOTE:** Available in v1.117.0+
+     * 
+     * &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0.
      * 
      * ## Example Usage
      * 
@@ -512,6 +512,8 @@ public final class MaxcomputeFunctions {
      * 
      * &gt; **NOTE:** Available in v1.117.0+
      * 
+     * &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -560,6 +562,8 @@ public final class MaxcomputeFunctions {
      * 
      * &gt; **NOTE:** Available in v1.117.0+
      * 
+     * &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -607,6 +611,8 @@ public final class MaxcomputeFunctions {
      * For information about Maxcompute and how to use it, see [What is Maxcompute](https://www.alibabacloud.com/help/en/product/27797.htm).
      * 
      * &gt; **NOTE:** Available in v1.117.0+
+     * 
+     * &gt; **NOTE:** This datasource has been deprecated since provider version v1.228.0.
      * 
      * ## Example Usage
      * 

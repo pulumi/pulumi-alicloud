@@ -136,7 +136,7 @@ import (
 // * `ids` - (Optional)  A list of ENI IDs.
 // * `nameRegex` - (Optional) A regex string to filter results by ENI name.
 // * `vpcId` - (Optional) The VPC ID linked to ENIs.
-// * `vswitchId` - (Optional) The VSwitch ID linked to ENIs.
+// * `vswitchId` - (Optional) The vSwitch ID linked to ENIs.
 // * `privateIp` - (Optional) The primary private IP address of the ENI.
 // * `securityGroupId` - (Optional) The security group ID linked to ENIs.
 // * `name` - (Optional) The name of the ENIs.
@@ -183,7 +183,7 @@ type GetNetworkInterfacesArgs struct {
 	Type *string                `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId *string `pulumi:"vpcId"`
-	// ID of the VSwitch that the ENI is linked to.
+	// ID of the vSwitch that the ENI is linked to.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -220,7 +220,7 @@ type GetNetworkInterfacesResult struct {
 	Type *string                `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId *string `pulumi:"vpcId"`
-	// ID of the VSwitch that the ENI is linked to.
+	// ID of the vSwitch that the ENI is linked to.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -265,7 +265,7 @@ type GetNetworkInterfacesOutputArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
-	// ID of the VSwitch that the ENI is linked to.
+	// ID of the vSwitch that the ENI is linked to.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 
@@ -373,7 +373,7 @@ func (o GetNetworkInterfacesResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
-// ID of the VSwitch that the ENI is linked to.
+// ID of the vSwitch that the ENI is linked to.
 func (o GetNetworkInterfacesResultOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesResult) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

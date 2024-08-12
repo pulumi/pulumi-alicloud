@@ -2757,7 +2757,7 @@ class GetPrometheisPrometheiResult(dict):
         :param str sub_clusters_json: The child instance json string of the globalView instance.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str vpc_id: The ID of the VPC.
-        :param str vswitch_id: The ID of the VSwitch.
+        :param str vswitch_id: The ID of the vSwitch.
         """
         pulumi.set(__self__, "auth_token", auth_token)
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -2936,7 +2936,7 @@ class GetPrometheisPrometheiResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The ID of the VSwitch.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 

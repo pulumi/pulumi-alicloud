@@ -29,16 +29,14 @@ class BindingArgs:
                * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
                If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
                The binding key must be 1 to 255 characters in length.
-        :param pulumi.Input[str] binding_type: The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
-        :param pulumi.Input[str] destination_name: The Target Queue Or Exchange of the Name.
-        :param pulumi.Input[str] instance_id: Instance Id.
-        :param pulumi.Input[str] source_exchange: The Source Exchange Name.
-        :param pulumi.Input[str] virtual_host_name: Virtualhost Name.
-        :param pulumi.Input[str] argument: X-match Attributes. Valid Values: 
-               * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-               * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-               
-               **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+        :param pulumi.Input[str] binding_type: The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
+        :param pulumi.Input[str] destination_name: The name of the object that you want to bind to the source exchange.
+        :param pulumi.Input[str] instance_id: The ID of the instance.
+        :param pulumi.Input[str] source_exchange: The name of the source exchange.
+        :param pulumi.Input[str] virtual_host_name: The name of the vhost.
+        :param pulumi.Input[str] argument: The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+               - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+               - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
         """
         pulumi.set(__self__, "binding_key", binding_key)
         pulumi.set(__self__, "binding_type", binding_type)
@@ -70,7 +68,7 @@ class BindingArgs:
     @pulumi.getter(name="bindingType")
     def binding_type(self) -> pulumi.Input[str]:
         """
-        The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+        The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
         """
         return pulumi.get(self, "binding_type")
 
@@ -82,7 +80,7 @@ class BindingArgs:
     @pulumi.getter(name="destinationName")
     def destination_name(self) -> pulumi.Input[str]:
         """
-        The Target Queue Or Exchange of the Name.
+        The name of the object that you want to bind to the source exchange.
         """
         return pulumi.get(self, "destination_name")
 
@@ -94,7 +92,7 @@ class BindingArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        Instance Id.
+        The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -106,7 +104,7 @@ class BindingArgs:
     @pulumi.getter(name="sourceExchange")
     def source_exchange(self) -> pulumi.Input[str]:
         """
-        The Source Exchange Name.
+        The name of the source exchange.
         """
         return pulumi.get(self, "source_exchange")
 
@@ -118,7 +116,7 @@ class BindingArgs:
     @pulumi.getter(name="virtualHostName")
     def virtual_host_name(self) -> pulumi.Input[str]:
         """
-        Virtualhost Name.
+        The name of the vhost.
         """
         return pulumi.get(self, "virtual_host_name")
 
@@ -130,11 +128,9 @@ class BindingArgs:
     @pulumi.getter
     def argument(self) -> Optional[pulumi.Input[str]]:
         """
-        X-match Attributes. Valid Values: 
-        * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-        * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-
-        **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+        The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+        - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+        - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
         """
         return pulumi.get(self, "argument")
 
@@ -155,22 +151,20 @@ class _BindingState:
                  virtual_host_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Binding resources.
-        :param pulumi.Input[str] argument: X-match Attributes. Valid Values: 
-               * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-               * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-               
-               **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+        :param pulumi.Input[str] argument: The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+               - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+               - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
         :param pulumi.Input[str] binding_key: The Binding Key.
                * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
                The binding key must be 1 to 255 characters in length.
                * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
                If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
                The binding key must be 1 to 255 characters in length.
-        :param pulumi.Input[str] binding_type: The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
-        :param pulumi.Input[str] destination_name: The Target Queue Or Exchange of the Name.
-        :param pulumi.Input[str] instance_id: Instance Id.
-        :param pulumi.Input[str] source_exchange: The Source Exchange Name.
-        :param pulumi.Input[str] virtual_host_name: Virtualhost Name.
+        :param pulumi.Input[str] binding_type: The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
+        :param pulumi.Input[str] destination_name: The name of the object that you want to bind to the source exchange.
+        :param pulumi.Input[str] instance_id: The ID of the instance.
+        :param pulumi.Input[str] source_exchange: The name of the source exchange.
+        :param pulumi.Input[str] virtual_host_name: The name of the vhost.
         """
         if argument is not None:
             pulumi.set(__self__, "argument", argument)
@@ -191,11 +185,9 @@ class _BindingState:
     @pulumi.getter
     def argument(self) -> Optional[pulumi.Input[str]]:
         """
-        X-match Attributes. Valid Values: 
-        * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-        * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-
-        **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+        The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+        - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+        - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
         """
         return pulumi.get(self, "argument")
 
@@ -224,7 +216,7 @@ class _BindingState:
     @pulumi.getter(name="bindingType")
     def binding_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+        The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
         """
         return pulumi.get(self, "binding_type")
 
@@ -236,7 +228,7 @@ class _BindingState:
     @pulumi.getter(name="destinationName")
     def destination_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Target Queue Or Exchange of the Name.
+        The name of the object that you want to bind to the source exchange.
         """
         return pulumi.get(self, "destination_name")
 
@@ -248,7 +240,7 @@ class _BindingState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance Id.
+        The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -260,7 +252,7 @@ class _BindingState:
     @pulumi.getter(name="sourceExchange")
     def source_exchange(self) -> Optional[pulumi.Input[str]]:
         """
-        The Source Exchange Name.
+        The name of the source exchange.
         """
         return pulumi.get(self, "source_exchange")
 
@@ -272,7 +264,7 @@ class _BindingState:
     @pulumi.getter(name="virtualHostName")
     def virtual_host_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Virtualhost Name.
+        The name of the vhost.
         """
         return pulumi.get(self, "virtual_host_name")
 
@@ -295,7 +287,7 @@ class Binding(pulumi.CustomResource):
                  virtual_host_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a RabbitMQ (AMQP) Binding resource to bind tha exchange with another exchange or queue.
+        Provides a RabbitMQ (AMQP) Binding resource.
 
         For information about RabbitMQ (AMQP) Binding and how to use it, see [What is Binding](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createbinding).
 
@@ -309,6 +301,10 @@ class Binding(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.amqp.Instance("default",
             instance_type="enterprise",
             max_tps="3000",
@@ -316,30 +312,29 @@ class Binding(pulumi.CustomResource):
             storage_size="700",
             support_eip=False,
             max_eip_tps="128",
-            payment_type="Subscription",
-            period=1)
+            payment_type="Subscription")
         default_virtual_host = alicloud.amqp.VirtualHost("default",
             instance_id=default.id,
-            virtual_host_name="tf-example")
+            virtual_host_name=name)
         default_exchange = alicloud.amqp.Exchange("default",
-            auto_delete_state=False,
-            exchange_name="tf-example",
-            exchange_type="HEADERS",
             instance_id=default.id,
-            internal=False,
-            virtual_host_name=default_virtual_host.virtual_host_name)
+            virtual_host_name=default_virtual_host.virtual_host_name,
+            exchange_name=name,
+            exchange_type="HEADERS",
+            auto_delete_state=False,
+            internal=False)
         default_queue = alicloud.amqp.Queue("default",
             instance_id=default.id,
-            queue_name="tf-example",
-            virtual_host_name=default_virtual_host.virtual_host_name)
+            virtual_host_name=default_virtual_host.virtual_host_name,
+            queue_name=name)
         default_binding = alicloud.amqp.Binding("default",
-            argument="x-match:all",
-            binding_key=default_queue.queue_name,
-            binding_type="QUEUE",
-            destination_name="tf-example",
             instance_id=default.id,
+            virtual_host_name=default_virtual_host.virtual_host_name,
             source_exchange=default_exchange.exchange_name,
-            virtual_host_name=default_virtual_host.virtual_host_name)
+            destination_name=name,
+            binding_type="QUEUE",
+            binding_key=default_queue.queue_name,
+            argument="x-match:all")
         ```
 
         ## Import
@@ -352,22 +347,20 @@ class Binding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] argument: X-match Attributes. Valid Values: 
-               * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-               * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-               
-               **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+        :param pulumi.Input[str] argument: The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+               - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+               - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
         :param pulumi.Input[str] binding_key: The Binding Key.
                * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
                The binding key must be 1 to 255 characters in length.
                * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
                If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
                The binding key must be 1 to 255 characters in length.
-        :param pulumi.Input[str] binding_type: The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
-        :param pulumi.Input[str] destination_name: The Target Queue Or Exchange of the Name.
-        :param pulumi.Input[str] instance_id: Instance Id.
-        :param pulumi.Input[str] source_exchange: The Source Exchange Name.
-        :param pulumi.Input[str] virtual_host_name: Virtualhost Name.
+        :param pulumi.Input[str] binding_type: The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
+        :param pulumi.Input[str] destination_name: The name of the object that you want to bind to the source exchange.
+        :param pulumi.Input[str] instance_id: The ID of the instance.
+        :param pulumi.Input[str] source_exchange: The name of the source exchange.
+        :param pulumi.Input[str] virtual_host_name: The name of the vhost.
         """
         ...
     @overload
@@ -376,7 +369,7 @@ class Binding(pulumi.CustomResource):
                  args: BindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a RabbitMQ (AMQP) Binding resource to bind tha exchange with another exchange or queue.
+        Provides a RabbitMQ (AMQP) Binding resource.
 
         For information about RabbitMQ (AMQP) Binding and how to use it, see [What is Binding](https://www.alibabacloud.com/help/en/message-queue-for-rabbitmq/latest/createbinding).
 
@@ -390,6 +383,10 @@ class Binding(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.amqp.Instance("default",
             instance_type="enterprise",
             max_tps="3000",
@@ -397,30 +394,29 @@ class Binding(pulumi.CustomResource):
             storage_size="700",
             support_eip=False,
             max_eip_tps="128",
-            payment_type="Subscription",
-            period=1)
+            payment_type="Subscription")
         default_virtual_host = alicloud.amqp.VirtualHost("default",
             instance_id=default.id,
-            virtual_host_name="tf-example")
+            virtual_host_name=name)
         default_exchange = alicloud.amqp.Exchange("default",
-            auto_delete_state=False,
-            exchange_name="tf-example",
-            exchange_type="HEADERS",
             instance_id=default.id,
-            internal=False,
-            virtual_host_name=default_virtual_host.virtual_host_name)
+            virtual_host_name=default_virtual_host.virtual_host_name,
+            exchange_name=name,
+            exchange_type="HEADERS",
+            auto_delete_state=False,
+            internal=False)
         default_queue = alicloud.amqp.Queue("default",
             instance_id=default.id,
-            queue_name="tf-example",
-            virtual_host_name=default_virtual_host.virtual_host_name)
+            virtual_host_name=default_virtual_host.virtual_host_name,
+            queue_name=name)
         default_binding = alicloud.amqp.Binding("default",
-            argument="x-match:all",
-            binding_key=default_queue.queue_name,
-            binding_type="QUEUE",
-            destination_name="tf-example",
             instance_id=default.id,
+            virtual_host_name=default_virtual_host.virtual_host_name,
             source_exchange=default_exchange.exchange_name,
-            virtual_host_name=default_virtual_host.virtual_host_name)
+            destination_name=name,
+            binding_type="QUEUE",
+            binding_key=default_queue.queue_name,
+            argument="x-match:all")
         ```
 
         ## Import
@@ -505,22 +501,20 @@ class Binding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] argument: X-match Attributes. Valid Values: 
-               * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-               * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-               
-               **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+        :param pulumi.Input[str] argument: The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+               - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+               - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
         :param pulumi.Input[str] binding_key: The Binding Key.
                * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
                The binding key must be 1 to 255 characters in length.
                * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
                If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
                The binding key must be 1 to 255 characters in length.
-        :param pulumi.Input[str] binding_type: The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
-        :param pulumi.Input[str] destination_name: The Target Queue Or Exchange of the Name.
-        :param pulumi.Input[str] instance_id: Instance Id.
-        :param pulumi.Input[str] source_exchange: The Source Exchange Name.
-        :param pulumi.Input[str] virtual_host_name: Virtualhost Name.
+        :param pulumi.Input[str] binding_type: The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
+        :param pulumi.Input[str] destination_name: The name of the object that you want to bind to the source exchange.
+        :param pulumi.Input[str] instance_id: The ID of the instance.
+        :param pulumi.Input[str] source_exchange: The name of the source exchange.
+        :param pulumi.Input[str] virtual_host_name: The name of the vhost.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -539,11 +533,9 @@ class Binding(pulumi.CustomResource):
     @pulumi.getter
     def argument(self) -> pulumi.Output[str]:
         """
-        X-match Attributes. Valid Values: 
-        * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-        * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-
-        **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+        The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+        - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+        - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
         """
         return pulumi.get(self, "argument")
 
@@ -564,7 +556,7 @@ class Binding(pulumi.CustomResource):
     @pulumi.getter(name="bindingType")
     def binding_type(self) -> pulumi.Output[str]:
         """
-        The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+        The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
         """
         return pulumi.get(self, "binding_type")
 
@@ -572,7 +564,7 @@ class Binding(pulumi.CustomResource):
     @pulumi.getter(name="destinationName")
     def destination_name(self) -> pulumi.Output[str]:
         """
-        The Target Queue Or Exchange of the Name.
+        The name of the object that you want to bind to the source exchange.
         """
         return pulumi.get(self, "destination_name")
 
@@ -580,7 +572,7 @@ class Binding(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        Instance Id.
+        The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -588,7 +580,7 @@ class Binding(pulumi.CustomResource):
     @pulumi.getter(name="sourceExchange")
     def source_exchange(self) -> pulumi.Output[str]:
         """
-        The Source Exchange Name.
+        The name of the source exchange.
         """
         return pulumi.get(self, "source_exchange")
 
@@ -596,7 +588,7 @@ class Binding(pulumi.CustomResource):
     @pulumi.getter(name="virtualHostName")
     def virtual_host_name(self) -> pulumi.Output[str]:
         """
-        Virtualhost Name.
+        The name of the vhost.
         """
         return pulumi.get(self, "virtual_host_name")
 

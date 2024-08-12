@@ -159,7 +159,7 @@ class GetConnectionsConnectionResult(dict):
         :param str upgradeable: The remaining validity period of the endpoint of the classic network.
         :param str vpc_id: The ID of the VPC where the instance is deployed.
         :param str vpc_instance_id: The ID of the instance. It is returned only when the value of the DBInstanceNetType parameter is 2 (indicating VPC).
-        :param str vswitch_id: The ID of the VSwitch.
+        :param str vswitch_id: The ID of the vSwitch.
         """
         pulumi.set(__self__, "connection_string", connection_string)
         pulumi.set(__self__, "db_instance_net_type", db_instance_net_type)
@@ -251,7 +251,7 @@ class GetConnectionsConnectionResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The ID of the VSwitch.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 

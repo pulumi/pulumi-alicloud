@@ -508,7 +508,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int> SecondaryPrivateIpAddressCount { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        /// A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         /// </summary>
         [Output("secondaryPrivateIps")]
         public Output<ImmutableArray<string>> SecondaryPrivateIps { get; private set; } = null!;
@@ -1093,7 +1093,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _secondaryPrivateIps;
 
         /// <summary>
-        /// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        /// A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         /// </summary>
         public InputList<string> SecondaryPrivateIps
         {
@@ -1699,7 +1699,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _secondaryPrivateIps;
 
         /// <summary>
-        /// A list of Secondary private IP addresses which is selected from within the CIDR block of the VSwitch.
+        /// A list of Secondary private IP addresses which is selected from within the CIDR block of the vSwitch.
         /// </summary>
         public InputList<string> SecondaryPrivateIps
         {

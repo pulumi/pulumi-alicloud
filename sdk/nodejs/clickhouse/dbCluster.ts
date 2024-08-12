@@ -22,9 +22,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
  * const name = config.get("name") || "tf-example";
  * const default = alicloud.clickhouse.getRegions({
- *     current: true,
+ *     regionId: region,
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
@@ -37,13 +38,13 @@ import * as utilities from "../utilities";
  *     zoneId: _default.then(_default => _default.regions?.[0]?.zoneIds?.[0]?.zoneId),
  * });
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("default", {
- *     dbClusterVersion: "22.8.5.29",
+ *     dbClusterVersion: "23.8",
  *     category: "Basic",
  *     dbClusterClass: "S8",
  *     dbClusterNetworkType: "vpc",
  *     dbNodeGroupCount: 1,
  *     paymentType: "PayAsYouGo",
- *     dbNodeStorage: "500",
+ *     dbNodeStorage: "100",
  *     storageType: "cloud_essd",
  *     vswitchId: defaultSwitch.id,
  *     vpcId: defaultNetwork.id,
@@ -137,6 +138,11 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly maintainTime!: pulumi.Output<string>;
     /**
+     * The zone IDs and 
+     * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
+     */
+    public readonly multiZoneVswitchLists!: pulumi.Output<outputs.clickhouse.DbClusterMultiZoneVswitchList[] | undefined>;
+    /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */
     public readonly paymentType!: pulumi.Output<string>;
@@ -202,6 +208,7 @@ export class DbCluster extends pulumi.CustomResource {
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
+            resourceInputs["multiZoneVswitchLists"] = state ? state.multiZoneVswitchLists : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
@@ -249,6 +256,7 @@ export class DbCluster extends pulumi.CustomResource {
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["encryptionType"] = args ? args.encryptionType : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
+            resourceInputs["multiZoneVswitchLists"] = args ? args.multiZoneVswitchLists : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
@@ -320,6 +328,11 @@ export interface DbClusterState {
      * The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
      */
     maintainTime?: pulumi.Input<string>;
+    /**
+     * The zone IDs and 
+     * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
+     */
+    multiZoneVswitchLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterMultiZoneVswitchList>[]>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */
@@ -412,6 +425,11 @@ export interface DbClusterArgs {
      * The maintenance window of DBCluster. Valid format: `hh:mmZ-hh:mm Z`.
      */
     maintainTime?: pulumi.Input<string>;
+    /**
+     * The zone IDs and 
+     * corresponding vswitch IDs and zone IDs of multi-zone setup. if set, a multi-zone DBCluster will be created. Currently only support 2 available zones, primary zone not included. See `multiZoneVswitchList` below.
+     */
+    multiZoneVswitchLists?: pulumi.Input<pulumi.Input<inputs.clickhouse.DbClusterMultiZoneVswitchList>[]>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */

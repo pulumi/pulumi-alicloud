@@ -16,22 +16,18 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
     public static final BindingState Empty = new BindingState();
 
     /**
-     * X-match Attributes. Valid Values:
-     * * &#34;x-match:all&#34;: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-     * * &#34;x-match:any&#34;: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-     * 
-     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+     * The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+     * - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+     * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
      * 
      */
     @Import(name="argument")
     private @Nullable Output<String> argument;
 
     /**
-     * @return X-match Attributes. Valid Values:
-     * * &#34;x-match:all&#34;: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-     * * &#34;x-match:any&#34;: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-     * 
-     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+     * @return The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+     * - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+     * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
      * 
      */
     public Optional<Output<String>> argument() {
@@ -64,14 +60,14 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+     * The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
      * 
      */
     @Import(name="bindingType")
     private @Nullable Output<String> bindingType;
 
     /**
-     * @return The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+     * @return The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
      * 
      */
     public Optional<Output<String>> bindingType() {
@@ -79,14 +75,14 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Target Queue Or Exchange of the Name.
+     * The name of the object that you want to bind to the source exchange.
      * 
      */
     @Import(name="destinationName")
     private @Nullable Output<String> destinationName;
 
     /**
-     * @return The Target Queue Or Exchange of the Name.
+     * @return The name of the object that you want to bind to the source exchange.
      * 
      */
     public Optional<Output<String>> destinationName() {
@@ -94,14 +90,14 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance Id.
+     * The ID of the instance.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return Instance Id.
+     * @return The ID of the instance.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -109,14 +105,14 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Source Exchange Name.
+     * The name of the source exchange.
      * 
      */
     @Import(name="sourceExchange")
     private @Nullable Output<String> sourceExchange;
 
     /**
-     * @return The Source Exchange Name.
+     * @return The name of the source exchange.
      * 
      */
     public Optional<Output<String>> sourceExchange() {
@@ -124,14 +120,14 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Virtualhost Name.
+     * The name of the vhost.
      * 
      */
     @Import(name="virtualHostName")
     private @Nullable Output<String> virtualHostName;
 
     /**
-     * @return Virtualhost Name.
+     * @return The name of the vhost.
      * 
      */
     public Optional<Output<String>> virtualHostName() {
@@ -169,11 +165,9 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param argument X-match Attributes. Valid Values:
-         * * &#34;x-match:all&#34;: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-         * * &#34;x-match:any&#34;: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-         * 
-         * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+         * @param argument The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+         * - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+         * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
          * 
          * @return builder
          * 
@@ -184,11 +178,9 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param argument X-match Attributes. Valid Values:
-         * * &#34;x-match:all&#34;: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
-         * * &#34;x-match:any&#34;: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
-         * 
-         * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+         * @param argument The key-value pairs that are configured for the headers attributes of a message. Default value: `x-match:all`. Valid values:
+         * - `x-match:all`: A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message.
+         * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
          * 
          * @return builder
          * 
@@ -229,7 +221,7 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindingType The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+         * @param bindingType The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
          * 
          * @return builder
          * 
@@ -240,7 +232,7 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindingType The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
+         * @param bindingType The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
          * 
          * @return builder
          * 
@@ -250,7 +242,7 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationName The Target Queue Or Exchange of the Name.
+         * @param destinationName The name of the object that you want to bind to the source exchange.
          * 
          * @return builder
          * 
@@ -261,7 +253,7 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationName The Target Queue Or Exchange of the Name.
+         * @param destinationName The name of the object that you want to bind to the source exchange.
          * 
          * @return builder
          * 
@@ -271,7 +263,7 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId Instance Id.
+         * @param instanceId The ID of the instance.
          * 
          * @return builder
          * 
@@ -282,7 +274,7 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId Instance Id.
+         * @param instanceId The ID of the instance.
          * 
          * @return builder
          * 
@@ -292,7 +284,7 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceExchange The Source Exchange Name.
+         * @param sourceExchange The name of the source exchange.
          * 
          * @return builder
          * 
@@ -303,7 +295,7 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceExchange The Source Exchange Name.
+         * @param sourceExchange The name of the source exchange.
          * 
          * @return builder
          * 
@@ -313,7 +305,7 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualHostName Virtualhost Name.
+         * @param virtualHostName The name of the vhost.
          * 
          * @return builder
          * 
@@ -324,7 +316,7 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualHostName Virtualhost Name.
+         * @param virtualHostName The name of the vhost.
          * 
          * @return builder
          * 

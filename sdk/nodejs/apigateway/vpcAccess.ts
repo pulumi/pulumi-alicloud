@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     vpcId: exampleNetwork.id,
  * });
  * const exampleGetImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     nameRegex: "^ubuntu_18.*64",
  *     owners: "system",
  * });
  * const exampleInstance = new alicloud.ecs.Instance("example", {

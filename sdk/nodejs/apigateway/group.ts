@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.apigateway.Group("default", {
  *     name: "tf_example",
  *     description: "tf_example",
+ *     basePath: "/",
  * });
  * ```
  *
@@ -56,6 +57,10 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
+     * The base path of the api gateway group. Defaults to `/`.
+     */
+    public readonly basePath!: pulumi.Output<string>;
+    /**
      * The description of the api gateway group. Defaults to null.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -89,6 +94,7 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
+            resourceInputs["basePath"] = state ? state.basePath : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -96,6 +102,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["vpcDomain"] = state ? state.vpcDomain : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
+            resourceInputs["basePath"] = args ? args.basePath : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -111,6 +118,10 @@ export class Group extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Group resources.
  */
 export interface GroupState {
+    /**
+     * The base path of the api gateway group. Defaults to `/`.
+     */
+    basePath?: pulumi.Input<string>;
     /**
      * The description of the api gateway group. Defaults to null.
      */
@@ -137,6 +148,10 @@ export interface GroupState {
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
+    /**
+     * The base path of the api gateway group. Defaults to `/`.
+     */
+    basePath?: pulumi.Input<string>;
     /**
      * The description of the api gateway group. Defaults to null.
      */

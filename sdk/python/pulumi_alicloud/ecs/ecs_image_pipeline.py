@@ -551,7 +551,7 @@ class EcsImagePipeline(pulumi.CustomResource):
 
         default = alicloud.resourcemanager.get_resource_groups(name_regex="default")
         default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(image_id=default_get_images.ids[0])
@@ -639,7 +639,7 @@ class EcsImagePipeline(pulumi.CustomResource):
 
         default = alicloud.resourcemanager.get_resource_groups(name_regex="default")
         default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(image_id=default_get_images.ids[0])

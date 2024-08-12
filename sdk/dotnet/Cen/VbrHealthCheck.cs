@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Cen
         /// The source IP address of health checks.
         /// </summary>
         [Output("healthCheckSourceIp")]
-        public Output<string?> HealthCheckSourceIp { get; private set; } = null!;
+        public Output<string> HealthCheckSourceIp { get; private set; } = null!;
 
         /// <summary>
         /// The destination IP address of health checks.

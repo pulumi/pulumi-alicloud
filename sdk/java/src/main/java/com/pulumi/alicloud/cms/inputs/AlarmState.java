@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.cms.inputs;
 
+import com.pulumi.alicloud.cms.inputs.AlarmCompositeExpressionArgs;
 import com.pulumi.alicloud.cms.inputs.AlarmEscalationsCriticalArgs;
 import com.pulumi.alicloud.cms.inputs.AlarmEscalationsInfoArgs;
 import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
@@ -24,6 +25,21 @@ import javax.annotation.Nullable;
 public final class AlarmState extends com.pulumi.resources.ResourceArgs {
 
     public static final AlarmState Empty = new AlarmState();
+
+    /**
+     * The trigger conditions for multiple metrics. See `composite_expression` below.
+     * 
+     */
+    @Import(name="compositeExpression")
+    private @Nullable Output<AlarmCompositeExpressionArgs> compositeExpression;
+
+    /**
+     * @return The trigger conditions for multiple metrics. See `composite_expression` below.
+     * 
+     */
+    public Optional<Output<AlarmCompositeExpressionArgs>> compositeExpression() {
+        return Optional.ofNullable(this.compositeExpression);
+    }
 
     /**
      * List contact groups of the alarm rule, which must have been created on the console.
@@ -64,14 +80,14 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The interval of effecting alarm rule. It format as &#34;hh:mm-hh:mm&#34;, like &#34;0:00-4:00&#34;. Default to &#34;00:00-23:59&#34;.
+     * The interval of effecting alarm rule. It format as &#34;hh:mm-hh:mm&#34;, like &#34;0:00-4:00&#34;. Default value: `00:00-23:59`.
      * 
      */
     @Import(name="effectiveInterval")
     private @Nullable Output<String> effectiveInterval;
 
     /**
-     * @return The interval of effecting alarm rule. It format as &#34;hh:mm-hh:mm&#34;, like &#34;0:00-4:00&#34;. Default to &#34;00:00-23:59&#34;.
+     * @return The interval of effecting alarm rule. It format as &#34;hh:mm-hh:mm&#34;, like &#34;0:00-4:00&#34;. Default value: `00:00-23:59`.
      * 
      */
     public Optional<Output<String>> effectiveInterval() {
@@ -207,14 +223,14 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+     * The statistical period of the metric. Unit: seconds. Default value: `300`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+     * @return The statistical period of the metric. Unit: seconds. Default value: `300`.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -354,6 +370,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     private AlarmState() {}
 
     private AlarmState(AlarmState $) {
+        this.compositeExpression = $.compositeExpression;
         this.contactGroups = $.contactGroups;
         this.dimensions = $.dimensions;
         this.effectiveInterval = $.effectiveInterval;
@@ -392,6 +409,27 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AlarmState defaults) {
             $ = new AlarmState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param compositeExpression The trigger conditions for multiple metrics. See `composite_expression` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compositeExpression(@Nullable Output<AlarmCompositeExpressionArgs> compositeExpression) {
+            $.compositeExpression = compositeExpression;
+            return this;
+        }
+
+        /**
+         * @param compositeExpression The trigger conditions for multiple metrics. See `composite_expression` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compositeExpression(AlarmCompositeExpressionArgs compositeExpression) {
+            return compositeExpression(Output.of(compositeExpression));
         }
 
         /**
@@ -455,7 +493,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param effectiveInterval The interval of effecting alarm rule. It format as &#34;hh:mm-hh:mm&#34;, like &#34;0:00-4:00&#34;. Default to &#34;00:00-23:59&#34;.
+         * @param effectiveInterval The interval of effecting alarm rule. It format as &#34;hh:mm-hh:mm&#34;, like &#34;0:00-4:00&#34;. Default value: `00:00-23:59`.
          * 
          * @return builder
          * 
@@ -466,7 +504,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param effectiveInterval The interval of effecting alarm rule. It format as &#34;hh:mm-hh:mm&#34;, like &#34;0:00-4:00&#34;. Default to &#34;00:00-23:59&#34;.
+         * @param effectiveInterval The interval of effecting alarm rule. It format as &#34;hh:mm-hh:mm&#34;, like &#34;0:00-4:00&#34;. Default value: `00:00-23:59`.
          * 
          * @return builder
          * 
@@ -652,7 +690,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+         * @param period The statistical period of the metric. Unit: seconds. Default value: `300`.
          * 
          * @return builder
          * 
@@ -663,7 +701,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
+         * @param period The statistical period of the metric. Unit: seconds. Default value: `300`.
          * 
          * @return builder
          * 

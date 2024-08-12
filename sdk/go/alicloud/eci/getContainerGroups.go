@@ -74,7 +74,7 @@ type GetContainerGroupsArgs struct {
 	// The status list. For more information, see the description of ContainerGroup arrays.
 	Status *string                `pulumi:"status"`
 	Tags   map[string]interface{} `pulumi:"tags"`
-	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
+	// The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
 	VswitchId *string `pulumi:"vswitchId"`
 	WithEvent *bool   `pulumi:"withEvent"`
 	// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
@@ -133,7 +133,7 @@ type GetContainerGroupsOutputArgs struct {
 	// The status list. For more information, see the description of ContainerGroup arrays.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	Tags   pulumi.MapInput       `pulumi:"tags"`
-	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
+	// The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 	WithEvent pulumi.BoolPtrInput   `pulumi:"withEvent"`
 	// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.

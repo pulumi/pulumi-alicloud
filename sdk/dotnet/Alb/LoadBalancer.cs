@@ -28,87 +28,85 @@ namespace Pulumi.AliCloud.Alb
     public partial class LoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Access Logging Configuration Structure. See `access_log_config` below.
+        /// The configuration of the access log. See `access_log_config` below.
         /// </summary>
         [Output("accessLogConfig")]
         public Output<Outputs.LoadBalancerAccessLogConfig?> AccessLogConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
+        /// The mode in which IP addresses are allocated. Valid values: `Fixed`, `Dynamic`.
         /// </summary>
         [Output("addressAllocatedMode")]
         public Output<string?> AddressAllocatedMode { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol version. Value:
-        /// - **IPv4**:IPv4 type.
-        /// - **DualStack**: the dual-stack type.
+        /// The protocol version. Valid values: `IPv4`, `DualStack`.
         /// </summary>
         [Output("addressIpVersion")]
         public Output<string> AddressIpVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The type of IP address that the SLB instance uses to provide services.
+        /// The type of the address of the ALB instance. Valid values: `Internet`, `Intranet`.
         /// </summary>
         [Output("addressType")]
         public Output<string> AddressType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
+        /// The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
         /// </summary>
         [Output("bandwidthPackageId")]
-        public Output<string> BandwidthPackageId { get; private set; } = null!;
+        public Output<string?> BandwidthPackageId { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The time when the resource was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable delete protection. Value:true: on.false (default): Off.
+        /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         /// </summary>
         [Output("deletionProtectionEnabled")]
         public Output<bool?> DeletionProtectionEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+        /// (Available since v1.158.0) The domain name of the ALB instance.
         /// </summary>
         [Output("dnsName")]
         public Output<string> DnsName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to PreCheck only this request, value:true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
+        /// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The address type of Ipv6.
+        /// The address type of the Ipv6 address. Valid values: `Internet`, `Intranet`.
         /// </summary>
         [Output("ipv6AddressType")]
         public Output<string> Ipv6AddressType { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of the billing method. See `load_balancer_billing_config` below.
+        /// The billing method of the ALB instance. See `load_balancer_billing_config` below.
         /// </summary>
         [Output("loadBalancerBillingConfig")]
         public Output<Outputs.LoadBalancerLoadBalancerBillingConfig> LoadBalancerBillingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The edition of the ALB instance.
+        /// The edition of the ALB instance. The features and billing rules vary based on the edition of the ALB instance. Valid values: `Basic`, `Standard`, `StandardWithWaf`.
         /// </summary>
         [Output("loadBalancerEdition")]
         public Output<string> LoadBalancerEdition { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource.
+        /// The name of the ALB instance.
         /// </summary>
         [Output("loadBalancerName")]
         public Output<string?> LoadBalancerName { get; private set; } = null!;
 
         /// <summary>
-        /// Modify the Protection Configuration. See `modification_protection_config` below.
+        /// The configuration of the read-only mode. See `modification_protection_config` below.
         /// </summary>
         [Output("modificationProtectionConfig")]
         public Output<Outputs.LoadBalancerModificationProtectionConfig> ModificationProtectionConfig { get; private set; } = null!;
@@ -120,25 +118,25 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
+        /// The status of the Load Balancer.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, object>> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
+        /// The ID of the VPC.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
+        /// The list of zones and vSwitch mappings. You must specify at least two zones. See `zone_mappings` below.
         /// </summary>
         [Output("zoneMappings")]
         public Output<ImmutableArray<Outputs.LoadBalancerZoneMapping>> ZoneMappings { get; private set; } = null!;
@@ -190,75 +188,73 @@ namespace Pulumi.AliCloud.Alb
     public sealed class LoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Access Logging Configuration Structure. See `access_log_config` below.
+        /// The configuration of the access log. See `access_log_config` below.
         /// </summary>
         [Input("accessLogConfig")]
         public Input<Inputs.LoadBalancerAccessLogConfigArgs>? AccessLogConfig { get; set; }
 
         /// <summary>
-        /// The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
+        /// The mode in which IP addresses are allocated. Valid values: `Fixed`, `Dynamic`.
         /// </summary>
         [Input("addressAllocatedMode")]
         public Input<string>? AddressAllocatedMode { get; set; }
 
         /// <summary>
-        /// The protocol version. Value:
-        /// - **IPv4**:IPv4 type.
-        /// - **DualStack**: the dual-stack type.
+        /// The protocol version. Valid values: `IPv4`, `DualStack`.
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }
 
         /// <summary>
-        /// The type of IP address that the SLB instance uses to provide services.
+        /// The type of the address of the ALB instance. Valid values: `Internet`, `Intranet`.
         /// </summary>
         [Input("addressType", required: true)]
         public Input<string> AddressType { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
+        /// The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
         /// </summary>
         [Input("bandwidthPackageId")]
         public Input<string>? BandwidthPackageId { get; set; }
 
         /// <summary>
-        /// Whether to enable delete protection. Value:true: on.false (default): Off.
+        /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         /// </summary>
         [Input("deletionProtectionEnabled")]
         public Input<bool>? DeletionProtectionEnabled { get; set; }
 
         /// <summary>
-        /// Whether to PreCheck only this request, value:true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
+        /// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The address type of Ipv6.
+        /// The address type of the Ipv6 address. Valid values: `Internet`, `Intranet`.
         /// </summary>
         [Input("ipv6AddressType")]
         public Input<string>? Ipv6AddressType { get; set; }
 
         /// <summary>
-        /// The configuration of the billing method. See `load_balancer_billing_config` below.
+        /// The billing method of the ALB instance. See `load_balancer_billing_config` below.
         /// </summary>
         [Input("loadBalancerBillingConfig", required: true)]
         public Input<Inputs.LoadBalancerLoadBalancerBillingConfigArgs> LoadBalancerBillingConfig { get; set; } = null!;
 
         /// <summary>
-        /// The edition of the ALB instance.
+        /// The edition of the ALB instance. The features and billing rules vary based on the edition of the ALB instance. Valid values: `Basic`, `Standard`, `StandardWithWaf`.
         /// </summary>
         [Input("loadBalancerEdition", required: true)]
         public Input<string> LoadBalancerEdition { get; set; } = null!;
 
         /// <summary>
-        /// The name of the resource.
+        /// The name of the ALB instance.
         /// </summary>
         [Input("loadBalancerName")]
         public Input<string>? LoadBalancerName { get; set; }
 
         /// <summary>
-        /// Modify the Protection Configuration. See `modification_protection_config` below.
+        /// The configuration of the read-only mode. See `modification_protection_config` below.
         /// </summary>
         [Input("modificationProtectionConfig")]
         public Input<Inputs.LoadBalancerModificationProtectionConfigArgs>? ModificationProtectionConfig { get; set; }
@@ -273,7 +269,7 @@ namespace Pulumi.AliCloud.Alb
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -282,7 +278,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
+        /// The ID of the VPC.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -291,7 +287,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.LoadBalancerZoneMappingArgs>? _zoneMappings;
 
         /// <summary>
-        /// The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
+        /// The list of zones and vSwitch mappings. You must specify at least two zones. See `zone_mappings` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingArgs> ZoneMappings
         {
@@ -308,87 +304,85 @@ namespace Pulumi.AliCloud.Alb
     public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Access Logging Configuration Structure. See `access_log_config` below.
+        /// The configuration of the access log. See `access_log_config` below.
         /// </summary>
         [Input("accessLogConfig")]
         public Input<Inputs.LoadBalancerAccessLogConfigGetArgs>? AccessLogConfig { get; set; }
 
         /// <summary>
-        /// The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB instance.
+        /// The mode in which IP addresses are allocated. Valid values: `Fixed`, `Dynamic`.
         /// </summary>
         [Input("addressAllocatedMode")]
         public Input<string>? AddressAllocatedMode { get; set; }
 
         /// <summary>
-        /// The protocol version. Value:
-        /// - **IPv4**:IPv4 type.
-        /// - **DualStack**: the dual-stack type.
+        /// The protocol version. Valid values: `IPv4`, `DualStack`.
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }
 
         /// <summary>
-        /// The type of IP address that the SLB instance uses to provide services.
+        /// The type of the address of the ALB instance. Valid values: `Internet`, `Intranet`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
 
         /// <summary>
-        /// The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a public IP address.
+        /// The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
         /// </summary>
         [Input("bandwidthPackageId")]
         public Input<string>? BandwidthPackageId { get; set; }
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The time when the resource was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Whether to enable delete protection. Value:true: on.false (default): Off.
+        /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
         /// </summary>
         [Input("deletionProtectionEnabled")]
         public Input<bool>? DeletionProtectionEnabled { get; set; }
 
         /// <summary>
-        /// The domain name of the ALB instance. **NOTE:** Available in v1.158.0+.
+        /// (Available since v1.158.0) The domain name of the ALB instance.
         /// </summary>
         [Input("dnsName")]
         public Input<string>? DnsName { get; set; }
 
         /// <summary>
-        /// Whether to PreCheck only this request, value:true: sends a check request and does not create a resource. Check items include whether required parameters are filled in, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.false (default): Sends a normal request, returns the HTTP_2xx status code after the check, and directly performs the operation.
+        /// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The address type of Ipv6.
+        /// The address type of the Ipv6 address. Valid values: `Internet`, `Intranet`.
         /// </summary>
         [Input("ipv6AddressType")]
         public Input<string>? Ipv6AddressType { get; set; }
 
         /// <summary>
-        /// The configuration of the billing method. See `load_balancer_billing_config` below.
+        /// The billing method of the ALB instance. See `load_balancer_billing_config` below.
         /// </summary>
         [Input("loadBalancerBillingConfig")]
         public Input<Inputs.LoadBalancerLoadBalancerBillingConfigGetArgs>? LoadBalancerBillingConfig { get; set; }
 
         /// <summary>
-        /// The edition of the ALB instance.
+        /// The edition of the ALB instance. The features and billing rules vary based on the edition of the ALB instance. Valid values: `Basic`, `Standard`, `StandardWithWaf`.
         /// </summary>
         [Input("loadBalancerEdition")]
         public Input<string>? LoadBalancerEdition { get; set; }
 
         /// <summary>
-        /// The name of the resource.
+        /// The name of the ALB instance.
         /// </summary>
         [Input("loadBalancerName")]
         public Input<string>? LoadBalancerName { get; set; }
 
         /// <summary>
-        /// Modify the Protection Configuration. See `modification_protection_config` below.
+        /// The configuration of the read-only mode. See `modification_protection_config` below.
         /// </summary>
         [Input("modificationProtectionConfig")]
         public Input<Inputs.LoadBalancerModificationProtectionConfigGetArgs>? ModificationProtectionConfig { get; set; }
@@ -400,7 +394,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
+        /// The status of the Load Balancer.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -409,7 +403,7 @@ namespace Pulumi.AliCloud.Alb
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -418,7 +412,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
+        /// The ID of the VPC.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -427,7 +421,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.LoadBalancerZoneMappingGetArgs>? _zoneMappings;
 
         /// <summary>
-        /// The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
+        /// The list of zones and vSwitch mappings. You must specify at least two zones. See `zone_mappings` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingGetArgs> ZoneMappings
         {

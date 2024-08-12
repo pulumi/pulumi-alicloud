@@ -52,7 +52,7 @@ import (
 //			}
 //			exampleGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				InstanceType: pulumi.StringRef(example.InstanceTypes[len(example.InstanceTypes)-1].Id),
-//				NameRegex:    pulumi.StringRef("^aliyun_2_1903_x64_20G_alibase_20231221.vhd"),
+//				NameRegex:    pulumi.StringRef("^aliyun_2_1903_x64_20G_alibase_20240628.vhd"),
 //				Owners:       pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {

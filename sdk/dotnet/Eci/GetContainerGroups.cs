@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Eci
         }
 
         /// <summary>
-        /// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
+        /// The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
         /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.AliCloud.Eci
         }
 
         /// <summary>
-        /// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
+        /// The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

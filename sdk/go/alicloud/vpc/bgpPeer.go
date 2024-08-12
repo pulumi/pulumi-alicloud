@@ -117,7 +117,7 @@ type BgpPeer struct {
 	// The IP version.
 	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
 	// The IP address of the BGP peer.
-	PeerIpAddress pulumi.StringPtrOutput `pulumi:"peerIpAddress"`
+	PeerIpAddress pulumi.StringOutput `pulumi:"peerIpAddress"`
 	// Status of BGP neighbors.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -332,8 +332,8 @@ func (o BgpPeerOutput) IpVersion() pulumi.StringOutput {
 }
 
 // The IP address of the BGP peer.
-func (o BgpPeerOutput) PeerIpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BgpPeer) pulumi.StringPtrOutput { return v.PeerIpAddress }).(pulumi.StringPtrOutput)
+func (o BgpPeerOutput) PeerIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpPeer) pulumi.StringOutput { return v.PeerIpAddress }).(pulumi.StringOutput)
 }
 
 // Status of BGP neighbors.

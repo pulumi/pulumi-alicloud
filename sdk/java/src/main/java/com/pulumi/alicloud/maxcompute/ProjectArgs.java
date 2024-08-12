@@ -66,14 +66,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * Logical deletion, value: (true/false) true: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
      * 
      */
     @Import(name="isLogical")
     private @Nullable Output<String> isLogical;
 
     /**
-     * @return Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+     * @return Logical deletion, value: (true/false) true: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
      * 
      */
     public Optional<Output<String>> isLogical() {
@@ -267,7 +267,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isLogical Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+         * @param isLogical Logical deletion, value: (true/false) true: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isLogical Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+         * @param isLogical Logical deletion, value: (true/false) true: In this case, the project status will be changed to &#39;DELETING&#39; and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
          * 
          * @return builder
          * 

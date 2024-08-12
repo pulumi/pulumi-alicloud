@@ -19,6 +19,8 @@ import (
 //
 // > **NOTE:** Available in v1.117.0+
 //
+// > **NOTE:** This datasource has been deprecated since provider version v1.228.0.
+//
 // ## Example Usage
 //
 // ```go

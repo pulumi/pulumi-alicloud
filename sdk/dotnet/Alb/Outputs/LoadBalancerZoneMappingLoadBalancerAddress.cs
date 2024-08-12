@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class LoadBalancerZoneMappingLoadBalancerAddress
     {
         /// <summary>
-        /// IP Address. The Public IP Address, and Private IP Address from the Address Type.
+        /// IP address. The Public IP Address, and Private IP Address from the Address Type.
         /// </summary>
         public readonly string? Address;
         /// <summary>
-        /// The ID of the EIP instance.
+        /// The ID of the EIP.
         /// </summary>
         public readonly string? AllocationId;
         /// <summary>
-        /// The type of the EIP instance.
+        /// The type of the EIP.
         /// </summary>
         public readonly string? EipType;
         /// <summary>

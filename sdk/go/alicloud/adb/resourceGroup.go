@@ -28,6 +28,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -37,7 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraform-example"
+//			name := "tf_example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -45,41 +46,60 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
 //				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("192.168.192.0/24"),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultDBCluster, err := adb.NewDBCluster(ctx, "default", &adb.DBClusterArgs{
-//				ComputeResource:   pulumi.String("32Core128GB"),
+//				ComputeResource:   pulumi.String("48Core192GB"),
 //				DbClusterCategory: pulumi.String("MixedStorage"),
+//				DbClusterVersion:  pulumi.String("3.0"),
+//				DbNodeClass:       pulumi.String("E32"),
+//				DbNodeStorage:     pulumi.Int(100),
 //				Description:       pulumi.String(name),
 //				ElasticIoResource: pulumi.Int(1),
+//				MaintainTime:      pulumi.String("04:00Z-05:00Z"),
 //				Mode:              pulumi.String("flexible"),
 //				PaymentType:       pulumi.String("PayAsYouGo"),
-//				VpcId:             defaultNetwork.ID(),
-//				VswitchId:         defaultSwitch.ID(),
-//				ZoneId:            pulumi.String(_default.Zones[0].Id),
+//				ResourceGroupId:   pulumi.String(defaultGetResourceGroups.Ids[0]),
+//				SecurityIps: pulumi.StringArray{
+//					pulumi.String("10.168.1.12"),
+//					pulumi.String("10.168.1.11"),
+//				},
+//				VpcId:     defaultNetwork.ID(),
+//				VswitchId: defaultSwitch.ID(),
+//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//				Tags: pulumi.Map{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = adb.NewResourceGroup(ctx, "default", &adb.ResourceGroupArgs{
-//				DbClusterId: defaultDBCluster.ID(),
-//				GroupName:   pulumi.String(name),
+//				GroupName:   pulumi.String("TF_EXAMPLE"),
 //				GroupType:   pulumi.String("batch"),
-//				NodeNum:     pulumi.Int(1),
+//				NodeNum:     pulumi.Int(0),
+//				DbClusterId: defaultDBCluster.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -18,14 +18,14 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
     public static final DynamicTagGroupState Empty = new DynamicTagGroupState();
 
     /**
-     * Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+     * The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
      * 
      */
     @Import(name="contactGroupLists")
     private @Nullable Output<List<String>> contactGroupLists;
 
     /**
-     * @return Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+     * @return The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
      * 
      */
     public Optional<Output<List<String>>> contactGroupLists() {
@@ -33,14 +33,14 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The relationship between conditional expressions. Valid values: `and`, `or`.
+     * The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
      * 
      */
     @Import(name="matchExpressFilterRelation")
     private @Nullable Output<String> matchExpressFilterRelation;
 
     /**
-     * @return The relationship between conditional expressions. Valid values: `and`, `or`.
+     * @return The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
      * 
      */
     public Optional<Output<String>> matchExpressFilterRelation() {
@@ -48,14 +48,14 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The label generates a matching expression that applies the grouping. See `match_express` below.
+     * The conditional expressions used to create an application group based on the tag. See `match_express` below.
      * 
      */
     @Import(name="matchExpresses")
     private @Nullable Output<List<DynamicTagGroupMatchExpressArgs>> matchExpresses;
 
     /**
-     * @return The label generates a matching expression that applies the grouping. See `match_express` below.
+     * @return The conditional expressions used to create an application group based on the tag. See `match_express` below.
      * 
      */
     public Optional<Output<List<DynamicTagGroupMatchExpressArgs>>> matchExpresses() {
@@ -63,14 +63,14 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The status of the resource. Valid values: `RUNNING`, `FINISH`.
+     * The status of the Dynamic Tag Group.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `RUNNING`, `FINISH`.
+     * @return The status of the Dynamic Tag Group.
      * 
      */
     public Optional<Output<String>> status() {
@@ -78,14 +78,14 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The tag key of the tag.
+     * The tag keys of the cloud resources.
      * 
      */
     @Import(name="tagKey")
     private @Nullable Output<String> tagKey;
 
     /**
-     * @return The tag key of the tag.
+     * @return The tag keys of the cloud resources.
      * 
      */
     public Optional<Output<String>> tagKey() {
@@ -93,14 +93,14 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Alarm template ID list.
+     * The IDs of the alert templates.
      * 
      */
     @Import(name="templateIdLists")
     private @Nullable Output<List<String>> templateIdLists;
 
     /**
-     * @return Alarm template ID list.
+     * @return The IDs of the alert templates.
      * 
      */
     public Optional<Output<List<String>>> templateIdLists() {
@@ -137,7 +137,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param contactGroupLists Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+         * @param contactGroupLists The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param contactGroupLists Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+         * @param contactGroupLists The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param contactGroupLists Alarm contact group. The value range of N is 1~100. The alarm notification of the application group is sent to the alarm contact in the alarm contact group.
+         * @param contactGroupLists The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param matchExpressFilterRelation The relationship between conditional expressions. Valid values: `and`, `or`.
+         * @param matchExpressFilterRelation The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param matchExpressFilterRelation The relationship between conditional expressions. Valid values: `and`, `or`.
+         * @param matchExpressFilterRelation The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param matchExpresses The label generates a matching expression that applies the grouping. See `match_express` below.
+         * @param matchExpresses The conditional expressions used to create an application group based on the tag. See `match_express` below.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param matchExpresses The label generates a matching expression that applies the grouping. See `match_express` below.
+         * @param matchExpresses The conditional expressions used to create an application group based on the tag. See `match_express` below.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param matchExpresses The label generates a matching expression that applies the grouping. See `match_express` below.
+         * @param matchExpresses The conditional expressions used to create an application group based on the tag. See `match_express` below.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status The status of the resource. Valid values: `RUNNING`, `FINISH`.
+         * @param status The status of the Dynamic Tag Group.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status The status of the resource. Valid values: `RUNNING`, `FINISH`.
+         * @param status The status of the Dynamic Tag Group.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tagKey The tag key of the tag.
+         * @param tagKey The tag keys of the cloud resources.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tagKey The tag key of the tag.
+         * @param tagKey The tag keys of the cloud resources.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param templateIdLists Alarm template ID list.
+         * @param templateIdLists The IDs of the alert templates.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param templateIdLists Alarm template ID list.
+         * @param templateIdLists The IDs of the alert templates.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class DynamicTagGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param templateIdLists Alarm template ID list.
+         * @param templateIdLists The IDs of the alert templates.
          * 
          * @return builder
          * 

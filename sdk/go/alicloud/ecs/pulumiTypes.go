@@ -8180,7 +8180,7 @@ type GetEcsKeyPairsKeyPairInstance struct {
 	PublicIp string `pulumi:"publicIp"`
 	RegionId string `pulumi:"regionId"`
 	Status   string `pulumi:"status"`
-	// The ID of the VSwitch attached to the ECS instance.
+	// The ID of the vSwitch attached to the ECS instance.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -8213,7 +8213,7 @@ type GetEcsKeyPairsKeyPairInstanceArgs struct {
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	Status   pulumi.StringInput `pulumi:"status"`
-	// The ID of the VSwitch attached to the ECS instance.
+	// The ID of the vSwitch attached to the ECS instance.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -8318,7 +8318,7 @@ func (o GetEcsKeyPairsKeyPairInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the VSwitch attached to the ECS instance.
+// The ID of the vSwitch attached to the ECS instance.
 func (o GetEcsKeyPairsKeyPairInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsKeyPairInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -8509,7 +8509,7 @@ type GetEcsKeyPairsPairInstance struct {
 	PublicIp string `pulumi:"publicIp"`
 	RegionId string `pulumi:"regionId"`
 	Status   string `pulumi:"status"`
-	// The ID of the VSwitch attached to the ECS instance.
+	// The ID of the vSwitch attached to the ECS instance.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -8542,7 +8542,7 @@ type GetEcsKeyPairsPairInstanceArgs struct {
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	Status   pulumi.StringInput `pulumi:"status"`
-	// The ID of the VSwitch attached to the ECS instance.
+	// The ID of the vSwitch attached to the ECS instance.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -8647,7 +8647,7 @@ func (o GetEcsKeyPairsPairInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the VSwitch attached to the ECS instance.
+// The ID of the vSwitch attached to the ECS instance.
 func (o GetEcsKeyPairsPairInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsKeyPairsPairInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -9318,7 +9318,7 @@ type GetEcsLaunchTemplatesTemplateNetworkInterface struct {
 	PrimaryIp string `pulumi:"primaryIp"`
 	// The security group ID must be one in the same VPC.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -9342,7 +9342,7 @@ type GetEcsLaunchTemplatesTemplateNetworkInterfaceArgs struct {
 	PrimaryIp pulumi.StringInput `pulumi:"primaryIp"`
 	// The security group ID must be one in the same VPC.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -9417,7 +9417,7 @@ func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) SecurityGroupId() p
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
 func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -9755,9 +9755,11 @@ type GetEcsNetworkInterfacesInterface struct {
 	Id string `pulumi:"id"`
 	// The instance id.
 	InstanceId string `pulumi:"instanceId"`
+	// A list of IPv6 addresses that is assigned to the ENI.  **NOTE:** Available since v1.228.0.
+	Ipv6Sets []string `pulumi:"ipv6Sets"`
 	// The MAC address of the ENI.
 	Mac string `pulumi:"mac"`
-	// The network interface name.
+	// Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
 	Name string `pulumi:"name"`
 	// The network interface id.
 	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
@@ -9769,8 +9771,9 @@ type GetEcsNetworkInterfacesInterface struct {
 	OwnerId string `pulumi:"ownerId"`
 	// The primary private IP address of the ENI.
 	PrimaryIpAddress string `pulumi:"primaryIpAddress"`
-	// The primary private IP address of the ENI.
-	PrivateIp          string   `pulumi:"privateIp"`
+	// Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
+	PrivateIp string `pulumi:"privateIp"`
+	// A list of secondary private IP address that is assigned to the ENI.
 	PrivateIpAddresses []string `pulumi:"privateIpAddresses"`
 	// A list of secondary private IP address that is assigned to the ENI.
 	PrivateIps []string `pulumi:"privateIps"`
@@ -9786,13 +9789,13 @@ type GetEcsNetworkInterfacesInterface struct {
 	ServiceId int `pulumi:"serviceId"`
 	// Whether the user of the elastic network card is a cloud product or a virtual vendor.
 	ServiceManaged bool `pulumi:"serviceManaged"`
-	// The status of the ENI.
+	// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
 	Status string `pulumi:"status"`
-	// The tags.
+	// A map of tags assigned to ENIs.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The type of the ENI.
+	// The type of ENI. Valid Values: `Primary`, `Secondary`.
 	Type string `pulumi:"type"`
-	// The Vpc Id.
+	// The vpc id.
 	VpcId string `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId string `pulumi:"vswitchId"`
@@ -9822,9 +9825,11 @@ type GetEcsNetworkInterfacesInterfaceArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The instance id.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// A list of IPv6 addresses that is assigned to the ENI.  **NOTE:** Available since v1.228.0.
+	Ipv6Sets pulumi.StringArrayInput `pulumi:"ipv6Sets"`
 	// The MAC address of the ENI.
 	Mac pulumi.StringInput `pulumi:"mac"`
-	// The network interface name.
+	// Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
 	Name pulumi.StringInput `pulumi:"name"`
 	// The network interface id.
 	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
@@ -9836,8 +9841,9 @@ type GetEcsNetworkInterfacesInterfaceArgs struct {
 	OwnerId pulumi.StringInput `pulumi:"ownerId"`
 	// The primary private IP address of the ENI.
 	PrimaryIpAddress pulumi.StringInput `pulumi:"primaryIpAddress"`
-	// The primary private IP address of the ENI.
-	PrivateIp          pulumi.StringInput      `pulumi:"privateIp"`
+	// Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
+	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
+	// A list of secondary private IP address that is assigned to the ENI.
 	PrivateIpAddresses pulumi.StringArrayInput `pulumi:"privateIpAddresses"`
 	// A list of secondary private IP address that is assigned to the ENI.
 	PrivateIps pulumi.StringArrayInput `pulumi:"privateIps"`
@@ -9853,13 +9859,13 @@ type GetEcsNetworkInterfacesInterfaceArgs struct {
 	ServiceId pulumi.IntInput `pulumi:"serviceId"`
 	// Whether the user of the elastic network card is a cloud product or a virtual vendor.
 	ServiceManaged pulumi.BoolInput `pulumi:"serviceManaged"`
-	// The status of the ENI.
+	// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The tags.
+	// A map of tags assigned to ENIs.
 	Tags pulumi.MapInput `pulumi:"tags"`
-	// The type of the ENI.
+	// The type of ENI. Valid Values: `Primary`, `Secondary`.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The Vpc Id.
+	// The vpc id.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
@@ -9945,12 +9951,17 @@ func (o GetEcsNetworkInterfacesInterfaceOutput) InstanceId() pulumi.StringOutput
 	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// A list of IPv6 addresses that is assigned to the ENI.  **NOTE:** Available since v1.228.0.
+func (o GetEcsNetworkInterfacesInterfaceOutput) Ipv6Sets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) []string { return v.Ipv6Sets }).(pulumi.StringArrayOutput)
+}
+
 // The MAC address of the ENI.
 func (o GetEcsNetworkInterfacesInterfaceOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.Mac }).(pulumi.StringOutput)
 }
 
-// The network interface name.
+// Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
 func (o GetEcsNetworkInterfacesInterfaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -9980,11 +9991,12 @@ func (o GetEcsNetworkInterfacesInterfaceOutput) PrimaryIpAddress() pulumi.String
 	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.PrimaryIpAddress }).(pulumi.StringOutput)
 }
 
-// The primary private IP address of the ENI.
+// Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
 func (o GetEcsNetworkInterfacesInterfaceOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
+// A list of secondary private IP address that is assigned to the ENI.
 func (o GetEcsNetworkInterfacesInterfaceOutput) PrivateIpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) []string { return v.PrivateIpAddresses }).(pulumi.StringArrayOutput)
 }
@@ -10024,22 +10036,22 @@ func (o GetEcsNetworkInterfacesInterfaceOutput) ServiceManaged() pulumi.BoolOutp
 	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) bool { return v.ServiceManaged }).(pulumi.BoolOutput)
 }
 
-// The status of the ENI.
+// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
 func (o GetEcsNetworkInterfacesInterfaceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tags.
+// A map of tags assigned to ENIs.
 func (o GetEcsNetworkInterfacesInterfaceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The type of the ENI.
+// The type of ENI. Valid Values: `Primary`, `Secondary`.
 func (o GetEcsNetworkInterfacesInterfaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The Vpc Id.
+// The vpc id.
 func (o GetEcsNetworkInterfacesInterfaceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsNetworkInterfacesInterface) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -13570,7 +13582,7 @@ type GetInstancesInstance struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId string `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the instances.
+	// ID of the vSwitch linked to the instances.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -13655,7 +13667,7 @@ type GetInstancesInstanceArgs struct {
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// ID of the VSwitch linked to the instances.
+	// ID of the vSwitch linked to the instances.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -13851,7 +13863,7 @@ func (o GetInstancesInstanceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// ID of the VSwitch linked to the instances.
+// ID of the vSwitch linked to the instances.
 func (o GetInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -14184,7 +14196,7 @@ type GetKeyPairsKeyPairInstance struct {
 	PublicIp string `pulumi:"publicIp"`
 	RegionId string `pulumi:"regionId"`
 	Status   string `pulumi:"status"`
-	// The ID of the VSwitch attached to the ECS instance.
+	// The ID of the vSwitch attached to the ECS instance.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -14217,7 +14229,7 @@ type GetKeyPairsKeyPairInstanceArgs struct {
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	Status   pulumi.StringInput `pulumi:"status"`
-	// The ID of the VSwitch attached to the ECS instance.
+	// The ID of the vSwitch attached to the ECS instance.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -14322,7 +14334,7 @@ func (o GetKeyPairsKeyPairInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the VSwitch attached to the ECS instance.
+// The ID of the vSwitch attached to the ECS instance.
 func (o GetKeyPairsKeyPairInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsKeyPairInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -14513,7 +14525,7 @@ type GetKeyPairsPairInstance struct {
 	PublicIp string `pulumi:"publicIp"`
 	RegionId string `pulumi:"regionId"`
 	Status   string `pulumi:"status"`
-	// The ID of the VSwitch attached to the ECS instance.
+	// The ID of the vSwitch attached to the ECS instance.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -14546,7 +14558,7 @@ type GetKeyPairsPairInstanceArgs struct {
 	PublicIp pulumi.StringInput `pulumi:"publicIp"`
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	Status   pulumi.StringInput `pulumi:"status"`
-	// The ID of the VSwitch attached to the ECS instance.
+	// The ID of the vSwitch attached to the ECS instance.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -14651,7 +14663,7 @@ func (o GetKeyPairsPairInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the VSwitch attached to the ECS instance.
+// The ID of the vSwitch attached to the ECS instance.
 func (o GetKeyPairsPairInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeyPairsPairInstance) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -14685,7 +14697,8 @@ type GetNetworkInterfacesInterface struct {
 	// ID of the ENI.
 	Id string `pulumi:"id"`
 	// ID of the instance that the ENI is attached to.
-	InstanceId string `pulumi:"instanceId"`
+	InstanceId string   `pulumi:"instanceId"`
+	Ipv6Sets   []string `pulumi:"ipv6Sets"`
 	// MAC address of the ENI.
 	Mac string `pulumi:"mac"`
 	// Name of the ENI.
@@ -14715,7 +14728,7 @@ type GetNetworkInterfacesInterface struct {
 	Type string                 `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId string `pulumi:"vpcId"`
-	// ID of the VSwitch that the ENI is linked to.
+	// ID of the vSwitch that the ENI is linked to.
 	VswitchId string `pulumi:"vswitchId"`
 	// ID of the availability zone that the ENI belongs to.
 	ZoneId string `pulumi:"zoneId"`
@@ -14741,7 +14754,8 @@ type GetNetworkInterfacesInterfaceArgs struct {
 	// ID of the ENI.
 	Id pulumi.StringInput `pulumi:"id"`
 	// ID of the instance that the ENI is attached to.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	InstanceId pulumi.StringInput      `pulumi:"instanceId"`
+	Ipv6Sets   pulumi.StringArrayInput `pulumi:"ipv6Sets"`
 	// MAC address of the ENI.
 	Mac pulumi.StringInput `pulumi:"mac"`
 	// Name of the ENI.
@@ -14771,7 +14785,7 @@ type GetNetworkInterfacesInterfaceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// ID of the VPC that the ENI belongs to.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// ID of the VSwitch that the ENI is linked to.
+	// ID of the vSwitch that the ENI is linked to.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 	// ID of the availability zone that the ENI belongs to.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -14852,6 +14866,10 @@ func (o GetNetworkInterfacesInterfaceOutput) Id() pulumi.StringOutput {
 // ID of the instance that the ENI is attached to.
 func (o GetNetworkInterfacesInterfaceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkInterfacesInterfaceOutput) Ipv6Sets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkInterfacesInterface) []string { return v.Ipv6Sets }).(pulumi.StringArrayOutput)
 }
 
 // MAC address of the ENI.
@@ -14943,7 +14961,7 @@ func (o GetNetworkInterfacesInterfaceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// ID of the VSwitch that the ENI is linked to.
+// ID of the vSwitch that the ENI is linked to.
 func (o GetNetworkInterfacesInterfaceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkInterfacesInterface) string { return v.VswitchId }).(pulumi.StringOutput)
 }

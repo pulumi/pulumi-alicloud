@@ -36,7 +36,7 @@ public final class GetEndpointsEndpointAddressItem {
      */
     private String vpcId;
     /**
-     * @return ID of the VSwitch the cluster belongs to.
+     * @return ID of the vSwitch the cluster belongs to.
      * 
      */
     private String vswitchId;
@@ -78,7 +78,7 @@ public final class GetEndpointsEndpointAddressItem {
         return this.vpcId;
     }
     /**
-     * @return ID of the VSwitch the cluster belongs to.
+     * @return ID of the vSwitch the cluster belongs to.
      * 
      */
     public String vswitchId() {

@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.204.0.
  * 
+ * &gt; **NOTE:** deprecated since v1.228.0.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

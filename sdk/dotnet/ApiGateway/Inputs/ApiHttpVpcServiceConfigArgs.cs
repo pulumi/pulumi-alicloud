@@ -19,6 +19,18 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string>? AoneName { get; set; }
 
         /// <summary>
+        /// The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+        /// </summary>
+        [Input("contentTypeCategory")]
+        public Input<string>? ContentTypeCategory { get; set; }
+
+        /// <summary>
+        /// The content type value of backend service.
+        /// </summary>
+        [Input("contentTypeValue")]
+        public Input<string>? ContentTypeValue { get; set; }
+
+        /// <summary>
         /// The http method of backend service.
         /// </summary>
         [Input("method", required: true)]
@@ -41,6 +53,12 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         /// </summary>
         [Input("timeout", required: true)]
         public Input<int> Timeout { get; set; } = null!;
+
+        /// <summary>
+        /// The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+        /// </summary>
+        [Input("vpcScheme")]
+        public Input<string>? VpcScheme { get; set; }
 
         public ApiHttpVpcServiceConfigArgs()
         {

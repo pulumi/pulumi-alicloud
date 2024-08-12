@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         private InputList<Inputs.LoadBalancerZoneMappingLoadBalancerAddressArgs>? _loadBalancerAddresses;
 
         /// <summary>
-        /// The SLB Instance Address.
+        /// The IP address of the ALB instance.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingLoadBalancerAddressArgs> LoadBalancerAddresses
         {
@@ -25,13 +25,13 @@ namespace Pulumi.AliCloud.Alb.Inputs
         }
 
         /// <summary>
-        /// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        /// The ID of the VSwitch.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the zone to which the SLB instance belongs.
+        /// The zone ID of the ALB instance.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;

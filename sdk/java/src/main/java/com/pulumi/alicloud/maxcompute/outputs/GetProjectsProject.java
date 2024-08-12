@@ -13,17 +13,26 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectsProject {
+    /**
+     * @return Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
+     * 
+     */
     private String comment;
     /**
-     * @return Default Computing Resource Group
+     * @return View the current storage size of the Project. The storage size is the same as the measurement size, that is, the compressed logical storage size collected by the Project.
+     * 
+     */
+    private String costStorage;
+    /**
+     * @return Represents the creation time of the project
+     * 
+     */
+    private String createTime;
+    /**
+     * @return Used to implement computing resource allocation.If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      * 
      */
     private String defaultQuota;
-    /**
-     * @return Project ID. The value is the same as `project_name`.
-     * 
-     */
-    private String id;
     /**
      * @return IP whitelist
      * 
@@ -35,7 +44,7 @@ public final class GetProjectsProject {
      */
     private String owner;
     /**
-     * @return The name of the resource
+     * @return The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
      * 
      */
     private String projectName;
@@ -50,7 +59,7 @@ public final class GetProjectsProject {
      */
     private GetProjectsProjectSecurityProperties securityProperties;
     /**
-     * @return The status of the resource
+     * @return The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
      * 
      */
     private String status;
@@ -61,22 +70,33 @@ public final class GetProjectsProject {
     private String type;
 
     private GetProjectsProject() {}
+    /**
+     * @return Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
+     * 
+     */
     public String comment() {
         return this.comment;
     }
     /**
-     * @return Default Computing Resource Group
+     * @return View the current storage size of the Project. The storage size is the same as the measurement size, that is, the compressed logical storage size collected by the Project.
+     * 
+     */
+    public String costStorage() {
+        return this.costStorage;
+    }
+    /**
+     * @return Represents the creation time of the project
+     * 
+     */
+    public String createTime() {
+        return this.createTime;
+    }
+    /**
+     * @return Used to implement computing resource allocation.If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      * 
      */
     public String defaultQuota() {
         return this.defaultQuota;
-    }
-    /**
-     * @return Project ID. The value is the same as `project_name`.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return IP whitelist
@@ -93,7 +113,7 @@ public final class GetProjectsProject {
         return this.owner;
     }
     /**
-     * @return The name of the resource
+     * @return The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
      * 
      */
     public String projectName() {
@@ -114,7 +134,7 @@ public final class GetProjectsProject {
         return this.securityProperties;
     }
     /**
-     * @return The status of the resource
+     * @return The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
      * 
      */
     public String status() {
@@ -138,8 +158,9 @@ public final class GetProjectsProject {
     @CustomType.Builder
     public static final class Builder {
         private String comment;
+        private String costStorage;
+        private String createTime;
         private String defaultQuota;
-        private String id;
         private GetProjectsProjectIpWhiteList ipWhiteList;
         private String owner;
         private String projectName;
@@ -151,8 +172,9 @@ public final class GetProjectsProject {
         public Builder(GetProjectsProject defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
+    	      this.costStorage = defaults.costStorage;
+    	      this.createTime = defaults.createTime;
     	      this.defaultQuota = defaults.defaultQuota;
-    	      this.id = defaults.id;
     	      this.ipWhiteList = defaults.ipWhiteList;
     	      this.owner = defaults.owner;
     	      this.projectName = defaults.projectName;
@@ -171,19 +193,27 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder costStorage(String costStorage) {
+            if (costStorage == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "costStorage");
+            }
+            this.costStorage = costStorage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "createTime");
+            }
+            this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder defaultQuota(String defaultQuota) {
             if (defaultQuota == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "defaultQuota");
             }
             this.defaultQuota = defaultQuota;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetProjectsProject", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -245,8 +275,9 @@ public final class GetProjectsProject {
         public GetProjectsProject build() {
             final var _resultValue = new GetProjectsProject();
             _resultValue.comment = comment;
+            _resultValue.costStorage = costStorage;
+            _resultValue.createTime = createTime;
             _resultValue.defaultQuota = defaultQuota;
-            _resultValue.id = id;
             _resultValue.ipWhiteList = ipWhiteList;
             _resultValue.owner = owner;
             _resultValue.projectName = projectName;

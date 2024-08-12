@@ -90,6 +90,11 @@ export type NatFirewallControlPolicy = import("./natFirewallControlPolicy").NatF
 export const NatFirewallControlPolicy: typeof import("./natFirewallControlPolicy").NatFirewallControlPolicy = null as any;
 utilities.lazyLoad(exports, ["NatFirewallControlPolicy"], () => require("./natFirewallControlPolicy"));
 
+export { VpcCenTrFirewallArgs, VpcCenTrFirewallState } from "./vpcCenTrFirewall";
+export type VpcCenTrFirewall = import("./vpcCenTrFirewall").VpcCenTrFirewall;
+export const VpcCenTrFirewall: typeof import("./vpcCenTrFirewall").VpcCenTrFirewall = null as any;
+utilities.lazyLoad(exports, ["VpcCenTrFirewall"], () => require("./vpcCenTrFirewall"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -115,6 +120,8 @@ const _module = {
                 return new NatFirewall(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/natFirewallControlPolicy:NatFirewallControlPolicy":
                 return new NatFirewallControlPolicy(name, <any>undefined, { urn })
+            case "alicloud:cloudfirewall/vpcCenTrFirewall:VpcCenTrFirewall":
+                return new VpcCenTrFirewall(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -130,3 +137,4 @@ pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/instance", _mod
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/instanceMember", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/natFirewall", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/natFirewallControlPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/vpcCenTrFirewall", _module)

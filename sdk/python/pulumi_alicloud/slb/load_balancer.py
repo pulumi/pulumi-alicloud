@@ -70,7 +70,7 @@ class LoadBalancerArgs:
                
                > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        :param pulumi.Input[str] vswitch_id: The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -378,7 +378,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -446,7 +446,7 @@ class _LoadBalancerState:
                
                > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        :param pulumi.Input[str] vswitch_id: The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -754,7 +754,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -887,7 +887,7 @@ class LoadBalancer(pulumi.CustomResource):
                
                > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        :param pulumi.Input[str] vswitch_id: The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
         ...
     @overload
@@ -1090,7 +1090,7 @@ class LoadBalancer(pulumi.CustomResource):
                
                > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        :param pulumi.Input[str] vswitch_id: The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1296,7 +1296,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+        The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
         """
         return pulumi.get(self, "vswitch_id")
 

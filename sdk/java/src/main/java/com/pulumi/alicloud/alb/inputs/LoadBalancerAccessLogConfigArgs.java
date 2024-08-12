@@ -15,14 +15,14 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
     public static final LoadBalancerAccessLogConfigArgs Empty = new LoadBalancerAccessLogConfigArgs();
 
     /**
-     * This Log Storage Project.
+     * The project to which the access log is shipped.
      * 
      */
     @Import(name="logProject", required=true)
     private Output<String> logProject;
 
     /**
-     * @return This Log Storage Project.
+     * @return The project to which the access log is shipped.
      * 
      */
     public Output<String> logProject() {
@@ -30,14 +30,14 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * This Log Storage Method Is Increased.
+     * The Logstore to which the access log is shipped.
      * 
      */
     @Import(name="logStore", required=true)
     private Output<String> logStore;
 
     /**
-     * @return This Log Storage Method Is Increased.
+     * @return The Logstore to which the access log is shipped.
      * 
      */
     public Output<String> logStore() {
@@ -70,7 +70,7 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param logProject This Log Storage Project.
+         * @param logProject The project to which the access log is shipped.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param logProject This Log Storage Project.
+         * @param logProject The project to which the access log is shipped.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param logStore This Log Storage Method Is Increased.
+         * @param logStore The Logstore to which the access log is shipped.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class LoadBalancerAccessLogConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param logStore This Log Storage Method Is Increased.
+         * @param logStore The Logstore to which the access log is shipped.
          * 
          * @return builder
          * 

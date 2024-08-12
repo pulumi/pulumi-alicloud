@@ -32,6 +32,37 @@ __all__ = [
     'V2FunctionInstanceLifecycleConfig',
     'V2FunctionInstanceLifecycleConfigPreFreeze',
     'V2FunctionInstanceLifecycleConfigPreStop',
+    'V3AsyncInvokeConfigDestinationConfig',
+    'V3AsyncInvokeConfigDestinationConfigOnFailure',
+    'V3AsyncInvokeConfigDestinationConfigOnSuccess',
+    'V3CustomDomainAuthConfig',
+    'V3CustomDomainCertConfig',
+    'V3CustomDomainRouteConfig',
+    'V3CustomDomainRouteConfigRoute',
+    'V3CustomDomainRouteConfigRouteRewriteConfig',
+    'V3CustomDomainRouteConfigRouteRewriteConfigEqualRule',
+    'V3CustomDomainRouteConfigRouteRewriteConfigRegexRule',
+    'V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule',
+    'V3CustomDomainTlsConfig',
+    'V3CustomDomainWafConfig',
+    'V3FunctionCode',
+    'V3FunctionCustomContainerConfig',
+    'V3FunctionCustomContainerConfigAccelerationInfo',
+    'V3FunctionCustomContainerConfigHealthCheckConfig',
+    'V3FunctionCustomDns',
+    'V3FunctionCustomDnsDnsOption',
+    'V3FunctionCustomRuntimeConfig',
+    'V3FunctionCustomRuntimeConfigHealthCheckConfig',
+    'V3FunctionGpuConfig',
+    'V3FunctionInstanceLifecycleConfig',
+    'V3FunctionInstanceLifecycleConfigInitializer',
+    'V3FunctionInstanceLifecycleConfigPreStop',
+    'V3FunctionLogConfig',
+    'V3FunctionNasConfig',
+    'V3FunctionNasConfigMountPoint',
+    'V3FunctionOssMountConfig',
+    'V3FunctionOssMountConfigMountPoint',
+    'V3FunctionVpcConfig',
     'GetCustomDomainsDomainResult',
     'GetCustomDomainsDomainCertConfigResult',
     'GetCustomDomainsDomainRouteConfigResult',
@@ -1117,6 +1148,1696 @@ class V2FunctionInstanceLifecycleConfigPreStop(dict):
 
 
 @pulumi.output_type
+class V3AsyncInvokeConfigDestinationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "onFailure":
+            suggest = "on_failure"
+        elif key == "onSuccess":
+            suggest = "on_success"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3AsyncInvokeConfigDestinationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3AsyncInvokeConfigDestinationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3AsyncInvokeConfigDestinationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 on_failure: Optional['outputs.V3AsyncInvokeConfigDestinationConfigOnFailure'] = None,
+                 on_success: Optional['outputs.V3AsyncInvokeConfigDestinationConfigOnSuccess'] = None):
+        """
+        :param 'V3AsyncInvokeConfigDestinationConfigOnFailureArgs' on_failure: Failed callback target structure. See `on_failure` below.
+        :param 'V3AsyncInvokeConfigDestinationConfigOnSuccessArgs' on_success: Successful callback target structure. See `on_success` below.
+        """
+        if on_failure is not None:
+            pulumi.set(__self__, "on_failure", on_failure)
+        if on_success is not None:
+            pulumi.set(__self__, "on_success", on_success)
+
+    @property
+    @pulumi.getter(name="onFailure")
+    def on_failure(self) -> Optional['outputs.V3AsyncInvokeConfigDestinationConfigOnFailure']:
+        """
+        Failed callback target structure. See `on_failure` below.
+        """
+        return pulumi.get(self, "on_failure")
+
+    @property
+    @pulumi.getter(name="onSuccess")
+    def on_success(self) -> Optional['outputs.V3AsyncInvokeConfigDestinationConfigOnSuccess']:
+        """
+        Successful callback target structure. See `on_success` below.
+        """
+        return pulumi.get(self, "on_success")
+
+
+@pulumi.output_type
+class V3AsyncInvokeConfigDestinationConfigOnFailure(dict):
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        """
+        :param str destination: Asynchronous call target Resource Descriptor.
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        """
+        Asynchronous call target Resource Descriptor.
+        """
+        return pulumi.get(self, "destination")
+
+
+@pulumi.output_type
+class V3AsyncInvokeConfigDestinationConfigOnSuccess(dict):
+    def __init__(__self__, *,
+                 destination: Optional[str] = None):
+        """
+        :param str destination: Asynchronous call target Resource Descriptor.
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[str]:
+        """
+        Asynchronous call target Resource Descriptor.
+        """
+        return pulumi.get(self, "destination")
+
+
+@pulumi.output_type
+class V3CustomDomainAuthConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authInfo":
+            suggest = "auth_info"
+        elif key == "authType":
+            suggest = "auth_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3CustomDomainAuthConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3CustomDomainAuthConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3CustomDomainAuthConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_info: Optional[str] = None,
+                 auth_type: Optional[str] = None):
+        """
+        :param str auth_info: Authentication Information.
+        :param str auth_type: Authentication type. anonymous, function, or jwt.
+        """
+        if auth_info is not None:
+            pulumi.set(__self__, "auth_info", auth_info)
+        if auth_type is not None:
+            pulumi.set(__self__, "auth_type", auth_type)
+
+    @property
+    @pulumi.getter(name="authInfo")
+    def auth_info(self) -> Optional[str]:
+        """
+        Authentication Information.
+        """
+        return pulumi.get(self, "auth_info")
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> Optional[str]:
+        """
+        Authentication type. anonymous, function, or jwt.
+        """
+        return pulumi.get(self, "auth_type")
+
+
+@pulumi.output_type
+class V3CustomDomainCertConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certName":
+            suggest = "cert_name"
+        elif key == "privateKey":
+            suggest = "private_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3CustomDomainCertConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3CustomDomainCertConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3CustomDomainCertConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cert_name: Optional[str] = None,
+                 certificate: Optional[str] = None,
+                 private_key: Optional[str] = None):
+        """
+        :param str cert_name: Certificate Name.
+        :param str certificate: PEM format certificate.
+        :param str private_key: Private Key in PEM format.
+        """
+        if cert_name is not None:
+            pulumi.set(__self__, "cert_name", cert_name)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+
+    @property
+    @pulumi.getter(name="certName")
+    def cert_name(self) -> Optional[str]:
+        """
+        Certificate Name.
+        """
+        return pulumi.get(self, "cert_name")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[str]:
+        """
+        PEM format certificate.
+        """
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        """
+        Private Key in PEM format.
+        """
+        return pulumi.get(self, "private_key")
+
+
+@pulumi.output_type
+class V3CustomDomainRouteConfig(dict):
+    def __init__(__self__, *,
+                 routes: Optional[Sequence['outputs.V3CustomDomainRouteConfigRoute']] = None):
+        """
+        :param Sequence['V3CustomDomainRouteConfigRouteArgs'] routes: Routing Configuration List. See `routes` below.
+        """
+        if routes is not None:
+            pulumi.set(__self__, "routes", routes)
+
+    @property
+    @pulumi.getter
+    def routes(self) -> Optional[Sequence['outputs.V3CustomDomainRouteConfigRoute']]:
+        """
+        Routing Configuration List. See `routes` below.
+        """
+        return pulumi.get(self, "routes")
+
+
+@pulumi.output_type
+class V3CustomDomainRouteConfigRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "functionName":
+            suggest = "function_name"
+        elif key == "rewriteConfig":
+            suggest = "rewrite_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3CustomDomainRouteConfigRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3CustomDomainRouteConfigRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3CustomDomainRouteConfigRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 function_name: Optional[str] = None,
+                 methods: Optional[Sequence[str]] = None,
+                 path: Optional[str] = None,
+                 qualifier: Optional[str] = None,
+                 rewrite_config: Optional['outputs.V3CustomDomainRouteConfigRouteRewriteConfig'] = None):
+        """
+        :param str function_name: Function name.
+        :param Sequence[str] methods: List of supported HTTP methods.
+        :param str path: Route matching rule.
+        :param str qualifier: Version or Alias.
+        :param 'V3CustomDomainRouteConfigRouteRewriteConfigArgs' rewrite_config: Override Configuration. See `rewrite_config` below.
+        """
+        if function_name is not None:
+            pulumi.set(__self__, "function_name", function_name)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if qualifier is not None:
+            pulumi.set(__self__, "qualifier", qualifier)
+        if rewrite_config is not None:
+            pulumi.set(__self__, "rewrite_config", rewrite_config)
+
+    @property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[str]:
+        """
+        Function name.
+        """
+        return pulumi.get(self, "function_name")
+
+    @property
+    @pulumi.getter
+    def methods(self) -> Optional[Sequence[str]]:
+        """
+        List of supported HTTP methods.
+        """
+        return pulumi.get(self, "methods")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Route matching rule.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def qualifier(self) -> Optional[str]:
+        """
+        Version or Alias.
+        """
+        return pulumi.get(self, "qualifier")
+
+    @property
+    @pulumi.getter(name="rewriteConfig")
+    def rewrite_config(self) -> Optional['outputs.V3CustomDomainRouteConfigRouteRewriteConfig']:
+        """
+        Override Configuration. See `rewrite_config` below.
+        """
+        return pulumi.get(self, "rewrite_config")
+
+
+@pulumi.output_type
+class V3CustomDomainRouteConfigRouteRewriteConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "equalRules":
+            suggest = "equal_rules"
+        elif key == "regexRules":
+            suggest = "regex_rules"
+        elif key == "wildcardRules":
+            suggest = "wildcard_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3CustomDomainRouteConfigRouteRewriteConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3CustomDomainRouteConfigRouteRewriteConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3CustomDomainRouteConfigRouteRewriteConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 equal_rules: Optional[Sequence['outputs.V3CustomDomainRouteConfigRouteRewriteConfigEqualRule']] = None,
+                 regex_rules: Optional[Sequence['outputs.V3CustomDomainRouteConfigRouteRewriteConfigRegexRule']] = None,
+                 wildcard_rules: Optional[Sequence['outputs.V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule']] = None):
+        """
+        :param Sequence['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs'] equal_rules: Exact Match Rule List. See `equal_rules` below.
+        :param Sequence['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs'] regex_rules: Regular match rule list. See `regex_rules` below.
+        :param Sequence['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs'] wildcard_rules: List of wildcard matching rules. See `wildcard_rules` below.
+        """
+        if equal_rules is not None:
+            pulumi.set(__self__, "equal_rules", equal_rules)
+        if regex_rules is not None:
+            pulumi.set(__self__, "regex_rules", regex_rules)
+        if wildcard_rules is not None:
+            pulumi.set(__self__, "wildcard_rules", wildcard_rules)
+
+    @property
+    @pulumi.getter(name="equalRules")
+    def equal_rules(self) -> Optional[Sequence['outputs.V3CustomDomainRouteConfigRouteRewriteConfigEqualRule']]:
+        """
+        Exact Match Rule List. See `equal_rules` below.
+        """
+        return pulumi.get(self, "equal_rules")
+
+    @property
+    @pulumi.getter(name="regexRules")
+    def regex_rules(self) -> Optional[Sequence['outputs.V3CustomDomainRouteConfigRouteRewriteConfigRegexRule']]:
+        """
+        Regular match rule list. See `regex_rules` below.
+        """
+        return pulumi.get(self, "regex_rules")
+
+    @property
+    @pulumi.getter(name="wildcardRules")
+    def wildcard_rules(self) -> Optional[Sequence['outputs.V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule']]:
+        """
+        List of wildcard matching rules. See `wildcard_rules` below.
+        """
+        return pulumi.get(self, "wildcard_rules")
+
+
+@pulumi.output_type
+class V3CustomDomainRouteConfigRouteRewriteConfigEqualRule(dict):
+    def __init__(__self__, *,
+                 match: Optional[str] = None,
+                 replacement: Optional[str] = None):
+        """
+        :param str match: Matching Rules.
+        :param str replacement: Replace Rules.
+        """
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+        if replacement is not None:
+            pulumi.set(__self__, "replacement", replacement)
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional[str]:
+        """
+        Matching Rules.
+        """
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter
+    def replacement(self) -> Optional[str]:
+        """
+        Replace Rules.
+        """
+        return pulumi.get(self, "replacement")
+
+
+@pulumi.output_type
+class V3CustomDomainRouteConfigRouteRewriteConfigRegexRule(dict):
+    def __init__(__self__, *,
+                 match: Optional[str] = None,
+                 replacement: Optional[str] = None):
+        """
+        :param str match: Matching Rules.
+        :param str replacement: Replace Rules.
+        """
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+        if replacement is not None:
+            pulumi.set(__self__, "replacement", replacement)
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional[str]:
+        """
+        Matching Rules.
+        """
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter
+    def replacement(self) -> Optional[str]:
+        """
+        Replace Rules.
+        """
+        return pulumi.get(self, "replacement")
+
+
+@pulumi.output_type
+class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule(dict):
+    def __init__(__self__, *,
+                 match: Optional[str] = None,
+                 replacement: Optional[str] = None):
+        """
+        :param str match: Matching Rules.
+        :param str replacement: Replace Rules.
+        """
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+        if replacement is not None:
+            pulumi.set(__self__, "replacement", replacement)
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional[str]:
+        """
+        Matching Rules.
+        """
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter
+    def replacement(self) -> Optional[str]:
+        """
+        Replace Rules.
+        """
+        return pulumi.get(self, "replacement")
+
+
+@pulumi.output_type
+class V3CustomDomainTlsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cipherSuites":
+            suggest = "cipher_suites"
+        elif key == "maxVersion":
+            suggest = "max_version"
+        elif key == "minVersion":
+            suggest = "min_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3CustomDomainTlsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3CustomDomainTlsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3CustomDomainTlsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cipher_suites: Optional[Sequence[str]] = None,
+                 max_version: Optional[str] = None,
+                 min_version: Optional[str] = None):
+        """
+        :param Sequence[str] cipher_suites: List of TLS cipher suites.
+        :param str max_version: The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        :param str min_version: TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        """
+        if cipher_suites is not None:
+            pulumi.set(__self__, "cipher_suites", cipher_suites)
+        if max_version is not None:
+            pulumi.set(__self__, "max_version", max_version)
+        if min_version is not None:
+            pulumi.set(__self__, "min_version", min_version)
+
+    @property
+    @pulumi.getter(name="cipherSuites")
+    def cipher_suites(self) -> Optional[Sequence[str]]:
+        """
+        List of TLS cipher suites.
+        """
+        return pulumi.get(self, "cipher_suites")
+
+    @property
+    @pulumi.getter(name="maxVersion")
+    def max_version(self) -> Optional[str]:
+        """
+        The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        """
+        return pulumi.get(self, "max_version")
+
+    @property
+    @pulumi.getter(name="minVersion")
+    def min_version(self) -> Optional[str]:
+        """
+        TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        """
+        return pulumi.get(self, "min_version")
+
+
+@pulumi.output_type
+class V3CustomDomainWafConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableWaf":
+            suggest = "enable_waf"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3CustomDomainWafConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3CustomDomainWafConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3CustomDomainWafConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_waf: Optional[bool] = None):
+        """
+        :param bool enable_waf: Enable WAF protection.
+        """
+        if enable_waf is not None:
+            pulumi.set(__self__, "enable_waf", enable_waf)
+
+    @property
+    @pulumi.getter(name="enableWaf")
+    def enable_waf(self) -> Optional[bool]:
+        """
+        Enable WAF protection.
+        """
+        return pulumi.get(self, "enable_waf")
+
+
+@pulumi.output_type
+class V3FunctionCode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ossBucketName":
+            suggest = "oss_bucket_name"
+        elif key == "ossObjectName":
+            suggest = "oss_object_name"
+        elif key == "zipFile":
+            suggest = "zip_file"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionCode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionCode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionCode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 checksum: Optional[str] = None,
+                 oss_bucket_name: Optional[str] = None,
+                 oss_object_name: Optional[str] = None,
+                 zip_file: Optional[str] = None):
+        """
+        :param str checksum: The CRC-64 value of the function code package.
+        :param str oss_bucket_name: The name of the OSS Bucket that stores the function code ZIP package.
+        :param str oss_object_name: The name of the OSS Object that stores the function code ZIP package.
+        :param str zip_file: The Base 64 encoding of the function code ZIP package.
+        """
+        if checksum is not None:
+            pulumi.set(__self__, "checksum", checksum)
+        if oss_bucket_name is not None:
+            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+        if oss_object_name is not None:
+            pulumi.set(__self__, "oss_object_name", oss_object_name)
+        if zip_file is not None:
+            pulumi.set(__self__, "zip_file", zip_file)
+
+    @property
+    @pulumi.getter
+    def checksum(self) -> Optional[str]:
+        """
+        The CRC-64 value of the function code package.
+        """
+        return pulumi.get(self, "checksum")
+
+    @property
+    @pulumi.getter(name="ossBucketName")
+    def oss_bucket_name(self) -> Optional[str]:
+        """
+        The name of the OSS Bucket that stores the function code ZIP package.
+        """
+        return pulumi.get(self, "oss_bucket_name")
+
+    @property
+    @pulumi.getter(name="ossObjectName")
+    def oss_object_name(self) -> Optional[str]:
+        """
+        The name of the OSS Object that stores the function code ZIP package.
+        """
+        return pulumi.get(self, "oss_object_name")
+
+    @property
+    @pulumi.getter(name="zipFile")
+    def zip_file(self) -> Optional[str]:
+        """
+        The Base 64 encoding of the function code ZIP package.
+        """
+        return pulumi.get(self, "zip_file")
+
+
+@pulumi.output_type
+class V3FunctionCustomContainerConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accelerationInfo":
+            suggest = "acceleration_info"
+        elif key == "accelerationType":
+            suggest = "acceleration_type"
+        elif key == "acrInstanceId":
+            suggest = "acr_instance_id"
+        elif key == "healthCheckConfig":
+            suggest = "health_check_config"
+        elif key == "resolvedImageUri":
+            suggest = "resolved_image_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionCustomContainerConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionCustomContainerConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionCustomContainerConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 acceleration_info: Optional['outputs.V3FunctionCustomContainerConfigAccelerationInfo'] = None,
+                 acceleration_type: Optional[str] = None,
+                 acr_instance_id: Optional[str] = None,
+                 commands: Optional[Sequence[str]] = None,
+                 entrypoints: Optional[Sequence[str]] = None,
+                 health_check_config: Optional['outputs.V3FunctionCustomContainerConfigHealthCheckConfig'] = None,
+                 image: Optional[str] = None,
+                 port: Optional[int] = None,
+                 resolved_image_uri: Optional[str] = None):
+        """
+        :param 'V3FunctionCustomContainerConfigAccelerationInfoArgs' acceleration_info: (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+        :param str acceleration_type: Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+        :param str acr_instance_id: ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+        :param Sequence[str] commands: Container startup parameters.
+        :param Sequence[str] entrypoints: Container start command.
+        :param 'V3FunctionCustomContainerConfigHealthCheckConfigArgs' health_check_config: Function custom health check configuration. See `health_check_config` below.
+        :param str image: The container Image address.
+        :param int port: The listening port of the HTTP Server when the custom container runs.
+        :param str resolved_image_uri: The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
+        """
+        if acceleration_info is not None:
+            pulumi.set(__self__, "acceleration_info", acceleration_info)
+        if acceleration_type is not None:
+            pulumi.set(__self__, "acceleration_type", acceleration_type)
+        if acr_instance_id is not None:
+            pulumi.set(__self__, "acr_instance_id", acr_instance_id)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if entrypoints is not None:
+            pulumi.set(__self__, "entrypoints", entrypoints)
+        if health_check_config is not None:
+            pulumi.set(__self__, "health_check_config", health_check_config)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if resolved_image_uri is not None:
+            pulumi.set(__self__, "resolved_image_uri", resolved_image_uri)
+
+    @property
+    @pulumi.getter(name="accelerationInfo")
+    @_utilities.deprecated("""Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)""")
+    def acceleration_info(self) -> Optional['outputs.V3FunctionCustomContainerConfigAccelerationInfo']:
+        """
+        (Deprecated since v1.228.0) - Image Acceleration Information (Obsolete).
+        """
+        return pulumi.get(self, "acceleration_info")
+
+    @property
+    @pulumi.getter(name="accelerationType")
+    @_utilities.deprecated("""Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)""")
+    def acceleration_type(self) -> Optional[str]:
+        """
+        Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+        """
+        return pulumi.get(self, "acceleration_type")
+
+    @property
+    @pulumi.getter(name="acrInstanceId")
+    @_utilities.deprecated("""Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)""")
+    def acr_instance_id(self) -> Optional[str]:
+        """
+        ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+        """
+        return pulumi.get(self, "acr_instance_id")
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        Container startup parameters.
+        """
+        return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter
+    def entrypoints(self) -> Optional[Sequence[str]]:
+        """
+        Container start command.
+        """
+        return pulumi.get(self, "entrypoints")
+
+    @property
+    @pulumi.getter(name="healthCheckConfig")
+    def health_check_config(self) -> Optional['outputs.V3FunctionCustomContainerConfigHealthCheckConfig']:
+        """
+        Function custom health check configuration. See `health_check_config` below.
+        """
+        return pulumi.get(self, "health_check_config")
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[str]:
+        """
+        The container Image address.
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The listening port of the HTTP Server when the custom container runs.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="resolvedImageUri")
+    def resolved_image_uri(self) -> Optional[str]:
+        """
+        The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
+        """
+        return pulumi.get(self, "resolved_image_uri")
+
+
+@pulumi.output_type
+class V3FunctionCustomContainerConfigAccelerationInfo(dict):
+    def __init__(__self__, *,
+                 status: Optional[str] = None):
+        """
+        :param str status: Image Acceleration Status (Deprecated).
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)""")
+    def status(self) -> Optional[str]:
+        """
+        Image Acceleration Status (Deprecated).
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class V3FunctionCustomContainerConfigHealthCheckConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "httpGetUrl":
+            suggest = "http_get_url"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "successThreshold":
+            suggest = "success_threshold"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionCustomContainerConfigHealthCheckConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionCustomContainerConfigHealthCheckConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionCustomContainerConfigHealthCheckConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failure_threshold: Optional[int] = None,
+                 http_get_url: Optional[str] = None,
+                 initial_delay_seconds: Optional[int] = None,
+                 period_seconds: Optional[int] = None,
+                 success_threshold: Optional[int] = None,
+                 timeout_seconds: Optional[int] = None):
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if http_get_url is not None:
+            pulumi.set(__self__, "http_get_url", http_get_url)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[int]:
+        return pulumi.get(self, "failure_threshold")
+
+    @property
+    @pulumi.getter(name="httpGetUrl")
+    def http_get_url(self) -> Optional[str]:
+        return pulumi.get(self, "http_get_url")
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[int]:
+        return pulumi.get(self, "success_threshold")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class V3FunctionCustomDns(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsOptions":
+            suggest = "dns_options"
+        elif key == "nameServers":
+            suggest = "name_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionCustomDns. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionCustomDns.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionCustomDns.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dns_options: Optional[Sequence['outputs.V3FunctionCustomDnsDnsOption']] = None,
+                 name_servers: Optional[Sequence[str]] = None,
+                 searches: Optional[Sequence[str]] = None):
+        """
+        :param Sequence['V3FunctionCustomDnsDnsOptionArgs'] dns_options: List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
+        :param Sequence[str] name_servers: IP Address List of DNS servers.
+        :param Sequence[str] searches: DNS search domain list.
+        """
+        if dns_options is not None:
+            pulumi.set(__self__, "dns_options", dns_options)
+        if name_servers is not None:
+            pulumi.set(__self__, "name_servers", name_servers)
+        if searches is not None:
+            pulumi.set(__self__, "searches", searches)
+
+    @property
+    @pulumi.getter(name="dnsOptions")
+    def dns_options(self) -> Optional[Sequence['outputs.V3FunctionCustomDnsDnsOption']]:
+        """
+        List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
+        """
+        return pulumi.get(self, "dns_options")
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Optional[Sequence[str]]:
+        """
+        IP Address List of DNS servers.
+        """
+        return pulumi.get(self, "name_servers")
+
+    @property
+    @pulumi.getter
+    def searches(self) -> Optional[Sequence[str]]:
+        """
+        DNS search domain list.
+        """
+        return pulumi.get(self, "searches")
+
+
+@pulumi.output_type
+class V3FunctionCustomDnsDnsOption(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: Configuration Item Name.
+        :param str value: Configuration Item Value.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Configuration Item Name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Configuration Item Value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class V3FunctionCustomRuntimeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "healthCheckConfig":
+            suggest = "health_check_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionCustomRuntimeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionCustomRuntimeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionCustomRuntimeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 args: Optional[Sequence[str]] = None,
+                 commands: Optional[Sequence[str]] = None,
+                 health_check_config: Optional['outputs.V3FunctionCustomRuntimeConfigHealthCheckConfig'] = None,
+                 port: Optional[int] = None):
+        """
+        :param Sequence[str] args: Instance startup parameters.
+        :param Sequence[str] commands: Instance start command.
+        :param 'V3FunctionCustomRuntimeConfigHealthCheckConfigArgs' health_check_config: Function custom health check configuration. See `health_check_config` below.
+        :param int port: The listening port of the HTTP Server.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if health_check_config is not None:
+            pulumi.set(__self__, "health_check_config", health_check_config)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[str]]:
+        """
+        Instance startup parameters.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter
+    def commands(self) -> Optional[Sequence[str]]:
+        """
+        Instance start command.
+        """
+        return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter(name="healthCheckConfig")
+    def health_check_config(self) -> Optional['outputs.V3FunctionCustomRuntimeConfigHealthCheckConfig']:
+        """
+        Function custom health check configuration. See `health_check_config` below.
+        """
+        return pulumi.get(self, "health_check_config")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The listening port of the HTTP Server.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class V3FunctionCustomRuntimeConfigHealthCheckConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "httpGetUrl":
+            suggest = "http_get_url"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "successThreshold":
+            suggest = "success_threshold"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionCustomRuntimeConfigHealthCheckConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionCustomRuntimeConfigHealthCheckConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionCustomRuntimeConfigHealthCheckConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failure_threshold: Optional[int] = None,
+                 http_get_url: Optional[str] = None,
+                 initial_delay_seconds: Optional[int] = None,
+                 period_seconds: Optional[int] = None,
+                 success_threshold: Optional[int] = None,
+                 timeout_seconds: Optional[int] = None):
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if http_get_url is not None:
+            pulumi.set(__self__, "http_get_url", http_get_url)
+        if initial_delay_seconds is not None:
+            pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        if period_seconds is not None:
+            pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
+        if timeout_seconds is not None:
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[int]:
+        return pulumi.get(self, "failure_threshold")
+
+    @property
+    @pulumi.getter(name="httpGetUrl")
+    def http_get_url(self) -> Optional[str]:
+        return pulumi.get(self, "http_get_url")
+
+    @property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[int]:
+        return pulumi.get(self, "success_threshold")
+
+    @property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> Optional[int]:
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class V3FunctionGpuConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gpuMemorySize":
+            suggest = "gpu_memory_size"
+        elif key == "gpuType":
+            suggest = "gpu_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionGpuConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionGpuConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionGpuConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gpu_memory_size: Optional[int] = None,
+                 gpu_type: Optional[str] = None):
+        """
+        :param int gpu_memory_size: GPU memory specification, unit: MB, multiple of 1024MB.
+        :param str gpu_type: GPU card architecture.
+               - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+               - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+               - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+        """
+        if gpu_memory_size is not None:
+            pulumi.set(__self__, "gpu_memory_size", gpu_memory_size)
+        if gpu_type is not None:
+            pulumi.set(__self__, "gpu_type", gpu_type)
+
+    @property
+    @pulumi.getter(name="gpuMemorySize")
+    def gpu_memory_size(self) -> Optional[int]:
+        """
+        GPU memory specification, unit: MB, multiple of 1024MB.
+        """
+        return pulumi.get(self, "gpu_memory_size")
+
+    @property
+    @pulumi.getter(name="gpuType")
+    def gpu_type(self) -> Optional[str]:
+        """
+        GPU card architecture.
+        - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
+        - fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).
+        - fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+        """
+        return pulumi.get(self, "gpu_type")
+
+
+@pulumi.output_type
+class V3FunctionInstanceLifecycleConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preStop":
+            suggest = "pre_stop"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionInstanceLifecycleConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionInstanceLifecycleConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionInstanceLifecycleConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 initializer: Optional['outputs.V3FunctionInstanceLifecycleConfigInitializer'] = None,
+                 pre_stop: Optional['outputs.V3FunctionInstanceLifecycleConfigPreStop'] = None):
+        """
+        :param 'V3FunctionInstanceLifecycleConfigInitializerArgs' initializer: Initializer handler method configuration. See `initializer` below.
+        :param 'V3FunctionInstanceLifecycleConfigPreStopArgs' pre_stop: PreStop handler method configuration. See `pre_stop` below.
+        """
+        if initializer is not None:
+            pulumi.set(__self__, "initializer", initializer)
+        if pre_stop is not None:
+            pulumi.set(__self__, "pre_stop", pre_stop)
+
+    @property
+    @pulumi.getter
+    def initializer(self) -> Optional['outputs.V3FunctionInstanceLifecycleConfigInitializer']:
+        """
+        Initializer handler method configuration. See `initializer` below.
+        """
+        return pulumi.get(self, "initializer")
+
+    @property
+    @pulumi.getter(name="preStop")
+    def pre_stop(self) -> Optional['outputs.V3FunctionInstanceLifecycleConfigPreStop']:
+        """
+        PreStop handler method configuration. See `pre_stop` below.
+        """
+        return pulumi.get(self, "pre_stop")
+
+
+@pulumi.output_type
+class V3FunctionInstanceLifecycleConfigInitializer(dict):
+    def __init__(__self__, *,
+                 handler: Optional[str] = None,
+                 timeout: Optional[int] = None):
+        """
+        :param str handler: Function Handler: the call entry for the function compute system to run your function.
+        :param int timeout: The maximum running time of the function, in seconds.
+        """
+        if handler is not None:
+            pulumi.set(__self__, "handler", handler)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def handler(self) -> Optional[str]:
+        """
+        Function Handler: the call entry for the function compute system to run your function.
+        """
+        return pulumi.get(self, "handler")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[int]:
+        """
+        The maximum running time of the function, in seconds.
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class V3FunctionInstanceLifecycleConfigPreStop(dict):
+    def __init__(__self__, *,
+                 handler: Optional[str] = None,
+                 timeout: Optional[int] = None):
+        """
+        :param str handler: Function Handler: the call entry for the function compute system to run your function.
+        :param int timeout: The maximum running time of the function, in seconds.
+        """
+        if handler is not None:
+            pulumi.set(__self__, "handler", handler)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def handler(self) -> Optional[str]:
+        """
+        Function Handler: the call entry for the function compute system to run your function.
+        """
+        return pulumi.get(self, "handler")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[int]:
+        """
+        The maximum running time of the function, in seconds.
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class V3FunctionLogConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableInstanceMetrics":
+            suggest = "enable_instance_metrics"
+        elif key == "enableRequestMetrics":
+            suggest = "enable_request_metrics"
+        elif key == "logBeginRule":
+            suggest = "log_begin_rule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionLogConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionLogConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionLogConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_instance_metrics: Optional[bool] = None,
+                 enable_request_metrics: Optional[bool] = None,
+                 log_begin_rule: Optional[str] = None,
+                 logstore: Optional[str] = None,
+                 project: Optional[str] = None):
+        """
+        :param bool enable_instance_metrics: After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
+        :param bool enable_request_metrics: After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
+        :param str log_begin_rule: Log Line First Matching Rules.
+        :param str logstore: The Logstore name of log service.
+        :param str project: The name of the log service Project.
+        """
+        if enable_instance_metrics is not None:
+            pulumi.set(__self__, "enable_instance_metrics", enable_instance_metrics)
+        if enable_request_metrics is not None:
+            pulumi.set(__self__, "enable_request_metrics", enable_request_metrics)
+        if log_begin_rule is not None:
+            pulumi.set(__self__, "log_begin_rule", log_begin_rule)
+        if logstore is not None:
+            pulumi.set(__self__, "logstore", logstore)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="enableInstanceMetrics")
+    def enable_instance_metrics(self) -> Optional[bool]:
+        """
+        After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
+        """
+        return pulumi.get(self, "enable_instance_metrics")
+
+    @property
+    @pulumi.getter(name="enableRequestMetrics")
+    def enable_request_metrics(self) -> Optional[bool]:
+        """
+        After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
+        """
+        return pulumi.get(self, "enable_request_metrics")
+
+    @property
+    @pulumi.getter(name="logBeginRule")
+    def log_begin_rule(self) -> Optional[str]:
+        """
+        Log Line First Matching Rules.
+        """
+        return pulumi.get(self, "log_begin_rule")
+
+    @property
+    @pulumi.getter
+    def logstore(self) -> Optional[str]:
+        """
+        The Logstore name of log service.
+        """
+        return pulumi.get(self, "logstore")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
+        """
+        The name of the log service Project.
+        """
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class V3FunctionNasConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupId":
+            suggest = "group_id"
+        elif key == "mountPoints":
+            suggest = "mount_points"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionNasConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionNasConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionNasConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 group_id: Optional[int] = None,
+                 mount_points: Optional[Sequence['outputs.V3FunctionNasConfigMountPoint']] = None,
+                 user_id: Optional[int] = None):
+        """
+        :param int group_id: Group ID.
+        :param Sequence['V3FunctionNasConfigMountPointArgs'] mount_points: Mount point list. See `mount_points` below.
+        :param int user_id: Account ID.
+        """
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if mount_points is not None:
+            pulumi.set(__self__, "mount_points", mount_points)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[int]:
+        """
+        Group ID.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter(name="mountPoints")
+    def mount_points(self) -> Optional[Sequence['outputs.V3FunctionNasConfigMountPoint']]:
+        """
+        Mount point list. See `mount_points` below.
+        """
+        return pulumi.get(self, "mount_points")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[int]:
+        """
+        Account ID.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class V3FunctionNasConfigMountPoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableTls":
+            suggest = "enable_tls"
+        elif key == "mountDir":
+            suggest = "mount_dir"
+        elif key == "serverAddr":
+            suggest = "server_addr"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionNasConfigMountPoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionNasConfigMountPoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionNasConfigMountPoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_tls: Optional[bool] = None,
+                 mount_dir: Optional[str] = None,
+                 server_addr: Optional[str] = None):
+        """
+        :param bool enable_tls: Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
+        :param str server_addr: NAS server address.
+        """
+        if enable_tls is not None:
+            pulumi.set(__self__, "enable_tls", enable_tls)
+        if mount_dir is not None:
+            pulumi.set(__self__, "mount_dir", mount_dir)
+        if server_addr is not None:
+            pulumi.set(__self__, "server_addr", server_addr)
+
+    @property
+    @pulumi.getter(name="enableTls")
+    def enable_tls(self) -> Optional[bool]:
+        """
+        Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
+        """
+        return pulumi.get(self, "enable_tls")
+
+    @property
+    @pulumi.getter(name="mountDir")
+    def mount_dir(self) -> Optional[str]:
+        return pulumi.get(self, "mount_dir")
+
+    @property
+    @pulumi.getter(name="serverAddr")
+    def server_addr(self) -> Optional[str]:
+        """
+        NAS server address.
+        """
+        return pulumi.get(self, "server_addr")
+
+
+@pulumi.output_type
+class V3FunctionOssMountConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPoints":
+            suggest = "mount_points"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionOssMountConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionOssMountConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionOssMountConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mount_points: Optional[Sequence['outputs.V3FunctionOssMountConfigMountPoint']] = None):
+        """
+        :param Sequence['V3FunctionOssMountConfigMountPointArgs'] mount_points: OSS mount point list. See `mount_points` below.
+        """
+        if mount_points is not None:
+            pulumi.set(__self__, "mount_points", mount_points)
+
+    @property
+    @pulumi.getter(name="mountPoints")
+    def mount_points(self) -> Optional[Sequence['outputs.V3FunctionOssMountConfigMountPoint']]:
+        """
+        OSS mount point list. See `mount_points` below.
+        """
+        return pulumi.get(self, "mount_points")
+
+
+@pulumi.output_type
+class V3FunctionOssMountConfigMountPoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "bucketPath":
+            suggest = "bucket_path"
+        elif key == "mountDir":
+            suggest = "mount_dir"
+        elif key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionOssMountConfigMountPoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionOssMountConfigMountPoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionOssMountConfigMountPoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket_name: Optional[str] = None,
+                 bucket_path: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 mount_dir: Optional[str] = None,
+                 read_only: Optional[bool] = None):
+        """
+        :param str bucket_name: OSS Bucket name.
+        :param str bucket_path: Path of the mounted OSS Bucket.
+        :param str endpoint: OSS access endpoint.
+        :param bool read_only: Read-only.
+        """
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if bucket_path is not None:
+            pulumi.set(__self__, "bucket_path", bucket_path)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if mount_dir is not None:
+            pulumi.set(__self__, "mount_dir", mount_dir)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[str]:
+        """
+        OSS Bucket name.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter(name="bucketPath")
+    def bucket_path(self) -> Optional[str]:
+        """
+        Path of the mounted OSS Bucket.
+        """
+        return pulumi.get(self, "bucket_path")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        OSS access endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="mountDir")
+    def mount_dir(self) -> Optional[str]:
+        return pulumi.get(self, "mount_dir")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[bool]:
+        """
+        Read-only.
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class V3FunctionVpcConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "securityGroupId":
+            suggest = "security_group_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+        elif key == "vswitchIds":
+            suggest = "vswitch_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3FunctionVpcConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3FunctionVpcConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3FunctionVpcConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 security_group_id: Optional[str] = None,
+                 vpc_id: Optional[str] = None,
+                 vswitch_ids: Optional[Sequence[str]] = None):
+        """
+        :param str security_group_id: Security group ID.
+        :param str vpc_id: VPC network ID.
+        :param Sequence[str] vswitch_ids: Switch List.
+        """
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[str]:
+        """
+        Security group ID.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[str]:
+        """
+        VPC network ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Optional[Sequence[str]]:
+        """
+        Switch List.
+        """
+        return pulumi.get(self, "vswitch_ids")
+
+
+@pulumi.output_type
 class GetCustomDomainsDomainResult(dict):
     def __init__(__self__, *,
                  account_id: str,
@@ -1783,7 +3504,7 @@ class GetServicesServiceVpcConfigResult(dict):
         """
         :param str security_group_id: Associated security group ID.
         :param str vpc_id: Associated VPC ID.
-        :param Sequence[str] vswitch_ids: Associated VSwitch IDs.
+        :param Sequence[str] vswitch_ids: Associated vSwitch IDs.
         """
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -1809,7 +3530,7 @@ class GetServicesServiceVpcConfigResult(dict):
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> Sequence[str]:
         """
-        Associated VSwitch IDs.
+        Associated vSwitch IDs.
         """
         return pulumi.get(self, "vswitch_ids")
 

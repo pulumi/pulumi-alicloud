@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'DbClusterDbClusterAccessWhiteList',
+    'DbClusterMultiZoneVswitchList',
     'GetAccountsAccountResult',
     'GetBackupPoliciesPolicyResult',
     'GetDbClustersClusterResult',
@@ -83,6 +84,55 @@ class DbClusterDbClusterAccessWhiteList(dict):
         The IP address list under the whitelist group.
         """
         return pulumi.get(self, "security_ip_list")
+
+
+@pulumi.output_type
+class DbClusterMultiZoneVswitchList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vswitchId":
+            suggest = "vswitch_id"
+        elif key == "zoneId":
+            suggest = "zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbClusterMultiZoneVswitchList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbClusterMultiZoneVswitchList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbClusterMultiZoneVswitchList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vswitch_id: str,
+                 zone_id: Optional[str] = None):
+        """
+        :param str vswitch_id: The ID of the vswitch.
+        :param str zone_id: The zone ID of the vswitch.
+        """
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the vswitch.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[str]:
+        """
+        The zone ID of the vswitch.
+        """
+        return pulumi.get(self, "zone_id")
 
 
 @pulumi.output_type

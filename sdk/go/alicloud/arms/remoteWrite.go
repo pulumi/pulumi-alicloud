@@ -18,6 +18,8 @@ import (
 //
 // > **NOTE:** Available since v1.204.0.
 //
+// > **NOTE:** deprecated since v1.228.0.
+//
 // ## Example Usage
 //
 // # Basic Usage

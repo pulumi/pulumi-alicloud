@@ -46,8 +46,93 @@ import (
 //				HttpsPolicy:  pulumi.String("HTTPS2_TLS1_0"),
 //				ZoneId:       pulumi.String("cn-hangzhou-MAZ6"),
 //				PaymentType:  pulumi.String("PayAsYouGo"),
-//				UserVpcId:    pulumi.String("1709116870"),
 //				InstanceType: pulumi.String("normal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vswitch1, err := vpc.NewSwitch(ctx, "vswitch_1", &vpc.SwitchArgs{
+//				VpcId:       vpc.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/16"),
+//				ZoneId:      pulumi.String("cn-hangzhou-j"),
+//				VswitchName: pulumi.Sprintf("%v_1", name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vswitch2, err := vpc.NewSwitch(ctx, "vswitch_2", &vpc.SwitchArgs{
+//				VpcId:       vpc.ID(),
+//				CidrBlock:   pulumi.String("172.17.0.0/16"),
+//				ZoneId:      pulumi.String("cn-hangzhou-k"),
+//				VswitchName: pulumi.Sprintf("%v_2", name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			securityGroup, err := ecs.NewSecurityGroup(ctx, "security_group", &ecs.SecurityGroupArgs{
+//				VpcId: vpc.ID(),
+//				Name:  pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigateway.NewInstance(ctx, "vpc_integration_instance", &apigateway.InstanceArgs{
+//				InstanceName: pulumi.String(name),
+//				HttpsPolicy:  pulumi.String("HTTPS2_TLS1_0"),
+//				InstanceSpec: pulumi.String("api.s1.small"),
+//				InstanceType: pulumi.String("vpc_connect"),
+//				PaymentType:  pulumi.String("PayAsYouGo"),
+//				UserVpcId:    vpc.ID(),
+//				InstanceCidr: pulumi.String("192.168.0.0/16"),
+//				ZoneVswitchSecurityGroups: apigateway.InstanceZoneVswitchSecurityGroupArray{
+//					&apigateway.InstanceZoneVswitchSecurityGroupArgs{
+//						ZoneId:        vswitch1.ZoneId,
+//						VswitchId:     vswitch1.ID(),
+//						CidrBlock:     vswitch1.CidrBlock,
+//						SecurityGroup: securityGroup.ID(),
+//					},
+//					&apigateway.InstanceZoneVswitchSecurityGroupArgs{
+//						ZoneId:        vswitch2.ZoneId,
+//						VswitchId:     vswitch2.ID(),
+//						CidrBlock:     vswitch2.CidrBlock,
+//						SecurityGroup: securityGroup.ID(),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -68,41 +153,52 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+	ConnectCidrBlocks pulumi.StringOutput `pulumi:"connectCidrBlocks"`
 	// Creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
+	DeleteVpcIpBlock pulumi.StringPtrOutput `pulumi:"deleteVpcIpBlock"`
 	// The time of the instance package. Valid values:
 	// - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
 	// - PricingCycle is **Year**, indicating annual payment. The value range is **1** to **3**.
 	//
 	// When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
 	Duration pulumi.IntPtrOutput `pulumi:"duration"`
-	// Does IPV6 Capability Support.
+	// Specifies whether IPv6 egress capability is enabled.
 	EgressIpv6Enable pulumi.BoolPtrOutput `pulumi:"egressIpv6Enable"`
 	// Https policy.
 	HttpsPolicy pulumi.StringOutput `pulumi:"httpsPolicy"`
+	// The CIDR block for the instance deployment. Valid values are:
+	// - `192.168.0.0/16`.
+	// - `172.16.0.0/12`.
+	InstanceCidr pulumi.StringOutput `pulumi:"instanceCidr"`
 	// Instance name.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// Instance type.
 	InstanceSpec pulumi.StringOutput `pulumi:"instanceSpec"`
-	// Instance type-normal: traditional exclusive instance.
+	// The type of the instance. Valid values are:
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
+	// Specifies whether IPv6 ingress capability is enabled.
+	Ipv6Enabled pulumi.BoolPtrOutput `pulumi:"ipv6Enabled"`
 	// The payment type of the resource.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// The subscription instance is of the subscription year or month type. The value range is as follows:
-	// - **year**: year
-	// - **month**: month
-	// > **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+	// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Does ipv6 support.
-	SupportIpv6 pulumi.BoolPtrOutput `pulumi:"supportIpv6"`
+	SupportIpv6 pulumi.BoolOutput `pulumi:"supportIpv6"`
+	// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+	ToConnectVpcIpBlock InstanceToConnectVpcIpBlockPtrOutput `pulumi:"toConnectVpcIpBlock"`
 	// User's VpcID.
 	UserVpcId pulumi.StringPtrOutput `pulumi:"userVpcId"`
 	// Whether the slb of the Vpc supports.
 	VpcSlbIntranetEnable pulumi.BoolPtrOutput `pulumi:"vpcSlbIntranetEnable"`
 	// The zone where the instance is deployed.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
+	ZoneVswitchSecurityGroups InstanceZoneVswitchSecurityGroupArrayOutput `pulumi:"zoneVswitchSecurityGroups"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -147,79 +243,101 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+	ConnectCidrBlocks *string `pulumi:"connectCidrBlocks"`
 	// Creation time.
 	CreateTime *string `pulumi:"createTime"`
+	// Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
+	DeleteVpcIpBlock *string `pulumi:"deleteVpcIpBlock"`
 	// The time of the instance package. Valid values:
 	// - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
 	// - PricingCycle is **Year**, indicating annual payment. The value range is **1** to **3**.
 	//
 	// When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
 	Duration *int `pulumi:"duration"`
-	// Does IPV6 Capability Support.
+	// Specifies whether IPv6 egress capability is enabled.
 	EgressIpv6Enable *bool `pulumi:"egressIpv6Enable"`
 	// Https policy.
 	HttpsPolicy *string `pulumi:"httpsPolicy"`
+	// The CIDR block for the instance deployment. Valid values are:
+	// - `192.168.0.0/16`.
+	// - `172.16.0.0/12`.
+	InstanceCidr *string `pulumi:"instanceCidr"`
 	// Instance name.
 	InstanceName *string `pulumi:"instanceName"`
 	// Instance type.
 	InstanceSpec *string `pulumi:"instanceSpec"`
-	// Instance type-normal: traditional exclusive instance.
+	// The type of the instance. Valid values are:
 	InstanceType *string `pulumi:"instanceType"`
+	// Specifies whether IPv6 ingress capability is enabled.
+	Ipv6Enabled *bool `pulumi:"ipv6Enabled"`
 	// The payment type of the resource.
 	PaymentType *string `pulumi:"paymentType"`
-	// The subscription instance is of the subscription year or month type. The value range is as follows:
-	// - **year**: year
-	// - **month**: month
-	// > **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+	// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// Does ipv6 support.
 	SupportIpv6 *bool `pulumi:"supportIpv6"`
+	// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+	ToConnectVpcIpBlock *InstanceToConnectVpcIpBlock `pulumi:"toConnectVpcIpBlock"`
 	// User's VpcID.
 	UserVpcId *string `pulumi:"userVpcId"`
 	// Whether the slb of the Vpc supports.
 	VpcSlbIntranetEnable *bool `pulumi:"vpcSlbIntranetEnable"`
 	// The zone where the instance is deployed.
 	ZoneId *string `pulumi:"zoneId"`
+	// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
+	ZoneVswitchSecurityGroups []InstanceZoneVswitchSecurityGroup `pulumi:"zoneVswitchSecurityGroups"`
 }
 
 type InstanceState struct {
+	// (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+	ConnectCidrBlocks pulumi.StringPtrInput
 	// Creation time.
 	CreateTime pulumi.StringPtrInput
+	// Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
+	DeleteVpcIpBlock pulumi.StringPtrInput
 	// The time of the instance package. Valid values:
 	// - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
 	// - PricingCycle is **Year**, indicating annual payment. The value range is **1** to **3**.
 	//
 	// When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
 	Duration pulumi.IntPtrInput
-	// Does IPV6 Capability Support.
+	// Specifies whether IPv6 egress capability is enabled.
 	EgressIpv6Enable pulumi.BoolPtrInput
 	// Https policy.
 	HttpsPolicy pulumi.StringPtrInput
+	// The CIDR block for the instance deployment. Valid values are:
+	// - `192.168.0.0/16`.
+	// - `172.16.0.0/12`.
+	InstanceCidr pulumi.StringPtrInput
 	// Instance name.
 	InstanceName pulumi.StringPtrInput
 	// Instance type.
 	InstanceSpec pulumi.StringPtrInput
-	// Instance type-normal: traditional exclusive instance.
+	// The type of the instance. Valid values are:
 	InstanceType pulumi.StringPtrInput
+	// Specifies whether IPv6 ingress capability is enabled.
+	Ipv6Enabled pulumi.BoolPtrInput
 	// The payment type of the resource.
 	PaymentType pulumi.StringPtrInput
-	// The subscription instance is of the subscription year or month type. The value range is as follows:
-	// - **year**: year
-	// - **month**: month
-	// > **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+	// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
 	PricingCycle pulumi.StringPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// Does ipv6 support.
 	SupportIpv6 pulumi.BoolPtrInput
+	// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+	ToConnectVpcIpBlock InstanceToConnectVpcIpBlockPtrInput
 	// User's VpcID.
 	UserVpcId pulumi.StringPtrInput
 	// Whether the slb of the Vpc supports.
 	VpcSlbIntranetEnable pulumi.BoolPtrInput
 	// The zone where the instance is deployed.
 	ZoneId pulumi.StringPtrInput
+	// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
+	ZoneVswitchSecurityGroups InstanceZoneVswitchSecurityGroupArrayInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -227,72 +345,86 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
+	DeleteVpcIpBlock *string `pulumi:"deleteVpcIpBlock"`
 	// The time of the instance package. Valid values:
 	// - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
 	// - PricingCycle is **Year**, indicating annual payment. The value range is **1** to **3**.
 	//
 	// When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
 	Duration *int `pulumi:"duration"`
-	// Does IPV6 Capability Support.
+	// Specifies whether IPv6 egress capability is enabled.
 	EgressIpv6Enable *bool `pulumi:"egressIpv6Enable"`
 	// Https policy.
 	HttpsPolicy string `pulumi:"httpsPolicy"`
+	// The CIDR block for the instance deployment. Valid values are:
+	// - `192.168.0.0/16`.
+	// - `172.16.0.0/12`.
+	InstanceCidr *string `pulumi:"instanceCidr"`
 	// Instance name.
 	InstanceName string `pulumi:"instanceName"`
 	// Instance type.
 	InstanceSpec string `pulumi:"instanceSpec"`
-	// Instance type-normal: traditional exclusive instance.
+	// The type of the instance. Valid values are:
 	InstanceType *string `pulumi:"instanceType"`
+	// Specifies whether IPv6 ingress capability is enabled.
+	Ipv6Enabled *bool `pulumi:"ipv6Enabled"`
 	// The payment type of the resource.
 	PaymentType string `pulumi:"paymentType"`
-	// The subscription instance is of the subscription year or month type. The value range is as follows:
-	// - **year**: year
-	// - **month**: month
-	// > **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+	// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
 	PricingCycle *string `pulumi:"pricingCycle"`
-	// Does ipv6 support.
-	SupportIpv6 *bool `pulumi:"supportIpv6"`
+	// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+	ToConnectVpcIpBlock *InstanceToConnectVpcIpBlock `pulumi:"toConnectVpcIpBlock"`
 	// User's VpcID.
 	UserVpcId *string `pulumi:"userVpcId"`
 	// Whether the slb of the Vpc supports.
 	VpcSlbIntranetEnable *bool `pulumi:"vpcSlbIntranetEnable"`
 	// The zone where the instance is deployed.
 	ZoneId *string `pulumi:"zoneId"`
+	// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
+	ZoneVswitchSecurityGroups []InstanceZoneVswitchSecurityGroup `pulumi:"zoneVswitchSecurityGroups"`
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
+	DeleteVpcIpBlock pulumi.StringPtrInput
 	// The time of the instance package. Valid values:
 	// - PricingCycle is **Month**, indicating monthly payment. The value range is **1** to **9**.
 	// - PricingCycle is **Year**, indicating annual payment. The value range is **1** to **3**.
 	//
 	// When the value of> ChargeType is **PrePaid**, this parameter is available and must be passed in.
 	Duration pulumi.IntPtrInput
-	// Does IPV6 Capability Support.
+	// Specifies whether IPv6 egress capability is enabled.
 	EgressIpv6Enable pulumi.BoolPtrInput
 	// Https policy.
 	HttpsPolicy pulumi.StringInput
+	// The CIDR block for the instance deployment. Valid values are:
+	// - `192.168.0.0/16`.
+	// - `172.16.0.0/12`.
+	InstanceCidr pulumi.StringPtrInput
 	// Instance name.
 	InstanceName pulumi.StringInput
 	// Instance type.
 	InstanceSpec pulumi.StringInput
-	// Instance type-normal: traditional exclusive instance.
+	// The type of the instance. Valid values are:
 	InstanceType pulumi.StringPtrInput
+	// Specifies whether IPv6 ingress capability is enabled.
+	Ipv6Enabled pulumi.BoolPtrInput
 	// The payment type of the resource.
 	PaymentType pulumi.StringInput
-	// The subscription instance is of the subscription year or month type. The value range is as follows:
-	// - **year**: year
-	// - **month**: month
-	// > **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+	// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
 	PricingCycle pulumi.StringPtrInput
-	// Does ipv6 support.
-	SupportIpv6 pulumi.BoolPtrInput
+	// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+	ToConnectVpcIpBlock InstanceToConnectVpcIpBlockPtrInput
 	// User's VpcID.
 	UserVpcId pulumi.StringPtrInput
 	// Whether the slb of the Vpc supports.
 	VpcSlbIntranetEnable pulumi.BoolPtrInput
 	// The zone where the instance is deployed.
 	ZoneId pulumi.StringPtrInput
+	// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
+	ZoneVswitchSecurityGroups InstanceZoneVswitchSecurityGroupArrayInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -382,9 +514,19 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// (Available since v1.228.0) The CIDR blocks that can be accessed by the Vpc integration instance.
+func (o InstanceOutput) ConnectCidrBlocks() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectCidrBlocks }).(pulumi.StringOutput)
+}
+
 // Creation time.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Indicates whether to delete the IP block that the VPC can access, conflict with `toConnectVpcIpBlock`.
+func (o InstanceOutput) DeleteVpcIpBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DeleteVpcIpBlock }).(pulumi.StringPtrOutput)
 }
 
 // The time of the instance package. Valid values:
@@ -396,7 +538,7 @@ func (o InstanceOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Duration }).(pulumi.IntPtrOutput)
 }
 
-// Does IPV6 Capability Support.
+// Specifies whether IPv6 egress capability is enabled.
 func (o InstanceOutput) EgressIpv6Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EgressIpv6Enable }).(pulumi.BoolPtrOutput)
 }
@@ -404,6 +546,13 @@ func (o InstanceOutput) EgressIpv6Enable() pulumi.BoolPtrOutput {
 // Https policy.
 func (o InstanceOutput) HttpsPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HttpsPolicy }).(pulumi.StringOutput)
+}
+
+// The CIDR block for the instance deployment. Valid values are:
+// - `192.168.0.0/16`.
+// - `172.16.0.0/12`.
+func (o InstanceOutput) InstanceCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceCidr }).(pulumi.StringOutput)
 }
 
 // Instance name.
@@ -416,9 +565,14 @@ func (o InstanceOutput) InstanceSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceSpec }).(pulumi.StringOutput)
 }
 
-// Instance type-normal: traditional exclusive instance.
+// The type of the instance. Valid values are:
 func (o InstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Specifies whether IPv6 ingress capability is enabled.
+func (o InstanceOutput) Ipv6Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.Ipv6Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // The payment type of the resource.
@@ -426,10 +580,7 @@ func (o InstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The subscription instance is of the subscription year or month type. The value range is as follows:
-// - **year**: year
-// - **month**: month
-// > **NOTE:**  If the Payment type is PrePaid, this parameter is required.
+// The subscription instance is of the subscription year or month type. This parameter is required when the Payment type is PrePaid. The value range is as follows:
 func (o InstanceOutput) PricingCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
 }
@@ -440,8 +591,13 @@ func (o InstanceOutput) Status() pulumi.StringOutput {
 }
 
 // Does ipv6 support.
-func (o InstanceOutput) SupportIpv6() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.SupportIpv6 }).(pulumi.BoolPtrOutput)
+func (o InstanceOutput) SupportIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SupportIpv6 }).(pulumi.BoolOutput)
+}
+
+// The additional IP block that the VPC integration instance can access, conflict with `deleteVpcIpBlock`. See `toConnectVpcIpBlock` below.
+func (o InstanceOutput) ToConnectVpcIpBlock() InstanceToConnectVpcIpBlockPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceToConnectVpcIpBlockPtrOutput { return v.ToConnectVpcIpBlock }).(InstanceToConnectVpcIpBlockPtrOutput)
 }
 
 // User's VpcID.
@@ -457,6 +613,11 @@ func (o InstanceOutput) VpcSlbIntranetEnable() pulumi.BoolPtrOutput {
 // The zone where the instance is deployed.
 func (o InstanceOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+// Network configuration details for Vpc integration instance which includes the availability zone, VSwitch, and security group information. See `zoneVswitchSecurityGroup` below.
+func (o InstanceOutput) ZoneVswitchSecurityGroups() InstanceZoneVswitchSecurityGroupArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceZoneVswitchSecurityGroupArrayOutput { return v.ZoneVswitchSecurityGroups }).(InstanceZoneVswitchSecurityGroupArrayOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }

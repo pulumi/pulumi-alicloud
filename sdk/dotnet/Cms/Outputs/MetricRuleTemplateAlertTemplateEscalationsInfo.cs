@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class MetricRuleTemplateAlertTemplateEscalationsInfo
     {
         /// <summary>
-        /// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        /// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         /// </summary>
         public readonly string? ComparisonOperator;
         /// <summary>
-        /// The statistical aggregation method for critical-level alerts.
+        /// The statistical aggregation method for warn-level alerts.
         /// </summary>
         public readonly string? Statistics;
         /// <summary>
-        /// The threshold for critical-level alerts.
+        /// The threshold for warn-level alerts.
         /// </summary>
         public readonly string? Threshold;
         /// <summary>
-        /// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        /// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         /// </summary>
         public readonly string? Times;
 

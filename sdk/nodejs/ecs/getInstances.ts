@@ -112,7 +112,7 @@ export interface GetInstancesArgs {
      */
     vpcId?: string;
     /**
-     * ID of the VSwitch linked to the instances.
+     * ID of the vSwitch linked to the instances.
      */
     vswitchId?: string;
 }
@@ -173,7 +173,7 @@ export interface GetInstancesResult {
      */
     readonly vpcId?: string;
     /**
-     * ID of the VSwitch the instance belongs to.
+     * ID of the vSwitch the instance belongs to.
      */
     readonly vswitchId?: string;
 }
@@ -264,7 +264,7 @@ export interface GetInstancesOutputArgs {
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * ID of the VSwitch linked to the instances.
+     * ID of the vSwitch linked to the instances.
      */
     vswitchId?: pulumi.Input<string>;
 }

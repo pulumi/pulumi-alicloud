@@ -76,7 +76,7 @@ type Project struct {
 	DefaultQuota pulumi.StringPtrOutput `pulumi:"defaultQuota"`
 	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList ProjectIpWhiteListPtrOutput `pulumi:"ipWhiteList"`
-	// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+	// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
 	IsLogical pulumi.StringPtrOutput `pulumi:"isLogical"`
 	// Project owner
 	Owner pulumi.StringOutput `pulumi:"owner"`
@@ -134,7 +134,7 @@ type projectState struct {
 	DefaultQuota *string `pulumi:"defaultQuota"`
 	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList *ProjectIpWhiteList `pulumi:"ipWhiteList"`
-	// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+	// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
 	IsLogical *string `pulumi:"isLogical"`
 	// Project owner
 	Owner *string `pulumi:"owner"`
@@ -163,7 +163,7 @@ type ProjectState struct {
 	DefaultQuota pulumi.StringPtrInput
 	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList ProjectIpWhiteListPtrInput
-	// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+	// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
 	IsLogical pulumi.StringPtrInput
 	// Project owner
 	Owner pulumi.StringPtrInput
@@ -194,7 +194,7 @@ type projectArgs struct {
 	DefaultQuota *string `pulumi:"defaultQuota"`
 	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList *ProjectIpWhiteList `pulumi:"ipWhiteList"`
-	// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+	// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
 	IsLogical *string `pulumi:"isLogical"`
 	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
 	ProductType *string `pulumi:"productType"`
@@ -218,7 +218,7 @@ type ProjectArgs struct {
 	DefaultQuota pulumi.StringPtrInput
 	// IP whitelist See `ipWhiteList` below.
 	IpWhiteList ProjectIpWhiteListPtrInput
-	// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+	// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
 	IsLogical pulumi.StringPtrInput
 	// Quota payment type, support `PayAsYouGo`, `Subscription`, `Dev`.
 	ProductType pulumi.StringPtrInput
@@ -341,7 +341,7 @@ func (o ProjectOutput) IpWhiteList() ProjectIpWhiteListPtrOutput {
 	return o.ApplyT(func(v *Project) ProjectIpWhiteListPtrOutput { return v.IpWhiteList }).(ProjectIpWhiteListPtrOutput)
 }
 
-// Logical deletion, value: (ture/flase) ture: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. flase: immediately deleted, that is, completely deleted, permanently unrecoverable.
+// Logical deletion, value: (true/false) true: In this case, the project status will be changed to 'DELETING' and completely deleted after 14 days. false: immediately deleted, that is, completely deleted, permanently unrecoverable.
 func (o ProjectOutput) IsLogical() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.IsLogical }).(pulumi.StringPtrOutput)
 }

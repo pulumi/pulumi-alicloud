@@ -100,7 +100,7 @@ public final class GetNetworksVpc {
      */
     private String vrouterId;
     /**
-     * @return List of VSwitch IDs in the specified VPC
+     * @return List of vSwitch IDs in the specified VPC
      * 
      */
     private List<String> vswitchIds;
@@ -226,7 +226,7 @@ public final class GetNetworksVpc {
         return this.vrouterId;
     }
     /**
-     * @return List of VSwitch IDs in the specified VPC
+     * @return List of vSwitch IDs in the specified VPC
      * 
      */
     public List<String> vswitchIds() {

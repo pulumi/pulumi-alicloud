@@ -36,19 +36,19 @@ class ControlPolicyArgs:
         :param pulumi.Input[str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         :param pulumi.Input[str] description: The description of the access control policy.
-        :param pulumi.Input[str] destination: The destination address defined in the access control policy.
-        :param pulumi.Input[str] destination_type: DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
-        :param pulumi.Input[str] direction: Direction. Valid values: `in`, `out`.
-        :param pulumi.Input[str] proto: Proto. Valid values: ` TCP`, ` UDP`, `ANY`, `ICMP`.
-        :param pulumi.Input[str] source: Source.
-        :param pulumi.Input[str] source_type: SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
-        :param pulumi.Input[str] dest_port: The destination port defined in the access control policy.
-        :param pulumi.Input[str] dest_port_group: The destination port address book defined in the access control policy.
-        :param pulumi.Input[str] dest_port_type: The destination port type defined in the access control policy. Valid values: `group`, `port`.
-        :param pulumi.Input[str] ip_version: The ip version.
-        :param pulumi.Input[str] lang: DestPortGroupPorts. Valid values: `en`, `zh`.
-        :param pulumi.Input[str] release: Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
-        :param pulumi.Input[str] source_ip: The source ip.
+        :param pulumi.Input[str] destination: The destination address in the access control policy.
+        :param pulumi.Input[str] destination_type: The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
+        :param pulumi.Input[str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        :param pulumi.Input[str] proto: The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        :param pulumi.Input[str] source: The source address in the access control policy.
+        :param pulumi.Input[str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
+        :param pulumi.Input[str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
+        :param pulumi.Input[str] dest_port_group: The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
+        :param pulumi.Input[str] dest_port_type: The type of the destination port in the access control policy. Valid values: `port`, `group`.
+        :param pulumi.Input[str] ip_version: The IP version supported by the access control policy. Default value: `4`. Valid values:
+        :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
+        :param pulumi.Input[str] release: The status of the access control policy. Valid values: `true`, `false`.
+        :param pulumi.Input[str] source_ip: The source IP address of the request.
         """
         pulumi.set(__self__, "acl_action", acl_action)
         pulumi.set(__self__, "application_name", application_name)
@@ -115,7 +115,7 @@ class ControlPolicyArgs:
     @pulumi.getter
     def destination(self) -> pulumi.Input[str]:
         """
-        The destination address defined in the access control policy.
+        The destination address in the access control policy.
         """
         return pulumi.get(self, "destination")
 
@@ -127,7 +127,7 @@ class ControlPolicyArgs:
     @pulumi.getter(name="destinationType")
     def destination_type(self) -> pulumi.Input[str]:
         """
-        DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+        The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
         """
         return pulumi.get(self, "destination_type")
 
@@ -139,7 +139,7 @@ class ControlPolicyArgs:
     @pulumi.getter
     def direction(self) -> pulumi.Input[str]:
         """
-        Direction. Valid values: `in`, `out`.
+        The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         """
         return pulumi.get(self, "direction")
 
@@ -151,7 +151,7 @@ class ControlPolicyArgs:
     @pulumi.getter
     def proto(self) -> pulumi.Input[str]:
         """
-        Proto. Valid values: ` TCP`, ` UDP`, `ANY`, `ICMP`.
+        The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
         """
         return pulumi.get(self, "proto")
 
@@ -163,7 +163,7 @@ class ControlPolicyArgs:
     @pulumi.getter
     def source(self) -> pulumi.Input[str]:
         """
-        Source.
+        The source address in the access control policy.
         """
         return pulumi.get(self, "source")
 
@@ -175,7 +175,7 @@ class ControlPolicyArgs:
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Input[str]:
         """
-        SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+        The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
         """
         return pulumi.get(self, "source_type")
 
@@ -187,7 +187,7 @@ class ControlPolicyArgs:
     @pulumi.getter(name="destPort")
     def dest_port(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination port defined in the access control policy.
+        The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
         """
         return pulumi.get(self, "dest_port")
 
@@ -199,7 +199,7 @@ class ControlPolicyArgs:
     @pulumi.getter(name="destPortGroup")
     def dest_port_group(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination port address book defined in the access control policy.
+        The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
         """
         return pulumi.get(self, "dest_port_group")
 
@@ -211,7 +211,7 @@ class ControlPolicyArgs:
     @pulumi.getter(name="destPortType")
     def dest_port_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination port type defined in the access control policy. Valid values: `group`, `port`.
+        The type of the destination port in the access control policy. Valid values: `port`, `group`.
         """
         return pulumi.get(self, "dest_port_type")
 
@@ -223,7 +223,7 @@ class ControlPolicyArgs:
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The ip version.
+        The IP version supported by the access control policy. Default value: `4`. Valid values:
         """
         return pulumi.get(self, "ip_version")
 
@@ -235,7 +235,7 @@ class ControlPolicyArgs:
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
-        DestPortGroupPorts. Valid values: `en`, `zh`.
+        The language of the content within the request and response. Valid values: `zh`, `en`.
         """
         return pulumi.get(self, "lang")
 
@@ -247,7 +247,7 @@ class ControlPolicyArgs:
     @pulumi.getter
     def release(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+        The status of the access control policy. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "release")
 
@@ -259,7 +259,7 @@ class ControlPolicyArgs:
     @pulumi.getter(name="sourceIp")
     def source_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The source ip.
+        The source IP address of the request.
         """
         return pulumi.get(self, "source_ip")
 
@@ -295,19 +295,19 @@ class _ControlPolicyState:
         :param pulumi.Input[str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         :param pulumi.Input[str] description: The description of the access control policy.
-        :param pulumi.Input[str] dest_port: The destination port defined in the access control policy.
-        :param pulumi.Input[str] dest_port_group: The destination port address book defined in the access control policy.
-        :param pulumi.Input[str] dest_port_type: The destination port type defined in the access control policy. Valid values: `group`, `port`.
-        :param pulumi.Input[str] destination: The destination address defined in the access control policy.
-        :param pulumi.Input[str] destination_type: DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
-        :param pulumi.Input[str] direction: Direction. Valid values: `in`, `out`.
-        :param pulumi.Input[str] ip_version: The ip version.
-        :param pulumi.Input[str] lang: DestPortGroupPorts. Valid values: `en`, `zh`.
-        :param pulumi.Input[str] proto: Proto. Valid values: ` TCP`, ` UDP`, `ANY`, `ICMP`.
-        :param pulumi.Input[str] release: Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
-        :param pulumi.Input[str] source: Source.
-        :param pulumi.Input[str] source_ip: The source ip.
-        :param pulumi.Input[str] source_type: SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+        :param pulumi.Input[str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
+        :param pulumi.Input[str] dest_port_group: The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
+        :param pulumi.Input[str] dest_port_type: The type of the destination port in the access control policy. Valid values: `port`, `group`.
+        :param pulumi.Input[str] destination: The destination address in the access control policy.
+        :param pulumi.Input[str] destination_type: The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
+        :param pulumi.Input[str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        :param pulumi.Input[str] ip_version: The IP version supported by the access control policy. Default value: `4`. Valid values:
+        :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
+        :param pulumi.Input[str] proto: The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        :param pulumi.Input[str] release: The status of the access control policy. Valid values: `true`, `false`.
+        :param pulumi.Input[str] source: The source address in the access control policy.
+        :param pulumi.Input[str] source_ip: The source IP address of the request.
+        :param pulumi.Input[str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
         """
         if acl_action is not None:
             pulumi.set(__self__, "acl_action", acl_action)
@@ -397,7 +397,7 @@ class _ControlPolicyState:
     @pulumi.getter(name="destPort")
     def dest_port(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination port defined in the access control policy.
+        The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
         """
         return pulumi.get(self, "dest_port")
 
@@ -409,7 +409,7 @@ class _ControlPolicyState:
     @pulumi.getter(name="destPortGroup")
     def dest_port_group(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination port address book defined in the access control policy.
+        The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
         """
         return pulumi.get(self, "dest_port_group")
 
@@ -421,7 +421,7 @@ class _ControlPolicyState:
     @pulumi.getter(name="destPortType")
     def dest_port_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination port type defined in the access control policy. Valid values: `group`, `port`.
+        The type of the destination port in the access control policy. Valid values: `port`, `group`.
         """
         return pulumi.get(self, "dest_port_type")
 
@@ -433,7 +433,7 @@ class _ControlPolicyState:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination address defined in the access control policy.
+        The destination address in the access control policy.
         """
         return pulumi.get(self, "destination")
 
@@ -445,7 +445,7 @@ class _ControlPolicyState:
     @pulumi.getter(name="destinationType")
     def destination_type(self) -> Optional[pulumi.Input[str]]:
         """
-        DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+        The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
         """
         return pulumi.get(self, "destination_type")
 
@@ -457,7 +457,7 @@ class _ControlPolicyState:
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[str]]:
         """
-        Direction. Valid values: `in`, `out`.
+        The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         """
         return pulumi.get(self, "direction")
 
@@ -469,7 +469,7 @@ class _ControlPolicyState:
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The ip version.
+        The IP version supported by the access control policy. Default value: `4`. Valid values:
         """
         return pulumi.get(self, "ip_version")
 
@@ -481,7 +481,7 @@ class _ControlPolicyState:
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
-        DestPortGroupPorts. Valid values: `en`, `zh`.
+        The language of the content within the request and response. Valid values: `zh`, `en`.
         """
         return pulumi.get(self, "lang")
 
@@ -493,7 +493,7 @@ class _ControlPolicyState:
     @pulumi.getter
     def proto(self) -> Optional[pulumi.Input[str]]:
         """
-        Proto. Valid values: ` TCP`, ` UDP`, `ANY`, `ICMP`.
+        The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
         """
         return pulumi.get(self, "proto")
 
@@ -505,7 +505,7 @@ class _ControlPolicyState:
     @pulumi.getter
     def release(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+        The status of the access control policy. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "release")
 
@@ -517,7 +517,7 @@ class _ControlPolicyState:
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
         """
-        Source.
+        The source address in the access control policy.
         """
         return pulumi.get(self, "source")
 
@@ -529,7 +529,7 @@ class _ControlPolicyState:
     @pulumi.getter(name="sourceIp")
     def source_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The source ip.
+        The source IP address of the request.
         """
         return pulumi.get(self, "source_ip")
 
@@ -541,7 +541,7 @@ class _ControlPolicyState:
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[pulumi.Input[str]]:
         """
-        SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+        The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
         """
         return pulumi.get(self, "source_type")
 
@@ -587,16 +587,20 @@ class ControlPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cloudfirewall.ControlPolicy("example",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudfirewall.ControlPolicy("default",
+            direction="in",
             application_name="ANY",
+            description=name,
             acl_action="accept",
-            description="example",
+            source="127.0.0.1/32",
+            source_type="net",
+            destination="127.0.0.2/32",
             destination_type="net",
-            destination="100.1.1.0/24",
-            direction="out",
-            proto="ANY",
-            source="1.2.3.0/24",
-            source_type="net")
+            proto="ANY")
         ```
 
         ## Import
@@ -613,19 +617,19 @@ class ControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         :param pulumi.Input[str] description: The description of the access control policy.
-        :param pulumi.Input[str] dest_port: The destination port defined in the access control policy.
-        :param pulumi.Input[str] dest_port_group: The destination port address book defined in the access control policy.
-        :param pulumi.Input[str] dest_port_type: The destination port type defined in the access control policy. Valid values: `group`, `port`.
-        :param pulumi.Input[str] destination: The destination address defined in the access control policy.
-        :param pulumi.Input[str] destination_type: DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
-        :param pulumi.Input[str] direction: Direction. Valid values: `in`, `out`.
-        :param pulumi.Input[str] ip_version: The ip version.
-        :param pulumi.Input[str] lang: DestPortGroupPorts. Valid values: `en`, `zh`.
-        :param pulumi.Input[str] proto: Proto. Valid values: ` TCP`, ` UDP`, `ANY`, `ICMP`.
-        :param pulumi.Input[str] release: Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
-        :param pulumi.Input[str] source: Source.
-        :param pulumi.Input[str] source_ip: The source ip.
-        :param pulumi.Input[str] source_type: SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+        :param pulumi.Input[str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
+        :param pulumi.Input[str] dest_port_group: The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
+        :param pulumi.Input[str] dest_port_type: The type of the destination port in the access control policy. Valid values: `port`, `group`.
+        :param pulumi.Input[str] destination: The destination address in the access control policy.
+        :param pulumi.Input[str] destination_type: The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
+        :param pulumi.Input[str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        :param pulumi.Input[str] ip_version: The IP version supported by the access control policy. Default value: `4`. Valid values:
+        :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
+        :param pulumi.Input[str] proto: The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        :param pulumi.Input[str] release: The status of the access control policy. Valid values: `true`, `false`.
+        :param pulumi.Input[str] source: The source address in the access control policy.
+        :param pulumi.Input[str] source_ip: The source IP address of the request.
+        :param pulumi.Input[str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
         """
         ...
     @overload
@@ -648,16 +652,20 @@ class ControlPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cloudfirewall.ControlPolicy("example",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudfirewall.ControlPolicy("default",
+            direction="in",
             application_name="ANY",
+            description=name,
             acl_action="accept",
-            description="example",
+            source="127.0.0.1/32",
+            source_type="net",
+            destination="127.0.0.2/32",
             destination_type="net",
-            destination="100.1.1.0/24",
-            direction="out",
-            proto="ANY",
-            source="1.2.3.0/24",
-            source_type="net")
+            proto="ANY")
         ```
 
         ## Import
@@ -782,19 +790,19 @@ class ControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
                > **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         :param pulumi.Input[str] description: The description of the access control policy.
-        :param pulumi.Input[str] dest_port: The destination port defined in the access control policy.
-        :param pulumi.Input[str] dest_port_group: The destination port address book defined in the access control policy.
-        :param pulumi.Input[str] dest_port_type: The destination port type defined in the access control policy. Valid values: `group`, `port`.
-        :param pulumi.Input[str] destination: The destination address defined in the access control policy.
-        :param pulumi.Input[str] destination_type: DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
-        :param pulumi.Input[str] direction: Direction. Valid values: `in`, `out`.
-        :param pulumi.Input[str] ip_version: The ip version.
-        :param pulumi.Input[str] lang: DestPortGroupPorts. Valid values: `en`, `zh`.
-        :param pulumi.Input[str] proto: Proto. Valid values: ` TCP`, ` UDP`, `ANY`, `ICMP`.
-        :param pulumi.Input[str] release: Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
-        :param pulumi.Input[str] source: Source.
-        :param pulumi.Input[str] source_ip: The source ip.
-        :param pulumi.Input[str] source_type: SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+        :param pulumi.Input[str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
+        :param pulumi.Input[str] dest_port_group: The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
+        :param pulumi.Input[str] dest_port_type: The type of the destination port in the access control policy. Valid values: `port`, `group`.
+        :param pulumi.Input[str] destination: The destination address in the access control policy.
+        :param pulumi.Input[str] destination_type: The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
+        :param pulumi.Input[str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
+        :param pulumi.Input[str] ip_version: The IP version supported by the access control policy. Default value: `4`. Valid values:
+        :param pulumi.Input[str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
+        :param pulumi.Input[str] proto: The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        :param pulumi.Input[str] release: The status of the access control policy. Valid values: `true`, `false`.
+        :param pulumi.Input[str] source: The source address in the access control policy.
+        :param pulumi.Input[str] source_ip: The source IP address of the request.
+        :param pulumi.Input[str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -856,15 +864,15 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="destPort")
     def dest_port(self) -> pulumi.Output[str]:
         """
-        The destination port defined in the access control policy.
+        The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify `dest_port`.
         """
         return pulumi.get(self, "dest_port")
 
     @property
     @pulumi.getter(name="destPortGroup")
-    def dest_port_group(self) -> pulumi.Output[str]:
+    def dest_port_group(self) -> pulumi.Output[Optional[str]]:
         """
-        The destination port address book defined in the access control policy.
+        The name of the destination port address book in the access control policy. **Note:** If `dest_port_type` is set to `group`, you must specify `dest_port_group`.
         """
         return pulumi.get(self, "dest_port_group")
 
@@ -872,7 +880,7 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="destPortType")
     def dest_port_type(self) -> pulumi.Output[str]:
         """
-        The destination port type defined in the access control policy. Valid values: `group`, `port`.
+        The type of the destination port in the access control policy. Valid values: `port`, `group`.
         """
         return pulumi.get(self, "dest_port_type")
 
@@ -880,7 +888,7 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter
     def destination(self) -> pulumi.Output[str]:
         """
-        The destination address defined in the access control policy.
+        The destination address in the access control policy.
         """
         return pulumi.get(self, "destination")
 
@@ -888,7 +896,7 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="destinationType")
     def destination_type(self) -> pulumi.Output[str]:
         """
-        DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+        The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
         """
         return pulumi.get(self, "destination_type")
 
@@ -896,15 +904,15 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter
     def direction(self) -> pulumi.Output[str]:
         """
-        Direction. Valid values: `in`, `out`.
+        The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         """
         return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> pulumi.Output[Optional[str]]:
+    def ip_version(self) -> pulumi.Output[str]:
         """
-        The ip version.
+        The IP version supported by the access control policy. Default value: `4`. Valid values:
         """
         return pulumi.get(self, "ip_version")
 
@@ -912,7 +920,7 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter
     def lang(self) -> pulumi.Output[Optional[str]]:
         """
-        DestPortGroupPorts. Valid values: `en`, `zh`.
+        The language of the content within the request and response. Valid values: `zh`, `en`.
         """
         return pulumi.get(self, "lang")
 
@@ -920,7 +928,7 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter
     def proto(self) -> pulumi.Output[str]:
         """
-        Proto. Valid values: ` TCP`, ` UDP`, `ANY`, `ICMP`.
+        The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
         """
         return pulumi.get(self, "proto")
 
@@ -928,7 +936,7 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter
     def release(self) -> pulumi.Output[str]:
         """
-        Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+        The status of the access control policy. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "release")
 
@@ -936,15 +944,15 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter
     def source(self) -> pulumi.Output[str]:
         """
-        Source.
+        The source address in the access control policy.
         """
         return pulumi.get(self, "source")
 
     @property
     @pulumi.getter(name="sourceIp")
-    def source_ip(self) -> pulumi.Output[str]:
+    def source_ip(self) -> pulumi.Output[Optional[str]]:
         """
-        The source ip.
+        The source IP address of the request.
         """
         return pulumi.get(self, "source_ip")
 
@@ -952,7 +960,7 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Output[str]:
         """
-        SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+        The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
         """
         return pulumi.get(self, "source_type")
 

@@ -426,14 +426,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.tags;
     }
     /**
-     * The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+     * The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
+     * @return The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
      * 
      */
     public Output<Optional<String>> vswitchId() {

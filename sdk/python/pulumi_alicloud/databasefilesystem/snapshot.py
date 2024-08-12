@@ -236,7 +236,7 @@ class Snapshot(pulumi.CustomResource):
         example = alicloud.ecs.get_instance_types(availability_zone=zone_id,
             instance_type_family="ecs.g7se")
         example_get_images = alicloud.ecs.get_images(instance_type=example.instance_types[len(example.instance_types) - 1].id,
-            name_regex="^aliyun_2_1903_x64_20G_alibase_20231221.vhd",
+            name_regex="^aliyun_2_1903_x64_20G_alibase_20240628.vhd",
             owners="system")
         default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0],
@@ -313,7 +313,7 @@ class Snapshot(pulumi.CustomResource):
         example = alicloud.ecs.get_instance_types(availability_zone=zone_id,
             instance_type_family="ecs.g7se")
         example_get_images = alicloud.ecs.get_images(instance_type=example.instance_types[len(example.instance_types) - 1].id,
-            name_regex="^aliyun_2_1903_x64_20G_alibase_20231221.vhd",
+            name_regex="^aliyun_2_1903_x64_20G_alibase_20240628.vhd",
             owners="system")
         default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0],

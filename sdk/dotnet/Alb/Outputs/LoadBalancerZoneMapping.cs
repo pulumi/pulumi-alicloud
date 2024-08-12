@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class LoadBalancerZoneMapping
     {
         /// <summary>
-        /// The SLB Instance Address.
+        /// The IP address of the ALB instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.LoadBalancerZoneMappingLoadBalancerAddress> LoadBalancerAddresses;
         /// <summary>
-        /// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        /// The ID of the VSwitch.
         /// </summary>
         public readonly string VswitchId;
         /// <summary>
-        /// The ID of the zone to which the SLB instance belongs.
+        /// The zone ID of the ALB instance.
         /// </summary>
         public readonly string ZoneId;
 

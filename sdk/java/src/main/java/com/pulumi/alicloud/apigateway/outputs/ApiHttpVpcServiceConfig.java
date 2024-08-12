@@ -19,6 +19,16 @@ public final class ApiHttpVpcServiceConfig {
      */
     private @Nullable String aoneName;
     /**
+     * @return The content type category of backend service which supports values of &#39;DEFAULT&#39;,&#39;CUSTOM&#39; and &#39;CLIENT&#39;.
+     * 
+     */
+    private @Nullable String contentTypeCategory;
+    /**
+     * @return The content type value of backend service.
+     * 
+     */
+    private @Nullable String contentTypeValue;
+    /**
      * @return The http method of backend service.
      * 
      */
@@ -38,6 +48,11 @@ public final class ApiHttpVpcServiceConfig {
      * 
      */
     private Integer timeout;
+    /**
+     * @return The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+     * 
+     */
+    private @Nullable String vpcScheme;
 
     private ApiHttpVpcServiceConfig() {}
     /**
@@ -46,6 +61,20 @@ public final class ApiHttpVpcServiceConfig {
      */
     public Optional<String> aoneName() {
         return Optional.ofNullable(this.aoneName);
+    }
+    /**
+     * @return The content type category of backend service which supports values of &#39;DEFAULT&#39;,&#39;CUSTOM&#39; and &#39;CLIENT&#39;.
+     * 
+     */
+    public Optional<String> contentTypeCategory() {
+        return Optional.ofNullable(this.contentTypeCategory);
+    }
+    /**
+     * @return The content type value of backend service.
+     * 
+     */
+    public Optional<String> contentTypeValue() {
+        return Optional.ofNullable(this.contentTypeValue);
     }
     /**
      * @return The http method of backend service.
@@ -75,6 +104,13 @@ public final class ApiHttpVpcServiceConfig {
     public Integer timeout() {
         return this.timeout;
     }
+    /**
+     * @return The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+     * 
+     */
+    public Optional<String> vpcScheme() {
+        return Optional.ofNullable(this.vpcScheme);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -86,24 +122,42 @@ public final class ApiHttpVpcServiceConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String aoneName;
+        private @Nullable String contentTypeCategory;
+        private @Nullable String contentTypeValue;
         private String method;
         private String name;
         private String path;
         private Integer timeout;
+        private @Nullable String vpcScheme;
         public Builder() {}
         public Builder(ApiHttpVpcServiceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aoneName = defaults.aoneName;
+    	      this.contentTypeCategory = defaults.contentTypeCategory;
+    	      this.contentTypeValue = defaults.contentTypeValue;
     	      this.method = defaults.method;
     	      this.name = defaults.name;
     	      this.path = defaults.path;
     	      this.timeout = defaults.timeout;
+    	      this.vpcScheme = defaults.vpcScheme;
         }
 
         @CustomType.Setter
         public Builder aoneName(@Nullable String aoneName) {
 
             this.aoneName = aoneName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder contentTypeCategory(@Nullable String contentTypeCategory) {
+
+            this.contentTypeCategory = contentTypeCategory;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder contentTypeValue(@Nullable String contentTypeValue) {
+
+            this.contentTypeValue = contentTypeValue;
             return this;
         }
         @CustomType.Setter
@@ -138,13 +192,22 @@ public final class ApiHttpVpcServiceConfig {
             this.timeout = timeout;
             return this;
         }
+        @CustomType.Setter
+        public Builder vpcScheme(@Nullable String vpcScheme) {
+
+            this.vpcScheme = vpcScheme;
+            return this;
+        }
         public ApiHttpVpcServiceConfig build() {
             final var _resultValue = new ApiHttpVpcServiceConfig();
             _resultValue.aoneName = aoneName;
+            _resultValue.contentTypeCategory = contentTypeCategory;
+            _resultValue.contentTypeValue = contentTypeValue;
             _resultValue.method = method;
             _resultValue.name = name;
             _resultValue.path = path;
             _resultValue.timeout = timeout;
+            _resultValue.vpcScheme = vpcScheme;
             return _resultValue;
         }
     }

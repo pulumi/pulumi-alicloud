@@ -1184,22 +1184,25 @@ func (o ProjectSecurityPropertiesProjectProtectionPtrOutput) Protected() pulumi.
 }
 
 type GetProjectsProject struct {
+	// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
 	Comment string `pulumi:"comment"`
-	// Default Computing Resource Group
+	// View the current storage size of the Project. The storage size is the same as the measurement size, that is, the compressed logical storage size collected by the Project.
+	CostStorage string `pulumi:"costStorage"`
+	// Represents the creation time of the project
+	CreateTime string `pulumi:"createTime"`
+	// Used to implement computing resource allocation.If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 	DefaultQuota string `pulumi:"defaultQuota"`
-	// Project ID. The value is the same as `projectName`.
-	Id string `pulumi:"id"`
 	// IP whitelist
 	IpWhiteList GetProjectsProjectIpWhiteList `pulumi:"ipWhiteList"`
 	// Project owner
 	Owner string `pulumi:"owner"`
-	// The name of the resource
+	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName string `pulumi:"projectName"`
 	// Project base attributes
 	Properties GetProjectsProjectProperties `pulumi:"properties"`
 	// Security-related attributes
 	SecurityProperties GetProjectsProjectSecurityProperties `pulumi:"securityProperties"`
-	// The status of the resource
+	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 	Status string `pulumi:"status"`
 	// Project type
 	Type string `pulumi:"type"`
@@ -1217,22 +1220,25 @@ type GetProjectsProjectInput interface {
 }
 
 type GetProjectsProjectArgs struct {
+	// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
 	Comment pulumi.StringInput `pulumi:"comment"`
-	// Default Computing Resource Group
+	// View the current storage size of the Project. The storage size is the same as the measurement size, that is, the compressed logical storage size collected by the Project.
+	CostStorage pulumi.StringInput `pulumi:"costStorage"`
+	// Represents the creation time of the project
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Used to implement computing resource allocation.If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
 	DefaultQuota pulumi.StringInput `pulumi:"defaultQuota"`
-	// Project ID. The value is the same as `projectName`.
-	Id pulumi.StringInput `pulumi:"id"`
 	// IP whitelist
 	IpWhiteList GetProjectsProjectIpWhiteListInput `pulumi:"ipWhiteList"`
 	// Project owner
 	Owner pulumi.StringInput `pulumi:"owner"`
-	// The name of the resource
+	// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
 	// Project base attributes
 	Properties GetProjectsProjectPropertiesInput `pulumi:"properties"`
 	// Security-related attributes
 	SecurityProperties GetProjectsProjectSecurityPropertiesInput `pulumi:"securityProperties"`
-	// The status of the resource
+	// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 	Status pulumi.StringInput `pulumi:"status"`
 	// Project type
 	Type pulumi.StringInput `pulumi:"type"`
@@ -1289,18 +1295,24 @@ func (o GetProjectsProjectOutput) ToGetProjectsProjectOutputWithContext(ctx cont
 	return o
 }
 
+// Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
 func (o GetProjectsProjectOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Comment }).(pulumi.StringOutput)
 }
 
-// Default Computing Resource Group
-func (o GetProjectsProjectOutput) DefaultQuota() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsProject) string { return v.DefaultQuota }).(pulumi.StringOutput)
+// View the current storage size of the Project. The storage size is the same as the measurement size, that is, the compressed logical storage size collected by the Project.
+func (o GetProjectsProjectOutput) CostStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.CostStorage }).(pulumi.StringOutput)
 }
 
-// Project ID. The value is the same as `projectName`.
-func (o GetProjectsProjectOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsProject) string { return v.Id }).(pulumi.StringOutput)
+// Represents the creation time of the project
+func (o GetProjectsProjectOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Used to implement computing resource allocation.If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
+func (o GetProjectsProjectOutput) DefaultQuota() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.DefaultQuota }).(pulumi.StringOutput)
 }
 
 // IP whitelist
@@ -1313,7 +1325,7 @@ func (o GetProjectsProjectOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Owner }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
 func (o GetProjectsProjectOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.ProjectName }).(pulumi.StringOutput)
 }
@@ -1328,7 +1340,7 @@ func (o GetProjectsProjectOutput) SecurityProperties() GetProjectsProjectSecurit
 	return o.ApplyT(func(v GetProjectsProject) GetProjectsProjectSecurityProperties { return v.SecurityProperties }).(GetProjectsProjectSecurityPropertiesOutput)
 }
 
-// The status of the resource
+// The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
 func (o GetProjectsProjectOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1359,9 +1371,9 @@ func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProje
 }
 
 type GetProjectsProjectIpWhiteList struct {
-	// Classic network IP white list.
+	// Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
 	IpList string `pulumi:"ipList"`
-	// VPC network whitelist.
+	// Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
 	VpcIpList string `pulumi:"vpcIpList"`
 }
 
@@ -1377,9 +1389,9 @@ type GetProjectsProjectIpWhiteListInput interface {
 }
 
 type GetProjectsProjectIpWhiteListArgs struct {
-	// Classic network IP white list.
+	// Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
 	IpList pulumi.StringInput `pulumi:"ipList"`
-	// VPC network whitelist.
+	// Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
 	VpcIpList pulumi.StringInput `pulumi:"vpcIpList"`
 }
 
@@ -1409,32 +1421,32 @@ func (o GetProjectsProjectIpWhiteListOutput) ToGetProjectsProjectIpWhiteListOutp
 	return o
 }
 
-// Classic network IP white list.
+// Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
 func (o GetProjectsProjectIpWhiteListOutput) IpList() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectIpWhiteList) string { return v.IpList }).(pulumi.StringOutput)
 }
 
-// VPC network whitelist.
+// Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
 func (o GetProjectsProjectIpWhiteListOutput) VpcIpList() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectIpWhiteList) string { return v.VpcIpList }).(pulumi.StringOutput)
 }
 
 type GetProjectsProjectProperties struct {
-	// Whether to allow full table scan.
+	// Whether to allow full table scan. Default: false.
 	AllowFullScan bool `pulumi:"allowFullScan"`
 	// Whether to turn on Decimal2.0.
 	EnableDecimal2 bool `pulumi:"enableDecimal2"`
-	// Whether encryption is turned on.
+	// Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)> **NOTE :**:To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm.
 	Encryption GetProjectsProjectPropertiesEncryption `pulumi:"encryption"`
-	// Job default retention time.
-	RetentionDays string `pulumi:"retentionDays"`
-	// SQL charge limit.
+	// Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.The effective policy after adjusting the backup cycle is:Extend the backup cycle: The new backup cycle takes effect on the same day.Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+	RetentionDays int `pulumi:"retentionDays"`
+	// Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).Unit: scan volume (GB)* complexity.
 	SqlMeteringMax string `pulumi:"sqlMeteringMax"`
-	// Life cycle of tables.
+	// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,.
 	TableLifecycle GetProjectsProjectPropertiesTableLifecycle `pulumi:"tableLifecycle"`
-	// Project time zone.
+	// Project time zone, example value: Asia/Shanghai.
 	Timezone string `pulumi:"timezone"`
-	// Type system.
+	// Data type version. Value:(1/2/hive)1: The original MaxCompute type system.2: New type system introduced by MaxCompute 2.0.hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
 	TypeSystem string `pulumi:"typeSystem"`
 }
 
@@ -1450,21 +1462,21 @@ type GetProjectsProjectPropertiesInput interface {
 }
 
 type GetProjectsProjectPropertiesArgs struct {
-	// Whether to allow full table scan.
+	// Whether to allow full table scan. Default: false.
 	AllowFullScan pulumi.BoolInput `pulumi:"allowFullScan"`
 	// Whether to turn on Decimal2.0.
 	EnableDecimal2 pulumi.BoolInput `pulumi:"enableDecimal2"`
-	// Whether encryption is turned on.
+	// Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)> **NOTE :**:To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm.
 	Encryption GetProjectsProjectPropertiesEncryptionInput `pulumi:"encryption"`
-	// Job default retention time.
-	RetentionDays pulumi.StringInput `pulumi:"retentionDays"`
-	// SQL charge limit.
+	// Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.The effective policy after adjusting the backup cycle is:Extend the backup cycle: The new backup cycle takes effect on the same day.Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+	// Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).Unit: scan volume (GB)* complexity.
 	SqlMeteringMax pulumi.StringInput `pulumi:"sqlMeteringMax"`
-	// Life cycle of tables.
+	// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,.
 	TableLifecycle GetProjectsProjectPropertiesTableLifecycleInput `pulumi:"tableLifecycle"`
-	// Project time zone.
+	// Project time zone, example value: Asia/Shanghai.
 	Timezone pulumi.StringInput `pulumi:"timezone"`
-	// Type system.
+	// Data type version. Value:(1/2/hive)1: The original MaxCompute type system.2: New type system introduced by MaxCompute 2.0.hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
 	TypeSystem pulumi.StringInput `pulumi:"typeSystem"`
 }
 
@@ -1494,7 +1506,7 @@ func (o GetProjectsProjectPropertiesOutput) ToGetProjectsProjectPropertiesOutput
 	return o
 }
 
-// Whether to allow full table scan.
+// Whether to allow full table scan. Default: false.
 func (o GetProjectsProjectPropertiesOutput) AllowFullScan() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProjectProperties) bool { return v.AllowFullScan }).(pulumi.BoolOutput)
 }
@@ -1504,44 +1516,44 @@ func (o GetProjectsProjectPropertiesOutput) EnableDecimal2() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProjectProperties) bool { return v.EnableDecimal2 }).(pulumi.BoolOutput)
 }
 
-// Whether encryption is turned on.
+// Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)> **NOTE :**:To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm.
 func (o GetProjectsProjectPropertiesOutput) Encryption() GetProjectsProjectPropertiesEncryptionOutput {
 	return o.ApplyT(func(v GetProjectsProjectProperties) GetProjectsProjectPropertiesEncryption { return v.Encryption }).(GetProjectsProjectPropertiesEncryptionOutput)
 }
 
-// Job default retention time.
-func (o GetProjectsProjectPropertiesOutput) RetentionDays() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsProjectProperties) string { return v.RetentionDays }).(pulumi.StringOutput)
+// Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.The effective policy after adjusting the backup cycle is:Extend the backup cycle: The new backup cycle takes effect on the same day.Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+func (o GetProjectsProjectPropertiesOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectsProjectProperties) int { return v.RetentionDays }).(pulumi.IntOutput)
 }
 
-// SQL charge limit.
+// Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).Unit: scan volume (GB)* complexity.
 func (o GetProjectsProjectPropertiesOutput) SqlMeteringMax() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectProperties) string { return v.SqlMeteringMax }).(pulumi.StringOutput)
 }
 
-// Life cycle of tables.
+// Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,.
 func (o GetProjectsProjectPropertiesOutput) TableLifecycle() GetProjectsProjectPropertiesTableLifecycleOutput {
 	return o.ApplyT(func(v GetProjectsProjectProperties) GetProjectsProjectPropertiesTableLifecycle {
 		return v.TableLifecycle
 	}).(GetProjectsProjectPropertiesTableLifecycleOutput)
 }
 
-// Project time zone.
+// Project time zone, example value: Asia/Shanghai.
 func (o GetProjectsProjectPropertiesOutput) Timezone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectProperties) string { return v.Timezone }).(pulumi.StringOutput)
 }
 
-// Type system.
+// Data type version. Value:(1/2/hive)1: The original MaxCompute type system.2: New type system introduced by MaxCompute 2.0.hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
 func (o GetProjectsProjectPropertiesOutput) TypeSystem() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectProperties) string { return v.TypeSystem }).(pulumi.StringOutput)
 }
 
 type GetProjectsProjectPropertiesEncryption struct {
-	// Algorithm.
+	// The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
 	Algorithm string `pulumi:"algorithm"`
-	// Whether to open.
+	// Only enable function is supported. Value: (true).
 	Enable bool `pulumi:"enable"`
-	// Encryption algorithm key.
+	// The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
 	Key string `pulumi:"key"`
 }
 
@@ -1557,11 +1569,11 @@ type GetProjectsProjectPropertiesEncryptionInput interface {
 }
 
 type GetProjectsProjectPropertiesEncryptionArgs struct {
-	// Algorithm.
+	// The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
 	Algorithm pulumi.StringInput `pulumi:"algorithm"`
-	// Whether to open.
+	// Only enable function is supported. Value: (true).
 	Enable pulumi.BoolInput `pulumi:"enable"`
-	// Encryption algorithm key.
+	// The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
 	Key pulumi.StringInput `pulumi:"key"`
 }
 
@@ -1591,17 +1603,17 @@ func (o GetProjectsProjectPropertiesEncryptionOutput) ToGetProjectsProjectProper
 	return o
 }
 
-// Algorithm.
+// The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
 func (o GetProjectsProjectPropertiesEncryptionOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectPropertiesEncryption) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
-// Whether to open.
+// Only enable function is supported. Value: (true).
 func (o GetProjectsProjectPropertiesEncryptionOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProjectPropertiesEncryption) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// Encryption algorithm key.
+// The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
 func (o GetProjectsProjectPropertiesEncryptionOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectPropertiesEncryption) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -1609,7 +1621,7 @@ func (o GetProjectsProjectPropertiesEncryptionOutput) Key() pulumi.StringOutput 
 type GetProjectsProjectPropertiesTableLifecycle struct {
 	// Project type
 	Type string `pulumi:"type"`
-	// The value of the life cycle.
+	// The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
 	Value string `pulumi:"value"`
 }
 
@@ -1627,7 +1639,7 @@ type GetProjectsProjectPropertiesTableLifecycleInput interface {
 type GetProjectsProjectPropertiesTableLifecycleArgs struct {
 	// Project type
 	Type pulumi.StringInput `pulumi:"type"`
-	// The value of the life cycle.
+	// The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1662,25 +1674,25 @@ func (o GetProjectsProjectPropertiesTableLifecycleOutput) Type() pulumi.StringOu
 	return o.ApplyT(func(v GetProjectsProjectPropertiesTableLifecycle) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value of the life cycle.
+// The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
 func (o GetProjectsProjectPropertiesTableLifecycleOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectPropertiesTableLifecycle) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type GetProjectsProjectSecurityProperties struct {
-	// Whether to enable download permission check.
+	// Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
 	EnableDownloadPrivilege bool `pulumi:"enableDownloadPrivilege"`
-	// Label authorization.
+	// Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
 	LabelSecurity bool `pulumi:"labelSecurity"`
-	// Project creator permissions.
+	// Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
 	ObjectCreatorHasAccessPermission bool `pulumi:"objectCreatorHasAccessPermission"`
-	// Does the project creator have authorization rights.
+	// The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
 	ObjectCreatorHasGrantPermission bool `pulumi:"objectCreatorHasGrantPermission"`
 	// Project protection.
 	ProjectProtection GetProjectsProjectSecurityPropertiesProjectProtection `pulumi:"projectProtection"`
-	// Whether to turn on ACL.
+	// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingAcl bool `pulumi:"usingAcl"`
-	// Whether to enable Policy.
+	// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingPolicy bool `pulumi:"usingPolicy"`
 }
 
@@ -1696,19 +1708,19 @@ type GetProjectsProjectSecurityPropertiesInput interface {
 }
 
 type GetProjectsProjectSecurityPropertiesArgs struct {
-	// Whether to enable download permission check.
+	// Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
 	EnableDownloadPrivilege pulumi.BoolInput `pulumi:"enableDownloadPrivilege"`
-	// Label authorization.
+	// Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
 	LabelSecurity pulumi.BoolInput `pulumi:"labelSecurity"`
-	// Project creator permissions.
+	// Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
 	ObjectCreatorHasAccessPermission pulumi.BoolInput `pulumi:"objectCreatorHasAccessPermission"`
-	// Does the project creator have authorization rights.
+	// The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
 	ObjectCreatorHasGrantPermission pulumi.BoolInput `pulumi:"objectCreatorHasGrantPermission"`
 	// Project protection.
 	ProjectProtection GetProjectsProjectSecurityPropertiesProjectProtectionInput `pulumi:"projectProtection"`
-	// Whether to turn on ACL.
+	// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingAcl pulumi.BoolInput `pulumi:"usingAcl"`
-	// Whether to enable Policy.
+	// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 	UsingPolicy pulumi.BoolInput `pulumi:"usingPolicy"`
 }
 
@@ -1738,22 +1750,22 @@ func (o GetProjectsProjectSecurityPropertiesOutput) ToGetProjectsProjectSecurity
 	return o
 }
 
-// Whether to enable download permission check.
+// Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
 func (o GetProjectsProjectSecurityPropertiesOutput) EnableDownloadPrivilege() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProjectSecurityProperties) bool { return v.EnableDownloadPrivilege }).(pulumi.BoolOutput)
 }
 
-// Label authorization.
+// Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
 func (o GetProjectsProjectSecurityPropertiesOutput) LabelSecurity() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProjectSecurityProperties) bool { return v.LabelSecurity }).(pulumi.BoolOutput)
 }
 
-// Project creator permissions.
+// Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
 func (o GetProjectsProjectSecurityPropertiesOutput) ObjectCreatorHasAccessPermission() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProjectSecurityProperties) bool { return v.ObjectCreatorHasAccessPermission }).(pulumi.BoolOutput)
 }
 
-// Does the project creator have authorization rights.
+// The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
 func (o GetProjectsProjectSecurityPropertiesOutput) ObjectCreatorHasGrantPermission() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProjectSecurityProperties) bool { return v.ObjectCreatorHasGrantPermission }).(pulumi.BoolOutput)
 }
@@ -1765,20 +1777,20 @@ func (o GetProjectsProjectSecurityPropertiesOutput) ProjectProtection() GetProje
 	}).(GetProjectsProjectSecurityPropertiesProjectProtectionOutput)
 }
 
-// Whether to turn on ACL.
+// Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 func (o GetProjectsProjectSecurityPropertiesOutput) UsingAcl() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProjectSecurityProperties) bool { return v.UsingAcl }).(pulumi.BoolOutput)
 }
 
-// Whether to enable Policy.
+// Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
 func (o GetProjectsProjectSecurityPropertiesOutput) UsingPolicy() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProjectSecurityProperties) bool { return v.UsingPolicy }).(pulumi.BoolOutput)
 }
 
 type GetProjectsProjectSecurityPropertiesProjectProtection struct {
-	// Exclusion policy.
+	// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
 	ExceptionPolicy string `pulumi:"exceptionPolicy"`
-	// Is it turned on.
+	// Whether enabled, value:(true/false).
 	Protected bool `pulumi:"protected"`
 }
 
@@ -1794,9 +1806,9 @@ type GetProjectsProjectSecurityPropertiesProjectProtectionInput interface {
 }
 
 type GetProjectsProjectSecurityPropertiesProjectProtectionArgs struct {
-	// Exclusion policy.
+	// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
 	ExceptionPolicy pulumi.StringInput `pulumi:"exceptionPolicy"`
-	// Is it turned on.
+	// Whether enabled, value:(true/false).
 	Protected pulumi.BoolInput `pulumi:"protected"`
 }
 
@@ -1826,12 +1838,12 @@ func (o GetProjectsProjectSecurityPropertiesProjectProtectionOutput) ToGetProjec
 	return o
 }
 
-// Exclusion policy.
+// Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
 func (o GetProjectsProjectSecurityPropertiesProjectProtectionOutput) ExceptionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProjectSecurityPropertiesProjectProtection) string { return v.ExceptionPolicy }).(pulumi.StringOutput)
 }
 
-// Is it turned on.
+// Whether enabled, value:(true/false).
 func (o GetProjectsProjectSecurityPropertiesProjectProtectionOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProjectSecurityPropertiesProjectProtection) bool { return v.Protected }).(pulumi.BoolOutput)
 }

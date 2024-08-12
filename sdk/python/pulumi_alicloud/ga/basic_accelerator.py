@@ -535,13 +535,13 @@ class BasicAccelerator(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.ga.BasicAccelerator("default",
-            bandwidth_billing_type="BandwidthPackage",
-            auto_pay=True,
             duration=1,
             pricing_cycle="Month",
-            auto_use_coupon="true",
             basic_accelerator_name="tf-example-value",
-            description="tf-example-value")
+            description="tf-example-value",
+            bandwidth_billing_type="BandwidthPackage",
+            auto_pay=True,
+            auto_use_coupon="true")
         ```
 
         ## Import
@@ -593,13 +593,13 @@ class BasicAccelerator(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.ga.BasicAccelerator("default",
-            bandwidth_billing_type="BandwidthPackage",
-            auto_pay=True,
             duration=1,
             pricing_cycle="Month",
-            auto_use_coupon="true",
             basic_accelerator_name="tf-example-value",
-            description="tf-example-value")
+            description="tf-example-value",
+            bandwidth_billing_type="BandwidthPackage",
+            auto_pay=True,
+            auto_use_coupon="true")
         ```
 
         ## Import

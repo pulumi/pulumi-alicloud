@@ -218,44 +218,6 @@ class GatewayCacheDisk(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.144.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
-        default_network = alicloud.vpc.Network("default",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("default",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default.stocks[0].zone_id,
-            vswitch_name=name)
-        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=name)
-        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
-            description=name,
-            gateway_class="Standard",
-            type="File",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            release_after_expiration=True,
-            storage_bundle_id=default_storage_bundle.id,
-            location="Cloud",
-            gateway_name=name)
-        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("default",
-            gateway_id=default_gateway.id,
-            cache_disk_size_in_gb=50,
-            cache_disk_category="cloud_efficiency")
-        ```
-
         ## Import
 
         Cloud Storage Gateway Gateway Cache Disk can be imported using the id, e.g.
@@ -283,44 +245,6 @@ class GatewayCacheDisk(pulumi.CustomResource):
         For information about Cloud Storage Gateway Gateway Cache Disk and how to use it, see [What is Gateway Cache Disk](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/creategatewaycachedisk).
 
         > **NOTE:** Available since v1.144.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.cloudstoragegateway.get_stocks(gateway_class="Standard")
-        default_network = alicloud.vpc.Network("default",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("default",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default.stocks[0].zone_id,
-            vswitch_name=name)
-        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=name)
-        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
-            description=name,
-            gateway_class="Standard",
-            type="File",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            release_after_expiration=True,
-            storage_bundle_id=default_storage_bundle.id,
-            location="Cloud",
-            gateway_name=name)
-        default_gateway_cache_disk = alicloud.cloudstoragegateway.GatewayCacheDisk("default",
-            gateway_id=default_gateway.id,
-            cache_disk_size_in_gb=50,
-            cache_disk_category="cloud_efficiency")
-        ```
 
         ## Import
 

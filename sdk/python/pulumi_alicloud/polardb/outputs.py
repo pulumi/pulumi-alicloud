@@ -924,7 +924,7 @@ class GetEndpointsEndpointAddressItemResult(dict):
         :param str net_type: IP network type:`Public` or `Private`.
         :param str port: Intranet connection port.
         :param str vpc_id: ID of the VPC the instance belongs to.
-        :param str vswitch_id: ID of the VSwitch the cluster belongs to.
+        :param str vswitch_id: ID of the vSwitch the cluster belongs to.
         """
         pulumi.set(__self__, "connection_string", connection_string)
         pulumi.set(__self__, "ip_address", ip_address)
@@ -977,7 +977,7 @@ class GetEndpointsEndpointAddressItemResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        ID of the VSwitch the cluster belongs to.
+        ID of the vSwitch the cluster belongs to.
         """
         return pulumi.get(self, "vswitch_id")
 

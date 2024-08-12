@@ -37,6 +37,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Trigger{}
 	case "alicloud:fc/v2Function:V2Function":
 		r = &V2Function{}
+	case "alicloud:fc/v3Alias:V3Alias":
+		r = &V3Alias{}
+	case "alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig":
+		r = &V3AsyncInvokeConfig{}
+	case "alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig":
+		r = &V3ConcurrencyConfig{}
+	case "alicloud:fc/v3CustomDomain:V3CustomDomain":
+		r = &V3CustomDomain{}
+	case "alicloud:fc/v3Function:V3Function":
+		r = &V3Function{}
+	case "alicloud:fc/v3FunctionVersion:V3FunctionVersion":
+		r = &V3FunctionVersion{}
+	case "alicloud:fc/v3Trigger:V3Trigger":
+		r = &V3Trigger{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -88,6 +102,41 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"fc/v2Function",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"fc/v3Alias",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"fc/v3AsyncInvokeConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"fc/v3ConcurrencyConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"fc/v3CustomDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"fc/v3Function",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"fc/v3FunctionVersion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"fc/v3Trigger",
 		&module{version},
 	)
 }

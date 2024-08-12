@@ -9563,7 +9563,7 @@ type GetServerlessKubernetesClustersCluster struct {
 	Tags            map[string]interface{} `pulumi:"tags"`
 	// The ID of VPC where the current cluster is located.
 	VpcId string `pulumi:"vpcId"`
-	// The ID of VSwitch where the current cluster is located.
+	// The ID of vSwitch where the current cluster is located.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -9595,7 +9595,7 @@ type GetServerlessKubernetesClustersClusterArgs struct {
 	Tags            pulumi.MapInput    `pulumi:"tags"`
 	// The ID of VPC where the current cluster is located.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// The ID of VSwitch where the current cluster is located.
+	// The ID of vSwitch where the current cluster is located.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -9695,7 +9695,7 @@ func (o GetServerlessKubernetesClustersClusterOutput) VpcId() pulumi.StringOutpu
 	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The ID of VSwitch where the current cluster is located.
+// The ID of vSwitch where the current cluster is located.
 func (o GetServerlessKubernetesClustersClusterOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerlessKubernetesClustersCluster) string { return v.VswitchId }).(pulumi.StringOutput)
 }
